@@ -35,11 +35,17 @@ class DynamicNode<V,E> implements Node<V,E> {
 
 	public List<Link<V,E>> outLinks ()
 	{
+		if (out==null)
+			out = new DynamicList<Link<V,E>>();
+		
 		return out;
 	}
 
 	public List<Link<V,E>> inLinks ()
 	{
+		if (in==null)
+			in = new DynamicList<Link<V,E>>();
+		
 		return in;
 	}
 

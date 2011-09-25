@@ -24,18 +24,27 @@ public interface Graph<V, E> extends List<V>
 	public int index (Node<V,E> node);
 	
 	public Node<V,E> getNode (int index);
+	public Node<V,E> getNode (V node);
 
 	// Node degrees
 
 	public int degree (int node);
+	public int degree (V node);
+	
 	public int inDegree (int node);
+	public int inDegree (V node);
+	
 	public int outDegree (int node);
+	public int outDegree (V node);	
 
 	// Edges
 
 	public int links ();
 
 	public List<Link<V,E>> outLinks (int node);
+	public List<Link<V,E>> outLinks (V node);
+
 	public List<Link<V,E>> inLinks (int node);
+	public List<Link<V,E>> inLinks (V node);
 }
 

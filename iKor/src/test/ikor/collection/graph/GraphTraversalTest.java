@@ -21,8 +21,8 @@ public class GraphTraversalTest
 
 	public static void main (String args[])
 	{
-		DynamicGraph<String,Integer> map = GraphTest.roadmap();
-		DynamicGraph<String,String>  web = GraphTest.web();
+		DynamicGraph<String,Integer> map = Mock.roadmap();
+		DynamicGraph<String,String>  web = Mock.web();
 
 		GraphSearch<String,Integer>  mapSearch; 
 		GraphSearch<String,String>   webSearch;

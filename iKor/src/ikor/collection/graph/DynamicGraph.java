@@ -48,6 +48,12 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 	}
 	
 	@Override
+	public final Node<V,E> getNode (V node)
+	{
+		return getNode (index(node));
+	}
+	
+	@Override
 	public V get (int nodeIndex)
     {
 		return nodes.get(nodeIndex).getContent();
@@ -56,13 +62,23 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 	@Override
 	public int index (V node)
 	{
-		return index.get(node);
+		Integer entry = index.get(node);
+		
+		if (entry!=null)
+			return entry.intValue();
+		else
+			return -1;
 	}
 
 	@Override
 	public int index (Node<V,E> node)
 	{
-		return index.get(node.getContent());
+		Integer result = index.get(node.getContent());
+		
+		if (result!=null)
+			return result;
+		else
+			return -1;
 	}
 
 
@@ -92,32 +108,71 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 
 	public int degree (int i)
 	{
-		return nodes.get(i).degree();
+		if ((i>=0) && (i<size()))
+			return nodes.get(i).degree();
+		else
+			return 0;
+	}
+
+	public int degree (V node)
+	{
+		return degree(index(node));
 	}
 
 	public int inDegree (int i)
 	{
-		return nodes.get(i).inDegree();
+		if ((i>=0) && (i<size()))
+			return nodes.get(i).inDegree();
+		else
+			return 0;
 	}
 
+	public int inDegree (V node)
+	{
+		return inDegree(index(node));
+	}
+	
+	
 	public int outDegree (int i)
 	{
-		return nodes.get(i).outDegree();
+		if ((i>=0) && (i<size()))
+			return nodes.get(i).outDegree();
+		else
+			return 0;
 	}
 
+	public int outDegree (V node)
+	{
+		return outDegree(index(node));
+	}
+	
 	// Edges
 
 	public List<Link<V,E>> outLinks (int node)
 	{
-		return nodes.get(node).outLinks();
+		if ((node>=0) && (node<size()))
+			return nodes.get(node).outLinks();
+		else
+			return null;
 	}
 
+	public List<Link<V,E>> outLinks (V node)
+	{
+		return outLinks(index(node));
+	}
+	
 	public List<Link<V,E>> inLinks (int node)
 	{
-		return nodes.get(node).inLinks();
+		if ((node>=0) && (node<size()))
+			return nodes.get(node).inLinks();
+		else
+			return null;
 	}
 
-	
+	public List<Link<V,E>> inLinks (V node)
+	{
+		return inLinks(index(node));
+	}	
 
 	// Add node
 
@@ -146,19 +201,26 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 	@Override
 	public boolean add (int sourceIndex, int destinationIndex, E content)
 	{
-		DynamicNode<V,E> source = nodes.get(sourceIndex);
-		DynamicNode<V,E> destination = nodes.get(destinationIndex);
-		Link<V,E>        link = new Link<V,E>( source, destination, content);
-
-		source.addOutLink (link);
-		destination.addInLink (link);
-
-		if (!isDirected()) {
-			source.addInLink (link);
-			destination.addOutLink (link);
-		}
+		if ( (sourceIndex>=0) && (sourceIndex<size())
+		   && (destinationIndex>=0) && (destinationIndex<size()) ) {
 		
-		return true;
+			DynamicNode<V,E> source = nodes.get(sourceIndex);
+			DynamicNode<V,E> destination = nodes.get(destinationIndex);
+			Link<V,E>        link = new Link<V,E>( source, destination, content);
+
+			source.addOutLink (link);
+			destination.addInLink (link);
+
+			if (!isDirected()) {
+				source.addInLink (link);
+				destination.addOutLink (link);
+			}
+		
+			return true;
+			
+		} else {
+			return false;
+		}
 	}
 
 
@@ -178,29 +240,36 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 
 	public boolean remove (int nodeIndex)
 	{
-		DynamicNode<V,E> node = nodes.get(nodeIndex);
+		if ((nodeIndex>=0) && (nodeIndex<size())) {
+			
+			DynamicNode<V,E> node = nodes.get(nodeIndex);
 
-		// Remove node & adjacent edges
+			// Remove node & adjacent edges
 
-		while (node.outDegree()>0) {
-			  remove ( node.outLink(0) );
-		}
+			while (node.outDegree()>0) {
+				remove ( node.outLink(0) );
+			}
 
-		while (node.inDegree()>0) {
-			  remove ( node.inLink(0) );
-		}
+			while (node.inDegree()>0) {
+				remove ( node.inLink(0) );
+			}
 
-		nodes.remove (node);
+			nodes.remove (node);
 
-		// Update index: O(n)
+			// Update index: O(n)
 
-		index.remove (node.getContent());
+			index.remove (node.getContent());
 
-		for (int i=nodeIndex; i<size(); i++) {
-			index.set ( nodes.get(i).getContent(), i);
-		}
+			for (int i=nodeIndex; i<size(); i++) {
+				index.set ( nodes.get(i).getContent(), i);
+			}
 		
-		return true;
+			return true;
+		
+		} else {
+			
+			return false;
+		}
 	}
 
 
@@ -212,21 +281,30 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 
 	public boolean  remove (int sourceIndex, int destinationIndex, E content)
 	{
-		DynamicNode<V,E> source = nodes.get(sourceIndex);
-		DynamicNode<V,E> destination = nodes.get(destinationIndex);
-		Link<V,E>        link;
-
-		for (int i=0; i<source.outDegree(); i++) {
-
-			link = source.outLink(i);
-
-			if ( (link.getDestination() == destination) 
-				&&  ( (link.getContent()==content) || (link.getContent().equals(content)) ) ) {
-			   remove( source.outLink(i));
-			}
-		}
 		
-		return true;
+		if ( (sourceIndex>=0) && (sourceIndex<size())
+		   && (destinationIndex>=0) && (destinationIndex<size()) ) {
+			
+			DynamicNode<V,E> source = nodes.get(sourceIndex);
+			DynamicNode<V,E> destination = nodes.get(destinationIndex);
+			Link<V,E>        link;
+
+			for (int i=0; i<source.outDegree(); i++) {
+
+				link = source.outLink(i);
+
+				if ( (link.getDestination() == destination) 
+				   &&  ( (link.getContent()==content) || (link.getContent().equals(content)) ) ) {
+					remove( source.outLink(i));
+				}
+			}
+		
+			return true;
+		
+		} else {
+			
+			return false;
+		}
 	}
 
     public boolean remove (Link<V,E> link)
@@ -265,7 +343,7 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 
 			} else {
 
-				toStringBuffer(buffer, "LinkS", nodes.get(i).outLinks());
+				toStringBuffer(buffer, "Links", nodes.get(i).outLinks());
 			}
 		}
 
@@ -291,20 +369,19 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 
 	@Override
 	public boolean contains(V object) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return ( index.get(object) != null );
 	}
 
 	@Override
 	public Iterator<V> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return new GraphIterator(this);
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		index.clear();
+		nodes.clear();
 	}
 }
 

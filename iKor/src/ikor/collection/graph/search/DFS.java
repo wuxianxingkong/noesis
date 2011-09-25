@@ -1,0 +1,79 @@
+package ikor.collection.graph.search;
+
+// Title:       Graph Search
+// Version:     1.0
+// Copyright:   2008
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
+
+import ikor.util.Visitor;
+
+import ikor.collection.List;
+
+import ikor.collection.graph.Graph;
+import ikor.collection.graph.Node;
+import ikor.collection.graph.Link;
+/**
+ * Depth-First Search in Graphs
+ * 
+ * @author Fernando Berzal
+ */
+
+public class DFS<V,E> extends GraphSearch<V,E>
+{
+    // Constructor
+
+	public DFS (Graph<V,E> graph)
+	{
+		super(graph);
+	}
+
+	public DFS (Graph<V,E> graph, Visitor<Node<V,E>> nodeVisitor, Visitor<Link<V,E>> linkVisitor)
+	{
+		super(graph, nodeVisitor, linkVisitor);
+	}
+
+	// Graph exploration
+
+	public void explore (Node<V,E> current)
+	{
+		int             currentIndex, targetIndex;
+		Node<V,E>       target;
+		List<Link<V,E>> links;
+		Link<V,E>       link;
+
+ 	    currentIndex = graph.index(current);
+   	    state[currentIndex] = GraphSearch.State.DISCOVERED;
+
+		visitNode(current);
+
+		links = graph.outLinks(currentIndex);
+
+		if (links!=null) {
+
+			for (int i=0; i<links.size(); i++) {
+
+				link = links.get(i);
+
+				visitLink (link);
+
+				if (graph.isDirected()) {
+					target = link.getDestination();		
+				} else {
+					target = (link.getDestination()==current)? link.getSource(): link.getDestination();
+				}
+
+
+				targetIndex = graph.index(target);
+
+				if (state[targetIndex]==GraphSearch.State.UNDISCOVERED) {
+					explore(target);
+				}
+			}
+		}
+
+   	    state[currentIndex] = GraphSearch.State.EXPLORED;
+	}
+
+}
+

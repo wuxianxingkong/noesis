@@ -1,0 +1,16 @@
+ikor.collection
+ikor.collection.graph
+ikor.collection.graph.search
+ikor.collection.relation
+ikor.collection.sequence
+ikor.collection.sequence.alignment
+ikor.math
+ikor.model
+ikor.model.description
+ikor.util
+ikor.util.concurrent
+ikor.util.jdbc
+ikor.util.similarity
+ikor.util.xml
+test.ikor.collection.graph
+test.ikor.model.mock

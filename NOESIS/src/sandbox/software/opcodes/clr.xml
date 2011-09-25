@@ -1,0 +1,3101 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="instructions.xsl"?>
+
+<!--
+
+<instruction>
+ <hex></hex>
+ <opcode></opcode>
+ <description></description>
+ <category></category> 
+ <operation></operation>
+ <before>
+ </before>
+ <after>
+ </after>
+</instruction>
+-->
+
+<architecture name=".NET Common Language Runtime - MSIL Instruction Set">
+
+
+<instruction>
+ <hex>00</hex>
+ <opcode>nop</opcode>
+ <description>Do nothing</description>
+ <category>nop</category> 
+</instruction>
+
+<instruction>
+ <hex>01</hex>
+ <opcode>break</opcode>
+ <description>Breakpoint instruction</description>
+ <category>control</category> 
+ <operation>break</operation>
+</instruction>
+
+<instruction>
+ <hex>02</hex>
+ <opcode>ldarg.0</opcode>
+ <description>Load argument onto the stack</description>
+ <category>load</category> 
+ <operation>argument</operation>
+ <before>
+  <operand type="index">0</operand>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>03</hex>
+ <opcode>ldarg.1</opcode>
+ <description>Load argument onto the stack</description>
+ <category>load</category> 
+ <operation>argument</operation>
+ <before>
+  <operand type="index">1</operand>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>04</hex>
+ <opcode>ldarg.2</opcode>
+ <description>Load argument onto the stack</description>
+ <category>load</category> 
+ <operation>argument</operation>
+ <before>
+  <operand type="index">2</operand>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>05</hex>
+ <opcode>ldarg.3</opcode>
+ <description>Load argument onto the stack</description>
+ <category>load</category> 
+ <operation>argument</operation>
+ <before>
+  <operand type="index">3</operand>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>06</hex>
+ <opcode>ldloc.0</opcode>
+ <description>Load local variable onto the stack</description>
+ <category>load</category> 
+ <operation>local</operation>
+ <before>
+  <operand type="index" bytes="0">0</operand>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>07</hex>
+ <opcode>ldloc.1</opcode>
+ <description>Load local variable onto the stack</description>
+ <category>load</category> 
+ <operation>local</operation>
+ <before>
+  <operand type="index" bytes="0">1</operand>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>08</hex>
+ <opcode>ldloc.2</opcode>
+ <description>Load local variable onto the stack</description>
+ <category>load</category> 
+ <operation>local</operation>
+ <before>
+  <operand type="index" bytes="0">2</operand>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>09</hex>
+ <opcode>ldloc.3</opcode>
+ <description>Load local variable onto the stack</description>
+ <category>load</category> 
+ <operation>local</operation>
+ <before>
+  <operand type="index" bytes="0">3</operand>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>0a</hex>
+ <opcode>stloc.0</opcode>
+ <description>Store local variable</description>
+ <category>store</category> 
+ <operation>local</operation>
+ <before>
+  <operand type="index" bytes="0">0</operand>
+  <stack>value</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>0b</hex>
+ <opcode>stloc.1</opcode>
+ <description>Store local variable</description>
+ <category>store</category> 
+ <operation>local</operation>
+ <before>
+  <operand type="index" bytes="0">1</operand>
+  <stack>value</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>0c</hex>
+ <opcode>stloc.2</opcode>
+ <description>Store local variable</description>
+ <category>store</category> 
+ <operation>local</operation>
+ <before>
+  <operand type="index" bytes="0">2</operand>
+  <stack>value</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>0d</hex>
+ <opcode>stloc.3</opcode>
+ <description>Store local variable</description>
+ <category>store</category> 
+ <operation>local</operation>
+ <before>
+  <operand type="index" bytes="0">3</operand>
+  <stack>value</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>0e</hex>
+ <opcode>ldarg.s</opcode>
+ <description>Load argument onto the stack</description>
+ <category>load</category> 
+ <operation>argument</operation>
+ <before>
+  <operand type="index" bytes="1">index</operand>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>0f</hex>
+ <opcode>ldarga.s</opcode>
+ <description>Load an argument address</description>
+ <category>load</category> 
+ <operation>argument</operation>
+ <before>
+  <operand type="index" bytes="1">index</operand>
+ </before>
+ <after>
+   <stack type="address">address</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>10</hex>
+ <opcode>starg.s</opcode>
+ <description>Store a value in an argument slot</description>
+ <category>store</category> 
+ <operation>argument</operation>
+ <before>
+  <operand type="index" bytes="1">index</operand>
+  <stack>value</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>11</hex>
+ <opcode>ldloc.s</opcode>
+ <description>Load local variable onto the stack</description>
+ <category>load</category> 
+ <operation>local</operation>
+ <before>
+  <operand type="index" bytes="1">index</operand>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>12</hex>
+ <opcode>ldloca.s</opcode>
+ <description>Load local variable address onto the stack</description>
+ <category>load</category> 
+ <operation>local</operation>
+ <before>
+  <operand type="index" bytes="1">index</operand>
+ </before>
+ <after>
+  <stack type="address">address</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>13</hex>
+ <opcode>stloc.s</opcode>
+ <description>Store local variable</description>
+ <category>store</category> 
+ <operation>local</operation>
+ <before>
+  <operand type="index" bytes="1">index</operand>
+  <stack>value</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>14</hex>
+ <opcode>ldnull</opcode>
+ <description>Load a null pointer</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+ </before>
+ <after>
+  <stack>null</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>15</hex>
+ <opcode>ldc.i4.m1</opcode>
+ <description>Load numeric constant</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+ </before>
+ <after>
+  <stack type="int">-1</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>16</hex>
+ <opcode>ldc.i4.0</opcode>
+ <description>Load numeric constant</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+ </before>
+ <after>
+  <stack type="int">0</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>17</hex>
+ <opcode>ldc.i4.1</opcode>
+ <description>Load numeric constant</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+ </before>
+ <after>
+  <stack type="int">1</stack>
+ </after>>
+</instruction>
+
+<instruction>
+ <hex>18</hex>
+ <opcode>ldc.i4.2</opcode>
+ <description>Load numeric constant</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+ </before>
+ <after>
+  <stack type="int">2</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>19</hex>
+ <opcode>ldc.i4.3</opcode>
+ <description>Load numeric constant</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+ </before>
+ <after>
+  <stack type="int">3</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>1a</hex>
+ <opcode>ldc.i4.4</opcode>
+ <description>Load numeric constant</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+ </before>
+ <after>
+  <stack type="int">4</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>1b</hex>
+ <opcode>ldc.i4.5</opcode>
+ <description>Load numeric constant</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+ </before>
+ <after>
+  <stack type="int">5</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>1c</hex>
+ <opcode>ldc.i4.6</opcode>
+ <description>Load numeric constant</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+ </before>
+ <after>
+  <stack type="int">6</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>1d</hex>
+ <opcode>ldc.i4.7</opcode>
+ <description>Load numeric constant</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+ </before>
+ <after>
+  <stack type="int">7</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>1e</hex>
+ <opcode>ldc.i4.8</opcode>
+ <description>Load numeric constant</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+ </before>
+ <after>
+  <stack type="int">8</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>1f</hex>
+ <opcode>ldc.i4.s</opcode>
+ <description>Load numeric constant</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+  <operand type="int" bytes="1">value</operand>
+ </before>
+ <after>
+  <stack type="int">value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>20</hex>
+ <opcode>ldc.i4</opcode>
+ <description>Load numeric constant</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+  <operand type="int" bytes="4">value</operand>
+ </before>
+ <after>
+  <stack type="int">value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>21</hex>
+ <opcode>ldc.i8</opcode>
+ <description>Load numeric constant</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+  <operand type="long" bytes="8">value</operand>
+ </before>
+ <after>
+  <stack type="long">value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>22</hex>
+ <opcode>ldc.r4</opcode>
+ <description>Load numeric constant</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+  <operand type="float" bytes="4">value</operand>
+ </before>
+ <after>
+  <stack type="double">value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>23</hex>
+ <opcode>ldc.r8</opcode>
+ <description>Load numeric constant</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+  <operand type="double" bytes="8">value</operand>
+ </before>
+ <after>
+  <stack type="double">value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>25</hex>
+ <opcode>dup</opcode>
+ <description>Duplicate the top value of the stack</description>
+ <category>stack</category> 
+ <operation>dup</operation>
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack>value</stack>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>26</hex>
+ <opcode>pop</opcode>
+ <description>Remove the top element of the stack</description>
+ <category>stack</category> 
+ <operation>pop</operation>
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>27</hex>
+ <opcode>jmp</opcode>
+ <description>Jump to method</description>
+ <category>control</category> 
+ <operation>call</operation>
+ <before>
+  <operand type="method">method</operand>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>28</hex>
+ <opcode>call</opcode>
+ <description>Call a method</description>
+ <category>control</category> 
+ <operation>call</operation>
+ <before>
+  <operand type="method">method</operand>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>29</hex>
+ <opcode>calli</opcode>
+ <description>Indirect method call</description>
+ <category>control</category> 
+ <operation>call</operation>
+ <before>
+  <operand type="metadata">descriptor</operand>
+  <stack type="pointer">method pointer</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>2a</hex>
+ <opcode>ret</opcode>
+ <description>Return from method</description>
+ <category>control</category> 
+ <operation>return</operation>
+ <before>
+  <stack>retVal</stack>
+ </before>
+ <after>
+  <stack>retVal</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>2b</hex>
+ <opcode>br.s</opcode>
+ <description>Unconditional branch</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <before>
+   <operand type="offset" bytes="1">target</operand>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>2c</hex>
+ <opcode>brfalse.s</opcode>
+ <opcode>brnull.s</opcode>
+ <opcode>brzero.s</opcode>
+ <description>Branch on false, null, or zero</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>false</condition>
+ <before>
+   <operand type="offset" bytes="1">target</operand>
+   <stack>value</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>2d</hex>
+ <opcode>brtrue.s</opcode>
+ <alias>brinst.s</alias>
+ <description>Branch on non-false, non-null</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>true</condition>
+ <before>
+   <operand type="offset" bytes="1">target</operand>
+   <stack>value</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>2e</hex>
+ <opcode>beq.s</opcode>
+ <description>Branch on equal</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>==</condition>
+ <before>
+  <operand type="offset" bytes="1">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>2f</hex>
+ <opcode>bge.s</opcode>
+ <description>Branch on greater than or equal to</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>&gt;=</condition>
+ <before>
+  <operand type="offset" bytes="1">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>30</hex>
+ <opcode>bgt.s</opcode>
+ <description>Branch on greater than</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>&gt;</condition>
+ <before>
+  <operand type="offset" bytes="1">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>31</hex>
+ <opcode>ble.s</opcode>
+ <description>Branch on less than or equal to</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>&lt;=</condition>
+ <before>
+  <operand type="offset" bytes="1">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>32</hex>
+ <opcode>blt.s</opcode>
+ <description>Branch on less than</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>&lt;</condition>
+ <before>
+  <operand type="offset" bytes="1">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>33</hex>
+ <opcode>bne.un.s</opcode>
+ <description>Branch on not equal</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>!=</condition>
+ <before>
+  <operand type="offset" bytes="1">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>34</hex>
+ <opcode>bge.un.s</opcode>
+ <description>Branch on greater than or equal to (unsigned or unordered)</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>&gt;=</condition>
+ <before>
+  <operand type="offset" bytes="1">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>35</hex>
+ <opcode>bgt.un.s</opcode>
+ <description>Branch on greater than (unsigned or unordered)</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>&gt;</condition>
+ <before>
+  <operand type="offset" bytes="1">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>36</hex>
+ <opcode>ble.un.s</opcode>
+ <description>Branch on less than or equal to (unsigned or unordered)</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>&lt;=</condition>
+ <before>
+  <operand type="offset" bytes="1">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>37</hex>
+ <opcode>blt.un.s</opcode>
+ <description>Branch on less than (unsigned or unordered)</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>&lt;</condition>
+ <before>
+  <operand type="offset" bytes="1">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>38</hex>
+ <opcode>br</opcode>
+ <description>Unconditional branch</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <before>
+   <operand type="offset" bytes="4">target</operand>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>39</hex>
+ <opcode>brfalse</opcode>
+ <opcode>brnull</opcode>
+ <opcode>brzero</opcode>
+ <description>Branch on false, null, or zero</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>false</condition>
+ <before>
+   <operand type="offset" bytes="4">target</operand>
+   <stack>value</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>3a</hex>
+ <opcode>brtrue</opcode>
+ <alias>brinst</alias>
+ <description>Branch on non-false, non-null</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>true</condition>
+ <before>
+   <operand type="offset" bytes="4">target</operand>
+   <stack>value</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>3b</hex>
+ <opcode>beq</opcode>
+ <description>Branch on equal</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>==</condition>
+ <before>
+  <operand type="offset" bytes="4">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>3c</hex>
+ <opcode>bge</opcode>
+ <description>Branch on greater than or equal to</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>&gt;=</condition>
+ <before>
+  <operand type="offset" bytes="4">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>3d</hex>
+ <opcode>bgt</opcode>
+ <description>Branch on greater than</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>&gt;</condition>
+ <before>
+  <operand type="offset" bytes="4">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>3e</hex>
+ <opcode>ble</opcode>
+ <description>Branch on less than or equal to</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>&lt;=</condition>
+ <before>
+  <operand type="offset" bytes="4">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>3f</hex>
+ <opcode>blt</opcode>
+ <description>Branch on less than</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>&lt;=</condition>
+ <before>
+  <operand type="offset" bytes="4">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>40</hex>
+ <opcode>bne.un</opcode>
+ <description>Branch on not equal</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>!=</condition>
+ <before>
+  <operand type="offset" bytes="4">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>41</hex>
+ <opcode>bge.un</opcode>
+ <description>Branch on greater than or equal to (unsigned or unordered)</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>&gt;=</condition>
+ <before>
+  <operand type="offset" bytes="4">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>42</hex>
+ <opcode>bgt.un</opcode>
+ <description>Branch on greater than (unsigned or unordered)</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>&gt;</condition>
+ <before>
+  <operand type="offset" bytes="4">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>43</hex>
+ <opcode>ble.un</opcode>
+ <description>Branch on less than or equal to (unsigned or unordered)</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>&lt;=</condition>
+ <before>
+  <operand type="offset" bytes="4">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>44</hex>
+ <opcode>blt.un</opcode>
+ <description>Branch on less than (unsigned or unordered)</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <condition>&lt;=</condition>
+ <before>
+  <operand type="offset" bytes="4">target</operand>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>45</hex>
+ <opcode>switch</opcode>
+ <description>Table switch on value</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <before>
+  <stack type="int">value</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>46</hex>
+ <opcode>ldind.i1</opcode>
+ <description>Load value indirect onto the stack</description>
+ <category>load</category> 
+ <operation>address</operation>
+ <before>
+  <operand>address</operand>
+ </before>
+ <after>
+  <stack type="int">value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>47</hex>
+ <opcode>ldind.u1</opcode>
+ <description>Load value indirect onto the stack</description>
+ <category>load</category> 
+ <operation>address</operation>
+ <before>
+  <operand>address</operand>
+ </before>
+ <after>
+  <stack type="int">value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>48</hex>
+ <opcode>ldind.i2</opcode>
+ <description>Load value indirect onto the stack</description>
+ <category>load</category> 
+ <operation>address</operation>
+ <before>
+  <operand>address</operand>
+ </before>
+ <after>
+  <stack type="int">value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>49</hex>
+ <opcode>ldind.u2</opcode>
+ <description>Load value indirect onto the stack</description>
+ <category>load</category> 
+ <operation>address</operation>
+ <before>
+  <operand>address</operand>
+ </before>
+ <after>
+  <stack type="int">value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>4a</hex>
+ <opcode>ldind.i4</opcode>
+ <description>Load value indirect onto the stack</description>
+ <category>load</category> 
+ <operation>address</operation>
+ <before>
+  <operand>address</operand>
+ </before>
+ <after>
+  <stack type="int">value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>4c</hex>
+ <opcode>ldind.i8</opcode>
+ <description>Load value indirect onto the stack</description>
+ <category>load</category> 
+ <operation>address</operation>
+ <before>
+  <operand>address</operand>
+ </before>
+ <after>
+  <stack type="long">value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>4d</hex>
+ <opcode>ldind.i</opcode>
+ <description>Load value indirect onto the stack</description>
+ <category>load</category> 
+ <operation>address</operation>
+ <before>
+  <operand>address</operand>
+ </before>
+ <after>
+  <stack type="int">value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>4e</hex>
+ <opcode>ldind.r4</opcode>
+ <description>Load value indirect onto the stack</description>
+ <category>load</category> 
+ <operation>address</operation>
+ <before>
+  <operand>address</operand>
+ </before>
+ <after>
+  <stack type="double">value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>4f</hex>
+ <opcode>ldind.r8</opcode>
+ <description>Load value indirect onto the stack</description>
+ <category>load</category> 
+ <operation>address</operation>
+ <before>
+  <operand>address</operand>
+ </before>
+ <after>
+  <stack type="double">value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>50</hex>
+ <opcode>ldind.ref</opcode>
+ <description>Load value indirect onto the stack</description>
+ <category>load</category> 
+ <operation>address</operation>
+ <before>
+  <operand>address</operand>
+ </before>
+ <after>
+  <stack type="ref">value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>51</hex>
+ <opcode>stind.ref</opcode>
+ <description>Store value indirect from stack</description>
+ <category>store</category> 
+ <operation>address</operation>
+ <before>
+  <stack>value</stack>
+  <stack type="address">address</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>52</hex>
+ <opcode>stind.i1</opcode>
+ <description>Store value indirect from stack</description>
+ <category>store</category> 
+ <operation>address</operation>
+ <before>
+  <stack>value</stack>
+  <stack type="address">address</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>53</hex>
+ <opcode>stind.i2</opcode>
+ <description>Store value indirect from stack</description>
+ <category>store</category> 
+ <operation>address</operation>
+ <before>
+  <stack>value</stack>
+  <stack type="address">address</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>54</hex>
+ <opcode>stind.i4</opcode>
+ <description>Store value indirect from stack</description>
+ <category>store</category> 
+ <operation>address</operation>
+ <before>
+  <stack>value</stack>
+  <stack type="address">address</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>55</hex>
+ <opcode>stind.i8</opcode>
+ <description>Store value indirect from stack</description>
+ <category>store</category> 
+ <operation>address</operation>
+ <before>
+  <stack>value</stack>
+  <stack type="address">address</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>56</hex>
+ <opcode>stind.r4</opcode>
+ <description>Store value indirect from stack</description>
+ <category>store</category> 
+ <operation>address</operation>
+ <before>
+  <stack>value</stack>
+  <stack type="address">address</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>57</hex>
+ <opcode>stind.r8</opcode>
+ <description>Store value indirect from stack</description>
+ <category>store</category> 
+ <operation>address</operation>
+ <before>
+  <stack>value</stack>
+  <stack type="address">address</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>58</hex>
+ <opcode>add</opcode>
+ <description>Add numeric values</description>
+ <category>alu</category> 
+ <operation>+</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>59</hex>
+ <opcode>sub</opcode>
+ <description>Substract numeric values</description>
+ <category>alu</category> 
+ <operation>-</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>5a</hex>
+ <opcode>mul</opcode>
+ <description>Multiply values</description>
+ <category>alu</category> 
+ <operation>*</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>5b</hex>
+ <opcode>div</opcode>
+ <description>Divide values</description>
+ <category>alu</category> 
+ <operation>/</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>5c</hex>
+ <opcode>div.un</opcode>
+ <description>Divide unsigned values</description>
+ <category>alu</category> 
+ <operation>/</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>5d</hex>
+ <opcode>rem</opcode>
+ <description>Remainder</description>
+ <category>alu</category> 
+ <operation>%</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>5e</hex>
+ <opcode>rem.un</opcode>
+ <description>Integer remainder (unsigned)</description>
+ <category>alu</category> 
+ <operation>%</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>5f</hex>
+ <opcode>and</opcode>
+ <description>Bitwise AND</description>
+ <category>alu</category> 
+ <operation>and</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>60</hex>
+ <opcode>or</opcode>
+ <description>Bitwise OR</description>
+ <category>alu</category> 
+ <operation>or</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>61</hex>
+ <opcode>xor</opcode>
+ <description>Bitwise XOR</description>
+ <category>alu</category> 
+ <operation>xor</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>62</hex>
+ <opcode>shl</opcode>
+ <description>Shift integer left</description>
+ <category>alu</category> 
+ <operation>&lt;&lt;</operation>
+ <before>
+  <stack type="int">shiftAmount</stack>
+  <stack type="int">value</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>63</hex>
+ <opcode>shr</opcode>
+ <description>Shift integer right</description>
+ <category>alu</category> 
+ <operation>&gt;&gt;</operation>
+ <before>
+  <stack type="int">shiftAmount</stack>
+  <stack type="int">value</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>64</hex>
+ <opcode>shr.un</opcode>
+ <description>Shift integer right (unsigned)</description>
+ <category>alu</category> 
+ <operation>&gt;&gt;&gt;</operation>
+ <before>
+  <stack type="int">shiftAmount</stack>
+  <stack type="int">value</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>65</hex>
+ <opcode>neg</opcode>
+ <description>Negate value</description>
+ <category>alu</category> 
+ <operation>-</operation>
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>66</hex>
+ <opcode>not</opcode>
+ <description>Bitwise complement</description>
+ <category>alu</category> 
+ <operation>not</operation>
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>67</hex>
+ <opcode>conv.i1</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>68</hex>
+ <opcode>conv.i2</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>69</hex>
+ <opcode>conv.i4</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>6a</hex>
+ <opcode>conv.i8</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="long">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>6b</hex>
+ <opcode>conv.r4</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="double">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>6c</hex>
+ <opcode>conv.r8</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="double">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>6d</hex>
+ <opcode>conv.u4</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>6e</hex>
+ <opcode>conv.u8</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="long">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>6f</hex>
+ <opcode>callvirt</opcode>
+ <description>Call a method associated, at runtime, with an object</description>
+ <category>control</category> 
+ <operation>call</operation>
+ <before>
+  <stack type="args">args</stack>
+  <stack type="ref">obj</stack>
+ </before>
+ <after>
+  <optional>
+  <stack>returnValue</stack>
+  </optional>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>70</hex>
+ <opcode>cpobj</opcode>
+ <description>Copy a value type</description>
+ <category>load/store</category> 
+ <before>
+  <stack>srcValObj</stack>
+  <stack>destValObj</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>71</hex>
+ <opcode>ldobj</opcode>
+ <description>Copy value type to the stack</description>
+ <category>load</category> 
+ <operation>object</operation>
+ <before>
+  <operand>type</operand>
+  <stack>address</stack>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>72</hex>
+ <opcode>ldstr</opcode>
+ <description>Load literal string</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+  <operand>string</operand>
+ </before>
+ <after>
+  <stack>string</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>73</hex>
+ <opcode>newobj</opcode>
+ <description>Create a new object</description>
+ <category>new</category> 
+ <operation>object</operation>
+ <before>
+  <optional>
+   <stack>args</stack>
+  </optional>
+ </before>
+ <after>
+  <stack>object</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>74</hex>
+ <opcode>castclass</opcode>
+ <description>Cast an object to a class</description>
+ <category>cast</category> 
+ <before>
+  <operand type="type">type</operand>
+  <stack>object</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+ <throw>InvalidCastException</throw>
+ <throw>TypeLoadException</throw>
+</instruction>
+
+<instruction>
+ <hex>75</hex>
+ <opcode>isinst</opcode>
+ <description>Test if an object is an instance of a class or interface, returning NULL or an instance of that class or interface</description>
+ <category>cast</category> 
+ <operation>check</operation>
+ <before>
+  <stack>obj</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>76</hex>
+ <opcode>conv.r.un</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <operand type="type">type</operand>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="double">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>77</hex>
+ <opcode>ann.data.s</opcode>
+ <description>Multi-byte no operation</description>
+ <category>ancillary</category> 
+ <operation>annotations</operation>
+</instruction>
+
+<instruction>
+ <hex>78</hex>
+ <opcode>box</opcode>
+ <description>Convert value type to object reference</description>
+ <category>cast</category> 
+ <operation>box</operation>
+ <before>
+  <operand type="type">valueType</operand>
+  <stack type="address">valuePtr</stack>
+ </before>
+ <after>
+  <stack type="ref">object</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>79</hex>
+ <opcode>unbox</opcode>
+ <description>Convert boxed value type to its raw form</description>
+ <category>cast</category> 
+ <operation>unbox</operation>
+ <before>
+  <operand type="type">valueType</operand>
+  <stack type="ref">object</stack>
+ </before>
+ <after>
+  <stack type="address">valueObjectPtr</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>7a</hex>
+ <opcode>throw</opcode>
+ <description>Throw an exception</description>
+ <category>control</category> 
+ <operation>throw</operation>
+ <before>
+  <stack>object</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>7b</hex>
+ <opcode>ldfld</opcode>
+ <description>Load field of an object</description>
+ <category>load</category> 
+ <operation>object</operation>
+ <before>
+  <operand>field</operand>
+  <stack>object</stack>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>7c</hex>
+ <opcode>ldflda</opcode>
+ <description>Load field address</description>
+ <category>load</category> 
+ <operation>object</operation>
+ <before>
+  <operand>field</operand>
+  <stack>object</stack>
+ </before>
+ <after>
+  <stack>address</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>7d</hex>
+ <opcode>stfld</opcode>
+ <description>Store into a field of an object</description>
+ <category>store</category> 
+ <operation>object</operation>
+ <before>
+  <operand>field</operand>
+  <stack>value</stack>
+  <stack>object</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>7e</hex>
+ <opcode>ldsfld</opcode>
+ <description>Load static field of a class</description>
+ <category>load</category> 
+ <operation>class</operation>
+ <before>
+  <operand>field</operand>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>7f</hex>
+ <opcode>ldsflda</opcode>
+ <description>Load static field address</description>
+ <category>load</category> 
+ <operation>class</operation>
+ <before>
+  <operand>field</operand>
+ </before>
+ <after>
+  <stack>address</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>80</hex>
+ <opcode>stsfld</opcode>
+ <description>Store a static field of a clas</description>
+ <category>store</category> 
+ <operation>class</operation>
+ <before>
+  <operand>field</operand>
+  <stack>value</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>81</hex>
+ <opcode>stobj</opcode>
+ <description>Store a value type from the stack into memory</description>
+ <category>store</category> 
+ <operation>object</operation>
+ <before>
+  <operand>type</operand>
+  <stack>value</stack>
+  <stack>address</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>82</hex>
+ <opcode>conv.ovf.i1.un</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>83</hex>
+ <opcode>conv.ovf.i2.un</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>84</hex>
+ <opcode>conv.ovf.i4.un</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>85</hex>
+ <opcode>conv.ovf.i8.un</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="long">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>86</hex>
+ <opcode>conv.ovf.u1.un</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>87</hex>
+ <opcode>conv.ovf.u2.un</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>88</hex>
+ <opcode>conv.ovf.u4.un</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>89</hex>
+ <opcode>conv.ovf.u8.un</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="long">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>8a</hex>
+ <opcode>conv.ovf.i.un</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>8b</hex>
+ <opcode>conv.ovf.u.un</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>8d</hex>
+ <opcode>newarr</opcode>
+ <description>Create a zero-based, one-dimensional array</description>
+ <category>new</category> 
+ <operation>array</operation>
+ <before>
+  <operand>type</operand>
+  <stack>size</stack>
+ </before>
+ <after>
+  <stack>array</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>8e</hex>
+ <opcode>ldlen</opcode>
+ <description>Load the length of an array</description>
+ <category>load</category> 
+ <operation>array.length</operation>
+ <before>
+  <stack>array</stack>
+ </before>
+ <after>
+  <stack>length</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>8f</hex>
+ <opcode>ldelema</opcode>
+ <description>Load address of an element of an array</description>
+ <category>load</category> 
+ <operation>array</operation>
+ <before>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>90</hex>
+ <opcode>ldelem.i1</opcode>
+ <description>Load an element of an array</description>
+ <category>load</category> 
+ <operation>array</operation>
+ <before>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>91</hex>
+ <opcode>ldelem.u1</opcode>
+ <description>Load an element of an array</description>
+ <category>load</category> 
+ <operation>array</operation>
+ <before>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>92</hex>
+ <opcode>ldelem.i2</opcode>
+ <description>Load an element of an array</description>
+ <category>load</category> 
+ <operation>array</operation>
+ <before>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>93</hex>
+ <opcode>ldelem.u2</opcode>
+ <description>Load an element of an array</description>
+ <category>load</category> 
+ <operation>array</operation>
+ <before>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>94</hex>
+ <opcode>ldelem.i4</opcode>
+ <description>Load an element of an array</description>
+ <category>load</category> 
+ <operation>array</operation>
+ <before>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>96</hex>
+ <opcode>ldelem.i8</opcode>
+ <description>Load an element of an array</description>
+ <category>load</category> 
+ <operation>array</operation>
+ <before>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>97</hex>
+ <opcode>ldelem.i</opcode>
+ <description>Load an element of an array</description>
+ <category>load</category> 
+ <operation>array</operation>
+ <before>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>98</hex>
+ <opcode>ldelem.r4</opcode>
+ <description>Load an element of an array</description>
+ <category>load</category> 
+ <operation>array</operation>
+ <before>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>99</hex>
+ <opcode>ldelem.r8</opcode>
+ <description>Load an element of an array</description>
+ <category>load</category> 
+ <operation>array</operation>
+ <before>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>9a</hex>
+ <opcode>ldelem.ref</opcode>
+ <description>Load an element of an array</description>
+ <category>load</category> 
+ <operation>array</operation>
+ <before>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>9b</hex>
+ <opcode>stelem.i</opcode>
+ <description>Store an element of an array</description>
+ <category>store</category> 
+ <operation>array</operation>
+ <before>
+  <stack>value</stack>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>9c</hex>
+ <opcode>stelem.i1</opcode>
+ <description>Store an element of an array</description>
+ <category>store</category> 
+ <operation>array</operation>
+ <before>
+  <stack>value</stack>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>9d</hex>
+ <opcode>stelem.i2</opcode>
+ <description>Store an element of an array</description>
+ <category>store</category> 
+ <operation>array</operation>
+ <before>
+  <stack>value</stack>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>9e</hex>
+ <opcode>stelem.i4</opcode>
+ <description>Store an element of an array</description>
+ <category>store</category> 
+ <operation>array</operation>
+ <before>
+  <stack>value</stack>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>9f</hex>
+ <opcode>stelem.i8</opcode>
+ <description>Store an element of an array</description>
+ <category>store</category> 
+ <operation>array</operation>
+ <before>
+  <stack>value</stack>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>a0</hex>
+ <opcode>stelem.r4</opcode>
+ <description>Store an element of an array</description>
+ <category>store</category> 
+ <operation>array</operation>
+ <before>
+  <stack>value</stack>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>a1</hex>
+ <opcode>stelem.r8</opcode>
+ <description>Store an element of an array</description>
+ <category>store</category> 
+ <operation>array</operation>
+ <before>
+  <stack>value</stack>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>a2</hex>
+ <opcode>stelem.ref</opcode>
+ <description>Store an element of an array</description>
+ <category>store</category> 
+ <operation>array</operation>
+ <before>
+  <stack>value</stack>
+  <stack>index</stack>
+  <stack>array</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>b3</hex>
+ <opcode>conv.ovf.i1</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>b4</hex>
+ <opcode>conv.ovf.u1</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>b5</hex>
+ <opcode>conv.ovf.i2</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>b6</hex>
+ <opcode>conv.ovf.u2</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>b7</hex>
+ <opcode>conv.ovf.i4</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>b8</hex>
+ <opcode>conv.ovf.u4</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>b9</hex>
+ <opcode>conv.ovf.i8</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="long">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>ba</hex>
+ <opcode>conv.ovf.u8</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="long">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>c2</hex>
+ <opcode>refanyval</opcode>
+ <description>Load the address out of a typed reference</description>
+ <category>cast</category> 
+</instruction>
+
+<instruction>
+ <hex>c3</hex>
+ <opcode>ckfinite</opcode>
+ <description>Check for a finite real number</description>
+ <category>cast</category> 
+ <operation>check</operation>
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+ <throw>ArithmeticException</throw>
+</instruction>
+
+<instruction>
+ <hex>c6</hex>
+ <opcode>mkrefany</opcode>
+ <description>Push a typed reference on the stack</description>
+ <category>load</category> 
+ <operation>object</operation>
+ <before>
+  <stack>object</stack>
+ </before>
+ <after>
+  <stack>reference</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>c7</hex>
+ <opcode>ann.call</opcode>
+ <description>Start of simple calling sequence</description>
+ <category>ancillary</category> 
+ <operation>annotations</operation>
+</instruction>
+
+<instruction>
+ <hex>c8</hex>
+ <opcode>ann.catch</opcode>
+ <description>Start an exception filter or handler</description>
+ <category>ancillary</category> 
+ <operation>annotations</operation>
+</instruction>
+
+<instruction>
+ <hex>c9</hex>
+ <opcode>ann.dead</opcode>
+ <description>Stack location is no longer live</description>
+ <category>ancillary</category> 
+ <operation>annotations</operation>
+</instruction>
+
+<instruction>
+ <hex>ca</hex>
+ <opcode>ann.hoisted</opcode>
+ <description>Start of the simple portion of a hoisted calling sequence</description>
+ <category>ancillary</category> 
+ <operation>annotations</operation>
+</instruction>
+
+<instruction>
+ <hex>cb</hex>
+ <opcode>ann.hoisted_call</opcode>
+ <description>Start of complex argument evaluation</description>
+ <category>ancillary</category> 
+ <operation>annotations</operation>
+</instruction>
+
+<instruction>
+ <hex>cc</hex>
+ <opcode>ann.lab</opcode>
+ <description></description>
+ <category>ancillary</category> 
+ <operation>annotations</operation>
+</instruction>
+
+<instruction>
+ <hex>cd</hex>
+ <opcode>ann.def</opcode>
+ <description>SSA definition node</description>
+ <category>ancillary</category> 
+ <operation>annotations</operation>
+</instruction>
+
+<instruction>
+ <hex>ce</hex>
+ <opcode>ann.ref.s</opcode>
+ <description>SSA reference node</description>
+ <category>ancillary</category> 
+ <operation>annotations</operation>
+</instruction>
+
+<instruction>
+ <hex>cf</hex>
+ <opcode>ann.phi</opcode>
+ <description>SSA phi node</description>
+ <category>ancillary</category> 
+ <operation>annotations</operation>
+</instruction>
+
+<instruction>
+ <hex>d0</hex>
+ <opcode>ldtoken</opcode>
+ <description>Load the runtime representation of a metadata token</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+  <operand>token</operand>
+ </before>
+ <after>
+  <stack>unmanaged pointer</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>d1</hex>
+ <opcode>conv.u2</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>d2</hex>
+ <opcode>conv.u1</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>d3</hex>
+ <opcode>conv.i</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>d4</hex>
+ <opcode>conv.ovf.i</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>d5</hex>
+ <opcode>conv.ovf.u</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>d6</hex>
+ <opcode>add.ovf</opcode>
+ <description>Add signed integer values with overflow check</description>
+ <category>alu</category> 
+ <operation>+</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+ <throw>OverflowException</throw>
+</instruction>
+
+<instruction>
+ <hex>d7</hex>
+ <opcode>add.ovf.un</opcode>
+ <description>Add unsigned integer values with overflow check</description>
+ <category>alu</category> 
+ <operation>+</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+ <throw>OverflowException</throw>
+</instruction>
+
+<instruction>
+ <hex>d8</hex>
+ <opcode>mul.ovf</opcode>
+ <description>Multiply values with overflow check (signed result)</description>
+ <category>alu</category> 
+ <operation>*</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>d9</hex>
+ <opcode>mul.ovf.un</opcode>
+ <description>Multiply values with overflow check (unsigned result)</description>
+ <category>alu</category> 
+ <operation>*</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>da</hex>
+ <opcode>sub.ovf</opcode>
+ <description>Substract values with overflow check (signed result)</description>
+ <category>alu</category> 
+ <operation>-</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>db</hex>
+ <opcode>sub.ovf.un</opcode>
+ <description>Substract values with overflow check (unsigned result)</description>
+ <category>alu</category> 
+ <operation>-</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>dc</hex>
+ <opcode>endfinally</opcode>
+ <description>End finally clause of an exception block</description>
+ <category>control</category> 
+ <operation>exceptions</operation>
+</instruction>
+
+<instruction>
+ <hex>dd</hex>
+ <opcode>leave</opcode>
+ <description>Exit a protected region of code</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <before>
+  <operand type="offset" bytes="4">offset</operand>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>de</hex>
+ <opcode>leave.s</opcode>
+ <description>Exit a protected region of code</description>
+ <category>control</category> 
+ <operation>branch</operation>
+ <before>
+  <operand type="offset" bytes="1">offset</operand>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>df</hex>
+ <opcode>stind.i</opcode>
+ <description>Store value indirect from stack</description>
+ <category>store</category> 
+ <operation>address</operation>
+ <before>
+  <stack>value</stack>
+  <stack type="address">address</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>e0</hex>
+ <opcode>conv.u</opcode>
+ <description>Data conversion</description>
+ <category>cast</category> 
+ <before>
+  <stack>value</stack>
+ </before>
+ <after>
+  <stack type="int">result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 00</hex>
+ <opcode>arglist</opcode>
+ <description>Get argument list handle for the current method</description>
+ <category>C</category> 
+ <operation>va_*</operation>
+ <before>
+ </before>
+ <after>
+  <stack type="handle">arglist</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 01</hex>
+ <opcode>ceq</opcode>
+ <description>Compare equal</description>
+ <category>alu</category> 
+ <operation>==</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 02</hex>
+ <opcode>cgt</opcode>
+ <description>Compare greater than</description>
+ <category>alu</category> 
+ <operation>&gt;</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 03</hex>
+ <opcode>cgt.un</opcode>
+ <description>Compare greater than (unsigned or unordered)</description>
+ <category>alu</category> 
+ <operation>&gt;</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 04</hex>
+ <opcode>clt</opcode>
+ <description>Compare less than</description>
+ <category>alu</category> 
+ <operation>&lt;</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 05</hex>
+ <opcode>clt.un</opcode>
+ <description>Compare less than (unsigned or unordered)</description>
+ <category>alu</category> 
+ <operation>&lt;</operation>
+ <before>
+  <stack>value2</stack>
+  <stack>value1</stack>
+ </before>
+ <after>
+  <stack>result</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 06</hex>
+ <opcode>ldftn</opcode>
+ <description>Load a method pointer</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+  <operand type="address">method</operand>
+ </before>
+ <after>
+  <stack type="address">method</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 07</hex>
+ <opcode>ldvirtftn</opcode>
+ <description>Load a virtual method pointer</description>
+ <category>load</category> 
+ <operation>object</operation>
+ <before>
+  <operand>method</operand>
+  <stack>object</stack>
+ </before>
+ <after>
+  <stack>address</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 08</hex>
+ <opcode>jmpi</opcode>
+ <description>Jump via method pointer</description>
+ <category>control</category> 
+ <operation>call</operation>
+</instruction>
+
+<instruction>
+ <hex>fe 09</hex>
+ <opcode>ldarg</opcode>
+ <description>Load argument onto the stack</description>
+ <category>load</category> 
+ <operation>argument</operation>
+ <before>
+  <operand type="index" bytes="2">index</operand>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 0a</hex>
+ <opcode>ldarga</opcode>
+ <description>Load an argument address</description>
+ <category>load</category> 
+ <operation>argument</operation>
+ <before>
+  <operand type="index" bytes="2">index</operand>
+ </before>
+ <after>
+   <stack type="address">address</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 0b</hex>
+ <opcode>starg</opcode>
+ <description>Store a value in an argument slot</description>
+ <category>store</category> 
+ <operation>argument</operation>
+ <before>
+  <operand type="index" bytes="2">index</operand>
+  <stack>value</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 0c</hex>
+ <opcode>ldloc</opcode>
+ <description>Load local variable onto the stack</description>
+ <category>load</category> 
+ <operation>local</operation>
+ <before>
+  <operand type="index" bytes="2">index</operand>
+ </before>
+ <after>
+  <stack>value</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 0d</hex>
+ <opcode>ldloca</opcode>
+ <description>Load local variable address onto the stack</description>
+ <category>load</category> 
+ <operation>local</operation>
+ <before>
+  <operand type="index" bytes="2">index</operand>
+ </before>
+ <after>
+  <stack type="address">address</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 0e</hex>
+ <opcode>stloc</opcode>
+ <description>Store local variable</description>
+ <category>store</category> 
+ <operation>local</operation>
+ <before>
+  <operand type="index" bytes="2">index</operand>
+  <stack>value</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 0f</hex>
+ <opcode>localloc</opcode>
+ <description>Allocate space in the local dynamic memory pool</description>
+ <category>C</category> 
+ <operation>alloc</operation>
+ <before>
+  <stack type="int">size</stack>
+ </before>
+ <after>
+  <stack type="address">address</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 11</hex>
+ <opcode>endfilter</opcode>
+ <description>End filter clause of SEH</description>
+ <category>control</category> 
+ <operation>exceptions</operation>
+ <before>
+  <stack type="int">value</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 12</hex>
+ <opcode>unaligned.</opcode>
+ <description>Subsequent pointer instruction may be unaligned</description>
+ <category>ancillary</category> 
+</instruction>
+
+<instruction>
+ <hex>fe 13</hex>
+ <opcode>volatile.</opcode>
+ <description>Subsequent pointer reference is volatile</description>
+ <category>ancillary</category> 
+</instruction>
+
+<instruction>
+ <hex>fe 14</hex>
+ <opcode>tail.</opcode>
+ <description>Subsequent call terminates current method</description>
+ <category>control</category> 
+ <operation>return</operation>
+ <info>call, calli, callvirt</info>
+</instruction>
+
+<instruction>
+ <hex>fe 15</hex>
+ <opcode>initobj</opcode>
+ <description>Initialize a value type</description>
+ <category>store</category> 
+ <operation>object</operation>
+ <before>
+  <stack type="address">address of value object</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 16</hex>
+ <opcode>ann.live</opcode>
+ <description>Mark a stack location as live</description>
+ <category>ancillary</category> 
+ <operation>annotations</operation>
+</instruction>
+
+<instruction>
+ <hex>fe 17</hex>
+ <opcode>cpblk</opcode>
+ <description>Copy data from memory to memory</description>
+ <category>C</category> 
+ <operation>memcpy</operation>
+ <before>
+  <stack type="int">size</stack>
+  <stack type="address">src</stack>
+  <stack type="address">dest</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 18</hex>
+ <opcode>initblk</opcode>
+ <description>Initialize a block of memory to a value</description>
+ <category>C</category> 
+ <operation>memset</operation>
+ <before>
+  <stack type="int">size</stack>
+  <stack type="byte">value</stack>
+  <stack type="address">address</stack>
+ </before>
+ <after>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 19</hex>
+ <opcode>ann.ref</opcode>
+ <description>SSA reference node</description>
+ <category>ancillary</category> 
+ <operation>annotations</operation>
+</instruction>
+
+<instruction>
+ <hex>fe 1a</hex>
+ <opcode>rethrow</opcode>
+ <description>Rethrow the current exception</description>
+ <category>control</category> 
+ <operation>throw</operation>
+</instruction>
+
+<instruction>
+ <hex>fe 1c</hex>
+ <opcode>sizeof</opcode>
+ <description>Load the size in bytes of a value type</description>
+ <category>stack</category> 
+ <operation>push</operation>
+ <before>
+  <operand>type</operand>
+ </before>
+ <after>
+  <stack type="int">size</stack>
+ </after>
+</instruction>
+
+<instruction>
+ <hex>fe 1d</hex>
+ <opcode>refanytype</opcode>
+ <description>Load the type out of a typed reference</description>
+ <category>cast</category> 
+</instruction>
+
+<instruction>
+ <hex>fe 22</hex>
+ <opcode>ann.data</opcode>
+ <description>Multi-byte no operation</description>
+ <category>ancillary</category> 
+ <operation>annotations</operation>
+</instruction>
+
+<instruction>
+ <hex>fe 23</hex>
+ <opcode>ann.arg</opcode>
+ <description></description>
+ <category>ancillary</category> 
+ <operation>annotations</operation>
+</instruction>
+
+
+
+
+
+</architecture>

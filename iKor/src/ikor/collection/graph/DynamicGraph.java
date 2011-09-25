@@ -192,9 +192,7 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 
 	public boolean add (V source, V destination, E content)
 	{
-		add( index(source), index(destination), content);
-		
-		return true;
+		return add( index(source), index(destination), content);
 	}
 
 
@@ -288,18 +286,27 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 			DynamicNode<V,E> source = nodes.get(sourceIndex);
 			DynamicNode<V,E> destination = nodes.get(destinationIndex);
 			Link<V,E>        link;
+			E                linkContent;
 
 			for (int i=0; i<source.outDegree(); i++) {
 
 				link = source.outLink(i);
 
-				if ( (link.getDestination() == destination) 
-				   &&  ( (link.getContent()==content) || (link.getContent().equals(content)) ) ) {
-					remove( source.outLink(i));
+				if ( link.getDestination() == destination) {
+					
+					linkContent = link.getContent();
+				
+				    if (  (linkContent == content)
+					   || ( (linkContent!=null) && linkContent.equals(content) )
+					   || ( (content!=null) && content.equals(linkContent) ) ) {
+					
+					   remove( source.outLink(i));
+					   return true;
+				   }
 				}
 			}
 		
-			return true;
+			return false;
 		
 		} else {
 			

@@ -359,6 +359,7 @@ public class GraphTest {
 		assertEquals(10+0, roadmap.links());
 		
 		assertEquals("Jaén", roadmap.get(8));
+		assertEquals(8, roadmap.index("Jaén"));
 		assertEquals(0, roadmap.degree("Jaén"));
 	}
 
@@ -371,17 +372,21 @@ public class GraphTest {
 
 		// Undirected graph
 		
-		roadmap.add("La Zubia", "Castell de Ferro", 100);
+		assertTrue(roadmap.add("La Zubia", "Castell de Ferro", 100));
 
 		assertEquals(8+0, roadmap.size());
 		assertEquals(10+1, roadmap.links());
 		
 		assertEquals(2+1, roadmap.degree("La Zubia"));
 		assertEquals(2+1, roadmap.degree("Castell de Ferro"));
+
+		assertFalse(roadmap.add("La Zubia", "XXX", 100));
+		assertFalse(roadmap.add("XXX", "Castell de Ferro", 100));
+		assertFalse(roadmap.add("XXX", "XXX", 100));
 		
 		// Directed graph
 		
-		web.add("C#", "Java", null);
+		assertTrue(web.add("C#", "Java", null));
 		
 		assertEquals(9+0, web.size());
 		assertEquals(17+1, web.links());
@@ -390,7 +395,11 @@ public class GraphTest {
 		assertEquals(2+1, web.inDegree("Java"));
 		
 		assertEquals(1+1, web.outDegree("C#"));
-		assertEquals(3+0, web.outDegree("Java"));		
+		assertEquals(3+0, web.outDegree("Java"));	
+		
+		assertFalse(web.add("C#",  "XXX", null));
+		assertFalse(web.add("XXX", "Java", null));
+		assertFalse(web.add("XXX", "XXX", null));		
 	}
 
 
@@ -404,7 +413,7 @@ public class GraphTest {
 				
 		// Undirected graph
 		
-		roadmap.remove("Almería");
+		assertTrue(roadmap.remove("Almería"));
 		
 		assertEquals("Granada", roadmap.get(0));
 		assertEquals("Motril", roadmap.get(1));
@@ -425,14 +434,14 @@ public class GraphTest {
 		assertEquals("Motril",  roadmap.inLinks("Castell de Ferro").get(0).getSource().getContent() );
 		assertEquals("Granada", roadmap.inLinks("Guadix").get(0).getSource().getContent() );
 		
-		roadmap.remove("Jaén");               // Remove non-existing node
+		assertFalse(roadmap.remove("Jaén"));               // Remove non-existing node
 		assertEquals(8-1, roadmap.size());
 		assertEquals(10-2, roadmap.links());
 		
 		
 		// Directed graph
 		
-		web.remove("Java");
+		assertTrue(web.remove("Java"));
 		
 		assertEquals("home", web.get(0));
 		assertEquals("C", web.get(1));
@@ -467,7 +476,7 @@ public class GraphTest {
 		assertEquals(1, web.outDegree("Internet") );
 		assertEquals(0, web.outDegree("ASP.NET") );		
 		
-		web.remove("CV");				// Remove non-existing node
+		assertFalse(web.remove("CV"));				// Remove non-existing node
 		assertEquals(9-1, web.size());
 		assertEquals(17-5, web.links());
 		
@@ -482,32 +491,65 @@ public class GraphTest {
 	public void testRemoveEdge() {
 		
 		// Undirected graph
+		// ----------------
 		
-		roadmap.remove("Granada", "La Zubia", 3);
+		// Edge with different content -> FAILURE
+		
+		assertFalse(roadmap.remove("Granada", "La Zubia", 3+2)); 
+
+		assertEquals(8-0, roadmap.size());
+		assertEquals(10-0, roadmap.links());
+		
+		assertEquals(5-0, roadmap.degree("Granada"));
+		assertEquals(2-0, roadmap.degree("La Zubia"));
+		
+		// Edge with proper content -> SUCCESS
+		
+		assertTrue(roadmap.remove("Granada", "La Zubia", 3));
 		
 		assertEquals(8-0, roadmap.size());
 		assertEquals(10-1, roadmap.links());
 		
 		assertEquals(5-1, roadmap.degree("Granada"));
 		assertEquals(2-1, roadmap.degree("La Zubia"));
-
 		
-		roadmap.remove("Granada", "La Zubia", 3);
+		// Duplicated deletion
+		
+		assertFalse(roadmap.remove("Granada", "La Zubia", 3));
+		assertEquals(8-0, roadmap.size());
+		assertEquals(10-1, roadmap.links());
+		
+		// Unexisting edges
+
+		assertFalse(roadmap.remove("Granada", "Almería", 180));
 		assertEquals(8-0, roadmap.size());
 		assertEquals(10-1, roadmap.links());
 
-		roadmap.remove("Granada", "Almería", 180);
-		assertEquals(8-0, roadmap.size());
-		assertEquals(10-1, roadmap.links());
-
-		roadmap.remove("Granada", "Jaén", 90);
+		assertFalse(roadmap.remove("Granada", "Jaén", 90));
 		assertEquals(8-0, roadmap.size());
 		assertEquals(10-1, roadmap.links());
 
 		
 		// Directed graph
+		// --------------
 		
-		web.remove("DB", "Data Mining", null);
+		// Wrong content -> Removal error
+		
+		assertFalse(web.remove("DB", "Data Mining", "Really?"));
+		
+		assertEquals(9-0, web.size());
+		assertEquals(17-0, web.links());
+		
+		// Wrong direction -> Removal error
+
+		assertFalse(web.remove("Data Mining", "DB", "Really?"));
+		
+		assertEquals(9-0, web.size());
+		assertEquals(17-0, web.links());
+		
+		// Right content -> Removal OK
+		
+		assertTrue(web.remove("DB", "Data Mining", null));
 		
 		assertEquals(9-0, web.size());
 		assertEquals(17-1, web.links());
@@ -532,24 +574,27 @@ public class GraphTest {
 		assertEquals(1, web.outDegree("Internet") );
 		assertEquals(0, web.outDegree("ASP.NET") );				
 
+		// Duplicated deletion
 		
-		web.remove("DB", "Data Mining", null);	
+		assertFalse(web.remove("DB", "Data Mining", null));	
 		assertEquals(9-0, web.size());
 		assertEquals(17-1, web.links());
 		
-		web.remove("DB", "home", null);
+		// Unexisting arcs
+		
+		assertFalse(web.remove("DB", "home", null));
 		assertEquals(9-0, web.size());
 		assertEquals(17-1, web.links());
 		
-		web.remove("DB", "CV", null);
+		assertFalse(web.remove("DB", "CV", null));
 		assertEquals(9-0, web.size());
 		assertEquals(17-1, web.links());
 
-		web.remove("CV", "DB", null);
+		assertFalse(web.remove("CV", "DB", null));
 		assertEquals(9-0, web.size());
 		assertEquals(17-1, web.links());
 
-		web.remove("CV", "XXX", null);
+		assertFalse(web.remove("CV", "CV", null));
 		assertEquals(9-0, web.size());
 		assertEquals(17-1, web.links());
 	}

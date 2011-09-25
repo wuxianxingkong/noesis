@@ -1,7 +1,8 @@
+package sandbox;
+
 import java.io.*;
 
 import javax.xml.stream.*;
-import javax.xml.stream.events.*;
 import javax.xml.stream.XMLOutputFactory;
 
 

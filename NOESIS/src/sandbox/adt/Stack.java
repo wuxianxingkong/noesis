@@ -1,4 +1,4 @@
-package adt;
+package sandbox.adt;
 
 // Title:       Queue collection ADT
 // Version:     1.0
@@ -20,7 +20,7 @@ import java.util.ArrayDeque;
  *
  * @author Fernando Berzal
  */
-public class Queue<T> implements Collection<T>
+public class Stack<T> implements Collection<T>
 {
     /**
      * Collection. ArrayList is roughly equivalent to Vector, except that it is unsynchronized
@@ -30,7 +30,7 @@ public class Queue<T> implements Collection<T>
     /**
      * Constructor
      */
-    public Queue ()
+    public Stack ()
     {   
     }
 
@@ -61,30 +61,29 @@ public class Queue<T> implements Collection<T>
      * @param object Object to be added
      */
     
-    public void enqueue (T object)
+    public void push (T object)
     {
-        items.addLast(object);
+        items.addFirst(object);
     }
     
     /**
      * Removes an element from the collection
-     * @param object Object to be removed
      */
     
-    public T dequeue ()
+    public T pop ()
     {
         return items.removeFirst();
     }
+    
 
     /**
-     * Retrieves, but does not remove, the element from the head of the queue
+     * Retrieves, but does not remove, the element from the top of the stack
      */
     
     public T peek ()
     {
         return items.peekFirst();
     }
-    
      
     /**
      * Gets a collection element
@@ -93,7 +92,7 @@ public class Queue<T> implements Collection<T>
      */
     public T get (int i)
     {
-        throw new UnsupportedOperationException("Queues do not support random access methods");
+        throw new UnsupportedOperationException("Stacks do not support random access methods");
     }
    
     /** 

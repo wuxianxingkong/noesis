@@ -1,4 +1,4 @@
-package adt;
+package sandbox.adt;
 
 // Title:       Collection interface
 // Version:     2.0

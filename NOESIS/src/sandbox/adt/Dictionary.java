@@ -1,4 +1,4 @@
-package adt;
+package sandbox.adt;
 
 // Title:       Dictionary ADT
 // Version:     2.0

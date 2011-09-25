@@ -1,4 +1,4 @@
-package adt;
+package sandbox.adt;
 
 
 public abstract class Matching

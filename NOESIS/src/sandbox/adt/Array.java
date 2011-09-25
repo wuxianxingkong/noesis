@@ -1,4 +1,4 @@
-package adt;
+package sandbox.adt;
 
 // Title:       Array collection ADT
 // Version:     2.0

@@ -14,7 +14,7 @@ import test.ikor.collection.MockVisitor;
 import ikor.collection.graph.*;
 import ikor.collection.graph.search.*;
 
-public class GraphTraversalTest
+public class TestGraphTraversal
 {
 	
 	DynamicGraph<String,Integer> roadmap;

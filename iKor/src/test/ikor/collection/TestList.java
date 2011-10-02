@@ -9,7 +9,7 @@ import ikor.collection.DynamicList;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ListTest {
+public class TestList {
 
 	DynamicList<String> list;
 	

@@ -18,7 +18,7 @@ import org.junit.Test;
  * @author Fernan
  *
  */
-public class TestGraph {
+public class GraphTest {
 
 	DynamicGraph<String,Integer> roadmap;
 	DynamicGraph<String,String>  web;

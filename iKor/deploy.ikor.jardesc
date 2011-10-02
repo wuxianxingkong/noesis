@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="iKor/redist/ikor.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/iKor/deploy.ikor.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="true">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=iKor/src&lt;ikor.collection.sequence.alignment"/>
+        <javaElement handleIdentifier="=iKor/src&lt;ikor.collection.graph"/>
+        <javaElement handleIdentifier="=iKor/src&lt;ikor.math"/>
+        <javaElement handleIdentifier="=iKor/src&lt;ikor.collection.sequence"/>
+        <javaElement handleIdentifier="=iKor/src&lt;ikor.collection"/>
+        <javaElement handleIdentifier="=iKor/src&lt;ikor.model.description"/>
+        <javaElement handleIdentifier="=iKor/src&lt;ikor.util.similarity"/>
+        <javaElement handleIdentifier="=iKor/src&lt;ikor.util"/>
+        <javaElement handleIdentifier="=iKor/src&lt;ikor.util.jdbc"/>
+        <javaElement handleIdentifier="=iKor/src&lt;ikor.collection.relation"/>
+        <javaElement handleIdentifier="=iKor/src&lt;ikor.util.xml"/>
+        <javaElement handleIdentifier="=iKor/src&lt;ikor.util.concurrent"/>
+        <javaElement handleIdentifier="=iKor/src&lt;ikor.collection.graph.search"/>
+        <javaElement handleIdentifier="=iKor/src&lt;ikor.model"/>
+    </selectedElements>
+</jardesc>

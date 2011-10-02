@@ -40,7 +40,11 @@ public class ListIterator<T> implements Iterator<T>
 
 	@Override
 	public T next() {
-		return (T) list.get(index++);
+		
+		if (index<=last)
+			return (T) list.get(index++);
+		else
+			return null;
 	}
 
 	@Override

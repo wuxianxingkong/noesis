@@ -9,5 +9,12 @@ package ikor.collection.graph;
 
 public interface Node<V,E> extends Element<V>
 {
-
+	public V getContent();
+	
+	public Link<V,E> outLink (int arc);
+	public Link<V,E> inLink (int arc);	
+	
+	public int degree();
+	public int outDegree();
+	public int inDegree();
 }

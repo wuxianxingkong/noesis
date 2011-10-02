@@ -1,4 +1,4 @@
-package ikor.util;
+package ikor.collection;
 
 // Title:       Visitor
 // Version:     1.0

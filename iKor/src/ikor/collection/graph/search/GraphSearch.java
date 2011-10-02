@@ -6,11 +6,11 @@ package ikor.collection.graph.search;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
+import ikor.collection.Visitor;
 import ikor.collection.graph.Graph;
 import ikor.collection.graph.Node;
 import ikor.collection.graph.Link;
 
-import ikor.util.Visitor;
 
 /**
  * Graph Search

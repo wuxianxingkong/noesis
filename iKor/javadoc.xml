@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="protected" author="true" classpath="C:\Java\eclipse\plugins\org.junit_4.8.1.v4_8_1_v20100427-1100\junit.jar;C:\Java\eclipse\plugins\org.hamcrest.core_1.1.0.v20090501071000.jar" destdir="doc" doctitle="iKor Library" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="test.ikor.collection.graph,ikor.collection.graph,ikor.collection.sequence.alignment,ikor.math,ikor.collection.sequence,ikor.collection,ikor.model.description,ikor.util.similarity,ikor.util,ikor.util.jdbc,ikor.collection.relation,test.ikor.model.mock,ikor.util.xml,ikor.util.concurrent,ikor.collection.graph.search,ikor.model" source="1.6" sourcepath="src" splitindex="true" use="true" version="true"/>
+    </target>
+</project>

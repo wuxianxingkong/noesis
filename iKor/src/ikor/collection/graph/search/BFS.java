@@ -6,10 +6,10 @@ package ikor.collection.graph.search;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
-import ikor.util.Visitor;
 
 import ikor.collection.List;
 import ikor.collection.Queue;
+import ikor.collection.Visitor;
 
 import ikor.collection.graph.Graph;
 import ikor.collection.graph.Node;

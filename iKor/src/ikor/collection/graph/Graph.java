@@ -40,6 +40,11 @@ public interface Graph<V, E> extends List<V>
 	// Edges
 
 	public int links ();
+	
+	public Link<V,E> getLink(int destination, int source);
+	public Link<V,E> getLink(V source, V destination);
+	public Link<V, E> getLink(Node<V,E> source, Node<V,E> destination);
+	
 
 	public List<Link<V,E>> outLinks (int node);
 	public List<Link<V,E>> outLinks (V node);

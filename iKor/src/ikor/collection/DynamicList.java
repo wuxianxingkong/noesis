@@ -64,7 +64,7 @@ public class DynamicList<T> implements MutableList<T>
 
 	@Override
 	public Iterator<T> iterator() {
-		return list.iterator();
+		return new ListIterator<T>(this);
 	}
 
 	@Override

@@ -44,7 +44,10 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 	@Override
 	public Node<V,E> getNode (int nodeIndex)
     {
-		return nodes.get(nodeIndex);
+		if ((nodeIndex>=0) && (nodeIndex<nodes.size()))
+			return nodes.get(nodeIndex);
+		else
+			return null;
 	}
 	
 	@Override
@@ -147,6 +150,38 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 	}
 	
 	// Edges
+	
+	@Override
+	public Link<V, E> getLink(int node1, int node2) {
+		return getLink ( getNode(node1), getNode(node2) );
+	}
+
+	@Override
+	public Link<V, E> getLink(V node1, V node2) {
+		return getLink ( getNode(node1), getNode(node2) );
+	}
+		
+	@Override
+	public Link<V, E> getLink(Node<V,E> source, Node<V,E> destination) {
+		
+		Link<V,E> link;
+		int       degree;
+		
+		if ((source!=null) && (destination!=null)) {
+			degree= source.outDegree();
+
+			for (int i=0; i<degree; i++) {
+				link = source.outLink(i);
+
+				if (  ( link.getDestination().equals(destination) ) 
+				   || ( !isDirected() && link.getSource().equals(destination)) )
+					return link;
+			}
+		}
+		
+		return null;
+	}
+	
 
 	public List<Link<V,E>> outLinks (int node)
 	{
@@ -390,5 +425,6 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 		index.clear();
 		nodes.clear();
 	}
+
 }
 

@@ -29,8 +29,8 @@ public class GraphTest {
 	@Before
 	public void setUp() throws Exception {
 		
-		roadmap = Mock.roadmap();
-		web     = Mock.web();		
+		roadmap = MockObjects.roadmap();
+		web     = MockObjects.web();		
 	}
 
 
@@ -71,6 +71,45 @@ public class GraphTest {
 		assertEquals("ASP.NET", web.get(8));		
 	}
 
+	/**
+	 * Test method for {@link ikor.collection.graph.DynamicGraph#getLink(int, int)}, 
+	 */
+	@Test
+	public void testLinks() {
+		
+		// Undirected graph
+		
+		assertEquals (70, roadmap.getLink("Granada", "Motril").getContent().intValue());
+		assertEquals (3,  roadmap.getLink("Granada", "La Zubia").getContent().intValue());
+		assertEquals (3,  roadmap.getLink("Granada", "Cájar").getContent().intValue());
+		assertEquals (2,  roadmap.getLink("Granada", "Huétor Vega").getContent().intValue());
+		assertEquals (1,  roadmap.getLink("Huétor Vega", "Cájar").getContent().intValue());
+		assertEquals (1,  roadmap.getLink("Cájar", "La Zubia").getContent().intValue());
+		assertEquals (20, roadmap.getLink("Motril", "Castell de Ferro").getContent().intValue());
+		assertEquals (94, roadmap.getLink("Castell de Ferro", "Almería").getContent().intValue());
+		assertEquals (106,roadmap.getLink("Guadix", "Almería").getContent().intValue());
+		assertEquals (55, roadmap.getLink("Granada", "Guadix").getContent().intValue());
+
+		// Reversed links
+		
+		assertEquals (70, roadmap.getLink("Motril", "Granada").getContent().intValue());
+		assertEquals (3,  roadmap.getLink("La Zubia", "Granada").getContent().intValue());
+		assertEquals (3,  roadmap.getLink("Cájar", "Granada").getContent().intValue());
+		assertEquals (2,  roadmap.getLink("Huétor Vega", "Granada").getContent().intValue());
+		assertEquals (1,  roadmap.getLink("Cájar", "Huétor Vega").getContent().intValue());
+		assertEquals (1,  roadmap.getLink("La Zubia", "Cájar").getContent().intValue());
+		assertEquals (20, roadmap.getLink("Castell de Ferro", "Motril").getContent().intValue());
+		assertEquals (94, roadmap.getLink("Almería", "Castell de Ferro").getContent().intValue());
+		assertEquals (106,roadmap.getLink("Almería", "Guadix").getContent().intValue());
+		assertEquals (55, roadmap.getLink("Granada", "Guadix").getContent().intValue());
+		
+		// Inexistent links
+		assertEquals (null, roadmap.getLink("Granada", "Almería"));
+		assertEquals (null, roadmap.getLink("Granada", "XXX"));
+		assertEquals (null, roadmap.getLink("XXX", "Granada"));
+		assertEquals (null, roadmap.getLink("XXX", "XXX"));
+	}
+	
 
 	/**
 	 * Test method for {@link ikor.collection.graph.DynamicGraph#index(java.lang.Object)}.
@@ -125,7 +164,7 @@ public class GraphTest {
 	 * Test method for {@link ikor.collection.graph.DynamicGraph#links()}.
 	 */
 	@Test
-	public void testLinks() {
+	public void testLinkCount() {
 		assertEquals(10, roadmap.links());
 		assertEquals(17, web.links());
 	}

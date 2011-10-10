@@ -12,7 +12,7 @@ import ikor.math.Vector2D;
  */
 public class Vector2DTest {
 
-	public final static double EPSILON = 1e-12;
+	public final static double EPSILON = 1e-6;
 	
 	Vector2D vector00;
 	Vector2D vector01;
@@ -66,8 +66,9 @@ public class Vector2DTest {
 		assertEquals( 1, vector01.length(), EPSILON);
 		assertEquals( 1, vector10.length(), EPSILON);
 		assertEquals( Math.sqrt(1*1+1*1), vector11.length(), EPSILON);
-		assertEquals( Math.sqrt(2*2+2*2), vector22.length(), EPSILON);
+		assertEquals( 2, vector20.length(), EPSILON);
 		assertEquals( Math.sqrt(2*2+1*1), vector21.length(), EPSILON);
+		assertEquals( Math.sqrt(2*2+2*2), vector22.length(), EPSILON);
 	}
 	
 	@Test
@@ -126,6 +127,68 @@ public class Vector2DTest {
 		assertEquals (6, vector21.dotProduct(vector22), EPSILON);
 
 		assertEquals (8, vector22.dotProduct(vector22), EPSILON);
+	}
+	
+	@Test
+	public void testProjection()
+	{
+		assertEquals (0, vector00.projection(vector00), EPSILON);
+		assertEquals (0, vector00.projection(vector01), EPSILON);
+		assertEquals (0, vector00.projection(vector10), EPSILON);
+		assertEquals (0, vector00.projection(vector11), EPSILON);
+		assertEquals (0, vector00.projection(vector21), EPSILON);
+		assertEquals (0, vector00.projection(vector22), EPSILON);
+
+		assertEquals (1, vector01.projection(vector01), EPSILON);
+		assertEquals (0, vector01.projection(vector10), EPSILON);
+		assertEquals (1/vector11.length(), vector01.projection(vector11), EPSILON);
+		assertEquals (1/vector21.length(), vector01.projection(vector21), EPSILON);
+		assertEquals (2/vector22.length(), vector01.projection(vector22), EPSILON);
+
+		assertEquals (1, vector10.projection(vector10), EPSILON);
+		assertEquals (1/vector11.length(), vector10.projection(vector11), EPSILON);
+		assertEquals (2/vector21.length(), vector10.projection(vector21), EPSILON);
+		assertEquals (2/vector22.length(), vector10.projection(vector22), EPSILON);
+
+		assertEquals (vector11.length(), vector11.projection(vector11), EPSILON);
+		assertEquals (3/Math.sqrt(5), vector11.projection(vector21), EPSILON);
+		assertEquals (4/Math.sqrt(8), vector11.projection(vector22), EPSILON);
+
+		assertEquals (vector21.length(), vector21.projection(vector21), EPSILON);
+		assertEquals (6/Math.sqrt(8), vector21.projection(vector22), EPSILON);
+
+		assertEquals (vector22.length(), vector22.projection(vector22), EPSILON);
+	}
+	
+	@Test
+	public void testAngle()
+	{
+		assertEquals (0, vector00.angle(vector00), EPSILON);
+		assertEquals (0, vector00.angle(vector01), EPSILON);
+		assertEquals (0, vector00.angle(vector10), EPSILON);
+		assertEquals (0, vector00.angle(vector11), EPSILON);
+		assertEquals (0, vector00.angle(vector21), EPSILON);
+		assertEquals (0, vector00.angle(vector22), EPSILON);
+
+		assertEquals (0, vector01.angle(vector01), EPSILON);
+		assertEquals (-Math.PI/2, vector01.angle(vector10), EPSILON);
+		assertEquals (-Math.PI/4, vector01.angle(vector11), EPSILON);
+		assertEquals (-Math.acos(1/Math.sqrt(5)), vector01.angle(vector21), EPSILON);
+		assertEquals (-Math.PI/4, vector01.angle(vector22), EPSILON);
+
+		assertEquals (0, vector10.angle(vector10), EPSILON);
+		assertEquals (Math.PI/4, vector10.angle(vector11), EPSILON);
+		assertEquals (Math.acos(2/Math.sqrt(5)), vector10.angle(vector21), EPSILON);
+		assertEquals (Math.PI/4, vector10.angle(vector22), EPSILON);
+
+		assertEquals (0, vector11.angle(vector11), EPSILON);
+		assertEquals (-Math.acos(3/Math.sqrt(2*5)), vector11.angle(vector21), EPSILON);
+		assertEquals (0, vector11.angle(vector22), EPSILON);
+
+		assertEquals (0, vector21.angle(vector21), EPSILON);
+		assertEquals (+Math.acos(6/Math.sqrt(5*8)), vector21.angle(vector22), EPSILON);
+
+		assertEquals (0, vector22.angle(vector22), EPSILON);
 	}
 	
 	@Test

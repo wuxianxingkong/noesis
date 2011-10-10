@@ -80,6 +80,36 @@ public class Vector2D implements java.io.Serializable
 		return this.x*v.x + this.y*v.y;
 	}
 	
+	public double projection (Vector2D v)
+	{
+		double length = v.length();
+		
+		if (length>0)
+			return dotProduct(v)/v.length();
+		else
+			return 0;
+	}
+	
+	/**
+	 * Angle between two vectors. The dot product won't give all possible values 
+	 * between 0° and 360°, or -180° and +180°, hence we resort the atan2 function. 
+	 * @param v The other vector
+	 * @return Angle between vectors (between -Math.PI and Math.PI)
+	 */
+	public double angle (Vector2D v)
+	{
+		double angle = Math.atan2(v.y,v.x)- Math.atan2(this.y, this.x);
+		
+		if ( (this.squaredLength()==0) || (v.squaredLength()==0) )
+			return 0;
+		if (angle > Math.PI)
+			return angle - 2*Math.PI;
+		else if (angle < -Math.PI)
+			return angle + 2*Math.PI;
+		else
+			return angle;
+	}
+	
 	public double distance (Vector2D v)
 	{
 		double dx = this.x - v.x;

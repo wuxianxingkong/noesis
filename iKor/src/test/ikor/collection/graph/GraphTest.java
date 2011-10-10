@@ -1,6 +1,3 @@
-/**
- * JUnit test for {@link ikor.collection.graph.DynamicGraph}.
- */
 package test.ikor.collection.graph;
 
 import static org.junit.Assert.*;
@@ -15,7 +12,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * @author Fernan
+ * JUnit test for {@link ikor.collection.graph.DynamicGraph}.
+ * @author Fernando Berzal
  *
  */
 public class GraphTest {

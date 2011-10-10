@@ -42,7 +42,7 @@ public class Vector2D implements java.io.Serializable
 	{
 		double length = this.length();
 		
-		if (length> Constants.EPSILON) {
+		if (length> Configuration.EPSILON) {
 			return new Vector2D (this.x/length, this.y/length);
 		} else {
 			return null;
@@ -156,8 +156,8 @@ public class Vector2D implements java.io.Serializable
 				
 				Vector2D v = (Vector2D) obj;
 				
-				return ( Math.abs(this.x-v.x) < Constants.EPSILON )
-					&& ( Math.abs(this.y-v.y) < Constants.EPSILON );
+				return ( Math.abs(this.x-v.x) < Configuration.EPSILON )
+					&& ( Math.abs(this.y-v.y) < Configuration.EPSILON );
 			}
 		}
 	}

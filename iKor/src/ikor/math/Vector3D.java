@@ -47,7 +47,7 @@ public class Vector3D implements java.io.Serializable
 	{
 		double length = this.length();
 		
-		if (length> Constants.EPSILON) {
+		if (length> Configuration.EPSILON) {
 			return new Vector3D (this.x/length, this.y/length, this.z/length);
 		} else {
 			return null;
@@ -123,7 +123,7 @@ public class Vector3D implements java.io.Serializable
 		
 		if ( (a>0) && (b>0) ) {
 			
-			if ( Math.abs(p-a*b) < Constants.EPSILON )
+			if ( Math.abs(p-a*b) < Configuration.EPSILON )
 				return 0;
 			else
 				return Math.acos( this.dotProduct(v) / (a*b) );
@@ -169,9 +169,9 @@ public class Vector3D implements java.io.Serializable
 				
 				Vector3D v = (Vector3D) obj;
 				
-				return ( Math.abs(this.x-v.x) < Constants.EPSILON )
-					&& ( Math.abs(this.y-v.y) < Constants.EPSILON )
-					&& ( Math.abs(this.z-v.z) < Constants.EPSILON );
+				return ( Math.abs(this.x-v.x) < Configuration.EPSILON )
+					&& ( Math.abs(this.y-v.y) < Configuration.EPSILON )
+					&& ( Math.abs(this.z-v.z) < Configuration.EPSILON );
 			}
 		}
 	}

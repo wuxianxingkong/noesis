@@ -1,6 +1,6 @@
 package ikor.math;
 
-public class Constants 
+public class Configuration 
 {
 	public static double EPSILON = 1e-6;
 

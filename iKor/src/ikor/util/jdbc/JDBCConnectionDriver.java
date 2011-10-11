@@ -8,6 +8,7 @@ package ikor.util.jdbc;
 
 import java.sql.*;
 import java.util.*;
+import java.util.logging.Logger;
 
 // JDBC Driver wrapper
 // -------------------
@@ -95,4 +96,10 @@ public class JDBCConnectionDriver implements Driver
   {
     return driver.jdbcCompliant();
   }
+
+@Override
+public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+	// TODO Auto-generated method stub
+	return null;
+}
 }

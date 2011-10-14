@@ -7,8 +7,7 @@ import ikor.math.Decimal;
 
 import noesis.Network;
 
-
-public class PajekNetworkReader implements NetworkReader<String,Decimal> 
+public class PajekNetworkReader extends NetworkReader<String,Decimal> 
 {
 	private BufferedReader input;
 	private String currentLine;
@@ -56,7 +55,7 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 	 * @param net Network
 	 * @throws IOException
 	 */
-	private void readNetwork (Network<String,Decimal> net)
+	private void readNetwork (Network<String, Decimal> net)
 		throws IOException
 	{
 		// *network <ID>
@@ -71,7 +70,7 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 	 * @param net Network
 	 * @throws IOException
 	 */
-	private void readVertices (Network<String,Decimal> net)
+	private void readVertices (Network<String, Decimal> net)
 		throws IOException
 	{
 		int    vertices;
@@ -107,10 +106,8 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 			
 			line = readLine();
 		}
-
-		while (net.size()<vertices) {
-			net.add(null); // Unlabeled vertex
-		}
+		
+		net.setSize(vertices);
 	}
 	
 	/**
@@ -118,7 +115,7 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 	 * @param net Network
 	 * @throws IOException
 	 */
-	private void readArcList (Network<String,Decimal> net)
+	private void readArcList (Network<String, Decimal> net)
 		throws IOException
 	{
 		String line;
@@ -150,7 +147,7 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 	 * @param net Network
 	 * @throws IOException
 	 */		
-	private void readEdgeList (Network<String,Decimal> net)
+	private void readEdgeList (Network<String, Decimal> net)
 		throws IOException
 	{
 		String line;
@@ -184,7 +181,7 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 	 * @param net Network
 	 * @throws IOException 
 	 */
-	private void readArcPairs (Network<String,Decimal> net)
+	private void readArcPairs (Network<String, Decimal> net)
 		throws IOException
 	{
 		String line;
@@ -219,7 +216,7 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 	 * @param net Network
 	 * @throws IOException 
 	 */
-	private void readEdgePairs (Network<String,Decimal> net)
+	private void readEdgePairs (Network<String, Decimal> net)
 		throws IOException
 	{	
 		String line;
@@ -300,6 +297,7 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 		readLine();
 	}
 	
+
 	
 	/**
 	 * Read Pajek file (*vertices, *arcslist/*edgeslist, *arcs/*edges, *matrix). 
@@ -308,7 +306,7 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 	public Network read()
 		throws IOException
 	{
-		Network<String,Decimal> net = new Network<String,Decimal>();
+		Network<String,Decimal> net = createNetwork();
 		
 		readLine();
 		

@@ -1,8 +1,6 @@
 package test.noesis.io;
 
 
-import ikor.math.Decimal;
-
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -13,7 +11,6 @@ import noesis.Network;
 import noesis.io.PajekNetworkReader;
 import noesis.io.PajekNetworkWriter;
 
-import org.junit.Before;
 import org.junit.Test;
 
 public class PajekNetworkWriterTest {
@@ -66,47 +63,43 @@ public class PajekNetworkWriterTest {
 		return net;
 	}	
 	
-	@Before
-	public void setUp() throws Exception {
+	
+	private Network createNetwork (String[] lines)
+		throws IOException
+	{
+		String netstr = networkString(lines);
+
+		StringReader sr = new StringReader( netstr );
+		PajekNetworkReader reader = new PajekNetworkReader(sr);
+		
+		return reader.read();
 	}
 
 	
 	@Test
 	public void testPajekWriterNetwork() throws IOException
 	{
-		String netstr = networkString(pajekNetwork);
-
-		StringReader sr = new StringReader( netstr );
-		PajekNetworkReader reader = new PajekNetworkReader(sr);
-		
-		Network<String,Decimal> net = reader.read();
-		
+		Network net = createNetwork(pajekNetwork);
 		StringWriter sw = new StringWriter();
 		PajekNetworkWriter writer = new PajekNetworkWriter(sw);
 		
 		writer.write(net);
 		sw.close();
 		
-		assertEquals(netstr, sw.toString());	
+		assertEquals(networkString(pajekNetwork), sw.toString());	
 	}
 
 	@Test
 	public void testPajekWriterUnlabeled() throws IOException
 	{
-		String netstr = networkString(pajekUnlabeled);
-		
-		StringReader sr = new StringReader( netstr );
-		PajekNetworkReader reader = new PajekNetworkReader(sr);
-		
-		Network<String,Decimal> net = reader.read();
-		
+		Network net = createNetwork(pajekUnlabeled);
 		StringWriter sw = new StringWriter();
 		PajekNetworkWriter writer = new PajekNetworkWriter(sw);
 		
 		writer.write(net);
 		sw.close();
 		
-		assertEquals(netstr, sw.toString());
+		assertEquals(networkString(pajekUnlabeled), sw.toString());
 	}
 	
 }

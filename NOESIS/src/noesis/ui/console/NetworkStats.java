@@ -1,11 +1,14 @@
 package noesis.ui.console;
 
-import java.io.FileReader;
+import java.io.*;
+import java.util.zip.*;
 
 import ikor.util.Benchmark;
 
 import noesis.Network;
+import noesis.io.NetworkReader;
 import noesis.io.PajekNetworkReader;
+import noesis.io.SNAPNetworkReader;
 
 
 public class NetworkStats {
@@ -14,7 +17,7 @@ public class NetworkStats {
 	 * @param args
 	 */
 	public static void main(String[] args)
-		throws java.io.IOException
+		throws IOException
 	{
 	
 		if (args.length==0) {
@@ -29,11 +32,22 @@ public class NetworkStats {
 			
 			crono.start();
 			
-			FileReader file = new FileReader(args[0]);
+			FileReader    file = new FileReader(args[0]);
+			NetworkReader reader; 
 			
 			System.err.println("Reading network from "+args[0]);
 			
-			PajekNetworkReader reader = new PajekNetworkReader(file);
+			if (args[0].endsWith(".net"))
+				reader = new PajekNetworkReader(file);
+			else if (args[0].endsWith(".txt"))
+				reader = new SNAPNetworkReader(file);
+			else if (args[0].endsWith(".gz"))
+				reader = getSNAPGZReader(args[0]);
+			else
+				throw new IOException("Unknown network file format.");
+			
+			reader.setType(noesis.ArrayNetwork.class);
+			// reader.setType(noesis.GraphNetwork.class);  
 			
 			Network net = reader.read();
 			
@@ -50,6 +64,19 @@ public class NetworkStats {
 			System.out.println("Time: "+crono);
 		}
 
+	}
+	
+	
+	private static SNAPNetworkReader getSNAPGZReader(String file)
+		throws IOException
+	{
+		// ZipFile zf = new ZipFile(file);
+		// InputStream in = zf.getInputStream( zf.getEntry(txt) );
+		FileInputStream fin = new FileInputStream (file);
+		InputStream in = new GZIPInputStream( fin );
+		Reader r = new InputStreamReader(in);
+		
+		return new SNAPNetworkReader(r);
 	}
 
 }

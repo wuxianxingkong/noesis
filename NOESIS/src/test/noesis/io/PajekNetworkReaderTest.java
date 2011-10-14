@@ -10,11 +10,13 @@ import noesis.io.PajekNetworkReader;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
+
 import org.junit.Test;
 
 public class PajekNetworkReaderTest {
 
+	// Sample Pajek networks 
+	
 	private String[] pajekLists = new String[] {
 		"*Vertices 5",
 		"1 \"a\"",
@@ -94,20 +96,12 @@ public class PajekNetworkReaderTest {
 		
 		return net;
 	}
-	
-	@Before
-	public void setUp() throws Exception {
-	}
-	
 
+
+	// Ancillary routines
 	
-	@Test
-	public void testPajekLists() throws IOException
-	{
-		StringReader sr = new StringReader( networkString(pajekLists));
-		PajekNetworkReader reader = new PajekNetworkReader(sr);
-		Network<String,Decimal> net = reader.read();
-		
+	public void checkPajekNodes (Network<String,Decimal> net)
+	{		
 		assertEquals(5, net.size());
 		
 		assertEquals("a", net.get(0));
@@ -115,7 +109,21 @@ public class PajekNetworkReaderTest {
 		assertEquals("c", net.get(2));
 		assertEquals("d", net.get(3));
 		assertEquals("e", net.get(4));
+	}
+	
+	public void checkPajekUnlabeledNodes (Network<String,Decimal> net)
+	{
+		assertEquals(5, net.size());
 		
+		assertEquals(null, net.get(0));
+		assertEquals(null, net.get(1));
+		assertEquals(null, net.get(2));
+		assertEquals(null, net.get(3));
+		assertEquals(null, net.get(4));
+	}
+		
+	public void checkPajekLinks (Network<String,Decimal> net)
+	{		
 		assertEquals(8, net.links());
 		
 		assertEquals("1", net.get("a","e").toString());
@@ -147,70 +155,43 @@ public class PajekNetworkReaderTest {
 		assertEquals(null, net.get("d","d"));
 		assertEquals(null, net.get("e","e"));
 	}
-
-
-	@Test
-	public void testPajekPairs() throws IOException
-	{
-		StringReader sr = new StringReader( networkString(pajekPairs));
-		PajekNetworkReader reader = new PajekNetworkReader(sr);
-		Network<String,Decimal> net = reader.read();
-		
-		assertEquals(5, net.size());
-		
-		assertEquals("a", net.get(0));
-		assertEquals("b", net.get(1));
-		assertEquals("c", net.get(2));
-		assertEquals("d", net.get(3));
-		assertEquals("e", net.get(4));
-		
+	
+	public void checkPajekUnlabeledLinks (Network<String,Decimal> net)
+	{		
 		assertEquals(8, net.links());
 		
-		assertEquals("1", net.get("a","e").toString());
-		assertEquals("1", net.get("e","a").toString());
+		assertEquals("1", net.get(0,4).toString());
+		assertEquals("1", net.get(4,0).toString());
 
-		assertEquals("1", net.get("a","b").toString());
-		assertEquals("1", net.get("a","d").toString());
-		assertEquals("2", net.get("b","c").toString());
-		assertEquals("1", net.get("c","a").toString());
-		assertEquals("2", net.get("c","d").toString());
-		assertEquals("1", net.get("d","e").toString());
+		assertEquals("1", net.get(0,1).toString());
+		assertEquals("1", net.get(0,4).toString());
+		assertEquals("1", net.get(1,2).toString());
+		assertEquals("1", net.get(2,0).toString());
+		assertEquals("1", net.get(2,3).toString());
+		assertEquals("1", net.get(3,4).toString());
 		
-		assertEquals(null, net.get("a","c"));
-		assertEquals(null, net.get("b","a"));
-		assertEquals(null, net.get("b","d"));
-		assertEquals(null, net.get("b","e"));
-		assertEquals(null, net.get("c","b"));
-		assertEquals(null, net.get("c","e"));
-		assertEquals(null, net.get("d","a"));
-		assertEquals(null, net.get("d","b"));
-		assertEquals(null, net.get("d","c"));
-		assertEquals(null, net.get("e","b"));
-		assertEquals(null, net.get("e","c"));
-		assertEquals(null, net.get("e","d"));
+		assertEquals(null, net.get(0,2));
+		assertEquals(null, net.get(1,0));
+		assertEquals(null, net.get(1,3));
+		assertEquals(null, net.get(1,4));
+		assertEquals(null, net.get(2,1));
+		assertEquals(null, net.get(2,4));
+		assertEquals(null, net.get(3,0));
+		assertEquals(null, net.get(3,1));
+		assertEquals(null, net.get(3,2));
+		assertEquals(null, net.get(4,1));
+		assertEquals(null, net.get(4,2));
+		assertEquals(null, net.get(4,3));
 
-		assertEquals(null, net.get("a","a"));
-		assertEquals(null, net.get("b","b"));
-		assertEquals(null, net.get("c","c"));
-		assertEquals(null, net.get("d","d"));
-		assertEquals(null, net.get("e","e"));
-	}
+		assertEquals(null, net.get(0,0));
+		assertEquals(null, net.get(1,1));
+		assertEquals(null, net.get(2,2));
+		assertEquals(null, net.get(3,3));
+		assertEquals(null, net.get(4,4));
+	}	
 
-	@Test
-	public void testPajekMatrix() throws IOException
-	{
-		StringReader sr = new StringReader( networkString(pajekMatrix));
-		PajekNetworkReader reader = new PajekNetworkReader(sr);
-		Network<String,Decimal> net = reader.read();
-		
-		assertEquals(5, net.size());
-		
-		assertEquals("a", net.get(0));
-		assertEquals("b", net.get(1));
-		assertEquals("c", net.get(2));
-		assertEquals("d", net.get(3));
-		assertEquals("e", net.get(4));
-		
+	public void checkPajekValues(Network<String,Decimal> net)
+	{		
 		assertEquals(8, net.links());
 		
 		assertEquals("1", net.get("a","e").toString());
@@ -243,20 +224,123 @@ public class PajekNetworkReaderTest {
 		assertEquals(null, net.get("e","e"));
 	}
 	
+
+	
 	@Test
-	public void testUnlabeledPajekList() throws IOException
+	public void testGraphPajekLists() throws IOException
+	{
+		StringReader sr = new StringReader( networkString(pajekLists));
+		PajekNetworkReader reader = new PajekNetworkReader(sr);
+	
+		reader.setType(noesis.GraphNetwork.class);
+		
+		Network<String,Decimal> net = reader.read();
+		
+		checkPajekNodes(net);
+		checkPajekLinks(net);
+	}
+
+	@Test
+	public void testArrayPajekLists() throws IOException
+	{
+		StringReader sr = new StringReader( networkString(pajekLists));
+		PajekNetworkReader reader = new PajekNetworkReader(sr);
+	
+		reader.setType(noesis.ArrayNetwork.class);
+		
+		Network<String,Decimal> net = reader.read();
+		
+		checkPajekNodes(net);
+		checkPajekLinks(net);
+	}
+
+	
+	@Test
+	public void testGraphPajekPairs() throws IOException
+	{
+		StringReader sr = new StringReader( networkString(pajekPairs));
+		PajekNetworkReader reader = new PajekNetworkReader(sr);
+		
+		reader.setType(noesis.GraphNetwork.class);
+
+		Network<String,Decimal> net = reader.read();
+	
+		checkPajekNodes(net);	
+		checkPajekValues(net);
+	}
+	
+	@Test
+	public void testArrayPajekPairs() throws IOException
+	{
+		StringReader sr = new StringReader( networkString(pajekPairs));
+		PajekNetworkReader reader = new PajekNetworkReader(sr);
+		
+		reader.setType(noesis.ArrayNetwork.class);
+
+		Network<String,Decimal> net = reader.read();
+		
+		checkPajekNodes(net);
+		checkPajekValues(net);
+	}	
+	
+	
+
+	@Test
+	public void testGraphPajekMatrix() throws IOException
+	{
+		StringReader sr = new StringReader( networkString(pajekMatrix));
+		PajekNetworkReader reader = new PajekNetworkReader(sr);
+		
+		reader.setType(noesis.GraphNetwork.class);
+
+		Network<String,Decimal> net = reader.read();
+		
+		checkPajekNodes(net);	
+		checkPajekValues(net);
+	}
+		
+	@Test
+	public void testArrayPajekMatrix() throws IOException
+	{
+		StringReader sr = new StringReader( networkString(pajekMatrix));
+		PajekNetworkReader reader = new PajekNetworkReader(sr);
+		
+		reader.setType(noesis.ArrayNetwork.class);
+
+		Network<String,Decimal> net = reader.read();
+		
+		checkPajekNodes(net);	
+		checkPajekValues(net);
+	}	
+
+	
+	@Test
+	public void testGraphUnlabeledPajekList() throws IOException
 	{
 		StringReader sr = new StringReader( networkString(pajekUnlabeled));
 		PajekNetworkReader reader = new PajekNetworkReader(sr);
+		
+		reader.setType(noesis.GraphNetwork.class);
+		
 		Network<String,Decimal> net = reader.read();
 		
-		assertEquals(5, net.size());
+		checkPajekUnlabeledNodes(net);
+		checkPajekUnlabeledLinks(net);
+	}
+
+	
+	@Test
+	public void testArrayUnlabeledPajekList() throws IOException
+	{
+		StringReader sr = new StringReader( networkString(pajekUnlabeled));
+		PajekNetworkReader reader = new PajekNetworkReader(sr);
 		
-		assertEquals(null, net.get(0));
-		assertEquals(null, net.get(1));
-		assertEquals(null, net.get(2));
-		assertEquals(null, net.get(3));
-		assertEquals(null, net.get(4));
+		reader.setType(noesis.ArrayNetwork.class);
+		
+		Network<String,Decimal> net = reader.read();
+		
+		checkPajekUnlabeledNodes(net);
+		checkPajekUnlabeledLinks(net);
 	}
 	
 

@@ -11,10 +11,15 @@ import noesis.Network;
 public class PajekNetworkReader implements NetworkReader<String,Decimal> 
 {
 	private BufferedReader input;
+	private String currentLine;
+	
+	private final int startIndex = 1;
+	private int bimode = 0;
 	
 	public PajekNetworkReader (Reader reader)
 	{
 		this.input = new BufferedReader(reader);
+		this.currentLine = null;
 	}
 
 	/**
@@ -29,11 +34,37 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 		
 		do {
 			line = input.readLine();
-		} while ((line!=null) && (line.trim().length()==0) && line.startsWith("%"));
+		} while ((line!=null) && ((line.trim().length()==0) || line.startsWith("%")));
+		
+		currentLine = line;
 		
 		return line;
 	}
 	
+	/**
+	 * Current input line
+	 * @return Input line
+	 */
+	
+	private String currentLine ()
+	{
+		return currentLine;
+	}
+
+	/**
+	 * Read list of vertices (with corresponding labels)
+	 * @param net Network
+	 * @throws IOException
+	 */
+	private void readNetwork (Network<String,Decimal> net)
+		throws IOException
+	{
+		// *network <ID>
+		
+		net.setID( currentLine().substring( currentLine.indexOf(' ') ).trim());
+		
+		readLine();
+	}
 	
 	/**
 	 * Read list of vertices (with corresponding labels)
@@ -45,15 +76,26 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 	{
 		int    vertices;
 		int    start,end;
-		String line = readLine();
+		String line = currentLine();
 		
-		if (!line.toLowerCase().startsWith("*vertices"))
-			throw new IOException("Invalid Pajek file format");
+		// *vertices <n> [<bimode>]
 		
-		vertices = Integer.parseInt(line.substring(10).trim());
+		StringTokenizer tokenizer = new StringTokenizer(line);
 		
-		for (int i=0; i<vertices; i++) {
-			line = readLine();
+		tokenizer.nextToken(); // *vertices
+		
+		vertices = Integer.parseInt(tokenizer.nextToken());
+		
+		if (tokenizer.hasMoreTokens())
+			bimode = Integer.parseInt(tokenizer.nextToken());
+				
+		
+		// <n> ["<label>"]
+
+		line = readLine();
+	
+		while ((line!=null) && !line.startsWith("*")) {
+		
 			start = line.indexOf('"');
 			
 			if (start!=-1) {
@@ -62,24 +104,27 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 			} else {
 				net.add( null ); // Unlabeled vertex
 			}
+			
+			line = readLine();
+		}
+
+		while (net.size()<vertices) {
+			net.add(null); // Unlabeled vertex
 		}
 	}
 	
 	/**
-	 * Read arc/edge lists
+	 * Read arc list
 	 * @param net Network
 	 * @throws IOException
 	 */
-	private void readList (Network<String,Decimal> net)
+	private void readArcList (Network<String,Decimal> net)
 		throws IOException
 	{
 		String line;
 		int    source, destination;
 		StringTokenizer tokenizer;
 		Decimal value = new Decimal(1);
-
-		
-		// Arcs
 		
 		line = readLine();
 		
@@ -93,22 +138,29 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 				
 				destination = Integer.parseInt(tokenizer.nextToken());
 				
-				net.add(source-1, destination-1, value);
+				net.add(source-startIndex, destination-startIndex, value);
 			}
 			
 			line = readLine();
 		}
+	}
 		
-		// Edges
-
-		if (line!=null) {
-			if (line.toLowerCase().startsWith("*edgeslist"))
-				line = readLine();
-			else
-				throw new IOException("Unsupported Pajek file format.");
-		}
+	/**
+	 * Read edge list
+	 * @param net Network
+	 * @throws IOException
+	 */		
+	private void readEdgeList (Network<String,Decimal> net)
+		throws IOException
+	{
+		String line;
+		int    source, destination;
+		StringTokenizer tokenizer;
+		Decimal value = new Decimal(1);
 		
-		while (line!=null) {
+		line = readLine();
+		
+		while ((line!=null) && !line.startsWith("*")) {
 
 			tokenizer = new StringTokenizer(line);
 			
@@ -118,8 +170,8 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 				
 				destination = Integer.parseInt(tokenizer.nextToken());
 				
-				net.add(source-1, destination-1, value);
-				net.add(destination-1, source-1, value);
+				net.add(source-startIndex, destination-startIndex, value);
+				net.add(destination-startIndex, source-startIndex, value);
 			}
 			
 			line = readLine();
@@ -132,7 +184,7 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 	 * @param net Network
 	 * @throws IOException 
 	 */
-	private void readPairs (Network<String,Decimal> net)
+	private void readArcPairs (Network<String,Decimal> net)
 		throws IOException
 	{
 		String line;
@@ -140,8 +192,6 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 		StringTokenizer tokenizer;
 		Decimal value;
 		Decimal one = new Decimal(1);
-		
-		// Arcs
 		
 		line = readLine();
 		
@@ -157,21 +207,30 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 			else
 				value = one;
 			
-			net.add(source-1, destination-1, value);
+			net.add(source-startIndex, destination-startIndex, value);
 			
 			line = readLine();
 		}
+	}	
+	
+	
+	/**
+	 * Read edges as sets of pairs
+	 * @param net Network
+	 * @throws IOException 
+	 */
+	private void readEdgePairs (Network<String,Decimal> net)
+		throws IOException
+	{	
+		String line;
+		int    source, destination;
+		StringTokenizer tokenizer;
+		Decimal value;
+		Decimal one = new Decimal(1);
 		
-		// Edges
+		line = readLine();
 		
-		if (line!=null) {
-			if (line.toLowerCase().startsWith("*edges"))
-				line = readLine();
-			else
-				throw new IOException("Unsupported Pajek file format.");
-		}
-
-		while (line!=null) {
+		while ((line!=null) && !line.startsWith("*")) {
 
 			tokenizer = new StringTokenizer(line);
 			
@@ -183,8 +242,8 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 			else
 				value = one;
 			
-			net.add(source-1, destination-1, value);	
-			net.add(destination-1, source-1, value);	
+			net.add(source-startIndex, destination-startIndex, value);	
+			net.add(destination-startIndex, source-startIndex, value);	
 			
 			line = readLine();			
 		}			
@@ -204,45 +263,82 @@ public class PajekNetworkReader implements NetworkReader<String,Decimal>
 		StringTokenizer tokenizer;
 		Decimal value;
 		
-		for (int i=0; i<net.size(); i++) {
+		if (bimode==0) {
+		
+			for (int i=0; i<net.size(); i++) {
 
-			line = readLine();			
-			tokenizer = new StringTokenizer(line);
-			
-			for (int j=0; j<net.size(); j++) {
-				
-				value = new Decimal(tokenizer.nextToken());
-				
-				if (value.intValue()>0)
-					net.add(i,j,value);
+				line = readLine();			
+				tokenizer = new StringTokenizer(line);
+
+				for (int j=0; j<net.size(); j++) {
+
+					value = new Decimal(tokenizer.nextToken());
+
+					if (value.intValue()>0)
+						net.add(i,j,value);
+				}
 			}
+		
+		} else {  // 2-mode network
 
+			for (int i=0; i<bimode; i++) {
+
+				line = readLine();			
+				tokenizer = new StringTokenizer(line);
+
+				for (int j=0; j<net.size()-bimode; j++) {
+
+					value = new Decimal(tokenizer.nextToken());
+
+					if (value.intValue()>0)
+						net.add(i,bimode+j,value);
+				}
+			}
 		}
+	
+		
+		readLine();
 	}
 	
 	
 	/**
 	 * Read Pajek file (*vertices, *arcslist/*edgeslist, *arcs/*edges, *matrix). 
 	 */
-	// TODO Pajek file format: *network, *partition, *vector
 	@Override
 	public Network read()
 		throws IOException
 	{
 		Network<String,Decimal> net = new Network<String,Decimal>();
 		
-		readVertices(net);
+		readLine();
 		
-		String line = readLine().toLowerCase();
-		
-		if (line.startsWith("*arcslist"))
-			readList(net);
-		else if (line.startsWith("*arcs"))
-			readPairs(net);
-		else if (line.startsWith("*matrix"))
-			readMatrix(net);
-		else
-			throw new IOException("Unsupported Pajek file format");
+		while ((currentLine()!=null) && currentLine().startsWith("*")) {
+			
+			String line = currentLine().toLowerCase();
+			
+			if (line.startsWith("*net")) // *net || *network
+				readNetwork(net);
+			else if (line.startsWith("*vertices"))
+				readVertices(net);
+			else if (line.startsWith("*arcslist"))
+				readArcList(net);
+			else if (line.startsWith("*edgeslist"))
+				readEdgeList(net);
+			else if (line.startsWith("*arcs"))
+				readArcPairs(net);
+			else if (line.startsWith("*edges"))
+				readEdgePairs(net);
+			else if (line.startsWith("*matrix"))
+				readMatrix(net);
+			else
+				throw new IOException("Unsupported Pajek file format");
+			
+			// TODO Pajek file format: *partition, *vector, multi-relational, .paj
+			//  *partition for nominal properties of vertices
+			//  *vector for numerical properties of vertices
+			//  *arclist :n <label> for multi-relational networks (e.g. wordnet)
+			//  .paj == Pajek project files
+		}
 		
 		return net;
 	}

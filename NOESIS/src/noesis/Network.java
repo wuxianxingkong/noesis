@@ -19,12 +19,25 @@ import ikor.collection.graph.*;
 
 public class Network<V,E> implements Graph<V,E>
 {
+	private String id;
 	private DynamicGraph<V,E> net;
 	
 	
 	public Network ()
 	{
 		this.net = new DynamicGraph<V,E>(true);
+		this.id = null;
+	}
+	
+	
+	public void setID (String id)
+	{
+		this.id = id;
+	}
+	
+	public String getID ()
+	{
+		return id;
 	}
 
 	

@@ -97,7 +97,7 @@ public class JDBCConnectionDriver implements Driver
     return driver.jdbcCompliant();
   }
 
-@Override
+//@Override
 public Logger getParentLogger() throws SQLFeatureNotSupportedException {
 	// TODO Auto-generated method stub
 	return null;

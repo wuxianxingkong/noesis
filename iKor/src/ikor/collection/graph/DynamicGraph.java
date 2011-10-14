@@ -150,6 +150,29 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 	}
 	
 	// Edges
+
+	@Override
+	public E get(int source, int destination) 
+	{
+		Link<V,E> link = getLink ( getNode(source), getNode(destination) );
+		
+		if (link!=null)
+			return link.getContent();
+		else
+			return null;
+	}
+
+	@Override
+	public E get(V source, V destination) 
+	{
+		Link<V,E> link = getLink ( getNode(source), getNode(destination) );
+		
+		if (link!=null)
+			return link.getContent();
+		else
+			return null;
+	}
+	
 	
 	@Override
 	public Link<V, E> getLink(int node1, int node2) {

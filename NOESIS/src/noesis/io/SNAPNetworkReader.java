@@ -38,11 +38,13 @@ public class SNAPNetworkReader extends NetworkReader
 	public Network read() 
 		throws IOException 
 	{
-		Network<String,Decimal> net = createNetwork();
+		Network<Integer,Decimal> net = createNetwork();
 		int     nodes;
 		int     source, destination;
+		int     mark;
 		String  line;
-		String  token, idSource, idDestination;
+		String  token;
+		Integer idSource, idDestination;
 		StringTokenizer tokenizer;
 		
 		// # Directed graph (each unordered pair of nodes is saved once): <file>.txt 
@@ -66,7 +68,8 @@ public class SNAPNetworkReader extends NetworkReader
 		
 		nodes = Integer.parseInt(tokenizer.nextToken());
 		
-		// Assert.assertEquals("Edges:", tokenizer.nextToken());
+		// token = tokenizer.nextToken();
+		// assert token.equals("Edges:");
 		// links = Integer.parseInt(tokenizer.nextToken());
 		
 		net.setSize(nodes);
@@ -81,24 +84,27 @@ public class SNAPNetworkReader extends NetworkReader
 		
 		while (line!=null) {
 			
-			tokenizer = new StringTokenizer(line);
+			// tokenizer = new StringTokenizer(line);		
+			// idSource = Integer.parseInt(tokenizer.nextToken());
+			// idDestination = Integer.parseInt(tokenizer.nextToken());
 			
-			idSource = tokenizer.nextToken();
-			idDestination = tokenizer.nextToken();
-			
+			mark = line.indexOf('\t');
+			idSource = Integer.parseInt(line.substring(0, mark));
+			idDestination = Integer.parseInt(line.substring(mark+1));			
+
 			source = net.index(idSource);
 			
 			if (source==-1)
 				source = net.add(idSource);
 
-			destination =  net.index(idDestination);
+			destination = net.index(idDestination);
 			
 			if (destination==-1)
 				destination = net.add(idDestination);
-			
+		
 			if (!net.add(source,destination))
 				System.err.println(line);
-			
+
 			line = readLine();
 		}
 		

@@ -35,13 +35,13 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 	}
 	
 	@Override
-	public int size() 
+	public final int size() 
 	{
 		return size;
 	}
 
 	@Override
-	public void setSize(int size) 
+	public final void setSize(int size) 
 	{
 		int[][] oldInLinks;
 		int[][] oldOutLinks;
@@ -61,7 +61,7 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 	}
 
 	@Override
-	public int links() 
+	public final int links() 
 	{
 		return nlinks;
 	}
@@ -69,49 +69,62 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 
 
 	@Override
-	public int add(V node) 
+	public final int add(V node) 
 	{
-		boolean ok;
-				
-		ok = nodes.add(node);
+		int pos = nodes.size();
 		
-		if (ok) {
-			hash.set(node, nodes.size()-1);
+		nodes.add(node);
+		hash.set(node, pos);
 			
-			if (nodes.size()>size)
-				setSize(nodes.size());
-		}
-		
-		if (ok)
-			return nodes.size()-1;
-		else
-			return -1;
+		if (nodes.size()>=size)
+			setSize(nodes.size());
+
+		return pos;
 	}
 	
 	
-	private int[] extend (int[] array, int value)
+	// e.g. Google web (875k nodes, 5.1M links, 21MB GZIP, 75MB TXT )
+	// - Incremental extension (+1):                            
+	//     55s = 21s (I/O) + 13s (node creation) + 21s (link creation)
+	//     (without additional memory requirements)
+	// - Multiplicative extension with Pascal-like arrays (*2):
+	//     41s = 21s (I/O) + 13s (node creation) + 7s (link creation)
+	//     (2*size() additional integer values, i.e. inLinks[i][0] & outLinks[i][0])
+	
+	private final static int INITIAL_ARRAY_SIZE = 4;
+	private final static int START_INDEX = 1;
+	
+	private final int[] extend (int[] array, int value)
 	{
 		int   dim;
 		int[] newArray;
 		
-		if (array!=null)
-			dim = array.length;
-		else
-			dim = 0;
+		if (array==null) {
+			
+			newArray = new int[INITIAL_ARRAY_SIZE];
+			newArray[0] = 1;
+			newArray[1] = value;
 		
-		newArray = new int[dim+1];
-		
-		if (array!=null) {
-			System.arraycopy(array,0,newArray,0,array.length);
-		}
-		
-		newArray[dim] = value;
+		} else {
+			
+			dim = array[0]+1;	
+			
+			if (dim<array.length) {
+				newArray = array;
+			} else {
+				newArray = new int[2*array.length];
+				System.arraycopy(array,0,newArray,0,array.length);
+			}
+
+			newArray[0] = dim; 
+			newArray[dim] = value;	
+		}		
 		
 		return newArray;
 	}
 
 	@Override
-	public boolean add(int source, int destination) 
+	public final boolean add(int source, int destination) 
 	{
 		if (  (source>=0) 
 		   && (source<size())
@@ -130,7 +143,7 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 	}
 
 	@Override
-	public boolean add(int sourceIndex, int destinationIndex, E value) 
+	public final boolean add(int sourceIndex, int destinationIndex, E value) 
 	{
 		boolean ok = add(sourceIndex,destinationIndex);
 		
@@ -149,7 +162,7 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 	}
 
 	@Override
-	public V get(int index) 
+	public final V get(int index) 
 	{
 		if (nodes!=null)
 			return nodes.get(index);
@@ -158,12 +171,12 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 	}
 
 	@Override
-	public E get(int source, int destination) 
+	public final E get(int source, int destination) 
 	{
 		if ((content!=null) && (content[source]!=null)) {
 			
-			for (int i=0; i<outLinks[source].length; i++)
-				if (outLinks[source][i] == destination)
+			for (int i=0; i<outLinks[source][0]; i++)
+				if (outLinks[source][START_INDEX+i] == destination)
 					return content[source].get(i);
 			
 			return null;
@@ -175,7 +188,7 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 	}
 
 	@Override
-	public E get(V source, V destination) 
+	public final E get(V source, V destination) 
 	{
 		int sourceIndex = index(source);
 		int destinationIndex = index(destination);
@@ -184,13 +197,13 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 	}
 
 	@Override
-	public boolean contains(V node) 
+	public final boolean contains(V node) 
 	{
 		return hash.contains(node);
 	}
 
 	@Override
-	public int index(V node) 
+	public final int index(V node) 
 	{	
 		Integer entry = hash.get(node);
 		
@@ -202,19 +215,19 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 
 
 	@Override
-	public int inDegree(int node) 
+	public final int inDegree(int node) 
 	{
 		if ((inLinks!=null) && (inLinks[node]!=null))
-			return inLinks[node].length;
+			return inLinks[node][0];
 		else
 			return 0;
 	}
 
 	@Override
-	public int outDegree(int node) 
+	public final int outDegree(int node) 
 	{
 		if ((outLinks!=null) && (outLinks[node]!=null))
-			return outLinks[node].length;
+			return outLinks[node][0];
 		else
 			return 0;
 	}

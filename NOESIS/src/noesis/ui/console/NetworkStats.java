@@ -72,8 +72,8 @@ public class NetworkStats {
 			outDegrees.compute();
 			inDegrees.compute();
 			
-			//saveInt("out.txt", outDegrees);
-			//saveInt("in.txt",  inDegrees);
+			//saveInt("out/outDegrees.txt", outDegrees);
+			//saveInt("out/inDegrees.txt",  inDegrees);
 			
 			System.out.println("Degree distributions");
 			System.out.println("- Out-degrees: "+outDegrees);

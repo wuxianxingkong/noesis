@@ -33,625 +33,664 @@ package ikor.math;
 
 public class Matrix implements java.io.Serializable
 {
-  // Variables de instancia
+	// Variables de instancia
 
-  private int    filas;
-  private int    columnas;
-  private double datos[][];
+	private int filas;
+	private int columnas;
+	private double datos[][];
 
-  // Constructor
+	// Constructors
 
-  /** @pre rows>0 && columns>0 */
-  public Matrix (int rows, int columns) 
-  {
-    int i,j;
-
-    filas    = rows;
-    columnas = columns;
-    datos    = new double[filas][columnas];
-
-    for (i=0; i<filas; i++)
-        for (j=0; j<columnas; j++)
-	    datos[i][j] = 0;
-  }
-
-  // Constructor de copia
-
-  public Matrix (Matrix origen)
-  {
-    int i,j;
-
-    filas    = origen.filas;
-    columnas = origen.columnas;
-    datos    = new double[filas][columnas];
-
-    for (i=0; i<filas; i++)
-        for (j=0; j<columnas; j++)
-	    datos[i][j] = origen.datos[i][j];
-  }
-
-  // Acceso a las variables de instancia
-
-  public final int rows ()
-  {
-    return filas;
-  }
-
-  public final int columns ()
-  {
-    return columnas;
-  }
-
-  public final double getCell (int i, int j)
-  {
-    return datos[i][j];
-  }
-
-  public void setCell (int i, int j, double v)
-  {
-    datos[i][j] = v;
-  }
-
-  // Copia la columna cA de la matriz origen en la columna cB de la matriz actual
-
-  public void CopyColumn ( Matrix origen, int cA, int cB )
-  {
-    int i;
-
-    if ( this.filas == origen.filas )
-       for (i=0; i<filas; i++)
-	   datos[i][cB] = origen.datos[i][cA];
-  }
-
-  /* ------------------------ */
-  /* OPERACIONES CON MATRICES */
-  /* ------------------------ */
-
-  // Traspuesta de una matriz
-
-  public Matrix transpose ()
-  {
-    int    i, j;
-    Matrix t = new Matrix ( columnas, filas );
-
-    for (i=0; i<columnas; i++)
-	for (j=0; j<filas; j++)
-	    t.datos[i][j] = this.datos[j][i];
-
-    return t;
-  }
-
-  // Anula todos los coeficientes de una matriz
-
-  public void Zero ()
-  {
-    int i,j;
-
-    for (i=0; i<filas; i++)
-        for (j=0; j<columnas; j++)
-	    datos[i][j] = 0;
-  }
-
-  // Multiplica todos los coeficientes de una matriz por una constante
-
-  public void scale (float k)
-  {
-    int i,j;
-
-    for (i=0; i<filas; i++)
-        for (j=0; j<columnas; j++)
-	        datos[i][j] *= k;
-  }
-
-  // Devuelve el resultado de eliminar de A la fila i y la columna j
-
-  /** @pre (filas>1) && (i>=0) && (i<filas) && (columnas>1) && (j>=0) && (j<columnas) */
-  public Matrix SubMatrix ( int i, int j )
-  {
-    int    x,y,xS,yS;
-    Matrix S = new Matrix ( filas-1, columnas-1 );
-
-    for ( x=xS=0; x<filas; x++ )
-	if (x!=i) {
-	   for ( y=yS=0; y<columnas; y++)
-	       if (y!=j) {
-		   S.datos[xS][yS] = this.datos[x][y];
-		   yS++;
-	       }
-	   xS++;
+	/** @pre rows>0 && columns>0 */
+	public Matrix(int rows, int columns) 
+	{
+		this(rows, columns, 0);
 	}
 
-    return S;
-  }
+	/** @pre rows>0 && columns>0 */
+	public Matrix(int rows, int columns, double value) 
+	{
+		int i, j;
+
+		filas = rows;
+		columnas = columns;
+		datos = new double[filas][columnas];
+
+		for (i = 0; i < filas; i++)
+			for (j = 0; j < columnas; j++)
+				datos[i][j] = value;
+	}
+
+	// Constructor de copia
+
+	public Matrix(Matrix origen) 
+	{
+		int i, j;
+
+		filas = origen.filas;
+		columnas = origen.columnas;
+		datos = new double[filas][columnas];
+
+		for (i = 0; i < filas; i++)
+			for (j = 0; j < columnas; j++)
+				datos[i][j] = origen.datos[i][j];
+	}
+
+	// Acceso a las variables de instancia
+
+	public final int size() 
+	{
+		return filas * columnas;
+	}
+
+	public final int rows() 
+	{
+		return filas;
+	}
 
-  // Suma de matrices: A+B
+	public final int columns() 
+	{
+		return columnas;
+	}
+
+	public final double get(int i, int j) 
+	{
+		return datos[i][j];
+	}
 
-  public Matrix add ( Matrix other )
-  {
-    int    i,j;
-    Matrix suma = null;
+	public void set(int i, int j, double v) 
+	{
+		datos[i][j] = v;
+	}
 
-    if ( this.filas==other.filas && this.columnas==other.columnas ) {
+	/* ------------------------ */
+	/* OPERACIONES CON MATRICES */
+	/* ------------------------ */
 
-       suma = new Matrix ( filas, columnas );
+	// Traspuesta de una matriz
 
-       for (i=0; i<filas; i++)
-	   for (j=0; j<columnas; j++)
-		suma.datos[i][j] = this.datos[i][j] + other.datos[i][j];
-    }
+	public Matrix transpose() 
+	{
+		int i, j;
+		Matrix t = new Matrix(columnas, filas);
 
-    return suma;
-  }
+		for (i = 0; i < columnas; i++)
+			for (j = 0; j < filas; j++)
+				t.datos[i][j] = this.datos[j][i];
 
-  // Resta de matrices: A-B
+		return t;
+	}
 
-  public Matrix sub ( Matrix other )
-  {
-    int    i,j;
-    Matrix resta = null;
+	// Devuelve el resultado de eliminar de A la fila i y la columna j
 
-    if ( this.filas==other.filas && this.columnas==other.columnas ) {
+	/**
+	 * @pre (filas>1) && (i>=0) && (i<filas) 
+	 *   && (columnas>1) && (j>=0) && (j<columnas)
+	 */
+	public Matrix submatrix(int i, int j) 
+	{
+		int x, y, xS, yS;
+		Matrix S = new Matrix(filas - 1, columnas - 1);
 
-       resta = new Matrix ( filas, columnas );
+		for (x = xS = 0; x < filas; x++)
+			if (x != i) {
+				for (y = yS = 0; y < columnas; y++)
+					if (y != j) {
+						S.datos[xS][yS] = this.datos[x][y];
+						yS++;
+					}
+				xS++;
+			}
 
-       for (i=0; i<filas; i++)
-	   for (j=0; j<columnas; j++)
-		resta.datos[i][j] = this.datos[i][j] - other.datos[i][j];
-    }
+		return S;
+	}
 
-    return resta;
-  }
+	// Suma de matrices: A+B
 
-  // Multiplicación de matrices: A*B
+	public Matrix add(Matrix other) 
+	{
+		int i, j;
+		Matrix suma = null;
 
-  public Matrix mult ( Matrix other )
-  {
-    int    i, j, k;
-    Matrix result = null;
+		if (this.filas == other.filas && this.columnas == other.columnas) {
 
-    if ( this.columnas==other.filas ) {
+			suma = new Matrix(filas, columnas);
 
-       result = new Matrix ( this.filas, other.columnas);
+			for (i = 0; i < filas; i++)
+				for (j = 0; j < columnas; j++)
+					suma.datos[i][j] = this.datos[i][j] + other.datos[i][j];
+		}
 
-       for (i=0; i<this.filas; i++)
-	   for (j=0; j<other.columnas; j++) {
+		return suma;
+	}
 
-               result.datos[i][j] = 0;
+	public Matrix add(double constant) 
+	{
+		int i, j;
+		Matrix suma = new Matrix(filas, columnas);
 
-	       for (k=0; k<this.columnas; k++)
-		   result.datos[i][j] += this.datos[i][k] * other.datos[k][j];
-           }
-    }
+		for (i = 0; i < filas; i++)
+			for (j = 0; j < columnas; j++)
+				suma.datos[i][j] = this.datos[i][j] + constant;
 
-    return result;
-  }
+		return suma;
+	}
 
-  // Suma de los coeficientes de la diagonal (Traza)
+	// Resta de matrices: A-B
 
-  public double Traza ()
-  {
-    int    i;
-    double result = 0;
+	public Matrix substract(Matrix other)
+	{
+		int i, j;
+		Matrix resta = null;
 
-    if (filas==columnas)
-       for (i=0; i<filas; i++)
-	   result += datos[i][i];
+		if (this.filas == other.filas && this.columnas == other.columnas) {
 
-    return result;
-  }
+			resta = new Matrix(filas, columnas);
 
-  // Producto de los coeficientes de la diagonal
+			for (i = 0; i < filas; i++)
+				for (j = 0; j < columnas; j++)
+					resta.datos[i][j] = this.datos[i][j] - other.datos[i][j];
+		}
 
-  public double ProductoDiagonal ()
-  {
-    int    i;
-    double result = 1;
+		return resta;
+	}
 
-    if (filas==columnas)
-       for (i=0; i<filas; i++)
-	   result *= datos[i][i];
+	// Multiplicación de matrices: A*B
 
-    return result;
-  }
+	public Matrix multiply(Matrix other) 
+	{
+		int i, j, k;
+		Matrix result = null;
 
-  /* ----------------------------------------------------------------------- */
-  /*  Descomposición LU con pivoteo parcial                                  */
-  /*  Entradas:  A = Matriz cuadrada (n x n)                                 */
-  /*             P = Vector de permutación (n x 1)                           */
-  /*  Salida: Número de permutaciones realizadas ( -1 ---> Matriz singular ) */
-  /*          A ---> Matriz LU                                               */
+		if (this.columnas == other.filas) {
 
-  private int LU (Matrix A, Matrix P)
-  {
-    int	   i, j, k, n;
-    int	   maxi;
-    double tmp;
-    double c, c1;
-    int    p;
+			result = new Matrix(this.filas, other.columnas);
 
-    n = A.columnas;
+			for (i = 0; i < this.filas; i++)
+				for (j = 0; j < other.columnas; j++) {
 
-    for (i=0; i<n; i++)
-        P.datos[i][0] = i;
+					result.datos[i][j] = 0;
 
-    p = 0;
+					for (k = 0; k < this.columnas; k++)
+						result.datos[i][j] += this.datos[i][k]
+								* other.datos[k][j];
+				}
+		}
 
-    for (k=0; k<n; k++) {
+		return result;
+	}
 
-        // Pivoteo parcial
+	public Matrix multiply(double constant) 
+	{
+		int i, j;
+		Matrix result = new Matrix(this.filas, this.columnas);
 
-        for (i=k, maxi=k, c=0; i<n; i++) {
+		for (i = 0; i < this.filas; i++)
+			for (j = 0; j < this.columnas; j++)
+				result.datos[i][j] = constant * this.datos[i][j];
 
-	    c1 = Math.abs( A.datos[(int)P.datos[i][0]][k] );
+		return result;
+	}
 
-	    if (c1 > c) {
-	       c = c1;
-	       maxi = i;
-	    }
-        }
+	public Matrix divide(double constant) 
+	{
+		int i, j;
+		Matrix result = new Matrix(this.filas, this.columnas);
 
-        // Intercambio de filas y actualización del vector P
+		for (i = 0; i < this.filas; i++)
+			for (j = 0; j < this.columnas; j++)
+				result.datos[i][j] = this.datos[i][j] / constant;
 
-        if ( k != maxi) {
-	   p++;
-	   tmp = P.datos[k][0];
-	   P.datos[k][0] = P.datos[maxi][0];
-	   P.datos[maxi][0] = tmp;
-        }
+		return result;
+	}
 
-        // Matriz singular
+	// Suma de los coeficientes de la diagonal (Traza)
 
-        if ( A.datos[(int)P.datos[k][0]][k] == 0.0 )
-	   return -1;
+	public double trace() 
+	{
+		int i;
+		double result = 0;
 
+		if (filas == columnas)
+			for (i = 0; i < filas; i++)
+				result += datos[i][i];
 
-        for (i=k+1; i<n; i++) {
+		return result;
+	}
 
-	    // Calcula m(i,j)
+	// Producto de los coeficientes de la diagonal
 
-	    A.datos[(int)P.datos[i][0]][k] /= A.datos[(int)P.datos[k][0]][k];
+	public double diagonalProduct()
+	{
+		int i;
+		double result = 1;
 
-	    // Eliminación
+		if (filas == columnas)
+			for (i = 0; i < filas; i++)
+				result *= datos[i][i];
 
-	    for (j=k+1; j<n; j++)
-	        A.datos[(int)P.datos[i][0]][j]
-                       -= A.datos[(int)P.datos[i][0]][k] * A.datos[(int)P.datos[k][0]][j];
-        }
-    }
+		return result;
+	}
 
-    return p;
-  }
+	
+	// Descomposición LU con pivoteo parcial 
+	// Entradas: A = Matriz cuadrada (n x n)
+	// P = Vector de permutación (n x 1) */
+	// Salida: Número de permutaciones realizadas ( -1 ---> Matriz singular ) 
+	//  A ---> Matriz LU 
 
-  /* ----------------------------------------------------------------------- */
-  /*  Substitución hacia atrás                                               */
-  /*  Entrada: A = Matriz LU cuadrada n x n                                  */
-  /*           B = Matriz n x 1 ( se sobreescribe)                           */
-  /*           X = Resultado de AX=B                                         */
-  /*           P = Permutación (tras llamar a Descomposicion LU)             */
-  /*           x = Columna de x en la que poner el resultado                 */
+	private int LU(Matrix A, Matrix P) 
+	{
+		int i, j, k, n;
+		int maxi;
+		double tmp;
+		double c, c1;
+		int p;
 
-  private void SustitucionHaciaAtras ( Matrix A,
-				       Matrix B,
-				       Matrix X,
-				       Matrix P,
-				       int    xcol )
-  {
-    int	   i, j, k, n;
-    double sum;
+		n = A.columnas;
 
-    n = A.columnas;
+		for (i = 0; i < n; i++)
+			P.datos[i][0] = i;
 
-    for (k=0; k<n; k++)
-        for (i=k+1; i<n; i++)
-	    B.datos[(int)P.datos[i][0]][0]
-                   -= A.datos[(int)P.datos[i][0]][k] * B.datos[(int)P.datos[k][0]][0];
+		p = 0;
 
-    X.datos[n-1][xcol] = B.datos[(int)P.datos[n-1][0]][0]
-                       / A.datos[(int)P.datos[n-1][0]][n-1];
+		for (k = 0; k < n; k++) {
 
-    for (k=n-2; k>=0; k--) {
+			// Pivoteo parcial
 
-        sum = 0;
+			for (i = k, maxi = k, c = 0; i < n; i++) {
 
-        for (j=k+1; j<n; j++)
-	    sum += A.datos[(int)P.datos[k][0]][j] * X.datos[j][xcol];
+				c1 = Math.abs(A.datos[(int) P.datos[i][0]][k]);
 
-        X.datos[k][xcol] =  ( B.datos[(int)P.datos[k][0]][0] - sum )
-			    / A.datos[(int)P.datos[k][0]][k];
-    }
+				if (c1 > c) {
+					c = c1;
+					maxi = i;
+				}
+			}
 
-  }
+			// Intercambio de filas y actualización del vector P
 
-  /* ----------------------------------------------------------------------- */
-  /*  Sistema de ecuaciones lineales AX = c                                  */
-  /* ----------------------------------------------------------------------- */
+			if (k != maxi) {
+				p++;
+				tmp = P.datos[k][0];
+				P.datos[k][0] = P.datos[maxi][0];
+				P.datos[maxi][0] = tmp;
+			}
 
-  public Matrix System ( Matrix c )
-  {
-    Matrix A = new Matrix(this);
-    Matrix B = new Matrix(c);
-    Matrix X = new Matrix(filas,1);
-    Matrix P = new Matrix(filas,1);
+			// Matriz singular
 
-    LU ( A, P );
-    SustitucionHaciaAtras ( A, B, X, P, 0 );
+			if (A.datos[(int) P.datos[k][0]][k] == 0.0)
+				return -1;
 
-    A = null;
-    B = null;
-    P = null;
+			for (i = k + 1; i < n; i++) {
 
-    return X;
-  }
+				// Calcula m(i,j)
 
-  /* ----------------------------------------------------------------------- */
-  /*  Inversa de una matriz                                                  */
-  /* ----------------------------------------------------------------------- */
+				A.datos[(int) P.datos[i][0]][k] /= A.datos[(int) P.datos[k][0]][k];
 
-  public Matrix inverse ( )
-  {
-    int    i;
-    int    n = filas;
-    int    p;
-    Matrix A = new Matrix(this);
-    Matrix B = new Matrix(n,1);
-    Matrix P = new Matrix(n,1);
-    Matrix C = null;
+				// Eliminación
 
-    // Descomposición LU
+				for (j = k + 1; j < n; j++)
+					A.datos[(int) P.datos[i][0]][j] -= A.datos[(int) P.datos[i][0]][k]
+							* A.datos[(int) P.datos[k][0]][j];
+			}
+		}
 
-    p = LU(A,P);
+		return p;
+	}
 
-    if ( p != -1 ) {
+	/* ----------------------------------------------------------------------- */
+	/* Substitución hacia atrás */
+	/* Entrada: A = Matriz LU cuadrada n x n */
+	/* B = Matriz n x 1 ( se sobreescribe) */
+	/* X = Resultado de AX=B */
+	/* P = Permutación (tras llamar a Descomposicion LU) */
+	/* x = Columna de x en la que poner el resultado */
 
-       C = new Matrix(n,n);
+	private void backwardsSubstitution
+		(Matrix A, Matrix B, Matrix X, Matrix P,int xcol) 
+	{
+		int i, j, k, n;
+		double sum;
 
-       for (i=0; i<n; i++) {
-	   B.Zero();
-	   B.datos[i][0] = 1;
-	   SustitucionHaciaAtras ( A, B, C, P, i );
-       }
-    }
+		n = A.columnas;
 
-    A = null;
-    B = null;
-    P = null;
+		for (k = 0; k < n; k++)
+			for (i = k + 1; i < n; i++)
+				B.datos[(int) P.datos[i][0]][0] -= A.datos[(int) P.datos[i][0]][k]
+						* B.datos[(int) P.datos[k][0]][0];
 
-    return C;
-  }
+		X.datos[n - 1][xcol] = B.datos[(int) P.datos[n - 1][0]][0]
+				/ A.datos[(int) P.datos[n - 1][0]][n - 1];
 
-  /* ----------------------------------------------------------------------- */
-  /*  Determinante de una matriz A                                           */
-  /* ----------------------------------------------------------------------- */
+		for (k = n - 2; k >= 0; k--) {
 
-  private static final double sign[] = {1.0, -1.0};
+			sum = 0;
 
-  public double det ( )
-  {
-    Matrix A, P;
-    int	   i, j, n;
-    double result;
+			for (j = k + 1; j < n; j++)
+				sum += A.datos[(int) P.datos[k][0]][j] * X.datos[j][xcol];
 
-    n = filas;
-    A = new Matrix(this);
-    P = new Matrix(n,1);
+			X.datos[k][xcol] = (B.datos[(int) P.datos[k][0]][0] - sum)
+					/ A.datos[(int) P.datos[k][0]][k];
+		}
+	}
 
-    // Descomposición LU
+	/* ----------------------------------------------------------------------- */
+	/* Sistema de ecuaciones lineales AX = c                                   */
+	/* ----------------------------------------------------------------------- */
 
-    i = LU (A,P);
+	public Matrix system(Matrix c)
+	{
+		Matrix A = new Matrix(this);
+		Matrix B = new Matrix(c);
+		Matrix X = new Matrix(filas, 1);
+		Matrix P = new Matrix(filas, 1);
 
-    switch (i) {
+		LU(A, P);
+		backwardsSubstitution(A, B, X, P, 0);
 
-      // Matriz singular
+		A = null;
+		B = null;
+		P = null;
 
-      case -1:  result = 0.0;
-	        break;
+		return X;
+	}
 
-      // |A| = |L||U||P|
-      //    |L| = 1,
-      //    |U| = multiplication of the diagonal
-      //    |P| = +-1
+	/* ----------------------------------------------------------------------- */
+	/* Inversa de una matriz                                                   */
+	/* ----------------------------------------------------------------------- */
 
-      default: result = 1.0;
+	public Matrix inverse()
+	{
+		int i;
+		int n = filas;
+		int p;
+		Matrix A = new Matrix(this);
+		Matrix B = new Matrix(n, 1);
+		Matrix P = new Matrix(n, 1);
+		Matrix C = null;
 
-	       for (j=0; j<n; j++)
-		   result *= A.datos[(int)P.datos[j][0]][j];
+		// Descomposición LU
 
-	       result *= sign[i%2];
-	       break;
-    }
+		p = LU(A, P);
 
-    A = null;
-    P = null;
+		if (p != -1) {
 
-    return result;
-  }
+			C = new Matrix(n, n);
 
-  /* ----------------------------------------------------------------------- */
-  /*  Menor de Aij                                                           */
+			for (i = 0; i < n; i++) {
+				B.zero();
+				B.datos[i][0] = 1;
+				backwardsSubstitution(A, B, C, P, i);
+			}
+		}
 
-  public double Menor ( int i, int j )
-  {
-    Matrix S = this.SubMatrix (i,j);
+		A = null;
+		B = null;
+		P = null;
 
-    return S.det();
-  }
+		return C;
+	}
 
-  /* ----------------------------------------------------------------------- */
-  /*  Cofactor de Aij                                                        */
+	// Anula todos los coeficientes de una matriz
 
-  public double Cofactor ( int i, int j )
-  {
-    return sign[(i+j)%2] * datos[i][j] * Menor(i,j);
-  }
+	private void zero() {
+		int i, j;
 
-  /* ----------------------------------------------------------------------- */
-  /*  Matriz simétrica n x n de Toeplitz a partir de un vector n x 1         */
+		for (i = 0; i < filas; i++)
+			for (j = 0; j < columnas; j++)
+				datos[i][j] = 0;
+	}
 
-  public Matrix Toeplitz ( Matrix R )
-  {
-    int    i, j, n;
-    Matrix T;
+	/* ----------------------------------------------------------------------- */
+	/* Determinante de una matriz A                                            */
+	/* ----------------------------------------------------------------------- */
 
-    n = R.filas;
-    T = new Matrix (n, n);
+	private static final double sign[] = { 1.0, -1.0 };
 
-    for (i=0; i<n; i++)
-        for (j=0; j<n; j++)
-	    T.datos[i][j] = R.datos[Math.abs(i-j)][0];
+	public double determinant() 
+	{
+		Matrix A, P;
+		int i, j, n;
+		double result;
 
-    return T;
-  }
+		n = filas;
+		A = new Matrix(this);
+		P = new Matrix(n, 1);
 
-  /* ----------------------------------------------------------------------- */
-  /*  Algoritmo de Levinson-Durbin                                           */
-  /*                                                                         */
-  /*  Resoluci¢n de un sistema de ecuaciones lineales de la forma:           */
-  /*                                                                         */
-  /*              |  v0   v1   v2  .. vn-1 | |  a1   |    |  v1   |          */
-  /*              |  v1   v0   v1  .. vn-2 | |  a2   |    |  v2   |          */
-  /*              |  v2   v1   v0  .. vn-3 | |  a3   |  = |  ..   |          */
-  /*              |  ...                   | |  ..   |    |  ..   |          */
-  /*              |  vn-1 vn-2 ..  .. v0   | |  an   |    |  vn   |          */
-  /*                                                                         */
-  /*    - A es una matriz sim‚trica de Toeplitz                              */
-  /*    - R = Matriz (v0, v1, ... vn) (dim (n+1) x 1)                        */
-  /*    - Devuelve x (de Ax = B)                                             */
-  /* ----------------------------------------------------------------------- */
+		// Descomposición LU
 
-  public Matrix LevinsonDurbin ( Matrix R )
-  {
-    int    i, i1, j, ji, p;
-    Matrix W, E, K, A, X;
+		i = LU(A, P);
 
-    p = R.filas - 1;
-    W = new Matrix( p+2, 1   );
-    E = new Matrix( p+2, 1   );
-    K = new Matrix( p+2, 1   );
-    A = new Matrix( p+2, p+2 );
+		switch (i) {
 
-    W.datos[0][0] = R.datos[1][0];
-    E.datos[0][0] = R.datos[0][0];
+			// Matriz singular
 
-    for (i=1; i<=p; i++){
-        K.datos[i][0] = W.datos[i-1][0] / E.datos[i-1][0];
-        E.datos[i][0] = E.datos[i-1][0] * (1.0 - K.datos[i][0]*K.datos[i][0]);
-        A.datos[i][i] = -K.datos[i][0];
+			case -1:
+				result = 0.0;
+				break;
 
-        i1 = i-1;
+			// |A| = |L||U||P|
+			// |L| = 1,
+			// |U| = multiplication of the diagonal
+			// |P| = +-1
 
-        if (i1 >= 1)
-	   for (j=1; j<=i1; j++) {
-	       ji = i - j;
-	       A.datos[j][i] = A.datos[j][i1] - K.datos[i][0] * A.datos[ji][i1];
-	   }
+			default:
+				result = 1.0;
 
-        if (i != p) {
-	   W.datos[i][0] = R.datos[i+1][0];
-	   for (j=1; j<=i; j++)
-	       W.datos[i][0] += A.datos[j][i] * R.datos[i-j+1][0];
-        }
-    }
+				for (j = 0; j < n; j++)
+					result *= A.datos[(int) P.datos[j][0]][j];
 
-    X = new Matrix ( p, 1 );
+				result *= sign[i % 2];
+				break;
+		}
 
-    for (i=0; i<p; i++)
-        X.datos[i][0] = -A.datos[i+1][p];
+		A = null;
+		P = null;
 
-    A = null;
-    W = null;
-    K = null;
-    E = null;
+		return result;
+	}
 
-    return X;
-  }
+	/* ----------------------------------------------------------------------- */
+	/* Menor de Aij                                                            */
 
-  /* ----------------------------------------------------------------------- */
-  /*  Algoritmo de Levinson-Durbin:                                          */
-  /*    Resuelve el sistema de ecuaciones Ax=B de la forma                   */
-  /*                                                                         */
-  /*              |  v0   v1   v2  .. vn-1 | |  a1   |    |  v1   |          */
-  /*              |  v1   v0   v1  .. vn-2 | |  a2   |    |  v2   |          */
-  /*              |  v2   v1   v0  .. vn-3 | |  a3   |  = |  ..   |          */
-  /*              |  ...                   | |  ..   |    |  ..   |          */
-  /*              |  vn-1 vn-2 ..  .. v0   | |  an   |    |  vn   |          */
-  /*                                                                         */
-  /* ----------------------------------------------------------------------- */
+	public double minor(int i, int j) 
+	{
+		Matrix S = this.submatrix(i, j);
 
-  public Matrix LevinsonDurbinSystem ( Matrix A, Matrix B )
-  {
-    Matrix R, X;
-    int    i, n;
+		return S.determinant();
+	}
 
-    n = A.filas;
-    R = new Matrix (n+1, 1);
+	/* ----------------------------------------------------------------------- */
+	/* Cofactor de Aij                                                         */
 
-    for (i=0; i<n; i++)
-        R.datos[i][0] = A.datos[i][0];
+	public double cofactor(int i, int j) 
+	{
+		return sign[(i + j) % 2] * datos[i][j] * minor(i, j);
+	}
 
-    R.datos[n][0] = B.datos[n-1][0];
+	/* ----------------------------------------------------------------------- */
+	/* Matriz simétrica n x n de Toeplitz a partir de un vector n x 1 */
 
-    X = LevinsonDurbin ( R );
+	public Matrix toeplitz(Matrix R) {
+		int i, j, n;
+		Matrix T;
 
-    R = null;
+		n = R.filas;
+		T = new Matrix(n, n);
 
-    return X;
-  }
+		for (i = 0; i < n; i++)
+			for (j = 0; j < n; j++)
+				T.datos[i][j] = R.datos[Math.abs(i - j)][0];
 
+		return T;
+	}
 
-  /* --------------- */
-  /* Salida estándar */
-  /* --------------- */
+	/* ----------------------------------------------------------------------- */
+	/* Algoritmo de Levinson-Durbin                                            */
+	/*                                                                         */
+	/* Resolución de un sistema de ecuaciones lineales de la forma:            */
+	/*                                                                         */
+	/* | v0 v1 v2 .. vn-1 | | a1 |   | v1 |                                    */
+	/* | v1 v0 v1 .. vn-2 | | a2 |   | v2 |                                    */
+	/* | v2 v1 v0 .. vn-3 | | a3 | = | .. |                                    */
+	/* |        ...       | | .. |   | .. |                                    */
+	/* | vn-1 vn-2 ..  v0 | | an |   | vn |                                    */
+	/*                                                                         */
+	/* - A es una matriz sim‚trica de Toeplitz                                 */
+	/* - R = Matriz (v0, v1, ... vn) (dim (n+1) x 1)                           */
+	/* - Devuelve x (de Ax = B)                                                */
+	/* ----------------------------------------------------------------------- */
 
-  public String toString ()
-  {
-    int    i,j;
-    String str = "[";
+	public Matrix LevinsonDurbin(Matrix R) 
+	{
+		int i, i1, j, ji, p;
+		Matrix W, E, K, A, X;
 
-    for (i=0; i<filas; i++) {
-
-        str += "["+datos[i][0];
-
-        for (j=1; j<columnas; j++)
-            str += " "+datos[i][j];
-
-        str += "]\n";
-    }
-
-    str += "]";
-
-    return str;
-  }
-
-
-/*
-  // TEST
-  // ----
-
-  public static void main (String argv[])
-  {
-    Matrix m = new Matrix(3,3);
-
-    m.datos[0][0] = 3;
-    m.datos[0][1] = 2;
-    m.datos[0][2] = 1;
-    m.datos[1][0] = 4;
-    m.datos[1][1] = 5;
-    m.datos[1][2] = 6;
-    m.datos[2][0] = 8;
-    m.datos[2][1] = 7;
-    m.datos[2][2] = 9;
-
-    System.out.println("A");
-    System.out.println(m);
-
-    Matrix i = m.inverse();
-
-    System.out.println("inv(A)");
-    System.out.println(i);
-
-    System.out.println("det(A)="+m.det());
-    System.out.println("det(inv(A))=" + i.det());
-  }
-*/
-
+		p = R.filas - 1;
+		W = new Matrix(p + 2, 1);
+		E = new Matrix(p + 2, 1);
+		K = new Matrix(p + 2, 1);
+		A = new Matrix(p + 2, p + 2);
+
+		W.datos[0][0] = R.datos[1][0];
+		E.datos[0][0] = R.datos[0][0];
+
+		for (i = 1; i <= p; i++) {
+			K.datos[i][0] = W.datos[i - 1][0] / E.datos[i - 1][0];
+			E.datos[i][0] = E.datos[i - 1][0] * (1.0 - K.datos[i][0] * K.datos[i][0]);
+			A.datos[i][i] = -K.datos[i][0];
+
+			i1 = i - 1;
+
+			if (i1 >= 1)
+				for (j = 1; j <= i1; j++) {
+					ji = i - j;
+					A.datos[j][i] = A.datos[j][i1] - K.datos[i][0] * A.datos[ji][i1];
+				}
+
+			if (i != p) {
+				W.datos[i][0] = R.datos[i + 1][0];
+				for (j = 1; j <= i; j++)
+					W.datos[i][0] += A.datos[j][i] * R.datos[i - j + 1][0];
+			}
+		}
+
+		X = new Matrix(p, 1);
+
+		for (i = 0; i < p; i++)
+			X.datos[i][0] = -A.datos[i + 1][p];
+
+		A = null;
+		W = null;
+		K = null;
+		E = null;
+
+		return X;
+	}
+
+	/* ----------------------------------------------------------------------- */
+	/* Algoritmo de Levinson-Durbin:                                           */
+	/* Resuelve el sistema de ecuaciones Ax=B de la forma                      */
+	/*                                                                         */
+	/* | v0 v1 v2 .. vn-1 | | a1 |   | v1 |                                    */
+	/* | v1 v0 v1 .. vn-2 | | a2 |   | v2 |                                    */
+	/* | v2 v1 v0 .. vn-3 | | a3 | = | .. |                                    */
+	/* |        ...       | | .. |   | .. |                                    */
+	/* | vn-1 vn-2 ..  v0 | | an |   | vn |                                    */
+	/*                                                                         */
+	/* ----------------------------------------------------------------------- */
+
+	public Matrix LevinsonDurbinSystem(Matrix A, Matrix B) 
+	{
+		Matrix R, X;
+		int i, n;
+
+		n = A.filas;
+		R = new Matrix(n + 1, 1);
+
+		for (i = 0; i < n; i++)
+			R.datos[i][0] = A.datos[i][0];
+
+		R.datos[n][0] = B.datos[n - 1][0];
+
+		X = LevinsonDurbin(R);
+
+		R = null;
+
+		return X;
+	}
+	
+	
+	// Matrix equality
+	
+	@Override
+	public boolean equals (Object obj)
+	{
+		Matrix other;
+		
+		if (this==obj) {
+			
+			return true;
+			
+		} else if (obj instanceof Matrix) {
+			
+			other = (Matrix) obj;
+			
+			if ( this.columns()!=other.columns() )
+				return false;
+			
+			if ( this.rows()!=other.rows() )
+				return false;
+			
+			for (int i=0; i<rows(); i++)
+				for (int j=0; j<rows(); j++)
+					if ( this.get(i,j) != other.get(i,j) )
+						return false;
+			
+			return true;
+		
+		} else {
+			return false;
+		}
+	}
+	
+	@Override 
+	public int hashCode ()
+	{
+		return this.toString().hashCode(); 
+	}	
+
+	/* --------------- */
+	/* Salida estándar */
+	/* --------------- */
+
+	@Override
+	public String toString() 
+	{
+		return toString( "[", "]\n", " " );
+	}
+
+	public String toString ( String rowPrefix, String rowSuffix, String delimiter) 
+	{
+		int i,j;
+		StringBuffer buffer = new StringBuffer();
+		
+		for (i = 0; i < filas; i++) {
+
+			buffer.append(rowPrefix);
+			buffer.append(datos[i][0]);
+
+			for (j = 1; j < columnas; j++) {
+				buffer.append(delimiter);
+				buffer.append(datos[i][j]);
+			}
+
+			buffer.append(rowSuffix);
+		}
+			
+		return buffer.toString();
+	}	
+	
+	
 }

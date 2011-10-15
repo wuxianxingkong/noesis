@@ -90,7 +90,7 @@ public class Vector3D implements java.io.Serializable
 		double length = v.length();
 		
 		if (length>0)
-			return dotProduct(v)/v.length();
+			return dotProduct(v)/length;
 		else
 			return 0;
 	}
@@ -126,7 +126,7 @@ public class Vector3D implements java.io.Serializable
 			if ( Math.abs(p-a*b) < Configuration.EPSILON )
 				return 0;
 			else
-				return Math.acos( this.dotProduct(v) / (a*b) );
+				return Math.acos( p / (a*b) );
 			
 		} else
 			return 0;

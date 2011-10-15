@@ -10,12 +10,22 @@ import noesis.Network;
 public class SNAPNetworkReader extends NetworkReader
 {
 	private BufferedReader input;
+
+	public SNAPNetworkReader ()
+	{
+		this.input = null;
+	}
 	
 	public SNAPNetworkReader (Reader reader)
 	{
-		this.input = new BufferedReader(reader);
+		setReader(reader);
 	}
 
+	public void setReader (Reader reader)
+	{
+		this.input = new BufferedReader(reader);
+	}
+	
 	/**
 	 * Reads the next input line from a SNAP file (ignoring empty lines) 
 	 * @return Next input line

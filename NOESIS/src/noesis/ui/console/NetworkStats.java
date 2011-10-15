@@ -5,6 +5,11 @@ import java.io.*;
 import ikor.util.Benchmark;
 
 import noesis.Network;
+
+import noesis.analysis.structure.NodeMetrics;
+import noesis.analysis.structure.InDegreeDistribution;
+import noesis.analysis.structure.OutDegreeDistribution;
+
 import noesis.io.NetworkReader;
 import noesis.io.PajekNetworkReader;
 import noesis.io.SNAPNetworkReader;
@@ -50,7 +55,6 @@ public class NetworkStats {
 			
 			Network net = reader.read();
 			
-			crono.stop();
 			
 			System.out.println("NETWORK STATISTICS");
 			
@@ -60,11 +64,39 @@ public class NetworkStats {
 			System.out.println("- Nodes: "+net.size());
 			System.out.println("- Links: "+net.links());
 			
+			// Degree distributions
+			
+			OutDegreeDistribution outDegrees = new OutDegreeDistribution(net);
+			InDegreeDistribution  inDegrees = new InDegreeDistribution(net);
+			
+			outDegrees.compute();
+			inDegrees.compute();
+			
+			//saveInt("out.txt", outDegrees);
+			//saveInt("in.txt",  inDegrees);
+			
+			System.out.println("Degree distributions");
+			System.out.println("- Out-degrees: "+outDegrees);
+			System.out.println("- In-degrees:  "+inDegrees);
+			
+			crono.stop();
+			
+			System.out.println();
 			System.out.println("Time: "+crono);
 		}
 
 	}
 	
+	
+	public static void saveInt (String file, NodeMetrics metrics)
+		throws IOException
+	{
+		FileWriter writer = new FileWriter(file);
 
+		for (int i=0; i<metrics.getNetwork().size(); i++)
+			writer.write("\t" + (int)metrics.get(i));
+		
+		writer.close();
+	}
 
 }

@@ -216,6 +216,15 @@ public class Vector extends Matrix
 	{
 		return toString("[","]",",");
 	}
+
+	public String toStringSummary() 
+	{
+		return "[n=" + size()
+		     + " min=" + min()
+		     + " max=" + max()
+		     + " avg=" + average()
+		     + " dev=" + deviation() + "]";
+	}
 	
 	
 	public String toString(String prefix, String suffix, String delimiter) 

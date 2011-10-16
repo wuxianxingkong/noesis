@@ -76,12 +76,31 @@ public class Matrix implements java.io.Serializable
 				datos[i][j] = origen.datos[i][j];
 	}
 
+	
+	public Matrix (double[][] data)
+	{
+		this.filas    = data.length;
+		this.columnas = data[0].length;	
+		this.datos    = data;
+	}
+	
+
+	protected Matrix (double[] vector)
+	{
+		this.filas    = 1;
+		this.columnas = vector.length;
+		
+		this.datos = new double[filas][];
+		this.datos[0] = vector;
+	}
+	
 	// Acceso a las variables de instancia
 
 	public final int size() 
 	{
 		return filas * columnas;
 	}
+	
 
 	public final int rows() 
 	{

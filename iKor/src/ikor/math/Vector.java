@@ -13,6 +13,11 @@ public class Vector extends Matrix
 	{
 		super(original);
 	}
+
+	public Vector (double[] data)
+	{
+		super(data);
+	}
 	
 	
 	// Accessors & mutators

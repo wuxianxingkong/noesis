@@ -232,5 +232,42 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 			return 0;
 	}
 
+	@Override
+	public int[] outLinks(int node) 
+	{
+		int outDegree = outLinks[node][0];
+		int[] links = new int[outDegree];
+		
+		for (int i=1; i<=outDegree; i++)
+			links[i] = outLinks[node][i];
+
+		return links;
+	}
+
+	
+	@Override
+	public int[] outLinks(V node) 
+	{
+		return outLinks(index(node));
+	}
+
+	@Override
+	public int[] inLinks(int node) 
+	{
+		int inDegree = inLinks[node][0];
+		int[] links = new int[inDegree];
+		
+		for (int i=1; i<=inDegree; i++)
+			links[i] = inLinks[node][i];
+
+		return links;
+	}
+
+	@Override
+	public int[] inLinks(V node) 
+	{
+		return inLinks(index(node));
+	}
+
 
 }

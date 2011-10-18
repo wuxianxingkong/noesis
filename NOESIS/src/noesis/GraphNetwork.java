@@ -6,8 +6,6 @@ package noesis;
 //Author:      Fernando Berzal
 //E-mail:      berzal@acm.org
 
-import java.util.Iterator;
-
 import ikor.collection.List;
 import ikor.collection.graph.*;
 
@@ -17,7 +15,7 @@ import ikor.collection.graph.*;
  * @author Fernando Berzal
  */
 
-public class GraphNetwork<V,E> extends Network<V,E> implements Graph<V,E>
+public class GraphNetwork<V,E> extends Network<V,E> implements ExplicitGraph<V,E>
 {
 	private DynamicGraph<V,E> net;
 	
@@ -122,11 +120,6 @@ public class GraphNetwork<V,E> extends Network<V,E> implements Graph<V,E>
 		return net.contains(object);
 	}
 
-	@Override
-	public Iterator iterator() 
-	{
-		return net.iterator();
-	}
 
 	/* (non-Javadoc)
 	 * @see noesis.Network#isDirected()
@@ -164,25 +157,6 @@ public class GraphNetwork<V,E> extends Network<V,E> implements Graph<V,E>
 		return net.getNode(node);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see noesis.Network#degree(int)
-	 */
-	@Override
-	public int degree(int node) 
-	{
-		return net.degree(node);
-	}
-
-
-	/* (non-Javadoc)
-	 * @see noesis.Network#degree(V)
-	 */
-	@Override
-	public int degree(V node) 
-	{
-		return net.degree(node);
-	}
 
 
 	/* (non-Javadoc)
@@ -237,28 +211,56 @@ public class GraphNetwork<V,E> extends Network<V,E> implements Graph<V,E>
 
 
 	@Override
-	public List<Link<V, E>> outLinks(int node) 
+	public List<Link<V, E>> outLinkList(int node) 
+	{
+		return net.outLinkList(node);
+	}
+
+
+	@Override
+	public List<Link<V, E>> outLinkList(V node) 
+	{
+		return net.outLinkList(node);
+	}
+
+
+	@Override
+	public List<Link<V, E>> inLinkList(int node) 
+	{
+		return net.inLinkList(node);
+	}
+
+
+	@Override
+	public List<Link<V, E>> inLinkList(V node) 
+	{
+		return net.inLinkList(node);
+	}
+
+
+	@Override
+	public int[] outLinks(int node) 
 	{
 		return net.outLinks(node);
 	}
 
 
 	@Override
-	public List<Link<V, E>> outLinks(V node) 
+	public int[] outLinks(V node) 
 	{
 		return net.outLinks(node);
 	}
 
 
 	@Override
-	public List<Link<V, E>> inLinks(int node) 
+	public int[] inLinks(int node) 
 	{
 		return net.inLinks(node);
 	}
 
 
 	@Override
-	public List<Link<V, E>> inLinks(V node) 
+	public int[] inLinks(V node) 
 	{
 		return net.inLinks(node);
 	}

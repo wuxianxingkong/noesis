@@ -7,7 +7,7 @@ package ikor.collection.graph.search;
 // E-mail:      berzal@acm.org
 
 import ikor.collection.Visitor;
-import ikor.collection.graph.Graph;
+import ikor.collection.graph.ExplicitGraph;
 import ikor.collection.graph.Node;
 import ikor.collection.graph.Link;
 
@@ -22,7 +22,7 @@ public abstract class GraphSearch<V,E>
 {
 	public enum State { UNDISCOVERED, DISCOVERED, EXPLORED };
 
-	protected Graph<V,E>         graph;
+	protected ExplicitGraph<V,E> graph;
 	protected State[]            state;
 
 	private   Visitor<Node<V,E>> nodeVisitor;
@@ -31,12 +31,12 @@ public abstract class GraphSearch<V,E>
 
     // Constructor
 
-	public GraphSearch (Graph<V,E> graph)
+	public GraphSearch (ExplicitGraph<V,E> graph)
 	{
 		this(graph,null,null);
 	}
 
-	public GraphSearch (Graph<V,E> graph, Visitor<Node<V,E>> nodeVisitor, Visitor<Link<V,E>> linkVisitor)
+	public GraphSearch (ExplicitGraph<V,E> graph, Visitor<Node<V,E>> nodeVisitor, Visitor<Link<V,E>> linkVisitor)
 	{
 		this.graph       = graph;
 		this.state       = new State[graph.size()];

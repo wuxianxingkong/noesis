@@ -2,7 +2,7 @@ package test.ikor.collection.graph;
 
 import test.ikor.collection.MockVisitor;
 import ikor.collection.graph.DynamicGraph;
-import ikor.collection.graph.Graph;
+import ikor.collection.graph.ExplicitGraph;
 import ikor.collection.graph.Link;
 import ikor.collection.graph.Node;
 
@@ -38,7 +38,7 @@ public class MockObjects {
 	}
 	
 	
-	public static MockVisitor<Node<String,Integer>> roadmapBFSVisitor (Graph<String,Integer> roadmap)
+	public static MockVisitor<Node<String,Integer>> roadmapBFSVisitor (ExplicitGraph<String,Integer> roadmap)
 	{
 		MockVisitor<Node<String,Integer>> visitor = new MockVisitor<Node<String,Integer>>();
 		
@@ -57,7 +57,7 @@ public class MockObjects {
 	}
 
 	
-	public static MockVisitor<Node<String,Integer>> roadmapDFSVisitor (Graph<String,Integer> roadmap)
+	public static MockVisitor<Node<String,Integer>> roadmapDFSVisitor (ExplicitGraph<String,Integer> roadmap)
 	{
 		MockVisitor<Node<String,Integer>> visitor = new MockVisitor<Node<String,Integer>>();
 		
@@ -75,7 +75,7 @@ public class MockObjects {
 	}	
 
 	
-	public static MockVisitor<Link<String,Integer>> roadmapBFSLinkVisitor (Graph<String,Integer> map)
+	public static MockVisitor<Link<String,Integer>> roadmapBFSLinkVisitor (ExplicitGraph<String,Integer> map)
 	{
 		MockVisitor<Link<String,Integer>> visitor = new MockVisitor<Link<String,Integer>>();
 		
@@ -111,7 +111,7 @@ public class MockObjects {
 	}
 
 	
-	public static MockVisitor<Link<String,Integer>> roadmapDFSLinkVisitor (Graph<String,Integer> map)
+	public static MockVisitor<Link<String,Integer>> roadmapDFSLinkVisitor (ExplicitGraph<String,Integer> map)
 	{
 		MockVisitor<Link<String,Integer>> visitor = new MockVisitor<Link<String,Integer>>();
 		
@@ -186,7 +186,7 @@ public class MockObjects {
 		return graph;		
 	}
 
-	public static MockVisitor<Node<String,String>> webBFSVisitor (Graph<String,String> web)
+	public static MockVisitor<Node<String,String>> webBFSVisitor (ExplicitGraph<String,String> web)
 	{
 		MockVisitor<Node<String,String>> visitor = new MockVisitor<Node<String,String>>();
 
@@ -204,7 +204,7 @@ public class MockObjects {
 		return visitor;
 	}
 	
-	public static MockVisitor<Node<String,String>> webDFSVisitor (Graph<String,String> web)
+	public static MockVisitor<Node<String,String>> webDFSVisitor (ExplicitGraph<String,String> web)
 	{
 		MockVisitor<Node<String,String>> visitor = new MockVisitor<Node<String,String>>();
 	
@@ -226,7 +226,7 @@ public class MockObjects {
 	}
 	
 	
-	public static MockVisitor<Link<String,String>> webBFSLinkVisitor (Graph<String,String> web)
+	public static MockVisitor<Link<String,String>> webBFSLinkVisitor (ExplicitGraph<String,String> web)
 	{
 		MockVisitor<Link<String,String>> visitor = new MockVisitor<Link<String,String>>();
 		
@@ -251,7 +251,7 @@ public class MockObjects {
 		return visitor;
 	}
 
-	public static MockVisitor<Link<String,String>> webDFSLinkVisitor (Graph<String,String> web)
+	public static MockVisitor<Link<String,String>> webDFSLinkVisitor (ExplicitGraph<String,String> web)
 	{
 		MockVisitor<Link<String,String>> visitor = new MockVisitor<Link<String,String>>();
 		

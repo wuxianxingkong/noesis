@@ -8,10 +8,17 @@ package ikor.collection.graph;
 
 import ikor.collection.*;
 
-// Graph vertex
+/**
+ * Graph vertex
+ * 
+ * @author Fernando Berzal
+ *
+ * @param <V> Graph vertex type
+ * @param <E> Graph link type
+ */
 
-class DynamicNode<V,E> implements Node<V,E> {
-
+class DynamicNode<V,E> implements Node<V,E> 
+{
 	private V                      content;
 	private DynamicList<Link<V,E>> in;
 	private DynamicList<Link<V,E>> out;

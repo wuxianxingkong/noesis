@@ -6,6 +6,11 @@ package ikor.collection.graph;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
+
+/**
+ * Graph link.
+ */
+
 public class Link<V,E> implements Element<E>
 {
 	private Node<V,E> source;

@@ -8,6 +8,12 @@ package ikor.collection.graph;
 
 import java.util.Iterator;
 
+/**
+ * Graph node iterator.
+ * 
+ * @author Fernando Berzal
+ */
+
 public class GraphIterator<V> implements Iterator<V> 
 {
 	Graph<V,?> graph;
@@ -35,7 +41,7 @@ public class GraphIterator<V> implements Iterator<V>
 	public V next() {
 		
 		if (index<=last)
-			return (V) graph.getNode(index++).getContent();
+			return graph.get(index++);
 		else
 			return null;
 	}

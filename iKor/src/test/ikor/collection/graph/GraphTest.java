@@ -232,8 +232,8 @@ public class GraphTest {
 	 * Test method for {@link ikor.collection.graph.DynamicGraph#outDegree(int)}.
 	 */
 	@Test
-	public void testOutDegree() {
-		
+	public void testOutDegree() 
+	{	
 		// Undirected graph (in-degree == out-degree)
 		
 		assertEquals(5, roadmap.outDegree("Granada") );
@@ -258,24 +258,81 @@ public class GraphTest {
 		assertEquals(0, web.outDegree("ASP.NET") );		
 	}
 
+	
 	/**
 	 * Test method for {@link ikor.collection.graph.DynamicGraph#outLinks(int)}.
 	 */
 	@Test
-	public void testOutLinks() {
-			
+	public void testOutLinks() 
+	{		
 		// Undirected graph (in-links == out-links)
 		
-		assertEquals(5, roadmap.outLinks("Granada").size() );
-		assertEquals(2, roadmap.outLinks("Motril").size() );
-		assertEquals(2, roadmap.outLinks("La Zubia").size() );
-		assertEquals(3, roadmap.outLinks("Cájar").size() );
-		assertEquals(2, roadmap.outLinks("Huétor Vega").size() );
-		assertEquals(2, roadmap.outLinks("Castell de Ferro").size() );
-		assertEquals(2, roadmap.outLinks("Almería").size() );
-		assertEquals(2, roadmap.outLinks("Guadix").size() );
+		assertEquals(5, roadmap.outLinks("Granada").length );
+		assertEquals(2, roadmap.outLinks("Motril").length );
+		assertEquals(2, roadmap.outLinks("La Zubia").length );
+		assertEquals(3, roadmap.outLinks("Cájar").length );
+		assertEquals(2, roadmap.outLinks("Huétor Vega").length );
+		assertEquals(2, roadmap.outLinks("Castell de Ferro").length );
+		assertEquals(2, roadmap.outLinks("Almería").length );
+		assertEquals(2, roadmap.outLinks("Guadix").length );
 		
-		List<Link<String,Integer>> list = roadmap.outLinks(roadmap.index("Granada"));
+		int   source = roadmap.index("Granada");
+		int[] list   = roadmap.outLinks(source);
+				
+		assertEquals ( "Motril", roadmap.get(list[0]) );
+		assertEquals ( 70, roadmap.get(source, list[0]).intValue() );
+
+		assertEquals ( "La Zubia", roadmap.get(list[1]) );
+		assertEquals ( 3, roadmap.get(source, list[1]).intValue() );
+
+		assertEquals ( "Cájar", roadmap.get(list[2]) );
+		assertEquals ( 3, roadmap.get(source, list[2]).intValue() );
+
+		assertEquals ( "Huétor Vega", roadmap.get(list[3]) );
+		assertEquals ( 2, roadmap.get(source, list[3]).intValue() );
+
+		assertEquals ( "Guadix", roadmap.get(list[4]) );
+		assertEquals ( 55, roadmap.get(source, list[4]).intValue() );
+		
+		// Directed graph (out degree)
+		
+		assertEquals(8, web.outLinks("home").length );
+		assertEquals(3, web.outLinks("C").length );
+		assertEquals(1, web.outLinks("C#").length );
+		assertEquals(0, web.outLinks("C++Builder").length );
+		assertEquals(3, web.outLinks("Java").length );
+		assertEquals(1, web.outLinks("DB").length );
+		assertEquals(0, web.outLinks("Data Mining").length );
+		assertEquals(1, web.outLinks("Internet").length );
+		assertEquals(0, web.outLinks("ASP.NET").length );		
+
+		int   node  = web.index("Java");
+		int[] links = web.outLinks(node);
+
+		assertEquals ( "C", web.get(links[0]) );
+		assertEquals ( "C#", web.get(links[1]) );	
+		assertEquals ( "C++Builder", web.get(links[2]) );
+	}
+
+	
+	/**
+	 * Test method for {@link ikor.collection.graph.DynamicGraph#outLinkList(int)}.
+	 */
+	@Test
+	public void testOutLinkList() 
+	{
+		// Undirected graph (in-links == out-links)
+		
+		assertEquals(5, roadmap.outLinkList("Granada").size() );
+		assertEquals(2, roadmap.outLinkList("Motril").size() );
+		assertEquals(2, roadmap.outLinkList("La Zubia").size() );
+		assertEquals(3, roadmap.outLinkList("Cájar").size() );
+		assertEquals(2, roadmap.outLinkList("Huétor Vega").size() );
+		assertEquals(2, roadmap.outLinkList("Castell de Ferro").size() );
+		assertEquals(2, roadmap.outLinkList("Almería").size() );
+		assertEquals(2, roadmap.outLinkList("Guadix").size() );
+		
+		List<Link<String,Integer>> list = roadmap.outLinkList("Granada");
 				
 		assertEquals ( "Granada", list.get(0).getSource().getContent() );
 		assertEquals ( "Motril", list.get(0).getDestination().getContent() );
@@ -300,17 +357,17 @@ public class GraphTest {
 		
 		// Directed graph (out degree)
 		
-		assertEquals(8, web.outLinks("home").size() );
-		assertEquals(3, web.outLinks("C").size() );
-		assertEquals(1, web.outLinks("C#").size() );
-		assertEquals(0, web.outLinks("C++Builder").size() );
-		assertEquals(3, web.outLinks("Java").size() );
-		assertEquals(1, web.outLinks("DB").size() );
-		assertEquals(0, web.outLinks("Data Mining").size() );
-		assertEquals(1, web.outLinks("Internet").size() );
-		assertEquals(0, web.outLinks("ASP.NET").size() );		
+		assertEquals(8, web.outLinkList("home").size() );
+		assertEquals(3, web.outLinkList("C").size() );
+		assertEquals(1, web.outLinkList("C#").size() );
+		assertEquals(0, web.outLinkList("C++Builder").size() );
+		assertEquals(3, web.outLinkList("Java").size() );
+		assertEquals(1, web.outLinkList("DB").size() );
+		assertEquals(0, web.outLinkList("Data Mining").size() );
+		assertEquals(1, web.outLinkList("Internet").size() );
+		assertEquals(0, web.outLinkList("ASP.NET").size() );		
 
-		List<Link<String,String>> links = web.outLinks(web.index("Java"));
+		List<Link<String,String>> links = web.outLinkList("Java");
 
 		assertEquals ( "Java", links.get(0).getSource().getContent() );
 		assertEquals ( "C", links.get(0).getDestination().getContent() );
@@ -320,27 +377,81 @@ public class GraphTest {
 		
 		assertEquals ( "Java", links.get(2).getSource().getContent() );
 		assertEquals ( "C++Builder", links.get(2).getDestination().getContent() );
-		
 	}
 
 	/**
 	 * Test method for {@link ikor.collection.graph.DynamicGraph#inLinks(int)}.
 	 */
 	@Test
-	public void testInLinks() {
-				
+	public void testInLinks() 
+	{			
 		// Undirected graph (in-links == out-links)
 		
-		assertEquals(5, roadmap.inLinks("Granada").size() );
-		assertEquals(2, roadmap.inLinks("Motril").size() );
-		assertEquals(2, roadmap.inLinks("La Zubia").size() );
-		assertEquals(3, roadmap.inLinks("Cájar").size() );
-		assertEquals(2, roadmap.inLinks("Huétor Vega").size() );
-		assertEquals(2, roadmap.inLinks("Castell de Ferro").size() );
-		assertEquals(2, roadmap.inLinks("Almería").size() );
-		assertEquals(2, roadmap.inLinks("Guadix").size() );
+		assertEquals(5, roadmap.inLinks("Granada").length );
+		assertEquals(2, roadmap.inLinks("Motril").length );
+		assertEquals(2, roadmap.inLinks("La Zubia").length );
+		assertEquals(3, roadmap.inLinks("Cájar").length );
+		assertEquals(2, roadmap.inLinks("Huétor Vega").length );
+		assertEquals(2, roadmap.inLinks("Castell de Ferro").length );
+		assertEquals(2, roadmap.inLinks("Almería").length );
+		assertEquals(2, roadmap.inLinks("Guadix").length );
 		
-		List<Link<String,Integer>> list = roadmap.inLinks(roadmap.index("Granada"));
+		int   source = roadmap.index("Granada");
+		int[] list = roadmap.inLinks(source);
+				
+		assertEquals ( "Motril", roadmap.get(list[0]) );
+		assertEquals ( 70, roadmap.get(source,list[0]).intValue() );
+
+		assertEquals ( "La Zubia", roadmap.get(list[1]) );
+		assertEquals ( 3, roadmap.get(source,list[1]).intValue() );
+
+		assertEquals ( "Cájar", roadmap.get(list[2]) );
+		assertEquals ( 3, roadmap.get(source,list[2]).intValue() );
+
+		assertEquals ( "Huétor Vega", roadmap.get(list[3]) );
+		assertEquals ( 2, roadmap.get(source,list[3]).intValue() );
+
+		assertEquals ( "Guadix", roadmap.get(list[4]) );
+		assertEquals ( 55, roadmap.get(source,list[4]).intValue() );
+		
+		
+		// Directed graph (out degree)
+		
+		assertEquals(0, web.inLinks("home").length );
+		assertEquals(2, web.inLinks("C").length );
+		assertEquals(3, web.inLinks("C#").length );
+		assertEquals(3, web.inLinks("C++Builder").length );
+		assertEquals(2, web.inLinks("Java").length );
+		assertEquals(2, web.inLinks("DB").length );
+		assertEquals(2, web.inLinks("Data Mining").length );
+		assertEquals(1, web.inLinks("Internet").length );
+		assertEquals(2, web.inLinks("ASP.NET").length );		
+
+		int node = web.index("Java");
+		int[] links = web.inLinks(node);
+
+		assertEquals ( "home", web.get(links[0]) );
+		assertEquals ( "C", web.get(links[1]) );
+	}
+
+	/**
+	 * Test method for {@link ikor.collection.graph.DynamicGraph#inLinkList(int)}.
+	 */
+	@Test
+	public void testInLinkList() 
+	{			
+		// Undirected graph (in-links == out-links)
+		
+		assertEquals(5, roadmap.inLinkList("Granada").size() );
+		assertEquals(2, roadmap.inLinkList("Motril").size() );
+		assertEquals(2, roadmap.inLinkList("La Zubia").size() );
+		assertEquals(3, roadmap.inLinkList("Cájar").size() );
+		assertEquals(2, roadmap.inLinkList("Huétor Vega").size() );
+		assertEquals(2, roadmap.inLinkList("Castell de Ferro").size() );
+		assertEquals(2, roadmap.inLinkList("Almería").size() );
+		assertEquals(2, roadmap.inLinkList("Guadix").size() );
+		
+		List<Link<String,Integer>> list = roadmap.inLinkList("Granada");
 				
 		assertEquals ( "Granada", list.get(0).getSource().getContent() );
 		assertEquals ( "Motril", list.get(0).getDestination().getContent() );
@@ -365,17 +476,17 @@ public class GraphTest {
 		
 		// Directed graph (out degree)
 		
-		assertEquals(0, web.inLinks("home").size() );
-		assertEquals(2, web.inLinks("C").size() );
-		assertEquals(3, web.inLinks("C#").size() );
-		assertEquals(3, web.inLinks("C++Builder").size() );
-		assertEquals(2, web.inLinks("Java").size() );
-		assertEquals(2, web.inLinks("DB").size() );
-		assertEquals(2, web.inLinks("Data Mining").size() );
-		assertEquals(1, web.inLinks("Internet").size() );
-		assertEquals(2, web.inLinks("ASP.NET").size() );		
+		assertEquals(0, web.inLinkList("home").size() );
+		assertEquals(2, web.inLinkList("C").size() );
+		assertEquals(3, web.inLinkList("C#").size() );
+		assertEquals(3, web.inLinkList("C++Builder").size() );
+		assertEquals(2, web.inLinkList("Java").size() );
+		assertEquals(2, web.inLinkList("DB").size() );
+		assertEquals(2, web.inLinkList("Data Mining").size() );
+		assertEquals(1, web.inLinkList("Internet").size() );
+		assertEquals(2, web.inLinkList("ASP.NET").size() );		
 
-		List<Link<String,String>> links = web.inLinks(web.index("Java"));
+		List<Link<String,String>> links = web.inLinkList("Java");
 
 		assertEquals ( "home", links.get(0).getSource().getContent() );
 		assertEquals ( "Java", links.get(0).getDestination().getContent() );
@@ -384,6 +495,7 @@ public class GraphTest {
 		assertEquals ( "Java", links.get(1).getDestination().getContent() );
 	}
 
+	
 	/**
 	 * Test method for {@link ikor.collection.graph.DynamicGraph#add(java.lang.Object)}.
 	 */
@@ -468,8 +580,8 @@ public class GraphTest {
 		assertEquals(2-1, roadmap.degree("Guadix"));
 		assertEquals(0, roadmap.degree("Almería"));
 		
-		assertEquals("Motril",  roadmap.inLinks("Castell de Ferro").get(0).getSource().getContent() );
-		assertEquals("Granada", roadmap.inLinks("Guadix").get(0).getSource().getContent() );
+		assertEquals("Motril",  roadmap.inLinkList("Castell de Ferro").get(0).getSource().getContent() );
+		assertEquals("Granada", roadmap.inLinkList("Guadix").get(0).getSource().getContent() );
 		
 		assertFalse(roadmap.remove("Jaén"));               // Remove non-existing node
 		assertEquals(8-1, roadmap.size());

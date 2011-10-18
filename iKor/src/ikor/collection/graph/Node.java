@@ -7,6 +7,10 @@ package ikor.collection.graph;
 // E-mail:      berzal@acm.org
 
 
+/**
+ * Graph node.
+ */
+
 public interface Node<V,E> extends Element<V>
 {
 	public V getContent();

@@ -6,13 +6,13 @@ package ikor.collection.graph.search;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
-
 import ikor.collection.List;
 import ikor.collection.Visitor;
 
-import ikor.collection.graph.Graph;
+import ikor.collection.graph.ExplicitGraph;
 import ikor.collection.graph.Node;
 import ikor.collection.graph.Link;
+
 /**
  * Depth-First Search in Graphs
  * 
@@ -23,12 +23,12 @@ public class DFS<V,E> extends GraphSearch<V,E>
 {
     // Constructor
 
-	public DFS (Graph<V,E> graph)
+	public DFS (ExplicitGraph<V,E> graph)
 	{
 		super(graph);
 	}
 
-	public DFS (Graph<V,E> graph, Visitor<Node<V,E>> nodeVisitor, Visitor<Link<V,E>> linkVisitor)
+	public DFS (ExplicitGraph<V,E> graph, Visitor<Node<V,E>> nodeVisitor, Visitor<Link<V,E>> linkVisitor)
 	{
 		super(graph, nodeVisitor, linkVisitor);
 	}
@@ -47,7 +47,7 @@ public class DFS<V,E> extends GraphSearch<V,E>
 
 		visitNode(current);
 
-		links = graph.outLinks(currentIndex);
+		links = graph.outLinkList(currentIndex);
 
 		if (links!=null) {
 

@@ -6,12 +6,11 @@ package ikor.collection.graph.search;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
-
 import ikor.collection.List;
 import ikor.collection.Queue;
 import ikor.collection.Visitor;
 
-import ikor.collection.graph.Graph;
+import ikor.collection.graph.ExplicitGraph;
 import ikor.collection.graph.Node;
 import ikor.collection.graph.Link;
 
@@ -26,12 +25,12 @@ public class BFS<V,E> extends GraphSearch<V,E>
 
     // Constructor
 
-	public BFS (Graph<V,E> graph)
+	public BFS (ExplicitGraph<V,E> graph)
 	{
 		super(graph);
 	}
 
-	public BFS (Graph<V,E> graph, Visitor<Node<V,E>> nodeVisitor, Visitor<Link<V,E>> linkVisitor)
+	public BFS (ExplicitGraph<V,E> graph, Visitor<Node<V,E>> nodeVisitor, Visitor<Link<V,E>> linkVisitor)
 	{
 		super(graph, nodeVisitor, linkVisitor);
 	}
@@ -57,7 +56,7 @@ public class BFS<V,E> extends GraphSearch<V,E>
 
 			  visitNode(current);
 
-			  links = graph.outLinks(currentIndex);
+			  links = graph.outLinkList(currentIndex);
 
 			  if (links!=null) {
 

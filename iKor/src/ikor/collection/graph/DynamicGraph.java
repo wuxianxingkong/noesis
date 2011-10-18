@@ -11,12 +11,14 @@ import java.util.Iterator;
 import ikor.collection.*;
 
 /**
- * Generic Graph
+ * Generic linked list graph implementation.
  * 
  * @author Fernando Berzal
  */
 
-public class DynamicGraph<V,E> implements MutableGraph<V,E>
+public class DynamicGraph<V,E> 
+	extends ExplicitGraphImplementation<V,E>
+	implements MutableExplicitGraph<V,E>
 {
     private MutableDictionary<V,Integer>  index;
     private MutableList<DynamicNode<V,E>> nodes;
@@ -49,12 +51,7 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 		else
 			return null;
 	}
-	
-	@Override
-	public final Node<V,E> getNode (V node)
-	{
-		return getNode (index(node));
-	}
+
 	
 	@Override
 	public V get (int nodeIndex)
@@ -174,15 +171,7 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 	}
 	
 	
-	@Override
-	public Link<V, E> getLink(int node1, int node2) {
-		return getLink ( getNode(node1), getNode(node2) );
-	}
 
-	@Override
-	public Link<V, E> getLink(V node1, V node2) {
-		return getLink ( getNode(node1), getNode(node2) );
-	}
 		
 	@Override
 	public Link<V, E> getLink(Node<V,E> source, Node<V,E> destination) {
@@ -206,7 +195,7 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 	}
 	
 
-	public List<Link<V,E>> outLinks (int node)
+	public List<Link<V,E>> outLinkList (int node)
 	{
 		if ((node>=0) && (node<size()))
 			return nodes.get(node).outLinks();
@@ -214,12 +203,7 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 			return null;
 	}
 
-	public List<Link<V,E>> outLinks (V node)
-	{
-		return outLinks(index(node));
-	}
-	
-	public List<Link<V,E>> inLinks (int node)
+	public List<Link<V,E>> inLinkList (int node)
 	{
 		if ((node>=0) && (node<size()))
 			return nodes.get(node).inLinks();
@@ -227,10 +211,7 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 			return null;
 	}
 
-	public List<Link<V,E>> inLinks (V node)
-	{
-		return inLinks(index(node));
-	}	
+
 
 	// Add node
 
@@ -448,6 +429,5 @@ public class DynamicGraph<V,E> implements MutableGraph<V,E>
 		index.clear();
 		nodes.clear();
 	}
-
 }
 

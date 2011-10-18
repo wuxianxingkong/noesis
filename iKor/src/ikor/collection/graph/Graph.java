@@ -9,7 +9,7 @@ package ikor.collection.graph;
 import ikor.collection.*;
 
 /**
- * Graph
+ * Graph interface.
  * 
  * @author Fernando Berzal
  */
@@ -21,10 +21,6 @@ public interface Graph<V, E> extends List<V>
 	// Nodes
 
 	public int index (V node);
-	public int index (Node<V,E> node);
-	
-	public Node<V,E> getNode (int index);
-	public Node<V,E> getNode (V node);
 
 	// Node degrees
 
@@ -40,18 +36,14 @@ public interface Graph<V, E> extends List<V>
 	// Edges
 
 	public int links ();
+	
 	public E get(int source, int destination);
 	public E get(V source, V destination);
 	
-	public Link<V,E> getLink(int source, int destination);
-	public Link<V,E> getLink(V source, V destination);
-	public Link<V, E> getLink(Node<V,E> source, Node<V,E> destination);
-	
+	public int[] outLinks (int node);
+	public int[] outLinks (V node);
 
-	public List<Link<V,E>> outLinks (int node);
-	public List<Link<V,E>> outLinks (V node);
-
-	public List<Link<V,E>> inLinks (int node);
-	public List<Link<V,E>> inLinks (V node);
+	public int[] inLinks (int node);
+	public int[] inLinks (V node);
 }
 

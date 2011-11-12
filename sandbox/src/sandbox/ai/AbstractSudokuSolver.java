@@ -12,14 +12,14 @@ package sandbox.ai;
  * @author Fernando Berzal
  */
 
-public class SudokuSolver 
+public class AbstractSudokuSolver 
 {
 	
 	/**
 	 * Constructor
 	 * @param template Cadena representando una plantilla de sudoku
 	 */
-	public SudokuSolver (String template)
+	public AbstractSudokuSolver (String template)
 	{
 		
 	}

@@ -30,7 +30,7 @@ public class Test
 	public static void main (String args[])
 	{
 		String       plantilla;
-		SudokuSolver sudoku;
+		AbstractSudokuSolver sudoku;
 		
 		long   inicio;
 		long   fin;

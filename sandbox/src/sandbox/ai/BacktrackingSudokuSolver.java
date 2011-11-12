@@ -6,7 +6,7 @@ package sandbox.ai;
  * @author Fernando Berzal
  */
 
-public class BacktrackingSudokuSolver extends SudokuSolver {
+public class BacktrackingSudokuSolver extends AbstractSudokuSolver {
 
 	private Sudoku sudoku;
 	
@@ -35,7 +35,7 @@ public class BacktrackingSudokuSolver extends SudokuSolver {
 		int     i, j, v;
 		int     x, y;
 		boolean first;
-		boolean fin = sudoku.isSolved();
+		boolean fin = sudoku.isSolvedX();
 		
 		if (!fin) {
 			
@@ -59,7 +59,7 @@ public class BacktrackingSudokuSolver extends SudokuSolver {
 			for (v=1; (v<=9) && !fin; v++) {
 				sudoku.set(x,y,v);
 
-				if (sudoku.check())
+				if (sudoku.checkX())
 					fin = backtrack(sudoku);
 			}
 						

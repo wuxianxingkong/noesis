@@ -189,6 +189,19 @@ public class Sudoku {
 		return (emptyCells()==0) && checkX();
 	}
 
+	// Compatibility
+
+	public boolean isCompatibleWith (Sudoku template)
+	{
+		for (int i=0; i<9; i++)
+			for (int j=0; j<9; j++)
+				if ((template.get(i,j)!=0) && (this.get(i,j)!=template.get(i,j)))
+					return false;
+		
+		return true;
+	}
+	
+	
 	// E/S
 	
 	public String toString ()

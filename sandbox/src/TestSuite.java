@@ -9,51 +9,45 @@ import java.io.*;
 import java.util.ArrayList;
 import sandbox.ai.Sudoku;
 
-public class TestSuite 
+public class TestSuite implements Runnable
 {
-	public static final String FICHERO_POR_DEFECTO = "80Sudokus-X.txt";
-	public static final long   TIME_LIMIT = 120000;
-
-	public static void main(String[] args) 
+	public static final String FICHERO_POR_DEFECTO = "80Sudokus-X.dat";
+	public static final long   TIME_LIMIT = 120000;	
+	
+	private String[] sudokus;
+	private int      resueltos;
+	private int      errores;
+	
+	private long     plazo;
+	private long     inicio;
+	private long     fin;
+	
+	
+	
+	public TestSuite(String[] sudokus, long plazo)
 	{
-		String       fichero;
+		this.sudokus = sudokus;
+		this.plazo = plazo;
+	}
+	
+
+	@Override
+	public void run() 
+	{
 		SudokuSolver solver;
 		Sudoku       sudoku;
 		Sudoku       solution;
 		
-		long   inicio;
-		long   fin;
-		long   tiempo;
 		long   deadline;
 		
-		int    resueltos;
-		int    errores;
-		
-		// Argumentos de entrada
-		
-		if (args.length==0) {
-			
-			System.err.println("Por favor, indique su fichero de prueba como argumento de este programa.");
-			System.err.println("Asumiendo fichero por defecto...");
-			fichero = FICHERO_POR_DEFECTO;
-			
-		} else {
-			
-			fichero = args[0];
-		}
-		
-		String[] sudokus = getSudokus(fichero);
-	
-		// Resolución del sudoku
-
 		resueltos = 0;
 		errores   = 0;
 		
 		inicio    = System.currentTimeMillis();
 		fin       = inicio;
 
-		if (args.length>1) {
-			deadline = inicio + Integer.parseInt(args[1]);
+		if (plazo!=0) {
+			deadline = inicio + plazo;
 		} else {
 			deadline = inicio + TIME_LIMIT;
 		}
@@ -82,13 +76,70 @@ public class TestSuite
 		
 		if (fin>deadline)
 			resueltos--;
+	}	
+
+	
+	public static void main(String[] args) 
+		throws InterruptedException
+	{
+		String fichero;
+		long   plazo;
 		
-		tiempo = fin - inicio;
+		// Argumentos de entrada
 		
+		if (args.length==0) {
+			
+			System.err.println("Por favor, indique su fichero de prueba como argumento de este programa.");
+			System.err.println("Asumiendo fichero por defecto...");
+			fichero = FICHERO_POR_DEFECTO;
+			
+		} else {
+			
+			fichero = args[0];
+		}
+		
+		if (args.length>1) {
+			plazo = Long.parseLong(args[1]);
+		} else {
+			plazo = TIME_LIMIT;
+		}
+			
+		// Test suite
+		
+		String[]   sudokus = getSudokus(fichero);
+		TestSuite  testSuite = new TestSuite(sudokus,plazo);
+	
+		// Independent thread
+		
+		Thread t = new Thread(testSuite); // myRunnable does your calculations
+
+		long startTime = System.currentTimeMillis();
+		long endTime = startTime + plazo;
+
+		// Workaround: Marks this thread as a daemon thread.
+		// The Java Virtual Machine exits when the only threads running are all daemon threads.
+		t.setDaemon(true); 
+		
+		t.start(); // Kick off calculations
+
+		while (System.currentTimeMillis() < endTime) {
+		    // Still within time theshold, wait a little longer
+		    try {
+		         Thread.sleep(plazo/10);  // Sleep T/10 seconds
+		    } catch (InterruptedException e) {
+		         // Someone woke us up during sleep, that's OK
+		    }
+		}
+
+		// t.interrupt();  // Tell the thread to [voluntarily] stop 
+		// t.join();       // Wait for the thread to cleanup and finish
+			
 		
 		// Resultado
 		
-		System.out.println(resueltos+", "+errores+", "+tiempo);
+		long tiempo = testSuite.fin - testSuite.inicio;
+		
+		System.out.println(testSuite.resueltos+", "+testSuite.errores+", "+tiempo);
 	}
 	
 	
@@ -123,5 +174,6 @@ public class TestSuite
 	   
 	   return array;
 	}
+
 
 }

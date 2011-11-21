@@ -7,8 +7,8 @@ import ikor.util.Benchmark;
 import noesis.Network;
 
 import noesis.analysis.structure.NodeMetrics;
-import noesis.analysis.structure.InDegreeDistribution;
-import noesis.analysis.structure.OutDegreeDistribution;
+import noesis.analysis.structure.InDegree;
+import noesis.analysis.structure.OutDegree;
 
 import noesis.io.NetworkReader;
 import noesis.io.PajekNetworkReader;
@@ -66,8 +66,8 @@ public class NetworkStats {
 			
 			// Degree distributions
 			
-			OutDegreeDistribution outDegrees = new OutDegreeDistribution(net);
-			InDegreeDistribution  inDegrees = new InDegreeDistribution(net);
+			OutDegree outDegrees = new OutDegree(net);
+			InDegree  inDegrees = new InDegree(net);
 			
 			outDegrees.compute();
 			inDegrees.compute();

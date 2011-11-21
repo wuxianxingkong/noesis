@@ -5,7 +5,7 @@ import noesis.Network;
 
 import ikor.math.Vector;
 
-public abstract class NodeMetrics 
+public abstract class NodeMetrics<T> 
 {
 	private Network network;
 	private Vector  metrics;
@@ -16,22 +16,31 @@ public abstract class NodeMetrics
 		this.metrics = new Vector(network.size());
 	}
 	
-	public Network getNetwork ()
+	public final Network getNetwork ()
 	{
 		return this.network;
 	}
 	
-	public double get(int i)
+	public final double get(int i)
 	{
 		return metrics.get(i);
 	}
 	
-	protected void set (int i, double value)
+	private final void set (int i, double value)
 	{
 		metrics.set(i,value);
 	}
 	
-	public abstract void compute ();
+	public final void compute ()
+	{
+		Network net = getNetwork();
+		int     size = net.size();
+	
+		for (int node=0; node<size; node++)
+			set (node, compute(node));
+	}
+	
+	public abstract double compute (int node);
 	
 	// Standard output
 	

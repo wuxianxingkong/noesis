@@ -1,0 +1,790 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+<title>Mining Network Data</title>
+
+
+<text>
+The study of networks encompasses theories, models, and applications expressed in terms of <q>relational concepts</q> <cite>Wasserman and Faust 1994</cite>. In other words, the relationships defined by the existing links among the elements of a complex system are the fundamental ingredient of networks, where
+</text>
+
+<list>
+
+<item>Elements (also known as actors in social network analysis and nodes or vertices in graph theoretical terms) are autonomous but interdependent.</item>
+
+<item>Links between elements represent the only channels through which resources can flow, let them be material or immaterial.</item>
+
+</list>
+
+<text>
+Connections in a network provide opportunities for and impose constraints on the elements of the network. Ties among elements are primary and attributes of elements are secondary (and they can often be understood in terms of the role they play within the network structure). 
+</text>
+
+<text>
+Connections in a social network may represent kinship, friendship, liking, interactions, transactions, flow of resources, group co-membership and other kinds of social ties... even several of these at the same time.
+</text>
+
+<text>
+Nodes in a social network might be people from a given group, departments within a corporation, whole corporations, public agencies, and even nation-states...
+</text>
+
+<text>
+Most applications focus on networks of elements of the same type (one-mode networks), albeit you could also have networks conformed by elements of different types (multimode networks)...
+</text>
+
+
+<text>
+++ the need to understand the interconnectivity of our relationship with customers and the groups they interact with, whom, how and why.
+</text>
+
+<text>
+Need for new data mining techniques ++ Today's data, however, doesn't take the familiar form of the database. <q>The information's not coming at you in a clean tabular form, it's coming at you in a network form.</q> [Chid Apte, director of analytics research at IBM and chair of the KDD'2011 conference]. It arrives in a graph, that records not only the complex connections between nodes but also other types of information in a diversity of formats (e.g. the videos, images, and comments that people post on social networks). Social media may have started the trend toward analyzing such graphs, Apte says, but network data comes from other sources as well-for example, from complex engineering systems such as the electric power grid, water distribution systems, and traffic management systems. <cite>Naone 2011</cite>
+</text>
+
+
+<text>
+++ <cite>Amaral and Ottino 2004</cite> <cite>Kim and Wilhelm 2008</cite>
+</text>
+
+<document>
+<tag>history</tag>
+<title>Historical comments</title>
+
+<text>
+1736: Leonhard Euler
+++ Konisberg @ 0471648167 [Marcel Danesi] The Liar Paradox and the Towers of Hanoi.pdf
+</text>
+
+<text>
+Historically, <i>linkages</i> was the term sometimes employed to refer to graphs. The graph term was later standardized by James Joseph Sylvester, a 19th-century British mathematician who founded the American Journal of Mathematics, the first mathematics journal in the United States <cite>Chartrand et al. 2011</cite>.
+</text>
+
+</document>
+
+
+
+<document>
+<tag>kinds</tag>
+<title>Kinds of networks</title>
+
+<document>
+<tag>social</tag>
+<title>Social networks</title>
+
+<text>
+Widely used in the social and behavioral sciences, social network analysis focuses on the relationships among social entities <cite>Wasserman and Faust 1994</cite>. Depending on the particular context, these social entities can be individuals belonging to groups, corporations making economic transactions with other corporations, or nations signing treaties and trade agreements. The key ingredient in social network analysis is its focus on relationships, in contrast to reductionist approaches that limit their attention to the attributes of individual social entities.
+</text>
+
+<text>
+Topics that have been studied by network analysts: occupational mobility, decision making, group problem solving, consensus and social influence, social perception, social support, community formation, exchange and power, social roles, coalition formation, company interlocking, markets, the world economic system, difussion and adoption of innovations...
+</text>
+
+<text>
+Two students of Leslie White, a renowned anthropologists, offer complementary views on the forces behind cooperation [of people within societies].
+<cite>Wright 2000</cite>. Whereas Robert Carneiro's focus was on pushing people together as the rational response against external threats, Elman Service thought that it was clear in some cases and probable in many others that neighboring societies were pulled together because of economic causes. Either by pushing or pulling people, opportunities for gain originate and draw people in closer cooperation, because of the benefits of participation in the total network. 
+</text>
+
+<text>
+Jennifer Fewell, from Arizona State University, illustrates the importance of [insect] social networking using a professional basketball example <cite>Fewell and O'Donnell 2009</cite>. Phoenix Suns were successful, in part, because point guard Steve Nash passed the ball quickly to different teammates, making it difficult for defenders to predict their play. However, the Suns immediately started losing the first six games after Shaquille O'Neal joined the team, most likely because he destroyed his team's network dynamics: <q>Everybody there on the floor... knew where that ball was going to go - it was going to go to Shaq.</q> The network dynamics had changed and the success of the team depended on it, so they were forced to change their network dynamics again in order to improve their results with Shaquille O'Neal in the team. <q>It's a good example that the success of individuals depend on the network, and the success of the network depends on individuals. It's not just how good the individuals are... it's how good those interactions among them are as well.</q>
+</text>
+
+
+<text>
+++ Bibliographic <cite>Tang et al. 2008</cite>
+</text>
+
+<text>
+++ Obesity ;-) <cite>Christakis and Fowler 2007</cite>
+</text>
+
+</document>
+
+<document>
+<tag>content</tag>
+<title>Content networks</title>
+</document>
+
+<document>
+<tag>economic</tag>
+<title>Economic networks</title>
+</document>
+
+<document>
+<tag>transportation</tag>
+<title>Transportation networks</title>
+</document>
+
+<document>
+<tag>biological</tag>
+<title>Biological networks</title>
+
+<text>
+++ <cite>Oltvai and Barabasi 2002</cite> <cite>Barabasi and Oltvai 2004</cite> <cite>Guimera and Nunes 2005</cite> <cite>Boccaletti et al. 2009</cite>
+<cite>Barabasi et al. 2011</cite>
+</text>
+
+</document>
+
+</document>
+
+
+<document>
+<tag>properties</tag>
+<title>Network properties</title>
+
+<text>
+++ Scale, evolution, distribution &amp; interaction through connections...
+</text>
+
+</document>
+
+
+
+<document>
+<tag>datasets</tag>
+<title>Network data sets</title>
+
+</document>
+
+
+<document>
+<tag>introduction-notes</tag>
+<title>Bibliographic notes</title>
+
+<document>
+<title>Survey papers</title>
+
+<text>
+++ <cite>Strogatz 2001</cite> <cite>Albert and Barabasi 2002</cite> <cite>Newman 2003</cite> <cite>Boccaletti et al. 2006</cite> <cite>Borner et al. 2007</cite> <cite>Costa et al. 2007</cite> <cite>Costa et al. 2011</cite>
+</text>
+
+<text>
+++ Collection of classic papers <cite>Newman et al. 2006</cite>
+</text>
+
+<text>
+The first use of the <q>social network</q> term is often attributed to John Arundel Barnes <cite>Barnes 1954</cite>, an anthropologist who conducted a field study to analyze the social structure and decision-making processes in Bremnes, a small island in western Norway. Since then, social networks denote patterns of ties that encompass many concepts used by the social sciences, including bounded groups (e.g., tribes or families) and social categories (e.g., gender or ethnicity).
+</text>
+
+<text>
+Sociometry can be considered to be the precursor of social network analysis (and much of social psychology), as it was founded to measure interpersonal relations in small groups of people. Jacob Levy Moreno, the founder of sociometry, also pioneered the use of <q>sociograms</q> in the 1930's, e.g. <cite>Moreno and Jennings 1938</cite>. Sociograms are standard graph drawings used to depict the social links that determine the interpersonal structure of groups.
+</text>
+
+</document>
+
+
+<document>
+<title>Recommended books</title>
+
+
+<text>
+++ Networks <cite>Easley and Kleinberg 2010</cite> <cite>Newman 2010</cite> <cite>Jackson 2009</cite> <cite>Lewis 2009</cite> <cite>Cohen and Havlin 2010</cite> <cite>van Steen 2010</cite> <cite>Dogorotsev 2010</cite>
+</text>
+
+<text>
+++ Social network analysis <cite>Scott 2000</cite> <cite>Wasserman and Faust 1994</cite> <cite>Freeman 2004</cite> <cite>Thompson et al. 1991</cite> <cite>Hanneman and Riddle 2005</cite>
+</text>
+
+<text>
+++ Tool-oriented titles: Pajek <cite>de Nooy et al. 2005</cite>, NodeXL <cite>Hansen et al. 2010</cite>
+</text>
+
+<text>
+++ Monographs <cite>Bornholdt and Schuster 2003</cite> <cite>Cook and Holder 2007</cite> <cite>Yu et al. 2010</cite> <cite>Aggarwal and Wang 2010</cite> <cite>Aggarwal 2011</cite>
+</text>
+
+<text>
+++ Divulgative books <cite>Barabasi 2003</cite> <cite>Watts 2004</cite>...  <cite>Barabasi 2010</cite> <cite>Watts 2011</cite>
+</text>
+
+<text>
+++ <cite>Sterman 2000</cite> <cite>Goyal 2007</cite> <cite>Mitchell 2009</cite>, <cite>Sporns 2011</cite>...
+</text>
+
+</document>
+
+</document>
+
+
+
+<document>
+<tag>introduction-bibliography</tag>
+<title>References</title>
+
+
+<reference id="Aggarwal and Wang 2010">
+ <editor>Charu C. Aggarwal</editor>
+ <editor>Haixun Wang</editor>
+ <title>Managing and Mining Graph Data</title>
+ <publisher>Springer</publisher>
+ <year>2010</year>
+ <isbn>1441960449</isbn>
+ <file>[books]/algorithms/graphs/1441960449 Managing and Mining Graph Data.2010.pdf</file>
+</reference>
+
+<reference id="Aggarwal 2011">
+ <editor>Charu C. Aggarwal</editor>
+ <title>Social Network Data Analytics</title>
+ <publisher>Springer</publisher>
+ <year>2011</year>
+ <isbn>1441984615</isbn>
+ <file>[books]/algorithms/graphs/1441984615 Social Network Data Analytics.2011.pdf</file>
+</reference>
+
+<reference id="Albert and Barabasi 2002">
+ <author>Réka Albert</author>
+ <author>Albert-László Barabási</author>
+ <title>Statistical mechanics of complex networks</title>
+ <journal>Reviews of Modern Physics</journal>
+ <volume>74</volume>
+ <pages>47–97</pages>
+ <year>2002</year>
+ <doi>10.1103/RevModPhys.74.47</doi>
+ <file>Networks/2002 Reviews of Modern Physics [Barabasi] Statistical mechanics of complex networks.pdf</file>
+</reference>
+
+<reference id="Amaral and Ottino 2004">
+ <author>Luis A.N. Amaral</author>
+ <author>J.M. Ottino</author>
+ <title>Complex networks: Augmenting the framework for the study of complex systems</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>147-162</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00110-5</doi>
+ <file>Networks/2004 EPJB [Amaral &amp; Ottino] Complex networks.pdf</file>
+</reference>
+
+<reference id="Barabasi 2003">
+ <author>Albert-László Barabási</author>
+ <title>Linked: How Everything Is Connected to Everything Else and What It Means</title>
+ <publisher>Plume</publisher>
+ <year>2003</year>
+ <isbn>0452284392</isbn>
+</reference>
+
+<reference id="Barabasi 2010">
+ <author>Albert-László Barabási</author>
+ <title>Bursts: The Hidden Pattern Behind Everything We Do</title>
+ <publisher>Dutton</publisher>
+ <year>2010</year>
+ <isbn>0525951601</isbn>
+</reference>
+
+<reference id="Barabasi et al. 2011">
+ <author>Albert-László Barabási</author>
+ <author>Natali Gulbahce</author>
+ <author>Joseph Loscalzo</author>
+ <title>Network Medicine: A network-based approach to human disease</title>
+ <journal>Nature Reviews Genetics</journal>
+ <volume>12</volume>
+ <pages>56-68</pages>
+ <year>2011</year>
+ <doi>10.1038/nrg2918</doi>
+ <file>Networks/applications/biological/2011 Nature Reviews Genetics [Barabasi] Network Medicine.pdf</file>
+</reference>
+
+<reference id="Barabasi and Oltvai 2004">
+ <author>Albert-László Barabási</author>
+ <author>Zoltán N. Oltvai</author>
+ <title>Network Biology: Understanding the cell's functional organization</title>
+ <journal>Nature Reviews Genetics</journal>
+ <volume>5</volume>
+ <pages>101-113</pages>
+ <year>2004</year>
+ <doi>10.1038/nrg1272</doi>
+ <file>Networks/applications/biological/2004 Nature Reviews Genetics [Barabasi] Network Biology.pdf</file>
+</reference>
+
+
+<reference id="Barnes 1954">
+ <author>John Arundel Barnes</author>
+ <title>Class and Committees in a Norwegian Island Parish</title>
+ <journal>Human Relations</journal>
+ <volume>7</volume>
+ <number>1</number>
+ <pages>39-58</pages>
+ <year>1954</year>
+ <doi>10.1177/001872675400700102</doi>
+ <file>Networks/applications/social/1954 Human Relations [Barnes] Social Network.pdf</file>
+ <file>Networks/applications/social/1954 Human Relations [Barnes] Social Network.classics.pdf</file>
+</reference>
+
+<reference id="Boccaletti et al. 2006">
+ <author>Stefano Boccaletti</author>
+ <author>Vito Latora</author>
+ <author>Yamir Moreno</author>
+ <author>Mario Chavez</author>
+ <author>D.-U. Hwang</author>
+ <title>Complex networks: Structure and dynamics</title>
+ <journal>Physics Reports</journal>
+ <volume>424(4-5)</volume>
+ <pages>175-308</pages>
+ <year>2006</year>
+ <doi>10.1016/j.physrep.2005.10.009</doi>
+ <file>Networks/2006 Physics Reports [Boccaletti et al.] Complex Networks.pdf</file>
+</reference>
+
+<reference id="Boccaletti et al. 2009">
+ <editor>Stefano Boccaletti</editor>
+ <editor>Vito Latora</editor>
+ <editor>Yamir Moreno</editor>
+ <title>Handbook on Biological Networks</title>
+ <publisher>World Scientific Publishing Company</publisher>
+ <year>2009</year>
+ <isbn>9812838791</isbn>
+ <file>[books]/algorithms/graphs/9812838791 Handbook of Biological Networks.pdf</file>
+</reference>
+
+<reference id="Borner et al. 2007">
+ <author>Katy Börner</author>
+ <author>Soma Sanyal</author>
+ <author>Alessandro Vespignani</author>
+ <title>Network Science</title>
+ <journal>Annual Review of Information Science and Technology</journal>
+ <volume>41</volume>
+ <number>1</number>
+ <pages>537-607</pages>
+ <year>2007</year>
+ <doi>10.1002/aris.2007.1440410119</doi>
+ <file>Networks/2007 ARIST Network Science.pdf</file>
+</reference>
+
+
+<reference id="Bornholdt and Schuster 2003">
+ <editor>Stefan Bornholdt</editor>
+ <editor>Heinz Georg Schuster</editor>
+ <title>Handbook of Graphs and Networks: From the Genome to the Internet</title>
+ <publisher>Wiley-VCH</publisher>
+ <year>2003</year>
+ <isbn>3527403361</isbn>
+ <file>[books]/algorithms/graphs/3527403361 [Bornholdt &amp; Schuster] Handbook of Graphs And Networks.pdf</file>
+</reference>
+
+
+<reference id="Chartrand et al. 2011">
+ <author>Gary Chartrand</author>
+ <author>Linda Lesniak</author>
+ <author>Ping Zhang</author>
+ <title>Graphs &amp; Digraphs</title>
+ <edition>5th edition</edition>
+ <publisher>CRC Press</publisher>
+ <year>2011</year>
+ <isbn>978143982627</isbn>
+</reference>
+
+
+<reference id="Christakis and Fowler 2007">
+ <author>Nicholas A. Christakis</author>
+ <author>James H. Fowler</author>
+ <title>The Spread of Obesity in a Large Social Network over 32 Years</title>
+ <journal>The New England Journal of Medicine</journal>
+ <volume>357</volume>
+ <pages>370-379</pages>
+ <year>2007</year>
+ <doi>10.1056/NEJMsa066082</doi>
+ <file>Networks/applications/social/2007 NEJM Obesity in social networks.pdf</file>
+</reference>
+
+<reference id="Cohen and Havlin 2010">
+ <author>Reuven Cohen</author>
+ <author>Shlomo Havlin</author>
+ <title>Complex Networks: Structure, Robustness and Function</title>
+ <publisher>Cambridge University Press</publisher>
+ <year>2010</year>
+ <isbn>0521841569</isbn>
+ <file>[books]\algorithms\graphs\0521841569 [Havlin &amp; Cohen] Complex Networks.pdf</file>
+</reference>
+
+<reference id="Costa et al. 2007">
+ <author>Luciano da Fontoura Costa</author>
+ <author>Francisco Aparecido Rodrigues</author>
+ <author>Gonzalo Travieso</author>
+ <author>Paulino Ribeiro Villas Boas</author>
+ <title>Characterization of complex networks: A survey of measurements</title>
+ <journal>Advances in Physics</journal>
+ <volume>56</volume>
+ <number>1</number>
+ <pages>167-242</pages>
+ <year>2007</year>
+ <doi>10.1080/00018730601170527</doi>
+ <file>Networks/structure/2007 AP [Costa] Characterization of complex networks.pdf</file>
+</reference>
+
+<reference id="Costa et al. 2011">
+ <author>Luciano da Fontoura Costa</author>
+ <author>Osvaldo N. Oliveira Jr.</author>
+ <author>Gonzalo Travieso</author>
+ <author>Francisco Aparecido Rodrigues</author>
+ <author>Paulino Ribeiro Villas Boas</author>
+ <author>Lucas Antiqueira</author>
+ <author>Matheus Palhares Viana</author>
+ <author>Luis Enrique Correa Rocha</author>
+ <title>Analyzing and modeling real-world phenomena with complex networks: A survey of applications</title>
+ <journal>Advances in Physics</journal>
+ <volume>60</volume>
+ <number>3</number>
+ <pages>329-412</pages>
+ <year>2011</year>
+ <doi>10.1080/00018732.2011.572452</doi>
+ <file>Networks/applications/2011 AP [Costa] Survey of applications.pdf</file>
+</reference>
+
+<reference id="Cook and Holder 2007">
+ <editor>Diane J. Cook</editor>
+ <editor>Lawrence B. Holder</editor>
+ <title>Mining Graph Data</title>
+ <publisher>Wiley-Interscience</publisher>
+ <year>2007</year>
+ <isbn>0471731900</isbn>
+ <file>[books]/algorithms/graphs/0471731900 Mining Graph Data.pdf</file>
+</reference>
+
+<reference id="de Nooy et al. 2005">
+ <author>Wouter de Nooy</author>
+ <author>Andrej Mrvar</author>
+ <author>Vladimir Batagelj</author>
+ <title>Exploratory Social Network Analysis with Pajek</title>
+ <publisher>Cambridge University Press</publisher>
+ <year>2005</year>
+ <isbn>0521602629</isbn>
+ <file>[books]/algorithms/graphs/0521602629 [de Nooy] Exploratory Social Network Analysis With Pajek.pdf</file>
+</reference>
+
+<reference id="Dogorotsev 2010">
+ <author>Sergey Dorogovtsev</author>
+ <title>Lectures on Complex Networks</title>
+ <publisher>Oxford University Press</publisher>
+ <year>2010</year>
+ <isbn>0199548935</isbn>
+</reference>
+
+
+<reference id="Easley and Kleinberg 2010">
+ <author>David Easley</author>
+ <author>Jon Kleinberg</author>
+ <title>Networks, Crowds, and Markets: Reasoning About a Highly Connected World</title>
+ <publisher>Cambridge University Press</publisher>
+ <edition>1st edition</edition>
+ <year>2010</year>
+ <isbn>978-0-521-19533-1</isbn>
+ <file>[books]/algorithms/graphs/0521195330 [Easley &amp; Kleinberg] Networks, Crowds, and Markets.pdf</file>
+</reference>
+
+
+<reference id="Fewell and O'Donnell 2009">
+ <author>Jennifer H. Fewell</author>
+ <author>Sean O'Donnell</author>
+ <title>Social Networks: How Simple Parts Make Complex Systems</title>
+ <publisher>University of Washington Department of Psychology's Allen L. Edwards Psychology Lecture Series</publisher>
+ <year>2009</year>
+ <url>http://www.uwtv.org</url>
+</reference>
+
+
+<reference id="Freeman 2004">
+ <author>Linton C. Freeman</author>
+ <title>The Development of Social Network Analysis: A Study in the Sociology of Science</title>
+ <publisher>Empirical Press</publisher>
+ <edition>1st edition</edition>
+ <year>2004</year>
+ <isbn>1594577145</isbn>
+ <file>[books]/algorithms/graphs/1594577145 [Freeman] The Development of Social Network Analysis.pdf</file>
+</reference>
+
+
+<reference id="Goyal 2007">
+ <author>Sanjeev Goyal</author>
+ <title>Connections: An Introduction to the Economics of Networks</title>
+ <publisher>Princeton University Press</publisher>
+ <year>2007</year>
+ <isbn>069112650X</isbn>
+ <file>[books]/algorithms/graphs/069112650X [Goyal] Connections.pdf</file>
+</reference>
+
+<reference id="Guimera and Nunes 2005">
+ <author>Roger Guimerà</author>
+ <author>Luis A.N. Amaral</author>
+ <title>Functional cartography of complex metabolic networks</title>
+ <journal>Nature</journal>
+ <volume>433</volume>
+ <pages>895-900</pages>
+ <year>2005</year>
+ <doi>10.1038/nature03288</doi>
+ <file>Networks/applications/biological/2005 Nature - Functional cartography of complex metabolic networks.pdf</file>
+</reference>
+
+<reference id="Hanneman and Riddle 2005">
+ <author>Robert A. Hanneman</author>
+ <author>Mark Riddle</author>
+ <title>Introduction to social network methods</title>
+ <publisher>University of California, Riverside</publisher>
+ <url>http://www.faculty.ucr.edu/~hanneman/nettext/</url>
+ <year>2005</year>
+</reference>
+
+
+<reference id="Hansen et al. 2010">
+ <author>Derek Hansen</author>
+ <author>Ben Shneiderman</author>
+ <author>Marc A. Smith</author>
+ <author>Linton C. Freeman</author>
+ <title>Analyzing Social Media Networks with NodeXL: Insights from a Connected World</title>
+ <publisher>Morgan Kaufmann</publisher>
+ <year>2010</year>
+ <isbn>0123822297</isbn>
+</reference>
+
+<reference id="Jackson 2009">
+ <author>Matthew O. Jackson</author>
+ <title>Social and Economic Networks</title>
+ <publisher>Princeton University Press</publisher>
+ <edition>1st edition</edition>
+ <year>2010</year>
+ <isbn>978-0-691-14820-5</isbn>
+ <file>[books]/algorithms/graphs/0691134405 [Jackson] Social and Economic Networks.pdf</file>
+</reference>
+
+<reference id="Kim and Wilhelm 2008">
+ <author>Jongkwang Kim</author>
+ <author>Thomas Wilhelm</author>
+ <title>What is a complex graph?</title>
+ <journal>Physica A: Statistical Mechanics and its Applications</journal>
+ <volume>287</volume>
+ <number>11</number>
+ <pages>2637-2652</pages>
+ <year>2008</year>
+ <doi>10.1016/j.physa.2008.01.015</doi>
+ <file>Networks/2008 Physica A [Kim &amp; Wilhelm] Complex graph.pdf</file>
+</reference>
+
+
+<reference id="Lewis 2009">
+ <author>Ted G. Lewis</author>
+ <title>Network Science: Theory and Applications</title>
+ <publisher>Wiley</publisher>
+ <edition>1st edition</edition>
+ <year>2009</year>
+ <isbn>978-0-470-33188-0</isbn>
+ <file>[books]/algorithms/graphs/0470331887 [Lewis] Network Science - Theory and Applications.pdf</file>
+</reference>
+
+<reference id="Mitchell 2009">
+ <author>Melanie Mitchell</author>
+ <title>Complexity: A Guided Tour</title>
+ <publisher>Oxford University Press</publisher>
+ <year>2009</year>
+ <isbn>0195124413</isbn>
+</reference>
+
+
+<reference id="Moreno and Jennings 1938">
+ <author>Jacob L. Moreno</author>
+ <author>Helen H. Jennings</author>
+ <title>Statistics of Social Configurations</title>
+ <journal>Sociometry</journal>
+ <volume>1</volume>
+ <number>3/4</number>
+ <pages>342-374</pages>
+ <year>1938</year>
+ <url>http://www.jstor.org/stable/2785588</url>
+ <file>Networks/applications/social/1938 Sociometry [Moreno &amp; Jennings] Social configurations.pdf</file>
+</reference>
+
+
+<reference id="Naone 2011">
+ <author>Erica Naone</author>
+ <title>The New Big Data</title>
+ <journal>MIT Technology Review</journal>
+ <volume>August 22</volume>
+ <year>2011</year>
+ <url>http://www.technologyreview.com/computing/38397/</url>
+</reference>
+
+
+<reference id="Newman 2003">
+ <author>Mark E.J. Newman</author>
+ <title>The Structure and Function of Complex Networks</title>
+ <journal>SIAM Review</journal>
+ <volume>45</volume>
+ <pages>167-256</pages>
+ <year>2003</year>
+ <doi>10.1137/S003614450342480</doi>
+ <file>Networks/2003 SIAM Review [Newman] The structure and function of complex networks.draft.pdf</file>
+ <file>Networks/2003 SIAM Review [Newman] The structure and function of complex networks.pdf</file>
+</reference>
+
+
+
+
+<reference id="Newman 2010">
+ <author>Mark E. J. Newman</author>
+ <title>Networks: An Introduction</title>
+ <publisher>Oxford University Press</publisher>
+ <edition>1st edition</edition>
+ <year>2010</year>
+ <isbn>978-0-19-920665-0</isbn>
+</reference>
+
+<reference id="Newman et al. 2006">
+ <author>Mark E.J. Newman</author>
+ <author>Albert-László Barabási</author>
+ <author>Duncan J. Watts</author>
+ <title>The Structure and Dynamics of Networks</title>
+ <publisher>Princeton University Press</publisher>
+ <year>2006</year>
+ <isbn>0691113572</isbn>
+</reference>
+
+<reference id="Oltvai and Barabasi 2002">
+ <author>Zoltán N. Oltvai</author>
+ <author>Albert-László Barabási</author>
+ <title>Life's Complexity Pyramid</title>
+ <journal>Science</journal>
+ <volume>298</volume>
+ <number>5594</number>
+ <pages>763-764</pages>
+ <year>2002</year>
+ <doi>10.1126/science.1078563</doi>
+ <file>Networks/applications/biological/2002 Science [Barabasi] Life's complexity pyramid.pdf</file>
+</reference>
+
+<reference id="Scott 2000">
+ <author>John P. Scott</author>
+ <title>Social Network Analysis: A Handbook</title>
+ <publisher>Sage Publications Ltd.</publisher>
+ <edition>2nd edition</edition>
+ <year>2000</year>
+ <isbn>978-0-761-96339-4</isbn>
+ <file>[books]/algorithms/graphs/0761963391 [Scott] Social Network Analysis - A Handbook.pdf</file>
+</reference>
+
+
+<reference id="Sporns 2011">
+ <author>Olaf Sporns</author>
+ <title>Networks of the Brain</title>
+ <publisher>MIT Press</publisher>
+ <year>2011</year>
+ <isbn>9780262014694</isbn>
+</reference>
+
+
+<reference id="Sterman 2000">
+ <author>John D. Sterman</author>
+ <title>Business Dynamics: Systems Thinking and Modeling for a Complex World</title>
+ <publisher>McGraw-Hill Higher Education</publisher>
+ <year>2000</year>
+ <isbn>0071179895</isbn>
+</reference>
+
+<reference id="Strogatz 2001">
+ <author>Steven H. Strogatz</author>
+ <title>Exploring Complex Networks</title>
+ <journal>Nature</journal>
+ <volume>268</volume>
+ <pages>268-276</pages>
+ <year>2001</year>
+ <doi>10.1038/35065725</doi>
+ <file>Networks/2001 Nature [Strogatz] Exploring complex networks.pdf</file>
+</reference>
+
+
+<reference id="Tang et al. 2008">
+ <author>Jie Tang</author>
+ <author>Jing Zhang</author>
+ <author>Limin Yao</author>
+ <author>Juanzi Li</author>
+ <author>Li Zhang</author>
+ <author>Zhong Su</author>
+ <title>ArnetMiner: extraction and mining of academic social networks</title>
+ <proceedings>14th ACM SIGKDD International Conference on Knowledge Discovery in Data Mining</proceedings>
+ <conference>KDD</conference>
+ <year>2008</year>
+ <isbn>978-1-60558-193-4</isbn>
+ <location>Las Vegas, Nevada, USA</location>
+ <pages>990-998</pages>
+ <doi>10.1145/1401890.1402008</doi>
+ <file>Networks/applications/bibliographic/2008 KDD ArnetMiner.pdf</file>
+</reference>
+
+
+<reference id="Thompson et al. 1991">
+ <editor>Grahame Thompson</editor>
+ <editor>Jennifer Frances</editor>
+ <editor>Rosalind Levacic</editor>
+ <editor>Jeremy Mitchell</editor>
+ <title>Markets, Hierarchies and Networks: The Coordination of Social Life</title>
+ <publisher>SAGE Publications</publisher>
+ <year>1991</year>
+ <isbn>0803985908</isbn>
+</reference>
+
+
+<reference id="van Steen 2010">
+ <author>Maarten van Steen</author>
+ <title>Graph Theory and Complex Networks: An Introduction</title>
+ <publisher>Maarten van Steen</publisher>
+ <year>2010</year>
+ <isbn>9081540610</isbn>
+ <url>http://www.distributed-systems.net/gtcn/</url>
+ <file>[books]\algorithms\graphs\9081540610 [van Steen] Graph Theory and Complex Networks.pdf</file>
+</reference>
+
+
+<reference id="Wasserman and Faust 1994">
+ <author>Stanley Wasserman</author>
+ <author>Katherine Faust</author>
+ <title>Social Network Analysis: Methods and Applications</title>
+ <publisher>Cambridge University Press</publisher>
+ <edition>1st edition</edition>
+ <year>1994</year>
+ <isbn>0-521-38707-8</isbn>
+ <file>[books]/algorithms/graphs/0521387078 [Wasserman] Social Network Analysis - Methods and Applications.pdf</file>
+</reference>
+
+
+<reference id="Watts 2004">
+ <author>Duncan J. Watts</author>
+ <title>Six Degrees: The Science of a Connected Age</title>
+ <publisher>W. W. Norton &amp; Company</publisher>
+ <year>2004</year>
+ <isbn>0393325423</isbn>
+</reference>
+
+
+<reference id="Watts 2011">
+ <author>Duncan J. Watts</author>
+ <title>Everything Is Obvious (Once You Know the Answer)</title>
+ <publisher>Crown Business</publisher>
+ <year>2011</year>
+ <isbn>0385531680</isbn>
+</reference>
+
+<reference id="Wright 2000">
+ <author>Robert Wright</author>
+ <title>Nonzero: The Logic of Human Destiny</title>
+ <publisher>Little, Brown &amp; Company</publisher>
+ <year>2000</year>
+ <isbn>0316644854</isbn>
+</reference>
+
+
+<reference id="Yu et al. 2010">
+ <editor>Philip S. Yu</editor>
+ <editor>Jiawei Han</editor>
+ <editor>Christos Faloutsos</editor>
+ <title>Link Mining: Models, Algorithms, and Applications</title>
+ <publisher>Springer</publisher>
+ <year>2010</year>
+ <isbn>1441965149</isbn>
+ <file>[books]/algorithms/graphs/1441965149 Link Mining.2010.pdf</file>
+</reference>
+
+
+</document>
+
+
+</document>

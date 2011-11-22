@@ -1,0 +1,288 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+<title>Plantilla de documento</title>
+
+
+<document>
+<tag>process</tag>
+<title>El proceso de diseño de bases de datos</title>
+
+<document>
+<tag>process1</tag>
+<title>Diseño conceptual</title>
+</document>
+<document>
+<tag>process2</tag>
+<title>Diseño lógico</title>
+</document>
+<document>
+<tag>process3</tag>
+<title>Diseño físico</title>
+</document>
+
+</document>
+
+
+<document>
+<tag>notations</tag>
+<title>Notaciones alternativas</title>
+
+<document>
+<title>Diagramas UML</title>
+</document>
+<document>
+<title>Diagramas entidad/relación</title>
+</document>
+<document>
+<title>Diagramas CASE*Method</title>
+</document>
+
+</document>
+
+
+<document>
+<tag>strategies</tag>
+<title>Listas</title>
+
+<text>
+Una lista de ejemplo:
+</text>
+
+<list>
+<item>
+Primer elemento de la lista
+
+  <list>
+   <item>
+   Lista anidada
+
+     <list>
+     <item>Lista de tercer nivel</item>
+     <item>Más elementos...</item>
+     </list>
+
+   </item>
+      
+   <item>Segundo elemento de la lista anidada</item>
+   <item>Tercer elemento de la lista anidada</item>
+  </list>
+</item>
+<item>Segundo elemento de la lista</item>
+<item>Tercer elemento de la lista</item>
+<item>Cuarto elemento de la lista</item>
+</list>
+
+<text>
+FIN de la lista de ejemplo.
+</text>
+</document>
+
+
+
+<document>
+<tag>patterns</tag>
+<title>Ecuaciones</title>
+
+<text>
+Las ecuaciones de Maxwell:
+</text>
+
+	<equation id="maxwell">
+	\begin{aligned}
+          \nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &amp; = \frac{4\pi}{c}\vec{\mathbf{j}} \\  
+	  \nabla \cdot \vec{\mathbf{E}} &amp; = 4 \pi \rho \\
+          \nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} &amp; = \vec{\mathbf{0}} \\
+          \nabla \cdot \vec{\mathbf{B}} &amp; = 0 
+	\end{aligned}
+	</equation>
+
+
+<text>
+donde <eqn id="maxwellE">\vec{\mathbf{E}}</eqn> representa...
+</text>
+
+</document>
+
+<document>
+<tag>misc</tag>
+<title>Ejemplos</title>
+
+	<example>
+	  <title>Ejemplo de código</title>
+	  <code>
+def eratosthenes_sieve(n):
+    # Create a candidate list within which non-primes will be
+    # marked as None; only candidates below sqrt(n) need be checked. 
+    candidates = list(range(n+1))
+    fin = int(n**0.5)
+ 
+    # Loop over the candidates, marking out each multiple.
+    for i in xrange(2, fin+1):
+        if candidates[i]:
+            candidates[2*i::i] = [None] * (n//i - 1)
+ 
+    # Filter out non-primes and return the list.
+    return [i for i in candidates[2:] if i]
+	  </code>
+	</example>
+
+<comment>
+  <title>Descripción del algoritmo</title>
+  <text>La criba de Eratóstenes en Python...</text>
+</comment>
+
+<note>
+  <title>Más información</title>
+  <text><url>http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes</url></text>
+</note>
+
+</document>
+
+
+<document>
+<tag>images</tag>
+<title>Imágenes</title>
+
+	<image scale="5">
+	 <url>image/type/mime-xml.png</url>
+	 <title>Formato XML</title>
+	</image>
+
+	<image scale="5">
+	 <url>image/type/mime-html.png</url>
+	 <title>Formato HTML</title>
+	</image>
+
+	<image scale="5">
+	 <url>image/type/mime-pdf.png</url>
+	 <title>Formato PDF</title>
+	</image>
+
+	<image scale="5">
+	 <url>image/type/mime-tex.png</url>
+	 <title>Formato LaTeX</title>
+	</image>
+
+</document>
+
+
+<document>
+<tag>bibliography</tag>
+<title>Bibliografía</title>
+
+
+<document>
+<tag>bibliography-books</tag>
+<title>Libros recomendados</title>
+
+
+<book>
+ <author>Robert L. Glass</author>
+ <title>Facts and Fallacies of Software Engineering</title>
+ <publisher>Addison-Wesley, 2003</publisher>
+ <isbn>0321117425</isbn>
+ <comment>
+  <text>Este es un comentario... Este es un comentario... Este es un comentario... Este es un comentario... Este es un comentario... Este es un comentario... Este es un comentario... Este es un comentario... Este es un comentario... Este es un comentario...</text>
+  <text>...en dos párrafos</text>
+ </comment>
+</book>
+
+<book>
+ <author>David C. Hay</author>
+ <title>Data Model Patterns</title>
+ <publisher>Dorset House Publishing, 1995</publisher>
+ <isbn>0932633293</isbn>
+ <comment>
+   <text>Patrones de diseño...</text>
+ </comment>
+</book>
+
+
+<book>
+ <author>Martin Fowler</author>
+ <title>Patterns of Enterprise Application Architecture</title>
+ <publisher>Addison-Wesley, 2003</publisher>
+ <isbn>0321127420</isbn>
+</book>
+
+
+<book>
+ <author>Steve McConnell</author>
+ <title>Code Complete: A practical handbook of software construction</title>
+ <publisher>Microsoft Press, 2ª edición, 2004</publisher>
+ <isbn>0735619670</isbn>
+</book>
+
+</document>
+
+
+<document>
+<tag>bibliography-refs</tag>
+<title>Referencias científicas</title>
+
+<text>
+XXX aparece descrito en <cite>New2010</cite>, <cite>BA1999</cite> y <cite>LKF2005</cite>.
+</text>
+
+<!-- Book -->
+
+<reference id="New2010">
+ <author>Mark E. J. Newman</author>
+ <title>Networks: An Introduction</title>
+ <publisher>Oxford University Press</publisher>
+ <edition>1st edition</edition>
+ <year>2010</year>
+ <isbn>978-0-19-920665-0</isbn>
+ <comment>
+  <text>Excellent introductory textbook...</text>
+ </comment>
+</reference>
+
+<!-- Journal article -->
+
+<reference id="BA1999">
+ <author>Albert-László Barabási</author>
+ <author>Réka Albert</author>
+ <title>Emergence of scaling in random networks</title>
+ <journal>Science</journal>
+ <volume>286</volume>
+ <number>5439</number>
+ <pages>509-512</pages>
+ <year>1999</year>
+ <doi>10.1126/science.286.5439.509</doi>
+ <comment>
+  <text>Barabasi-Albert model...</text>
+ </comment>
+</reference>
+
+<!-- Conference paper -->
+
+<reference id="LKF2005">
+ <author>Jure Leskovec</author>
+ <author>Jon Kleinberg</author>
+ <author>Christos Faloutsos</author>
+ <title>Graphs over time: densification laws, shrinking diameters and possible explanations</title>
+ <proceedings>11th ACM SIGKDD International Conference on Knowledge Discovery in Data Mining</proceedings>
+ <conference>KDD</conference>
+ <year>2005</year>
+ <isbn>1-59593-135-X</isbn>
+ <location>Chicago, Illinois, USA</location>
+ <pages>177-187</pages>
+ <doi>10.1145/1081870.1081893</doi>
+ <comment>
+  <text>KDD'2005 Best Paper Award...</text>
+ </comment>
+</reference>
+
+
+</document>
+
+
+</document>
+
+
+
+</document>

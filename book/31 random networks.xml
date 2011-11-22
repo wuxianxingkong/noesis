@@ -1,0 +1,108 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+<title>Regular and Random Networks</title>
+
+
+<document>
+<tag>regular-networks</tag>
+<title>Regular networks</title>
+</document>
+
+
+<document>
+<tag>random-networks</tag>
+<title>Random networks</title>
+
+<document>
+<tag>random-erdos-renyi</tag>
+<title>Random graphs: Erdos-Renyi</title>
+</document>
+
+<document>
+<tag>random-degree-distributions</tag>
+<title>Random graphs with general degree distributions</title>
+</document>
+
+<document>
+<tag>random-exponential</tag>
+<title>Exponential random graphs</title>
+</document>
+
+</document>
+
+
+
+
+<document>
+<tag>random-notes</tag>
+<title>Bibliographic notes</title>
+
+
+<text>
+++ <cite>Erdos and Renyi 1959</cite> <cite>Erdos and Renyi 1960</cite>
+</text>
+
+
+<text>
+++ <cite>Bornholdt and Schuster 2003</cite> <cite>Bollobas et al. 2009</cite>
+</text>
+
+</document>
+
+<document>
+<tag>random-references</tag>
+<title>References</title>
+
+<reference id="Bollobas et al. 2009">
+ <title>Handbook of Large-Scale Random Networks</title>
+ <editor>Bela Bollobas</editor>
+ <editor>Robert Kozma</editor>
+ <editor>Dezso Miklos</editor>
+ <publisher>Springer</publisher>
+ <year>2009</year>
+ <isbn>3540693947</isbn>
+ <file>[books]\algorithms\graphs\3540693947 [Bollobas] Handbook of Large-Scale Random Networks.pdf</file>
+</reference>
+
+<reference id="Bornholdt and Schuster 2003">
+ <editor>Stefan Bornholdt</editor>
+ <editor>Heinz Georg Schuster</editor>
+ <title>Handbook of Graphs and Networks: From the Genome to the Internet</title>
+ <publisher>Wiley-VCH</publisher>
+ <year>2003</year>
+ <isbn>3527403361</isbn>
+ <file>[books]/algorithms/graphs/3527403361 [Bornholdt &amp; Schuster] Handbook of Graphs And Networks.pdf</file>
+</reference>
+
+
+<reference id="Erdos and Renyi 1959">
+ <author>Paul Erdös</author>
+ <author>Alfréd Rényi</author>
+ <title>On Random Graphs</title>
+ <journal>Publicationes Mathematicae</journal>
+ <volume>6</volume>
+ <pages>290-297</pages>
+ <year>1959</year>
+ <url>http://www.renyi.hu/~p_erdos/1959-11.pdf</url>
+ <file>Networks/models/random/1959 [Erdos &amp; Renyi] Random graphs.pdf</file>
+</reference>
+
+<reference id="Erdos and Renyi 1960">
+ <author>Paul Erdös</author>
+ <author>Alfréd Rényi</author>
+ <title>On the Evolution of Random Graphs</title>
+ <journal>Publications of the Mathematical Institute of the Hungarian Academy of Sciences</journal>
+ <volume>5</volume>
+ <pages>17-61</pages>
+ <year>1960</year>
+ <url>http://www.renyi.hu/~p_erdos/1960-10.pdf</url>
+ <file>Networks/models/random/1960 [Erdos &amp; Renyi] Evolution of random graphs.pdf</file>
+</reference>
+
+
+</document>
+
+</document>

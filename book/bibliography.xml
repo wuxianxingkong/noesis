@@ -1,0 +1,4378 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book-references.xsl"?>
+
+
+<document>
+<tag>bibliography</tag>
+<title>Bibliography</title>
+
+
+
+<reference id="Adamcsek et al. 2006">
+ <author>Balázs Adamcsek</author>
+ <author>Gergely Palla</author>
+ <author>Illés J. Farkas</author>
+ <author>Imre Derényi</author>
+ <author>Tamás Vicsek</author>
+ <title>CFinder: locating cliques and overlapping modules in biological networks</title>
+ <journal>Bioinformatics</journal>
+ <volume>22</volume>
+ <number>8</number>
+ <pages>1021-1023</pages>
+ <year>2006</year>
+ <doi>10.1093/bioinformatics/btl039</doi>
+ <file>Networks/algorithms/clustering/2006 Bioinformatics [Adamcsek] CFinder.pdf</file>
+</reference>
+
+
+
+<reference id="Adamic and Huberman 2001">
+ <author>Lada Adamic</author>
+ <author>Bernardo A. Huberman</author>
+ <title>The Web's Hidden Order</title>
+ <journal>Communications of the ACM</journal>
+ <volume>44</volume>
+ <number>9</number>
+ <pages>55-59</pages>
+ <year>2001</year>
+ <doi>10.1145/383694.383707</doi>
+ <file>Networks/applications/www/2001 CACM Web's Hidden Order.pdf</file>
+</reference>
+
+
+<reference id="Adamic et al. 2008">
+ <author>Lada Adamic</author>
+ <author>Jun Zhang</author>
+ <author>Eytan Bakshy</author>
+ <author>Mark S. Ackerman</author>
+ <title>Knowledge Sharing and Yahoo Answers: Everyone Knows Something</title>
+ <proceedings>17th International Conference on the World Wide Web</proceedings>
+ <conference>WWW</conference>
+ <year>2008</year>
+ <isbn>978-1-60558-085-2</isbn>
+ <location>Beijing, China</location>
+ <pages>665-674</pages>
+ <doi>10.1145/1367497.1367587</doi>
+ <file>Networks/applications/www/2008 WWW Yahoo Answers.pdf</file>
+</reference>
+
+
+
+<reference id="Adar and Adamic 2005">
+ <author>Eytan Adar</author>
+ <author>Lada Adamic</author>
+ <title>Tracking Information Epidemics in Blogspace</title>
+ <proceedings>IEEE/WIC/ACM International Conference on Web Intelligence</proceedings>
+ <conference>WI</conference>
+ <year>2005</year>
+ <isbn>0-7695-2415-X</isbn>
+ <location>Compiegne, France</location>
+ <pages>207-214</pages>
+ <doi>10.1109/WI.2005.151</doi>
+ <file>Networks/applications/www/blogs/2005 WI Information Epidemics in Blogspace.pdf</file>
+</reference>
+
+
+<reference id="Aggarwal and Wang 2010">
+ <editor>Charu C. Aggarwal</editor>
+ <editor>Haixun Wang</editor>
+ <title>Managing and Mining Graph Data</title>
+ <publisher>Springer</publisher>
+ <year>2010</year>
+ <isbn>1441960449</isbn>
+ <file>[books]/algorithms/graphs/1441960449 Managing and Mining Graph Data.2010.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+<reference id="Aggarwal 2011">
+ <editor>Charu C. Aggarwal</editor>
+ <title>Social Network Data Analytics</title>
+ <publisher>Springer</publisher>
+ <year>2011</year>
+ <isbn>1441984615</isbn>
+ <file>[books]/algorithms/graphs/1441984615 Social Network Data Analytics.2011.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Ahn et al. 2007">
+ <author>Yong-Yeol Ahn</author>
+ <author>Seungyeop Han</author>
+ <author>Haewoon Kwak</author>
+ <author>Sue Moon</author>
+ <author>Hawoong Jeong</author>
+ <title>Analysis of topological characteristics of huge online social networking services</title>
+ <proceedings>16th International Conference on the World Wide Web</proceedings>
+ <conference>WWW</conference>
+ <year>2007</year>
+ <isbn>978-1-59593-654-7</isbn>
+ <location>Banff, Alberta, Canada</location>
+ <pages>835-844</pages>
+ <doi>10.1145/1242572.1242685</doi>
+ <file>Networks/applications/www/2007 WWW Topological characteristics of online social networks.pdf</file>
+</reference>
+
+<reference id="Ahn et al. 2010">
+ <author>Yong-Yeol Ahn</author>
+ <author>James P. Bagrow</author>
+ <author>Sune Lehmann</author>
+ <title>Link communities reveal multiscale complexity in networks</title>
+ <journal>Nature</journal>
+ <volume>466</volume>
+ <pages>761-764</pages>
+ <year>2010</year>
+ <doi>10.1038/nature09182</doi>
+ <file>Networks/algorithms/clustering/2010 Nature [Ahn, Bagrow &amp; Lehmann] Link communities.pdf</file>
+ <comment>
+  <text>Clustering the links between nodes, rather than the nodes themselves, thereby allowing each node to belong to multiple overlapping or nested communities.</text>
+ </comment>
+</reference>
+
+
+<reference id="Aho et al. 1983">
+ <author>Alfred V. Aho</author>
+ <author>John E. Hopcroft</author>
+ <author>Jeffrey D. Ullman</author>
+ <title>Data Structures and Algorithms</title>
+ <publisher>Addison-Wesley</publisher>
+ <year>1983</year>
+ <isbn>0201000237</isbn>
+ <file>[books]/algorithms/ddj/books/book9/toc.htm</file>
+ <comment>
+  <text>Another classic textbook...</text>
+ </comment>
+</reference>
+
+
+<reference id="Ahuja et al. 1993">
+ <author>Ravindra K. Ahuja</author>
+ <author>Thomas L. Magnanti</author>
+ <author>James B. Orlin</author>
+ <title>Network Flows: Theory, Algorithms, and Applications</title>
+ <publisher>Prentice Hall</publisher>
+ <year>1993</year>
+ <isbn>013617549X</isbn>
+ <file>[books]/algorithms/graphs/013617549X [Ahuja] Network Flows.1993.zip</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Alava and Dogorotsev 2005">
+ <author>Mikko J. Alava</author>
+ <author>Sergey Dorogovtsev</author>
+ <title>Complex networks created by aggregation</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>71</volume>
+ <number>3</number>
+ <pages>036107</pages>
+ <year>2005</year>
+ <doi>10.1103/PhysRevE.71.036107</doi>
+ <file>Networks/models/scale-free/2005 PhysRevE [Alava &amp; Dogorovtsev] Complex networks created by aggregation.pdf</file>
+</reference>
+
+
+<reference id="Albert and Barabasi 2002">
+ <author>Réka Albert</author>
+ <author>Albert-László Barabási</author>
+ <title>Statistical mechanics of complex networks</title>
+ <journal>Reviews of Modern Physics</journal>
+ <volume>74</volume>
+ <pages>47–97</pages>
+ <year>2002</year>
+ <doi>10.1103/RevModPhys.74.47</doi>
+ <file>Networks/2002 Reviews of Modern Physics [Barabasi] Statistical mechanics of complex networks.pdf</file>
+ <comment>
+  <text>Survey paper...</text>
+ </comment>
+</reference>
+
+
+<reference id="Alexanderson 2006">
+ <author>Gerald L. Alexanderson</author>
+ <title>Euler and Königsberg's bridges: A historical view</title>
+ <journal>Bulletin of the American Mathematical Society</journal>
+ <volume>43</volume>
+ <number>4</number>
+ <pages>567-573</pages>
+ <year>2006</year>
+ <doi>10.1090/S0273-0979-06-01130-X</doi>
+ <file>Networks/2006 BAMS [Alexanderson] Euler and Konigsberg's bridges.pdf</file>
+</reference>
+
+
+<reference id="Alvarez-Hamelin and Schabanel 2004">
+ <author>J.I. Alvarez-Hamelin</author>
+ <author>N. Schabanel</author>
+ <title>An Internet graph model based on trade-off optimization</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>231-237</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00116-y</doi>
+ <file>Networks/applications/www/2004 EPJB An internet graph model based on trade-off optimization.pdf</file>
+</reference>
+
+
+<reference id="Amaral et al. 2000">
+ <author>Luis A.N. Amaral</author>
+ <author>A. Scala</author>
+ <author>Marc Barthélemy</author>
+ <author>H. Eugene Stanley</author>
+ <title>Classes of small-world networks</title>
+ <journal>PNAS</journal>
+ <volume>97</volume>
+ <number>21</number>
+ <pages>11149-11152</pages>
+ <year>2000</year>
+ <doi>10.1073/pnas.200327197</doi>
+ <file>Networks/models/scale-free/2000 PNAS [Amaral] Classes of small-world networks.pdf</file>
+</reference>
+
+
+<reference id="Amaral and Guimera 2006">
+ <author>Luis A.N. Amaral</author>
+ <author>Roger Guimerà</author>
+ <title>Complex networks: Lies, damned lies and statistics</title>
+ <journal>Nature Physics</journal>
+ <volume>2</volume>
+ <pages>75-76</pages>
+ <year>2006</year>
+ <doi>10.1038/nphys228</doi>
+ <file>Networks/structure/2006 Nature Physics [Amaral &amp; Guimera] Lies, damnes lies and statistics.pdf</file>
+</reference>
+
+
+<reference id="Amaral and Ottino 2004">
+ <author>Luis A.N. Amaral</author>
+ <author>J.M. Ottino</author>
+ <title>Complex networks: Augmenting the framework for the study of complex systems</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>147-162</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00110-5</doi>
+ <file>Networks/2004 EPJB [Amaral &amp; Ottino] Complex networks.pdf</file>
+</reference>
+
+
+<reference id="Arenas et al. 2004">
+ <author>Alex Arenas</author>
+ <author>L. Danon</author>
+ <author>Albert Díaz-Guilera</author>
+ <author>P.M. Gleiser</author>
+ <author>Roger Guimerà</author>
+ <title>Community analysis in social networks</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>373-380</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00130-1</doi>
+ <file>Networks/applications/social/2004 EPJB Community analysis in social networks.pdf</file>
+</reference>
+
+
+<reference id="Arenas et al. 2008">
+ <author>Alex Arenas</author>
+ <author>Albert Díaz-Guilera</author>
+ <author>Jurgen Kurths</author>
+ <author>Yamir Moreno</author>
+ <author>Changsong Zhou</author>
+ <title>Synchronization in complex networks</title>
+ <journal>Physics Reports</journal>
+ <volume>469</volume>
+ <number>3</number>
+ <pages>93-153</pages>
+ <year>2008</year>
+ <doi>10.1016/j.physrep.2008.09.002</doi>
+ <file>Networks/dynamics/synchronization/2008 Physics Reports [Arenas et al.] Synchronization in complex networks.pdf</file>
+ <comment>
+  <text>Survey paper...</text>
+ </comment>
+</reference>
+
+
+<reference id="Avis et al. 2005">
+ <editor>David Avis</editor>
+ <editor>Alain Hertz</editor>
+ <editor>Odile Marcotte</editor>
+ <title>Graph Theory and Combinatorial Optimization</title>
+ <publisher>Springer</publisher>
+ <year>2005</year>
+ <isbn>0387255915</isbn>
+ <file>[books]/algorithms/graphs/0387255915 [Avis, Hertz &amp; Marcotte] Graph Theory and Combinatorial Optimization.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Bang-Jensen and Gutin 2002">
+ <author>Jorgen Bang-Jensen</author>
+ <author>Gregory Gutin</author>
+ <title>Digraphs: Theory, Algorithms and Applications</title>
+ <publisher>Springer</publisher>
+ <year>2002</year>
+ <isbn>1852332689</isbn>
+ <file>[books]\algorithms\graphs\1852332689 [Bang-Jensen &amp; Gutin] Digraphs.zip</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+
+
+<reference id="Barabasi 2003">
+ <author>Albert-László Barabási</author>
+ <title>Linked: How Everything Is Connected to Everything Else and What It Means</title>
+ <publisher>Plume</publisher>
+ <year>2003</year>
+ <isbn>0452284392</isbn>
+ <comment>
+  <text>One of the best-known divulgative books on basic network research.</text>
+ </comment>
+</reference>
+
+
+<reference id="Barabasi 2005">
+ <author>Albert-László Barabási</author>
+ <title>Taming complexity</title>
+ <journal>Nature Physics</journal>
+ <volume>1</volume>
+ <pages>68-70</pages>
+ <year>2005</year>
+ <doi>10.1038/nphys162</doi>
+ <file>Networks/2005 Nature Physics [Barabasi] Taming complexity.pdf</file>
+</reference>
+
+
+<reference id="Barabasi 2010">
+ <author>Albert-László Barabási</author>
+ <title>Bursts: The Hidden Pattern Behind Everything We Do</title>
+ <publisher>Dutton</publisher>
+ <year>2010</year>
+ <isbn>0525951601</isbn>
+ <comment>
+  <text>Recent divulgative book with an odd organization: Hungarian History in even chapters, bursts as a consequence of power laws in odd chapters.</text>
+ </comment>
+</reference>
+
+
+<reference id="Barabasi and Albert 1999">
+ <author>Albert-László Barabási</author>
+ <author>Réka Albert</author>
+ <title>Emergence of scaling in random networks</title>
+ <journal>Science</journal>
+ <volume>286</volume>
+ <number>5439</number>
+ <pages>509-512</pages>
+ <year>1999</year>
+ <doi>10.1126/science.286.5439.509</doi>
+ <file>Networks/models/1999 Science [Barabasi &amp; Albert] Scaling in random networks.pdf</file>
+ <comment>
+  <text>Barabasi-Albert model... <url>http://en.wikipedia.org/wiki/BA_model</url>.</text>
+ </comment>
+</reference>
+
+<reference id="Barabasi and Bonabeau 2003">
+ <author>Albert-László Barabási</author>
+ <author>Eric Bonabeau</author>
+ <title>Scale-Free Networks</title>
+ <journal>Scientific American</journal>
+ <volume>288</volume>
+ <number>5</number>
+ <pages>50-59</pages>
+ <year>2003</year>
+ <file>Networks/models/scale-free/2003 Scientific American [Barabasi] Scale-Free Networks.pdf</file>
+</reference>
+
+<reference id="Barabasi et al. 2011">
+ <author>Albert-László Barabási</author>
+ <author>Natali Gulbahce</author>
+ <author>Joseph Loscalzo</author>
+ <title>Network Medicine: A network-based approach to human disease</title>
+ <journal>Nature Reviews Genetics</journal>
+ <volume>12</volume>
+ <pages>56-68</pages>
+ <year>2011</year>
+ <doi>10.1038/nrg2918</doi>
+ <file>Networks/applications/biological/2011 Nature Reviews Genetics [Barabasi] Network Medicine.pdf</file>
+</reference>
+
+<reference id="Barabasi and Oltvai 2004">
+ <author>Albert-László Barabási</author>
+ <author>Zoltán N. Oltvai</author>
+ <title>Network Biology: Understanding the cell's functional organization</title>
+ <journal>Nature Reviews Genetics</journal>
+ <volume>5</volume>
+ <pages>101-113</pages>
+ <year>2004</year>
+ <doi>10.1038/nrg1272</doi>
+ <file>Networks/applications/biological/2004 Nature Reviews Genetics [Barabasi] Network Biology.pdf</file>
+</reference>
+
+
+<reference id="Barnes 1954">
+ <author>John Arundel Barnes</author>
+ <title>Class and Committees in a Norwegian Island Parish</title>
+ <journal>Human Relations</journal>
+ <volume>7</volume>
+ <number>1</number>
+ <pages>39-58</pages>
+ <year>1954</year>
+ <doi>10.1177/001872675400700102</doi>
+ <file>Networks/applications/social/1954 Human Relations [Barnes] Social Network.pdf</file>
+ <file>Networks/applications/social/1954 Human Relations [Barnes] Social Network.classics.pdf</file>
+</reference>
+
+
+<reference id="Barrat et al. 2008">
+ <author>Alain Barrat</author>
+ <author>Marc Barthélemy</author>
+ <author>Alessandro Vespignani</author>
+ <title>Dynamical Processes on Complex Networks</title>
+ <publisher>Cambridge University Press</publisher>
+ <year>2008</year>
+ <isbn>0521879507</isbn>
+ <file>[books]/algorithms/graphs/0521879507 [Barrat, Barthelemy &amp; Vespignani] Dynamical Processes on Complex Networks.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Barthelemy 2004">
+ <author>Marc Barthélemy</author>
+ <title>Betweenness centrality in large complex networks</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>163-168</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00111-4</doi>
+ <file>Networks/structure/metrics/2004 EPJB [Barthelemy] Betweenness centrality.pdf</file>
+</reference>
+
+
+<reference id="Bar-Yam 2003">
+ <author>Yaneer Bar-Yam</author>
+ <title>Dynamics Of Complex Systems</title>
+ <publisher>Westview Press</publisher>
+ <year>2003</year>
+ <isbn>0813341213</isbn>
+ <file>[books]/algorithms/graphs/0813341213 [Bar-Yam] Dynamics of Complex Systems.zip</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Barzel and Biham 2009">
+ <author>Baruch Barzel</author>
+ <author>Ofer Biham</author>
+ <title>Quantifying the connectivity of a network: The network correlation function method</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>80</volume>
+ <number>4</number>
+ <pages>046104</pages>
+ <year>2009</year>
+ <doi>10.1103/PhysRevE.80.046104</doi>
+ <file>Networks/structure/metrics/2009 PhysRevE [Barzel &amp; Biham] Network correlation function.pdf</file>
+</reference>
+
+
+<reference id="Battiston and Catanzaro 2004">
+ <author>S. Battiston</author>
+ <author>M. Catanzaro</author>
+ <title>Statistical properties of corporate board and director networks</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>345-352</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00127-8</doi>
+ <file>Networks/applications/economic/2004 EPJB Statistical properties of corporate board and director networks.pdf</file>
+</reference>
+
+
+<reference id="Beinhocker 2006">
+ <author>Eric D. Beinhocker</author>
+ <title>The Origin of Wealth: Evolution, Complexity, and the Radical Remaking of Economics</title>
+ <publisher>Harvard Business School Press</publisher>
+ <year>2006</year>
+ <isbn>157851777X</isbn>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+<reference id="Berge 1958">
+ <author>Claude Berge</author>
+ <title>Théorie des Graphes et ses Applications</title>
+ <publisher>Dunod, Paris</publisher>
+ <year>1958</year>
+</reference>
+
+<reference id="Berge 2001">
+ <author>Claude Berge</author>
+ <title>The Theory of Graphs</title>
+ <publisher>Dover Publications</publisher>
+ <year>2001</year>
+ <isbn>0486419754</isbn>
+</reference>
+
+
+<reference id="Bertsekas 1998">
+ <author>Dimitri P. Bertsekas</author>
+ <title>Network Optimization: Continuous and Discrete Models</title>
+ <publisher>Athena Scientific</publisher>
+ <year>1998</year>
+ <isbn>1886529027</isbn>
+ <file>[books]/algorithms/graphs/1886529027 [Bertsekas] Network Optimization - Continuous and Discrete Models.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+
+
+<reference id="Bird et al. 2006a">
+ <author>Christian Bird</author>
+ <author>Alex Gourley</author>
+ <author>Premkumar T. Devanbu</author>
+ <author>Michael Gertz</author>
+ <author>Anand Swaminathan</author>
+ <title>Mining email social networks</title>
+ <proceedings>International Workshop on Mining Software Repositories</proceedings>
+ <conference>MSR</conference>
+ <year>2006</year>
+ <location>Shanghai, China</location>
+ <pages>137-143</pages>
+ <isbn>1-59593-397-2</isbn>
+ <doi>10.1145/1137983.1138016</doi>
+ <file>Networks/applications/communication/email/2006 MSR Mining email social networks.pdf</file>
+</reference>
+
+<reference id="Bird et al. 2006b">
+ <author>Christian Bird</author>
+ <author>Alex Gourley</author>
+ <author>Premkumar T. Devanbu</author>
+ <author>Michael Gertz</author>
+ <author>Anand Swaminathan</author>
+ <title>Mining email social networks in Postgres</title>
+ <proceedings>International Workshop on Mining Software Repositories</proceedings>
+ <conference>MSR</conference>
+ <year>2006</year>
+ <location>Shanghai, China</location>
+ <pages>185-186</pages>
+ <isbn>1-59593-397-2</isbn>
+ <doi>10.1145/1137983.1138033</doi>
+ <file>Networks/applications/communication/email/2006 MSR Mining email social networks in Postgres.pdf</file>
+</reference>
+
+
+<reference id="Blochl et al. 2011">
+ <author>Florian Blöchl</author>
+ <author>Fabian J. Theis</author>
+ <author>Fernando Vega-Redondo</author>
+ <author>Eric O'N. Fisher</author>
+ <title>Vertex centralities in input-output networks reveal the structure of modern economies</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>83</volume>
+ <number>4</number>
+ <pages>046127</pages>
+ <year>2011</year>
+ <doi>10.1103/PhysRevE.83.046127</doi>
+ <file>Networks/applications/economic/2011 PhysRevE - Vertex centralities reveal the structure of modern economies.pdf</file>
+</reference>
+
+
+<reference id="Blondel et al. 2008">
+ <author>Vincent D Blondel</author>
+ <author>Jean-Loup Guillaume</author>
+ <author>Renaud Lambiotte</author>
+ <author>Etienne Lefebvre</author>
+ <title>Fast unfolding of communities in large networks</title>
+ <journal>Journal of Statistical Mechanics: Theory and Experiment</journal>
+ <volume>2008</volume>
+ <number>10</number>
+ <pages>P10008</pages>
+ <year>2008</year>
+ <doi>10.1088/1742-5468/2008/10/P10008</doi>
+ <file>Networks/algorithms/clustering/2008 JSM [Blondel] Fast unfolding of communities.pdf</file>
+</reference>
+
+
+<reference id="Boccaletti et al. 2006">
+ <author>Stefano Boccaletti</author>
+ <author>Vito Latora</author>
+ <author>Yamir Moreno</author>
+ <author>Mario Chavez</author>
+ <author>D.-U. Hwang</author>
+ <title>Complex networks: Structure and dynamics</title>
+ <journal>Physics Reports</journal>
+ <volume>424</volume>
+ <number>4-5</number>
+ <pages>175-308</pages>
+ <year>2006</year>
+ <doi>10.1016/j.physrep.2005.10.009</doi>
+ <file>Networks/2006 Physics Reports [Boccaletti et al.] Complex Networks.pdf</file>
+ <comment>
+  <text>Survey paper...</text>
+ </comment>
+</reference>
+
+
+<reference id="Boccaletti et al. 2009">
+ <editor>Stefano Boccaletti</editor>
+ <editor>Vito Latora</editor>
+ <editor>Yamir Moreno</editor>
+ <title>Handbook on Biological Networks</title>
+ <publisher>World Scientific Publishing Company</publisher>
+ <year>2009</year>
+ <isbn>9812838791</isbn>
+ <file>[books]/algorithms/graphs/9812838791 Handbook of Biological Networks.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Boccara 2003">
+ <author>Nino Boccara</author>
+ <title>Modeling Complex Systems</title>
+ <publisher>Springer</publisher>
+ <year>2003</year>
+ <isbn>0387404627</isbn>
+ <file>[books]\algorithms\graphs\0387404627 [Boccara] Modeling Complex Systems.pdf</file>
+ <comment>
+  <text>Complex systems...</text>
+ </comment>
+</reference>
+
+
+<reference id="Bockermann and Jungermann 2010">
+ <author>Christian Bockermann</author>
+ <author>Felix Jungermann</author>
+ <title>Stream-based Community Discovery via Relational Hypergraph Factorization on Evolving Networks</title>
+ <proceedings>Workshop on Dynamic Networks and Knowledge Discovery</proceedings>
+ <conference>DyNaK</conference>
+ <year>2010</year>
+ <location>Barcelona, Spain</location>
+ <pages>41-52</pages>
+ <url>http://ceur-ws.org/Vol-655/</url>
+ <file>Networks/algorithms/clustering/2010 DyNaK Stream-based community discovery.pdf</file>
+</reference>
+
+
+
+<reference id="Boguna et al. 2004">
+ <author>Marián Boguñá</author>
+ <author>Romualdo Pastor-Satorras</author>
+ <author>Alessandro Vespignani</author>
+ <title>Cut-offs and finite size effects in scale-free networks</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>205-209</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00038-8</doi>
+ <file>Networks/models/scale-free/2004 EPJB Cut-offs and finite size effects in scale-free networks.pdf</file>
+</reference>
+
+
+<reference id="Bollobas 2002">
+ <author>Bela Bollobas</author>
+ <title>Modern Graph Theory</title>
+ <publisher>Springer</publisher>
+ <year>2002</year>
+ <isbn>0387984887</isbn>
+ <file>[books]\algorithms\graphs\0387984887 [Bollobas] Modern Graph Theory.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Bollobas et al. 2009">
+ <title>Handbook of Large-Scale Random Networks</title>
+ <editor>Bela Bollobas</editor>
+ <editor>Robert Kozma</editor>
+ <editor>Dezso Miklos</editor>
+ <publisher>Springer</publisher>
+ <year>2009</year>
+ <isbn>3540693947</isbn>
+ <file>[books]\algorithms\graphs\3540693947 [Bollobas] Handbook of Large-Scale Random Networks.pdf</file>
+ <comment>
+  <text>Description: This handbook describes advances in large scale network studies that have taken place in the past 5 years since the publication of the Handbook of Graphs and Networks in 2003 <cite>Bornholdt and Schuster 2003</cite>. It covers all aspects of large-scale networks, including mathematical foundations and rigorous results of random graph theory, modeling and computational aspects of large-scale networks, as well as areas in physics, biology, neuroscience, sociology and technical areas. Applications range from microscopic to mesoscopic and macroscopic models. The book is based on the material of the NSF workshop on Large-scale Random Graphs held in Budapest in 2006, at the Alfréd Rényi Institute of Mathematics, organized jointly with the University of Memphis.</text>
+ </comment>
+</reference>
+
+
+<reference id="Bonacich 1972">
+ <author>Phillip Bonacich</author>
+ <title>Factoring and weighting approaches to status scores and clique identification</title>
+ <journal>Journal of Mathematical Sociology</journal>
+ <volume>2</volume>
+ <number>1</number>
+ <pages>113-120</pages>
+ <year>1972</year>
+ <doi>10.1080/0022250X.1972.9989806</doi>
+</reference>
+
+
+<reference id="Bonacich 2007">
+ <author>Phillip Bonacich</author>
+ <title>Some unique properties of eigenvector centrality</title>
+ <journal>Social Networks</journal>
+ <volume>29</volume>
+ <number>4</number>
+ <pages>555-564</pages>
+ <year>2007</year>
+ <doi>10.1016/j.socnet.2007.04.002</doi>
+ <file>Networks/structure/metrics/2007 Social Networks [Bonacich] Eigenvector centrality.pdf</file>
+</reference>
+
+
+<reference id="Bonanno et al. 2004">
+ <author>G. Bonanno</author>
+ <author>Guido Caldarelli</author>
+ <author>F. Lillo</author>
+ <author>S. Micciché</author>
+ <author>N. Vandewalle</author>
+ <author>R.N. Mantegna</author>
+ <title>Networks of equities in financial markets</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>363-371</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00129-6</doi>
+ <file>Networks/applications/economic/2004 EPJB Networks of equities in financial markets.pdf</file>
+</reference>
+
+
+<reference id="Bondy and Murty 1976">
+ <author>John Adrian Bondy</author>
+ <author>U.S.R. Murty</author>
+ <title>Graph Theory With Applications</title>
+ <publisher>North-Holland</publisher>
+ <year>1976</year>
+ <isbn>0444194517</isbn>
+ <file>[books]\algorithms\graphs\0444194517 [Bondy &amp; Murty] Graph Theory with Applications.pdf</file>
+ <comment>
+  <text>Yet another book on graph theory...</text>
+ </comment>
+</reference>
+
+
+
+
+<reference id="Borgatti and Everett 1997">
+ <author>Stephen P. Borgatti</author>
+ <author>Martin G. Everett</author>
+ <title>Network analysis of 2-mode data</title>
+ <journal>Social Networks</journal>
+ <volume>19</volume>
+ <number>3</number>
+ <pages>243-269</pages>
+ <year>1997</year>
+ <doi>10.1016/S0378-8733(96)00301-2</doi>
+ <file>Networks/structure/mode/1997 SN Network analysis of 2-mode data.pdf</file>
+</reference>
+
+
+<reference id="Borgatti 2002">
+ <author>Stephen P. Borgatti</author>
+ <title>The Key Player Problem</title>
+ <proceedings>Workshop on Dynamic Social Network Modeling and Analysis</proceedings>
+ <conference>DSNMA</conference>
+ <year>2002</year>
+ <location>Washington D.C., USA</location>
+ <pages>241-252</pages>
+ <isbn>0-309-51916-0</isbn>
+ <url>http://www.nap.edu/catalog.php?record_id=10735</url>
+ <file>Networks/structure/metrics/2003 DSNMA Key Player Problem.pdf</file>
+</reference>
+
+
+<reference id="Borgatti and Cross 2003">
+ <author>Stephen P. Borgatti</author>
+ <author>Rob Cross</author>
+ <title>A Relational View of Information Seeking and Learning in Social Networks</title>
+ <journal>Management Science</journal>
+ <volume>49</volume>
+ <number>4</number>
+ <pages>432-445</pages>
+ <year>2003</year>
+ <doi>10.1287/mnsc.49.4.432.14428</doi>
+ <file>Networks/dynamics/search/2003 MS A Relational View of Information Seeking and Learning.pdf</file>
+</reference>
+
+
+<reference id="Borgatti 2005">
+ <author>Stephen P. Borgatti</author>
+ <title>Centrality and network flow</title>
+ <journal>Social Networks</journal>
+ <volume>27</volume>
+ <number>1</number>
+ <pages>55-71</pages>
+ <year>2005</year>
+ <doi>10.1016/j.socnet.2004.11.008</doi>
+ <file>Networks/structure/metrics/2005 SN Centrality and Network Flow.pdf</file>
+</reference>
+
+
+<reference id="Borgatti 2006">
+ <author>Stephen P. Borgatti</author>
+ <title>Identifying sets of key players in a social network</title>
+ <journal>Computational &amp; Mathematical Organization Theory</journal>
+ <volume>12</volume>
+ <number>1</number>
+ <pages>21-34</pages>
+ <year>2006</year>
+ <doi>10.1007/s10588-006-7084-x</doi>
+ <file>Networks/structure/metrics/2006 CMOT Key players in a social network.pdf</file>
+</reference>
+
+
+<reference id="Borgatti and Halgin 2011a">
+ <author>Stephen P. Borgatti</author>
+ <author>Daniel S. Halgin</author>
+ <title>On Network Theory</title>
+ <journal>Organization Science</journal>
+ <year>2011</year>
+ <doi>10.1287/orsc.1110.0641</doi>
+ <file>Networks/2011 OS Network Theory.pdf</file>
+</reference>
+
+
+<reference id="Borgatti and Halgin 2011b">
+ <author>Stephen P. Borgatti</author>
+ <author>Daniel S. Halgin</author>
+ <title>Analyzing Affiliation Networks</title>
+ <booktitle>The SAGE Handbook of Social Network Analysis</booktitle>
+ <publisher>Sage Publications Ltd.</publisher>
+ <year>2011</year>
+ <isbn>9781847873958</isbn>
+ <file>Networks/structure/mode/2011 SAGE Affiliation Networks.pdf</file>
+</reference>
+
+
+
+<reference id="Borner et al. 2007">
+ <author>Katy Börner</author>
+ <author>Soma Sanyal</author>
+ <author>Alessandro Vespignani</author>
+ <title>Network Science</title>
+ <journal>Annual Review of Information Science and Technology</journal>
+ <volume>41</volume>
+ <number>1</number>
+ <pages>537-607</pages>
+ <year>2007</year>
+ <doi>10.1002/aris.2007.1440410119</doi>
+ <file>Networks/2007 ARIST Network Science.pdf</file>
+</reference>
+
+
+<reference id="Bornholdt and Schuster 2003">
+ <editor>Stefan Bornholdt</editor>
+ <editor>Heinz Georg Schuster</editor>
+ <title>Handbook of Graphs and Networks: From the Genome to the Internet</title>
+ <publisher>Wiley-VCH</publisher>
+ <year>2003</year>
+ <isbn>3527403361</isbn>
+ <file>[books]/algorithms/graphs/3527403361 [Bornholdt &amp; Schuster] Handbook of Graphs And Networks.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Brassard and Bratley 1996">
+ <author>Giles Brassard</author>
+ <author>Paul Bratley</author>
+ <title>Fundamentals of Algorithmics</title>
+ <publisher>Prentice-Hall</publisher>
+ <year>1996</year>
+ <isbn>0133350681</isbn>
+ <comment>
+  <text>Classic textbook...</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Brin and Page 1998">
+ <author>Sergey Brin</author>
+ <author>Lawrence Page</author>
+ <title>The Anatomy of a Large-Scale Hypertextual Web Search Engine</title>
+ <proceedings>7th International Conference on the World Wide Web</proceedings>
+ <conference>WWW</conference>
+ <year>1998</year>
+ <location>Brisbane, Australia</location>
+ <journal>Computer Networks and ISDN Systems</journal>
+ <volume>30</volume>
+ <number>1-7</number>
+ <pages>107-117</pages>
+ <doi>10.1016/S0169-7552(98)00110-X</doi>
+ <url>http://ilpubs.stanford.edu:8090/361/</url>
+ <file>Networks/software/1998 WWW Google.pdf</file>
+ <file>Networks/software/1998 WWW Google.tr.pdf</file>
+</reference>
+
+
+
+
+<reference id="Broder et al. 2000">
+ <author>Andrei Broder</author>
+ <author>Ravi Kumar</author>
+ <author>Farzin Maghoul</author>
+ <author>Prabhakar Raghavan</author>
+ <author>Sridhar Rajagopalan</author>
+ <author>Raymie Stata</author>
+ <author>Andrew Tomkins</author>
+ <author>Janet Wiener</author>
+ <title>Graph structure in the Web</title>
+ <journal>Computer Networks</journal>
+ <volume>33</volume>
+ <number>1-6</number>
+ <pages>309-320</pages>
+ <year>2000</year>
+ <doi>10.1016/S1389-1286(00)00083-9</doi>
+ <file>Networks/applications/www/2000 Computer Networks [Broder] Graph structure in the Web.pdf</file>
+</reference>
+
+
+<reference id="Buldyrev et al. 2010">
+ <author>Sergey V. Buldyrev</author>
+ <author>Roni Parshani</author>
+ <author>Gerald Paul</author>
+ <author>H. Eugene Stanley</author>
+ <author>Shlomo Havlin</author>
+ <title>Catastrophic cascade of failures in interdependent networks</title>
+ <journal>Nature</journal>
+ <volume>464</volume>
+ <pages>1025-1028</pages>
+ <year>2010</year>
+ <doi>10.1038/nature08932</doi>
+ <file>Networks/dynamics/robustness/2010 Nature [Havlin] Catastrophic cascade of failures in interdependent networks.pdf</file>
+</reference>
+
+
+
+<reference id="Caldarelli et al. 2004">
+ <author>Guido Caldarelli</author>
+ <author>Romualdo Pastor-Satorras</author>
+ <author>Alessandro Vespignani</author>
+ <title>Structure of cycles and local ordering in complex networks</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>183-186</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00020-6</doi>
+ <file>Networks/structure/metrics/2004 EPJB Structure of cycles and local ordering.pdf</file>
+</reference>
+
+
+<reference id="Caldarelli 2007">
+ <author>Guido Caldarelli</author>
+ <title>Scale-Free Networks: Complex Webs in Nature and Technology</title>
+ <publisher>Oxford University Press</publisher>
+ <year>2007</year>
+ <isbn>0199211515</isbn>
+ <file>[books]\algorithms\graphs\0199211515 [Caldarelli] Scale-Free Networks.pdf</file>
+</reference>
+
+
+<reference id="Capocci et al. 2006">
+ <author>A. Capocci</author>
+ <author>V. D. P. Servedio</author>
+ <author>F. Colaiori</author>
+ <author>L. S. Buriol</author>
+ <author>D. Donato</author>
+ <author>S. Leonardi</author>
+ <author>Guido Caldarelli</author>
+ <title>Preferential attachment in the growth of social networks: The Internet encyclopedia Wikipedia</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>74</volume>
+ <number>3</number>
+ <pages>036116</pages>
+ <year>2004</year>
+ <doi>10.1103/PhysRevE.74.036116</doi>
+ <file>Networks/applications/www/2006 PhysRevE - Wikipedia.pdf</file>
+</reference>
+
+<reference id="Cartwright and Harary 1956">
+ <author>Dorwin Cartwright</author>
+ <author>Frank Harary</author>
+ <title>Structural balance: A generalization of Heider's theory</title>
+ <journal>Psychological Review</journal>
+ <volume>63</volume>
+ <number>5</number>
+ <pages>277-293</pages>
+ <year>1956</year>
+ <doi>10.1037/h0046049</doi>
+ <file>Networks/structure/motifs/1956 PR [Cartwright &amp; Harary] Structural balance.pdf</file>
+</reference>
+
+<reference id="Castellano et al. 2004">
+ <author>C. Castellano</author>
+ <author>Federico Cecconi</author>
+ <author>Vittorio Loreto</author>
+ <author>Domenico Parisi</author>
+ <author>Filippo Radicchi</author>
+ <title>Self-contained algorithms to detect communities in networks</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>311-319</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00123-0</doi>
+ <file>Networks/algorithms/clustering/2004 EPJB Self-contained algorithms to detect communities in networks.pdf</file>
+</reference>
+
+
+
+<reference id="Chakrabarti et al. 2008">
+ <author>Deepayan Chakrabarti</author>
+ <author>Yang Wang</author>
+ <author>Chenxi Wang</author>
+ <author>Jure Leskovec</author>
+ <author>Christos Faloutsos</author>
+ <title>Epidemic thresholds in real networks</title>
+ <journal>ACM Transactions on Information and System Security</journal>
+ <volume>10</volume>
+ <number>4</number>
+ <pages>13</pages>
+ <year>2008</year>
+ <doi>10.1145/1284680.1284681</doi>
+ <file>Networks/dynamics/percolation/2008 TISSEC Epidemic thresholds.pdf</file>
+</reference>
+
+
+<reference id="Chartrand 1984">
+ <author>Gary Chartrand</author>
+ <title>Introductory Graph Theory</title>
+ <publisher>Dover Publications</publisher>
+ <year>1984</year>
+ <isbn>0486247759</isbn>
+ <comment>
+  <text>Introduction to basic concepts, with some games and puzzles...</text>
+ </comment>
+</reference>
+
+
+<reference id="Chartrand et al. 2011">
+ <author>Gary Chartrand</author>
+ <author>Linda Lesniak</author>
+ <author>Ping Zhang</author>
+ <title>Graphs &amp; Digraphs</title>
+ <edition>5th edition</edition>
+ <publisher>CRC Press</publisher>
+ <year>2011</year>
+ <isbn>978143982627</isbn>
+ <comment>
+  <text>Reader-friendly textbook on graph theory.</text>
+ </comment>
+</reference>
+
+<reference id="Chen et al. 2007">
+ <author>Y. W. Chen</author>
+ <author>L. F. Zhang</author>
+ <author>J. P. Huang</author>
+ <title>The Watts-Strogatz network model developed by including degree distribution: Theory and computer simulation</title>
+ <journal>Journal of Physics A: Mathematical and Theoretical</journal>
+ <volume>40</volume>
+ <number>29</number>
+ <pages>8237</pages>
+ <year>2007</year>
+ <doi>10.1088/1751-8113/40/29/003</doi>
+ <file>Networks/models/small-world/2007 JPA Watts-Strogatz network model with degree distribution.pdf</file>
+</reference>
+
+
+
+<reference id="Christakis and Fowler 2007">
+ <author>Nicholas A. Christakis</author>
+ <author>James H. Fowler</author>
+ <title>The Spread of Obesity in a Large Social Network over 32 Years</title>
+ <journal>The New England Journal of Medicine</journal>
+ <volume>357</volume>
+ <pages>370-379</pages>
+ <year>2007</year>
+ <doi>10.1056/NEJMsa066082</doi>
+ <file>Networks/applications/social/2007 NEJM Obesity in social networks.pdf</file>
+</reference>
+
+
+
+<reference id="Clauset et al. 2004">
+ <author>Aaron Clauset</author>
+ <author>Mark E.J. Newman</author>
+ <author>Cristopher Moore</author>
+ <title>Finding community structure in very large networks</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>70</volume>
+ <number>6</number>
+ <pages>066111</pages>
+ <year>2004</year>
+ <doi>10.1103/PhysRevE.70.066111</doi>
+ <file>Networks/algorithms/clustering/2004 Physical Review E [Newman] Community structure in very large networks.pdf</file>
+</reference>
+
+
+<reference id="Clauset et al. 2006">
+ <author>Aaron Clauset</author>
+ <author>Cristopher Moore</author>
+ <author>Mark E.J. Newman</author>
+ <title>Structural Inference of Hierarchies in Networks</title>
+ <proceedings>Statistical Network Analysis: Models, Issues, and New Directions</proceedings>
+ <conference>ICML-SNA</conference>
+ <year>2006</year>
+ <isbn>978-3-540-73133-7</isbn>
+ <location>Pittsburgh, Pennsylvania, USA</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>4503</volume>
+ <pages>1-13</pages>
+ <doi>10.1007/978-3-540-73133-7_1</doi>
+ <file>Networks/algorithms/clustering/2006 ICML-SNA [Newman] Structural Inference of Hierarchies in Networks.pdf</file>
+</reference>
+
+
+<reference id="Clauset et al. 2008">
+ <author>Aaron Clauset</author>
+ <author>Cristopher Moore</author>
+ <author>Mark E.J. Newman</author>
+ <title>Hierarchical structure and the prediction of missing links in networks</title>
+ <journal>Nature</journal>
+ <volume>453</volume>
+ <pages>98-101</pages>
+ <year>2008</year>
+ <doi>10.1038/nature06830</doi>
+ <file>Networks/algorithms/clustering/2008 Nature [Newman] Hierarchical structure.pdf</file>
+</reference>
+
+
+<reference id="Clauset et al. 2009">
+ <author>Aaron Clauset</author>
+ <author>Cosma Rohilla Shalizi</author>
+ <author>Mark E.J. Newman</author>
+ <title>Power-law distributions in empirical data</title>
+ <journal>SIAM Review</journal>
+ <volume>51</volume>
+ <number>4</number>
+ <pages>661-703</pages>
+ <year>2009</year>
+ <doi>10.1137/070710111</doi>
+ <file>Networks/models/scale-free/2009 SIAM Review [Clauset] Power-law distributions.pdf</file>
+ <!-- arXiv:0706.1062 -->
+</reference>
+
+
+<reference id="Cohen et al. 2000">
+ <author>Reuven Cohen</author>
+ <author>Keren Erez</author>
+ <author>Daniel ben-Avraham</author>
+ <author>Shlomo Havlin</author>
+ <title>Resilience of the Internet to Random Breakdowns</title>
+ <journal>Physical Review Letters</journal>
+ <volume>85</volume>
+ <number>21</number>
+ <pages>4626-4628</pages>
+ <year>2000</year>
+ <doi>10.1103/PhysRevLett.85.4626</doi>
+ <file>Networks/dynamics/robustness/2000 PRL [Havlin] Resilience of the Internet to random breakdowns.pdf</file>
+</reference>
+
+<reference id="Cohen et al. 2001a">
+ <author>Reuven Cohen</author>
+ <author>Keren Erez</author>
+ <author>Daniel ben-Avraham</author>
+ <author>Shlomo Havlin</author>
+ <title>Breakdown of the Internet under Intentional Attack</title>
+ <journal>Physical Review Letters</journal>
+ <volume>86</volume>
+ <number>16</number>
+ <pages>3682-3685</pages>
+ <year>2001</year>
+ <doi>10.1103/PhysRevLett.86.3682</doi>
+ <file>Networks/dynamics/robustness/2001 PRL [Havlin] Breakdown of the Internet under intentional attack.pdf</file>
+</reference>
+
+<reference id="Cohen et al. 2001b">
+ <author>Reuven Cohen</author>
+ <author>Keren Erez</author>
+ <author>Daniel ben-Avraham</author>
+ <author>Shlomo Havlin</author>
+ <title>Breakdown of the Internet under Intentional Attack (reply)</title>
+ <journal>Physical Review Letters</journal>
+ <volume>87</volume>
+ <number>21</number>
+ <pages>219802</pages>
+ <year>2001</year>
+ <doi>10.1103/PhysRevLett.87.219802</doi>
+ <file>Networks/dynamics/robustness/2001 PRL [Havlin] Breakdown of the Internet under intentional attack.reply.pdf</file>
+</reference>
+
+
+<reference id="Cohen and Havlin 2003">
+ <author>Reuven Cohen</author>
+ <author>Shlomo Havlin</author>
+ <title>Scale-Free Networks Are Ultrasmall</title>
+ <journal>Physical Review Letters</journal>
+ <volume>90</volume>
+ <number>5</number>
+ <pages>058701</pages>
+ <year>2003</year>
+ <doi>10.1103/PhysRevLett.90.058701</doi>
+ <file>Networks/models/scale-free/2003 PRL [Havlin] Scale-free networks are ultrasmall.pdf</file>
+</reference>
+
+
+<reference id="Cohen and Havlin 2010">
+ <author>Reuven Cohen</author>
+ <author>Shlomo Havlin</author>
+ <title>Complex Networks: Structure, Robustness and Function</title>
+ <publisher>Cambridge University Press</publisher>
+ <year>2010</year>
+ <isbn>0521841569</isbn>
+ <file>[books]\algorithms\graphs\0521841569 [Havlin &amp; Cohen] Complex Networks.pdf</file>
+</reference>
+
+
+<reference id="Cook and Holder 2007">
+ <editor>Diane J. Cook</editor>
+ <editor>Lawrence B. Holder</editor>
+ <title>Mining Graph Data</title>
+ <publisher>Wiley-Interscience</publisher>
+ <year>2007</year>
+ <isbn>0471731900</isbn>
+ <file>[books]/algorithms/graphs/0471731900 Mining Graph Data.pdf</file>
+ <comment>
+  <text>Good survey of some relevant topics: graph matching, graph visualization, graph generation, pattern mining, supervised &amp; unsupervised learning, applications...</text>
+ </comment>
+</reference>
+
+
+<reference id="Cormen et al. 1990">
+ <author>Thomas H. Cormen</author>
+ <author>Charles E. Leiserson</author>
+ <author>Ronald L. Rivest</author>
+ <title>Introduction to Algorithms</title>
+ <publisher>MIT Press</publisher>
+ <year>1990</year>
+ <isbn>0262031418</isbn>
+ <file>[books]/algorithms/ddj/books/book6/toc.htm</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Costa et al. 2007">
+ <author>Luciano da Fontoura Costa</author>
+ <author>Francisco Aparecido Rodrigues</author>
+ <author>Gonzalo Travieso</author>
+ <author>Paulino Ribeiro Villas Boas</author>
+ <title>Characterization of complex networks: A survey of measurements</title>
+ <journal>Advances in Physics</journal>
+ <volume>56</volume>
+ <number>1</number>
+ <pages>167-242</pages>
+ <year>2007</year>
+ <doi>10.1080/00018730601170527</doi>
+ <file>Networks/structure/2007 AP [Costa] Characterization of complex networks.pdf</file>
+ <comment>
+  <text>Survey paper...</text>
+ </comment>
+</reference>
+
+
+<reference id="Costa et al. 2011">
+ <author>Luciano da Fontoura Costa</author>
+ <author>Osvaldo N. Oliveira Jr.</author>
+ <author>Gonzalo Travieso</author>
+ <author>Francisco Aparecido Rodrigues</author>
+ <author>Paulino Ribeiro Villas Boas</author>
+ <author>Lucas Antiqueira</author>
+ <author>Matheus Palhares Viana</author>
+ <author>Luis Enrique Correa Rocha</author>
+ <title>Analyzing and modeling real-world phenomena with complex networks: A survey of applications</title>
+ <journal>Advances in Physics</journal>
+ <volume>60</volume>
+ <number>3</number>
+ <pages>329-412</pages>
+ <year>2011</year>
+ <doi>10.1080/00018732.2011.572452</doi>
+ <file>Networks/applications/2011 AP [Costa] Survey of applications.pdf</file>
+ <comment>
+  <text>Survey paper...</text>
+ </comment>
+</reference>
+
+
+<reference id="Crofts and Higham 2009">
+ <author>Jonathan J. Crofts</author>
+ <author>Desmond J. Higham</author>
+ <title>A weighted communicability measure applied to complex brain networks</title>
+ <journal>Journal of the Royal Society Interface</journal>
+ <volume>6</volume>
+ <number>33</number>
+ <pages>411–414</pages>
+ <year>2009</year>
+ <doi>10.1098/rsif.2008.0484</doi>
+ <file>Networks/structure/metrics/2009 JRSInterface [Crofts &amp; Higham] Weighted communicability.pdf</file>
+</reference>
+
+
+<reference id="Csermely 2006">
+ <author>Peter Csermely</author>
+ <title>Weak Links: Stabilizers of Complex Systems from Proteins to Social Networks</title>
+ <publisher>Springer</publisher>
+ <edition>1st edition</edition>
+ <year>2006</year>
+ <isbn>3540311513</isbn>
+ <file>[books]/algorithms/graphs/3540311513 [Csermely] Weak Links.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="de Nooy et al. 2005">
+ <author>Wouter de Nooy</author>
+ <author>Andrej Mrvar</author>
+ <author>Vladimir Batagelj</author>
+ <title>Exploratory Social Network Analysis with Pajek</title>
+ <publisher>Cambridge University Press</publisher>
+ <year>2005</year>
+ <isbn>0521602629</isbn>
+ <file>[books]/algorithms/graphs/0521602629 [de Nooy] Exploratory Social Network Analysis With Pajek.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Dehmer 2010">
+ <editor>Matthias Dehmer</editor>
+ <title>Structural Analysis of Complex Networks</title>
+ <publisher>Birkhäuser</publisher>
+ <year>2010</year>
+ <isbn>0817647880</isbn>
+ <file>[books]\algorithms\graphs\0817647880 Structural Analysis of Complex Networks.pdf</file>
+</reference>
+
+
+<reference id="Dette et al. 2011">
+ <author>Tilman Dette</author>
+ <author>Scott Pauls</author>
+ <author>Daniel N. Rockmore</author>
+ <title>Robustness and Contagion in the International Financial Network</title>
+ <journal>arXiv</journal>
+ <year>2011</year>
+ <url>http://arxiv.org/abs/1104.4249v2</url>
+ <file>Networks/applications/economic/2011 arXiv Robustness and contagion in the international financial network.pdf</file>
+</reference>
+
+
+<reference id="Diestel 2005">
+ <author>Reinhard Diestel</author>
+ <title>Graph Theory</title>
+ <publisher>Springer</publisher>
+ <edition>3rd edition</edition>
+ <year>2005</year>
+ <isbn>3540261826</isbn>
+ <file>[books]\algorithms\graphs\3540261826 [Diestel] Graph Theory.3rd.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Dogorotsev 2010">
+ <author>Sergey Dorogovtsev</author>
+ <title>Lectures on Complex Networks</title>
+ <publisher>Oxford University Press</publisher>
+ <year>2010</year>
+ <isbn>0199548935</isbn>
+</reference>
+
+
+<reference id="Donato et al. 2004a">
+ <author>D. Donato</author>
+ <author>L. Laura</author>
+ <author>S. Leonardi</author>
+ <author>S. Millozzi</author>
+ <title>Large scale properties of the Webgraph</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>239-243</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00056-6</doi>
+ <file>Networks/applications/www/2004 EPJB Large scale properties of the Webgraph.pdf</file>
+</reference>
+
+
+<reference id="Donato et al. 2004b">
+ <author>D. Donato</author>
+ <author>L. Laura</author>
+ <author>S. Leonardi</author>
+ <author>S. Millozzi</author>
+ <title>Simulating the Webgraph: A comparative analysis of models</title>
+ <journal>Computing in Science &amp; Engineering</journal>
+ <volume>6</volume>
+ <number>6</number>
+ <pages>84-89</pages>
+ <year>2004</year>
+ <doi>10.1109/MCSE.2004.73</doi>
+ <file>Networks/applications/www/2004 CiSE Simulating the Webgraph - A comparative analysis of models.pdf</file>
+</reference>
+
+
+<reference id="Dorogovtsev et al. 2008">
+ <author>S. N. Dorogovtsev</author>
+ <author>A. V. Goltsev</author>
+ <author>J. F. F. Mendes</author>
+ <title>Critical phenomena in complex networks</title>
+ <journal>Reviews of Modern Physics</journal>
+ <volume>80</volume>
+ <number>4</number>
+ <pages>1275–1335</pages>
+ <year>2008</year>
+ <doi>10.1103/RevModPhys.80.1275</doi>
+ <file>Networks/structure/2008 RevModPhys [Dogorovtsev] Critical phenomena in complex networks.pdf</file>
+ <comment>
+  <text>Survey paper...</text>
+ </comment>
+</reference>
+
+
+<reference id="Dorogovtsev and Mendes 2002">
+ <author>S. N. Dorogovtsev</author>
+ <author>J. F. F. Mendes</author>
+ <title>Evolution of networks</title>
+ <journal>Advances in Physics</journal>
+ <volume>51</volume>
+ <number>4</number>
+ <pages>1079-1187</pages>
+ <year>2002</year>
+ <doi>10.1080/00018730110112519</doi>
+ <file>Networks/dynamics/evolution/2002 AP [Dorogovtsev &amp; Mendes] Evolution of networks.pdf</file>
+ <comment>
+  <text>Survey paper...</text>
+ </comment>
+</reference>
+
+
+<reference id="Dorogovtsev and Mendes 2003">
+ <author>S. N. Dorogovtsev</author>
+ <author>J. F. F. Mendes</author>
+ <title>Evolution of Networks: From Biological Nets to the Internet and WWW</title>
+ <publisher>Oxford University Press</publisher>
+ <year>2003</year>
+ <isbn>0198515901</isbn>
+ <file>[books]/algorithms/graphs/0198515901 [Dorogovtsev &amp; Mendes] Evolution of Networks.chm</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Durugbo et al. 2011">
+ <author>Christopher Durugbo</author>
+ <author>Windo Hutabarat</author>
+ <author>Ashutosh Tiwari</author>
+ <author>Jeffrey R. Alcock</author>
+ <title>Modelling collaboration using complex networks</title>
+ <journal>Information Sciences</journal>
+ <volume>181</volume>
+ <number>15</number>
+ <pages>3143-3161</pages>
+ <year>2011</year>
+ <doi>10.1016/j.ins.2011.03.020</doi>
+ <file>Networks/applications/social/2011 IS Modelling collaboration.pdf</file>
+ <comment>
+  <text>[Abstract] ... Grounded on complex network theory and collaborative design research, a mathematical model of information flow for analysing collaboration in organisations is proposed in this article. The model defines concepts for characterising organisational structures for collaboration and proposes indicators for assessing organisational behaviour in terms of collaboration within organisations...</text>
+ </comment>
+</reference>
+
+
+
+
+<reference id="Easley and Kleinberg 2010">
+ <author>David Easley</author>
+ <author>Jon Kleinberg</author>
+ <title>Networks, Crowds, and Markets: Reasoning About a Highly Connected World</title>
+ <publisher>Cambridge University Press</publisher>
+ <edition>1st edition</edition>
+ <year>2010</year>
+ <isbn>978-0-521-19533-1</isbn>
+ <file>[books]/algorithms/graphs/0521195330 [Easley &amp; Kleinberg] Networks, Crowds, and Markets.pdf</file>
+ <comment>
+  <text>Excellent introductory textbook.</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Erdos and Renyi 1959">
+ <author>Paul Erdös</author>
+ <author>Alfréd Rényi</author>
+ <title>On Random Graphs</title>
+ <journal>Publicationes Mathematicae</journal>
+ <volume>6</volume>
+ <pages>290-297</pages>
+ <year>1959</year>
+ <url>http://www.renyi.hu/~p_erdos/1959-11.pdf</url>
+ <file>Networks/models/random/1959 [Erdos &amp; Renyi] Random graphs.pdf</file>
+</reference>
+
+<reference id="Erdos and Renyi 1960">
+ <author>Paul Erdös</author>
+ <author>Alfréd Rényi</author>
+ <title>On the Evolution of Random Graphs</title>
+ <journal>Publications of the Mathematical Institute of the Hungarian Academy of Sciences</journal>
+ <volume>5</volume>
+ <pages>17-61</pages>
+ <year>1960</year>
+ <url>http://www.renyi.hu/~p_erdos/1960-10.pdf</url>
+ <file>Networks/models/random/1960 [Erdos &amp; Renyi] Evolution of random graphs.pdf</file>
+</reference>
+
+
+<reference id="Ereteo et al. 2009">
+ <author>Guillaume Erétéo</author>
+ <author>Michel Buffa</author>
+ <author>Fabien Gandon</author>
+ <author>Olivier Corby</author>
+ <title>Analysis of a Real Online Social Network Using Semantic Web Frameworks</title>
+ <proceedings>8th International Semantic Web Conference</proceedings>
+ <conference>ISWC</conference>
+ <year>2009</year>
+ <isbn>978-3-642-04929-3</isbn>
+ <location>Chantilly, VA, USA</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>5823</volume>
+ <pages>180-195</pages>
+ <doi>10.1007/978-3-642-04930-9_12</doi>
+ <file>Networks/applications/social/2009 ISWC SNA Using Semantic Web Frameworks.pdf</file>
+ <comment>
+  <text>... extended SNA operators using semantic web frameworks to include the semantics of these graph-based representations when analyzing such social networks and to deal with the diversity of their relations and interactions...</text>
+ </comment>
+</reference>
+
+
+<reference id="Ermann et al. 2011">
+ <author>L. Ermann</author>
+ <author>A. D. Chepelianskii</author>
+ <author>D. L. Shepelyansky</author>
+ <title>Fractal Weyl law for Linux Kernel architecture</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>79</volume>
+ <number>1</number>
+ <pages>115-120</pages>
+ <year>2011</year>
+ <doi>10.1140/epjb/e2010-10774-7</doi>
+ <file>Networks/applications/software/2011 EPJB Fractal Weyl law for Linux Kernel architecture.pdf</file>
+</reference>
+
+
+<reference id="Estrada 2006">
+ <author>Ernesto Estrada</author>
+ <title>Network robustness to targeted attacks. The interplay of expansibility and degree distribution</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>52</volume>
+ <number>4</number>
+ <pages>563-574</pages>
+ <year>2006</year>
+ <doi>10.1140/epjb/e2006-00330-7</doi>
+ <file>Networks/dynamics/robustness/2006 [Estrada] Network robustness to targeted attacks.pdf</file>
+</reference>
+
+
+<reference id="Estrada 2007">
+ <author>Ernesto Estrada</author>
+ <title>Topological structural classes of complex networks</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>75</volume>
+ <number>1</number>
+ <pages>016103</pages>
+ <year>2007</year>
+ <doi>10.1103/PhysRevE.75.016103</doi>
+ <file>Networks/structure/2007 Physical Review E [Estrada] Topological structural classes.pdf</file>
+</reference>
+
+
+<reference id="Estrada and Hatano 2008">
+ <author>Ernesto Estrada</author>
+ <author>Naomichi Hatano</author>
+ <title>Communicability in complex networks</title>
+ <journal>Physical Review E</journal>
+ <volume>77</volume>
+ <number>3</number>
+ <pages>036111</pages>
+ <year>2008</year>
+ <doi>10.1103/PhysRevE.77.036111</doi>
+ <file>Networks/structure/metrics/2008 PhysRevE [Estrada &amp; Hatano] Communicability.pdf</file>
+</reference>
+
+
+<reference id="Euler 1736">
+ <author>Leonhard Euler</author>
+ <title>Solutio problematis ad geometriam situs pertinentis</title>
+ <journal>Commentarii Academiae Scientiarum Imperialis Petropolitanae</journal>
+ <volume>8</volume>
+ <pages>128-140</pages>
+ <year>1736</year>
+ <file>Networks/1736 [Euler] Konigsberg Bridges.pdf</file>
+</reference>
+
+
+
+<reference id="Evans 2010">
+ <author>T. S. Evans</author>
+ <title>Clique graphs and overlapping communities</title>
+ <journal>Journal of Statistical Mechanics: Theory and Experiment</journal>
+ <volume>2010</volume>
+ <pages>P12037</pages>
+ <year>2010</year>
+ <doi>10.1088/1742-5468/2010/12/P12037</doi>
+ <file>Networks/algorithms/clustering/2010 JSM [Evans] Clique graphs and overlapping communities.pdf</file>
+</reference>
+
+
+<reference id="Evans and Lambiotte 2009">
+ <author>T. S. Evans</author>
+ <author>R. Lambiotte</author>
+ <title>Line graphs, link partitions, and overlapping communities</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>80</volume>
+ <number>1</number>
+ <pages>016105</pages>
+ <year>2009</year>
+ <doi>10.1103/PhysRevE.80.016105</doi>
+ <file>Networks/algorithms/clustering/2009 Physical Review E [Evans] Line graphs, link partitions, and overlapping communities.pdf</file>
+</reference>
+
+
+<reference id="Evans and Lambiotte 2010">
+ <author>T. S. Evans</author>
+ <author>R. Lambiotte</author>
+ <title>Line graphs of weighted networks for overlapping communities</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>77</volume>
+ <number>2</number>
+ <pages>265-272</pages>
+ <year>2010</year>
+ <doi>10.1140/epjb/e2010-00261-8</doi>
+ <file>Networks/algorithms/clustering/2010 EPJB [Evans] Line graphs of weighted networks for overlapping communities.pdf</file>
+</reference>
+
+
+
+<reference id="Fagiolo 2007">
+ <author>Giorgio Fagiolo</author>
+ <title>Clustering in complex directed networks</title>
+ <journal>Physical Review E</journal>
+ <volume>76</volume>
+ <number>2</number>
+ <pages>026107</pages>
+ <year>2007</year>
+ <doi>10.1103/PhysRevE.76.026107</doi>
+ <file>Networks/structure/metrics/2008 PhysRevE [Fagiolo] Clustering in directed networks.pdf</file>
+</reference>
+
+
+<reference id="Fewell and O'Donnell 2009">
+ <author>Jennifer H. Fewell</author>
+ <author>Sean O'Donnell</author>
+ <title>Social Networks: How Simple Parts Make Complex Systems</title>
+ <publisher>University of Washington Department of Psychology's Allen L. Edwards Psychology Lecture Series</publisher>
+ <year>2009</year>
+ <url>http://www.uwtv.org</url>
+ <comment>
+ <text>
+ Focus on social insects as model research systems for exploring how individual behavior is integrated to yield complex, adaptive behavior at the group (colony) level. Their talks cover recent advances in exploring how the behavior of complex systems results from interactions among simple parts. They also look at how we can use network models to understand a wide range of complex systems that impact our daily lives.
+ </text>
+ </comment>
+</reference>
+
+
+<reference id="Fortunato 2010">
+ <author>Santo Fortunato</author>
+ <title>Community detection in graphs</title>
+ <journal>Physics Reports</journal>
+ <volume>486</volume>
+ <number>3-5</number>
+ <pages>75-174</pages>
+ <year>2010</year>
+ <doi>10.1016/j.physrep.2009.11.002</doi>
+ <file>Networks/algorithms/clustering/2010 Physics Reports [Fortunato] Community Detection.pdf</file>
+ <comment>
+  <text>Survey paper...</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Foti et al. 2011">
+ <author>N. Foti</author>
+ <author>S. Pauls</author>
+ <author>Daniel N. Rockmore</author>
+ <title>Stability of the World Trade Web over Time - An Extinction Analysis</title>
+ <journal>arXiv</journal>
+ <year>2011</year>
+ <url>http://arxiv.org/abs/1104.4380v2</url>
+ <file>Networks/applications/economic/2011 arXiv Trade Stability.pdf</file>
+</reference>
+
+
+<reference id="Freeman 1978">
+ <author>Linton C. Freeman</author>
+ <title>Centrality in social networks: Conceptual clarification</title>
+ <journal>Social Networks</journal>
+ <volume>1</volume>
+ <number>3</number>
+ <pages>215-239</pages>
+ <year>1978</year>
+ <doi>10.1016/0378-8733(78)90021-7</doi>
+ <file>Networks/structure/metrics/1978 SN [Freeman] Centrality in social networks.pdf</file>
+</reference>
+
+
+<reference id="Freeman et al. 1991">
+ <author>Linton C. Freeman</author>
+ <author>Stephen P. Borgatti</author>
+ <author>Douglas R. White</author>
+ <title>Centrality in valued graphs: A measure of betweenness based on network flow</title>
+ <journal>Social Networks</journal>
+ <volume>13</volume>
+ <number>2</number>
+ <pages>141-154</pages>
+ <year>1991</year>
+ <doi>10.1016/0378-8733(91)90017-N</doi>
+ <file>Networks/structure/metrics/1991 SN Centrality in valued graphs - Betweenness based on network flow.pdf</file>
+</reference>
+
+
+<reference id="Freeman 2004">
+ <author>Linton C. Freeman</author>
+ <title>The Development of Social Network Analysis: A Study in the Sociology of Science</title>
+ <publisher>Empirical Press</publisher>
+ <edition>1st edition</edition>
+ <year>2004</year>
+ <isbn>1594577145</isbn>
+ <file>[books]/algorithms/graphs/1594577145 [Freeman] The Development of Social Network Analysis.pdf</file>
+ <comment>
+  <text>On the historical development of social network analysis.</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Fruchterman and Reingold 1991">
+ <author>Thomas M. J. Fruchterman</author>
+ <author>Edward M. Reingold</author>
+ <title>Graph drawing by force-directed placement</title>
+ <journal>Software: Practice and Experience</journal>
+ <volume>21</volume>
+ <number>11</number>
+ <pages>1129-1164</pages>
+ <year>1991</year>
+ <doi>10.1002/spe.4380211102</doi>
+ <file>Networks/algorithms/visualization/1991 SPE [Fruchterman &amp; Reingold] Graph Drawing by Force-Directed Placement.pdf</file>
+</reference>
+
+
+
+<reference id="Fujiwara and Aoyama 2010">
+ <author>Y. Fujiwara</author>
+ <author>H. Aoyama</author>
+ <title>Large-scale structure of a nation-wide production network</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>77</volume>
+ <number>4</number>
+ <pages>565-580</pages>
+ <year>2010</year>
+ <doi>10.1140/epjb/e2010-00275-2</doi>
+ <file>Networks/applications/economic/2010 EPJB Large-scale structure of a nation-wide production network.pdf</file>
+</reference>
+
+
+
+<reference id="Ganguly et al. 2009">
+ <editor>Niloy Ganguly</editor>
+ <editor>Andreas Deutsch</editor>
+ <editor>Animesh Mukherjee</editor>
+ <title>Dynamics On and Of Complex Networks: Applications to Biology, Computer Science, and the Social Sciences</title>
+ <publisher>Birkhäuser Boston</publisher>
+ <year>2009</year>
+ <isbn>0817647503</isbn>
+ <file>[books]/algorithms/graphs/0817647503 [Ganguly, Deutsch &amp; Mukherjee] Dynamics On and Of Complex Networks.2009.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Garlaschelli 2004">
+ <author>D. Garlaschelli</author>
+ <title>Universality in food webs</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>277-285</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00120-3</doi>
+ <file>Networks/applications/ecological/2004 EPJB Universality in food webs.pdf</file>
+</reference>
+
+
+
+<reference id="Georgeot et al. 2010">
+ <author>Bertrand Georgeot</author>
+ <author>Olivier Giraud</author>
+ <author>Dima L. Shepelyansky</author>
+ <title>Spectral properties of the Google matrix of the World Wide Web and other directed networks</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>81</volume>
+ <number>5</number>
+ <pages>056109</pages>
+ <year>2010</year>
+ <doi>10.1103/PhysRevE.81.056109</doi>
+ <file>Networks/applications/www/2010 PhysRevE - Spectral properties of the Google matrix.pdf</file>
+</reference>
+
+
+<reference id="Girvan and Newman 2002">
+ <author>M. Girvan</author>
+ <author>Mark E.J. Newman</author>
+ <title>Community structure in social and biological networks</title>
+ <journal>PNAS</journal>
+ <volume>99</volume>
+ <number>12</number>
+ <pages>7821-7826</pages>
+ <year>2002</year>
+ <doi>10.1073/pnas.122653799</doi>
+ <file>Networks/algorithms/clustering/2002 PNAS [Girvan &amp; Newman] Community structure.pdf</file>
+</reference>
+
+
+<reference id="Glattfelder and Battiston 2009">
+ <author>J. B. Glattfelder</author>
+ <author>S. Battiston</author>
+ <title>Backbone of complex networks of corporations: The flow of control</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>80</volume>
+ <number>3</number>
+ <pages>036104</pages>
+ <year>2009</year>
+ <doi>10.1103/PhysRevE.80.036104</doi>
+ <file>Networks/applications/economic/2009 PhysRevE - Backbone of complex networks of corporations.pdf</file>
+</reference>
+
+
+<reference id="Goyal 2007">
+ <author>Sanjeev Goyal</author>
+ <title>Connections: An Introduction to the Economics of Networks</title>
+ <publisher>Princeton University Press</publisher>
+ <year>2007</year>
+ <isbn>069112650X</isbn>
+ <file>[books]/algorithms/graphs/069112650X [Goyal] Connections.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Grama et al. 2003">
+ <author>Ananth Grama</author>
+ <author>Anshul Gupta</author>
+ <author>George Karypis</author>
+ <author>Vipin Kumar</author>
+ <title>Introduction to Parallel Computing</title>
+ <publisher>Addison Wesley</publisher>
+ <edition>2nd edition</edition>
+ <year>2003</year>
+ <isbn>0201648652</isbn>
+ <file>[books]/algorithms/0201648652 [Kumar] Parallel Computing.2nd.chm</file>
+</reference>
+
+
+<reference id="Granovetter 1973">
+ <author>Mark S. Granovetter</author>
+ <title>The strength of weak ties</title>
+ <journal>American Journal of Sociology</journal>
+ <volume>78</volume>
+ <number>6</number>
+ <pages>1360-1380</pages>
+ <year>1973</year>
+ <url>http://www.jstor.org/stable/2776392</url>
+ <file>Networks/applications/social/1973 American Journal of Sociology [Granovetter] Strength of Weak Ties.pdf</file>
+</reference>
+
+<reference id="Granovetter 1983">
+ <author>Mark S. Granovetter</author>
+ <title>The strength of weak ties: A network theory revisited</title>
+ <journal>Sociological Theory</journal>
+ <volume>1</volume>
+ <pages>201-233</pages>
+ <year>1983</year>
+ <url>http://www.jstor.org/stable/202051</url>
+ <file>Networks/applications/social/1983 Sociological Theory [Granovetter] Strength of Weak Ties - Revisited.pdf</file>
+</reference>
+
+
+
+<reference id="Gregory 2007">
+ <author>Steve Gregory</author>
+ <title>An Algorithm to Find Overlapping Community Structure in Networks</title>
+ <proceedings>11th European Conference on Principles and Practice of Knowledge Discovery in Databases</proceedings>
+ <conference>PKDD</conference>
+ <year>2007</year>
+ <isbn>978-3-540-74976-9</isbn>
+ <location>Warsaw, Poland</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>4702</volume>
+ <pages>91-102</pages>
+ <doi>10.1007/978-3-540-74976-9_12</doi>
+ <file>Networks/algorithms/clustering/2007 PKDD [Gregory] Overlapping community structure.pdf</file>
+</reference>
+
+
+<reference id="Gross and Blasius 2008">
+ <author>Thilo Gross</author>
+ <author>Bernd Blasius</author>
+ <title>Adaptive coevolutionary networks: A review</title>
+ <journal>Journal of the Royal Society Interface</journal>
+ <volume>5</volume>
+ <number>20</number>
+ <pages>259-271</pages>
+ <year>2008</year>
+ <doi>10.1098/rsif.2007.1229</doi>
+ <file>Networks/dynamics/evolution/2008 Interface [Gross &amp; Blasius] Adaptive coevolutionary networks.pdf</file>
+</reference>
+
+
+<reference id="Gross and Yellen 2003">
+ <editor>Jonathan L. Gross</editor>
+ <editor>Jay Yellen</editor>
+ <title>Handbook of Graph Theory</title>
+ <publisher>CRC Press</publisher>
+ <year>2003</year>
+ <isbn>1584880902</isbn>
+ <file>[books]/algorithms/graphs/1584880902 [Gross &amp; Yellen] Handbook of Graph Theory - Discrete Mathematics and Its Applications.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+<reference id="Gross and Yellen 2005">
+ <author>Jonathan L. Gross</author>
+ <author>Jay Yellen</author>
+ <title>Graph Theory and Its Applications</title>
+ <publisher>Chapman and Hall / CRC Press</publisher>
+ <edition>2nd edition</edition>
+ <year>2005</year>
+ <isbn>158488505X</isbn>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Guim et al. 2004">
+ <author>C.-M. Ghim</author>
+ <author>E. Oh</author>
+ <author>K.-I. Goh</author>
+ <author>B. Kahng</author>
+ <author>D. Kim</author>
+ <title>Packet transport along the shortest pathways in scale-free networks</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>193-199</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00113-2</doi>
+ <file>Networks/models/scale-free/2004 EPJB Packet transport along the shortest pathways in scale-free networks.pdf</file>
+</reference>
+
+
+<reference id="Guimera and Amaral 2004">
+ <author>Roger Guimerà</author>
+ <author>Luis A.N. Amaral</author>
+ <title>Modeling the world-wide airport network</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>381-385</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00131-0</doi>
+ <file>Networks/applications/transportation/2004 EPJB Airport network.pdf</file>
+</reference>
+
+
+<reference id="Guimera and Amaral 2005">
+ <author>Roger Guimerà</author>
+ <author>Luis A.N. Amaral</author>
+ <title>Functional cartography of complex metabolic networks</title>
+ <journal>Nature</journal>
+ <volume>433</volume>
+ <pages>895-900</pages>
+ <year>2005</year>
+ <doi>10.1038/nature03288</doi>
+ <file>Networks/applications/biological/2005 Nature - Functional cartography of complex metabolic networks.pdf</file>
+</reference>
+
+
+<reference id="Guimera et al. 2007">
+ <author>Roger Guimerà</author>
+ <author>Marta Sales-Pardo</author>
+ <author>Luis A.N. Amaral</author>
+ <title>Classes of complex networks defined by role-to-role connectivity profiles</title>
+ <journal>Nature Physics</journal>
+ <volume>3</volume>
+ <pages>63-69</pages>
+ <year>2007</year>
+ <doi>10.1038/nphys489</doi>
+ <file>Networks/structure/2007 Nature Physics [Guimera et al.] Classes of complex networks.pdf</file>
+</reference>
+
+
+
+<reference id="Han and Kamber 2006">
+ <author>Jiawei Han</author>
+ <author>Micheline Kamber</author>
+ <title>Data Mining: Concepts and Techniques</title>
+ <publisher>Morgan Kaufmann</publisher>
+ <edition>2nd edition</edition>
+ <year>2006</year>
+ <isbn>1558609016</isbn>
+ <file>[books]/algorithms/AI/1558609016 [Han] Data Mining.2ed.pdf</file>
+</reference>
+
+
+<reference id="Hanneman and Riddle 2005">
+ <author>Robert A. Hanneman</author>
+ <author>Mark Riddle</author>
+ <title>Introduction to social network methods</title>
+ <publisher>University of California, Riverside</publisher>
+ <url>http://www.faculty.ucr.edu/~hanneman/nettext/</url>
+ <year>2005</year>
+</reference>
+
+
+<reference id="Hansen et al. 2010">
+ <author>Derek Hansen</author>
+ <author>Ben Shneiderman</author>
+ <author>Marc A. Smith</author>
+ <author>Linton C. Freeman</author>
+ <title>Analyzing Social Media Networks with NodeXL: Insights from a Connected World</title>
+ <publisher>Morgan Kaufmann</publisher>
+ <year>2010</year>
+ <isbn>0123822297</isbn>
+ <comment>
+  <text>Qualitative description of social network analysis with many Web 2.0 case studies... using NodeXL for Excel.</text>
+ </comment>
+</reference>
+
+
+<reference id="Harary 1969">
+ <author>Frank Harary</author>
+ <title>Graph Theory</title>
+ <publisher>Addison Wesley</publisher>
+ <year>1969</year>
+ <isbn>0201410338</isbn>
+ <file>[books]/algorithms/graphs/1969 [Harary] Graph Theory.pdf</file>
+ <file>[books]/algorithms/graphs/1969 [Harary] Graph Theory.djvu</file>
+ <comment>
+  <text>Classic book on graph theory.</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Heer and Boyd 2005">
+ <author>Jeffrey Heer</author>
+ <author>Danah Boyd</author>
+ <title>Vizster: Visualizing online social networks</title>
+ <proceedings>IEEE Symposium on Information Visualization</proceedings>
+ <conference>InfoVis</conference>
+ <year>2005</year>
+ <isbn>0-7803-9464-X</isbn>
+ <location>Minneapolis, MN, USA</location>
+ <pages>32-39</pages>
+ <doi>10.1109/INFVIS.2005.1532126</doi>
+ <file>Networks/algorithms/visualization/2005 InfoVis [Heer &amp; Boyd] Vizster.pdf</file>
+</reference>
+
+
+<reference id="Heer and Agrawala 2006">
+ <author>Jeffrey Heer</author>
+ <author>Maneesh Agrawala</author>
+ <title>Software Design Patterns for Information Visualization</title>
+ <journal>IEEE Transactions on Visualization and Computer Graphics</journal>
+ <volume>12</volume>
+ <number>5</number>
+ <pages>853-860</pages>
+ <year>2006</year>
+ <doi>10.1109/TVCG.2006.178</doi>
+ <file>Networks/algorithms/visualization/2006 TVCG [Heer &amp; Agrawala] Design Patterns for Information Visualization.pdf</file>
+</reference>
+
+
+<reference id="Heider 1946">
+ <author>Fritz Heider</author>
+ <title>Attitudes and Cognitive Organization</title>
+ <journal>The Journal of Psychology</journal>
+ <volume>21</volume>
+ <pages>107-112</pages>
+ <year>1946</year>
+ <doi>10.1080/00223980.1946.9917275</doi>
+ <url>http://psychclassics.yorku.ca/Heider/attitudes.htm</url>
+ <file>Networks/structure/motifs/1946 JP [Heider] Structural balance.pdf</file>
+</reference>
+
+
+<reference id="Holme et al. 2004">
+ <author>Petter Holme</author>
+ <author>Christofer R. Edling</author>
+ <author>Fredrik Liljeros</author>
+ <author>Stephen P. Borgatti</author>
+ <title>Structure and time evolution of an Internet dating community</title>
+ <journal>Social Networks</journal>
+ <volume>26</volume>
+ <number>2</number>
+ <pages>155-174</pages>
+ <year>2004</year>
+ <doi>10.1016/j.socnet.2004.01.007</doi>
+ <file>Networks/applications/www/2004 SN Internet dating community.pdf</file>
+</reference>
+
+
+<reference id="Hu et al. 2008">
+ <author>Yanqing Hu</author>
+ <author>Hongbin Chen</author>
+ <author>Peng Zhang</author>
+ <author>Menghui Li</author>
+ <author>Zengru Di</author>
+ <author>Ying Fan</author>
+ <title>Comparative definition of community and corresponding identifying algorithm</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>78</volume>
+ <number>2</number>
+ <pages>026121</pages>
+ <year>2004</year>
+ <doi>10.1103/PhysRevE.78.026121</doi>
+ <file>Networks/algorithms/clustering/2008 Physical Review E [Hu et al.] Comparative definition of community.pdf</file>
+</reference>
+
+
+<reference id="Huang et al. 2010">
+ <author>Jianbin Huang</author>
+ <author>Heli Sun</author>
+ <author>Jiawei Han</author>
+ <author>Hongbo Deng</author>
+ <author>Yizhou Sun</author>
+ <author>Yaguang Liu</author>
+ <title>SHRINK: A structural clustering algorithm for detecting hierarchical communities in networks</title>
+ <proceedings>19th ACM International Conference on Information and Knowledge Management</proceedings>
+ <conference>CIKM</conference>
+ <year>2010</year>
+ <isbn>978-1-4503-0099-5</isbn>
+ <location>Toronto, Ontario, Canada</location>
+ <pages>219-228</pages>
+ <doi>10.1145/1871437.1871469</doi>
+ <file>Networks/algorithms/clustering/2010 CIKM SHRINK.pdf</file>
+</reference>
+
+
+<reference id="Huang et al. 2011">
+ <author>Xuqing Huang</author>
+ <author>Jianxi Gao</author>
+ <author>Sergey V. Buldyrev</author>
+ <author>Shlomo Havlin</author>
+ <author>H. Eugene Stanley</author>
+ <title>Robustness of interdependent networks under targeted attack</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>83</volume>
+ <number>6</number>
+ <pages>065101(R)</pages>
+ <year>2011</year>
+ <doi>10.1103/PhysRevE.83.065101</doi>
+ <file>Networks/dynamics/robustness/2011 PhysRevE [Havlin] Robustness of interdependent networks under targeted attack.pdf</file>
+</reference>
+
+
+<reference id="Jackson 2009">
+ <author>Matthew O. Jackson</author>
+ <title>Social and Economic Networks</title>
+ <publisher>Princeton University Press</publisher>
+ <edition>1st edition</edition>
+ <year>2010</year>
+ <isbn>978-0-691-14820-5</isbn>
+ <file>[books]/algorithms/graphs/0691134405 [Jackson] Social and Economic Networks.pdf</file>
+ <comment>
+  <text>Good introductory textbook.</text>
+ </comment>
+</reference>
+
+
+<reference id="Janert 2010">
+ <author>Philipp K. Janert</author>
+ <title>Data Analysis with Open Source Tools</title>
+ <publisher>O'Reilly Media</publisher>
+ <edition>1st edition</edition>
+ <year>2010</year>
+ <isbn>0596802358</isbn>
+ <comment>
+  <text>Interesting overview of many useful data analysis techniques...</text>
+ </comment>
+</reference>
+
+
+<reference id="Jungnickel 2007">
+ <author>Dieter Jungnickel</author>
+ <title>Graphs, Networks, and Algorithms</title>
+ <publisher>Springer</publisher>
+ <edition>3rd edition</edition>
+ <year>2007</year>
+ <isbn>3540727795</isbn>
+ <file>[books]\algorithms\graphs\3540727795 [Jungnickel] Graphs, Networks and Algorithms.pdf</file>
+ <comment>
+  <text>Textbook on graph theory.</text>
+ </comment>
+</reference>
+
+
+<reference id="Kalinka and Tomancak 2011">
+ <author>Alex T. Kalinka</author>
+ <author>Pavel Tomancak</author>
+ <title>linkcomm: an R package for the generation, visualization, and analysis of link communities in networks of arbitrary size and type</title>
+ <journal>Bioinformatics</journal>
+ <volume>27</volume>
+ <number>14</number>
+ <pages>2011-2012</pages>
+ <year>2011</year>
+ <doi>10.1093/bioinformatics/btr311</doi>
+ <file>Networks/algorithms/clustering/2011 Bioinformatics [Kalinka &amp; Tomancak] linkcomm.pdf</file>
+ <comment>
+  <text>C++ implementation of <cite>Ahn et al. 2010</cite>.</text>
+ </comment>
+</reference>
+
+
+<reference id="Karrer et al. 2008">
+ <author>Brian Karrer</author>
+ <author>Elizaveta Levina</author>
+ <author>Mark E.J. Newman</author>
+ <title>Robustness of community structure in networks</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>77</volume>
+ <number>4</number>
+ <pages>046119</pages>
+ <year>2008</year>
+ <doi>10.1103/PhysRevE.77.046119</doi>
+ <file>Networks/algorithms/clustering/2008 Physical Review E [Newman] Robustness of community structure.pdf</file>
+</reference>
+
+
+<reference id="Kamada and Kawai 1989">
+ <author>Tomihisa Kamada</author>
+ <author>Satoru Kawai</author>
+ <title>An algorithm for drawing general undirected graphs</title>
+ <journal>Information Processing Letters</journal>
+ <volume>31</volume>
+ <number>1</number>
+ <pages>7-15</pages>
+ <year>1989</year>
+ <doi>10.1016/0020-0190(89)90102-6</doi>
+ <file>Networks/algorithms/visualization/1989 IPL [Kamada &amp; Kawai] Drawing undirected graphs.pdf</file>
+</reference>
+
+
+<reference id="Kamada and Kawai 1991">
+ <author>Tomihisa Kamada</author>
+ <author>Satoru Kawai</author>
+ <title>A general framework for visualizing abstract objects and relations</title>
+ <journal>ACM Transactions on Graphics</journal>
+ <volume>10</volume>
+ <number>1</number>
+ <pages>1-39</pages>
+ <year>1991</year>
+ <doi>10.1145/99902.99903</doi>
+ <file>Networks/algorithms/visualization/1991 TOG [Kamada &amp; Kawai] Visualizing abstract objects and relations.pdf</file>
+</reference>
+
+
+
+<reference id="Kameshwaran et al. 2010">
+ <author>Sampath Kameshwaran</author>
+ <author>Vinayaka Pandit</author>
+ <author>Sameep Mehta</author>
+ <author>Nukala Viswanadham</author>
+ <author>Kashyap Dixit</author>
+ <title>Outcome aware ranking in interaction networks</title>
+ <proceedings>19th ACM International Conference on Information and Knowledge Management</proceedings>
+ <conference>CIKM</conference>
+ <year>2010</year>
+ <isbn>978-1-4503-0099-5</isbn>
+ <location>Toronto, Ontario, Canada</location>
+ <pages>219-228</pages>
+ <doi>10.1145/1871437.1871470</doi>
+ <file>Networks/algorithms/ranking/2010 CIKM Outcome-aware ranking.pdf</file>
+</reference>
+
+
+<reference id="Karrer and Newman 2011">
+ <author>Brian Karrer</author>
+ <author>Mark E.J. Newman</author>
+ <title>Stochastic blockmodels and community structure in networks</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>83</volume>
+ <number>1</number>
+ <pages>016107</pages>
+ <year>2011</year>
+ <doi>10.1103/PhysRevE.83.016107</doi>
+ <file>Networks/algorithms/clustering/2011 Physical Review E [Newman] Stochastic blockmodels and community structure.pdf</file>
+</reference>
+
+
+<reference id="Katz 1953">
+ <author>Leo Katz</author>
+ <title>A new status index derived from sociometric analysis</title>
+ <journal>Psychometrika</journal>
+ <volume>18</volume>
+ <number>1</number>
+ <pages>39-43</pages>
+ <year>1953</year>
+ <doi>10.1007/BF02289026</doi>
+ <file>Networks/structure/metrics/1953 Psychometrika [Katz] Status index.pdf</file>
+</reference>
+
+
+<reference id="Kim et al. 2004">
+ <author>D.-H. Kim</author>
+ <author>B. Kahng</author>
+ <author>D. Kim</author>
+ <title>Multi-component static model for social networks</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>305-309</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00018-0</doi>
+ <file>Networks/models/scale-free/2004 EPJB Multi-component static model for social networks.pdf</file>
+</reference>
+
+
+<reference id="Kim and Wilhelm 2008">
+ <author>Jongkwang Kim</author>
+ <author>Thomas Wilhelm</author>
+ <title>What is a complex graph?</title>
+ <journal>Physica A: Statistical Mechanics and its Applications</journal>
+ <volume>287</volume>
+ <number>11</number>
+ <pages>2637-2652</pages>
+ <year>2008</year>
+ <doi>10.1016/j.physa.2008.01.015</doi>
+ <file>Networks/2008 Physica A [Kim &amp; Wilhelm] Complex graph.pdf</file>
+</reference>
+
+
+
+<reference id="Kleinberg 1998">
+ <author>Jon Kleinberg</author>
+ <title>Authoritative sources in a hyperlinked environment</title>
+ <proceedings>9th Annual ACM-SIAM Symposium on Discrete Algorithms</proceedings>
+ <conference>SODA</conference>
+ <year>1998</year>
+ <isbn>0-89871-410-9</isbn>
+ <location>San Francisco, California</location>
+ <pages>668-677</pages>
+ <url>http://portal.acm.org/citation.cfm?doid=314613.315045</url>
+ <file>Networks/structure/metrics/1998 SODA [Kleinberg] HITS.pdf</file>
+</reference>
+
+
+<reference id="Kleinberg 1999a">
+ <author>Jon Kleinberg</author>
+ <title>Authoritative sources in a hyperlinked environment</title>
+ <journal>Journal of the ACM</journal>
+ <volume>46</volume>
+ <number>5</number>
+ <pages>604-632</pages>
+ <year>1999</year>
+ <doi>10.1145/324133.324140</doi>
+ <file>Networks/structure/metrics/1999 JACM [Kleinberg] HITS.pdf</file>
+</reference>
+
+
+<reference id="Kleinberg 1999b">
+ <author>Jon Kleinberg</author>
+ <title>Hubs, authorities, and communities</title>
+ <journal>ACM Computing Surveys</journal>
+ <volume>31</volume>
+ <number>4es</number>
+ <year>1999</year>
+ <doi>10.1145/345966.345982</doi>
+ <file>Networks/structure/metrics/1999 ACM Computing Surveys [Kleinberg] Hubs, authorities, and communities.pdf</file>
+</reference>
+
+<reference id="Kleinberg 2000">
+ <author>Jon Kleinberg</author>
+ <title>Navigation in a small world</title>
+ <journal>Nature</journal>
+ <volume>406</volume>
+ <number>6798</number>
+ <pages>845</pages>
+ <year>2000</year>
+ <doi>10.1038/35022643</doi>
+ <file>Networks/models/small-world/2000 Nature [Kleinberg] Navigation in a small world.pdf</file>
+</reference>
+
+<reference id="Kleinberg and Tardos 2005">
+ <author>Jon Kleinberg</author>
+ <author>Éva Tardos</author>
+ <title>Algorithm Design</title>
+ <publisher>Addison-Wesley</publisher>
+ <year>2005</year>
+ <isbn>0321295358</isbn>
+ <file>[books]/algorithms/0321295358 [Kleinberg] Algorithm Design.pdf</file>
+ <comment>
+  <text>Interesting textbook on algorithm design, specially the chapter on network flow...</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Konig 1936">
+ <author>Dénes König</author>
+ <title>Theorie der endlichen und unendlichen Graphen</title>
+ <publisher>Akademische Verlagsgesellschaft, Leipzig</publisher>
+ <year>1936</year>
+</reference>
+
+<reference id="Konig 1990">
+ <author>Dénes König</author>
+ <title>Theory of finite and infinite graphs</title>
+ <publisher>Birkhäuser</publisher>
+ <year>1990</year>
+ <isbn>0817633898</isbn>
+ <!-- Translated from German by Richard McCoart -->
+</reference>
+
+
+<reference id="Kumar et al. 1994">
+ <author>Vipin Kumar</author>
+ <author>Ananth Grama</author>
+ <author>Anshul Gupta</author>
+ <author>George Karypis</author>
+ <title>Introduction to Parallel Computing: Design and Analysis of Algorithms</title>
+ <publisher>Benjamin Cummings</publisher>
+ <year>1994</year>
+ <isbn>0805331700</isbn>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Kumar et al. 1999">
+ <author>Ravi Kumar</author>
+ <author>Prabhakar Raghavan</author>
+ <author>Sridhar Rajagopalan</author>
+ <author>Andrew Tomkins</author>
+ <title>Trawling the Web for emerging cyber-communities</title>
+ <proceedings>8th International Conference on the World Wide Web</proceedings>
+ <conference>WWW</conference>
+ <year>1999</year>
+ <location>Toronto, Canada</location>
+ <journal>Computer Networks</journal>
+ <volume>31</volume>
+ <number>11-16</number>
+ <pages>1481-1493</pages>
+ <doi>10.1016/S1389-1286(99)00040-7</doi>
+ <file>Networks/applications/www/1999 WWW Emerging cyber-communities.pdf</file>
+ <file>Networks/applications/www/1999 WWW Emerging cyber-communities.web.pdf</file>
+</reference>
+
+
+
+<reference id="Kumar et al. 2003">
+ <author>Ravi Kumar</author>
+ <author>Jasmine Novak</author>
+ <author>Prabhakar Raghavan</author>
+ <author>Andrew Tomkins</author>
+ <title>On the bursty evolution of blogspace</title>
+ <proceedings>12th International Conference on the World Wide Web</proceedings>
+ <conference>WWW</conference>
+ <year>2003</year>
+ <isbn>1-58113-680-3</isbn>
+ <location>Budapest, Hungary</location>
+ <pages>568-576</pages>
+ <doi>10.1145/775152.775233</doi>
+ <file>Networks/applications/www/blogs/2003 WWW Bursty evolution of blogspace.pdf</file>
+</reference>
+
+
+<reference id="Kumar et al. 2004">
+ <author>Ravi Kumar</author>
+ <author>Jasmine Novak</author>
+ <author>Prabhakar Raghavan</author>
+ <author>Andrew Tomkins</author>
+ <title>Structure and evolution of blogspace</title>
+ <journal>Communications of the ACM</journal>
+ <volume>47</volume>
+ <number>12</number>
+ <pages>35-39</pages>
+ <year>2004</year>
+ <doi>10.1145/1035134.1035162</doi>
+ <file>Networks/applications/www/blogs/2004 CACM Structure and evolution of blogspace.pdf</file>
+</reference>
+
+
+<reference id="Kumar et al. 2006">
+ <author>Ravi Kumar</author>
+ <author>Jasmine Novak</author>
+ <author>Andrew Tomkins</author>
+ <title>Structure and evolution of online social networks</title>
+ <proceedings>12th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</proceedings>
+ <conference>KDD</conference>
+ <year>2006</year>
+ <isbn>1-59593-339-5</isbn>
+ <location>Philadelphia, PA, USA</location>
+ <pages>611-617</pages>
+ <doi>10.1145/1150402.1150476</doi>
+ <file>Networks/applications/www/2006 KDD Structure and evolution of online social networks.pdf</file>
+</reference>
+
+
+<reference id="Latora and Marchiori 2001">
+<author>Vito Latora</author>
+ <author>Massimo Marchiori</author>
+ <title>Efficient behavior of small-world networks</title>
+ <journal>Physical Review Letters</journal>
+ <volume>87</volume>
+ <number>19</number>
+ <pages>198701</pages>
+ <year>2001</year>
+ <doi>10.1103/PhysRevLett.87.198701</doi>
+ <file>Networks/structure/metrics/2001 PhysRevLett [Latora] Efficiency.pdf</file>
+</reference>
+
+
+<reference id="Leskovek et al. 2005">
+ <author>Jure Leskovec</author>
+ <author>Jon Kleinberg</author>
+ <author>Christos Faloutsos</author>
+ <title>Graphs over time: Densification laws, shrinking diameters and possible explanations</title>
+ <proceedings>11th ACM SIGKDD International Conference on Knowledge Discovery in Data Mining</proceedings>
+ <conference>KDD</conference>
+ <year>2005</year>
+ <isbn>1-59593-135-X</isbn>
+ <location>Chicago, Illinois, USA</location>
+ <pages>177-187</pages>
+ <doi>10.1145/1081870.1081893</doi>
+ <file>Networks/dynamics/evolution/2005 KDD Graphs over time.pdf</file>
+ <comment>
+  <text>KDD'2005 Best Paper Award...</text>
+ </comment>
+</reference>
+
+
+<reference id="Leskovek et al. 2006a">
+ <author>Jure Leskovec</author>
+ <author>Lada Adamic</author>
+ <author>Bernardo A. Huberman</author>
+ <title>The dynamics of viral marketing</title>
+ <proceedings>7th ACM Conference on Electronic Commerce</proceedings>
+ <conference>EC</conference>
+ <year>2006</year>
+ <isbn>1-59593-236-4</isbn>
+ <location>Ann Arbor, Michigan, USA</location>
+ <pages>228-237</pages>
+ <doi>10.1145/1134707.1134732</doi>
+ <file>Networks/applications/www/2006 EC Dynamics of Viral Marketing.pdf</file>
+</reference>
+
+<reference id="Leskovek and Faloutsos 2006">
+ <author>Jure Leskovec</author>
+ <author>Christos Faloutsos</author>
+ <title>Sampling from large graphs</title>
+ <proceedings>12th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</proceedings>
+ <conference>KDD</conference>
+ <year>2006</year>
+ <isbn>1-59593-339-5</isbn>
+ <location>Philadelphia, PA, USA</location>
+ <pages>631-636</pages>
+ <doi>10.1145/1150402.1150479</doi>
+ <file>Networks/algorithms/graphs/sampling/2006 KDD Sampling from large graphs.pdf</file>
+</reference>
+
+
+
+<reference id="Leskovek et al. 2007a">
+ <author>Jure Leskovec</author>
+ <author>Lada Adamic</author>
+ <author>Bernardo A. Huberman</author>
+ <title>The dynamics of viral marketing</title>
+ <journal>ACM Transactions on the Web</journal>
+ <volume>1</volume>
+ <number>1</number>
+ <pages>5</pages>
+ <year>2007</year>
+ <doi>10.1145/1232722.1232727</doi>
+ <file>Networks/applications/www/2007 TWEB Dynamics of Viral Marketing.pdf</file>
+</reference>
+
+
+
+
+<reference id="Leskovek and Faloutsos 2007">
+ <author>Jure Leskovec</author>
+ <author>Christos Faloutsos</author>
+ <title>Scalable modeling of real graphs using Kronecker multiplication</title>
+ <proceedings>24th International Conference on Machine Learning</proceedings>
+ <conference>ICML</conference>
+ <year>2007</year>
+ <isbn>978-1-59593-793-3</isbn>
+ <location>Corvallis, Oregon, USA</location>
+ <pages>497-504</pages>
+ <doi>10.1145/1273496.1273559</doi>
+ <file>Networks/models/2007 ICML Kronecker graphs.pdf</file>
+</reference>
+
+
+
+<reference id="Leskovek et al. 2007b">
+ <author>Jure Leskovec</author>
+ <author>Jon Kleinberg</author>
+ <author>Christos Faloutsos</author>
+ <title>Graph Evolution: Densification and Shrinking Diameters</title>
+ <journal>ACM Transactions on Knowledge Discovery from Data</journal>
+ <volume>1</volume>
+ <number>1</number>
+ <pages>5</pages>
+ <year>2007</year>
+ <doi>10.1145/1217299.1217301</doi>
+ <file>Networks/dynamics/evolution/2007 TKDD Graph Evolution.pdf</file>
+</reference>
+
+
+<reference id="Leskovek et al. 2007c">
+ <author>Jure Leskovec</author>
+ <author>Andreas Krause</author>
+ <author>Carlos Guestrin</author>
+ <author>Christos Faloutsos</author>
+ <author>Jeanne VanBriesen</author>
+ <author>Natalie Glance</author>
+ <title>Scalable modeling of real graphs using Kronecker multiplication</title>
+ <proceedings>13th ACM SIGKDD International Conference on Knowledge Discovery And Data Mining</proceedings>
+ <conference>KDD</conference>
+ <year>2007</year>
+ <isbn>978-1-59593-609-7</isbn>
+ <location>San Jose, California, USA</location>
+ <pages>420-429</pages>
+ <doi>10.1145/1281192.1281239</doi>
+ <file>Networks/dynamics/percolation/2007 KDD Outbreak Detection.pdf</file>
+</reference>
+
+
+<reference id="Leskovec and Horwitz 2008">
+ <author>Jure Leskovec</author>
+ <author>Eric Horvitz</author>
+ <title>Planetary-scale views on a large instant-messaging network</title>
+ <proceedings>17th International Conference on the World Wide Web</proceedings>
+ <conference>WWW</conference>
+ <year>2008</year>
+ <isbn>978-1-60558-085-2</isbn>
+ <location>Beijing, China</location>
+ <pages>915-924</pages>
+ <doi>10.1145/1367497.1367620</doi>
+ <file>Networks/applications/communication/instant-messaging/2008 WWW Instant-messaging network.pdf</file>
+</reference>
+
+
+<reference id="Leskovec et al. 2008">
+ <author>Jure Leskovec</author>
+ <author>Kevin J. Lang</author>
+ <author>Anirban Dasgupta</author>
+ <author>Michael W. Mahoney</author>
+ <title>Statistical properties of community structure in large social and information networks</title>
+ <proceedings>17th International Conference on the World Wide Web</proceedings>
+ <conference>WWW</conference>
+ <year>2008</year>
+ <isbn>978-1-60558-085-2</isbn>
+ <location>Beijing, China</location>
+ <pages>695-704</pages>
+ <doi>10.1145/1367497.1367591</doi>
+ <file>Networks/algorithms/clustering/2008 WWW Statistical properties of community structure.pdf</file>
+</reference>
+
+
+
+<reference id="Leung et al. 2010">
+ <author>Cane Wing-ki Leung</author>
+ <author>Ee-Peng Lim</author>
+ <author>David Lo</author>
+ <author>Jianshu Weng</author>
+ <title>Mining interesting link formation rules in social networks</title>
+ <proceedings>19th ACM International Conference on Information and Knowledge Management</proceedings>
+ <conference>CIKM</conference>
+ <year>2010</year>
+ <isbn>978-1-4503-0099-5</isbn>
+ <location>Toronto, Ontario, Canada</location>
+ <pages>209-218</pages>
+ <doi>10.1145/1871437.1871468</doi>
+ <file>Networks/algorithms/patterns/2010 CIKM Link formation rules.pdf</file>
+</reference>
+
+
+<reference id="Lewis 2009">
+ <author>Ted G. Lewis</author>
+ <title>Network Science: Theory and Applications</title>
+ <publisher>Wiley</publisher>
+ <edition>1st edition</edition>
+ <year>2009</year>
+ <isbn>978-0-470-33188-0</isbn>
+ <file>[books]/algorithms/graphs/0470331887 [Lewis] Network Science - Theory and Applications.pdf</file>
+ <comment>
+  <text>Good introductory textbook.</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Li et al. 2006">
+ <author>Xin Li</author>
+ <author>Bing Liu</author>
+ <author>Philip S. Yu</author>
+ <title>Discovering Overlapping Communities of Named Entities</title>
+ <proceedings>10th European Conference on Principles and Practice of Knowledge Discovery in Databases</proceedings>
+ <conference>PKDD</conference>
+ <year>2006</year>
+ <isbn>3-540-45374-1</isbn>
+ <location>Berlin, Germany</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>4213</volume>
+ <pages>593-600</pages>
+ <doi>10.1007/11871637_60</doi>
+ <file>Networks/algorithms/clustering/2006 PKDD Overlapping Communities of Named Entities.pdf</file>
+</reference>
+
+
+
+
+<reference id="Lin et al. 2009">
+ <author>Yu-Ru Lin</author>
+ <author>Jimeng Sun</author>
+ <author>Paul Castro</author>
+ <author>Ravi Konuru</author>
+ <author>Hari Sundaram</author>
+ <author>Aisling Kelliher</author>
+ <title>MetaFac: Community discovery via relational hypergraph factorization</title>
+ <proceedings>15th ACM SIGKDD International Conference on Knowledge Discovery in Data Mining</proceedings>
+ <conference>KDD</conference>
+ <year>2009</year>
+ <isbn>978-1-60558-495-9</isbn>
+ <location>Paris, France</location>
+ <pages>527-535</pages>
+ <doi>10.1145/1557019.1557080</doi>
+ <file>Networks/algorithms/clustering/2009 KDD MetaFac.pdf</file>
+</reference>
+
+
+
+<reference id="Liu et al. 2010">
+ <author>Lu Liu</author>
+ <author>Jie Tang</author>
+ <author>Jiawei Han</author>
+ <author>Meng Jiang</author>
+ <author>Shiqiang Yang</author>
+ <title>Mining topic-level influence in heterogeneous networks</title>
+ <proceedings>19th ACM International Conference on Information and Knowledge Management</proceedings>
+ <conference>CIKM</conference>
+ <year>2010</year>
+ <isbn>978-1-4503-0099-5</isbn>
+ <location>Toronto, Ontario, Canada</location>
+ <pages>209-218</pages>
+ <doi>10.1145/1871437.1871467</doi>
+ <file>Networks/dynamics/percolation/2010 CIKM Topic-level influence.pdf</file>
+</reference>
+
+
+
+<reference id="Liu et al. 2011">
+ <author>Yang-Yu Liu</author>
+ <author>Jean-Jacques Slotine</author>
+ <author>Albert-László Barabási</author>
+ <title>Controllability of complex networks</title>
+ <journal>Nature</journal>
+ <volume>473</volume>
+ <number>7346</number>
+ <pages>167-173</pages>
+ <year>2011</year>
+ <doi>10.1038/nature10011</doi>
+ <file>Networks/dynamics/controllability/2011 Nature [Barabasi] Controllability.pdf</file>
+</reference>
+
+
+
+<reference id="Magnien et al. 2011">
+ <author>Clémence Magnien</author>
+ <author>Matthieu Latapy</author>
+ <author>Jean-Loup Guillaume</author>
+ <title>Impact of Random Failures and Attacks on Poisson and Power-Law Random Networks</title>
+ <journal>ACM Computing Surveys</journal>
+ <volume>43</volume>
+ <number>3</number>
+ <article>13</article>
+ <year>2011</year>
+ <doi>10.1145/1922649.1922650</doi>
+ <file>Networks/dynamics/robustness/2011 CSUR Random failures and attacks on networks.pdf</file>
+</reference>
+
+
+<reference id="Mainzer 2007">
+ <author>Klaus Mainzer</author>
+ <title>Thinking in Complexity: The Computational Dynamics of Matter, Mind, and Mankind</title>
+ <publisher>Springer</publisher>
+ <edition>5th edition</edition>
+ <year>2007</year>
+ <isbn>3540722270</isbn>
+ <file>[books]\algorithms\graphs\3540722270 [Mainzer] Thinking in Complexity - The Computational Dynamics of Matter, Mind and Mankind.5th.2007.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Maiya and Berger-Wolf 2010a">
+ <author>Arun S. Maiya</author>
+ <author>Tanya Y. Berger-Wolf</author>
+ <title>Expansion and search in networks</title>
+ <proceedings>19th ACM International Conference on Information and Knowledge Management</proceedings>
+ <conference>CIKM</conference>
+ <year>2010</year>
+ <isbn>978-1-4503-0099-5</isbn>
+ <location>Toronto, Ontario, Canada</location>
+ <pages>239-248</pages>
+ <doi>10.1145/1871437.1871471</doi>
+ <file>Networks/dynamics/search/2010 CIKM Expansion and search in networks.pdf</file>
+</reference>
+
+
+<reference id="Maiya and Berger-Wolf 2010b">
+ <author>Arun S. Maiya</author>
+ <author>Tanya Y. Berger-Wolf</author>
+ <title>Online Sampling of High Centrality Individuals in Social Networks</title>
+ <proceedings>14th Pacific-Asia Conference on Advances in Knowledge Discovery and Data Mining</proceedings>
+ <conference>PAKDD</conference>
+ <year>2010</year>
+ <isbn>978-3-642-13656-6</isbn>
+ <location>Hyderabad, India</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>6118</volume>
+ <pages>91-98</pages>
+ <doi>10.1007/978-3-642-13657-3_12</doi>
+ <file>Networks/algorithms/graphs/sampling/2010 PAKDD Sampling high-centrality individuals.pdf</file>
+</reference>
+
+
+<reference id="Maiya and Berger-Wolf 2010c">
+ <author>Arun S. Maiya</author>
+ <author>Tanya Y. Berger-Wolf</author>
+ <title>Sampling Community Structure</title>
+ <proceedings>19th International Conference on the World Wide Web</proceedings>
+ <conference>WWW</conference>
+ <year>2010</year>
+ <isbn>978-1-60558-799-8</isbn>
+ <location>Raleigh, North Carolina, USA</location>
+ <pages>701-710</pages>
+ <doi>10.1145/1772690.1772762</doi>
+ <file>Networks/algorithms/graphs/sampling/2010 WWW Sampling community structure.pdf</file>
+</reference>
+
+
+<reference id="McKane 2004">
+ <author>A.J. McKane</author>
+ <title>Evolving complex food webs</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>287-295</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00121-2</doi>
+ <file>Networks/applications/ecological/2004 EPJB Evolving complex food webs.pdf</file>
+</reference>
+
+
+<reference id="Menczer 2004">
+ <author>F. Menczer</author>
+ <title>Correlated topologies in citation networks and the Web</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>211-221</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00114-1</doi>
+ <file>Networks/applications/bibliographic/2004 EPJB Correlated topologies in citation networks and the Web.pdf</file>
+</reference>
+
+
+
+<reference id="Mika 2005">
+ <author>Peter Mika</author>
+ <title>Flink: Semantic Web technology for the extraction and analysis of social networks</title>
+ <journal>Journal of Web Semantics: Science, Services and Agents on the World Wide Web</journal>
+ <!-- Selected Papers from the International Semantic Web Conference, 2004 - ISWC, 2004 -->
+ <volume>3</volume>
+ <number>2-3</number>
+ <pages>211-223</pages>
+ <year>2005</year>
+ <doi>10.1016/j.websem.2005.05.006</doi>
+ <file>Networks/software/2005 WS Flink.pdf</file>
+</reference>
+
+
+<reference id="Milo et al. 2002">
+ <author>Ron Milo</author>
+ <author>Shai Shen-Orr</author>
+ <author>Shalev Itzkovitz</author>
+ <author>Nadav Kashtan</author>
+ <author>D. Chklovskii</author>
+ <author>Uri Alon</author>
+ <title>Network Motifs: Simple building blocks of complex networks</title>
+ <journal>Science</journal>
+ <volume>298</volume>
+ <number>5594</number>
+ <pages>824-827</pages>
+ <year>2002</year>
+ <doi>10.1126/science.298.5594.824</doi>
+ <file>Networks/structure/motifs/2002 Science [Milo] Network motifs.pdf</file>
+</reference>
+
+<reference id="Milo et al. 2004a">
+ <author>Ron Milo</author>
+ <author>Shalev Itzkovitz</author>
+ <author>Nadav Kashtan</author>
+ <author>Reuven Levitt</author>
+ <author>Shai Shen-Orr</author>
+ <author>Inbal Ayzenshtat</author>
+ <author>Michal Sheffer</author>
+ <author>Uri Alon</author>
+ <title>Superfamilies of evolved and designed networks</title>
+ <journal>Science</journal>
+ <volume>303</volume>
+ <number>5663</number>
+ <pages>1538-1542</pages>
+ <year>2004</year>
+ <doi>10.1126/science.1089167</doi>
+ <file>Networks/structure/motifs/2004 Science [Milo] Superfamilies of networks.pdf</file>
+</reference>
+
+<reference id="Milo et al. 2004b">
+ <author>Ron Milo</author>
+ <author>Shalev Itzkovitz</author>
+ <author>Nadav Kashtan</author>
+ <author>Reuven Levitt</author>
+ <author>Uri Alon</author>
+ <title>Response to Comment on "Network Motifs: Simple Building Blocks of Complex Networks" and "Superfamilies of Evolved and Designed Networks"</title>
+ <journal>Science</journal>
+ <volume>305</volume>
+ <number>5687</number>
+ <pages>1107</pages>
+ <year>2004</year>
+ <doi>10.1126/science.1100519</doi>
+ <file>Networks/structure/motifs/2004 Science [Milo] Response to comment.pdf</file>
+</reference>
+
+
+
+<reference id="Mitchell 2009">
+ <author>Melanie Mitchell</author>
+ <title>Complexity: A Guided Tour</title>
+ <publisher>Oxford University Press</publisher>
+ <year>2009</year>
+ <isbn>0195124413</isbn>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Mondragon 2008">
+ <author>Raúl J. Mondragón</author>
+ <title>Topological modelling of large networks</title>
+ <journal>Philosophical Transactions of the Royal Society A: Mathematica, Physical, and Engineering Sciences</journal>
+ <volume>366</volume>
+ <number>1872</number>
+ <pages>1931-1940</pages>
+ <year>2008</year>
+ <doi>10.1098/rsta.2008.0008</doi>
+ <file>Networks/models/2008 PTRA [Mondragon] Topological Modeling.pdf</file>
+</reference>
+
+
+
+<reference id="Moreno and Jennings 1938">
+ <author>Jacob L. Moreno</author>
+ <author>Helen H. Jennings</author>
+ <title>Statistics of Social Configurations</title>
+ <journal>Sociometry</journal>
+ <volume>1</volume>
+ <number>3/4</number>
+ <pages>342-374</pages>
+ <year>1938</year>
+ <url>http://www.jstor.org/stable/2785588</url>
+ <file>Networks/applications/social/1938 Sociometry [Moreno &amp; Jennings] Social configurations.pdf</file>
+</reference>
+
+
+<reference id="Motter 2004">
+ <author>Adilson E. Motter</author>
+ <title>Cascade Control and Defense in Complex Networks</title>
+ <journal>Physical Review Letters</journal>
+ <volume>93</volume>
+ <number>9</number>
+ <pages>098701</pages>
+ <year>2004</year>
+ <doi>10.1103/PhysRevLett.93.098701</doi>
+ <file>Networks/dynamics/robustness/2004 PhysRevLett [Motter] Cascade Control and Defense.pdf</file>
+</reference>
+
+
+
+<reference id="Naone 2011">
+ <author>Erica Naone</author>
+ <title>The New Big Data</title>
+ <journal>MIT Technology Review</journal>
+ <volume>August 22</volume>
+ <year>2011</year>
+ <url>http://www.technologyreview.com/computing/38397/</url>
+</reference>
+
+
+
+<reference id="Newcomb 1953">
+ <author>Theodore M. Newcomb</author>
+ <title>An approach to the study of communicative acts</title>
+ <journal>Psychological Review</journal>
+ <volume>60</volume>
+ <number>6</number>
+ <pages>343-404</pages>
+ <year>1953</year>
+ <doi>10.1037/h0063098</doi>
+ <file>Networks/structure/motifs/1953 PR [Newcomb] Structural balance.pdf</file>
+</reference>
+
+
+
+<reference id="Newman 2002">
+ <author>Mark E.J. Newman</author>
+ <title>Assortative Mixing in Networks</title>
+ <journal>Physical Review Letters</journal>
+ <volume>89</volume>
+ <pages>208701</pages>
+ <year>2002</year>
+ <doi>10.1103/PhysRevLett.89.208701</doi>
+ <file>Networks/structure/metrics/2002 PhysRevLett [Newman] Assortativity Mixing.pdf</file>
+</reference>
+
+
+
+<reference id="Newman 2003">
+ <author>Mark E.J. Newman</author>
+ <title>The Structure and Function of Complex Networks</title>
+ <journal>SIAM Review</journal>
+ <volume>45</volume>
+ <pages>167-256</pages>
+ <year>2003</year>
+ <doi>10.1137/S003614450342480</doi>
+ <file>Networks/2003 SIAM Review [Newman] The structure and function of complex networks.draft.pdf</file>
+ <file>Networks/2003 SIAM Review [Newman] The structure and function of complex networks.pdf</file>
+ <comment>
+  <text>Survey paper on networks...</text>
+ </comment>
+</reference>
+
+
+<reference id="Newman 2004a">
+ <author>Mark E.J. Newman</author>
+ <title>Fast algorithm for detecting community structure in networks</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>69</volume>
+ <number>6</number>
+ <pages>066133</pages>
+ <year>2004</year>
+ <doi>10.1103/PhysRevE.69.066133</doi>
+ <file>Networks/algorithms/clustering/2004 Physical Review E [Newman] Detecting community structure.pdf</file>
+</reference>
+
+
+<reference id="Newman 2004b">
+ <author>Mark E.J. Newman</author>
+ <title>Analysis of weighted networks</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>70</volume>
+ <number>5</number>
+ <pages>056131</pages>
+ <year>2004</year>
+ <doi>10.1103/PhysRevE.69.066133</doi>
+ <file>Networks/structure/2004 Physical Review E [Newman] Weighted networks.pdf</file>
+</reference>
+
+
+<reference id="Newman 2004c">
+ <author>Mark E.J. Newman</author>
+ <title>Detecting community structure in networks</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>321-330</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00124-y</doi>
+ <file>Networks/algorithms/clustering/2004 EPJB [Newman] Community structure in networks.pdf</file>
+</reference>
+
+
+<reference id="Newman 2006">
+ <author>Mark E.J. Newman</author>
+ <title>Finding community structure in networks using the eigenvectors of matrices</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>74</volume>
+ <number>3</number>
+ <pages>036104</pages>
+ <year>2006</year>
+ <doi>10.1103/PhysRevE.74.036104</doi>
+ <file>Networks/algorithms/clustering/2006 Physical Review E [Newman] Finding community structure using eigenvectors.pdf</file>
+</reference>
+
+
+<reference id="Newman 2010">
+ <author>Mark E.J. Newman</author>
+ <title>Networks: An Introduction</title>
+ <publisher>Oxford University Press</publisher>
+ <edition>1st edition</edition>
+ <year>2010</year>
+ <isbn>978-0-19-920665-0</isbn>
+ <comment>
+  <text>Excellent introductory textbook.</text>
+ </comment>
+</reference>
+
+
+<reference id="Newman et al. 2006">
+ <author>Mark E.J. Newman</author>
+ <author>Albert-László Barabási</author>
+ <author>Duncan J. Watts</author>
+ <title>The Structure and Dynamics of Networks</title>
+ <publisher>Princeton University Press</publisher>
+ <year>2006</year>
+ <isbn>0691113572</isbn>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+	
+<reference id="Newman and Girvan 2004">
+ <author>Mark E.J. Newman</author>
+ <author>M. Girvan</author>
+ <title>Finding and evaluating community structure in networks</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>69</volume>
+ <number>2</number>
+ <pages>026113</pages>
+ <year>2004</year>
+ <doi>10.1103/PhysRevE.69.026113</doi>
+ <file>Networks/algorithms/clustering/2004 Physical Review E [Newman] Finding and evaluating community structure.pdf</file>
+</reference>
+
+
+
+<reference id="Okamoto et al. 2008">
+ <author>Kazuya Okamoto</author>
+ <author>Wei Chen</author>
+ <author>Xiang-Yang Li</author>
+ <title>Ranking of Closeness Centrality for Large-Scale Social Networks</title>
+ <proceedings>Frontiers in Algorithmics, 2nd Annual International Workshop</proceedings>
+ <conference>FAW</conference>
+ <year>2008</year>
+ <isbn>978-3-540-69310-9</isbn>
+ <location>Changsha, China</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>5059</volume>
+ <pages>186-195</pages>
+ <doi>10.1007/978-3-540-69311-6_21</doi>
+ <file>Networks/structure/metrics/2008 FAW Closeness centrality.pdf</file>
+</reference>
+
+
+<reference id="Oltvai and Barabasi 2002">
+ <author>Zoltán N. Oltvai</author>
+ <author>Albert-László Barabási</author>
+ <title>Life's Complexity Pyramid</title>
+ <journal>Science</journal>
+ <volume>298</volume>
+ <number>5594</number>
+ <pages>763-764</pages>
+ <year>2002</year>
+ <doi>10.1126/science.1078563</doi>
+ <file>Networks/applications/biological/2002 Science [Barabasi] Life's complexity pyramid.pdf</file>
+</reference>
+
+
+
+<reference id="Onnela et al. 2004">
+ <author>Jukka-Pekka Onnela</author>
+ <author>Kimmo Kaski</author>
+ <author>János Kertész</author>
+ <title>Clustering and information in correlation based financial networks</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>353-362</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00128-7</doi>
+ <file>Networks/applications/economic/2004 EPJB Clustering and information in correlation based financial networks.pdf</file>
+</reference>
+
+
+<reference id="Onnela et al. 2005">
+ <author>Jukka-Pekka Onnela</author>
+ <author>Jari Saramäki</author>
+ <author>János Kertész</author>
+ <author>Kimmo Kaski</author>
+ <title>Intensity and coherence of motifs in weighted complex networks</title>
+ <journal>Physical Review E</journal>
+ <volume>71</volume>
+ <number>6</number>
+ <pages>065103(R)</pages>
+ <year>2005</year>
+ <doi>10.1103/PhysRevE.71.065103</doi>
+ <file>Networks/structure/metrics/2005 PhysRevE [Onnela] Intensity and coherence of motifs.pdf</file>
+</reference>
+
+
+<reference id="Ore 1962">
+ <author>Oystein Ore</author>
+ <title>Theory of Graphs</title>
+ <publisher>American Mathematical Society Colloquium Publications</publisher>
+ <year>1962</year>
+ <isbn>0821810383</isbn>
+ <file>[books]/algorithms/graphs/1962 [Ore] Theory of graphs.pdf</file>
+</reference>
+
+
+
+<reference id="Page et al. 1998">
+ <author>Lawrence Page</author>
+ <author>Sergey Brin</author>
+ <author>Rajeev Motwani</author>
+ <author>Terry Winograd</author>
+ <title>The PageRank Citation Ranking: Bringing Order to the Web</title>
+ <publisher>Stanford InfoLab</publisher>
+ <edition>Technical Report</edition>
+ <year>1998</year>
+ <url>http://ilpubs.stanford.edu:8090/422/</url>
+ <file>Networks/structure/metrics/1999 TR PageRank.pdf</file>
+</reference>
+
+
+<reference id="Palla et al. 2005">
+ <author>Gergely Palla</author>
+ <author>Imre Derényi</author>
+ <author>Illés Farkas</author>
+ <author>Tamás Vicsek</author>
+ <title>Uncovering the overlapping community structure of complex networks in nature and society</title>
+ <journal>Nature</journal>
+ <volume>435</volume>
+ <pages>814-818</pages>
+ <year>2005</year>
+ <doi>10.1038/nature03607</doi>
+ <file>Networks/algorithms/clustering/2005 Nature [Palla] Overlapping community structure.pdf</file>
+</reference>
+
+
+
+<reference id="Park and Barabasi 2007">
+ <author>Juyong Park</author>
+ <author>Albert-László Barabási</author>
+ <title>Distribution of node characteristics in complex networks</title>
+ <journal>PNAS</journal>
+ <volume>104</volume>
+ <number>46</number>
+ <pages>17916-17920</pages>
+ <year>2007</year>
+ <doi>10.1073/pnas.0705081104</doi>
+ <file>Networks/structure/metrics/2007 PNAS [Barabasi] Distribution of node characteristics.pdf</file>
+</reference>
+
+
+<reference id="Pastor-Satorras and Vespignani 2007">
+ <author>Romualdo Pastor-Satorras</author>
+ <author>Alessandro Vespignani</author>
+ <title>Evolution and Structure of the Internet: A Statistical Physics Approach</title>
+ <publisher>Cambridge University Press</publisher>
+ <year>2007</year>
+ <isbn>052171477X</isbn>
+ <file>[books]/algorithms/graphs/052171477X [Pastor-Satorras &amp; Vespignani] Evolution and Structure of the Internet.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Paul et al. 2004">
+ <author>G. Paul</author>
+ <author>T. Tanizawa</author>
+ <author>Shlomo Havlin</author>
+ <author>H. Eugene Stanley</author>
+ <title>Optimization of robustness of complex networks</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>187-191</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00112-3</doi>
+ <file>Networks/dynamics/robustness/2004 EPJB [Havlin] Optimization of robustness of complex networks.pdf</file>
+</reference>
+
+
+<reference id="Petermann and De Los Rios 2004">
+ <author>T. Petermann</author>
+ <author>P. De Los Rios</author>
+ <title>Exploration of scale-free networks: Do we measure the real exponents?</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>201-204</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00021-5</doi>
+ <file>Networks/models/scale-free/2004 EPJB Exploration of scale-free networks.pdf</file>
+</reference>
+
+
+
+<reference id="Pool and Kochen 1978">
+ <author>Ithiel de Sola Pool</author>
+ <author>Manfred Kochen</author>
+ <title>Contacts and influence</title>
+ <journal>Social Networks</journal>
+ <volume>1</volume>
+ <number>1</number>
+ <pages>5-51</pages>
+ <year>1978</year>
+ <doi>10.1016/0378-8733(78)90011-4</doi>
+ <file>Networks/models/small-world/1978 Social Networks [Pool &amp; Kochen] Contacts and influence.pdf</file>
+</reference>
+
+<reference id="Press et al. 1992">
+ <author>William H. Press</author>
+ <author>Brian P. Flannery</author>
+ <author>Saul A. Teukolsky</author>
+ <author>William T. Vetterling</author>
+ <title>Numerical Recipes in C: The Art of Scientific Computing</title>
+ <publisher>Cambridge University Press</publisher>
+ <edition>2nd edition</edition>
+ <year>1992</year>
+ <isbn>0521431085</isbn>
+ <file>[books]/algorithms/Numerical Recipes</file>
+</reference>
+
+<reference id="Press et al. 2007">
+ <author>William H. Press</author>
+ <author>Saul A. Teukolsky</author>
+ <author>William T. Vetterling</author>
+ <author>Brian P. Flannery</author>
+ <title>Numerical Recipes: The Art of Scientific Computing</title>
+ <publisher>Cambridge University Press</publisher>
+ <edition>3rd edition</edition>
+ <year>2007</year>
+ <isbn>0521880688</isbn>
+</reference>
+
+
+<reference id="Radicchi et al. 2004">
+ <author>Filippo Radicchi</author>
+ <author>Claudio Castellano</author>
+ <author>Federico Cecconi</author>
+ <author>Vittorio Loreto</author>
+ <author>Domenico Parisi</author>
+ <title>Defining and identifying communities in networks</title>
+ <journal>PNAS</journal>
+ <volume>101</volume>
+ <number>9</number>
+ <pages>2658-2663</pages>
+ <year>2004</year>
+ <doi>10.1073/pnas.0400054101</doi>
+ <file>Networks/algorithms/clustering/2004 PNAS Defining and identifying communities in networks.pdf</file>
+</reference>
+
+
+<reference id="Ravasz and Barabasi 2003">
+ <author>Erzsébet Ravasz</author>
+ <author>Albert-László Barabási</author>
+ <title>Hierarchical organization in complex networks</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>67</volume>
+ <pages>026112</pages>
+ <year>2003</year>
+ <doi>10.1103/PhysRevE.67.026112</doi>
+ <file>Networks/models/scale-free/2003 PhysRevE [Ravasz &amp; Barabasi] Hierarchical organization in complex networks.pdf</file>
+</reference>
+
+
+<reference id="Rodrigues et al. 2006">
+ <author>José F. Rodrigues, Jr.</author>
+ <author>Hanghang Tong</author>
+ <author>Agma J. M. Traina</author>
+ <author>Christos Faloutsos</author>
+ <author>Jure Leskovec</author>
+ <title>GMine: A system for scalable, interactive graph visualization and mining</title>
+ <proceedings>32nd International Conference on Very Large Data Bases</proceedings>
+ <conference>VLDB</conference>
+ <year>2006</year>
+ <isbn>1-59593-385-9</isbn>
+ <location>Seoul, Korea</location>
+ <pages>1195-1198</pages>
+ <url>http://portal.acm.org/citation.cfm?id=1182635.1164242</url>
+ <file>Networks/algorithms/visualization/2006 VLDB GMine.pdf</file>
+</reference>
+
+
+
+<reference id="Rubinov and Sporns 2010">
+ <author>Mikail Rubinov</author>
+ <author>Olaf Sporns</author>
+ <title>Complex network measures of brain connectivity: Uses and interpretations</title>
+ <journal>NeuroImage</journal>
+ <volume>52</volume>
+ <number>3</number>
+ <pages>1059-1069</pages>
+ <year>2010</year>
+ <doi>10.1016/j.neuroimage.2009.10.003</doi>
+ <file>Networks/structure/metrics/2010 Neuroimage [Rubinov &amp; Sporns] Complex network measures of brain connectivity.pdf</file>
+</reference>
+
+
+<reference id="Sales-Pardo et al. 2007">
+ <author>Marta Sales-Pardo</author>
+ <author>Roger Guimerà</author>
+ <author>André A. Moreira</author>
+ <author>Luis A.N. Amaral</author>
+ <title>Extracting the hierarchical organization of complex systems</title>
+ <journal>PNAS</journal>
+ <volume>104</volume>
+ <number>39</number>
+ <pages>15224-15229</pages>
+ <year>2007</year>
+ <doi>10.1073/pnas.0703740104</doi>
+ <file>Networks/algorithms/clustering/2007 PNAS [Sales-Pardo et al.] Hierarchical organization of complex systems.pdf</file>
+</reference>
+
+
+
+<reference id="Sathik and Rasheed 2009">
+ <author>M. Mohamed Sathik</author>
+ <author>A. Abdul Rasheed</author>
+ <title>A Centrality Approach to Identify Sets of Key Players in an Online Weblog</title>
+ <journal>International Journal of Recent Trends in Engineering</journal>
+ <volume>2</volume>
+ <number>3</number>
+ <pages>85-87</pages>
+ <year>2009</year>
+ <url>http://ijrte.academypublisher.com/vol02/no03/ijrte02038587.pdf</url>
+ <file>Networks/applications/www/blogs/2009 IJRTE Key players in an online weblog.pdf</file>
+</reference>
+
+
+<reference id="Sathik 2011">
+ <author>M. Mohamed Sathik</author>
+ <title>Community Discovery in Mobile Blog</title>
+ <journal>Journal of Global Research in Computer Science</journal>
+ <volume>2</volume>
+ <number>2</number>
+ <pages>12-16</pages>
+ <year>2011</year>
+ <url>http://www.jgrcs.info/index.php/jgrcs/article/view/138</url>
+ <file>Networks/applications/www/blogs/2011 JGRCS Communities in mobile blog.pdf</file>
+</reference>
+
+
+<reference id="Scott 2000">
+ <author>John P. Scott</author>
+ <title>Social Network Analysis: A Handbook</title>
+ <publisher>Sage Publications Ltd.</publisher>
+ <edition>2nd edition</edition>
+ <year>2000</year>
+ <isbn>978-0-761-96339-4</isbn>
+ <file>[books]/algorithms/graphs/0761963391 [Scott] Social Network Analysis - A Handbook.pdf</file>
+ <comment>
+  <text>Introductory textbook on social network analysis.</text>
+ </comment>
+</reference>
+
+
+<reference id="Sedgewick 1990">
+ <author>Robert Sedgewick</author>
+ <title>Algorithms in C</title>
+ <publisher>Addison-Wesley</publisher>
+ <year>1990</year>
+ <isbn>0201514257</isbn>
+ <file>[books]/algorithms/0201514257 [Sedgewick] Algorithms in C.pdf</file>
+ <comment>
+  <text>Introductory textbook on algorithms (C edition).</text>
+ </comment>
+</reference>
+
+<reference id="Sedgewick 2002">
+ <author>Robert Sedgewick</author>
+ <title>Algorithms in Java. Parts 1-4</title>
+ <publisher>Addison-Wesley</publisher>
+ <edition>3rd edition</edition>
+ <year>2002</year>
+ <isbn>0201361205</isbn>
+ <file>[books]/algorithms/0201361205 [Sedgewick] Algorithms in Java.chm</file>
+ <comment>
+  <text>Introductory textbook on algorithms (Java edition).</text>
+ </comment>
+</reference>
+
+<reference id="Sedgewick 2003">
+ <author>Robert Sedgewick</author>
+ <title>Algorithms in Java. Part 5. Graph Algorithms</title>
+ <publisher>Addison-Wesley</publisher>
+ <edition>3rd edition</edition>
+ <year>2003</year>
+ <isbn>0201361213</isbn>
+ <file>[books]/algorithms/0201361213 [Sedgewick] Algorithms in Java - Graph Algorithms.chm</file>
+ <comment>
+  <text>Introductory textbook on algorithms (Java edition).</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Serrano and Boguna 2006a">
+ <author>M. Ángeles Serrano</author>
+ <author>Marián Boguñá</author>
+ <title>Clustering in complex networks. I. General formalism</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>74</volume>
+ <number>5</number>
+ <pages>056114</pages>
+ <year>2006</year>
+ <doi>10.1103/PhysRevE.74.056114</doi>
+ <file>Networks/algorithms/clustering/2006 Physical Review E - Clustering 1 Formalism.pdf</file>
+</reference>
+
+<reference id="Serrano and Boguna 2006b">
+ <author>M. Ángeles Serrano</author>
+ <author>Marián Boguñá</author>
+ <title>Clustering in complex networks. II. Percolation properties</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>74</volume>
+ <number>5</number>
+ <pages>056115</pages>
+ <year>2006</year>
+ <doi>10.1103/PhysRevE.74.056115</doi>
+ <file>Networks/algorithms/clustering/2006 Physical Review E - Clustering 2 Percolation properties.pdf</file>
+</reference>
+
+<reference id="Serrano and Boguna 2006c">
+ <author>M. Ángeles Serrano</author>
+ <author>Marián Boguñá</author>
+ <title>Percolation and Epidemic Thresholds in Clustered Networks</title>
+ <journal>Physical Review Letters</journal>
+ <volume>97</volume>
+ <number>8</number>
+ <pages>088701</pages>
+ <year>2006</year>
+ <doi>10.1103/PhysRevLett.97.088701</doi>
+ <file>Networks/dynamics/percolation/2006 Physical Review Letters - Percolation and Epidemic Thresholds.pdf</file>
+</reference>
+
+<reference id="Serrano et al. 2006">
+ <author>M. Ángeles Serrano</author>
+ <author>Marián Boguñá</author>
+ <author>Romualdo Pastor-Satorras</author>
+ <title>Correlations in weighted networks</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>74</volume>
+ <number>5</number>
+ <pages>055101(R)</pages>
+ <year>2006</year>
+ <doi>10.1103/PhysRevE.74.055101</doi>
+ <file>Networks/structure/metrics/2006 Physical Review E - Correlations.pdf</file>
+</reference>
+
+
+
+<reference id="Shen and Cheng 2010">
+ <author>Hua-Wei Shen</author>
+ <author>Xue-Qi Cheng</author>
+ <title>Spectral methods for the detection of network community structure: A comparative analysis</title>
+ <journal>Journal of Statistical Mechanics: Theory and Experiment</journal>
+ <volume>2010</volume>
+ <pages>P10020</pages>
+ <year>2010</year>
+ <doi>10.1088/1742-5468/2010/10/P10020</doi>
+ <file>Networks/algorithms/clustering/2010 JSM [Shen &amp; Cheng] Spectral methods for the detection of network community structure.pdf</file>
+</reference>
+
+
+<reference id="Shi et al. 2009">
+ <author>Chuan Shi</author>
+ <author>Dan Zhou</author>
+ <author>Bin Wu</author>
+ <author>Jian Liu</author>
+ <title>VisNetMiner: An Integration Tool for Visualization and Analysis of Networks</title>
+ <proceedings>5th International Conference on Advanced Data Mining and Applications</proceedings>
+ <conference>ADMA</conference>
+ <year>2009</year>
+ <isbn>978-3-642-03348-3</isbn>
+ <location>Beijing, China</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>5678</volume>
+ <pages>611-618</pages>
+ <doi>10.1007/978-3-642-03348-3_63</doi>
+ <file>Networks/algorithms/visualization/2009 ADMA VisNetMiner.pdf</file>
+ <comment>
+  <text>ADMA'2009 paper...</text>
+ </comment>
+</reference>
+
+
+<reference id="Shi et al. 2010">
+ <author>Chuan Shi</author>
+ <author>Jian Zhang</author>
+ <author>Liangliang Shi</author>
+ <author>Yanan Cai</author>
+ <author>Bin Wu</author>
+ <title>A Novel Algorithm for Hierarchical Community Structure Detection in Complex Networks</title>
+ <proceedings>5th International Conference on Advanced Data Mining and Applications</proceedings>
+ <conference>ADMA</conference>
+ <year>2010</year>
+ <isbn>978-3-642-17316-5</isbn>
+ <location>Chongqing, China</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>6440</volume>
+ <pages>557-564</pages>
+ <doi>10.1007/978-3-642-17316-5_53</doi>
+ <file>Networks/algorithms/clustering/2010 ADMA Hierarchical Community Structure Detection.pdf</file>
+ <comment>
+  <text>ADMA'2010 paper...</text>
+ </comment>
+</reference>
+
+
+<reference id="Shoham and Leyton-Brown 2008">
+ <author>Yoav Shoham</author>
+ <author>Kevin Leyton-Brown</author>
+ <title>Multiagent Systems: Algorithmic, Game-Theoretic, and Logical Foundations</title>
+ <publisher>Cambridge University Press</publisher>
+ <year>2008</year>
+ <isbn>0521899435</isbn>
+ <file>[books]/algorithms/AI/0521899435 [Shoham &amp; Leyton-Brown] Multiagent Systems.pdf</file>
+ <comment>
+  <text>Graduate-level textbook on multiagent systems, mostly focused on game theory.</text>
+ </comment>
+</reference>
+
+
+<reference id="Simon 1962">
+ <author>Herbert A. Simon</author>
+ <title>The Architecture of Complexity</title>
+ <journal>Proceedings of the American Philosophical Society</journal>
+ <volume>106</volume>
+ <number>6</number>
+ <pages>467-482</pages>
+ <year>1962</year>
+ <url>http://www.jstor.org/stable/985254</url>
+ <file>Networks/1962 PAPS [Simon] Architecture of Complexity.pdf</file>
+</reference>
+
+
+<reference id="Skiena 2008">
+ <author>Steven S. Skiena</author>
+ <title>The Algorithm Design Manual</title>
+ <publisher>Springer</publisher>
+ <edition>2nd edition</edition>
+ <year>2008</year>
+ <isbn>1848000693</isbn>
+ <file>[books]/algorithms/1848000693 [Skiena] The Algorithm Design Manual.2nd.pdf</file>
+</reference>
+
+
+
+
+<reference id="Sole and Valverde 2004">
+ <author>Ricard V. Solé</author>
+ <author>Sergi Valverde</author>
+ <title>Information theory of complex networks: On evolution and architectural constraints</title>
+ <journal>Lecture Notes in Physics</journal>
+ <volume>650</volume>
+ <pages>189-207</pages>
+ <year>2004</year>
+ <file>Networks/models/2004 LNP Information Theory of Complex Networks.pdf</file>
+</reference>
+
+<reference id="Sporns and Kotter 2004">
+ <author>Olaf Sporns</author>
+ <author>Rolf Kötter</author>
+ <title>Motifs in Brain Networks</title>
+ <journal>PLoS Biology</journal>
+ <volume>2</volume>
+ <number>11</number>
+ <pages>e369</pages>
+ <year>2004</year>
+ <doi>10.1371/journal.pbio.0020369</doi>
+ <file>Networks/structure/motifs/2004 PLoS Biology [Sporns] Motifs in brain networks.pdf</file>
+</reference>
+
+<reference id="Sporns 2006">
+ <author>Olaf Sporns</author>
+ <title>Small-world connectivity, motif composition, and complexity of fractal neuronal connections</title>
+ <journal>Biosystems</journal>
+ <volume>85</volume>
+ <number>1</number>
+ <pages>55-64</pages>
+ <year>2006</year>
+ <doi>10.1016/j.biosystems.2006.02.008</doi>
+ <file>Networks/structure/motifs/2006 Biosystems [Sporns] Motif composition.pdf</file>
+</reference>
+
+<reference id="Sporns et al. 2007">
+ <author>Olaf Sporns</author>
+ <author>Christopher J. Honey</author>
+ <author>Rolf Kötter</author>
+ <title>Identification and Classification of Hubs in Brain Networks</title>
+ <journal>PLoS ONE</journal>
+ <volume>2</volume>
+ <number>10</number>
+ <pages>e1049</pages>
+ <year>2007</year>
+ <doi>10.1371/journal.pone.0001049</doi>
+ <file>Networks/structure/motifs/2007 PLoS ONE [Sporns] Hubs in brain networks.pdf</file>
+</reference>
+
+<reference id="Sporns 2011">
+ <author>Olaf Sporns</author>
+ <title>Networks of the Brain</title>
+ <publisher>MIT Press</publisher>
+ <year>2011</year>
+ <isbn>9780262014694</isbn>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Sterman 2000">
+ <author>John D. Sterman</author>
+ <title>Business Dynamics: Systems Thinking and Modeling for a Complex World</title>
+ <publisher>McGraw-Hill Higher Education</publisher>
+ <year>2000</year>
+ <isbn>0071179895</isbn>
+ <comment>
+  <text>Systems thinking @ complex systems ...</text>
+ </comment>
+</reference>
+
+
+<reference id="Strogatz 2001">
+ <author>Steven H. Strogatz</author>
+ <title>Exploring Complex Networks</title>
+ <journal>Nature</journal>
+ <volume>268</volume>
+ <pages>268-276</pages>
+ <year>2001</year>
+ <doi>10.1038/35065725</doi>
+ <file>Networks/2001 Nature [Strogatz] Exploring complex networks.pdf</file>
+ <comment>
+  <text>Survey paper on networks...</text>
+ </comment>
+</reference>
+
+
+<reference id="Stumpf et al. 2005">
+ <author>Michael P. H. Stumpf</author>
+ <author>Carsten Wiuf</author>
+ <author>Robert M. May</author>
+ <title>Subnets of scale-free networks are not scale-free: Sampling properties of networks</title>
+ <journal>PNAS</journal>
+ <volume>102</volume>
+ <number>12</number>
+ <pages>4221-4224</pages>
+ <year>2005</year>
+ <doi>10.1073/pnas.0501179102</doi>
+ <file>Networks/models/scale-free/2005 PNAS Subnets of scale-free networks.pdf</file>
+ <!-- arXiv:0706.1062 -->
+</reference>
+
+
+<reference id="Subelj and Bajec 2011">
+ <author>L. Subelj and M. Bajec</author>
+ <title>Robust network community detection using balanced propagation</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>81</volume>
+ <number>3</number>
+ <pages>352-362</pages>
+ <year>2011</year>
+ <doi>10.1140/epjb/e2011-10979-2</doi>
+ <file>Networks/algorithms/clustering/2011 EPJB Robust network community detection using balanced propagation.pdf</file>
+</reference>
+
+
+<reference id="Szabo and Fath 2007">
+ <author>György Szabó</author>
+ <author>Gábor Fáth</author>
+ <title>Evolutionary games on graphs</title>
+ <journal>Physics Reports</journal>
+ <volume>446</volume>
+ <number>4-6</number>
+ <pages>97-216</pages>
+ <year>2007</year>
+ <doi>10.1016/j.physrep.2007.04.004</doi>
+ <file>Networks/dynamics/games/2007 Physics Reports [Szabo &amp; Fath] Evolutionary games on graphs.pdf</file>
+ <comment>
+  <text>Survey paper...</text>
+ </comment>
+</reference>
+
+
+<reference id="Tan et al. 2006">
+ <author>Pang-Ning Tan</author>
+ <author>Michael Steinbach</author>
+ <author>Vipin Kumar</author>
+ <title>Introduction to Data Mining</title>
+ <publisher>Addison-Wesley</publisher>
+ <year>2006</year>
+ <isbn>0321321367</isbn>
+</reference>
+
+
+<reference id="Tang et al. 2008">
+ <author>Jie Tang</author>
+ <author>Jing Zhang</author>
+ <author>Limin Yao</author>
+ <author>Juanzi Li</author>
+ <author>Li Zhang</author>
+ <author>Zhong Su</author>
+ <title>ArnetMiner: extraction and mining of academic social networks</title>
+ <proceedings>14th ACM SIGKDD International Conference on Knowledge Discovery in Data Mining</proceedings>
+ <conference>KDD</conference>
+ <year>2008</year>
+ <isbn>978-1-60558-193-4</isbn>
+ <location>Las Vegas, Nevada, USA</location>
+ <pages>990-998</pages>
+ <doi>10.1145/1401890.1402008</doi>
+ <file>Networks/applications/bibliographic/2008 KDD ArnetMiner.pdf</file>
+</reference>
+
+
+<reference id="Thompson et al. 1991">
+ <editor>Grahame Thompson</editor>
+ <editor>Jennifer Frances</editor>
+ <editor>Rosalind Levacic</editor>
+ <editor>Jeremy Mitchell</editor>
+ <title>Markets, Hierarchies and Networks: The Coordination of Social Life</title>
+ <publisher>SAGE Publications</publisher>
+ <year>1991</year>
+ <isbn>0803985908</isbn>
+ <comment>
+  <text>From Amazon.com: Social Sytems have long been considered utilising two theoretical models, that of markets and that of hierarchies... This particular volume also introduced an alternative prospectus, that of the network, which had different features, advantages and disdvantages to the other tow approaches and which was able to be compared and contrasted to them. One interesting aspect to the papers contained therein was the admittance to the debate of more complex portrayals of the differing forms of social organisation... and also the the novel idea that the extreme models presented an inadequate picture of the reality which could involve mixtures of the types of systems outlined... The final article is that of Friedrich Hayek, the Nobel prize winner in Economics who sets out a lucid and precise exposition of a way of looking at the world which had not been presented prior to the final article. His dazzling prose provides the icing on the cake for what is a very valuable collection of articles.</text>
+ </comment>
+</reference>
+
+
+<reference id="Tolk and Jain 2009">
+ <editor>Andreas Tolk</editor>
+ <editor>Lakhmi C. Jain</editor>
+ <title>Complex Systems in Knowledge-based Environments: Theory, Models and Applications</title>
+ <publisher>Springer</publisher>
+ <year>2009</year>
+ <isbn>3540880747</isbn>
+ <file>[books]\algorithms\graphs\3540880747 Complex Systems in Knowledge-Based Environments.pdf</file>
+ <comment>
+  <text>Computational intelligence @ complex systems ...</text>
+ </comment>
+</reference>
+
+
+<reference id="Travers and Milgram 1969">
+ <author>Jeffrey Travers</author>
+ <author>Stanley Milgram</author>
+ <title>An Experimental Study of the Small World Problem</title>
+ <journal>Sociometry</journal>
+ <volume>32</volume>
+ <number>4</number>
+ <pages>425-443</pages>
+ <year>1969</year>
+ <url>http://www.jstor.org/stable/2786545</url>
+ <file>Networks/models/small-world/1969 Sociometry [Travers &amp; Milgram] Small World Problem.pdf</file>
+</reference>
+
+
+<reference id="Tutte 1998">
+ <author>William Thomas Tutte</author>
+ <title>Graph Theory As I Have Known It</title>
+ <publisher>Oxford University Press</publisher>
+ <year>1998</year>
+ <isbn>0198502516</isbn>
+ <file>[books]/algorithms/graphs/1998 [Tutte] Graph Theory as I Have Known It.djvu</file>
+</reference>
+
+
+<reference id="Uzzi et al. 2007">
+ <author>Brian Uzzi</author>
+ <author>Luis A.N. Amaral</author>
+ <author>Felix Reed-Tsochas</author>
+ <title>Small-world networks and management science research: A review</title>
+ <journal>European Management Review</journal>
+ <volume>4</volume>
+ <number>2</number>
+ <pages>77-91</pages>
+ <year>2007</year>
+ <doi>10.1057/palgrave.emr.1500078</doi>
+ <file>Networks/models/small-world/2007 EMR Small-world networks and management science.pdf</file>
+</reference>
+
+
+<reference id="van der Aalst and Song 2004">
+ <author>Wil M. P. van der Aalst</author>
+ <author>Minseok Song</author>
+ <title>Mining Social Networks: Uncovering Interaction Patterns in Business Processes</title>
+ <proceedings>2nd International Conference on Business Process Management</proceedings>
+ <conference>BPM</conference>
+ <year>2004</year>
+ <isbn>3-540-22235-9</isbn>
+ <location>Potsdam, Germany</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>3080</volume>
+ <pages>244-260</pages>
+ <doi>10.1007/978-3-540-25970-1_16</doi>
+ <file>Networks/applications/social/2004 BPM Mining Social Networks.pdf</file>
+ <comment>
+  <text>BPM'2004 paper...</text>
+ </comment>
+</reference>
+
+
+<reference id="van der Aalst et al. 2005">
+ <author>Wil M. P. van der Aalst</author>
+ <author>Hajo A. Reijers</author>
+ <author>Minseok Song</author>
+ <title>Discovering Social Networks from Event Logs</title>
+ <journal>Computer Supported Cooperative Work</journal>
+ <volume>14</volume>
+ <number>6</number>
+ <pages>549-593</pages>
+ <year>2005</year>
+ <doi>10.1007/s10606-005-9005-9</doi>
+ <file>Networks/applications/social/2005 CSCW Discovering Social Networks from Event Logs.pdf</file>
+</reference>
+
+
+
+<reference id="Van Mieghem 2011">
+ <title>Graph Spectra for Complex Networks</title>
+ <author>Piet Van Mieghem</author>
+ <publisher>Cambridge University Press</publisher>
+ <edition>1st edition</edition>
+ <year>2011</year>
+ <isbn>052119458X</isbn>
+ <file>[books]\algorithms\graphs\052119458X Graph Spectra for Complex Networks.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="van Steen 2010">
+ <author>Maarten van Steen</author>
+ <title>Graph Theory and Complex Networks: An Introduction</title>
+ <publisher>Maarten van Steen</publisher>
+ <year>2010</year>
+ <isbn>9081540610</isbn>
+ <url>http://www.distributed-systems.net/gtcn/</url>
+ <file>[books]\algorithms\graphs\9081540610 [van Steen] Graph Theory and Complex Networks.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Varlamis et al. 2010">
+ <author>Iraklis Varlamis</author>
+ <author>Magdalini Eirinaki</author>
+ <author>Malamati Louta</author>
+ <title>A Study on Social Network Metrics and Their Application in Trust Networks</title>
+ <proceedings>International Conference on Advances in Social Networks Analysis and Mining</proceedings>
+ <conference>ASONAM</conference>
+ <year>2010</year>
+ <location>Odense, Denmark</location>
+ <isbn>978-0-7695-4138-9</isbn>
+ <pages>168-175</pages>
+ <doi>10.1109/ASONAM.2010.40</doi>
+ <file>Networks/applications/www/2010 ASONAM Epinions.pdf</file>
+</reference>
+
+
+<reference id="Villas Boas et al. 2010">
+ <author>Paulino Ribeiro Villas Boas</author>
+ <author>Francisco Aparecido Rodrigues</author>
+ <author>Gonzalo Travieso</author>
+ <author>Luciano da Fontoura Costa</author>
+ <title>Sensitivity of complex networks measurements</title>
+ <journal>Journal of Statistical Mechanics: Theory and Experiment</journal>
+ <volume>2010</volume>
+ <pages>P03009</pages>
+ <year>2010</year>
+ <doi>10.1088/1742-5468/2010/03/P03009</doi>
+ <file>Networks/structure/metrics/2010 JSM Sensitivity of complex networks measurements.pdf</file>
+</reference>
+
+
+<reference id="Wan et al. 2008">
+ <author>Li Wan</author>
+ <author>Jianxin Liao</author>
+ <author>Xiaomin Xu</author>
+ <title>CDPM: Finding and Evaluating Community Structure in Social Networks</title>
+ <proceedings>4th International Conference on Advanced Data Mining and Applications</proceedings>
+ <conference>ADMA</conference>
+ <year>2008</year>
+ <isbn>978-3-540-88192-6</isbn>
+ <location>Chengdu, China</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>5139</volume>
+ <pages>620-627</pages>
+ <doi>10.1007/978-3-540-88192-6_64</doi>
+ <file>Networks/algorithms/clustering/2008 ADMA CDPM Community Structure in Social Networks.pdf</file>
+ <comment>
+  <text>ADMA'2008 paper that presents a hierarchical agglomerative clustering algorithm for social networks called CDPM (Clique Directed Percolation Method). Despite following a well-known clustering strategy, its novelty lies in the definition of a Silhouette Coefficient for graphs.</text>
+ </comment>
+</reference>
+
+
+<reference id="Wan et al. 2009">
+ <author>Li Wan</author>
+ <author>Jianxin Liao</author>
+ <author>Chun Wang</author>
+ <author>Xiaomin Xu</author>
+ <title>JCCM: Joint Cluster Communities on Attribute and Relationship Data in Social Networks</title>
+ <proceedings>5th International Conference on Advanced Data Mining and Applications</proceedings>
+ <conference>ADMA</conference>
+ <year>2009</year>
+ <isbn>978-3-642-03348-3</isbn>
+ <location>Beijing, China</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>5678</volume>
+ <pages>671-679</pages>
+ <doi>10.1007/978-3-642-03348-3_70</doi>
+ <file>Networks/algorithms/clustering/2009 ADMA JCCM Joint Cluster Communities.pdf</file>
+ <comment>
+  <text>ADMA'2009 paper that describes a two-phase clustering algorithm for identifying communities in social networks. The proposed algorithm is compared with some existing algorithms and its results seem to be promising. Surprisingly, however, the authors compare their algorithm with X-Mean, CPM, and CONGA, but they do not compare it with their own CDPM algorithm</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Wang et al. 2008">
+ <author>Yi Wang</author>
+ <author>Bin Wu</author>
+ <author>Xin Pei</author>
+ <title>CommTracker: A Core-Based Algorithm of Tracking Community Evolution</title>
+ <proceedings>4th International Conference on Advanced Data Mining and Applications</proceedings>
+ <conference>ADMA</conference>
+ <year>2008</year>
+ <isbn>978-3-540-88192-6</isbn>
+ <location>Chengdu, China</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>5139</volume>
+ <pages>229-240</pages>
+ <doi>10.1007/978-3-540-88192-6_22</doi>
+ <file>Networks/algorithms/clustering/2008 ADMA CommTracker - Tracking Community Evolution.pdf</file>
+ <comment>
+  <text>ADMA'2008 paper that illustrates how simple but effective ideas (i.e. identifying core nodes) can lead to elegant algorithms that can be helpful in the solution of practical problems (i.e. tracking the evolution of communities in a social network). The proposed algorithm is useful to detect community splits and mergers. Moreover, the algorithm is parameter-free, something that is always welcome in data mining applications.</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Wang et al. 2010">
+ <author>Xufei Wang</author>
+ <author>Lei Tang</author>
+ <author>Huiji Gao</author>
+ <author>Huan Liu</author>
+ <title>Discovering Overlapping Groups in Social Media</title>
+ <proceedings>10th International Conference on Data Mining</proceedings>
+ <conference>ICDM</conference>
+ <year>2010</year>
+ <isbn>978-1-4244-9131-5</isbn>
+ <location>Sydney, Australia</location>
+ <pages>569-578</pages>
+ <doi>10.1109/ICDM.2010.48</doi>
+ <file>Networks/algorithms/clustering/2010 ICDM Overlapping groups.pdf</file>
+ <comment>
+  <text>ICDM'2010 paper that describes a a novel co-clustering framework, which takes advantage of networking information between users and tags in social media, to discover these overlapping communities.</text>
+ </comment>
+</reference>
+
+
+<reference id="Wasserman and Faust 1994">
+ <author>Stanley Wasserman</author>
+ <author>Katherine Faust</author>
+ <title>Social Network Analysis: Methods and Applications</title>
+ <publisher>Cambridge University Press</publisher>
+ <edition>1st edition</edition>
+ <year>1994</year>
+ <isbn>0-521-38707-8</isbn>
+ <file>[books]/algorithms/graphs/0521387078 [Wasserman] Social Network Analysis - Methods and Applications.pdf</file>
+ <comment>
+  <text>Classic textbook on social network analysis.</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Waters 2008">
+ <author>Jim Waters</author>
+ <title>Social Network Behavior, Thought-Leaders and Knowledge Building in an Online Learning Community</title>
+ <proceedings>41st Hawaii International Conference on System Sciences</proceedings>
+ <conference>HICSS</conference>
+ <year>2008</year>
+ <location>Waikoloa, Big Island, HI, USA</location>
+ <pages>366</pages>
+ <doi>10.1109/HICSS.2008.403</doi>
+ <file>Networks/applications/communication/message-boards/2008 HICSS Online Learning Community.pdf</file>
+</reference>
+
+
+<reference id="Watts 2003">
+ <author>Duncan J. Watts</author>
+ <title>Small Worlds: The Dynamics of Networks between Order and Randomness</title>
+ <publisher>Princeton University Press</publisher>
+ <year>2003</year>
+ <isbn>0691117047</isbn>
+</reference>
+
+<reference id="Watts 2004">
+ <author>Duncan J. Watts</author>
+ <title>Six Degrees: The Science of a Connected Age</title>
+ <publisher>W. W. Norton &amp; Company</publisher>
+ <year>2004</year>
+ <isbn>0393325423</isbn>
+ <comment>
+  <text>Classic divulgative book on basic network research.</text>
+ </comment>
+</reference>
+
+
+<reference id="Watts and Strogatz 1998">
+ <author>Duncan J. Watts</author>
+ <author>Steven H. Strogatz</author>
+ <title>Collective dynamics of 'small-world' networks</title>
+ <journal>Nature</journal>
+ <volume>393</volume>
+ <pages>440-442</pages>
+ <year>1998</year>
+ <doi>10.1038/30918</doi>
+ <file>Networks/models/1998 Nature [Watts &amp; Strogatz] Small-world networks.pdf</file>
+ <comment>
+  <text>Watts-Strogatz model... <url>http://en.wikipedia.org/wiki/Watts_and_Strogatz_model</url>.</text>
+ </comment>
+</reference>
+
+
+
+<reference id="Watts 2011">
+ <author>Duncan J. Watts</author>
+ <title>Everything Is Obvious (Once You Know the Answer)</title>
+ <publisher>Crown Business</publisher>
+ <year>2011</year>
+ <isbn>0385531680</isbn>
+ <file>[ebooks]/Science/[Duncan J. Watts] Everything is Obvious.epub</file>
+ <comment>
+  <text>Recent divulgative book on common and uncommon sense.</text>
+ </comment>
+</reference>
+
+
+<reference id="Weisbuch 2004">
+ <author>G. Weisbuch</author>
+ <title>Bounded confidence and social networks</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>339-343</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00126-9</doi>
+ <file>Networks/applications/social/2004 EPJB Bounded confidence and social networks.pdf</file>
+</reference>
+
+
+
+<reference id="Wilson and Nicholas 2008">
+ <author>Marcella Wilson</author>
+ <author>Charles Nicholas</author>
+ <title>Topological analysis of an online social network for older adults</title>
+ <proceedings>ACM Workshop on Search in Social Media</proceedings>
+ <conference>SSM</conference>
+ <year>2008</year>
+ <isbn>978-1-60558-258-0</isbn>
+ <location>Napa Valley, California, USA</location>
+ <pages>51-58</pages>
+ <doi>10.1145/1458583.1458596</doi>
+ <file>Networks/applications/www/2008 SSM Topological analysis on an online social network.pdf</file>
+</reference>
+
+
+<reference id="Witten and Frank 2005">
+ <author>Ian H. Witten</author>
+ <author>Eibe Frank</author>
+ <title>Data Mining: Practical Machine Learning Tools and Techniques</title>
+ <publisher>Morgan Kaufmann</publisher>
+ <edition>2nd edition</edition>
+ <year>2005</year>
+ <isbn>0120884070</isbn>
+ <file>[books]/algorithms/AI/0120884070 [Witten &amp; Frank] Data Mining - Practical Machine Learning Tools and Techniques.2005.pdf</file>
+</reference>
+
+
+<reference id="Wright 2000">
+ <author>Robert Wright</author>
+ <title>Nonzero: The Logic of Human Destiny</title>
+ <publisher>Little, Brown &amp; Company</publisher>
+ <year>2000</year>
+ <isbn>0316644854</isbn>
+</reference>
+
+
+
+<reference id="Wu and Huberman 2004">
+ <author>F. Wu</author>
+ <author>Bernardo A. Huberman</author>
+ <title>Finding communities in linear time: A Physics approach</title>
+ <journal>The European Physical Journal B - Condensed Matter and Complex Systems</journal>
+ <volume>38</volume>
+ <number>2</number>
+ <pages>331-338</pages>
+ <year>2004</year>
+ <doi>10.1140/epjb/e2004-00125-x</doi>
+ <file>Networks/algorithms/clustering/2004 EPJB [Wu &amp; Huberman] Finding communities in linear time.pdf</file>
+</reference>
+
+
+<reference id="Ye et al. 2008">
+ <author>Qi Ye</author>
+ <author>Bin Wu</author>
+ <author>Bai Wang</author>
+ <title>JSNVA: A Java Straight-Line Drawing Framework for Network Visual Analysis</title>
+ <proceedings>4th International Conference on Advanced Data Mining and Applications</proceedings>
+ <conference>ADMA</conference>
+ <year>2008</year>
+ <isbn>978-3-540-88192-6</isbn>
+ <location>Chengdu, China</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>5139</volume>
+ <pages>667-674</pages>
+ <doi>10.1007/978-3-540-88192-6_70</doi>
+ <file>Networks/algorithms/visualization/2008 ADMA JSNVA Network Visual Analysis.pdf</file>
+ <comment>
+  <text>ADMA'2008 paper that describes the design of a Java framework for network visualization.</text>
+ </comment>
+</reference>
+
+
+<reference id="Yu et al. 2010">
+ <editor>Philip S. Yu</editor>
+ <editor>Jiawei Han</editor>
+ <editor>Christos Faloutsos</editor>
+ <title>Link Mining: Models, Algorithms, and Applications</title>
+ <publisher>Springer</publisher>
+ <year>2010</year>
+ <isbn>1441965149</isbn>
+ <file>[books]/algorithms/graphs/1441965149 Link Mining.2010.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
+<reference id="Zhang et al. 2007">
+ <author>Jun Zhang</author>
+ <author>Mark S. Ackerman</author>
+ <author>Lada Adamic</author>
+ <title>Expertise networks in online communities: Structure and algorithms</title>
+ <proceedings>16th International Conference on the World Wide Web</proceedings>
+ <conference>WWW</conference>
+ <year>2007</year>
+ <isbn>978-1-59593-654-7</isbn>
+ <location>Banff, Alberta, Canada</location>
+ <pages>221-230</pages>
+ <doi>10.1145/1242572.1242603</doi>
+ <file>Networks/applications/www/2007 WWW Expertise Networks.pdf</file>
+</reference>
+
+
+<reference id="Zhang et al. 2010">
+ <author>Jie Zhang</author>
+ <author>Changsong Zhou</author>
+ <author>Xiaoke Xu</author>
+ <author>Michael Small</author>
+ <title>Mapping from structure to dynamics: A unified view of dynamical processes on networks</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>82</volume>
+ <number>2</number>
+ <pages>026116</pages>
+ <year>2010</year>
+ <doi>10.1103/PhysRevE.82.026116</doi>
+ <file>Networks/dynamics/2010 PhysRevE - Mapping from structure to dynamics.pdf</file>
+</reference>
+
+
+<reference id="Zhu et al. 2009">
+ <author>Tian Zhu</author>
+ <author>Bin Wu</author>
+ <author>Bai Wang</author>
+ <title>Social Influence and Role Analysis Based on Community Structure in Social Network</title>
+ <proceedings>5th International Conference on Advanced Data Mining and Applications</proceedings>
+ <conference>ADMA</conference>
+ <year>2009</year>
+ <isbn>978-3-642-03348-3</isbn>
+ <location>Beijing, China</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>5678</volume>
+ <pages>788-795</pages>
+ <doi>10.1007/978-3-642-03348-3_84</doi>
+ <file>Networks/algorithms/clustering/2009 ADMA Social influence and role analysis based on community structure.pdf</file>
+ <comment>
+  <text>ADMA'2009 paper...</text>
+ </comment>
+</reference>
+
+
+</document>

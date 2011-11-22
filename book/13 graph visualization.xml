@@ -1,0 +1,143 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+<title>Graph Visualization</title>
+
+
+<document>
+<tag>graph-visualization-techniques</tag>
+<title>Graph drawing techniques</title>
+</document>
+
+<document>
+<tag>graph-visualization-force</tag>
+<title>Force-directed methods</title>
+</document>
+
+<document>
+<tag>graph-visualization-hierarchical</tag>
+<title>Hierarchical methods</title>
+</document>
+
+<document>
+<tag>graph-visualization-metrics</tag>
+<title>Metrics-based methods</title>
+</document>
+
+
+<document>
+<tag>graph-visualization-notes</tag>
+<title>Bibliographic notes</title>
+</document>
+
+<document>
+<tag>graph-visualization-references</tag>
+<title>References</title>
+
+<reference id="Fruchterman and Reingold 1991">
+ <author>Thomas M. J. Fruchterman</author>
+ <author>Edward M. Reingold</author>
+ <title>Graph drawing by force-directed placement</title>
+ <journal>Software: Practice and Experience</journal>
+ <volume>21</volume>
+ <number>11</number>
+ <pages>1129-1164</pages>
+ <year>1991</year>
+ <doi>10.1002/spe.4380211102</doi>
+ <file>Networks/algorithms/visualization/1991 SPE [Fruchterman &amp; Reingold] Graph Drawing by Force-Directed Placement.pdf</file>
+</reference>
+
+<reference id="Guimera and Nunes 2005">
+ <author>Roger Guimerà</author>
+ <author>Luís A. Nunes Amaral</author>
+ <title>Functional cartography of complex metabolic networks</title>
+ <journal>Nature</journal>
+ <volume>433</volume>
+ <pages>895-900</pages>
+ <year>2005</year>
+ <doi>10.1038/nature03288</doi>
+ <file>Networks/applications/biology/2005 Nature - Functional cartography of complex metabolic networks.pdf</file>
+</reference>
+
+<reference id="Heer and Agrawala 2006">
+ <author>Jeffrey Heer</author>
+ <author>Maneesh Agrawala</author>
+ <title>Software Design Patterns for Information Visualization</title>
+ <journal>IEEE Transactions on Visualization and Computer Graphics</journal>
+ <volume>12</volume>
+ <number>5</number>
+ <pages>853-860</pages>
+ <year>2006</year>
+ <doi>10.1109/TVCG.2006.178</doi>
+ <file>Networks/algorithms/visualization/2006 TVCG [Heer &amp; Agrawala] Design Patterns for Information Visualization.pdf</file>
+</reference>
+
+
+<reference id="Kamada and Kawai 1989">
+ <author>Tomihisa Kamada</author>
+ <author>Satoru Kawai</author>
+ <title>An algorithm for drawing general undirected graphs</title>
+ <journal>Information Processing Letters</journal>
+ <volume>31</volume>
+ <number>1</number>
+ <pages>7-15</pages>
+ <year>1989</year>
+ <doi>10.1016/0020-0190(89)90102-6</doi>
+ <file>Networks/algorithms/visualization/1989 IPL [Kamada &amp; Kawai] Drawing undirected graphs.pdf</file>
+</reference>
+
+<reference id="Kamada and Kawai 1991">
+ <author>Tomihisa Kamada</author>
+ <author>Satoru Kawai</author>
+ <title>A general framework for visualizing abstract objects and relations</title>
+ <journal>ACM Transactions on Graphics</journal>
+ <volume>10</volume>
+ <number>1</number>
+ <pages>1-39</pages>
+ <year>1991</year>
+ <doi>10.1145/99902.99903</doi>
+ <file>Networks/algorithms/visualization/1991 TOG [Kamada &amp; Kawai] Visualizing abstract objects and relations.pdf</file>
+</reference>
+
+<reference id="Shi et al. 2009">
+ <author>Chuan Shi</author>
+ <author>Dan Zhou</author>
+ <author>Bin Wu</author>
+ <author>Jian Liu</author>
+ <title>VisNetMiner: An Integration Tool for Visualization and Analysis of Networks</title>
+ <proceedings>5th International Conference on Advanced Data Mining and Applications</proceedings>
+ <conference>ADMA</conference>
+ <year>2009</year>
+ <isbn>978-3-642-03348-3</isbn>
+ <location>Beijing, China</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>5678</volume>
+ <pages>611-618</pages>
+ <doi>10.1007/978-3-642-03348-3_63</doi>
+ <file>Networks/algorithms/visualization/2009 ADMA VisNetMiner.pdf</file>
+</reference>
+
+
+<reference id="Ye et al. 2008">
+ <author>Qi Ye</author>
+ <author>Bin Wu</author>
+ <author>Bai Wang</author>
+ <title>JSNVA: A Java Straight-Line Drawing Framework for Network Visual Analysis</title>
+ <proceedings>4th International Conference on Advanced Data Mining and Applications</proceedings>
+ <conference>ADMA</conference>
+ <year>2008</year>
+ <isbn>978-3-540-88192-6</isbn>
+ <location>Chengdu, China</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>5139</volume>
+ <pages>667-674</pages>
+ <doi>10.1007/978-3-540-88192-6_70</doi>
+ <file>Networks/algorithms/visualization/2008 ADMA JSNVA Network Visual Analysis.pdf</file>
+</reference>
+
+
+</document>
+
+</document>

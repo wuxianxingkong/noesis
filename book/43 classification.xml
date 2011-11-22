@@ -1,0 +1,47 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+<title>Classification</title>
+
+
+
+<document>
+<tag>classification</tag>
+<title>Object classification</title>
+
+</document>
+
+
+<document>
+<tag>link-prediction</tag>
+<title>Link prediction</title>
+
+</document>
+
+
+<document>
+<tag>entity-resolution</tag>
+<title>Entity resolution (a.k.a. reference reconciliation or object consolidation)</title>
+
+</document>
+
+
+
+
+<document>
+<tag>classification-notes</tag>
+<title>Bibliographic notes</title>
+
+</document>
+
+
+
+<document>
+<tag>classification-references</tag>
+<title>References</title>
+
+</document>
+
+</document>

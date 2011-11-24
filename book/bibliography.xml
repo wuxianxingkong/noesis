@@ -86,6 +86,7 @@
  </comment>
 </reference>
 
+
 <reference id="Aggarwal 2011">
  <editor>Charu C. Aggarwal</editor>
  <title>Social Network Data Analytics</title>
@@ -2936,6 +2937,23 @@
  <year>2004</year>
  <doi>10.1140/epjb/e2004-00121-2</doi>
  <file>Networks/applications/ecological/2004 EPJB Evolving complex food webs.pdf</file>
+</reference>
+
+
+
+<reference id="Memon and Alhajj 2010">
+ <editor>Nasrullah Memon</editor>
+ <editor>Reda Alhajj</editor>
+ <title>From Sociology to Computing in Social Networks: Theory, Foundations and Applications</title>
+ <series>Lecture Notes in Social Networks</series>
+ <volume>1</volume>
+ <publisher>Springer</publisher>
+ <year>2010</year>
+ <isbn>3709102936</isbn>
+ <file>[books]/algorithms/graphs/3709102936 LNSN From Sociology to Computing in Social Networks.2010.pdf</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
 </reference>
 
 

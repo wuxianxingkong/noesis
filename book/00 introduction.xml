@@ -192,7 +192,7 @@ Sociometry can be considered to be the precursor of social network analysis (and
 </text>
 
 <text>
-++ Monographs <cite>Bornholdt and Schuster 2003</cite> <cite>Cook and Holder 2007</cite> <cite>Yu et al. 2010</cite> <cite>Aggarwal and Wang 2010</cite> <cite>Aggarwal 2011</cite>
+++ Monographs <cite>Bornholdt and Schuster 2003</cite> <cite>Cook and Holder 2007</cite> <cite>Yu et al. 2010</cite> <cite>Aggarwal and Wang 2010</cite> <cite>Aggarwal 2011</cite> Lecture Notes in Social Networks series from Springer <cite>Memon and Alhajj 2010</cite>
 </text>
 
 <text>
@@ -571,6 +571,20 @@ Sociometry can be considered to be the precursor of social network analysis (and
  <isbn>978-0-470-33188-0</isbn>
  <file>[books]/algorithms/graphs/0470331887 [Lewis] Network Science - Theory and Applications.pdf</file>
 </reference>
+
+
+<reference id="Memon and Alhajj 2010">
+ <editor>Nasrullah Memon</editor>
+ <editor>Reda Alhajj</editor>
+ <title>From Sociology to Computing in Social Networks: Theory, Foundations and Applications</title>
+ <series>Lecture Notes in Social Networks</series>
+ <volume>1</volume>
+ <publisher>Springer</publisher>
+ <year>2010</year>
+ <isbn>3709102936</isbn>
+ <file>[books]/algorithms/graphs/3709102936 LNSN From Sociology to Computing in Social Networks.2010.pdf</file>
+</reference>
+
 
 <reference id="Mitchell 2009">
  <author>Melanie Mitchell</author>

@@ -119,6 +119,8 @@ Connector hubs are high-degree nodes that maintain a diverse set of between-modu
 ++ <cite>Bonacich 1972</cite> <cite>Bonacich 2007</cite>: Eigenvector centrality (takes into account interactions of different path lengths and their dispersion, relying on walks rather than shortest paths).
 </text>
 
+
+
 </document>
 
 
@@ -146,6 +148,17 @@ Connector hubs are high-degree nodes that maintain a diverse set of between-modu
 
 <text>
 ++ <cite>Page et al. 1998</cite> <cite>Brin and Page 1998</cite>
+</text>
+
+<text>
+++ Facebook has its own algorithm, EdgeRank, which (in conjunction with September’s addition, GraphRank) determines which items appear at the top of an individual's news feed. EdgeRank is based on many variables, including who Facebook thinks are a user's closest friends and how many people have interacted with a piece of content.
+
+@ FT Tech Hub:
+The unexpected impact of Facebook’s <q>seamless sharing</q> on newspaper sites.
+November 18, 2011 4:52 pm by Tim Bradshaw.
+
+ <url>http://blogs.ft.com/fttechhub/2011/11/unexpected-impact-facebook-newspaper-sites</url>
+ <url>http://econsultancy.com/uk/blog/7885-edgerank-the-most-important-algorithm-you-ve-never-heard-of</url>
 </text>
 
 </document>
@@ -505,6 +518,7 @@ Despite their overlap and partial redundancy, different metrics provide unique i
  <doi>10.1016/j.neuroimage.2009.10.003</doi>
  <file>Networks/structure/metrics/2010 Neuroimage [Rubinov &amp; Sporns] Complex network measures of brain connectivity.pdf</file>
 </reference>
+
 
 
 <reference id="Varlamis et al. 2010">

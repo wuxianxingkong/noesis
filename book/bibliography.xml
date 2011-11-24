@@ -315,6 +315,19 @@
 </reference>
 
 
+<reference id="Backstrom et al. 2011">
+ <author>Lars Backstrom</author>
+ <author>Paolo Boldi</author>
+ <author>Marco Rosa</author>
+ <author>Johan Ugander</author>
+ <author>Sebastiano Vigna</author>
+ <title>Four Degrees of Separation</title>
+ <journal>arXiv</journal>
+ <year>2011</year>
+ <url>http://arxiv.org/abs/1111.4570</url>
+ <file>Networks/applications/social/2011 arXiv - Facebook degrees of separation.pdf</file>
+</reference>
+
 <reference id="Bang-Jensen and Gutin 2002">
  <author>Jorgen Bang-Jensen</author>
  <author>Gregory Gutin</author>
@@ -1384,7 +1397,7 @@
  <title>Robustness and Contagion in the International Financial Network</title>
  <journal>arXiv</journal>
  <year>2011</year>
- <url>http://arxiv.org/abs/1104.4249v2</url>
+ <url>http://arxiv.org/abs/1104.4249</url>
  <file>Networks/applications/economic/2011 arXiv Robustness and contagion in the international financial network.pdf</file>
 </reference>
 
@@ -1738,7 +1751,7 @@
  <title>Stability of the World Trade Web over Time - An Extinction Analysis</title>
  <journal>arXiv</journal>
  <year>2011</year>
- <url>http://arxiv.org/abs/1104.4380v2</url>
+ <url>http://arxiv.org/abs/1104.4380</url>
  <file>Networks/applications/economic/2011 arXiv Trade Stability.pdf</file>
 </reference>
 
@@ -3943,6 +3956,19 @@
  <year>1998</year>
  <isbn>0198502516</isbn>
  <file>[books]/algorithms/graphs/1998 [Tutte] Graph Theory as I Have Known It.djvu</file>
+</reference>
+
+
+<reference id="Ugander at al. 2011">
+ <author>Johan Ugander</author>
+ <author>Brian Karrer</author>
+ <author>Lars Backstrom</author>
+ <author>Cameron Marlow</author>
+ <title>The Anatomy of the Facebook Social Graph</title>
+ <journal>arXiv</journal>
+ <year>2011</year>
+ <url>http://arxiv.org/abs/1111.4503</url>
+ <file>Networks/applications/social/2011 arXiv - Facebook social graph.pdf</file>
 </reference>
 
 

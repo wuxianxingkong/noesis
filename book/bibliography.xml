@@ -351,6 +351,8 @@
  <publisher>Plume</publisher>
  <year>2003</year>
  <isbn>0452284392</isbn>
+ <file>[books]/algorithms/graphs/9780786746965 [Albert-Laszlo Barabasi] Linked.free.epub</file>
+ <file>[books]/algorithms/graphs/9780786746965 [Albert-Laszlo Barabasi] Linked.nook.epub</file>
  <comment>
   <text>One of the best-known divulgative books on basic network research.</text>
  </comment>
@@ -3210,6 +3212,8 @@
  <comment>
   <text>Excellent introductory textbook.</text>
  </comment>
+ <file>[books]/algorithms/graphs/0199206651 [Newman] Networks.epub</file>
+ <file>[books]/algorithms/graphs/0199206651 [Newman] Networks.mobi</file>
 </reference>
 
 
@@ -4229,6 +4233,8 @@
  <publisher>W. W. Norton &amp; Company</publisher>
  <year>2004</year>
  <isbn>0393325423</isbn>
+ <file>[books]/algorithms/graphs/9780393076127 [Duncan J. Watts] Six Degrees.free.epub</file>
+ <file>[books]/algorithms/graphs/9780393076127 [Duncan J. Watts] Six Degrees.nook.epub</file>
  <comment>
   <text>Classic divulgative book on basic network research.</text>
  </comment>

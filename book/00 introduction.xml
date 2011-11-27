@@ -264,6 +264,8 @@ Sociometry can be considered to be the precursor of social network analysis (and
  <publisher>Plume</publisher>
  <year>2003</year>
  <isbn>0452284392</isbn>
+ <file>[books]/algorithms/graphs/9780786746965 [Albert-Laszlo Barabasi] Linked.free.epub</file>
+ <file>[books]/algorithms/graphs/9780786746965 [Albert-Laszlo Barabasi] Linked.nook.epub</file>
 </reference>
 
 <reference id="Barabasi 2010">
@@ -632,8 +634,6 @@ Sociometry can be considered to be the precursor of social network analysis (and
 </reference>
 
 
-
-
 <reference id="Newman 2010">
  <author>Mark E. J. Newman</author>
  <title>Networks: An Introduction</title>
@@ -641,6 +641,8 @@ Sociometry can be considered to be the precursor of social network analysis (and
  <edition>1st edition</edition>
  <year>2010</year>
  <isbn>978-0-19-920665-0</isbn>
+ <file>[books]/algorithms/graphs/0199206651 [Newman] Networks.epub</file>
+ <file>[books]/algorithms/graphs/0199206651 [Newman] Networks.mobi</file>
 </reference>
 
 <reference id="Newman et al. 2006">
@@ -766,6 +768,8 @@ Sociometry can be considered to be the precursor of social network analysis (and
  <publisher>W. W. Norton &amp; Company</publisher>
  <year>2004</year>
  <isbn>0393325423</isbn>
+ <file>[books]/algorithms/graphs/9780393076127 [Duncan J. Watts] Six Degrees.free.epub</file>
+ <file>[books]/algorithms/graphs/9780393076127 [Duncan J. Watts] Six Degrees.nook.epub</file>
 </reference>
 
 
@@ -775,6 +779,7 @@ Sociometry can be considered to be the precursor of social network analysis (and
  <publisher>Crown Business</publisher>
  <year>2011</year>
  <isbn>0385531680</isbn>
+ <file>[ebooks]/Science/[Duncan J. Watts] Everything is Obvious.epub</file>
 </reference>
 
 <reference id="Wright 2000">

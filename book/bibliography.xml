@@ -1730,6 +1730,20 @@
 </reference>
 
 
+<reference id="Ford and Fulkerson 1962">
+ <author>Lester Randolph Ford, Jr.</author>
+ <author>Delbert Ray Fulkerson</author>
+ <title>Flows in Networks</title>
+ <publisher>Princeton University Press</publisher>
+ <year>1962</year>
+ <isbn>0691079625</isbn>
+ <file>[books]/algorithms/graphs/0691079625  [Ford &amp; Fulkerson] Flows in Networks.1962.djvu</file>
+ <comment>
+  <text>TBD</text>
+ </comment>
+</reference>
+
+
 <reference id="Fortunato 2010">
  <author>Santo Fortunato</author>
  <title>Community detection in graphs</title>

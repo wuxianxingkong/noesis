@@ -3047,6 +3047,7 @@
  <publisher>Oxford University Press</publisher>
  <year>2009</year>
  <isbn>0195124413</isbn>
+ <file>[ebooks]/Science/[Melanie Mitchell] Complexity - A Guided Tour.epub</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -4219,12 +4220,13 @@
 </reference>
 
 
-<reference id="Watts 2003">
+<reference id="Watts 1999">
  <author>Duncan J. Watts</author>
  <title>Small Worlds: The Dynamics of Networks between Order and Randomness</title>
  <publisher>Princeton University Press</publisher>
- <year>2003</year>
- <isbn>0691117047</isbn>
+ <year>1999</year>
+ <isbn>0691005419</isbn>
+ <file>[books]/algorithms/graphs/0691005419 [Watts] Small Worlds.1999.pdf</file>
 </reference>
 
 <reference id="Watts 2004">

@@ -157,7 +157,7 @@ Jennifer Fewell, from Arizona State University, illustrates the importance of [i
 <title>Survey papers</title>
 
 <text>
-++ <cite>Strogatz 2001</cite> <cite>Albert and Barabasi 2002</cite> <cite>Newman 2003</cite> <cite>Boccaletti et al. 2006</cite> <cite>Borner et al. 2007</cite> <cite>Costa et al. 2007</cite> <cite>Costa et al. 2011</cite>
+++ <cite>Strogatz 2001</cite> <cite>Albert and Barabasi 2002</cite> <cite>Newman 2003</cite> <cite>Watts 2004b</cite> <cite>Boccaletti et al. 2006</cite> <cite>Borner et al. 2007</cite> <cite>Costa et al. 2007</cite> <cite>Costa et al. 2011</cite>
 </text>
 
 <text>
@@ -770,6 +770,17 @@ Sociometry can be considered to be the precursor of social network analysis (and
  <isbn>0393325423</isbn>
  <file>[books]/algorithms/graphs/9780393076127 [Duncan J. Watts] Six Degrees.free.epub</file>
  <file>[books]/algorithms/graphs/9780393076127 [Duncan J. Watts] Six Degrees.nook.epub</file>
+</reference>
+
+<reference id="Watts 2004b">
+ <author>Duncan J. Watts</author>
+ <title>The New Science of Networks</title>
+ <journal>Annual Review of Sociology</journal>
+ <volume>30</volume>
+ <pages>243-270</pages>
+ <year>2004</year>
+ <doi>10.1146/annurev.soc.30.020404.104342</doi>
+ <file>Networks/2004 Annual Review of Sociology [Watts] The New Science of Networks.pdf</file>
 </reference>
 
 

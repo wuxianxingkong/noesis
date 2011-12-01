@@ -1061,6 +1061,20 @@
 
 
 
+<reference id="Chakrabarti and Faloutsos 2006">
+ <author>Deepayan Chakrabarti</author>
+ <author>Christos Faloutsos</author>
+ <title>Graph mining: Laws, generators, and algorithms</title>
+ <journal>ACM Computing Surveys</journal>
+ <volume>38</volume>
+ <number>1</number>
+ <pages>2</pages>
+ <year>2006</year>
+ <doi>10.1145/1132952.1132954</doi>
+ <file>Networks/models/2006 ACM Surveys  [Chakrabarti &amp; Faloutsos] Graph mining.pdf</file>
+</reference>
+
+
 <reference id="Chakrabarti et al. 2008">
  <author>Deepayan Chakrabarti</author>
  <author>Yang Wang</author>
@@ -1773,6 +1787,18 @@
 </reference>
 
 
+<reference id="Freeman 1977">
+ <author>Linton C. Freeman</author>
+ <title>A Set of Measures of Centrality Based on Betweenness</title>
+ <journal>Sociometry</journal>
+ <volume>40</volume>
+ <number>1</number>
+ <pages>35-41</pages>
+ <year>1977</year>
+ <url>http://www.jstor.org/stable/3033543</url>
+ <file>Networks/structure/metrics/1977 Sociometry [Freeman] Measures of centrality.pdf</file>
+</reference>
+
 <reference id="Freeman 1978">
  <author>Linton C. Freeman</author>
  <title>Centrality in social networks: Conceptual clarification</title>
@@ -1915,6 +1941,19 @@
  <year>2009</year>
  <doi>10.1103/PhysRevE.80.036104</doi>
  <file>Networks/applications/economic/2009 PhysRevE - Backbone of complex networks of corporations.pdf</file>
+</reference>
+
+
+<reference id="Goldberg et al. 1990">
+ <author>Andrew V. Goldberg</author>
+ <author>Eva Tardos</author>
+ <author>Robert E. Tarjan</author>
+ <title>Network Flow Algorithms</title>
+ <booktitle>Algorithms and Combinatorics 9</booktitle>
+ <publisher>Springer-Verlag</publisher>
+ <year>1990</year>
+ <isbn>0387526854</isbn>
+ <file>Networks/algorithms/flow/1990 AC Network Flow Algorithms.pdf</file>
 </reference>
 
 
@@ -2306,6 +2345,25 @@
   <text>C++ implementation of <cite>Ahn et al. 2010</cite>.</text>
  </comment>
 </reference>
+
+
+
+<reference id="Kang et al. 2011">
+ <author>Unmi Tina Kang</author>
+ <author>Charalampos E. Tsourakakis</author>
+ <author>Ana Paula Appel</author>
+ <author>Christos Faloutsos</author>
+ <author>Jure Leskovec</author>
+ <title>HADI: Mining Radii of Large Graphs</title>
+ <journal>ACM Transactions on Knowledge Discovery from Data</journal>
+ <volume>5</volume>
+ <number>2</number>
+ <pages>8</pages>
+ <year>2011</year>
+ <doi>10.1145/1921632.1921634</doi>
+ <file>Networks/structure/metrics/2011 TKDD HADI Radii of Large Graphs.pdf</file>
+</reference>
+
 
 
 <reference id="Karrer et al. 2008">
@@ -3147,6 +3205,21 @@
 
 
 
+<reference id="Newman et al. 2001">
+ <author>Mark E.J. Newman</author>
+ <author>Steven H. Strogatz</author>
+ <author>Duncan J. Watts</author>
+ <title>Random graphs with arbitrary degree distributions and their applications</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>64</volume>
+ <number>2</number>
+ <pages>026118</pages>
+ <year>2001</year>
+ <doi>10.1103/PhysRevE.64.026118</doi>
+ <file>Networks/models/random/2001 Physical Review E [Newman, Strogatz &amp; Watts] Random graphs.pdf</file>
+</reference>
+
+
 <reference id="Newman 2002">
  <author>Mark E.J. Newman</author>
  <title>Assortative Mixing in Networks</title>
@@ -3159,6 +3232,19 @@
 </reference>
 
 
+<reference id="Newman et al. 2002">
+ <author>Mark E.J. Newman</author>
+ <author>Duncan J. Watts</author>
+ <author>Steven H. Strogatz</author>
+ <title>Random graph models of social networks</title>
+ <journal>PNAS</journal>
+ <volume>99</volume>
+ <number>s1</number>
+ <pages>2566-2572</pages>
+ <year>2002</year>
+ <doi>10.1073/pnas.012582999</doi>
+ <file>Networks/models/random/2002 PNAS [Newman, Strogatz &amp; Watts] Random graph models of social networks.pdf</file>
+</reference>
 
 <reference id="Newman 2003">
  <author>Mark E.J. Newman</author>
@@ -3214,6 +3300,18 @@
  <file>Networks/algorithms/clustering/2004 EPJB [Newman] Community structure in networks.pdf</file>
 </reference>
 
+<reference id="Newman 2005">
+ <author>Mark E.J. Newman</author>
+ <title>Power laws, Pareto distributions and Zipf's law</title>
+ <journal>Contemporary Physics</journal>
+ <volume>46</volume>
+ <number>5</number>
+ <pages>323-351</pages>
+ <year>2005</year>
+ <doi>10.1080/00107510500052444</doi>
+ <file>Networks/models/2005 Contemporary Physics [Newman] Power laws.draft.pdf</file>
+ <file>Networks/models/2005 Contemporary Physics [Newman] Power laws.pdf</file>
+</reference>
 
 <reference id="Newman 2006">
  <author>Mark E.J. Newman</author>
@@ -3582,6 +3680,19 @@
 </reference>
 
 
+<reference id="Schrijver 2002">
+ <author>Alexander Schrijver</author>
+ <title>On the history of the transportation and maximum flow problems</title>
+ <journal>Mathematical Programming</journal>
+ <volume>91</volume>
+ <number>3</number>
+ <pages>437-445</pages>
+ <year>2002</year>
+ <doi>10.1007/s101070100259</doi>
+ <file>Networks/algorithms/flow/2002 MP Transportation and network flow.pdf</file>
+</reference>
+
+
 <reference id="Scott 2000">
  <author>John P. Scott</author>
  <title>Social Network Analysis: A Handbook</title>
@@ -3762,6 +3873,18 @@
  </comment>
 </reference>
 
+
+<reference id="Simon 1955">
+ <author>Herbert A. Simon</author>
+ <title>On a Class of Skew Distribution Functions</title>
+ <journal>Biometrika</journal>
+ <volume>42</volume>
+ <number>3/4</number>
+ <pages>425-440</pages>
+ <year>1955</year>
+ <url>http://www.jstor.org/stable/2333389</url>
+ <file>Networks/models/1955 Biometrika [Simon] Skew distribution functions.pdf</file>
+</reference>
 
 <reference id="Simon 1962">
  <author>Herbert A. Simon</author>
@@ -4265,6 +4388,17 @@
  <comment>
   <text>Classic divulgative book on basic network research.</text>
  </comment>
+</reference>
+
+<reference id="Watts 2004b">
+ <author>Duncan J. Watts</author>
+ <title>The New Science of Networks</title>
+ <journal>Annual Review of Sociology</journal>
+ <volume>30</volume>
+ <pages>243-270</pages>
+ <year>2004</year>
+ <doi>10.1146/annurev.soc.30.020404.104342</doi>
+ <file>Networks/2004 Annual Review of Sociology [Watts] The New Science of Networks.pdf</file>
 </reference>
 
 

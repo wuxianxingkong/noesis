@@ -53,13 +53,66 @@ public abstract class Network<V, E> implements Graph<V,E>
 	
 
 	// Network dynamics
+	// ----------------
+	
+	// Nodes
 	
 	public abstract int add(V node);
 
+	// Links
+	
 	public abstract boolean add(int sourceIndex, int destinationIndex);
 
 	public abstract boolean add(int sourceIndex, int destinationIndex, E content);
+	
+	public final boolean add (V source, V destination, E link)
+	{
+		int sourceIndex = index(source);
+		int destinationIndex = index(destination);
+		
+		if ( (sourceIndex!=-1) && (destinationIndex!=-1) )
+			return add(sourceIndex, destinationIndex, link);
+		else
+			return false;
+	}
+	
+	public final boolean add (V source, V destination)
+	{
+		int sourceIndex = index(source);
+		int destinationIndex = index(destination);
+		
+		if ( (sourceIndex!=-1) && (destinationIndex!=-1) )
+			return add(sourceIndex, destinationIndex);
+		else
+			return false;
+	}	
+	
 
+	// Biderectional links
+	
+	public final boolean add2 (V source, V destination)
+	{
+		boolean ok;
+		
+		ok = add(source,destination);
+		
+		if (ok)
+			ok = add(destination,source);
+		
+		return ok;
+	}
+	
+	public final boolean add2 (V source, V destination, E link)
+	{
+		boolean ok;
+		
+		ok = add(source,destination,link);
+		
+		if (ok)
+			ok = add(destination,source,link);
+		
+		return ok;
+	}
 	
 	// Accessors
 	

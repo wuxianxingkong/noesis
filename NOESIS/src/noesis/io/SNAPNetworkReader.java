@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 
 import noesis.Network;
 
-public class SNAPNetworkReader extends NetworkReader
+public class SNAPNetworkReader extends NetworkReader<String,Decimal>
 {
 	private BufferedReader input;
 
@@ -45,16 +45,16 @@ public class SNAPNetworkReader extends NetworkReader
 	
 
 	@Override
-	public Network read() 
+	public Network<String,Decimal> read() 
 		throws IOException 
 	{
-		Network<Integer,Decimal> net = createNetwork();
+		Network<String,Decimal> net = createNetwork();
 		int     nodes;
 		int     source, destination;
 		int     mark;
 		String  line;
 		String  token;
-		Integer idSource, idDestination;
+		String  idSource, idDestination;
 		StringTokenizer tokenizer;
 		
 		// # Directed graph (each unordered pair of nodes is saved once): <file>.txt 
@@ -99,8 +99,8 @@ public class SNAPNetworkReader extends NetworkReader
 			// idDestination = Integer.parseInt(tokenizer.nextToken());
 			
 			mark = line.indexOf('\t');
-			idSource = Integer.parseInt(line.substring(0, mark));
-			idDestination = Integer.parseInt(line.substring(mark+1));			
+			idSource = line.substring(0, mark);
+			idDestination = line.substring(mark+1);			
 
 			source = net.index(idSource);
 			

@@ -2,6 +2,8 @@ package noesis.ui.console;
 
 import java.io.*;
 
+import ikor.math.Decimal;
+
 import ikor.util.Benchmark;
 
 import noesis.Network;
@@ -37,7 +39,7 @@ public class NetworkStats {
 			
 			crono.start();
 			
-			NetworkReader reader; 
+			NetworkReader<String,Decimal> reader; 
 			
 			System.err.println("Reading network from "+args[0]);
 			
@@ -53,7 +55,7 @@ public class NetworkStats {
 			reader.setType(noesis.ArrayNetwork.class);     // NDwww.net 5.2s
 			// reader.setType(noesis.GraphNetwork.class);  // NDwww.net 9.6s
 			
-			Network net = reader.read();
+			Network<String,Decimal> net = reader.read();
 			
 			
 			System.out.println("NETWORK STATISTICS");

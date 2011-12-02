@@ -5,7 +5,7 @@ import noesis.Network;
 
 import ikor.math.Vector;
 
-public abstract class NodeMetrics<T> 
+public abstract class NodeMetrics 
 {
 	private Network network;
 	private Vector  metrics;

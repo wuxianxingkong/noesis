@@ -303,7 +303,7 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 	 * Read Pajek file (*vertices, *arcslist/*edgeslist, *arcs/*edges, *matrix). 
 	 */
 	@Override
-	public Network read()
+	public Network<String,Decimal> read()
 		throws IOException
 	{
 		Network<String,Decimal> net = createNetwork();

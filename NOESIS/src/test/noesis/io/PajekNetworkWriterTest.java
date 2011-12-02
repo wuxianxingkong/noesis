@@ -7,6 +7,8 @@ import java.io.StringWriter;
 
 import static org.junit.Assert.*;
 
+import ikor.math.Decimal;
+
 import noesis.Network;
 import noesis.io.PajekNetworkReader;
 import noesis.io.PajekNetworkWriter;
@@ -64,7 +66,7 @@ public class PajekNetworkWriterTest {
 	}	
 	
 	
-	private Network createNetwork (String[] lines)
+	private Network<String,Decimal> createNetwork (String[] lines)
 		throws IOException
 	{
 		String netstr = networkString(lines);
@@ -79,7 +81,7 @@ public class PajekNetworkWriterTest {
 	@Test
 	public void testPajekWriterNetwork() throws IOException
 	{
-		Network net = createNetwork(pajekNetwork);
+		Network<String,Decimal> net = createNetwork(pajekNetwork);
 		StringWriter sw = new StringWriter();
 		PajekNetworkWriter writer = new PajekNetworkWriter(sw);
 		
@@ -92,7 +94,7 @@ public class PajekNetworkWriterTest {
 	@Test
 	public void testPajekWriterUnlabeled() throws IOException
 	{
-		Network net = createNetwork(pajekUnlabeled);
+		Network<String,Decimal> net = createNetwork(pajekUnlabeled);
 		StringWriter sw = new StringWriter();
 		PajekNetworkWriter writer = new PajekNetworkWriter(sw);
 		

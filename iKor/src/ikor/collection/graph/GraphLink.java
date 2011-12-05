@@ -34,7 +34,7 @@ public class GraphLink<E> implements GraphElement<E>
 		return destination;
 	}
 	
-	public void setDestination( GraphNode destination) 
+	private void setDestination( GraphNode destination) 
 	{
 		this.destination = destination;
 	}
@@ -44,7 +44,7 @@ public class GraphLink<E> implements GraphElement<E>
 		return source;
 	}
 	
-	public void setSource (GraphNode source) 
+	private void setSource (GraphNode source) 
 	{
 		this.source = source;
 	}
@@ -54,7 +54,7 @@ public class GraphLink<E> implements GraphElement<E>
 		return content;
 	}
 	
-	public void setContent (E content) 
+	private void setContent (E content) 
 	{
 		this.content = content;
 	}

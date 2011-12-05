@@ -1,4 +1,4 @@
-package ikor.collection;
+package ikor.collection.util;
 
 /**
  * Union-Find data structure (adapted from Sedgewick's Algorithms, 4th edition).

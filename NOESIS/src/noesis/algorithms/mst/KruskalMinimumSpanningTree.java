@@ -2,23 +2,30 @@ package noesis.algorithms.mst;
 
 
 import ikor.collection.Evaluator;
+import ikor.collection.EvaluatorComparator;
 import ikor.collection.PriorityQueue;
 import ikor.collection.DynamicPriorityQueue;
 import ikor.collection.util.UnionFind;
 
 import noesis.Network;
 import noesis.Link;
-import noesis.LinkComparator;
 import noesis.ArrayNetwork;
 
+/**
+ * Minimum Spanning Trees (for undirected networks): Kruskal's algorithm. 
+ *  
+ * Efficient implementation using union-find data structure, O(m log m).
+ *  
+ * @author Fernando Berzal
+ */
 public class KruskalMinimumSpanningTree<V,E>
 {
 	Network<V,E> network;
-	Evaluator    evaluator;
+	Evaluator<E> evaluator;
 	Network<V,E> mst;
 	double       weight;
 	
-	public KruskalMinimumSpanningTree (Network<V,E> net, Evaluator linkEvaluator)
+	public KruskalMinimumSpanningTree (Network<V,E> net, Evaluator<E> linkEvaluator)
 	{
 		this.network   = net;
 		this.evaluator = linkEvaluator;
@@ -76,7 +83,8 @@ public class KruskalMinimumSpanningTree<V,E>
 	
 	private PriorityQueue<Link<E>> createPriorityQueue ()
 	{
-		LinkComparator<E> comparator = new LinkComparator(evaluator);
+		LinkEvaluator linkEvaluator = new LinkEvaluator(evaluator);    
+		EvaluatorComparator<E> comparator = new EvaluatorComparator(linkEvaluator);
 		PriorityQueue<Link<E>> queue = new DynamicPriorityQueue<Link<E>>(comparator);
 	
 		for (int i=0; i<network.size(); i++) {
@@ -105,5 +113,24 @@ public class KruskalMinimumSpanningTree<V,E>
 	public double weight ()
 	{
 		return weight;
+	}
+	
+	
+	// Ancillary class
+	
+	class LinkEvaluator implements Evaluator<Link<E>>
+	{
+		private Evaluator<E> evaluator;
+		
+		public LinkEvaluator(Evaluator<E> evaluator)
+		{
+			this.evaluator = evaluator;
+		}
+
+		@Override
+		public double evaluate(Link<E> object) 
+		{
+			return evaluator.evaluate(object.getContent());
+		}
 	}
 }

@@ -37,6 +37,18 @@ public class MinimumSpanningTreeTest
 		assertEquals( roadmap.size()-1, mst.links());
 		assertEquals( 1+1+2+20+55+70+94, kruskal.weight(), 0.001 );
 	}
+
+	@Test
+	public void testPrim() 
+	{
+		Evaluator<Integer> linkEvaluator = new LinkEvaluator();
+		PrimMinimumSpanningTree prim = new PrimMinimumSpanningTree(roadmap,linkEvaluator);
+		Network<String,Integer> mst = prim.run();
+		
+		assertEquals( roadmap.size(), mst.size());
+		assertEquals( roadmap.size()-1, mst.links());
+		assertEquals( 1+1+2+20+55+70+94, prim.weight(), 0.001 );
+	}	
 	
 	class LinkEvaluator implements Evaluator<Integer>
 	{

@@ -8,8 +8,8 @@ package ikor.collection.graph.search;
 
 import ikor.collection.Visitor;
 import ikor.collection.graph.ExplicitGraph;
-import ikor.collection.graph.Node;
-import ikor.collection.graph.Link;
+import ikor.collection.graph.GraphNode;
+import ikor.collection.graph.GraphLink;
 
 
 /**
@@ -25,8 +25,8 @@ public abstract class GraphSearch<V,E>
 	protected ExplicitGraph<V,E> graph;
 	protected State[]            state;
 
-	private   Visitor<Node<V,E>> nodeVisitor;
-	private   Visitor<Link<V,E>> linkVisitor;
+	private   Visitor<GraphNode<V>> nodeVisitor;
+	private   Visitor<GraphLink<E>> linkVisitor;
 
 
     // Constructor
@@ -36,7 +36,7 @@ public abstract class GraphSearch<V,E>
 		this(graph,null,null);
 	}
 
-	public GraphSearch (ExplicitGraph<V,E> graph, Visitor<Node<V,E>> nodeVisitor, Visitor<Link<V,E>> linkVisitor)
+	public GraphSearch (ExplicitGraph<V,E> graph, Visitor<GraphNode<V>> nodeVisitor, Visitor<GraphLink<E>> linkVisitor)
 	{
 		this.graph       = graph;
 		this.state       = new State[graph.size()];
@@ -49,12 +49,12 @@ public abstract class GraphSearch<V,E>
 
 	// Node visitor
 
-	public void setNodeVisitor (Visitor<Node<V,E>> visitor)
+	public void setNodeVisitor (Visitor<GraphNode<V>> visitor)
 	{
 		this.nodeVisitor = visitor;
 	}
 
-	protected void visitNode (Node<V,E> node)
+	protected void visitNode (GraphNode<V> node)
 	{
 		if (nodeVisitor!=null)
 			nodeVisitor.visit(node);
@@ -63,12 +63,12 @@ public abstract class GraphSearch<V,E>
 
 	// Edge visitor
 
-	public void setLinkVisitor (Visitor<Link<V,E>> visitor)
+	public void setLinkVisitor (Visitor<GraphLink<E>> visitor)
 	{
 		this.linkVisitor = visitor;
 	}
 
-	protected void visitLink (Link<V,E> link)
+	protected void visitLink (GraphLink<E> link)
 	{
 		if (linkVisitor!=null)
 			linkVisitor.visit(link);
@@ -87,7 +87,7 @@ public abstract class GraphSearch<V,E>
 		explore ( graph.getNode(index) );
 	}
 
-	public abstract void explore (Node<V,E> start);
+	public abstract void explore (GraphNode<V> start);
 
 	// Explored nodes
 
@@ -96,7 +96,7 @@ public abstract class GraphSearch<V,E>
 		return state[index];
 	}
 
-	public State status (Node<V,E> node)
+	public State status (GraphNode<V> node)
 	{
 		return status( graph.index(node) );
 	}

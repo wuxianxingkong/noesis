@@ -11,12 +11,12 @@ package ikor.collection.graph;
  * Graph node.
  */
 
-public interface Node<V,E> extends Element<V>
+public interface GraphNode<V> extends GraphElement<V>
 {
 	public V getContent();
 	
-	public Link<V,E> outLink (int arc);
-	public Link<V,E> inLink (int arc);	
+	public GraphLink outLink (int arc);
+	public GraphLink inLink (int arc);	
 	
 	public int degree();
 	public int outDegree();

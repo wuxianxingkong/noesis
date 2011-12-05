@@ -17,10 +17,10 @@ public interface MutableExplicitGraph<V, E> extends MutableGraph<V,E>, ExplicitG
 {
 	// Nodes
 	
-	public abstract boolean remove (Node<V,E> node);
+	public abstract boolean remove (GraphNode<V> node);
 	
 	// Links
 	
-    public abstract boolean remove (Link<V,E> link);
+    public abstract boolean remove (GraphLink<E> link);
 	
 }

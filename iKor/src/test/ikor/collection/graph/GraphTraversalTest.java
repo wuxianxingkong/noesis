@@ -35,8 +35,8 @@ public class GraphTraversalTest
 	@Test
 	public void testBFSundirected() {
 		
-		GraphSearch<String,Integer>   mapSearch; 
-		MockVisitor<Node<String,Integer>> cityVisitor;
+		GraphSearch<String,Integer>    mapSearch; 
+		MockVisitor<GraphNode<String>> cityVisitor;
 		
 		cityVisitor = MockObjects.roadmapBFSVisitor(roadmap);
 		mapSearch = new BFS<String,Integer>(roadmap, cityVisitor, null);
@@ -48,8 +48,8 @@ public class GraphTraversalTest
 	@Test
 	public void testDFSundirected() {
 		
-		GraphSearch<String,Integer>   mapSearch; 
-		MockVisitor<Node<String,Integer>> cityVisitor;
+		GraphSearch<String,Integer>    mapSearch; 
+		MockVisitor<GraphNode<String>> cityVisitor;
 		
 		cityVisitor = MockObjects.roadmapDFSVisitor(roadmap);
 		mapSearch = new DFS<String,Integer>(roadmap, cityVisitor, null);
@@ -61,8 +61,8 @@ public class GraphTraversalTest
 	@Test
 	public void testBFSundirectedLinks() {
 		
-		GraphSearch<String,Integer>   mapSearch; 
-		MockVisitor<Link<String,Integer>> roadVisitor;
+		GraphSearch<String,Integer>     mapSearch; 
+		MockVisitor<GraphLink<Integer>> roadVisitor;
 		
 		roadVisitor = MockObjects.roadmapBFSLinkVisitor(roadmap);
 		mapSearch = new BFS<String,Integer>(roadmap, null, roadVisitor);
@@ -74,8 +74,8 @@ public class GraphTraversalTest
 	@Test
 	public void testDFSundirectedLinks() {
 		
-		GraphSearch<String,Integer>   mapSearch; 
-		MockVisitor<Link<String,Integer>> roadVisitor;
+		GraphSearch<String,Integer>     mapSearch; 
+		MockVisitor<GraphLink<Integer>> roadVisitor;
 		
 		roadVisitor = MockObjects.roadmapDFSLinkVisitor(roadmap);
 		mapSearch = new DFS<String,Integer>(roadmap, null, roadVisitor);
@@ -89,8 +89,8 @@ public class GraphTraversalTest
 	@Test
 	public void testBFSdirected() {
 		
-		GraphSearch<String,String>   webSearch; 
-		MockVisitor<Node<String,String>> pageVisitor;
+		GraphSearch<String,String>     webSearch; 
+		MockVisitor<GraphNode<String>> pageVisitor;
 		
 		pageVisitor = MockObjects.webBFSVisitor(web);
 		webSearch = new BFS<String,String>(web, pageVisitor, null);
@@ -103,8 +103,8 @@ public class GraphTraversalTest
 	@Test
 	public void testDFSdirected() {
 		
-		GraphSearch<String,String>   webSearch; 
-		MockVisitor<Node<String,String>> pageVisitor;
+		GraphSearch<String,String>     webSearch; 
+		MockVisitor<GraphNode<String>> pageVisitor;
 		
 		pageVisitor = MockObjects.webDFSVisitor(web);
 		webSearch = new DFS<String,String>(web, pageVisitor, null);
@@ -116,8 +116,8 @@ public class GraphTraversalTest
 	@Test
 	public void testBFSdirectedLinks() {
 		
-		GraphSearch<String,String>   webSearch; 
-		MockVisitor<Link<String,String>> linkVisitor;
+		GraphSearch<String,String>     webSearch; 
+		MockVisitor<GraphLink<String>> linkVisitor;
 		
 		linkVisitor = MockObjects.webBFSLinkVisitor(web);
 		webSearch = new BFS<String,String>(web, null, linkVisitor);
@@ -129,8 +129,8 @@ public class GraphTraversalTest
 	@Test
 	public void testDFSdirectedLinks() {
 		
-		GraphSearch<String,String>   webSearch; 
-		MockVisitor<Link<String,String>> linkVisitor;
+		GraphSearch<String,String>     webSearch; 
+		MockVisitor<GraphLink<String>> linkVisitor;
 		
 		linkVisitor = MockObjects.webDFSLinkVisitor(web);
 		webSearch = new DFS<String,String>(web, null, linkVisitor);
@@ -153,19 +153,19 @@ public class GraphTraversalTest
 		// System.out.println(map);
 
 		System.out.println("\nDFS (NODES)");
-		mapSearch = new DFS<String,Integer>(map, new MockVisitor<Node<String,Integer>>(), null);
+		mapSearch = new DFS<String,Integer>(map, new MockVisitor<GraphNode<String>>(), null);
 		mapSearch.explore();
 
 		System.out.println("\nBFS (NODES)");
-		mapSearch = new BFS<String,Integer>(map, new MockVisitor<Node<String,Integer>>(), null);
+		mapSearch = new BFS<String,Integer>(map, new MockVisitor<GraphNode<String>>(), null);
 		mapSearch.explore();
 
 		System.out.println("\nDFS (EDGES)");
-		mapSearch = new DFS<String,Integer>(map, null, new MockVisitor<Link<String,Integer>>());
+		mapSearch = new DFS<String,Integer>(map, null, new MockVisitor<GraphLink<Integer>>());
 		mapSearch.explore();
 
 		System.out.println("\nBFS (EDGES)");
-		mapSearch = new BFS<String,Integer>(map, null, new MockVisitor<Link<String,Integer>>());
+		mapSearch = new BFS<String,Integer>(map, null, new MockVisitor<GraphLink<Integer>>());
 		mapSearch.explore();
 
 		System.out.println("WEB");
@@ -173,19 +173,19 @@ public class GraphTraversalTest
 
 
 		System.out.println("\nDFS (NODES)");
-		webSearch = new DFS<String,String>(web, new MockVisitor<Node<String,String>>(), null);
+		webSearch = new DFS<String,String>(web, new MockVisitor<GraphNode<String>>(), null);
 		webSearch.explore();
 
 		System.out.println("\nBFS (NODES)");
-		webSearch = new BFS<String,String>(web, new MockVisitor<Node<String,String>>(), null);
+		webSearch = new BFS<String,String>(web, new MockVisitor<GraphNode<String>>(), null);
 		webSearch.explore();
 
 		System.out.println("\nDFS (EDGES)");
-		webSearch = new DFS<String,String>(web, null, new MockVisitor<Link<String,String>>());
+		webSearch = new DFS<String,String>(web, null, new MockVisitor<GraphLink<String>>());
 		webSearch.explore();
 
 		System.out.println("\nBFS (EDGES)");
-		webSearch = new BFS<String,String>(web, null, new MockVisitor<Link<String,String>>());
+		webSearch = new BFS<String,String>(web, null, new MockVisitor<GraphLink<String>>());
 		webSearch.explore();
 	}
 

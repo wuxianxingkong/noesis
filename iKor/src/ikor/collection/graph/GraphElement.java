@@ -10,7 +10,7 @@ package ikor.collection.graph;
  * Generic graph element.
  */
 
-public interface Element<T> 
+public interface GraphElement<T> 
 {
 	public T getContent();
 }

@@ -17,11 +17,11 @@ import ikor.collection.*;
  * @param <E> Graph link type
  */
 
-class DynamicNode<V,E> implements Node<V,E> 
+class DynamicNode<V> implements GraphNode<V> 
 {
 	private V                      content;
-	private DynamicList<Link<V,E>> in;
-	private DynamicList<Link<V,E>> out;
+	private DynamicList<GraphLink> in;
+	private DynamicList<GraphLink> out;
 
 	
 	public DynamicNode (V content)
@@ -40,59 +40,59 @@ class DynamicNode<V,E> implements Node<V,E>
 
 	// Links
 
-	public List<Link<V,E>> outLinks ()
+	public List<GraphLink> outLinks ()
 	{
 		if (out==null)
-			out = new DynamicList<Link<V,E>>();
+			out = new DynamicList<GraphLink>();
 		
 		return out;
 	}
 
-	public List<Link<V,E>> inLinks ()
+	public List<GraphLink> inLinks ()
 	{
 		if (in==null)
-			in = new DynamicList<Link<V,E>>();
+			in = new DynamicList<GraphLink>();
 		
 		return in;
 	}
 
 
-	public Link<V,E> outLink (int arc)
+	public GraphLink outLink (int arc)
 	{
 		return out.get(arc);
 	}
 
-	public Link<V,E> inLink (int arc)
+	public GraphLink inLink (int arc)
 	{
 		return in.get(arc);
 	}
 
 
-	public void addOutLink (Link<V,E> link)
+	public void addOutLink (GraphLink link)
 	{
 		if (out==null)
-			out = new DynamicList<Link<V,E>>();
+			out = new DynamicList<GraphLink>();
 
 		out.add(link);
 	}
 
 
-	public void addInLink (Link<V,E> link)
+	public void addInLink (GraphLink link)
 	{
 		if (in==null)
-			in = new DynamicList<Link<V,E>>();
+			in = new DynamicList<GraphLink>();
 
 		in.add(link);
 	}
 
 
-	public void removeOutLink (Link<V,E> link)
+	public void removeOutLink (GraphLink link)
 	{
 		out.remove(link);
 	}
 
 
-	public void removeInLink (Link<V,E> link)
+	public void removeInLink (GraphLink link)
 	{
 		in.remove(link);
 	}

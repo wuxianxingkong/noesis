@@ -10,8 +10,8 @@ import ikor.collection.List;
 import ikor.collection.Visitor;
 
 import ikor.collection.graph.ExplicitGraph;
-import ikor.collection.graph.Node;
-import ikor.collection.graph.Link;
+import ikor.collection.graph.GraphNode;
+import ikor.collection.graph.GraphLink;
 
 /**
  * Depth-First Search in Graphs
@@ -28,19 +28,19 @@ public class DFS<V,E> extends GraphSearch<V,E>
 		super(graph);
 	}
 
-	public DFS (ExplicitGraph<V,E> graph, Visitor<Node<V,E>> nodeVisitor, Visitor<Link<V,E>> linkVisitor)
+	public DFS (ExplicitGraph<V,E> graph, Visitor<GraphNode<V>> nodeVisitor, Visitor<GraphLink<E>> linkVisitor)
 	{
 		super(graph, nodeVisitor, linkVisitor);
 	}
 
 	// Graph exploration
 
-	public void explore (Node<V,E> current)
+	public void explore (GraphNode<V> current)
 	{
-		int             currentIndex, targetIndex;
-		Node<V,E>       target;
-		List<Link<V,E>> links;
-		Link<V,E>       link;
+		int                currentIndex, targetIndex;
+		GraphNode<V>       target;
+		List<GraphLink<E>> links;
+		GraphLink<E>       link;
 
  	    currentIndex = graph.index(current);
    	    state[currentIndex] = GraphSearch.State.DISCOVERED;

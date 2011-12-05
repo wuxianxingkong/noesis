@@ -11,8 +11,8 @@ import ikor.collection.Queue;
 import ikor.collection.Visitor;
 
 import ikor.collection.graph.ExplicitGraph;
-import ikor.collection.graph.Node;
-import ikor.collection.graph.Link;
+import ikor.collection.graph.GraphNode;
+import ikor.collection.graph.GraphLink;
 
 /**
  * Breadth-First Search in Graphs
@@ -30,20 +30,20 @@ public class BFS<V,E> extends GraphSearch<V,E>
 		super(graph);
 	}
 
-	public BFS (ExplicitGraph<V,E> graph, Visitor<Node<V,E>> nodeVisitor, Visitor<Link<V,E>> linkVisitor)
+	public BFS (ExplicitGraph<V,E> graph, Visitor<GraphNode<V>> nodeVisitor, Visitor<GraphLink<E>> linkVisitor)
 	{
 		super(graph, nodeVisitor, linkVisitor);
 	}
 
 	// Graph exploration
 
-	public void explore (Node<V,E> start)
+	public void explore (GraphNode<V> start)
 	{
-		Queue<Node<V,E>> queue    = new Queue<Node<V,E>>();
-		int              currentIndex, targetIndex;
-		Node<V,E>        current, target;
-		List<Link<V,E>>  links;
-		Link<V,E>        link;
+		Queue<GraphNode<V>> queue = new Queue<GraphNode<V>>();
+		int                 currentIndex, targetIndex;
+		GraphNode<V>        current, target;
+		List<GraphLink<E>>  links;
+		GraphLink<E>        link;
 
 		queue.enqueue ( start );
 

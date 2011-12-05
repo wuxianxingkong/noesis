@@ -35,7 +35,7 @@ public class ListIterator<T> implements Iterator<T>
 
 	@Override
 	public boolean hasNext() {
-		return (index<last);
+		return (index<=last);
 	}
 
 	@Override

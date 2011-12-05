@@ -18,39 +18,39 @@ public abstract class ExplicitGraphImplementation<V,E> implements ExplicitGraph<
 {
 	// Nodes
 	
-	public abstract int index (Node<V,E> node);
+	public abstract int index (GraphNode<V> node);
 	
-	public abstract Node<V,E> getNode (int index);
+	public abstract GraphNode<V> getNode (int index);
 
-	public final Node<V,E> getNode (V node)
+	public final GraphNode<V> getNode (V node)
 	{
 		return getNode (index(node));
 	}	
 	
 	// Links
 	
-	public abstract Link<V,E> getLink(Node<V,E> source, Node<V,E> destination);
+	public abstract GraphLink<E> getLink(GraphNode<V> source, GraphNode<V> destination);
 	
-	public final Link<V, E> getLink(int source, int destination) {
+	public final GraphLink<E> getLink(int source, int destination) {
 		return getLink ( getNode(source), getNode(destination) );
 	}
 
-	public final Link<V, E> getLink(V source, V destination) {
+	public final GraphLink<E> getLink(V source, V destination) {
 		return getLink ( getNode(source), getNode(destination) );
 	}
 	
 	
-	public abstract List<Link<V,E>> outLinkList (int node);
+	public abstract List<GraphLink<E>> outLinkList (int node);
 
-	public final List<Link<V,E>> outLinkList (V node)
+	public final List<GraphLink<E>> outLinkList (V node)
 	{
 		return outLinkList(index(node));
 	}
 
 	
-	public abstract List<Link<V,E>> inLinkList (int node);
+	public abstract List<GraphLink<E>> inLinkList (int node);
 		
-	public final List<Link<V,E>> inLinkList (V node)
+	public final List<GraphLink<E>> inLinkList (V node)
 	{
 		return inLinkList(index(node));
 	}		
@@ -60,7 +60,7 @@ public abstract class ExplicitGraphImplementation<V,E> implements ExplicitGraph<
 	@Override
 	public final int[] outLinks(int node) 
 	{
-		List<Link<V,E>> list = outLinkList(node);
+		List<GraphLink<E>> list = outLinkList(node);
 		int[] array = new int[list.size()];
 		
 		if (isDirected()) {
@@ -71,7 +71,7 @@ public abstract class ExplicitGraphImplementation<V,E> implements ExplicitGraph<
 		} else {
 			
 			for (int i=0; i<array.length; i++) {
-				Link<V,E> link = list.get(i);
+				GraphLink<E> link = list.get(i);
 				
 				if (node==index(link.getSource())) {
 					array[i] = index(link.getDestination());
@@ -93,7 +93,7 @@ public abstract class ExplicitGraphImplementation<V,E> implements ExplicitGraph<
 	@Override
 	public final int[] inLinks(int node) 
 	{
-		List<Link<V,E>> list = inLinkList(node);
+		List<GraphLink<E>> list = inLinkList(node);
 		int[] array = new int[list.size()];
 		
 		if (isDirected()) {
@@ -104,7 +104,7 @@ public abstract class ExplicitGraphImplementation<V,E> implements ExplicitGraph<
 		} else {
 		
 			for (int i=0; i<array.length; i++) {
-				Link<V,E> link = list.get(i);
+				GraphLink<E> link = list.get(i);
 
 				if (node==index(link.getDestination())) {
 					array[i] = index(link.getSource());

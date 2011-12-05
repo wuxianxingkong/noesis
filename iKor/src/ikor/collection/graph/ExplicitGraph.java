@@ -18,21 +18,21 @@ public interface ExplicitGraph<V,E> extends Graph<V, E>
 {
 	// Nodes
 	
-	public int index (Node<V,E> node);
+	public int index (GraphNode<V> node);
 	
-	public Node<V,E> getNode (int index);
-	public Node<V,E> getNode (V node);
+	public GraphNode<V> getNode (int index);
+	public GraphNode<V> getNode (V node);
 	
 	// Links
 	
-	public Link<V,E> getLink(Node<V,E> source, Node<V,E> destination);
-	public Link<V,E> getLink(int source, int destination);
-	public Link<V,E> getLink(V source, V destination);
+	public GraphLink<E> getLink(GraphNode<V> source, GraphNode<V> destination);
+	public GraphLink<E> getLink(int source, int destination);
+	public GraphLink<E> getLink(V source, V destination);
 	
 	
-	public List<Link<V,E>> outLinkList (int node);
-	public List<Link<V,E>> outLinkList (V node);
+	public List<GraphLink<E>> outLinkList (int node);
+	public List<GraphLink<E>> outLinkList (V node);
 	
-	public List<Link<V,E>> inLinkList (int node);
-	public List<Link<V,E>> inLinkList (V node);
+	public List<GraphLink<E>> inLinkList (int node);
+	public List<GraphLink<E>> inLinkList (V node);
 }

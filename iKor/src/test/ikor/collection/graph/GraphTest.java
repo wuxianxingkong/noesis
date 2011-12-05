@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 import ikor.collection.List;
 import ikor.collection.graph.DynamicGraph;
-import ikor.collection.graph.Link;
+import ikor.collection.graph.GraphLink;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -332,7 +332,7 @@ public class GraphTest {
 		assertEquals(2, roadmap.outLinkList("Almería").size() );
 		assertEquals(2, roadmap.outLinkList("Guadix").size() );
 		
-		List<Link<String,Integer>> list = roadmap.outLinkList("Granada");
+		List<GraphLink<Integer>> list = roadmap.outLinkList("Granada");
 				
 		assertEquals ( "Granada", list.get(0).getSource().getContent() );
 		assertEquals ( "Motril", list.get(0).getDestination().getContent() );
@@ -367,7 +367,7 @@ public class GraphTest {
 		assertEquals(1, web.outLinkList("Internet").size() );
 		assertEquals(0, web.outLinkList("ASP.NET").size() );		
 
-		List<Link<String,String>> links = web.outLinkList("Java");
+		List<GraphLink<String>> links = web.outLinkList("Java");
 
 		assertEquals ( "Java", links.get(0).getSource().getContent() );
 		assertEquals ( "C", links.get(0).getDestination().getContent() );
@@ -451,7 +451,7 @@ public class GraphTest {
 		assertEquals(2, roadmap.inLinkList("Almería").size() );
 		assertEquals(2, roadmap.inLinkList("Guadix").size() );
 		
-		List<Link<String,Integer>> list = roadmap.inLinkList("Granada");
+		List<GraphLink<Integer>> list = roadmap.inLinkList("Granada");
 				
 		assertEquals ( "Granada", list.get(0).getSource().getContent() );
 		assertEquals ( "Motril", list.get(0).getDestination().getContent() );
@@ -486,7 +486,7 @@ public class GraphTest {
 		assertEquals(1, web.inLinkList("Internet").size() );
 		assertEquals(2, web.inLinkList("ASP.NET").size() );		
 
-		List<Link<String,String>> links = web.inLinkList("Java");
+		List<GraphLink<String>> links = web.inLinkList("Java");
 
 		assertEquals ( "home", links.get(0).getSource().getContent() );
 		assertEquals ( "Java", links.get(0).getDestination().getContent() );
@@ -633,7 +633,7 @@ public class GraphTest {
 
 	/**
 	 * Test method for {@link ikor.collection.graph.DynamicGraph#remove(java.lang.Object, java.lang.Object, java.lang.Object)}
-	 * and {@link ikor.collection.graph.DynamicGraph#remove(ikor.collection.graph.Link)},
+	 * and {@link ikor.collection.graph.DynamicGraph#remove(ikor.collection.graph.GraphLink)},
 	 * which rely on {@link ikor.collection.graph.DynamicGraph#remove(int, int, java.lang.Object)}..
 	 */
 	@Test

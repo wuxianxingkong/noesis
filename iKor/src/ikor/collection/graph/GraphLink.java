@@ -11,45 +11,53 @@ package ikor.collection.graph;
  * Graph link.
  */
 
-public class Link<V,E> implements Element<E>
+public class GraphLink<E> implements GraphElement<E>
 {
-	private Node<V,E> source;
-	private Node<V,E> destination;
+	private GraphNode source;
+	private GraphNode destination;
 	private E         content;
 
-	public Link (Node<V,E> source, Node<V,E> destination)
+	public GraphLink (GraphNode source, GraphNode destination)
 	{ 
 		this(source,destination,null);
 	}
 	
-	public Link (Node<V,E> source, Node<V,E> destination, E content)
+	public GraphLink (GraphNode source, GraphNode destination, E content)
 	{ 
 		setSource(source);
 		setDestination(destination);
 		setContent(content);
 	}
 	
-	public Node<V,E> getDestination() {
+	public GraphNode getDestination() 
+	{
 		return destination;
 	}
-	public void setDestination(Node<V,E> destination) {
+	
+	public void setDestination( GraphNode destination) 
+	{
 		this.destination = destination;
 	}
 	
-	public Node<V,E> getSource() {
+	public GraphNode getSource() 
+	{
 		return source;
 	}
-	public void setSource(Node<V,E> source) {
+	
+	public void setSource (GraphNode source) 
+	{
 		this.source = source;
 	}
 
-	public E getContent() {
+	public E getContent() 
+	{
 		return content;
 	}
-	public void setContent (E content) {
+	
+	public void setContent (E content) 
+	{
 		this.content = content;
 	}
-
 
 	// toString
 

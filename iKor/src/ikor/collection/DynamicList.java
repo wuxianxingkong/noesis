@@ -45,7 +45,7 @@ public class DynamicList<T> implements MutableList<T>
 	 * @param list list to be copied
 	 */
 	
-	public DynamicList (List<T> list)
+	public DynamicList (Collection<T> list)
 	{
     	for (T t: list) {
     		this.add(t);

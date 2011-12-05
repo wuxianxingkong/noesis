@@ -3,8 +3,8 @@ package test.ikor.collection.graph;
 import test.ikor.collection.MockVisitor;
 import ikor.collection.graph.DynamicGraph;
 import ikor.collection.graph.ExplicitGraph;
-import ikor.collection.graph.Link;
-import ikor.collection.graph.Node;
+import ikor.collection.graph.GraphLink;
+import ikor.collection.graph.GraphNode;
 
 public class MockObjects {
 	
@@ -38,9 +38,9 @@ public class MockObjects {
 	}
 	
 	
-	public static MockVisitor<Node<String,Integer>> roadmapBFSVisitor (ExplicitGraph<String,Integer> roadmap)
+	public static MockVisitor<GraphNode<String>> roadmapBFSVisitor (ExplicitGraph<String,Integer> roadmap)
 	{
-		MockVisitor<Node<String,Integer>> visitor = new MockVisitor<Node<String,Integer>>();
+		MockVisitor<GraphNode<String>> visitor = new MockVisitor<GraphNode<String>>();
 		
 		visitor.addVisit(roadmap.getNode("Granada"));
 		visitor.addVisit(roadmap.getNode("Motril"));
@@ -57,9 +57,9 @@ public class MockObjects {
 	}
 
 	
-	public static MockVisitor<Node<String,Integer>> roadmapDFSVisitor (ExplicitGraph<String,Integer> roadmap)
+	public static MockVisitor<GraphNode<String>> roadmapDFSVisitor (ExplicitGraph<String,Integer> roadmap)
 	{
-		MockVisitor<Node<String,Integer>> visitor = new MockVisitor<Node<String,Integer>>();
+		MockVisitor<GraphNode<String>> visitor = new MockVisitor<GraphNode<String>>();
 		
 		visitor.addVisit(roadmap.getNode("Granada"));
 		visitor.addVisit(roadmap.getNode("Motril"));
@@ -75,9 +75,9 @@ public class MockObjects {
 	}	
 
 	
-	public static MockVisitor<Link<String,Integer>> roadmapBFSLinkVisitor (ExplicitGraph<String,Integer> map)
+	public static MockVisitor<GraphLink<Integer>> roadmapBFSLinkVisitor (ExplicitGraph<String,Integer> map)
 	{
-		MockVisitor<Link<String,Integer>> visitor = new MockVisitor<Link<String,Integer>>();
+		MockVisitor<GraphLink<Integer>> visitor = new MockVisitor<GraphLink<Integer>>();
 		
 		visitor.addVisit(map.getLink("Granada", "Motril"));
 		visitor.addVisit(map.getLink("Granada", "La Zubia"));
@@ -111,9 +111,9 @@ public class MockObjects {
 	}
 
 	
-	public static MockVisitor<Link<String,Integer>> roadmapDFSLinkVisitor (ExplicitGraph<String,Integer> map)
+	public static MockVisitor<GraphLink<Integer>> roadmapDFSLinkVisitor (ExplicitGraph<String,Integer> map)
 	{
-		MockVisitor<Link<String,Integer>> visitor = new MockVisitor<Link<String,Integer>>();
+		MockVisitor<GraphLink<Integer>> visitor = new MockVisitor<GraphLink<Integer>>();
 		
 		visitor.addVisit(map.getLink("Granada", "Motril"));
 
@@ -186,9 +186,9 @@ public class MockObjects {
 		return graph;		
 	}
 
-	public static MockVisitor<Node<String,String>> webBFSVisitor (ExplicitGraph<String,String> web)
+	public static MockVisitor<GraphNode<String>> webBFSVisitor (ExplicitGraph<String,String> web)
 	{
-		MockVisitor<Node<String,String>> visitor = new MockVisitor<Node<String,String>>();
+		MockVisitor<GraphNode<String>> visitor = new MockVisitor<GraphNode<String>>();
 
 		visitor.addVisit(web.getNode("home"));
 
@@ -204,9 +204,9 @@ public class MockObjects {
 		return visitor;
 	}
 	
-	public static MockVisitor<Node<String,String>> webDFSVisitor (ExplicitGraph<String,String> web)
+	public static MockVisitor<GraphNode<String>> webDFSVisitor (ExplicitGraph<String,String> web)
 	{
-		MockVisitor<Node<String,String>> visitor = new MockVisitor<Node<String,String>>();
+		MockVisitor<GraphNode<String>> visitor = new MockVisitor<GraphNode<String>>();
 	
 		visitor.addVisit(web.getNode("home"));
 		visitor.addVisit(web.getNode("C"));
@@ -226,9 +226,9 @@ public class MockObjects {
 	}
 	
 	
-	public static MockVisitor<Link<String,String>> webBFSLinkVisitor (ExplicitGraph<String,String> web)
+	public static MockVisitor<GraphLink<String>> webBFSLinkVisitor (ExplicitGraph<String,String> web)
 	{
-		MockVisitor<Link<String,String>> visitor = new MockVisitor<Link<String,String>>();
+		MockVisitor<GraphLink<String>> visitor = new MockVisitor<GraphLink<String>>();
 		
 		visitor.addVisit(web.getLink("home", "C"));
 		visitor.addVisit(web.getLink("home", "C#"));
@@ -251,9 +251,9 @@ public class MockObjects {
 		return visitor;
 	}
 
-	public static MockVisitor<Link<String,String>> webDFSLinkVisitor (ExplicitGraph<String,String> web)
+	public static MockVisitor<GraphLink<String>> webDFSLinkVisitor (ExplicitGraph<String,String> web)
 	{
-		MockVisitor<Link<String,String>> visitor = new MockVisitor<Link<String,String>>();
+		MockVisitor<GraphLink<String>> visitor = new MockVisitor<GraphLink<String>>();
 		
 		visitor.addVisit(web.getLink("home", "C"));
 		visitor.addVisit(web.getLink("C", "C#"));

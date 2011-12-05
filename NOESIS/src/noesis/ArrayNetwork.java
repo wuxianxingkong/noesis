@@ -279,5 +279,11 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 		return inLinks(index(node));
 	}
 
+	
+	@Override
+	public String toString ()
+	{
+		return "["+super.toString()+"] "+size()+" nodes, "+links()+" links.";
+	}
 
 }

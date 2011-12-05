@@ -1,4 +1,4 @@
-package test.noesis.algorithms.traversal;
+package test.noesis;
 
 //Title:       Mock visitor
 //Version:     1.0

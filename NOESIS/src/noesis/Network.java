@@ -9,7 +9,8 @@ package noesis;
 import java.util.Iterator;
 
 import ikor.collection.graph.Graph;
-import ikor.collection.graph.GraphIterator;
+import ikor.collection.graph.GraphNodeIterator;
+import ikor.collection.graph.GraphLinkIterator;
 
 /**
  * Network ADT.
@@ -64,6 +65,13 @@ public abstract class Network<V, E> implements Graph<V,E>
 	public abstract boolean add(int sourceIndex, int destinationIndex);
 
 	public abstract boolean add(int sourceIndex, int destinationIndex, E content);
+
+	/*
+	public final boolean add (XLink<E> link)
+	{
+		return add (link.getSource(), link.getDestination(), link.getContent());
+	}
+	*/
 	
 	public final boolean add (V source, V destination, E link)
 	{
@@ -122,16 +130,22 @@ public abstract class Network<V, E> implements Graph<V,E>
 
 	public abstract E get(V source, V destination);
 
-
 	public abstract boolean contains(V object);
 	
 	public abstract int index(V node);
 	
 	
+	
 	public final Iterator<V> iterator ()
 	{
-		return new GraphIterator<V>(this);
+		return new GraphNodeIterator<V>(this);
 	}
+	
+	public final Iterator<E> linkIterator ()
+	{
+		return new GraphLinkIterator<E>(this);
+	}
+	
 
 	
 	// Node degrees
@@ -160,5 +174,14 @@ public abstract class Network<V, E> implements Graph<V,E>
 		return outDegree ( index(node) );
 	}	
 	
+	
+	@Override
+	public String toString ()
+	{
+		if (id!=null)
+			return id;
+		else
+			return "Network";
+	}
 
 }

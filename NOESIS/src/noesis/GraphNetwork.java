@@ -140,19 +140,19 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ExplicitGraph<V,E
 	}
 
 	@Override
-	public int index(Node<V,E> node) 
+	public int index(GraphNode<V> node) 
 	{
 		return net.index(node);
 	}
 
 	@Override
-	public Node getNode(int index) 
+	public GraphNode getNode(int index) 
 	{
 		return net.getNode(index);
 	}
 
 	@Override
-	public Node<V, E> getNode(V node) 
+	public GraphNode<V> getNode(V node) 
 	{
 		return net.getNode(node);
 	}
@@ -190,49 +190,49 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ExplicitGraph<V,E
 
 
 	@Override
-	public Link<V, E> getLink(int destination, int source) 
+	public GraphLink<E> getLink(int source, int destination) 
 	{
 		return net.getLink(source,destination);
 	}
 
 
 	@Override
-	public Link<V, E> getLink(V source, V destination) 
+	public GraphLink<E> getLink(V source, V destination) 
 	{
 		return net.getLink(source,destination);
 	}
 
 
 	@Override
-	public Link<V, E> getLink(Node<V, E> source, Node<V, E> destination) 
+	public GraphLink<E> getLink(GraphNode<V> source, GraphNode<V> destination) 
 	{
 		return net.getLink(source,destination);
 	}
 
 
 	@Override
-	public List<Link<V, E>> outLinkList(int node) 
+	public List<GraphLink<E>> outLinkList(int node) 
 	{
 		return net.outLinkList(node);
 	}
 
 
 	@Override
-	public List<Link<V, E>> outLinkList(V node) 
+	public List<GraphLink<E>> outLinkList(V node) 
 	{
 		return net.outLinkList(node);
 	}
 
 
 	@Override
-	public List<Link<V, E>> inLinkList(int node) 
+	public List<GraphLink<E>> inLinkList(int node) 
 	{
 		return net.inLinkList(node);
 	}
 
 
 	@Override
-	public List<Link<V, E>> inLinkList(V node) 
+	public List<GraphLink<E>> inLinkList(V node) 
 	{
 		return net.inLinkList(node);
 	}

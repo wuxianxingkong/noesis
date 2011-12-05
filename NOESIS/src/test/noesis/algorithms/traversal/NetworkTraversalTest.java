@@ -3,6 +3,9 @@ package test.noesis.algorithms.traversal;
 import org.junit.Test;
 import org.junit.Before;
 
+import test.noesis.MockVisitor;
+import test.noesis.algorithms.MockObjects;
+
 import noesis.Network;
 import noesis.algorithms.traversal.*;
 

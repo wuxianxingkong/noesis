@@ -20,10 +20,10 @@ import noesis.ArrayNetwork;
  */
 public class KruskalMinimumSpanningTree<V,E>
 {
-	Network<V,E> network;
-	Evaluator<E> evaluator;
-	Network<V,E> mst;
-	double       weight;
+	private Network<V,E> network;
+	private Evaluator<E> evaluator;
+	private Network<V,E> mst;
+	private double       weight;
 	
 	public KruskalMinimumSpanningTree (Network<V,E> net, Evaluator<E> linkEvaluator)
 	{
@@ -31,7 +31,7 @@ public class KruskalMinimumSpanningTree<V,E>
 		this.evaluator = linkEvaluator;
 	}
 	
-	public Network<V,E> run()
+	public void run()
 	{
 		PriorityQueue<Link<E>> queue;
 		UnionFind              uf;
@@ -74,11 +74,6 @@ public class KruskalMinimumSpanningTree<V,E>
                 weight += evaluator.evaluate(link.getContent());
             }
         }		
-		
-		
-		// Result
-		
-		return mst;
 	}
 	
 	private PriorityQueue<Link<E>> createPriorityQueue ()

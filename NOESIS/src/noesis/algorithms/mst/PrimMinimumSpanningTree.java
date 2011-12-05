@@ -1,9 +1,10 @@
 package noesis.algorithms.mst;
 
-import ikor.collection.DynamicPriorityQueue;
 import ikor.collection.Evaluator;
 import ikor.collection.EvaluatorComparator;
+import ikor.collection.Indexer;
 import ikor.collection.PriorityQueue;
+import ikor.collection.IndexedPriorityQueue;
 
 import noesis.ArrayNetwork;
 import noesis.Network;
@@ -11,18 +12,18 @@ import noesis.Network;
 /**
  * Minimum Spanning Trees (for undirected networks): Prim's algorithm. 
  *  
- * Efficient implementation using priority queue, O(m log n).
+ * Efficient implementation using an indexed priority queue, O(m log n).
  *  
  * @author Fernando Berzal
  */
 public class PrimMinimumSpanningTree<V,E>
 {
-	Network<V,E> network;
-	Evaluator<E> linkEvaluator;
-	Network<V,E> mst;
-	double       weight;
-	int[]        parent;
-	double[]     cost;
+	private Network<V,E> network;
+	private Evaluator<E> linkEvaluator;
+
+	private double       weight;
+	private int[]        parent;
+	
 	
 	public PrimMinimumSpanningTree (Network<V,E> net, Evaluator<E> linkEvaluator)
 	{
@@ -30,31 +31,29 @@ public class PrimMinimumSpanningTree<V,E>
 		this.linkEvaluator = linkEvaluator;
 	}
 	
-	public Network<V,E> run()
+	
+	public void run()
 	{
-		Evaluator<Integer>           nodeEvaluator;
-		EvaluatorComparator<Integer> comparator;
-		PriorityQueue<Integer>       queue;
-		boolean[]                    visited;  
-		double                       linkValue;
-
+		PriorityQueue<Integer> queue;
+		boolean[]              visited;  
+		double[]               cost;		
+		double                 linkValue;
+		int                    size = network.size();
+		
 		// Initialization
 		
-		parent = new int[network.size()];
-		cost = new double[network.size()];
-		visited = new boolean[network.size()];
-
-		nodeEvaluator = new PrimNodeEvaluator(cost);
-		comparator = new EvaluatorComparator(nodeEvaluator);
-		queue = new DynamicPriorityQueue<Integer>(comparator);
+		parent = new int[size];
+		cost = new double[size];
+		visited = new boolean[size];
+		queue = createPriorityQueue(size,cost);
 		
-		for (int i=0; i<network.size(); i++) {
+		for (int i=0; i<size; i++) {
 			parent[i] = -1;
 			cost[i] = Double.POSITIVE_INFINITY;
 			queue.add(i);
 		}
 		
-		updateCost(queue, 0,0);
+		updateCost(queue, cost, 0, 0);
 	
 		// Greedy algorithm
 		
@@ -63,8 +62,6 @@ public class PrimMinimumSpanningTree<V,E>
         	int vertex = queue.get();
         	
         	visited[vertex] = true;
-
-        	// Check that source-destination link does not create a cycle
         	
         	int[] links = network.outLinks(vertex);
         	
@@ -77,7 +74,7 @@ public class PrimMinimumSpanningTree<V,E>
         				
         				if (linkValue<cost[links[j]]) {
         					parent[links[j]] = vertex;
-        					updateCost(queue, links[j], linkValue);
+        					updateCost(queue, cost, links[j], linkValue);
         				}
         			}
         		}
@@ -86,8 +83,42 @@ public class PrimMinimumSpanningTree<V,E>
 		
 		// Result
 		
-		this.mst = new ArrayNetwork<V,E>();
 		this.weight = 0;	
+		
+		for (int i=0; i<network.size(); i++)
+			if (parent[i]!=-1) {
+				E link = network.get(parent[i],i);
+				weight += linkEvaluator.evaluate(link);
+			}
+	}
+	
+	private void updateCost (PriorityQueue queue, double cost[], int node, double newCost)
+	{
+		queue.remove(node);
+		cost[node] = newCost;
+		queue.add(node);
+	}
+	
+	private PriorityQueue<Integer> createPriorityQueue (int size, double cost[])
+	{
+		Indexer<Integer>             nodeIndexer;
+		Evaluator<Integer>           nodeEvaluator;
+		EvaluatorComparator<Integer> nodeComparator;
+		PriorityQueue<Integer>       queue;
+
+		nodeIndexer = new PrimNodeIndexer();
+		nodeEvaluator = new PrimNodeEvaluator(cost);
+		nodeComparator = new EvaluatorComparator(nodeEvaluator);
+		queue = new IndexedPriorityQueue<Integer>(size,nodeComparator,nodeIndexer);
+		
+		return queue;
+	}
+	
+	// Minimum spanning tree
+	
+	public Network<V,E> MST ()
+	{
+		ArrayNetwork<V,E> mst = new ArrayNetwork<V,E>();
 		
 		for (int i=0; i<network.size(); i++)
 			mst.add ( network.get(i) );
@@ -96,25 +127,15 @@ public class PrimMinimumSpanningTree<V,E>
 			if (parent[i]!=-1) {
 				E link = network.get(parent[i],i);
 				mst.add(parent[i], i, link);
-				weight += linkEvaluator.evaluate(link);
 			}
 		
 		return mst;
 	}
 	
-	private void updateCost (PriorityQueue queue, int node, double newCost)
+	
+	public int parent (int node)
 	{
-		queue.remove(node);
-		cost[node] = newCost;
-		queue.add(node);
-	}
-	
-	
-	// Minimum spanning tree
-	
-	public Network<V,E> MST ()
-	{
-		return mst;
+		return parent[node];
 	}
 	
 	// Tree weight
@@ -125,7 +146,9 @@ public class PrimMinimumSpanningTree<V,E>
 	}
 	
 	
-	// Ancillary class
+	
+	
+	// Ancillary classes
 	
 	class PrimNodeEvaluator implements Evaluator<Integer>
 	{
@@ -141,5 +164,15 @@ public class PrimMinimumSpanningTree<V,E>
 		{
 			return cost[object];
 		}
+	}
+	
+	class PrimNodeIndexer implements Indexer<Integer>
+	{
+		@Override
+		public int index(Integer object) 
+		{
+			return object;
+		}
+		
 	}
 }

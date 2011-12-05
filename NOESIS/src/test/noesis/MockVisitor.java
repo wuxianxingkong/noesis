@@ -33,7 +33,7 @@ public class MockVisitor<T> implements Visitor<T>
 	
 	public void visit (T object)
 	{
-		System.out.println(object);
+		// System.out.println(object);
 		assertEquals(expected.get(next), object);
 		next++;
 	}

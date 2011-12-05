@@ -14,18 +14,18 @@ import java.util.Iterator;
  * @author Fernando Berzal
  */
 
-public class GraphIterator<V> implements Iterator<V> 
+public class GraphNodeIterator<V> implements Iterator<V> 
 {
 	Graph<V,?> graph;
 	int        index;
 	int        last;
 
-	public GraphIterator (Graph<V,?> graph)
+	public GraphNodeIterator (Graph<V,?> graph)
 	{
 		this(graph,0,graph.size()-1);
 	}
 
-	public GraphIterator (Graph<V,?> graph, int start, int end)
+	public GraphNodeIterator (Graph<V,?> graph, int start, int end)
 	{
 		this.graph = graph;
 		this.index = start;
@@ -34,7 +34,7 @@ public class GraphIterator<V> implements Iterator<V>
 
 	@Override
 	public boolean hasNext() {
-		return (index<last);
+		return (index<=last);
 	}
 
 	@Override

@@ -435,7 +435,7 @@ public class DynamicGraph<V,E>
 
 	@Override
 	public Iterator<V> iterator() {
-		return new GraphIterator(this);
+		return new GraphNodeIterator(this);
 	}
 
 	@Override

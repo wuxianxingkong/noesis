@@ -8,6 +8,7 @@ package ikor.collection;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Standard priority queue implementation, based on java.util.PriorityQueue.
@@ -105,15 +106,47 @@ public class DynamicPriorityQueue<T> implements PriorityQueue<T>
 	}
 
 	/**
-	 * Returns an iterator over the elements in this priority queue.
+	 * Returns an iterator over the elements in this priority queue 
+	 * (in the order defined by the priority queue).
 	 * 
 	 * @see ikor.collection.Collection#iterator()
 	 */
 	@Override
 	public Iterator<T> iterator() 
 	{
-		return queue.iterator();
+		return new PriorityQueueIterator(); 
 	}
+
+    private class PriorityQueueIterator implements Iterator<T> 
+    {
+        private java.util.PriorityQueue<T> copy;
+
+        public PriorityQueueIterator() 
+        {
+            copy = new java.util.PriorityQueue<T>(size());
+            
+            for (T t:queue)
+                copy.add(t);
+        }
+
+        public boolean hasNext()  
+        {
+        	return (copy.size()>0);                     
+        }
+        
+        public void remove()      
+        {
+        	throw new UnsupportedOperationException();  
+        }
+
+        public T next() 
+        {
+            if (!hasNext()) 
+            	throw new NoSuchElementException();
+            
+            return copy.poll();
+        }
+    }		
 
 	/**
 	 * Retrieves, but does not remove, the head of this queue: O(1).

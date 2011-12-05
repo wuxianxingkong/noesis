@@ -5,6 +5,8 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses( { ListTest.class,
+					   PriorityQueueTest.class,
+					   IndexedPriorityQueueTest.class,
 	                   test.ikor.collection.graph.AllTests.class })
 public class AllTests {
 

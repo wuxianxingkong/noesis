@@ -2157,6 +2157,7 @@
  <publisher>Morgan Kaufmann</publisher>
  <year>2010</year>
  <isbn>0123822297</isbn>
+ <file>[books]/algorithms/graphs/0123822297 Analyzing Social Media Networks with NodeXL.pdf</file>
  <comment>
   <text>Qualitative description of social network analysis with many Web 2.0 case studies... using NodeXL for Excel.</text>
  </comment>
@@ -3634,6 +3635,16 @@
  <year>2010</year>
  <doi>10.1016/j.neuroimage.2009.10.003</doi>
  <file>Networks/structure/metrics/2010 Neuroimage [Rubinov &amp; Sporns] Complex network measures of brain connectivity.pdf</file>
+</reference>
+
+
+<reference id="Russell 2011">
+ <author>Matthew A. Russell</author>
+ <title>Mining the Social Web: Analyzing Data from Facebook, Twitter, LinkedIn, and Other Social Media Sites</title>
+ <publisher>O'Reilly Media</publisher>
+ <year>2011</year>
+ <isbn>1449388345</isbn>
+ <file>[books]/algorithms/graphs/1449388345 Mining the Social Web.2011.pdf</file>
 </reference>
 
 

@@ -377,6 +377,7 @@
  <publisher>Dutton</publisher>
  <year>2010</year>
  <isbn>0525951601</isbn>
+ <file>[books]/algorithms/graphs/0525951601 [Barabasi] Bursts.2010.pdf</file>
  <comment>
   <text>Recent divulgative book with an odd organization: Hungarian History in even chapters, bursts as a consequence of power laws in odd chapters.</text>
  </comment>
@@ -1751,7 +1752,7 @@
  <publisher>Princeton University Press</publisher>
  <year>1962</year>
  <isbn>0691079625</isbn>
- <file>[books]/algorithms/graphs/0691079625  [Ford &amp; Fulkerson] Flows in Networks.1962.djvu</file>
+ <file>[books]/algorithms/graphs/0691079625 [Ford &amp; Fulkerson] Flows in Networks.1962.djvu</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -3693,6 +3694,7 @@
 </reference>
 
 
+
 <reference id="Scott 2000">
  <author>John P. Scott</author>
  <title>Social Network Analysis: A Handbook</title>
@@ -3704,6 +3706,16 @@
  <comment>
   <text>Introductory textbook on social network analysis.</text>
  </comment>
+</reference>
+
+
+<reference id="Scott 2011">
+ <author>L. Ridgway Scott</author>
+ <title>Numerical Analysis</title>
+ <publisher>Princeton University Press</publisher>
+ <year>2011</year>
+ <isbn>0691146861</isbn>
+ <file>[books]/mathematics/0691146861 [Scott] Numerical Analysis.2011.pdf</file>
 </reference>
 
 

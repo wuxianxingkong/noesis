@@ -1,14 +1,15 @@
 package noesis.algorithms.paths;
 
+
 import ikor.collection.Visitor;
 import ikor.collection.util.Pair;
 
 import noesis.Network;
-import noesis.algorithms.traversal.NetworkDFS;
+import noesis.algorithms.traversal.NetworkBFS;
 
-public class DepthFirstPathFinder<V, E> extends PredecessorPathFinder<V, E> implements PathFinder<V, E> 
+public class BreadthFirstPathFinder<V, E> extends PredecessorPathFinder<V, E> implements PathFinder<V, E> 
 {
-	public DepthFirstPathFinder (Network<V,E> net, int origin)
+	public BreadthFirstPathFinder (Network<V,E> net, int origin)
 	{
 		super(net,origin);
 	}	
@@ -16,7 +17,7 @@ public class DepthFirstPathFinder<V, E> extends PredecessorPathFinder<V, E> impl
 	@Override
 	public void run() 
 	{
-		NetworkDFS<V,E> dfs;
+		NetworkBFS<V,E> bfs;
 		
 		// Initialization
 		
@@ -27,9 +28,9 @@ public class DepthFirstPathFinder<V, E> extends PredecessorPathFinder<V, E> impl
 		
 		// DFS
 		
-		dfs = new NetworkDFS(network);
-		dfs.setLinkIndexVisitor(new IndexVisitor(predecessor));
-		dfs.traverse(origin);
+		bfs = new NetworkBFS(network);
+		bfs.setLinkIndexVisitor(new IndexVisitor(predecessor));
+		bfs.traverse(origin);
 	}
 	
 	// Ancillary visitor class

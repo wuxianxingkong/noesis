@@ -30,6 +30,13 @@ public class IndexedPriorityQueue<T> implements PriorityQueue<T>
     private T[]     keys;      // keys[i] -> priority of i
     private Indexer    indexer;
     private Comparator comparator;
+
+
+    public IndexedPriorityQueue (int capacity, Evaluator<T> evaluator, Indexer<T> indexer)
+    {
+    	this(capacity, new EvaluatorComparator<T>(evaluator), indexer);
+    }
+
     
     public IndexedPriorityQueue (int capacity, Comparator<T> comparator, Indexer<T> indexer)
     {

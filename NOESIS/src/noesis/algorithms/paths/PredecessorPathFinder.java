@@ -82,5 +82,10 @@ public abstract class PredecessorPathFinder<V, E> implements PathFinder<V, E>
 		else
 			return 0;
 	}
-
+	
+	
+	public final int predecessor (int node)
+	{
+		return predecessor[node];
+	}
 }

@@ -1,9 +1,7 @@
 package noesis.algorithms.paths;
 
-import ikor.collection.Visitor;
-import ikor.collection.util.Pair;
-
 import noesis.Network;
+import noesis.algorithms.LinkVisitor;
 import noesis.algorithms.traversal.NetworkDFS;
 
 public class DepthFirstPathFinder<V, E> extends PredecessorPathFinder<V, E> implements PathFinder<V, E> 
@@ -28,27 +26,24 @@ public class DepthFirstPathFinder<V, E> extends PredecessorPathFinder<V, E> impl
 		// DFS
 		
 		dfs = new NetworkDFS(network);
-		dfs.setLinkIndexVisitor(new IndexVisitor(predecessor));
+		dfs.setLinkVisitor(new DFSVisitor(predecessor));
 		dfs.traverse(origin);
 	}
 	
 	// Ancillary visitor class
 
-	class IndexVisitor implements Visitor<Pair<Integer,Integer>>
+	class DFSVisitor extends LinkVisitor
 	{
 		private int[] predecessor;
 		
-		public IndexVisitor (int[] predecessor)
+		public DFSVisitor (int[] predecessor)
 		{
 			this.predecessor = predecessor;
 		}
 		
 		@Override
-		public void visit(Pair<Integer,Integer> link) 
+		public void visit (int source, int destination) 
 		{
-			int source = link.first();
-			int destination = link.second();
-			
 			if (predecessor[destination]==-1)
 				predecessor[destination] = source;
 		}

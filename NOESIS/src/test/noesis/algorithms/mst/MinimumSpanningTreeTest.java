@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
 
-import test.noesis.algorithms.MockObjects;
+import test.noesis.algorithms.TestNetworks;
 
 import ikor.collection.Evaluator;
 
@@ -21,7 +21,7 @@ public class MinimumSpanningTreeTest
 	@Before
 	public void setUp() throws Exception 
 	{
-		roadmap = MockObjects.roadmap();
+		roadmap = TestNetworks.roadmap();
 	}
 	
 	// Undirected graph

@@ -9,7 +9,7 @@ import ikor.collection.PriorityQueue;
 import noesis.ArrayNetwork;
 import noesis.Network;
 
-public class DijkstraShortestPaths<V,E>
+public class DijkstraShortestPathFinder<V,E> implements PathFinder<V, E>
 {
 	private Network<V,E> network;
 	private int          origin;
@@ -18,13 +18,26 @@ public class DijkstraShortestPaths<V,E>
 	private int[]        predecessor;
 	private double[]     distance;
 	
-	public DijkstraShortestPaths (Network<V,E> net, int origin, Evaluator<E> linkEvaluator)
+	public DijkstraShortestPathFinder (Network<V,E> net, int origin, Evaluator<E> linkEvaluator)
 	{
 		this.network       = net;
 		this.origin        = origin;
 		this.linkEvaluator = linkEvaluator;
 	}
 	
+	/* (non-Javadoc)
+	 * @see noesis.algorithms.paths.PathFinder#network()
+	 */
+	@Override
+	public Network<V,E> network ()
+	{
+		return network;
+	}
+	
+	/* (non-Javadoc)
+	 * @see noesis.algorithms.paths.PathFinder#run()
+	 */
+	@Override
 	public void run()
 	{
 		PriorityQueue<Integer> queue; 
@@ -91,7 +104,11 @@ public class DijkstraShortestPaths<V,E>
 	
 	// Shortest path tree
 	
-	public Network<V,E> shortestPaths ()
+	/* (non-Javadoc)
+	 * @see noesis.algorithms.paths.PathFinder#paths()
+	 */
+	@Override
+	public final Network<V,E> paths ()
 	{
 		Network<V,E> paths = new ArrayNetwork<V,E>();
 		
@@ -106,6 +123,49 @@ public class DijkstraShortestPaths<V,E>
 		
 		return paths;
 	}
+	
+	/* (non-Javadoc)
+	 * @see noesis.algorithms.paths.PathFinder#pathTo(int)
+	 */
+	@Override
+	public final int[] pathTo (int destination)
+	{
+		int[] path = null;
+		int   position;
+		int   length = pathLength(destination);
+		
+		if (length>0) {
+		
+			path = new int[length];
+			position = length-1;
+		
+			path[position] = destination;
+		
+			while (path[position]!=origin) { // == position >= 0
+				position--;
+				path[position] = predecessor[path[position+1]];
+			} 
+		}
+		
+		return path;
+	}
+	
+	private int pathLength (int destination)
+	{
+		int length = 1;
+		int node = destination;
+		
+		while ((node!=origin) && (predecessor[node]!=-1)) {
+			length++;
+			node = predecessor[node];
+		}
+		
+		if (node==origin) 
+			return length;
+		else
+			return 0;
+	}
+	
 	
 	// Distances
 	

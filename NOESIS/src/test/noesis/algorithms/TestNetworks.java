@@ -4,8 +4,9 @@ import test.noesis.MockVisitor;
 import noesis.Network;
 import noesis.ArrayNetwork;
 
-public class MockObjects {
-	
+public class TestNetworks 
+{
+
 	// Undirected graph
 	
 	public static Network<String,Integer> roadmap ()
@@ -303,7 +304,7 @@ public class MockObjects {
 		graph.add("3","5",2);
 		graph.add("3","t",19);
 
-		graph.add("4","6",6);
+		graph.add("4","3",6);
 		graph.add("4","t",6);
 
 		graph.add("5","4",11);
@@ -318,4 +319,82 @@ public class MockObjects {
 				
 		return graph;
 	}
+	
+	
+	public static Network<String,Integer> weightedUnreachableGraph ()
+	{
+		Network<String,Integer> graph = new ArrayNetwork<String,Integer>();
+		
+		graph.add("s");
+		graph.add("2");
+		graph.add("3");
+		graph.add("4"); // Unreachable node (starting from s)
+		graph.add("5"); // Unreachable node (starting from s)
+		graph.add("6");
+		graph.add("7");
+		graph.add("t");
+		
+		graph.add("s","2",9);
+		graph.add("s","6",14);
+		graph.add("s","7",15);
+		
+		graph.add("2","3",23);
+		
+		//graph.add("3","5",2);
+		graph.add("3","t",19);
+
+		graph.add("4","3",6);
+		graph.add("4","t",6);
+
+		graph.add("5","4",11);
+		graph.add("5","t",16);
+
+		graph.add("6","3",18);
+		// graph.add("6","5",30);
+		graph.add("6","7",5);
+
+		// graph.add("7","5",20);
+		graph.add("7","t",44);
+				
+		return graph;
+	}	
+	
+	public static Network<String,Integer> weightedDisconnectedGraph ()
+	{
+		Network<String,Integer> graph = new ArrayNetwork<String,Integer>();
+		
+		graph.add("s");
+		graph.add("2");
+		graph.add("6");
+		graph.add("7");
+		
+		graph.add("3"); // Second connected component
+		graph.add("4"); 
+		graph.add("5"); 
+		graph.add("t");
+		
+		graph.add("s","2",9);
+		graph.add("s","6",14);
+		graph.add("s","7",15);
+		
+		//graph.add("2","3",23);
+		
+		graph.add("3","5",2);
+		graph.add("3","t",19);
+
+		graph.add("4","3",6);
+		graph.add("4","t",6);
+
+		graph.add("5","4",11);
+		graph.add("5","t",16);
+
+		// graph.add("6","3",18);
+		// graph.add("6","5",30);
+		graph.add("6","7",5);
+
+		// graph.add("7","5",20);
+		// graph.add("7","t",44);
+				
+		return graph;
+	}		
 }

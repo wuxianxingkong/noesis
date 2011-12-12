@@ -1,6 +1,7 @@
 package noesis.algorithms.traversal;
 
 import ikor.collection.Visitor;
+import ikor.collection.util.Pair;
 
 import noesis.Network;
 
@@ -11,8 +12,10 @@ public abstract class NetworkTraversal<V,E>
 	protected Network<V,E> network;
 	protected State[]      state;
 
-	private   Visitor<V> nodeVisitor;
-	private   Visitor<E> linkVisitor;
+	private   Visitor<V>       nodeVisitor;
+	private   Visitor<E>       linkVisitor;
+	private   Visitor<Integer>               nodeIndexVisitor;
+	private   Visitor<Pair<Integer,Integer>> linkIndexVisitor;
 
 
     // Constructor
@@ -22,6 +25,11 @@ public abstract class NetworkTraversal<V,E>
 		this(network,null,null);
 	}
 
+	public NetworkTraversal (Network<V,E> network, Visitor<V> nodeVisitor)
+	{
+		this(network,nodeVisitor,null);
+	}
+	
 	public NetworkTraversal (Network<V,E> network, Visitor<V> nodeVisitor, Visitor<E> linkVisitor)
 	{
 		this.network = network;
@@ -33,6 +41,18 @@ public abstract class NetworkTraversal<V,E>
 		this.linkVisitor = linkVisitor;
 	}
 
+	// Index visitors
+
+	public void setNodeIndexVisitor (Visitor<Integer> visitor)
+	{
+		this.nodeIndexVisitor = visitor;
+	}
+
+	public void setLinkIndexVisitor (Visitor<Pair<Integer,Integer>> visitor)
+	{
+		this.linkIndexVisitor = visitor;
+	}	
+	
 	// Node visitor
 
 	public void setNodeVisitor (Visitor<V> visitor)
@@ -40,24 +60,11 @@ public abstract class NetworkTraversal<V,E>
 		this.nodeVisitor = visitor;
 	}
 
-	protected void visitNode (V node)
-	{
-		if (nodeVisitor!=null)
-			nodeVisitor.visit(node);
-	}
-
-
 	// Edge visitor
 
 	public void setLinkVisitor (Visitor<E> visitor)
 	{
 		this.linkVisitor = visitor;
-	}
-
-	protected void visitLink (E link)
-	{
-		if (linkVisitor!=null)
-			linkVisitor.visit(link);
 	}
 
 
@@ -70,6 +77,29 @@ public abstract class NetworkTraversal<V,E>
 
 	public abstract void traverse (int index);
 
+	
+	protected final void visitNode (int node)
+	{
+		if (nodeIndexVisitor!=null)
+			nodeIndexVisitor.visit(node);
+		
+		if (nodeVisitor!=null) {
+			V nodeContent = network.get(node);
+			nodeVisitor.visit(nodeContent);
+		}
+	}	
+	
+	protected final void visitLink (int source, int destination)
+	{
+		if (linkIndexVisitor!=null)
+			linkIndexVisitor.visit( new Pair(source,destination) );
+		
+		if (linkVisitor!=null) {
+			E linkContent = network.get(source,destination);
+			linkVisitor.visit(linkContent);
+		}
+	}	
+	
 	// Explored nodes
 
 	public State status (int index)

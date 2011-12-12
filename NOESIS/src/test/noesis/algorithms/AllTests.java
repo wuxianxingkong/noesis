@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses( { test.noesis.algorithms.mst.MinimumSpanningTreeTest.class,
-					   test.noesis.algorithms.paths.ShortestPathTrest.class,
+					   test.noesis.algorithms.paths.PathFinderTest.class,
 					   test.noesis.algorithms.traversal.NetworkTraversalTest.class })
 public class AllTests {
 

@@ -13,6 +13,11 @@ public class NetworkDFS<V,E> extends NetworkTraversal<V,E>
 		super(network);
 	}
 
+	public NetworkDFS (Network<V,E> network, Visitor<V> nodeVisitor)
+	{
+		super(network, nodeVisitor, null);
+	}
+	
 	public NetworkDFS (Network<V,E> network, Visitor<V> nodeVisitor, Visitor<E> linkVisitor)
 	{
 		super(network, nodeVisitor, linkVisitor);
@@ -27,7 +32,7 @@ public class NetworkDFS<V,E> extends NetworkTraversal<V,E>
 
    	    state[current] = NetworkTraversal.State.DISCOVERED;
 
-		visitNode(network.get(current));
+		visitNode(current);
 
 		links = network.outLinks(current);
 
@@ -37,7 +42,7 @@ public class NetworkDFS<V,E> extends NetworkTraversal<V,E>
 
 				target = links[i];
 
-				visitLink (network.get(current, target));
+				visitLink (current, target);
 
 				if (state[target]==NetworkTraversal.State.UNDISCOVERED) {
 					traverse(target);

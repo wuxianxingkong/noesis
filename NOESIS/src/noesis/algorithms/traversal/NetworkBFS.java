@@ -35,7 +35,7 @@ public class NetworkBFS<V,E> extends NetworkTraversal<V,E>
 
 			  state[current] = NetworkTraversal.State.DISCOVERED;
 
-			  visitNode(network.get(current));
+			  visitNode(current);
 
 			  links = network.outLinks(current);
 
@@ -45,7 +45,7 @@ public class NetworkBFS<V,E> extends NetworkTraversal<V,E>
 					  
 					  target = links[i];
 
-					  visitLink (network.get(current, target));
+					  visitLink (current, target);
 
 					  if (state[target] == NetworkTraversal.State.UNDISCOVERED) {
 						  queue.enqueue(target);

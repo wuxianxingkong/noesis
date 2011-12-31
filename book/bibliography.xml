@@ -184,7 +184,7 @@
  <title>Statistical mechanics of complex networks</title>
  <journal>Reviews of Modern Physics</journal>
  <volume>74</volume>
- <pages>47–97</pages>
+ <pages>47-97</pages>
  <year>2002</year>
  <doi>10.1103/RevModPhys.74.47</doi>
  <file>Networks/2002 Reviews of Modern Physics [Barabasi] Statistical mechanics of complex networks.pdf</file>
@@ -2908,6 +2908,16 @@
  <file>Networks/dynamics/percolation/2010 CIKM Topic-level influence.pdf</file>
 </reference>
 
+
+<reference id="Liu 2011">
+ <author>Bing Liu</author>
+ <title>Web Data Mining: Exploring Hyperlinks, Contents, and Usage Data</title>
+ <publisher>Springer</publisher>
+ <edition>2nd edition</edition>
+ <year>2011</year>
+ <isbn>3642194591</isbn>
+ <file>[books]/algorithms/graphs/3642194591 [Liu] Web Data Mining.pdf</file>
+</reference>
 
 
 <reference id="Liu et al. 2011">

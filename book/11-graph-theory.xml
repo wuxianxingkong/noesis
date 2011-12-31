@@ -1,0 +1,464 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+<title>Graph Theory: The Mathematics of Networks</title>
+
+<text>
+Graph Theory is the mathematical study of graphs (or networks).
+</text>
+
+<document>
+<tag>graph-theory-fundamentals</tag>
+<title>Graphs</title>
+
+<text>
+[idea] A graph as a mathematical representation of a system composed of interconnected elements.
+</text>
+
+<text>
+From a formal point of view, a graph G=(V,E) is a finite non-empty set V of vertices (or nodes) together with a possibly empty set E of pairs of V called edges (or links). A graph G=(V,E) has a vertex set V and an edge set E, which are often denoted by V(G) and E(G), respectively. The number of vertices in the graph is the order of graph. The number of edges is the size of the graph.
+</text>
+
+<text>
+Nodes correspond to the elements of the system represented by the graph, whereas links represent their connections. In a social network, for instance, people are nodes and friendship relationships are represented by links between pairs of nodes.
+</text>
+
+<text>
+Edges {u,v} of G can be denoted by uv or vu. When uv is an edge in G, u and v are said to be adjacent vertices and they are referred to as neighbors of each other. Likewise, when uv and vw are distinct edges in G, they are said to be adjacent edges.
+</text>
+
+<text>
+[idea] dyadic (pairwise) relationships
+</text>
+
+<text>
+++ Directed graphs (= digraphs)
+</text>
+
+<text>
+++ Binary vs. weighted graphs
+</text>
+
+<text>
+++ Multigraphs /pseudographs
+</text>
+
+</document>
+
+
+
+
+<document>
+<tag>graph-theory-degree</tag>
+<title>Node degrees and degree sequences</title>
+
+<text>
+The set of neighbors of a vertex v is the neighborhood of v and is denoted by <eqn>N_G(v)</eqn>. Technically, that is the open neighborhood of the vertex (the closed neighborhood would also include the vertex v). The degree of a vertex v in a graph G is the number of vertices in G that are adjacent to v, i.e. <eqn>deg_G(v) = |N_G(v)|</eqn>. The minimum degree among the vertices of G is denoted by <eqn>\delta(G)</eqn>, while the maximum degree in G is denoted by <eqn>\Delta(G)</eqn>. Hence, <eqn>0 \le \delta(G) \le deg_G(v) \le \Delta(G) \le n-1</eqn>.
+</text>
+
+<text>
+The average degree of a graph G of order n and size m is 2m/n, a result we obtain if we take into account that the sum of the degrees of the vertices in the graph is 2m (the First Theorem of Graph Theory, a.k.a. the Handshaking Lemma <cite>Chartrand et al. 2011</cite>).
+</text>
+
+
+<text>
+++ Weighted graphs: Node strength instead of node degree = Sum of all the edge weights of a node.
+</text>
+
+<text>
+++ Degree sequence
+</text>
+
+</document>
+
+
+
+<document>
+<tag>graph-theory-connectivity</tag>
+<title>Connectivity, paths, and distance</title>
+
+
+<text>
+++ Connected graphs, weakly-connected vs. strongly-connected
+</text>
+
+<text>
+In binary graphs, path lengths correspond to the number of edges paths contain, whereas they are computed using edge weights in weighted graphs (paths composed of stronger edges span shorter lengths).
+</text>
+
+<text>
+++ Walks, trails, and paths
+</text>
+
+<text>
+++ Circuits and cycles
+</text>
+
+<text>
+Paths and cycles are important kinds of graphs. A path <eqn>P_n</eqn> is a graph of order n and size n-1 whose vertices can be labeled <eqn>v_1, v_2, ..., v_n</eqn> and whose edges are <eqn>v_iv_{i+1}</eqn> for <eqn>i=1,2,...,n-1</eqn>. A cycle <eqn>C_n</eqn> is a graph of order n and size n whose whose vertices can be labeled <eqn>v_1, v_2, ..., v_n</eqn> and whose edges are <eqn>v_1v_n</eqn> and <eqn>v_iv_{i+1}</eqn> for <eqn>i=1,2,...,n-1</eqn>. The cycle <eqn>C_3</eqn> is called a triangle.
+</text>
+
+
+
+<text>
+++ Distance, geodesic, eccentricity, diameter, radius
+</text>
+
+<text>
+An edge linking two nodes indicates that they can communicate directly, whereas longer paths are likely to have a lower effect on the network behavior.
+</text>
+
+<text>
+The pairwise distance of the shortest path linking the nodes in a network is represented in its distance matrix. Its global maximum is the network diameter. The distance matrix describes the communication pattern within the network.
+</text>
+
+</document>
+
+
+
+<document>
+<tag>graph-theory-classes</tag>
+<title>Interesting classes of graphs</title>
+
+<text>
+In a complete graph, every two distinct edges are adjacent, i.e. the size of a complete graph of order n is n(n-1)/2. The complete graph of order n is denoted by <eqn>K_n</eqn>. ++ tournament (orientation of a complete graph)
+</text>
+
+<text>
+++ Regular graphs, e.g. cubic graphs, Petersen graphs
+</text>
+
+<text>
+++ Bipartite graphs
+</text>
+
+
+
+<document>
+<tag>graph-theory-trees</tag>
+<title>Trees</title>
+
+<text>
+++ Properties
+</text>
+
+<text>
+++ Special trees: stars, double stars, and caterpillars (spine)
+</text>
+
+<text>
+++ Prüfer codes
+</text>
+
+<text>
+++ Spanning trees: Matrix-Tree Theorem
+</text>
+
+
+</document>
+
+</document>
+
+
+<document>
+<tag>graph-theory-isomorphism</tag>
+<title>Isomorphic graphs and subgraphs</title>
+</document>
+
+
+<document>
+<tag>graph-theory-independent-paths</tag>
+<title>Independent paths and cut sets</title>
+
+<text>
+++ Nonseparable graphs: cut-vertices (nodes) and blocks/branches => vertex-cuts (vertex-connectivity), bridges (edges) => edge-cuts (edge-connectivity)
+</text>
+
+<text>
+++ Connectivity: k-connected &amp; k-edge-connected graphs
+</text>
+
+<text>
+Whitney 1932
+</text>
+
+<equation>
+\kappa(G) \le \lambda(G) \le \delta(G)
+</equation>
+
+<text>
+Menger's theorem (Menger 1927)
+</text>
+
+<text>
+Whitney's theorem (Whitney 1932)
+</text>
+
+</document>
+
+
+<document>
+<tag>graph-theory-laplacian</tag>
+<title>Appendix: The graph Laplacian</title>
+</document>
+
+
+<document>
+<tag>graph-theory-notes</tag>
+<title>Bibliographic notes</title>
+
+<text>
+Origin of graph theory: Euler founded the field he called <q>geometria situs</q> (geometry of position), what is now known as graph theory.
+</text>
+
+<text>
+Euler 1736 @ Könisberg Bridges == Eulerian circuits and Eulerian trails.
+</text>
+
+<text>
+<q>In addition to that branch of geometry which is concerned with magnitudes, and
+which has always received the greatest attention, there is another branch, pre-
+viously almost unknown, which Leibniz first mentioned, calling it the geometry
+of position. This branch is concerned only with the determination of position
+and its properties; it does not involve measurements, nor calculations made
+with them. It has not yet been satisfactorily determined what kind of problems
+are relevant to this geometry of position, or what methods should be used in
+solving them. Hence, when a problem was recently mentioned, which seemed
+geometrical but was so constructed that it did not require the measurement of
+distances, nor did calculation help at all, I had no doubt that it was concerned
+with the geometry of position - especially as its solution involved only position,
+and no calculation was of any use...</q> translated from <q>Solution of a problem relating to the geometry of position</q> <cite>Euler 1736</cite>
+</text>
+
+<text>
+[Wikipedia] In 1736 Euler solved, or rather proved unsolvable, a problem known as the seven bridges of Königsberg. The city of Königsberg, Kingdom of Prussia (now Kaliningrad, Russia) is set on the Pregel River, and included two large islands which were connected to each other and the mainland by seven bridges. The question is whether it is possible to walk with a route that crosses each bridge exactly once, and return to the starting point. Euler's solution of the Königsberg bridge problem is considered to be the first theorem of graph theory. In addition, his recognition that the key information was the number of bridges and the list of their endpoints (rather than their exact positions) presaged the development of topology <cite>Alexanderson 2006</cite>.
+This stamp of the former German Democratic Republic honoring Euler displaying his formula relating the number of faces, edges and vertices of a convex polyhedron. Euler also made contributions to the understanding of planar graphs. He introduced a formula governing the relationship between the number of edges, vertices, and faces of a convex polyhedron. Given such a polyhedron, the alternating sum of vertices, edges and faces equals a constant: V-E+F=2.
+</text>
+
+
+<text>
+++ William Rowan Hamilton's Icosian Game @ 1856: Hamiltonian circuits.
+</text>
+
+<text>
+Two 19th Century examples: Kirchhoff 1847 work on electrical networks (the foundation of circuit theory in electrical engineering) and Cayley 1857 use of trees to count alkanes (chemical compounds) = enumerating chemical isomers, molecules that contain the same number of atoms bonded in different ways.
+</text>
+
+<text>
+The term graph was not used in its current sense until 1878, when J.J. Sylvester used it instead of <q>linkage</q>, which was the term used to refer to graphs at that time <cite>Gross and Yellen 2003</cite>.
+</text>
+
+<text>
+First two books on graph theory: <cite>Konig 1936</cite> in German (English translation: <cite>Konig 1990</cite>) and <cite>Berge 1958</cite> in French (English translation: <cite>Berge 2001</cite>).
+</text>
+
+<text>
+The first major book on graph theory written in English: <cite>Ore 1962</cite>.
+</text>
+
+<text>
+The only other major book on graph theory published in English before 1970: <cite>Harary 1969</cite>
+</text>
+
+<text>
+A retrospective from one of the key players in the development of graph theory: <cite>Tutte 1998</cite>
+</text>
+
+<text>
+++ Other textbooks: <cite>Bondy and Murty 1976</cite> 
+</text>
+
+<text>
+++ Modern textbooks, e.g. <cite>Chartrand et al. 2011</cite> <cite>Jungnickel 2007</cite> <cite>Diestel 2005</cite> <cite>Gross and Yellen 2005</cite> <cite>Gross and Yellen 2003</cite> <cite>Bollobas 2002</cite>. 
+</text>
+
+<text>
+[note] Pure mathematics, not always with practical applications.
+</text>
+
+<text>
+++ Introductory divulgative books, e.g. <cite>Chartrand 1984</cite>
+</text>
+
+
+</document>
+
+
+<document>
+<tag>graph-theory-references</tag>
+<title>References</title>
+
+
+<reference id="Alexanderson 2006">
+ <author>Gerald L. Alexanderson</author>
+ <title>Euler and Königsberg's bridges: A historical view</title>
+ <journal>Bulletin of the American Mathematical Society</journal>
+ <volume>43</volume>
+ <number>4</number>
+ <pages>567-573</pages>
+ <year>2006</year>
+ <doi>10.1090/S0273-0979-06-01130-X</doi>
+ <file>Networks/2006 BAMS [Alexanderson] Euler and Konigsberg's bridges.pdf</file>
+</reference>
+
+
+<reference id="Berge 1958">
+ <author>Claude Berge</author>
+ <title>Théorie des Graphes et ses Applications</title>
+ <publisher>Dunod, Paris</publisher>
+ <year>1958</year>
+</reference>
+
+<reference id="Berge 2001">
+ <author>Claude Berge</author>
+ <title>The Theory of Graphs</title>
+ <publisher>Dover Publications</publisher>
+ <year>2001</year>
+ <isbn>0486419754</isbn>
+</reference>
+
+
+<reference id="Bollobas 2002">
+ <author>Bela Bollobas</author>
+ <title>Modern Graph Theory</title>
+ <publisher>Springer</publisher>
+ <year>2002</year>
+ <isbn>0387984887</isbn>
+ <file>[books]\algorithms\graphs\0387984887 [Bollobas] Modern Graph Theory.pdf</file>
+</reference>
+
+<reference id="Bondy and Murty 1976">
+ <author>John Adrian Bondy</author>
+ <author>U.S.R. Murty</author>
+ <title>Graph Theory With Applications</title>
+ <publisher>North-Holland</publisher>
+ <year>1976</year>
+ <isbn>0444194517</isbn>
+ <file>[books]\algorithms\graphs\0444194517 [Bondy &amp; Murty] Graph Theory with Applications.pdf</file>
+</reference>
+
+<reference id="Chartrand 1984">
+ <author>Gary Chartrand</author>
+ <title>Introductory Graph Theory</title>
+ <publisher>Dover Publications</publisher>
+ <year>1984</year>
+ <isbn>0486247759</isbn>
+</reference>
+
+
+<reference id="Chartrand et al. 2011">
+ <author>Gary Chartrand</author>
+ <author>Linda Lesniak</author>
+ <author>Ping Zhang</author>
+ <title>Graphs &amp; Digraphs</title>
+ <edition>5th edition</edition>
+ <publisher>CRC Press</publisher>
+ <year>2011</year>
+ <isbn>978143982627</isbn>
+</reference>
+
+
+<reference id="Diestel 2005">
+ <author>Reinhard Diestel</author>
+ <title>Graph Theory</title>
+ <publisher>Springer</publisher>
+ <edition>3rd edition</edition>
+ <year>2005</year>
+ <isbn>3540261826</isbn>
+ <file>[books]\algorithms\graphs\3540261826 [Diestel] Graph Theory.3rd.pdf</file>
+</reference>
+
+
+<reference id="Euler 1736">
+ <author>Leonhard Euler</author>
+ <title>Solutio problematis ad geometriam situs pertinentis</title>
+ <journal>Commentarii Academiae Scientiarum Imperialis Petropolitanae</journal>
+ <volume>8</volume>
+ <pages>128-140</pages>
+ <year>1736</year>
+ <file>Networks/1736 [Euler] Konigsberg Bridges.pdf</file>
+</reference>
+
+
+<reference id="Gross and Yellen 2003">
+ <editor>Jonathan L. Gross</editor>
+ <editor>Jay Yellen</editor>
+ <title>Handbook of Graph Theory</title>
+ <publisher>CRC Press</publisher>
+ <year>2003</year>
+ <isbn>1584880902</isbn>
+ <file>[books]/algorithms/graphs/1584880902 [Gross &amp; Yellen] Handbook of Graph Theory - Discrete Mathematics and Its Applications.pdf</file>
+</reference>
+
+
+<reference id="Gross and Yellen 2005">
+ <author>Jonathan L. Gross</author>
+ <author>Jay Yellen</author>
+ <title>Graph Theory and Its Applications</title>
+ <publisher>Chapman and Hall / CRC Press</publisher>
+ <edition>2nd edition</edition>
+ <year>2005</year>
+ <isbn>158488505X</isbn>
+</reference>
+
+
+<reference id="Harary 1969">
+ <author>Frank Harary</author>
+ <title>Graph Theory</title>
+ <publisher>Addison Wesley</publisher>
+ <year>1969</year>
+ <isbn>0201410338</isbn>
+ <file>[books]/algorithms/graphs/1969 [Harary] Graph Theory.pdf</file>
+ <file>[books]/algorithms/graphs/1969 [Harary] Graph Theory.djvu</file>
+</reference>
+
+<reference id="Jungnickel 2007">
+ <author>Dieter Jungnickel</author>
+ <title>Graphs, Networks, and Algorithms</title>
+ <publisher>Springer</publisher>
+ <edition>3rd edition</edition>
+ <year>2007</year>
+ <isbn>3540727795</isbn>
+ <file>[books]\algorithms\graphs\3540727795 [Jungnickel] Graphs, Networks and Algorithms.pdf</file>
+</reference>
+
+<reference id="Konig 1936">
+ <author>Dénes König</author>
+ <title>Theorie der endlichen und unendlichen Graphen</title>
+ <publisher>Akademische Verlagsgesellschaft, Leipzig</publisher>
+ <year>1936</year>
+</reference>
+
+<reference id="Konig 1990">
+ <author>Dénes König</author>
+ <title>Theory of finite and infinite graphs</title>
+ <publisher>Birkhäuser</publisher>
+ <year>1990</year>
+ <isbn>0817633898</isbn>
+ <!-- Translated from German by Richard McCoart -->
+</reference>
+
+
+<reference id="Ore 1962">
+ <author>Oystein Ore</author>
+ <title>Theory of Graphs</title>
+ <publisher>American Mathematical Society Colloquium Publications</publisher>
+ <year>1962</year>
+ <isbn>0821810383</isbn>
+ <file>[books]/algorithms/graphs/1962 [Ore] Theory of graphs.pdf</file>
+</reference>
+
+<reference id="Tutte 1998">
+ <author>William Thomas Tutte</author>
+ <title>Graph Theory As I Have Known It</title>
+ <publisher>Oxford University Press</publisher>
+ <year>1998</year>
+ <isbn>0198502516</isbn>
+ <file>[books]/algorithms/graphs/1998 [Tutte] Graph Theory as I Have Known It.djvu</file>
+</reference>
+
+</document>
+
+</document>

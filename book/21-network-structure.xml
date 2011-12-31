@@ -1,0 +1,257 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+<title>Network Structure</title>
+
+
+<document>
+<tag>structure-connectivity</tag>
+<title>Connectivity</title>
+
+<text>
+Facebook <cite>Ugander at al. 2011</cite>: (1) global structure of the graph: the social network is nearly fully connected, with 99.91% of individuals belonging to a single large connected component, (2) by studying the average local clustering coefficient and degeneracy of graph neighborhoods: the Facebook graph as a whole is clearly sparse, the graph neighborhoods of users contain surprisingly dense structure; (3) assortativity patterns present in the graph by studying the basic demographic and network properties of users. We observe clear degree assortativity and characterize the extent to which "your friends have more friends than you". Furthermore, we observe a strong effect of age on friendship preferences as well as a globally modular community structure driven by nationality, but we do not find any strong gender homophily. 
+</text>
+
+</document>
+
+<document>
+<tag>structure-shortest-paths</tag>
+<title>Shortest paths</title>
+
+<text>
+The strength of interactions often diminishes as node become more remote. In fact, in weighted networks, link length is inversely proportional to link weight, since weights indicate the strength of the connection between the linked nodes (a measure of similarity) whereas lengths indicate the conceptual distance between the nodes (a measure of dissimilarity).
+</text>
+
+
+<text>
+As mentioned in the chapter on Graph Theory, the distance matrix represents the the pairwise distance corresponding to the shortest paths linking the nodes in a network. The characteristic path length of the network can be computed as the average (sometimes the median) of the graph distance matrix.
+</text>
+
+<text>
+The average path length varies with the size of the network, often in what might seem non-intuitive ways. <cite>Leskovek et al. 2005</cite> found that...
+</text>
+
+<text>
+<q>six degrees of separation</q>
+
++ Stanley Milgram (1967): 296 volunteers were asked to send a message by postcard <cite>Travers and Milgram 1969</cite>
++ Facebook (2011): the average number of acquaintances separating any two people in the world was 4.74, calculating the average distance between any two people by computing a vast number of sample paths among Facebook users (721 million, more than one-tenth of the world’s population) <cite>Backstrom et al. 2011</cite>
+</text>
+
+
+<text>
+The average path length, however, can be influenced by a small number of outliers (e.g. disconnected or remote nodes), hence a more robust measure is often employed: the global efficiency <cite>Latora and Marchiori 2001</cite>. The global efficiency is computed as the average of the inverse of the distance matrix. A fully connected network has maximum global efficiency (all pairs of nodes are connected by links), while a fully disconnected network has minimum global efficiency (all distances between nodes are infinite).
+</text>
+
+<text>
+The average path length and the global efficiency are global measures of network connectivity. Low path lengths and high efficiencies indicate short shortest paths, but they do not consider other paths that might exist in the network (not even the number of different shortest paths that might exist). Alternative metrics of network integration consider them.
+</text>
+
+<text>
+Communicability measures global information flow within a network based on the number of walks between nodes <cite>Estrada and Hatano 2008</cite> <cite>Crofts and Higham 2009</cite>.
+</text>
+
+</document>
+
+<document>
+<tag>structure-degree-distributions</tag>
+<title>Degree distributions</title>
+</document>
+
+<document>
+<tag>structure-clustering-coefficient</tag>
+<title>Clustering coefficients</title>
+
+<text>
+The clustering coefficient of an individual node measure the density of connections among the node's neighbors <cite>Watts and Strogatz 1998</cite>. Densely connected neighborhoods form clusters around a node.
+</text>
+
+<text>
+In its original form, the clustering coefficient is the fraction of fully connected triangles among the node's neighbors (a.k.a. three-node motifs).
+</text>
+
+<text>
+Low-degree nodes can disproportionately influence their neighbors' clustering coefficients, a problem solved by transitivity <cite>Newman 2003</cite>... a collectively normalized variant of the clustering coefficient.
+</text>
+
+<text>
+Clustering coefficients and trasitivity have been generalized for weighted and directed networks <cite>Onnela et al. 2005</cite> <cite>Fagiolo 2007</cite>.
+</text>
+
+<text>
+Clustering (segregation) - efficiency (integration) trade-off... Optimal clustering and modularity are incompatible with optimal global efficiency (separate communities do not communicate too much). Local vs. global order (e.g. specialization of subsystems).
+</text>
+
+</document>
+
+
+<document>
+<tag>structure-notes</tag>
+<title>Bibliographic notes</title>
+</document>
+
+<document>
+<tag>structure-references</tag>
+<title>References</title>
+
+
+
+<reference id="Backstrom et al. 2011">
+ <author>Lars Backstrom</author>
+ <author>Paolo Boldi</author>
+ <author>Marco Rosa</author>
+ <author>Johan Ugander</author>
+ <author>Sebastiano Vigna</author>
+ <title>Four Degrees of Separation</title>
+ <journal>arXiv</journal>
+ <year>2011</year>
+ <url>http://arxiv.org/abs/1111.4570</url>
+ <file>Networks/applications/social/2011 arXiv - Facebook degrees of separation.pdf</file>
+</reference>
+
+
+<reference id="Crofts and Higham 2009">
+ <author>Jonathan J. Crofts</author>
+ <author>Desmond J. Higham</author>
+ <title>A weighted communicability measure applied to complex brain networks</title>
+ <journal>Journal of the Royal Society Interface</journal>
+ <volume>6</volume>
+ <number>33</number>
+ <pages>411–414</pages>
+ <year>2009</year>
+ <doi>10.1098/rsif.2008.0484</doi>
+ <file>Networks/structure/metrics/2009 JRSInterface [Crofts &amp; Higham] Weighted communicability.pdf</file>
+</reference>
+
+
+<reference id="Estrada and Hatano 2008">
+ <author>Ernesto Estrada</author>
+ <author>Naomichi Hatano</author>
+ <title>Communicability in complex networks</title>
+ <journal>Physical Review E</journal>
+ <volume>77</volume>
+ <number>3</number>
+ <pages>036111</pages>
+ <year>2008</year>
+ <doi>10.1103/PhysRevE.77.036111</doi>
+ <file>Networks/structure/metrics/2008 PhysRevE [Estrada &amp; Hatano] Communicability.pdf</file>
+</reference>
+
+<reference id="Fagiolo 2007">
+ <author>Giorgio Fagiolo</author>
+ <title>Clustering in complex directed networks</title>
+ <journal>Physical Review E</journal>
+ <volume>76</volume>
+ <number>2</number>
+ <pages>026107</pages>
+ <year>2007</year>
+ <doi>10.1103/PhysRevE.76.026107</doi>
+ <file>Networks/structure/metrics/2008 PhysRevE [Fagiolo] Clustering in directed networks.pdf</file>
+</reference>
+
+
+<reference id="Latora and Marchiori 2001">
+<author>Vito Latora</author>
+ <author>Massimo Marchiori</author>
+ <title>Efficient behavior of small-world networks</title>
+ <journal>Physical Review Letters</journal>
+ <volume>87</volume>
+ <number>19</number>
+ <pages>198701</pages>
+ <year>2001</year>
+ <doi>10.1103/PhysRevLett.87.198701</doi>
+ <file>Networks/structure/metrics/2001 PhysRevLett [Latora] Efficiency.pdf</file>
+</reference>
+
+
+<reference id="Leskovek et al. 2005">
+ <author>Jure Leskovec</author>
+ <author>Jon Kleinberg</author>
+ <author>Christos Faloutsos</author>
+ <title>Graphs over time: Densification laws, shrinking diameters and possible explanations</title>
+ <proceedings>11th ACM SIGKDD International Conference on Knowledge Discovery in Data Mining</proceedings>
+ <conference>KDD</conference>
+ <year>2005</year>
+ <isbn>1-59593-135-X</isbn>
+ <location>Chicago, Illinois, USA</location>
+ <pages>177-187</pages>
+ <doi>10.1145/1081870.1081893</doi>
+ <file>Networks/dynamics/evolution/2005 KDD Graphs over time.pdf</file>
+</reference>
+
+
+<reference id="Newman 2003">
+ <author>Mark E.J. Newman</author>
+ <title>The Structure and Function of Complex Networks</title>
+ <journal>SIAM Review</journal>
+ <volume>45</volume>
+ <pages>167-256</pages>
+ <year>2003</year>
+ <doi>10.1137/S003614450342480</doi>
+ <file>Networks/2003 SIAM Review [Newman] The structure and function of complex networks.draft.pdf</file>
+ <file>Networks/2003 SIAM Review [Newman] The structure and function of complex networks.pdf</file>
+</reference>
+
+
+<reference id="Onnela et al. 2005">
+ <author>Jukka-Pekka Onnela</author>
+ <author>Jari Saramäki</author>
+ <author>János Kertész</author>
+ <author>Kimmo Kaski</author>
+ <title>Intensity and coherence of motifs in weighted complex networks</title>
+ <journal>Physical Review E</journal>
+ <volume>71</volume>
+ <number>6</number>
+ <pages>065103(R)</pages>
+ <year>2005</year>
+ <doi>10.1103/PhysRevE.71.065103</doi>
+ <file>Networks/structure/metrics/2005 PhysRevE [Onnela] Intensity and coherence of motifs.pdf</file>
+</reference>
+
+
+
+
+<reference id="Travers and Milgram 1969">
+ <author>Jeffrey Travers</author>
+ <author>Stanley Milgram</author>
+ <title>An Experimental Study of the Small World Problem</title>
+ <journal>Sociometry</journal>
+ <volume>32</volume>
+ <number>4</number>
+ <pages>425-443</pages>
+ <year>1969</year>
+ <url>http://www.jstor.org/stable/2786545</url>
+ <file>Networks/models/small-world/1969 Sociometry [Travers &amp; Milgram] Small World Problem.pdf</file>
+</reference>
+
+
+<reference id="Ugander at al. 2011">
+ <author>Johan Ugander</author>
+ <author>Brian Karrer</author>
+ <author>Lars Backstrom</author>
+ <author>Cameron Marlow</author>
+ <title>The Anatomy of the Facebook Social Graph</title>
+ <journal>arXiv</journal>
+ <year>2011</year>
+ <url>http://arxiv.org/abs/1111.4503</url>
+ <file>Networks/applications/social/2011 arXiv - Facebook social graph.pdf</file>
+</reference>
+
+<reference id="Watts and Strogatz 1998">
+ <author>Duncan J. Watts</author>
+ <author>Steven H. Strogatz</author>
+ <title>Collective dynamics of 'small-world' networks</title>
+ <journal>Nature</journal>
+ <volume>393</volume>
+ <pages>440-442</pages>
+ <year>1998</year>
+ <doi>10.1038/30918</doi>
+ <file>Networks/models/1998 Nature [Watts &amp; Strogatz] Small-world networks.pdf</file>
+</reference>
+
+
+</document>
+
+</document>

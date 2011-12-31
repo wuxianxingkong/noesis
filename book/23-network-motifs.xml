@@ -1,0 +1,287 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+<title>Network Motifs</title>
+
+
+<text>
+Large networks can be decomposed into smaller <q>building blocks</q> or <q>networks-within-networks</q>, commonly referred to as <b>motifs</b>.
+</text>
+
+<text>
+Every network can be uniquely decomposed into a set of motifs, and the number and distribution of individual motifs can reflect some functional characteristics of the network <cite>Sporns 2011</cite>.
+</text>
+
+<document>
+<tag>motifs-dyads</tag>
+<title>Dyads</title>
+
+<text>
+= Two actors and their ties
+</text>
+
+<text>
+At the most basic level, a link establishes a relationship between two nodes. The link is a property of the pair, not of any single node...
+</text>
+
+<text>
+Dyadic analysis focuses on the properties of pairwise relationships, e.g. reciprocity.
+</text>
+
+<text>
+<cite>Wasserman and Faust 1994</cite>: chapters 13, 15 &amp; 16...
+</text>
+
+</document>
+
+
+<document>
+<tag>motifs-triads</tag>
+<title>Triads</title>
+
+<text>
+= Three actors and their ties
+</text>
+
+<text>
+++ Transitivity (if A likes B and B likes C, then A will like C)
+</text>
+
+<text>
+++ Balance (if A and B like each other, they will have a similar opinion of C; if they dislike each other, they will not agree on C)
+</text>
+
+
+<text>
+<cite>Wasserman and Faust 1994</cite>: chapters 6 and 14...
+</text>
+</document>
+
+
+<document>
+<tag>motifs-cliques</tag>
+<title>Cliques, plexes &amp; cores</title>
+</document>
+
+<document>
+<tag>motifs-components</tag>
+<title>Components &amp; k-components</title>
+</document>
+
+
+<document>
+<tag>motifs-structural-balance</tag>
+<title>Appendix: Structural balance</title>
+
+
+<text>
+Stuctural balance, postulated by Fritz Heider in the 1940's <cite>Heider 1946</cite> and Theodore M. Newcomb in the 1950's <cite>Newcomb 1953</cite>, led to research on triples of individuals, since balanced relations are common in empirical work...
+</text>
+
+<text>
+<cite>Cartwright and Harary 1956</cite> were among the first to quantify structural balance...
+</text>
+
+<text>
+Balance theory influenced the development of other structural theories, such as transitivity...
+</text>
+
+</document>
+
+
+
+<document>
+<tag>motifs-notes</tag>
+<title>Bibliographic notes</title>
+
+<text>
+Motif analysis extended to weighted networks <cite>Onnela et al. 2005</cite>.
+</text>
+
+<text>
+Motif composition => profile of local processing capacity <cite>Sporns and Kotter 2004</cite>, <cite>Sporns et al. 2007</cite>.
+</text>
+
+</document>
+
+<document>
+<tag>motifs-references</tag>
+<title>References</title>
+
+
+<reference id="Cartwright and Harary 1956">
+ <author>Dorwin Cartwright</author>
+ <author>Frank Harary</author>
+ <title>Structural balance: A generalization of Heider's theory</title>
+ <journal>Psychological Review</journal>
+ <volume>63</volume>
+ <number>5</number>
+ <pages>277-293</pages>
+ <year>1956</year>
+ <doi>10.1037/h0046049</doi>
+ <file>Networks/structure/motifs/1956 PR [Cartwright &amp; Harary] Structural balance.pdf</file>
+</reference>
+
+
+<reference id="Heider 1946">
+ <author>Fritz Heider</author>
+ <title>Attitudes and Cognitive Organization</title>
+ <journal>The Journal of Psychology</journal>
+ <volume>21</volume>
+ <number>1</number>
+ <pages>107-112</pages>
+ <year>1946</year>
+ <doi>10.1080/00223980.1946.9917275</doi>
+ <url>http://psychclassics.yorku.ca/Heider/attitudes.htm</url>
+ <file>Networks/structure/motifs/1946 JP [Heider] Structural balance.pdf</file>
+</reference>
+
+
+
+<reference id="Milo et al. 2002">
+ <author>Ron Milo</author>
+ <author>Shai Shen-Orr</author>
+ <author>Shalev Itzkovitz</author>
+ <author>Nadav Kashtan</author>
+ <author>D. Chklovskii</author>
+ <author>Uri Alon</author>
+ <title>Network Motifs: Simple building blocks of complex networks</title>
+ <journal>Science</journal>
+ <volume>298</volume>
+ <number>5594</number>
+ <pages>824-827</pages>
+ <year>2002</year>
+ <doi>10.1126/science.298.5594.824</doi>
+ <file>Networks/structure/motifs/2002 Science [Milo] Network motifs.pdf</file>
+</reference>
+
+<reference id="Milo et al. 2004a">
+ <author>Ron Milo</author>
+ <author>Shalev Itzkovitz</author>
+ <author>Nadav Kashtan</author>
+ <author>Reuven Levitt</author>
+ <author>Shai Shen-Orr</author>
+ <author>Inbal Ayzenshtat</author>
+ <author>Michal Sheffer</author>
+ <author>Uri Alon</author>
+ <title>Superfamilies of evolved and designed networks</title>
+ <journal>Science</journal>
+ <volume>303</volume>
+ <number>5663</number>
+ <pages>1538-1542</pages>
+ <year>2004</year>
+ <doi>10.1126/science.1089167</doi>
+ <file>Networks/structure/motifs/2004 Science [Milo] Superfamilies of networks.pdf</file>
+</reference>
+
+<reference id="Milo et al. 2004b">
+ <author>Ron Milo</author>
+ <author>Shalev Itzkovitz</author>
+ <author>Nadav Kashtan</author>
+ <author>Reuven Levitt</author>
+ <author>Uri Alon</author>
+ <title>Response to Comment on "Network Motifs: Simple Building Blocks of Complex Networks" and "Superfamilies of Evolved and Designed Networks"</title>
+ <journal>Science</journal>
+ <volume>305</volume>
+ <number>5687</number>
+ <pages>1107</pages>
+ <year>2004</year>
+ <doi>10.1126/science.1100519</doi>
+ <file>Networks/structure/motifs/2004 Science [Milo] Response to comment.pdf</file>
+</reference>
+
+
+<reference id="Newcomb 1953">
+ <author>Theodore M. Newcomb</author>
+ <title>An approach to the study of communicative acts</title>
+ <journal>Psychological Review</journal>
+ <volume>60</volume>
+ <number>6</number>
+ <pages>343-404</pages>
+ <year>1953</year>
+ <doi>10.1037/h0063098</doi>
+ <file>Networks/structure/motifs/1953 PR [Newcomb] Structural balance.pdf</file>
+</reference>
+
+
+<reference id="Onnela et al. 2005">
+ <author>Jukka-Pekka Onnela</author>
+ <author>Jari Saramäki</author>
+ <author>János Kertész</author>
+ <author>Kimmo Kaski</author>
+ <title>Intensity and coherence of motifs in weighted complex networks</title>
+ <journal>Physical Review E</journal>
+ <volume>71</volume>
+ <number>6</number>
+ <pages>065103(R)</pages>
+ <year>2005</year>
+ <doi>10.1103/PhysRevE.71.065103</doi>
+ <file>Networks/structure/metrics/2005 PhysRevE [Onnela] Intensity and coherence of motifs.pdf</file>
+</reference>
+
+
+<reference id="Sporns and Kotter 2004">
+ <author>Olaf Sporns</author>
+ <author>Rolf Kötter</author>
+ <title>Motifs in Brain Networks</title>
+ <journal>PLoS Biology</journal>
+ <volume>2</volume>
+ <number>11</number>
+ <pages>e369</pages>
+ <year>2004</year>
+ <doi>10.1371/journal.pbio.0020369</doi>
+ <file>Networks/structure/motifs/2004 PLoS Biology [Sporns] Motifs in brain networks.pdf</file>
+</reference>
+
+<reference id="Sporns 2006">
+ <author>Olaf Sporns</author>
+ <title>Small-world connectivity, motif composition, and complexity of fractal neuronal connections</title>
+ <journal>Biosystems</journal>
+ <volume>85</volume>
+ <number>1</number>
+ <pages>55-64</pages>
+ <year>2006</year>
+ <doi>10.1016/j.biosystems.2006.02.008</doi>
+ <file>Networks/structure/motifs/2006 Biosystems [Sporns] Motif composition.pdf</file>
+</reference>
+
+<reference id="Sporns et al. 2007">
+ <author>Olaf Sporns</author>
+ <author>Christopher J. Honey</author>
+ <author>Rolf Kötter</author>
+ <title>Identification and Classification of Hubs in Brain Networks</title>
+ <journal>PLoS ONE</journal>
+ <volume>2</volume>
+ <number>10</number>
+ <pages>e1049</pages>
+ <year>2007</year>
+ <doi>10.1371/journal.pone.0001049</doi>
+ <file>Networks/structure/motifs/2007 PLoS ONE [Sporns] Hubs in brain networks.pdf</file>
+</reference>
+
+
+<reference id="Sporns 2011">
+ <author>Olaf Sporns</author>
+ <title>Networks of the Brain</title>
+ <publisher>MIT Press</publisher>
+ <year>2011</year>
+ <isbn>9780262014694</isbn>
+</reference>
+
+
+<reference id="Wasserman and Faust 1994">
+ <author>Stanley Wasserman</author>
+ <author>Katherine Faust</author>
+ <title>Social Network Analysis: Methods and Applications</title>
+ <publisher>Cambridge University Press</publisher>
+ <edition>1st edition</edition>
+ <year>1994</year>
+ <isbn>0-521-38707-8</isbn>
+ <file>[books]/algorithms/graphs/0521387078 [Wasserman] Social Network Analysis - Methods and Applications.pdf</file>
+</reference>
+
+</document>
+
+</document>

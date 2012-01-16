@@ -9,6 +9,14 @@
 Specific aspects of the general idea of social group have led to more precise network definitions: cliques and their generalizations in graph theoretic terms, interacting communities, social circles, and structures of affiliation.
 </text>
 
+<text>
+++ Identification of various kinds of subgraphs, i.e. communities
+</text>
+
+<text>
+Applications: Web communities representing groups with a common interest, communities of named entities in text documents (e.g. people and organizations), social phenomena in e-mail communications, friendships in social networks...
+</text>
+
 <document>
 <tag>community-detection-partitioning</tag>
 <title>Graph partitioning</title>

@@ -18,7 +18,7 @@ Graph Theory is the mathematical study of graphs (or networks).
 </text>
 
 <text>
-From a formal point of view, a graph G=(V,E) is a finite non-empty set V of vertices (or nodes) together with a possibly empty set E of pairs of V called edges (or links). A graph G=(V,E) has a vertex set V and an edge set E, which are often denoted by V(G) and E(G), respectively.
+From a formal point of view, a graph G=(V,E) is a finite non-empty set V of vertices (or nodes) together with a possibly empty set E of pairs of V called edges (or links, even ties). A graph G=(V,E) has a vertex set V and an edge set E, which are often denoted by V(G) and E(G), respectively.
 </text>
 
 <text>

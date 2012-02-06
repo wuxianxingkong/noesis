@@ -69,6 +69,10 @@ A power law implies that the probability of finding a node with a degree that is
 </text>
 
 <text>
+IDEA: The fluctuations in degree are unbounded, i.e., the standard deviation is bounded only by the finite size of the graph.
+</text>
+
+<text>
 <cite>Clauset et al. 2009</cite> examine how power laws are best detected in practice: regression analysis of linear relationships in log-log scale (the standard method) results in many false positives (e.g. networks that might be better approximated by exponential or log-normal distributions). Sampling might also introduce false negatives <cite>Stumpf et al. 2005</cite>.
 </text> 
 

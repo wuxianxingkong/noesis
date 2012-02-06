@@ -39,16 +39,17 @@ Edges {u,v} of G can be denoted by uv or vu. When uv is an edge in G, u and v ar
 </text>
 
 <text>
-++ Directed graphs (= digraphs)
+++ Directed graphs (= digraphs): undirected graphs for nondirectional links, directed graphs for directional links.
 </text>
 
 <text>
-++ Binary vs. weighted graphs
+++ Binary vs. weighted graphs: binary graphs for dichotomous links (ties are either present or absent for each pair of nodes), weighted graphs for valued links (that indicate the strength, intensity, or frequency of the tie between each pair of actors).
 </text>
 
 <text>
 ++ Multigraphs /pseudographs
 </text>
+
 
 </document>
 

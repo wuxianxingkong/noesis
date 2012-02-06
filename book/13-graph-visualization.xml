@@ -50,6 +50,12 @@ An example <type>graph drawing</type> algorithm is shown in Figure <ref>force-ba
 </code>
 </figure>
 
+
+<text>
+++ The Kamada-Kawai's graph drawing algorithm, chosen for its ability to represent
+naturally the most important elements in the center of the representation (the backbone), <cite>Kamada and Kawai 1989</cite>
+</text>
+
 </document>
 
 <document>

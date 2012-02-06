@@ -14,7 +14,7 @@ The study of networks encompasses theories, models, and applications expressed i
 
 <item>Elements (also known as actors in social network analysis and nodes or vertices in graph theoretical terms) are autonomous but interdependent.</item>
 
-<item>Links between elements represent the only channels through which resources can flow, let them be material or immaterial.</item>
+<item>Links between elements (also known as connections, ties, relations, or even <q>relational contents</q>) represent the only channels through which resources can flow, let them be material or immaterial.</item>
 
 </list>
 
@@ -34,6 +34,23 @@ Nodes in a social network might be people from a given group, departments within
 Most applications focus on networks of elements of the same type (one-mode networks), albeit you could also have networks conformed by elements of different types (multimode networks)...
 </text>
 
+<text>
+++ Modes = distinct sets of entities on which the structural variables are measured. Single set (uni-mode networks), two sets (two-mode networks) or even more (multi-mode networks). 
+
+The mode of the network = the number of sets of entities on which structural variables are measured.
+
+- Dyadic two-mode networks (two sets of actors: relations are dyads with the first actor in one set and the second actor in a different set).
+
+- Non-dyadic two-mode networks or affiliation networks (one set of actors and one set of events or activities, which define subsets of actors).
+</text>
+
+<text>
+++ Attributes: structural variables (measured on pairs of actors, i.e. links) and actor variables (a.k.a. composition variables, defined at the level of individual actors [i.e. <q>of the standard social and behavioral science variety</q> <cite>Wasserman and Faust 1994</cite>, those measured in non-network studies]).
+</text>
+
+<text>
+Modeling units (level at which network data are studied): actor, dyad (pair of actors), triad (triple of actors), subset of actors, the network as a whole.
+</text>
 
 <text>
 ++ the need to understand the interconnectivity of our relationship with customers and the groups they interact with, whom, how and why.
@@ -42,6 +59,10 @@ Most applications focus on networks of elements of the same type (one-mode netwo
 <text>
 Need for new data mining techniques ++ Today's data, however, doesn't take the familiar form of the database. <q>The information's not coming at you in a clean tabular form, it's coming at you in a network form.</q> [Chid Apte, director of analytics research at IBM and chair of the KDD'2011 conference]. It arrives in a graph, that records not only the complex connections between nodes but also other types of information in a diversity of formats (e.g. the videos, images, and comments that people post on social networks). Social media may have started the trend toward analyzing such graphs, Apte says, but network data comes from other sources as well-for example, from complex engineering systems such as the electric power grid, water distribution systems, and traffic management systems. <cite>Naone 2011</cite>
 </text>
+
+
+
+
 
 
 <text>
@@ -78,7 +99,18 @@ Widely used in the social and behavioral sciences, social network analysis focus
 </text>
 
 <text>
+Kinds of relations in a social network: 
+- John Barnes (1972): attitudes, roles, and transactions.
+- Knoke/Kuklinski (1982): individual evaluations (sentiments: friendship, liking, respect...), kinship (family ties: marriage and descent relationships), transactions or transfers of material resources (lending/borrowing, buying/selling, exchange of gifts), transfer of non-material resources (communication, i.e. sending/receiving information, let it be e-mail messages, advice, or mere gossip), interactions (e.g. attending the same event, hitting...), movement (physical, between locations, or social, between occupations), formal roles (boss/employee, teacher/student, doctor/patient...)...
+</text>
+
+
+<text>
 Topics that have been studied by network analysts: occupational mobility, decision making, group problem solving, consensus and social influence, social perception, social support, community formation, exchange and power, social roles, coalition formation, company interlocking, markets, the world economic system, difussion and adoption of innovations...
+</text>
+
+<text>
+Ego-centered networks (a.k.a. personal or local networks) consist of a focal actor, called ego, a set of alters who have ties to ego, and measurements on the ties among the alters, e.g. Facebook friends or people in your Google+ circles [difference between dichotomous links @Facebook vs. valued links @Google+, e.g. trusty friend, well-known, acquaintance, name associated to face, unknown]. Applications: study of the social envionment surrounding a given individual (you!) and what social scientists call social support, i.e. how social relationships can affect the emotional and physical well-being of a given individual.
 </text>
 
 <text>
@@ -92,11 +124,16 @@ Jennifer Fewell, from Arizona State University, illustrates the importance of [i
 
 
 <text>
-++ Bibliographic <cite>Tang et al. 2008</cite>
+++ Obesity ;-) <cite>Christakis and Fowler 2007</cite>
 </text>
 
 <text>
-++ Obesity ;-) <cite>Christakis and Fowler 2007</cite>
+++ Dunbar's number: http://www.technologyreview.com/blog/arxiv/26824/ 
++ http://arxiv.org/abs/1105.5170 Validation of Dunbar's Number In Twitter Conversations  @ Network structure chapter
+</text>
+
+<text>
+++ Milgram's Six Degrees of separation (4.74 @ Facebook, http://arxiv.org/abs/1111.4503  http://arxiv.org/abs/1111.4570 ) @ Network structure chapter
 </text>
 
 </document>
@@ -106,6 +143,12 @@ Jennifer Fewell, from Arizona State University, illustrates the importance of [i
 <title>Content networks</title>
 
 <cite>Liu 2011</cite>
+
+
+<text>
+++ Bibliographic <cite>Tang et al. 2008</cite>
+</text>
+
 
 </document>
 

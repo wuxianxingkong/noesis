@@ -22,6 +22,11 @@ The most elementary representation of a graph is the adjacency matrix, also know
 <document>
 <tag>graph-representation-lists</tag>
 <title>Adjacency lists</title>
+
+<text>
+++ Compression (Liu, "Web Data Mining", 232-242)
+</text>
+
 </document>
 
 </document>

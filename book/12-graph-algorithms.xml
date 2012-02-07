@@ -5,6 +5,11 @@
 <document>
 <title>Graph Algorithms</title>
 
+
+<text>
+<q>The key to solving many algorithmic problems is to think of them in terms of graphs... it is amazing how often messy applied probles have a simple description and solution in terms of classical graph properties</q> <cite>Skiena 2008</cite>.
+</text>
+
 <document>
 <tag>graph-representation</tag>
 <title>Graph representation</title>
@@ -22,6 +27,10 @@ The most elementary representation of a graph is the adjacency matrix, also know
 <document>
 <tag>graph-representation-lists</tag>
 <title>Adjacency lists</title>
+
+<text>
+Adjacency lists for sparse graphs, adjacency matrix for dense graphs.
+</text>
 
 <text>
 ++ Compression (Liu, "Web Data Mining", 232-242)
@@ -44,6 +53,18 @@ The most elementary representation of a graph is the adjacency matrix, also know
 <document>
 <tag>graph-exploration-bfs</tag>
 <title>Breadth-first search</title>
+
+
+<text>
+++ Shortest paths can be found by performing a breadth-first search on unweighted/binary graphs (more elaborate algorithms are required for weighted graphs, as we will see later)
+</text>
+
+</document>
+
+
+<document>
+<tag>graph-exploration-astar</tag>
+<title>A* search</title>
 </document>
 
 </document>
@@ -67,7 +88,7 @@ The most elementary representation of a graph is the adjacency matrix, also know
 
 <document>
 <tag>graph-flow</tag>
-<title>Network flow: Maximum flow and minimum cuts</title>
+<title>Network flows: Maximum flow and minimum cuts</title>
 </document>
 
 <document>
@@ -95,6 +116,8 @@ Hard problems (NP):
 <item>Hamiltonian path / TSP</item>
 
 <item>Eulerian path</item>
+
+<item>Isomorphism testing, i.e. checking whether the topological structure of two graphs are identical (typically solved using backtracking)</item>
 
 </list>
 

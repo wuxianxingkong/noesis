@@ -45,23 +45,27 @@ Examples: road networks (lanes in both directions) are undirected vs. street net
 </text>
 
 <text>
-++ Binary vs. weighted graphs: binary graphs for dichotomous links (ties are either present or absent for each pair of nodes), weighted graphs for valued links (that indicate the strength, intensity, or frequency of the tie between each pair of actors).
+++ Binary vs. weighted graphs: binary graphs for dichotomous links (ties are either present or absent for each pair of nodes), weighted graphs for valued links (that indicate the strength, intensity, or frequency of the tie between each pair of actors). Binary graphs, also known as unweighted graphs...
 
 - Each edge is assigned a numerical value or weigth; e.g. road network (length, time, speed-limit...)
 </text>
 
 
 <text>
-A self-loop is an edge from one vertex to itself
+A self-loop, or loop for short, is an edge from one vertex to itself
 </text>
 
 <text>
-++ Multigraphs/pseudographs: An edge is a multiedge when it appears more than once in the same graph. A graph without multiedges is called a simple graph.
+++ Multigraphs/pseudographs: An edge is a multiedge when it appears more than once in the same graph. 
+</text>
+
+<text>
+A graph without multiedges nor self-loops is called a simple graph. Multiedges and self-loops introduce some subtetlies in the design of graph algorithms, hence simple graphs are often preferred.
 </text>
 
 
 <text>
-++ Labeled graphs: Each vertex is assigned a name or identifier (may not be unique)
+++ Labeled graphs: Each vertex is assigned a name or identifier (may not be unique). Note: the index of a node within the graph is often employed as a surrogate for the node identifier (for convenience when implementing efficient algorithms and also for preserving anonymity in some applications).
 </text>
 
 <text>
@@ -154,7 +158,9 @@ In a complete graph, every two distinct edges are adjacent, i.e. the size of a c
 </text>
 
 <text>
-++ Regular graphs, e.g. cubic graphs, Petersen graphs
+++ Regular graphs, e.g. cubic graphs, Petersen graphs:
+
+i.e. all nodes have the same degree
 </text>
 
 <text>

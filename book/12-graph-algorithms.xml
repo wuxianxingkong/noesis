@@ -14,6 +14,10 @@
 <tag>graph-representation</tag>
 <title>Graph representation</title>
 
+<text>
+Graphs <eqn>G=(V,E)</eqn> of order <eqn>n</eqn> (number of vertices or nodes) and size <eqn>m</eqn> (number of edges or links)
+</text>
+
 <document>
 <tag>graph-representation-matrix</tag>
 <title>Adjacency matrix</title>
@@ -22,6 +26,22 @@
 The most elementary representation of a graph is the adjacency matrix, also known as the connection matrix.
 </text>
 
+<text>
+Using a <eqn>n \times n</eqn> square matrix <eqn>A</eqn>, where <eqn>A[i][j]=1</eqn> if there is a link from node i to node j, <eqn>A[i][j]=0</eqn> otherwise.
+</text>
+
+<text>
++ Easy to check whether a link exists or not, addition/removal of links: <eqn>O(1)</eqn> operations.
+</text>
+
+<text>
+- Wasted space, specially for sparse networks: <eqn>O(n^2)</eqn> space vs. <eqn>O(n)</eqn> actual size 
+- impractical for large networks unless an alternative representation scheme is employed...
+</text>
+
+<text>
+Incidence matrix: An alternative representation scheme, where we use a <eqn>n \times m</eqn> square matrix <eqn>I</eqn>, where <eqn>I[i][j]=1</eqn> if node i is involved in link j, <eqn>I[i][j]=0</eqn> otherwise. [not used in practice]
+</text>
 </document>
 
 <document>
@@ -29,8 +49,64 @@ The most elementary representation of a graph is the adjacency matrix, also know
 <title>Adjacency lists</title>
 
 <text>
-Adjacency lists for sparse graphs, adjacency matrix for dense graphs.
+Linked lists are employed to store the neighbors of each node. 
+i.e. a directed link (x,y) will appear in x's adjacency list.
+i.e. undirected edges (x,y) will appear twice: in both x's and y's adjacency lists.
++ Implemented using pointers/references or dynamic arrays (to reduce memory fragmentation)
 </text>
+
+<text>
++ Faster computation of node degrees: <eqn>O(d)</eqn> (vs. <eqn>O(n)</eqn> for adjacency matrix). NOTE: Can be precomputed
+</text>
+
+<text>
++ Slower check of edge existence, insertion/deletion of edges: <eqn>O(d)</eqn> (vs. <eqn>O(1)</eqn> for adjacency matrix)
+
+NOTE: Most algorithms can be easily designed so that they do not need to perform such operations, just by scanning all the links in each adjacency list (e.g. see breadth-first and depth-first traversal below).
+</text>
+
+<text>
++ Lower memory requirements: <eqn>O(n+m)</eqn> (vs. <eqn>O(n^2)</eqn> for adjacency matrix)
+</text>
+
+<text>
++ Faster graph traversal: <eqn>O(n+m)</eqn> (vs. <eqn>O(n^2)</eqn> for adjacency matrix)
+</text>
+
+<text>
+Preferred choice for most problems.
+</text>
+
+<text>
+Adjacency lists for sparse graphs, adjacency matrix only for dense graphs (uncommon in data mining problems).
+</text>
+
+
+<note>
+<text>
+Algorithmic libraries often provide general-purpose implementations of graph data structures, hence there is no need to implement them yourself unless your problem imposes very specific requirements, e.g. C++
+</text>
+
+<list>
+
+<item>LEDA (Library of Efficient Data types and Algorithms), <url>http://www.algorithmic-solutions.com/</url>, originally from the Max Planck Institute for Informatics in Saarbrücken, Germany; since 2001, maintained by the Algorithmic Solutions Software GmbH.</item>
+
+<item>Boost Graph Library (BGL), <url>http://www.boost.org</url>.</item>
+
+<item>MatlabBGL, <url>http://www.cs.purdue.edu/homes/dgleich/packages/matlab_bgl/</url>, for Matlab: BGL port.</item>
+
+<item>Combinatorica, <url>http://www.combinatorica.com</url>, for Mathematica, by Steven Skiena.</item>
+
+
+</list>
+</note>
+
+</document>
+
+
+<document>
+<tag>graph-representation-compression</tag>
+<title>Compression techniques</title>
 
 <text>
 ++ Compression (Liu, "Web Data Mining", 232-242)
@@ -45,21 +121,184 @@ Adjacency lists for sparse graphs, adjacency matrix for dense graphs.
 <tag>graph-exploration</tag>
 <title>Graph exploration</title>
 
+<text>
+A fundamental graph problem: Visiting every node (or link) in a network in a systematic way, i.e. graph traversal.
+</text>
+
+<text>
+For efficiency, we should not visit the same node repeatedly. For correctness, we should guarantee that every node is eventually visited. IDEA: Keep track of which nodes we have already visited...
+</text>
+
+<text>
+++ Visitor design pattern <cite>Gamma et al. 1994</cite>
+</text>
+
+<text>
+BFS/DFS define a tree on the vertices of the graph.
+</text>
+
 <document>
 <tag>graph-exploration-dfs</tag>
 <title>Depth-first search</title>
+
+<text>
+Implementation: recursion/stack (LIFO: we explore a path until we meet a dead end [i.e. no unvisited neighbors] and then backtrack). Recursion eliminates the need of an explicit stack and provides a neat implementation of the algorithm.
+</text>
+
+
+<text>
+EFFICIENCY: <eqn>O(n+m)</eqn> using adjacency lists
+</text>
+
+
+
+<text>
+Time intervals: a clock ticks every time we enter or exit a node and we keep track of the entry and exit times for each node.
+</text>
+
+<text>
+Properties:
+
+- Time intervals are properly nested: if we enter x before y, we exit y before x; i.e. all nodes reachable from a given node are explored before we finish with it.
+
+- The difference between exit and entry times indicate the number of descendants of any given node. Actually half the time difference is the number of descendants in the search tree.
+
+- For undirected graphs, DFS partitions edges into tree edges and back edges. Tree edges appear in the DFS tree, whereas back edges always point to an ancestor in the DFS tree (never to a sibling nor cousin node, just because all nodes reachable from a given node are explored before we finish with it).
+</text>
+
+<!--
+Classifying (x,y) edges:
+
+- parent[y] == x  => Tree edge
+
+- discovered[y] and not processed[y]  => Back edge
+
+For directed graphs:
+
+- discovered[y] and (entry_time[y] &gt; entry_time[x]) => Forward edge
+
+- discovered[y] and (entry_time[y] &lt; entry_time[x]) => Cross edge
+-->
+
+
+<text>
+APPLICATIONS
+</text>
+
+<text>
+Solving mazes: A version of depth-first search was investigated in the 19th century by French mathematician Charles Pierre Tremaux[1] as a strategy for solving mazes (Wikipedia)
+</text>
+
+<text>
+ON UNDIRECTED GRAPHS
+</text>
+
+<text>
+++ Cycle detection: If there are no back edges, all edges belong to the tree, hence the graph is actually a tree.
+</text>
+
+<text>
+++ Graph biconnectedness: Articulation vertices (a.k.a. cut-nodes): Vertices whose deletion disconnects the graph connected component (i.e. single points of failure). Graphs without articulation points are said to be biconnected, since they have no single points of failure. A brute force algorithm would remove each vertex and check whether the graph is still connected (an <eqn>O(n(n+m))</eqn> algorithm), albeit a linear algorithm is possible based on DFS if we track the earliest reachable node for each node. If the DFS tree represented the whole graph, all internal nodes would be articulation points. Three situations have to be considered <cite>Skiena 2008</cite>: 
+
+1) root cut-nodes (if the root of the DFS tree has more than one child, then it is an articulation point), 
+
+2) bridge cut-nodes (if v is an internal node in the DFS tree and its earliest reachable node is v, then v is an articulation point)
+
+3) parent cut-nodes (if v is an internal node in the DFS tree and its earliest reachable node is its parent in the tree, then the parent is an articulation point unless it is the root of the DFS tree, i.e. it cuts v and its descendants from the graph).
+</text>
+
+<text>
+++ Edge biconnectedness: Bridges (in terms of link failures instead of node failures). A single edge whose deletion disconnects the graph is called a bridge. Any graph without bridges is said to be edge-biconnected. Edge (x,y) is a bridge when it is a DFS tree edge and no back edge connects from y or below to x or above.
+</text>
+
+
+<text>
+The classic sequential algorithm for computing biconnected components in a connected undirected graph due to John Hopcroft and Robert Tarjan (1973) [1] runs in linear time, and is based on depth-first search
++ Hopcroft, J.; Tarjan, R. (1973). "Efficient algorithms for graph manipulation". Communications of the ACM 16 (6): 372–378. doi:10.1145/362248.362272
+
+In the online version of the problem, vertices and edges are added (but not removed) dynamically, and a data structure must maintain the biconnected components. Jeffery Westbrook and Robert Tarjan (1992) [2] developed an efficient data structure for this problem based on disjoint-set data structures. Specifically, it processes n vertex additions and m edge additions in O(m alpha(m, n)) total time, where alpha is the inverse Ackermann function. This time bound is proved to be optimal.
++ Westbrook, J.; Tarjan, R. E. (1992). "Maintaining bridge-connected and biconnected components on-line". Algorithmica 7: 433–464. doi:10.1007/BF01758773. edit
+
+Uzi Vishkin and Robert Tarjan (1985) [3] designed a parallel algorithm on CRCW PRAM that runs in O(log n) time with n + m processors. 
++ Tarjan, R.; Vishkin, U. (1985). "An Efficient Parallel Biconnectivity Algorithm". SIAM Journal on Computing 14 (4): 862–000. doi:10.1137/0214061
+
+Guojing Cong and David A. Bader (2005) [4] developed an algorithm that achieves a speedup of 5 with 12 processors on SMPs.
++ Guojing Cong and David A. Bader, (2005). "An Experimental Study of Parallel Biconnected Components Algorithms on Symmetric Multiprocessors (SMPs)". Proceedings of the 19th IEEE International Conference on Parallel and Distributed Processing Symposium. pp. 45b. doi:10.1109/IPDPS.2005.100
+</text>
+
+
+<text>
+ON DIRECTED GRAPHS
+</text>
+
+<text>
+++ Topological sorting: A common operation on directed acyclic graphs. Ordering the vertices... (such ordering cannot exist if the graph contains a directed cycle, i.e. no back edges). Each DAG has, at least, one topological sort, which gives an ordering to process each vertex before any of its successors (e.g. precedence constraints). Considering the nodes in the reverse order they are processed by DFS returns a valid topological sort.
+
+ ref. first described by Kahn (1962): http://en.wikipedia.org/wiki/Topological_sorting
+      Kahn, A. B. (1962), "Topological sorting of large networks", Communications of the ACM 5 (11): 558–562, doi:10.1145/368996.369025.
+</text>
+
+<text>
+++ Identifying strongly-connected components: 1) Traverse the graph atarting from any given node to discover the nodes that are reachable from the node. 2) Build a graph G'=(V,E') with the same vertex set but all its arcs reversed; i.e. <eqn>(y,z) \in E' iff (x,y) \in E</eqn>. 3) Perform a traveral starting from v in G', which will result in discovering the set of nodes that can reach v. A graph G is strongly connected if all nodes in G can reach v and are reachable from v.
+</text>
+
+<text>
+Any graph can be partitioned into a set of strongly-connected components. Using DFS, we can easily identify cycles. If we take into account that all the nodes involved in a cycle must belong to the same strongly-connected component, we can collapse the nodes in the cycle into a single vertex and repeat the process. When no cycles remain, each vertex represents a different strongly-connected component.
+</text>
+
+<text>
+Linear SCC algorithms:
+- Kosaraju's algorithm, 1978: http://en.wikipedia.org/wiki/Kosaraju%27s_algorithm
+   ref.  Aho, Hopcroft and Ullman credit it to an unpublished paper from 1978 by S. Rao Kosaraju and Micha Sharir. (Alfred V. Aho, John E. Hopcroft, Jeffrey D. Ullman. Data Structures and Algorithms. Addison-Wesley, 1983)
+- Cheriyan–Mehlhorn/Gabow algorithm, 1996/1999: http://en.wikipedia.org/wiki/Cheriyan%E2%80%93Mehlhorn/Gabow_algorithm
+   ref. Cheriyan, J.; Mehlhorn, K. (1996), "Algorithms for dense graphs and networks on the random access computer", Algorithmica 15: 521–549, doi:10.1007/BF01940880
+   ref. Gabow, H.N. (2003), "Searching (Ch 10.1)", in Gross, J. L.; Yellen, J., Discrete Math. and its Applications: Handbook of Graph Theory, 25, CRC Press, pp. 953–984
+- Tarjan's strongly connected components algorithm, 1972: http://en.wikipedia.org/wiki/Tarjan's_strongly_connected_components_algorithm
+   ref. Tarjan, R. E. (1972), "Depth-first search and linear graph algorithms", SIAM Journal on Computing 1 (2): 146–160, doi:10.1137/0201010
+</text>
+
 </document>
+
+
 
 <document>
 <tag>graph-exploration-bfs</tag>
 <title>Breadth-first search</title>
 
+<text>
+Implementation: queue (FIFO: we explore the oldest unexplored vertices first).
+</text>
 
 <text>
-++ Shortest paths can be found by performing a breadth-first search on unweighted/binary graphs (more elaborate algorithms are required for weighted graphs, as we will see later)
+EFFICIENCY: <eqn>O(n+m)</eqn> using adjacency lists
+</text>
+
+<text>
+Properties (due to the fact that each path in the tree must be the shortest path in the graph):
+
+- For undirected graphs, edges not appearing in the breadth-first search tree can only point to nodes on the same level or to the level directly below.
+</text>
+
+
+
+<text>
+APPLICATIONS
+</text>
+
+<text>
+++ Shortest paths can be found by performing a breadth-first search on unweighted/binary graphs (more elaborate algorithms are required for weighted graphs, as we will see later): the tree resulting from BFS defines the shortest paths from the root to the remaining nodes in the graph. IMPLEMENTATION: parent[node] @ Visitor + reversal using recursion/stack
+</text>
+
+<text>
+++ Connected components: Any node we visit is part of the same connected component. Starting the search from any unvisited node, we can obtain additional connected components.
+</text>
+
+<text>
+++ Two-coloring graphs = Bipartite testing: A graph is bipartite if it can be colored without conflicts using two colors. Whenever we visit a new node, we color it using the opposite of its parent's color. If edges appear with the same color at both ends, the graph is not bipartite. Otherwise, we have partitioned the graph.
 </text>
 
 </document>
+
 
 
 <document>
@@ -67,7 +306,29 @@ Adjacency lists for sparse graphs, adjacency matrix for dense graphs.
 <title>A* search</title>
 </document>
 
+<text>
+Best-first search... heuristics
+</text>
+
+<text>
+http://en.wikipedia.org/wiki/A*_search_algorithm
+A* search algorithm
+
+HISTORY: In 1964 Nils Nilsson invented a heuristic based approach to increase the speed of Dijkstra's algorithm. This algorithm was called A1. In 1967 Bertram Raphael made dramatic improvements upon this algorithm, but failed to show optimality. He called this algorithm A2. Then in 1968 Peter E. Hart introduced an argument that proved A2 was optimal when using a consistent heuristic with only minor changes. His proof of the algorithm also included a section that showed that the new A2 algorithm was the best algorithm possible given the conditions. He thus named the new algorithm in Kleene star syntax to be the algorithm that starts with A and includes all possible version numbers or A*. [2]
+
+Hart, P. E.; Nilsson, N. J.; Raphael, B. (1972). "Correction to "A Formal Basis for the Heuristic Determination of Minimum Cost Paths"". SIGART Newsletter 37: 28–29.
+</text>
+
+
+<text>
+http://en.wikipedia.org/wiki/B*
+B* algorithm
+Berliner, Hans (1979). "The B* Tree Search Algorithm. A Best-First Proof Procedure.". Artificial Intelligence 12 (1): 23–40. doi:10.1016/0004-3702(79)90003-1
+</text>
+
+
 </document>
+
 
 
 <document>
@@ -84,6 +345,22 @@ Adjacency lists for sparse graphs, adjacency matrix for dense graphs.
 <document>
 <tag>graph-shortest-paths</tag>
 <title>Shortest paths</title>
+
+<text>
+http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+Dijkstra's algorithm: <eqn>O(m + n \log n)</eqn> using Fibonacci heaps
+
+http://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
+Bellman–Ford algorithm: <eqn>O(nm)</eqn> time, <eqn>O(n)</eqn> space
+
+http://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm
+Floyd–Warshall algorithm: <eqn>O(n^3)</eqn>
+
+http://en.wikipedia.org/wiki/Johnson%27s_algorithm
+Johnson's algorithm: <eqn>O(n^2 \log n + nm)</eqn> using <eqn>O(nm)</eqn> time for the Bellman–Ford stage of the algorithm, and <eqn>O(n \log n + m)</eqn> for each of <eqn>n</eqn> instantiations of Dijkstra's algorithm. Faster than the Floyd-Warshal algorithm for sparse graphs.
+</text>
+
+
 </document>
 
 <document>
@@ -103,8 +380,34 @@ Graphs of order n (nodes) and size m (links)...
 The following problems can be solved with algorithms that run in linear time (i.e. <eqn>O(n+m)</eqn>):
 </text>
 
+<list>
+
+<item>Graph traversal, either BFS, DFS, or best-first search (as in A*).</item>
+
+<item>Shortest paths in unweighted graphs (based on BFS): Finding the shortest paths and also counting the number of different shortest paths.</item>
+
+<item>Identifying connected and strongly-connected components (based on graph traversal).</item>
+
+<item>Bipartite testing (based on graph traversal).</item>
+
+<item>Cycle detection (based on DFS).</item>
+
+<item>Identification of articulation points, i.e. graph biconnectedness (based on DFS).</item>
+
+<item>Identification of bridges, i.e. edge-biconnectedness (based on DFS).</item>
+
+<item>Topological sorting (based on DFS).</item>
+
+</list>
+
+
+
 <text>
 The following algorithms require <eqn>O(m \log n)</eqn> time:
+</text>
+
+<text>
+NOTE: When working with large data sets, only linear (<eqn>O(n)</eqn>) or near linear (e.g. <eqn>O(n \log n)</eqn>) are likely to be suitable.
 </text>
 
 <text>
@@ -118,6 +421,10 @@ Hard problems (NP):
 <item>Eulerian path</item>
 
 <item>Isomorphism testing, i.e. checking whether the topological structure of two graphs are identical (typically solved using backtracking)</item>
+
+<item>[Minimum-size] vertex cover: A vertex cover is a subset of vertices <eqn>V' \in V</eqn> such that every edge in E contains at least one vertex from V'.</item>
+
+<item>[Maximum-size] Independent set: An independent set is a set of vertices U such that no edge in E is incident on two vertices of U.</item>
 
 </list>
 
@@ -200,6 +507,20 @@ Inline image:
 <document>
 <tag>graph-algorithms-references</tag>
 <title>References</title>
+
+
+<reference id="Gamma et al. 1994">
+ <author>Erich Gamma</author>
+ <author>Richard Helm</author>
+ <author>Ralph Johnson</author>
+ <author>John Vlissides</author>
+ <title>Design Patterns: Elements of reusable object-oriented software</title>
+ <publisher>Addison-Wesley</publisher>
+ <year>1994</year>
+ <isbn>0201633612</isbn>
+ <file>[books]/design/patterns/0201633612 [GoF] Design Patterns.chm</file>
+</reference>
+
 
 <reference id="Grama et al. 2003">
  <author>Ananth Grama</author>

@@ -1873,6 +1873,19 @@
 
 
 
+<reference id="Gamma et al. 1994">
+ <author>Erich Gamma</author>
+ <author>Richard Helm</author>
+ <author>Ralph Johnson</author>
+ <author>John Vlissides</author>
+ <title>Design Patterns: Elements of reusable object-oriented software</title>
+ <publisher>Addison-Wesley</publisher>
+ <year>1994</year>
+ <isbn>0201633612</isbn>
+ <file>[books]/design/patterns/0201633612 [GoF] Design Patterns.chm</file>
+</reference>
+
+
 <reference id="Ganguly et al. 2009">
  <editor>Niloy Ganguly</editor>
  <editor>Andreas Deutsch</editor>

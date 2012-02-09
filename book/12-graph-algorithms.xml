@@ -10,6 +10,54 @@
 <q>The key to solving many algorithmic problems is to think of them in terms of graphs... it is amazing how often messy applied probles have a simple description and solution in terms of classical graph properties</q> <cite>Skiena 2008</cite>.
 </text>
 
+
+<note>
+<title>A primer on algorithm analysis</title>
+
+<text>
+The dominance pecking order in algorithm analysis
+</text>
+
+<equation>
+n! >> c^n >> n^3 >> n^2 >> n^{1+\epsilon} >> n \log n 
+</equation>
+
+<equation>
+>> n >> sqrt(n) >> \log^2 n >> \log n
+</equation>
+
+<equation>
+>> \log n / \log \log n >> \log \log n >> \alpha(n) >> 1
+</equation>
+
+<text>
+<cite>Skiena 2008</cite>, page 56:
+</text>
+
+<list>
+<item><eqn>\alpha(n)</eqn>: Inverse Ackerman's function (union-find data structure).</item>
+<item><eqn>\log n / \log \log n</eqn>: Height of an n-leaf tree of degree <eqn>d = \log n</eqn>.</item>
+<item><eqn>n^{1+\epsilon}</eqn>, e.g. <eqn>2^c*n^{1+1/c}</eqn> where <eqn>c</eqn> cannot be arbitrarily large (<eqn>2^c!</eqn>).</item>
+</list>
+
+<text>
+The importance of data structures @ <cite>Skiena 2008</cite>, chapter 3, page 65: <q>Changing the data structure does not change the correctness of the program, since we presumably replace a correct implementation with a different correct implementation. However, the new implementation of the data type realizes different tradeoffs in the time to execute various operations, so the total performance can improve dramatically</q>.
+</text>
+
+</note>
+
+
+<note>
+<title>Fundamental data structures</title>
+
+<text>
+3 fundamental ADTs: containers, dictionaries &amp; priority queues
+</text>
+
+</note>
+
+<!-- Graph representation -->
+
 <document>
 <tag>graph-representation</tag>
 <title>Graph representation</title>
@@ -106,7 +154,7 @@ Algorithmic libraries often provide general-purpose implementations of graph dat
 
 <document>
 <tag>graph-representation-compression</tag>
-<title>Compression techniques</title>
+<title>Graph compression</title>
 
 <text>
 ++ Compression (Liu, "Web Data Mining", 232-242)
@@ -116,6 +164,9 @@ Algorithmic libraries often provide general-purpose implementations of graph dat
 
 </document>
 
+
+
+<!-- Graph exploration -->
 
 <document>
 <tag>graph-exploration</tag>
@@ -255,7 +306,18 @@ Linear SCC algorithms:
    ref. Gabow, H.N. (2003), "Searching (Ch 10.1)", in Gross, J. L.; Yellen, J., Discrete Math. and its Applications: Handbook of Graph Theory, 25, CRC Press, pp. 953–984
 - Tarjan's strongly connected components algorithm, 1972: http://en.wikipedia.org/wiki/Tarjan's_strongly_connected_components_algorithm
    ref. Tarjan, R. E. (1972), "Depth-first search and linear graph algorithms", SIAM Journal on Computing 1 (2): 146–160, doi:10.1137/0201010
+
+
+ all efficiently compute the strongly connected components of a directed graph, but Tarjan's and Gabow's are favoured in practice since they require only one depth-first search rather than two. http://en.wikipedia.org/wiki/Strongly_connected_component
+</text> 
+
+
+<text>
+Parallelization of DFS 
+- for dense graphs @ Section 10.6 <cite>Grama et al. 2003</cite>
+- Parallel DFS @ Section 11.4  <cite>Grama et al. 2003</cite>
 </text>
+
 
 </document>
 
@@ -297,17 +359,26 @@ APPLICATIONS
 ++ Two-coloring graphs = Bipartite testing: A graph is bipartite if it can be colored without conflicts using two colors. Whenever we visit a new node, we color it using the opposite of its parent's color. If edges appear with the same color at both ends, the graph is not bipartite. Otherwise, we have partitioned the graph.
 </text>
 
+<text>
+++ Distributed algorithm @ MIT Lecture 2 (synchronous) + Lecture 9 (asynchronous) / Section 4.2 + Section 15.4 <cite>Lynch 1997</cite>
+</text>
+
+
+
 </document>
 
 
 
 <document>
-<tag>graph-exploration-astar</tag>
-<title>A* search</title>
+<tag>graph-exploration-best-first</tag>
+<title>Best-first search</title>
 </document>
 
 <text>
 Best-first search... heuristics
+
+Judea Pearl described best-first search as estimating the promise of node n by a "heuristic evaluation function f(n) which, in general, may depend on the description of n, the description of the goal, the information gathered by the search up to that point, and most important, on any extra knowledge about the problem domain." ref. Pearl, J. Heuristics: Intelligent Search Strategies for Computer Problem Solving. Addison-Wesley, 1984.
+
 </text>
 
 <text>
@@ -317,6 +388,8 @@ A* search algorithm
 HISTORY: In 1964 Nils Nilsson invented a heuristic based approach to increase the speed of Dijkstra's algorithm. This algorithm was called A1. In 1967 Bertram Raphael made dramatic improvements upon this algorithm, but failed to show optimality. He called this algorithm A2. Then in 1968 Peter E. Hart introduced an argument that proved A2 was optimal when using a consistent heuristic with only minor changes. His proof of the algorithm also included a section that showed that the new A2 algorithm was the best algorithm possible given the conditions. He thus named the new algorithm in Kleene star syntax to be the algorithm that starts with A and includes all possible version numbers or A*. [2]
 
 Hart, P. E.; Nilsson, N. J.; Raphael, B. (1972). "Correction to "A Formal Basis for the Heuristic Determination of Minimum Cost Paths"". SIGART Newsletter 37: 28–29.
+
+Often used for path finding...
 </text>
 
 
@@ -327,9 +400,15 @@ Berliner, Hans (1979). "The B* Tree Search Algorithm. A Best-First Proof Procedu
 </text>
 
 
+<text>
+++ Parallel best-first search @ Section 11.5 <cite>Grama et al. 2003</cite>
+</text>
+
 </document>
 
 
+
+<!-- Minimum spanning trees -->
 
 <document>
 <tag>graph-spanning-trees</tag>
@@ -339,17 +418,57 @@ Berliner, Hans (1979). "The B* Tree Search Algorithm. A Best-First Proof Procedu
 ++ Minimum Spanning Trees: Kruskal &amp; Prim. Naive implementation <eqn>O(m^2)</eqn> for Kruskal's algorithm, <eqn>O(n^3)</eqn> for Prim's algorithm
 </text>
 
+<text>
+Parallel Prim's algorithm
+- for dense graphs @ Section 10.2 <cite>Grama et al. 2003</cite>
+- for sparse graphs @ Section 10.7.2 <cite>Grama et al. 2003</cite>
++ Bibliographic notes
+</text>
+
+<text>
+Distributed MST algorithms @ MIT 6.852: Distributed Algorithms - Lecture 4 (synchronous) + Lecture 9 (asynchronous) / Section 4.4 + Section 15.5 <cite>Lynch 1997</cite>
+</text>
+
 </document>
 
+
+
+
+<!-- Shortest paths -->
 
 <document>
 <tag>graph-shortest-paths</tag>
 <title>Shortest paths</title>
 
+
+<!-- Shortest paths: Single source -->
+
+<document>
+<tag>graph-shortest-paths-dijkstra</tag>
+<title>Single source shortest paths</title>
+
 <text>
 http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 Dijkstra's algorithm: <eqn>O(m + n \log n)</eqn> using Fibonacci heaps
+</text>
 
+<text>
+Parallelization of Dijkstra's algorithm
+- for dense graphs @ Section 10.3 <cite>Grama et al. 2003</cite>
++ Bibliographic notes
+</text>
+
+</document>
+
+
+
+<!-- Shortest paths: All pairs -->
+
+<document>
+<tag>graph-shortest-paths-all-pairs</tag>
+<title>All-pairs shortest paths</title>
+
+<text>
 http://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
 Bellman–Ford algorithm: <eqn>O(nm)</eqn> time, <eqn>O(n)</eqn> space
 
@@ -360,13 +479,35 @@ http://en.wikipedia.org/wiki/Johnson%27s_algorithm
 Johnson's algorithm: <eqn>O(n^2 \log n + nm)</eqn> using <eqn>O(nm)</eqn> time for the Bellman–Ford stage of the algorithm, and <eqn>O(n \log n + m)</eqn> for each of <eqn>n</eqn> instantiations of Dijkstra's algorithm. Faster than the Floyd-Warshal algorithm for sparse graphs.
 </text>
 
+<text>
+Parallelization of Floyd's algorithm 
+- for dense graphs @ Section 10.4 <cite>Grama et al. 2003</cite>
++ Bibliographic notes
+</text>
+
+
+<text>
+Distributed shortest paths @ MIT 6.852: Lectures 2-3 (synchronous) + Lectures 8-9 (asynchronous)  / Section 4.3 + Section 15.4 <cite>Lynch 1997</cite>
+</text>
 
 </document>
+
+</document>
+
+
+
+
+<!-- Network flows -->
 
 <document>
 <tag>graph-flow</tag>
 <title>Network flows: Maximum flow and minimum cuts</title>
 </document>
+
+
+
+
+<!-- Algorithm catalog -->
 
 <document>
 <tag>graph-algorithm-catalog</tag>
@@ -403,12 +544,18 @@ The following problems can be solved with algorithms that run in linear time (i.
 
 
 <text>
-The following algorithms require <eqn>O(m \log n)</eqn> time:
+The following algorithms are almost linear, i.e. <eqn>O(n \log n)</eqn>:
 </text>
 
 <text>
 NOTE: When working with large data sets, only linear (<eqn>O(n)</eqn>) or near linear (e.g. <eqn>O(n \log n)</eqn>) are likely to be suitable.
 </text>
+
+
+<text>
+The following algorithms require polynomial time:
+</text>
+
 
 <text>
 Hard problems (NP):
@@ -429,40 +576,7 @@ Hard problems (NP):
 </list>
 
 
-<note>
-<title>The dominance pecking order in algorithm analysis</title>
 
-<equation>
-n! >> c^n >> n^3 >> n^2 >> n^{1+\epsilon} >> n \log n 
-</equation>
-
-<equation>
->> n >> sqrt(n) >> \log^2 n >> \log n
-</equation>
-
-<equation>
->> \log n / \log \log n >> \log \log n >> \alpha(n) >> 1
-</equation>
-
-<text>
-<cite>Skiena 2008</cite>, page 56:
-</text>
-
-<list>
-<item><eqn>\alpha(n)</eqn>: Inverse Ackerman's function (union-find data structure).</item>
-<item><eqn>\log n / \log \log n</eqn>: Height of an n-leaf tree of degree <eqn>d = \log n</eqn>.</item>
-<item><eqn>n^{1+\epsilon}</eqn>, e.g. <eqn>2^c*n^{1+1/c}</eqn> where <eqn>c</eqn> cannot be arbitrarily large (<eqn>2^c!</eqn>).</item>
-</list>
-
-<text>
-The importance of data structures @ <cite>Skiena 2008</cite>, chapter 3, page 65: <q>Changing the data structure does not change the correctness of the program, since we presumably replace a correct implementation with a different correct implementation. However, the new implementation of the data type realizes different tradeoffs in the time to execute various operations, so the total performance can improve dramatically</q>.
-</text>
-
-<text>
-3 fundamental ADTs: containers, dictionaries &amp; priority queues
-</text>
-
-</note>
 
 
 
@@ -543,6 +657,15 @@ Inline image:
  <year>2005</year>
  <isbn>0321295358</isbn>
  <file>[books]/algorithms/0321295358 [Kleinberg] Algorithm Design.pdf</file>
+</reference>
+
+<reference id="Lynch 1997">
+ <author>Nancy A. Lynch</author>
+ <title>Distributed Algorithms</title>
+ <publisher>Morgan Kaufmann</publisher>
+ <year>1997</year>
+ <isbn>1558603484</isbn>
+ <file>[books]/algorithms/1558603484 [Lynch] Distributed Algorithms.pdf</file>
 </reference>
 
 <reference id="Skiena 2008">

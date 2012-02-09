@@ -192,6 +192,51 @@ Jennifer Fewell, from Arizona State University, illustrates the importance of [i
 <tag>datasets</tag>
 <title>Network data sets</title>
 
+<text>
+Large network datasets...
+</text>
+
+<list>
+
+<item>
+The Stanford Large Network Dataset Collection, <url>http://snap.stanford.edu/data/</url>, maintained by Jure Leskovec (University of Stanford, California) as part of the Stanford Network Analysis Platform (SNAP).
+</item>
+
+<item>
+The Koblenz Network Collection, <url>http://konect.uni-koblenz.de/</url>, maintained by Jérôme Kunegis (University of Koblenz–Landau, Germany).
+</item>
+
+<item>
+The UCI Network Data Repository, <url>http://networkdata.ics.uci.edu/</url>, a NSF-funded project from the University of California at Irvine led by Christopher L. DuBois.
+</item>
+
+<item>
+CASOS datasets, <url>http://www.casos.cs.cmu.edu/computational_tools/datasets/</url>, from the Center for Computational Analysis of Social and Organizational Systems at Carnegie Mellon University (Pittsburhg, Pennsylvania).
+</item>
+
+<item>
+NWB datasets, <url>https://nwb.slis.indiana.edu/community/?n=Datasets.HomePage</url>, from the wiki of the Network Workbench Project (Indiana University at Bloomington).
+</item>
+
+<item>
+The University of Florida Sparse Matrix Collection, <url>http://www.cise.ufl.edu/research/sparse/matrices/</url>.
+</item>
+
+<item>
+Pajek datasets, <url>http://vlado.fmf.uni-lj.si/pub/networks/data/</url>, by Vladimir Batagelj and Andrej Mrvar. 
+</item>
+
+<item>
+Links to network data sets collected by Mark E.J. Newman (University of Michigan): <url>http://www-personal.umich.edu/~mejn/netdata/</url>.
+</item>
+
+</list>
+
+
+<text>
++ Several data mining competitions...
+</text>
+
 </document>
 
 

@@ -359,10 +359,15 @@ APPLICATIONS
 ++ Two-coloring graphs = Bipartite testing: A graph is bipartite if it can be colored without conflicts using two colors. Whenever we visit a new node, we color it using the opposite of its parent's color. If edges appear with the same color at both ends, the graph is not bipartite. Otherwise, we have partitioned the graph.
 </text>
 
+
 <text>
 ++ Distributed algorithm @ MIT Lecture 2 (synchronous) + Lecture 9 (asynchronous) / Section 4.2 + Section 15.4 <cite>Lynch 1997</cite>
+@ MIT Distributed algorithms Lecture 21
 </text>
 
+<text>
+++ Sublinear approximate algorithm @ MIT Sublinear algorithms => Goal: Quickly distinguish inputs that have specific property from those that are far from having the property...
+</text>
 
 
 </document>
@@ -372,7 +377,6 @@ APPLICATIONS
 <document>
 <tag>graph-exploration-best-first</tag>
 <title>Best-first search</title>
-</document>
 
 <text>
 Best-first search... heuristics
@@ -406,6 +410,7 @@ Berliner, Hans (1979). "The B* Tree Search Algorithm. A Best-First Proof Procedu
 
 </document>
 
+</document>
 
 
 <!-- Minimum spanning trees -->
@@ -415,7 +420,15 @@ Berliner, Hans (1979). "The B* Tree Search Algorithm. A Best-First Proof Procedu
 <title>Minimum spanning trees</title>
 
 <text>
+@ MIT Graphs - Shortest paths
+</text>
+
+<text>
 ++ Minimum Spanning Trees: Kruskal &amp; Prim. Naive implementation <eqn>O(m^2)</eqn> for Kruskal's algorithm, <eqn>O(n^3)</eqn> for Prim's algorithm
+</text>
+
+<text>
+++ Union-find data structure
 </text>
 
 <text>
@@ -439,6 +452,11 @@ Distributed MST algorithms @ MIT 6.852: Distributed Algorithms - Lecture 4 (sync
 <document>
 <tag>graph-shortest-paths</tag>
 <title>Shortest paths</title>
+
+
+<text>
+@ MIT Graphs - Shortest paths
+</text>
 
 
 <!-- Shortest paths: Single source -->
@@ -502,8 +520,40 @@ Distributed shortest paths @ MIT 6.852: Lectures 2-3 (synchronous) + Lectures 8-
 <document>
 <tag>graph-flow</tag>
 <title>Network flows: Maximum flow and minimum cuts</title>
+
+
+<text>
+@ MIT Graphs - Network flow
+</text>
+
+<document>
+<tag>graph-matching</tag>
+<title>An application: Matching problems</title>
+
+<text>
+@ MIT Graphs - Matching
+</text>
+
 </document>
 
+</document>
+
+
+
+
+
+<!-- Graph isomorphism -->
+
+<document>
+<tag>graph-isomorphism</tag>
+<title>Graph isomorphism</title>
+
+
+<text>
+@ MIT Interactive proofs and zero knowledge
+</text>
+
+</document>
 
 
 

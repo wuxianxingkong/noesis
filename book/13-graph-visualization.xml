@@ -66,17 +66,44 @@ naturally the most important elements in the center of the representation (the b
 <text>
 ++ BASED ON TOPOLOGICAL SORTING Layered graph drawing is a type of graph drawing in which the vertices of a directed graph are drawn in horizontal rows or layers with the edges generally directed downwards.[1][2] It is also known as Sugiyama-style graph drawing after Kozo Sugiyama, who first developed this drawing style.[3]
 
-ref. Sugiyama, Kozo; Tagawa, Shôjirô; Toda, Mitsuhiko (1981), "Methods for visual understanding of hierarchical system structures", IEEE Transactions on Systems, Man, and Cybernetics SMC-11 (2): 109–125, doi:10.1109/TSMC.1981.4308636, MR0611436.
+ref. Sugiyama, Kozo; Tagawa, Shôjirô; Toda, Mitsuhiko (1981), "Methods for visual understanding of hierarchical system structures", IEEE Transactions on Systems, Man, and Cybernetics SMC-11 (2): 109-125, doi:10.1109/TSMC.1981.4308636, MR0611436.
 
 ++ http://en.wikipedia.org/wiki/Layered_graph_drawing
+</text>
 
 </document>
+
+
+
 
 <document>
 <tag>graph-visualization-metrics</tag>
 <title>Metrics-based methods</title>
 </document>
 
+
+
+
+
+<document>
+<tag>graph-visualization-specific</tag>
+<title>Specific methods</title>
+
+
+<document>
+<tag>graph-visualization-trees</tag>
+<title>Trees</title>
+
+</document>
+
+
+<document>
+<tag>graph-visualization-bipartite</tag>
+<title>Bipartite graphs</title>
+
+</document>
+
+</document>
 
 <document>
 <tag>graph-visualization-tools</tag>

@@ -11,6 +11,14 @@
 </text>
 
 
+<text>
+1. Graph representation
+2. Graph exploration
+3. Optimization problems: MST, shortest paths, maximum flow
+4. Hard problems, e.g. graph isomorphisms
+5. A catalog of graph algorithms
+</text>
+
 <note>
 <title>A primer on algorithm analysis</title>
 
@@ -180,13 +188,20 @@ A fundamental graph problem: Visiting every node (or link) in a network in a sys
 For efficiency, we should not visit the same node repeatedly. For correctness, we should guarantee that every node is eventually visited. IDEA: Keep track of which nodes we have already visited...
 </text>
 
-<text>
-++ Visitor design pattern <cite>Gamma et al. 1994</cite>
-</text>
 
 <text>
 BFS/DFS define a tree on the vertices of the graph.
 </text>
+
+<note>
+<title>The Visitor design pattern</title>
+
+<text>
+++ Visitor design pattern <cite>Gamma et al. 1994</cite>
+</text>
+
+</note>
+
 
 <document>
 <tag>graph-exploration-dfs</tag>
@@ -265,13 +280,13 @@ ON UNDIRECTED GRAPHS
 
 <text>
 The classic sequential algorithm for computing biconnected components in a connected undirected graph due to John Hopcroft and Robert Tarjan (1973) [1] runs in linear time, and is based on depth-first search
-+ Hopcroft, J.; Tarjan, R. (1973). "Efficient algorithms for graph manipulation". Communications of the ACM 16 (6): 372–378. doi:10.1145/362248.362272
++ Hopcroft, J.; Tarjan, R. (1973). "Efficient algorithms for graph manipulation". Communications of the ACM 16 (6): 372-378. doi:10.1145/362248.362272
 
 In the online version of the problem, vertices and edges are added (but not removed) dynamically, and a data structure must maintain the biconnected components. Jeffery Westbrook and Robert Tarjan (1992) [2] developed an efficient data structure for this problem based on disjoint-set data structures. Specifically, it processes n vertex additions and m edge additions in O(m alpha(m, n)) total time, where alpha is the inverse Ackermann function. This time bound is proved to be optimal.
-+ Westbrook, J.; Tarjan, R. E. (1992). "Maintaining bridge-connected and biconnected components on-line". Algorithmica 7: 433–464. doi:10.1007/BF01758773. edit
++ Westbrook, J.; Tarjan, R. E. (1992). "Maintaining bridge-connected and biconnected components on-line". Algorithmica 7: 433-464. doi:10.1007/BF01758773. edit
 
 Uzi Vishkin and Robert Tarjan (1985) [3] designed a parallel algorithm on CRCW PRAM that runs in O(log n) time with n + m processors. 
-+ Tarjan, R.; Vishkin, U. (1985). "An Efficient Parallel Biconnectivity Algorithm". SIAM Journal on Computing 14 (4): 862–000. doi:10.1137/0214061
++ Tarjan, R.; Vishkin, U. (1985). "An Efficient Parallel Biconnectivity Algorithm". SIAM Journal on Computing 14 (4): 862-000. doi:10.1137/0214061
 
 Guojing Cong and David A. Bader (2005) [4] developed an algorithm that achieves a speedup of 5 with 12 processors on SMPs.
 + Guojing Cong and David A. Bader, (2005). "An Experimental Study of Parallel Biconnected Components Algorithms on Symmetric Multiprocessors (SMPs)". Proceedings of the 19th IEEE International Conference on Parallel and Distributed Processing Symposium. pp. 45b. doi:10.1109/IPDPS.2005.100
@@ -286,7 +301,7 @@ ON DIRECTED GRAPHS
 ++ Topological sorting: A common operation on directed acyclic graphs. Ordering the vertices... (such ordering cannot exist if the graph contains a directed cycle, i.e. no back edges). Each DAG has, at least, one topological sort, which gives an ordering to process each vertex before any of its successors (e.g. precedence constraints). Considering the nodes in the reverse order they are processed by DFS returns a valid topological sort.
 
  ref. first described by Kahn (1962): http://en.wikipedia.org/wiki/Topological_sorting
-      Kahn, A. B. (1962), "Topological sorting of large networks", Communications of the ACM 5 (11): 558–562, doi:10.1145/368996.369025.
+      Kahn, A. B. (1962), "Topological sorting of large networks", Communications of the ACM 5 (11): 558-562, doi:10.1145/368996.369025.
 </text>
 
 <text>
@@ -301,11 +316,11 @@ Any graph can be partitioned into a set of strongly-connected components. Using 
 Linear SCC algorithms:
 - Kosaraju's algorithm, 1978: http://en.wikipedia.org/wiki/Kosaraju%27s_algorithm
    ref.  Aho, Hopcroft and Ullman credit it to an unpublished paper from 1978 by S. Rao Kosaraju and Micha Sharir. (Alfred V. Aho, John E. Hopcroft, Jeffrey D. Ullman. Data Structures and Algorithms. Addison-Wesley, 1983)
-- Cheriyan–Mehlhorn/Gabow algorithm, 1996/1999: http://en.wikipedia.org/wiki/Cheriyan%E2%80%93Mehlhorn/Gabow_algorithm
-   ref. Cheriyan, J.; Mehlhorn, K. (1996), "Algorithms for dense graphs and networks on the random access computer", Algorithmica 15: 521–549, doi:10.1007/BF01940880
-   ref. Gabow, H.N. (2003), "Searching (Ch 10.1)", in Gross, J. L.; Yellen, J., Discrete Math. and its Applications: Handbook of Graph Theory, 25, CRC Press, pp. 953–984
+- Cheriyan-Mehlhorn/Gabow algorithm, 1996/1999: http://en.wikipedia.org/wiki/Cheriyan%E2%80%93Mehlhorn/Gabow_algorithm
+   ref. Cheriyan, J.; Mehlhorn, K. (1996), "Algorithms for dense graphs and networks on the random access computer", Algorithmica 15: 521-549, doi:10.1007/BF01940880
+   ref. Gabow, H.N. (2003), "Searching (Ch 10.1)", in Gross, J. L.; Yellen, J., Discrete Math. and its Applications: Handbook of Graph Theory, 25, CRC Press, pp. 953-984
 - Tarjan's strongly connected components algorithm, 1972: http://en.wikipedia.org/wiki/Tarjan's_strongly_connected_components_algorithm
-   ref. Tarjan, R. E. (1972), "Depth-first search and linear graph algorithms", SIAM Journal on Computing 1 (2): 146–160, doi:10.1137/0201010
+   ref. Tarjan, R. E. (1972), "Depth-first search and linear graph algorithms", SIAM Journal on Computing 1 (2): 146-160, doi:10.1137/0201010
 
 
  all efficiently compute the strongly connected components of a directed graph, but Tarjan's and Gabow's are favoured in practice since they require only one depth-first search rather than two. http://en.wikipedia.org/wiki/Strongly_connected_component
@@ -391,7 +406,7 @@ A* search algorithm
 
 HISTORY: In 1964 Nils Nilsson invented a heuristic based approach to increase the speed of Dijkstra's algorithm. This algorithm was called A1. In 1967 Bertram Raphael made dramatic improvements upon this algorithm, but failed to show optimality. He called this algorithm A2. Then in 1968 Peter E. Hart introduced an argument that proved A2 was optimal when using a consistent heuristic with only minor changes. His proof of the algorithm also included a section that showed that the new A2 algorithm was the best algorithm possible given the conditions. He thus named the new algorithm in Kleene star syntax to be the algorithm that starts with A and includes all possible version numbers or A*. [2]
 
-Hart, P. E.; Nilsson, N. J.; Raphael, B. (1972). "Correction to "A Formal Basis for the Heuristic Determination of Minimum Cost Paths"". SIGART Newsletter 37: 28–29.
+Hart, P. E.; Nilsson, N. J.; Raphael, B. (1972). "Correction to "A Formal Basis for the Heuristic Determination of Minimum Cost Paths"". SIGART Newsletter 37: 28-29.
 
 Often used for path finding...
 </text>
@@ -400,7 +415,7 @@ Often used for path finding...
 <text>
 http://en.wikipedia.org/wiki/B*
 B* algorithm
-Berliner, Hans (1979). "The B* Tree Search Algorithm. A Best-First Proof Procedure.". Artificial Intelligence 12 (1): 23–40. doi:10.1016/0004-3702(79)90003-1
+Berliner, Hans (1979). "The B* Tree Search Algorithm. A Best-First Proof Procedure.". Artificial Intelligence 12 (1): 23-40. doi:10.1016/0004-3702(79)90003-1
 </text>
 
 
@@ -420,16 +435,158 @@ Berliner, Hans (1979). "The B* Tree Search Algorithm. A Best-First Proof Procedu
 <title>Minimum spanning trees</title>
 
 <text>
+A spanning tree of a graph <eqn>G=(V,E)</eqn> is a subset of <eqn>n-1</eqn> edges from <eqn>E</eqn> that connect all the vertices in <eqn>V</eqn> and, therefore, form a tree. In weighted graphs, where edges have numerical values associated to them, known as weights, a minimum spanning tree is a spanning tree whose sum of edge values is as small as possible. A tree is always the smallest connected graph in terms of its number of edges (and also the most vulnerable to single failures), while a MST is the cheapest connected graph in term of edge costs.
+</text>
+
+<text>
+The algorithms in this section can also be adapted to find maximum spanning trees (just negate the weights and the MST in the negated graph is the maximum spanning tree in the original graph), minimum product spanning trees (replace edge weights with their logarithms so that products are converted into sums), or minimum bottleneck spanning tree (i.e. a spanning tree that minimizes the maximum edge weight, by just employing Kruskal's algorithm). 
+</text>
+
+<text>
+However, other related problems cannot be solved using the efficient algorithms described in this section:
+- Steiner trees (when we can add intermediate vertices), NP-hard in general.
+- Low-degree spanning tree (i.e. the minimum spanning tree whose maximum node degree is smaller; in case it where a simple path, this problem would be equivalent to finding a Hamiltonian path = TSP, NP-complete)
+</text>
+
+<text>
+APPLICATIONS: 
+- Whenever we need to connect a set of nodes with minimum cost (e.g. transportation networks, communication networks, distribution networks...). 
+- Bottleneck spanning trees have applications when edge weights represent costs, capacities, or strengths
+- Clustering (e.g. hierarchical clustering)
+</text>
+
+
+<text>
+In unweighted graphs (or weighted graphs where all edges have the same cost), any tree is also a minimum spanning tree. Its cost will always be <eqn>n-1</eqn> times the cost of a single edge. In this case, a spanning tree can easily be found by performing any systematic graph traversal (e.g. DFS or BFS).
+</text>
+
+<text>
+In weighted graphs, efficient greedy algorithms exist than can be employed to identify minimum spanning trees...
+</text>
+
+
+<document>
+<tag>graph-spanning-trees-greedy</tag>
+<title>Greedy MST algorithms</title>
+
+
+<text>
 @ MIT Graphs - Shortest paths
 </text>
 
 <text>
-++ Minimum Spanning Trees: Kruskal &amp; Prim. Naive implementation <eqn>O(m^2)</eqn> for Kruskal's algorithm, <eqn>O(n^3)</eqn> for Prim's algorithm
+Greedy algorithms choose what to do next by selecting the best local candidate to be added to the solution and, when the optimality of the chosen heuristics can be proved, they provide efficient algorithms for solving problems such as finding the minimum spanning tree.
 </text>
 
 <text>
-++ Union-find data structure
+Candidates: edges/nodes...
 </text>
+
+
+<text>
+MSTs are unique when all m edge weights are distinct. The way ties are broken leads to different MSTs...
+</text>
+
+<document>
+<tag>graph-spanning-trees-greedy-prim</tag>
+<title>Prim's algorithm</title>
+
+<text>
+Starts from any node and adds one edge at a time until all the vertices are connected... heuristics: select the edge with the smallest weight that will enlarge the number of vertices in the tree
+</text>
+
+<text>
+No cycles are created since only edges between tree and non-tree nodes are added to the solution
+</text>
+
+<text>
+EFFICIENCY:
+<eqn>n</eqn> iterations through <eqn>m</eqn> edges = <eqn>O(mn)</eqn>
+</text>
+
+<text>
+PROOF? by contradiction
+</text>
+
+<text>
+Tree reconstruction: parent vector or dynamic structure...
+</text>
+
+</document>
+
+<document>
+<tag>graph-spanning-trees-greedy-kruskal</tag>
+<title>Kruskal's algorithm</title>
+
+<text>
+Instead of starting on any particular node and growing a tree, Kruskal's algorithm builds the minimum spanning tree by connecting sets of vertices...
+</text>
+
+<text>
+Initially: each vertex a separate component + Iteration: consider the least cost edge and test whether it connects two separate components (if its both endpoints are already in the same connected component, the edge is discarded, since it would create a cycle; if not, it is added to the MST and the components it connects are merged).
+</text>
+
+<text>
+Since each connected component is always a tree, we do not have to check for cycles
+</text>
+
+<text>
+EFFICIENCY:
+Sorting edges <eqn>O(m \log m)</eqn> + <eqn>m</eqn> iterations / testing connectivity by BFS/DFS <eqn>O(n)</eqn> = <eqn>O(mn)</eqn>
+</text>
+
+<text>
+PROOF? by contradiction
+</text>
+
+</document>
+
+</document>
+
+
+<document>
+<tag>graph-spanning-trees-sequential</tag>
+<title>Sequential implementation of MST algorithms</title>
+
+<text>
+Naive implementation:
+<eqn>O(mn)</eqn> for Kruskal's algorithm 
+<eqn>O(mn)</eqn> for Prim's algorithm 
+(i.e. <eqn>O(n^3)</eqn> for dense graphs, <eqn>O(n^2)</eqn> for sparse graphs)
+</text>
+
+<text>
+Prim's algorithm:
+1) Maintaining a boolean flag to indicate whether a vertex is already in the tree or not, we can test whether the current edge links to a non-tree vertex in constant time, leading to a <eqn>O(n^2)</eqn> algorithm (both for dense and sparse graphs).
+2) The use of priority queues can lead to a more efficient <eqn>O(m + n \log n)</eqn> implementation, by making it faster to find the minimum cost edge at each iteration.
+</text>
+
+<text>
+Kruskal's algorithm:
+1) Union-find data structure for implementing the component test in <eqn>O(\log n)</eqn> = <eqn>O(m \log m)</eqn> time (i.e. needed to sort the edges).
++ Typically faster than Prim's algorithm for sparse graphs
+</text>
+
+
+<text>
+Union-find data structure for representing set partitions (a partitioning of elements, say nodes, intro a collection of disjoint subsets):
+1) Union: Component merging in <eqn>O(\log n)</eqn>
+2) Find: Same component check in <eqn>O(\log n)</eqn>
+
+Solution: Represent each component as a backwards tree, with pointers from a node to its parent (choosing how to merge in order to limit the height of the trees and reduce the effect of unbalanced trees: the smaller tree will always be a subtree of the larger tree; why? height of the nodes in the larger tree stay the same, heights in the smaller tree are increased by one)
+
+Result: We must double the number of nodes to increase the height of the resulting tree, hence the <eqn>O(\log n)</eqn> result
+</text>
+
+<text>
+++ Union-find can be done even faster (Skiena, 385)
+</text>
+
+</document>
+
+<document>
+<tag>graph-spanning-trees-parallel</tag>
+<title>Parallel MST algorithms</title>
 
 <text>
 Parallel Prim's algorithm
@@ -438,9 +595,17 @@ Parallel Prim's algorithm
 + Bibliographic notes
 </text>
 
+</document>
+
+<document>
+<tag>graph-spanning-trees-distributed</tag>
+<title>Distributed MST algorithms</title>
+
 <text>
 Distributed MST algorithms @ MIT 6.852: Distributed Algorithms - Lecture 4 (synchronous) + Lecture 9 (asynchronous) / Section 4.4 + Section 15.5 <cite>Lynch 1997</cite>
 </text>
+
+</document>
 
 </document>
 
@@ -455,6 +620,19 @@ Distributed MST algorithms @ MIT 6.852: Distributed Algorithms - Lecture 4 (sync
 
 
 <text>
+When graphs are weighted, i.e. each edge in the graph is associated to a numerical value, computing their shortest paths is more complicated than performing breadth-first traversals (recall that the BFS tree leads to minimum-number-of-links paths)...
+</text>
+
+<note>
+<title>The Strategy design pattern</title>
+
+<text>
+++ The Strategy design pattern <cite>Gamma et al. 1994</cite>
+</text>
+</note>
+
+
+<text>
 @ MIT Graphs - Shortest paths
 </text>
 
@@ -466,9 +644,38 @@ Distributed MST algorithms @ MIT 6.852: Distributed Algorithms - Lecture 4 (sync
 <title>Single source shortest paths</title>
 
 <text>
-http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
-Dijkstra's algorithm: <eqn>O(m + n \log n)</eqn> using Fibonacci heaps
+APPLICATIONS: Finding directions... (note: hierarchical A*)
 </text>
+
+<text>
+Finding the shortest path from a source node <eqn>s</eqn> to every other node in the network...
+</text>
+
+<text>
+IDEA: Shortest path from s to t goes through x, then that path contains the shortest path from s to x
+</text>
+
+<text>
+Similar to Prim's algorithm... each iteration determines the shortest path from s to a new vertex x by minimizing d(s,v)+w(v,x)
+
+In Prim's algorithm, we just take into account the weighte of the edge we add to the MST; in Dijkstra's algorithm, we consider the cost of the whole path from s to x (i.e. the final edge weight plus the distance from s to the tree vertex that is adjacent to the new edge). Dijkstra's algorithm returns a shortest-path spanning tree from s to all the other nodes in the network.
+</text>
+
+<text>
+http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+Dijkstra's algorithm: 
+</text>
+
+<text>
+EFFICIENCY:
+- <eqn>O(n^2)</eqn> using a naive implementation
+- <eqn>O(m + n \log n)</eqn> using Fibonacci heaps
+</text>
+
+<text>
+CORRECTNESS: Only on graphs without negative edges!!!
+</text>
+
 
 <text>
 Parallelization of Dijkstra's algorithm
@@ -486,16 +693,51 @@ Parallelization of Dijkstra's algorithm
 <tag>graph-shortest-paths-all-pairs</tag>
 <title>All-pairs shortest paths</title>
 
+
+<text>
+Some problems requite computing the shortest paths between all pairs of nodes, e.g. the central node (i.e. the node that minimizes the longest or average distance to every other node) or the network diameter (i.e. the longest shortest-path distance between two nodes in the network). 
+</text>
+
+<text>
+APPLICATIONS: 
+- bounding the amount of time needed to deliver a packet through a network
+- transitive closure (reachable vertices can be computing using graph traversal algorithms, an all-pairs shortest path algorithms returns them all in a whole batch, albeit less efficiently).
+- pattern recognition problems, e.g. Viterbi algorithm, a dynamic programming algorithm that basically solves a shortest path problem on a DAG.
+</text>
+
+<text>
+A first solution: Repeating Dijkstra's algorithm for each node
+</text>
+
+<text>
++ Best on adjacency matrix (anyway we will need to store <eqn>n \times n</eqn> distances), i.e. one of the rare cases where algorithms on adjacency matrices work better
+</text>
+
+
 <text>
 http://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
-Bellman–Ford algorithm: <eqn>O(nm)</eqn> time, <eqn>O(n)</eqn> space
-
-http://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm
-Floyd–Warshall algorithm: <eqn>O(n^3)</eqn>
-
-http://en.wikipedia.org/wiki/Johnson%27s_algorithm
-Johnson's algorithm: <eqn>O(n^2 \log n + nm)</eqn> using <eqn>O(nm)</eqn> time for the Bellman–Ford stage of the algorithm, and <eqn>O(n \log n + m)</eqn> for each of <eqn>n</eqn> instantiations of Dijkstra's algorithm. Faster than the Floyd-Warshal algorithm for sparse graphs.
+Bellman-Ford algorithm: <eqn>O(nm)</eqn> time, <eqn>O(n)</eqn> space
 </text>
+
+
+<text>
+http://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm
+Floyd-Warshall algorithm: <eqn>O(n^3)</eqn>
+
+- Define the length of the shortest path from i to j using only the k first vertices as possible intermediate nodes: <eqn>W[i,j]^k</eqn>
+- Initial shortest-path matrix = adjacency matrix
+- <eqn>W[i,j]^k = min \{ W[i,j]^{k-1}, W[i,k]^{k-1} + W[k,j]^{k-1} \}</eqn>
+- Compact implementation: 3 nested loops
+- Ancillary matrix to reconstruct the paths
+</text>
+
+
+
+<text>
+http://en.wikipedia.org/wiki/Johnson%27s_algorithm
+Johnson's algorithm: <eqn>O(n^2 \log n + nm)</eqn> using <eqn>O(nm)</eqn> time for the Bellman-Ford stage of the algorithm, and <eqn>O(n \log n + m)</eqn> for each of <eqn>n</eqn> instantiations of Dijkstra's algorithm. Faster than the Floyd-Warshal algorithm for sparse graphs.
+</text>
+
 
 <text>
 Parallelization of Floyd's algorithm 
@@ -521,14 +763,103 @@ Distributed shortest paths @ MIT 6.852: Lectures 2-3 (synchronous) + Lectures 8-
 <tag>graph-flow</tag>
 <title>Network flows: Maximum flow and minimum cuts</title>
 
+<text>
+Interpreting weighted graphs as distribution networks where weights represent capacities
+</text>
+
+<text>
+Network flow problem: The maximum amount of flow that can be sent from s to t in a given graph.
+</text>
+
+
+
+<text>
+IDEA: <b>Augmenting paths</b>
+i.e. iteratively find a path of positive capacity from s to t and add it to the flow
+- As in a traffic jam, the flow is limited by the most congested point.
+- A flow through a network is optimal if and only if it contains no augmenting path.
+</text>
+
+<text>
+MECHANISM: Directed <b>residual flow graph</b> R(G,f), where G is the graph and f the current flow
+i.e. For each edge (i,j) in G with capacity c(i,j) and flow f(i,j), R can contain two edges
+- an edge (i,j) with weight c(i,j)-f(i,j) if c(i,j)>f(i,j)
+- an edge (j,i) with weight f(i,j)-c(i,j) if f(i,j)>0
+
+An edge (i,j) in the residual flow graph indicates that flow can still be pushed from i to j (its weight determines the amount of its unused capacity). 
+
+A path from s to t in the residual graph (and the minimum edge weight on this path) defines an augmenting path (and the amount of flow that can be pushed).
+</text>
+
+<text>
+- For each edge in the residual graph: keep track of the amount of flow currently going through the edge as well as any unused capacity (the residual capacity)
+- Initialization: create directed flow edges (i,j) and (j,i); initial flows set to 0; initial residual flows set to their capacity in the original graph.
+</text>
+
+<text>
+ITERATIVE ALGORITHM
+Ford-Fulkerson algorithm <cite>Ford and Fulkerson 1956</cite>
+http://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algorithm
+
+- Use the augmented path to update the residual graph (transfer the maximum possible volume from the residual capacity = the path edge with the smallest amount of residual capacity; NOTE: adding positive flow to (i,j) reduces the residual capacity of (i,j) but also increases the residual capacity of (j,i), i.e. augmenting a path requires updates to both forward and reverse links along the augmenting path ).
+- Terminate when no such augmenting path exists.
+</text>
+
+<text>
+IMPLEMENTATION (Edmonds-Karp algorithm <cite>Edmonds and Karp 1972</cite>):
+http://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm
+The algorithm is identical to the Ford–Fulkerson algorithm, except that the search order when finding the augmenting path is defined. The path found must be a shortest path that has available capacity
+
+- BFS to look for any path from the source to the sink that increases the total flow (only consider edges with residual capacity, i.e. positive residual flow)
+</text>
+
+<text>
+As described, even though the algorithm converges to the optimal solution, it may take arbitrarily long (each augmenting path might add only a little to the flow). <cite>Edmonds and Karp 1972</cite> proved that selecting the shortest unweighted path guarantees that <eqn>O(n^3)</eqn> augmentations suffice for optimization.
+
+<eqn>O(nm^2)</eqn> running time: each augmenting path can be found in <eqn>O(m)</eqn> time, every time at least one of the <eqn>m</eqn> edges becomes saturated, the distance from the saturated edge to the source along the augmenting path must be longer than last time it was saturated, and that length is at most <eqn>n</eqn>.
+
+Another property of this algorithm is that the length of the shortest augmenting path increases monotonically.
+</text>
 
 <text>
 @ MIT Graphs - Network flow
 </text>
 
+
+<document>
+<tag>graph-minimum-cuts</tag>
+<title>Minimum cuts</title>
+
+<text>
+A set of edges whose deletion separates s from t is called an s-t cut. Since no s-t flow can exceed the weight of the minimum s-t cut, finding the maximum flow is equivalent to discovering the minimum cut. In fact, the maximum s-t flow equals the weight of the minimum s-t cut.
+</text>
+
+<text>
+Therefore, flow algorithms can be used to solve edge and vertex connectivity problems...
+</text>
+
+</document>
+
 <document>
 <tag>graph-matching</tag>
 <title>An application: Matching problems</title>
+
+<text>
+A matching in a graph <eqn>G=(V,E)</eqn> is a subset of edges <eqn>E' \subset E</eqn> such that no two edges in <eqn>E'</eqn> share a vertex.
+</text>
+
+<text>
+Remember that a graph is bipartite (or two-colorable) if its vertices can be divided into two sets, L and R, so that every edge in the graph connects one vertex from the first set to a different vertex on the second set.
+</text>
+
+<text>
+APPLICATIONS:
+- Assignment problems (jobs to be done and people who can do them, male and female customers of a dating web site...)
+</text>
+
+<text>
+The largest possible bipartite matching can be found using network flow. Just add a source node s connected to every vertex in L with capacity 1, add a sink node t connected to every node in R, and assign each edge in the bipartite graph a capacity of 1. The maximum flow from s to t determines the largest matching in the bipartite graph.
+</text>
 
 <text>
 @ MIT Graphs - Matching
@@ -597,6 +928,15 @@ The following problems can be solved with algorithms that run in linear time (i.
 The following algorithms are almost linear, i.e. <eqn>O(n \log n)</eqn>:
 </text>
 
+<list>
+
+<item>Minimum spanning trees (using either Prim's or Kruskal's algorithm).</item>
+
+<item>Single source shortest paths (using Dijkstra's algorithm).</item>
+
+</list>
+
+
 <text>
 NOTE: When working with large data sets, only linear (<eqn>O(n)</eqn>) or near linear (e.g. <eqn>O(n \log n)</eqn>) are likely to be suitable.
 </text>
@@ -606,6 +946,17 @@ NOTE: When working with large data sets, only linear (<eqn>O(n)</eqn>) or near l
 The following algorithms require polynomial time:
 </text>
 
+<list>
+
+<item>All-pairs shortest paths (e.g. Floyd's algorithm).</item>
+
+<item>Transitive closure (i.e. all-pairs reachability) and reduction.</item>
+
+<item>Maximum network flow.</item>
+
+<item>Minimum cuts.</item>
+
+</list>
 
 <text>
 Hard problems (NP):
@@ -613,15 +964,17 @@ Hard problems (NP):
 
 <list>
 
-<item>Hamiltonian path / TSP</item>
+<item>Hamiltonian path / the traveling salesman problem (TSP)</item>
 
 <item>Eulerian path</item>
 
 <item>Isomorphism testing, i.e. checking whether the topological structure of two graphs are identical (typically solved using backtracking)</item>
 
-<item>[Minimum-size] vertex cover: A vertex cover is a subset of vertices <eqn>V' \in V</eqn> such that every edge in E contains at least one vertex from V'.</item>
+<item>(Minimum-size) vertex cover: A vertex cover is a subset of vertices <eqn>V' \in V</eqn> such that every edge in E contains at least one vertex from V'.</item>
 
-<item>[Maximum-size] Independent set: An independent set is a set of vertices U such that no edge in E is incident on two vertices of U.</item>
+<item>(Maximum-size) Independent set: An independent set is a set of vertices U such that no edge in E is incident on two vertices of U.</item>
+
+<item>Steiner trees</item>
 
 </list>
 
@@ -665,12 +1018,61 @@ Inline image:
 <cite>Grama et al. 2003</cite> includes a chapter on parallel graph algorithms.
 </text>
 
+<text>
+Network flow; monographs <cite>Ahuja et al. 1993</cite> <cite>Ford and Fulkerson 1962</cite>; surveys <cite>Goldberg et al. 1990</cite> <cite>Schrijver 2002</cite>; original algorithms <cite> Ford and Fulkerson 1956</cite> <cite>Edmonds and Karp 1972</cite>
+</text>
+
 </document>
 
 
 <document>
 <tag>graph-algorithms-references</tag>
 <title>References</title>
+
+<reference id="Ahuja et al. 1993">
+ <author>Ravindra K. Ahuja</author>
+ <author>Thomas L. Magnanti</author>
+ <author>James B. Orlin</author>
+ <title>Network Flows: Theory, Algorithms, and Applications</title>
+ <publisher>Prentice Hall</publisher>
+ <year>1993</year>
+ <isbn>013617549X</isbn>
+ <file>[books]/algorithms/graphs/013617549X [Ahuja] Network Flows.1993.zip</file>
+</reference>
+
+<reference id="Edmonds and Karp 1972">
+ <author>Jack Edmonds</author>
+ <author>Richard M. Karp</author>
+ <title>Theoretical improvements in algorithmic efficiency for network flow problems</title>
+ <journal>Journal of the ACM</journal>
+ <volume>19</volume>
+ <number>2</number>
+ <pages>248-264</pages>
+ <year>1972</year>
+ <doi>10.1145/321694.321699</doi>
+ <file>Networks/algorithms/flow/1972 JACM [Edmonds &amp; Karp] Network flow.pdf</file>
+</reference>
+
+<reference id="Ford and Fulkerson 1956">
+ <author>Lester Randolph Ford, Jr.</author>
+ <author>Delbert Ray Fulkerson</author>
+ <title>Maximal flow through a network</title>
+ <journal>Canadian Journal of Mathematics</journal>
+ <volume>8</volume>
+ <pages>399-404</pages>
+ <year>1956</year>
+ <file>Networks/algorithms/flow/1956 CJM [Ford &amp; Fulkerson] Maximal flow.pdf</file>
+</reference>
+
+<reference id="Ford and Fulkerson 1962">
+ <author>Lester Randolph Ford, Jr.</author>
+ <author>Delbert Ray Fulkerson</author>
+ <title>Flows in Networks</title>
+ <publisher>Princeton University Press</publisher>
+ <year>1962</year>
+ <isbn>0691079625</isbn>
+ <file>[books]/algorithms/graphs/0691079625 [Ford &amp; Fulkerson] Flows in Networks.1962.djvu</file>
+</reference>
 
 
 <reference id="Gamma et al. 1994">
@@ -683,6 +1085,19 @@ Inline image:
  <year>1994</year>
  <isbn>0201633612</isbn>
  <file>[books]/design/patterns/0201633612 [GoF] Design Patterns.chm</file>
+</reference>
+
+
+<reference id="Goldberg et al. 1990">
+ <author>Andrew V. Goldberg</author>
+ <author>Eva Tardos</author>
+ <author>Robert E. Tarjan</author>
+ <title>Network Flow Algorithms</title>
+ <booktitle>Algorithms and Combinatorics 9</booktitle>
+ <publisher>Springer-Verlag</publisher>
+ <year>1990</year>
+ <isbn>0387526854</isbn>
+ <file>Networks/algorithms/flow/1990 AC Network Flow Algorithms.pdf</file>
 </reference>
 
 
@@ -716,6 +1131,18 @@ Inline image:
  <year>1997</year>
  <isbn>1558603484</isbn>
  <file>[books]/algorithms/1558603484 [Lynch] Distributed Algorithms.pdf</file>
+</reference>
+
+<reference id="Schrijver 2002">
+ <author>Alexander Schrijver</author>
+ <title>On the history of the transportation and maximum flow problems</title>
+ <journal>Mathematical Programming</journal>
+ <volume>91</volume>
+ <number>3</number>
+ <pages>437-445</pages>
+ <year>2002</year>
+ <doi>10.1007/s101070100259</doi>
+ <file>Networks/algorithms/flow/2002 MP Transportation and network flow.pdf</file>
 </reference>
 
 <reference id="Skiena 2008">

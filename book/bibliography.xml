@@ -1361,7 +1361,7 @@
  <journal>Journal of the Royal Society Interface</journal>
  <volume>6</volume>
  <number>33</number>
- <pages>411–414</pages>
+ <pages>411-414</pages>
  <year>2009</year>
  <doi>10.1098/rsif.2008.0484</doi>
  <file>Networks/structure/metrics/2009 JRSInterface [Crofts &amp; Higham] Weighted communicability.pdf</file>
@@ -1483,7 +1483,7 @@
  <journal>Reviews of Modern Physics</journal>
  <volume>80</volume>
  <number>4</number>
- <pages>1275–1335</pages>
+ <pages>1275-1335</pages>
  <year>2008</year>
  <doi>10.1103/RevModPhys.80.1275</doi>
  <file>Networks/structure/2008 RevModPhys [Dogorovtsev] Critical phenomena in complex networks.pdf</file>
@@ -1560,6 +1560,19 @@
  </comment>
 </reference>
 
+
+<reference id="Edmonds and Karp 1972">
+ <author>Jack Edmonds</author>
+ <author>Richard M. Karp</author>
+ <title>Theoretical improvements in algorithmic efficiency for network flow problems</title>
+ <journal>Journal of the ACM</journal>
+ <volume>19</volume>
+ <number>2</number>
+ <pages>248-264</pages>
+ <year>1972</year>
+ <doi>10.1145/321694.321699</doi>
+ <file>Networks/algorithms/flow/1972 JACM [Edmonds &amp; Karp] Network flow.pdf</file>
+</reference>
 
 
 <reference id="Erdos and Renyi 1959">
@@ -1742,6 +1755,18 @@
  Focus on social insects as model research systems for exploring how individual behavior is integrated to yield complex, adaptive behavior at the group (colony) level. Their talks cover recent advances in exploring how the behavior of complex systems results from interactions among simple parts. They also look at how we can use network models to understand a wide range of complex systems that impact our daily lives.
  </text>
  </comment>
+</reference>
+
+
+<reference id="Ford and Fulkerson 1956">
+ <author>Lester Randolph Ford, Jr.</author>
+ <author>Delbert Ray Fulkerson</author>
+ <title>Maximal flow through a network</title>
+ <journal>Canadian Journal of Mathematics</journal>
+ <volume>8</volume>
+ <pages>399-404</pages>
+ <year>1956</year>
+ <file>Networks/algorithms/flow/1956 CJM [Ford &amp; Fulkerson] Maximal flow.pdf</file>
 </reference>
 
 

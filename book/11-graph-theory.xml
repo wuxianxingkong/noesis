@@ -47,7 +47,7 @@ Examples: road networks (lanes in both directions) are undirected vs. street net
 <text>
 ++ Binary vs. weighted graphs: binary graphs for dichotomous links (ties are either present or absent for each pair of nodes), weighted graphs for valued links (that indicate the strength, intensity, or frequency of the tie between each pair of actors). Binary graphs, also known as unweighted graphs...
 
-- Each edge is assigned a numerical value or weigth; e.g. road network (length, time, speed-limit...)
+- Each edge is assigned a numerical value or weigth; e.g. road network (length, traversal time, construction cost, speed limit...)
 </text>
 
 

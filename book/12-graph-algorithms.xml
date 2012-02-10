@@ -558,6 +558,7 @@ Naive implementation:
 <text>
 Prim's algorithm:
 1) Maintaining a boolean flag to indicate whether a vertex is already in the tree or not, we can test whether the current edge links to a non-tree vertex in constant time, leading to a <eqn>O(n^2)</eqn> algorithm (both for dense and sparse graphs).
+2) Optimization: <eqn>O(n \log k)</eqn> on graphs that have only <eqn>k</eqn> different edge costs.
 2) The use of priority queues can lead to a more efficient <eqn>O(m + n \log n)</eqn> implementation, by making it faster to find the minimum cost edge at each iteration.
 </text>
 
@@ -651,6 +652,7 @@ APPLICATIONS: Finding directions... (note: hierarchical A*)
 Finding the shortest path from a source node <eqn>s</eqn> to every other node in the network...
 </text>
 
+
 <text>
 IDEA: Shortest path from s to t goes through x, then that path contains the shortest path from s to x
 </text>
@@ -670,6 +672,10 @@ Dijkstra's algorithm:
 EFFICIENCY:
 - <eqn>O(n^2)</eqn> using a naive implementation
 - <eqn>O(m + n \log n)</eqn> using Fibonacci heaps
+</text>
+
+<text>
+Related problem: Single-destination shortest path problem for directed graphs.
 </text>
 
 <text>
@@ -803,6 +809,8 @@ http://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algorithm
 
 - Use the augmented path to update the residual graph (transfer the maximum possible volume from the residual capacity = the path edge with the smallest amount of residual capacity; NOTE: adding positive flow to (i,j) reduces the residual capacity of (i,j) but also increases the residual capacity of (j,i), i.e. augmenting a path requires updates to both forward and reverse links along the augmenting path ).
 - Terminate when no such augmenting path exists.
+
+As described, even though the algorithm converges to the optimal solution, it may take arbitrarily long (each augmenting path might add only a little to the flow).
 </text>
 
 <text>
@@ -814,7 +822,7 @@ The algorithm is identical to the Ford–Fulkerson algorithm, except that the sear
 </text>
 
 <text>
-As described, even though the algorithm converges to the optimal solution, it may take arbitrarily long (each augmenting path might add only a little to the flow). <cite>Edmonds and Karp 1972</cite> proved that selecting the shortest unweighted path guarantees that <eqn>O(n^3)</eqn> augmentations suffice for optimization.
+ <cite>Edmonds and Karp 1972</cite> proved that selecting the shortest unweighted augmenting path (a.k.a. shortest geodesic path) guarantees that <eqn>O(n^3)</eqn> augmentations suffice for optimization.
 
 <eqn>O(nm^2)</eqn> running time: each augmenting path can be found in <eqn>O(m)</eqn> time, every time at least one of the <eqn>m</eqn> edges becomes saturated, the distance from the saturated edge to the source along the augmenting path must be longer than last time it was saturated, and that length is at most <eqn>n</eqn>.
 
@@ -920,6 +928,11 @@ The following problems can be solved with algorithms that run in linear time (i.
 
 <item>Topological sorting (based on DFS).</item>
 
+<item>Single-source shortest paths on DAGs, even with negative weights.</item>
+
+<item>Maximum matching in a tree.</item>
+
+
 </list>
 
 
@@ -932,7 +945,7 @@ The following algorithms are almost linear, i.e. <eqn>O(n \log n)</eqn>:
 
 <item>Minimum spanning trees (using either Prim's or Kruskal's algorithm).</item>
 
-<item>Single source shortest paths (using Dijkstra's algorithm).</item>
+<item>Single-source shortest paths (using Dijkstra's algorithm), only for positive weights.</item>
 
 </list>
 
@@ -952,9 +965,15 @@ The following algorithms require polynomial time:
 
 <item>Transitive closure (i.e. all-pairs reachability) and reduction.</item>
 
+<item>Finding a directed cycle of minimum total weight, <eqn>O(n^3)</eqn>.</item>
+
 <item>Maximum network flow.</item>
 
 <item>Minimum cuts.</item>
+
+<item>Maximum bipartite matching.</item>
+
+<item>Minimum-size edge cover (i.e. a set of edges, of minimum size, such that each vertex in the graph is incident to at least one edge from the set).</item>
 
 </list>
 
@@ -970,9 +989,9 @@ Hard problems (NP):
 
 <item>Isomorphism testing, i.e. checking whether the topological structure of two graphs are identical (typically solved using backtracking)</item>
 
-<item>(Minimum-size) vertex cover: A vertex cover is a subset of vertices <eqn>V' \in V</eqn> such that every edge in E contains at least one vertex from V'.</item>
+<item>Minimum-size vertex cover: A vertex cover is a subset of vertices <eqn>V' \in V</eqn> such that every edge in E contains at least one vertex from V'.</item>
 
-<item>(Maximum-size) Independent set: An independent set is a set of vertices U such that no edge in E is incident on two vertices of U.</item>
+<item>Maximum-size independent set: An independent set is a set of vertices U such that no edge in E is incident on two vertices of U.</item>
 
 <item>Steiner trees</item>
 

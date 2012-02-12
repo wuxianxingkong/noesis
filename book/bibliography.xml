@@ -134,6 +134,18 @@
 </reference>
 
 
+
+<reference id="Aho et al. 1974">
+ <author>Alfred V. Aho</author>
+ <author>John E. Hopcroft</author>
+ <author>Jeffrey D. Ullman</author>
+ <title>The Design and Analysis of Computer Algorithms</title>
+ <publisher>Addison-Wesley</publisher>
+ <year>1974</year>
+ <isbn>0201000296</isbn>
+</reference>
+
+
 <reference id="Aho et al. 1983">
  <author>Alfred V. Aho</author>
  <author>John E. Hopcroft</author>
@@ -313,6 +325,37 @@
  <comment>
   <text>TBD</text>
  </comment>
+</reference>
+
+
+
+<reference id="Babai et al. 1982">
+ <author>László Babai</author>
+ <author>D. Yu. Grigoryev</author>
+ <author>David M. Mount</author>
+ <title>Isomorphism of graphs with bounded eigenvalue multiplicity</title>
+ <proceedings>14th Annual ACM Symposium on the Theory of Computing</proceedings>
+ <conference>STOC</conference>
+ <location>San Francisco, California</location>
+ <year>1982</year>
+ <isbn>0-89791-070-2</isbn>
+ <pages>310-324</pages>
+ <doi>10.1145/800070.802206</doi>
+ <file>Networks/algorithms/graphs/isomorphism/1982 STOC Isomorphism of graphs of bounded eigenvalue multiplicity.pdf</file>
+</reference>
+
+<reference id="Babai and Luks 1983">
+ <author>László Babai</author>
+ <author>Eugene M. Luks</author>
+ <title>Canonical labeling of graphs</title>
+ <proceedings>15th Annual ACM Symposium on the Theory of Computing</proceedings>
+ <conference>STOC</conference>
+ <location>Boston, Massachusetts</location>
+ <year>1983</year>
+ <isbn>0-89791-099-0</isbn>
+ <pages>171-183</pages>
+ <doi>10.1145/800061.808746</doi>
+ <file>Networks/algorithms/graphs/isomorphism/1983 STOC [Babai &amp; Luks] Canonical labeling.pdf</file>
 </reference>
 
 
@@ -521,6 +564,20 @@
 </reference>
 
 
+<reference id="Beigel and Eppstein 2005">
+ <author>Richard Beigel</author>
+ <author>David Eppstein</author>
+ <title>3-coloring in time O(1.3289^n)</title>
+ <journal>Journal of Algorithms</journal>
+ <volume>54</volume>
+ <number>2</number>
+ <pages>168-204</pages>
+ <year>2005</year>
+ <doi>10.1016/j.jalgor.2004.06.008</doi>
+ <file>Networks/algorithms/graphs/np/2005 JA 3-coloring.pdf</file>
+</reference>
+
+
 <reference id="Beinhocker 2006">
  <author>Eric D. Beinhocker</author>
  <title>The Origin of Wealth: Evolution, Complexity, and the Radical Remaking of Economics</title>
@@ -548,6 +605,19 @@
 </reference>
 
 
+<reference id="Berliner 1979">
+ <author>Hans Berliner</author>
+ <title>The B* Tree Search Algorithm: A Best-First Proof Procedure</title>
+ <journal>Artificial Intelligence</journal>
+ <volume>12</volume>
+ <number>1</number>
+ <pages>23-40</pages>
+ <year>1979</year>
+ <doi>10.1016/0004-3702(79)90003-1</doi>
+ <file>Networks/algorithms/graphs/search/1979 AI Bstar.pdf</file>
+</reference>
+
+
 <reference id="Bertsekas 1998">
  <author>Dimitri P. Bertsekas</author>
  <title>Network Optimization: Continuous and Discrete Models</title>
@@ -560,6 +630,20 @@
  </comment>
 </reference>
 
+
+<reference id="Beyer et al. 1979">
+ <author>T. Beyer</author>
+ <author>W. Jones</author>
+ <author>S. Mitchell</author>
+ <title>Linear algorithms for isomorphism of maximal outerplanar graphs</title>
+ <journal>Journal of the ACM</journal>
+ <volume>26</volume>
+ <number>4</number>
+ <pages>603-610</pages>
+ <year>1979</year>
+ <doi>10.1145/322154.322155</doi>
+ <file>Networks/algorithms/graphs/isomorphism/1979 JACM Outerplanar graph isomorphism.pdf</file>
+</reference>
 
 
 
@@ -595,6 +679,22 @@
  <isbn>1-59593-397-2</isbn>
  <doi>10.1145/1137983.1138033</doi>
  <file>Networks/applications/communication/email/2006 MSR Mining email social networks in Postgres.pdf</file>
+</reference>
+
+
+
+<reference id="Bjorklund et al. 2009">
+ <author>Andreas Björklund</author>
+ <author>Thore Husfeldt</author>
+ <author>Mikko Koivisto</author>
+ <title>Set partitioning via inclusion-exclusion</title>
+ <journal>SIAM Journal on Computing</journal>
+ <volume>39</volume>
+ <number>2</number>
+ <pages>546-563</pages>
+ <year>2009</year>
+ <doi>10.1137/070683933</doi>
+ <file>Networks/algorithms/graphs/np/2009 SIAM JC Set partitioning via inclusion-exclusion.pdf</file>
 </reference>
 
 
@@ -692,6 +792,17 @@
 </reference>
 
 
+<reference id="Bodlaender 1990">
+ <author>Hans Bodlaender</author>
+ <title>Polynomial algorithms for graph isomorphism and chromatic index on partial k-trees</title>
+ <journal>Journal of Algorithms</journal>
+ <volume>11</volume>
+ <number>4</number>
+ <pages>631-643</pages>
+ <year>1990</year>
+ <doi>10.1016/0196-6774(90)90013-5</doi>
+ <file>Networks/algorithms/graphs/isomorphism/1990 JA Isomorphism on partial k-trees.pdf</file>
+</reference>
 
 <reference id="Boguna et al. 2004">
  <author>Marián Boguñá</author>
@@ -988,6 +1099,19 @@
 
 
 
+<reference id="Byskov 2004">
+ <author>Jesper Makholm Byskov</author>
+ <title>Enumerating maximal independent sets with applications to graph colouring</title>
+ <journal>Operations Research Letters</journal>
+ <volume>32</volume>
+ <number>6</number>
+ <pages>547-556</pages>
+ <year>2004</year>
+ <doi>10.1016/j.orl.2004.03.002</doi>
+ <file>Networks/algorithms/graphs/np/2004 ORL Graph colouring.pdf</file>
+</reference>
+
+
 <reference id="Caldarelli et al. 2004">
  <author>Guido Caldarelli</author>
  <author>Romualdo Pastor-Satorras</author>
@@ -1133,6 +1257,19 @@
  <file>Networks/models/small-world/2007 JPA Watts-Strogatz network model with degree distribution.pdf</file>
 </reference>
 
+
+<reference id="Cheriyan and Mehlhorn 1996">
+ <author>J. Cheriyan</author>
+ <author>K. Mehlhorn</author>
+ <title>Algorithms for dense graphs and networks on the random access computer</title>
+ <journal>Algorithmica</journal>
+ <volume>15</volume>
+ <number>6</number>
+ <pages>521-549</pages>
+ <year>1996</year>
+ <doi>10.1007/BF01940880</doi>
+ <file>Networks/algorithms/graphs/connectedness/1996 Algorithmica [Cheriyan &amp; Mehlhorn] Dense graphs and networks.pdf</file>
+</reference>
 
 
 <reference id="Christakis and Fowler 2007">
@@ -1283,6 +1420,21 @@
 </reference>
 
 
+<reference id="Cong and Bader 2005">
+ <author>Guojing Cong</author>
+ <author>David A. Bader</author>
+ <title>An experimental study of parallel biconnected components algorithms on symmetric multiprocessors (SMPs)</title>
+ <proceedings>19th IEEE International Conference on Parallel and Distributed Processing Symposium</proceedings>
+ <conference>IPDPS</conference>
+ <location>Denver, Colorado</location>
+ <year>2005</year>
+ <isbn>0-7695-2312-9</isbn>
+ <pages>45b</pages>
+ <doi>10.1109/IPDPS.2005.100</doi>
+ <file>Networks/algorithms/graphs/connectedness/2005 IPDPS [Cong &amp; Bader] Parallel biconnected algorithms.pdf</file>
+</reference>
+
+
 <reference id="Cook and Holder 2007">
  <editor>Diane J. Cook</editor>
  <editor>Lawrence B. Holder</editor>
@@ -1309,6 +1461,20 @@
  <comment>
   <text>TBD</text>
  </comment>
+</reference>
+
+
+<reference id="Corneil and Gotlieb 1970">
+ <author>Derek G. Corneil</author>
+ <author>Calvin C. Gotlieb</author>
+ <title>An efficient algorithm for graph isomorphism</title>
+ <journal>Journal of the ACM</journal>
+ <volume>17</volume>
+ <number>1</number>
+ <pages>51-64</pages>
+ <year>1970</year>
+ <doi>10.1145/321556.321562</doi>
+ <file>Networks/algorithms/graphs/isomorphism/1970 JACM Graph isomorphism.pdf</file>
 </reference>
 
 
@@ -1758,6 +1924,21 @@
 </reference>
 
 
+<reference id="Filotti and Mayer 1980">
+ <author>I.S. Filotti</author>
+ <author>Jack N. Mayer</author>
+ <title>A polynomial-time algorithm for determining the isomorphism of graphs of fixed genus</title>
+ <proceedings>12th Annual ACM Symposium on the Theory of Computing</proceedings>
+ <conference>STOC</conference>
+ <location>Los Angeles, California</location>
+ <year>1980</year>
+ <isbn>0-89791-017-6</isbn>
+ <pages>236-243</pages>
+ <doi>10.1145/800141.804671</doi>
+ <file>Networks/algorithms/graphs/isomorphism/1980 STOC Isomorphism testing for graphs of fixed genus.pdf</file>
+</reference>
+
+
 <reference id="Ford and Fulkerson 1956">
  <author>Lester Randolph Ford, Jr.</author>
  <author>Delbert Ray Fulkerson</author>
@@ -1897,6 +2078,32 @@
 </reference>
 
 
+<reference id="Gabow 2003">
+ <author>Harold N. Gabow</author>
+ <title>Searching (10.1)</title>
+ <booktitle>Handbook of Graph Theory (Discrete Mathematics and its Applications, 25)</booktitle>
+ <publisher>CRC Press</publisher>
+ <year>2003</year>
+ <pages>953-984</pages>
+ <isbn>1584880902</isbn>
+ <file>[books]/algorithms/graphs/1584880902 [Gross &amp; Yellen] Handbook of Graph Theory - Discrete Mathematics and Its Applications.pdf</file>
+</reference>
+
+<reference id="Galil et al. 1987">
+ <author>Zvi Galil</author>
+ <author>Christoph M. Hoffmann</author>
+ <author>Eugene M. Luks</author>
+ <author>Claus P. Schnorr</author>
+ <author>Andreas Weber</author>
+ <title>An O(n^3 log n) deterministic and an O(n^3) Las Vegas isomorphism test for trivalent graphs</title>
+ <journal>Journal of the ACM</journal>
+ <volume>34</volume>
+ <number>3</number>
+ <pages>513-531</pages>
+ <year>1987</year>
+ <doi>10.1145/28869.28870</doi>
+ <file>Networks/algorithms/graphs/isomorphism/1987 JACM Trivalent graph isomorphism.pdf</file>
+</reference>
 
 <reference id="Gamma et al. 1994">
  <author>Erich Gamma</author>
@@ -2175,6 +2382,18 @@
 
 
 
+<reference id="Hadlock 1975">
+ <author>Frank Hadlock</author>
+ <title>Finding a maximum cut of a planar graph in polynomial time</title>
+ <journal>SIAM Journal on Computing</journal>
+ <volume>4</volume>
+ <number>3</number>
+ <pages>221-225</pages>
+ <year>1975</year>
+ <doi>10.1137/0204019</doi>
+</reference>
+
+
 <reference id="Han and Kamber 2006">
  <author>Jiawei Han</author>
  <author>Micheline Kamber</author>
@@ -2226,6 +2445,34 @@
  </comment>
 </reference>
 
+
+<reference id="Hart et al. 1968">
+ <author>Peter E. Hart</author>
+ <author>Nils J. Nilsson</author>
+ <author>Bertram Raphael</author>
+ <title>A formal basis for the heuristic determination of minimum-cost paths</title>
+ <journal>IEEE Transactions on Systems Science and Cybernetics</journal>
+ <volume>4</volume>
+ <number>2</number>
+ <pages>100-107</pages>
+ <year>1968</year>
+ <doi>10.1109/TSSC.1968.300136</doi>
+ <file>Networks/algorithms/graphs/search/1968 TSSC Astar.pdf</file>
+</reference>
+
+
+<reference id="Hart et al. 1972">
+ <author>Peter E. Hart</author>
+ <author>Nils J. Nilsson</author>
+ <author>Bertram Raphael</author>
+ <title>Correction to 'A formal basis for the heuristic determination of minimum-cost paths'</title>
+ <journal>SIGART Newsletter</journal>
+ <volume>37</volume>
+ <pages>28-29</pages>
+ <year>1972</year>
+ <doi>10.1145/1056777.1056779</doi>
+ <file>Networks/algorithms/graphs/search/1972 SIGART Correction to Astar.pdf</file>
+</reference>
 
 
 <reference id="Heer and Boyd 2005">
@@ -2283,6 +2530,35 @@
  <year>2004</year>
  <doi>10.1016/j.socnet.2004.01.007</doi>
  <file>Networks/applications/www/2004 SN Internet dating community.pdf</file>
+</reference>
+
+
+
+<reference id="Hopcroft and Tarjan 1973">
+ <author>John Hopcroft</author>
+ <author>Robert E. Tarjan</author>
+ <title>Efficient algorithms for graph manipulations</title>
+ <journal>Communications of the ACM</journal>
+ <volume>16</volume>
+ <number>6</number>
+ <pages>372-378</pages>
+ <year>1973</year>
+ <doi>10.1145/362248.362272</doi>
+ <file>Networks/algorithms/graphs/connectedness/1973 CACM [Hopcroft &amp; Tarjan] Graph manipulation.pdf</file>
+</reference>
+
+
+<reference id="Hopcroft and Wong 1974">
+ <author>John E. Hopcroft</author>
+ <author>Eugene M. Luks</author>
+ <title>Linear time algorithm for isomorphism of planar graphs</title>
+ <proceedings>6th Annual ACM Symposium on the Theory of Computing</proceedings>
+ <conference>STOC</conference>
+ <location>Seattle, Washington</location>
+ <year>1974</year>
+ <pages>172-184</pages>
+ <doi>10.1145/800119.803896</doi>
+ <file>Networks/algorithms/graphs/isomorphism/1974 STOC Linear algorithm for planar graph isomorphism.pdf</file>
 </reference>
 
 
@@ -2378,6 +2654,19 @@
  <comment>
   <text>Textbook on graph theory.</text>
  </comment>
+</reference>
+
+
+<reference id="Kahn 1962">
+ <author>A.B. Kahn</author>
+ <title>Topological sorting of large networks</title>
+ <journal>Communications of the ACM</journal>
+ <volume>5</volume>
+ <number>11</number>
+ <pages>558-562</pages>
+ <year>1962</year>
+ <doi>10.1145/368996.369025</doi>
+ <file>Networks/algorithms/graphs/1962 CACM [Kahn] Topological sorting.pdf</file>
 </reference>
 
 
@@ -2515,6 +2804,19 @@
  <file>Networks/structure/metrics/1953 Psychometrika [Katz] Status index.pdf</file>
 </reference>
 
+
+
+<reference id="Kelly 1957">
+ <author>Paul J. Kelly</author>
+ <title>A congruence theorem for trees</title>
+ <journal>Pacific Journal of Mathematics</journal>
+ <volume>7</volume>
+ <number>1</number>
+ <pages>961-968</pages>
+ <year>1957</year>
+ <url>http://projecteuclid.org/euclid.pjm/1103043674</url>
+ <file>Networks/algorithms/graphs/isomorphism/1957 PJM [Kelly] Congruence theorem for trees.pdf</file>
+</reference>
 
 <reference id="Kim et al. 2004">
  <author>D.-H. Kim</author>
@@ -2727,6 +3029,18 @@
  <file>Networks/structure/metrics/2001 PhysRevLett [Latora] Efficiency.pdf</file>
 </reference>
 
+
+<reference id="Lawler 1976">
+ <author>E.L. Lawler</author>
+ <title>A note on the complexity of the chromatic number problem</title>
+ <journal>Information Processing Letters</journal>
+ <volume>5</volume>
+ <number>3</number>
+ <pages>66-67</pages>
+ <year>1976</year>
+ <doi>10.1016/0020-0190(76)90065-X</doi>
+ <file>Networks/algorithms/graphs/np/1976 IPL [Lawler] Chromatic number problem.pdf</file>
+</reference>
 
 <reference id="Leskovek et al. 2005">
  <author>Jure Leskovec</author>
@@ -2994,6 +3308,60 @@
 </reference>
 
 
+<reference id="Lueker and Booth 1979">
+ <author>George S. Lueker</author>
+ <author>Kellogg S.Booth</author>
+ <title>A linear time algorithm for deciding interval graph isomorphism</title>
+ <journal>Journal of the ACM</journal>
+ <volume>26</volume>
+ <number>2</number>
+ <pages>183-195</pages>
+ <year>1979</year>
+ <doi>10.1145/322123.322125</doi>
+ <file>Networks/algorithms/graphs/isomorphism/1979 JACM Interval graph isomorphism.pdf</file>
+</reference>
+
+
+<reference id="Lueker and Booth 1981">
+ <author>Charles J. Colbourn</author>
+ <title>On testing isomorphism of permutation graphs</title>
+ <journal>Networks</journal>
+ <volume>11</volume>
+ <number>1</number>
+ <pages>13-21</pages>
+ <year>1981</year>
+ <doi>10.1002/net.3230110103</doi>
+ <!--<file>Networks/algorithms/graphs/isomorphism/1981 Networks...</file>-->
+</reference>
+
+
+<reference id="Luks 1982">
+ <author>Eugene M. Luks</author>
+ <title>Isomorphism of graphs of bounded valence can be tested in polynomial time</title>
+ <journal>Journal of Computer and System Sciences</journal>
+ <volume>25</volume>
+ <number>1</number>
+ <pages>42-65</pages>
+ <year>1982</year>
+ <doi>10.1016/0022-0000(82)90009-5</doi>
+ <file>Networks/algorithms/graphs/isomorphism/1982 JCSS [Luks] Isomorphism of graphs of bounded valence.pdf</file>
+</reference>
+
+
+<reference id="Luks 1986">
+ <author>Eugene M. Luks</author>
+ <title>Parallel algorithms for permutation groups and graph isomorphism</title>
+ <proceedings>27th Annual IEEE Symposium on Foundations of Computer Science</proceedings>
+ <conference>SFCS</conference>
+ <location>Toronto, Ontario, Canada</location>
+ <year>1986</year>
+ <isbn>0-8186-0740-8</isbn>
+ <pages>292-302</pages>
+ <doi>10.1109/SFCS.1986.39</doi>
+ <file>Networks/algorithms/graphs/isomorphism/1986 SFCS Isomorphism of colored graphs with bounded color multiplicity.pdf</file>
+</reference>
+
+
 <reference id="Lynch 1997">
  <author>Nancy A. Lynch</author>
  <title>Distributed Algorithms</title>
@@ -3094,6 +3462,19 @@
 </reference>
 
 
+<reference id="McKay 1981">
+ <author>Brendan D. McKay</author>
+ <title>Practical graph isomorphism</title>
+ <proceedings>10th Manitoba Conference on Numerical Mathematics and Computing</proceedings>
+ <booktitle>Congressus Numerantium 30</booktitle>
+ <location>Winnipeg, Canada</location>
+ <year>1980</year>
+ <pages>45-87</pages>
+ <year>1981</year>
+ <file>Networks/algorithms/graphs/isomorphism/1981 CN [McKay] Practical Graph Isomorphism.pdf</file>
+ <url>http://cs.anu.edu.au/~bdm/papers/pgi.pdf</url>
+</reference>
+
 
 <reference id="Memon and Alhajj 2010">
  <editor>Nasrullah Memon</editor>
@@ -3138,6 +3519,46 @@
  <file>Networks/software/2005 WS Flink.pdf</file>
 </reference>
 
+
+<reference id="Miller 1980">
+ <author>Gary L. Miller</author>
+ <title>Isomorphism testing for graphs of bounded genus</title>
+ <proceedings>12th Annual ACM Symposium on the Theory of Computing</proceedings>
+ <conference>STOC</conference>
+ <location>Los Angeles, California</location>
+ <year>1980</year>
+ <isbn>0-89791-017-6</isbn>
+ <pages>225-235</pages>
+ <doi>10.1145/800141.804670</doi>
+ <file>Networks/algorithms/graphs/isomorphism/1980 STOC Isomorphism testing for graphs of bounded genus.pdf</file>
+</reference>
+
+<reference id="Miller 1983a">
+ <author>Gary L. Miller</author>
+ <title>Isomorphism testing and canonical forms for k-contractable graphs (A generalization of bounded valence and bounded genus)</title>
+ <proceedings>International Conference on Foundations of Computer Theory</proceedings>
+ <conference>FCT</conference>
+ <location>Borgholm, Sweden</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>158</volume>
+ <year>1983</year>
+ <isbn>3-540-12689-9</isbn>
+ <pages>310-327</pages>
+ <doi>10.1145/800070.802206</doi>
+ <file>Networks/algorithms/graphs/isomorphism/1983 FCT Isomorphism of k-contractable graphs.pdf</file>
+</reference>
+
+<reference id="Miller 1983b">
+ <author>Gary L. Miller</author>
+ <title>Isomorphism of k-Contractible Graphs. A Generalization of Bounded Valence and Bounded Genus</title>
+ <journal>Information and Control</journal>
+ <volume>56</volume>
+ <number>1/2</number>
+ <pages>1-20</pages>
+ <year>1983</year>
+ <doi>10.1016/S0019-9958(83)80047-3</doi>
+ <file>Networks/algorithms/graphs/isomorphism/1983 IC Isomorphism of k-contractible graphs.pdf</file>
+</reference>
 
 <reference id="Miller and Page 2007">
  <author>John H. Miller</author>
@@ -3554,6 +3975,34 @@
 </reference>
 
 
+<reference id="Papadimitriou and Yannakakis 1989">
+ <author>Christos H. Papadimitriou</author>
+ <author>Mihalis Yannakakis</author>
+ <title>Shortest paths without a map</title>
+ <proceedings>16th International Colloquium on Automata, Languages and Programming</proceedings>
+ <conference>ICALP</conference>
+ <location>Stresa, Italy</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>372</volume>
+ <year>1989</year>
+ <isbn>3-540-51371-X</isbn>
+ <pages>610-620</pages>
+ <doi>10.1007/BFb0035787</doi>
+</reference>
+
+<reference id="Papadimitriou and Yannakakis 1991">
+ <author>Christos H. Papadimitriou</author>
+ <author>Mihalis Yannakakis</author>
+ <title>Shortest paths without a map</title>
+ <journal>Theoretical Computer Science</journal>
+ <volume>84</volume>
+ <number>1</number>
+ <pages>127-150</pages>
+ <year>1991</year>
+ <doi>10.1016/0304-3975(91)90263-2</doi>
+ <file>Networks/algorithms/graphs/paths/1991 TCS Shortest paths without a map.pdf</file>
+</reference>
+
 
 <reference id="Park and Barabasi 2007">
  <author>Juyong Park</author>
@@ -3596,6 +4045,15 @@
  <year>2004</year>
  <doi>10.1140/epjb/e2004-00112-3</doi>
  <file>Networks/dynamics/robustness/2004 EPJB [Havlin] Optimization of robustness of complex networks.pdf</file>
+</reference>
+
+
+<reference id="Pearl 1984">
+ <author>Judea Pearl</author>
+ <title>Heuristics: Intelligent Search Strategies for Computer Problem Solving</title>
+  <publisher>Addison-Wesley</publisher>
+  <year>1984</year>
+  <isbn>0201055945</isbn>
 </reference>
 
 
@@ -3767,6 +4225,20 @@
  <year>2011</year>
  <url>http://www.jgrcs.info/index.php/jgrcs/article/view/138</url>
  <file>Networks/applications/www/blogs/2011 JGRCS Communities in mobile blog.pdf</file>
+</reference>
+
+
+<reference id="Schmidt and Druffel 1976">
+ <author>Douglas C. Schmidt</author>
+ <author>Larry E. Druffel</author>
+ <title>A fast backtracking algorithm to test directed graphs for isomorphism using distance matrices</title>
+ <journal>Journal of the ACM</journal>
+ <volume>23</volume>
+ <number>3</number>
+ <pages>433-445</pages>
+ <year>1976</year>
+ <doi>10.1145/321958.321963</doi>
+ <file>Networks/algorithms/graphs/isomorphism/1976 JACM [Schmidt &amp; Druffel] Graph isomorphism.pdf</file>
 </reference>
 
 
@@ -4178,6 +4650,34 @@
 </reference>
 
 
+<reference id="Tarjan 1972">
+ <author>Robert E. Tarjan</author>
+ <title>Depth-first search and linear graph algorithms</title>
+ <journal>SIAM Journal on Computing</journal>
+ <volume>1</volume>
+ <number>2</number>
+ <pages>146-160</pages>
+ <year>1972</year>
+ <doi>10.1137/0201010</doi>
+ <file>Networks/algorithms/graphs/connectedness/1972 SIAM JC [Tarjan] DFS and linear graph algorithms.pdf</file>
+ <file>Networks/algorithms/graphs/connectedness/1972 SIAM JC [Tarjan] DFS and linear graph algorithms.classic.pdf</file>
+</reference>
+
+
+<reference id="Tarjan and Vishkin 1985">
+ <author>Robert E. Tarjan</author>
+ <author>Uzi Vishkin</author>
+ <title>An efficient parallel biconnectivity algorithm</title>
+ <journal>SIAM Journal on Computing</journal>
+ <volume>14</volume>
+ <number>4</number>
+ <pages>862-874</pages>
+ <year>1985</year>
+ <doi>10.1137/0214061</doi>
+ <file>Networks/algorithms/graphs/connectedness/1985 SIAM JC [Tarjan &amp; Vishkin] Efficient parallel biconnectivity algorithm.tr.pdf</file>
+</reference>
+
+
 <reference id="Thompson et al. 1991">
  <editor>Grahame Thompson</editor>
  <editor>Jennifer Frances</editor>
@@ -4241,6 +4741,18 @@
  <year>2011</year>
  <url>http://arxiv.org/abs/1111.4503</url>
  <file>Networks/applications/social/2011 arXiv - Facebook social graph.pdf</file>
+</reference>
+
+<reference id="Ullman 1976">
+ <author>Julian R. Ullman</author>
+ <title>An algorithm for subgraph isomorphism</title>
+ <journal>Journal of the ACM</journal>
+ <volume>23</volume>
+ <number>1</number>
+ <pages>31-42</pages>
+ <year>1976</year>
+ <doi>10.1145/321921.321925</doi>
+ <file>Networks/algorithms/graphs/isomorphism/1976 JACM [Ullman] Subgraph isomorphism.pdf</file>
 </reference>
 
 
@@ -4545,6 +5057,19 @@
  <file>Networks/applications/social/2004 EPJB Bounded confidence and social networks.pdf</file>
 </reference>
 
+
+<reference id="Westbrook and Tarjan 1992">
+ <author>Jeffery Westbrook</author>
+ <author>Robert E. Tarjan</author>
+ <title>Maintaining bridge-connected and biconnected components on-line</title>
+ <journal>Algorithmica</journal>
+ <volume>7</volume>
+ <number>1-6</number>
+ <pages>433-464</pages>
+ <year>1992</year>
+ <doi>10.1007/BF01758773</doi>
+ <file>Networks/algorithms/graphs/connectedness/1992 Algorithmica [Westbrook &amp; Tarjan] Bridge-connected and biconnected components.pdf</file>
+</reference>
 
 
 <reference id="Wilson and Nicholas 2008">

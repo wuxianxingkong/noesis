@@ -1082,6 +1082,21 @@
 </reference>
 
 
+<reference id="Broder and Mitzenmacher 2005">
+ <author>Andrei Broder</author>
+ <author>Michael Mitzenmacher</author>
+ <title>Network Applications of Bloom Filters: A Survey</title>
+ <journal>Internet Mathematics</journal>
+ <volume>1</volume>
+ <number>4</number>
+ <pages>485-509</pages>
+ <year>2005</year>
+ <url>http://www.eecs.harvard.edu/~michaelm/postscripts/im2005b.pdf</url>
+ <doi>10.1145/355588.365103</doi>
+ <file>Computer Science/algorithms/adt/2005 IM Bloom filters.pdf</file>
+</reference>
+
+
 <reference id="Buldyrev et al. 2010">
  <author>Sergey V. Buldyrev</author>
  <author>Roni Parshani</author>
@@ -1154,6 +1169,22 @@
  <doi>10.1103/PhysRevE.74.036116</doi>
  <file>Networks/applications/www/2006 PhysRevE - Wikipedia.pdf</file>
 </reference>
+
+
+<reference id="Carlsson and Chen 1992">
+ <author>Svante Carlsson</author>
+ <author>Jingsen Chen</author>
+ <title>The complexity of heaps</title>
+ <proceedings>3rd Annual ACM-SIAM Symposium on Discrete algorithms</proceedings>
+ <conference>SODA</conference>
+ <location>Orlando, Florida</location>
+ <year>1992</year>
+ <isbn>0-89791-466-X</isbn>
+ <pages>393-402</pages>
+ <doi>10.1007/BFb0012776</doi>
+ <file>Computer Science/algorithms/adt/1992 SODA Complexity of heaps.pdf</file>
+</reference>
+
 
 <reference id="Cartwright and Harary 1956">
  <author>Dorwin Cartwright</author>
@@ -1938,6 +1969,17 @@
  <file>Networks/algorithms/graphs/isomorphism/1980 STOC Isomorphism testing for graphs of fixed genus.pdf</file>
 </reference>
 
+<reference id="Floyd 1964">
+ <author>Robert W. Floyd</author>
+ <title>Algorithm 245: Treesort 3</title>
+ <journal>Communications of the ACM</journal>
+ <volume>7</volume>
+ <number>12</number>
+ <pages>701-702</pages>
+ <year>1964</year>
+ <doi>10.1145/355588.365103</doi>
+ <file>Computer Science/algorithms/sorting/1964 CACM [Floyd] TreeSort.pdf</file>
+</reference>
 
 <reference id="Ford and Fulkerson 1956">
  <author>Lester Randolph Ford, Jr.</author>
@@ -1991,6 +2033,21 @@
  <year>2011</year>
  <url>http://arxiv.org/abs/1104.4380</url>
  <file>Networks/applications/economic/2011 arXiv Trade Stability.pdf</file>
+</reference>
+
+
+
+<reference id="Fredman and Tarjan 1987">
+ <author>Michael L. Fredman</author>
+ <author>Robert E. Tarjan</author>
+ <title>Fibonacci heaps and their uses in improved network optimization algorithms</title>
+ <journal>Journal of the ACM</journal>
+ <volume>34</volume>
+ <number>3</number>
+ <pages>596-615</pages>
+ <year>1987</year>
+ <doi>10.1145/28869.28874</doi>
+ <file>Computer Science/algorithms/adt/1987 JACM Fibonacci heaps.pdf</file>
 </reference>
 
 
@@ -2211,6 +2268,34 @@
  <year>1990</year>
  <isbn>0387526854</isbn>
  <file>Networks/algorithms/flow/1990 AC Network Flow Algorithms.pdf</file>
+</reference>
+
+
+<reference id="Gonnet and Munro 1982">
+ <author>Gaston H. Gonnet</author>
+ <author>J. Ian Munro</author>
+ <title>Heaps on heaps</title>
+ <proceedings>9th International Colloquium on Automata, Languages and Programming</proceedings>
+ <conference>ICALP</conference>
+ <location>Aarhus, Denmark</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>140</volume>
+ <year>1982</year>
+ <isbn>3-540-11576-5</isbn>
+ <pages>282-291</pages>
+ <doi>10.1007/BFb0012776</doi>
+</reference>
+
+<reference id="Gonnet and Munro 1986">
+ <author>Gaston H. Gonnet</author>
+ <author>J. Ian Munro</author>
+ <title>Heaps on heaps</title>
+ <journal>SIAM Journal on Computing</journal>
+ <volume>15</volume>
+ <number>4</number>
+ <pages>964-971</pages>
+ <year>1986</year>
+ <doi>10.1137/0215068</doi>
 </reference>
 
 
@@ -4541,9 +4626,20 @@
  <publisher>MIT Press</publisher>
  <year>2011</year>
  <isbn>9780262014694</isbn>
- <comment>
-  <text>TBD</text>
- </comment>
+</reference>
+
+
+<reference id="Stasko and Vitter 1987">
+ <author>John T. Stasko</author>
+ <author>Jeffrey Scott Vitter</author>
+ <title>Pairing heaps: Experiments and analysis</title>
+ <journal>Communications of the ACM</journal>
+ <volume>30</volume>
+ <number>3</number>
+ <pages>234-249</pages>
+ <year>1987</year>
+ <doi>10.1145/214748.214759</doi>
+ <file>Computer Science/algorithms/adt/1987 CACM Pairing heaps.pdf</file>
 </reference>
 
 
@@ -4663,6 +4759,17 @@
  <file>Networks/algorithms/graphs/connectedness/1972 SIAM JC [Tarjan] DFS and linear graph algorithms.classic.pdf</file>
 </reference>
 
+<reference id="Tarjan 1979">
+ <author>Robert E. Tarjan</author>
+ <title>A class of algorithms which require nonlinear time to maintain disjoint sets</title>
+ <journal>Journal of Computer and System Sciences</journal>
+ <volume>18</volume>
+ <number>2</number>
+ <pages>110-127</pages>
+ <year>1979</year>
+ <doi>10.1016/0022-0000(79)90042-4</doi>
+ <file>Computer Science/algorithms/adt/1979 JCSS [Tarjan] Union-find.pdf</file>
+</reference>
 
 <reference id="Tarjan and Vishkin 1985">
  <author>Robert E. Tarjan</author>
@@ -4805,6 +4912,19 @@
  <file>Networks/applications/social/2005 CSCW Discovering Social Networks from Event Logs.pdf</file>
 </reference>
 
+<reference id="van Emde Boas et al. 1977">
+ <author>Peter van Emde Boas</author>
+ <author>R. Kaas</author>
+ <author>E. Zijlstra</author>
+ <title>Design and implementation of an efficient priority queue</title>
+ <journal>Mathematical Systems Theory</journal>
+ <volume>10</volume>
+ <number>1</number>
+ <pages>99-127</pages>
+ <year>1977</year>
+ <doi>10.1007/BF01683268</doi>
+ <file>Computer Science/algorithms/adt/1977 MST [Emde Boas] Priority queue.pdf</file>
+</reference>
 
 
 <reference id="Van Mieghem 2011">

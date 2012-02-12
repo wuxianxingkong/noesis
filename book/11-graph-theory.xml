@@ -112,6 +112,10 @@ Graphs are sparse when existing edges represent a small fraction of the possible
 </text>
 
 <text>
+Planar graphs, i.e. those that can be drawn on a plane without link crossings, are common in many applications. They are always sparse, since they have at most 2n-6 links. Trees, for instance, are also planar graphs.
+</text>
+
+<text>
 ++ Connected graphs, weakly-connected vs. strongly-connected
 </text>
 

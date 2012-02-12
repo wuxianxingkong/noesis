@@ -1926,6 +1926,17 @@
 </reference>
 
 
+<reference id="Garey and Johnson 1979">
+ <author>Michael R. Garey</author>
+ <author>David S. Johnson</author>
+ <title>Computers and Intractability: A Guide to the Theory of NP-Completeness</title>
+ <publisher>W.H. Freeman</publisher>
+ <year>1979</year>
+ <isbn>0716710455</isbn>
+ <file>[books]/algorithms/0716710455 [Garey &amp; Johnson] Computers and Intractability.pdf</file>
+</reference>
+
+
 <reference id="Garlaschelli 2004">
  <author>D. Garlaschelli</author>
  <title>Universality in food webs</title>
@@ -2404,6 +2415,16 @@
  <file>Networks/structure/metrics/2011 TKDD HADI Radii of Large Graphs.pdf</file>
 </reference>
 
+
+<reference id="Karp 1972">
+ <author>Richard M. Karp</author>
+ <title>Reducibility among combinatorial problems</title>
+ <booktitle>Complexity of Computer Computations</booktitle>
+ <publisher>IBM Research Symposia Series, Plenum Press</publisher>
+ <year>1972</year>
+ <isbn>0306307073</isbn>
+ <file>Networks/algorithms/1972 [Karp] Reducibility.pdf</file>
+</reference>
 
 
 <reference id="Karrer et al. 2008">

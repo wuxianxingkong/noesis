@@ -68,6 +68,14 @@ naturally the most important elements in the center of the representation (the b
 
 ref. Sugiyama, Kozo; Tagawa, Shôjirô; Toda, Mitsuhiko (1981), "Methods for visual understanding of hierarchical system structures", IEEE Transactions on Systems, Man, and Cybernetics SMC-11 (2): 109-125, doi:10.1109/TSMC.1981.4308636, MR0611436.
 
+
+++ A minimal feedback arc set (one that can not be reduced in size by removing any edges) has the additional property that, if the edges in it are reversed rather than removed, then the graph remains acyclic. Finding a small edge set with this property is a key step in layered graph drawing
+
+Di Battista, Giuseppe; Eades, Peter; Tamassia, Roberto; Tollis, Ioannis G. (1998), "Layered Drawings of Digraphs", Graph Drawing: Algorithms for the Visualization of Graphs, Prentice Hall, pp. 265–302, ISBN 9780133016154.
+
+astert, Oliver; Matuszewski, Christian (2001), "Layered drawings of digraphs", in Kaufmann, Michael; Wagner, Dorothea, Drawing Graphs: Methods and Models, Lecture Notes in Computer Science, 2025, Springer-Verlag, pp. 87–120, doi:10.1007/3-540-44969-8_5.
+
+
 ++ http://en.wikipedia.org/wiki/Layered_graph_drawing
 </text>
 

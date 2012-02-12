@@ -23,7 +23,7 @@
 <title>A primer on algorithm analysis</title>
 
 <text>
-The dominance pecking order in algorithm analysis
+The dominance pecking order in algorithm analysis <cite>Skiena 2008</cite>:
 </text>
 
 <equation>
@@ -38,25 +38,22 @@ n! >> c^n >> n^3 >> n^2 >> n^{1+\epsilon} >> n \log n
 >> \log n / \log \log n >> \log \log n >> \alpha(n) >> 1
 </equation>
 
-<text>
-<cite>Skiena 2008</cite>, page 56:
-</text>
-
 <list>
 <item><eqn>\alpha(n)</eqn>: Inverse Ackerman's function (union-find data structure).</item>
 <item><eqn>\log n / \log \log n</eqn>: Height of an n-leaf tree of degree <eqn>d = \log n</eqn>.</item>
 <item><eqn>n^{1+\epsilon}</eqn>, e.g. <eqn>2^c*n^{1+1/c}</eqn> where <eqn>c</eqn> cannot be arbitrarily large (<eqn>2^c!</eqn>).</item>
 </list>
 
-<text>
-The importance of data structures @ <cite>Skiena 2008</cite>, chapter 3, page 65: <q>Changing the data structure does not change the correctness of the program, since we presumably replace a correct implementation with a different correct implementation. However, the new implementation of the data type realizes different tradeoffs in the time to execute various operations, so the total performance can improve dramatically</q>.
-</text>
-
 </note>
 
 
 <note>
 <title>Fundamental data structures</title>
+
+
+<text>
+The importance of data structures @ <cite>Skiena 2008</cite>, chapter 3, page 65: <q>Changing the data structure does not change the correctness of the program, since we presumably replace a correct implementation with a different correct implementation. However, the new implementation of the data type realizes different tradeoffs in the time to execute various operations, so the total performance can improve dramatically</q>.
+</text>
 
 <text>
 3 fundamental ADTs: containers, dictionaries &amp; priority queues
@@ -892,6 +889,62 @@ The largest possible bipartite matching can be found using network flow. Just ad
 @ MIT Interactive proofs and zero knowledge
 </text>
 
+<text>
+Practical algorithms for graph isomorphism:
+
+- McKay (1981), McKay, Brendan D. (1981), "Practical graph isomorphism", Congressus Numerantium 30: 45–87, 10th. Manitoba Conference on Numerical Mathematics and Computing (Winnipeg, 1980).
+
+- Schmidt and Druffel (1976), 
+Schmidt, Douglas C.; Druffel, Larry E. (1976), "A Fast Backtracking Algorithm to Test Directed Graphs for Isomorphism Using Distance Matrices", J. ACM (ACM) 23 (3): 433–445, doi:10.1145/321958.321963, ISSN 0004-5411.
+
+- Ullman (1976)
+Ullman, Julian R. (1976), "An algorithm for subgraph isomorphism", Journal of the ACM 23: 31–42, doi:10.1145/321921.321925.
+</text>
+
+
+<text>
+While they seem to perform well on random graphs, a major drawback of these algorithms is their exponential time performance in the worst case.[9]
+</text>
+
+<text>
+Best known algorithm: <cite>Luks 1983</cite> has run time <eqn>2^O(\sqrt{n \log n})</eqn> for graphs with n vertices.
+</text>
+
+<text>
+Isomorphism for many special classes of graphs can be solved in polynomial time, and in practice graph isomorphism can often be solved efficiently:
+</text>
+
+<list>
+
+<item>Trees[10]:  P.J. Kelly, "A congruence theorem for trees" Pacific J. Math., 7 (1957) pp. 961–968; Aho, Hopcroft &amp; Ullman 1974. Aho, Alfred V.; Hopcroft, John; Ullman, Jeffrey D. (1974), The Design and Analysis of Computer Algorithms, Reading, MA: Addison–Wesley.</item>
+<item>Planar graphs[11]: Hopcroft, John; Wong, J. (1974), "Linear time algorithm for isomorphism of planar graphs", Proceedings of the Sixth Annual ACM Symposium on Theory of Computing, pp. 172–184, doi:10.1145/800119.803896.</item>
+
+<item>Interval graphs[13]: Booth, Kellogg S.; Lueker, George S. (1979), "A linear time algorithm for deciding interval graph isomorphism", Journal of the ACM 26 (2): 183–195, doi:10.1145/322123.322125.</item>
+
+<item>Permutation graphs[14]: Colbourn, C. J. (1981), "On testing isomorphism of permutation graphs", Networks 11: 13–21, doi:10.1002/net.3230110103.</item>
+
+<item>Partial k-trees[15]: Bodlaender, Hans (1990), "Polynomial algorithms for graph isomorphism and chromatic index on partial k-trees", Journal of Algorithms 11 (4): 631–643, doi:10.1016/0196-6774(90)90013-5.</item>
+
+<item>Bounded-parameter graphs: 
+- Graphs of bounded genus[16],
+Miller, Gary (1980), "Isomorphism testing for graphs of bounded genus", Proceedings of the 12th Annual ACM Symposium on Theory of Computing, pp. 225–235, doi:10.1145/800141.804670, ISBN 0897910176.
+Filotti, I. S.; Mayer, Jack N. (1980), "A polynomial-time algorithm for determining the isomorphism of graphs of fixed genus", Proceedings of the 12th Annual ACM Symposium on Theory of Computing, pp. 236–243, doi:10.1145/800141.804671, ISBN 0897910176.
+
+- graphs of bounded degree[17], 
+Luks, Eugene M. (1982), "Isomorphism of graphs of bounded valence can be tested in polynomial time", Journal of Computer and System Sciences 25: 42–65, doi:10.1016/0022-0000(82)90009-5.
+
+- graphs with bounded eigenvalue multiplicity[18], 
+Babai, László; Grigoryev, D. Yu.; Mount, David M. (1982), "Isomorphism of graphs with bounded eigenvalue multiplicity", Proceedings of the 14th Annual ACM Symposium on Theory of Computing, pp. 310–324, doi:10.1145/800070.802206, ISBN 0897910702.
+
+- k-Contractible graphs (a generalization of bounded degree and bounded genus)[19], 
+ Gary L. Miller: Isomorphism Testing and Canonical Forms for k-Contractable Graphs (A Generalization of Bounded Valence and Bounded Genus). Proc. Int. Conf. on Foundations of Computer Theory, 1983, pp. 310–327 (Lecture Notes in Computer Science, vol. 158, full paper in: Information and Control, 56(1–2):1–20, 1983.)
+
+- Color-preserving isomorphism of colored graphs with bounded color multiplicity (i.e., at most k vertices have the same color for a fixed k)[20] ^ Eugene Luks, "Parallel algorithms for permutation groups and graph isomorphism", Proc. IEEE Symp. Foundations of Computer Science, 1986, 292-302
+</item>
+
+</list>
+
+
 </document>
 
 
@@ -905,6 +958,11 @@ The largest possible bipartite matching can be found using network flow. Just ad
 <text>
 Graphs of order n (nodes) and size m (links)...
 </text>
+
+<document>
+<tag>graph-algorithm-catalog-linear</tag>
+<title>Linear-time algorithms</title>
+
 
 <text>
 The following problems can be solved with algorithms that run in linear time (i.e. <eqn>O(n+m)</eqn>):
@@ -930,11 +988,18 @@ The following problems can be solved with algorithms that run in linear time (i.
 
 <item>Single-source shortest paths on DAGs, even with negative weights.</item>
 
+<item>Hamiltonian path on a DAG (topological sorting).</item>
+
 <item>Maximum matching in a tree.</item>
 
 
 </list>
 
+</document>
+
+<document>
+<tag>graph-algorithm-catalog-almost-linear</tag>
+<title>Almost linear-time algorithms</title>
 
 
 <text>
@@ -954,6 +1019,12 @@ The following algorithms are almost linear, i.e. <eqn>O(n \log n)</eqn>:
 NOTE: When working with large data sets, only linear (<eqn>O(n)</eqn>) or near linear (e.g. <eqn>O(n \log n)</eqn>) are likely to be suitable.
 </text>
 
+
+</document>
+
+<document>
+<tag>graph-algorithm-catalog-polynomial</tag>
+<title>Polynomial-time algorithms</title>
 
 <text>
 The following algorithms require polynomial time:
@@ -975,31 +1046,181 @@ The following algorithms require polynomial time:
 
 <item>Minimum-size edge cover (i.e. a set of edges, of minimum size, such that each vertex in the graph is incident to at least one edge from the set).</item>
 
+<item>Eulerian cycle</item>
+
 </list>
 
+</document>
+
+<document>
+<tag>graph-algorithm-catalog-hard</tag>
+<title>Hard problems</title>
+
+
+<note>
 <text>
-Hard problems (NP):
+NP (non-deterministic polynomial) is the set of all decision problems whose solutions can be verified in polynomial time (or, alternatively, the set of decision problems that can be solved in polynomial time on a nondeterministic Turing machine). That is, even though any given solution to such a problem can be verified quickly (in polynomial time), there is no known efficient way to discover a solution to the problem.
+</text>
+
+<text>
+In computational complexity theory, NP-hard problems are, at least as hard as the hardest problems in NP (i.e. any NP problem can be converted into L by a transformation of the inputs in polynomial time or, in theoretical parlance, every problem in NP is reducible to L in polynomial time). A problem is NP-complete when it is in NP and also NP-hard. Hence, NP-complete is a subset of NP, which is itself a subset of NP-hard.
+</text>
+
+<text>
+This the P=NP? question is not resolved, and hence we do not know whether solution verification is really easier than solution discovery for NP problems, we could say that NP problems are <q>not-necessarily polynomial time</q> <cite>Skiena 2008</cite>.
+</text>
+
+<text>
+More general classes exist, such as PSPACE: the set of all decision problems which can be solved by a Turing machine using a polynomial amount of space. Formally, <eqn>P \subseteq NP \subseteq PSPACE</eqn>. Some graph problems are known to be PSPACE-complete, such as the Canadian Traveler Problem (CTP), a generalization of the shortest path problem to graphs that are partially observable (i.e. the graph is revealed while it is being explored) that has many practical applications.
+
+ref. C.H. Papadimitriou; M. Yannakakis (1989). "Shortest paths without a map". Lecture notes in computer science. 372. Proc. 16th ICALP. Springer-Verlag. pp. 610–620.
+</text>
+
+</note>
+
+
+<text>
+The following problem occupies a singular position within the complexity hierarchy, since it is not known whether the problem has a fast algorithm that solves it ot is NP-complete:
 </text>
 
 <list>
 
-<item>Hamiltonian path / the traveling salesman problem (TSP)</item>
-
-<item>Eulerian path</item>
-
 <item>Isomorphism testing, i.e. checking whether the topological structure of two graphs are identical (typically solved using backtracking)</item>
-
-<item>Minimum-size vertex cover: A vertex cover is a subset of vertices <eqn>V' \in V</eqn> such that every edge in E contains at least one vertex from V'.</item>
-
-<item>Maximum-size independent set: An independent set is a set of vertices U such that no edge in E is incident on two vertices of U.</item>
-
-<item>Steiner trees</item>
 
 </list>
 
 
+<text>
+The following algorithms are known to be NP-hard (most of them are, in fact, NP-complete): COVERING/PARTITIONING, SUBGRAPHS, ORDERING
+</text>
+
+<list>
+
+<item>Hamiltonian circuit on unweighted graphs (both directed and undirected), remains NP-complete even for directed planar graphs (graphs that can be embedded in the plane) and for cubic planar undirected graphs (graphs in which all vertices have degree three).
+
+M. R. Garey, D. S. Johnson, and L. Stockmeyer. Some simplified NP-complete problems. Proceedings of the sixth annual ACM symposium on Theory of computing, p. 47-63. 1974.</item>
+
+<item>The traveling salesman problem (TSP) on weighted graphs, one of the most intensively studied problems in optimization. http://en.wikipedia.org/wiki/Travelling_salesman_problem</item>
+
+<item>Hamiltonian path on unweighted graphs. The Hamiltonian path problem for graph G is equivalent to the Hamiltonian cycle problem in a graph H obtained from G by adding a new vertex and connecting it to all vertices of G.</item>
+
+<item>Eulerian path</item>
+
+<item>Longest simple path</item>
+
+<item>Longest circuit</item>
+
+<item>Path with forbidden pairs or vertices</item>
 
 
+
+
+<item>Minimum-size vertex cover: A vertex cover is a subset of vertices <eqn>V' \in V</eqn> such that every edge in E contains at least one vertex from V'. Obviously, the set of all vertices is a vertex cover. The problem of finding a minimum vertex cover is a classical optimization problem in computer science a, one of Karp's 21 NP-complete problems</item>
+
+<item>Maximum-size independent set: An independent set is a set of vertices U such that no edge in E is incident on two vertices of U. A maximum independent set is a largest independent set and the maximum independent set problem is known to be NP-hard. A set is independent if and only if its complement is a vertex cover. The sum of the size of the maximum independent set and the size of a minimum vertex cover is the number of vertices in the graph.</item>
+
+
+
+<item>Maximum cliques, <eqn>O(3^{n/3}) = O(1.4422^n)</eqn>, since any n-vertex graph has at most any n-vertex graph has at most <eqn>3^{n/3}</eqn> maximal cliques;  http://en.wikipedia.org/wiki/Clique_problem</item>
+
+<item>Dense subgraph, i.e. a subgraph with exactly k vertices and at least y edges.</item>
+
+<item>Planar subgraph, i.e. a subgraph with at least k edges that can be embedded on the plane.</item>
+
+<item>Eulerian subgraph, i.e. a subgraph that contains an Eulerian cycle.</item>
+
+<item>Bipartite subgraph, i.e. a subgraph with at least k edges that can is bipartite.</item>
+
+<item>Cubic subgraph, i.e. a cubic subgraph with at least k edges.</item>
+
+<item>Degree-bounded connected subgraph, i.e. a subgraph with at least k edges so that the resulting subgraph is connected and no vertex degree exceeds d.</item>
+
+<item>Transitive subgraph, i.e. (u,w) (w,v) implies (u,v).</item>
+
+<item>Uniconnected subgraph, i.e. subgraph containing at most one directed path between any pair of vertices.</item>
+
+<item>Minimum k-connected subgraph, i.e. k-connected subgraph (cannot be disconnected by removing fewer than k vertices).</item>
+
+<item>Subgraph isomorphism, i.e. given two graphs G and H as input, determine whether G contains a subgraph that is isomorphic to H.</item>
+
+<item>Largest common subgraph, i.e. given two graphs G and H as input, determine their largest isomorphic subgraphs.</item>
+
+<item>Graph contractability, i.e. given two graphs G and H as input, can a graph isomorphic to H be obtained by a sequence of edge contractions? (when two adjacent vertices are replaced by a single one that is adjacent to exactly those vertices that were adjacent to at least one of the original vertices).</item>
+
+<item>Minimum equivalent digraph. i.e. subgraph that contains a directed path from u to v only when the original graph does.</item>
+
+
+
+<item>Steiner trees, i.e. find the shortest interconnect for a given set of objects (as MST, but including the possibility of adding extra intermediate nodes).</item>
+
+<item>Constrained spanninig trees: degree-constrained spanning tree (a spanning tree with no vertex with degree above k), maximum-leaf spanning trees, (a spanning tree with k or more leaves), shortest-total-path-length spanning tree (i.e. minimizing the sum of the length of the path in the tree between every pair of nodes), bounded-diameter spanning tree (no simple path with more than d edges)...</item>
+
+<item>Maximum cut (the max-cut problem), i.e. finding a cut whose size is at least the size of any other cut. A polynomial-time algorithm to find maximum cuts in planar graphs exists.[3] ref. Hadlock, F. (1975), "Finding a Maximum Cut of a Planar Graph in Polynomial Time", SIAM J. Comput. 4 (3): 221–225, doi:10.1137/0204019.</item>
+
+<item>Minimum cut into bounded sets, i.e. imposing restrictions on the size of the disjoint sets that partition the network.</item>
+
+
+
+
+
+<item>Matching on hypergraphs, i.e. when more than two vertices are involved in a single edge. In fact, 3-dimensional matching is known to be NP-hard whereas bipartite matching (a.k.a. 2-dimensional matching) is in P.</item>
+
+<item>The Bandwidth problem, which can be visualized as placing the vertices of a graph at distinct integer points along the x-axis so that the length of the longest edge is minimized. Such placement is called linear graph arrangement, linear graph layout or linear graph placement. e.g. the problem of placement of a set of standard cells in a singe row with the goal of minimizing the maximal propagation delay (which is assumed to be proportional to wire length).</item>
+
+<item>Related: The pathwidth problem, with applications in VLSI design, graph drawing, and computational linguistics.</item>
+
+
+
+<item>Clique cover (a.k.a. partition into cliques), i.e. determining whether the vertices of a graph can be partitioned into k cliques. </item>
+
+<item>Feedback vertex set, i.e. a set of vertices whose removal leaves a DAG (a graph without cycles).</item>
+
+<item>A feedback arc set (FAS) or feedback edge set is a set of edges which, when removed from the graph, leave a DAG.  A minimal feedback arc set has the additional property that, if the edges in it are reversed rather than removed, then the graph remains acyclic. Finding a small edge set with this property is a key step in layered graph drawing</item>
+
+<item>Chromatic number / graph k-colorability / vertex coloring: assignment of labels traditionally called "colors" to elements of a graph subject to certain constraints. In its simplest form, it is a way of coloring the vertices of a graph such that no two adjacent vertices share the same color; this is called a vertex coloring. Using dynamic programming and a bound on the number of maximal independent sets, k-colorability can be decided in time and space O(2.445^n).[6] Using the principle of inclusion–exclusion and Yates’s algorithm for the fast zeta transform, k-colorability can be decided in time O(n2^n)[5] for any k. Faster algorithms are known for 3- and 4-colorability, which can be decided in time O(1.3289^n) [7] and O(1.7504^n),[8] respectively. Note that 2-colorable graphs are bipartite graphs and bipartite testing can be performed in linear time.
+
+[5] Björklund, A.; Husfeldt, T.; Koivisto, M. (2009), "Set partitioning via inclusion–exclusion", SIAM Journal on Computing 39 (2): 546–563, doi:10.1137/070683933
+[6] Lawler, E.L. (1976), "A note on the complexity of the chromatic number problem", Information Processing Letters 5 (3): 66–67, doi:10.1016/0020-0190(76)90065-X
+[7] Beigel, R.; Eppstein, D. (2005), "3-coloring in time O(1.3289n)", Journal of Algorithms 54 (2)): 168–204, doi:10.1016/j.jalgor.2004.06.008
+[8] Byskov, J.M. (2004), "Enumerating maximal independent sets with applications to graph colouring", Operations Research Letters 32 (6): 547–556, doi:10.1016/j.orl.2004.03.002
+</item>
+
+<item>Edge coloring: assigns a color to each edge so that no two adjacent edges share the same color. an edge coloring of a graph is just a vertex coloring of its line graph (a graph that represents the adjacencies between edges of G)</item>
+
+<item>Face coloring of a planar graph assigns a color to each face or region so that no two faces that share a boundary have the same color. a face coloring of a planar graph is just a vertex coloring of its planar dual (a vertex for each plane region of G, and an edge for each edge in G joining two neighboring regions). </item>
+
+<item>Achromatic number: Does a graph G have an achromatic number K or greater? i.e. is there a partition of V into k disjoint sets so that each V_i is an independent set.</item>
+
+<item>Other graph partitioning problems: into triangles, into cliques, into isomorphic subgraphs, into Hamiltonian subgraphs, into forests, into perfect matchings... are also known NP-complete problems.</item>
+
+</list>
+
+<text>
+Contrast subtle differences: Eulerian path (easy) vs. Eulerian cycle (hard); bipartite matching (easy) vs. hypergraph matching (hard); shortest paths (easy) vs. longest paths (hard); Hamiltonian path on a graph (hard) vs. on a DAG (easy); the minimum spanning tree (easy), which is the undirected variant of the feedback arc set problem (hard)...
+</text>
+
+<text>
+Even when a problem is NP-complete, algorithms can be devised that solve them in practice, either by employing a systematic search on the problem space (e.g. employing backtracking or branch-and-bound algorithms with substantial pruning) or heuristic methods that might not find the optimal solution but often return a good-enough one (e.g. simulated annealing). Heuristics are also employed by approximation algorithms that can get reasonable solutions with guaranteed bounds; i.e. the solution they provide is related to a lower bound on the optimal solution and imposes limits on how badly the approximation algorithm might perform.
+</text>
+
+<list>
+
+<item>Vertex cover: Greedy algorithm that chooses an edge at random and adds both intervening nodes to the cover. Since one of the incident vertices must always be on the minimum vertex cover, this simple algorithm efficiently returns a cover that is at most twice as large as the optimal cover.
+</item>
+
+<item>The Euclidean Traveling Salesman Problem: When the triangle inequality holds, we can approximate the TSP solution by employing minimum spanning trees. Such trees, which connect all the nodes in a graph, can be traversed in depth. That traversal provides a non-Hamiltonian cycle whose length is at most twice the optimal cycle (why? deleting any link from the cycle returns a Hamiltonian path, i.e. a tree, whose weight cannot be greater than that of the MST.
+</item>
+
+<item>Maximum DAG: The largest possible subset of edges so that the resulting subgraph is acyclic. Any permutation of nodes can be interpreted as a topological sorting of the graph. Removing either left-to-right or right-to-left edges, we keep at least half of the edges in the original graph, hence the solution contains at least half as many edges as the optimum.
+</item>
+
+</list>
+
+<text>
+Alternative heuristics might even get better results for particular instances of the above problems, albeit more complex heuristics do not necessarily guarantee better results. In fact, the result if often the opposite. It should also be noted that some clever postprocessing of the results provided by approximation algorithms might also be worthwhile, since it might improve the approximate solution without weakening the approximation bound.
+</text>
+
+</document>
 
 
 <!--
@@ -1039,6 +1260,13 @@ Inline image:
 
 <text>
 Network flow; monographs <cite>Ahuja et al. 1993</cite> <cite>Ford and Fulkerson 1962</cite>; surveys <cite>Goldberg et al. 1990</cite> <cite>Schrijver 2002</cite>; original algorithms <cite> Ford and Fulkerson 1956</cite> <cite>Edmonds and Karp 1972</cite>
+</text>
+
+<text>
+NP problems:
+- 1972: Landmark paper, "Reducibility Among Combinatorial Problems"  <cite>Karp 1972</cite>, 21 combinatorial and graph theoretical NP-complete problems
+- 1979: Catalog containing hundreds of NP problems<cite>Garey and Johnson 1979</cite>, 65 graph theoretical problems and 51 network design problems.
+- Wikipedia: More than 3000 known NP-complete problems, http://en.wikipedia.org/wiki/List_of_NP-complete_problems
 </text>
 
 </document>
@@ -1107,6 +1335,18 @@ Network flow; monographs <cite>Ahuja et al. 1993</cite> <cite>Ford and Fulkerson
 </reference>
 
 
+
+<reference id="Garey and Johnson 1979">
+ <author>Michael R. Garey</author>
+ <author>David S. Johnson</author>
+ <title>Computers and Intractability: A Guide to the Theory of NP-Completeness</title>
+ <publisher>W.H. Freeman</publisher>
+ <year>1979</year>
+ <isbn>0716710455</isbn>
+ <file>[books]/algorithms/0716710455 [Garey &amp; Johnson] Computers and Intractability.pdf</file>
+</reference>
+
+
 <reference id="Goldberg et al. 1990">
  <author>Andrew V. Goldberg</author>
  <author>Eva Tardos</author>
@@ -1131,6 +1371,17 @@ Network flow; monographs <cite>Ahuja et al. 1993</cite> <cite>Ford and Fulkerson
  <year>2003</year>
  <isbn>0201648652</isbn>
  <file>[books]/algorithms/0201648652 [Kumar] Parallel Computing.2nd.chm</file>
+</reference>
+
+
+<reference id="Karp 1972">
+ <author>Richard M. Karp</author>
+ <title>Reducibility among combinatorial problems</title>
+ <booktitle>Complexity of Computer Computations</booktitle>
+ <publisher>IBM Research Symposia Series, Plenum Press</publisher>
+ <year>1972</year>
+ <isbn>0306307073</isbn>
+ <file>Networks/algorithms/1972 [Karp] Reducibility.pdf</file>
 </reference>
 
 <reference id="Kleinberg and Tardos 2005">

@@ -1027,6 +1027,16 @@
 </reference>
 
 
+<reference id="Boruvka 1926">
+ <author>Otakar Boruvka</author>
+ <title>O jistém problému minimálním (About a certain minimal problem, in Czech)</title>
+ <journal>Práce mor. prírodoved. spol. v Brne III</journal>
+ <volume>3</volume>
+ <pages>37-58</pages>
+ <year>1926</year>
+</reference>
+
+
 <reference id="Brassard and Bratley 1996">
  <author>Giles Brassard</author>
  <author>Paul Bratley</author>
@@ -1274,6 +1284,20 @@
  </comment>
 </reference>
 
+
+<reference id="Chazelle 2000">
+ <author>Bernard Chazelle</author>
+ <title>A minimum spanning tree algorithm with inverse-Ackermann type complexity</title>
+ <journal>Journal of the ACM</journal>
+ <volume>47</volume>
+ <number>6</number>
+ <pages>1028-1047</pages>
+ <year>2000</year>
+ <doi>10.1145/355541.355562</doi>
+ <file>Networks/algorithms/graphs/paths/2000 JACM [Chazelle] MST.pdf</file>
+</reference>
+
+
 <reference id="Chen et al. 2007">
  <author>Y. W. Chen</author>
  <author>L. F. Zhang</author>
@@ -1302,6 +1326,15 @@
  <file>Networks/algorithms/graphs/connectedness/1996 Algorithmica [Cheriyan &amp; Mehlhorn] Dense graphs and networks.pdf</file>
 </reference>
 
+
+<reference id="Choquet 1938">
+ <author>Gustave Choquet</author>
+ <title>Étude de certains réseaux de routes (Study of research on routes, in French)</title>
+ <journal>Comptes-rendus de l'Académie des Sciences</journal>
+ <volume>206</volume>
+ <pages>310-313</pages>
+ <year>1938</year>
+</reference>
 
 <reference id="Christakis and Fowler 2007">
  <author>Nicholas A. Christakis</author>
@@ -1630,6 +1663,19 @@
  </comment>
 </reference>
 
+
+
+<reference id="Dijkstra 1959">
+ <author>Edsger W. Dijkstra.</author>
+ <title>A note on two problems in connexion with graphs</title>
+ <journal>Numerische Mathematik</journal>
+ <volume>1</volume>
+ <number>1</number>
+ <pages>269-271</pages>
+ <year>1959</year>
+ <doi>10.1007/BF01386390</doi>
+ <file>Networks/algorithms/graphs/paths/1959 NM [Dijkstra] MST &amp; Shortest paths.pdf</file>
+</reference>
 
 <reference id="Dogorotsev 2010">
  <author>Sergey Dorogovtsev</author>
@@ -2602,6 +2648,22 @@
 </reference>
 
 
+
+<reference id="Holm et al. 2001">
+ <author>Jacob Holm</author>
+ <author>Kristian de Lichtenberg</author>
+ <author>Mikkel Thorup</author>
+ <title>Poly-logarithmic deterministic fully-dynamic algorithms for connectivity, minimum spanning tree, 2-edge, and biconnectivity</title>
+ <journal>Journal of the ACM</journal>
+ <volume>48</volume>
+ <number>4</number>
+ <pages>723-760</pages>
+ <year>2001</year>
+ <doi>10.1145/502090.502095</doi>
+ <file>Networks/algorithms/graphs/paths/2001 JACM [Holm] MST.pdf</file>
+</reference>
+
+
 <reference id="Holme et al. 2004">
  <author>Petter Holme</author>
  <author>Christofer R. Edling</author>
@@ -2787,6 +2849,21 @@
  <year>2011</year>
  <doi>10.1145/1921632.1921634</doi>
  <file>Networks/structure/metrics/2011 TKDD HADI Radii of Large Graphs.pdf</file>
+</reference>
+
+
+<reference id="Karger et al. 1995">
+ <author>David R. Karger</author>
+ <author>Philip N. Klein</author>
+ <author>Robert E. Tarjan</author>
+ <title>A randomized linear-time algorithm to find minimum spanning trees</title>
+ <journal>Journal of the ACM</journal>
+ <volume>42</volume>
+ <number>2</number>
+ <pages>321-328</pages>
+ <year>1995</year>
+ <doi>10.1145/201019.201022</doi>
+ <file>Networks/algorithms/graphs/paths/1995 JACM [Karger] MST.pdf</file>
 </reference>
 
 
@@ -3012,6 +3089,19 @@
  <year>1990</year>
  <isbn>0817633898</isbn>
  <!-- Translated from German by Richard McCoart -->
+</reference>
+
+
+<reference id="Kruskal 1956">
+ <author>Joseph B. Kruskal, Jr.</author>
+ <title>On the shortest spanning subtree of a graph and the traveling salesman problem</title>
+ <journal>Proceedings of the American Mathematical Society</journal>
+ <volume>7</volume>
+ <number>1</number>
+ <pages>48-50</pages>
+ <year>1956</year>
+ <url>http://www.jstor.org/stable/2033241</url>
+ <file>Networks/algorithms/graphs/paths/1956 AMS [Kruskal] MST.pdf</file>
 </reference>
 
 
@@ -3736,6 +3826,15 @@
  <file>Networks/models/2008 PTRA [Mondragon] Topological Modeling.pdf</file>
 </reference>
 
+<reference id="Moore 1959">
+ <author>Edward F. Moore</author>
+ <title>The shortest path through a maze</title>
+ <proceedings>International Symposium on the Theory of Switching</proceedings>
+ <conference>ISST</conference>
+ <location>Cambridge, Massachusetts</location>
+ <year>1959</year>
+ <pages>285-292</pages>
+</reference>
 
 
 <reference id="Moreno and Jennings 1938">
@@ -4156,6 +4255,32 @@
 </reference>
 
 
+<reference id="Pettie and Ramachandran 2002">
+ <author>Seth Pettie</author>
+ <author>Vijaya Ramachandran</author>
+ <title>An optimal minimum spanning tree algorithm</title>
+ <journal>Journal of the ACM</journal>
+ <volume>49</volume>
+ <number>1</number>
+ <pages>16-34</pages>
+ <year>2002</year>
+ <doi>10.1145/505241.505243</doi>
+ <file>Networks/algorithms/graphs/paths/2002 JACM [Pettie] MST.pdf</file>
+</reference>
+
+<reference id="Pettie and Ramachandran 2008">
+ <author>Seth Pettie</author>
+ <author>Vijaya Ramachandran</author>
+ <title>Randomized minimum spanning tree algorithms using exponentially fewer random bits</title>
+ <journal>ACM Transactions on Algorithms</journal>
+ <volume>4</volume>
+ <number>1</number>
+ <pages>a5</pages>
+ <year>2008</year>
+ <doi>10.1145/1328911.1328916</doi>
+ <file>Networks/algorithms/graphs/paths/2008 TALG [Pettie] MST.pdf</file>
+</reference>
+
 
 <reference id="Pool and Kochen 1978">
  <author>Ithiel de Sola Pool</author>
@@ -4193,6 +4318,18 @@
  <edition>3rd edition</edition>
  <year>2007</year>
  <isbn>0521880688</isbn>
+</reference>
+
+
+<reference id="Prim 1957">
+ <author>Robert C. Prim:</author>
+ <title>Shortest connection networks and some generalizations</title>
+ <journal>Bell System Technical Journal</journal>
+ <volume>36</volume>
+ <pages>1389-1401</pages>
+ <year>1957</year>
+ <url>http://www.alcatel-lucent.com/bstj/vol36-1957/articles/bstj36-6-1389.pdf</url>
+ <file>Networks/algorithms/graphs/paths/1957 BSTJ [Prim] MST.pdf</file>
 </reference>
 
 

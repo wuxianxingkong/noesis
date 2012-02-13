@@ -96,6 +96,16 @@ The average degree of a graph G of order n and size m is 2m/n, a result we obtai
 
 <text>
 ++ Degree sequence
+
+An integer partition p = (p_1, ..., p_n) where p_i is the degree of the ith highest-degree node in the graph.
+
+p is an integer partition of 2m, i.e. sum p_i = 2m, in undirected graphs, since each edge contributes to the degree of two nodes.
+
+Not all integer partitions correspond to actual graphs.
+
+An algorithm to build a graph given a degree sequence: the highest-degree node is connected to the following node; the degree sequence is updated by decrementing p_1 and p_2 (and reorder the partition), resulting in a smaller partition; the process is repeated until the degree sequence is full of zeroes (or a negative value appears, which means the graph was not realizable).
+
+The algorithm above is deterministic. If we want a random graphs with the given degree sequence, we can generate them by flipping edges: from (x,y) and (w,z) we create (x,w) and (y,z), which yields a different graph with the same degree sequence (albeit it should be noted that the resulting graph is not necessarily connected).
 </text>
 
 </document>
@@ -116,7 +126,11 @@ Planar graphs, i.e. those that can be drawn on a plane without link crossings, a
 </text>
 
 <text>
-++ Connected graphs, weakly-connected vs. strongly-connected
+++ Connected graphs, weakly-connected vs. strongly-connected components (a.k.a. blocks)
+
+A graph G is strongly connected if all nodes in G can reach v and are reachable from v.
+
+Weakly-connected and strongly-connected components define unique partitions of the graph nodes.
 </text>
 
 <text>
@@ -144,6 +158,9 @@ Paths and cycles are important kinds of graphs. A path <eqn>P_n</eqn> is a graph
 <text>
 An edge linking two nodes indicates that they can communicate directly, whereas longer paths are likely to have a lower effect on the network behavior.
 </text>
+
+<text>
+++ Counting the number of paths of length k by matrix multiplication: A^k (includes non-simple paths), e.g. divide-and-conquer algorithm @ Skiena 425 [Karatsuba KO63], fast multiplication algorithms @ Skiena 403 [Strassen 69][Coppersmith 90][CKSU05]
 
 <text>
 The pairwise distance of the shortest path linking the nodes in a network is represented in its distance matrix. Its global maximum is the network diameter. The distance matrix describes the communication pattern within the network.
@@ -176,7 +193,7 @@ i.e. all nodes have the same degree
 </text>
 
 <text>
-++ Directed acyclic graphs (DAGs) arise in some applications, e.g. scheduling
+++ Directed acyclic graphs (DAGs), a.k.a. partial orders or posets, arise in some applications, e.g. scheduling
 + Topological sorting orders the vertices of a DAG respecting the precedence constraints imposed by the arcs in the DAG.
 </text>
 
@@ -188,6 +205,8 @@ i.e. all nodes have the same degree
 
 <text>
 ++ Properties: connected, acyclic graphs
+
+connected graph with n-1 edges and n nodes
 </text>
 
 <text>
@@ -199,7 +218,32 @@ Trees are recursive structures, since cutting any edge leaves two smaller trees.
 </text>
 
 <text>
-++ Prüfer codes
+++ Prüfer codes (parents) [Prü 1918]
+
++ The degree of a node is one more than the number of times its value appears in the Prüfer sequence
+
+a simple way to rank and unrank labeled trees and solve any tree generation problem: Exactly n^(n-2) labeled trees on n vertices, which correspond to that many strings of length n-2 on the alphabet {1..n}.
+
+NOTE: There are two models for generating data such as permutations: ranking/unranking (biyective function) and incremental change methods (iterators). Ranking/unranking methods make it trivial to generate random data (just generate a random number and rank), whereas enumeration by incremental change methods makes it tricky to generate random data (e.g. needed to solve some hard problems using randomized algorithms)
+
+e.g. permutations [Knuth05a]
+
+INCORRECT (does not generate permutations uniformly!) 
+
+for i=1..n 
+  a[i] = i
+
+for j=1..n-1
+  swap( a[i], a[random(1,n)]
+
+CORRECT VERSION
+
+for i=1..n 
+  a[i] = i
+
+for j=1..n-1
+  swap( a[i], a[random(i,n)]
+
 </text>
 
 <text>

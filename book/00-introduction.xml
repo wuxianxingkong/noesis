@@ -230,6 +230,18 @@ Pajek datasets, <url>http://vlado.fmf.uni-lj.si/pub/networks/data/</url>, by Vla
 Links to network data sets collected by Mark E.J. Newman (University of Michigan): <url>http://www-personal.umich.edu/~mejn/netdata/</url>.
 </item>
 
+<item>
+The Stanford GraphBase, by Donald E. Knuth, http://www-cs-staff.stanford.edu/~knuth/sgb.html, includes some example graphs as well as a collection of programs to generate and manipulate graphs and networks (written in CWEB, which is a mix of the C programming language and Knuth's TEX typesetting language, to illustrate the use of literate programming). Such generators can be used to create test data for performing experiments and comparing algorithms.
+</item>
+
+<item>
+The Nauty graph isomorphism testing program, http://cs.anu.edu.au/~bdm/nauty/, also includes graph generators for graphs, directed graphs, bipartitue graphs, and multigraphs.
+</item>
+
+<item>
+Brendan McKay, the author of the Nauty program, also maintains collectins of various kinds of graphs at http://cs.anu.edu.au/~bdm/data/ and he recommends Gordon's Royce collection, http://mapleta.maths.uwa.edu.au/~gordon/data.html
+</item>
+
 </list>
 
 

@@ -68,6 +68,12 @@ n! >> c^n >> n^3 >> n^2 >> n^{1+\epsilon} >> n \log n
 <item><eqn>n^{1+\epsilon}</eqn>, e.g. <eqn>2^c*n^{1+1/c}</eqn> where <eqn>c</eqn> cannot be arbitrarily large (<eqn>2^c!</eqn>).</item>
 </list>
 
+<text>
+++ polylogarithmic, polylogarithmic function in n is a polynomial in the logarithm of n,
+a_k \log^k (n) + ... + a_1 \log(n) + a_0
+
+</text>
+
 </document>
 
 
@@ -342,7 +348,11 @@ A fundamental graph problem: Visiting every node (or link) in a network in a sys
 
 <text>
 ++ CS
-Graph-searching procedures such as depth-first search (DFS) and breadth-first search (BFS) form the basic preprocessing steps for most graph algorithms. 
+Graph-searching procedures such as depth-first search (DFS)
+<cite>Tarjan 1972</cite> <cite>Hopcroft and Tarjan 1973</cite>
+and breadth-first search (BFS) 
+<cite>Moore 1959</cite>
+form the basic preprocessing steps for most graph algorithms. 
 </text>
 
 <text>
@@ -425,7 +435,7 @@ and to find a topological order of the vertices of a DAG.
 
 
 <text>
-Solving mazes: A version of depth-first search was investigated in the 19th century by French mathematician Charles Pierre Tremaux as a strategy for solving mazes (Wikipedia)
+Solving mazes (e.g. <cite>Moore 1959</cite>): A version of depth-first search was investigated in the 19th century by French mathematician Charles Pierre Tremaux as a strategy for solving mazes.
 </text>
 
 <text>
@@ -433,7 +443,12 @@ ON UNDIRECTED GRAPHS
 </text>
 
 <text>
-++ Cycle detection: If there are no back edges, all edges belong to the tree, hence the graph is actually a tree.
+++ Connected components: Identify the different contextec components of a graph G, where x and y are members of different components if no path exists from x to y in G. O(m+n)
+</text>
+
+
+<text>
+++ Cycle detection / tree testing: If there are no back edges, all edges belong to the DFS tree, hence the graph is actually a tree. When present, the back edge and the DFS tree define the cycle.
 </text>
 
 <text>
@@ -467,13 +482,29 @@ ON DIRECTED GRAPHS
 </text>
 
 <text>
-++ Topological sorting: A common operation on directed acyclic graphs. Ordering the vertices... (such ordering cannot exist if the graph contains a directed cycle, i.e. no back edges). Each DAG has, at least, one topological sort, which gives an ordering to process each vertex before any of its successors (e.g. precedence constraints). Considering the nodes in the reverse order they are processed by DFS returns a valid topological sort.
-
- ref. first described by <cite>Kahn 1962</cite>: http://en.wikipedia.org/wiki/Topological_sorting
+++ Cycle detection / DAG testing: If there are no back edges, all edges belong to the DFS tree, hence the graph is actually a DAG. As above, when present, the back edge and the DFS tree define the cycle.
 </text>
 
 <text>
-++ Identifying strongly-connected components: 1) Traverse the graph atarting from any given node to discover the nodes that are reachable from the node. 2) Build a graph G'=(V,E') with the same vertex set but all its arcs reversed; i.e. <eqn>(y,z) \in E' iff (x,y) \in E</eqn>. 3) Perform a traveral starting from v in G', which will result in discovering the set of nodes that can reach v. A graph G is strongly connected if all nodes in G can reach v and are reachable from v.
+++ Topological sorting: A common operation on directed acyclic graphs. Finding a linear ordering of the vertices so that for each arc (i,j), vertex i is to the left of vertex j (such ordering cannot exist if the graph contains a directed cycle, i.e. no back edges). Each DAG has, at least, one topological sort (often, many different ones, up to n! if there are no constraints), which gives an ordering to process each vertex before any of its successors (e.g. precedence constraints). Only DAGs can be topologically sorted. 
+
+1) Considering the nodes in the reverse order they are processed by DFS returns a valid topological sort.
+
+2) Using a DFS to identify all source vertices (of in-degree 0), which can appear at the start of the topological sort without violating any constraints. Deleting outgoing edges of the source vertices creates new source vertices. The process is repeated until all vertices are included in the topological sort. Proper use of data structures is sufficient to obtain a linear time O(n+m) algorithm.
+
+ ref. first described by <cite>Kahn 1962</cite>: http://en.wikipedia.org/wiki/Topological_sorting
+ Applications: scheduling tasks under precedence constraints (any topological sort, a.k.a. linear extension, defines an order to perform the tasks that satisfies all precedence constraints).
+</text>
+
+
+<text>
+++ Identifying weakly-connected components: Just ignore edge direction.
+</text>
+
+<text>
+++ Identifying strongly-connected components (first algorithm by <cite>Tarjan 1972</cite>): 1) Traverse the graph atarting from any given node to discover the nodes that are reachable from the node. 2) Build a graph G'=(V,E') with the same vertex set but all its arcs reversed; i.e. <eqn>(y,z) \in E' iff (x,y) \in E</eqn>. 3) Perform a traveral starting from v in G', which will result in discovering the set of nodes that can reach v. 
+
+If the second traversal does not completely traverse G', each DFS performed on G' will correspond to a strongly-connected component.
 </text>
 
 <text>
@@ -534,7 +565,10 @@ APPLICATIONS
 </text>
 
 <text>
-++ Shortest paths can be found by performing a breadth-first search on unweighted/binary graphs (more elaborate algorithms are required for weighted graphs, as we will see later): the tree resulting from BFS defines the shortest paths from the root to the remaining nodes in the graph. IMPLEMENTATION: parent[node] @ Visitor + reversal using recursion/stack
+++ Shortest paths can be found by performing a breadth-first search on unweighted/binary graphs <cite>Moore 1959</cite>
+
+
+(more elaborate algorithms are required for weighted graphs, as we will see later): the tree resulting from BFS defines the shortest paths from the root to the remaining nodes in the graph. IMPLEMENTATION: parent[node] @ Visitor + reversal using recursion/stack
 </text>
 
 <text>
@@ -621,6 +655,7 @@ APPLICATIONS:
 - Whenever we need to connect a set of nodes with minimum cost (e.g. transportation networks, communication networks, distribution networks...). 
 - Bottleneck spanning trees have applications when edge weights represent costs, capacities, or strengths
 - Clustering (e.g. hierarchical clustering)
+- They can be used to obtain approximate solutions to hard problems (Steiner trees or TSP below)
 </text>
 
 
@@ -647,7 +682,37 @@ Greedy algorithms choose what to do next by selecting the best local candidate t
 </text>
 
 <text>
-Candidates: edges/nodes...
+Candidates: 
+
+- Edges (Kruskal's algorithm <cite>Kruskal 1956</cite>): Each vertex starts as a separate tree and separate trees are merged by adding the lowest-cost edge to the MST that does not create a cycle (i.e. connects two separate subtrees)
+
+Kruskal(G):
+Sort edges in order of increasing weight
+edges_in_tree = 0
+while edges_in_tree &lt; n-1
+    get next edge (v,w)
+    if component(v) != component(w)
+       Add edge (v,w) to the MST
+       component(v) = component(w)
+       edges_in_tree++
+
+
+- Nodes (Prim's algorithm <cite>Prim 1957</cite>, rediscovered by <cite>Dijkstra 1959</cite>): Start with an arbitrary vertex and iteratively grow the tree by adding the lowest-cost edge that links some new vertex to the tree.
+
+Prim(G):
+Select an arbitrary vertex
+while...
+
+- The oldest algorithm: Boruvka's algorithm, published in 1926 <cite>Boruvka 1926</cite> and rediscovered by Choquet in 1938 <cite>Choquet 1938</cite>
+
+Since the lowest-weight edge incident on each vertex must be in the minimum spanning tree, the union of these edges will return a forest of at most n/2 trees. For each tree, select the edge (x,y) of lowest weight such that x \in T and y \notin T, which will also have to belong to the MST. Repeat until all vertices are connected. Each iteration at least halves the number of remaining trees, hence, after log n iterations, each taking linear time, we obtain the MST in O(m log n).
+
+
+An inverse algorithm would also be possible...
+  Algoritmo de  Algoritmo de borrado borrado inverso inverso::
+  Comenzando con  Comenzando con T=A,  T=A, considerar considerar laslas aristas aristas en  en orden orden decreciente decreciente
+  de coste de coste y y eliminar eliminar laslas aristas aristas de T salvo  de T salvo que que esoeso desconectase desconectase T.T.
+
 </text>
 
 
@@ -727,7 +792,9 @@ Naive implementation:
 Prim's algorithm:
 1) Maintaining a boolean flag to indicate whether a vertex is already in the tree or not, we can test whether the current edge links to a non-tree vertex in constant time, leading to a <eqn>O(n^2)</eqn> algorithm (both for dense and sparse graphs).
 2) Optimization: <eqn>O(n \log k)</eqn> on graphs that have only <eqn>k</eqn> different edge costs.
-2) The use of priority queues can lead to a more efficient <eqn>O(m + n \log n)</eqn> implementation, by making it faster to find the minimum cost edge at each iteration.
+3) The use of priority queues can lead to a more efficient implementation, by making it faster to find the minimum cost edge at each iteration.
+- <eqn>O(m \log n)</eqn> using standard binary heaps.
+- <eqn>O(m + n \log n)</eqn> using Fibonacci <cite>Fredman and Tarjan 1987</cite> or pairing heaps <cite>Stasko and Vitter 1987</cite>.
 </text>
 
 <text>
@@ -774,6 +841,15 @@ Efficient implementation of basic graph algorithms led to the discovery of sever
 structure <cite>Tarjan 1979</cite> and Fibonacci heaps <cite>Fredman and Tarjan 1987</cite>. These data structures have been used to speed up many other algorithms.
 
 </text>
+
+<text>
+A combination of Boruvka's algorhtm <cite>Boruvka 1926</cite> with Prim's algorithm <cite>Prim 1957</cite> yields an O(m log log n) algorithm. Running log log n iterations of Boruvka's algorhtm yields at most n/log n trees. Then create a graph G' with a vertex for each tree and an edge whose weight corresponds to the lightest edge between T_i and T_j. The MST of G' combined with the edges selected by  Boruvka's algorhtm yields the MST of G. Since Prim's algorithm will take O(n+m) time on this n/log n vertex, m edge graph (if implemented using Fibonacci or pairing heaps). <cite>Skiena 2008</cite>. Even tighter bounds, e.g. O(n \alpha(m,n)), can be achieved <cite>Karger et al. 1995</cite> <cite>Chazelle 2000</cite> <cite>Pettie and Ramachandran 2002</cite> <cite>Pettie and Ramachandran 2008</cite>.
+</text>
+
+<text>
+Dynamic graph algorithms are incremental algorithms that maintain graph invariants (such as MSTs) under edge insertion and deletion operations. <cite>Holm et al. 2001</cite> describes and efficient algorithm to maintain MSTs (and several other invariant) in amortized polylogarithmic time per update.
+</text>
+
 
 </document>
 
@@ -1348,7 +1424,11 @@ The following problem occupies a singular position within the complexity hierarc
 
 
 <text>
-The following algorithms are known to be NP-hard (most of them are, in fact, NP-complete): COVERING/PARTITIONING, SUBGRAPHS, ORDERING
+The following algorithms are known to be NP-hard (most of them are, in fact, NP-complete): 
+- Permutations/ORDERING, e.g. TSP, bandwidth, isomorphism
+- Selection: COVERING/PARTITIONING, SUBGRAPHS
+- Network design
+- Partitioning
 </text>
 
 <list>
@@ -1398,6 +1478,8 @@ M. R. Garey, D. S. Johnson, and L. Stockmeyer. Some simplified NP-complete probl
 
 <item>Minimum k-connected subgraph, i.e. k-connected subgraph (cannot be disconnected by removing fewer than k vertices).</item>
 
+
+
 <item>Subgraph isomorphism, i.e. given two graphs G and H as input, determine whether G contains a subgraph that is isomorphic to H.</item>
 
 <item>Largest common subgraph, i.e. given two graphs G and H as input, determine their largest isomorphic subgraphs.</item>
@@ -1407,6 +1489,19 @@ M. R. Garey, D. S. Johnson, and L. Stockmeyer. Some simplified NP-complete probl
 <item>Minimum equivalent digraph. i.e. subgraph that contains a directed path from u to v only when the original graph does.</item>
 
 
+<item>The Bandwidth problem, which seeks the linear ordering of the vertices that minimizes the length of the longest edge. which can be visualized as placing the vertices of a graph at distinct integer points along the x-axis so that the length of the longest edge is minimized.  Such placement is called linear graph arrangement, linear graph layout or linear graph placement.
+
+
+e.g. the problem of placement of a set of standard cells in a singe row with the goal of minimizing the maximal propagation delay (which is assumed to be proportional to wire length).
+
+e.g. solving linear systems (Gaussian elimination can be sped up when working with banded matrices, where the bandwidth is the distance from the furthest non-zero entry to the matrix diagonal)
+
+Variants
+- Linear arrangement: minimize the sum of the edge lengths
+- Profile minimization: minimize the sum of one-way distances
+- The pathwidth problem
+
+++ applications in VLSI design, graph drawing, and computational linguistics.</item>
 
 <item>Steiner trees, i.e. find the shortest interconnect for a given set of objects (as MST, but including the possibility of adding extra intermediate nodes).</item>
 
@@ -1417,14 +1512,7 @@ M. R. Garey, D. S. Johnson, and L. Stockmeyer. Some simplified NP-complete probl
 <item>Minimum cut into bounded sets, i.e. imposing restrictions on the size of the disjoint sets that partition the network.</item>
 
 
-
-
-
 <item>Matching on hypergraphs, i.e. when more than two vertices are involved in a single edge. In fact, 3-dimensional matching is known to be NP-hard whereas bipartite matching (a.k.a. 2-dimensional matching) is in P.</item>
-
-<item>The Bandwidth problem, which can be visualized as placing the vertices of a graph at distinct integer points along the x-axis so that the length of the longest edge is minimized. Such placement is called linear graph arrangement, linear graph layout or linear graph placement. e.g. the problem of placement of a set of standard cells in a singe row with the goal of minimizing the maximal propagation delay (which is assumed to be proportional to wire length).</item>
-
-<item>Related: The pathwidth problem, with applications in VLSI design, graph drawing, and computational linguistics.</item>
 
 
 
@@ -1516,6 +1604,12 @@ TARJAN, R. E. 1983.
 Data Structures and Network Algorithms.
 Society for Industrial and Applied Mathematics, Philadelphia.
 
+A. GIBBONS 1985
+Algorithmic Graph Theory
+Cambridge University Press
+
+SEDGEWICK 199...
+Algorithms in C...
 </text>
 
 
@@ -1547,11 +1641,15 @@ NP problems:
 
 <text>
 
+Many graph problems (such as shortest paths, bipartite matching, or network flows) can also be solved as special cases of linear programming.
+
 The books by Papadimitriou and Steiglitz [1982] and Ahuja et al. [1993] provide a
 comprehensive coverage of combinatorial optimization problems. 
 
 The book edited by Hochbaum [1996] provides an extensive coverage of work on approximation
 algorithms for graph problems. 
+
+Software tools: lp_solve (http://lpsolve.sourceforge.net/), CLP (http://www.coin-or.org), NEOS = Network-Enabled Optimization System @ Argonne National Laboratory, Illinois (submit your own optimization jobs at http://neos.mcs.anl.gov/)
 
 REFERENCES
 
@@ -1713,6 +1811,16 @@ Automata, Languages and Programming (ICALP).
 </reference>
 
 
+<reference id="Boruvka 1926">
+ <author>Otakar Boruvka</author>
+ <title>O jistém problému minimálním (About a certain minimal problem, in Czech)</title>
+ <journal>Práce mor. prírodoved. spol. v Brne III</journal>
+ <volume>3</volume>
+ <pages>37-58</pages>
+ <year>1926</year>
+</reference>
+
+
 <reference id="Broder and Mitzenmacher 2005">
  <author>Andrei Broder</author>
  <author>Michael Mitzenmacher</author>
@@ -1755,6 +1863,20 @@ Automata, Languages and Programming (ICALP).
  <file>Computer Science/algorithms/adt/1992 SODA Complexity of heaps.pdf</file>
 </reference>
 
+
+<reference id="Chazelle 2000">
+ <author>Bernard Chazelle</author>
+ <title>A minimum spanning tree algorithm with inverse-Ackermann type complexity</title>
+ <journal>Journal of the ACM</journal>
+ <volume>47</volume>
+ <number>6</number>
+ <pages>1028-1047</pages>
+ <year>2000</year>
+ <doi>10.1145/355541.355562</doi>
+ <file>Networks/algorithms/graphs/paths/2000 JACM [Chazelle] MST.pdf</file>
+</reference>
+
+
 <reference id="Cheriyan and Mehlhorn 1996">
  <author>J. Cheriyan</author>
  <author>K. Mehlhorn</author>
@@ -1767,6 +1889,17 @@ Automata, Languages and Programming (ICALP).
  <doi>10.1007/BF01940880</doi>
  <file>Networks/algorithms/graphs/connectedness/1996 Algorithmica [Cheriyan &amp; Mehlhorn] Dense graphs and networks.pdf</file>
 </reference>
+
+
+<reference id="Choquet 1938">
+ <author>Gustave Choquet</author>
+ <title>Étude de certains réseaux de routes (Study of research on routes, in French)</title>
+ <journal>Comptes-rendus de l'Académie des Sciences</journal>
+ <volume>206</volume>
+ <pages>310-313</pages>
+ <year>1938</year>
+</reference>
+
 
 <reference id="Cong and Bader 2005">
  <author>Guojing Cong</author>
@@ -1794,6 +1927,19 @@ Automata, Languages and Programming (ICALP).
  <year>1970</year>
  <doi>10.1145/321556.321562</doi>
  <file>Networks/algorithms/graphs/isomorphism/1970 JACM Graph isomorphism.pdf</file>
+</reference>
+
+
+<reference id="Dijkstra 1959">
+ <author>Edsger W. Dijkstra.</author>
+ <title>A note on two problems in connexion with graphs</title>
+ <journal>Numerische Mathematik</journal>
+ <volume>1</volume>
+ <number>1</number>
+ <pages>269-271</pages>
+ <year>1959</year>
+ <doi>10.1007/BF01386390</doi>
+ <file>Networks/algorithms/graphs/paths/1959 NM [Dijkstra] MST &amp; Shortest paths.pdf</file>
 </reference>
 
 <reference id="Edmonds and Karp 1972">
@@ -2017,6 +2163,22 @@ Automata, Languages and Programming (ICALP).
 </reference>
 
 
+
+<reference id="Holm et al. 2001">
+ <author>Jacob Holm</author>
+ <author>Kristian de Lichtenberg</author>
+ <author>Mikkel Thorup</author>
+ <title>Poly-logarithmic deterministic fully-dynamic algorithms for connectivity, minimum spanning tree, 2-edge, and biconnectivity</title>
+ <journal>Journal of the ACM</journal>
+ <volume>48</volume>
+ <number>4</number>
+ <pages>723-760</pages>
+ <year>2001</year>
+ <doi>10.1145/502090.502095</doi>
+ <file>Networks/algorithms/graphs/paths/2001 JACM [Holm] MST.pdf</file>
+</reference>
+
+
 <reference id="Hopcroft and Tarjan 1973">
  <author>John Hopcroft</author>
  <author>Robert E. Tarjan</author>
@@ -2055,6 +2217,21 @@ Automata, Languages and Programming (ICALP).
  <file>Networks/algorithms/graphs/1962 CACM [Kahn] Topological sorting.pdf</file>
 </reference>
 
+
+<reference id="Karger et al. 1995">
+ <author>David R. Karger</author>
+ <author>Philip N. Klein</author>
+ <author>Robert E. Tarjan</author>
+ <title>A randomized linear-time algorithm to find minimum spanning trees</title>
+ <journal>Journal of the ACM</journal>
+ <volume>42</volume>
+ <number>2</number>
+ <pages>321-328</pages>
+ <year>1995</year>
+ <doi>10.1145/201019.201022</doi>
+ <file>Networks/algorithms/graphs/paths/1995 JACM [Karger] MST.pdf</file>
+</reference>
+
 <reference id="Karp 1972">
  <author>Richard M. Karp</author>
  <title>Reducibility among combinatorial problems</title>
@@ -2086,6 +2263,18 @@ Automata, Languages and Programming (ICALP).
  <year>2005</year>
  <isbn>0321295358</isbn>
  <file>[books]/algorithms/0321295358 [Kleinberg] Algorithm Design.pdf</file>
+</reference>
+
+<reference id="Kruskal 1956">
+ <author>Joseph B. Kruskal, Jr.</author>
+ <title>On the shortest spanning subtree of a graph and the traveling salesman problem</title>
+ <journal>Proceedings of the American Mathematical Society</journal>
+ <volume>7</volume>
+ <number>1</number>
+ <pages>48-50</pages>
+ <year>1956</year>
+ <url>http://www.jstor.org/stable/2033241</url>
+ <file>Networks/algorithms/graphs/paths/1956 AMS [Kruskal] MST.pdf</file>
 </reference>
 
 
@@ -2220,6 +2409,17 @@ Automata, Languages and Programming (ICALP).
 </reference>
 
 
+<reference id="Moore 1959">
+ <author>Edward F. Moore</author>
+ <title>The shortest path through a maze</title>
+ <proceedings>International Symposium on the Theory of Switching</proceedings>
+ <conference>ISST</conference>
+ <location>Cambridge, Massachusetts</location>
+ <year>1959</year>
+ <pages>285-292</pages>
+</reference>
+
+
 <reference id="Papadimitriou and Yannakakis 1989">
  <author>Christos H. Papadimitriou</author>
  <author>Mihalis Yannakakis</author>
@@ -2254,6 +2454,45 @@ Automata, Languages and Programming (ICALP).
   <publisher>Addison-Wesley</publisher>
   <year>1984</year>
   <isbn>0201055945</isbn>
+</reference>
+
+
+<reference id="Pettie and Ramachandran 2002">
+ <author>Seth Pettie</author>
+ <author>Vijaya Ramachandran</author>
+ <title>An optimal minimum spanning tree algorithm</title>
+ <journal>Journal of the ACM</journal>
+ <volume>49</volume>
+ <number>1</number>
+ <pages>16-34</pages>
+ <year>2002</year>
+ <doi>10.1145/505241.505243</doi>
+ <file>Networks/algorithms/graphs/paths/2002 JACM [Pettie] MST.pdf</file>
+</reference>
+
+<reference id="Pettie and Ramachandran 2008">
+ <author>Seth Pettie</author>
+ <author>Vijaya Ramachandran</author>
+ <title>Randomized minimum spanning tree algorithms using exponentially fewer random bits</title>
+ <journal>ACM Transactions on Algorithms</journal>
+ <volume>4</volume>
+ <number>1</number>
+ <pages>a5</pages>
+ <year>2008</year>
+ <doi>10.1145/1328911.1328916</doi>
+ <file>Networks/algorithms/graphs/paths/2008 TALG [Pettie] MST.pdf</file>
+</reference>
+
+
+<reference id="Prim 1957">
+ <author>Robert C. Prim:</author>
+ <title>Shortest connection networks and some generalizations</title>
+ <journal>Bell System Technical Journal</journal>
+ <volume>36</volume>
+ <pages>1389-1401</pages>
+ <year>1957</year>
+ <url>http://www.alcatel-lucent.com/bstj/vol36-1957/articles/bstj36-6-1389.pdf</url>
+ <file>Networks/algorithms/graphs/paths/1957 BSTJ [Prim] MST.pdf</file>
 </reference>
 
 
@@ -2382,6 +2621,8 @@ Automata, Languages and Programming (ICALP).
  <doi>10.1007/BF01758773</doi>
  <file>Networks/algorithms/graphs/connectedness/1992 Algorithmica [Westbrook &amp; Tarjan] Bridge-connected and biconnected components.pdf</file>
 </reference>
+
+<!-- NEW -->
 
 
 </document>

@@ -149,10 +149,25 @@ In binary graphs, path lengths correspond to the number of edges paths contain, 
 Paths and cycles are important kinds of graphs. A path <eqn>P_n</eqn> is a graph of order n and size n-1 whose vertices can be labeled <eqn>v_1, v_2, ..., v_n</eqn> and whose edges are <eqn>v_iv_{i+1}</eqn> for <eqn>i=1,2,...,n-1</eqn>. A cycle <eqn>C_n</eqn> is a graph of order n and size n whose whose vertices can be labeled <eqn>v_1, v_2, ..., v_n</eqn> and whose edges are <eqn>v_1v_n</eqn> and <eqn>v_iv_{i+1}</eqn> for <eqn>i=1,2,...,n-1</eqn>. The cycle <eqn>C_3</eqn> is called a triangle.
 </text>
 
+<text>
+Eulerian cycle (tour visiting every edge)
+- An undirected graph contains an Eulerian cycle iff (1) it is connected, and (2) each vertex is of even degree.
+- An undirected graph contains an Eulerian path iff (1) it is connected, and (2) all but two vertices are of even degree. These two vertices will be the start and end points of any path.
+
+- A directed graph contains an Eulerian cycle iff (1) it is strongly-connected, and (2) each vertex has the same in-degree as out-degree.
+- A directed graph contains an Eulerian path from x to y iff (1) it is connected, and (2) all other vertices have the same in-degree as out-degree,
+with x and y being vertices with in-degree one less and one more than their out-degrees, respectively.
+</text>
 
 
 <text>
 ++ Distance, geodesic, eccentricity, diameter, radius
+
+The eccentricity of vertex v in a graph is the shortest-path distance to the farthest vertex from v. 
+The radius of a graph is the smallest eccentricity of any vertex.
+The diameter of a graph is the maximum eccentricity of any vertex.
+The center is the set of vertices whose eccentricity is the radius.
+
 </text>
 
 <text>

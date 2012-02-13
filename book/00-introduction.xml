@@ -76,6 +76,15 @@ Need for new data mining techniques ++ Today's data, however, doesn't take the f
 <text>
 1736: Leonhard Euler
 ++ Konisberg @ 0471648167 [Marcel Danesi] The Liar Paradox and the Towers of Hanoi.pdf
+ 
+ The German city of Königsberg, founded in 1255, was annexed by the Soviet Union at the end of World War II in 1945 and later renamed Kaliningrad in 1946 after the death of Chairman of the Presidium of the Supreme Soviet of the USSR Mikhail Kalinin, one of the original Bolsheviks. The city is on the banks of the Pregel river. 
+
+"The history of graph theory began in 1736, when Euler [Eul36] first solved the
+seven bridges of K¨onigsberg problem.) . In Euler's day there were seven bridges linking the banks and
+two islands, which can be modeled as a multigraph with seven edges and four vertices.
+Euler sought a way to walk over each of the bridges exactly once and return home—i.e.
+, an Eulerian cycle. Euler proved that such a tour is impossible, since all four of the
+vertices had odd degrees."
 </text>
 
 <text>

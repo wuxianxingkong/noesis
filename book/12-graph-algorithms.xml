@@ -145,7 +145,7 @@ Skip lists: A modern data structure that is easier to implement than balanced tr
 </list>
 
 <text>
-Choosing the proper alternative: access patterns (e.g. relative frequencies of insert, delete, and search operations: hash table vs. sorted list). Efficient implementations always try to minimize the number of block data transfers. The so-called cache-oblivious data structures offer performance guarantees without explicit knowledge of the particular block size.
+Choosing the proper alternative: access patterns (e.g. relative frequencies of insert, delete, and search operations: hash table vs. sorted list). Efficient implementations always try to minimize the number of block data transfers. The so-called cache-oblivious data structures <cite>Frigo et al. 1999</cite> offer performance guarantees without explicit knowledge of the particular block size.
 </text>
 
 </document>
@@ -892,6 +892,12 @@ Distributed MST algorithms @ MIT 6.852: Distributed Algorithms - Lecture 4 (sync
 When graphs are weighted, i.e. each edge in the graph is associated to a numerical value, computing their shortest paths is more complicated than performing breadth-first traversals (recall that the BFS tree leads to minimum-number-of-links paths)...
 </text>
 
+<text>
+Shortest paths in directed acyclic graphs can also be found in linear time: Perform a topological sorting and then process the vertices
+from left to right. Observe that d(s, j) = min_(x,i) d(s, i) + w(i, j) since we already know the shortest path d(s, i) for all vertices to the left of j. The same algorithm (replacing min with max) also suffices to find the longest path in a DAG, which is useful in scheduling applications.
+</text>
+
+
 <note>
 <title>The Strategy design pattern</title>
 
@@ -913,12 +919,19 @@ When graphs are weighted, i.e. each edge in the graph is associated to a numeric
 <title>Single source shortest paths</title>
 
 <text>
-APPLICATIONS: Finding directions... (note: hierarchical A*)
+Finding the shortest path from s to t in G.
+Actually, finding the shortest path from a source node <eqn>s</eqn> to every other node in the network requires the same amount of work...
 </text>
 
 <text>
-Finding the shortest path from a source node <eqn>s</eqn> to every other node in the network...
+APPLICATIONS: Finding directions (note: hierarchical A*), transportation and communications networks, distinguishing
+among homophones iin speech recognition systems, graph visualization algorithms...
+
+Approximate shortest paths in road networks, for instance, typically employ a hierarchical variation of A* <cite>Goldberg et al. 2006</cite> <cite>Goldberg et al. 2007</cite>. Such problem differ from the shortest path problems in this Section because
+(1) preprocessing costs can be amortized over many point-to-point queries, 
+(2) the backbone of high-speed, long-distance highways can reduce the path problem to identifying the best place to get on and off this backbone, and (3) approximate or heuristic solutions suffice in practice
 </text>
+
 
 
 <text>
@@ -933,13 +946,27 @@ In Prim's algorithm, we just take into account the weighte of the edge we add to
 
 <text>
 http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
-Dijkstra's algorithm: 
+Dijkstra's algorithm <cite>Dijkstra 1959</cite>: 
+
+computes the shortest path from a given starting vertex x to all n . 1
+other vertices. In each iteration, it identifies a new vertex v for which the shortest
+path from x to v is known. We maintain a set of vertices S to which we currently
+know the shortest path from v, and this set grows by one vertex in each iteration.
+In each iteration, we identify the edge (u,v) so that
+dist(x, u) + weight(u, v) = min_(w,y) { dist(x, w) + weight(w,y) }
+
+This edge (u, v) gets added to a shortest path tree, whose root is x and describes
+all the shortest paths from x.
+
+If we just need to know the shortest
+path from x to y, terminate the algorithm as soon as y enters S.
 </text>
 
 <text>
 EFFICIENCY:
-- <eqn>O(n^2)</eqn> using a naive implementation
-- <eqn>O(m + n \log n)</eqn> using Fibonacci heaps
+- <eqn>O(n^2)</eqn> using a naive implementation with arrays
+- Using binary heaps: <eqn>O(m \log n)</eqn>
+- Fastest implementation: <eqn>O(m + n \log n)</eqn> amortized time using Fibonacci heaps <cite>Fredman and Tarjan 1987</cite>
 </text>
 
 <text>
@@ -948,6 +975,23 @@ Related problem: Single-destination shortest path problem for directed graphs.
 
 <text>
 CORRECTNESS: Only on graphs without negative edges!!!
+
+Dijkstraís algorithm assumes that all edges have positive cost. 
+- Adding a fixed amount of weight to make each edge positive does
+not solve the problem. Dijkstraís algorithm will then favor paths using a fewer
+number of edges,
+
+For graphs with edges of negative weight,
+you must use the more general, but less efficient, Bellman-Ford algorithm.
+
+NOTE: negative cost cycles =the shortest x to y path in such a graph is not defined because we can detour
+from x to the negative cost cycle and repeatedly loop around it, making the total cost arbitrarily small.
+
+
+</text>
+
+<text>
+In a geometric setting, more efficient geometric algorithms compute the shortest path directly from the arrangement of obstacles: motion planning algorithms <cite>Latombe 1991</cite> <cite>LaValle 2006</cite>
 </text>
 
 
@@ -973,14 +1017,8 @@ Some problems requite computing the shortest paths between all pairs of nodes, e
 </text>
 
 <text>
-APPLICATIONS: 
+EXAMPLE: 
 - bounding the amount of time needed to deliver a packet through a network
-- transitive closure (reachable vertices can be computing using graph traversal algorithms, an all-pairs shortest path algorithms returns them all in a whole batch, albeit less efficiently).
-- pattern recognition problems, e.g. Viterbi algorithm, a dynamic programming algorithm that basically solves a shortest path problem on a DAG.
-</text>
-
-<text>
-A first solution: Repeating Dijkstra's algorithm for each node
 </text>
 
 <text>
@@ -989,14 +1027,18 @@ A first solution: Repeating Dijkstra's algorithm for each node
 
 
 <text>
-http://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
-Bellman-Ford algorithm: <eqn>O(nm)</eqn> time, <eqn>O(n)</eqn> space
+A first solution: Repeating Dijkstra's algorithm for each node
 </text>
 
+<!-- Floyd-Warshall -->
 
 <text>
 http://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm
-Floyd-Warshall algorithm: <eqn>O(n^3)</eqn>
+Floyd-Warshall algorithm: <cite>Floyd 1962</cite>
+often referred to as Floyd's algorithm, albeit the same algorithm was published by Bernard Roy in 1959 <cite>Roy 1959</cite> and by Stephen Warshall in 1962 <cite>Warshall 1962</cite>
+
+
+<eqn>O(n^3)</eqn>
 
 - Define the length of the shortest path from i to j using only the k first vertices as possible intermediate nodes: <eqn>W[i,j]^k</eqn>
 - Initial shortest-path matrix = adjacency matrix
@@ -1005,18 +1047,139 @@ Floyd-Warshall algorithm: <eqn>O(n^3)</eqn>
 - Ancillary matrix to reconstruct the paths
 </text>
 
+<code>
+D0 = M
+for k = 1 to n do
+    for i = 1 to n do
+        for j = 1 to n do
+            Dk(i,j) = min{ Dk-1(ij), Dk-1(ik) + Dk-1(kj) }
+return Dn
 
+
+  for k := 1 to n
+        for i := 1 to n
+           for j := 1 to n
+              if path[i][k] + path[k][j] &lt; path[i][j] then
+                 path[i][j] := path[i][k]+path[k][j];
+                 next[i][j] := k;
+
+</code>
+
+<text>
+Transitive closure of directed graphs (Warshall's algorithm). In Warshall's original formulation of the algorithm, the graph is unweighted and represented by a Boolean adjacency matrix. Then the addition operation is replaced by logical conjunction (AND) and the minimum operation by logical disjunction (OR).
+</text>
+
+<!-- Bellman-Ford -->
+
+<text>
+http://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
+Bellman-Ford algorithm: <eqn>O(nm)</eqn> time, <eqn>O(n)</eqn> space
+
+Bellman-Ford algorithm <cite>Bellman 1958</cite> <cite>Ford and Fulkerson 1962</cite>
+
++ Negative weights (arise when we reduce other problems to shortest-paths problems)
+</text>
+
+<code>
+   // Step 1: initialize graph
+   for each vertex v in vertices:
+       if v is source then v.distance := 0
+       else v.distance := infinity
+       v.predecessor := null
+
+   // Step 2: relax edges repeatedly
+   for i from 1 to size(vertices)-1:
+       for each edge uv in edges: // uv is the edge from u to v
+           u := uv.source
+           v := uv.destination
+           if u.distance + uv.weight &lt; v.distance:
+               v.distance := u.distance + uv.weight
+               v.predecessor := u
+
+   // Step 3: check for negative-weight cycles
+   for each edge uv in edges:
+       u := uv.source
+       v := uv.destination
+       if u.distance + uv.weight &lt; v.distance:
+           error "Graph contains a negative-weight cycle"
+</code>
+
+<!-- Johnson -->
 
 <text>
 http://en.wikipedia.org/wiki/Johnson%27s_algorithm
-Johnson's algorithm: <eqn>O(n^2 \log n + nm)</eqn> using <eqn>O(nm)</eqn> time for the Bellman-Ford stage of the algorithm, and <eqn>O(n \log n + m)</eqn> for each of <eqn>n</eqn> instantiations of Dijkstra's algorithm. Faster than the Floyd-Warshal algorithm for sparse graphs.
+Johnson's algorithm <cite>Johnson 1977</cite> 
+
+1
+First, a new node q is added to the graph, connected by zero-weight edges to each of the other nodes.
+
+2
+Second, the Bellman-Ford algorithm is used, starting from the new vertex q, to find for each vertex v the least weight h(v) of a path from q to v. If this step detects a negative cycle, the algorithm is terminated.
+
+3
+Next the edges of the original graph are reweighted using the values computed by the Bellman-Ford algorithm: an edge from u to v, having length w(u,v), is given the new length w(u,v) + h(u) - h(v).
+
+4
+Finally, q is removed, and Dijkstra's algorithm is used to find the shortest paths from each node s to every other vertex in the reweighted graph.
+
+
+<eqn>O(n^2 \log n + nm)</eqn> using <eqn>O(nm)</eqn> time for the Bellman-Ford stage of the algorithm, and <eqn>O(n \log n + m)</eqn> for each of <eqn>n</eqn> instantiations of Dijkstra's algorithm. Faster than the Floyd-Warshal algorithm for sparse graphs.
+
+
+It allows some of the edge weights to be negative
 </text>
 
+
+<!-- Applications -->
+
+<text>
+All-pairs shortest paths algorithms can be used to find the shortest cycle in a graph: its girth. Floyd's algorithm can be used to compute d_ii, which is the shortest way to get from vertex i to itself (i.e. the shortest cycle that goes through i). If you want the shortest simple cycle, the easiest
+approach is to compute the lengths of the shortest paths from i to all other vertices, and then explicitly check whether there is an acceptable edge from each vertex back to i.
+</text>
+
+
+<text>
+- Reachability questions (can I get to x from y?)
+
+RELATED PROBLEMS 
++ Transitive closure, construct a graph G' = (V,E') with edge (i, j) in E' iff there is a directed path from i to j in G. 
++ Transitive reduction (also known as minimum equivalent digraph), the inverse operation of transitive closure: reducing the number of edges while maintaining identical reachability properties, i.e. construct a small graph G'' = (V,E'') with a directed path from i to j in G'' iff there is a directed path from i to j in G
+
+- transitive closure 
+
+1) using graph traversal algorithms O(n(n+m)), 
+2) an all-pairs shortest path algorithms returns them all in a whole batch, albeit less efficiently, O(n^3) using Warshall's algorithm.
+3) using matrix multiplication: O(log n) multiplications using a divide-and-conquer algorithm
+
+- transitive reduction
+
+Approximate solution: A linear-time, quick-and-dirty transitive reduction algorithm identifies the
+strongly connected components of G, replaces each by a simple directed cycle,
+and adds these edges to those bridging the different components.
+
++ Transitive reduction also arises in graph drawing, where it is important to eliminate as many unnecessary edges as possible to reduce the visual clutter
+</text>
+
+
+<text>
+- pattern recognition problems, e.g. Viterbi algorithm, a dynamic programming algorithm that basically solves a shortest path problem on a DAG.
+</text>
+
+
+<!-- Parallelization -->
 
 <text>
 Parallelization of Floyd's algorithm 
 - for dense graphs @ Section 10.4 <cite>Grama et al. 2003</cite>
 + Bibliographic notes
+</text>
+
+
+<text>
+Wikipedia: A distributed variant of the Bellman-Ford algorithm is used in distance-vector routing protocols, for example the Routing Information Protocol (RIP). The algorithm is distributed because it involves a number of nodes (routers) within an Autonomous system, a collection of IP networks typically owned by an ISP. It consists of the following steps:
+- Each node calculates the distances between itself and all other nodes within the AS and stores this information as a table.
+- Each node sends its table to all neighboring nodes.
+- When a node receives distance tables from its neighbors, it calculates the shortest routes to all other nodes and updates its own table to reflect any changes.
 </text>
 
 
@@ -1042,27 +1205,49 @@ Interpreting weighted graphs as distribution networks where weights represent ca
 </text>
 
 <text>
-++ CS
+two primary classes of network flow problems:
+maximum flow and minimum-cost flow:
 
-The maximum-flow problem is that of finding a maximum flow of a
+- "The maximum-flow problem is that of finding a maximum flow of a
 single commodity from a source vertex to a sink vertex that satisfies
 capacity constraints on the edges and flow conservation constraints at the
-vertices. Associating costs with edges yields the minimum-cost flow problem.
+vertices. "
 
-        Several graph problems, including the assignment problem and graph
-connectivity, can be reduced to the minimum-cost flow problem. A fundamental
-theorem is the Max-flow Min-cut Theorem of Ford and Fulkerson that shows a
-min-max equality between two fundamental properties of a flow network. The
-two major techniques for solving flow problems are the augmenting-path
-method and the preflow-push method. Polyno-mial- time algorithms to solve
-minimum-cost flows are also known [Ahuja et al. 1993].
+- Associating costs with edges yields the minimum-cost flow problem. 
+where we also have a targeted amount of flow f we want to send from s to t at minimum total cost.
+
+
+Polynomial-time algorithms to solve maximum flow and minimum-cost flows are known.
+"a surprising variety of linear programming
+problems arising in practice can be modeled as network-flow problems,
+and network-flow algorithms can solve these problems much faster than
+general-purpose linear programming methods"
+
+APPLICATIONS: cost-effective way to ship goods between a set of factories and a set of stores
+defines a network-flow problem, as do many resource-allocation problems in communications
+networks
 </text>
 
 <text>
 Network flow problem: The maximum amount of flow that can be sent from s to t in a given graph.
 </text>
 
+<text>
+The two major techniques for solving flow problems are the augmenting-path method and the preflow-push method.
 
+- Augmenting paths: "These algorithms repeatedly find a path of positive
+capacity from source to sink and add it to the flow. It can be shown that
+the flow through a network is optimal if and only if it contains no augmenting
+path. Since each augmentation adds something to the flow, we eventually
+find the maximum. The difference between network-flow algorithms is in how
+they select the augmenting path."
+
+- "Preflow-push methods - These algorithms push flows from one vertex to another,
+initially ignoring the constraint that in-flow must equal out-flow at each
+vertex. Preflow-push methods prove faster than augmenting-path methods,
+essentially because multiple paths can be augmented simultaneously. These
+algorithms are the method of choice in practice"
+</text>
 
 <text>
 IDEA: <b>Augmenting paths</b>
@@ -1101,12 +1286,13 @@ As described, even though the algorithm converges to the optimal solution, it ma
 <text>
 IMPLEMENTATION (Edmonds-Karp algorithm <cite>Edmonds and Karp 1972</cite>):
 http://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm
-The algorithm is identical to the FordñFulkerson algorithm, except that the search order when finding the augmenting path is defined. The path found must be a shortest path that has available capacity
+The algorithm is identical to the Ford-Fulkerson algorithm, except that the search order when finding the augmenting path is defined. The path found must be a shortest path that has available capacity
 
 - BFS to look for any path from the source to the sink that increases the total flow (only consider edges with residual capacity, i.e. positive residual flow)
 </text>
 
 <text>
+
  <cite>Edmonds and Karp 1972</cite> proved that selecting the shortest unweighted augmenting path (a.k.a. shortest geodesic path) guarantees that <eqn>O(n^3)</eqn> augmentations suffice for optimization.
 
 <eqn>O(nm^2)</eqn> running time: each augmenting path can be found in <eqn>O(m)</eqn> time, every time at least one of the <eqn>m</eqn> edges becomes saturated, the distance from the saturated edge to the source along the augmenting path must be longer than last time it was saturated, and that length is at most <eqn>n</eqn>.
@@ -1115,30 +1301,106 @@ Another property of this algorithm is that the length of the shortest augmenting
 </text>
 
 <text>
-@ MIT Graphs - Network flow
+The standard reference for network flow algorithms and their history is <cite>Ahuja et al. 1993</cite>. 
+The fastest known general network flow algorithm runs in <eqn>O(nm \log(n^2/m))</eqn> time <cite>Goldberg and Tarjan 1988</cite>.
 </text>
 
+
+<text>
+++ @ MIT Graphs - Network flow
+</text>
+
+
+<text>
+VARIANTS
+
+- multiple sources and/or sinks? - No problem. We can handle
+this by modifying the network to create a vertex to serve as a super-source
+that feeds all the sources, and a super-sink that drains all the sinks.
+
+- if all arc capacities are identical, either 0 or 1? - Faster algorithms
+exist for 0-1 network flows.
+
+- if all my edge costs are identical? - Use the simpler and faster algorithms
+for solving maximum flow as opposed to minimum-cost flow. Max-flow
+without edge costs arises in many applications, including edge/vertex connectivity
+and bipartite matching.
+
+- What if I have multiple types of material moving through the network? - In
+a telecommunications network, every message has a given source and destination.
+Each destination needs to receive exactly those calls sent to it, not
+an equal amount of communication from arbitrary places. This can be modeled
+as a multicommodity flow problem, where each call defines a different
+commodity and we seek to satisfy all demands without exceeding the total
+capacity of any edge. Linear programming will suffice for multicommodity flow if fractional flows
+are permitted. Unfortunately, integral multicommodity flow is NP-complete,
+even for only two commodities.
+</text>
 
 <document>
 <tag>graph-minimum-cuts</tag>
 <title>Minimum cuts</title>
 
 <text>
-A set of edges whose deletion separates s from t is called an s-t cut. Since no s-t flow can exceed the weight of the minimum s-t cut, finding the maximum flow is equivalent to discovering the minimum cut. In fact, the maximum s-t flow equals the weight of the minimum s-t cut.
+A set of edges whose deletion separates s from t is called an s-t cut. Since no s-t flow can exceed the weight of the minimum s-t cut, finding the maximum flow is equivalent to discovering the minimum cut. In fact, the maximum s-t flow equals the weight of the minimum s-t cut. This maximum-flow, minimum-cut theorem is due to <cite>Ford and Fulkerson 1962</cite>.
 </text>
 
 <text>
-Therefore, flow algorithms can be used to solve edge and vertex connectivity problems...
+Therefore, flow algorithms can be used to solve edge and vertex connectivity problems that are employed to answer questions such as
+What is the smallest subset of vertices (or edges) whose deletion will disconnect G? Or which will separate s from t? Such problem often appear when stuydying network reliability.
+</text>
+
+<text>
+"The edge (vertex) connectivity of a graph G is the smallest number of edge
+(vertex) deletions sufficient to disconnect G. There is a close relationship between
+the two quantities. The vertex connectivity is always less than or equal to the
+edge connectivity, since deleting one vertex from each edge in a cut set succeeds
+in disconnecting the graph. But smaller vertex subsets may be possible. The minimum
+vertex degree is an upper bound for both edge and vertex connectivity, since
+deleting all its neighbors (or cutting the edges to all its neighbors) disconnects the
+graph into one big and one single-vertex component"
+</text>
+
+<text>
+- Simple depth-first or breadth-first traversals suffice to identify all connected components in linear time, including strongly-connected and weakly-connected components in directed graphs.
+
+- Weak links: We say that G is biconnected if no single vertex deletion is sufficient to disconnect G. Any vertex that is such a
+weak point is called an articulation vertex. A bridge is the analogous concept for edges, meaning a single edge whose deletion disconnects the graph. Linear-time algorithms for identifying articulation vertices and bridges also exist.
+
+- Finding the smallest cut-set that separates a given pair of vertices can be solved using network flow algorithms. 
+
+- Vertex connectivity is characterized by Mengerís theorem, which states that a graph is k-connected if and only if every pair of vertices is joined by at least k vertex-disjoint paths. Network flow can again be used to perform this calculation, since a flow of k between a pair of vertices implies k edge-disjoint paths. we construct a graph G' such that any set of edge-disjoint paths in G' corresponds to vertex-disjoint paths in G. This is done by replacing each vertex vi of G with two vertices vi,1 and vi,2, such that edge (vi,1, vi,2)  G' for all vi G, and by replacing every edge (vi, x) Å∏ G by edges (vi,j, xk), j = k {0, 1} in G'. Thus two edge-disjoint paths in G' correspond to each vertex-disjoint path
+in G.
+
+A non-flow-based algorithm for edge k-connectivity in O(kn2) is due to Matula <cite>Matula 1987</cite>.
+Faster k-connectivity algorithms are known for certain small values of k. All three-connected components of a graph can be generated in linear time <cite>Hopcroft and Tarjan 1973b</cite>, while O(n2) suffices to test 4-connectivity <cite>Kanevsky and Ramachandran 1991</cite>
+
+- Graph partitioning, i.e. splitting the graph into smaller components with specific properties, is, however, an NP-complete problem. Good heuristic techniques exist for this problem <cite>Karypis and Kumar 1999</cite>, which has important applications (e.g. in VLSI circuit layout).
 </text>
 
 </document>
 
 <document>
 <tag>graph-matching</tag>
-<title>An application: Matching problems</title>
+<title>Matching</title>
 
 <text>
 A matching in a graph <eqn>G=(V,E)</eqn> is a subset of edges <eqn>E' \subset E</eqn> such that no two edges in <eqn>E'</eqn> share a vertex.
+</text>
+
+<text>
+PROBLEM
+Find the largest set of edges E' from E such that each
+vertex in V is incident to at most one edge of E'.
+</text>
+
+<text>
+APPLICATION: Assignment problems, with/without weights (maximum cardinality matching/ maximum weight matching).
+- Assignment problems (jobs to be done and people who can do them, male and female customers of a dating web site...)
+</text>
+
+<text>
+Matching theory and algorithms <cite>Lovasz and Plummer 1986</cite>
 </text>
 
 <text>
@@ -1153,27 +1415,39 @@ for finding a maximum matching. Edges may be assigned weights that denote
 the advantage of including them in a matching. Maximum-weight bipartite
 matching, also known as the assignment problem, arises in many applications.
 Algorithms for maximum cardinality and maximum-weight matchings have been
-well studied. The Hungarian method is a popular technique for solving the
-assignment problem. See Ahuja et al. [1993], Bondy and Murty [1977], Lovasz
-and Plummer [1986], and Papadimitriou and Steiglitz [1982] for more details.
+well studied.  See <cite>Ahuja et al. 1993</cite>,<cite>Bondy and Murty 1976</cite>, 
+, and <cite>Papadimitriou and Steiglitz 1982</cite>
+for more details.
+</text>
+
+<text>
+Standard algorithms for bipartite matching based on network flows:
 </text>
 
 <text>
 Remember that a graph is bipartite (or two-colorable) if its vertices can be divided into two sets, L and R, so that every edge in the graph connects one vertex from the first set to a different vertex on the second set.
 </text>
-
-<text>
-APPLICATIONS:
-- Assignment problems (jobs to be done and people who can do them, male and female customers of a dating web site...)
-</text>
-
 <text>
 The largest possible bipartite matching can be found using network flow. Just add a source node s connected to every vertex in L with capacity 1, add a sink node t connected to every node in R, and assign each edge in the bipartite graph a capacity of 1. The maximum flow from s to t determines the largest matching in the bipartite graph.
 </text>
 
 <text>
+The best algorithm for maximum bipartite matching, based on Hopcroft and Karp's algorithm <cite>Hopcroft and Karp 1973</cite>, repeatedly finds the shortest augmenting paths instead of using network flow, and runs in O(\sqrt{n}m) <cite>Micali and Vazirani 1980</cite>.
+</text>
+
+<text>
+Classic algorithm: Hungarian algorithm for bipartite matching <cite>Kuhn 1955</cite>. The Hungarian algorithm runs in O(n(m + n log n)) time.
+</text>
+
+<text>
+Matching based on preferences (e.g. matching medical residents to hospitals or students to university courses): O(n^2) time using Galey and Shapley's algorithm <cite>Gale and Shapley 1962</cite>.
+</text>
+
+
+<text>
 @ MIT Graphs - Matching
 </text>
+
 
 </document>
 
@@ -1306,9 +1580,15 @@ The following problems can be solved with algorithms that run in linear time (i.
 
 <item>Single-source shortest paths on DAGs, even with negative weights.</item>
 
-<item>Hamiltonian path on a DAG (topological sorting).</item>
+<item>Shortest paths, longest paths, and hamiltonian paths on DAGs (topological sorting).</item>
 
 <item>Maximum matching in a tree.</item>
+
+<item>Eulerian cycle: the shortest tour visiting each edge of G 
+- Checking is an Eulerian cycle exists: verify that the graph is connected using DFS or BFS, and then count the number of odd-degree vertices.
+- Constructing the cycle in linear time: Use DFS to find an arbitrary cycle in the graph. Delete this cycle and
+repeat until the entire set of edges has been partitioned into a set of edge-disjoint cycles. These cycles will have common vertices (since the graph is connected), and so can be spliced together as an "eight" at a shared vertex. By so splicing all the extracted cycles together, we construct a single circuit containing all of the edges.
+</item>
 
 
 </list>
@@ -1362,9 +1642,13 @@ The following algorithms require polynomial time:
 
 <item>Maximum bipartite matching.</item>
 
+<item>Minimum vertex cover problem and maximum independent set problems for bipartite graphs (since the maximum bipartite matching is equal in size to the minimum vertex cover in bipartite graphs.</item>
+
 <item>Minimum-size edge cover (i.e. a set of edges, of minimum size, such that each vertex in the graph is incident to at least one edge from the set).</item>
 
-<item>Eulerian cycle</item>
+<item>Chinese postman problem (a generalization of the Eulerian circuit) introduced by <cite>Kwan 1962</cite>, hence its name: the shortest tour visiting each edge of G at least once. This minimum
+cycle will never visit any edge more than twice, so good tours exist for any road network. The optimal postman tour can be constructed by adding the appropriate edges to the graph G to make it Eulerian. Specifically, we find the shortest path between each pair of odd-degree vertices in G. Adding a path between two odd-degree vertices in G turns both of them to even-degree, moving G closer to becoming an Eulerian graph. Finding the best set of shortest paths to add to G reduces to identifying a minimum-weight perfect matching in a bipartite graph G' <cite>Edmonds and Johnson 1973</cite>. For undirected graphs, the vertices of G' correspond the odd-degree vertices of G, with the weight of edge (i, j) defined to be the length of the shortest path from i to j in G. For directed graphs, the vertices of G' correspond to the degree-imbalanced vertices from G, with the bonus that all edges in G' go from out-degree deficient vertices to in-degree deficient ones. Thus, bipartite matching algorithms suffice when G is directed. Once the graph is Eulerian, the actual cycle can be extracted in linear time.
+</item>
 
 </list>
 
@@ -1522,7 +1806,7 @@ Variants
 
 <item>A feedback arc set (FAS) or feedback edge set is a set of edges which, when removed from the graph, leave a DAG.  A minimal feedback arc set has the additional property that, if the edges in it are reversed rather than removed, then the graph remains acyclic. Finding a small edge set with this property is a key step in layered graph drawing</item>
 
-<item>Chromatic number / graph k-colorability / vertex coloring: assignment of labels traditionally called "colors" to elements of a graph subject to certain constraints. In its simplest form, it is a way of coloring the vertices of a graph such that no two adjacent vertices share the same color; this is called a vertex coloring. Using dynamic programming and a bound on the number of maximal independent sets, k-colorability can be decided in time and space O(2.445^n) <cite>Lawler 1976</cite> Using the principle of inclusionñexclusion and Yatesís algorithm for the fast zeta transform, k-colorability can be decided in time O(n2^n) for any k <cite>Bjorklund et al. 2009</cite>. Faster algorithms are known for 3- and 4-colorability, which can be decided in time O(1.3289^n) <cite>Beigel and Eppstein 2005</cite> and O(1.7504^n) <cite>Byskov 2004</cite>, respectively. Note that 2-colorable graphs are bipartite graphs and bipartite testing can be performed in linear time.
+<item>Chromatic number / graph k-colorability / vertex coloring: assignment of labels traditionally called "colors" to elements of a graph subject to certain constraints. In its simplest form, it is a way of coloring the vertices of a graph such that no two adjacent vertices share the same color; this is called a vertex coloring. Using dynamic programming and a bound on the number of maximal independent sets, k-colorability can be decided in time and space O(2.445^n) <cite>Lawler 1976</cite> Using the principle of inclusion-exclusion and Yatesís algorithm for the fast zeta transform, k-colorability can be decided in time O(n2^n) for any k <cite>Bjorklund et al. 2009</cite>. Faster algorithms are known for 3- and 4-colorability, which can be decided in time O(1.3289^n) <cite>Beigel and Eppstein 2005</cite> and O(1.7504^n) <cite>Byskov 2004</cite>, respectively. Note that 2-colorable graphs are bipartite graphs and bipartite testing can be performed in linear time.
 </item>
 
 <item>Edge coloring: assigns a color to each edge so that no two adjacent edges share the same color. an edge coloring of a graph is just a vertex coloring of its line graph (a graph that represents the adjacencies between edges of G)</item>
@@ -1593,23 +1877,11 @@ Inline image:
 Many textbooks describe at least part of the material mentioned in this chapter.
 
 <cite>Skiena 2008</cite>, <cite>Kleinberg and Tardos 2005</cite>
-Even's [1979] book discusses many basic graph algorithms known before 1979.
-Tarjan's [1983] book provides a survey of both algorithms and data structures.
+<cite>Even 2011</cite> discusses many basic graph algorithms known before 1979.
+<cite>Tarjan 1983</cite> book provides a survey of both algorithms and data structures.
+<cite>Gibbons 1985</cite>
+<cite>Sedgewick 1990</cite> in C, <cite>Sedgewick 2002</cite> and <cite>Sedgewick 2003</cite> in Java (2nd volume devoted to graph algorithms)
 
-EVEN, S. 1979.
-Graph Algorithms.
-Computer Science Press, Potomac, MD.
-
-TARJAN, R. E. 1983.
-Data Structures and Network Algorithms.
-Society for Industrial and Applied Mathematics, Philadelphia.
-
-A. GIBBONS 1985
-Algorithmic Graph Theory
-Cambridge University Press
-
-SEDGEWICK 199...
-Algorithms in C...
 </text>
 
 
@@ -1626,10 +1898,7 @@ Network flow; monographs <cite>Ahuja et al. 1993</cite> <cite>Ford and Fulkerson
 <text>
 Matching:  The concept of a matching in a graph is very fundamental and forms
 the cornerstone of combinatorial optimization, with an entire book devoted
-to it [Lovasz and Plummer 1986].
-
-LOVASZ,L. and PLUMMER, M. D. 1986.
-Matching Theory. Elsevier B.V., New York.
+to it <cite>Lovasz and Plummer 1986</cite>
 </text>
 
 <text>
@@ -1643,23 +1912,13 @@ NP problems:
 
 Many graph problems (such as shortest paths, bipartite matching, or network flows) can also be solved as special cases of linear programming.
 
-The books by Papadimitriou and Steiglitz [1982] and Ahuja et al. [1993] provide a
+The books by <cite>Papadimitriou and Steiglitz 1982</cite> and <cite>Ahuja et al. 1993</cite> provide a
 comprehensive coverage of combinatorial optimization problems. 
 
-The book edited by Hochbaum [1996] provides an extensive coverage of work on approximation
+Hochbaum's edited collection <cite>Hochbaum 1996</cite> provides an extensive coverage of work on approximation
 algorithms for graph problems. 
 
 Software tools: lp_solve (http://lpsolve.sourceforge.net/), CLP (http://www.coin-or.org), NEOS = Network-Enabled Optimization System @ Argonne National Laboratory, Illinois (submit your own optimization jobs at http://neos.mcs.anl.gov/)
-
-REFERENCES
-
-PAPADIMITRIOU,C.H. and STEIGLITZ, K. 1982.
-Combinatorial Optimization: Algorithms and Complexity.
-Prentice Hall, Englewood Cliffs, NJ.
-
-HOCHBAUM, D. 1996.
-Approximation Algorithms.
-Edited volume under preparation, PWS, Boston, MA (in press).
 
 </text>
 
@@ -1755,6 +2014,19 @@ Automata, Languages and Programming (ICALP).
  <file>Networks/algorithms/graphs/np/2005 JA 3-coloring.pdf</file>
 </reference>
 
+
+<reference id="Bellman 1958">
+ <author>Richard E. Bellman</author>
+ <title>On a routing problem</title>
+ <journal>Quarterly of Applied Mathematics</journal>
+ <volume>16</volume>
+ <pages>87-90</pages>
+ <year>1958</year>
+ <!--<url>http://monet.skku.ac.kr/course_materials/undergraduate/al/lecture/2006/BellmanFord.pdf</url>-->
+ <file>Networks/algorithms/graphs/paths/1958 QAM [Bellman] Shortest paths.pdf</file>
+</reference>
+
+
 <reference id="Berliner 1979">
  <author>Hans Berliner</author>
  <title>The B* Tree Search Algorithm: A Best-First Proof Procedure</title>
@@ -1810,6 +2082,15 @@ Automata, Languages and Programming (ICALP).
  <file>Networks/algorithms/graphs/isomorphism/1990 JA Isomorphism on partial k-trees.pdf</file>
 </reference>
 
+<reference id="Bondy and Murty 1976">
+ <author>John Adrian Bondy</author>
+ <author>U.S.R. Murty</author>
+ <title>Graph Theory With Applications</title>
+ <publisher>North-Holland</publisher>
+ <year>1976</year>
+ <isbn>0444194517</isbn>
+ <file>[books]\algorithms\graphs\0444194517 [Bondy &amp; Murty] Graph Theory with Applications.pdf</file>
+</reference>
 
 <reference id="Boruvka 1926">
  <author>Otakar Boruvka</author>
@@ -1887,7 +2168,7 @@ Automata, Languages and Programming (ICALP).
  <pages>521-549</pages>
  <year>1996</year>
  <doi>10.1007/BF01940880</doi>
- <file>Networks/algorithms/graphs/connectedness/1996 Algorithmica [Cheriyan &amp; Mehlhorn] Dense graphs and networks.pdf</file>
+ <file>Networks/algorithms/graphs/connectivity/1996 Algorithmica [Cheriyan &amp; Mehlhorn] Dense graphs and networks.pdf</file>
 </reference>
 
 
@@ -1912,7 +2193,7 @@ Automata, Languages and Programming (ICALP).
  <isbn>0-7695-2312-9</isbn>
  <pages>45b</pages>
  <doi>10.1109/IPDPS.2005.100</doi>
- <file>Networks/algorithms/graphs/connectedness/2005 IPDPS [Cong &amp; Bader] Parallel biconnected algorithms.pdf</file>
+ <file>Networks/algorithms/graphs/connectivity/2005 IPDPS [Cong &amp; Bader] Parallel biconnected algorithms.pdf</file>
 </reference>
 
 
@@ -1955,6 +2236,20 @@ Automata, Languages and Programming (ICALP).
  <file>Networks/algorithms/graphs/paths/1959 NM [Dijkstra] MST &amp; Shortest paths.pdf</file>
 </reference>
 
+
+<reference id="Edmonds and Johnson 1973">
+ <author>Jack Edmonds</author>
+ <author>Ellis L. Johnson</author>
+ <title>Matching, Euler tours, and the Chinese postman</title>
+ <journal>Mathematical Programming</journal>
+ <volume>5</volume>
+ <number>1</number>
+ <pages>88-124</pages>
+ <year>1973</year>
+ <doi>10.1007/BF015801133</doi>
+ <file>Networks/algorithms/graphs/paths/1973 MP Chinese postman.pdf</file>
+</reference>
+
 <reference id="Edmonds and Karp 1972">
  <author>Jack Edmonds</author>
  <author>Richard M. Karp</author>
@@ -1966,6 +2261,16 @@ Automata, Languages and Programming (ICALP).
  <year>1972</year>
  <doi>10.1145/321694.321699</doi>
  <file>Networks/algorithms/flow/1972 JACM [Edmonds &amp; Karp] Network flow.pdf</file>
+</reference>
+
+
+<reference id="Even 2011">
+ <author>Shimon Even</author>
+ <title>Graph Algorithms</title>
+ <publisher>Cambridge University Press</publisher>
+ <edition>2nd edition</edition>
+ <year>2011</year>
+ <isbn>9780521517188</isbn>
 </reference>
 
 
@@ -1982,6 +2287,20 @@ Automata, Languages and Programming (ICALP).
  <doi>10.1145/800141.804671</doi>
  <file>Networks/algorithms/graphs/isomorphism/1980 STOC Isomorphism testing for graphs of fixed genus.pdf</file>
 </reference>
+
+
+<reference id="Floyd 1962">
+ <author>Robert W. Floyd</author>
+ <title>Algorithm 97: Shortest path</title>
+ <journal>Communications of the ACM</journal>
+ <volume>7</volume>
+ <number>6</number>
+ <pages>345</pages>
+ <year>1962</year>
+ <doi>10.1145/367766.368168</doi>
+ <file>Networks/algorithms/graphs/paths/1962 CACM [Floyd] Shortest paths.pdf</file>
+</reference>
+
 
 <reference id="Floyd 1964">
  <author>Robert W. Floyd</author>
@@ -2030,6 +2349,24 @@ Automata, Languages and Programming (ICALP).
  <file>Computer Science/algorithms/adt/1987 JACM Fibonacci heaps.pdf</file>
 </reference>
 
+
+<reference id="Frigo et al. 1999">
+ <author>Matteo Frigo</author>
+ <author>Charles E. Leiserson</author>
+ <author>Harald Prokop</author>
+ <author>Sridhar Ramachandran</author>
+ <title>Cache-oblivious algorithms</title>
+ <proceedings>40th Annual Symposium on Foundations of Computer Science</proceedings>
+ <conference>FOCS</conference>
+ <location>New York, NY, USA</location>
+ <year>1999</year>
+ <pages>285-298</pages>
+ <isbn>0-7695-0409-4</isbn>
+ <doi>10.1109/SFFCS.1999.814600</doi>
+ <file>Computer Science/algorithms/1999 FOCS Cache-oblivious algorithms.pdf</file>
+</reference>
+
+
 <reference id="Gabow 2003">
  <author>Harold N. Gabow</author>
  <title>Searching (10.1)</title>
@@ -2040,6 +2377,21 @@ Automata, Languages and Programming (ICALP).
  <isbn>1584880902</isbn>
  <file>[books]/algorithms/graphs/1584880902 [Gross &amp; Yellen] Handbook of Graph Theory - Discrete Mathematics and Its Applications.pdf</file>
 </reference>
+
+
+<reference id="Gale and Shapley 1962">
+ <author>D. Gale</author>
+ <author>L.S. Shapley</author>
+ <title>College admissions and the stability of marriage</title>
+ <journal>The American Mathematical Monthly</journal>
+ <volume>69</volume>
+ <number>1</number>
+ <pages>9-15</pages>
+ <year>1962</year>
+ <url>http://www.jstor.org/stable/2312726</url>
+ <file>Networks/algorithms/flow/matching/1962 AMM Stable marriage.pdf</file>
+</reference>
+
 
 <reference id="Galil et al. 1987">
  <author>Zvi Galil</author>
@@ -2082,6 +2434,29 @@ Automata, Languages and Programming (ICALP).
 </reference>
 
 
+<reference id="Gibbons 1985">
+ <author>Alan M. Gibbons</author>
+ <title>Algorithmic Graph Theory</title>
+ <publisher>Cambridge University Press</publisher>
+ <year>1985</year>
+ <isbn>0521246598</isbn>
+</reference>
+
+
+<reference id="Goldberg and Tarjan 1988">
+ <author>Andrew V. Goldberg</author>
+ <author>Robert E. Tarjan</author>
+ <title>A new approach to the maximum-flow problem</title>
+ <journal>Journal of the ACM</journal>
+ <volume>35</volume>
+ <number>4</number>
+ <pages>921-940</pages>
+ <year>1988</year>
+ <doi>10.1145/48014.61051</doi>
+ <file>Networks/algorithms/flow/1988 JACM Maximum-flow problem.pdf</file>
+</reference>
+
+
 <reference id="Goldberg et al. 1990">
  <author>Andrew V. Goldberg</author>
  <author>Eva Tardos</author>
@@ -2093,6 +2468,42 @@ Automata, Languages and Programming (ICALP).
  <isbn>0387526854</isbn>
  <file>Networks/algorithms/flow/1990 AC Network Flow Algorithms.pdf</file>
 </reference>
+
+
+
+<reference id="Goldberg et al. 2006">
+ <author>Andrew V. Goldberg</author>
+ <author>Haim Kaplan</author>
+ <author>Renato F. Werneck</author>
+ <title>Reach for A*: Efficient point-to-point shortest path algorithms</title>
+ <proceedings>8th SIAM Workshop on Algorithms Engineering and Experimentation</proceedings>
+ <conference>ALENEX</conference>
+ <location>Miami, Florida</location>
+ <year>2006</year>
+ <pages>129-143</pages>
+ <url>http://www.siam.org/proceedings/alenex/2006/alenex06.php</url>
+ <!--<url>http://www.siam.org/proceedings/alenex/2006/alx06_013agoldberg.pdf</url>-->
+ <file>Networks/algorithms/graphs/paths/2006 ALENEX Astar shortest paths.pdf</file>
+ <file>Networks/algorithms/graphs/paths/2006 ALENEX Astar shortest paths.tr.pdf</file>
+</reference>
+
+<reference id="Goldberg et al. 2007">
+ <author>Andrew V. Goldberg</author>
+ <author>Haim Kaplan</author>
+ <author>Renato F. Werneck</author>
+ <title>Better landmarks within reach</title>
+ <proceedings>6th International Workshop on Experimental Algorithms</proceedings>
+ <conference>WEA</conference>
+ <location>Rome, Italy</location>
+ <year>2007</year>
+ <pages>38-51</pages>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>4525</volume>
+ <isbn>978-3-540-72844-3</isbn>
+ <doi>10.1007/978-3-540-72845-0_4</doi>
+ <file>Networks/algorithms/graphs/paths/2007 WEA Astar shortest paths.pdf</file>
+</reference>
+
 
 <reference id="Gonnet and Munro 1982">
  <author>Gaston H. Gonnet</author>
@@ -2176,6 +2587,14 @@ Automata, Languages and Programming (ICALP).
 </reference>
 
 
+<reference id="Hochbaum 1996">
+ <author>Dorit S. Hochbaum</author>
+ <title>Approximation Algorithms for NP-Hard Problems</title>
+ <publisher>PWS Publishing Company</publisher>
+ <year>1996</year>
+ <isbn>0-534-94968-1</isbn>
+</reference>
+
 
 <reference id="Holm et al. 2001">
  <author>Jacob Holm</author>
@@ -2191,6 +2610,18 @@ Automata, Languages and Programming (ICALP).
  <file>Networks/algorithms/graphs/paths/2001 JACM [Holm] MST.pdf</file>
 </reference>
 
+<reference id="Hopcroft and Karp 1973">
+ <author>John E. Hopcroft</author>
+ <author>Richard M. Karp</author>
+ <title>An $n^{5/3}$ algorithm for maximum matchings in bipartite graphs</title>
+ <journal>SIAM Journal on Computing</journal>
+ <volume>2</volume>
+ <number>4</number>
+ <pages>225-231</pages>
+ <year>1973</year>
+ <doi>10.1137/0202019</doi>
+</reference>
+
 
 <reference id="Hopcroft and Tarjan 1973">
  <author>John Hopcroft</author>
@@ -2202,8 +2633,22 @@ Automata, Languages and Programming (ICALP).
  <pages>372-378</pages>
  <year>1973</year>
  <doi>10.1145/362248.362272</doi>
- <file>Networks/algorithms/graphs/connectedness/1973 CACM [Hopcroft &amp; Tarjan] Graph manipulation.pdf</file>
+ <file>Networks/algorithms/graphs/connectivity/1973 CACM [Hopcroft &amp; Tarjan] Graph manipulation.pdf</file>
 </reference>
+
+
+<reference id="Hopcroft and Tarjan 1973b">
+ <author>John E. Hopcroft</author>
+ <author>Robert E. Tarjan</author>
+ <title>Dividing a graph into triconnected components</title>
+ <journal>SIAM Journal on Computing</journal>
+ <volume>2</volume>
+ <number>3</number>
+ <pages>135-158</pages>
+ <year>1973</year>
+ <doi>10.1137/0202012</doi>
+</reference>
+
 
 <reference id="Hopcroft and Wong 1974">
  <author>John E. Hopcroft</author>
@@ -2218,6 +2663,19 @@ Automata, Languages and Programming (ICALP).
  <file>Networks/algorithms/graphs/isomorphism/1974 STOC Linear algorithm for planar graph isomorphism.pdf</file>
 </reference>
 
+
+<reference id="Johnson 1977">
+ <author>Donald B. Johnson</author>
+ <title>Efficient algorithms for shortest paths in sparse networks</title>
+ <journal>Journal of the ACM</journal>
+ <volume>24</volume>
+ <number>1</number>
+ <pages>1-13</pages>
+ <year>1977</year>
+ <doi>10.1145/321992.321993</doi>
+ <file>Networks/algorithms/graphs/paths/1977 JACM [Johnson] Shortest paths.pdf</file>
+</reference>
+
 <reference id="Kahn 1962">
  <author>A.B. Kahn</author>
  <title>Topological sorting of large networks</title>
@@ -2228,6 +2686,20 @@ Automata, Languages and Programming (ICALP).
  <year>1962</year>
  <doi>10.1145/368996.369025</doi>
  <file>Networks/algorithms/graphs/1962 CACM [Kahn] Topological sorting.pdf</file>
+</reference>
+
+  
+<reference id="Kanevsky and Ramachandran 1991">
+ <author>Arkady Kanevsky</author>
+ <author>Vijaya Ramachandran</author>
+ <title>Improved algorithms for graph four-connectivity</title>
+ <journal>Journal of Computer and System Sciences</journal>
+ <volume>42</volume>
+ <number>3</number>
+ <pages>288-306</pages>
+ <year>1991</year>
+ <doi>10.1016/0022-0000(91)90004-O</doi>
+ <file>Networks/algorithms/graphs/connectivity/1991 JCSS 4-connectivity.pdf</file>
 </reference>
 
 
@@ -2245,6 +2717,7 @@ Automata, Languages and Programming (ICALP).
  <file>Networks/algorithms/graphs/paths/1995 JACM [Karger] MST.pdf</file>
 </reference>
 
+
 <reference id="Karp 1972">
  <author>Richard M. Karp</author>
  <title>Reducibility among combinatorial problems</title>
@@ -2255,6 +2728,19 @@ Automata, Languages and Programming (ICALP).
  <file>Networks/algorithms/1972 [Karp] Reducibility.pdf</file>
 </reference>
 
+
+<reference id="Karypis and Kumar 1999">
+ <author>George Karypis</author>
+ <author>Vipin Kumar</author>
+ <title>A fast and high quality multilevel scheme for partitioning irregular graphs</title>
+ <journal>SIAM Journal on Scientific Computing</journal>
+ <volume>20</volume>
+ <number>1</number>
+ <pages>359-392</pages>
+ <year>1999</year>
+ <doi>10.1137/S1064827595287997</doi>
+ <file>Networks/algorithms/graphs/connectivity/1999 SIAMSC [Karypis &amp; Kumar] METIS.pdf</file>
+</reference>
 
 <reference id="Kelly 1957">
  <author>Paul J. Kelly</author>
@@ -2290,6 +2776,47 @@ Automata, Languages and Programming (ICALP).
  <file>Networks/algorithms/graphs/paths/1956 AMS [Kruskal] MST.pdf</file>
 </reference>
 
+<reference id="Kuhn 1955">
+ <author>Harold W. Kuhn</author>
+ <title>The Hungarian Method for the assignment problem</title>
+ <journal>Naval Research Logistics Quarterly</journal>
+ <volume>2</volume>
+ <number>1-2</number>
+ <pages>83ñ97</pages>
+ <year>1955</year>
+ <doi>10.1002/nav.3800020109</doi>
+ <!--<file>Networks/algorithms/graphs/matching...</file>-->
+</reference>
+
+<reference id="Kwan 1962">
+ <author>Mei-Ko Kwan</author>
+ <title>Graphic programming using odd and even points</title>
+ <journal>Chinese Mathematics</journal>
+ <volume>1</volume>
+ <pages>273-277</pages>
+ <year>1962</year>
+ <!--<doi>10.1002/nav.3800020109</doi>-->
+ <!--<file>Networks/algorithms/graphs/...</file>-->
+</reference>
+
+
+
+<reference id="Latombe 1991">
+ <author>Jean Claude Latombe</author>
+ <title>Robot Motion Planning</title>
+ <publisher>Kluwer Academic Publishers</publisher>
+ <year>1991</year>
+ <isbn>079239206X</isbn>
+</reference>
+
+<reference id="LaValle 2006">
+ <author>Steven M. LaValle</author>
+ <title>Planning Algorithms</title>
+ <publisher>Cambridge University Press</publisher>
+ <year>2006</year>
+ <isbn>0-521-86205-1</isbn>
+ <url>http://planning.cs.uiuc.edu/</url>
+</reference>
 
 <reference id="Lawler 1976">
  <author>E.L. Lawler</author>
@@ -2301,6 +2828,16 @@ Automata, Languages and Programming (ICALP).
  <year>1976</year>
  <doi>10.1016/0020-0190(76)90065-X</doi>
  <file>Networks/algorithms/graphs/np/1976 IPL [Lawler] Chromatic number problem.pdf</file>
+</reference>
+
+
+<reference id="Lovasz and Plummer 1986">
+ <author>L·szlÛ Lov·sz</author>
+ <author>M.D. Plummer</author>
+ <title>Matching Theory</title>
+ <publisher>Elsevier B.V.</publisher>
+ <year>1986</year>
+ <isbn>0444879161</isbn>
 </reference>
 
 <reference id="Lueker and Booth 1979">
@@ -2315,7 +2852,6 @@ Automata, Languages and Programming (ICALP).
  <doi>10.1145/322123.322125</doi>
  <file>Networks/algorithms/graphs/isomorphism/1979 JACM Interval graph isomorphism.pdf</file>
 </reference>
-
 
 
 <reference id="Luks 1982">
@@ -2355,6 +2891,19 @@ Automata, Languages and Programming (ICALP).
 </reference>
 
 
+<reference id="Matula 1987">
+ <author>David W. Matula</author>
+ <title>Determining edge connectivity in O(nm)</title>
+ <proceedings>28th Annual Symposium on Foundations of Computer Science</proceedings>
+ <conference>FOCS</conference>
+ <location>Los Angeles, California</location>
+ <year>1987</year>
+ <pages>249-251</pages>
+ <isbn>0-8186-0807-2</isbn>
+ <doi>10.1109/SFCS.1987.19</doi>
+ <file>Networks/algorithms/graphs/connectivity/1987 FOCS [Matula] Edge connectivity.pdf</file>
+</reference>
+
 <reference id="McKay 1981">
  <author>Brendan D. McKay</author>
  <title>Practical graph isomorphism</title>
@@ -2367,6 +2916,21 @@ Automata, Languages and Programming (ICALP).
  <file>Networks/algorithms/graphs/isomorphism/1981 CN [McKay] Practical Graph Isomorphism.pdf</file>
  <url>http://cs.anu.edu.au/~bdm/papers/pgi.pdf</url>
 </reference>
+
+
+<reference id="Micali and Vazirani 1980">
+ <author>Silvio Micali</author>
+ <author>Vijay V. Vazirani</author>
+ <title>An $O(\sqrt{|V|}|e|)$ algorithm for finding maximum matchings in general graphs</title>
+ <proceedings>21th Annual Symposium on Foundations of Computer Science</proceedings>
+ <conference>FOCS</conference>
+ <location>Syracuse, New York</location>
+ <year>1980</year>
+ <pages>17-27</pages>
+ <doi>10.1109/SFCS.1980.12</doi>
+ <file>Networks/algorithms/flow/matching/1980 FOCS Maximum matchings.pdf</file>
+</reference>
+
 
 
 <reference id="Miller 1980">
@@ -2420,6 +2984,15 @@ Automata, Languages and Programming (ICALP).
  <pages>285-292</pages>
 </reference>
 
+
+<reference id="Papadimitriou and Steiglitz 1982">
+ <author>Christos H. Papadimitriou</author>
+ <author>Kenneth Steiglitz</author>
+ <title>Combinatorial Optimization: Algorithms and Complexity</title>
+ <publisher>Prentice Hall</publisher>
+ <year>1982</year>
+ <isbn>0131524623</isbn>
+</reference>
 
 <reference id="Papadimitriou and Yannakakis 1989">
  <author>Christos H. Papadimitriou</author>
@@ -2497,6 +3070,18 @@ Automata, Languages and Programming (ICALP).
 </reference>
 
 
+<reference id="Roy 1959">
+ <author>Bernard Roy</author>
+ <title>TransitivitÈ et connexitÈ (Transitivity and connectivity, in French)</title>
+ <journal>C.R. Acad. Sci. Paris</journal>
+ <volume>249</volume>
+ <pages>216-218</pages>
+ <year>1959</year>
+ <!--<doi>10.1002/nav.3800020109</doi>-->
+ <!--<file>Networks/algorithms/graphs/...</file>-->
+</reference>
+
+
 <reference id="Schmidt and Druffel 1976">
  <author>Douglas C. Schmidt</author>
  <author>Larry E. Druffel</author>
@@ -2521,6 +3106,35 @@ Automata, Languages and Programming (ICALP).
  <year>2002</year>
  <doi>10.1007/s101070100259</doi>
  <file>Networks/algorithms/flow/2002 MP Transportation and network flow.pdf</file>
+</reference>
+
+<reference id="Sedgewick 1990">
+ <author>Robert Sedgewick</author>
+ <title>Algorithms in C</title>
+ <publisher>Addison-Wesley</publisher>
+ <year>1990</year>
+ <isbn>0201514257</isbn>
+ <file>[books]/algorithms/0201514257 [Sedgewick] Algorithms in C.pdf</file>
+</reference>
+
+<reference id="Sedgewick 2002">
+ <author>Robert Sedgewick</author>
+ <title>Algorithms in Java. Parts 1-4</title>
+ <publisher>Addison-Wesley</publisher>
+ <edition>3rd edition</edition>
+ <year>2002</year>
+ <isbn>0201361205</isbn>
+ <file>[books]/algorithms/0201361205 [Sedgewick] Algorithms in Java.chm</file>
+</reference>
+
+<reference id="Sedgewick 2003">
+ <author>Robert Sedgewick</author>
+ <title>Algorithms in Java. Part 5. Graph Algorithms</title>
+ <publisher>Addison-Wesley</publisher>
+ <edition>3rd edition</edition>
+ <year>2003</year>
+ <isbn>0201361213</isbn>
+ <file>[books]/algorithms/0201361213 [Sedgewick] Algorithms in Java - Graph Algorithms.chm</file>
 </reference>
 
 <reference id="Skiena 2008">
@@ -2555,8 +3169,8 @@ Automata, Languages and Programming (ICALP).
  <pages>146-160</pages>
  <year>1972</year>
  <doi>10.1137/0201010</doi>
- <file>Networks/algorithms/graphs/connectedness/1972 SIAM JC [Tarjan] DFS and linear graph algorithms.pdf</file>
- <file>Networks/algorithms/graphs/connectedness/1972 SIAM JC [Tarjan] DFS and linear graph algorithms.classic.pdf</file>
+ <file>Networks/algorithms/graphs/connectivity/1972 SIAM JC [Tarjan] DFS and linear graph algorithms.pdf</file>
+ <file>Networks/algorithms/graphs/connectivity/1972 SIAM JC [Tarjan] DFS and linear graph algorithms.classic.pdf</file>
 </reference>
 
 <reference id="Tarjan 1979">
@@ -2571,6 +3185,16 @@ Automata, Languages and Programming (ICALP).
  <file>Computer Science/algorithms/adt/1979 JCSS [Tarjan] Union-find.pdf</file>
 </reference>
 
+
+<reference id="Tarjan 1983">
+ <author>Robert E. Tarjan</author>
+ <title>Data Structures and Network Algorithms.</title>
+ <publisher>Society for Industrial and Applied Mathematics</publisher>
+ <year>1983</year>
+ <isbn>0898711878</isbn>
+</reference>
+
+
 <reference id="Tarjan and Vishkin 1985">
  <author>Robert E. Tarjan</author>
  <author>Uzi Vishkin</author>
@@ -2581,7 +3205,7 @@ Automata, Languages and Programming (ICALP).
  <pages>862-874</pages>
  <year>1985</year>
  <doi>10.1137/0214061</doi>
- <file>Networks/algorithms/graphs/connectedness/1985 SIAM JC [Tarjan &amp; Vishkin] Efficient parallel biconnectivity algorithm.tr.pdf</file>
+ <file>Networks/algorithms/graphs/connectivity/1985 SIAM JC [Tarjan &amp; Vishkin] Efficient parallel biconnectivity algorithm.tr.pdf</file>
 </reference>
 
 <reference id="Ullman 1976">
@@ -2610,6 +3234,19 @@ Automata, Languages and Programming (ICALP).
  <file>Computer Science/algorithms/adt/1977 MST [Emde Boas] Priority queue.pdf</file>
 </reference>
 
+
+<reference id="Warshall 1962">
+ <author>Stephen Warshall</author>
+ <title>A theorem on Boolean matrices</title>
+ <journal>Journal of the ACM</journal>
+ <volume>9</volume>
+ <number>1</number>
+ <pages>11-12</pages>
+ <year>1962</year>
+ <doi>10.1145/321105.321107</doi>
+ <file>Networks/algorithms/graphs/paths/1962 JACM [Warshall] Boolean matrices.pdf</file>
+</reference>
+
 <reference id="Westbrook and Tarjan 1992">
  <author>Jeffery Westbrook</author>
  <author>Robert E. Tarjan</author>
@@ -2620,13 +3257,13 @@ Automata, Languages and Programming (ICALP).
  <pages>433-464</pages>
  <year>1992</year>
  <doi>10.1007/BF01758773</doi>
- <file>Networks/algorithms/graphs/connectedness/1992 Algorithmica [Westbrook &amp; Tarjan] Bridge-connected and biconnected components.pdf</file>
+ <file>Networks/algorithms/graphs/connectivity/1992 Algorithmica [Westbrook &amp; Tarjan] Bridge-connected and biconnected components.pdf</file>
 </reference>
 
 <!-- NEW -->
 
 
-</document>
 
+</document>
 
 </document>

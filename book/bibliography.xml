@@ -589,6 +589,20 @@
  </comment>
 </reference>
 
+
+<reference id="Bellman 1958">
+ <author>Richard E. Bellman</author>
+ <title>On a routing problem</title>
+ <journal>Quarterly of Applied Mathematics</journal>
+ <volume>16</volume>
+ <pages>87-90</pages>
+ <year>1958</year>
+ <!--<url>http://monet.skku.ac.kr/course_materials/undergraduate/al/lecture/2006/BellmanFord.pdf</url>-->
+ <file>Networks/algorithms/graphs/paths/1958 QAM [Bellman] Shortest paths.pdf</file>
+</reference>
+
+
+
 <reference id="Berge 1958">
  <author>Claude Berge</author>
  <title>Théorie des Graphes et ses Applications</title>
@@ -1323,7 +1337,7 @@
  <pages>521-549</pages>
  <year>1996</year>
  <doi>10.1007/BF01940880</doi>
- <file>Networks/algorithms/graphs/connectedness/1996 Algorithmica [Cheriyan &amp; Mehlhorn] Dense graphs and networks.pdf</file>
+ <file>Networks/algorithms/graphs/connectivity/1996 Algorithmica [Cheriyan &amp; Mehlhorn] Dense graphs and networks.pdf</file>
 </reference>
 
 
@@ -1495,7 +1509,7 @@
  <isbn>0-7695-2312-9</isbn>
  <pages>45b</pages>
  <doi>10.1109/IPDPS.2005.100</doi>
- <file>Networks/algorithms/graphs/connectedness/2005 IPDPS [Cong &amp; Bader] Parallel biconnected algorithms.pdf</file>
+ <file>Networks/algorithms/graphs/connectivity/2005 IPDPS [Cong &amp; Bader] Parallel biconnected algorithms.pdf</file>
 </reference>
 
 
@@ -1817,6 +1831,21 @@
 </reference>
 
 
+
+<reference id="Edmonds and Johnson 1973">
+ <author>Jack Edmonds</author>
+ <author>Ellis L. Johnson</author>
+ <title>Matching, Euler tours, and the Chinese postman</title>
+ <journal>Mathematical Programming</journal>
+ <volume>5</volume>
+ <number>1</number>
+ <pages>88-124</pages>
+ <year>1973</year>
+ <doi>10.1007/BF015801133</doi>
+ <file>Networks/algorithms/graphs/paths/1973 MP Chinese postman.pdf</file>
+</reference>
+
+
 <reference id="Edmonds and Karp 1972">
  <author>Jack Edmonds</author>
  <author>Richard M. Karp</author>
@@ -1986,6 +2015,16 @@
 
 
 
+<reference id="Even 2011">
+ <author>Shimon Even</author>
+ <title>Graph Algorithms</title>
+ <publisher>Cambridge University Press</publisher>
+ <edition>2nd edition</edition>
+ <year>2011</year>
+ <isbn>9780521517188</isbn>
+</reference>
+
+
 <reference id="Fagiolo 2007">
  <author>Giorgio Fagiolo</author>
  <title>Clustering in complex directed networks</title>
@@ -2027,6 +2066,20 @@
  <doi>10.1145/800141.804671</doi>
  <file>Networks/algorithms/graphs/isomorphism/1980 STOC Isomorphism testing for graphs of fixed genus.pdf</file>
 </reference>
+
+
+<reference id="Floyd 1962">
+ <author>Robert W. Floyd</author>
+ <title>Algorithm 97: Shortest path</title>
+ <journal>Communications of the ACM</journal>
+ <volume>7</volume>
+ <number>6</number>
+ <pages>345</pages>
+ <year>1962</year>
+ <doi>10.1145/367766.368168</doi>
+ <file>Networks/algorithms/graphs/paths/1962 CACM [Floyd] Shortest paths.pdf</file>
+</reference>
+
 
 <reference id="Floyd 1964">
  <author>Robert W. Floyd</author>
@@ -2163,6 +2216,21 @@
  </comment>
 </reference>
 
+<reference id="Frigo et al. 1999">
+ <author>Matteo Frigo</author>
+ <author>Charles E. Leiserson</author>
+ <author>Harald Prokop</author>
+ <author>Sridhar Ramachandran</author>
+ <title>Cache-oblivious algorithms</title>
+ <proceedings>40th Annual Symposium on Foundations of Computer Science</proceedings>
+ <conference>FOCS</conference>
+ <location>New York, NY, USA</location>
+ <year>1999</year>
+ <pages>285-298</pages>
+ <isbn>0-7695-0409-4</isbn>
+ <doi>10.1109/SFFCS.1999.814600</doi>
+ <file>Computer Science/algorithms/1999 FOCS Cache-oblivious algorithms.pdf</file>
+</reference>
 
 
 <reference id="Fruchterman and Reingold 1991">
@@ -2204,6 +2272,21 @@
  <isbn>1584880902</isbn>
  <file>[books]/algorithms/graphs/1584880902 [Gross &amp; Yellen] Handbook of Graph Theory - Discrete Mathematics and Its Applications.pdf</file>
 </reference>
+
+
+<reference id="Gale and Shapley 1962">
+ <author>D. Gale</author>
+ <author>L.S. Shapley</author>
+ <title>College admissions and the stability of marriage</title>
+ <journal>The American Mathematical Monthly</journal>
+ <volume>69</volume>
+ <number>1</number>
+ <pages>9-15</pages>
+ <year>1962</year>
+ <url>http://www.jstor.org/stable/2312726</url>
+ <file>Networks/algorithms/flow/matching/1962 AMM Stable marriage.pdf</file>
+</reference>
+
 
 <reference id="Galil et al. 1987">
  <author>Zvi Galil</author>
@@ -2289,6 +2372,15 @@
 </reference>
 
 
+<reference id="Gibbons 1985">
+ <author>Alan M. Gibbons</author>
+ <title>Algorithmic Graph Theory</title>
+ <publisher>Cambridge University Press</publisher>
+ <year>1985</year>
+ <isbn>0521246598</isbn>
+</reference>
+
+
 <reference id="Girvan and Newman 2002">
  <author>M. Girvan</author>
  <author>Mark E.J. Newman</author>
@@ -2317,6 +2409,20 @@
 </reference>
 
 
+<reference id="Goldberg and Tarjan 1988">
+ <author>Andrew V. Goldberg</author>
+ <author>Robert E. Tarjan</author>
+ <title>A new approach to the maximum-flow problem</title>
+ <journal>Journal of the ACM</journal>
+ <volume>35</volume>
+ <number>4</number>
+ <pages>921-940</pages>
+ <year>1988</year>
+ <doi>10.1145/48014.61051</doi>
+ <file>Networks/algorithms/flow/1988 JACM Maximum-flow problem.pdf</file>
+</reference>
+
+
 <reference id="Goldberg et al. 1990">
  <author>Andrew V. Goldberg</author>
  <author>Eva Tardos</author>
@@ -2327,6 +2433,40 @@
  <year>1990</year>
  <isbn>0387526854</isbn>
  <file>Networks/algorithms/flow/1990 AC Network Flow Algorithms.pdf</file>
+</reference>
+
+
+<reference id="Goldberg et al. 2006">
+ <author>Andrew V. Goldberg</author>
+ <author>Haim Kaplan</author>
+ <author>Renato F. Werneck</author>
+ <title>Reach for A*: Efficient point-to-point shortest path algorithms</title>
+ <proceedings>8th SIAM Workshop on Algorithms Engineering and Experimentation</proceedings>
+ <conference>ALENEX</conference>
+ <location>Miami, Florida</location>
+ <year>2006</year>
+ <pages>129-143</pages>
+ <url>http://www.siam.org/proceedings/alenex/2006/alenex06.php</url>
+ <!--<url>http://www.siam.org/proceedings/alenex/2006/alx06_013agoldberg.pdf</url>-->
+ <file>Networks/algorithms/graphs/paths/2006 ALENEX Astar shortest paths.pdf</file>
+ <file>Networks/algorithms/graphs/paths/2006 ALENEX Astar shortest paths.tr.pdf</file>
+</reference>
+
+<reference id="Goldberg et al. 2007">
+ <author>Andrew V. Goldberg</author>
+ <author>Haim Kaplan</author>
+ <author>Renato F. Werneck</author>
+ <title>Better landmarks within reach</title>
+ <proceedings>6th International Workshop on Experimental Algorithms</proceedings>
+ <conference>WEA</conference>
+ <location>Rome, Italy</location>
+ <year>2007</year>
+ <pages>38-51</pages>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>4525</volume>
+ <isbn>978-3-540-72844-3</isbn>
+ <doi>10.1007/978-3-540-72845-0_4</doi>
+ <file>Networks/algorithms/graphs/paths/2007 WEA Astar shortest paths.pdf</file>
 </reference>
 
 
@@ -2661,6 +2801,14 @@
 </reference>
 
 
+<reference id="Hochbaum 1996">
+ <author>Dorit S. Hochbaum</author>
+ <title>Approximation Algorithms for NP-Hard Problems</title>
+ <publisher>PWS Publishing Company</publisher>
+ <year>1996</year>
+ <isbn>0-534-94968-1</isbn>
+</reference>
+
 
 <reference id="Holm et al. 2001">
  <author>Jacob Holm</author>
@@ -2692,6 +2840,17 @@
  <file>Networks/applications/www/2004 SN Internet dating community.pdf</file>
 </reference>
 
+<reference id="Hopcroft and Karp 1973">
+ <author>John E. Hopcroft</author>
+ <author>Richard M. Karp</author>
+ <title>An $n^{5/3}$ algorithm for maximum matchings in bipartite graphs</title>
+ <journal>SIAM Journal on Computing</journal>
+ <volume>2</volume>
+ <number>4</number>
+ <pages>225-231</pages>
+ <year>1973</year>
+ <doi>10.1137/0202019</doi>
+</reference>
 
 
 <reference id="Hopcroft and Tarjan 1973">
@@ -2704,7 +2863,20 @@
  <pages>372-378</pages>
  <year>1973</year>
  <doi>10.1145/362248.362272</doi>
- <file>Networks/algorithms/graphs/connectedness/1973 CACM [Hopcroft &amp; Tarjan] Graph manipulation.pdf</file>
+ <file>Networks/algorithms/graphs/connectivity/1973 CACM [Hopcroft &amp; Tarjan] Graph manipulation.pdf</file>
+</reference>
+
+
+<reference id="Hopcroft and Tarjan 1973b">
+ <author>John E. Hopcroft</author>
+ <author>Robert E. Tarjan</author>
+ <title>Dividing a graph into triconnected components</title>
+ <journal>SIAM Journal on Computing</journal>
+ <volume>2</volume>
+ <number>3</number>
+ <pages>135-158</pages>
+ <year>1973</year>
+ <doi>10.1137/0202012</doi>
 </reference>
 
 
@@ -2800,6 +2972,19 @@
  <comment>
   <text>Interesting overview of many useful data analysis techniques...</text>
  </comment>
+</reference>
+
+
+<reference id="Johnson 1977">
+ <author>Donald B. Johnson</author>
+ <title>Efficient algorithms for shortest paths in sparse networks</title>
+ <journal>Journal of the ACM</journal>
+ <volume>24</volume>
+ <number>1</number>
+ <pages>1-13</pages>
+ <year>1977</year>
+ <doi>10.1145/321992.321993</doi>
+ <file>Networks/algorithms/graphs/paths/1977 JACM [Johnson] Shortest paths.pdf</file>
 </reference>
 
 
@@ -2952,6 +3137,20 @@
  <file>Networks/algorithms/ranking/2010 CIKM Outcome-aware ranking.pdf</file>
 </reference>
 
+ 
+<reference id="Kanevsky and Ramachandran 1991">
+ <author>Arkady Kanevsky</author>
+ <author>Vijaya Ramachandran</author>
+ <title>Improved algorithms for graph four-connectivity</title>
+ <journal>Journal of Computer and System Sciences</journal>
+ <volume>42</volume>
+ <number>3</number>
+ <pages>288-306</pages>
+ <year>1991</year>
+ <doi>10.1016/0022-0000(91)90004-O</doi>
+ <file>Networks/algorithms/graphs/connectivity/1991 JCSS 4-connectivity.pdf</file>
+</reference>
+
 
 <reference id="Karrer and Newman 2011">
  <author>Brian Karrer</author>
@@ -2964,6 +3163,20 @@
  <year>2011</year>
  <doi>10.1103/PhysRevE.83.016107</doi>
  <file>Networks/algorithms/clustering/2011 Physical Review E [Newman] Stochastic blockmodels and community structure.pdf</file>
+</reference>
+
+
+<reference id="Karypis and Kumar 1999">
+ <author>George Karypis</author>
+ <author>Vipin Kumar</author>
+ <title>A fast and high quality multilevel scheme for partitioning irregular graphs</title>
+ <journal>SIAM Journal on Scientific Computing</journal>
+ <volume>20</volume>
+ <number>1</number>
+ <pages>359-392</pages>
+ <year>1999</year>
+ <doi>10.1137/S1064827595287997</doi>
+ <file>Networks/algorithms/graphs/connectivity/1999 SIAMSC [Karypis &amp; Kumar] METIS.pdf</file>
 </reference>
 
 
@@ -3117,6 +3330,17 @@
  <file>Networks/algorithms/graphs/paths/1956 AMS [Kruskal] MST.pdf</file>
 </reference>
 
+<reference id="Kuhn 1955">
+ <author>Harold W. Kuhn</author>
+ <title>The Hungarian Method for the assignment problem</title>
+ <journal>Naval Research Logistics Quarterly</journal>
+ <volume>2</volume>
+ <number>1-2</number>
+ <pages>83–97</pages>
+ <year>1955</year>
+ <doi>10.1002/nav.3800020109</doi>
+ <!--<file>Networks/algorithms/graphs/matching...</file>-->
+</reference>
 
 <reference id="Kumar et al. 1994">
  <author>Vipin Kumar</author>
@@ -3204,6 +3428,26 @@
 </reference>
 
 
+<reference id="Kwan 1962">
+ <author>Mei-Ko Kwan</author>
+ <title>Graphic programming using odd and even points</title>
+ <journal>Chinese Mathematics</journal>
+ <volume>1</volume>
+ <pages>273-277</pages>
+ <year>1962</year>
+ <!--<doi>10.1002/nav.3800020109</doi>-->
+ <!--<file>Networks/algorithms/graphs/...</file>-->
+</reference>
+
+
+<reference id="Latombe 1991">
+ <author>Jean Claude Latombe</author>
+ <title>Robot Motion Planning</title>
+ <publisher>Kluwer Academic Publishers</publisher>
+ <year>1991</year>
+ <isbn>079239206X</isbn>
+</reference>
+
 <reference id="Latora and Marchiori 2001">
 <author>Vito Latora</author>
  <author>Massimo Marchiori</author>
@@ -3217,6 +3461,15 @@
  <file>Networks/structure/metrics/2001 PhysRevLett [Latora] Efficiency.pdf</file>
 </reference>
 
+
+<reference id="LaValle 2006">
+ <author>Steven M. LaValle</author>
+ <title>Planning Algorithms</title>
+ <publisher>Cambridge University Press</publisher>
+ <year>2006</year>
+ <isbn>0-521-86205-1</isbn>
+ <url>http://planning.cs.uiuc.edu/</url>
+</reference>
 
 <reference id="Lawler 1976">
  <author>E.L. Lawler</author>
@@ -3496,6 +3749,17 @@
 </reference>
 
 
+
+<reference id="Lovasz and Plummer 1986">
+ <author>László Lovász</author>
+ <author>M.D. Plummer</author>
+ <title>Matching Theory</title>
+ <publisher>Elsevier B.V.</publisher>
+ <year>1986</year>
+ <isbn>0444879161</isbn>
+</reference>
+
+
 <reference id="Lueker and Booth 1979">
  <author>George S. Lueker</author>
  <author>Kellogg S.Booth</author>
@@ -3625,6 +3889,20 @@
 </reference>
 
 
+<reference id="Matula 1987">
+ <author>David W. Matula</author>
+ <title>Determining edge connectivity in O(nm)</title>
+ <proceedings>28th Annual Symposium on Foundations of Computer Science</proceedings>
+ <conference>FOCS</conference>
+ <location>Los Angeles, California</location>
+ <year>1987</year>
+ <pages>249-251</pages>
+ <isbn>0-8186-0807-2</isbn>
+ <doi>10.1109/SFCS.1987.19</doi>
+ <file>Networks/algorithms/graphs/connectivity/1987 FOCS [Matula] Edge connectivity.pdf</file>
+</reference>
+
+
 <reference id="McKane 2004">
  <author>A.J. McKane</author>
  <title>Evolving complex food webs</title>
@@ -3680,6 +3958,19 @@
  <file>Networks/applications/bibliographic/2004 EPJB Correlated topologies in citation networks and the Web.pdf</file>
 </reference>
 
+
+<reference id="Micali and Vazirani 1980">
+ <author>Silvio Micali</author>
+ <author>Vijay V. Vazirani</author>
+ <title>An $O(\sqrt{|V|}|e|)$ algorithm for finding maximum matchings in general graphs</title>
+ <proceedings>21th Annual Symposium on Foundations of Computer Science</proceedings>
+ <conference>FOCS</conference>
+ <location>Syracuse, New York</location>
+ <year>1980</year>
+ <pages>17-27</pages>
+ <doi>10.1109/SFCS.1980.12</doi>
+ <file>Networks/algorithms/flow/matching/1980 FOCS Maximum matchings.pdf</file>
+</reference>
 
 
 <reference id="Mika 2005">
@@ -4160,6 +4451,16 @@
 </reference>
 
 
+<reference id="Papadimitriou and Steiglitz 1982">
+ <author>Christos H. Papadimitriou</author>
+ <author>Kenneth Steiglitz</author>
+ <title>Combinatorial Optimization: Algorithms and Complexity</title>
+ <publisher>Prentice Hall</publisher>
+ <year>1982</year>
+ <isbn>0131524623</isbn>
+</reference>
+
+
 <reference id="Papadimitriou and Yannakakis 1989">
  <author>Christos H. Papadimitriou</author>
  <author>Mihalis Yannakakis</author>
@@ -4382,6 +4683,16 @@
 </reference>
 
 
+<reference id="Roy 1959">
+ <author>Bernard Roy</author>
+ <title>Transitivité et connexité (Transitivity and connectivity, in French)</title>
+ <journal>C.R. Acad. Sci. Paris</journal>
+ <volume>249</volume>
+ <pages>216-218</pages>
+ <year>1959</year>
+ <!--<doi>10.1002/nav.3800020109</doi>-->
+ <!--<file>Networks/algorithms/graphs/...</file>-->
+</reference>
 
 <reference id="Rubinov and Sporns 2010">
  <author>Mikail Rubinov</author>
@@ -4893,8 +5204,8 @@
  <pages>146-160</pages>
  <year>1972</year>
  <doi>10.1137/0201010</doi>
- <file>Networks/algorithms/graphs/connectedness/1972 SIAM JC [Tarjan] DFS and linear graph algorithms.pdf</file>
- <file>Networks/algorithms/graphs/connectedness/1972 SIAM JC [Tarjan] DFS and linear graph algorithms.classic.pdf</file>
+ <file>Networks/algorithms/graphs/connectivity/1972 SIAM JC [Tarjan] DFS and linear graph algorithms.pdf</file>
+ <file>Networks/algorithms/graphs/connectivity/1972 SIAM JC [Tarjan] DFS and linear graph algorithms.classic.pdf</file>
 </reference>
 
 <reference id="Tarjan 1979">
@@ -4909,6 +5220,14 @@
  <file>Computer Science/algorithms/adt/1979 JCSS [Tarjan] Union-find.pdf</file>
 </reference>
 
+<reference id="Tarjan 1983">
+ <author>Robert E. Tarjan</author>
+ <title>Data Structures and Network Algorithms.</title>
+ <publisher>Society for Industrial and Applied Mathematics</publisher>
+ <year>1983</year>
+ <isbn>0898711878</isbn>
+</reference>
+
 <reference id="Tarjan and Vishkin 1985">
  <author>Robert E. Tarjan</author>
  <author>Uzi Vishkin</author>
@@ -4919,7 +5238,7 @@
  <pages>862-874</pages>
  <year>1985</year>
  <doi>10.1137/0214061</doi>
- <file>Networks/algorithms/graphs/connectedness/1985 SIAM JC [Tarjan &amp; Vishkin] Efficient parallel biconnectivity algorithm.tr.pdf</file>
+ <file>Networks/algorithms/graphs/connectivity/1985 SIAM JC [Tarjan &amp; Vishkin] Efficient parallel biconnectivity algorithm.tr.pdf</file>
 </reference>
 
 
@@ -5210,6 +5529,19 @@
 </reference>
 
 
+<reference id="Warshall 1962">
+ <author>Stephen Warshall</author>
+ <title>A theorem on Boolean matrices</title>
+ <journal>Journal of the ACM</journal>
+ <volume>9</volume>
+ <number>1</number>
+ <pages>11-12</pages>
+ <year>1962</year>
+ <doi>10.1145/321105.321107</doi>
+ <file>Networks/algorithms/graphs/paths/1962 JACM [Warshall] Boolean matrices.pdf</file>
+</reference>
+
+
 <reference id="Wasserman and Faust 1994">
  <author>Stanley Wasserman</author>
  <author>Katherine Faust</author>
@@ -5326,7 +5658,7 @@
  <pages>433-464</pages>
  <year>1992</year>
  <doi>10.1007/BF01758773</doi>
- <file>Networks/algorithms/graphs/connectedness/1992 Algorithmica [Westbrook &amp; Tarjan] Bridge-connected and biconnected components.pdf</file>
+ <file>Networks/algorithms/graphs/connectivity/1992 Algorithmica [Westbrook &amp; Tarjan] Bridge-connected and biconnected components.pdf</file>
 </reference>
 
 

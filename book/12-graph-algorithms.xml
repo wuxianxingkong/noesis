@@ -518,7 +518,7 @@ Linear SCC algorithms:
    ref.  <cite>Aho et al. 1983</cite> credit it to an unpublished paper from 1978 by S. Rao Kosaraju and Micha Sharir. (Al
 
 - Cheriyan-Mehlhorn/Gabow algorithm, 1996/1999: http://en.wikipedia.org/wiki/Cheriyan%E2%80%93Mehlhorn/Gabow_algorithm
-   ref. <cite>Cheriyan and Mehlhor 1996</cite> <cite>Gabow 2003</cite>
+   ref. <cite>Cheriyan and Mehlhorn 1996</cite> <cite>Gabow 2003</cite>
 
 - Tarjan's strongly connected components algorithm, 1972: http://en.wikipedia.org/wiki/Tarjan's_strongly_connected_components_algorithm
    ref. <cite>Tarjan 1972</cite>
@@ -1930,6 +1930,19 @@ Automata, Languages and Programming (ICALP).
 </reference>
 
 
+<reference id="Colbourn 1981">
+ <author>Charles J. Colbourn</author>
+ <title>On testing isomorphism of permutation graphs</title>
+ <journal>Networks</journal>
+ <volume>11</volume>
+ <number>1</number>
+ <pages>13-21</pages>
+ <year>1981</year>
+ <doi>10.1002/net.3230110103</doi>
+ <!--<file>Networks/algorithms/graphs/isomorphism/1981 Networks...</file>-->
+</reference>
+
+
 <reference id="Dijkstra 1959">
  <author>Edsger W. Dijkstra.</author>
  <title>A note on two problems in connexion with graphs</title>
@@ -2303,18 +2316,6 @@ Automata, Languages and Programming (ICALP).
  <file>Networks/algorithms/graphs/isomorphism/1979 JACM Interval graph isomorphism.pdf</file>
 </reference>
 
-
-<reference id="Lueker and Booth 1981">
- <author>Charles J. Colbourn</author>
- <title>On testing isomorphism of permutation graphs</title>
- <journal>Networks</journal>
- <volume>11</volume>
- <number>1</number>
- <pages>13-21</pages>
- <year>1981</year>
- <doi>10.1002/net.3230110103</doi>
- <!--<file>Networks/algorithms/graphs/isomorphism/1981 Networks...</file>-->
-</reference>
 
 
 <reference id="Luks 1982">

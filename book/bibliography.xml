@@ -1513,6 +1513,19 @@
 </reference>
 
 
+<reference id="Colbourn 1981">
+ <author>Charles J. Colbourn</author>
+ <title>On testing isomorphism of permutation graphs</title>
+ <journal>Networks</journal>
+ <volume>11</volume>
+ <number>1</number>
+ <pages>13-21</pages>
+ <year>1981</year>
+ <doi>10.1002/net.3230110103</doi>
+ <!--<file>Networks/algorithms/graphs/isomorphism/1981 Networks...</file>-->
+</reference>
+
+
 <reference id="Cormen et al. 1990">
  <author>Thomas H. Cormen</author>
  <author>Charles E. Leiserson</author>
@@ -3496,18 +3509,6 @@
  <file>Networks/algorithms/graphs/isomorphism/1979 JACM Interval graph isomorphism.pdf</file>
 </reference>
 
-
-<reference id="Lueker and Booth 1981">
- <author>Charles J. Colbourn</author>
- <title>On testing isomorphism of permutation graphs</title>
- <journal>Networks</journal>
- <volume>11</volume>
- <number>1</number>
- <pages>13-21</pages>
- <year>1981</year>
- <doi>10.1002/net.3230110103</doi>
- <!--<file>Networks/algorithms/graphs/isomorphism/1981 Networks...</file>-->
-</reference>
 
 
 <reference id="Luks 1982">

@@ -231,6 +231,15 @@ connected graph with n-1 edges and n nodes
 Trees are recursive structures, since cutting any edge leaves two smaller trees.
 </text>
 
+
+<text>
+++ Rooted vs. free:
+
+- Rooted trees define a hierarchical order, emanating from a single source node
+identified as the root.
+- Free trees do not encode any structure beyond their connection topology.
+</text>
+
 <text>
 ++ Special trees: stars, double stars, and caterpillars (spine)
 </text>

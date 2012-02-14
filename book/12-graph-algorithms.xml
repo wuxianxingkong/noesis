@@ -1752,7 +1752,7 @@ M. R. Garey, D. S. Johnson, and L. Stockmeyer. Some simplified NP-complete probl
 
 <item>Eulerian subgraph, i.e. a subgraph that contains an Eulerian cycle.</item>
 
-<item>Bipartite subgraph, i.e. a subgraph with at least k edges that can is bipartite.</item>
+<item>Bipartite subgraph, i.e. a subgraph with at least k edges that is bipartite.</item>
 
 <item>Cubic subgraph, i.e. a cubic subgraph with at least k edges.</item>
 

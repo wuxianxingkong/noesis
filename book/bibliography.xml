@@ -2799,7 +2799,7 @@
 
 
 <reference id="Hochbaum 1996">
- <author>Dorit S. Hochbaum</author>
+ <editor>Dorit S. Hochbaum</editor>
  <title>Approximation Algorithms for NP-Hard Problems</title>
  <publisher>PWS Publishing Company</publisher>
  <year>1996</year>
@@ -5796,6 +5796,92 @@
  <comment>
   <text>ADMA'2009 paper...</text>
  </comment>
+</reference>
+
+
+<!-- Graph drawing -->
+
+<reference id="Guimera and Nunes 2005">
+ <author>Roger Guimerà</author>
+ <author>Luís A. Nunes Amaral</author>
+ <title>Functional cartography of complex metabolic networks</title>
+ <journal>Nature</journal>
+ <volume>433</volume>
+ <pages>895-900</pages>
+ <year>2005</year>
+ <doi>10.1038/nature03288</doi>
+ <file>Networks/applications/biology/2005 Nature - Functional cartography of complex metabolic networks.pdf</file>
+</reference>
+
+<reference id="Di Battista et al. 1999">
+ <author>Giuseppe Di Battista</author>
+ <author>Peter Eades</author>
+ <author>Roberto Tamassia</author>
+ <author>Ioannis G. Tollis</author>
+ <title>Graph Drawing: Algorithms for the Visualization of Graphs</title>
+ <publisher>Prentice Hall</publisher>
+ <year>1999</year>
+ <isbn>0133016153</isbn>
+ <file>[books]/algorithms/graphs/drawing/0133016153 Graph Drawing.1999.djvu</file>
+</reference>
+
+<reference id="Aigner et al. 2011">
+ <author>Wolfgang Aigner</author>
+ <author>Silvia Miksch</author>
+ <author>Heidrun Schumann</author>
+ <author>Christian Tominski</author>
+ <title>Visualization of Time-Oriented Data</title>
+ <publisher>Springer</publisher>
+ <year>2011</year>
+ <isbn>0857290789</isbn>
+ <file>[books]/algorithms/graphs/drawing/0857290789 Visualization of Time-Oriented Data.2011.pdf</file>
+</reference>
+
+<reference id="Sugiyama 2002">
+ <author>Kozo Sugiyama</author>
+ <title>Graph Drawing and Applications for Software and Knowledge Engineers</title>
+ <series>Series on Software Engineering and Knowledge Engineering</series>
+ <publisher>World Scientific Publishing</publisher>
+ <year>2002</year>
+ <isbn>9810248792</isbn>
+ <file>[books]/algorithms/graphs/drawing/9810248792 Graph Drawing and Applications for Software and Knowledge Engineers.2002.djvu</file>
+</reference>
+
+<reference id="Diehl 2007">
+ <author>Stephan Diehl</author>
+ <title>Software Visualization: Visualizing the Structure, Behaviour, and Evolution of Software</title>
+ <publisher>Springer</publisher>
+ <year>2007</year>
+ <isbn>3540465049</isbn>
+ <file>[books]/programming/3540465049 [Diehl] Software Visualization.pdf</file>
+</reference>
+
+<reference id="Steele and Iliinsy 2010">
+ <title>Beautiful Visualization: Looking at Data through the Eyes of Experts</title>
+ <editor>Julie Steele</editor>
+ <editor>Noah Iliinsky</editor>
+ <publisher>O'Reilly</publisher>
+ <year>2010</year>
+ <isbn>1449379869</isbn>
+ <file>[books]/design/interface/1449379869 Beautiful Visualization.pdf</file>
+</reference>
+
+<reference id="Tufte 2001">
+ <author>Edward R. Tufte</author>
+ <title>The Visual Display of Quantitative Information</title>
+ <publisher>Graphics Press</publisher>
+ <edition>2nd edition</edition>
+ <year>2001</year>
+ <isbn>0961392142</isbn>
+</reference>
+
+<reference id="Cleveland 1985">
+ <author>William S. Cleveland</author>
+ <title>The Elements of Graphing Data</title>
+ <publisher>Wadsworth</publisher>
+ <edition>1st edition</edition>
+ <year>1985</year>
+ <isbn>0534037291</isbn>
 </reference>
 
 

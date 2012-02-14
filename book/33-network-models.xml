@@ -1,8 +1,10 @@
 <?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography SYSTEM "bibliography.xml"> ]> 
 <?xml-stylesheet type="text/xsl" href="../book.xsl"?>
 
 
 <document>
+&bibliography;
 <title>Other Network Models</title>
 
 <cite>Watts and Strogatz 1998</cite>
@@ -62,58 +64,5 @@ e.g. interlocking boards of directors
 </document>
 
 
-
-<document>
-<tag>models-references</tag>
-<title>References</title>
-
-<reference id="Barabasi and Albert 1999">
- <author>Albert-László Barabási</author>
- <author>Réka Albert</author>
- <title>Emergence of scaling in random networks</title>
- <journal>Science</journal>
- <volume>286</volume>
- <number>5439</number>
- <pages>509-512</pages>
- <year>1999</year>
- <doi>10.1126/science.286.5439.509</doi>
- <file>Networks/models/1999 Science [Barabasi &amp; Albert] Scaling in random networks.pdf</file>
-</reference>
-
-
-<reference id="Jackson 2009">
- <author>Matthew O. Jackson</author>
- <title>Social and Economic Networks</title>
- <publisher>Princeton University Press</publisher>
- <edition>1st edition</edition>
- <year>2010</year>
- <isbn>978-0-691-14820-5</isbn>
- <file>[books]/algorithms/graphs/0691134405 [Jackson] Social and Economic Networks.pdf</file>
-</reference>
-
-<reference id="Lewis 2009">
- <author>Ted G. Lewis</author>
- <title>Network Science: Theory and Applications</title>
- <publisher>Wiley</publisher>
- <edition>1st edition</edition>
- <year>2009</year>
- <isbn>978-0-470-33188-0</isbn>
- <file>[books]/algorithms/graphs/0470331887 [Lewis] Network Science - Theory and Applications.pdf</file>
-</reference>
-
-
-<reference id="Watts and Strogatz 1998">
- <author>Duncan J. Watts</author>
- <author>Steven H. Strogatz</author>
- <title>Collective dynamics of 'small-world' networks</title>
- <journal>Nature</journal>
- <volume>393</volume>
- <pages>440-442</pages>
- <year>1998</year>
- <doi>10.1038/30918</doi>
- <file>Networks/models/1998 Nature [Watts &amp; Strogatz] Small-world networks.pdf</file>
-</reference>
-
-</document>
 
 </document>

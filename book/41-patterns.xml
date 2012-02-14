@@ -1,8 +1,10 @@
 <?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography SYSTEM "bibliography.xml"> ]> 
 <?xml-stylesheet type="text/xsl" href="../book.xsl"?>
 
 
 <document>
+&bibliography;
 <title>Patterns</title>
 
 
@@ -82,14 +84,6 @@
 <document>
 <tag>patterns-notes</tag>
 <title>Bibliographic notes</title>
-
-</document>
-
-
-
-<document>
-<tag>patterns-references</tag>
-<title>References</title>
 
 </document>
 

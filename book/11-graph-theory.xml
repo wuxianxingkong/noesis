@@ -1,8 +1,10 @@
 <?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography SYSTEM "bibliography.xml"> ]> 
 <?xml-stylesheet type="text/xsl" href="../book.xsl"?>
 
 
 <document>
+&bibliography;
 <title>Graph Theory: The Mathematics of Networks</title>
 
 <text>
@@ -176,6 +178,7 @@ An edge linking two nodes indicates that they can communicate directly, whereas 
 
 <text>
 ++ Counting the number of paths of length k by matrix multiplication: A^k (includes non-simple paths), e.g. divide-and-conquer algorithm @ Skiena 425 [Karatsuba KO63], fast multiplication algorithms @ Skiena 403 [Strassen 69][Coppersmith 90][CKSU05]
+</text>
 
 <text>
 The pairwise distance of the shortest path linking the nodes in a network is represented in its distance matrix. Its global maximum is the network diameter. The distance matrix describes the communication pattern within the network.
@@ -391,182 +394,6 @@ A retrospective from one of the key players in the development of graph theory: 
 ++ Introductory divulgative books, e.g. <cite>Chartrand 1984</cite>
 </text>
 
-
-</document>
-
-
-<document>
-<tag>graph-theory-references</tag>
-<title>References</title>
-
-
-<reference id="Alexanderson 2006">
- <author>Gerald L. Alexanderson</author>
- <title>Euler and Königsberg's bridges: A historical view</title>
- <journal>Bulletin of the American Mathematical Society</journal>
- <volume>43</volume>
- <number>4</number>
- <pages>567-573</pages>
- <year>2006</year>
- <doi>10.1090/S0273-0979-06-01130-X</doi>
- <file>Networks/2006 BAMS [Alexanderson] Euler and Konigsberg's bridges.pdf</file>
-</reference>
-
-
-<reference id="Berge 1958">
- <author>Claude Berge</author>
- <title>Théorie des Graphes et ses Applications</title>
- <publisher>Dunod, Paris</publisher>
- <year>1958</year>
-</reference>
-
-<reference id="Berge 2001">
- <author>Claude Berge</author>
- <title>The Theory of Graphs</title>
- <publisher>Dover Publications</publisher>
- <year>2001</year>
- <isbn>0486419754</isbn>
-</reference>
-
-
-<reference id="Bollobas 2002">
- <author>Bela Bollobas</author>
- <title>Modern Graph Theory</title>
- <publisher>Springer</publisher>
- <year>2002</year>
- <isbn>0387984887</isbn>
- <file>[books]\algorithms\graphs\0387984887 [Bollobas] Modern Graph Theory.pdf</file>
-</reference>
-
-<reference id="Bondy and Murty 1976">
- <author>John Adrian Bondy</author>
- <author>U.S.R. Murty</author>
- <title>Graph Theory With Applications</title>
- <publisher>North-Holland</publisher>
- <year>1976</year>
- <isbn>0444194517</isbn>
- <file>[books]\algorithms\graphs\0444194517 [Bondy &amp; Murty] Graph Theory with Applications.pdf</file>
-</reference>
-
-<reference id="Chartrand 1984">
- <author>Gary Chartrand</author>
- <title>Introductory Graph Theory</title>
- <publisher>Dover Publications</publisher>
- <year>1984</year>
- <isbn>0486247759</isbn>
-</reference>
-
-
-<reference id="Chartrand et al. 2011">
- <author>Gary Chartrand</author>
- <author>Linda Lesniak</author>
- <author>Ping Zhang</author>
- <title>Graphs &amp; Digraphs</title>
- <edition>5th edition</edition>
- <publisher>CRC Press</publisher>
- <year>2011</year>
- <isbn>978143982627</isbn>
-</reference>
-
-
-<reference id="Diestel 2005">
- <author>Reinhard Diestel</author>
- <title>Graph Theory</title>
- <publisher>Springer</publisher>
- <edition>3rd edition</edition>
- <year>2005</year>
- <isbn>3540261826</isbn>
- <file>[books]\algorithms\graphs\3540261826 [Diestel] Graph Theory.3rd.pdf</file>
-</reference>
-
-
-<reference id="Euler 1736">
- <author>Leonhard Euler</author>
- <title>Solutio problematis ad geometriam situs pertinentis</title>
- <journal>Commentarii Academiae Scientiarum Imperialis Petropolitanae</journal>
- <volume>8</volume>
- <pages>128-140</pages>
- <year>1736</year>
- <file>Networks/1736 [Euler] Konigsberg Bridges.pdf</file>
-</reference>
-
-
-<reference id="Gross and Yellen 2003">
- <editor>Jonathan L. Gross</editor>
- <editor>Jay Yellen</editor>
- <title>Handbook of Graph Theory</title>
- <publisher>CRC Press</publisher>
- <year>2003</year>
- <isbn>1584880902</isbn>
- <file>[books]/algorithms/graphs/1584880902 [Gross &amp; Yellen] Handbook of Graph Theory - Discrete Mathematics and Its Applications.pdf</file>
-</reference>
-
-
-<reference id="Gross and Yellen 2005">
- <author>Jonathan L. Gross</author>
- <author>Jay Yellen</author>
- <title>Graph Theory and Its Applications</title>
- <publisher>Chapman and Hall / CRC Press</publisher>
- <edition>2nd edition</edition>
- <year>2005</year>
- <isbn>158488505X</isbn>
-</reference>
-
-
-<reference id="Harary 1969">
- <author>Frank Harary</author>
- <title>Graph Theory</title>
- <publisher>Addison Wesley</publisher>
- <year>1969</year>
- <isbn>0201410338</isbn>
- <file>[books]/algorithms/graphs/1969 [Harary] Graph Theory.pdf</file>
- <file>[books]/algorithms/graphs/1969 [Harary] Graph Theory.djvu</file>
-</reference>
-
-<reference id="Jungnickel 2007">
- <author>Dieter Jungnickel</author>
- <title>Graphs, Networks, and Algorithms</title>
- <publisher>Springer</publisher>
- <edition>3rd edition</edition>
- <year>2007</year>
- <isbn>3540727795</isbn>
- <file>[books]\algorithms\graphs\3540727795 [Jungnickel] Graphs, Networks and Algorithms.pdf</file>
-</reference>
-
-<reference id="Konig 1936">
- <author>Dénes König</author>
- <title>Theorie der endlichen und unendlichen Graphen</title>
- <publisher>Akademische Verlagsgesellschaft, Leipzig</publisher>
- <year>1936</year>
-</reference>
-
-<reference id="Konig 1990">
- <author>Dénes König</author>
- <title>Theory of finite and infinite graphs</title>
- <publisher>Birkhäuser</publisher>
- <year>1990</year>
- <isbn>0817633898</isbn>
- <!-- Translated from German by Richard McCoart -->
-</reference>
-
-
-<reference id="Ore 1962">
- <author>Oystein Ore</author>
- <title>Theory of Graphs</title>
- <publisher>American Mathematical Society Colloquium Publications</publisher>
- <year>1962</year>
- <isbn>0821810383</isbn>
- <file>[books]/algorithms/graphs/1962 [Ore] Theory of graphs.pdf</file>
-</reference>
-
-<reference id="Tutte 1998">
- <author>William Thomas Tutte</author>
- <title>Graph Theory As I Have Known It</title>
- <publisher>Oxford University Press</publisher>
- <year>1998</year>
- <isbn>0198502516</isbn>
- <file>[books]/algorithms/graphs/1998 [Tutte] Graph Theory as I Have Known It.djvu</file>
-</reference>
 
 </document>
 

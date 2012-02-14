@@ -1,11 +1,8 @@
 <?xml version="1.0"  encoding="ISO-8859-1" ?> 
-<?xml-stylesheet type="text/xsl" href="../book-references.xsl"?>
+<?xml-stylesheet type="text/xsl" href="../book-bibliography.xsl"?>
 
 
-<document>
-<tag>bibliography</tag>
-<title>Bibliography</title>
-
+<bibliography>
 
 
 <reference id="Adamcsek et al. 2006">
@@ -5802,4 +5799,4 @@
 </reference>
 
 
-</document>
+</bibliography>

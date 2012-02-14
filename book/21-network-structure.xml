@@ -1,8 +1,10 @@
 <?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography SYSTEM "bibliography.xml"> ]> 
 <?xml-stylesheet type="text/xsl" href="../book.xsl"?>
 
 
 <document>
+&bibliography;
 <title>Network Structure</title>
 
 
@@ -95,168 +97,6 @@ Clustering (segregation) - efficiency (integration) trade-off... Optimal cluster
 <document>
 <tag>structure-notes</tag>
 <title>Bibliographic notes</title>
-</document>
-
-<document>
-<tag>structure-references</tag>
-<title>References</title>
-
-
-
-<reference id="Backstrom et al. 2011">
- <author>Lars Backstrom</author>
- <author>Paolo Boldi</author>
- <author>Marco Rosa</author>
- <author>Johan Ugander</author>
- <author>Sebastiano Vigna</author>
- <title>Four Degrees of Separation</title>
- <journal>arXiv</journal>
- <year>2011</year>
- <url>http://arxiv.org/abs/1111.4570</url>
- <file>Networks/applications/social/2011 arXiv - Facebook degrees of separation.pdf</file>
-</reference>
-
-
-<reference id="Crofts and Higham 2009">
- <author>Jonathan J. Crofts</author>
- <author>Desmond J. Higham</author>
- <title>A weighted communicability measure applied to complex brain networks</title>
- <journal>Journal of the Royal Society Interface</journal>
- <volume>6</volume>
- <number>33</number>
- <pages>411–414</pages>
- <year>2009</year>
- <doi>10.1098/rsif.2008.0484</doi>
- <file>Networks/structure/metrics/2009 JRSInterface [Crofts &amp; Higham] Weighted communicability.pdf</file>
-</reference>
-
-
-<reference id="Estrada and Hatano 2008">
- <author>Ernesto Estrada</author>
- <author>Naomichi Hatano</author>
- <title>Communicability in complex networks</title>
- <journal>Physical Review E</journal>
- <volume>77</volume>
- <number>3</number>
- <pages>036111</pages>
- <year>2008</year>
- <doi>10.1103/PhysRevE.77.036111</doi>
- <file>Networks/structure/metrics/2008 PhysRevE [Estrada &amp; Hatano] Communicability.pdf</file>
-</reference>
-
-<reference id="Fagiolo 2007">
- <author>Giorgio Fagiolo</author>
- <title>Clustering in complex directed networks</title>
- <journal>Physical Review E</journal>
- <volume>76</volume>
- <number>2</number>
- <pages>026107</pages>
- <year>2007</year>
- <doi>10.1103/PhysRevE.76.026107</doi>
- <file>Networks/structure/metrics/2008 PhysRevE [Fagiolo] Clustering in directed networks.pdf</file>
-</reference>
-
-
-<reference id="Latora and Marchiori 2001">
-<author>Vito Latora</author>
- <author>Massimo Marchiori</author>
- <title>Efficient behavior of small-world networks</title>
- <journal>Physical Review Letters</journal>
- <volume>87</volume>
- <number>19</number>
- <pages>198701</pages>
- <year>2001</year>
- <doi>10.1103/PhysRevLett.87.198701</doi>
- <file>Networks/structure/metrics/2001 PhysRevLett [Latora] Efficiency.pdf</file>
-</reference>
-
-
-<reference id="Leskovek et al. 2005">
- <author>Jure Leskovec</author>
- <author>Jon Kleinberg</author>
- <author>Christos Faloutsos</author>
- <title>Graphs over time: Densification laws, shrinking diameters and possible explanations</title>
- <proceedings>11th ACM SIGKDD International Conference on Knowledge Discovery in Data Mining</proceedings>
- <conference>KDD</conference>
- <year>2005</year>
- <isbn>1-59593-135-X</isbn>
- <location>Chicago, Illinois, USA</location>
- <pages>177-187</pages>
- <doi>10.1145/1081870.1081893</doi>
- <file>Networks/dynamics/evolution/2005 KDD Graphs over time.pdf</file>
-</reference>
-
-
-<reference id="Newman 2003">
- <author>Mark E.J. Newman</author>
- <title>The Structure and Function of Complex Networks</title>
- <journal>SIAM Review</journal>
- <volume>45</volume>
- <pages>167-256</pages>
- <year>2003</year>
- <doi>10.1137/S003614450342480</doi>
- <file>Networks/2003 SIAM Review [Newman] The structure and function of complex networks.draft.pdf</file>
- <file>Networks/2003 SIAM Review [Newman] The structure and function of complex networks.pdf</file>
-</reference>
-
-
-<reference id="Onnela et al. 2005">
- <author>Jukka-Pekka Onnela</author>
- <author>Jari Saramäki</author>
- <author>János Kertész</author>
- <author>Kimmo Kaski</author>
- <title>Intensity and coherence of motifs in weighted complex networks</title>
- <journal>Physical Review E</journal>
- <volume>71</volume>
- <number>6</number>
- <pages>065103(R)</pages>
- <year>2005</year>
- <doi>10.1103/PhysRevE.71.065103</doi>
- <file>Networks/structure/metrics/2005 PhysRevE [Onnela] Intensity and coherence of motifs.pdf</file>
-</reference>
-
-
-
-
-<reference id="Travers and Milgram 1969">
- <author>Jeffrey Travers</author>
- <author>Stanley Milgram</author>
- <title>An Experimental Study of the Small World Problem</title>
- <journal>Sociometry</journal>
- <volume>32</volume>
- <number>4</number>
- <pages>425-443</pages>
- <year>1969</year>
- <url>http://www.jstor.org/stable/2786545</url>
- <file>Networks/models/small-world/1969 Sociometry [Travers &amp; Milgram] Small World Problem.pdf</file>
-</reference>
-
-
-<reference id="Ugander at al. 2011">
- <author>Johan Ugander</author>
- <author>Brian Karrer</author>
- <author>Lars Backstrom</author>
- <author>Cameron Marlow</author>
- <title>The Anatomy of the Facebook Social Graph</title>
- <journal>arXiv</journal>
- <year>2011</year>
- <url>http://arxiv.org/abs/1111.4503</url>
- <file>Networks/applications/social/2011 arXiv - Facebook social graph.pdf</file>
-</reference>
-
-<reference id="Watts and Strogatz 1998">
- <author>Duncan J. Watts</author>
- <author>Steven H. Strogatz</author>
- <title>Collective dynamics of 'small-world' networks</title>
- <journal>Nature</journal>
- <volume>393</volume>
- <pages>440-442</pages>
- <year>1998</year>
- <doi>10.1038/30918</doi>
- <file>Networks/models/1998 Nature [Watts &amp; Strogatz] Small-world networks.pdf</file>
-</reference>
-
-
 </document>
 
 </document>

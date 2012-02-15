@@ -1889,6 +1889,8 @@ Many textbooks describe at least part of the material mentioned in this chapter.
 
 <text>
 <cite>Grama et al. 2003</cite> includes a chapter on parallel graph algorithms.
+
++ <cite>Lynch 1997</cite> textbook on distributed algorithms.
 </text>
 
 
@@ -1903,12 +1905,6 @@ the cornerstone of combinatorial optimization, with an entire book devoted
 to it <cite>Lovasz and Plummer 1986</cite>
 </text>
 
-<text>
-NP problems:
-- 1972: Landmark paper, "Reducibility Among Combinatorial Problems"  <cite>Karp 1972</cite>, 21 combinatorial and graph theoretical NP-complete problems
-- 1979: Catalog containing hundreds of NP problems<cite>Garey and Johnson 1979</cite>, 65 graph theoretical problems and 51 network design problems.
-- Wikipedia: More than 3000 known NP-complete problems, http://en.wikipedia.org/wiki/List_of_NP-complete_problems
-</text>
 
 <text>
 
@@ -1920,8 +1916,39 @@ comprehensive coverage of combinatorial optimization problems.
 Hochbaum's edited collection <cite>Hochbaum 1996</cite> provides an extensive coverage of work on approximation
 algorithms for graph problems. 
 
-Software tools: lp_solve (http://lpsolve.sourceforge.net/), CLP (http://www.coin-or.org), NEOS = Network-Enabled Optimization System @ Argonne National Laboratory, Illinois (submit your own optimization jobs at http://neos.mcs.anl.gov/)
+Software tools: lp_solve (<url>http://lpsolve.sourceforge.net/</url>), CLP (<url>http://www.coin-or.org</url>), NEOS = Network-Enabled Optimization System @ Argonne National Laboratory, Illinois (submit your own optimization jobs at <url>http://neos.mcs.anl.gov/</url>)
 
+</text>
+
+<text>
+NP problems:
+- 1972: Landmark paper, "Reducibility Among Combinatorial Problems"  <cite>Karp 1972</cite>, 21 combinatorial and graph theoretical NP-complete problems
+- 1979: Catalog containing hundreds of NP problems<cite>Garey and Johnson 1979</cite>, 65 graph theoretical problems and 51 network design problems.
+
+- A compendium of NP optimization problems edited by Pierluigi Crescenzi and Viggo Kann
+<url>http://www.nada.kth.se/~viggo/problemlist/</url>
+
+- Wikipedia: More than 3000 known NP-complete problems,
+<url>http://en.wikipedia.org/wiki/List_of_NP-complete_problems</url>
+
+</text>
+
+<text>
+Approximation algorithms:
+
+- Crescenzi and Kann [ACG+03]
+[ACG+03] G. Ausiello, P. Crescenzi, G. Gambosi, V. Kann, S. Marchetti-Spaccamela,
+and M. Protasi. Complexity and Approximation: Combinatorial Optimization
+Problems and Their Approximability Properties. Springer, 2003.
+
+- Vazirani [Vaz04]
+[Vaz04] V. Vazirani. Approximation Algorithms. Springer, 2004.
+
+- Hochbaum [Hoc96]
+[Hoc96] D. Hochbaum, editor. Approximation Algorithms for NP-hard Problems. PWS Publishing, Boston, 1996.
+
+- Gonzalez [Gon07]
+[Gon07] T. Gonzalez. Handbook of Approximation Algorithms and Metaheuristics. Chapman-Hall / CRC, 2007.
 </text>
 
 

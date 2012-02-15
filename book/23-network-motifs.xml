@@ -65,6 +65,41 @@ Dyadic analysis focuses on the properties of pairwise relationships, e.g. recipr
 <document>
 <tag>motifs-cliques</tag>
 <title>Cliques, plexes &amp; cores</title>
+
+
+<text>
+CLIQUES <cite>Skiena 2008</cite>:
+
+1) finding a maximum clique is NP-complete <cite>Karp 1972</cite>. A simple upper bound on the maximum clique in G is the highest vertex degree plus 1. A better upper bound comes from sorting the vertices in order of decreasing degree. Let j be the largest index such that degree of the jth vertex is at least j - 1. The largest clique in the graph contains no more than j vertices, since no vertex of degree &lt; (j - 1) can appear in a clique of size j. To speed our search, we should delete all such useless vertices from G.
+SOLUTION: backtracking/branch-and-bound, simulated annealing (approximate solution)
+
+2) "A maximal clique is a clique that cannot be enlarged by adding any additional vertex. This doesn’t mean that it has to
+be large relative to the largest possible clique, but it might be. To find a nice maximal (and hopefully large) clique, sort the vertices from highest degree to lowest degree, put the first vertex in the clique, and then test each of the other vertices to see whether it is adjacent to all the clique vertices added thus far. If so, add it; if not, continue down the list. By using a bit vector to mark which vertices are currently in the clique, this can be made to run in O(n+m) time. An alternative approach might incorporate some randomness into the vertex ordering, and accept the largest maximal clique you find after a certain number of trials."
+
+
+3) DENSE SUBGRAPHS: "Insisting on cliques to define clusters in a graph can be risky, since a single missing edge will eliminate a
+vertex from consideration. Instead, we should seek large dense subgraphs - i.e. , subsets of vertices that contain a large number of edges between them. Cliques are, by definition, the densest subgraphs possible. 
+
+The largest set of vertices whose induced (defined) subgraph has minimum vertex degree ge k can be found with a simple linear-time algorithm. Begin by deleting all the vertices whose degree is less than k. This may reduce the degree of other vertices below k, if they were adjacent to sufficiently deleted low-degree vertices. Repeating this process until all remaining vertices have degree ge k constructs the largest high-degree subgraph. This algorithm can be implemented in O(n+m) time by using adjacency lists and a suitable priority queue. If we continue to delete the lowest-degree vertices, we eventually end up with a clique or set of cliques, but they may be as small as two vertices.
+
+- The densest subgraph problem seeks the subset of vertices whose induced subgraph has the highest average vertex degree. The
+problem is NP-complete
+
+
+4) PLANAR GRAPHS cannot have cliques of a size larger than four, or else they cease to be planar. Since each edge defines a clique of size 2, the only interesting cases are cliques of three and four vertices. Efficient algorithms to find such small cliques consider the vertices from lowest to highest degree. Any planar graph must contain a vertex of at most 5 degrees, so there is only a constant-sized neighborhood to check exhaustively for a clique containing it. We then delete this vertex to leave a smaller planar graph, containing another low-degree vertex. Repeat this check and delete processes until the graph is empty.
+</text>
+
+<text>
+APPLICATIONS:
+
+- Application of densest subgraph, namely detecting link spam on the Web.
+[GKT05] D. Gibson, R. Kumar, and A. Tomkins. Discovering large dense subgraphs
+in massive graphs. In Proc. 31st Int. Conf on Very Large Data Bases, pages
+721–732, 2005.
+
+- <cite>Skiena 2008</cite>: "Internal Revenue Service (IRS) developed to detect organized tax fraud. In this scam, large groups of phony tax returns are submitted in the hopes of getting undeserved refunds. But generating large numbers of different phony tax returns is hard work. The IRS constructs graphs with vertices corresponding to submitted tax forms and edges between any two forms that appear suspiciously similar. Any large clique in this graph points to fraud"
+</text>
+
 </document>
 
 <document>

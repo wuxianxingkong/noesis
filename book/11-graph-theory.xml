@@ -161,6 +161,11 @@ Eulerian cycle (tour visiting every edge)
 with x and y being vertices with in-degree one less and one more than their out-degrees, respectively.
 </text>
 
+<text>
+Hamiltonian cycle (tour visiting every node)
+e.g. any graph where all vertices have degree ge n/2 must be Hamiltonian.
+</text>
+
 
 <text>
 ++ Distance, geodesic, eccentricity, diameter, radius
@@ -360,7 +365,9 @@ This stamp of the former German Democratic Republic honoring Euler displaying hi
 
 
 <text>
-++ William Rowan Hamilton's Icosian Game @ 1856: Hamiltonian circuits.
+++ William Rowan Hamilton's Icosian Game @ 1856: Hamiltonian circuits. 
+
+"Hamiltonian cycles apparently first arose in Euler's study of the knight’s tour problem, although they were popularized by Hamilton's “Around the World” game in 1839."
 </text>
 
 <text>

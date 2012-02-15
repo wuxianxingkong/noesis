@@ -2034,11 +2034,39 @@ Variants
 - Profile minimization: minimize the sum of one-way distances
 - The pathwidth problem
 
-++ applications in VLSI design, graph drawing, and computational linguistics.</item>
+++ applications in VLSI design, graph drawing, and computational linguistics.
+</item>
 
-<item>Steiner trees, i.e. find the shortest interconnect for a given set of objects (as MST, but including the possibility of adding extra intermediate nodes).
 
-++ Skien1 16.10
+<item>Steiner trees, i.e. find the shortest interconnect for a given set of objects = Find the smallest tree connecting all the vertices of T (as MST, but including the possibility of adding extra intermediate nodes to reduce the cost of the tree).
+
+APPLICATIONS: 
+- network design problems, e.g. water pipes, heating ducts, VLSI circuits (e.g. connect a set of sites to (say) ground under constraints such as material cost, signal propagation time, or reducing capacitance)
+- phylogenic trees (inferring trees from the similarity between different objects or species).
+- analogies can be drawn between minimum Steiner trees and minimum energy configurations
+in certain physical systems. The case that such analog systems - including the
+behavior of soap films over wire frames - solve the Steiner tree problem is discussed in [Mie58].
+
+GEOMETRIC CONSTRAINTS (used to prune the tree in backtracking or branch-and-bound): In the plane, every Steiner point will have a degree of exactly three in a minimum Steiner tree, and the angles formed
+between any two of these edges must be exactly 120 degrees
+
+VARIATION
+- rectilinear Steiner (all edges are restricted to being either horizontal or vertical), hence angles must be
+multiples of 90 degrees
+
+HISTORY
+The Euclidean Steiner problem dates back to Fermat, who asked how to find a point p
+in the plane minimizing the sum of the distances to three given points. This was solved by
+Torricelli before 1640. Steiner was apparently one of several mathematicians who worked
+the general problem for n points, and was mistakenly credited with the problem. An
+interesting, more detailed history appears in [HRW92].
+
+BOUND 
+MST guarantee a provably good approximation for both Euclidean (\sqrt{3}/2) and rectilinear Steiner trees (2/3).
+++ Gilbert and Pollak [GP68] first conjectured that the ratio of the length of the minimum
+Steiner tree over the MST is always ge \sqrt{3/2}, aprox. 0.866. After twenty years of active research,
+the Gilbert-Pollak ratio was finally proven by Du and Hwang [DH92].
+
 </item>
 
 <item>Constrained spanninig trees: degree-constrained spanning tree (a spanning tree with no vertex with degree above k), maximum-leaf spanning trees, (a spanning tree with k or more leaves), shortest-total-path-length spanning tree (i.e. minimizing the sum of the length of the path in the tree between every pair of nodes), bounded-diameter spanning tree (no simple path with more than d edges)...</item>
@@ -2087,9 +2115,24 @@ span the vertex partition defined by the maximum edge cut."
 <item>Clique cover (a.k.a. partition into cliques), i.e. determining whether the vertices of a graph can be partitioned into k cliques. </item>
 
 
-<item>Feedback vertex set, i.e. a set of vertices whose removal leaves a DAG (a graph without cycles). ++ Skiena 16.11 </item>
+<item>Feedback set problems (a.k.a. maximum acyclic subgraph problem).
+- Feedback vertex set, i.e. a set of vertices whose removal leaves a DAG (a graph without cycles). 
+- Feedback arc set (FAS) or feedback edge set is a set of edges which, when removed from the graph, leave a DAG.  A minimal feedback arc set has the additional property that, if the edges in it are reversed rather than removed, then the graph remains acyclic. Finding a small edge set with this property is a key step in layered graph drawing
 
-<item>A feedback arc set (FAS) or feedback edge set is a set of edges which, when removed from the graph, leave a DAG.  A minimal feedback arc set has the additional property that, if the edges in it are reversed rather than removed, then the graph remains acyclic. Finding a small edge set with this property is a key step in layered graph drawing ++ Skiena 16.11 </item>
+
+APPLICATIONS: Many problems are easier on directed acyclic graphs (DAGs) than general digraphs.
+
+- scheduling jobs with precedence constraints, when the constraints are all consistent, can be solved by a topological sort of the resulting DAG. "But how can you design a schedule when there are cyclic constraints?" we identify the smallest number of constraints that must be dropped to permit a valid schedule. In the feedback edge (or arc) set problem, we drop individual precedence constraints. In the feedback vertex set problem, we drop entire jobs and all constraints associated with them.
+
+- eliminating race conditions from electronic circuits (origin of the "feedback" term)
+
+- ranking tournaments, tennis or chess (a natural ranking is the topological sort resulting after deleting
+the minimum set of feedback edges from the digraph).
+
+
+
+</item>
+
 
 
 <item>Chromatic number / graph k-colorability / vertex coloring: assignment of labels traditionally called "colors" to elements of a graph subject to certain constraints. 
@@ -2241,6 +2284,21 @@ making a second pass through our cover."
 
 
 <item>Maximum DAG: The largest possible subset of edges so that the resulting subgraph is acyclic. Any permutation of nodes can be interpreted as a topological sorting of the graph. Removing either left-to-right or right-to-left edges, we keep at least half of the edges in the original graph, hence the solution contains at least half as many edges as the optimum.
+
+FEEDBACK EDGE SET: Linear-time heustic algorithm...
+"constructs a vertex ordering and then deletes any arc going in the wrong
+direction. At least half the arcs must go either left-to-right or right-to-left for
+any vertex order, so take the smaller partition as your feedback set.
+But what is the right vertex order to start from? One natural order is to
+sort the vertices in terms of edge-imbalance, namely in-degree minus outdegree.
+Another approach starts by picking an arbitrary vertex v. Any vertex
+x defined by an in-going edge (x, v) will be placed to the left of v. Any x
+defined by out-going edge (v, x) will analogously be placed to the right of v.
+We can now recur on the left and right subsets to complete the vertex order."
+
+FEEDBACK VERTEX SET..."The heuristics above yield vertex
+orders defining (hopefully) few back edges. We seek a small set of vertices
+that together cover these backedges. This is exactly a vertex cover problem"
 </item>
 
 

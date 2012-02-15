@@ -1255,6 +1255,9 @@ essentially because multiple paths can be augmented simultaneously. These
 algorithms are the method of choice in practice"
 </text>
 
+
+<!-- Augmenting paths -->
+
 <text>
 IDEA: <b>Augmenting paths</b>
 i.e. iteratively find a path of positive capacity from s to t and add it to the flow
@@ -1311,6 +1314,11 @@ The standard reference for network flow algorithms and their history is <cite>Ah
 The fastest known general network flow algorithm runs in <eqn>O(nm \log(n^2/m))</eqn> time <cite>Goldberg and Tarjan 1988</cite>.
 </text>
 
+<!-- Preflow-push -->
+
+<text>
+++ Kleinberg 7 + 13.2
+</text>
 
 <text>
 ++ @ MIT Graphs - Network flow
@@ -1341,6 +1349,11 @@ commodity and we seek to satisfy all demands without exceeding the total
 capacity of any edge. Linear programming will suffice for multicommodity flow if fractional flows
 are permitted. Unfortunately, integral multicommodity flow is NP-complete,
 even for only two commodities.
+
+<text>
+++ Kleinberg: Circulations with demands
+</text>
+
 </text>
 
 <document>
@@ -1400,6 +1413,10 @@ Faster k-connectivity algorithms are known for certain small values of k. All th
 
 <text>
 A matching in a graph <eqn>G=(V,E)</eqn> is a subset of edges <eqn>E' \subset E</eqn> such that no two edges in <eqn>E'</eqn> share a vertex.
+</text>
+
+<text>
+++ Kleinberg 404-414
 </text>
 
 <text>
@@ -2019,7 +2036,10 @@ Variants
 
 ++ applications in VLSI design, graph drawing, and computational linguistics.</item>
 
-<item>Steiner trees, i.e. find the shortest interconnect for a given set of objects (as MST, but including the possibility of adding extra intermediate nodes).</item>
+<item>Steiner trees, i.e. find the shortest interconnect for a given set of objects (as MST, but including the possibility of adding extra intermediate nodes).
+
+++ Skien1 16.10
+</item>
 
 <item>Constrained spanninig trees: degree-constrained spanning tree (a spanning tree with no vertex with degree above k), maximum-leaf spanning trees, (a spanning tree with k or more leaves), shortest-total-path-length spanning tree (i.e. minimizing the sum of the length of the path in the tree between every pair of nodes), bounded-diameter spanning tree (no simple path with more than d edges)...</item>
 
@@ -2067,9 +2087,9 @@ span the vertex partition defined by the maximum edge cut."
 <item>Clique cover (a.k.a. partition into cliques), i.e. determining whether the vertices of a graph can be partitioned into k cliques. </item>
 
 
-<item>Feedback vertex set, i.e. a set of vertices whose removal leaves a DAG (a graph without cycles).</item>
+<item>Feedback vertex set, i.e. a set of vertices whose removal leaves a DAG (a graph without cycles). ++ Skiena 16.11 </item>
 
-<item>A feedback arc set (FAS) or feedback edge set is a set of edges which, when removed from the graph, leave a DAG.  A minimal feedback arc set has the additional property that, if the edges in it are reversed rather than removed, then the graph remains acyclic. Finding a small edge set with this property is a key step in layered graph drawing</item>
+<item>A feedback arc set (FAS) or feedback edge set is a set of edges which, when removed from the graph, leave a DAG.  A minimal feedback arc set has the additional property that, if the edges in it are reversed rather than removed, then the graph remains acyclic. Finding a small edge set with this property is a key step in layered graph drawing ++ Skiena 16.11 </item>
 
 
 <item>Chromatic number / graph k-colorability / vertex coloring: assignment of labels traditionally called "colors" to elements of a graph subject to certain constraints. 

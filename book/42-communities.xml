@@ -19,9 +19,47 @@ Specific aspects of the general idea of social group have led to more precise ne
 Applications: Web communities representing groups with a common interest, communities of named entities in text documents (e.g. people and organizations), social phenomena in e-mail communications, friendships in social networks...
 </text>
 
+<text>
+GRAPH PARTITIONING, from <cite>Skiena 2008</cite>:
+
+APPLICATIONS:
+
+- Clustering: Graph partition also arises when we need to cluster the vertices into logical components. If edges link “similar” pairs of objects, the clusters remaining after partition should reflect coherent groupings.
+
+- Divide and conquer arises in many divide-and-conquer algorithms, which gain their efficiency by breaking problems into equal-sized pieces such that the respective solutions can easily be reassembled. Minimizing the number of edges cut in the partition usually simplifies the task of merging
+
+- Parallel algorithms. Consider the finite element method, which is used to compute the physical properties (such
+as stress and heat transfer) of  geometric models. Parallelizing such calculations requires partitioning the models into equal-sized pieces whose interface is small. This is a graph-partitioning problem, since the topology of a geometric model is
+usually represented using a graph.
+
+- Data locality: Large graphs are often partitioned into reasonable-sized pieces to improve data locality 
+
+- Drawing: or make less cluttered drawings.
+</text>
+
+
+
 <document>
 <tag>community-detection-partitioning</tag>
 <title>Graph partitioning</title>
+
+<text>
+GRAPH PARTITIONING HEURISTICS
+
+- Local improvement heuristics for graph partitioning (.e.g sweep through the vertices, deciding
+whether the size of the cut would improve if we moved this vertex over to the other
+side) are due to Kernighan-Lin [KL70] and Fiduccia-Mattheyses [FM82].
+
+- Spectral partitioning methods use sophisticated linear algebra techniques to
+obtain a good partitioning. The spectral bisection method uses the second-lowest
+eigenvector of the Laplacian matrix of the graph to partition it into two pieces. 
+Spectral methods for graph partition are discussed in [Chu97, PSL90]. 
+
+When more than two components are desired, the partitioning heuristic should
+be applied recursively.
+
+Empirical results on graph partitioning heuristics include [BG95, LR93].
+</text>
 
 <document>
 <tag>community-detection-kernighan-lin</tag>

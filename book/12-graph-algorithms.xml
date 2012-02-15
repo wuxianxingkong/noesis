@@ -579,6 +579,10 @@ APPLICATIONS
 
 <text>
 ++ Two-coloring graphs = Bipartite testing: A graph is bipartite if it can be colored without conflicts using two colors. Whenever we visit a new node, we color it using the opposite of its parent's color. If edges appear with the same color at both ends, the graph is not bipartite. Otherwise, we have partitioned the graph.
+
+
+"Color the first vertex blue, and then do a depth-first search of the graph. Whenever we discover a new, uncolored
+vertex, color it opposite of its parent, since the same color would cause a clash. The graph cannot be bipartite if we ever find an edge (x, y) where both x and y have been colored identically. Otherwise, the final coloring will be a 2-coloring, constructed in O(n + m) time."
 </text>
 
 
@@ -978,9 +982,9 @@ Related problem: Single-destination shortest path problem for directed graphs.
 <text>
 CORRECTNESS: Only on graphs without negative edges!!!
 
-Dijkstraís algorithm assumes that all edges have positive cost. 
+Dijkstra's algorithm assumes that all edges have positive cost. 
 - Adding a fixed amount of weight to make each edge positive does
-not solve the problem. Dijkstraís algorithm will then favor paths using a fewer
+not solve the problem. Dijkstra's algorithm will then favor paths using a fewer
 number of edges,
 
 For graphs with edges of negative weight,
@@ -1371,13 +1375,21 @@ weak point is called an articulation vertex. A bridge is the analogous concept f
 
 - Finding the smallest cut-set that separates a given pair of vertices can be solved using network flow algorithms. 
 
-- Vertex connectivity is characterized by Mengerís theorem, which states that a graph is k-connected if and only if every pair of vertices is joined by at least k vertex-disjoint paths. Network flow can again be used to perform this calculation, since a flow of k between a pair of vertices implies k edge-disjoint paths. we construct a graph G' such that any set of edge-disjoint paths in G' corresponds to vertex-disjoint paths in G. This is done by replacing each vertex vi of G with two vertices vi,1 and vi,2, such that edge (vi,1, vi,2)  G' for all vi G, and by replacing every edge (vi, x) Å∏ G by edges (vi,j, xk), j = k {0, 1} in G'. Thus two edge-disjoint paths in G' correspond to each vertex-disjoint path
+- Vertex connectivity is characterized by Menger's theorem, which states that a graph is k-connected if and only if every pair of vertices is joined by at least k vertex-disjoint paths. Network flow can again be used to perform this calculation, since a flow of k between a pair of vertices implies k edge-disjoint paths. we construct a graph G' such that any set of edge-disjoint paths in G' corresponds to vertex-disjoint paths in G. This is done by replacing each vertex vi of G with two vertices vi,1 and vi,2, such that edge (vi,1, vi,2)  G' for all vi G, and by replacing every edge (vi, x) Å∏ G by edges (vi,j, xk), j = k {0, 1} in G'. Thus two edge-disjoint paths in G' correspond to each vertex-disjoint path
 in G.
 
 A non-flow-based algorithm for edge k-connectivity in O(kn2) is due to Matula <cite>Matula 1987</cite>.
 Faster k-connectivity algorithms are known for certain small values of k. All three-connected components of a graph can be generated in linear time <cite>Hopcroft and Tarjan 1973b</cite>, while O(n2) suffices to test 4-connectivity <cite>Kanevsky and Ramachandran 1991</cite>
 
 - Graph partitioning, i.e. splitting the graph into smaller components with specific properties, is, however, an NP-complete problem. Good heuristic techniques exist for this problem <cite>Karypis and Kumar 1999</cite>, which has important applications (e.g. in VLSI circuit layout).
+
+<!-- Tools:
+- Chaco: partition graphs for parallel computing applications http://www.cs.sandia.gov/°´bahendr/chaco.html.
+- METIS (http://glaros.dtc.umn.edu/gkhome/views/metis)successfully partitioned graphs with over 1,000,000 vertices.
+- Scotch (http://www.labri.fr/perso/pelegrin/scotch/)
+- JOSTLE (http://staffweb.cms.gre.ac.uk/°´wc06/jostle/)
+-->
+
 </text>
 
 </document>
@@ -1465,11 +1477,95 @@ Matching based on preferences (e.g. matching medical residents to hospitals or s
 <tag>graph-isomorphism</tag>
 <title>Graph isomorphism</title>
 
+<text>
+Find a (or all) mapping f from the vertices of G to the vertices of H such that G and H are identical; i.e. (x, y) is an edge of G iff (f(x), f(y)) is an edge of H.
+</text>
+
+<text>
+"We need some terminology to settle what is meant when we say two graphs
+are the same. Two labeled graphs G = (Vg,Eg) and H = (Vh,Eh) are identical
+when (x, y) in Eg iff (x, y) in Eh. The isomorphism problem consists of finding a
+mapping from the vertices of G to H such that they are identical. Such a mapping
+is called an isomorphism; the problem of finding the mapping is sometimes called
+graph matching."
+
+"A mapping of a graph to itself is called an automorphism. For example, the complete graph Kn has n! automorphisms
+(any mapping will do), while an arbitrary random graph is likely to have few or perhaps only one, since G is always identical to itself"
+</text>
+
+<text>
+APPLICATIONS
+e.g. 
+
+- Pattern matching: The structure of chemical compounds are naturally described
+by labeled graphs, with each atom represented by a vertex. Identifying all
+molecules in a structure database containing a particular functional group is an
+instance of subgraph isomorphism testing.
+
+- Identifying symmetries (automorphism)
+
+- indexing graph databases by small substructures (and doing expensive isomorphism
+tests only against those containing the same substructures as the query graph).
+</text>
 
 <text>
 @ MIT Interactive proofs and zero knowledge
 </text>
 
+
+<text>
+VARIATIONS
+
+- "Subgraph isomorphism asks whether there is a subset of edges and vertices of H that is
+isomorphic to a smaller graph G."
+
+- "Induced subgraph isomorphism asks whether there is a subset of vertices of H whose deletion leaves a subgraph isomorphic
+to a smaller graph G. For induced subgraph isomorphism, (1) all edges of G must be present in H, and (2) no non-edges of G can be present in H."
+
+e.g. Clique happens to be an instance of both subgraph isomorphism problems, while
+Hamiltonian cycle is only an example of vanilla subgraph isomorphism
+
+</text>
+
+<text>
+SOLUTION: Backtracking
+
+The basic algorithm backtracks through
+all n! possible relabelings of the vertices of graph h with the names of vertices
+of graph g, and then tests whether the graphs are identical. Of course, we can
+prune the search of all permutations with a given prefix as soon as we detect any
+mismatch between edges whose vertices are both in the prefix.
+
+++ Labels and related constraints can be factored into any backtracking algorithm.
+
+
+++ the real key to efficient isomorphism testing is to preprocess the vertices
+into "equivalence classes," partitioning them into sets of vertices so that two
+vertices in different sets cannot possibly be mistaken for each other. All vertices
+in each equivalence class must share the same value of some invariant that is independent
+of labeling. Possibilities include:
+
+- Vertex degree ñ This simplest way to partition vertices is based on their degreeóthe number of edges incident on the vertex. Two vertices of different degrees cannot be identical. This simple partition can be a big win, but won't do much for regular (equal degree) graphs.
+
+- Shortest path matrix ñ For each vertex v, the all-pairs shortest path matrix defines a multiset of n-1 distances representing
+the distances between v and each of the other vertices. Any two identical vertices must define the exact same multiset of distances, so we can partition the vertices into equivalence classes defining identical distance multisets.
+
+- Counting length-k paths - Taking the adjacency matrix of G and raising it to the kth power gives a matrix where Gk[i, j] counts the number of (nonsimple) paths from i to j. For each vertex and each k, this matrix defines a multiset of path-counts, which can be used for partitioning as with distances above. You could try all 1 le k le n or beyond, and use any single deviation as an
+excuse to partition.
+
+Using these invariants, you should be able to partition the vertices of most graphs into a large number of small equivalence classes. Finishing the job off with backtracking should then be short work. We assign each vertex the name of its equivalence class as a label, and treat it as a labeled matching problem. It is harder to detect isomorphisms between highly-symmetric graphs than it is with random graphs because of the reduced effectiveness of these equivalence-class partitioning heuristics.
+
+
+
+++ Faster algorithms exist for trees and planar graphs. 
+
+- Trees (e.g. NLP, parsing):  Begin with the leaves of both trees and work inward toward the center. Each vertex in one tree is assigned a label representing the set of vertices in the second tree that might possibly be isomorphic to it, based on the constraints of labels and vertex degrees. For example, all the leaves in tree T1 are initially potentially equivalent to all
+leaves of T2. Now, working inward, we can partition the vertices adjacent to leaves in T1 into classes based on how many leaves and non-leaves they are adjacent to. By carefully keeping track of the labels of the subtrees, we can make sure that we have the same distribution of labeled subtrees for T1 and T2. Any mismatch means T1 != T2, while completing the process partitions the
+vertices into equivalence classes defining all isomorphisms. A linear-time tree isomorphism algorithm
+for both labeled and unlabeled trees is presented in [AHU74].
+
+-
+</text>
 
 
 <text>
@@ -1536,9 +1632,47 @@ Isomorphism for many special classes of graphs can be solved in polynomial time,
 </list>
 
 <text>
-SOFTWARE: ell now that youíve gone and starting learning about some computational complexity in relationship to graph isomorphism, itís probably a good time to stop and look at actual practical algorithms for graph isomorphism.  The king of the hill here, as far as I know, is the program nauty (No AUTomorphism, Yes?) by Brendan D. McKay.  http://cs.anu.edu.au/people/bdm/nauty/ <cite>McKay 1981</cite>
+SOFTWARE: ell now that you've gone and starting learning about some computational complexity in relationship to graph isomorphism, it's probably a good time to stop and look at actual practical algorithms for graph isomorphism.  The king of the hill here, as far as I know, is the program nauty (No AUTomorphism, Yes?) by Brendan D. McKay.  http://cs.anu.edu.au/people/bdm/nauty/ <cite>McKay 1981</cite>
+
+
+"The best known isomorphism testing program is nauty (No
+AUTomorphisms, Yes?) - set of very efficient C language procedures for determining
+the automorphism group of a vertex-colored graph. Nauty is also able to
+produce a canonically-labeled isomorph of the graph, to assist in isomorphism testing.
+
+
+The VFLib graph-matching library contains implementations for several different
+algorithms for both graph and subgraph isomorphism testing. This library
+has been widely used and very carefully benchmarked [FSV01]. It is available at
+http://amalfi.dis.unina.it/graph/.
+
+GraphGrep [GS02] (http://www.cs.nyu.edu/shasha/papers/graphgrep/) is a representative
+data mining tool for querying large databases of graphs.
+
+Valiente [Val02] has made available the implementations of graph/subgraph
+isomorphism algorithms for both trees and graphs in his book [Val02]. These C++
+implementations run on top of LEDA (see Section 19.1.1 (page 658)), and are
+available at http://www.lsi.upc.edu/°´valiente/algorithm/.
+
 </text>
 
+<text>
+REFERENCES @ SKIENA
+Graph isomorphism is an important problem in complexity theory. Monographs
+on isomorphism detection include [Hof82, KST93]. Valiente [Val02] focuses on algorithms
+for tree and subgraph isomorphism. See [FSV01] for performance comparisons between different graph
+and subgraph isomorphism algorithms.
+
+Polynomial-time algorithms are known for planar graph isomorphism [HW74] and for
+graphs where the maximum vertex degree is bounded by a constant [Luk80]. The all-pairs
+shortest path heuristic is due to [SD76], although there exist nonisomorphic graphs that
+realize the exact same set of distances [BH90]. 
+
+A problem is said to be isomorphism-complete if it is provably as hard as isomorphism.
+Testing the isomorphism of bipartite graphs is isomorphism-complete, since any graph
+can be made bipartite by replacing each edge by two edges connected with a new vertex.
+Clearly, the original graphs are isomorphic if and only if the transformed graphs are.
+</text>
 </document>
 
 
@@ -1570,7 +1704,7 @@ The following problems can be solved with algorithms that run in linear time (i.
 
 <item>Identifying connected and strongly-connected components (based on graph traversal).</item>
 
-<item>Bipartite testing (based on graph traversal).</item>
+<item>Bipartite testing (based on graph traversal) = 2-coloring.</item>
 
 <item>Cycle detection (based on DFS).</item>
 
@@ -1594,6 +1728,17 @@ path in a DAG (presented in Section 15.4 (page 489)) does the job if we replace 
 <item>The maximum independent set of a tree (equivalent to maximum tree matching on the complement graph): "(1)
 stripping off the leaf nodes, (2) adding them to the independent set, (3) deleting all adjacent nodes, and then (4) repeating from the first step on the resulting trees until it is empty."</item>
 
+<item>Tree partitioning: "Certain special graphs always have small separators, that partition the vertices
+into balanced pieces. For any tree, there always exists a single vertex
+whose deletion partitions the tree so that no component contains more than
+n/2 of the original n vertices. These components need not always be connected;
+consider the separating vertex of a star-shaped tree. This separating
+vertex can be found in linear time using depth first-search."
+<!--Every planar graph has a set of O(\sqrt{n}) vertices whose deletion leaves no component with
+more than 2n/3 vertices. These separators provide a useful way to decompose geometric models, which are often defined by planar graphs.-->
+</item>
+
+<item>Tree isomorphism</item>
 
 <item>Eulerian cycle: the shortest tour visiting each edge of G 
 - Checking is an Eulerian cycle exists: verify that the graph is connected using DFS or BFS, and then count the number of odd-degree vertices.
@@ -1654,6 +1799,13 @@ The following algorithms require polynomial time:
 
 <item>Minimum cuts.</item>
 
+<item>Maximum cuts in planar graphs:
+"A polynomial-time algorithm to find maximum cuts in planar graphs exists. <cite>Hadlock 1975</cite>
+The planar separator theorem and an efficient algorithm for finding such a separator
+are due to Lipton and Tarjan [LT79, LT80]. For experiences in implementing planar
+separator algorithms, see [ADGM04, HPS+05]."
+</item>
+
 <item>Maximum bipartite matching.</item>
 
 <item>Minimum vertex cover problem and maximum independent set problems for bipartite graphs (since the maximum bipartite matching is equal in size to the minimum vertex cover in bipartite graphs...)</item>
@@ -1663,6 +1815,10 @@ The following algorithms require polynomial time:
 <item>Chinese postman problem (a generalization of the Eulerian circuit) introduced by <cite>Kwan 1962</cite>, hence its name: the shortest tour visiting each edge of G at least once. This minimum
 cycle will never visit any edge more than twice, so good tours exist for any road network. The optimal postman tour can be constructed by adding the appropriate edges to the graph G to make it Eulerian. Specifically, we find the shortest path between each pair of odd-degree vertices in G. Adding a path between two odd-degree vertices in G turns both of them to even-degree, moving G closer to becoming an Eulerian graph. Finding the best set of shortest paths to add to G reduces to identifying a minimum-weight perfect matching in a bipartite graph G' <cite>Edmonds and Johnson 1973</cite>. For undirected graphs, the vertices of G' correspond the odd-degree vertices of G, with the weight of edge (i, j) defined to be the length of the shortest path from i to j in G. For directed graphs, the vertices of G' correspond to the degree-imbalanced vertices from G, with the bonus that all edges in G' go from out-degree deficient vertices to in-degree deficient ones. Thus, bipartite matching algorithms suffice when G is directed. Once the graph is Eulerian, the actual cycle can be extracted in linear time.
 </item>
+
+<item>Bipartite graph edge coloring: Bipartite graphs can be edge-colored in polynomial time [Sch98].</item>
+
+<item>Planar graph isomorphism</item>
 
 </list>
 
@@ -1867,25 +2023,104 @@ Variants
 
 <item>Constrained spanninig trees: degree-constrained spanning tree (a spanning tree with no vertex with degree above k), maximum-leaf spanning trees, (a spanning tree with k or more leaves), shortest-total-path-length spanning tree (i.e. minimizing the sum of the length of the path in the tree between every pair of nodes), bounded-diameter spanning tree (no simple path with more than d edges)...</item>
 
-<item>Maximum cut (the max-cut problem), i.e. finding a cut whose size is at least the size of any other cut. A polynomial-time algorithm to find maximum cuts in planar graphs exists. <cite>Hadlock 1975</cite></item>
-
-<item>Minimum cut into bounded sets, i.e. imposing restrictions on the size of the disjoint sets that partition the network.</item>
-
 
 <item>Matching on hypergraphs, i.e. when more than two vertices are involved in a single edge. In fact, 3-dimensional matching is known to be NP-hard whereas bipartite matching (a.k.a. 2-dimensional matching) is in P.</item>
 
 
+<item>
+Graph partitioning: a small cut that partitions
+the vertices into roughly equal-sized pieces = "Partition the vertices into m roughly equal-sized subsets such that the total edge cost spanning the subsets is at most k."
+
+
+APPLICATIONS:
+
+- Clustering: Graph partition also arises when we need to cluster the vertices into logical components. If edges link ìsimilarî pairs of objects, the clusters remaining after partition should reflect coherent groupings.
+
+- Divide and conquer arises in many divide-and-conquer algorithms, which gain their efficiency by breaking problems into equal-sized pieces such that the respective solutions can easily be reassembled. Minimizing the number of edges cut in the partition usually simplifies the task of merging
+
+- Parallel algorithms. Consider the finite element method, which is used to compute the physical properties (such
+as stress and heat transfer) of  geometric models. Parallelizing such calculations requires partitioning the models into equal-sized pieces whose interface is small. This is a graph-partitioning problem, since the topology of a geometric model is
+usually represented using a graph.
+
+- Data locality: Large graphs are often partitioned into reasonable-sized pieces to improve data locality 
+
+- Drawing: or make less cluttered drawings.
+</item>
+
+
+<item>Minimum cut into bounded sets, i.e. imposing restrictions on the size of the disjoint sets that partition the network.
+"Minimum cut set ñ The smallest set of edges to cut that will disconnect a
+graph can be efficiently found using network flow  algorithms. The smallest
+cutset might split off only a single vertex, so the resulting partition could be
+very unbalanced."
+</item>
+
+<item>Maximum cut (the max-cut problem), i.e. finding a cut whose size is at least the size of any other cut. <cite>Karp 1972</cite>
+
+APPLICATION e.g. "Given an electronic circuit specified by a graph, the maximum
+cut defines the largest amount of data communication that can simultaneously
+occur in the circuit. The highest-speed communications channel should thus
+span the vertex partition defined by the maximum edge cut."
+</item>
+
 
 <item>Clique cover (a.k.a. partition into cliques), i.e. determining whether the vertices of a graph can be partitioned into k cliques. </item>
+
 
 <item>Feedback vertex set, i.e. a set of vertices whose removal leaves a DAG (a graph without cycles).</item>
 
 <item>A feedback arc set (FAS) or feedback edge set is a set of edges which, when removed from the graph, leave a DAG.  A minimal feedback arc set has the additional property that, if the edges in it are reversed rather than removed, then the graph remains acyclic. Finding a small edge set with this property is a key step in layered graph drawing</item>
 
-<item>Chromatic number / graph k-colorability / vertex coloring: assignment of labels traditionally called "colors" to elements of a graph subject to certain constraints. In its simplest form, it is a way of coloring the vertices of a graph such that no two adjacent vertices share the same color; this is called a vertex coloring. Using dynamic programming and a bound on the number of maximal independent sets, k-colorability can be decided in time and space O(2.445^n) <cite>Lawler 1976</cite> Using the principle of inclusion-exclusion and Yatesís algorithm for the fast zeta transform, k-colorability can be decided in time O(n2^n) for any k <cite>Bjorklund et al. 2009</cite>. Faster algorithms are known for 3- and 4-colorability, which can be decided in time O(1.3289^n) <cite>Beigel and Eppstein 2005</cite> and O(1.7504^n) <cite>Byskov 2004</cite>, respectively. Note that 2-colorable graphs are bipartite graphs and bipartite testing can be performed in linear time.
+
+<item>Chromatic number / graph k-colorability / vertex coloring: assignment of labels traditionally called "colors" to elements of a graph subject to certain constraints. 
+
+- The smallest number of colors sufficient to vertex-color a graph is its chromatic number
+
+In its simplest form, it is a way of coloring the vertices of a graph such that no two adjacent vertices share the same color; this is called a vertex coloring. Using dynamic programming and a bound on the number of maximal independent sets, k-colorability can be decided in time and space O(2.445^n) <cite>Lawler 1976</cite> Using the principle of inclusion-exclusion and Yates's algorithm for the fast zeta transform, k-colorability can be decided in time O(n2^n) for any k <cite>Bjorklund et al. 2009</cite>. Faster algorithms are known for 3- and 4-colorability, which can be decided in time O(1.3289^n) <cite>Beigel and Eppstein 2005</cite> and O(1.7504^n) <cite>Byskov 2004</cite>, respectively. Note that 2-colorable graphs are bipartite graphs and bipartite testing can be performed in linear time.
+
+APPLICATIONS
+- many scheduling and clustering applications.
+- Register allocation in compiler optimization.
+- Printed circuit board testing
+
+BOUND: Brook's theorem states that the chromatic number Xi(G) le Delta(G) + 1, where Delta(G) is
+the maximum degree of a vertex of G. Equality holds only for odd-length cycles (which
+have chromatic number 3) and complete graphs.
+
+RESULT: The most famous problem in the history of graph theory is the four-color problem,
+first posed in 1852 and finally settled in 1976 by Appel and Haken using a proof involving
+extensive computation. Despite the four-color theorem, it is NP-complete to test whether a
+particular planar graph requires four colors or if three suffice. 
 </item>
 
-<item>Edge coloring: assigns a color to each edge so that no two adjacent edges share the same color. an edge coloring of a graph is just a vertex coloring of its line graph (a graph that represents the adjacencies between edges of G)</item>
+
+<item>Edge coloring: assigns a color to each edge so that no two adjacent edges share the same color. an edge coloring of a graph is just a vertex coloring of its line graph (a graph that represents the adjacencies between edges of G)
+
+APPLICATIONS
+- scheduling applications, typically associated with minimizing the number of noninterfering rounds needed to complete
+a given set of tasks.
+
+BOUND
+Edge coloring has a better (if less famous) theorem associated with it than vertex
+coloring. Vizing's theorem states that any graph with a maximum vertex degree
+of \Delta can be edge colored using at most \Delta + 1 colors. To put this in perspective,
+note that any edge coloring must have at least \Delta colors, since all the edges incident
+on any vertex must be distinct colors. (Vizing [Viz64] and Gupta [Gup66] independently proved that)
+
+INFO
+"The minimum number of colors needed to edge color a graph is called its edge-chromatic
+number by some and its chromatic index by others. Note that an evenlength
+cycle can be edge-colored with 2 colors, while odd-length cycles have an
+edge-chromatic number of 3." it is NP-complete to compute the edge-chromatic
+number [Hol81]
+
+TRANSFORMATION
+Any edge-coloring problem on G can be converted to the problem of finding a
+vertex coloring on the line graph L(G), which has a vertex of L(G) for each edge
+of G and an edge of L(G) if and only if the two edges of G share a common vertex.
+Line graphs can be constructed in time linear to their size, and any vertex-coloring
+code can be employed to color them
+</item>
 
 <item>Face coloring of a planar graph assigns a color to each face or region so that no two faces that share a boundary have the same color. a face coloring of a planar graph is just a vertex coloring of its planar dual (a vertex for each plane region of G, and an edge for each edge in G joining two neighboring regions). </item>
 
@@ -1948,6 +2183,10 @@ techniques they used in their record-setting TSP solvers, as well as the theory 
 behind the problem.
 </item>
 
+<item>The Euclidean Traveling Salesman Problem: When the triangle inequality holds, we can approximate the TSP solution by employing minimum spanning trees. Such trees, which connect all the nodes in a graph, can be traversed in depth. That traversal provides a non-Hamiltonian cycle whose length is at most twice the optimal cycle (why? deleting any link from the cycle returns a Hamiltonian path, i.e. a tree, whose weight cannot be greater than that of the MST.
+</item>
+
+
 <item>Vertex cover: Greedy algorithm that chooses an edge at random and adds both intervening nodes to the cover. Since one of the incident vertices must always be on the minimum vertex cover, this simple algorithm efficiently returns a cover that is at most twice as large as the optimal cover.
 
 
@@ -1980,10 +2219,18 @@ making a second pass through our cover."
 <item>Independent set: "The simplest reasonable heuristic is to find the lowest-degree vertex, add it to the independent set, and then delete it and all vertices adjacent to it. Repeating this process until the graph is empty gives a maximal independent set, in that it can't be made larger by just adding vertices.
 </item>
 
-<item>The Euclidean Traveling Salesman Problem: When the triangle inequality holds, we can approximate the TSP solution by employing minimum spanning trees. Such trees, which connect all the nodes in a graph, can be traversed in depth. That traversal provides a non-Hamiltonian cycle whose length is at most twice the optimal cycle (why? deleting any link from the cycle returns a Hamiltonian path, i.e. a tree, whose weight cannot be greater than that of the MST.
-</item>
 
 <item>Maximum DAG: The largest possible subset of edges so that the resulting subgraph is acyclic. Any permutation of nodes can be interpreted as a topological sorting of the graph. Removing either left-to-right or right-to-left edges, we keep at least half of the edges in the original graph, hence the solution contains at least half as many edges as the optimum.
+</item>
+
+
+<item>
+Graph partitioning:
+"Any random vertex partition will expect to cut half of the edges in the graph, since the
+probability that the two vertices defining an edge end up on different sides of the partition
+is 1/2. Goemans and Williamson [GW95] gave an 0.878-factor approximation algorithm
+for maximum-cut, based on semi-definite programming techniques. Tighter analysis of
+this algorithm was followed by Karloff [Kar96]."
 </item>
 
 </list>

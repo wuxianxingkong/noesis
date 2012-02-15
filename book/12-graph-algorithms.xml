@@ -1756,7 +1756,7 @@ OPTIMAL SOLUTION: Two different approaches if you insist
 
 <item>Hamiltonian cycle (a special case of TSP): TSP tour of cost n
 
-OPTIMIZATIONS: Sufficiently dense graphs always contain Hamiltonian cycles. Further, the cycles implied by such sufficiency conditions can be efficiently constructed; e.g. any graph where all vertices have degree ge n/2 must be Hamiltonian.
+OPTIMIZATIONS: Sufficiently dense graphs always contain Hamiltonian cycles. Further, the cycles implied by such sufficiency conditions can be efficiently constructed
 
 OPTIMAL SOLUTION: Backtracking
 </item>

@@ -1674,6 +1674,19 @@
 </reference>
 
 
+<reference id="Didimo and Liotta 2007">
+ <author>Walter Didimo</author>
+ <author>Giuseppe Liotta</author>
+ <title>Graph Visualization and Data Mining</title>
+ <booktitle>Mining Graph Data</booktitle>
+ <publisher>Wiley-Interscience</publisher>
+ <year>2007</year>
+ <pages>35-63</pages>
+ <isbn>0471731900</isbn>
+ <file>[books]/algorithms/graphs/0471731900 Mining Graph Data.pdf</file>
+</reference>
+
+
 <reference id="Diestel 2005">
  <author>Reinhard Diestel</author>
  <title>Graph Theory</title>

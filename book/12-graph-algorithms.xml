@@ -26,8 +26,8 @@
 <!-- Propaedeutic -->
 
 <document>
-<tag>graph-representation</tag>
-<title>Propaedeutic</title>
+<tag>preliminaries</tag>
+<title>Preliminaries</title>
 
 <text>
 An introduction to an art and science of algorithm analysis and design... as a prerrequisite for later sections.
@@ -72,7 +72,7 @@ n! >> c^n >> n^3 >> n^2 >> n^{1+\epsilon} >> n \log n
 
 <text>
 ++ polylogarithmic, polylogarithmic function in n is a polynomial in the logarithm of n,
-a_k \log^k (n) + ... + a_1 \log(n) + a_0
+<eqn>a_k \log^k (n) + ... + a_1 \log(n) + a_0</eqn>
 
 </text>
 
@@ -494,7 +494,7 @@ ON DIRECTED GRAPHS
 
 2) Using a DFS to identify all source vertices (of in-degree 0), which can appear at the start of the topological sort without violating any constraints. Deleting outgoing edges of the source vertices creates new source vertices. The process is repeated until all vertices are included in the topological sort. Proper use of data structures is sufficient to obtain a linear time O(n+m) algorithm.
 
- ref. first described by <cite>Kahn 1962</cite>: http://en.wikipedia.org/wiki/Topological_sorting
+ ref. first described by <cite>Kahn 1962</cite>: <url>http://en.wikipedia.org/wiki/Topological_sorting</url>
  Applications: scheduling tasks under precedence constraints (any topological sort, a.k.a. linear extension, defines an order to perform the tasks that satisfies all precedence constraints).
 </text>
 
@@ -516,18 +516,18 @@ Any graph can be partitioned into a set of strongly-connected components. Using 
 <text>
 Linear SCC algorithms:
 
-- Kosaraju's algorithm, 1978: http://en.wikipedia.org/wiki/Kosaraju%27s_algorithm
+- Kosaraju's algorithm, 1978: <url>http://en.wikipedia.org/wiki/Kosaraju%27s_algorithm</url>
    ref.  <cite>Aho et al. 1983</cite> credit it to an unpublished paper from 1978 by S. Rao Kosaraju and Micha Sharir. (Al
 
-- Cheriyan-Mehlhorn/Gabow algorithm, 1996/1999: http://en.wikipedia.org/wiki/Cheriyan%E2%80%93Mehlhorn/Gabow_algorithm
+- Cheriyan-Mehlhorn/Gabow algorithm, 1996/1999: <url>http://en.wikipedia.org/wiki/Cheriyan%E2%80%93Mehlhorn/Gabow_algorithm</url>
    ref. <cite>Cheriyan and Mehlhorn 1996</cite> <cite>Gabow 2003</cite>
 
-- Tarjan's strongly connected components algorithm, 1972: http://en.wikipedia.org/wiki/Tarjan's_strongly_connected_components_algorithm
+- Tarjan's strongly connected components algorithm, 1972: <url>http://en.wikipedia.org/wiki/Tarjan's_strongly_connected_components_algorithm</url>
    ref. <cite>Tarjan 1972</cite>
    
 
 
- all efficiently compute the strongly connected components of a directed graph, but Tarjan's and Gabow's are favoured in practice since they require only one depth-first search rather than two. http://en.wikipedia.org/wiki/Strongly_connected_component
+ all efficiently compute the strongly connected components of a directed graph, but Tarjan's and Gabow's are favoured in practice since they require only one depth-first search rather than two. <url>http://en.wikipedia.org/wiki/Strongly_connected_component</url>
 </text> 
 
 
@@ -612,17 +612,19 @@ Judea Pearl described best-first search as estimating the promise of node n by a
 </text>
 
 <text>
-http://en.wikipedia.org/wiki/A*_search_algorithm
+<url>http://en.wikipedia.org/wiki/A*_search_algorithm</url>
 A* search algorithm
 
 HISTORY: In 1964 Nils Nilsson invented a heuristic based approach to increase the speed of Dijkstra's algorithm. This algorithm was called A1. In 1967 Bertram Raphael made dramatic improvements upon this algorithm, but failed to show optimality. He called this algorithm A2. Then in 1968 Peter E. Hart introduced an argument that proved A2 was optimal when using a consistent heuristic with only minor changes. His proof of the algorithm also included a section that showed that the new A2 algorithm was the best algorithm possible given the conditions. He thus named the new algorithm in Kleene star syntax to be the algorithm that starts with A and includes all possible version numbers or A*. <cite>Hart et al. 1968</cite> <cite>Hart et al. 1972</cite>
 
 Often used for path finding...
+
+++ Admissible heuristics...
 </text>
 
 
 <text>
-http://en.wikipedia.org/wiki/B*
+<url>http://en.wikipedia.org/wiki/B*</url>
 B* algorithm <cite>Berliner 1979</cite>
 </text>
 
@@ -691,7 +693,9 @@ Greedy algorithms choose what to do next by selecting the best local candidate t
 Candidates: 
 
 - Edges (Kruskal's algorithm <cite>Kruskal 1956</cite>): Each vertex starts as a separate tree and separate trees are merged by adding the lowest-cost edge to the MST that does not create a cycle (i.e. connects two separate subtrees)
+</text>
 
+<code>
 Kruskal(G):
 Sort edges in order of increasing weight
 edges_in_tree = 0
@@ -701,20 +705,25 @@ while edges_in_tree &lt; n-1
        Add edge (v,w) to the MST
        component(v) = component(w)
        edges_in_tree++
+</code>
 
-
+<text>
 - Nodes (Prim's algorithm <cite>Prim 1957</cite>, rediscovered by <cite>Dijkstra 1959</cite>): Start with an arbitrary vertex and iteratively grow the tree by adding the lowest-cost edge that links some new vertex to the tree.
+</text>
 
+<code>
 Prim(G):
 Select an arbitrary vertex
 while...
+</code>
 
+<text>
 - The oldest algorithm: Boruvka's algorithm, published in 1926 <cite>Boruvka 1926</cite> and rediscovered by Choquet in 1938 <cite>Choquet 1938</cite>
 
-Since the lowest-weight edge incident on each vertex must be in the minimum spanning tree, the union of these edges will return a forest of at most n/2 trees. For each tree, select the edge (x,y) of lowest weight such that x \in T and y \notin T, which will also have to belong to the MST. Repeat until all vertices are connected. Each iteration at least halves the number of remaining trees, hence, after log n iterations, each taking linear time, we obtain the MST in O(m log n).
+Since the lowest-weight edge incident on each vertex must be in the minimum spanning tree, the union of these edges will return a forest of at most n/2 trees. For each tree, select the edge (x,y) of lowest weight such that <eqn>x \in T</eqn> and <eqn>y \notin T</eqn>, which will also have to belong to the MST. Repeat until all vertices are connected. Each iteration at least halves the number of remaining trees, hence, after log n iterations, each taking linear time, we obtain the MST in O(m log n).
 
 
-An inverse algorithm would also be possible...
+- An inverse algorithm would also be possible...
   Algoritmo de  Algoritmo de borrado borrado inverso inverso::
   Comenzando con  Comenzando con T=A,  T=A, considerar considerar laslas aristas aristas en  en orden orden decreciente decreciente
   de coste de coste y y eliminar eliminar laslas aristas aristas de T salvo  de T salvo que que esoeso desconectase desconectase T.T.
@@ -821,7 +830,7 @@ Result: We must double the number of nodes to increase the height of the resulti
 </text>
 
 <text>
-Set data structures to represent unordered collections of objects. Representing subsets to efficiently test element \in subset, compute union/intersection of subsets, or insert/delete subset members,
+Set data structures to represent unordered collections of objects. Representing subsets to efficiently test element <eqn>\in</eqn> subset, compute union/intersection of subsets, or insert/delete subset members,
 
 1) Bit vectors: Space efficient, insertion/deletion by toggling single bits, union/intersection by or-ing/and-ing bit vectors.
 
@@ -849,7 +858,7 @@ structure <cite>Tarjan 1979</cite> and Fibonacci heaps <cite>Fredman and Tarjan 
 </text>
 
 <text>
-A combination of Boruvka's algorhtm <cite>Boruvka 1926</cite> with Prim's algorithm <cite>Prim 1957</cite> yields an O(m log log n) algorithm. Running log log n iterations of Boruvka's algorhtm yields at most n/log n trees. Then create a graph G' with a vertex for each tree and an edge whose weight corresponds to the lightest edge between T_i and T_j. The MST of G' combined with the edges selected by  Boruvka's algorhtm yields the MST of G. Since Prim's algorithm will take O(n+m) time on this n/log n vertex, m edge graph (if implemented using Fibonacci or pairing heaps). <cite>Skiena 2008</cite>. Even tighter bounds, e.g. O(n \alpha(m,n)), can be achieved <cite>Karger et al. 1995</cite> <cite>Chazelle 2000</cite> <cite>Pettie and Ramachandran 2002</cite> <cite>Pettie and Ramachandran 2008</cite>.
+A combination of Boruvka's algorhtm <cite>Boruvka 1926</cite> with Prim's algorithm <cite>Prim 1957</cite> yields an O(m log log n) algorithm. Running log log n iterations of Boruvka's algorhtm yields at most n/log n trees. Then create a graph G' with a vertex for each tree and an edge whose weight corresponds to the lightest edge between <eqn>T_i</eqn> and <eqn>T_j</eqn>. The MST of G' combined with the edges selected by  Boruvka's algorhtm yields the MST of G. Since Prim's algorithm will take O(n+m) time on this n/log n vertex, m edge graph (if implemented using Fibonacci or pairing heaps). <cite>Skiena 2008</cite>. Even tighter bounds, e.g. <eqn>O(n \alpha(m,n))</eqn>, can be achieved <cite>Karger et al. 1995</cite> <cite>Chazelle 2000</cite> <cite>Pettie and Ramachandran 2002</cite> <cite>Pettie and Ramachandran 2008</cite>.
 </text>
 
 <text>
@@ -900,7 +909,7 @@ When graphs are weighted, i.e. each edge in the graph is associated to a numeric
 
 <text>
 Shortest paths in directed acyclic graphs can also be found in linear time: Perform a topological sorting and then process the vertices
-from left to right. Observe that d(s, j) = min_(x,i) d(s, i) + w(i, j) since we already know the shortest path d(s, i) for all vertices to the left of j. The same algorithm (replacing min with max) also suffices to find the longest path in a DAG, which is useful in scheduling applications.
+from left to right. Observe that <eqn>d(s, j) = min_(x,i) d(s, i) + w(i, j)</eqn> since we already know the shortest path d(s, i) for all vertices to the left of j. The same algorithm (replacing min with max) also suffices to find the longest path in a DAG, which is useful in scheduling applications.
 </text>
 
 
@@ -951,7 +960,7 @@ In Prim's algorithm, we just take into account the weighte of the edge we add to
 </text>
 
 <text>
-http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+<url>http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</url>
 Dijkstra's algorithm <cite>Dijkstra 1959</cite>: 
 
 computes the shortest path from a given starting vertex x to all n . 1
@@ -959,7 +968,7 @@ other vertices. In each iteration, it identifies a new vertex v for which the sh
 path from x to v is known. We maintain a set of vertices S to which we currently
 know the shortest path from v, and this set grows by one vertex in each iteration.
 In each iteration, we identify the edge (u,v) so that
-dist(x, u) + weight(u, v) = min_(w,y) { dist(x, w) + weight(w,y) }
+<eqn>dist(x, u) + weight(u, v) = min_(w,y) { dist(x, w) + weight(w,y) }</eqn>
 
 This edge (u, v) gets added to a shortest path tree, whose root is x and describes
 all the shortest paths from x.
@@ -1039,7 +1048,7 @@ A first solution: Repeating Dijkstra's algorithm for each node
 <!-- Floyd-Warshall -->
 
 <text>
-http://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm
+<url>http://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm</url>
 Floyd-Warshall algorithm: <cite>Floyd 1962</cite>
 often referred to as Floyd's algorithm, albeit the same algorithm was published by Bernard Roy in 1959 <cite>Roy 1959</cite> and by Stephen Warshall in 1962 <cite>Warshall 1962</cite>
 
@@ -1078,7 +1087,7 @@ Transitive closure of directed graphs (Warshall's algorithm). In Warshall's orig
 <!-- Bellman-Ford -->
 
 <text>
-http://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
+<url>http://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm</url>
 Bellman-Ford algorithm: <eqn>O(nm)</eqn> time, <eqn>O(n)</eqn> space
 
 Bellman-Ford algorithm <cite>Bellman 1958</cite> <cite>Ford and Fulkerson 1962</cite>
@@ -1113,7 +1122,7 @@ Bellman-Ford algorithm <cite>Bellman 1958</cite> <cite>Ford and Fulkerson 1962</
 <!-- Johnson -->
 
 <text>
-http://en.wikipedia.org/wiki/Johnson%27s_algorithm
+<url>http://en.wikipedia.org/wiki/Johnson%27s_algorithm</url>
 Johnson's algorithm <cite>Johnson 1977</cite> 
 
 1
@@ -1139,7 +1148,7 @@ It allows some of the edge weights to be negative
 <!-- Applications -->
 
 <text>
-All-pairs shortest paths algorithms can be used to find the shortest cycle in a graph: its girth. Floyd's algorithm can be used to compute d_ii, which is the shortest way to get from vertex i to itself (i.e. the shortest cycle that goes through i). If you want the shortest simple cycle, the easiest
+All-pairs shortest paths algorithms can be used to find the shortest cycle in a graph: its girth. Floyd's algorithm can be used to compute <eqn>d_ii</eqn>, which is the shortest way to get from vertex i to itself (i.e. the shortest cycle that goes through i). If you want the shortest simple cycle, the easiest
 approach is to compute the lengths of the shortest paths from i to all other vertices, and then explicitly check whether there is an acceptable edge from each vertex back to i.
 </text>
 
@@ -1154,7 +1163,7 @@ RELATED PROBLEMS
 - transitive closure 
 
 1) using graph traversal algorithms O(n(n+m)), 
-2) an all-pairs shortest path algorithms returns them all in a whole batch, albeit less efficiently, O(n^3) using Warshall's algorithm.
+2) an all-pairs shortest path algorithms returns them all in a whole batch, albeit less efficiently, <eqn>O(n^3)</eqn> using Warshall's algorithm.
 3) using matrix multiplication: O(log n) multiplications using a divide-and-conquer algorithm
 
 - transitive reduction
@@ -1284,7 +1293,7 @@ A path from s to t in the residual graph (and the minimum edge weight on this pa
 <text>
 ITERATIVE ALGORITHM
 Ford-Fulkerson algorithm <cite>Ford and Fulkerson 1956</cite>
-http://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algorithm
+<url>http://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algorithm</url>
 
 - Use the augmented path to update the residual graph (transfer the maximum possible volume from the residual capacity = the path edge with the smallest amount of residual capacity; NOTE: adding positive flow to (i,j) reduces the residual capacity of (i,j) but also increases the residual capacity of (j,i), i.e. augmenting a path requires updates to both forward and reverse links along the augmenting path ).
 - Terminate when no such augmenting path exists.
@@ -1294,7 +1303,7 @@ As described, even though the algorithm converges to the optimal solution, it ma
 
 <text>
 IMPLEMENTATION (Edmonds-Karp algorithm <cite>Edmonds and Karp 1972</cite>):
-http://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm
+<url>http://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm</url>
 The algorithm is identical to the Ford-Fulkerson algorithm, except that the search order when finding the augmenting path is defined. The path found must be a shortest path that has available capacity
 
 - BFS to look for any path from the source to the sink that increases the total flow (only consider edges with residual capacity, i.e. positive residual flow)
@@ -1388,7 +1397,7 @@ weak point is called an articulation vertex. A bridge is the analogous concept f
 
 - Finding the smallest cut-set that separates a given pair of vertices can be solved using network flow algorithms. 
 
-- Vertex connectivity is characterized by Menger's theorem, which states that a graph is k-connected if and only if every pair of vertices is joined by at least k vertex-disjoint paths. Network flow can again be used to perform this calculation, since a flow of k between a pair of vertices implies k edge-disjoint paths. we construct a graph G' such that any set of edge-disjoint paths in G' corresponds to vertex-disjoint paths in G. This is done by replacing each vertex vi of G with two vertices vi,1 and vi,2, such that edge (vi,1, vi,2)  G' for all vi G, and by replacing every edge (vi, x) Å∏ G by edges (vi,j, xk), j = k {0, 1} in G'. Thus two edge-disjoint paths in G' correspond to each vertex-disjoint path
+- Vertex connectivity is characterized by Menger's theorem, which states that a graph is k-connected if and only if every pair of vertices is joined by at least k vertex-disjoint paths. Network flow can again be used to perform this calculation, since a flow of k between a pair of vertices implies k edge-disjoint paths. we construct a graph G' such that any set of edge-disjoint paths in G' corresponds to vertex-disjoint paths in G. This is done by replacing each vertex vi of G with two vertices vi,1 and vi,2, such that edge (vi,1, vi,2)  G' for all vi G, and by replacing every edge (vi, x) in G by edges (vi,j, xk), j = k {0, 1} in G'. Thus two edge-disjoint paths in G' correspond to each vertex-disjoint path
 in G.
 
 A non-flow-based algorithm for edge k-connectivity in O(kn2) is due to Matula <cite>Matula 1987</cite>.
@@ -1463,15 +1472,15 @@ The largest possible bipartite matching can be found using network flow. Just ad
 </text>
 
 <text>
-The best algorithm for maximum bipartite matching, based on Hopcroft and Karp's algorithm <cite>Hopcroft and Karp 1973</cite>, repeatedly finds the shortest augmenting paths instead of using network flow, and runs in O(\sqrt{n}m) <cite>Micali and Vazirani 1980</cite>.
+The best algorithm for maximum bipartite matching, based on Hopcroft and Karp's algorithm <cite>Hopcroft and Karp 1973</cite>, repeatedly finds the shortest augmenting paths instead of using network flow, and runs in <eqn>O(\sqrt{n}m)</eqn> <cite>Micali and Vazirani 1980</cite>.
 </text>
 
 <text>
-Classic algorithm: Hungarian algorithm for bipartite matching <cite>Kuhn 1955</cite>. The Hungarian algorithm runs in O(n(m + n log n)) time.
+Classic algorithm: Hungarian algorithm for bipartite matching <cite>Kuhn 1955</cite>. The Hungarian algorithm runs in <eqn>O(n(m + n \log n))</eqn> time.
 </text>
 
 <text>
-Matching based on preferences (e.g. matching medical residents to hospitals or students to university courses): O(n^2) time using Galey and Shapley's algorithm <cite>Gale and Shapley 1962</cite>.
+Matching based on preferences (e.g. matching medical residents to hospitals or students to university courses): <eqn>O(n^2)</eqn> time using Galey and Shapley's algorithm <cite>Gale and Shapley 1962</cite>.
 </text>
 
 
@@ -1562,9 +1571,9 @@ vertices in different sets cannot possibly be mistaken for each other. All verti
 in each equivalence class must share the same value of some invariant that is independent
 of labeling. Possibilities include:
 
-- Vertex degree ñ This simplest way to partition vertices is based on their degreeóthe number of edges incident on the vertex. Two vertices of different degrees cannot be identical. This simple partition can be a big win, but won't do much for regular (equal degree) graphs.
+- Vertex degree - This simplest way to partition vertices is based on their degree-the number of edges incident on the vertex. Two vertices of different degrees cannot be identical. This simple partition can be a big win, but won't do much for regular (equal degree) graphs.
 
-- Shortest path matrix ñ For each vertex v, the all-pairs shortest path matrix defines a multiset of n-1 distances representing
+- Shortest path matrix - For each vertex v, the all-pairs shortest path matrix defines a multiset of n-1 distances representing
 the distances between v and each of the other vertices. Any two identical vertices must define the exact same multiset of distances, so we can partition the vertices into equivalence classes defining identical distance multisets.
 
 - Counting length-k paths - Taking the adjacency matrix of G and raising it to the kth power gives a matrix where Gk[i, j] counts the number of (nonsimple) paths from i to j. For each vertex and each k, this matrix defines a multiset of path-counts, which can be used for partitioning as with distances above. You could try all 1 le k le n or beyond, and use any single deviation as an
@@ -1913,7 +1922,7 @@ M. R. Garey, D. S. Johnson, and L. Stockmeyer. Some simplified NP-complete probl
 </item>
 
 
-<item>The traveling salesman problem (TSP) on weighted graphs, one of the most intensively studied problems in optimization. http://en.wikipedia.org/wiki/Travelling_salesman_problem
+<item>The traveling salesman problem (TSP) on weighted graphs, one of the most intensively studied problems in optimization. <url>http://en.3.org/wiki/Travelling_salesman_problem</url>
 
 APPLICATIONS: 
 - transportation and routing problems.
@@ -1990,8 +1999,8 @@ and hence arise often in coding theory and scheduling problems."
 
 
 
-<item>Maximum cliques, <eqn>O(3^{n/3}) = O(1.4422^n)</eqn>, since any n-vertex graph has at most any n-vertex graph has at most <eqn>3^{n/3}</eqn> maximal cliques;  http://en.wikipedia.org/wiki/Clique_problem,
-+ Application: identifying ìclustersî of related objects, ref. more on the chapter on network motifs.</item>
+<item>Maximum cliques, <eqn>O(3^{n/3}) = O(1.4422^n)</eqn>, since any n-vertex graph has at most any n-vertex graph has at most <eqn>3^{n/3}</eqn> maximal cliques;  <url>http://en.wikipedia.org/wiki/Clique_problem</url>,
++ Application: identifying "clusters" of related objects, ref. more on the chapter on network motifs.</item>
 
 <item>Dense subgraph, i.e. a subgraph with exactly k vertices and at least y edges.</item>
 
@@ -2062,9 +2071,9 @@ the general problem for n points, and was mistakenly credited with the problem. 
 interesting, more detailed history appears in [HRW92].
 
 BOUND 
-MST guarantee a provably good approximation for both Euclidean (\sqrt{3}/2) and rectilinear Steiner trees (2/3).
+MST guarantee a provably good approximation for both Euclidean (<eqn>\sqrt{3}/2</eqn>) and rectilinear Steiner trees (2/3).
 ++ Gilbert and Pollak [GP68] first conjectured that the ratio of the length of the minimum
-Steiner tree over the MST is always ge \sqrt{3/2}, aprox. 0.866. After twenty years of active research,
+Steiner tree over the MST is always ge <eqn>\sqrt{3/2}</eqn>, aprox. 0.866. After twenty years of active research,
 the Gilbert-Pollak ratio was finally proven by Du and Hwang [DH92].
 
 </item>
@@ -2082,7 +2091,7 @@ the vertices into roughly equal-sized pieces = "Partition the vertices into m ro
 
 APPLICATIONS:
 
-- Clustering: Graph partition also arises when we need to cluster the vertices into logical components. If edges link ìsimilarî pairs of objects, the clusters remaining after partition should reflect coherent groupings.
+- Clustering: Graph partition also arises when we need to cluster the vertices into logical components. If edges link "similar" pairs of objects, the clusters remaining after partition should reflect coherent groupings.
 
 - Divide and conquer arises in many divide-and-conquer algorithms, which gain their efficiency by breaking problems into equal-sized pieces such that the respective solutions can easily be reassembled. Minimizing the number of edges cut in the partition usually simplifies the task of merging
 
@@ -2097,7 +2106,7 @@ usually represented using a graph.
 
 
 <item>Minimum cut into bounded sets, i.e. imposing restrictions on the size of the disjoint sets that partition the network.
-"Minimum cut set ñ The smallest set of edges to cut that will disconnect a
+"Minimum cut set - The smallest set of edges to cut that will disconnect a
 graph can be efficiently found using network flow  algorithms. The smallest
 cutset might split off only a single vertex, so the resulting partition could be
 very unbalanced."
@@ -2139,7 +2148,7 @@ the minimum set of feedback edges from the digraph).
 
 - The smallest number of colors sufficient to vertex-color a graph is its chromatic number
 
-In its simplest form, it is a way of coloring the vertices of a graph such that no two adjacent vertices share the same color; this is called a vertex coloring. Using dynamic programming and a bound on the number of maximal independent sets, k-colorability can be decided in time and space O(2.445^n) <cite>Lawler 1976</cite> Using the principle of inclusion-exclusion and Yates's algorithm for the fast zeta transform, k-colorability can be decided in time O(n2^n) for any k <cite>Bjorklund et al. 2009</cite>. Faster algorithms are known for 3- and 4-colorability, which can be decided in time O(1.3289^n) <cite>Beigel and Eppstein 2005</cite> and O(1.7504^n) <cite>Byskov 2004</cite>, respectively. Note that 2-colorable graphs are bipartite graphs and bipartite testing can be performed in linear time.
+In its simplest form, it is a way of coloring the vertices of a graph such that no two adjacent vertices share the same color; this is called a vertex coloring. Using dynamic programming and a bound on the number of maximal independent sets, k-colorability can be decided in time and space <eqn>O(2.445^n)</eqn> <cite>Lawler 1976</cite> Using the principle of inclusion-exclusion and Yates's algorithm for the fast zeta transform, k-colorability can be decided in time <eqn>O(n2^n)</eqn> for any k <cite>Bjorklund et al. 2009</cite>. Faster algorithms are known for 3- and 4-colorability, which can be decided in time <eqn>O(1.3289^n)</eqn> <cite>Beigel and Eppstein 2005</cite> and <eqn>O(1.7504^n)</eqn> <cite>Byskov 2004</cite>, respectively. Note that 2-colorable graphs are bipartite graphs and bipartite testing can be performed in linear time.
 
 APPLICATIONS
 - many scheduling and clustering applications.
@@ -2166,8 +2175,8 @@ a given set of tasks.
 BOUND
 Edge coloring has a better (if less famous) theorem associated with it than vertex
 coloring. Vizing's theorem states that any graph with a maximum vertex degree
-of \Delta can be edge colored using at most \Delta + 1 colors. To put this in perspective,
-note that any edge coloring must have at least \Delta colors, since all the edges incident
+of <eqn>\Delta</eqn> can be edge colored using at most <eqn>\Delta + 1</eqn> colors. To put this in perspective,
+note that any edge coloring must have at least <eqn>\Delta</eqn> colors, since all the edges incident
 on any vertex must be distinct colors. (Vizing [Viz64] and Gupta [Gup66] independently proved that)
 
 INFO
@@ -2187,7 +2196,7 @@ code can be employed to color them
 
 <item>Face coloring of a planar graph assigns a color to each face or region so that no two faces that share a boundary have the same color. a face coloring of a planar graph is just a vertex coloring of its planar dual (a vertex for each plane region of G, and an edge for each edge in G joining two neighboring regions). </item>
 
-<item>Achromatic number: Does a graph G have an achromatic number K or greater? i.e. is there a partition of V into k disjoint sets so that each V_i is an independent set.</item>
+<item>Achromatic number: Does a graph G have an achromatic number K or greater? i.e. is there a partition of V into k disjoint sets so that each <eqn>V_i</eqn> is an independent set.</item>
 
 <item>Other graph partitioning problems: into triangles, into cliques, into isomorphic subgraphs, into Hamiltonian subgraphs, into forests, into perfect matchings... are also known NP-complete problems.</item>
 
@@ -2208,7 +2217,7 @@ Traveling salesman problem:
 
 Geometric instances inherently satisfy the triangle inequality, so they can exploit performance guarantees from certain heuristics, e.g.
 
-- Minimum spanning trees ñ This heuristic starts by finding the minimum
+- Minimum spanning trees - This heuristic starts by finding the minimum
 spanning tree (MST) of the sites, and then does a depth-first search of the
 resulting tree. In the course of DFS, we walk over each of the n - 1 edges
 exactly twice: once going down to discover a new vertex, and once going up
@@ -2224,9 +2233,9 @@ GREEDY ALGORITHMS (without guarantees)
 single vertex, and then inserts new points into this partial tour one at a time
 until the tour is complete. The version of this heuristic that seems to work
 best is furthest point insertion: of all remaining points, insert the point v into
-a partial tour T such that  max_{v \in V} min_i (d(v, vi) + d(v, vi+1))
-The ÅgminÅh ensures that we insert the vertex in the position that adds the
-smallest amount of distance to the tour, while the ÅmaxÅ ensures that we
+a partial tour T such that <eqn>max_{v \in V} min_i (d(v, vi) + d(v, vi+1))</eqn>
+The "min" ensures that we insert the vertex in the position that adds the
+smallest amount of distance to the tour, while the "max" ensures that we
 pick the worst such vertex first... it 'roughs out' a partial tour first before filling in details"
 
 
@@ -2259,7 +2268,7 @@ empty. With the right data structures, this can be done in linear time. However,
 worse than the optimal cover for certain input graphs. The example that the greedy algorithm can be as bad as lg n times optimal is due to [Joh74] and presented in [PS98]. "
 
 2) "Fortunately, we can always find a vertex cover whose size is at most twice as
-large as optimal. Find a maximal matching M in the graphói.e. , a set of edges no
+large as optimal. Find a maximal matching M in the graph-i.e. , a set of edges no
 two of which share a vertex in common and which cannot be enlarged by adding
 additional edges. Such a maximal matching can be constructed incrementally, by
 picking an arbitrary edge e in the graph, deleting any edge sharing a vertex with e,
@@ -2268,7 +2277,7 @@ edge in a maximal matching gives us a vertex cover. Why? Because any vertex
 cover must contain at least one of the two vertices in each matching edge just to
 cover the edges of M, this cover is at most twice as large as the minimum cover.
 This heuristic can be tweaked to perform somewhat better in practice, if not
-in theory. We can select the matching edges to ìkill offî as many other edges as
+in theory. We can select the matching edges to "kill off" as many other edges as
 possible, which should reduce the size of the maximal matching and hence the
 number of pairs of vertices in the vertex cover. Also, some of the vertices from M
 may in fact not be necessary, since all of their incident edges might also have been
@@ -2387,7 +2396,7 @@ comprehensive coverage of combinatorial optimization problems.
 Hochbaum's edited collection <cite>Hochbaum 1996</cite> provides an extensive coverage of work on approximation
 algorithms for graph problems. 
 
-Software tools: lp_solve (<url>http://lpsolve.sourceforge.net/</url>), CLP (<url>http://www.coin-or.org</url>), NEOS = Network-Enabled Optimization System @ Argonne National Laboratory, Illinois (submit your own optimization jobs at <url>http://neos.mcs.anl.gov/</url>)
+Software tools: <type>lp_solve</type> (<url>http://lpsolve.sourceforge.net/</url>), CLP (<url>http://www.coin-or.org</url>), NEOS = Network-Enabled Optimization System @ Argonne National Laboratory, Illinois (submit your own optimization jobs at <url>http://neos.mcs.anl.gov/</url>)
 
 </text>
 

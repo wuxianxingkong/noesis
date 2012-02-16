@@ -564,7 +564,7 @@
 <reference id="Beigel and Eppstein 2005">
  <author>Richard Beigel</author>
  <author>David Eppstein</author>
- <title>3-coloring in time O(1.3289^n)</title>
+ <title>3-coloring in time $O(1.3289^n)$</title>
  <journal>Journal of Algorithms</journal>
  <volume>54</volume>
  <number>2</number>
@@ -2304,7 +2304,7 @@
  <author>Eugene M. Luks</author>
  <author>Claus P. Schnorr</author>
  <author>Andreas Weber</author>
- <title>An O(n^3 log n) deterministic and an O(n^3) Las Vegas isomorphism test for trivalent graphs</title>
+ <title>An $O(n^3 log n)$ deterministic and an $O(n^3)$ Las Vegas isomorphism test for trivalent graphs</title>
  <journal>Journal of the ACM</journal>
  <volume>34</volume>
  <number>3</number>
@@ -3346,7 +3346,7 @@
  <journal>Naval Research Logistics Quarterly</journal>
  <volume>2</volume>
  <number>1-2</number>
- <pages>83–97</pages>
+ <pages>83-97</pages>
  <year>1955</year>
  <doi>10.1002/nav.3800020109</doi>
  <!--<file>Networks/algorithms/graphs/matching...</file>-->

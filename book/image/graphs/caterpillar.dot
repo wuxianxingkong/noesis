@@ -1,0 +1,33 @@
+graph Caterpillar {
+
+node[fontname="Helvetica",style=filled,fillcolor="#d0d0d0",label="", shape=circle, fixedsize=true, width=0.3, height=0.3]
+edge[fontname="Helvetica",style=bold, color=blue];
+
+
+i[pos="100,100!"];
+c0[pos="150,100!"];
+c1[pos="200,100!"];
+c2[pos="250,100!"];
+c3[pos="300,100!"];
+c4[pos="350,100!"];
+d[pos="400,100!"];
+
+t0[pos="150,50!"];
+t1[pos="200,50!"];
+t2[pos="250,50!"];
+t3[pos="300,50!"];
+t4[pos="350,50!"];
+
+b0[pos="150,150!"];
+b1[pos="200,150!"];
+b2[pos="250,150!"];
+b3[pos="300,150!"];
+b4[pos="350,150!"];
+
+i -- c0 -- c1 -- c2 -- c3 -- c4 -- d;
+t0 -- c0 -- b0;
+t1 -- c1 -- b1;
+t2 -- c2 -- b2;
+t3 -- c3 -- b3;
+t4 -- c4 -- b4;
+}

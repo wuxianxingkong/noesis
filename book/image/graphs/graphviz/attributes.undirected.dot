@@ -1,0 +1,14 @@
+/* 
+ * @command = neato
+ */
+graph Gattributes{
+node[fontname="Helvetica", style=filled, fillcolor="#d0d0d0"]
+edge[fontname="Helvetica", style=bold, color=blue, arrowhead=open];
+     // The label attribute can be used to change the label of a node
+     a [label="special"];
+     // Here, the node shape is changed.
+     b [shape=box];
+     // These edges both have different line properties
+     a -- b -- c;
+     b -- d [style="bold,dashed"];
+ }

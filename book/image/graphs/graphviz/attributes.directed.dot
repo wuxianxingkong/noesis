@@ -1,0 +1,13 @@
+/* 
+ * @command = neato
+ */
+digraph Gattributes{
+node[fontname="Helvetica", style=filled, fillcolor="#d0d0d0"]
+edge[fontname="Helvetica", style=bold, color=blue, arrowhead=open];
+     a [label="special"];
+     // Here, the node shape is changed.
+     b [shape=box];
+     // These edges both have different line properties
+     a -> b -> c;
+     b -> d [style="bold,dashed"];
+ }

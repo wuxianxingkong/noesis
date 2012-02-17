@@ -1,0 +1,9 @@
+graph G {
+node [shape=square];
+node0 [ label ="a"]; 
+node1 [ label ="b"]; 
+node2 [ label ="c"];
+
+node0 -- node1;
+node0 -- node2; 
+}

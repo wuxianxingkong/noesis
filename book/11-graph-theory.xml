@@ -49,6 +49,10 @@ The number of vertices in the graph is the order of the graph, whereas the numbe
 {V \choose 2} the set of all pairs of its vertices. 
 The graph \overline{G} = (V, {V \choose 2} \ E) is the complementary graph. 
 Two vertices of V are adjacent in G if and only if they are not adjacent in \overline{G}
+
+The line graph L(G) of a graph G has as vertices the edges of G; two edges
+of G are adjacent in L(G) if and only if they have a common vertex in G. For
+example, the line graph of the complete graph Kn is the triangular graph Tn
 -->
 
 
@@ -91,10 +95,24 @@ Examples: road networks (lanes in both directions) are undirected vs. street net
 
 <document>
 <tag>graph-theory-multi</tag>
-<title>Simple graphs vs. multigraphs</title>
+<title>Multigraphs</title>
 
 <text>
-++ Multigraphs/pseudographs: An edge is a multiedge when it appears more than once in the same graph. 
+In multigraphs, there are pairs of vertices that are connected by more than one edge. An edge is said to be a multiedge when it appears more than once in the same graph (i.e. multigraph). 
+</text>
+
+<text>
+In multigraphs, we replace the edge set of an ordinary graph (by a family <eqn>E</eqn> of two-element subsets of <eqn>V</eqn>. 
+Formally, we define a multigraph as a triple <eqn>(V, E, J)</eqn> where <eqn>J</eqn> is a mapping from <eqn>E</eqn> to the set of two-element
+subsets of <eqn>V</eqn>, so that we can distinguish different edges connecting the same pair of vertices. <eqn>J</eqn> is called the incidence map because the image <eqn>J(e)</eqn> of an edge <eqn>e</eqn> is the set <eqn>{u, v}</eqn> of the end vertices of <eqn>e</eqn>.
+</text>
+
+<text>
+When <eqn>J(e) = J(e')</eqn>, we say that edges <eqn>e</eqn> and <eqn>e'</eqn> are parallel.
+</text>
+
+<text>
+Multigraphs can be generalized if we allow loops, i.e. edges <eqn>e</eqn> whose <eqn>J(e)</eqn> is a singleton set <eqn>{v}</eqn>. In this case, multigraphs are often calledd pseudographs.
 </text>
 
 <text>
@@ -146,8 +164,13 @@ The minimum degree among the vertices of G is denoted by <eqn>\delta(G)</eqn>, w
 
 
 <text>
+++ Directed: in-degree, out-degree, full degree (in+out)
+</text>
+
+<text>
 ++ Weighted graphs: Node strength instead of node degree = Sum of all the edge weights of a node.
 </text>
+
 
 
 <document>
@@ -220,79 +243,139 @@ Acyclic graphs do not contain any cycles. ++ important classes: DAGs, trees
 
 <document>
 <tag>graph-theory-eulerian</tag>
-<title>Eulerian cycles</title>
+<title>Eulerian circuits</title>
 
 <text>
-Eulerian cycle (tour visiting every edge)
-- An undirected graph contains an Eulerian cycle iff (1) it is connected, and (2) each vertex is of even degree.
-- An undirected graph contains an Eulerian path iff (1) it is connected, and (2) all but two vertices are of even degree. These two vertices will be the start and end points of any path.
-
-- A directed graph contains an Eulerian cycle iff (1) it is strongly-connected, and (2) each vertex has the same in-degree as out-degree.
-- A directed graph contains an Eulerian path from x to y iff (1) it is connected, and (2) all other vertices have the same in-degree as out-degree,
-with x and y being vertices with in-degree one less and one more than their out-degrees, respectively.
+The Königsberg bridge problem studied by Euler in 1736, which originated the study of graph theory, asked for a circular tour containing every edge in the graph (a multigraph in the Königsberg brige problem, actually, since it contained two pairs of parallel edges). Such circular tours, which traverse every edge in the graph, are called Eulerian circuits.
 </text>
+
+<text>
+Formally, an Eulerian trail of <eqn>G</eqn> is a trail that contains every edge in <eqn>G</eqn> exactly once. When the trail is closed, it is an Euler tour. A graph is Eulerian when it contains an Euler tour. The terms Eulerian cycle and Eulerian circuit are often used instead of Euler tour, even though an Euler tour can include the same vertices more than once. Likewise, the term Eulerian path is usually employed to refer to Eulerian trails.
+</text>
+
+<text>
+Euler's theorem characterizes Eulerian graphs <cite>Euler 1736</cite>. Given a connected graph <eqn>G</eqn>, Euler's theorem establishes that the following statements are equivalent:
+</text>
+
+<list>
+<item>G is Eulerian.</item>
+<item>Each vertex in G has even degree.</item>
+<item>The edge set of G can be partitioned into cycles.</item>
+</list>
+
+<text>
+Since Euler tours must traverse all the edges in a graph and each occurrence of a vertex in the Euler tour adds two to its degree, it follows that all vertices must have an even degree. This result proves that the Königsberg bridge problem has no solution, since all the vertices in its associated graph have odd degrees.
+</text>
+
+<text>
+I can also be proved that, given a connected graph with exactly <eqn>2k</eqn> vertices of odd degree, with <eqn>k \neq 0</eqn>, the edge set of the graph can be partitioned into <eqn>k</eqn> trails. Taking this into account, it is easy to obtain the following results:
+</text>
+
+<list>
+
+<item>
+An undirected graph contains an Eulerian circuit iff (1) it is connected, and (2) each vertex is of even degree.
+</item>
+
+<item>
+An undirected graph contains an Eulerian path iff (1) it is connected, and (2) all but two vertices are of even degree. These two vertices will be the start and end points of any Eulerian path.
+</item>
+
+</list>
+
+<text>
+Similar results can be derived for directed graphs:
+</text>
+
+<list>
+
+<item>
+A directed graph contains an Eulerian cycle iff (1) it is strongly-connected, and (2) each vertex has the same in-degree as out-degree.
+</item>
+
+<item>
+A directed graph contains an Eulerian path from x to y iff (1) it is connected, and (2) all other vertices have the same in-degree as out-degree,
+with x and y being vertices with in-degree one less and one more than their out-degrees, respectively.
+</item>
+
+</list>
+
+<!-- The line graph of an Eulerian graph is likewise Eulerian, butt the converse is false in general. -->
 
 </document>
 
 
 <document>
 <tag>graph-theory-hamiltonian</tag>
-<title>Hamiltonian cycles</title>
+<title>Hamiltonian circuits</title>
 
 <text>
-Hamiltonian cycle (tour visiting every node)
-e.g. any graph where all vertices have degree ge n/2 must be Hamiltonian.
-
-A Hamiltonian path or traceable path is a path that visits each vertex exactly once. A graph that contains a Hamiltonian path is called a traceable graph. A graph is Hamiltonian-connected if for every pair of vertices there is a Hamiltonian path between the two vertices.
-A Hamiltonian cycle, Hamiltonian circuit, vertex tour or graph cycle is a cycle that visits each vertex exactly once (except the vertex that is both the start and end, and so is visited twice). A graph that contains a Hamiltonian cycle is called a Hamiltonian graph.
-Similar notions may be defined for directed graphs, where each edge (arc) of a path or cycle can only be traced in a single direction (i.e., the vertices are connected with arrows and the edges traced "tail-to-head").
+Hamiltonian circuits are somehow related to Euler tours. Whereas every edge is traversed by an Euler tour, Hamiltonian cycles require visiting each node in the graph exactly once.
 </text>
 
 <text>
-Examples
+Formally, a Hamiltonian path or traceable path is a path that visits every vertex exactly once. A graph that contains a Hamiltonian path is called a traceable graph. A graph is said to be Hamiltonian-connected if, for every pair of vertices, there is a Hamiltonian path between them. A Hamiltonian cycle, Hamiltonian circuit, vertex tour, or graph cycle is a circuit that visits each vertex exactly once (except the vertex that is both the start and end, which is visited twice). Finally, a graph that contains a Hamiltonian cycle is called a Hamiltonian graph.
+</text>
 
-a complete graph with more than two vertices is Hamiltonian
-every cycle graph is Hamiltonian
-every tournament has an odd number of Hamiltonian paths[citation needed]
-every platonic solid, considered as a graph, is Hamiltonian[citation needed]
-every prism is Hamiltonian[citation needed]
-The Deltoidal hexecontahedron is the only non-hamiltonian Archimedean dual[citation needed]
-Every antiprism is Hamiltonian[citation needed]
-A maximal planar graph with no separating triangles is Hamiltonian.[citation needed]
+<!-- Any Hamiltonian cycle can be converted to a Hamiltonian path by removing one of its edges, 
+but a Hamiltonian path can be extended to Hamiltonian cycle only if its endpoints are adjacent. -->
+
+
+<text>
+Although Euler tours and Hamiltonian circuit look similar, they are quite different problems. While it is easy to find an Euler tour, it is hard to find a Hamiltonian circuit. In fact, there is no nice characterization of Hamiltonian graphs.
 </text>
 
 <text>
-Properties
-
-Any Hamiltonian cycle can be converted to a Hamiltonian path by removing one of its edges, but a Hamiltonian path can be extended to Hamiltonian cycle only if its endpoints are adjacent.
-The line graph of a Hamiltonian graph is Hamiltonian. The line graph of an Eulerian graph is Hamiltonian[clarification needed].
-A tournament (with more than 2 vertices) is Hamiltonian if and only if it is strongly connected.
-The problem of finding a Hamiltonian cycle may be used as the basis of a zero-knowledge proof.
-The number of different Hamiltonian cycles in a complete undirected graph on n vertices is (n - 1)! / 2 and in a complete directed graph on n vertices is (n - 1)!.
-
-The best vertex degree characterization of Hamiltonian graphs was provided in 1972 by the Bondy–Chvátal theorem, which generalizes earlier results by G. A. Dirac (1952) and Øystein Ore. In fact, both Dirac's and Ore's theorems are less powerful than what can be derived from Pósa's theorem (1962). Dirac and Ore's theorems basically state that a graph is Hamiltonian if it has enough edges. First we have to define the closure of a graph.
-Given a graph G with n vertices, the closure cl(G) is uniquely constructed from G by successively adding for all nonadjacent pairs of vertices u and v with degree(v) + degree(u) = n the new edge uv.
-
-Bondy–Chvátal theorem
-A graph is Hamiltonian if and only if its closure is Hamiltonian.
-As complete graphs are Hamiltonian, all graphs whose closure is complete are Hamiltonian, which is the content of the following earlier theorems by Dirac and Ore.
-
-Dirac (1952)
-A simple graph with n vertices (n = 3) is Hamiltonian if each vertex has degree n / 2 or greater.[2]
-
-Ore (1960)
-A graph with n vertices (n = 3) is Hamiltonian if, for each pair of non-adjacent vertices, the sum of their degrees is n or greater (see Ore's theorem).
-
-The following theorems can be regarded as directed versions:
-
-Ghouila-Houiri (1960)
-A strongly connected simple directed graph with n vertices is Hamiltonian if some vertex has a full degree smaller than n.
-
-Meyniel (1973)
-A strongly connected simple directed graph with n vertices is Hamiltonian if the sum of full degrees of some two distinct non-adjacent vertices is smaller than 2n - 1.
-
-The number of vertices must be doubled because each undirected edge corresponds to two directed arcs and thus the degree of a vertex in the directed graph is twice the degree in the undirected graph.
+We know, for instance, that some kinds of graphs are Hamiltonian, including complete graphs <eqn>K_n</eqn> with more than two vertices, every cycle graph, every tournament, and every platonic solid. We also know some sufficient conditions for the existence of a Hamiltonian cycle, usually in the form of statements about the degrees of the vertices in the graph:
 </text>
+
+<list>
+
+<item>A graph with more than two vertices is Hamiltonian if every vertex in the graph has degree <eqn>\geq n/2</eqn> (Dirac's theorem, 1952).</item>
+
+<item>A graph with more than two vertices is Hamiltonian if, for every pair of non-adjacent vertices, the sum of their degrees is n or greater (Ore's theorem, 1960).</item>
+
+<item>A graph <eqn>G</eqn> is Hamiltonian if and only if its closure <eqn>[G]</eqn> is Hamiltonian (Bondy–Chvátal theorem, 1972).</item>
+
+</list>
+
+<text>
+Given a graph <eqn>G</eqn> defined on <eqn>n</eqn> vertices, its closure <eqn>[G]</eqn> is constructed by successively adding edges <eqn>uv</eqn> to <eqn>G</eqn> for all nonadjacent pairs of vertices <eqn>u</eqn> and <eqn>v</eqn> that satisfy the following condition: <eqn>deg_G(v) + deg_G(u) \geq n</eqn>. In the closure of <eqn>G</eqn>, therefore, for any two non-adjacent vertices <eqn>u</eqn> and <eqn>v</eqn>, we always have <eqn>deg_G(u) + deg_G(v) &lt; n</eqn>.
+</text>
+
+<text>
+Since complete graphs are Hamiltonian, all graphs whose closure is complete will also be Hamiltonian. This result subsumes Dirac's and Ore's theorems, hence showing that the Bondy-Chvátal theorem theorem generalizes the previous two ones.
+</text>
+
+<text>
+Similar characterizations can be obtained for directed graphs:
+</text>
+
+<list>
+
+<item>
+A strongly connected simple directed graph with n vertices is Hamiltonian or some vertex has a full degree smaller than n (Ghouila-Houiri theorem, 1960).
+</item>
+
+<item>
+A strongly connected simple directed graph with n vertices is Hamiltonian or the sum of the full degrees of any two distinct non-adjacent vertices is smaller than <eqn>2n-1</eqn> (Meyniel's theorem, 1973).
+</item>
+
+</list>
+
+<text>
+The number of vertices in these sufficient conditions is doubled with respect to the undirected case because each undirected edge corresponds to two directed arcs and the full degree of a vertex in the directed graph is twice its degree in the undirected graph.
+</text>
+
+<!-- The line graph of an Eulerian graph is Hamiltonian: If G is Eulerian, then L(G) is Hamiltonian -->
+<!-- The line graph of a Hamiltonian graph is Hamiltonian. -->
+<!-- A tournament (with more than 2 vertices) is Hamiltonian if and only if it is strongly connected. -->
+
+
+<text>
+It should be noted that the number of different Hamiltonian cycles in a complete undirected graph on <eqn>n</eqn> vertices is <eqn>(n-1)!/2</eqn>, <eqn>(n-1)!</eqn> in a complete directed graph. Many important problems can be stated as finding the optimal Hamiltonian cycle in some sense and, since no general efficient method is known for finding one, their resolution requires the use of combinatorial optimization techniques. The traveling salesman problem (TSP) is probably the most famous of such problems: planning the minimum cost route for a traveling salesman who must visit <eqn>n</eqn> cities, where cost is typically associated to the traveled distance, even though other optimization criteria could be used (e.g. the time it takes to complete the tour or its actual monetary cost, which might depend on many other factors beyond time and distance). From a formal point of view, the solution to the TSP involves finding the cyclic permutation <eqn>\pi</eqn> of the graph vertex set that minimizes the cost function. Just enumerating the potential solutions is prohibitive in practice, since there are <eqn>(n-1)!</eqn> of them. Actually, there are <eqn>n!</eqn> permutations, but we can always set the starting node of the circuit, hence the <eqn>n</eqn> factor we can save.
+</text>
+
 
 </document>
 
@@ -560,7 +643,7 @@ identified as the root.
 <text>
 By f(n, s) we denote the number of forests G having n vertices and exactly s connected components,
 for which s fixed vertices are in distinct components; in particular, the number
-of trees on n vertices is f(n, 1). Cayley’s theorem gives a formula for the numbers f(n, s)
+of trees on n vertices is f(n, 1). Cayley's theorem gives a formula for the numbers f(n, s)
 </text>
 
 <equation>
@@ -789,7 +872,7 @@ This stamp of the former German Democratic Republic honoring Euler displaying hi
 <text>
 ++ William Rowan Hamilton's Icosian Game @ 1856: Hamiltonian circuits. 
 
-"Hamiltonian cycles apparently first arose in Euler's study of the knight’s tour problem, although they were popularized by Hamilton's “Around the World” game in 1839."
+"Hamiltonian cycles apparently first arose in Euler's study of the knight's tour problem, although they were popularized by Hamilton's “Around the World” game in 1839."
 </text>
 
 <text>

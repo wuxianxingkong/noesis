@@ -75,6 +75,8 @@ Need for new data mining techniques ++ Today's data, however, doesn't take the f
 <tag>history</tag>
 <title>Historical comments</title>
 
+<!-- Euler -->
+
 <text>
 1736: Leonhard Euler
 ++ Konisberg @ 0471648167 [Marcel Danesi] The Liar Paradox and the Towers of Hanoi.pdf
@@ -108,6 +110,7 @@ Euler gave a necessary and sufficient condition for an arbitrary graph to admit 
   <title>The graph representing the seven bridges of Königsberg problem.</title>
 </figure>
 
+<!-- Hamilton -->
 
 <text>
 The icosian game is a mathematical game invented in 1857 by William Rowan Hamilton. The game's object is finding a Hamiltonian cycle along the edges of a dodecahedron such that every vertex is visited a single time, no edge is visited twice, and the ending point is the same as the starting point. The puzzle was distributed commercially as a pegboard with holes at the nodes of the dodecahedral graph and was subsequently marketed in Europe in many forms.
@@ -115,6 +118,19 @@ The icosian game is a mathematical game invented in 1857 by William Rowan Hamilt
 The motivation for Hamilton was the problem of symmetries of an icosahedron, for which he invented icosians—an algebraic tool to compute the symmetries. The solution of the puzzle is a cycle containing twenty (in ancient Greek icosa) edges (i.e. a Hamiltonian circuit on the icosahedron).
 
 a Hamiltonian path (or traceable path) is a path in an undirected graph that visits each vertex exactly once. A Hamiltonian cycle (or Hamiltonian circuit) is a Hamiltonian path that is a cycle.
+
+J: In 1857 Sir William Rowan Hamilton (1805–1865, known to every mathematician
+for the quaternions and the theorem of Cayley–Hamilton) invented the
+following Icosian game which he then sold to a London game dealer in 1859
+for 25 pounds; it was realized physically as a pegboard with holes. The corners
+of a regular dodecahedron are labelled with the names of cities; the task is
+to find a circular tour along the edges of the dodecahedron visiting each city
+exactly once, where sometimes the first steps of the tour might also be prescribed.
+More about this game can be found in [BaCo87]. We may model the
+Icosian game by looking for a cycle in the corresponding dodecahedral graph
+which contains each vertex exactly once. Such a cycle is therefore called a
+Hamiltonian cycle. In Figure 1.7 we give a solution for Hamilton’s original
+problem.
 
 All platonic solids, including the dodecahedron in Figure <ref>fig-hamiltonian</ref>.
 </text>
@@ -124,6 +140,8 @@ All platonic solids, including the dodecahedron in Figure <ref>fig-hamiltonian</
   <image scale="30" file="image/history/Hamiltonian-path"/>
   <title>A Hamiltonian cycle in a dodecahedron. Source: Wikipedia Commons.</title>
 </figure>
+
+<!-- Terminology -->
 
 <text>
 Historically, <i>linkages</i> was the term sometimes employed to refer to graphs. The graph term was later standardized by James Joseph Sylvester, a 19th-century British mathematician who founded the American Journal of Mathematics, the first mathematics journal in the United States <cite>Chartrand et al. 2011</cite>.

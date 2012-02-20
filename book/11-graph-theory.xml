@@ -45,6 +45,10 @@ When <eqn>(u,v)</eqn> is an edge in <eqn>G</eqn>, <eqn>u</eqn> and <eqn>v</eqn> 
 The number of vertices in the graph is the order of the graph, whereas the number of edges in the graph is the size of the graph. We will typically use <eqn>n</eqn> to denote the order of the graph (i.e. its number of nodes) and <eqn>m</eqn> to denote its size (i.e. its number of links).
 </text>
 
+<text>
+++ Drawing a graph 
+</text>
+
 <!--
 {V \choose 2} the set of all pairs of its vertices. 
 The graph \overline{G} = (V, {V \choose 2} \ E) is the complementary graph. 
@@ -54,41 +58,6 @@ The line graph L(G) of a graph G has as vertices the edges of G; two edges
 of G are adjacent in L(G) if and only if they have a common vertex in G. For
 example, the line graph of the complete graph Kn is the triangular graph Tn
 -->
-
-
-<!-- Undirected / directed -->
-
-<document>
-<tag>graph-theory-directed</tag>
-<title>Directed vs. undirected graphs</title>
-
-<text>
-In scenarios such as the social network mentioned above, where we consider friendship relationships to be symmetric, links will be undirected. In undirected graphs, therefore, edges are two-element subsets of <eqn>V(G)</eqn>. An edge <eqn>{u,v}</eqn> can then be denoted as <eqn>uv</eqn> or <eqn>vu</eqn>, since both are considered to be equivalent. In other words, both <eqn>(u,v)</eqn> and <eqn>(v,u)</eqn> belong to <eqn>E(G)</eqn> as defined above.
-</text>
-
-
-<text>
-++ Directed graphs (= digraphs): undirected graphs for nondirectional links, directed graphs for directional links.
-
-Examples: road networks (lanes in both directions) are undirected vs. street networks within cities (typically directed due to one-way streets; program flow graphs are typically directed (dependences)...
-</text>
-
-</document>
-
-
-<!-- Weighted graphs -->
-
-<document>
-<tag>graph-theory-weighted</tag>
-<title>Binary vs. weighted graphs</title>
-
-<text>
-++ Binary vs. weighted graphs: binary graphs for dichotomous links (ties are either present or absent for each pair of nodes), weighted graphs for valued links (that indicate the strength, intensity, or frequency of the tie between each pair of actors). Binary graphs, also known as unweighted graphs...
-
-- Each edge is assigned a numerical value or weigth; e.g. road network (length, traversal time, construction cost, speed limit...)
-</text>
-
-</document>
 
 
 <!-- Multigraphs -->
@@ -121,6 +90,63 @@ A graph without multiedges nor self-loops is called a simple graph. Multiedges a
 
 </document>
 
+
+<!-- Undirected / directed -->
+
+<document>
+<tag>graph-theory-directed</tag>
+<title>Directed graphs (a.k.a. digraphs)</title>
+
+<text>
+In scenarios such as the social network mentioned above, where we consider friendship relationships to be symmetric, links will be undirected. In undirected graphs, therefore, edges are two-element subsets of <eqn>V(G)</eqn>. An edge <eqn>{u,v}</eqn> can then be denoted as <eqn>uv</eqn> or <eqn>vu</eqn>, since both are considered to be equivalent. In other words, both <eqn>(u,v)</eqn> and <eqn>(v,u)</eqn> belong to <eqn>E(G)</eqn> as defined above.
+</text>
+
+
+<text>
+++ Directed graphs (= digraphs): undirected graphs for nondirectional links, directed graphs for directional links.
+
+Examples (many applications concerning traffic and transportation networks): road networks (lanes in both directions) are undirected vs. street networks within cities (typically directed due to one-way streets; program flow graphs are typically directed (dependences)...
+</text>
+
+<text>
+J: Formally, a directed graph or, for short, a digraph is a pair G = (V,E) consisting of a finite set V and a set
+E of ordered pairs (a, b), where a \neq b are elements of V. The term arc is usually employed instead
+of edge to distinguish between the directed and the undirected case. 
+
+Instead of e = (a, b), we again write e = ab; a is called the start vertex or tail, and b the end vertex or head of e. We say that a and b are incident with e, and call two edges of the form ab and ba antiparallel. 
+</text>
+
+<text>
+++ Drawing: To draw a directed graph, we proceed as in the undirected case, but indicate the direction of an edge by an arrow.
+</text>
+
+<text>
+J: "Replacing each directed edge of the form (a, b) by an undirected edge {a, b}, we obtain the underlying multigraph |G|. Replacing parallel
+edges in |G| by a single edge, we get the underlying graph (G). Conversely, let G = (V,E) be a multigraph. Any directed multigraph H with |H| = G is
+called an orientation of G. Replacing each edge ab in E by two arcs (a, b) and (b, a), we get the associated directed multigraph
+\overrightarrow{G}; we also call \overrightarrow{G} G the complete orientation of G. "
+</text>
+
+
+</document>
+
+
+<!-- Weighted graphs -->
+
+<document>
+<tag>graph-theory-weighted</tag>
+<title>Weighted graphs</title>
+
+<text>
+++ Binary vs. weighted graphs: binary graphs for dichotomous links (ties are either present or absent for each pair of nodes), weighted graphs for valued links (that indicate the strength, intensity, or frequency of the tie between each pair of actors). Binary graphs, also known as unweighted graphs...
+
+- Each edge is assigned a numerical value or weigth; e.g. road network (length, traversal time, construction cost, speed limit...)
+</text>
+
+</document>
+
+
+
 <!-- Labeled graphs -->
 
 <document>
@@ -136,6 +162,8 @@ A graph without multiedges nor self-loops is called a simple graph. Multiedges a
 </text>
 
 </document>
+
+
 
 </document>
 
@@ -163,14 +191,6 @@ The minimum degree among the vertices of G is denoted by <eqn>\delta(G)</eqn>, w
 </text>
 
 
-<text>
-++ Directed: in-degree, out-degree, full degree (in+out)
-</text>
-
-<text>
-++ Weighted graphs: Node strength instead of node degree = Sum of all the edge weights of a node.
-</text>
-
 
 
 <document>
@@ -191,14 +211,86 @@ The algorithm above is deterministic. If we want a random graphs with the given 
 
 </document>
 
+
+<document>
+<tag>graph-theory-degree-directed</tag>
+<title>Directed graphs: In-degree and out-degree</title>
+
+<text>
+++ Directed: in-degree, out-degree, full degree (in+out)
+
+The in-degree deg_{in}(v) of a vertex v is the number of edges with head v, 
+the out-degree deg_{out}(v) of a vertex v is the number of edges with tail v. 
+</text>
+
 </document>
 
+
+<document>
+<tag>graph-theory-degree-weighted</tag>
+<title>Weighted graphs: Node strength</title>
+
+<text>
+++ Weighted graphs: Node strength instead of node degree = Sum of all the edge weights of a node.
+</text>
+
+</document>
+
+</document>
+
+
+
+<!-- Subgraphs -->
+
+<document>
+<tag>graph-theory-subgraphs</tag>
+<title>Subgraphs</title>
+
+
+<text>
+Let <eqn>G=(V,E)</eqn> be a graph and <eqn>V'</eqn> be a subset of <eqn>V</eqn>. Using the notation in <cite>Jungnickel 2007</cite>, by <eqn>E|V'</eqn> we denote the set of all edges <eqn>e \in E(G)</eqn> that have both vertices in <eqn>V'</eqn>. The resulting graph <eqn>G'=(V',E|V')</eqn> is the induced subgraph of <eqn>G</eqn> on <eqn>V'</eqn> and it will be denoted as <eqn>G|V'</eqn>.
+</text>
+
+<!--
+For a subset T of the vertex set V of a graph G we denote by G\ T the induced subgraph on V \ T. This graph arises from G by omitting all vertices in T and all edges incident with these vertices. For a one-element set T = {v} we write G \ v instead of G \ {v}. 
+--> 
+
+<text>
+Each graph of the form <eqn>(V',E')</eqn> where <eqn>V' \subset V</eqn> and <eqn>E' \subseteq E|V'</eqn> is said to be a subgraph of <eqn>G</eqn>.
+</text>
+
+<text>
+A subgraph of the same order of the original graph, i.e. when <eqn>V'=V</eqn>, is a spanning subgraph. 
+</text>
+
+<text>
+A k-factor is a k-regular spanning subgraph. When the edge set of a graph is divided into k-factors, such a decomposition is called a k-factorization of the graph. A 1-factorization, or factorization for short, can exist only if <eqn>G</eqn> has an even number of vertices and it is also called a resolution. Factorizations of <eqn>K_{2n}</eqn> can be interpreted as schedules for tournaments of <eqn>2n</eqn> teams and always exist <cite>Jungnickel 2007</cite>.
+</text>
+
+
+<!-- Isomorphism -->
+
+<note>
+<tag>graph-theory-isomorphism</tag>
+<title>Graph isomorphism</title>
+
+<text>
+Two graphs <eqn>G = (V,E)</eqn> and <eqn>G' = (V',E')</eqn> are called isomorphic if there is a bijection <eqn>\alpha: V \rightarrow V'</eqn> such that <eqn>(u, v) \in E</eqn> if and only if <eqn>(\alpha(u), \alpha(v)) \in E'</eqn> for all <eqn>u, v \in V</eqn>.
+</text>
+
+<text>
+The isomorphisms of a graph G to itself are called automorphisms.
+</text>
+
+</note>
+
+</document>
 
 <!-- Graph connectivity -->
 
 <document>
 <tag>graph-theory-connectivity</tag>
-<title>Connectivity, paths, and distance</title>
+<title>Graph connectivity</title>
 
 
 <text>
@@ -224,11 +316,33 @@ When all the edges in a walk are distinct, the walk is called a trail. Consequen
 When, both edges and nodes are distinct, the trail becomes a path. It should be noted that any walk always contains a path from its start vertex to its end vertex (plus some optional detours). 
 </text>
 
+<!-- @ directed graphs -->
+
+<text>
+- A sequence of edges (e1, . . . , en) is called a trail if the corresponding sequence of edges in the underlying graph |G| is a trail.
+- If (v0, . . . , vn) is the corresponding sequence of vertices, vi-1vi or vivi-1 must be an edge of G. In the first case,
+we have a forward edge, in the second a backward edge.
+- If a trail consists of forward edges only, it is called a directed trail;
+- any directed walk W with start vertex a and end vertex b, where a \neq b, contains a directed path from a to b.
+</text>
+
+<!-- as subgraphs --> 
+
+<text>
+Paths and cycles are important kinds of subgraphs. A path <eqn>P_n</eqn> is a graph of order n and size n-1 whose vertices can be labeled <eqn>v_1, v_2, ..., v_n</eqn> and whose edges are <eqn>v_iv_{i+1}</eqn> for <eqn>i=1,2,...,n-1</eqn>. A cycle <eqn>C_n</eqn> is a graph of order n and size n whose whose vertices can be labeled <eqn>v_1, v_2, ..., v_n</eqn> and whose edges are <eqn>v_1v_n</eqn> and <eqn>v_iv_{i+1}</eqn> for <eqn>i=1,2,...,n-1</eqn>. The cycle <eqn>C_3</eqn> is called a triangle.
+</text>
+
 <!-- Cycles -->
 
 <text>
-A cycle (or circuit) is a closed trail with <eqn>n \geq 3</eqn> and distinct nodes (except, of course, <eqn>v_0 = v_n</eqn>). Any closed walk of
+A cycle (or circuit) is a closed trail with <eqn>n \geq 3</eqn> and distinct nodes (except, of course, <eqn>v_0 = v_n</eqn>). 
+</text>
+
+<text>
+Any closed walk of
 odd length necessarily contains a cycle, whereas some closed walks of even length do not contain cycles (e.g. jumping from the starting node to one of its neighbors and returning back to it). 
+
++ any directed closed walk contains a directed cycle.
 </text>
 
 <text>
@@ -238,6 +352,8 @@ A cycle of length three is called a triangle.  ++transitive relationships
 <text>
 Acyclic graphs do not contain any cycles. ++ important classes: DAGs, trees
 </text>
+
+
  
  
 
@@ -266,6 +382,16 @@ Euler's theorem characterizes Eulerian graphs <cite>Euler 1736</cite>. Given a c
 <text>
 Since Euler tours must traverse all the edges in a graph and each occurrence of a vertex in the Euler tour adds two to its degree, it follows that all vertices must have an even degree. This result proves that the Königsberg bridge problem has no solution, since all the vertices in its associated graph have odd degrees.
 </text>
+
+<text>
+For directed graphs, an analogue theorem can be obtained. For connected directed graphs, the following statements are equivalent:
+</text>
+
+<list>
+<item>G has a directed Euler tour.</item>
+<item>G is pseudosymmetric, i.e. <eqn>deg_{in}(v)=deg_{out}(v)</eqn> for every vertex.</item>
+<item>The edge set of G can be partitioned into directed cycles.</item>
+</list>
 
 <text>
 I can also be proved that, given a connected graph with exactly <eqn>2k</eqn> vertices of odd degree, with <eqn>k \neq 0</eqn>, the edge set of the graph can be partitioned into <eqn>k</eqn> trails. Taking this into account, it is easy to obtain the following results:
@@ -358,7 +484,7 @@ A strongly connected simple directed graph with n vertices is Hamiltonian or som
 </item>
 
 <item>
-A strongly connected simple directed graph with n vertices is Hamiltonian or the sum of the full degrees of any two distinct non-adjacent vertices is smaller than <eqn>2n-1</eqn> (Meyniel's theorem, 1973).
+A strongly connected simple directed graph with n vertices is Hamiltonian or the sum of the full degrees of two distinct non-adjacent vertices is smaller than <eqn>2n-1</eqn> (Meyniel's theorem, 1973).
 </item>
 
 </list>
@@ -390,6 +516,17 @@ It should be noted that the number of different Hamiltonian cycles in a complete
 ++ Connected graphs, weakly-connected vs. strongly-connected components (a.k.a. blocks)
 
 A graph G is strongly connected if all nodes in G can reach v and are reachable from v.
+
+J: Finally, a directed multigraph G is called connected if the underlying |G| is connected.
+
+
+J: We say that a vertex b of a digraph G is accessible from a vertex a if there is a directed walk with start vertex a and end vertex b. As before, we allow walks to have length 0 so that each vertex is accessible from itself. 
+
+A digraph G is called strongly connected if each vertex is accessible from every other vertex. 
+
+A vertex a from which every other vertex is accessible is called a root of G. Thus a digraph is strongly connected if and only if every vertex is a root.
+
+
 
 Weakly-connected and strongly-connected components define unique partitions of the graph nodes.
 </text>
@@ -465,7 +602,189 @@ The pairwise distance of the shortest path linking the nodes in a network is rep
 </document>
 
 
+
+<!-- Independent paths and cut sets -->
+
+<document>
+<tag>graph-theory-independent-paths</tag>
+<title>Independent paths and cut sets</title>
+
+<text>
+++ Nonseparable graphs: cut-vertices (nodes) and blocks/branches 
+=> vertex-cuts (vertex-connectivity), bridges (edges) 
+=> edge-cuts (edge-connectivity)
+</text>
+
+
+
+<!-- Cut nodes -->
+
+<text>
+A cut point or articulation point of a graph G is a vertex v such that G \ v
+has more connected components than G.
+</text>
+
+<!-- Bridges -->
+
+<text>
+An edge e of a connected graph G is called a bridge if G \ e is not connected.
+The girth of a graph containing cycles is the length of a shortest cycle.
+</text>
+
+<text>
+J: Which connected multigraphs can be oriented in such a way that the resulting graph is strongly connected? Such multigraphs
+are called orientable. Thus we ask which connected systems of streets can be
+made into a system of one-way streets such that people can still move from
+each point to every other point. The answer is given by the following theorem
+[Rob39].
+Theorem 1.6.2 (Robbins' theorem). A connected multigraph is orientable
+if and only if it does not contain any bridge.
+
++ G does not contain a bridge if and only if each edge of G is contained in at least one cycle.
+</text>
+
+
+<!-- Separable graphs -->
+
+<text>
+A connected graph containing cut points is said to be separable.
+The maximal induced subgraphs of a graph G which are not separable are called the blocks or biconnected components of G.
+</text>
+
+
+<text>
+J: Let G be a graph and s and t two vertices of G. Then a set of paths in G with start vertex s and end vertex t is called edge disjoint if no two of these paths share an edge, and vertex disjoint if no two of the paths have a vertex other than s and t in common.
+</text>
+
+
+
+<!-- Separators -->
+
+<document>
+<tag>graph-theory-separators</tag>
+<title>Vertex separators and edge separators</title>
+
+<text>
+A subset A of E is called an edge separator for s and t if each path from s to t contains some edge from A. Similarly, a subset X of V \ {s, t} is called a vertex separator for s and t if each path from s to t meets X in some vertex.
+</text>
+
+
+<text>
+J: The existence of disjoint paths plays an important role for questions of network
+reliability: if there are k vertex disjoint paths from s to t, the connection
+between s and t can still be maintained even if k-1 vertices fail, and similarly
+for edges.
+
+J: measuring the strength of connectivity of a connected
+graph by the number of vertex disjoint paths (or edge disjoint paths) between
+any two given vertices
+</text>
+
 </document>
+
+
+<!-- k-connectivity -->
+
+<document>
+<tag>graph-theory-k-connectivity</tag>
+<title>Vertex connectivity and edge connectivity</title>
+
+<text>
+++ Connectivity: k-connected &amp; k-edge-connected graphs
+</text>
+
+<!-- Vertex connectivity -->
+
+<text>
+\kappa(G): the connectivity of a graph
+
+min {|T| : T \subset V and G \ T is not connected} .
+
+G is called k-connected if \kappa(G) \geq k.
+</text>
+
+<text>
+for any two vertices s and t of a graph G, we denote by \kappa(s, t) the maximal
+number of vertex disjoint paths from s to t in G. 
+
+
+A graph G is k-connected if and only if \kappa(s, t) \geq k for any two vertices s and t of G.
+</text>
+
+
+<text>
+A k-connected graph on n vertices contains at least <eqn>\lceil kn/2 \rceil</eqn> edges.
+</text>
+
+<text>
+A connected graph with at least three vertices either contains a cut point or is 2-connected.
+</text>
+
+<!-- Edge connectivity -->
+
+<text>
+\lambda(u, v) = the minimal cardinality of an edge separator for u and v.
+</text>
+
+<text>
+The edge connectivity \lambda(G) is defined as lambda(G) = min{ \lambda(u, v) : u, v \in V }.
+
+G is called m-fold edge connected if \lambda(G) \geq m
+</text>
+
+
+<equation>
+\kappa(G) \leq \lambda(G) \leq \delta(G)
+</equation>
+
+<text>
+PROOF: 
+
+- Removing all edges incident with v obviously yields a disconnected graph, so that \lambda(G) \leq \delta(G).
+
+- If \lambda(G) = 1, G contains a bridge e = uv. Then G cannot be 2-connected, because removing u from G
+yields either a K1 or a disconnected graph. If \lambda(G) = k \geq 2, removing k - 1
+edges e2, . . . , ek of an edge separator from G results in a graph H containing a
+bridge e1 = uv. Therefore, if we remove from G one of the end vertices of each
+of the ei distinct from u and v (for i = 2, . . . , k), we get either a disconnected
+graph or a graph where e1 is a bridge (so that removing u makes the graph
+disconnected). In either case, \kappa(G) \leq k = \lambda(G).
+</text>
+
+<!-- Connectivity theorems -->
+
+<text>
+Menger's theorem (1927):
+
+(Menger’s theorem, edge version). Let G be a graph or
+digraph, and let s and t be two vertices of G. Then the maximal number of
+edge disjoint paths from s to t is equal to the minimal cardinality of an edge
+separator for s and t.
+
+(Menger’s theorem, vertex version). Let G be a graph
+or digraph, and let s and t be any two non-adjacent vertices of G. Then the
+maximal number of vertex disjoint paths from s to t is equal to the minimal
+cardinality of a vertex separator for s and t.
+</text>
+
+<text>
+By Menger's theorem, \kappa(s, t)
+equals the minimal cardinality of a vertex separator for s and t whenever s
+and t are non-adjacent.
+</text>
+
+<text>
+Whitney's theorem (1932): A graph G is k-connected if and only if any two vertices of G are connected by at least k vertex disjoint paths [Whi32a]. (Note: Menger's theorem only applies to non-adjacent vertices s and t.)
+</text>
+
+</document>
+
+</document>
+
+</document>
+
+
+
 
 
 <!-- Classes -->
@@ -473,10 +792,6 @@ The pairwise distance of the shortest path linking the nodes in a network is rep
 <document>
 <tag>graph-theory-classes</tag>
 <title>Interesting classes of graphs</title>
-
-<text>
-In a complete graph, every two distinct edges are adjacent, i.e. the size of a complete graph of order n is n(n-1)/2. The complete graph of order n is denoted by <eqn>K_n</eqn>. ++ tournament (orientation of a complete graph)
-</text>
 
 
 <document>
@@ -493,7 +808,11 @@ more precisely an r-regular graph.
 <title>Complete graphs</title>
 
 <text>
-The complete graph Kn has n vertices (that is, |V | = n) and all two-element subsets of V as edges. The graph <eqn>K_n</eqn> is <eqn>(n-1)</eqn>-regular and its size is <eqn>n(n-1)/2</eqn>.
+In a complete graph, every two distinct edges are adjacent, i.e. the size of a complete graph of order <eqn>n</eqn> is <eqn>n(n-1)/2</eqn>. The complete graph of order <eqn>n</eqn> is denoted by <eqn>K_n</eqn>. 
+
+The complete graph Kn has n vertices (that is, |V | = n) and all two-element subsets of V as edges. 
+
+The graph <eqn>K_n</eqn> is <eqn>(n-1)</eqn>-regular and its size is <eqn>n(n-1)/2</eqn>.
 </text>
 
 <figure>
@@ -501,6 +820,18 @@ The complete graph Kn has n vertices (that is, |V | = n) and all two-element sub
   <image scale="25" file="image/graphs/k5"/>
   <title>The complete graph <eqn>K_5</eqn>.</title>
 </figure>
+
+
+<text>
+++ tournament (orientation of a complete graph)
+
+J: "Replacing each edge of the form (a, b) by an undirected edge {a, b}, we obtain the underlying multigraph |G|. Replacing parallel
+edges in |G| by a single edge, we get the underlying graph (G). Conversely, let G = (V,E) be a multigraph. Any directed multigraph H with |H| = G is
+called an orientation of G. Replacing each edge ab in E by two arcs (a, b) and (b, a), we get the associated directed multigraph
+\overrightarrow{G}; we also call \overrightarrow{G} G the complete orientation of G. The complete orientation of Kn is called the complete
+digraph on n vertices."
+</text>
+
 
 </document>
 
@@ -569,7 +900,6 @@ sets {a, b} with a in V1 and b in V2.
 The graph Km,n is regular only if m = n (in that case, it is n-regular). 
 
 The utility graph, also known as the Thomsen graph or K_{3,3}: cubic (3-regular), nonplanar graph.
-W: Two important characterizations of planar graphs, Kuratowski's theorem that the planar graphs are exactly the graphs that contain neither K3,3 nor the complete graph K5 as a subdivision, and Wagner's theorem that the planar graphs are exactly the graphs that contain neither K3,3 nor K5 as a minor, encompass this result.
 
 </text>
 
@@ -625,6 +955,13 @@ Trees are recursive structures, since cutting any edge leaves two smaller trees.
 - Rooted trees define a hierarchical order, emanating from a single source node
 identified as the root.
 - Free trees do not encode any structure beyond their connection topology.
+</text>
+
+<text>
+J: Directed trees can never be strongly connected; here, of course, a digraph
+G is called a tree if its underlying graph |G| is a tree. If G has a root r, we call G a directed tree, an arborescence or a branching with root r.
+
+Clearly, given any vertex r, an undirected tree has exactly one orientation as a directed tree with root r.
 </text>
 
 <text>
@@ -744,8 +1081,35 @@ The matrix tree theorem, also called Kirchhoff's matrix-tree theorem, states tha
 <title>Directed acyclic graphs</title>
 
 <text>
-++ Directed acyclic graphs (DAGs), a.k.a. partial orders or posets, arise in some applications, e.g. scheduling
+++ Directed acyclic graphs (DAGs), a.k.a. partial orders or posets, arise in many applications, e.g. scheduling and planning
+</text>
+
+<text>
+Let <eqn>(M,\preceq)</eqn> be a partially ordered set, a poset for short. This is a set M together with a reflexive, antisymmetric and transitive relation <eqn>\preceq</eqn>. This set corresponds to a directed graph G having vertex set M and the pairs (x,y) with x \preceq y as edges. Because of transitivity, G is acyclic.
+</text>
+
+
+<text>
 + Topological sorting orders the vertices of a DAG respecting the precedence constraints imposed by the arcs in the DAG.
+
+J: common problem is to check whether a given directed graph is acyclic
+and, if this is the case, to find a topological sorting of its vertices. That is, we
+require an enumeration of the vertices of G (labelling them with the numbers
+1, . . . , n, say) such that i &lt; j holds for each edge ij. Such a sorting exists for every directed acyclic graph.
+</text>
+
+<text>
++ Let G be a directed acyclic graph. Then G contains at least one vertex with din(v) = 0.
+
+JJ: we may choose a vertex v with din(v) = 0. Consider the directed graph H = G\ v. Obviously, H is acyclic as well and thus can be sorted topologically, using induction on the number of vertices, say by labelling the vertices as v2, . . . , vn. Then (v, v2, . . . , vn) is the desired topological sorting of G.
+</text>
+
+<text>
+J: Each partially ordered set may be embedded into a linearly
+ordered set.
+Proof. Let (v1, . . . , vn) be a topological sorting of the corresponding directed
+acyclic graph. Then vi . vj always implies i &lt; j, so that v1 . . . . . vn is a
+complete linear ordering
 </text>
 
 </document>
@@ -755,8 +1119,88 @@ The matrix tree theorem, also called Kirchhoff's matrix-tree theorem, states tha
 <document>
 <title>Planar graphs</title>
 
+
 <text>
-Planar graphs, i.e. those that can be drawn on a plane without link crossings, are common in many applications. They are always sparse, since they have at most <eqn>2n-6</eqn> links. Trees, for instance, are also planar graphs.
+J: Let E be a set of line segments in three-dimensional Euclidean space and V the set of end points of the line segments in E. Identifying each line segment with the two-element set of its end points, we can consider (V,E) as a graph. Such a graph is called geometric if any two line segments in E are disjoint or have one of their end points in common.
+Lemma 1.5.1. Every graph is isomorphic to a geometric graph.
+</text>
+
+<text>
+J: We call a geometric graph plane if its line segments all lie
+in one plane (often allows not only line segments, but
+curves as well, e.g. they are necessary to represent multigraphs). 
+Any graph isomorphic to a plane graph is called planar 
+</text>
+
+<text>
+J: Thus,
+the planar graphs are exactly those graphs which can be drawn in the plane
+without additional points of intersection between the edges
+
+Planar graphs, i.e. those that can be drawn on a plane without link crossings, are common in many applications. 
+</text>
+
+<text>
+J: If we omit the line segments of G from the plane surface on which G is drawn, the remainder splits into a number
+of connected open regions; the closure of such a region is called a face. 
+
+Euler's formula). Let G be a connected planar graph with
+n vertices, m edges and f faces. Then n - m + f = 2.
+
+e.g. Euler's formula was applied to the vertices, edges and faces
+of a convex polyhedron, which are planar; it is used, for example, to determine the five regular
+polyhedra (or Platonic solids, namely the tetrahedron, octahedron, cube,
+icosahedron and dodecahedron);
+</text>
+
+<text>
+A bound on the number of edges of planar graphs:
+Planar graphs are always sparse, since they have at most <eqn>3n-6</eqn> links. 
+</text>
+
+<text>
+Trees, for instance, are always planar graphs.
+</text>
+
+<note>
+<title>Graph homeomorphism</title>
+
+<text>
+J: A subdivision of a graph G is a graph H which can be derived from G by
+applying the following operation any number of times: replace an edge e = ab
+by a path (a, x1, . . . , xk, b), where x1, . . . , xk are an arbitrary number of new
+vertices; that is, vertices which were not in a previous subdivision. For convenience,
+G is also considered to be a subdivision of itself. 
+</text>
+
+<text>
+J: Two graphs H and H' are called homeomorphic 
+if they are isomorphic to subdivisions of the same
+graph G.
+</text>
+
+</note>
+
+<text>
+J: the famous characterization of planar graphs: A graph G is planar if and only
+if it does not contain a subgraph which is homeomorphic to K5 or K3,3 (Kuratowski's theorem).
+
+W: Two important characterizations of planar graphs, Kuratowski's theorem that the planar graphs are exactly the graphs that contain neither K3,3 nor the complete graph K5 as a subdivision, and Wagner's theorem that the planar graphs are exactly the graphs that contain neither K3,3 nor K5 as a minor, encompass this result.
+
+J: another interesting characterization of planarity. If we identify
+two adjacent vertices u and v in a graph G, we get an elementary contraction
+of G; more precisely, we omit u and v and replace them by a new vertex w
+which is adjacent to all vertices which were adjacent to u or v before
+the resulting graph is usually denoted by G/e, where e = uv.
+A graph G is called contractible to a graph H if
+H arises from G by a sequence of elementary contractions. 
+
+J: Wagner's theorem: A graph G is planar if and only if it
+does not contain a subgraph which is contractible to K5 or K3,3.
+</text>
+
+<text>
+Example: The Petersen graph is not planar,
 </text>
 
 </document>
@@ -765,69 +1209,6 @@ Planar graphs, i.e. those that can be drawn on a plane without link crossings, a
 </document>
 
 
-<document>
-<tag>graph-theory-isomorphism</tag>
-<title>Isomorphic graphs and subgraphs</title>
-
-
-<text>
-Let <eqn>G=(V,E)</eqn> be a graph and <eqn>V'</eqn> be a subset of <eqn>V</eqn>. Using the notation in <cite>Jungnickel 2007</cite>, by <eqn>E|V'</eqn> we denote the set of all edges <eqn>e \in E(G)</eqn> that have both vertices in <eqn>V'</eqn>. The resulting graph <eqn>G'=(V',E|V')</eqn> is the induced subgraph of <eqn>G</eqn> on <eqn>V'</eqn> and it will be denoted as <eqn>G|V'</eqn>.
-</text>
-
-<!--
-For a subset T of the vertex set V of a graph G we denote by G\ T the induced subgraph on V \ T. This graph arises from G by omitting all vertices in T and all edges incident with these vertices. For a one-element set T = {v} we write G \ v instead of G \ {v}. 
---> 
-
-<text>
-Each graph of the form <eqn>(V',E')</eqn> where <eqn>V' \subset V</eqn> and <eqn>E' \subseteq E|V'</eqn> is said to be a subgraph of <eqn>G</eqn>.
-</text>
-
-<text>
-A subgraph of the same order of the original graph, i.e. when <eqn>V'=V</eqn>, is a spanning subgraph. 
-</text>
-
-<text>
-A k-factor is a k-regular spanning subgraph. When the edge set of a graph is divided into k-factors, such a decomposition is called a k-factorization of the graph. A 1-factorization, or factorization for short, can exist only if <eqn>G</eqn> has an even number of vertices and it is also called a resolution. Factorizations of <eqn>K_{2n}</eqn> can be interpreted as schedules for tournaments of <eqn>2n</eqn> teams and always exist <cite>Jungnickel 2007</cite>.
-</text>
-
-<!-- Paths and cycles as subgraphs --> 
-
-<text>
-Paths and cycles are important kinds of subgraphs. A path <eqn>P_n</eqn> is a graph of order n and size n-1 whose vertices can be labeled <eqn>v_1, v_2, ..., v_n</eqn> and whose edges are <eqn>v_iv_{i+1}</eqn> for <eqn>i=1,2,...,n-1</eqn>. A cycle <eqn>C_n</eqn> is a graph of order n and size n whose whose vertices can be labeled <eqn>v_1, v_2, ..., v_n</eqn> and whose edges are <eqn>v_1v_n</eqn> and <eqn>v_iv_{i+1}</eqn> for <eqn>i=1,2,...,n-1</eqn>. The cycle <eqn>C_3</eqn> is called a triangle.
-</text>
-
-</document>
-
-
-<document>
-<tag>graph-theory-independent-paths</tag>
-<title>Independent paths and cut sets</title>
-
-<text>
-++ Nonseparable graphs: cut-vertices (nodes) and blocks/branches => vertex-cuts (vertex-connectivity), bridges (edges) => edge-cuts (edge-connectivity)
-</text>
-
-<text>
-++ Connectivity: k-connected &amp; k-edge-connected graphs
-</text>
-
-<text>
-Whitney 1932
-</text>
-
-<equation>
-\kappa(G) \le \lambda(G) \le \delta(G)
-</equation>
-
-<text>
-Menger's theorem (Menger 1927)
-</text>
-
-<text>
-Whitney's theorem (Whitney 1932)
-</text>
-
-</document>
 
 
 <document>

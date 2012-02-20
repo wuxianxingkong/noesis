@@ -79,15 +79,51 @@ Need for new data mining techniques ++ Today's data, however, doesn't take the f
 1736: Leonhard Euler
 ++ Konisberg @ 0471648167 [Marcel Danesi] The Liar Paradox and the Towers of Hanoi.pdf
  
- The German city of Königsberg, founded in 1255, was annexed by the Soviet Union at the end of World War II in 1945 and later renamed Kaliningrad in 1946 after the death of Chairman of the Presidium of the Supreme Soviet of the USSR Mikhail Kalinin, one of the original Bolsheviks. The city is on the banks of the Pregel river. 
+ The German city of Königsberg, founded in 1255, was annexed by the Soviet Union at the end of World War II in 1945 and later renamed Kaliningrad in 1946 after the death of Chairman of the Presidium of the Supreme Soviet of the USSR Mikhail Kalinin, one of the original Bolsheviks. The city is on the banks of the Pregel river. Figure <ref>fig-konigsberg</ref>.
 
 "The history of graph theory began in 1736, when Euler [Eul36] first solved the
 seven bridges of K¨onigsberg problem.) . In Euler's day there were seven bridges linking the banks and
 two islands, which can be modeled as a multigraph with seven edges and four vertices.
-Euler sought a way to walk over each of the bridges exactly once and return home—i.e.
+Euler sought a way to walk over each of the bridges exactly once and return home - i.e.
 , an Eulerian cycle. Euler proved that such a tour is impossible, since all four of the
 vertices had odd degrees."
+
+circular walk through the town of K¨onigsberg (now Kaliningrad) in such a way as to cross over each of the seven bridges spanning the river Pregel once, and only once... the precise shapes of the island and the other three territories involved are not important; the
+solvability depends only on their connection properties. Let us represent the four territories by points (called vertices), and the bridges by curves joining the respective points; then we get the graph also drawn in Figure <ref>fig-konigsberg-graph</ref>.
+
+Euler gave a necessary and sufficient condition for an arbitrary graph to admit a circular tour of the above kind...
+
+
 </text>
+
+<figure>
+  <tag>fig-konigsberg</tag>
+  <image scale="80" file="image/history/konigsberg"/>
+  <title>The seven bridges of Königsberg.</title>
+</figure>
+
+<figure>
+  <tag>fig-konigsberg-graph</tag>
+  <image scale="30" file="image/history/konigsberg-graph"/>
+  <title>The graph representing the seven bridges of Königsberg problem.</title>
+</figure>
+
+
+<text>
+The icosian game is a mathematical game invented in 1857 by William Rowan Hamilton. The game's object is finding a Hamiltonian cycle along the edges of a dodecahedron such that every vertex is visited a single time, no edge is visited twice, and the ending point is the same as the starting point. The puzzle was distributed commercially as a pegboard with holes at the nodes of the dodecahedral graph and was subsequently marketed in Europe in many forms.
+
+The motivation for Hamilton was the problem of symmetries of an icosahedron, for which he invented icosians—an algebraic tool to compute the symmetries. The solution of the puzzle is a cycle containing twenty (in ancient Greek icosa) edges (i.e. a Hamiltonian circuit on the icosahedron).
+
+a Hamiltonian path (or traceable path) is a path in an undirected graph that visits each vertex exactly once. A Hamiltonian cycle (or Hamiltonian circuit) is a Hamiltonian path that is a cycle.
+
+All platonic solids, including the dodecahedron in Figure <ref>fig-hamiltonian</ref>.
+</text>
+
+<figure>
+  <tag>fig-hamiltonian</tag>
+  <image scale="30" file="image/history/Hamiltonian-path"/>
+  <title>A Hamiltonian cycle in a dodecahedron. Source: Wikipedia Commons.</title>
+</figure>
 
 <text>
 Historically, <i>linkages</i> was the term sometimes employed to refer to graphs. The graph term was later standardized by James Joseph Sylvester, a 19th-century British mathematician who founded the American Journal of Mathematics, the first mathematics journal in the United States <cite>Chartrand et al. 2011</cite>.

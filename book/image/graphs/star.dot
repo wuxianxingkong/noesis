@@ -1,0 +1,22 @@
+graph star {
+
+node[fontname="Helvetica",style=filled,fillcolor="#d0d0d0",label="", shape=circle, fixedsize=true, width=0.3, height=0.3]
+edge[fontname="Helvetica",style=bold, color=blue];
+
+c[pos="150,100!"];
+
+i[pos="100,100!"];
+t1[pos="125,50!"];
+t2[pos="175,50!"];
+b1[pos="125,150!"];
+b2[pos="175,150!"];
+d[pos="200,100!"];
+
+c--i;
+c--d;
+c--t1;
+c--t2;
+c--b1;
+c--b2;
+
+}

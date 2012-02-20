@@ -1,0 +1,19 @@
+graph K5 {
+
+node[fontname="Helvetica",style=filled,fillcolor="#d0d0d0",label="", shape=circle, fixedsize=true, width=0.3, height=0.3]
+edge[fontname="Helvetica",style=bold, color=blue];
+
+n1 -- n2;
+n1 -- n3;
+n1 -- n4;
+n1 -- n5;
+
+n2 -- n3;
+n2 -- n4;
+n2 -- n5;
+
+n3 -- n4;
+n3 -- n5;
+
+n4 -- n5;
+}

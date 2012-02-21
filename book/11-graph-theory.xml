@@ -1209,12 +1209,35 @@ Example: The Petersen graph is not planar,
 </document>
 
 
+<!-- Graphs as matrices -->
+
+<document>
+<tag>graph-theory-matrix</tag>
+<title>Graphs as matrices</title>
+
+<document>
+<tag>graph-theory-matrix-adjacency</tag>
+<title>The adjacency matrix</title>
+</document>
+
+<document>
+<tag>graph-theory-matrix-incidence</tag>
+<title>The incidence matrix</title>
+</document>
+
+<document>
+<tag>graph-theory-matrix-distance</tag>
+<title>The distance matrix</title>
+</document>
 
 
 <document>
 <tag>graph-theory-laplacian</tag>
-<title>Appendix: The graph Laplacian</title>
+<title>The graph Laplacian</title>
 </document>
+
+</document>
+
 
 
 <document>

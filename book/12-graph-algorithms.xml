@@ -889,6 +889,10 @@ Parallel Prim's algorithm
 Distributed MST algorithms @ MIT 6.852: Distributed Algorithms - Lecture 4 (synchronous) + Lecture 9 (asynchronous) / Section 4.4 + Section 15.5 <cite>Lynch 1997</cite>
 </text>
 
+<text>
+<cite>Gallager et al. 1983</cite>: At most 5n log n + 2m messages...
+</text>
+
 </document>
 
 </document>

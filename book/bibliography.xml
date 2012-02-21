@@ -2314,6 +2314,23 @@
  <file>Networks/algorithms/graphs/isomorphism/1987 JACM Trivalent graph isomorphism.pdf</file>
 </reference>
 
+
+<reference id="Gallager et al. 1983">
+ <author>R.G. Gallager</author>
+ <author>P.A. Humblet</author>
+ <author>P.M. Spira</author>
+ <title>A distributed algorithm for minimum-weight spanning trees</title>
+ <journal>ACM Transactions on Programming Languages and Systems</journal>
+ <volume>5</volume>
+ <number>1</number>
+ <pages>66-77</pages>
+ <year>1983</year>
+ <doi>10.1145/357195.357200</doi>
+ <file>Networks/algorithms/graphs/paths/1983 TOPLAS Distributed MST.pdf</file>
+ <file>Networks/algorithms/graphs/paths/1983 TOPLAS Distributed MST.review.pdf</file>
+</reference>
+
+
 <reference id="Gamma et al. 1994">
  <author>Erich Gamma</author>
  <author>Richard Helm</author>

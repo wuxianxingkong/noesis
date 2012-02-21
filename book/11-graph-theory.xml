@@ -21,7 +21,7 @@ Graph Theory is the mathematical study of graphs (or networks).
 
 
 <text>
-From a formal point of view, a graph <eqn>G=(V,E)</eqn> is a finite non-empty set <eqn>V</eqn> of vertices (or nodes) together with a possibly empty set <eqn>E</eqn> of pairs of vertices called edges (also known as links). In other words, <eqn>V \neq \emptyset</eqn> and <eqn>E \subseteq V \times V</eqn>. A graph <eqn>G=(V,E)</eqn>, therefore, has a vertex set <eqn>V</eqn> and an edge set <eqn>E</eqn>, which are often denoted by <eqn>V(G)</eqn> and <eqn>E(G)</eqn>, respectively.
+From a formal point of view, a graph <eqn>G=(V,E)</eqn> is a finite non-empty set <eqn>V</eqn> of vertices together with a possibly empty set <eqn>E</eqn> of 2-element subsets of <eqn>V</eqn> called edges. A graph <eqn>G=(V,E)</eqn>, therefore, has a vertex set <eqn>V</eqn> and an edge set <eqn>E</eqn>, which are often denoted by <eqn>V(G)</eqn> and <eqn>E(G)</eqn>, respectively. Vertices are often referred to as points or, more commonly, nodes. Edges are sometimes called lines or links. When talking about networks, we will prefer the terms nodes and links.
 </text>
 
 <text>
@@ -29,16 +29,16 @@ Nodes (vertices) correspond to the elements of the system represented by the gra
 </text>
 
 <text>
-Any member <eqn>e=(u,v)</eqn> of <eqn>E(G)</eqn> is an edge in <eqn>G</eqn> with end vertices <eqn>u</eqn> and <eqn>v</eqn>. Both <eqn>u</eqn> and <eqn>v</eqn> are incident with the edge <eqn>e</eqn>. 
+Any member <eqn>e={u,v}</eqn> of <eqn>E(G)</eqn> is an edge in <eqn>G</eqn> with end vertices <eqn>u</eqn> and <eqn>v</eqn>. Both <eqn>u</eqn> and <eqn>v</eqn> are incident with the edge <eqn>e</eqn>. An edge <eqn>e={u,v}</eqn> is said to join <eqn>u</eqn> and <eqn>v</eqn> and can be denoted by <eqn>uv</eqn> or <eqn>vu</eqn>.
 </text>
 
 <text>
-A self-loop, or loop for short, is an edge <eqn>(v,v)</eqn> from one vertex <eqn>v</eqn> to itself.
+A self-loop, or loop for short, is an edge <eqn>vv</eqn> from one vertex <eqn>v</eqn> to itself.
 </text>
 
 
 <text>
-When <eqn>(u,v)</eqn> is an edge in <eqn>G</eqn>, <eqn>u</eqn> and <eqn>v</eqn> are adjacent vertices and they are said to be neighbors of each other. Likewise, when both <eqn>(u,v)</eqn> and <eqn>(v,w)</eqn> are edges in <eqn>G</eqn>, they are said to be adjacent edges.
+When <eqn>{u,v}</eqn> is an edge in <eqn>G</eqn>, <eqn>u</eqn> and <eqn>v</eqn> are adjacent vertices and they are said to be neighbors of each other. Likewise, when both <eqn>{u,v}</eqn> and <eqn>{v,w}</eqn> are edges in <eqn>G</eqn>, they are said to be adjacent edges.
 </text>
 
 <text>
@@ -46,7 +46,7 @@ The number of vertices in the graph is the order of the graph, whereas the numbe
 </text>
 
 <text>
-++ Drawing a graph 
+++ Drawing a graph as a diagram: Each point (or small circle) represents a node and two points are joined by a line if the corresponding nodes are joined by an edge in the graph.
 </text>
 
 <!--
@@ -71,7 +71,7 @@ In multigraphs, there are pairs of vertices that are connected by more than one 
 </text>
 
 <text>
-In multigraphs, we replace the edge set of an ordinary graph (by a family <eqn>E</eqn> of two-element subsets of <eqn>V</eqn>. 
+In multigraphs, we replace the edge set of an ordinary graph by a family <eqn>E</eqn> of two-element subsets of <eqn>V</eqn>. 
 Formally, we define a multigraph as a triple <eqn>(V, E, J)</eqn> where <eqn>J</eqn> is a mapping from <eqn>E</eqn> to the set of two-element
 subsets of <eqn>V</eqn>, so that we can distinguish different edges connecting the same pair of vertices. <eqn>J</eqn> is called the incidence map because the image <eqn>J(e)</eqn> of an edge <eqn>e</eqn> is the set <eqn>{u, v}</eqn> of the end vertices of <eqn>e</eqn>.
 </text>
@@ -98,7 +98,11 @@ A graph without multiedges nor self-loops is called a simple graph. Multiedges a
 <title>Directed graphs (a.k.a. digraphs)</title>
 
 <text>
-In scenarios such as the social network mentioned above, where we consider friendship relationships to be symmetric, links will be undirected. In undirected graphs, therefore, edges are two-element subsets of <eqn>V(G)</eqn>. An edge <eqn>{u,v}</eqn> can then be denoted as <eqn>uv</eqn> or <eqn>vu</eqn>, since both are considered to be equivalent. In other words, both <eqn>(u,v)</eqn> and <eqn>(v,u)</eqn> belong to <eqn>E(G)</eqn> as defined above.
+From a formal point of view, a directed graph <eqn>G=(V,E)</eqn> is a finite non-empty set <eqn>V</eqn> of vertices (or nodes) together with a possibly empty set <eqn>E</eqn> of ordered pairs of vertices called edges (also known as links). In other words, <eqn>V \neq \emptyset</eqn> and <eqn>E \subseteq V \times V</eqn>. Henceforth, we will stick to this definition both for directed and undirected graphs.
+</text>
+
+<text>
+In scenarios such as the social network mentioned at the beginning of this section, where we consider friendship relationships to be symmetric, links will be undirected. In undirected graphs, therefore, edges are two-element subsets of <eqn>V(G)</eqn>. An edge <eqn>{u,v}</eqn> can then be denoted as <eqn>uv</eqn> or <eqn>vu</eqn>, since both are considered to be equivalent. In other words, both <eqn>(u,v)</eqn> and <eqn>(v,u)</eqn> belong to <eqn>E(G)</eqn> as defined above.
 </text>
 
 
@@ -256,7 +260,7 @@ For a subset T of the vertex set V of a graph G we denote by G\ T the induced su
 --> 
 
 <text>
-Each graph of the form <eqn>(V',E')</eqn> where <eqn>V' \subset V</eqn> and <eqn>E' \subseteq E|V'</eqn> is said to be a subgraph of <eqn>G</eqn>.
+Each graph of the form <eqn>G'=(V',E')</eqn> where <eqn>V' \subset V</eqn> and <eqn>E' \subseteq E|V'</eqn> is said to be a subgraph of <eqn>G</eqn>.
 </text>
 
 <text>
@@ -275,13 +279,20 @@ A k-factor is a k-regular spanning subgraph. When the edge set of a graph is div
 <title>Graph isomorphism</title>
 
 <text>
-Two graphs <eqn>G = (V,E)</eqn> and <eqn>G' = (V',E')</eqn> are called isomorphic if there is a bijection <eqn>\alpha: V \rightarrow V'</eqn> such that <eqn>(u, v) \in E</eqn> if and only if <eqn>(\alpha(u), \alpha(v)) \in E'</eqn> for all <eqn>u, v \in V</eqn>.
+When are two graphs considered different? Basically, when they do not have the same structure, which leads as to the concept of graph isomorphism.
+</text>
+
+<text>
+Two graphs <eqn>G = (V(G),E(G))</eqn> and <eqn>H = (V(H),E(H))</eqn> are called isomorphic if there is a bijective function <eqn>\phi: V(G) \rightarrow V(H)</eqn> such that <eqn>(u, v) \in E(G)</eqn> if and only if <eqn>(\phi(u), \phi(v)) \in E(H)</eqn> for all <eqn>u, v \in V(G)</eqn>.
 </text>
 
 <text>
 The isomorphisms of a graph G to itself are called automorphisms.
 </text>
 
+<text>
+When two graphs G and H are isomorphic, they have the same number of nodes (i.e. the same order), the same number of links (i.e. the same size), and the degrees of the vertices of G are the same as the degrees of the vertices of H.
+</text>
 </note>
 
 </document>
@@ -329,7 +340,11 @@ we have a forward edge, in the second a backward edge.
 <!-- as subgraphs --> 
 
 <text>
-Paths and cycles are important kinds of subgraphs. A path <eqn>P_n</eqn> is a graph of order n and size n-1 whose vertices can be labeled <eqn>v_1, v_2, ..., v_n</eqn> and whose edges are <eqn>v_iv_{i+1}</eqn> for <eqn>i=1,2,...,n-1</eqn>. A cycle <eqn>C_n</eqn> is a graph of order n and size n whose whose vertices can be labeled <eqn>v_1, v_2, ..., v_n</eqn> and whose edges are <eqn>v_1v_n</eqn> and <eqn>v_iv_{i+1}</eqn> for <eqn>i=1,2,...,n-1</eqn>. The cycle <eqn>C_3</eqn> is called a triangle.
+Paths and cycles are important kinds of subgraphs:
+
+- A path <eqn>P_n</eqn> is a graph of order n and size n-1 whose vertices can be labeled <eqn>v_1, v_2, ..., v_n</eqn> and whose edges are <eqn>v_iv_{i+1}</eqn> for <eqn>i=1,2,...,n-1</eqn>. 
+
+- A cycle <eqn>C_n</eqn> is a graph of order n and size n whose whose vertices can be labeled <eqn>v_1, v_2, ..., v_n</eqn> and whose edges are <eqn>v_1v_n</eqn> and <eqn>v_iv_{i+1}</eqn> for <eqn>i=1,2,...,n-1</eqn>. The cycle <eqn>C_3</eqn> is called a triangle or triad.
 </text>
 
 <!-- Cycles -->
@@ -584,7 +599,10 @@ The eccentricity of vertex v in a graph is the shortest-path distance to the far
 The radius of a graph is the smallest eccentricity of any vertex.
 The diameter of a graph is the maximum eccentricity of any vertex.
 The center is the set of vertices whose eccentricity is the radius.
+</text>
 
+<text>
+The girth of a graph containing cycles is the length of a shortest cycle.
 </text>
 
 <text>
@@ -620,7 +638,7 @@ The pairwise distance of the shortest path linking the nodes in a network is rep
 <!-- Cut nodes -->
 
 <text>
-A cut point or articulation point of a graph G is a vertex v such that G \ v
+A cut node or articulation point of a graph G is a vertex v such that G \ v
 has more connected components than G.
 </text>
 
@@ -628,7 +646,18 @@ has more connected components than G.
 
 <text>
 An edge e of a connected graph G is called a bridge if G \ e is not connected.
-The girth of a graph containing cycles is the length of a shortest cycle.
+</text>
+
+
+
+<figure>
+  <tag>fig-connectivity</tag>
+  <image scale="25" file="image/graphs/bowtie"/>
+  <title>The bowtie graph.</title>
+</figure>
+
+<text>
+For example, let us consider the bowtie graph in Figure <ref>fig-connectivity</ref>. In this graph, both <eqn>c</eqn> and <eqn>d</eqn> are cut nodes (a.k.a articulation points), whereas only the <eqn>cd</eqn> edge is a bridge.
 </text>
 
 <text>
@@ -793,16 +822,26 @@ Whitney's theorem (1932): A graph G is k-connected if and only if any two vertic
 <tag>graph-theory-classes</tag>
 <title>Interesting classes of graphs</title>
 
+<text>
+Some kinds of graphs appear so often in practice that it is worthwhile to examine them in some detail.
+</text>
 
 <document>
 <tag>graph-theory-regular</tag>
 <title>Regular graphs</title>
 
 <text>
-When all the nodes in a graph have the same degree (say r), the graph is a regular graph,
-more precisely an r-regular graph. 
+When all the nodes in a graph have the same degree (say r), the graph is said to be a regular graph,
+more precisely an r-regular graph. A regular graph is said to be regular of degree r when its nodes have the degree r.
 </text>
 
+<text>
+The following theorem establishes the existence of regular graphs for given values of r and n: For integer r and n, there is an r-regular graph of n nodes if and only if <eqn>0 \leq r \leq n-1</eqn> and r and n are not both odd. The last condition is just a consequence of the fact that every graph must have an even number of nodes with odd degrees.
+</text>
+
+<text>
+At the opposite extreme of the spectrum of regularity, an graph would be irregular if <eqn>deg(u) \neq deg(v)</eqn> for every two vertices of the graph. Such a graph, however, cannot exist, given that an irregular graph with n nodes would have a degree sequence given by <eqn>deg(v_i)=i-1</eqn>. This would imply that one node in the graph would be isolated, i.e. <eqn>deg(v_1)=0</eqn>, which is a contradiction with the fact that <eqn>deg(v_n)=n-1</eqn>, since <eqn>v_1</eqn> should also be adjacent to <eqn>v_n</eqn>.
+</text>
 
 <document>
 <title>Complete graphs</title>
@@ -841,9 +880,9 @@ digraph on n vertices."
 
 A cubic graph is a graph in which all vertices have degree three, i.e. a 3-regular graph. Cubic graphs are also called trivalent graphs.
 
-There are many well-known individual cubic graphs, including the utility graph (<eqn>K_{3,3}</eqn>), the Petersen graph, the Heawood graph, the Möbius-Kantor graph, the Pappus graph, the Desargues graph, the Nauru graph, the Coxeter graph, the Tutte-Coxeter graph (a.k.a. Tutte eight-cage), the Dyck graph, the Foster graph, or the Biggs-Smith graph.
+There are many well-known individual cubic graphs, including the complete graph <eqn>K_4</eqn>, the utility graph (<eqn>K_{3,3}</eqn>), the Petersen graph, the Heawood graph, the Möbius-Kantor graph, the Pappus graph, the Desargues graph, the Nauru graph, the Coxeter graph, the Tutte-Coxeter graph (a.k.a. Tutte eight-cage), the Dyck graph, the Foster graph, or the Biggs-Smith graph.
 
-For instance, the Petersen graph is an undirected small graph, with 10 vertices and 15 edges, which is often employed as an useful example or counterexample for many problems in graph theory.
+For instance, the Petersen graph is an undirected small regular graph, named after the Danish mathematician Julius Petersen, who initiated the study of regular graphs in 1891. The Petersen graph, which includes 10 vertices and 15 edges, is often employed as an useful example or counterexample for many proofs in graph theory.
 
 <figure>
   <tag>fig-petersen</tag>
@@ -892,15 +931,24 @@ Theorem: a(a - c - 1) = (n - a - 1)d.
 <title>Bipartite graphs</title>
 
 <text>
-++ Bipartite graphs
+A graph G is bipartite if its vertex set V(G) can be partitioned into two disjoint sets L and R (called partite sets) so that every edge in G joins a node in L with a node in R.
+</text>
 
-The complete bipartite graph Km,n has as vertex set the disjoint union of a set V1 with m elements and a set V2 with n elements; edges are all the
+<text>
+If a bipartite graph is regular, then |L|=|R| and its size will be r|L|=r|R| assuming that it is r-regular. 
+</text>
+
+<text>
+A bipartite graph is said to be a complete bipartite graph if it is bipartite and uv is an edge of G if and only if u \in L and w \in R.
+
+The complete bipartite graph Ks,t has as vertex set the disjoint union of a set V1 with s elements and a set V2 with t elements; edges are all the
 sets {a, b} with a in V1 and b in V2. 
 
-The graph Km,n is regular only if m = n (in that case, it is n-regular). 
+Since the size of the complete bipartite graph <eqn>K_{\lfloor n/2 \rfloor, \lceil n/2 \rceil}</eqn> is <eqn>\lfloor n/2 \rfloor \cdot \lceil n/2 \rceil = \lfloor n^2/4 \rfloor</eqn>, no bipartite graph can have a larger size than <eqn>\lfloor n^2/4 \rfloor</eqn>.
 
-The utility graph, also known as the Thomsen graph or K_{3,3}: cubic (3-regular), nonplanar graph.
+From the previous result, we can conclude that every graph with more than two nodes and size larger than <eqn>\lfloor n^2/4 \rfloor</eqn> necessarily contains a triangle.
 
+Obviously, the graph Ks,t is regular only if s = t (in that case, it is s-regular). 
 </text>
 
 <figure>
@@ -909,6 +957,13 @@ The utility graph, also known as the Thomsen graph or K_{3,3}: cubic (3-regular)
   <image scale="20" file="image/graphs/k33pos"/>
   <title>Two different renderings of the complete bipartite graph <eqn>K_{3,3}</eqn>.</title>
 </figure>
+
+
+<text>
+- The utility graph, also known as the Thomsen graph or K_{3,3}: cubic (3-regular), nonplanar graph.
+
+- The complete bipartite graph K_{1,t} is called a star, a special kind of tree.
+</text>
 
 
 </document>
@@ -1215,9 +1270,157 @@ Example: The Petersen graph is not planar,
 <tag>graph-theory-matrix</tag>
 <title>Graphs as matrices</title>
 
+<text>
+Up to this point, we have described graphs by means of sets of nodes and ordered pairs and we have illustrated them with the help of simple line diagrams. However, a matrix representation of graphs is also possible, as we will see in this section.
+</text>
+
 <document>
 <tag>graph-theory-matrix-adjacency</tag>
 <title>The adjacency matrix</title>
+
+<text>
+Let G be a graph with n nodes. The adjacency matrix of the graph G is the <eqn>n \times n</eqn> binary matrix <eqn>A(G) = [a_{ij}]</eqn> where
+</text>
+
+<equation>
+a_{ij} = 
+\left \{
+\begin{matrix}
+ 1 &amp; if &amp; v_iv_j \in E(G)\\ 
+ 0 &amp; if &amp; v_iv_j \notin E(G)
+\end{matrix}
+\right.
+</equation>
+
+<text>
+For example, the adjacency matrix of the complete graph <eqn>K_5</eqn> is
+</text>
+
+<equation>
+A(K_5) =
+\begin{bmatrix}
+0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 \\
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 
+\end{bmatrix}
+</equation>
+
+<text>
+Whereas the adjacency matrix of the complete bipartite graph <eqn>K_{3,3}</eqn> is
+</text>
+
+<equation>
+A(K_{3,3}) =
+\begin{bmatrix}
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0
+\end{bmatrix}
+</equation>
+
+<text>
+Several observations can be made about such adjacency matrices:
+</text>
+
+<list>
+
+<item>
+The adjacency matrix <eqn>A</eqn> is a symmetric matrix for undirected graphs, since <eqn>a_{ij} = a_{ji}</eqn> for such graphs.
+</item>
+
+<item>
+All elements along the main diagonal of <eqn>A</eqn> are 0 if we do not allow loops (i.e. a vertex cannot be adjacent to itself).
+</item>
+
+<item>
+We can obtain the degree of the i-th node of an undirected graph just by adding the entries in row i (or, alternatively, in column i).
+</item>
+
+<item>
+Similarly, the sum of the entries in row i gives us the out-degree of the ith node in a directed graph, while the sum of the entries in column i gives us its in-degree.
+</item>
+
+<item>
+When <eqn>a_{ij} = 1</eqn>, the graph contains the edge <eqn>v_iv_j</eqn> and there is a path from <eqn>v_i</eqn> to <eqn>v_j</eqn> of length 1.
+</item>
+
+</list>
+
+<text>
+This last observation can be exploited to determine whether the graph contains a walk from <eqn>v_i</eqn> to <eqn>v_j</eqn> of length <eqn>k</eqn> for any arbitrary positive integer <eqn>k</eqn>. In fact, the number of different walks of length <eqn>k</eqn> from <eqn>v_i</eqn> to <eqn>v_j</eqn> is given by the <eqn>(i,j)</eqn> entry in the matrix <eqn>A^k</eqn>.
+</text>
+
+<text>
+Let <eqn>a_{ij}^{(k)}</eqn> denote the <eqn>(i,j)</eqn> entry in the matrix <eqn>A^k</eqn>. We can obtain the following data just by multiplying the adjacency matrix by itself:
+</text>
+
+<list>
+
+<item>
+The degree of a node: <eqn>deg(v_i) = a_{ii}^{(2)}</eqn>.
+</item>
+
+<item>
+The number of triangles in G than contain a given node: <eqn>triangles(v_i) = a_{ii}^{(3)} / 2</eqn>.
+</item>
+
+</list>
+
+<figure>
+  <tag>fig-bowtie</tag>
+  <image scale="25" file="image/graphs/bowtie"/>
+  <title>The bowtie graph.</title>
+</figure>
+
+<text>
+For instance, consider the bowtie graph in Figure <ref>fig-bowtie</ref> and the powers of its adjacency matrix:
+</text>
+
+<equation>
+A(G_{bowtie}) =
+\begin{bmatrix}
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 
+\end{bmatrix}
+</equation>
+
+<equation>
+A^2(G_{bowtie}) =
+\begin{bmatrix}
+2 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
+1 &amp; 2 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
+1 &amp; 1 &amp; 3 &amp; 0 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 0 &amp; 3 &amp; 1 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; 1 &amp; 2 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 2
+\end{bmatrix}
+</equation>
+
+<equation>
+A^3(G_{bowtie}) =
+\begin{bmatrix}
+2 &amp; 3 &amp; 4 &amp; 1 &amp; 1 &amp; 1 \\
+3 &amp; 2 &amp; 4 &amp; 1 &amp; 1 &amp; 1 \\
+4 &amp; 4 &amp; 2 &amp; 5 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 5 &amp; 2 &amp; 4 &amp; 4 \\
+1 &amp; 1 &amp; 1 &amp; 4 &amp; 2 &amp; 3 \\
+1 &amp; 1 &amp; 1 &amp; 4 &amp; 3 &amp; 2
+\end{bmatrix}
+</equation>
+
+<text>
+Nodes <eqn>c</eqn> and <eqn>d</eqn> have degree 3, while the remaining nodes have degree 2, as can be seen in <eqn>A^2</eqn>. Observing <eqn>A^3</eqn>, we can conclude that every node in the graph is part of a single triangle and also that all the nodes in the graph are connected by paths whose length is at most 3, since all entries in <eqn>A^3</eqn> are distinct from zero, which indicates that walks of length 3 exist for every pair of nodes in the graph.
+</text>
+   
 </document>
 
 <document>

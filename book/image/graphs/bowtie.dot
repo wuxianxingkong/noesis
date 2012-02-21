@@ -1,0 +1,11 @@
+graph bowtie {
+
+node[fontname="Helvetica",style=filled,fillcolor="#d0d0d0", shape=circle, fixedsize=true, width=0.3, height=0.3]
+edge[fontname="Helvetica",style=bold, color=blue];
+
+a -- b -- c -- a;
+
+d -- e -- f -- d;
+
+c -- d;
+}

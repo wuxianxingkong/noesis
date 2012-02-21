@@ -77,11 +77,11 @@ subsets of <eqn>V</eqn>, so that we can distinguish different edges connecting t
 </text>
 
 <text>
-When <eqn>J(e) = J(e')</eqn>, we say that edges <eqn>e</eqn> and <eqn>e'</eqn> are parallel.
+When <eqn>J(e) = J(e')</eqn>, we say that edges <eqn>e</eqn> and <eqn>e'</eqn> are parallel edges.
 </text>
 
 <text>
-Multigraphs can be generalized if we allow loops, i.e. edges <eqn>e</eqn> whose <eqn>J(e)</eqn> is a singleton set <eqn>{v}</eqn>. In this case, multigraphs are often calledd pseudographs.
+Multigraphs can be generalized if we allow loops, i.e. edges <eqn>e</eqn> whose <eqn>J(e)</eqn> is a singleton set <eqn>{v}</eqn>. Structures that allow both parallel edges and loops are often called pseudographs.
 </text>
 
 <text>
@@ -98,7 +98,7 @@ A graph without multiedges nor self-loops is called a simple graph. Multiedges a
 <title>Directed graphs (a.k.a. digraphs)</title>
 
 <text>
-From a formal point of view, a directed graph <eqn>G=(V,E)</eqn> is a finite non-empty set <eqn>V</eqn> of vertices (or nodes) together with a possibly empty set <eqn>E</eqn> of ordered pairs of vertices called edges (also known as links). In other words, <eqn>V \neq \emptyset</eqn> and <eqn>E \subseteq V \times V</eqn>. Henceforth, we will stick to this definition both for directed and undirected graphs.
+From a formal point of view, a directed graph <eqn>G=(V,E)</eqn> is a finite non-empty set <eqn>V</eqn> of vertices (or nodes) together with a possibly empty set <eqn>E</eqn> of ordered pairs of vertices called directed edges (also known as arcs). In other words, <eqn>V \neq \emptyset</eqn> and <eqn>E \subseteq V \times V</eqn>. Henceforth, we will stick to this definition both for directed and undirected graphs.
 </text>
 
 <text>
@@ -118,10 +118,12 @@ E of ordered pairs (a, b), where a \neq b are elements of V. The term arc is usu
 of edge to distinguish between the directed and the undirected case. 
 
 Instead of e = (a, b), we again write e = ab; a is called the start vertex or tail, and b the end vertex or head of e. We say that a and b are incident with e, and call two edges of the form ab and ba antiparallel. 
+
+(u,v): u is said to be adjacent to v and v is said to be adjacent from u.
 </text>
 
 <text>
-++ Drawing: To draw a directed graph, we proceed as in the undirected case, but indicate the direction of an edge by an arrow.
+++ Drawing: To draw a directed graph, we proceed as in the undirected case, but indicate the direction of a directed edge by an arrowhead.
 </text>
 
 <text>
@@ -131,6 +133,9 @@ called an orientation of G. Replacing each edge ab in E by two arcs (a, b) and (
 \overrightarrow{G}; we also call \overrightarrow{G} G the complete orientation of G. "
 </text>
 
+<text>
+We say that a digraph G is symmetric if,whenever (u,v) is an arc of G, then (v,u) is also an arc of G. We say that a digraph is oriented if, whenever (u,v) is an arc of G, then (v,u) is not an arc of G.
+</text>
 
 </document>
 
@@ -221,11 +226,28 @@ The algorithm above is deterministic. If we want a random graphs with the given 
 <title>Directed graphs: In-degree and out-degree</title>
 
 <text>
-++ Directed: in-degree, out-degree, full degree (in+out)
+In a directed graph, links are directed and we distinguish between
 
-The in-degree deg_{in}(v) of a vertex v is the number of edges with head v, 
-the out-degree deg_{out}(v) of a vertex v is the number of edges with tail v. 
+- The out-neighborhood <eqn>N^+(v)</eqn> of a vertex <eqn>v</eqn> (the set of vertices adjacent to v)
+
+- The in-neighborhood <eqn>N^-(v)</eqn> of a vertex <eqn>v</eqn> (the set of vertices adjacent from v)
 </text>
+
+<text>
+The out-degree <eqn>deg_{out}(v)</eqn> of a vertex v is the number of edges with tail v, i.e. <eqn>deg_{out}(v) = | N^+(v) |</eqn>
+
+The in-degree <eqn>deg_{in}(v)</eqn> of a vertex v is the number of edges with head v, i.e. <eqn>deg_{in}(v) = | N^-(v) |</eqn>
+
+The full degree of a vertex is defined by <eqn>deg(v) = deg_{out}(v) + deg_{in}(v)</eqn>
+</text>
+
+<text>
+The First Theorem of Digraph Theory can be stated as
+</text>
+
+<equation>
+\sum deg_{out}(v) = \sum deg_{in}(v) = |E(G)| = m
+</equation>
 
 </document>
 
@@ -472,11 +494,11 @@ We know, for instance, that some kinds of graphs are Hamiltonian, including comp
 
 <list>
 
-<item>A graph with more than two vertices is Hamiltonian if every vertex in the graph has degree <eqn>\geq n/2</eqn> (Dirac's theorem, 1952).</item>
+<item>Dirac's theorem (1952): A graph with more than two vertices is Hamiltonian if every vertex in the graph has degree <eqn>\geq n/2</eqn>.</item>
 
-<item>A graph with more than two vertices is Hamiltonian if, for every pair of non-adjacent vertices, the sum of their degrees is n or greater (Ore's theorem, 1960).</item>
+<item>Ore's theorem (1960): A graph with more than two vertices is Hamiltonian if, for every pair of non-adjacent vertices, the sum of their degrees is n or greater.</item>
 
-<item>A graph <eqn>G</eqn> is Hamiltonian if and only if its closure <eqn>[G]</eqn> is Hamiltonian (Bondy–Chvátal theorem, 1972).</item>
+<item>Bondy–Chvátal theorem (1972): A graph <eqn>G</eqn> is Hamiltonian if and only if its closure <eqn>[G]</eqn> is Hamiltonian.</item>
 
 </list>
 
@@ -495,11 +517,11 @@ Similar characterizations can be obtained for directed graphs:
 <list>
 
 <item>
-A strongly connected simple directed graph with n vertices is Hamiltonian or some vertex has a full degree smaller than n (Ghouila-Houiri theorem, 1960).
+Ghouila-Houiri theorem (1960): A strongly connected simple directed graph <eqn>D</eqn> with <eqn>n</eqn> vertices is Hamiltonian if <eqn>deg_{in}(v) \geq n/2</eqn> and <eqn>deg_{out}(v) \geq n/2</eqn> for all vertices in <eqn>D</eqn>.
 </item>
 
 <item>
-A strongly connected simple directed graph with n vertices is Hamiltonian or the sum of the full degrees of two distinct non-adjacent vertices is smaller than <eqn>2n-1</eqn> (Meyniel's theorem, 1973).
+Meyniel's theorem (1973): A strongly connected simple directed graph with n vertices is Hamiltonian if the sum of the full degrees of two distinct non-adjacent vertices is at least <eqn>2n-1</eqn>, i.e. <eqn>deg(x) + deg(y) \geq 2n-1</eqn> for all pairs of non-adjacent vertices <eqn>x</eqn> and <eqn>y</eqn>.
 </item>
 
 </list>
@@ -532,7 +554,7 @@ It should be noted that the number of different Hamiltonian cycles in a complete
 
 A graph G is strongly connected if all nodes in G can reach v and are reachable from v.
 
-J: Finally, a directed multigraph G is called connected if the underlying |G| is connected.
+J: Finally, a directed multigraph G is called connected if the underlying graph |G| is connected.
 
 
 J: We say that a vertex b of a digraph G is accessible from a vertex a if there is a directed walk with start vertex a and end vertex b. As before, we allow walks to have length 0 so that each vertex is accessible from itself. 
@@ -590,15 +612,43 @@ The number of edges in a walk, trail, path, or cycle (i.e. <eqn>n</eqn>) defines
 <text>
 ++ Distance, geodesic, eccentricity, diameter, radius
 
+- Distance: The distance <eqn>d_G(u,v)</eqn> from a vertex <eqn>u</eqn> to a vertex <eqn>v</eqn> in a connected graph <eqn>G</eqn> is the minimum length of the paths that connect <eqn>u</eqn> and <eqn>v</eqn> in <eqn>G</eqn>.
+</text>
 
+
+<text>
 If a and b are two vertices in the same connected component of a graph G, there has to exist a path of shortest length (say d) between a and b. (Why?)
 Then a and b are said to have distance d = d(a, b) ++ Junig. Chapter 3
+</text>
 
+<text>
+- Geodesic: A path of length  <eqn>d_G(u,v)</eqn> from a vertex <eqn>u</eqn> to a vertex <eqn>v</eqn> in a connected graph <eqn>G</eqn> is called a geodesic.
+</text>
 
+<text>
 The eccentricity of vertex v in a graph is the shortest-path distance to the farthest vertex from v. 
-The radius of a graph is the smallest eccentricity of any vertex.
-The diameter of a graph is the maximum eccentricity of any vertex.
-The center is the set of vertices whose eccentricity is the radius.
+The radius of a graph is the smallest eccentricity among the vertices of G.
+The diameter of a graph is the greatest eccentricity among the vertices of G.
+</text>
+
+<text>
+For every unweighted, undirected, connected graph, the following lower and upper bounds can be defined for its diameter:
+</text>
+
+<equation>
+radius(G) \leq diameter(G) \leq 2 radius(G)
+</equation>
+
+<text>
+Every vertex whose eccentricity is the radius of the graph is called a central vertex. The center of the graph is the subgraph induced by the set of vertices whose eccentricity is the radius. 
+</text>
+
+<text>
+Every vertex whose eccentricity is the diameter of the graph is called a peripheral vertex. The periphery of the graph is the subgraph induced by the set of vertices whose eccentricity is the diameter of the graph. 
+</text>
+
+<text>
+Two vertices whose distance between them is the diameter of the graph are said to be antipodal vertices.
 </text>
 
 <text>
@@ -638,16 +688,37 @@ The pairwise distance of the shortest path linking the nodes in a network is rep
 <!-- Cut nodes -->
 
 <text>
-A cut node or articulation point of a graph G is a vertex v such that G \ v
-has more connected components than G.
+A cut vertex, cut node, cut point, or articulation point of a graph G is a vertex v such that G \ v
+has more connected components than G, i.e. <eqn>k(G\v) &gt; k(G)</eqn>, where <eqn>k(G)</eqn> indicates the number of connected components of <eqn>G</eqn>.
 </text>
+
+<text>
+The following properties can be proved for cut points:
+</text>
+
+<list>
+
+<item>
+Every nontrivial connected graph contains at least two nodes that are not cut-nodes (which correspond to the extremes of the longest path within the graph).
+</item>
+
+<item>
+A vertex <eqn>v</eqn> is a cut-node if and only if there are two vertices <eqn>u</eqn> and <eqn>w</eqn> distinct from <eqn>v</eqn> such that <eqn>v</eqn> lies in every path between them.
+</item>
+
+</list>
+
 
 <!-- Bridges -->
 
 <text>
-An edge e of a connected graph G is called a bridge if G \ e is not connected.
+The removal of cut points results in a disconnected graph. There are also edges that have this property:
+An edge e of a connected graph G is called a bridge if G \ e is not connected. In particular, when e is a bridge, <eqn>k(G\v) = k(G) + 1</eqn>.
 </text>
 
+<text>
+An edge is a bridge of G if and only if it lies on no cycle in G.
+</text>
 
 
 <figure>
@@ -657,7 +728,7 @@ An edge e of a connected graph G is called a bridge if G \ e is not connected.
 </figure>
 
 <text>
-For example, let us consider the bowtie graph in Figure <ref>fig-connectivity</ref>. In this graph, both <eqn>c</eqn> and <eqn>d</eqn> are cut nodes (a.k.a articulation points), whereas only the <eqn>cd</eqn> edge is a bridge.
+For example, let us consider the bowtie graph in Figure <ref>fig-connectivity</ref>. In this graph, both <eqn>c</eqn> and <eqn>d</eqn> are cut points (a.k.a articulation points), whereas only the <eqn>cd</eqn> edge is a bridge.
 </text>
 
 <text>
@@ -675,11 +746,28 @@ if and only if it does not contain any bridge.
 
 <!-- Separable graphs -->
 
+
 <text>
-A connected graph containing cut points is said to be separable.
+A connected graph containing no cut-nodes is a nonseparable graph, whereas a connected graph containing cut points is said to be separable.
+</text>
+
+<text>
+It can be proved that, in any nonseparable graph with 3 nodes or more, every two vertices lie on a common cycle. Therefore, there are two internally disjoint paths between every two distinct nodes in nonseparable graphs, where internally disjoint means that they have only their end vertices in common (a.k.a. vertex-disjoint paths).
+</text>
+
+<!-- Blocks -->
+
+<text>
 The maximal induced subgraphs of a graph G which are not separable are called the blocks or biconnected components of G.
 </text>
 
+<text>
+Every two distinct blocks of a given connected graph have at most one vertex in common. When they have one, this vertex is a cut point.
+</text>
+
+<text>
+It can also be proved that the center of every connected graph lies in a single block of the graph.
+</text>
 
 <text>
 J: Let G be a graph and s and t two vertices of G. Then a set of paths in G with start vertex s and end vertex t is called edge disjoint if no two of these paths share an edge, and vertex disjoint if no two of the paths have a vertex other than s and t in common.
@@ -694,7 +782,9 @@ J: Let G be a graph and s and t two vertices of G. Then a set of paths in G with
 <title>Vertex separators and edge separators</title>
 
 <text>
-A subset A of E is called an edge separator for s and t if each path from s to t contains some edge from A. Similarly, a subset X of V \ {s, t} is called a vertex separator for s and t if each path from s to t meets X in some vertex.
+A subset A of E is called an edge separator for s and t if each path from s to t contains some edge from A. 
+
+Similarly, a subset X of V \ {s, t} is called a vertex separator for s and t if each path from s to t meets X in some vertex.
 </text>
 
 
@@ -709,20 +799,23 @@ graph by the number of vertex disjoint paths (or edge disjoint paths) between
 any two given vertices
 </text>
 
+
 </document>
 
 
-<!-- k-connectivity -->
+<!-- k-connectivity: k-connected &amp; k-edge-connected graphs -->
 
 <document>
 <tag>graph-theory-k-connectivity</tag>
 <title>Vertex connectivity and edge connectivity</title>
 
-<text>
-++ Connectivity: k-connected &amp; k-edge-connected graphs
-</text>
 
 <!-- Vertex connectivity -->
+
+<text>
+A vertex-cut of a connected graph G is a subset S of the vertices V(G) such that G\S is disconnected.
+A vertex-cut of minimum cardinality is called a minimum vertex-cut and this cardinality is known as the vertex connectivity of the graph, denoted by \kappa(G).
+</text>
 
 <text>
 \kappa(G): the connectivity of a graph
@@ -749,7 +842,16 @@ A k-connected graph on n vertices contains at least <eqn>\lceil kn/2 \rceil</eqn
 A connected graph with at least three vertices either contains a cut point or is 2-connected.
 </text>
 
+<text>
+The maximal induced subgraphs of a graph G which are k-connected are called the k-connected components of G. The idea of k-connected components generalizes the previous concept of block or biconnected component, where <eqn>k=2</eqn>.
+</text>
+
 <!-- Edge connectivity -->
+
+<text>
+Analogously, an edge-cut of a connected graph G is a subset X of the edges E(G) such that G\X is disconnected.
+An edge-cut of minimum cardinality is called a minimum edge-cut and this cardinality is known as the edge connectivity of the graph, denoted by \lambda(G).
+</text>
 
 <text>
 \lambda(u, v) = the minimal cardinality of an edge separator for u and v.
@@ -761,6 +863,9 @@ The edge connectivity \lambda(G) is defined as lambda(G) = min{ \lambda(u, v) : 
 G is called m-fold edge connected if \lambda(G) \geq m
 </text>
 
+<text>
+The following equation defines the relationship among (vertex) connectivity, edge connectivity, and maximum degree for any connected graph:
+</text>
 
 <equation>
 \kappa(G) \leq \lambda(G) \leq \delta(G)
@@ -783,27 +888,35 @@ disconnected). In either case, \kappa(G) \leq k = \lambda(G).
 <!-- Connectivity theorems -->
 
 <text>
-Menger's theorem (1927):
+By definition, a graph is connected if every two vertices are connected by at least one path. This fact can be generalized by Menger's and Whitney's theorems:
+</text>
 
-(Menger’s theorem, edge version). Let G be a graph or
-digraph, and let s and t be two vertices of G. Then the maximal number of
-edge disjoint paths from s to t is equal to the minimal cardinality of an edge
-separator for s and t.
+<list>
 
-(Menger’s theorem, vertex version). Let G be a graph
-or digraph, and let s and t be any two non-adjacent vertices of G. Then the
-maximal number of vertex disjoint paths from s to t is equal to the minimal
-cardinality of a vertex separator for s and t.
+<item>Menger’s theorem (1927), edge version: Let G be a graph or digraph, and let s and t be two vertices of G. Then the maximal number of edge disjoint paths from s to t is equal to the minimum cardinality of an edge separator for s and t.</item>
+
+<item>Menger’s theorem (1927), vertex version: Let G be a graph or digraph, and let s and t be any two non-adjacent vertices of G. Then the maximal number of vertex disjoint paths from s to t is equal to the minimum cardinality of a vertex separator for s and t.</item>
+
+</list>
+
+<text>
+By Menger's theorem, \kappa(s, t) equals the minimal cardinality of a vertex separator for s and t whenever s and t are non-adjacent.
 </text>
 
 <text>
-By Menger's theorem, \kappa(s, t)
-equals the minimal cardinality of a vertex separator for s and t whenever s
-and t are non-adjacent.
+With the aid of Menger's theorem, k-connected graphs can be characterized as follows:
 </text>
 
+<list>
+
+<item>Whitney's theorem (1932), vertex version: A graph G is k-connected if and only if any two vertices of G are connected by at least k vertex disjoint paths.</item>
+
+<item>Whitney's theorem (1932), edge version: A graph G is k-edge-connected if and only if any two vertices of G are connected by at least k edge disjoint paths.</item>
+
+</list>
+
 <text>
-Whitney's theorem (1932): A graph G is k-connected if and only if any two vertices of G are connected by at least k vertex disjoint paths [Whi32a]. (Note: Menger's theorem only applies to non-adjacent vertices s and t.)
+This formal result completes our study of graph connectivity, by completing Menger's theorem, which was only applicable to non-adjacent vertices s and t.
 </text>
 
 </document>
@@ -851,7 +964,7 @@ In a complete graph, every two distinct edges are adjacent, i.e. the size of a c
 
 The complete graph Kn has n vertices (that is, |V | = n) and all two-element subsets of V as edges. 
 
-The graph <eqn>K_n</eqn> is <eqn>(n-1)</eqn>-regular and its size is <eqn>n(n-1)/2</eqn>.
+The graph <eqn>K_n</eqn> is <eqn>(n-1)</eqn>-regular and its size is <eqn>n(n-1)/2</eqn>. Its (vertex) connectivity and edge connectivity are maximum: <eqn>\kappa(K_n) = \lambda(K_n) = n-1</eqn>.
 </text>
 
 <figure>
@@ -879,6 +992,8 @@ digraph on n vertices."
 <title>Cubic graphs</title>
 
 A cubic graph is a graph in which all vertices have degree three, i.e. a 3-regular graph. Cubic graphs are also called trivalent graphs.
+
+Their (vertex) connectivity and edge connectivity always coincide, i.e. <eqn>\kappa(K_n) = \lambda(K_n)</eqn>, and they can be either 1 or 2.
 
 There are many well-known individual cubic graphs, including the complete graph <eqn>K_4</eqn>, the utility graph (<eqn>K_{3,3}</eqn>), the Petersen graph, the Heawood graph, the Möbius-Kantor graph, the Pappus graph, the Desargues graph, the Nauru graph, the Coxeter graph, the Tutte-Coxeter graph (a.k.a. Tutte eight-cage), the Dyck graph, the Foster graph, or the Biggs-Smith graph.
 
@@ -974,9 +1089,11 @@ Obviously, the graph Ks,t is regular only if s = t (in that case, it is s-regula
 <title>Trees</title>
 
 <text>
-++ Properties: connected, acyclic graphs
+Trees are connected acyclic graphs.
 
-connected graph with n-1 edges and n nodes
+- connected graph with n-1 edges and n nodes.
+- every edge is a bridge, since there are no cycles.
+- every two nodes are connected by a unique path.
 
 DEFINITION
 
@@ -994,8 +1111,10 @@ that there is a tree on n vertices having degrees d1, . . . , dn if and only if
 d1 + . . . + dn = 2(n - 1),
 </text>
 
+
+
 <text>
-A forest is a graph whose connected components are trees.
+A forest is a graph without cycles, i.e. a graph whose connected components are trees. Obviously, a forest of n nodes with k connected components has n-k links.
 </text>
 
 
@@ -1020,15 +1139,22 @@ Clearly, given any vertex r, an undirected tree has exactly one orientation as a
 </text>
 
 <text>
-++ Special trees: stars, double stars, and caterpillars (spine)
+There are several well-known classes of trees:
 </text>
+
+<list>
+<item>Paths <eqn>P_n</eqn>, which are the trees with the minimum number of leaves (just <eqn>2</eqn> of them).</item>
+<item>Stars <eqn>K_{1,n-1}</eqn>, which are the trees with the maximum possible number of leaves: <eqn>n-1</eqn> leaves.</item>
+<item>Double stars, i.e. a tree containing exactly two non-leaves, which must be adjacent.</item>
+<item>Caterpillars, when the removal of the tree leaves produces a path (the spine of the caterpillar). Paths, stars, and double stars are also caterpillars.</item>
+</list>
 
 <figure>
   <tag>fig-trees</tag>
   <image scale="20" file="image/graphs/star"/>
   <image scale="35" file="image/graphs/double-star"/>
   <image scale="50" file="image/graphs/caterpillar"/>
-  <title>Special kinds of trees: stars, double stars, and caterpillars (or spines)</title>
+  <title>Well-known kinds of trees: stars, double stars, and caterpillars.</title>
 </figure>
 
 
@@ -1116,16 +1242,15 @@ for j=1..n-1
 
 </document>
 
-<document>
+<note>
 <title>Spanning trees</title>
 
 <text>
-++ Spanning trees: Matrix-Tree Theorem
-
-The matrix tree theorem, also called Kirchhoff's matrix-tree theorem, states that the number of nonidentical spanning trees of a graph G is equal to any cofactor of the degree matrix of G  minus the adjacency matrix of G.
+Cayley's tree formula, which states that there are <eqn>n^(n-2)</eqn> labeled trees of <eqn>n</eqn> nodes, can be interpreted from a different point of view: there can be <eqn>n^(n-2)</eqn> different spanning trees of the labeled complete graph <eqn>K_n</eqn>. Kirchhoff's matrix-tree theorem gives us the number of non-identical spanning trees of labeled graphs in general.
 </text>
 
-</document>
+<!-- equal to the value of any cofactor of the degree matrix of G minus the adjacency matrix of G. -->
+</note>
 
 </document>
 
@@ -1237,8 +1362,9 @@ graph G.
 </note>
 
 <text>
-J: the famous characterization of planar graphs: A graph G is planar if and only
-if it does not contain a subgraph which is homeomorphic to K5 or K3,3 (Kuratowski's theorem).
+J: the famous characterization of planar graphs:
+
+Kuratowski's theorem: A graph G is planar if and only if it does not contain a subgraph which is homeomorphic to K5 or K3,3.
 
 W: Two important characterizations of planar graphs, Kuratowski's theorem that the planar graphs are exactly the graphs that contain neither K3,3 nor the complete graph K5 as a subdivision, and Wagner's theorem that the planar graphs are exactly the graphs that contain neither K3,3 nor K5 as a minor, encompass this result.
 
@@ -1250,8 +1376,7 @@ the resulting graph is usually denoted by G/e, where e = uv.
 A graph G is called contractible to a graph H if
 H arises from G by a sequence of elementary contractions. 
 
-J: Wagner's theorem: A graph G is planar if and only if it
-does not contain a subgraph which is contractible to K5 or K3,3.
+Wagner's theorem: A graph G is planar if and only if it does not contain a subgraph which is contractible to K5 or K3,3.
 </text>
 
 <text>
@@ -1424,15 +1549,39 @@ Nodes <eqn>c</eqn> and <eqn>d</eqn> have degree 3, while the remaining nodes hav
 </document>
 
 <document>
+<tag>graph-theory-matrix-degree</tag>
+<title>The degree matrix</title>
+
+<text>
+Let G be a graph with n nodes. The degree matrix of the graph G is the <eqn>n \times n</eqn> matrix <eqn>D(G) = [d_{ij}]</eqn> where
+</text>
+
+<equation>
+d_{ij} = 
+\left \{
+\begin{matrix}
+ deg(v_i) &amp; if &amp; i = j \\ 
+ 0        &amp; if &amp; i \neq j
+\end{matrix}
+\right.
+</equation>
+
+</document>
+
+
+<!--
+<document>
 <tag>graph-theory-matrix-incidence</tag>
 <title>The incidence matrix</title>
 </document>
+-->
 
+<!--
 <document>
 <tag>graph-theory-matrix-distance</tag>
 <title>The distance matrix</title>
 </document>
-
+-->
 
 <document>
 <tag>graph-theory-laplacian</tag>

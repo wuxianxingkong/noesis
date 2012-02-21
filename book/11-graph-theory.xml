@@ -21,7 +21,7 @@ Graph Theory is the mathematical study of graphs (or networks).
 
 
 <text>
-From a formal point of view, a graph <eqn>G=(V,E)</eqn> is a finite non-empty set <eqn>V</eqn> of vertices together with a possibly empty set <eqn>E</eqn> of 2-element subsets of <eqn>V</eqn> called edges. A graph <eqn>G=(V,E)</eqn>, therefore, has a vertex set <eqn>V</eqn> and an edge set <eqn>E</eqn>, which are often denoted by <eqn>V(G)</eqn> and <eqn>E(G)</eqn>, respectively. Vertices are often referred to as points or, more commonly, nodes. Edges are sometimes called lines or links. When talking about networks, we will prefer the terms nodes and links.
+From a formal point of view, a <term>graph</term> <eqn>G=(V,E)</eqn> is a finite non-empty set <eqn>V</eqn> of vertices together with a possibly empty set <eqn>E</eqn> of 2-element subsets of <eqn>V</eqn> called edges. A graph <eqn>G=(V,E)</eqn>, therefore, has a <term>vertex set</term> <eqn>V</eqn> and an <term>edge set</term> <eqn>E</eqn>, which are often denoted by <eqn>V(G)</eqn> and <eqn>E(G)</eqn>, respectively. Vertices are often referred to as points or, more commonly, nodes. Edges are sometimes called lines or links. When talking about networks, we will prefer the terms nodes and links.
 </text>
 
 <text>
@@ -29,11 +29,11 @@ Nodes (vertices) correspond to the elements of the system represented by the gra
 </text>
 
 <text>
-Any member <eqn>e={u,v}</eqn> of <eqn>E(G)</eqn> is an edge in <eqn>G</eqn> with end vertices <eqn>u</eqn> and <eqn>v</eqn>. Both <eqn>u</eqn> and <eqn>v</eqn> are incident with the edge <eqn>e</eqn>. An edge <eqn>e={u,v}</eqn> is said to join <eqn>u</eqn> and <eqn>v</eqn> and can be denoted by <eqn>uv</eqn> or <eqn>vu</eqn>.
+Any member <eqn>e={u,v}</eqn> of <eqn>E(G)</eqn> is an <term>edge</term> in <eqn>G</eqn> with end vertices <eqn>u</eqn> and <eqn>v</eqn>. Both <eqn>u</eqn> and <eqn>v</eqn> are incident with the edge <eqn>e</eqn>. An edge <eqn>e={u,v}</eqn> is said to join <eqn>u</eqn> and <eqn>v</eqn> and can be denoted by <eqn>uv</eqn> or <eqn>vu</eqn>.
 </text>
 
 <text>
-A self-loop, or loop for short, is an edge <eqn>vv</eqn> from one vertex <eqn>v</eqn> to itself.
+A self-loop, or <term>loop</term> for short, is an edge <eqn>vv</eqn> from one vertex <eqn>v</eqn> to itself.
 </text>
 
 
@@ -42,7 +42,7 @@ When <eqn>{u,v}</eqn> is an edge in <eqn>G</eqn>, <eqn>u</eqn> and <eqn>v</eqn> 
 </text>
 
 <text>
-The number of vertices in the graph is the order of the graph, whereas the number of edges in the graph is the size of the graph. We will typically use <eqn>n</eqn> to denote the order of the graph (i.e. its number of nodes) and <eqn>m</eqn> to denote its size (i.e. its number of links).
+The number of vertices in the graph is the <term>order</term> of the graph, whereas the number of edges in the graph is the <term>size</term> of the graph. We will typically use <eqn>n</eqn> to denote the order of the graph (i.e. its number of nodes) and <eqn>m</eqn> to denote its size (i.e. its number of links).
 </text>
 
 <text>
@@ -51,10 +51,10 @@ The number of vertices in the graph is the order of the graph, whereas the numbe
 
 <!--
 {V \choose 2} the set of all pairs of its vertices. 
-The graph \overline{G} = (V, {V \choose 2} \ E) is the complementary graph. 
+The graph \overline{G} = (V, {V \choose 2} \ E) is the <term>complementary graph</term>. 
 Two vertices of V are adjacent in G if and only if they are not adjacent in \overline{G}
 
-The line graph L(G) of a graph G has as vertices the edges of G; two edges
+The <term>line graph</term> L(G) of a graph G has as vertices the edges of G; two edges
 of G are adjacent in L(G) if and only if they have a common vertex in G. For
 example, the line graph of the complete graph Kn is the triangular graph Tn
 -->
@@ -72,20 +72,19 @@ In multigraphs, there are pairs of vertices that are connected by more than one 
 
 <text>
 In multigraphs, we replace the edge set of an ordinary graph by a family <eqn>E</eqn> of two-element subsets of <eqn>V</eqn>. 
-Formally, we define a multigraph as a triple <eqn>(V, E, J)</eqn> where <eqn>J</eqn> is a mapping from <eqn>E</eqn> to the set of two-element
-subsets of <eqn>V</eqn>, so that we can distinguish different edges connecting the same pair of vertices. <eqn>J</eqn> is called the incidence map because the image <eqn>J(e)</eqn> of an edge <eqn>e</eqn> is the set <eqn>{u, v}</eqn> of the end vertices of <eqn>e</eqn>.
+Formally, we define a <term>multigraph</term> as a triple <eqn>(V, E, J)</eqn> where <eqn>J</eqn> is a mapping from <eqn>E</eqn> to the set of two-element subsets of <eqn>V</eqn>, so that we can distinguish different edges connecting the same pair of vertices. <eqn>J</eqn> is called the incidence map because the image <eqn>J(e)</eqn> of an edge <eqn>e</eqn> is the set <eqn>{u, v}</eqn> of the end vertices of <eqn>e</eqn>.
 </text>
 
 <text>
-When <eqn>J(e) = J(e')</eqn>, we say that edges <eqn>e</eqn> and <eqn>e'</eqn> are parallel edges.
+When <eqn>J(e) = J(e')</eqn>, we say that edges <eqn>e</eqn> and <eqn>e'</eqn> are <term>parallel edges</term>.
 </text>
 
 <text>
-Multigraphs can be generalized if we allow loops, i.e. edges <eqn>e</eqn> whose <eqn>J(e)</eqn> is a singleton set <eqn>{v}</eqn>. Structures that allow both parallel edges and loops are often called pseudographs.
+Multigraphs can be generalized if we allow loops, i.e. edges <eqn>e</eqn> whose <eqn>J(e)</eqn> is a singleton set <eqn>{v}</eqn>. A structure that allows both parallel edges and loops is often called <term>pseudographs</term>.
 </text>
 
 <text>
-A graph without multiedges nor self-loops is called a simple graph. Multiedges and self-loops introduce some subtetlies in the design of graph algorithms, hence simple graphs are often preferred.
+A graph without multiedges nor self-loops is called a <term>simple graph</term>. Multiedges and self-loops introduce some subtetlies in the design of graph algorithms, hence simple graphs are often preferred.
 </text>
 
 </document>

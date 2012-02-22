@@ -9,6 +9,16 @@
 
 
 <text>
+A network is described <q>by its structure (e.g., nodes and links), and its behavior (what the network 'does' as a result of the interactions among the nodes and links).</q> In other words, networks are graphs that represent something real, <q>a representation or model of observable reality.</q> (National Research Council, Committee on Network Science for Future Army Applications: Network Science, Board of Army Science and Technology, National Academies Press, www.nap.edu, 2005).
+</text>
+
+<text>
+Two key ingredients of networks <cite>Lewis 2009</cite>:
+(1) the study of the structure of a collection of nodes and links that represent something real,
+(2) the study of the dynamic behavior of the aggregation of nodes and links.
+</text>
+
+<text>
 The study of networks encompasses theories, models, and applications expressed in terms of <q>relational concepts</q> <cite>Wasserman and Faust 1994</cite>. In other words, the relationships defined by the existing links among the elements of a complex system are the fundamental ingredient of networks, where
 </text>
 
@@ -22,14 +32,16 @@ The study of networks encompasses theories, models, and applications expressed i
 
 <text>
 Connections in a network provide opportunities for and impose constraints on the elements of the network. Ties among elements are primary and attributes of elements are secondary (and they can often be understood in terms of the role they play within the network structure). 
+
++ results seem to correlate form with function and structure with behavior <cite>Lewis 2009</cite>.
 </text>
 
 <text>
-Connections in a social network may represent kinship, friendship, liking, interactions, transactions, flow of resources, group co-membership and other kinds of social ties... even several of these at the same time.
+Connections in a social network may represent kinship, friendship, liking, interactions, transactions, flow of resources, group co-membership and other kinds of social ties... even several of these at the same time. In other kinds of networks, links might represent contagions, synapses, cables, Internet links, or bibliographical citations.
 </text>
 
 <text>
-Nodes in a social network might be people from a given group, departments within a corporation, whole corporations, public agencies, and even nation-states...
+Nodes in a social network might be people from a given group, departments within a corporation, whole corporations, public agencies, and even nation-states... In other kinds of networks, they might be molecules, genes, routers, transformers (in power grids),Web pages, or research publications.
 </text>
 
 <text>
@@ -81,7 +93,7 @@ L: Selection of topics about what some have called <term>network science</term> 
 <tag>history</tag>
 <title>Historical comments</title>
 
-<!-- Euler -->
+<!-- 18th Century: Euler -->
 
 <text>
 1736: Leonhard Euler
@@ -116,6 +128,7 @@ Euler gave a necessary and sufficient condition for an arbitrary graph to admit 
   <title>The graph representing the seven bridges of Königsberg problem.</title>
 </figure>
 
+<!-- 19th Century -->
 
 <!-- Trees -->
 
@@ -142,7 +155,7 @@ exactly once, where sometimes the first steps of the tour might also be prescrib
 More about this game can be found in [BaCo87]. We may model the
 Icosian game by looking for a cycle in the corresponding dodecahedral graph
 which contains each vertex exactly once. Such a cycle is therefore called a
-Hamiltonian cycle. In Figure 1.7 we give a solution for Hamilton’s original
+Hamiltonian cycle. In Figure 1.7 we give a solution for Hamilton's original
 problem.
 
 All platonic solids, including the dodecahedron in Figure <ref>fig-hamiltonian</ref>.
@@ -160,6 +173,79 @@ All platonic solids, including the dodecahedron in Figure <ref>fig-hamiltonian</
 Historically, <i>linkages</i> was the term sometimes employed to refer to graphs. The graph term was later standardized by James Joseph Sylvester, a 19th-century British mathematician who founded the American Journal of Mathematics, the first mathematics journal in the United States <cite>Chartrand et al. 2011</cite>.
 </text>
 
+<!-- 20th Century -->
+
+<!-- Erdos -->
+<text>
+L: The Hungarian mathematician Paul Erdos (1913–1996)... papers on random graphs ... today, we use the Erdos–Renyi (ER) random graph as a kind of benchmark—to compare with nonrandom graphs (ER model, 1959-1960)
+</text>
+
+<!-- Milgram -->
+<text>
+L: Stanley Milgram is credited with introducing the notion of a small-world network... In Milgram's experiment, volunteers in Kansas and Nebraska were asked to forward a letter to an unfamiliar target living in Cambridge and Boston, Massachusetts. Not knowing the target person, recipients forwarded the letter to an acquaintance closer to the target than themselves. Many of the letters were lost, but of the ones that eventually reached their target addresses, the number of hops along the chain of intermediaries ranged from 2 to 10, with an average of 5.2. Hence the notion of a small world and six degrees of separation was born.
+</text>
+
+<!-- Network models -->
+<text>
+L: ... scientists in other fields began to use networks as models of physical and biological phenomena... pioneering work of Duncan Watts, Steven Strogatz, and Albert-Laszlo Barabasi ...
+</text>
+
+<text>
+Small worlds (sparse networks with small diameter): Watts and Strogatz
+
+In 1990, Guare coined phrase "six degrees of separation" as the name of his Broadway play
+</text>
+
+<text>
+Scale-free networks (nonrandom networks with hubs): Barabasi and Albert, 
+
+L: "the probability that a site has k links obeys a power law, which drops off quickly for large k"
+
+L: "a microrule called preferential attachment - that the probability a site will obtain a new link is directly proportional to the number of links it already has" (the <q>rich get richer</q> phenomenon).
+</text>
+
+<text>
+TIMELINE, excerpted from <cite>Lewis 2008</cite>:
+
+1736 Euler: Bridges of Ko¨nigsberg
+1925 G. Yule: Preferential attachment, Yule–Simon distribution
+1927 Kermack, McKendrick: First epidemic model
+1951 Solomonoff, Rappaport: Spread of infection in random networks
+1955 Simon: Power law observed in word analysis
+1959 Gilbert: First generative procedure for random graph
+1960 Erdos, Renyi: Random graphs
+1967 Milgram: Small-world experiment
+1969 Bass: Diffusion of innovation in populations (non-network model)
+1971 Fisher, Pry: Diffusion by product substitution (non-network model)
+1972 Bollobas: Complex graphs
+1972 Bonacich: Idea of influence in social networks leading to influence diagrams
+1973 Granovetter: Job-seeking networks formed clusters with "weak links" between them
+1978 Pool, Kochen: First theoretical examination of small worlds
+1984 Kuramoto: Synchronization of linear systems
+1985 Bollobas: Publishes book on "random graphs"
+1989 Bristor, Ryan: "Buying networks" i.e. application of network science to model economic system
+1995 Molloy, Reed: Generation of networks with arbitrary degree sequence distribution
+1996 Kretschmar, Morris: spread of infectious disease - contagion driven by largest connected component
+1998 Holland: Emergence in complex adaptive systems
+1998 Watts, Strogatz, Faloutsos, Faloutsos: Small worlds, examples of clustering; first generative procedure for small world
+1999 Dorogovtsev, Mendes: Small-world properties
+1999 Barabasi, Albert: Scale-free network model
+1999 Dorogovtsev, Mendes, Samukhim, Krapivsky, Redner: Exact solution to scale-free network degree sequence
+1999 Watts: Explanation of “small-world dilemma”: high clustering, low path length
+1999 Walsh: Difficulty of search in small worlds using local properties
+2000 Marchiori, Latora: Harmonic distance replaces path length: works for disconnected networks
+2000 Kleinberg: Shows O(n) search in small world using “Manhattan distance”
+2000 Albert, Jeong, Barabasi: Scale-free networks are resilient if hubs are protected (Internet's “Achilles heel”)
+2001 Pastor-Satorras, Vespignani: Claim no epidemic threshold in scale-free networks; Internet susceptible to SIS viruses
+2001 Tadic, Adamic: Use of local information can speed search on scale-free networks
+2002 Kleinfeld, Claims Milgram experiments not well founded: small-world social network is an “urban myth”
+2002 Wang, Chen, Barahona, Pecora, Liu, Hong, Choi, Kim, Jost, Jo: Sync in small worlds equivalent to stability in coupled system
+2003 Wang, Chakrabarti, Wang, Faloutsos: Spread of epidemics determined by network's spectral radius, largest eigenvalue of connection matrix
+2003 Strogatz: Synchronization of crickets, heartbeats
+2006 Atay Synchronization in networks with degree sequence distribution—application to networks
+2007 Gabbay Consensus in influence networks—linear and nonlinear models
+</text>
+
 </document>
 
 
@@ -167,6 +253,20 @@ Historically, <i>linkages</i> was the term sometimes employed to refer to graphs
 <document>
 <tag>kinds</tag>
 <title>Kinds of networks</title>
+
+<text>
+2001 Yung Taxonomy of applications of small-world theory to: SNA, collaboration, Internet, business, life sciences
+</text>
+
+<text>
+++ Application domains with different terminology:
+- Communication engineers think of networks as systems of routers and switches; 
+- sociologists think of networks as influence diagrams representing the social interactions among humans;
+- marketing business people think of networks as populations of buyers; 
+- physicist thinks of networks as models of phase transition, magnetism...
+- Biologists use the network metaphor to understand epidemics, genetics, and metabolic systems within cells
+- Power engineers think of electrical power grids.
+</text>
 
 <document>
 <tag>social</tag>
@@ -220,6 +320,20 @@ Jennifer Fewell, from Arizona State University, illustrates the importance of [i
 <tag>content</tag>
 <title>Content networks</title>
 
+<text>
+WWW: 
+
+L: The structure of the Internet and WWW: an emergent property of the decentralized Internet - that it had emerged without central planning into a structure consisting of a small number of extremely popular sites called hubs, and a large number of “unpopular” sites with few links (a scale-free network).
+
+1999 Albert, Jeong, Barabasi: Power law observed in WWW
+1999 Adamic: Distance between .edu sites shown to be small-world
+1999 Kleinberg, Kumar, Raghavan, Rajagopalan, Tomkins: Formalized model of WWW as “Webgraph”
+2000 Broder, Kumar, Maghoul, Raghavan, Rajagopalan Stata, Tomkins, Wiener: Full Webgraph map of the WWW
+2002 Levene, Fenner, Loizou, Wheeldon: Enhanced Webgraph model concluded structure of the WWW couldn't be explained by preferential
+attachment alone
+
+</text>
+
 <cite>Liu 2011</cite>
 
 
@@ -238,6 +352,17 @@ Jennifer Fewell, from Arizona State University, illustrates the importance of [i
 <document>
 <tag>transportation</tag>
 <title>Transportation networks</title>
+
+
+<text>
+INTERNET: 
+
+L: The structure of the Internet and WWW: an emergent property of the decentralized Internet - that it had emerged without central planning into a structure consisting of a small number of extremely popular sites called hubs, and a large number of “unpopular” sites with few links (a scale-free network).
+
+1988 Waxman: First graph model of the Internet
+1999 Faloutsos: Power law observed in Internet
+</text>
+
 </document>
 
 <document>
@@ -351,6 +476,15 @@ The first use of the <q>social network</q> term is often attributed to John Arun
 
 <text>
 Sociometry can be considered to be the precursor of social network analysis (and much of social psychology), as it was founded to measure interpersonal relations in small groups of people. Jacob Levy Moreno, the founder of sociometry, also pioneered the use of <q>sociograms</q> in the 1930's, e.g. <cite>Moreno and Jennings 1938</cite>. Sociograms are standard graph drawings used to depict the social links that determine the interpersonal structure of groups.
+</text>
+
+<text>
+Network science:
+2003 Virtanen Complete survey of network science results up to 2003
+
+2005 NRC Definition of network science: Committee on Network Science for Future Army Applications, commissioned by the Board on Army Science and Technology in cooperation with the National Research Council of the National Academies:
+<q>organized knowledge of networks based on their study using the scientific method</q> (National Research Council, Committee on Network Science for Future Army Applications: Network Science, Board of Army Science and Technology, National Academies Press, www.nap.edu, 2005).
+
 </text>
 
 </document>

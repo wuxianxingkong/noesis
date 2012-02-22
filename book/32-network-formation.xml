@@ -32,7 +32,9 @@
 
 <text>
 ++
-<cite>Watts and Strogatz 1998</cite> created a simple model that originates small worlds + discovered that these patterns are present in a broad range of networks.
+<cite>Watts and Strogatz 1998</cite> created a simple model that originates small worlds + discovered that these patterns are present in a broad range of networks. 
+
+L: Very sparse networks with small diameter (small worlds) at diverse phenomena such as phase transitions in materials, functionality of biological organisms, and behavior of electrical power grids.
 
 <cite>Uzzi et al. 2007</cite>
 </text>

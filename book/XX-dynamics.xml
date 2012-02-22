@@ -20,15 +20,39 @@
 ++ Evolution <cite>Leskovek et al. 2005</cite> <cite>Dorogovtsev and Mendes 2002</cite> <cite>Dorogovtsev and Mendes 2003</cite> <cite>Pastor-Satorras and Vespignani 2007</cite>
 </text>
 
+<text>
+Chapter 7 @ <cite>Lewis 2009</cite>: <q>Emergence,</q> introduces new self-organizing principles
+for networks and shows how to custom-design networks of arbitrary degree sequence
+distribution; 
+</text>
+
+<text>
+Chapter 12 @ <cite>Lewis 2009</cite>, <q>Netgain,</q> is an exploration of business
+models - relating the famous Schumpeter creative destruction process to an emergent
+process, and mapping the Bass and Fisher-Pry equations onto networks. It is comforting
+to verify the Bass-Fisher-Pry equations for networks, but furthermore, I
+show how these classical models may be extended to multi-product markets and oligopolies.
+</text>
+
 <document>
 <tag>diffusion</tag>
 <title>Diffusion through networks (i.e. signal propagation)</title>
+
+<text>
+L: Chapter 8 @ <cite>Lewis 2009</cite>, <q>Epidemics,</q> extends the elegant work of Z. Wang,
+Chakrabarti, C. Wang, and Faloutsos, to the exciting new endeavor of designing
+antigen countermeasures for the Internet. This work can be used to explain human
+epidemics as well as epidemics that sweep across the Internet. 
+</text>
+
 </document>
+
 
 <document>
 <tag>search</tag>
 <title>Search on networks</title>
 </document>
+
 
 <document>
 <tag>synchronization</tag>
@@ -38,11 +62,26 @@
 ++ <cite>Arenas et al. 2008</cite>
 </text>
 
+<text> 
+L: Chapter 9 @ <cite>Lewis 2009</cite>, <q>Synchrony,</q> pushes the early work of Watts to new levels—claiming that
+network synchronization is merely a special case of linear system stability. Simple
+eigenvalue tools can be used to determine the stability and synchrony of almost
+any linear network. 
+</text>
+
+<text>
+L: Chapter 10 @ <cite>Lewis 2009</cite>, <q>Influence Networks,</q> is mostly new material and
+suggests what conditions must be met in order for a social network to come to consensus.
+As it turns out, it is not easy for groups to agree! 
+</text>
+
 </document>
+
 
 <document>
 <tag>robustness</tag>
 <title>Robustness / Vulnerability (i.e. percolation &amp; network resilience)</title>
+
 
 <text>
 ++ <cite>Motter 2004</cite> <cite>Huang et al. 2011</cite>
@@ -50,6 +89,16 @@
 
 <text>
 ++ Internet <cite>Cohen et al. 2000</cite> <cite>Cohen et al. 2001a</cite> <cite>Cohen et al. 2001b</cite>
+</text>
+
+
+<text>
+L: Chapter 11 @ <cite>Lewis 2009</cite>, <q>Vulnerability,</q>
+builds on the PhD dissertation of Waleed Al-Mannai, who formalized and extended
+my own work on network risk. Al Mannai’s theory is being used on a daily basis to
+evaluate critical infrastructure systems and protect them against natural and synthetic
+(anthropogenic, humanmade) attacks. This has made a profound impression on the
+practice of homeland security. 
 </text>
 
 </document>

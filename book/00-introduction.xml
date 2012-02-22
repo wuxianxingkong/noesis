@@ -272,6 +272,15 @@ TIMELINE, excerpted from <cite>Lewis 2008</cite>:
 <tag>social</tag>
 <title>Social networks</title>
 
+
+<text>
+The first use of the <q>social network</q> term is often attributed to John Arundel Barnes <cite>Barnes 1954</cite>, an anthropologist who conducted a field study to analyze the social structure and decision-making processes in Bremnes, a small island in western Norway. Since then, social networks denote patterns of ties that encompass many concepts used by the social sciences, including bounded groups (e.g., tribes or families) and social categories (e.g., gender or ethnicity).
+</text>
+
+<text>
+Sociometry can be considered to be the precursor of social network analysis (and much of social psychology), as it was founded to measure interpersonal relations in small groups of people. Jacob Levy Moreno, the founder of sociometry, also pioneered the use of <q>sociograms</q> in the 1930's, e.g. <cite>Moreno and Jennings 1938</cite>. Sociograms are standard graph drawings used to depict the social links that determine the interpersonal structure of groups.
+</text>
+
 <text>
 Widely used in the social and behavioral sciences, social network analysis focuses on the relationships among social entities <cite>Wasserman and Faust 1994</cite>. Depending on the particular context, these social entities can be individuals belonging to groups, corporations making economic transactions with other corporations, or nations signing treaties and trade agreements. The key ingredient in social network analysis is its focus on relationships, in contrast to reductionist approaches that limit their attention to the attributes of individual social entities.
 </text>
@@ -459,6 +468,20 @@ Brendan McKay, the author of the Nauty program, also maintains collectins of var
 <tag>introduction-notes</tag>
 <title>Bibliographic notes</title>
 
+<text>
+2005 NRC Definition of network science: Committee on Network Science for Future Army Applications, commissioned by the Board on Army Science and Technology in cooperation with the National Research Council of the National Academies:
+<q>organized knowledge of networks based on their study using the scientific method</q> (National Research Council, Committee on Network Science for Future Army Applications: Network Science, Board of Army Science and Technology, National Academies Press, www.nap.edu, 2005).
+</text>
+
+<text>
+<cite>Lewis 2009</cite>: <q>Network science, or the science of networks, is the study of the theoretical foundations of network structure/dynamic behavior and the application of networks to many subfields. Currently known subfields include social network analysis (SNA), collaboration networks (bibliographic citations, product marketing, online social networks), synthetic emergent systems (power grids, the Internet), physical science systems (phase transition, percolation theory, Ising theory), and life science systems (epidemics, metabolic processes, genetics).</q>
+</text>
+
+<text>
+Related fields: networks incorporates ideas from complex adaptive systems (emergence), chaos theory (synchronization), and mean-field theory (physics)
+</text>
+
+
 <document>
 <title>Survey papers</title>
 
@@ -471,20 +494,8 @@ Brendan McKay, the author of the Nauty program, also maintains collectins of var
 </text>
 
 <text>
-The first use of the <q>social network</q> term is often attributed to John Arundel Barnes <cite>Barnes 1954</cite>, an anthropologist who conducted a field study to analyze the social structure and decision-making processes in Bremnes, a small island in western Norway. Since then, social networks denote patterns of ties that encompass many concepts used by the social sciences, including bounded groups (e.g., tribes or families) and social categories (e.g., gender or ethnicity).
-</text>
-
-<text>
-Sociometry can be considered to be the precursor of social network analysis (and much of social psychology), as it was founded to measure interpersonal relations in small groups of people. Jacob Levy Moreno, the founder of sociometry, also pioneered the use of <q>sociograms</q> in the 1930's, e.g. <cite>Moreno and Jennings 1938</cite>. Sociograms are standard graph drawings used to depict the social links that determine the interpersonal structure of groups.
-</text>
-
-<text>
-Network science:
-2003 Virtanen Complete survey of network science results up to 2003
-
-2005 NRC Definition of network science: Committee on Network Science for Future Army Applications, commissioned by the Board on Army Science and Technology in cooperation with the National Research Council of the National Academies:
-<q>organized knowledge of networks based on their study using the scientific method</q> (National Research Council, Committee on Network Science for Future Army Applications: Network Science, Board of Army Science and Technology, National Academies Press, www.nap.edu, 2005).
-
+++ Network science: 2003 Virtanen Complete survey of network science results up to 2003
+[Virtanen, S., Properties of Non-uniform Random Graph Models, Helsinki Univ. Technology, Laboratory for Theoretical Computer Science, Report FIN-02015 HUT, lab@tcs.hut, 2003]
 </text>
 
 </document>

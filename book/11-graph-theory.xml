@@ -201,6 +201,11 @@ N - nodes, also known as vertices or “actors”
 L - links, also known as edges
 f : N - N - mapping function that connects nodepairs, yielding topology
 J - algorithm for describing behaviors of nodes and links versus time
+
+MT: A macro-level model explains how the world works with an equation. Micro-level models are called agent-based models.
+1. Agents: The objects of our model, i.e. a set of autonomous agents (who might decide to collaborate)
+2. Rules: Agent behavior: rules they follow (might be pretty simple).
+3. Outcome: When agents follow their rules, it creates something at the macro level, sometimes surprising [emergence]
 </text>
 
 </document>

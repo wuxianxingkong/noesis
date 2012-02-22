@@ -20,6 +20,17 @@ Applications: Web communities representing groups with a common interest, commun
 </text>
 
 <text>
+1) people literally choose to people like them (sorting, what sociologists call homophily)
+2) we also change our behavior to match that of people around us (peer effects)
+both mechanisms create groups of people who look similar to one another
+
+e.g. 
+- Thomas Schelling's tipping model (racial segregation),
+- Mark Granovetter (people's willingness to participate in some sort of collective behavior: riots, political uprisings,social movement...)
+- John Miller and Scott Page's standing ovation model (a model of peer effects where you change your behavior to match that of others around you)
+</text>
+
+<text>
 GRAPH PARTITIONING, from <cite>Skiena 2008</cite>:
 
 APPLICATIONS:

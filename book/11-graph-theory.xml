@@ -172,6 +172,38 @@ We say that a digraph G is symmetric if,whenever (u,v) is an arc of G, then (v,u
 </document>
 
 
+<!-- Networks -->
+
+
+<document>
+<tag>graph-theory-network</tag>
+<title>Networks</title>
+
+<text>
+L: The structure portion of a network is easily modeled by graph theory.
+
+L: Specifically, the network itself can be defined in terms of a set, G = {N, L, f}, where N is a set of nodes, L a set of links, and f : N - N a mapping function that defines the structure of G—how nodes are connected to each other through links. The mapping function contains enough information to draw the graph on a planar piece of paper using dots as nodes and lines as links.
+</text>
+
+<text>
+Graph theory, however, is inadequate to define the second key ingredient of a network: its dynamic behavior.
+
+L: The dynamic portion of a network is defined by a set of microrules governing the behavior of nodes and links. These rules are given at the microlevel, to distinguish them from macrolevel behaviors of networks. Specifically, microlevel rules dictate the behavior of links and nodes, and macrolevel rules dictate the emergence of global properties of a network. For example, preferential attachment—links are attracted to nodes with a lot of links, already—is a microrule, whereas the power law describing the degree sequence distribution of a network is a macrolevel rule. As network scientists, we are concerned mainly with understanding macrolevel properties by studying microrules—and sometimes the reverse.
+
+L: A complete definition of network G must include both structural and behavioral information. For example, G(t) = { N(t), L(t), f(t) } is a set-theoretic definition of network G with a dynamic dimension 
+
+L: G(t) is a function of time t and the number, values, and mappings of nodes and links as they change with time. The
+actual behaviors of G(t) are expressed algorithmically, typically in the form of a computer algorithm. 
+
+L: Definition of Network G(t) = { N(t); L(t); f(t): J(t) } where, 
+t - time, simulated or real
+N - nodes, also known as vertices or “actors”
+L - links, also known as edges
+f : N - N - mapping function that connects nodepairs, yielding topology
+J - algorithm for describing behaviors of nodes and links versus time
+</text>
+
+</document>
 
 </document>
 

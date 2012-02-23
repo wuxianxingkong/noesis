@@ -32,6 +32,23 @@ Local centrality measures let us infer the potential influence of individual nod
 </text>
 
 <text>
+L: Power. The power of a node is proportional to its degree (number of links connecting
+it to the network) influence (link values); and betweenness or closeness;
+the power of a network is proportional to the number and strength of
+its nodes and links. For example, Metcalf's law states that the power of a
+network is proportional to the square of the number of nodes it contains
+[e.g., the maximum number of links that a network with n nodes can contain
+is n(n2-1)/2, which is approximately n2]. The influence a person exerts on a
+group is proportional to the position, number, and power of colleagues the
+person has within the group, such as the person’s connectivity. The power of
+a corporation, within an industry or market, is proportional to the number
+of customers (links) that it has, or its intermediary position within the
+industry. Power is a subtle but important organizing principle in most networks,
+but it is often called something else, such as influence, signal strength,
+or infection rate.
+</text>
+
+<text>
 The use of a particular metric to characterize the centrality of a node within a given network makes assumptions on the nature of the information flow or the dynamic processes on the network <cite>Borgatti 2005</cite>.
 </text>
 

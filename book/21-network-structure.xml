@@ -7,6 +7,12 @@
 &bibliography;
 <title>Network Structure</title>
 
+<text>
+L: Networks have structure—they are not random collections of nodes and links. Real-world networks have a distinct format or topology. This suggests that function follows form - many real-world phenomena behave the way they do because of their network structure...
+
+The architecture or topology of a network is a property that emerges over time as a consequence of distributed—and often subtle—forces or autonomous
+behaviors of its nodes. 
+</text>
 
 <document>
 <tag>structure-connectivity</tag>

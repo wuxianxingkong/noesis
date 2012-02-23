@@ -62,6 +62,8 @@ L: Watts and Strogatz: small worlds as networks with relatively short distances 
 SMALL WORLDS IN THE REAL WORLD
 L: Very sparse networks with small diameter (small worlds) at diverse phenomena such as phase transitions in materials, functionality of biological organisms, and behavior of electrical power grids.
 e.g. database of film actors, the electric power grid of the western United States, and the neural network of the nematode worm C. elegans (Caenorhabditis elegans)
+
+L: Sparse small-world networks appear to model human social networks, because humans have limited capacity to know a large number of other humans.
 </text>
 
 <text>
@@ -213,6 +215,10 @@ distribution of species among genera all obey a power law.
 1999:
 + M. Faloutsos, P. Faloutsos, and C. Faloutsos observed a power law in their graph models of the Internet
 + Albert, Jeong, and Barabasi obtained similar results for the WWW
+
+Scale-free networks appear to model economic constructs such as the Internet and
+monopolies within industrial segments, because preferential attachment is essentially
+the law of increasing returns of economics.
 </text>
 
 <text>

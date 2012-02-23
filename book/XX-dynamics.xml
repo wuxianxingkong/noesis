@@ -9,6 +9,10 @@
 <title>Network Dynamics</title>
 
 <text>
+A network is dynamic if its topology or other properties change as a function of time
+</text>
+
+<text>
 ++ <cite>Barrat et al. 2008</cite> <cite>Bar-Yam 2003</cite>  <cite>Ganguly et al. 2009</cite>
 </text>
 
@@ -149,6 +153,8 @@ without global knowledge."
 
 L: understanding of how and why network synchronization occurs in physical and biological systems also explains
 the conditions for arriving at a consensus by a group of people, how best to conduct product marketing campaigns, and how corporations rise to become a monopoly. Synchronization is a byproduct of the structure of 'living networks.'
+
+L: Networks tend to be structured in such a way that synchronization is more likely than chaos, simply because unstable systems cannot survive in natur
 </text>
 
 <text>
@@ -191,6 +197,15 @@ or converge? ... A network is said to sync when the value of its nodes reach
 a fixed point—a value that ceases to change once reached. We answer the question
 "What properties or conditions are necessary and sufficient for a network to sync?"
 The answer leads to a general theory of stability in networks.
+
+L: Stability. A dynamic network is stable if the rate of change in the state of its
+nodes/links or its topology either diminishes as time passes or is bounded
+by dampened oscillations within finite limits. For example, the regular and
+rhythmic beating of an animal’s heart is controlled by a stable network of
+nerves that regulate the pacemaker, the loss of a power plant in the electrical
+power grid stabilizes quickly by switching from one source to another
+without disruption in supply, or the loss of a coworker causes short-term reallocation
+of responsibility without organizational failure.
 </text>
 
 <text>

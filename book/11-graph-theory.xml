@@ -743,9 +743,6 @@ The girth of a graph containing cycles is the length of a shortest cycle.
 An edge linking two nodes indicates that they can communicate directly, whereas longer paths are likely to have a lower effect on the network behavior.
 </text>
 
-<text>
-++ Counting the number of paths of length k by matrix multiplication: A^k (includes non-simple paths), e.g. divide-and-conquer algorithm @ Skiena 425 [Karatsuba KO63], fast multiplication algorithms @ Skiena 403 [Strassen 69][Coppersmith 90][CKSU05]
-</text>
 
 <text>
 The pairwise distance of the shortest path linking the nodes in a network is represented in its distance matrix. Its global maximum is the network diameter. The distance matrix describes the communication pattern within the network.
@@ -1576,8 +1573,13 @@ Let <eqn>a_{ij}^{(k)}</eqn> denote the <eqn>(i,j)</eqn> entry in the matrix <eqn
 <list>
 
 <item>
-The degree of a node: <eqn>deg(v_i) = a_{ii}^{(2)}</eqn>.
+The degree of a node: <eqn>d_i = deg(v_i) = a_{ii}^{(2)}</eqn>.
 </item>
+
+
+<text>
+++ Counting the number of paths of length k by matrix multiplication: A^k (includes non-simple paths), e.g. divide-and-conquer algorithm @ Skiena 425 [Karatsuba KO63], fast multiplication algorithms @ Skiena 403 [Strassen 69][Coppersmith 90][CKSU05]
+</text>
 
 <item>
 The number of triangles in G than contain a given node: <eqn>triangles(v_i) = a_{ii}^{(3)} / 2</eqn>.
@@ -1642,7 +1644,7 @@ Note: The adjacency matrix is also known as the <term>sociomatrix</term> in soci
 </note>
 
 <text>
-The spectral decomposition of the adjacency matrix also provides valuable insight into the nature of a graph. The <term>spectral radius</term> <eqn>\rho(G)</eqn> is computed from the adjacency matrix as its the largest non-trivial (i.e. non-zero) eigenvalue. The largest eigenvalue of the adjacency matrix, often denoted by <eqn>\kappa_1</eqn>, is never below the average degree of the network <eqn>\overline{d} = 2m / n</eqn>, nor below the square root of the largest degree <eqn>\Delta</eqn>. Spectral eigenvalues are also called <term>characteristic eigenvalues</term> because they characterize the topology of a graph in succinct terms (in fact, they are completely determined by the graph degree sequence) and they can be useful when analyzing the dynamic behavior of networks (e.g. the spectral radius can determine the persistence of an infection).
+The spectral decomposition of the adjacency matrix also provides valuable insight into the nature of a graph. The <term>spectral radius</term> <eqn>\rho(G)</eqn> is computed from the adjacency matrix as its the largest non-trivial (i.e. non-zero) eigenvalue. The largest eigenvalue of the adjacency matrix, often denoted by <eqn>\kappa_1</eqn>, is never below the average degree of the network <eqn>\langle d \rangle = 2m / n</eqn>, nor below the square root of the largest degree <eqn>\Delta</eqn>. Spectral eigenvalues are also called <term>characteristic eigenvalues</term> because they characterize the topology of a graph in succinct terms (in fact, they are completely determined by the graph degree sequence) and they can be useful when analyzing the dynamic behavior of networks (e.g. the spectral radius can determine the persistence of an infection).
 </text>
 
 </document>
@@ -1699,7 +1701,7 @@ b_{ij} =
 
 <text>
 The sum <eqn>\sum_k b_{ki}b_{kj}</eqn> will be -1 if there is an edge from vertex i to vertex j and zero otherwise.
-When i=j, this sum becomes <eqn>\sum_k b_{ki}^2</eqn> and returns the degree of vertex i.
+When i=j, this sum becomes <eqn>\sum_k b_{ki}^2</eqn> and returns the degree of the ith vertex <eqn>d_i</eqn>.
 </text>
 
 </document>
@@ -1854,7 +1856,7 @@ Taking into account the definition of the Laplacian as <eqn>l_{ij} = \delta_{ij}
 </text>
 
 <equation>
-\sum_j l_{ij} \times 1 = \sum_j ( \delta_{ij}d_{i} - a_{ij} ) = d_{i} - \sum_j a_{ij} = d_{i} - d{i} = 0
+\sum_j l_{ij} \times 1 = \sum_j ( \delta_{ij}d_{i} - a_{ij} ) = d_{i} - \sum_j a_{ij} = d_{i} - d_{i} = 0
 </equation>
 
 <text>
@@ -1876,7 +1878,7 @@ Some authors resort to a normalized Laplacian matrix when they want all elements
 l_{ij} = 
 \left \{
 \begin{matrix}
- \frac{-1}{\sqrt{deg(v_i)deg(v_j)}} &amp; if &amp; v_iv_j \in E(G) \\ 
+ \frac{-1}{\sqrt{d_i d_j}} &amp; if &amp; v_iv_j \in E(G) \\ 
  0        &amp; if &amp; v_iv_j \notin E(G) 
 \end{matrix}
 \right.

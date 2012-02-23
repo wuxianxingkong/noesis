@@ -1650,34 +1650,6 @@ The spectral decomposition of the adjacency matrix also provides valuable insigh
 </document>
 
 
-<document>
-<tag>graph-theory-matrix-connection</tag>
-<title>The connection matrix</title>
-
-<text>
-In multigraphs, each entry in the adjacency matrix is replaced by the number of links connecting node i to node j. Formally, <eqn>C(G) = [c_{ij}]</eqn> where
-</text>
-
-<equation>
-c_{ij} = 
-\left \{
-\begin{matrix}
- k_{ij} &amp; if &amp; v_iv_j \in E(G)\\ 
- 0 &amp; if &amp; v_iv_j \notin E(G)
-\end{matrix}
-\right.
-</equation>
-
-<text>
-and <eqn>k_{ij}</eqn> is the number of links connecting <eqn>v_{i}</eqn> to <eqn>v_{j}</eqn>.
-</text>
-
-<text>
-Note: Parallel edges (i.e. duplicate links) are ignored in the graph's adjacency matrixm which contains a 1 in row i column j if one or
-more links connect node i to node j.
-</text>
-
-</document>
 
 
 <document>
@@ -1704,7 +1676,55 @@ The sum <eqn>\sum_k b_{ki}b_{kj}</eqn> will be -1 if there is an edge from verte
 When i=j, this sum becomes <eqn>\sum_k b_{ki}^2</eqn> and returns the degree of the ith vertex <eqn>d_i</eqn>.
 </text>
 
+<text>
+The edge incidence matrix for the bowtie graph is
+</text>
+
+<equation>
+B(G_{bowtie}) = 
+\begin{bmatrix}
+1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
+\end{bmatrix}
+</equation>
+
 </document>
+
+
+
+<document>
+<tag>graph-theory-matrix-connection</tag>
+<title>The connection matrix</title>
+
+<text>
+In multigraphs, each entry in the connection matrix represents the number of links connecting node i to node j. Formally, <eqn>C(G) = [c_{ij}]</eqn>, where
+</text>
+
+<equation>
+c_{ij} = 
+\left \{
+\begin{matrix}
+ k_{ij} &amp; if &amp; v_iv_j \in E(G)\\ 
+ 0 &amp; if &amp; v_iv_j \notin E(G)
+\end{matrix}
+\right.
+</equation>
+
+<text>
+and <eqn>k_{ij}</eqn> is the number of links connecting <eqn>v_{i}</eqn> to <eqn>v_{j}</eqn>.
+</text>
+
+<text>
+For simple graphs, it is clear that <eqn>C(G) = A(G)</eqn>. Hoewever, the connection matrix and the adjacency matrix are different for multigraphs and pseudographs, since parallel edges and loops are not reflected on adjacency matrices. An adjacency matrix contains a 1 in its (i,j) entry whenever a link connect node i to node j, but parallel edges (i.e. duplicate links connecting the same pair of  nodes) are ignored in the adjacency matrix, not so in the connection matrix.
+</text>
+
+</document>
+
 
 
 <document>
@@ -1728,6 +1748,24 @@ d_{ij} =
 <text>
 where <eqn>d_i = deg(v_i)</eqn>.
 </text>
+
+
+<text>
+The degree matrix of the bowtie network is, then,
+</text>
+
+<equation>
+D(G_{bowtie}) = 
+\begin{bmatrix}
+ 2 &amp;  0 &amp;  0 &amp;  0 &amp;  0 &amp;  0 \\
+ 0 &amp;  2 &amp;  0 &amp;  0 &amp;  0 &amp;  0 \\
+ 0 &amp;  0 &amp;  3 &amp;  0 &amp;  0 &amp;  0 \\
+ 0 &amp;  0 &amp;  0 &amp;  3 &amp;  0 &amp;  0 \\
+ 0 &amp;  0 &amp;  0 &amp;  0 &amp;  2 &amp;  0 \\
+ 0 &amp;  0 &amp;  0 &amp;  0 &amp;  0 &amp;  2 
+\end{bmatrix}
+</equation>
+
 
 </document>
 
@@ -1790,7 +1828,7 @@ The Laplacian matrix of the previous bowtie network is, therefore,
 </text>
 
 <equation>
-L(G_{bowtie}) = C(G_{bowtie}) - D(G_{bowtie}) =
+L(G_{bowtie}) = 
 \begin{bmatrix}
  2 &amp; -1 &amp; -1 &amp;  0 &amp;  0 &amp;  0 \\
 -1 &amp;  2 &amp; -1 &amp;  0 &amp;  0 &amp;  0 \\

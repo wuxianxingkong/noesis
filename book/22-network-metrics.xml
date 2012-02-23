@@ -113,6 +113,13 @@ Value within <eqn>[0,1]</eqn>.
 A node with a high closeness centrality lies close to the rest of the nodes in the network and, since it can reach them through short paths, it can exert a stronger influence on them than other nodes with a lower closeness centrality.
 </text>
 
+<text>
+L: Closeness—as defined here—is not a perfect measure of an intermediary’s power
+over others. Consider the case of a symmetric graph. It
+is highly likely that several shortest paths exist between two arbitrarily chosen source
+and destination nodes.
+</text>
+
 </document>
 
 
@@ -638,12 +645,25 @@ A measure based on degree <cite>Newman 2002</cite>, defined as the correlation c
 ++ <cite>Barzel and Biham 2009</cite>
 </text>
 
+<text>
+L: Path length is the shortest path between two nodes, and average path length is the average over all shortest paths.
+</text>
+
+<text>
+L: Density is the ratio of the number of actual links to the maximum number possible.
+</text>
+
+
 </document>
 
 
 <document>
 <tag>modularity</tag>
 <title>Modularity</title>
+
+<text>
+L: Cluster coefficient is a measure of how many nodes form triangular subgraphs with their adjacent nodes.
+</text>
 
 
 <text>

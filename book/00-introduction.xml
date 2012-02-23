@@ -41,11 +41,11 @@ Connections in a network provide opportunities for and impose constraints on the
 </text>
 
 <text>
-Connections in a social network may represent kinship, friendship, liking, interactions, transactions, flow of resources, group co-membership and other kinds of social ties... even several of these at the same time. In other kinds of networks, links might represent contagions, synapses, cables, Internet links, or bibliographical citations.
+Connections in a social network may represent kinship, friendship, liking, romantic involvement, supervisor-employee relationships, interactions, transactions, resource flows, group co-membership and other kinds of social ties... even several of these at the same time. In other kinds of networks, links might represent chemical bonds, contagions, synapses, wires, Internet links, bibliographical citations, roads,.
 </text>
 
 <text>
-Nodes in a social network might be people from a given group, departments within a corporation, whole corporations, public agencies, and even nation-states... In other kinds of networks, they might be molecules, genes, routers, transformers (in power grids),Web pages, or research publications.
+Nodes in a social network might be people from a given group, departments within a corporation, whole corporations, public agencies, and even nation-states... In other kinds of networks, they might be atoms, molecules, genes, transistors, routers, transformers (in power grids),Web pages, research publications, cities.
 </text>
 
 <text>
@@ -103,7 +103,7 @@ L: Selection of topics about what some have called <term>network science</term> 
 1736: Leonhard Euler
 ++ Konisberg @ 0471648167 [Marcel Danesi] The Liar Paradox and the Towers of Hanoi.pdf
  
- The German city of Königsberg, founded in 1255, was annexed by the Soviet Union at the end of World War II in 1945 and later renamed Kaliningrad in 1946 after the death of Chairman of the Presidium of the Supreme Soviet of the USSR Mikhail Kalinin, one of the original Bolsheviks. This Russian city is on the banks of the Pregel river, part of it on an island in the middle of the river: Four bridges connected the banks of the river to the island; two bridges cross the forks of the river, and one bridge connects the island to the landmass located between the forks. Figure <ref>fig-konigsberg</ref>.
+ The German city of Königsberg, founded in 1255, was annexed by the Soviet Union at the end of World War II in 1945 and later renamed Kaliningrad in 1946 after the death of Chairman of the Presidium of the Supreme Soviet of the USSR Mikhail Kalinin, one of the original Bolsheviks. This Russian city is on the banks of the Pregel river, part of it on two islands in the middle of the river: Four bridges connected the banks of the river to the island; two bridges cross the forks of the river, and one bridge connects the island to the landmass located between the forks. Figure <ref>fig-konigsberg</ref>.
 
 "The history of graph theory began in 1736, when Euler [Eul36] first solved the
 seven bridges of K¨onigsberg problem.) . In Euler's day there were seven bridges linking the banks and

@@ -80,6 +80,36 @@ Empirical results on graph partitioning heuristics include [BG95, LR93].
 <document>
 <tag>community-detection-spectral</tag>
 <title>Spectral partitioning</title>
+
+
+<text>
+Let us suppose that a network is divided into <eqn>c</eqn> different components. Then, if we order the vertices so that the first <eqn>n_1</eqn> correspond to the first component, the next <eqn>n_2</eqn> to the second component, and so on, the network Laplacian will be block diagonal. In fact, each block in the Laplacian will be the Laplacian of the corresponding component.
+</text>
+
+<text>
+Taking into account the definition of the Laplacian
+</text>
+
+<equation>
+l_{ij} = \delta_{ij}d_{i} - a_{ij}
+</equation>
+
+<text>
+when we multiply the vector <eqn>\vec{1}</eqn>, made of ones, by the Laplacian, the ith element of the result will be
+</text>
+
+<equation>
+\sum_j l_{ij} \times 1 = \sum_j ( \delta_{ij}d_{i} - a_{ij} ) = d_{i} - \sum_j a_{ij} = d_{i} - d{i} = 0
+</equation>
+
+<text>
+That is, the vector <eqn>\vec{1}</eqn> is an eigenvector of the Laplacian with eigenvalue 0.
+</text>
+
+<text>
+If we return to our disconnected network, we can easily obtain <eqn>c</eqn> eigenvectors with eigenvalue zero: the vectors with ones in the positions corresponding to vertices in a single component and zeros elsewhere. Actually, the number of zero eigenvalues is always exactly equal to the number of connected components. As a corollary, we can assert that the network is connected if and only if the second eigenvalue of the network Laplacian <eqn>\lambda_2</eqn> is non-zero. The second eigenvalue of the network Laplacian is called the algebraic connectivity of the network and it is also known as its spectral gap.
+</text>
+
 </document>
 
 </document>

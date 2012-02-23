@@ -8,6 +8,10 @@
 <title>Models of Network Formation</title>
 
 
+<text>
+L: random graphs have random structure, and k-regular graphs have purely deterministic structure. In between these two extremes lie two important classes of graphs: the class of small-world (mostly structured, partly random), and the class of scale-free (mostly random, partly structured) graphs. Each class has its own characteristic property: the Poisson distribution for random graphs, powerlaw distribution for scale-free graphs, high average cluster coefficient for small-world graphs, and zero-entropy value for k-regular graphs.
+</text>
+
 <document>
 <tag>growing-random-networks</tag>
 <title>Growing random networks</title>

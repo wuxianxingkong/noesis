@@ -18,9 +18,30 @@
 <tag>random-networks</tag>
 <title>Random networks</title>
 
+<text>
+L: Solomonoff and Rappaport were the first to apply the ideas of epidemics to RANDOM networks (Solomonoff, 1951)
+[Solomonoff, R. and A. Rapoport, Connectivity of random nets, Bull. Math. Biophys. 13:107–117 (1951).]
+</text>
+
+<text>
+L: Gilbert showed how to build a random graph by first constructing a complete graph and then deleting randomly selected links until reaching the desired number of links (Gilbert, 1959)... cumbersome algorithm was quickly surpassed by the elegant and widely promoted algorithm
+of Erdos and Renyi (Erdos, 1960).
+
+[Gilbert, E. N., Random graphs, Ann. Math. Stat. 30(4):1141–1144 (1959).]
+[Erdo¨s, P. and A. Re´nyi, On the evolution of random graphs, Publ. Math. Inst. Hungar. Acad. Sci. 5:17–61 (1960).]
+</text>
+ 
+
 <document>
 <tag>random-erdos-renyi</tag>
 <title>Random graphs: Erdos-Renyi</title>
+
+<text>
+L: A network with n nodes is constructed by inserting a link between randomly selected nodepairs. The process is repeated until m links have been inserted.
+
+... it can leave some nodes isolated, and unless it is slightly modified, it can insert duplicate and loop links into the network.
+</text>
+
 </document>
 
 <document>

@@ -254,6 +254,14 @@ An algorithm to build a graph given a degree sequence: the highest-degree node i
 The algorithm above is deterministic. If we want a random graphs with the given degree sequence, we can generate them by flipping edges: from (x,y) and (w,z) we create (x,w) and (y,z), which yields a different graph with the same degree sequence (albeit it should be noted that the resulting graph is not necessarily connected).
 </text>
 
+
+<text>
+The degree sequence distribution of a network, for example, is a histogram of percentage of nodes with degree d versus d.
+Different kinds of networks exhibit different degree sequence distributions:
+e.g. 
+- A random network has a degree sequence distribution that obeys a binomial distribution, 
+- and a scale-free network’s degree sequence obeys a power law.
+</text>
 </document>
 
 

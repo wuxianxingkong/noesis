@@ -34,6 +34,9 @@ to verify the Bass-Fisher-Pry equations for networks, but furthermore, I
 show how these classical models may be extended to multi-product markets and oligopolies.
 </text>
 
+
+<!-- Diffusion -->
+
 <document>
 <tag>diffusion</tag>
 <title>Diffusion through networks (i.e. signal propagation)</title>
@@ -45,12 +48,87 @@ antigen countermeasures for the Internet. This work can be used to explain human
 epidemics as well as epidemics that sweep across the Internet. 
 </text>
 
+
+<text>
+L: In 1927, Kermack and McKendrick published the first mathematical model of the spread of an infection in a biological population (Kermack, 1927). The Kermack-McKendrick epidemic model is a nonnetwork model, but it set the stage for two important innovations to come: 
+
+(1) it explained the spread of a contagion along (social) links connecting (individual) nodes, and 
+
+(2) it coincidentally described new-product adoption—diffusion of technology—and how product information spreads like an infectious disease
+throughout a social network.
+[Kermack, W. O. and A. G. McKendrick, A contribution to the mathematical theory of epidemics. Proc. Roy. Soc. Lond. A 115:700-721 (1927).]
+</text>
+
+<text>
+L: Solomonoff and Rappaport were the first to apply the ideas of epidemics to RANDOM networks (Solomonoff, 1951)
+[Solomonoff, R. and A. Rapoport, Connectivity of random nets, Bull. Math. Biophys. 13:107-117 (1951).]
+</text>
+
+<text>
+L: the idea of nonrandomness as a factor in behavior and the connection between preferential attachment and nonrandom distributions occurred to Simon in 1955 (Simon, 1955)
+[Simon, H. A., On a class of skew distribution functions, Biometrika 42(3/4):425-440 (1955).]
+</text>
+
+<text>
+L: NON-NETWORK MODELS
+
+Bass, Fisher, and Pry model new-product adoptions as the propagation of an infectious disease (Bass, 1969, 2001; Norton, 1987). This work extended the Kermack-McKendrick epidemic model to the new field of marketing and prepared the way for network-based product diffusion models
+[Bass, F. M., A new product growth for model consumer durables, Manage. Sci. 15:215-227 (1969).]
+[Bass, P. I. and F. M. Bass, Diffusion of Technology Generations: A Model of Adoption and Repeat Sales, Working Paper, Bass Economics Inc. (www.basseconomics.com), Frisco, TX, 2001.]
+[Norton, J. H. and F. M. Bass, A diffusion theory model of adoption and substitution for successive generations of high-technology products, Manage. Sci. 33(9):1069-1086 (Sept. 1987).]
+
+
+1969 Bass: Diffusion of innovation in populations (non-network model)
+  [Bass, F. M., A new product growth for model consumer durables, Manage. Sci. 15:215-227 (1969).]
+
+1971 Fisher, Pry: Diffusion by product substitution (non-network model)
+  [J. C. Fisher and R. H. Pry (1971) "A Simple Substitution Model of Technological Change", Technological Forecasting & Social Change, vol. 3, no. 1]
+
+</text>
+
+
+<text>
+L: the rate of spreading and persistence of an infection is determined completely by a network's topological structure as well as the infectiousness of the contagion. Thus some networks are more prone to epidemics than are others. Furthermore, understanding the relationship between network topology and the spread of an infection tells us how best to stop the spread.
+
+1996 Kretschmar, Morris: spread of infectious disease - contagion driven by largest connected component
+  [Kretzschmar, M. and M. Morris, Measures of concurrency in networks and the spread of infectious disease, Math. Biosci. 133:165-96 (1996).]
+
+2003 Wang, Chakrabarti, Wang, Faloutsos: Spread of epidemics determined by network's spectral radius, largest eigenvalue of connection matrix
+  [Wang, Z., D. Chakrabarti, C.Wang, and C. Faloutsos, Epidemic spreading in real networks: an eigenvalue viewpoint, Proc. 22nd Intnatl. Symp. Reliable Distributed Systems, Oct. 6-18, 2003.]
+</text>
+
+<text>
+EXAMPLES
+- computer viruses spreading in networks such as the Internet.
+- The spread of information (advertising or "buzz") in a social network is much like the spread of an epidemic.
+</text>
 </document>
+
 
 
 <document>
 <tag>search</tag>
 <title>Search on networks</title>
+
+<text>
+++ 1999 Walsh: Difficulty of search in small worlds using local properties
+[Walsh, T., Search in a small world, IJCAI'99, Proc. 16th Intnatl. Joint Conf. Artificial
+Intelligence, Stockholm, Sweden, Morgan Kaufmann Publishers, San Francisco, 1999,
+Vol. 2, pp. 1172-1177.]
+
+++ 2000 Kleinberg: Shows O(n) search in small world using "Manhattan distance"
+[Kleinberg, J. M., Navigation in a small world, Nature 406:845 (2000).]
+
+++ 2001 Tadic, Adamic: Use of local information can speed search on scale-free networks
+[Tadic, B., Adaptive random walks on the class of web graphs, Eur. Phys. J. B 23(2):221-228 (2001).]
+[Tadic, B., Dynamics of directed graphs: The world-wide web, Physica A 293(1-2):273-284 (2001).
+
+++ 
+[Walsh, T., Search on high degree graphs, IJCAI'01, Proc. 17th Intnatl. Joint Conf. Artificial
+Intelligence, Seattle, Morgan Kaufmann Publishers, San Francisco, 2001, pp. 266-274.]
+</text>
+
+
 </document>
 
 
@@ -73,17 +151,108 @@ L: understanding of how and why network synchronization occurs in physical and b
 the conditions for arriving at a consensus by a group of people, how best to conduct product marketing campaigns, and how corporations rise to become a monopoly. Synchronization is a byproduct of the structure of 'living networks.'
 </text>
 
+<text>
+L: Bonacich was perhaps the first social scientist to realize
+that influence in a social network could be mathematically represented using the connection
+matrix of the network (Bonacich, 1972). The nodes represent individuals, and
+weights on directed links represent the degree of influence one individual has on
+another.3 If person A influences the decision of person B, and person B influences
+the decision of person C, and so on, what is the overall effect on group consensus?
+Will a chain of influences propagate through a network and eventually settle down
+to a common value? Bonacich naively claimed that consensus would eventually be
+reached, and proposed that the consensus be computed by raising the weighted connection
+matrix to the nth power, where n is the number of nodes in the network.
+[Bonacich, P., Factoring and weighing approaches to clique identification, J. Math. Sociol.
+2:113-120 (1972).]
+</text>
+
+<text>
+L: Marketing gurus note that highly connected people are superspreaders—people
+who accelerate the spread of buzz—new-product information, simply because they
+are highly connected (Rosen, 2000). But social scientists have long known of the
+power of the middleperson or intermediary—actors who connect other actors. If
+the only way actor A can communicate with actor C is by going through actor B,
+then B has power over A and C. Thus, social scientists define betweenness as the
+number of paths that must run through an actor to connect with other actors. So, in
+addition to connectedness, an actor derives influence by serving as an intermediary.
+Does betweenness give an actor more influence than connectedness?
+[Rosen, E., The Anatomy of Buzz, Doubleday-Random House, 2000.]
+</text>
+
+<text>
+L: More rigorously, a network can be regarded as a coupled system. The system is
+composed of nodes that take on values called states, and links that establish the
+inputs and outputs to nodes. The state of the network is the union of the states of
+all of its nodes. Signals (values) propagate along links, from node to node, and
+alter the node's states. If we plot the change in state versus time, we might observe
+oscillations, dampening, or convergence to a certain state—the so-called fixed
+point—and remain there, forever. Under what conditions does a network oscillate
+or converge? ... A network is said to sync when the value of its nodes reach
+a fixed point—a value that ceases to change once reached. We answer the question
+"What properties or conditions are necessary and sufficient for a network to sync?"
+The answer leads to a general theory of stability in networks.
+</text>
+
+<text>
+Kuramoto provided a mathematical basis for studying synchronization in coupled
+linear systems (Kuramoto, 1984). 
+[Kuramoto, Y., Chemical Oscillations, Waves, Turbulence, Springer-Verlag, 1984; republished
+by Dover Publications, 2003 (www.doverpublications.com).]
+
+His work would influence Strogatz a decade later,
+and have a major impact on the convergence between network science and control
+theory. For example, Kuramoto's work led Strogatz to observe automatic synchronization
+in small-world networks. Strogatz claimed that synchronization is simply a
+property of all small worlds (Strogatz, 2003). This turns out to be false...
+[Strogatz, S., SYNC: The Emerging Science of Spontaneous Order, Hyperion, 2003.]
+</text>
+
 <text> 
 L: Chapter 9 @ <cite>Lewis 2009</cite>, <q>Synchrony,</q> pushes the early work of Watts to new levels—claiming that
 network synchronization is merely a special case of linear system stability. Simple
 eigenvalue tools can be used to determine the stability and synchrony of almost
 any linear network. 
+
+
+2002 Wang, Chen, Barahona, Pecora, Liu, Hong, Choi, Kim, Jost, Jo: Sync in small worlds equivalent to stability in coupled system
+  [Wang, X. and G. Chen, Synchronization in small-world dynamical networks, J. Bifurcation Chaos 12(1):187-192 (2002).]
+  [Wang, X. and G. Chen, Synchronization in scale-free dynamical networks: Robustness and fragility, IEEE Trans. Circuits Syst. I 49:54-62 (2002)]
+  [Barahona, M. and L. M. Pecora, Synchronization in small-world systems, Phys. Rev. Lett. 89:054101 (2002).]
+  [Hong, H., M. Y. Choi, and B. J. Kim, Synchronization on small-world networks, Phys. Rev. E 65:026139 (2002),]
+  [Jost, J. and M. P. Joy, Spectral properties and synchronization in coupled map lattices, Phys. Rev. E 65(1):016201 (2002).]
+
+2003 Strogatz: Synchronization of crickets, heartbeats
+  [Strogatz, S., SYNC: The Emerging Science of Spontaneous Order, Hyperion, 2003.]
+
+2006 Atay Synchronization in networks with degree sequence distribution—application to networks
+  [Atay, F. M., T. Biyikoglu, and J. Jost, Synchronization of networks with prescribed degree distributions, IEEE Trans. Circuits Syst. I 53(1):92-98 (2006).]
 </text>
 
 <text>
 L: Chapter 10 @ <cite>Lewis 2009</cite>, <q>Influence Networks,</q> is mostly new material and
 suggests what conditions must be met in order for a social network to come to consensus.
 As it turns out, it is not easy for groups to agree! 
+
+...
+
+2007 Gabbay: Consensus in influence networks—linear and nonlinear models
+  [Gabbay, M., The effects of nonlinear interactions and network structure in small group opinion dynamics, Physica A 378:118-126 (www.elsevier.com/locate/physa) (2007).]
+
+Consider a group of people attempting to arrive at a consensus
+(Gabbay, 2007). Each member of the group starts with an initial position, and
+attempts to influence his or her neighbor's position by exerting a positive or negative
+influence on nearest neighbors. Influence spreads like an epidemic, but rather than
+infecting or not, the influence sways the position of adjacent nodes
+
+e.g. Atay network, nodes take on a
+value in the interval [-1, +1], representing disagreement or agreement, or some fraction
+in between. As influence spreads, each node value changes. If all nodes reach the
+same value, after some period of time, we say that the network has reached a consensus.
+If nodes never reach a consensus, we say that the network diverges.
+...
+consensus is reached when the influence network's largest nontrivial state matrix eigenvalue
+is bounded by one, and there are no conflicts in the network. Curiously, the most
+influential node in the network is the one less influenced by other nodes.
 </text>
 
 </document>
@@ -106,7 +275,7 @@ As it turns out, it is not easy for groups to agree!
 <text>
 L: Chapter 11 @ <cite>Lewis 2009</cite>, <q>Vulnerability,</q>
 builds on the PhD dissertation of Waleed Al-Mannai, who formalized and extended
-my own work on network risk. Al Mannai’s theory is being used on a daily basis to
+my own work on network risk. Al Mannai's theory is being used on a daily basis to
 evaluate critical infrastructure systems and protect them against natural and synthetic
 (anthropogenic, humanmade) attacks. This has made a profound impression on the
 practice of homeland security. 

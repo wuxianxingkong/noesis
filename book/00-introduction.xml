@@ -99,7 +99,7 @@ L: Selection of topics about what some have called <term>network science</term> 
 1736: Leonhard Euler
 ++ Konisberg @ 0471648167 [Marcel Danesi] The Liar Paradox and the Towers of Hanoi.pdf
  
- The German city of Königsberg, founded in 1255, was annexed by the Soviet Union at the end of World War II in 1945 and later renamed Kaliningrad in 1946 after the death of Chairman of the Presidium of the Supreme Soviet of the USSR Mikhail Kalinin, one of the original Bolsheviks. The city is on the banks of the Pregel river. Figure <ref>fig-konigsberg</ref>.
+ The German city of Königsberg, founded in 1255, was annexed by the Soviet Union at the end of World War II in 1945 and later renamed Kaliningrad in 1946 after the death of Chairman of the Presidium of the Supreme Soviet of the USSR Mikhail Kalinin, one of the original Bolsheviks. This Russian city is on the banks of the Pregel river, part of it on an island in the middle of the river: Four bridges connected the banks of the river to the island; two bridges cross the forks of the river, and one bridge connects the island to the landmass located between the forks. Figure <ref>fig-konigsberg</ref>.
 
 "The history of graph theory began in 1736, when Euler [Eul36] first solved the
 seven bridges of K¨onigsberg problem.) . In Euler's day there were seven bridges linking the banks and
@@ -145,8 +145,8 @@ The motivation for Hamilton was the problem of symmetries of an icosahedron, for
 
 a Hamiltonian path (or traceable path) is a path in an undirected graph that visits each vertex exactly once. A Hamiltonian cycle (or Hamiltonian circuit) is a Hamiltonian path that is a cycle.
 
-J: In 1857 Sir William Rowan Hamilton (1805–1865, known to every mathematician
-for the quaternions and the theorem of Cayley–Hamilton) invented the
+J: In 1857 Sir William Rowan Hamilton (1805-1865, known to every mathematician
+for the quaternions and the theorem of Cayley-Hamilton) invented the
 following Icosian game which he then sold to a London game dealer in 1859
 for 25 pounds; it was realized physically as a pegboard with holes. The corners
 of a regular dodecahedron are labelled with the names of cities; the task is
@@ -175,75 +175,158 @@ Historically, <i>linkages</i> was the term sometimes employed to refer to graphs
 
 <!-- 20th Century -->
 
+<text>
+RANDOM GRAPHS
+</text>
+
+<text>
+L: 1959 Gilbert: First generative procedure for random graphs
++ first constructing a complete graph and then deleting randomly selected links until reaching the desired number of links 
+[Gilbert, E. N., Random graphs, Ann. Math. Stat. 30(4):1141-1144 (1959).]
+</text>
+
 <!-- Erdos -->
 <text>
-L: The Hungarian mathematician Paul Erdos (1913–1996)... papers on random graphs ... today, we use the Erdos–Renyi (ER) random graph as a kind of benchmark—to compare with nonrandom graphs (ER model, 1959-1960)
+L: The Hungarian mathematician Paul Erdos (1913-1996)... papers on random graphs ... today, we use the Erdos-Renyi (ER) random graph as a kind of benchmark—to compare with nonrandom graphs (ER model, 1959-1960)
++ inserting a link between randomly selected node pairs until the desired number of links is achieved.
+[Erdo¨s, P. and A. Re´nyi, On the evolution of ra ndom graphs, Publ. Math. Inst. Hungar. Acad. Sci. 5:17-61 (1960).]
+</text>
+
+<text>
+SMALL WORLDS
 </text>
 
 <!-- Milgram -->
 <text>
-L: Stanley Milgram is credited with introducing the notion of a small-world network... In Milgram's experiment, volunteers in Kansas and Nebraska were asked to forward a letter to an unfamiliar target living in Cambridge and Boston, Massachusetts. Not knowing the target person, recipients forwarded the letter to an acquaintance closer to the target than themselves. Many of the letters were lost, but of the ones that eventually reached their target addresses, the number of hops along the chain of intermediaries ranged from 2 to 10, with an average of 5.2. Hence the notion of a small world and six degrees of separation was born.
+L: Stanley Milgram is credited with introducing the notion of a small-world network <cite>Travers and Milgram 1969</cite>... In Milgram's experiment, volunteers in Kansas and Nebraska were asked to forward a letter to an unfamiliar target living in Cambridge and Boston, Massachusetts. Not knowing the target person, recipients forwarded the letter to an acquaintance closer to the target than themselves. Many of the letters were lost, but of the ones that eventually reached their target addresses, the number of hops along the chain of intermediaries ranged from 2 to 10, with an average of 5.2. Hence the notion of a small world and six degrees of separation was born.
+
+... invited human subjects from Kansas and Nebraska to participate
+in a "communications project" to "better understand social contact in American
+society." The experiment required them to send a folder across the country to a target
+person defined by the experimenters.
+
+Instructions:
+1. Add your name to the roster at the bottom of this sheet, so that the next person
+who receives this letter will know whom it came from.
+2. Detach one postcard, fill it out, and return it to Harvard University. No stamp is
+necessary. It allows us to keep track of the progress of the folder as it moves
+toward the target person.
+3. If you know the target person on a personal basis, mail this folder directly to
+him/her. Do this only if you have previously met the target person and
+know each other on a first-name basis.
+4. If you do not know the target person on a personal basis, do not try to contact
+him/her directly. Instead, mail this folder (postcards and all) to a personal
+acquaintance who is more likely than you to know the target person. You
+may send the folder on to a friend, relative, or acquaintance, but it must be
+someone you know on a first-name basis.
+
+Conclusion:
+Society is not a nonrandom network.
+Instead of randomly bouncing from person to person, some folders reached their destinations and the path they followed was not planned out ahead of
+time (there was no assurance that a chain of intermediaries existed between sender and receiver).
+
++ Milgram's experiment inspired a 1990 Broadway play and movie by John Guare called <q>Six Degrees of Separation: A Play</q>.
+
++ The "Kevin Bacon game" created by Brett Tjaden of the University of Virginia: 
 </text>
 
+<text>
+WEAK TIES
+</text>
+
+<text>
+L: The small-world idea is related to the "weak ties" theory of Granovetter, who postulated
+that social networks contain both strong (direct) and weak ties (long-distance
+connections) that bind society together <cite>Granovetter 1973</cite>. In a cleverly titled paper,
+"The strength of weak ties," Granovetter suggests that social networks are held
+together by strong connections between friends and family members, as well as
+weaker, long-distance connections among casual acquaintances. This explains why
+it is possible to span a large sparse network in a small number of hops. The links
+of a social network are like freeways and streets—freeways have few intersections
+(nodes) and allow you to travel long distances without stopping. City streets, on
+the other hand, allow you to pinpoint a single person or house within a dense neighborhood.
+Freeways (weak ties) get you to a local neighborhood quickly, while streets
+(strong ties) zero in on a specific person or house.
+</text>
+
+
 <!-- Network models -->
+
+<text>
+NETWORK MODELS
+</text>
+
 <text>
 L: ... scientists in other fields began to use networks as models of physical and biological phenomena... pioneering work of Duncan Watts, Steven Strogatz, and Albert-Laszlo Barabasi ...
 </text>
 
 <text>
-Small worlds (sparse networks with small diameter): Watts and Strogatz
+Small worlds (sparse networks with small diameter): <cite>Watts and Strogatz 1998</cite>
 
-In 1990, Guare coined phrase "six degrees of separation" as the name of his Broadway play
+Algorithm: initially construct a graph with regular structure. Next, apply rewiring to every link with probability p, such that p*m links are randomized (redirected to a randomly selected node). Parameter p is the rewiring probability, and m is the number of links in the original regular graph.
+
+Watts and Strogatz: small worlds as networks with relatively short distances (hops) between node pairs chosen at random, even as the size of the network grows. Specifically, the diameter of a network increases as ln(n) while its size increases by O(n), where n is number of nodes.
+
 </text>
 
 <text>
-Scale-free networks (nonrandom networks with hubs): Barabasi and Albert, 
+Scale-free networks (nonrandom networks with hubs): <cite>Barabasi and Albert 1999</cite>
+
 
 L: "the probability that a site has k links obeys a power law, which drops off quickly for large k"
+... A network that follows a power-law distribution means that it has a
+hub, and many other nodes with many fewer links than the average. This lopsided
+preference for hubs seemed counter to nature, which typically follows a normal distribution.
 
 L: "a microrule called preferential attachment - that the probability a site will obtain a new link is directly proportional to the number of links it already has" (the <q>rich get richer</q> phenomenon).
+
+L: scale-free networks... The name came from observing that a function f(x) scales if f(ax) = a*f(x), which is
+what a power law does. Therefore, if the degree sequence distribution obeys the power law, h(x) = x ^-q, then it is clear that h(ax) = (ax)^-q = (a ^-q)h(x) = a' h(x).
 </text>
+
+<text>
+A small-world network has relatively small diameter and average path length, and a scale-free network has hubs.
+= Small worlds had characteristic short path length, but power-law networks had hubs—nodes with extremely high degree.
+</text>
+
+
 
 <text>
 TIMELINE, excerpted from <cite>Lewis 2008</cite>:
 
-1736 Euler: Bridges of Ko¨nigsberg
-1925 G. Yule: Preferential attachment, Yule–Simon distribution
-1927 Kermack, McKendrick: First epidemic model
+1736 Euler: Bridges of Königsberg <cite>Euler 1736</cite>
+
 1951 Solomonoff, Rappaport: Spread of infection in random networks
-1955 Simon: Power law observed in word analysis
-1959 Gilbert: First generative procedure for random graph
-1960 Erdos, Renyi: Random graphs
-1967 Milgram: Small-world experiment
-1969 Bass: Diffusion of innovation in populations (non-network model)
-1971 Fisher, Pry: Diffusion by product substitution (non-network model)
-1972 Bollobas: Complex graphs
+  [Solomonoff, R. and A. Rapoport, Connectivity of random nets, Bull. Math. Biophys. 13:107-117 (1951).]
+
+1955 Simon: Power law observed in word analysis <cite>Simon 1955</cite>
+
+1959 Gilbert: First generative procedure for random graphs
+  [Gilbert, E. N., Random graphs, Ann. Math. Stat. 30(4):1141-1144 (1959)]
+
+1960 Erdos, Renyi: Random graphs <cite>Erdos and Renyi 1959</cite> <cite>Erdos and Renyi 1960</cite>
+
+1967 Milgram: Small-world experiments <cite>Travers and Milgram 1969</cite>
+
 1972 Bonacich: Idea of influence in social networks leading to influence diagrams
-1973 Granovetter: Job-seeking networks formed clusters with "weak links" between them
-1978 Pool, Kochen: First theoretical examination of small worlds
-1984 Kuramoto: Synchronization of linear systems
-1985 Bollobas: Publishes book on "random graphs"
+  [Bonacich, P., Factoring and weighing approaches to clique identification, J. Math. Sociol. 2:113-120 (1972).]
+
+1973 Granovetter: Job-seeking networks formed clusters with "weak links" between them <cite>Granovetter 1973</cite>
+
+1978 Pool, Kochen: First theoretical examination of small worlds <cite>Pool and Kochen 1978</cite>
+
 1989 Bristor, Ryan: "Buying networks" i.e. application of network science to model economic system
+  [Bristor, J. M. and M. J. Ryan, Applying the small world phenomenon to organizational buying, in M. Kochen, ed., The Small World, Ablex, Norwood, NJ, 1989, Chapter 4, pp. 87-99.]
+
 1995 Molloy, Reed: Generation of networks with arbitrary degree sequence distribution
-1996 Kretschmar, Morris: spread of infectious disease - contagion driven by largest connected component
+  [Molloy, M. and B. Reed, A critical point for random graphs with a given degree sequence, Random Struct. Algorithms 6:161-180 (1995).]
+
 1998 Holland: Emergence in complex adaptive systems
-1998 Watts, Strogatz, Faloutsos, Faloutsos: Small worlds, examples of clustering; first generative procedure for small world
-1999 Dorogovtsev, Mendes: Small-world properties
-1999 Barabasi, Albert: Scale-free network model
-1999 Dorogovtsev, Mendes, Samukhim, Krapivsky, Redner: Exact solution to scale-free network degree sequence
-1999 Watts: Explanation of “small-world dilemma”: high clustering, low path length
-1999 Walsh: Difficulty of search in small worlds using local properties
-2000 Marchiori, Latora: Harmonic distance replaces path length: works for disconnected networks
-2000 Kleinberg: Shows O(n) search in small world using “Manhattan distance”
-2000 Albert, Jeong, Barabasi: Scale-free networks are resilient if hubs are protected (Internet's “Achilles heel”)
-2001 Pastor-Satorras, Vespignani: Claim no epidemic threshold in scale-free networks; Internet susceptible to SIS viruses
-2001 Tadic, Adamic: Use of local information can speed search on scale-free networks
-2002 Kleinfeld, Claims Milgram experiments not well founded: small-world social network is an “urban myth”
-2002 Wang, Chen, Barahona, Pecora, Liu, Hong, Choi, Kim, Jost, Jo: Sync in small worlds equivalent to stability in coupled system
-2003 Wang, Chakrabarti, Wang, Faloutsos: Spread of epidemics determined by network's spectral radius, largest eigenvalue of connection matrix
-2003 Strogatz: Synchronization of crickets, heartbeats
-2006 Atay Synchronization in networks with degree sequence distribution—application to networks
-2007 Gabbay Consensus in influence networks—linear and nonlinear models
+  [Holland, J. H., Emergence: From Chaos to Order, Addison-Wesley, Reading, MA, 1998.]
+
+1998 Watts, Strogatz: Frst generative procedure for small worlds <cite>Watts and Strogatz 1998</cite>
+
+1999 Barabasi, Albert: Scale-free network model <cite>Barabasi and Albert 1999</cite>
 </text>
 
 </document>
@@ -328,14 +411,40 @@ Jennifer Fewell, from Arizona State University, illustrates the importance of [i
 <text>
 WWW: 
 
-L: The structure of the Internet and WWW: an emergent property of the decentralized Internet - that it had emerged without central planning into a structure consisting of a small number of extremely popular sites called hubs, and a large number of “unpopular” sites with few links (a scale-free network).
+L: The structure of the Internet and WWW: an emergent property of the decentralized Internet - that it had emerged without central planning into a structure consisting of a small number of extremely popular sites called hubs, and a large number of "unpopular" sites with few links (a scale-free network).
+
+1999 Kleinberg, Kumar, Raghavan, Rajagopalan, Tomkins: Formalized model of WWW as "Webgraph"
++ We call such networks Webgraphs, because they use graph theory to understand the World Wide Web (WWW).
+(Kleinberg et al. 1999)
+[Kleinberg, J. M., S. R. Kumar, P. Raghavan, S. Rajagopalan, and A. S. Tomkins, The Web as a
+graph: Measurements, models, and methods, in T. Asano, H. Imai, D. Lee, S. Nakano, and
+T. Tokuyama, eds, Proc. 5th Annual Intnatl. Conf. Computing and Combinatorics, Tokyo,
+Lecture Notes in Computer Science, Vol. 1627, Springer-Verlag, Berlin, 1999.]
+
+2000 Broder, Kumar, Maghoul, Raghavan, Rajagopalan Stata, Tomkins, Wiener: Full Webgraph map of the WWW
++ Broder, Kumar, Maghoul, Raghavan, Rajagopalan, Stata, Tomkins, and Wiener were the first to fully map the WWW as a Webgraph and discover its structure
+[Broder, A., S. R. Kumar, F. Maghoul, P. Raghavan, S. Rajagopalan, R. Stata, A. Tomkins, and
+J. Wiener, Graph structure in the web, Comput. Networks 33(1-6):309-320, (2000).]
+
 
 1999 Albert, Jeong, Barabasi: Power law observed in WWW
+[Albert, R., H. Jeong, and A.-L. Barabasi, Diameter of the World Wide Web, Nature 401:130-131 (1999).]
+[Adamic, L. A. and B. A. Huberman, Power-law distribution of the World Wide Web, Science 287:2115 (2000).]
+
 1999 Adamic: Distance between .edu sites shown to be small-world
-1999 Kleinberg, Kumar, Raghavan, Rajagopalan, Tomkins: Formalized model of WWW as “Webgraph”
-2000 Broder, Kumar, Maghoul, Raghavan, Rajagopalan Stata, Tomkins, Wiener: Full Webgraph map of the WWW
+[Adamic, L. A., The small world web, in Research and Advanced Technology for
+Digital Libraries, Lecture Notes in Computer Science 1696, S. Abiteboul and
+A.-M. Vercoustre, eds, Springer-Verlag, New York, 1999, 443-452.]
+
+
 2002 Levene, Fenner, Loizou, Wheeldon: Enhanced Webgraph model concluded structure of the WWW couldn't be explained by preferential
 attachment alone
+[Levene, M., T. Fenner, G. Loizou, and R. Wheeldon, A stochastic model for the evolution of
+the web, Comput. Networks 39:277-287 (2002).]
+
+
+[Tadic, B., Growth and structure of the world-wide web: Towards realistic modeling, Comput. Phys. Commun. 147(1-2):586-589 (2002).
+[Tadic, B., Temporal fractal structures: Origin of power laws in the world-wide web, Physica A 314(1-4):278-283 (2002).]
 
 </text>
 
@@ -362,10 +471,17 @@ attachment alone
 <text>
 INTERNET: 
 
-L: The structure of the Internet and WWW: an emergent property of the decentralized Internet - that it had emerged without central planning into a structure consisting of a small number of extremely popular sites called hubs, and a large number of “unpopular” sites with few links (a scale-free network).
+L: The structure of the Internet and WWW: an emergent property of the decentralized Internet - that it had emerged without central planning into a structure consisting of a small number of extremely popular sites called hubs, and a large number of "unpopular" sites with few links (a scale-free network).
 
 1988 Waxman: First graph model of the Internet
-1999 Faloutsos: Power law observed in Internet
+L: Waxman proposed a static graph theory model of the Internet in 1988 (Waxman, 1988). 
+[Waxman, B. M., Routing of multipoint connections, IEEE J. Select. Areas Commun. 6(9):1617-1622 (1988).]
+
+1999 Faloutsos brothers: Power law observed in Internet
+[Faloutsos, M., P. Faloutsos, and C. Faloutsos, On power-law relationships of the Internet
+topology, Proc. ACM SIGCOMM '99 Conf. Applications, Technologies, Architectures, and
+Protocols for Computer Communication in Cambridge, MA, USA, ACM Press, New York,
+1999, pp. 251-262.]
 </text>
 
 </document>
@@ -411,7 +527,7 @@ The Stanford Large Network Dataset Collection, <url>http://snap.stanford.edu/dat
 </item>
 
 <item>
-The Koblenz Network Collection, <url>http://konect.uni-koblenz.de/</url>, maintained by Jérôme Kunegis (University of Koblenz–Landau, Germany).
+The Koblenz Network Collection, <url>http://konect.uni-koblenz.de/</url>, maintained by Jérôme Kunegis (University of Koblenz-Landau, Germany).
 </item>
 
 <item>
@@ -475,6 +591,11 @@ Brendan McKay, the author of the Nauty program, also maintains collectins of var
 
 <text>
 Related fields: networks incorporates ideas from complex adaptive systems (emergence), chaos theory (synchronization), and mean-field theory (physics)
+
++ L: Holland defines emergence in general terms as <q>much coming from little</q> (Holland, 1998): A series of microlevel changes accumulate over time, until a macrolevel change in the network is realized. Emergence means that a major change in global properties comes from many small changes at the local level.  [Holland, J. H., Emergence: From Chaos to Order, Addison-Wesley, Reading, MA, 1998.]
+
++ L: Networks evolve...  have dynamic properties such as fixed points when they sync. Starting at some initial state, a dynamic network may transition
+to a second, third, fourth, and higher state until either cycling back or reaching a final state—its fixed point... networks that reach a fixed point are different from networks that oscillate, forever.
 </text>
 
 
@@ -492,6 +613,14 @@ Related fields: networks incorporates ideas from complex adaptive systems (emerg
 <text>
 ++ Network science: 2003 Virtanen Complete survey of network science results up to 2003
 [Virtanen, S., Properties of Non-uniform Random Graph Models, Helsinki Univ. Technology, Laboratory for Theoretical Computer Science, Report FIN-02015 HUT, lab@tcs.hut, 2003]
+
+++ Voon Joe Yung gives a nonmathematical introduction and includes a copy of the Milgram experiment folder (Yung, 2001).
+[Yung, V. J. An exploration in the small world networks, available as Condensed Matter/ 0004214 (2000/2001).]
+
+++ The numerous papers by Mark Newman and Duncan Watts provide compact tutorials on the fundamentals of small worlds (Watts, 1999a; Newman, 2000b).
+[Watts, D., Networks, dynamics, and the small-world phenomenon, Am. J. Sociol. 105:2 493-527 (Sept 1999).]
+[Newman, M. E. J., Models of the small world: A review, J. Stat. Phys. 101:819-841 (2000).]
+[Newman, M. E. J., Small worlds, the structure of social networks, J. Stat. Phys. 101(3/4) (2000).]
 </text>
 
 </document>

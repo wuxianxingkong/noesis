@@ -13,6 +13,8 @@
 <title>Growing random networks</title>
 
 
+<!-- Small worlds -->
+
 <document>
 <tag>formation-watts-strogatz</tag>
 <title>Watts-Strogatz model (small-world networks)</title>
@@ -20,10 +22,23 @@
 
 <text>
 <cite>Pool and Kochen 1978</cite> @ inaugual issue of the Social Networks journal (a draft widely circulated two decades before its publication): the world of social relationships is much smaller than expected given the size of the social network.
+
+i.e. the earliest known theoretical analysis of small-world networks
 </text>
 
 <text>
 <cite>Travers and Milgram 1969</cite> famous experiments...
+
++ White identified biases in Milgram's experiment and suggested modifications that lead to an average of seven intermediaries (White, 1970). 
+[White, H. C., Search parameters for the small world problem, Soc. Forces 49:259-264 (1970).]
+
++ Hunter and Shotland modeled the experiment as a Markov process to determine average distances between groups (Hunter, 1974).
+[Hunter, J. and R. L. Shotland, Treating data collected by the small world method as a Markov process, Social Forces 52:321-332 (1974).]
+
+Two decades later (Kleinfeld, 2002).
+[Kleinfeld, J., Six degrees of separation: Urban myth? Psychol. Today (2002)]
+2002 Kleinfeld, Claims Milgram experiments not well founded: small-world social network is an "urban myth"
+
 </text>
 
 <text>
@@ -34,9 +49,29 @@
 ++
 <cite>Watts and Strogatz 1998</cite> created a simple model that originates small worlds + discovered that these patterns are present in a broad range of networks. 
 
-L: Very sparse networks with small diameter (small worlds) at diverse phenomena such as phase transitions in materials, functionality of biological organisms, and behavior of electrical power grids.
+Algorithm: initially construct a graph with regular structure. Next, apply rewiring to every link with probability p, such that p*m links are randomized (redirected to a randomly selected node). Parameter p is the rewiring probability, and m is the number of links in the original regular graph.
 
+L: increasing p also increases the randomness of the small world. This means we can produce a network with any desired level of randomness—entropy, if you will—by adjusting rewiring probability p—a low rewiring probability generates a nonrandom structure, and a high probability generates a random structure
+
+L: At a certain rewiring probability called the crossover point (also length scale), the network transitions from mostly structured to mostly random network. Typically, the crossover point is very small—on the order of 2-3%. Watts and Strogatz attached a meaning to the crossover, suggesting that it corresponds to phase transition in materials (the crossover point is also known as the phase transition threshold).
+
+L: Watts and Strogatz: small worlds as networks with relatively short distances (hops) between node pairs chosen at random, even as the size of the network grows. Specifically, the diameter of a network increases as ln(n) while its size increases by O(n), where n is number of nodes.
+</text>
+
+<text>
+SMALL WORLDS IN THE REAL WORLD
+L: Very sparse networks with small diameter (small worlds) at diverse phenomena such as phase transitions in materials, functionality of biological organisms, and behavior of electrical power grids.
+e.g. database of film actors, the electric power grid of the western United States, and the neural network of the nematode worm C. elegans (Caenorhabditis elegans)
+</text>
+
+<text>
 <cite>Uzzi et al. 2007</cite>
+</text>
+
+<text>
+Dorogovtsev, Mendes, Samukhim, Krapivsky, and Redner derived
+an exact formula for the power law of a purely scale-free network and showed that
+it describes many biological systems (Dorogovtsev, 2000; 2002a; 2002b; 2003).
 </text>
 
 <text>
@@ -58,8 +93,53 @@ A different class of small-world networks <cite>Sporns 2006</cite>: modular smal
 [Yung, V. J. An exploration in the small world networks, available as Condensed Matter 0004214 (2000/2001)]
 </text>
 
+<text>
+DYNAMICS
+</text>
+
+<text>
+++ 1999 Walsh: Difficulty of search in small worlds using local properties
+[Walsh, T., Search in a small world, IJCAI'99, Proc. 16th Intnatl. Joint Conf. Artificial
+Intelligence, Stockholm, Sweden, Morgan Kaufmann Publishers, San Francisco, 1999,
+Vol. 2, pp. 1172-1177.]
+
+++ 2000 Kleinberg: Shows O(n) search in small world using "Manhattan distance"
+[Kleinberg, J. M., Navigation in a small world, Nature 406:845 (2000).]
+
+L: Kleinberg gives a formal explanation for Milgram's experiment based on
+the "Manhattan distance" between source and target nodes. The "Manhattan distance"
+is defined as the number of blocks, traversed along streets in Manhattan,
+New York, between source and destination intersections. Kleinberg showed that it
+takes only O(n) steps to navigate such a small world (Kleinberg, 2002a).
+</text>
+
+<text>
+Strogatz claimed that the beating of a human's heart, the chirping of crickets, and
+other biological systems naturally sync because they are small-worlds (Strogatz,
+2003). But today we know that network synchronization has little to do with small-world
+topology, and everything to do with the Laplacian of the connection matrix, and
+the length of circuits within the network.
+
+ref. Atay networks (Atay, 2006), We examine stability of Atay networks,
+which have applications in marketing, as well as understanding the chirping of crickets,
+and show that sync is a property of emergent networks that contain triangleshaped
+subgraphs. As it turns out, small-world networks have an abundance of
+triangular subgraphs! Moreover, a network can be synchronized, by adding a triangular
+subgraph to one of its nodes.
+</text>
+
+<text>
+MORE
+</text>
+
+<text>
+2000 Marchiori, Latora: Harmonic distance replaces path length: works for disconnected networks
+[Marchiori, M. and V. Latora, Harmony in the small-world, Physica A 285(3-4):539-546 (2000).]
+</text>
 
 </document>
+
+<!-- Scale-free networks -->
 
 
 <document>
@@ -77,6 +157,12 @@ A wide range of real-world networks have been found to exhibit power-law degree 
 
 <text>
 A power law implies that the probability of finding a node with a degree that is twice as large as a given number decreases by a constant factor, rather than following an exponential falloff. ++ exponent of the power law distribution.
+
+L: "the probability that a site has k links obeys a power law, which drops off quickly for large k"
+... A network that follows a power-law distribution means that it has a
+hub, and many other nodes with many fewer links than the average. This lopsided
+preference for hubs seemed counter to nature, which typically follows a normal distribution.
+
 </text>
 
 <text>
@@ -89,11 +175,24 @@ IDEA: The fluctuations in degree are unbounded, i.e., the standard deviation is 
 
 <text>
 The <q>scale-free</q> term refers to the fact that nodes in a scale-free network do not have a characteristic scale. You can zoom in on any segment of the distribution and it does not change its shape.
+
+L: scale-free networks... The name came from observing that a function f(x) scales if f(ax) = a*f(x), which is
+what a power law does. Therefore, if the degree sequence distribution obeys the power law, h(x) = x ^-q, then it is clear that h(ax) = (ax)^-q = (a ^-q)h(x) = a' h(x).
 </text>
 
 <text>
 ++
+
+L: "a microrule called preferential attachment - that the probability a site will obtain a new link is directly proportional to the number of links it already has" (the <q>rich get richer</q> phenomenon).
+
+
 <cite>Barabasi and Albert 1999</cite> demonstrated that power-law degree distributions can be generated by a <q>preferential attachment</q> growth process. This process is a well-known example of how local processes can determine the global properties of complex networks. 
+
+L: Yule first observed preferential attachment in evolution (Yule, 1925): Darwinian algorithm = Connect the new node to an existing node with probability proportional to the number of links already connected to the existing node, i.e. its degree
+[Yule, G. U., A Mathematical theory of evolution based on the conclusions of Dr. J. C. Willis, Phil. Trans. Roy. Soc. Lond. B 213:21-87 (1925).]
+++ Yule-Simon distribution
+
+L: Preferential attachment describes an emergent process—that is, a process that results in a network topology that is not apparent by examination of the local algorithm, or microrule. It is not at all obvious that the result of repeated application of preferential attachment will result in a network with a degree sequence distribution that follows a power law. This realization would come 70 years later, when A.-L. Barabasi and R. Albert showed how to create a scale-free network by repeated application of preferential attachment.
 </text>
 
 <text>
@@ -102,6 +201,82 @@ The <q>scale-free</q> term refers to the fact that nodes in a scale-free network
 
 <text>
 ++ When new links involve a cost, i.e. they cost energy or occupy space, the degree distribution becomes truncated for high degrees <cite>Amaral et al. 2000</cite>. Networks that exhibit a scale-free behavior only through a range of node degrees are called broad-scale networks.
+</text>
+
+
+<text>
+EXAMPLES
+distribution of number of papers published by scientists, distribution of cities by population, distribution of wealth, and
+distribution of species among genera all obey a power law.
+[Mitzenmacher, M., A brief history of generative models for power law and lognormal distributions, Internet Math. 1(2):226-251 (2004).] 
+
+1999:
++ M. Faloutsos, P. Faloutsos, and C. Faloutsos observed a power law in their graph models of the Internet
++ Albert, Jeong, and Barabasi obtained similar results for the WWW
+</text>
+
+<text>
+DYNAMICS
+</text>
+
+<text>
+L: the idea of nonrandomness as a factor in behavior and the connection between preferential attachment and nonrandom distributions occurred to Simon in 1955 [Simon, H. A., On a class of skew distribution functions, Biometrika 42(3/4):425-440 (1955).]
+</text>
+
+<text>
+L: Albert, Jeong, and Barabasi observed that scale-free networks were extremely resilient
+against random attacks, but extremely vulnerable to systematic attacks on hubs
+(Albert, 2000). This makes sense—a random attack will most likely strike and destroy
+a node with only a few links, because a scale-free network has many such nodes. On
+the contrary, since hubs are rare, it is unlikely that a hub is attacked. But a hub has
+many links, and so its demise damages a large percentage of the network. Let pc
+be the fraction of damaged nodes that dismantles the network. When pc is high,
+the network is resilient, because many nodes must be knocked out to dismantle the
+network. When it is low, the network is vulnerable. In simulations, Albert et al.
+found threshold values of pc = 28% for random networks versus nearly 99% for
+scale-free networks under random attacks; that is, a random network dismantles
+when an average of 28% of its nodes are damaged. But the tables are turned when
+hubs are systematically attacked—only 18% of the nodes need to be attacked to dismantle
+a scale-free network. Thus, a scale-freenetwork is more vulnerable than a
+random network when its hubs are targeted.
+
+2000 Albert, Jeong, Barabasi: Scale-free networks are resilient if hubs are protected (Internet's "Achilles heel")
+  [Albert, R., H. Jeong, and A. L. Barabasi, The Internet's Achilles' heel: Error and attack tolerance of complex networks, Nature 406:378-382 (2000).]
+</text>
+
+<text>
+L: In related work, Pastor-Satorras and Vespignani observed that populations forming
+a scale-free network have no minimum epidemic threshold that prevents an infectious
+disease from recurring (Pastor-Satorras, 2001). Once an infection enters a network, it
+rises and falls repeatedly. Persistent epidemics are real—they occur in human networks
+as well as on the Internet.
+
+
+2001 Pastor-Satorras, Vespignani: Claim no epidemic threshold in scale-free networks; Internet susceptible to SIS viruses
+  [Pastor-Satorras, R. and A. Vespignani, Epidemic spreading in scale-free networks, Phys. Rev. Lett. 86(14):3200-3203 (2001).]
+</text>
+
+<text>
+L: Wang and coworkers showed the initial claim of Pastor-Satorrus to be generally
+false (Wang, 2003a). Instead, persistence of an infection is determined not by the network's
+degree sequence but by its spectral radius, which is defined as the largest nontrivial
+eigenvalue of a network's connection matrix. Therefore, network topology
+determines its susceptibility to epidemics, but not because it is scale-free. This profound
+result has significant implications for fighting both kinds of viruses—Internet
+and human. It also has implications for the product marketer.
+</text>
+
+
+<text>
+MORE...
+</text>
+
+<text>
+1999 Dorogovtsev, Mendes, Samukhim, Krapivsky, Redner: Exact solution to scale-free network degree sequence
+[Dorogovtsev, S. N., J. F. F. Mendes, and A. N. Samukhin, Structure of growing networks with
+preferential linking, Phys. Rev. Lett. 85(21):4633-4636 (2000).]
+[Krapivsky, P. L., S. Redner, and F. A. Leyvraz, Connectivity of growing random networks,
+Phys. Rev. Lett. 85(21):4629-4632 (2000).]
 </text>
 
 <text>
@@ -138,7 +313,7 @@ Alternative formation model: <cite>Alava and Dogorotsev 2005</cite>
 <title>Bibliographic notes</title>
 
 <text>
-<cite>Sole and Valverde 2004</cite> arrange network classes in a qualitative space by considering three dimensions: randomness, heterogeneity, and modularity. The first introduces the amount of randomness involved in the process of network’s building. The second measures how diverse is the link distribution and the third would measure how modular is the architecture. The position of different examples are only a visual guide. The domain
+<cite>Sole and Valverde 2004</cite> arrange network classes in a qualitative space by considering three dimensions: randomness, heterogeneity, and modularity. The first introduces the amount of randomness involved in the process of network's building. The second measures how diverse is the link distribution and the third would measure how modular is the architecture. The position of different examples are only a visual guide. The domain
 of highly heterogeneous, random hierarchical networks appears much more occupied than others. Scale-free like networks belong to this domain.
 
 Each class results from a different formation process and exhibits different patterns of behavior. 

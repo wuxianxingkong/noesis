@@ -45,6 +45,30 @@ Two decades later (Kleinfeld, 2002).
 
 </text>
 
+
+<text>
+DEGREE DISTRIBUTION
+
+L: A small-world network ... is a slightly structured and partially random network that is closer to the structured end of the spectrum than to the class of random networks that have no discernable structure or topology.
+
+
+L: A small-world graph, G(small world), is a graph with relatively small average path
+length, and a relatively high cluster coefficient, CC(G). Generally, the average path
+length of a small world grows proportional to O(log(n)/log(lambda)), where where lambda is the mean node degree,
+and the clustering coefficient tends to be greater than 50%.
+
+The small-world graph has the largest cluster coefficient even though its
+degree sequence distribution is very similar to that of a random graph....
+The class of small-world graphs is characterized by an unexpectedly large cluster
+coefficient when compared to the class of random graphs, but it also has some properties
+in common with the class of random graphs. For example, small-world and
+random graphs have similar degree distributions and diameters.
+
+The cluster coefficient of a small world can be several orders of magnitude
+larger that that of an equivalent random graph of the same size and with an equivalent
+number of links.
+</text>
+
 <text>
 <cite>Kleinberg 2000</cite>, not only surprisingly short paths, but also the remarkable ability of individuals to identify links that lead to those short paths...
 </text>
@@ -68,6 +92,19 @@ L: Very sparse networks with small diameter (small worlds) at diverse phenomena 
 e.g. database of film actors, the electric power grid of the western United States, and the neural network of the nematode worm C. elegans (Caenorhabditis elegans)
 
 L: Sparse small-world networks appear to model human social networks, because humans have limited capacity to know a large number of other humans.
+
+
+Common Examples of Small-World Networks <cite>Lewis 2009</cite>
+
+Graph, n, Small-World Cluster Coefficient, Random Cluster Coefficient
+World Wide Web            153,127 0.11 0.00023
+Internet                    6,209 0.30 0.00100
+Actors in same movie      225,226 0.79 0.00027
+Coauthor scientific papers 52,909 0.43 0.00018
+Western US power grid       4,941 0.08 0.00200
+C. elegans neural network     282 0.28 0.05000
+Foodweb (ecological chain)    134 0.22 0.06000
+
 </text>
 
 <text>
@@ -161,6 +198,31 @@ Anthropologists such as Elman Service, when studying cultural evolution, envisio
 A wide range of real-world networks have been found to exhibit power-law degree distributions: the World Wide Web, citation networks, cellular metabolism networks...
 </text>
 
+
+<text>
+Degree distribution: 
+
+L: Networks whose degree distribution approximates a power law,
+<eqn>H(k)=k^{-q}</eqn>, for some power <eqn>q &gt; 1</eqn>. 
+
+L:Such graphs are called scale-free because the power-law distribution has no scale parameter; that is, the variance of a power-law is
+infinite, versus the finite variance of most other distributions such as the Gaussian or normal distribution. Power laws are also sometimes called “fat tailed” because they do not decline as k increases as fast as an exponential or normal distribution.
+
+Random graphs more or less distribute links uniformly across n nodes. But... scale-free graphs are lopsided - a vast number of nodes have only one or two links, while a rare few nodes have perhaps hundreds of links... 
+
+
+scale-free graphs have less entropy than random graphs, but more than small worlds...
+The entropy of a scale-free graph is generally lower than the entropy of a random
+graph because scale-free networks contain some structure. Scale-free networks are closer to the random end of the "graph structure" spectrum
+than to the structured extreme. At one end is the class of structured k-regular graphs
+(where entropy equals zero), and the other end is the class of random networks that
+have no discernable structure or topology. In between is the class of scale-free networks,
+which have some structure, because the degree sequence distribution obeys a power law.
+
+A conjecture: a scale-free graph is more random than structured; a small-world graph is more structured than random
+</text>
+
+
 <text>
 A power law implies that the probability of finding a node with a degree that is twice as large as a given number decreases by a constant factor, rather than following an exponential falloff. ++ exponent of the power law distribution.
 
@@ -169,6 +231,14 @@ L: "the probability that a site has k links obeys a power law, which drops off q
 hub, and many other nodes with many fewer links than the average. This lopsided
 preference for hubs seemed counter to nature, which typically follows a normal distribution.
 
+L: A scale-free graph has many nodes with very low degree, and one node with very
+high degree. Hence, its degree distribution is skewed to the left—toward small degree
+values. Because so many nodes are connected to the graph’s hub node, the scale-free
+graph also exhibits a small graph diameter—similar to a random graph. It is nearly
+one-half the diameter of the small-world graph, and 50% smaller than the diameter
+of a random graph. This is a consequence of the high concentration of links attached
+to the hub. The unexpectedly large hub degree is a distinguishing property of scalefree
+graphs.
 </text>
 
 <text>

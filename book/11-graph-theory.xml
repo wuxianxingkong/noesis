@@ -274,7 +274,9 @@ An integer partition p = (p_1, ..., p_n) where p_i is the degree of the ith high
 
 p is an integer partition of 2m, i.e. sum p_i = 2m, in undirected graphs, since each edge contributes to the degree of two nodes.
 
-Not all integer partitions correspond to actual graphs.
+Not all integer partitions correspond to actual graphs. Those that do correspond to actual graphs are called graphical.
+
+It should be noted that different graphs can share the same degree sequence. Therefore there is not a one-to-one mapping between graphs and degree sequences. We could view a degree sequence as a rough description of the graph topology.
 
 An algorithm to build a graph given a degree sequence: the highest-degree node is connected to the following node; the degree sequence is updated by decrementing p_1 and p_2 (and reorder the partition), resulting in a smaller partition; the process is repeated until the degree sequence is full of zeroes (or a negative value appears, which means the graph was not realizable).
 
@@ -283,12 +285,35 @@ The algorithm above is deterministic. If we want a random graphs with the given 
 
 
 <text>
-The degree sequence distribution of a network, for example, is a histogram of percentage of nodes with degree d versus d.
+We can compress a degree sequence by obtaining a <term>degree distribution</term>, which is just the histogram of the relative frequencies corresponding to the different node degrees, which vary from 1 to <eqn>\Delta(G)</eqn>.
+
+As in any probability distribution, the sum of the values in the degree sequence distribution must add up to 1. 
+</text>
+
+<text>
 Different kinds of networks exhibit different degree sequence distributions:
 e.g. 
 - A random network has a degree sequence distribution that obeys a binomial distribution, 
 - and a scale-free network’s degree sequence obeys a power law.
 </text>
+
+<text>
+We can also employ the degree distribution to measure the randomness in the graph. From Information Theory, we know that <term>entropy</term> communicates the amount of information provided by a message and is measured in bits. We can obtain the entropy of a degree distribution by computing
+</text>
+
+<equation>
+H(G) = - \sum_i P(deg_G(v)=i) \log_2 P(deg_G(v)=i)
+</equation>
+
+<text>
+where <eqn>P(deg_G(v)=i)</eqn> is the probability of a node having degree i.
+</text>
+
+<text>
+This entropy measures the randomness in the graph degree distribution, or the diversity in node degrees, which is minimum when all the nodes have the same degree (i.e. for regular graphs). For regular networks, where <eqn>P(deg_G(v)=r)=1</eqn> for a single degree <eqn>r</eqn>, we obtain <eqn>H(G_{regular}) = - 1 \log_2 1 = 0</eqn>. The more random the graph, the higher the entropy: at one extreme, regular graphs have no entropy; at the other end of the spectrum, random graphs have very little regularity (and high entropy).
+</text>
+
+
 </document>
 
 
@@ -428,16 +453,6 @@ When, both edges and nodes are distinct, the trail becomes a path. It should be 
 we have a forward edge, in the second a backward edge.
 - If a trail consists of forward edges only, it is called a directed trail;
 - any directed walk W with start vertex a and end vertex b, where a \neq b, contains a directed path from a to b.
-</text>
-
-<!-- as subgraphs --> 
-
-<text>
-Paths and cycles are important kinds of subgraphs:
-
-- A path <eqn>P_n</eqn> is a graph of order n and size n-1 whose vertices can be labeled <eqn>v_1, v_2, ..., v_n</eqn> and whose edges are <eqn>v_iv_{i+1}</eqn> for <eqn>i=1,2,...,n-1</eqn>. 
-
-- A cycle <eqn>C_n</eqn> is a graph of order n and size n whose whose vertices can be labeled <eqn>v_1, v_2, ..., v_n</eqn> and whose edges are <eqn>v_1v_n</eqn> and <eqn>v_iv_{i+1}</eqn> for <eqn>i=1,2,...,n-1</eqn>. The cycle <eqn>C_3</eqn> is called a triangle or triad.
 </text>
 
 <!-- Cycles -->
@@ -1020,6 +1035,44 @@ This formal result completes our study of graph connectivity, by completing Meng
 Some kinds of graphs appear so often in practice that it is worthwhile to examine them in some detail.
 </text>
 
+<!-- Paths and cycles --> 
+
+<document>
+<tag>graph-theory-pc</tag>
+<title>Paths and cycles</title>
+
+<text>
+Paths and cycles are important kinds of graphs, often obtained as subgraphs of larger graphs:
+</text>
+
+<list>
+
+<item>
+A path <eqn>P_n</eqn> is a graph of order n and size n-1 whose vertices can be labeled <eqn>v_1, v_2, ..., v_n</eqn> and whose edges are <eqn>v_iv_{i+1}</eqn> for <eqn>i=1,2,...,n-1</eqn>. Some authors call them <q>line graphs</q>. In them, all internal nodes have degree 2, whereas the nodes at the extremes have degree 1. Paths are strongly connected and it is easy to see that an Eulerian path exists from the first to the last node in the path.
+</item>
+
+<item>
+A cycle <eqn>C_n</eqn> is a graph of order n and size n whose whose vertices can be labeled <eqn>v_1, v_2, ..., v_n</eqn> and whose edges are <eqn>v_1v_n</eqn> and <eqn>v_iv_{i+1}</eqn> for <eqn>i=1,2,...,n-1</eqn>. Due to their topology, they are often called <q>rings</q>. In ring graphs, all their nodes are connected to their predecessor and successor nodes, hence their degree is always 2. As paths, cycles are strongly connected and they are also Eulerian graphs, since the full cycle completes an Eulerian tour through the graph. It should be noted that <eqn>C_3</eqn> is the smallest possible cycle, of length 3. <eqn>C_3</eqn> is often referred to as a triangle or triad.
+</item>
+
+</list>
+
+<text>
+Albeit the topology of paths and rings looks similar, since they just differ in a single link, their properties are quite different. In rings, there are two different paths between any pair of nodes. This reduces the average path length between pairs of nodes, from <eqn>(n+1)/3</eqn> in paths to <eqn>(n+1)/4</eqn> for odd-length rings and <eqn>n^2/(4n-4))</eqn> for even-length rings <cite>Lewis 2009</cite>. It also influences the robustness of the network, since a single link removal disconnects a path, which has a bus-like topology if the use the common terminology in computer networks, while we would have to remove two links to split a ring into two buses.
+</text>
+
+<figure>
+  <tag>fig-paths-cycles</tag>
+  <image scale="40" file="image/graphs/path"/>
+  <image scale="30" file="image/graphs/ring"/>
+  <title>A simple path, <eqn>P_5</eqn>, and a ring or cycle, <eqn>C_9</eqn>.</title>
+</figure>
+
+</document>
+
+
+<!-- Regular graphs -->
+
 <document>
 <tag>graph-theory-regular</tag>
 <title>Regular graphs</title>
@@ -1030,8 +1083,30 @@ more precisely an r-regular graph. A regular graph is said to be regular of degr
 </text>
 
 <text>
+The cycles or rings we have just analyzed, <eqn>C_n</eqn>, are the simplest example of regular graphs, 2-regular graphs in this case.
+</text>
+
+<text>
+It is easy to see that r-regular graphs with <eqn>n</eqn> nodes contain <eqn>r*n/2</eqn> links. 
+</text>
+
+<text>
+For small values of r, r-regular graphs are sparse, since their size is proportional to their order; i.e. <eqn>m = r*n/2 \in O(n)</eqn> for small values of <eqn>r</eqn>. For large values of r, however, r-regular graphs are dense, being complete graphs the densest possible graphs.
+</text>
+
+<text>
+If we define the graph density as the ratio between the links it contains and the number of links in a complete graph, i.e. <eqn>d(G)=m/(n(n-1))</eqn> for simple graphs, the density of an r-regular graph is <eqn>d(R)=r/(2n-2)</eqn>. In other words, their density grows linearly with <eqn>r</eqn> while, in general, it grows sublinearly for arbitrary graphs.
+</text>
+
+<text>
+When <eqn>r</eqn> is even, an r-regular graph can be decomposed into <eqn>r/2</eqn> disjoint cycles of size <eqn>n</eqn>. The same is not true for odd values of <eqn>r</eqn>.
+</text>
+
+<text>
 The following theorem establishes the existence of regular graphs for given values of r and n: For integer r and n, there is an r-regular graph of n nodes if and only if <eqn>0 \leq r \leq n-1</eqn> and r and n are not both odd. The last condition is just a consequence of the fact that every graph must have an even number of nodes with odd degrees.
 </text>
+
+<text>
 
 <text>
 At the opposite extreme of the spectrum of regularity, an graph would be irregular if <eqn>deg(u) \neq deg(v)</eqn> for every two vertices of the graph. Such a graph, however, cannot exist, given that an irregular graph with n nodes would have a degree sequence given by <eqn>deg(v_i)=i-1</eqn>. This would imply that one node in the graph would be isolated, i.e. <eqn>deg(v_1)=0</eqn>, which is a contradiction with the fact that <eqn>deg(v_n)=n-1</eqn>, since <eqn>v_1</eqn> should also be adjacent to <eqn>v_n</eqn>.
@@ -1048,9 +1123,52 @@ The complete graph Kn has n vertices (that is, |V | = n) and all two-element sub
 The graph <eqn>K_n</eqn> is <eqn>(n-1)</eqn>-regular and its size is <eqn>n(n-1)/2</eqn>. Its (vertex) connectivity and edge connectivity are maximum: <eqn>\kappa(K_n) = \lambda(K_n) = n-1</eqn>.
 </text>
 
+<text>
+Complete graphs are the densest possible graphs because they contain the maximum number of links if we do not allow multiedges and loops. Since every node is connected to every other node, their average path length is 1.
+</text>
+
+<list>
+
+<item>
+The simplest complete graph, <eqn>K_2</eqn>, with two nodes and a single link connecting them, is the <q>barbell</q> (due to the similarity of its drawing to the bar used in weightlifting with heavy discs attached at its ends).
+</item>
+
+<item>
+The next complete graph, <eqn>K_3</eqn>, is just a cycle of length three, sometimes denoted by <eqn>C_3</eqn> and also known as a triangle or triad.
+</item>
+
+<item>
+The complete graph with four nodes,<eqn>K_4</eqn>, can still be depicted without line crossings, hence it is a planar graph.
+</item>
+
+<item>
+The following complete graph, however, is not planar: No matter how you try to draw <eqn>K_5</eqn>, some lines will necessarily cross. Since <eqn>K_5</eqn> is 4-regular, it can be decomposed into two <eqn>C_5</eqn> cycles.
+</item>
+
+</list>
+
+<figure>
+  <tag>fig-k2</tag>
+  <image scale="20" file="image/graphs/barbell"/>
+  <title>The complete graph <eqn>K_2</eqn>: a barbell.</title>
+</figure>
+
+<figure>
+  <tag>fig-k3</tag>
+  <image scale="15" file="image/graphs/triangle"/>
+  <title>The complete graph <eqn>K_3</eqn>: a triangle.</title>
+</figure>
+
+<figure>
+  <tag>fig-k4</tag>
+  <image scale="25" file="image/graphs/k4"/>
+  <image scale="25" file="image/graphs/k4-alt"/>
+  <title>Two depictions of the complete graph <eqn>K_4</eqn>.</title>
+</figure>
+
 <figure>
   <tag>fig-k5</tag>
-  <image scale="25" file="image/graphs/k5"/>
+  <image scale="30" file="image/graphs/k5"/>
   <title>The complete graph <eqn>K_5</eqn>.</title>
 </figure>
 

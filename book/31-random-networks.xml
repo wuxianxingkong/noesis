@@ -40,6 +40,29 @@ of Erdos and Renyi (Erdos, 1960).
 </text>
  
 
+<!-- Degree distribution -->
+
+L: The general shape... approximates a Poisson distribution because random selection of node pairs is a Poisson process - the probability of
+obtaining exactly k successes in m trials is given by the binomial distribution: 
+
+<equation> 
+B(k,m) = C {m \choose k } p^k (1-p)^{m-k}
+</equation>
+
+B(k,m) is approximated by the Poisson distribution by replacing p with (\lambda/m), in B(k,m), and letting m grow without bound:
+
+<equation> 
+H(k) = \lambda^k \frac{e^{-\lambda}}{k!}
+</equation>
+
+where \lambda is the mean node degree and k is the node degree.
+
+
+++ Figure
+
+
+
+
 <document>
 <tag>random-erdos-renyi</tag>
 <title>Random graphs: Erdos-Renyi</title>

@@ -661,10 +661,6 @@ L: Density is the ratio of the number of actual links to the maximum number poss
 <tag>modularity</tag>
 <title>Modularity</title>
 
-<text>
-L: Cluster coefficient is a measure of how many nodes form triangular subgraphs with their adjacent nodes.
-</text>
-
 
 <text>
 Networks with high levels of clustering are often composed of local communities or modules, which consist of densely connected sets of nodes. A module is separated from other modules in the sense that most links connect nodes within the module and only a few links extend beyond the module boundaries. </text>

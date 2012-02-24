@@ -86,6 +86,32 @@ In its original form, the clustering coefficient is the fraction of fully connec
 </text>
 
 <text>
+L: Cluster coefficient is a measure of how many nodes form triangular subgraphs with their adjacent nodes.
+
+L: Suppose that we compare the number of links connecting a group of k adjacent nodes
+to the maximum possible number,which is given by a complete subgraph with (k(k.))/2 links. 
+Each subgraph formed around a node in this k-node neighborhood forms a triangular
+subgraph if it is complete, and does not form a triangular subgraph if one or
+more links is (are) missing. The amount of clustering depends on the number of triangles
+found among these neighbors. Let the neighbors of node u be the nodes directly connected
+to u. There are degree(u) such neighbors, which means that there are potentially
+(degree(u) [degree(u)-1])/2 links among these neighbors. Suppose that the neighbors
+share c links; then the cluster coefficient of node u, CC(u), is
+
+CC(u) = 2c / ( degree(u) (degree(u) - 1) )
+
+A more visual way to think of cluster coefficient is the following: A node u with degree(u)
+neighbors may be part of c triangular subgraphs, each containing node u as one of the
+triangle’s three nodes. Cluster coefficient is the ratio of the actual number of triangular
+subgraphs c to the maximum possible number.
+
+L: The cluster coefficient of an entire graph G is the average over all node
+coefficients... maximum for complete graphs CC(K_n) = 1 and minimum for trees CC(T)= 0 (e.g. stars)
+
+</text>
+
+
+<text>
 Low-degree nodes can disproportionately influence their neighbors' clustering coefficients, a problem solved by transitivity <cite>Newman 2003</cite>... a collectively normalized variant of the clustering coefficient.
 </text>
 

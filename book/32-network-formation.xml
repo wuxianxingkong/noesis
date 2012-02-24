@@ -93,6 +93,18 @@ e.g. database of film actors, the electric power grid of the western United Stat
 
 L: Sparse small-world networks appear to model human social networks, because humans have limited capacity to know a large number of other humans.
 
+K: Jure Leskovec and Eric Horvitz [273]. They analyzed 30 billion conversations among 240 million active user accounts on Microsoft Instant Messenger (IM): a giant component containing almost all of the nodes, with an estimated average distance of 6.6 and an estimated median of 7 (over a random sample, due to the huge size of the graph)
+[Jure Leskovec and Eric Horvitz (June 2007). Planetary-Scale Views on an Instant-Messaging Network. arXiv:0803.0939.]
+http://arxiv.org/abs/0803.0939
+
+W: algorithm finds an average degree of separation of 3.43 between two random Twitter users, requiring an average of only 67 requests for information over the Internet to Twitter. A near-optimal solution of length 3.88 can be found by making an average of 13.3 requests.
+[Reza Bakhshandeh, Mehdi Samadi, Zohreh Azimifar, Jonathan Schaeffer, "Degrees of Separation in Social Networks", Fourth Annual Symposium on Combinatorial Search, 2011] 
+http://www.aaai.org/ocs/index.php/SOCS/SOCS11/paper/view/4031
+
+W: Facebook's data team released two papers in November 2011 which document that amongst all facebook users at the time of research (721 million users with 69 billion friendship links) there is an average distance of 4.74. Probabilistic algorithms were applied on statistical metadata to verify the accuracy of the measurements.[23] It was also found that 99.91% of facebook users were interconnected, forming a large connected component.[24]
+- Backstrom, Lars; Boldi, Paolo; Rosa, Marco; Ugander, Johan; Vigna, Sebastiano (2011-11-19). "Four Degrees of Separation". ArXiv. Retrieved 23 November 2011.
+- Ugander, Johan; Karrer, Brian; Backstrom, Lars; Marlow, Cameron. "The Anatomy of the Facebook Social Graph". ArXiv. Retrieved 23 November 2011.
+
 
 Common Examples of Small-World Networks <cite>Lewis 2009</cite>
 

@@ -18,6 +18,20 @@ behaviors of its nodes.
 <tag>structure-connectivity</tag>
 <title>Connectivity</title>
 
+
+<text>
+K: Large, complex networks often have what is called a giant component, which is a deliberately informal term for a connected component that contains a significant fraction of all nodes. Moreover, when a network contains a giant component, it almost always contains only one ... why? ++ imagine that there were two giant components, each with millions of nodes. All it would take is a single edge from someone in the first of these components to someone in the second, and the two giant components would merge into a single
+component. In most cases, it’s essentially inconceivable that some such edge wouldn’t
+form, and hence two coexisting giant components are something one almost never
+sees in real networks. When a giant component exists, it is thus generally unique and
+distinguishable as a component that dwarfs all others
+</text>
+
+<text>
+K: e.g. the romantic relationships in an American high school over an 18-month period [49]. Bearman, Moody, and Stovel note in their analysis of this
+network, “These structures reflect relationships that may be long over, and they link individuals together in chains far too long to be the subject of even the most intense gossip and scrutiny. Nevertheless, they are real: like social facts, they are invisible yet consequential macrostructures that arise as the product of individual agency.” (++dynamic aspects)
+</text>
+
 <text>
 Facebook <cite>Ugander at al. 2011</cite>: (1) global structure of the graph: the social network is nearly fully connected, with 99.91% of individuals belonging to a single large connected component, (2) by studying the average local clustering coefficient and degeneracy of graph neighborhoods: the Facebook graph as a whole is clearly sparse, the graph neighborhoods of users contain surprisingly dense structure; (3) assortativity patterns present in the graph by studying the basic demographic and network properties of users. We observe clear degree assortativity and characterize the extent to which "your friends have more friends than you". Furthermore, we observe a strong effect of age on friendship preferences as well as a globally modular community structure driven by nationality, but we do not find any strong gender homophily. 
 </text>
@@ -49,7 +63,12 @@ The average path length varies with the size of the network, often in what might
 <text>
 <q>six degrees of separation</q>
 
-+ Stanley Milgram (1967): 296 volunteers were asked to send a message by postcard <cite>Travers and Milgram 1969</cite>
++ Stanley Milgram (1967): 296 volunteers were asked to send a message by postcard 
+ experiments reported in The Small World Problem [7] in popular science journal Psychology Today, with a more rigorous version of the paper appearing in Sociometry two years later.
+<cite>Travers and Milgram 1969</cite>
+[Stanley Milgram, "The Small World Problem", Psychology Today, 1967, Vol. 2, 60-67]
+
+
 + Facebook (2011): the average number of acquaintances separating any two people in the world was 4.74, calculating the average distance between any two people by computing a vast number of sample paths among Facebook users (721 million, more than one-tenth of the world’s population) <cite>Backstrom et al. 2011</cite>
 </text>
 

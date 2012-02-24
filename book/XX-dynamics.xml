@@ -39,6 +39,30 @@ show how these classical models may be extended to multi-product markets and oli
 </text>
 
 
+<!-- Game theory -->
+
+<document>
+<tag>game-theory</tag>
+<title>Game theory</title>
+
+<text>
+K: a theory of behavior .... provides models of individual behavior in settings where outcomes depend on the behavior of others.
+
+K: settings in which a group of people must simultaneously choose how to act, knowing that the outcome will depend on the decisions made by all of them.
+
+K: we abstract such situations with interdependent behavior into a common framework, wherein a collection of individuals must each commit to a strategy, thereby receiving a payoff that depends on the strategies chosen by everyone... This general framework allows us to make predictions about how people will behave in a range of situations. A fundamental part of this framework is the notion of equilibrium – a state that is “self-reinforcing” in that it provides no individual with an incentive to unilaterally change his or her strategy, even if that individual knows how others will behave.
+
+K: e.g. One natural example is the problem of choosing a driving route through a network of highways at a time when traffic is heavy. For a driver in such a situation, the delays experienced depend on the pattern of traffic congestion arising not just from the driver’s choice of route, but also from the choices made by all other drivers. In this example, the network plays the role of a shared resource, and the combined actions of its users can either congest this resource or use it more efficiently. In fact, the interactions among people’s behavior can lead to counterintuitive effects; for example, adding resources to a transportation network can in fact create incentives that seriously undermine its efficiency, in a phenomenon known as Braess’s Paradox [76].
+
+K: e.g. bidding in an auction. If a seller is trying to sell a single item using an auction, then the success of any one bidder in the auction (whether she gets the item, and how much she pays) depends not just on how she bids but also on how everyone else bids; an optimal bidding strategy should take this into account. Here too, counterintuitive effects are at work: for example, if the seller introduces more aggressive pricing rules into the auction, he can make the strategic behavior of the bidders much more complex, and in particular induce optimal bidding that offsets whatever gains he might have expected to make from the new rules. Auctions represent a basic kind of economic interaction that we will generalize to more complex patterns of interactions in networks...
+
+APPLICATIONS
+
+K: One natural setting for this exploration is in models of trade and other forms of economic activity. The interactions among buyers and sellers, or pairs of counterparties to a trade or loan, naturally forms a network...
+</text>
+
+</document>
+
 <!-- Spectral analysis -->
 
 <document>
@@ -110,6 +134,99 @@ and spectral gap to explain stability—or the lack of it—in a network.
 <tag>diffusion</tag>
 <title>Diffusion through networks (i.e. signal propagation)</title>
 
+
+<text>
+K: Population Effects. If we observe a large population over time,
+we see a recurring pattern by which new ideas, beliefs, opinions, innovations, technologies,
+products, and social conventions are constantly emerging and evolving. Collectively,
+we can refer to these as social practices [382] (e.g., holding opinions, purchasing
+products, or behaving according to certain principles) that people can choose to adopt
+or not. As we watch a group or society over time, we see that new practices can be
+introduced that either become popular or remain obscure; meanwhile, established practices
+can persist or potentially fade over time...
+
+PEER EFFECTS
+The way in which new practices spread through a population depends in large part on
+the fact that people influence each other’s behavior. In short, as you see more and more
+people doing something, you generally become more likely to do it, too. Understanding
+this process, and what its consequences are, is a central issue for our understanding of
+networks and aggregate behavior.
+
+At a surface level, one could hypothesize that people imitate the decisions of others
+simply because of an underlying human tendency to conform: we have a fundamental
+inclination to behave as we see others behaving. This observation is clearly important,
+but as an explanation it leaves some crucial questions unresolved. In particular, by
+taking imitation as a given, we miss the opportunity to ask why people are influenced
+by the behavior of others. This is a broad and difficult question, but in fact it is possible
+to identify multiple reasons why even purely rational agents – individuals with no a
+priori desire to conform to what others are doing – nonetheless copy the behavior of
+others.
+
++ 1) INFORMATION
+One class of reasons is based on the fact that the behavior of others conveys information.
+You may have some private information on which to base a decision between
+alternatives, but if you see many people making a particular choice, it is natural to
+assume that they too have their own information, and to try to infer how other people
+are evaluating different choices from how they are behaving. In the case of a Web site
+like YouTube or Flickr, the observation that a lot of people use it can suggest that these
+people know something about its quality. Similarly, seeing that a certain restaurant
+is extremely crowded every weekend can suggest that many people think highly of
+it. But this sort of reasoning raises surprisingly subtle issues: as many people make
+decisions sequentially over time, the later decisions can be based in complex ways on a
+mixture of private information and inferences from what has already happened, so that
+the actions of a large set of people can in fact be based on surprisingly little genuine
+information. In an extreme form of this phenomenon we may get information cascades,
+where even rational individuals can choose to abandon their private information and
+follow a crowd.
+
++ 2) BENEFITS
+There is a completely different but equally important class of reasons why people
+may imitate the behavior of others – when a direct benefit can be gained from aligning
+one’s behavior with that of others, regardless of whether they are making the best
+decision. ... Such network effects amplify the success of products and technologies that are already
+doing well; in a market where network effects are at work, the leader can be difficult
+to displace. Still, this type of dominance is not necessarily permanent; as we will see
+later, it is possible for a new technology to displace an old one if it offers something
+markedly different or when it starts in a part of the network where there is room for the
+new technology to take hold.
+
+These considerations show how popularity as a general phenomenon is governed
+by a “rich get richer” feedback process in which popularity tends to build on itself. It
+is possible to build mathematical models for this process that include predictions for
+the distribution of popularity that are borne out by empirical data – a picture in which
+society’s attention is divided between a small number of prominent items and a “long
+tail” of more obscure ones.
+
+
+STRUCTURE
+The underlying mechanisms, based on information and direct benefits, are present both
+at the level of whole populations and at a local level in the network, between an
+individual and his or her set of friends or colleagues. In many cases you may care more
+about aligning your own behavior with the behavior of your immediate neighbors in
+the social network, rather than with the population as a whole.
+
+When individuals have incentives to adopt the behavior of their neighbors in the
+network, there can be cascading effects, in which a new behavior starts with a small set
+of initial adopters and then spreads radially outward through the network.
+
+e.g. the diffusion of technologies can be blocked by
+the boundary of a densely connected cluster in the network – a “closed community”
+of individuals who have a high amount of linkage among themselves, and hence are
+resistant to outside influences.
+
+Cascading behavior in a network is sometimes referred to as “social contagion”
+because it spreads from one person to another in the style of a biological epidemic
+
+fundamental differences in the underlying mechanisms between social and biological
+contagion; social contagion tends to involve decision making on the part
+of the affected individuals, whereas biological contagion is based on the chance of
+catching a disease-causing pathogen through contact with another individual. But the
+network-level dynamics are similar, and insights from the study of biological epidemics
+are also useful in thinking about the processes by which things spread in
+networks.
+</text>
+
+
 <text>
 L: Chapter 8 @ <cite>Lewis 2009</cite>, <q>Epidemics,</q> extends the elegant work of Z. Wang,
 Chakrabarti, C. Wang, and Faloutsos, to the exciting new endeavor of designing
@@ -178,6 +295,15 @@ EXAMPLES
 <document>
 <tag>search</tag>
 <title>Search on networks</title>
+
+<text>
+K: ... the way people can explore chains of social contacts for information or
+referrals to others. The surprising effectiveness with which people are able to accomplish
+such tasks, confirmed by both experiments and everyday experience, suggests
+characteristic patterns of structure at the network level that help facilitate these types
+of activities.
+</text>
+
 
 <text>
 ++ 1999 Walsh: Difficulty of search in small worlds using local properties

@@ -7,6 +7,10 @@
 &bibliography;
 <title>Mining Network Data</title>
 
+<text>
+K: A network perspective... involves formulating and reasoning about mathematicalmodels and also reasoning qualitatively about these models and searching for their broader implications... a powerful way of looking at complex systems in general - a way of thinking about social dynamics, economic interaction, online information, designed technology, and natural processes, and approaching such systems with an eye toward their patterns of
+internal structure and the rich feedback effects that result.
+</text>
 
 <text>
 A network is described <q>by its structure (e.g., nodes and links), and its behavior (what the network 'does' as a result of the interactions among the nodes and links).</q> In other words, networks are graphs that represent something real, <q>a representation or model of observable reality.</q> (National Research Council, Committee on Network Science for Future Army Applications: Network Science, Board of Army Science and Technology, National Academies Press, www.nap.edu, 2005).
@@ -96,6 +100,12 @@ L: Selection of topics about what some have called <term>network science</term> 
 <document>
 <tag>history</tag>
 <title>Historical comments</title>
+
+
+<text>
+K: two main bodies of theory that we will be building on: graph theory and game theory. These are theories of structure and behavior, respectively.
+Graph theory is the study of network structure, while game theory provides models of individual behavior in settings where outcomes depend on the behavior of others.
+</text>
 
 <!-- 18th Century: Euler -->
 
@@ -251,7 +261,23 @@ of a social network are like freeways and streets—freeways have few intersection
 the other hand, allow you to pinpoint a single person or house within a dense neighborhood.
 Freeways (weak ties) get you to a local neighborhood quickly, while streets
 (strong ties) zero in on a specific person or house.
+
+
+K: ... the communication is balanced between staying within small organizational units and
+cutting across organizational boundaries. This is an example of a much more general
+principle in social networks – that strong ties, representing close and frequent social
+contacts, tend to be embedded in tightly-linked regions of the network, whereas weak
+ties, representing more casual and distinct social contacts, tend to cross between these
+regions. Such a dichotomy suggests a way of thinking about social networks in terms
+of their dense pockets of strong ties and the ways in which they interact with each
+other through weaker ties. In a professional setting, it suggests a strategy for navigating
+one’s way through the social landscape of a large organization by finding the structural
+holes between parts of the network that interact very little with each other. At a global
+scale, it suggests some of the ways in which weak ties can act as “shortcuts” that link
+together distant parts of the world, resulting in the phenomenon colloquially known as
+six degrees of separation.
 </text>
+
 
 
 <!-- Network models -->

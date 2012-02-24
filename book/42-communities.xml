@@ -30,6 +30,20 @@ e.g.
 - John Miller and Scott Page's standing ovation model (a model of peer effects where you change your behavior to match that of others around you)
 </text>
 
+
+<text>
+EXAMPLE: karate club social network
+
+K: Social networks can also capture the sources of conflict within a group...
+2 central [nodes] in the network of friendships, with many connections to other people. On the other hand, they are not
+friends with each other, and in fact most people are only friends with one or the other
+of them. These two central people were, respectively, the instructor and the student
+founder of the club, and this pattern of noninteracting clusters was the most visible
+symptom of a conflict between them and their factions that ultimately splintered the
+group into two rival karate clubs... the theory of structural balance can be used to reason about how fissures in a network may
+arise from the dynamics of conflict and antagonism at a purely local level.
+</text>
+
 <text>
 GRAPH PARTITIONING, from <cite>Skiena 2008</cite>:
 

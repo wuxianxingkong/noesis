@@ -1107,8 +1107,6 @@ The following theorem establishes the existence of regular graphs for given valu
 </text>
 
 <text>
-
-<text>
 At the opposite extreme of the spectrum of regularity, an graph would be irregular if <eqn>deg(u) \neq deg(v)</eqn> for every two vertices of the graph. Such a graph, however, cannot exist, given that an irregular graph with n nodes would have a degree sequence given by <eqn>deg(v_i)=i-1</eqn>. This would imply that one node in the graph would be isolated, i.e. <eqn>deg(v_1)=0</eqn>, which is a contradiction with the fact that <eqn>deg(v_n)=n-1</eqn>, since <eqn>v_1</eqn> should also be adjacent to <eqn>v_n</eqn>.
 </text>
 
@@ -1190,6 +1188,7 @@ digraph on n vertices."
 <document>
 <title>Cubic graphs</title>
 
+<text>
 A cubic graph is a graph in which all vertices have degree three, i.e. a 3-regular graph. Cubic graphs are also called trivalent graphs.
 
 Their (vertex) connectivity and edge connectivity always coincide, i.e. <eqn>\kappa(K_n) = \lambda(K_n)</eqn>, and they can be either 1 or 2.
@@ -1197,6 +1196,7 @@ Their (vertex) connectivity and edge connectivity always coincide, i.e. <eqn>\ka
 There are many well-known individual cubic graphs, including the complete graph <eqn>K_4</eqn>, the utility graph (<eqn>K_{3,3}</eqn>), the Petersen graph, the Heawood graph, the Möbius-Kantor graph, the Pappus graph, the Desargues graph, the Nauru graph, the Coxeter graph, the Tutte-Coxeter graph (a.k.a. Tutte eight-cage), the Dyck graph, the Foster graph, or the Biggs-Smith graph.
 
 For instance, the Petersen graph is an undirected small regular graph, named after the Danish mathematician Julius Petersen, who initiated the study of regular graphs in 1891. The Petersen graph, which includes 10 vertices and 15 edges, is often employed as an useful example or counterexample for many proofs in graph theory.
+</text>
 
 <figure>
   <tag>fig-petersen</tag>

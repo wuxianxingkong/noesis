@@ -9,52 +9,52 @@
 <g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 200.428)">
 <title>Konigsberg</title>
 <polygon fill="white" stroke="white" points="-4,5 -4,-200.428 219.428,-200.428 219.428,5 -4,5"/>
-<!-- C -->
-<g id="node1" class="node"><title>C</title>
+<!-- c -->
+<g id="node1" class="node"><title>c</title>
 <ellipse fill="#d0d0d0" stroke="black" cx="107.214" cy="-18" rx="27" ry="18"/>
-<text text-anchor="middle" x="107.214" y="-14.3" font-family="Helvetica,sans-Serif" font-size="14.00">C</text>
+<text text-anchor="middle" x="107.214" y="-14.3" font-family="Helvetica,sans-Serif" font-size="14.00">c</text>
 </g>
-<!-- B -->
-<g id="node3" class="node"><title>B</title>
+<!-- b -->
+<g id="node3" class="node"><title>b</title>
 <ellipse fill="#d0d0d0" stroke="black" cx="27" cy="-98.2141" rx="27" ry="18"/>
-<text text-anchor="middle" x="27" y="-94.5141" font-family="Helvetica,sans-Serif" font-size="14.00">B</text>
+<text text-anchor="middle" x="27" y="-94.5141" font-family="Helvetica,sans-Serif" font-size="14.00">b</text>
 </g>
-<!-- C&#45;&#45;B -->
-<g id="edge2" class="edge"><title>C&#45;&#45;B</title>
+<!-- c&#45;&#45;b -->
+<g id="edge2" class="edge"><title>c&#45;&#45;b</title>
 <path fill="none" stroke="blue" stroke-width="2" d="M87.0581,-30.309C70.9188,-44.0176 49.1495,-65.9644 36.6305,-81.2688"/>
 </g>
-<!-- C&#45;&#45;B -->
-<g id="edge4" class="edge"><title>C&#45;&#45;B</title>
+<!-- c&#45;&#45;b -->
+<g id="edge4" class="edge"><title>c&#45;&#45;b</title>
 <path fill="none" stroke="blue" stroke-width="2" d="M97.6215,-34.8989C85.1322,-50.1764 63.3937,-72.0997 47.2475,-85.8273"/>
 </g>
-<!-- D -->
-<g id="node9" class="node"><title>D</title>
+<!-- d -->
+<g id="node9" class="node"><title>d</title>
 <ellipse fill="#d0d0d0" stroke="black" cx="187.428" cy="-98.2141" rx="27" ry="18"/>
-<text text-anchor="middle" x="187.428" y="-94.5141" font-family="Helvetica,sans-Serif" font-size="14.00">D</text>
+<text text-anchor="middle" x="187.428" y="-94.5141" font-family="Helvetica,sans-Serif" font-size="14.00">d</text>
 </g>
-<!-- C&#45;&#45;D -->
-<g id="edge10" class="edge"><title>C&#45;&#45;D</title>
+<!-- c&#45;&#45;d -->
+<g id="edge10" class="edge"><title>c&#45;&#45;d</title>
 <path fill="none" stroke="blue" stroke-width="2" d="M122.302,-33.0877C136.643,-47.4287 158.09,-68.8755 172.408,-83.1941"/>
 </g>
-<!-- A -->
-<g id="node6" class="node"><title>A</title>
+<!-- a -->
+<g id="node6" class="node"><title>a</title>
 <ellipse fill="#d0d0d0" stroke="black" cx="107.214" cy="-178.428" rx="27" ry="18"/>
-<text text-anchor="middle" x="107.214" y="-174.728" font-family="Helvetica,sans-Serif" font-size="14.00">A</text>
+<text text-anchor="middle" x="107.214" y="-174.728" font-family="Helvetica,sans-Serif" font-size="14.00">a</text>
 </g>
-<!-- B&#45;&#45;A -->
-<g id="edge6" class="edge"><title>B&#45;&#45;A</title>
+<!-- b&#45;&#45;a -->
+<g id="edge6" class="edge"><title>b&#45;&#45;a</title>
 <path fill="none" stroke="blue" stroke-width="2" d="M36.5926,-115.113C49.0819,-130.391 70.8204,-152.314 86.9666,-166.041"/>
 </g>
-<!-- B&#45;&#45;A -->
-<g id="edge8" class="edge"><title>B&#45;&#45;A</title>
+<!-- b&#45;&#45;a -->
+<g id="edge8" class="edge"><title>b&#45;&#45;a</title>
 <path fill="none" stroke="blue" stroke-width="2" d="M47.156,-110.523C63.2952,-124.232 85.0646,-146.178 97.5836,-161.483"/>
 </g>
-<!-- B&#45;&#45;D -->
-<g id="edge12" class="edge"><title>B&#45;&#45;D</title>
+<!-- b&#45;&#45;d -->
+<g id="edge12" class="edge"><title>b&#45;&#45;d</title>
 <path fill="none" stroke="blue" stroke-width="2" d="M54.2145,-98.2141C83.8046,-98.2141 130.811,-98.2141 160.348,-98.2141"/>
 </g>
-<!-- A&#45;&#45;D -->
-<g id="edge14" class="edge"><title>A&#45;&#45;D</title>
+<!-- a&#45;&#45;d -->
+<g id="edge14" class="edge"><title>a&#45;&#45;d</title>
 <path fill="none" stroke="blue" stroke-width="2" d="M122.302,-163.341C136.643,-149 158.09,-127.553 172.408,-113.234"/>
 </g>
 </g>

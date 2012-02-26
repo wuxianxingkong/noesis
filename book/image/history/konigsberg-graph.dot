@@ -6,11 +6,11 @@ graph Konigsberg
 node[fontname="Helvetica", style=filled, fillcolor="#d0d0d0"]
 edge[fontname="Helvetica", style=bold, color=blue, arrowhead=open];
 
- C -- B;
- C -- B;
- B -- A;
- B -- A;
- C -- D;
- B -- D;
- A -- D;
+ c -- b;
+ c -- b;
+ b -- a;
+ b -- a;
+ c -- d;
+ b -- d;
+ a -- d;
 }

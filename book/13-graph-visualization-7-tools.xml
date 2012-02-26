@@ -64,17 +64,35 @@ The DOT language syntax:
 
 <text>
 Libraries:
-++ JGraph, <url>http://www.jgraph.com/</url>,
+++ JGraph, <url>http://www.jgraph.com/</url>, open source network visualisation library using standard Java Swing. 
 ++ JGraphT, <url>http://jgrapht.sourceforge.net/</url>: Java graph libraries suitable for interactive applications.
 ++ JGraphEd (http://www.jharris.ca/JGraphEd/): a Java graph-drawing framework that includes several planarity testing/embedding algorithms, including both the Booth-Lueker PQ-tree algorithm and the modern straight-line grid embedding
 </text>
 
 <text>
 Social network analysis tools: 
-- Pajek <cite>de Nooy et al. 2005</cite>, 
+- Pajek <cite>de Nooy et al. 2005</cite>,  output in several formats including SVG and postscript
 - NodeXL <cite>Hansen et al. 2010</cite>... include implementations of force-directed methods for visualizing social networks.
+
+- UCINET Software for Social Network Analysis, http://www.analytictech.com/ucinet/,  
+Commercial but cheap. Can read and write many types of simple text file, can deal with excel files and can export data for Mage and Pajek. Includes NetDraw for drawing diagrams. Also it contains many standard data sets from social science, such as the Karate Club, which can easily be exported to a text format. These may be available with the trial version. 
+[Borgatti, S.P., 2002. NetDraw Software for Network Visualization. Analytic Technologies: Lexington, KY]
+
 </text>
 
+<text>
+++ GUESS - The Graph Exploration System, http://graphexploration.cond.org/index.html
+GUESS is an exploratory data analysis and visualisation tool for graphs and networks. Free, containing an embedded language called Gython (an extension of Python, or more specifically Jython). Contains "limited, but fairly functional GraphML and pajek" file readers. Contained within Network Workbench.
+
+++ Gephi, interactive visualization and exploration platform for all kinds of networks and complex systems, dynamic and hierarchical graphs, http://gephi.org/ ...  using java Netbeans technology.
+
+++ Cytoscape: An Open Source Platform for Complex Network Analysis and Visualization, ++ http://www.cytoscape.org/
+ Visualisations can be hand edited and may be exported in all the useful formats PDF, EPS, SVG, PNG, JPEG, and BMP. 
+
+++ yFiles, from yworks http://www.yworks.com/, a commercial java library of algorithms and components for the visualisation and analysis of networks. Used by both visone and yed,
+- http://visone.info/ A software tool intended for research and teaching in social network analysis.
+- yED, free multiplatform graph editor, from yWorks
+</text>
 
 </document>
 

@@ -25,6 +25,14 @@ Network Workbench (Indiana), by Katy Börner
 </item>
 
 <item>
+NetworkX, in Python, http://networkx.lanl.gov/
+</item>
+
+<item>
+igraph, written in C, but accessible from Python or Ruby, and also from the free R statistical package, http://igraph.sourceforge.net/
+</item>
+
+<item>
 Brain Connectivity Toolbox, <url>http://www.brain-connectivity-toolbox.net</url>. Matlab library containing a large selection of complex network measures. BCT is maintained by Olaf Sporns and Mikail Rubinov.
 </item>
 

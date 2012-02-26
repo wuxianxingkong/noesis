@@ -29,11 +29,17 @@ Nodes (vertices) correspond to the elements of the system represented by the gra
 </text>
 
 <text>
-Any member <eqn>e={u,v}</eqn> of <eqn>E(G)</eqn> is an <term>edge</term> in <eqn>G</eqn> with end vertices <eqn>u</eqn> and <eqn>v</eqn>. Both <eqn>u</eqn> and <eqn>v</eqn> are incident with the edge <eqn>e</eqn>. An edge <eqn>e={u,v}</eqn> is said to join <eqn>u</eqn> and <eqn>v</eqn> and can be denoted by <eqn>uv</eqn> or <eqn>vu</eqn>.
+SNA: nodes/points, edges/lines
 </text>
 
 <text>
-A self-loop, or <term>loop</term> for short, is an edge <eqn>vv</eqn> from one vertex <eqn>v</eqn> to itself.
+Any member <eqn>e={u,v}</eqn> of <eqn>E(G)</eqn> is an <term>edge</term> in <eqn>G</eqn> with end vertices <eqn>u</eqn> and <eqn>v</eqn>. Both <eqn>u</eqn> and <eqn>v</eqn> are incident with the edge <eqn>e</eqn>, and the edge is incident with them.
+
+An edge <eqn>e={u,v}</eqn> is said to join <eqn>u</eqn> and <eqn>v</eqn> and can be denoted by <eqn>uv</eqn> or <eqn>vu</eqn>. 
+</text>
+
+<text>
+A self-loop, or <term>loop</term> for short, is an edge <eqn>vv</eqn> from one vertex <eqn>v</eqn> to itself (a.k.a. reflexive tie in SNA)
 </text>
 
 
@@ -46,18 +52,21 @@ The number of vertices in the graph is the <term>order</term> of the graph, wher
 </text>
 
 <text>
-++ Drawing a graph as a diagram: Each point (or small circle) represents a node and two points are joined by a line if the corresponding nodes are joined by an edge in the graph.
+++ Drawing a graph as a diagram: Each point (or small circle) represents a node and two points are joined by a line if the corresponding nodes are joined by an edge in the graph. (a.k.a. sociogram in SNA)
 </text>
 
-<!--
+
+<text>
 {V \choose 2} the set of all pairs of its vertices. 
 The graph \overline{G} = (V, {V \choose 2} \ E) is the <term>complementary graph</term>. 
 Two vertices of V are adjacent in G if and only if they are not adjacent in \overline{G}
+</text>
 
+<text>
 The <term>line graph</term> L(G) of a graph G has as vertices the edges of G; two edges
 of G are adjacent in L(G) if and only if they have a common vertex in G. For
 example, the line graph of the complete graph Kn is the triangular graph Tn
--->
+</text>
 
 
 <!-- Multigraphs -->
@@ -87,8 +96,48 @@ Multigraphs can be generalized if we allow loops, i.e. edges <eqn>e</eqn> whose 
 A graph without multiedges nor self-loops is called a <term>simple graph</term>. Multiedges and self-loops introduce some subtetlies in the design of graph algorithms, hence simple graphs are often preferred.
 </text>
 
+<text>
+An alternative representation: Multiple relations <eqn>E^+ = {E_1, .. E_r}</eqn>, where r is the number of relations, i.e. a multigraph as a set of parallel graphs
+</text>
+
 </document>
 
+
+<!-- Hypergraphs -->
+
+<document>
+<tag>graph-theory-hyper</tag>
+<title>Hypergraphs</title>
+
+<text>
+Ties among subsets of actors (e.g. affiliation networks, as two-mode networks)
+</text>
+
+<text>
+Wikipedia: hypergraph is a generalization of a graph, where an edge can connect any number of vertices. Formally, a hypergraph H is a pair H = (X,E) where X is a set of elements, called nodes or vertices, and E is a set of non-empty subsets of X called hyperedges or links. Therefore, E is a subset of <eqn>2^X/{\emptyset}</eqn>, where <eqn>2^X</eqn> is the power set of X.
+</text>
+
+<text>
+Mathematically, hypergraphs can be viewed as incidence structures and vice versa. 
+</text>
+
+<text>
+In cooperative game theory, hypergraphs are called simple games (voting games); this notion is applied to solve problems in social choice theory.
+</text>
+
+<text>
+Dual hypergraph, a hypergraph whose vertices and edges are exchanged: <eqn>G^*=(E,V)</eqn> from <eqn>G=(V,E)</eqn>
+</text>
+
+<text>
+Higraphs (hierarchical graphs) as a more useful alternative in practice...
+
+higraph is a diagramming object that formalizes relations into a visual structure, it was developed by David Harel in 1988. Higraphs extend mathematical graphs by including notions of depth and orthogonality. In particular, nodes in a higraph can contain other nodes inside them, creating a hierarchy. The idea was initially developed for applications to databases, knowledge representation, and the behavioral specification of complex concurrent systems using the higraph-based language of statecharts.
+Higraphs are widely used in industrial applications like UML
+[Harel, D., 1988, "On Visual Formalisms", Communications of the ACM, 31(5): 514-530.]
+</text>
+
+</document>
 
 <!-- Undirected / directed -->
 
@@ -118,7 +167,7 @@ of edge to distinguish between the directed and the undirected case.
 
 Instead of e = (a, b), we again write e = ab; a is called the start vertex or tail, and b the end vertex or head of e; i.e. <eqn>tail \rightarrow head</eqn>. We say that a and b are incident with e, and call two edges of the form ab and ba antiparallel. 
 
-(u,v): u is said to be adjacent to v and v is said to be adjacent from u.
+(u,v): u is said to be adjacent to v and v is said to be adjacent from u (in undirected graphs: nodes adjacent WITH edges, rather than TO/FROM edges).
 </text>
 
 <text>
@@ -136,6 +185,10 @@ called an orientation of G. Replacing each edge ab in E by two arcs (a, b) and (
 We say that a digraph G is symmetric if,whenever (u,v) is an arc of G, then (v,u) is also an arc of G. We say that a digraph is oriented if, whenever (u,v) is an arc of G, then (v,u) is not an arc of G.
 </text>
 
+<text>
+++The converse graph: arcs reversed...
+</text>
+
 </document>
 
 
@@ -148,7 +201,15 @@ We say that a digraph G is symmetric if,whenever (u,v) is an arc of G, then (v,u
 <text>
 ++ Binary vs. weighted graphs: binary graphs for dichotomous links (ties are either present or absent for each pair of nodes), weighted graphs for valued links (that indicate the strength, intensity, or frequency of the tie between each pair of actors). Binary graphs, also known as unweighted graphs...
 
+a.k.a. valued graphs
+
 - Each edge is assigned a numerical value or weigth; e.g. road network (length, traversal time, construction cost, speed limit...)
+</text>
+
+<text>
+++ signed graphs <eqn>G_\pm = (G,E,v)</eqn>
+- valences v: <eqn>E \rightarrow {+,-}</eqn> 
+- sign of a cycle (product of the signs), useful for the study of balance
 </text>
 
 </document>
@@ -264,6 +325,21 @@ The minimum degree among the vertices of G is denoted by <eqn>\delta(G)</eqn>, w
 When the nodes with the largest degrees in a given network are much more connected that other nodes in the network, they are typically called hubs.
 </text>
 
+<text>
+Variance of the degrees (0 for regular graphs)...
+</text>
+
+<equation>
+\sigma_d^2(G) = \frac{1}{n} \sum ( d_i - \langle d \rangle )^2
+</equation>
+
+<text>
+Density (useful for measuring the cohesiveness of subgraphs):
+</text>
+
+<equation>
+\rho(G) = \frac{2m}{n(n-1)} = \frac{\langle d \rangle}{n-1}
+</equation>
 
 <document>
 <tag>graph-theory-degree-sequence</tag>
@@ -345,6 +421,24 @@ The First Theorem of Digraph Theory can be stated as
 \sum deg_{out}(v) = \sum deg_{in}(v) = |E(G)| = m
 </equation>
 
+
+<text>
+AVERAGE DEGREE
+Undirected graphs: <eqn>\langle d \rangle = 2m/n</eqn> 
+Directed graphs: <eqn>\langle d_{in} \rangle = \langle d_{out} \rangle = m/n</eqn>
+</text>
+
+<text>
+VARIANCE
+Note: Even though <eqn>\langle d_{in} \rangle = \langle d_{out} \rangle = m/n</eqn> in directed graphs, <eqn>\sigma_{d_{in}}^2</eqn> might differ from <eqn>\sigma_{d_{out}}^2</eqn>.
+</text>
+
+<note>
+<text>
+According to their in- and out-degrees, nodes in a directed graph can be classified as: isolates (d=0), sources or transmitters (din=0), sinks or receivers (dout=0), carriers (din=dout=1), and ordinary nodes.
+</text>
+</note>
+
 </document>
 
 
@@ -389,6 +483,15 @@ A subgraph of the same order of the original graph, i.e. when <eqn>V'=V</eqn>, i
 A k-factor is a k-regular spanning subgraph. When the edge set of a graph is divided into k-factors, such a decomposition is called a k-factorization of the graph. A 1-factorization, or factorization for short, can exist only if <eqn>G</eqn> has an even number of vertices and it is also called a resolution. Factorizations of <eqn>K_{2n}</eqn> can be interpreted as schedules for tournaments of <eqn>2n</eqn> teams and always exist <cite>Jungnickel 2007</cite>.
 </text>
 
+<text>
+DYAD: A subgraph with 2 nodes
++ Undirected graphs: 2 dyadic states
++ Directed graphs: 3 isomorphic classes (null dyad, asymmetric dyad, and mutual/reciprocal dyad
+
+TRIAD: A subgraph with 3 nodes
++ Undirected graphs: 4 triadic states (0-3 links)
+e.g. forbidden triad (2 links), unlikely with strong ties <cite>Granovetter 1973</cite>
+</text>
 
 <!-- Isomorphism -->
 
@@ -435,6 +538,8 @@ Graphs are sparse when existing edges represent a small fraction of the possible
 
 <text>
 A walk is a sequence of adjacent edges in a graph. Formally, a sequence of edges <eqn>(e_1, ..., e_n)</eqn> is a walk is there are vertices <eqn>v_0, ..., v_n</eqn> such that <eqn>e_i = v_{i-1}v{i}</eqn> for <eqn>i = 1..n</eqn>. For the sake of simplicity, we can specify a walk by its sequence of vertices <eqn>(v0, ..., vn)</eqn>, provided that <eqn>v_{i-1}v_i</eqn> is an edge in the graph for <eqn>i = 1..n</eqn>. Given a walk <eqn>(v0, ..., vn)</eqn>, <eqn>v_0</eqn> is said to be its start vertex, <eqn>v_n</eqn> is its end vertex, and <eqn>n</eqn> is its length. When the start vertex and the end vertex are the same, i.e. <eqn>v_0 = v_n</eqn>, the walk is said to be a closed walk. 
+
+++ SNA: start vertex (origin), end vertex (terminus)
 </text>
 
 <text>
@@ -445,6 +550,10 @@ When all the edges in a walk are distinct, the walk is called a trail. Consequen
 When, both edges and nodes are distinct, the trail becomes a path. It should be noted that any walk always contains a path from its start vertex to its end vertex (plus some optional detours). 
 </text>
 
+<equation>
+paths \subset trails \subset walks
+</equation>
+
 <!-- @ directed graphs -->
 
 <text>
@@ -454,6 +563,18 @@ we have a forward edge, in the second a backward edge.
 - If a trail consists of forward edges only, it is called a directed trail;
 - any directed walk W with start vertex a and end vertex b, where a \neq b, contains a directed path from a to b.
 </text>
+
+
+<text>
+Inverse walk: <eqn>W^{-1}</eqn>, from the destination to the origin
+</text>
+
+<!-- @ weighted graphs -->
+
+<text>
+Paths: value (min), length/distance/cost (sum)
+</text>
+
 
 <!-- Cycles -->
 
@@ -477,7 +598,9 @@ Acyclic graphs do not contain any cycles. ++ important classes: DAGs, trees
 </text>
 
 
- 
+<text>
+a.k.a. semiwalks/semipaths/semicycles (ignoring arc orientation) <eqn>X \subset semiX</eqn>
+</text> 
  
 
 <document>
@@ -655,6 +778,14 @@ Weakly-connected and strongly-connected components define unique partitions of t
 </text>
 
 <text>
+WF: 4 kinds of connectedness
+- weakly-connected
+- unilaterally connected (in one direction)
+- strongly-connected (in both directions)
+- recursively-connected (using the same path)
+</text>
+
+<text>
 
 J:
 Two vertices a and b of a graph G are connected if there exists a walk
@@ -668,7 +799,7 @@ is an equivalence relation on the vertex set of G.
 The equivalence classes of this relation are called the connected components of G. Thus G is connected if
 and only if its vertex set V is its unique connected component.
 
-Components which contain only one vertex are also called isolated vertices. 
+Components which contain only one vertex are also called isolated vertices and such vertices are often called isolates, since their degree is 0. 
 
 - A graph with n vertices and assume that each vertex of G has degree at least (n-1)/2: G must be connected.
 - A graph G is connected if and only if there exists an edge e = vw with v in V1 and w in V2 whenever V = V1 U V2 is a decomposition of the vertex set of G.(that is, V1 intersect V2 = empty)
@@ -719,11 +850,19 @@ L: Path length is the shortest path between two nodes, and average path length i
 <text>
 The eccentricity of vertex v in a graph is the shortest-path distance to the farthest vertex from v. 
 = the longest path from a node u to all other nodes of a connected graph
+= the largest geodesic distance
+++ from 0 to n-1
+a.k.a. association number in SNA
+</text>
 
+<text>
 The radius of a graph is the smallest eccentricity among the vertices of G.
+</text>
 
+<text>
 The diameter of a graph is the greatest eccentricity among the vertices of G.
 = The longest path between any two nodes in a graph G is called the diameter of G,
+= The largest geodesic in the graph <eqn>max_i max_j d(i,j)</eqn>
 </text>
 
 <text>
@@ -760,8 +899,10 @@ An edge linking two nodes indicates that they can communicate directly, whereas 
 
 
 <text>
-The pairwise distance of the shortest path linking the nodes in a network is represented in its distance matrix. Its global maximum is the network diameter. The distance matrix describes the communication pattern within the network.
+The pairwise distance of the shortest path linking the nodes in a network is represented in its distance matrix. Its global maximum is the network diameter. The distance matrix describes the communication patterns within the network.
 </text>
+
+
 
 </document>
 
@@ -909,7 +1050,9 @@ any two given vertices
 <!-- Vertex connectivity -->
 
 <text>
-A vertex-cut of a connected graph G is a subset S of the vertices V(G) such that G\S is disconnected.
+A vertex-cut of a connected graph G is a subset S of the vertices V(G) such that G\S is disconnected. 
+++ a.k.a. cut set
+
 A vertex-cut of minimum cardinality is called a minimum vertex-cut and this cardinality is known as the vertex connectivity of the graph, denoted by \kappa(G).
 </text>
 
@@ -946,6 +1089,8 @@ The maximal induced subgraphs of a graph G which are k-connected are called the 
 
 <text>
 Analogously, an edge-cut of a connected graph G is a subset X of the edges E(G) such that G\X is disconnected.
+++ a.k.a. line-cut
+
 An edge-cut of minimum cardinality is called a minimum edge-cut and this cardinality is known as the edge connectivity of the graph, denoted by \lambda(G).
 </text>
 
@@ -1228,7 +1373,39 @@ Theorem: a(a - c - 1) = (n - a - 1)d.
 
 
 <document>
-<title>Grids</title>
+<title>Lattices</title>
+
+<text>
+Wikipedia: The terms lattice graph, mesh graph, or grid graph refer to a number of categories of graphs whose drawing corresponds to some grid/mesh/lattice, i.e., its vertices correspond to the nodes of the mesh and its edges correspond to the ties between the nodes.
+</text>
+
+<text>
+e.g.
+
++ Square grid graph
+
+A common type of a lattice graph (known under different names, such as square grid graph) is the graph whose vertices correspond to the points in the plane with integer coordinates, x-coordinates being in the range 1,..., n, y-coordinates being in the range 1,..., m, and two vertices are connected by an edge whenever the corresponding points are at distance 1. In other words, it is a unit distance graph for the described point set (a unit distance graph is a graph formed from a collection of points in the Euclidean plane by connecting two points by an edge whenever the distance between the two points is exactly one.)
+
+A square grid graph is a Cartesian product of graphs, namely, of two path graphs with n - 1 and m - 1 edges.[1] Since a path graph is a median graph, the latter fact implies that the square grid graph is also a median graph. All grid graphs are bipartite.
+A path graph may also be considered to be a grid graph on the grid n times 1. A 2x2 grid graph is a 4-cycle.[1]
+
+
++ A triangular grid graph is a graph that corresponds to a triangular grid.
+
++ A Hanan grid graph for a finite set of points in the plane is produced by the grid obtained by intersections of all vertical and horizontal lines through each point of the set.
+
++ The rook's graph (the graph that represents all legal moves of the rook chess piece on a chessboard) is also sometimes called the lattice graph.
+
++ The hypercube graph Qn is a regular graph with 2n vertices, which correspond to the subsets of a set with n elements. Two vertices labelled by subsets W and B are joined by an edge if and only if W can be obtained from B by adding or removing a single element.
+Each vertex of Qn is incident to exactly n edges (that is, Qn is n-regular), so, by the handshaking lemma the total number of edges is 2n-1n.
+The name comes from the fact that the hypercube graph is the one-dimensional skeleton of the geometric hypercube.
+Hypercube graphs should not be confused with cubic graphs, which are graphs that are 3-regular. The only hypercube that is a cubic graph is Q3.
+� Another definition of Qn is the Cartesian product of n two-vertex complete graphs K2.
+� every hypercube Qn is Hamiltonian for n > 1.
+� every hypercube is a bipartite graph
+� is planar (can be drawn with no crossings) if and only if n &lt;= 3.
+e.g. The graph Q0 consists of a single vertex, while Q1 is the complete graph on two vertices and Q2 is a cycle of length 4. The graph Q3 is the 1-skeleton of a cube, a planar graph with eight vertices and twelve edges. 
+</text>
 
 <figure>
   <tag>fig-grid</tag>
@@ -1245,7 +1422,7 @@ Theorem: a(a - c - 1) = (n - a - 1)d.
 <title>Bipartite graphs</title>
 
 <text>
-A graph G is bipartite if its vertex set V(G) can be partitioned into two disjoint sets L and R (called partite sets) so that every edge in G joins a node in L with a node in R.
+A graph G is bipartite if its vertex set V(G) can be partitioned into two disjoint sets V_1 and V_2 (called partite sets) so that every edge in G joins a node in L with a node in R.
 </text>
 
 <text>
@@ -1279,6 +1456,9 @@ Obviously, the graph Ks,t is regular only if s = t (in that case, it is s-regula
 - The complete bipartite graph K_{1,t} is called a star, a special kind of tree.
 </text>
 
+<text>
+Generalization: s-partite graphs, with s partite sets.
+</text>
 
 </document>
 
@@ -1622,6 +1802,10 @@ a_{ij} =
 </equation>
 
 <text>
+++ the main diagonal (sometimes leading diagonal or major diagonal or primary diagonal or principal diagonal) 
+</text>
+
+<text>
 For example, the adjacency matrix of the complete graph <eqn>K_5</eqn> is
 </text>
 
@@ -1635,6 +1819,11 @@ A(K_5) =
 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 
 \end{bmatrix}
 </equation>
+
+<text>
+For complete graphs, every off-diagonal cell in the matrix is 1.
+</text>
+
 
 <text>
 Whereas the adjacency matrix of the complete bipartite graph <eqn>K_{3,3}</eqn> is
@@ -1653,7 +1842,34 @@ A(K_{3,3}) =
 </equation>
 
 <text>
-Several observations can be made about such adjacency matrices:
+In linear algebra, a block matrix or partitioned matrix is a matrix broken into sections called blocks. Considering that a block diagonal matrix is a block matrix which is a square matrix, and having main diagonal blocks square matrices, such that the off-diagonal blocks are zero matrices, we could say that, by properly rearranging the rows and columns in the matrix, the adjacency matrix of a s-partite graph is a block antidiagonal matrix, since the diagonal of a square matrix from the top right to the bottom left corner is called antidiagonal, counterdiagonal, secondary diagonal, or minor diagonal. 
+</text>
+
+<text>
+In fact, bipartite graphs could be represented more succinctly by a smaller matrix, of size <eqn>|V_1| \times |V_2|</eqn>, usually called the <term>biadjacency matrix</term> (or <term>affiliation matrix</term> in social network analysis terms when the bipartite graph represents an affiliation network). The biadjacency matrix <eqn>BA</eqn> of a bipartite graph corresponds to the upper right quadrant of the graph adjacency matrix when it is represented as (i.e. all ones for complete bipartite graphs).
+</text>
+
+<equation>
+A(G) =
+\begin{bmatrix}
+0    &amp; BA \\
+BA^t &amp; 0  \\
+\end{bmatrix}
+</equation>
+
+<text>
+Biadjacency matrices are specially suitable for weighted graphs, when binary values are replaced by edge weights, since they are suitable for representing matching problems.
+</text>
+
+<text>
+Matrix permutations: simultaneous rearrangements of rows and columns that do not change information about adjacency
++ Relabeling rows and columns simultaneously
++ ISOMORPHISM: There exists a unique adjacency matrix for each isomorphism class of graphs (up to permuting rows and columns), and it is not the adjacency matrix of any other isomorphism class of graphs... 
+</text>
+
+
+<text>
+Several additional observations can be made about adjacency matrices:
 </text>
 
 <list>
@@ -1663,7 +1879,7 @@ The adjacency matrix <eqn>A</eqn> is a symmetric matrix for undirected graphs, s
 </item>
 
 <item>
-All elements along the main diagonal of <eqn>A</eqn> are 0 if we do not allow loops (i.e. a vertex cannot be adjacent to itself).
+All elements along the main diagonal of <eqn>A</eqn> are 0 if we do not allow loops (i.e. a vertex cannot be adjacent to itself). ++ Undefined values (-) for SNA, 1 or 2 when loops are allowed (usually 2 for undirected graphs)
 </item>
 
 <item>
@@ -1694,16 +1910,49 @@ Let <eqn>a_{ij}^{(k)}</eqn> denote the <eqn>(i,j)</eqn> entry in the matrix <eqn
 The degree of a node: <eqn>d_i = deg(v_i) = a_{ii}^{(2)}</eqn>.
 </item>
 
-
-<text>
-++ Counting the number of paths of length k by matrix multiplication: A^k (includes non-simple paths), e.g. divide-and-conquer algorithm @ Skiena 425 [Karatsuba KO63], fast multiplication algorithms @ Skiena 403 [Strassen 69][Coppersmith 90][CKSU05]
-</text>
-
 <item>
 The number of triangles in G than contain a given node: <eqn>triangles(v_i) = a_{ii}^{(3)} / 2</eqn>.
 </item>
 
 </list>
+
+<text>
+Distance...
+</text>
+
+<equation>
+d(i,j) = min_k \{ A_{ij}^k &gt; 0 \}
+</equation>
+
+
+<text>
+The path/distance matrix:
+
+a.k.a. path matrix (entries equal to the path length separating nodes, or zero, if no path exists)
+
+L: Path matrix P(G) stores the number of hops along the direct path between all node
+pairs in a graph; that is, P(G) enumerates the lengths of shortest paths among all
+node pairs. If the graph is undirected, then P(G) is symmetric. Also, as with the adjacency
+matrix, if no link exists between a node pair, the corresponding element in
+P(G) is zero. The diagonal elements of P(G) are zero because we eliminate loops
+from consideration, as well as duplicate links.
+
+L: Let D be the size of the longest path뾲he diameter of G.  Then, P(G) = min_{k=1..D} \{k A^k(G)\}. Powers of adjacency matrix A also contain cycles of length k along the diagonal of Ak. Here, we ignore cycles, so the diagonal elements are set to zero after each multiplication.
+</text>
+
+
+<text>
+Graph reachability...
+</text>
+
+<equation>
+A^\Sigma = A + A^2+ A^3 + ... + A^{n-1}
+</equation>
+
+
+<text>
+++ Counting the number of paths of length k by matrix multiplication: A^k (includes non-simple paths), e.g. divide-and-conquer algorithm @ Skiena 425 [Karatsuba KO63], fast multiplication algorithms @ Skiena 403 [Strassen 69][Coppersmith 90][CKSU05]
+</text>
 
 <figure>
   <tag>fig-bowtie</tag>
@@ -1758,6 +2007,12 @@ Nodes <eqn>c</eqn> and <eqn>d</eqn> have degree 3, while the remaining nodes hav
 <note>
 <text>
 Note: The adjacency matrix is also known as the <term>sociomatrix</term> in social network analysis.
+
++ Undefined values at the diagonal (-)
+
++ Values of the ties for signed graphs and valued graphs
+
++ super-sociomatrix (r sociomatrices) for representing multiple relations
 </text>
 </note>
 
@@ -1889,28 +2144,6 @@ D(G_{bowtie}) =
 
 
 
-<!--
-<document>
-<tag>graph-theory-matrix-distance</tag>
-<title>The path/distance matrix</title>
-
-<text>
-a.k.a. path matrix (entries equal to the path length separating nodes, or zero, if no path exists)
-</text>
-
-L: Path matrix P(G) stores the number of hops along the direct path between all node
-pairs in a graph; that is, P(G) enumerates the lengths of shortest paths among all
-node pairs. If the graph is undirected, then P(G) is symmetric. Also, as with the adjacency
-matrix, if no link exists between a node pair, the corresponding element in
-P(G) is zero. The diagonal elements of P(G) are zero because we eliminate loops
-from consideration, as well as duplicate links.
-
-L: Let D be the size of the longest path뾲he diameter of G. 
-Then, P(G) = min_{k=1..D} {k A^k(G)}
-Powers of adjacency matrix A also contain cycles of length k along the diagonal of Ak. Here, we ignore cycles, so the diagonal elements are set to zero after each multiplication.
-
-</document>
--->
 
 <document>
 <tag>graph-theory-laplacian</tag>
@@ -1986,7 +2219,7 @@ we can obtain the following equation in matrix form:
 </equation>
 
 <text>
-This diffusion equation can be solved by writing the vector <eqn>\psi</eqn> as a linear combination of the eigenvectors <eqn>\vec{v_i}</eqn> of the Laplacian, i.e. <eqn>L\vec{v_i} = \lambda_i \vec{v_i}</eqn> where <eqn>\lambda_i</eqn> is the eigenvalue corresponding to the eigenvector <eqn>\vec{v_i}</eqn>, we obtain
+This diffusion equation can be solved by writing the vector <eqn>\psi</eqn> as a linear combination of the eigenvectors <eqn>\vec{v_i}</eqn> of the Laplacian <cite>Newman 2010</cite>, i.e. <eqn>L\vec{v_i} = \lambda_i \vec{v_i}</eqn> where <eqn>\lambda_i</eqn> is the eigenvalue corresponding to the eigenvector <eqn>\vec{v_i}</eqn>. We obtain
 </text>
 
 <equation>
@@ -2116,13 +2349,56 @@ The only other major book on graph theory published in English before 1970: <cit
 A retrospective from one of the key players in the development of graph theory: <cite>Tutte 1998</cite>
 </text>
 
-<text>
-++ Other textbooks: <cite>Bondy and Murty 1976</cite> 
-</text>
 
 <text>
 ++ Modern textbooks, e.g. <cite>Chartrand et al. 2011</cite> <cite>Jungnickel 2007</cite> <cite>Diestel 2005</cite> <cite>Gross and Yellen 2005</cite> <cite>Gross and Yellen 2003</cite> <cite>Bollobas 2002</cite>. 
 </text>
+
+<text>
+++ Other textbooks: <cite>Bondy and Murty 1976</cite> 
+
+WF: We recommend the following texts...
+<cite>Harary 1969</cite> and <cite>Bondy and Murty 1976</cite> . 
+
+The excellent text by Frank (1971) is more
+mathematically advanced and focuses on social networks. 
+[Frank, O. (1971). Statistical Inference in Graphs. Stockholm: FOA Repro]
+
+Similarly, the
+classic text by Harary, Norman, and Cartwright (1965) is also focused
+on directed graphs, and is quite accessible to beginners. 
+[Harary, E, Norman, R.Z., and Cartwright, D. (1 965). Structural Models: An
+Introduction to the Theory of Directed Graphs. New York: John Wiley and Sons]
+
+Roberts (1976, 1978) and Hage and Harary (1983) provide very readable, elementary
+introductions to graph theory, with many concepts illustrated on anthropological
+network data. 
+[Hage, P., and Harary, F. (1983). Structural Models in Anthropology. Cambridge: Cambridge University Press.]
+[Roberts, ES. (1976). Discrete Mathematical Models. Englewood Cliffs, NJ: Prentice-Hall.]
+[Roberts, ES. (1978). Graph Theory and Its Applications to Problems of SOCiety. Philadelphia: Society for Industrial and Applied Mathematics.]
+
+In their introduction to network analysis, Knoke
+and Kuklinski (1982) also describe some elementary ideas in graph theory.
+[Knoke, D., and Kuklinski, J.H. (1982). Network AlUllysis. Newbury Park : Sage.]
+
+Ford and Fulkerson (1962), Lawler (1976) give mathematical treatments of more advanced topics in graph theory,
+such as theories of matroids and optimization of network configurations.
+[Ford, L.R., and Fulkerson, D.R. (1 962). Flows in Networks. Princeton, NJ: Princeton University Press]
+[Lawler, E.L. (1976). Combinatorial Optimization : Networks and Matroids. New York: Holt, Rinehart, and Winston]
+
+
+The topic of tournaments is treated in the context of paired comparisons
+by David (1988). A more mathematical discussion of tournaments can
+be found in Moon (1968). 
+[Moon, J.W. (1968). Topics on Tournaments. New York : Holt, Rinehart, and Winston.]
+[David, H. A. (1988). The Merhod oj Paired Comparisons. Second Edition. Oxford and New York: Oxford University Press.]
+++ Skiena ??
+
+Berge (1989) discusses hypergraphs in detail.
+[Berge, C. (1973). Graphs and Hypergraphs. Amsterdam : North-Holland.]
+[Berge, C. (1989). Hypergraphs: Combinatorics of Finite Sets. Amsterdam: North-Holland.]
+</text>
+
 
 <text>
 [note] Pure mathematics, not always with practical applications.

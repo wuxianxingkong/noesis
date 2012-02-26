@@ -3499,7 +3499,7 @@
 </reference>
 
 <reference id="Lawler 1976">
- <author>E.L. Lawler</author>
+ <author>Eugene L. Lawler</author>
  <title>A note on the complexity of the chromatic number problem</title>
  <journal>Information Processing Letters</journal>
  <volume>5</volume>
@@ -3509,6 +3509,16 @@
  <doi>10.1016/0020-0190(76)90065-X</doi>
  <file>Networks/algorithms/graphs/np/1976 IPL [Lawler] Chromatic number problem.pdf</file>
 </reference>
+
+<reference id="Lawler 1976b">
+ <author>Eugene L. Lawler</author>
+ <title>Combinatorial Optimization: Networks and Matroids</title>
+ <publisher>Holt, Rinehart and Winston</publisher>
+ <year>1976</year>
+ <isbn>0030848660</isbn>
+ <file>[books]/algorithms/graphs/0030848660 [Lawler] Combinatorial Optimization - Networks and Matroids.pdf</file>
+</reference>
+
 
 <reference id="Leskovek et al. 2005">
  <author>Jure Leskovec</author>

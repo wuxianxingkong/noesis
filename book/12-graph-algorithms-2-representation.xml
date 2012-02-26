@@ -47,6 +47,11 @@ Incidence matrix: An alternative representation scheme, where we use a <eqn>n \t
 <tag>graph-representation-lists</tag>
 <title>Adjacency lists</title>
 
+
+<text>
+N: A complete network can be specified by giving the value of n and a list of all the edges. For example, the network in Fig. 6.1a has n = 6 vertices and edges (1,2), (1,5), (2,3), (2,4), (3,4), (3,5), and (3,6). Such a specification is called an edge list. Edge lists are sometimes used to store the structure of networks on computer files. In memory, adjacency lists are often used...
+</text>
+
 <text>
 Linked lists are employed to store the neighbors of each node. 
 i.e. a directed link (x,y) will appear in x's adjacency list.

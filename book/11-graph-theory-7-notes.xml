@@ -76,6 +76,10 @@ A retrospective from one of the key players in the development of graph theory: 
 WF: We recommend the following texts...
 <cite>Harary 1969</cite> and <cite>Bondy and Murty 1976</cite> . 
 
+Alternative textbook...
+[Douglas Brent West, Introduction to Graph Theory, Prentice Hall, Upper Saddle River, NJ (1995). ISBN 0132278286]
+[Douglas Brent West, Introduction to Graph Theory, 2nd edition, Prentice Hall, Upper Saddle River, NJ (2000). ISBN 0130144002]
+
 The excellent text by Frank (1971) is more
 mathematically advanced and focuses on social networks. 
 [Frank, O. (1971). Statistical Inference in Graphs. Stockholm: FOA Repro]
@@ -95,13 +99,10 @@ network data.
 
 In their introduction to network analysis, Knoke
 and Kuklinski (1982) also describe some elementary ideas in graph theory.
-[Knoke, D., and Kuklinski, J.H. (1982). Network AlUllysis. Newbury Park : Sage.]
+[Knoke, D., and Kuklinski, J.H. (1982). Network Analysis. Newbury Park : Sage.]
 
-Ford and Fulkerson (1962), Lawler (1976) give mathematical treatments of more advanced topics in graph theory,
-such as theories of matroids and optimization of network configurations.
-[Ford, L.R., and Fulkerson, D.R. (1 962). Flows in Networks. Princeton, NJ: Princeton University Press]
-[Lawler, E.L. (1976). Combinatorial Optimization : Networks and Matroids. New York: Holt, Rinehart, and Winston]
-
+<cite>Ford and Fulkerson 1962</cite> and <cite>Lawler 1976b</cite> give mathematical treatments of more advanced topics in graph theory,
+such as the optimization of network flows.
 
 The topic of tournaments is treated in the context of paired comparisons
 by David (1988). A more mathematical discussion of tournaments can
@@ -123,6 +124,7 @@ Berge (1989) discusses hypergraphs in detail.
 <text>
 ++ Introductory divulgative books, e.g. <cite>Chartrand 1984</cite>
 </text>
+
 
 
 </document>

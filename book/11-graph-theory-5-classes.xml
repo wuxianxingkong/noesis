@@ -205,6 +205,7 @@ Theorem: a(a - c - 1) = (n - a - 1)d.
 
 
 <document>
+<tag>graph-theory-lattices</tag>
 <title>Lattices</title>
 
 <text>
@@ -254,6 +255,10 @@ e.g. The graph Q0 consists of a single vertex, while Q1 is the complete graph on
 <title>Bipartite graphs</title>
 
 <text>
+a bipartite network, also called a two-mode network in the sociology literature... two kinds of vertices, one representing the original vertices and the other representing the groups to which they belong... The edges in a bipartite network run only between vertices of different types...
+</text>
+
+<text>
 A graph G is bipartite if its vertex set V(G) can be partitioned into two disjoint sets V_1 and V_2 (called partite sets) so that every edge in G joins a node in L with a node in R.
 </text>
 
@@ -292,6 +297,16 @@ Obviously, the graph Ks,t is regular only if s = t (in that case, it is s-regula
 Generalization: s-partite graphs, with s partite sets.
 </text>
 
+<text>
+IMPORTANT: Representation of hypergraphs:
+
+N:  A hypergraph and corresponding bipartite graph. These two networks show the same information—the membership of five vertices in four different groups. (a) The hypergraph representation in which the groups are represented as hyperedges, denoted by the loops circling sets of vertices. (b) The bipartite representation in which we introduce four new vertices (open circles) representing the four groups, with edges connecting each vertex to the groups to which it belongs.
+
+Examples...
+
+Apart from groups: who is or has been married to whom within a population (two kinds of vertices corresponding to men and women and the edges between them, marriages, except in some countries such as Spain or Canada, where same-sex marriages are allowed)
+</text>
+
 </document>
 
 
@@ -328,6 +343,16 @@ d1 + . . . + dn = 2(n - 1),
 A forest is a graph without cycles, i.e. a graph whose connected components are trees. Obviously, a forest of n nodes with k connected components has n-k links.
 </text>
 
+<text>
+e.g. A river network is an example of a naturally occurring tree, hierarchies (e.g. dendrogram), ubiquitous in Computer Science. 
+</text>
+
+<text>
+Properties:
+- there is exactly one path between any pair of vertices. (e.g. the calculation of a network’s diameter (Section 6.10.1), the betweenness centrality of a vertex (Section 7.7), and certain other properties based on shortest paths are all relatively easy with a tree.)
+- a tree is the connected network on n vertices with the minimum number of edges, since no connected network has less than n - 1 edges
+- adding an extra edge (gray) between any two vertices of a tree creates a cycle
+</text>
 
 <text>
 Trees are recursive structures, since cutting any edge leaves two smaller trees.
@@ -479,6 +504,9 @@ Cayley's tree formula, which states that there are <eqn>n^(n-2)</eqn> labeled tr
 Let <eqn>(M,\preceq)</eqn> be a partially ordered set, a poset for short. This is a set M together with a reflexive, antisymmetric and transitive relation <eqn>\preceq</eqn>. This set corresponds to a directed graph G having vertex set M and the pairs (x,y) with x \preceq y as edges. Because of transitivity, G is acyclic.
 </text>
 
+<text>
+N: e.g. the classic example of an acyclic directed network is a citation network of papers. When writing a paper you can only cite another paper if it has already been written, which means that all the directed edges in a citation network point backward in time. In real citation networks... approximately acyclic: cycles when two papers cite each other (e.g. by the same author)
+</text>
 
 <text>
 + Topological sorting orders the vertices of a DAG respecting the precedence constraints imposed by the arcs in the DAG.
@@ -496,6 +524,11 @@ JJ: we may choose a vertex v with din(v) = 0. Consider the directed graph H = G\
 </text>
 
 <text>
+N: ... There must be at least one vertex somewhere on the network that has ingoing edges only and no outgoing ones. To see this consider starting from any vertex in the network and making a path across the network by following edges, each in the correct direction denoted by its arrow. Either such a path will eventually encounter a vertex with no outgoing edges, in which case we are done, or each vertex it encounters has one or more outgoing edges, in which case we choose one such edge and continue our path. If the path never reaches a vertex with no outgoing edges, then it must eventually arrive back at a vertex that has been visited previously—at most we can visit all n vertices in the network once before the path either terminates or we are forced to revisit a vertex. However if we revisit a vertex then we have gone around a cycle in the network, which cannot be since the network is acyclic. Thus we must always in the end find a vertex with no outgoing edges and hence at least one such vertex always exists...
+... Note that the particular order in which we select the vertices is not necessarily unique
+</text>
+
+<text>
 J: Each partially ordered set may be embedded into a linearly
 ordered set.
 Proof. Let (v1, . . . , vn) be a topological sorting of the corresponding directed
@@ -503,11 +536,20 @@ acyclic graph. Then vi . vj always implies i &lt; j, so that v1 . . . . . vn is 
 complete linear ordering
 </text>
 
+<text>
+N:  So a simple algorithm for determining whether a network is acyclic is:1. Find a vertex with no outgoing edges.2. If no such vertex exists, the network is cyclic. Otherwise, if such a vertex does exist, remove it and all its ingoing edges from the network.3. If all vertices have been removed, the network is acyclic. Otherwise go back to step 1. 
+</text>
+
+<text>
+Since every vertex in such a strongly connected must belong to at least one cycle (there must be a directed path from that vertex to every other in the component and a directed path from every other vertex to it, two paths that combined create a cycle). Therefore, directed acyclic graphs do not have strongly connected components with more than one vertex.
+</text>
+
 </document>
 
 
 
 <document>
+<tag>graph-theory-planar</tag>
 <title>Planar graphs</title>
 
 
@@ -521,6 +563,18 @@ J: We call a geometric graph plane if its line segments all lie
 in one plane (often allows not only line segments, but
 curves as well, e.g. they are necessary to represent multigraphs). 
 Any graph isomorphic to a plane graph is called planar 
+</text>
+
+<text>
+N: a planar network is a network that can be drawn on a plane without having any edges cross... The definition of planarity only specifies that at least one arrangement of the vertices exists that results in no crossing.
+
+
+Figure 6.7: Two drawings of the K4 planar graph. (a) A small planar graph with four vertices and six edges. It is self-evident that the graph is planar, since in this depiction it has no edges that cross. (b) The same graph redrawn with two of its edges crossing. Even though the edges cross, the graph is still planar—a graph is planar if it can be drawn without crossing edges.
+
+
+Most of the networks we will encounter in this book are not planar, either because there is no relevant two-dimensional geometry to which the network is confined (e.g., citation networks, metabolic networks, collaboration networks), or else there is but there is nothing to stop edges from crossing on it (e.g., the Internet, airline route maps, email networks). However, there are a few important examples of networks that are planar. First of all, all trees are planar. For some trees, such as river networks, this is obvious. Rivers never cross one another; they only flow together. In other cases, such as the trees used in computer data structures, there is no obvious two-dimensional surface onto which the network falls but it is planar nonetheless.
+Among non-tree-like networks, some are planar for physical reasons. A good example is a road network. Because roads are confined to the Earth’s surface they form a roughly planar network. It does happen sometimes that roads meet without intersecting, one passing over the other on a bridge, so that in fact, if one wishes to be precise, the road network is not planar. However, such instances are rare (in the sense that there are far more places where roads intersect than there are bridges where they don’t) and the network is planar to a good approximation.
+Another example is the network of shared borders between countries, states, or provinces—see Fig. 6.8. We can take a map depicting any set of contiguous regions, represent each by a vertex, and draw an edge between any two that share a border. It is easy to see that the resulting network can always be drawn without crossing edges provided the regions in question are formed of contiguous landmasses. Networks of this type, representing regions on a map, play an important role in the four-color theorem, a theorem that states that it is possible to color any set of regions on a two-dimensional map, real or imagined, with at most four colors such that no two adjacent regions have the same color, no matter how many regions there are or of what size or shape.  By constructing the network corresponding to the map in question, this problem can be converted into a problem of coloring the vertices of a planar graph in such a way that no two vertices connected by an edge have the same color. The number of colors required to color a graph in this way is called the chromatic number of the graph and many mathematical results are known about chromatic numbers. The proof of the four-color theorem—the proof that the chromatic number of a planar graph is always four or less—is one of the triumphs of traditional graph theory and was first given by Appel and Haken [20-22] in 1976 after more than a hundred years of valiant effort within the mathematics community
 </text>
 
 <text>
@@ -575,9 +629,11 @@ graph G.
 <text>
 J: the famous characterization of planar graphs:
 
-Kuratowski's theorem: A graph G is planar if and only if it does not contain a subgraph which is homeomorphic to K5 or K3,3.
+Kuratowski's theorem: A graph G is planar if and only if it does not contain a subgraph which is homeomorphic to K5 or K3,3 (a.k.a. UG).
 
 W: Two important characterizations of planar graphs, Kuratowski's theorem that the planar graphs are exactly the graphs that contain neither K3,3 nor the complete graph K5 as a subdivision, and Wagner's theorem that the planar graphs are exactly the graphs that contain neither K3,3 nor K5 as a minor, encompass this result.
+
+N: Kuratowski’s theorem is not, however, particularly useful for the analysis of real-world networks, because such networks are rarely precisely planar. (And if they are, then, as in the case of the shared border network of countries or states, it is usually clear for other reasons that they are planar and hence Kuratowski’s theorem is unnecessary.) ...  a measure that could tell us, for example, that the road network of a country is 99% planar, even though there are a few bridges or tunnels here and there... no widely accepted metric for degree of planarity exists <cite>Newman 2010</cite>
 
 J: another interesting characterization of planarity. If we identify
 two adjacent vertices u and v in a graph G, we get an elementary contraction

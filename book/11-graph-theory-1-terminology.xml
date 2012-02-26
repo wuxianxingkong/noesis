@@ -12,6 +12,10 @@ From a formal point of view, a <term>graph</term> <eqn>G=(V,E)</eqn> is a finite
 </text>
 
 <text>
+++ nodes and links: Vertices and edges are also called nodes and links in computer science, points and lines in older graph theory textbooks, sites and bonds in physics, and actors and ties in social network analysis.
+</text>
+
+<text>
 Nodes (vertices) correspond to the elements of the system represented by the graph, whereas links (edges) represent their connections. In a social network, for instance, people are represented as nodes while friendship relationships are represented by links between pairs of nodes. In practice, we will restrict ourselves to dyadic (pairwise) relationships when representing graphs.
 </text>
 
@@ -26,7 +30,7 @@ An edge <eqn>e={u,v}</eqn> is said to join <eqn>u</eqn> and <eqn>v</eqn> and can
 </text>
 
 <text>
-A self-loop, or <term>loop</term> for short, is an edge <eqn>vv</eqn> from one vertex <eqn>v</eqn> to itself (a.k.a. reflexive tie in SNA)
+A self-edge, self-loop, or <term>loop</term> for short, is an edge <eqn>vv</eqn> from one vertex <eqn>v</eqn> to itself (a.k.a. reflexive tie in SNA)
 </text>
 
 
@@ -35,7 +39,7 @@ When <eqn>{u,v}</eqn> is an edge in <eqn>G</eqn>, <eqn>u</eqn> and <eqn>v</eqn> 
 </text>
 
 <text>
-The number of vertices in the graph is the <term>order</term> of the graph, whereas the number of edges in the graph is the <term>size</term> of the graph. We will typically use <eqn>n</eqn> to denote the order of the graph (i.e. its number of nodes) and <eqn>m</eqn> to denote its size (i.e. its number of links).
+The number of vertices in the graph is the <term>order</term> of the graph, whereas the number of edges in the graph is the <term>size</term> of the graph. Following the common notation in the literature, we will use <eqn>n</eqn> to denote the order of the graph (i.e. its number of nodes) and <eqn>m</eqn> to denote its size (i.e. its number of links).
 </text>
 
 <text>
@@ -97,7 +101,13 @@ An alternative representation: Multiple relations <eqn>E^+ = {E_1, .. E_r}</eqn>
 <title>Hypergraphs</title>
 
 <text>
-Ties among subsets of actors (e.g. affiliation networks, as two-mode networks)
+Ties among subsets of actors (e.g. affiliation networks, as two-mode networks). In sociology, such networks are called "affiliation networks"...
+
+e.g. Directors sitting on the boards of companies, scientists coauthoring papers, film actors appearing together in films, people attending social events, members of a familia or any other kind of social group, users who like a particular item in a recommender system, words appearing in documents in an information retrieval system, train routes connecting stations, metabolites participating in metabolic reactions...
+</text>
+
+<text>
+N:  generalized kind of edge that joins more than two vertices (We could just use ordinary edges joining vertex pairs to represent our family ties, placing an edge between any two vertices that correspond to individuals in the same family. This, however, doesn’t explicitly tell us when two edges correspond to ties within the same family, and there is no single object in the network that corresponds to a family the way a hyperedge does in the hypergraph. In a number of ways, therefore, the hypergraph is more convenient). Such an edge is called a hyperedge and a network with hyperedges is called a hypergraph. 
 </text>
 
 <text>
@@ -133,6 +143,10 @@ Higraphs are widely used in industrial applications like UML
 <title>Directed graphs (a.k.a. digraphs)</title>
 
 <text>
+N: directed network or directed graph, also called a digraph for short, is a network in which each edge has a direction, pointing from one vertex to another. Such edges are themselves called directed edges, and can be represented by lines with arrows on them... We can, if we wish, think of undirected networks as directed networks in which each undirected edge has been replaced with two directed ones running in opposite directions between the same pair of vertices. The adjacency matrix for such a network is then symmetric and exactly the same as for the original undirected network
+</text>
+
+<text>
 From a formal point of view, a directed graph <eqn>G=(V,E)</eqn> is a finite non-empty set <eqn>V</eqn> of vertices (or nodes) together with a possibly empty set <eqn>E</eqn> of ordered pairs of vertices called directed edges (also known as arcs). In other words, <eqn>V \neq \emptyset</eqn> and <eqn>E \subseteq V \times V</eqn>. Henceforth, we will stick to this definition both for directed and undirected graphs.
 </text>
 
@@ -144,7 +158,7 @@ In scenarios such as the social network mentioned at the beginning of this secti
 <text>
 ++ Directed graphs (= digraphs): undirected graphs for nondirectional links, directed graphs for directional links.
 
-Examples (many applications concerning traffic and transportation networks): road networks (lanes in both directions) are undirected vs. street networks within cities (typically directed due to one-way streets; program flow graphs are typically directed (dependences)...
+Examples (many applications concerning traffic and transportation networks): road networks (lanes in both directions) are undirected vs. street networks within cities (typically directed due to one-way streets; program flow graphs are typically directed (dependences), WWW links, citation networks, food webs (energy flow from prey to predator)...
 </text>
 
 <text>
@@ -175,6 +189,7 @@ We say that a digraph G is symmetric if,whenever (u,v) is an arc of G, then (v,u
 <text>
 ++The converse graph: arcs reversed...
 </text>
+
 
 </document>
 

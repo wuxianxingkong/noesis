@@ -37,12 +37,21 @@ Variance of the degrees (0 for regular graphs)...
 </equation>
 
 <text>
-Density (useful for measuring the cohesiveness of subgraphs):
+Density (useful for measuring the cohesiveness of subgraphs), a.k.a. connectance, in the [0,1] interval:
 </text>
 
 <equation>
 \rho(G) = \frac{2m}{n(n-1)} = \frac{\langle d \rangle}{n-1}
 </equation>
+
+<text>
+N: A network for which the density \rho tends to a constant as n \rightarrow \infinity is said to be dense. In such a network the fraction of non-zero elements in the adjacency matrix remains constant as the network becomes large. A network in which \rho \rightarrow 0 as n \rightarrow \infinity is said to be sparse. In particular, a network is sparse if the average degree tends to a constant as n becomes large. (theoretical definition)
+
+N: In some cases real-world networks do change their sizes and by making measurements for different sizes we can make a guess as to whether they are best regarded as sparse or dense. The Internet and the World Wide Web are two examples of networks whose growth over time allows us to say with some conviction that they are best regarded as sparse. In other cases there may be independent reasons for regarding a network to be sparse or dense. In a friendship network, for instance, it seems unlikely that the number of a person’s friends will double solely because the population of the world doubles. How many friends a person has is more a function of how much time they have to devote to the maintenance of friendships than it is a function of how many people are being born. Friendship networks therefore are usually regarded as sparse.
+In fact, almost of all of the networks we consider in this book are considered to be sparse networks, which will be important for the design of network algorithms... One possible exception to the pattern is food webs. Studies comparing ecosystems of different sizes seem to show that the density of food webs is roughly constant, regardless of their size, indicating that food webs may be dense networks 
+[Dunne, J. A., Williams, R. J., and Martinez, N. D., Food-web structure and network theory: The role of connectance and size, Proc. Natl. Acad. Sci. USA 99:12917-12922 (2002)]
+[Martinez, N. D., Constant connectance in community food webs, Am. Nat. 139:1208-1218 (1992)]
+</text>
 
 <document>
 <tag>graph-theory-degree-sequence</tag>

@@ -110,6 +110,10 @@ Euler's theorem characterizes Eulerian graphs <cite>Euler 1736</cite>. Given a c
 
 <text>
 Since Euler tours must traverse all the edges in a graph and each occurrence of a vertex in the Euler tour adds two to its degree, it follows that all vertices must have an even degree. This result proves that the Königsberg bridge problem has no solution, since all the vertices in its associated graph have odd degrees.
+
+N: if there are any vertices of degree greater than two in a network an Eulerian path will have to visit those vertices more than once in order to traverse all their edges
+
+N:  Euler observed that, since any Eulerian path must both enter and leave every vertex it passes through except the first and last, there can at most be two vertices in the network with odd degree if such a path is to exist
 </text>
 
 <text>
@@ -269,6 +273,19 @@ WF: 4 kinds of connectedness
 </text>
 
 <text>
+N: OUT-COMPONENT
+
+Considerations of this kind lead us to define the out-component, which is the set of vertices that are reachable via directed paths starting at a specified vertex A, and including A itself.
+An out-component has the property that edges connecting it to other vertices (ones not in the out-component) only point inward towards the members of component, and never outward (since if they pointed outward then the vertices they connected to would by definition be members of the out-component).
+Note that the members of an out-component depend on the choice of the starting vertex. Choose a different starting vertex and the set of reachable vertices may change. Thus an out-component is a property of the network structure and the starting vertex, and not (as with strongly and weakly connected components) of the network structure alone. This means, among other things, that a vertex can belong to more than one different out-component.
+A few other points are worth noticing. First, it is self-evident that all the members of the strongly connected component to which a vertex A belongs are also members of A’s out-component. Furthermore, all vertices that are reachable from A are necessarily also reachable from all the other vertices in the strongly connected component. Thus it follows that the out-components of all members of a strongly connected component are identical. It would be reasonable to say that out-components really “belong” not to individual vertices, but to strongly connected components
+
+N: IN-COMPONENT
+
+Very similar arguments apply to vertices from which a particular vertex can be reached. The in-component of a specified vertex A is the set of all vertices from which there is a directed path to A, including A itself. In-components depend on the choice of the specified vertex, and a vertex can belong to more than one in-component, but all vertices in the same strongly connected component have the same in-component. Furthermore, the strongly connected component to which a vertex belongs is a subset of its in-component, and indeed a vertex that is in both the in- and out-components of A is necessarily in the same strongly connected component as A (since paths exist in both directions) and hence A’s strongly connected component is equal to the intersection of its in- and out-components.
+</text>
+
+<text>
 
 J:
 Two vertices a and b of a graph G are connected if there exists a walk
@@ -323,6 +340,9 @@ Then a and b are said to have distance d = d(a, b) ++ Junig. Chapter 3
 
 <text>
 - Geodesic: A path of length  <eqn>d_G(u,v)</eqn> from a vertex <eqn>u</eqn> to a vertex <eqn>v</eqn> in a connected graph <eqn>G</eqn> is called a geodesic.
+= geodesic path, also called simply a shortest path,
+
+++ The length of a geodesic path, often called the geodesic distance or shortest distance
 </text>
 
 <text>
@@ -346,6 +366,10 @@ The radius of a graph is the smallest eccentricity among the vertices of G.
 The diameter of a graph is the greatest eccentricity among the vertices of G.
 = The longest path between any two nodes in a graph G is called the diameter of G,
 = The largest geodesic in the graph <eqn>max_i max_j d(i,j)</eqn>
+
+N: The diameter of a graph is the length of the longest geodesic path between any pair of vertices in the network for which a path actually exists (to avoid infinite values for disconnected graphs)
+...
+ talk about the diameters of the individual components separately, a perfectly well-defined concept whatever convention we adopt for unconnected vertices
 </text>
 
 <text>
@@ -403,6 +427,17 @@ The pairwise distance of the shortest path linking the nodes in a network is rep
 => edge-cuts (edge-connectivity)
 </text>
 
+
+<!-- Independent paths -->
+
+<text>
+N: The number of independent paths between vertices gives a simple measure of how strongly the vertices are connected to one another,
+
+there are two species of independent path: edge-independent and vertex-independent. Two paths connecting a given pair of vertices are edge-independent if they share no edges. Two paths are vertex-independent (or node-independent) if they share no vertices other than the starting and ending vertices. If two paths are vertex-independent then they are also edge-independent, but the reverse is not true: it is possible to be edge-independent but not vertex-independent. For instance, the network shown in Fig. 6.15a has two edge-independent paths from A to B, as denoted by the arrows, but only one vertex-independent path—the two edge-independent paths are not vertex-independent because they share the intermediate vertex C.
+Independent paths are also sometimes called disjoint paths, primarily in the mathematical literature. One also sees the terms edge-disjoint and vertexdisjoint , describing edge and vertex independenc
+
++ The edge-independent paths are not necessarily unique; there are two different ways of choosing two independent paths from A to B in (a two diamond graph).
+</text>
 
 
 <!-- Cut nodes -->
@@ -472,7 +507,7 @@ A connected graph containing no cut-nodes is a nonseparable graph, whereas a con
 </text>
 
 <text>
-It can be proved that, in any nonseparable graph with 3 nodes or more, every two vertices lie on a common cycle. Therefore, there are two internally disjoint paths between every two distinct nodes in nonseparable graphs, where internally disjoint means that they have only their end vertices in common (a.k.a. vertex-disjoint paths).
+It can be proved that, in any nonseparable graph with 3 nodes or more, every two vertices lie on a common cycle. Therefore, there are two internally disjoint paths between every two distinct nodes in nonseparable graphs, where internally disjoint means that they have only their end vertices in common (a.k.a. vertex-disjoint paths ). 
 </text>
 
 <!-- Blocks -->
@@ -501,6 +536,14 @@ J: Let G be a graph and s and t two vertices of G. Then a set of paths in G with
 <tag>graph-theory-separators</tag>
 <title>Vertex separators and edge separators</title>
 
+
+<text>
+N: Connectivity can also be visualized in terms of “bottlenecks” between vertices. Vertices A and B in (two-diamond graph, for instance, are connected by only one vertex-independent path because vertex C forms a bottleneck through which only one path can go. This idea of bottlenecks is formalized by the notion of cut sets as follows. Consider an undirected network. (In fact the developments here apply equally to directed ones, but for simplicity let us stick with the undirected case for now.) A cut set, or more properly a vertex cut set, is a set of vertices whose removal will disconnect a specified pair of vertices. For example, the central vertex C in Fig. 6.15 forms a cut set of size 1 for the vertices A and B. If it is removed, there will be no path from A to B. There are also other cut sets for A and B in this network, although all the others are larger than size 1.
+An edge cut set is the equivalent construct for edges—it is a set of edges whose removal will disconnect a specified pair of vertices.
+A minimum cut set is the smallest cut set that will disconnect a specified pair of vertices. In Fig. 6.15 the single vertex C is a minimum vertex cut set for vertices A and B. A minimum cut set need not be unique. 
+</text>
+
+
 <text>
 A subset A of E is called an edge separator for s and t if each path from s to t contains some edge from A. 
 
@@ -528,6 +571,13 @@ any two given vertices
 <document>
 <tag>graph-theory-k-connectivity</tag>
 <title>Vertex connectivity and edge connectivity</title>
+
+
+<text>
+N: There can be only a finite number of independent paths between any two vertices in a finite network. Each path must contain at least one edge and no two paths can share an edge, so the number of independent paths cannot exceed the number of edges in the network.
+
+The number of independent paths between a pair of vertices is called the connectivity of the vertices.68 If we wish to be explicit about whether we are considering edge- or vertex-independence, we refer to edge or vertex connectivity . The vertices A and B in (two diamond graph) have edge connectivity 2 but vertex connectivity 1 (since there is only one vertex-independent path between them).
+</text>
 
 
 <!-- Vertex connectivity -->
@@ -609,6 +659,8 @@ graph or a graph where e1 is a bridge (so that removing u makes the graph
 disconnected). In either case, \kappa(G) \leq k = \lambda(G).
 </text>
 
+
+
 <!-- Connectivity theorems -->
 
 <text>
@@ -628,7 +680,7 @@ By Menger's theorem, \kappa(s, t) equals the minimal cardinality of a vertex sep
 </text>
 
 <text>
-With the aid of Menger's theorem, k-connected graphs can be characterized as follows:
+With the aid of Menger's theorem, k-connected graphs can also be characterized as follows:
 </text>
 
 <list>
@@ -641,6 +693,10 @@ With the aid of Menger's theorem, k-connected graphs can be characterized as fol
 
 <text>
 This formal result completes our study of graph connectivity, by completing Menger's theorem, which was only applicable to non-adjacent vertices s and t.
+</text>
+
+<text>
+In layman's terms, Whitney's theorem states that there are n independent paths between a given pair of vertices if the size of the minimum cut set between them is n. The edge version of the Menger's theorem is specially relevant for network flow problems, where we try to maximize the amount of fluid that flows through a network: the maximum flow is equal to the number of edge-independent paths times the edge capacity. This result can be generalized for weighted graphs and it is known as the maximum-flow/minimun-cut theorem: the maximum flow between a given pair of vertices in a network is equal to the sum of the weights on the edges of the minimum edge cut set that separates both vertices, being the minimum edge cut set that with minimum sum of the weights of the edges in the set. As a matter of fact, maximum flow algorithms provide the standard numerical solution for connectivities and cut sets.
 </text>
 
 </document>

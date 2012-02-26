@@ -396,6 +396,14 @@ Citation analysis: co-citation and bibliographic coupling
 </text>
 
 <text>
+N: It is sometimes convenient to turn a directed network into an undirected one for the purposes of analysis. Two measures of vertex similarity...
+
+- The cocitation of two vertices i and j in a directed network is the number of vertices that have outgoing edges pointing to both i and j. In the language of citation networks, for instance, the cocitation of two papers is the number of other papers that cite both.
+
+- Bibliographic coupling is similar to cocitation. The bibliographic coupling of two vertices in a directed network is the number of other vertices to which both point. In a citation network, for instance, the bibliographic coupling of two papers i and j is the number of other papers that are cited by both i and j. 
+</text>
+
+<text>
 <b>Co-citation</b>: When two papers are cited by a third one, they are somehow related even though they do not cite each other. Co-citation is a similarity measure defined as the number of papers that co-cite a given pair of papers:
 </text>
 
@@ -407,6 +415,12 @@ CC_{ij} = \sum_{k=1}^{n} A_{ki} A_{kj}
 <eqn>CC_{ij}</eqn> is the co-citation matrix, which is symmetric.
 </text>
 
+<text>
+Co-citation network:
+N: ... we can define a cocitation network in which there is an edge between i and j if Cij &gt; 0, for i \neq j, i.e., an edge between any two vertices that are cocited in the original directed network. (We enforce the constraint that i \neq j because the cocitation network is conventionally defined to have no self-edges, even though the diagonal elements of the cocitation matrix are in general nonzero—see below.) ... we can also make the cocitation network a weighted network with positive integer weights on the edges equal to the corresponding elements Cij. T... In citation networks of academic papers, for instance, strong cocitation between papers is often a good indicator of papers that deal with related topics—if two papers are often cited together in the same bibliography they probably have something in common. And the more often they are cited together, the more likely it is that they are related.
+
+... The cocitation matrix thus plays a role similar to an adjacency matrix for the cocitation network. There is however one aspect in which the cocitation matrix differs from an adjacency matrix: its diagonal elements. The diagonal elements of the cocitation matrix are equal to  the total number of edges pointing to i—the total number of papers citing i.
+</text>
 
 <text>
 <b>Bibliographic coupling</b> mirrors co-citation by linking papers that cite the same articles (i.e. when two papers cite a third one, they are also related even though they do not cite each other). Let as define <eqn>BC_{ij}</eqn> as the number of papers that are cited by both <eqn>i</eqn> and <eqn>j</eqn>:
@@ -418,6 +432,15 @@ BC_{ij} = \sum_{k=1}^{n} A_{ik} A_{jk}
 
 <text>
 <eqn>BC_{ij}</eqn> defines the bibliographic coupling matrix, which is also symmetric.
+</text>
+
+
+<text>
+N: Bibliographic coupling, like cocitation, can be a useful measure of connection between vertices. In a citation network, for example, if two papers cite many of the same other papers it is often a good indication that they deal with similar subject matter, and the number of common papers cited can be an indicator of how strongly they overlap
+</text>
+
+<text>
+N: n a citation network, for instance, two papers can only have strong cocitation if they are both well cited and hence strong cocitation is limited to influential papers, review articles, books, and similar highly cited items. Conversely, two papers can only have strong bibliographic coupling if they both cite many others, i.e., if they have large bibliographies. In practice, the sizes of bibliographies vary less than the number of citations papers receive, and hence bibliographic coupling is a more uniform indicator of similarity between papers than cocitation... the cocitation of two papers can change over time as the papers receive new citations, whereas bibliographic coupling is fixed from the moment the papers are published.
 </text>
 
 <text>

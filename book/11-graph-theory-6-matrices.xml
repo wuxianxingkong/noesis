@@ -80,20 +80,56 @@ In linear algebra, a block matrix or partitioned matrix is a matrix broken into 
 </text>
 
 <text>
-In fact, bipartite graphs could be represented more succinctly by a smaller matrix, of size <eqn>|V_1| \times |V_2|</eqn>, usually called the <term>biadjacency matrix</term> (or <term>affiliation matrix</term> in social network analysis terms when the bipartite graph represents an affiliation network). The biadjacency matrix <eqn>BA</eqn> of a bipartite graph corresponds to the upper right quadrant of the graph adjacency matrix when it is represented as (i.e. all ones for complete bipartite graphs).
+In fact, bipartite graphs could be represented more succinctly by a smaller matrix, of size <eqn>|V_1| \times |V_2|</eqn>, usually called the <term>biadjacency matrix</term> (or <term>affiliation matrix</term> in social network analysis terms when the bipartite graph represents an affiliation network). The biadjacency matrix <eqn>B</eqn> of a bipartite graph corresponds to the upper right quadrant of the graph adjacency matrix when it is represented as (i.e. all ones for complete bipartite graphs).
 </text>
 
 <equation>
 A(G) =
 \begin{bmatrix}
-0    &amp; BA \\
-BA^t &amp; 0  \\
+0   &amp; B \\
+B^t &amp; 0  \\
 \end{bmatrix}
 </equation>
 
 <text>
 Biadjacency matrices are specially suitable for weighted graphs, when binary values are replaced by edge weights, since they are suitable for representing matching problems.
 </text>
+
+
+<text>
+N: Such weighted or valued networks can be represented by giving the elements of the adjacency matrix values equal to the weights of the corresponding connections (usually a real number). 
+</text>
+
+<text>
+All elements along the main diagonal of <eqn>A</eqn> are 0 if we do not allow loops (i.e. a vertex cannot be adjacent to itself). ++ Undefined values (-) for SNA, 1 or 2 when loops are allowed (usually 2 for undirected graphs)...
+
+N: for a network with no self-edges such as this one the diagonal matrix elements are all zero, and second that it is symmetric, since if there is an edge between i and j then there is an edge between j and i.Self-edges are a little more complicated. A single self-edge from vertex i to itself is represented by setting the corresponding diagonal element Aii of the matrix equal to 2. Why 2 and not 1? Essentially it is because every self-edge from i to i has two ends, both of which are connected to vertex i. We will find that many of our mathematical results concerning the adjacency matrix work equally well for networks with and without self-edges, but only if we are careful to count both ends of every edge, including the self-edges, by making the diagonal matrix elements equal to 2 rather than 1... non-self-edges appear twice in the adjacency matrix — an edge from i to j means that both Aij and Aji are 1. To count edges equally, self-edges should also appear twice, and since there is only one diagonal matrix element Aii , we need to record both appearances there
+
+... self-edges in a directed network are represented by setting the corresponding diagonal element of the adjacency matrix to 1, not 2 as in the undirected case (one undirected edge = two directed edges)
+</text>
+
+<text>
+N. It is also possible to represent multiedges and self-edges using an adjacency matrix. A multiedge is represented by setting the corresponding matrix element Aij equal to the multiplicity of the edge. For example, a double edge between vertices i and j is represented by Aij = Aji = 2. One can also have multiple self-edges (or “multi-self-edges” perhaps). Such edges are represented by setting the corresponding diagonal element of the adjacency matrix equal to twice the multiplicity of the edge.
+</text>
+
+<text>
+N: it is possible to create a network with multiedges that has the exact same adjacency matrix than a weighted network, by simply choosing the multiplicities of the multiedges equal to the corresponding weights. 
+</text>
+
+
+
+<text>
+N: CONNECTED COMPONENTS the adjacency matrix of a network with more than one component can be written in block diagonal form, meaning that the non-zero elements of the matrix are confined to square blocks along the diagonal of the matrix, with all other elements being zero
+
+Note: depending on the labeling, it might not be evident whether the graph is connected or not (looking for a suitable order would require much more effort than needed, since linear-time algorithms exist for detecting the graph connected components).
+</text>
+
+<text>
+N: DAG: The adjacency matrix of an acyclic directed network has interesting properties. Suppose we construct an ordering of the vertices of an acyclic network as described above, so that all edges point in one direction, and suppose we then label the vertices in that order. Then there can be an edge from vertex j to vertex i only if j > i. Put another way, the adjacency matrix A (whose element Aij records the presence of an edge from j to i) has all its non-zero elements above the diagonal—it is upper triangular...
+
+... for every acyclic directed network there exists at least one labeling of the vertices such that the adjacency matrix will be strictly upper triangular (i.e. triangular matrices with zeros on the diagonal are called strictly triangular, since loops are not permitted)
+</text>
+
 
 <text>
 Matrix permutations: simultaneous rearrangements of rows and columns that do not change information about adjacency
@@ -109,11 +145,7 @@ Several additional observations can be made about adjacency matrices:
 <list>
 
 <item>
-The adjacency matrix <eqn>A</eqn> is a symmetric matrix for undirected graphs, since <eqn>a_{ij} = a_{ji}</eqn> for such graphs, but it certainly might nt be symmetric for directed graphs.
-</item>
-
-<item>
-All elements along the main diagonal of <eqn>A</eqn> are 0 if we do not allow loops (i.e. a vertex cannot be adjacent to itself). ++ Undefined values (-) for SNA, 1 or 2 when loops are allowed (usually 2 for undirected graphs)
+The adjacency matrix <eqn>A</eqn> is a symmetric matrix for undirected graphs, since <eqn>a_{ij} = a_{ji}</eqn> for such graphs, but it certainly might be asymmetric for directed graphs.
 </item>
 
 <item>
@@ -141,11 +173,15 @@ Let <eqn>a_{ij}^{(k)}</eqn> denote the <eqn>(i,j)</eqn> entry in the matrix <eqn
 <list>
 
 <item>
-The degree of a node: <eqn>d_i = deg(v_i) = a_{ii}^{(2)}</eqn>.
+The degree of a node: <eqn>d_i = deg(v_i) = a_{ii}^{(2)}</eqn>. Note: k_i (physicists)
 </item>
 
 <item>
 The number of triangles in G than contain a given node: <eqn>triangles(v_i) = a_{ii}^{(3)} / 2</eqn>.
+</item>
+
+<item>
+The total number <eqn>C_r</eqn> of cycles of length r anywhere in a network is the sum of <eqn>a_{ii}^{(r)}</eqn> over all possible starting points i, i.e. <eqn>C_r = \sum_i a_{ii}^{(r)} / (2*r) = Tr A^r / (2*r)</eqn>. It should be noted that the sum counts loops consisting of the same vertices in the same order but with different starting points and in both directions, so it must be divided by <eqn>2*r</eqn>. However, this expression still misses the propoer count for paths consisting of the same subcycle repeated several times.
 </item>
 
 </list>
@@ -299,6 +335,31 @@ B(G_{bowtie}) =
 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
 \end{bmatrix}
 </equation>
+
+<text>
+++ BIPARTITE / MULTIGRAPHS: The biadjacency matrix for a bipartite network is a rectangular matrix that corresponds to the incidence matrix. If n is the number of people or other participants in the network and g is the number of groups, then the incidence matrix B is a g × n matrix
+
+...
+
+N: Although a bipartite network may give the most complete representation of a particular network it is often convenient to work with direct connections between vertices of just one type. We can use the bipartite network to infer such connections, creating a one-mode projection from the two-mode bipartite form. As an example, consider again the case of the films and actors. We can perform a projection onto the actors alone by constructing the n-vertex network in which the vertices represent actors and two actors are connected by an edge if they have appeared together in a film. The corresponding one-mode projection onto the films would be the g-vertex network where the vertices represent films and two films are connected if they share a common actor. 
+
+... 
+When we form a one-mode projection each group in the bipartite network results in a cluster of vertices in the one-mode projection that are all connected to each other—a "clique" in graph theoretical terms.
+...
+The one-mode projection is widely employed, but its construction discards a lot of the information present in the structure of the original bipartite network and hence it is, in a sense, a less powerful representation of our data. For example, the projection loses any information about how many groups two vertices share in common... We can capture information of this kind in our projection by making the projection weighted, giving each edge between two vertices in the projected network a weight equal to the number of common groups the vertices share. This weighted network still does not capture all the information in the bipartite original—it doesn’t record the number of groups or the exact membership of each group for instance—but it is an improvement on the unweighted version and is quite widely used.
+
+Mathematically the projection can be written in terms of the incidence matrix B as follows. The product BkiBkj will be 1 if and only if i and j both belong to the same group k in the bipartite network. Thus, the total number Pij of groups to which both i and j belong is Pij = sum... P = B Bt ?
+...
+Its off-diagonal elements are equal to the weights in that network, the number of common groups shared by each vertex pair
+...
+Pii is equal to the number of groups to which vertex i belongs.
+...
+to derive the adjacency matrix of the weighted one-mode projection, we would calculate the matrix P = BTB and set the diagonal elements equal to zero. And to derive the adjacency matrix of the unweighted projection, we would take the adjacency matrix of the weighted version and replace every non-zero matrix element with a 1
+
+to derive the adjacency matrix of the weighted one-mode projection, we would calculate the matrix P = BTB and set the diagonal elements equal to zero. And to derive the adjacency matrix of the unweighted projection, we would take the adjacency matrix of the weighted version and replace every non-zero matrix element with a 1
+...
+The other one-mode projection, onto the groups, can be represented by a g × g matrix P' = BBT, whose off-diagonal element  gives the number of common members of groups i and j, and whose diagonal element  gives the number of members of group i.
+</text>
 
 </document>
 

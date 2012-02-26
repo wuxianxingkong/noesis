@@ -1,0 +1,312 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<!-- Shortest paths -->
+
+<document>
+<tag>graph-shortest-paths</tag>
+<title>Shortest paths</title>
+
+
+<text>
+When graphs are weighted, i.e. each edge in the graph is associated to a numerical value, computing their shortest paths is more complicated than performing breadth-first traversals (recall that the BFS tree leads to minimum-number-of-links paths)...
+</text>
+
+<text>
+Shortest paths in directed acyclic graphs can also be found in linear time: Perform a topological sorting and then process the vertices
+from left to right. Observe that <eqn>d(s, j) = min_(x,i) d(s, i) + w(i, j)</eqn> since we already know the shortest path d(s, i) for all vertices to the left of j. The same algorithm (replacing min with max) also suffices to find the longest path in a DAG, which is useful in scheduling applications.
+</text>
+
+
+<note>
+<title>The Strategy design pattern</title>
+
+<text>
+++ The Strategy design pattern <cite>Gamma et al. 1994</cite>
+</text>
+</note>
+
+
+<text>
+@ MIT Graphs - Shortest paths
+</text>
+
+
+<!-- Shortest paths: Single source -->
+
+<document>
+<tag>graph-shortest-paths-dijkstra</tag>
+<title>Single source shortest paths</title>
+
+<text>
+Finding the shortest path from s to t in G.
+Actually, finding the shortest path from a source node <eqn>s</eqn> to every other node in the network requires the same amount of work...
+</text>
+
+<text>
+APPLICATIONS: Finding directions (note: hierarchical A*), transportation and communications networks, distinguishing
+among homophones iin speech recognition systems, graph visualization algorithms...
+
+Approximate shortest paths in road networks, for instance, typically employ a hierarchical variation of A* <cite>Goldberg et al. 2006</cite> <cite>Goldberg et al. 2007</cite>. Such problem differ from the shortest path problems in this Section because
+(1) preprocessing costs can be amortized over many point-to-point queries, 
+(2) the backbone of high-speed, long-distance highways can reduce the path problem to identifying the best place to get on and off this backbone, and (3) approximate or heuristic solutions suffice in practice
+</text>
+
+
+
+<text>
+IDEA: Shortest path from s to t goes through x, then that path contains the shortest path from s to x
+</text>
+
+<text>
+Similar to Prim's algorithm... each iteration determines the shortest path from s to a new vertex x by minimizing d(s,v)+w(v,x)
+
+In Prim's algorithm, we just take into account the weighte of the edge we add to the MST; in Dijkstra's algorithm, we consider the cost of the whole path from s to x (i.e. the final edge weight plus the distance from s to the tree vertex that is adjacent to the new edge). Dijkstra's algorithm returns a shortest-path spanning tree from s to all the other nodes in the network.
+</text>
+
+<text>
+<url>http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</url>
+Dijkstra's algorithm <cite>Dijkstra 1959</cite>: 
+
+computes the shortest path from a given starting vertex x to all n . 1
+other vertices. In each iteration, it identifies a new vertex v for which the shortest
+path from x to v is known. We maintain a set of vertices S to which we currently
+know the shortest path from v, and this set grows by one vertex in each iteration.
+In each iteration, we identify the edge (u,v) so that
+<eqn>dist(x, u) + weight(u, v) = min_(w,y) { dist(x, w) + weight(w,y) }</eqn>
+
+This edge (u, v) gets added to a shortest path tree, whose root is x and describes
+all the shortest paths from x.
+
+If we just need to know the shortest
+path from x to y, terminate the algorithm as soon as y enters S.
+</text>
+
+<text>
+EFFICIENCY:
+- <eqn>O(n^2)</eqn> using a naive implementation with arrays
+- Using binary heaps: <eqn>O(m \log n)</eqn>
+- Fastest implementation: <eqn>O(m + n \log n)</eqn> amortized time using Fibonacci heaps <cite>Fredman and Tarjan 1987</cite>
+</text>
+
+<text>
+Related problem: Single-destination shortest path problem for directed graphs.
+</text>
+
+<text>
+CORRECTNESS: Only on graphs without negative edges!!!
+
+Dijkstra's algorithm assumes that all edges have positive cost. 
+- Adding a fixed amount of weight to make each edge positive does
+not solve the problem. Dijkstra's algorithm will then favor paths using a fewer
+number of edges,
+
+For graphs with edges of negative weight,
+you must use the more general, but less efficient, Bellman-Ford algorithm.
+
+NOTE: negative cost cycles =the shortest x to y path in such a graph is not defined because we can detour
+from x to the negative cost cycle and repeatedly loop around it, making the total cost arbitrarily small.
+
+
+</text>
+
+<text>
+In a geometric setting, more efficient geometric algorithms compute the shortest path directly from the arrangement of obstacles: motion planning algorithms <cite>Latombe 1991</cite> <cite>LaValle 2006</cite>
+</text>
+
+
+<text>
+Parallelization of Dijkstra's algorithm
+- for dense graphs @ Section 10.3 <cite>Grama et al. 2003</cite>
++ Bibliographic notes
+</text>
+
+</document>
+
+
+
+<!-- Shortest paths: All pairs -->
+
+<document>
+<tag>graph-shortest-paths-all-pairs</tag>
+<title>All-pairs shortest paths</title>
+
+
+<text>
+Some problems requite computing the shortest paths between all pairs of nodes, e.g. the central node (i.e. the node that minimizes the longest or average distance to every other node) or the network diameter (i.e. the longest shortest-path distance between two nodes in the network). 
+</text>
+
+<text>
+EXAMPLE: 
+- bounding the amount of time needed to deliver a packet through a network
+</text>
+
+<text>
++ Best on adjacency matrix (anyway we will need to store <eqn>n \times n</eqn> distances), i.e. one of the rare cases where algorithms on adjacency matrices work better
+</text>
+
+
+<text>
+A first solution: Repeating Dijkstra's algorithm for each node
+</text>
+
+<!-- Floyd-Warshall -->
+
+<text>
+<url>http://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm</url>
+Floyd-Warshall algorithm: <cite>Floyd 1962</cite>
+often referred to as Floyd's algorithm, albeit the same algorithm was published by Bernard Roy in 1959 <cite>Roy 1959</cite> and by Stephen Warshall in 1962 <cite>Warshall 1962</cite>
+
+
+<eqn>O(n^3)</eqn>
+
+- Define the length of the shortest path from i to j using only the k first vertices as possible intermediate nodes: <eqn>W[i,j]^k</eqn>
+- Initial shortest-path matrix = adjacency matrix
+- <eqn>W[i,j]^k = min \{ W[i,j]^{k-1}, W[i,k]^{k-1} + W[k,j]^{k-1} \}</eqn>
+- Compact implementation: 3 nested loops
+- Ancillary matrix to reconstruct the paths
+</text>
+
+<code>
+D0 = M
+for k = 1 to n do
+    for i = 1 to n do
+        for j = 1 to n do
+            Dk(i,j) = min{ Dk-1(ij), Dk-1(ik) + Dk-1(kj) }
+return Dn
+
+
+  for k := 1 to n
+        for i := 1 to n
+           for j := 1 to n
+              if path[i][k] + path[k][j] &lt; path[i][j] then
+                 path[i][j] := path[i][k]+path[k][j];
+                 next[i][j] := k;
+
+</code>
+
+<text>
+Transitive closure of directed graphs (Warshall's algorithm). In Warshall's original formulation of the algorithm, the graph is unweighted and represented by a Boolean adjacency matrix. Then the addition operation is replaced by logical conjunction (AND) and the minimum operation by logical disjunction (OR).
+</text>
+
+<!-- Bellman-Ford -->
+
+<text>
+<url>http://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm</url>
+Bellman-Ford algorithm: <eqn>O(nm)</eqn> time, <eqn>O(n)</eqn> space
+
+Bellman-Ford algorithm <cite>Bellman 1958</cite> <cite>Ford and Fulkerson 1962</cite>
+
++ Negative weights (arise when we reduce other problems to shortest-paths problems)
+</text>
+
+<code>
+   // Step 1: initialize graph
+   for each vertex v in vertices:
+       if v is source then v.distance := 0
+       else v.distance := infinity
+       v.predecessor := null
+
+   // Step 2: relax edges repeatedly
+   for i from 1 to size(vertices)-1:
+       for each edge uv in edges: // uv is the edge from u to v
+           u := uv.source
+           v := uv.destination
+           if u.distance + uv.weight &lt; v.distance:
+               v.distance := u.distance + uv.weight
+               v.predecessor := u
+
+   // Step 3: check for negative-weight cycles
+   for each edge uv in edges:
+       u := uv.source
+       v := uv.destination
+       if u.distance + uv.weight &lt; v.distance:
+           error "Graph contains a negative-weight cycle"
+</code>
+
+<!-- Johnson -->
+
+<text>
+<url>http://en.wikipedia.org/wiki/Johnson%27s_algorithm</url>
+Johnson's algorithm <cite>Johnson 1977</cite> 
+
+1
+First, a new node q is added to the graph, connected by zero-weight edges to each of the other nodes.
+
+2
+Second, the Bellman-Ford algorithm is used, starting from the new vertex q, to find for each vertex v the least weight h(v) of a path from q to v. If this step detects a negative cycle, the algorithm is terminated.
+
+3
+Next the edges of the original graph are reweighted using the values computed by the Bellman-Ford algorithm: an edge from u to v, having length w(u,v), is given the new length w(u,v) + h(u) - h(v).
+
+4
+Finally, q is removed, and Dijkstra's algorithm is used to find the shortest paths from each node s to every other vertex in the reweighted graph.
+
+
+<eqn>O(n^2 \log n + nm)</eqn> using <eqn>O(nm)</eqn> time for the Bellman-Ford stage of the algorithm, and <eqn>O(n \log n + m)</eqn> for each of <eqn>n</eqn> instantiations of Dijkstra's algorithm. Faster than the Floyd-Warshal algorithm for sparse graphs.
+
+
+It allows some of the edge weights to be negative
+</text>
+
+
+<!-- Applications -->
+
+<text>
+All-pairs shortest paths algorithms can be used to find the shortest cycle in a graph: its girth. Floyd's algorithm can be used to compute <eqn>d_ii</eqn>, which is the shortest way to get from vertex i to itself (i.e. the shortest cycle that goes through i). If you want the shortest simple cycle, the easiest
+approach is to compute the lengths of the shortest paths from i to all other vertices, and then explicitly check whether there is an acceptable edge from each vertex back to i.
+</text>
+
+
+<text>
+- Reachability questions (can I get to x from y?)
+
+RELATED PROBLEMS 
++ Transitive closure, construct a graph G' = (V,E') with edge (i, j) in E' iff there is a directed path from i to j in G. 
++ Transitive reduction (also known as minimum equivalent digraph), the inverse operation of transitive closure: reducing the number of edges while maintaining identical reachability properties, i.e. construct a small graph G'' = (V,E'') with a directed path from i to j in G'' iff there is a directed path from i to j in G
+
+- transitive closure 
+
+1) using graph traversal algorithms O(n(n+m)), 
+2) an all-pairs shortest path algorithms returns them all in a whole batch, albeit less efficiently, <eqn>O(n^3)</eqn> using Warshall's algorithm.
+3) using matrix multiplication: O(log n) multiplications using a divide-and-conquer algorithm
+
+- transitive reduction
+
+Approximate solution: A linear-time, quick-and-dirty transitive reduction algorithm identifies the
+strongly connected components of G, replaces each by a simple directed cycle,
+and adds these edges to those bridging the different components.
+
++ Transitive reduction also arises in graph drawing, where it is important to eliminate as many unnecessary edges as possible to reduce the visual clutter
+</text>
+
+
+<text>
+- pattern recognition problems, e.g. Viterbi algorithm, a dynamic programming algorithm that basically solves a shortest path problem on a DAG.
+</text>
+
+
+<!-- Parallelization -->
+
+<text>
+Parallelization of Floyd's algorithm 
+- for dense graphs @ Section 10.4 <cite>Grama et al. 2003</cite>
++ Bibliographic notes
+</text>
+
+
+<text>
+Wikipedia: A distributed variant of the Bellman-Ford algorithm is used in distance-vector routing protocols, for example the Routing Information Protocol (RIP). The algorithm is distributed because it involves a number of nodes (routers) within an Autonomous system, a collection of IP networks typically owned by an ISP. It consists of the following steps:
+- Each node calculates the distances between itself and all other nodes within the AS and stores this information as a table.
+- Each node sends its table to all neighboring nodes.
+- When a node receives distance tables from its neighbors, it calculates the shortest routes to all other nodes and updates its own table to reflect any changes.
+</text>
+
+
+<text>
+Distributed shortest paths @ MIT 6.852: Lectures 2-3 (synchronous) + Lectures 8-9 (asynchronous)  / Section 4.3 + Section 15.4 <cite>Lynch 1997</cite>
+</text>
+
+</document>
+
+</document>

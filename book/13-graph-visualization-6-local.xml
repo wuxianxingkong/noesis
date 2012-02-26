@@ -1,0 +1,35 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<document>
+<tag>graph-visualization-local</tag>
+<title>Visualizing the local neighborhood</title>
+
+
+<text>
+++ Radial drawing (local neighborhood), i.e. a drawing where vertices lie on concentric circles <cite>Brandes et al. 2003</cite>
+== radial layouts, after <cite>Wills 1997</cite>
+
+Nodes are placed on concentric circles depending their distance from a given root node.)
+
+twopi@Graphviz draws graphs using a radial layout. 
+
+Basically, one node is chosen as the center and put at the origin. The remaining nodes are placed on
+a sequence of concentric circles centered about the origin, each a ?xed radial distance from the previous
+circle. All nodes distance 1 from the center are placed on the ?rst circle; all nodes distance 1 from a node
+on the first circle are placed on the second circle; and so forth.
+</text>
+
+
+<text>
+++ circo (circular layout, after Six and Tollis 99, Kauffman and Wiese 02. This is suitable for certain diagrams of multiple cyclic structures, such as certain telecommunications networks.)
+
+circo draws graphs using a circular layout (<cite>Six and Tollis 1999a</cite> @ GD'99, <cite>Six and Tollis 1999b</cite> @ ALENEX'99, <cite>Kaufmann and Wiese 2002</cite> @ GD'02). The tool identifies biconnected components and draws the nodes of the component on a circle. The block-cutpoint tree is then laid out using a recursive radial algorithm. Edge crossings within a
+circle are minimized by placing as many edges on the circle's perimeter as possible. 
+
+In particular, if the component is outerplanar, the component will have a planar layout.
+
+If a node belongs to multiple non-trivial biconnected components, the layout puts the node in one of them. By default, this is the first non-trivial component found in the search from the root component.
+</text>
+
+</document>

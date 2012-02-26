@@ -1,0 +1,131 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<!-- Graph representation -->
+
+<document>
+<tag>graph-representation</tag>
+<title>Graph representation</title>
+
+<text>
+Graphs <eqn>G=(V,E)</eqn> of order <eqn>n</eqn> (number of vertices or nodes) and size <eqn>m</eqn> (number of edges or links)
+</text>
+
+
+<document>
+<tag>graph-representation-matrix</tag>
+<title>Adjacency matrix</title>
+
+<text>
+The most elementary representation of a graph is the adjacency matrix, also known as the connection matrix.
+</text>
+
+<text>
+Using a <eqn>n \times n</eqn> square matrix <eqn>A</eqn>, where <eqn>A[i][j]=1</eqn> if there is a link from node i to node j, <eqn>A[i][j]=0</eqn> otherwise.
+</text>
+
+<text>
++ Easy to check whether a link exists or not, addition/removal of links: <eqn>O(1)</eqn> operations.
+</text>
+
+<text>
+- Wasted space, specially for sparse networks: <eqn>O(n^2)</eqn> space vs. <eqn>O(n)</eqn> actual size 
+- impractical for large networks unless an alternative representation scheme is employed...
+
+Only for small and or very dense graphs!
+
+- Efficient implementation: bit vectors to represent binary/unweighted graphs.
+</text>
+
+<text>
+Incidence matrix: An alternative representation scheme, where we use a <eqn>n \times m</eqn> square matrix <eqn>I</eqn>, where <eqn>I[i][j]=1</eqn> if node i is involved in link j, <eqn>I[i][j]=0</eqn> otherwise. Incidence matrices might be useful for representing hypergraphs, i.e. generalized graphs where each edge can link subsets of more then two nodes (on standard graphs, there will be just two non-zero entries in each column).
+</text>
+</document>
+
+
+<document>
+<tag>graph-representation-lists</tag>
+<title>Adjacency lists</title>
+
+<text>
+Linked lists are employed to store the neighbors of each node. 
+i.e. a directed link (x,y) will appear in x's adjacency list.
+i.e. undirected edges (x,y) will appear twice: in both x's and y's adjacency lists.
++ Implemented using pointers/references or dynamic arrays (to reduce memory fragmentation)
+</text>
+
+<text>
++ Faster computation of node degrees: <eqn>O(d)</eqn> (vs. <eqn>O(n)</eqn> for adjacency matrix). NOTE: Can be precomputed
+</text>
+
+<text>
++ Slower check of edge existence, insertion/deletion of edges: <eqn>O(d)</eqn> (vs. <eqn>O(1)</eqn> for adjacency matrix)
+
+NOTE: Most algorithms can be easily designed so that they do not need to perform such operations, just by scanning all the links in each adjacency list (e.g. see breadth-first and depth-first traversal below).
+</text>
+
+<text>
++ Lower memory requirements: <eqn>O(n+m)</eqn> (vs. <eqn>O(n^2)</eqn> for adjacency matrix)
+</text>
+
+<text>
++ Faster graph traversal: <eqn>O(n+m)</eqn> (vs. <eqn>O(n^2)</eqn> for adjacency matrix)
+</text>
+
+<text>
++ Efficient implementation: dynamic arrays rather than linked lists (removing unnecessary pointers)
+</text>
+
+<text>
+Preferred choice for most problems: Adjacency lists for sparse graphs, adjacency matrix only for dense graphs (uncommon in data mining problems).
+</text>
+
+
+<text>
+Bipartite incidence structures are to adjacency lists as incidence matrices to adjacency matrices and, as incidence matrices, can be used to represent hypergraphs (i.e. generalized graphs where each edge can link subsets of more then two nodes). The incidence structure contains a vertex for each node and link in the hypergraph. An edge (i,j) will appear in the incidence structure if link j is incident on node i in the hypergraph.
+</text>
+
+
+
+<note>
+<text>
+Algorithmic libraries often provide general-purpose implementations of graph data structures, hence there is no need to implement them yourself unless your problem imposes very specific requirements, e.g. C++
+</text>
+
+<list>
+
+<item>LEDA (Library of Efficient Data types and Algorithms), <url>http://www.algorithmic-solutions.com/</url>, originally from the Max Planck Institute for Informatics in Saarbrücken, Germany; since 2001, maintained by the Algorithmic Solutions Software GmbH.</item>
+
+<item>Boost Graph Library (BGL), <url>http://www.boost.org</url>.</item>
+
+<item>MatlabBGL, <url>http://www.cs.purdue.edu/homes/dgleich/packages/matlab_bgl/</url>, for Matlab: BGL port.</item>
+
+<item>Combinatorica, <url>http://www.combinatorica.com</url>, for Mathematica, by Steven Skiena.</item>
+
+<item>JUNG, <url>http://jung.sourceforge.net/</url>, Java graph library</item>
+
+<item>Stanford Graphbase, implemented in CWEB, a literate version of the C programming language</item>
+</list>
+
+<text>
+Implementation issues:
+- Attribute representation... as fields in link/node records
+- Large networks... hierarchical representation (vertices cluster subgraphs), e.g. VLSI circuits using cell libraries
+</text>
+</note>
+
+</document>
+
+
+<document>
+<tag>graph-representation-compression</tag>
+<title>Graph compression</title>
+
+<text>
+++ Compression (Liu, "Web Data Mining", 232-242)
+++ SNAP
+</text>
+
+</document>
+
+</document>

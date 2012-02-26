@@ -1,0 +1,187 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<!-- Propaedeutic -->
+
+<document>
+<tag>preliminaries</tag>
+<title>Preliminaries</title>
+
+<text>
+An introduction to an art and science of algorithm analysis and design... as a prerrequisite for later sections.
+</text>
+
+<document>
+<title>A primer on algorithm analysis</title>
+
+<text>
+Big-Oh notation...
+</text>
+
+<text>
+Worst-case analysis...
+</text>
+
+<text>
+Amortized analysis bounds the total amount of time used by any sequence of operations (e.g. coffee @ office or coffee shop). Used when single operations might prove costly but their cost is distributed among many fast operations... O(f(n)) in amortized analysis is worse than O(f(n)) in the worst case, but it might still be useful in practice. Provided that individual response time is not critical, amortized operations might help obtain a good throughput...
+</text>
+
+<text>
+The dominance pecking order in algorithm analysis <cite>Skiena 2008</cite>:
+</text>
+
+<equation>
+n! >> c^n >> n^3 >> n^2 >> n^{1+\epsilon} >> n \log n 
+</equation>
+
+<equation>
+>> n >> sqrt(n) >> \log^2 n >> \log n
+</equation>
+
+<equation>
+>> \log n / \log \log n >> \log \log n >> \alpha(n) >> 1
+</equation>
+
+<list>
+<item><eqn>\alpha(n)</eqn>: Inverse Ackerman's function, which grows notoriously slowly (union-find data structure).</item>
+<item><eqn>\log n / \log \log n</eqn>: Height of an n-leaf tree of degree <eqn>d = \log n</eqn>.</item>
+<item><eqn>n^{1+\epsilon}</eqn>, e.g. <eqn>2^c*n^{1+1/c}</eqn> where <eqn>c</eqn> cannot be arbitrarily large (<eqn>2^c!</eqn>).</item>
+</list>
+
+<text>
+++ polylogarithmic, polylogarithmic function in n is a polynomial in the logarithm of n,
+<eqn>a_k \log^k (n) + ... + a_1 \log(n) + a_0</eqn>
+
+</text>
+
+</document>
+
+
+<document>
+<title>Fundamental data structures</title>
+
+
+<text>
+The importance of data structures @ <cite>Skiena 2008</cite>, chapter 3, page 65: <q>Changing the data structure does not change the correctness of the program, since we presumably replace a correct implementation with a different correct implementation. However, the new implementation of the data type realizes different tradeoffs in the time to execute various operations, so the total performance can improve dramatically</q>.
+</text>
+
+<text>
+3 fundamental data structures, provided as ADTs whose implementation might vary: containers, dictionaries, and priority queues.
+
+DESIGN IDEA: Isolate the interface of the data structure from its particular implementation, so that it can be changed if needed.
+</text>
+
+
+<document>
+<title>Collections</title>
+
+<text>
+The base container in any collection framework...
+</text>
+
+<text>
+- Unsorted linked lists or arrays: sequential vs. random access; memory fragmentation and cache performance (spatial locality)
+- Sorted linked lists or arrays (-maintenance costs, only appropriate if there are not too many insertions and deletions, +logical deletions, +easy duplicate elimination, +binary search)
+- Self-organizing lists: every time a key is accessed, the corresponding object is moved to the head of the list (temporal locality)
+- Dynamic arrays (e.g. Java)
+</text>
+
+<text>
+Standard collection frameworks: C++ Standard Template Library (STL), Java Collections Framework (JCF)...
+</text>
+
+</document>
+
+
+<document>
+<title>Dictionaries</title>
+
+<text>
+Managing collections of objects than can be identified by keys...
+</text>
+
+<text>
+KEY OPERATIONS: Efficiently locate, insert, and delete the object associated to a particular key.
+</text>
+
+<text>
+Multiple data structures have been used for implementing dictionaries, including different incarnations of hash tables and balanced trees:
+</text>
+
+<list>
+
+<item>
+Hash tables (a function maps keys to integers, which indicate positions within a collection). Well-tuned = O(1). Warning! Check its performance (it can slow down your application if not properly configured).
+</item>
+
+<item>
+Binary and n-way search trees: O(log n) operations. Unbalanced search trees can degenerate into linked lists, hence rebalancing mechanisms are recommended (AVL-trees, red-black trees, and splay trees; B-trees for secondary storage). Splay trees, for instance, move any accessed key to the top of the tree, in order to exploit locality of reference (as self-organizing lists). B-trees collapse several levels of a BST into a single node in order to benefit from the system-specific page size (or block size in secondary storage) thus reducing cache misses, swapping, or disk accesses.  
+</item>
+
+<item>
+Skip lists: A modern data structure that is easier to implement than balanced trees. Skip lists consist of a hierarchy of sorted linked lists. Roughly ln n lists, each one half as large as the one above it, support O(ln n) queries using amortized analysis.
+</item>
+
+</list>
+
+<text>
+Choosing the proper alternative: access patterns (e.g. relative frequencies of insert, delete, and search operations: hash table vs. sorted list). Efficient implementations always try to minimize the number of block data transfers. The so-called cache-oblivious data structures <cite>Frigo et al. 1999</cite> offer performance guarantees without explicit knowledge of the particular block size.
+</text>
+
+</document>
+
+
+<document>
+<title>Priority queues</title>
+
+<text>
+Managing collections of objects than can be identified by ordered keys...
+</text>
+
+<text>
+KEY OPERATION: Efficiently access to the object corresponding to the smallest or largest key.
+</text>
+
+<text>
+Objects are retrieved by their key priority, rather than by their insertion time (as happens with LIFO stacks or FIFO queues) or their key value (as in dictionaries).
+</text>
+
+<text>
+When no insertions and deletions are performed, a sorted collection suffices. When such operations are mixed with queries, full-fledged priority queues can be implemented using:
+</text>
+
+<list>
+
+<item>Binary heaps support insertion and minimum extraction in O(log n) time, but no deletion. Internally, they are implemented using arrays as implicit binary trees where the key of the root of every subtree is always lower than the key of all its descendants. Hence, the minimum is always readily avaiable at the root of the tree.</item>
+
+<item>Fibonacci heaps <cite>Fredman and Tarjan 1987</cite> are unbalanced heaps designed to speed up decrease-key operations (i.e. when the priority of an item in the priority queue is reduced). They support insertion and decrease-key operations in constant amortized time. Applications: fasteer implementations of shortest paths, weighted bipartite matching, and minimum spanning trees.</item>
+
+<item>Pairing heaps <cite>Stasko and Vitter 1987</cite> report the same bounds than Fibonacci heaps with less overhead associated to their maintenance.</item>
+
+<item>Binary search trees can be used as priority queues, since the smallest element is always at the leftmost tree leaf, and they support extraction, insertion, and deletion in logarithmic time when balancing mechanisms are employed.</item>
+
+<item>Bounded-height priority queues: The right priority queue implementation for small ranges of keys. When keys have n different values, say 1..n, we keep an array of n linked lists and a pointer to the smallest non-empty list. Good enough in practice (using amortized analysis), do not guarantee good worst-case behavior. Useful, e.g., for maintaining graph nodes ordered by degree.</item>
+
+<item>Emde Boas priority queues <cite>van Emde Boas et al. 1977</cite> support O(log log n) insertion, deletion, search, max, and min operations when the key is a value from 1 to n.</item>
+</list>
+
+<text>
+ISSUES:
+
+- Changing priorities and specific operations...
+
+- There is a linear-time merging algorithm for heap construction <cite>Floyd 1964</cite>; 1.625n comparisons are sufficient <cite>Gonnet and Munro 1986</cite> and 1.5n-O(log n) comparisons are necessary <cite>Carlsson and Chen 1992</cite>.
+</text>
+
+<text>
+Example application: Simulation (a queue of forthcoming events is kept.
+</text>
+
+
+</document>
+
+
+</document>
+
+</document>
+

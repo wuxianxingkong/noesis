@@ -1,0 +1,171 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<document>
+<tag>kinds</tag>
+<title>Kinds of networks</title>
+
+<text>
+++ Application domains with different terminology:
+- Communication engineers think of networks as systems of routers and switches; 
+- sociologists think of networks as influence diagrams representing the social interactions among humans;
+- marketing business people think of networks as populations of buyers; 
+- physicist thinks of networks as models of phase transition, magnetism...
+- Biologists use the network metaphor to understand epidemics, genetics, and metabolic systems within cells
+- Power engineers think of electrical power grids.
+</text>
+
+<document>
+<tag>social</tag>
+<title>Social networks</title>
+
+
+<text>
+The first use of the <q>social network</q> term is often attributed to John Arundel Barnes <cite>Barnes 1954</cite>, an anthropologist who conducted a field study to analyze the social structure and decision-making processes in Bremnes, a small island in western Norway. Since then, social networks denote patterns of ties that encompass many concepts used by the social sciences, including bounded groups (e.g., tribes or families) and social categories (e.g., gender or ethnicity).
+</text>
+
+<text>
+Sociometry can be considered to be the precursor of social network analysis (and much of social psychology), as it was founded to measure interpersonal relations in small groups of people. Jacob Levy Moreno, the founder of sociometry, also pioneered the use of <q>sociograms</q> in the 1930's, e.g. <cite>Moreno and Jennings 1938</cite>. Sociograms are standard graph drawings used to depict the social links that determine the interpersonal structure of groups.
+</text>
+
+<text>
+Widely used in the social and behavioral sciences, social network analysis focuses on the relationships among social entities <cite>Wasserman and Faust 1994</cite>. Depending on the particular context, these social entities can be individuals belonging to groups, corporations making economic transactions with other corporations, or nations signing treaties and trade agreements. The key ingredient in social network analysis is its focus on relationships, in contrast to reductionist approaches that limit their attention to the attributes of individual social entities.
+</text>
+
+<text>
+Kinds of relations in a social network: 
+- John Barnes (1972): attitudes, roles, and transactions.
+- Knoke/Kuklinski (1982): individual evaluations (sentiments: friendship, liking, respect...), kinship (family ties: marriage and descent relationships), transactions or transfers of material resources (lending/borrowing, buying/selling, exchange of gifts), transfer of non-material resources (communication, i.e. sending/receiving information, let it be e-mail messages, advice, or mere gossip), interactions (e.g. attending the same event, hitting...), movement (physical, between locations, or social, between occupations), formal roles (boss/employee, teacher/student, doctor/patient...)...
+</text>
+
+
+<text>
+Topics that have been studied by network analysts: occupational mobility, decision making, group problem solving, consensus and social influence, social perception, social support, community formation, exchange and power, social roles, coalition formation, company interlocking, markets, the world economic system, difussion and adoption of innovations...
+</text>
+
+<text>
+Ego-centered networks (a.k.a. personal or local networks) consist of a focal actor, called ego, a set of alters who have ties to ego, and measurements on the ties among the alters, e.g. Facebook friends or people in your Google+ circles [difference between dichotomous links @Facebook vs. valued links @Google+, e.g. trusty friend, well-known, acquaintance, name associated to face, unknown]. Applications: study of the social envionment surrounding a given individual (you!) and what social scientists call social support, i.e. how social relationships can affect the emotional and physical well-being of a given individual.
+</text>
+
+<text>
+Two students of Leslie White, a renowned anthropologists, offer complementary views on the forces behind cooperation [of people within societies].
+<cite>Wright 2000</cite>. Whereas Robert Carneiro's focus was on pushing people together as the rational response against external threats, Elman Service thought that it was clear in some cases and probable in many others that neighboring societies were pulled together because of economic causes. Either by pushing or pulling people, opportunities for gain originate and draw people in closer cooperation, because of the benefits of participation in the total network. 
+</text>
+
+<text>
+Jennifer Fewell, from Arizona State University, illustrates the importance of [insect] social networking using a professional basketball example <cite>Fewell and O'Donnell 2009</cite>. Phoenix Suns were successful, in part, because point guard Steve Nash passed the ball quickly to different teammates, making it difficult for defenders to predict their play. However, the Suns immediately started losing the first six games after Shaquille O'Neal joined the team, most likely because he destroyed his team's network dynamics: <q>Everybody there on the floor... knew where that ball was going to go - it was going to go to Shaq.</q> The network dynamics had changed and the success of the team depended on it, so they were forced to change their network dynamics again in order to improve their results with Shaquille O'Neal in the team. <q>It's a good example that the success of individuals depend on the network, and the success of the network depends on individuals. It's not just how good the individuals are... it's how good those interactions among them are as well.</q>
+</text>
+
+
+<text>
+++ Obesity ;-) <cite>Christakis and Fowler 2007</cite>
+</text>
+
+<text>
+++ Dunbar's number: http://www.technologyreview.com/blog/arxiv/26824/ 
++ http://arxiv.org/abs/1105.5170 Validation of Dunbar's Number In Twitter Conversations  @ Network structure chapter
+</text>
+
+<text>
+++ Milgram's Six Degrees of separation (4.74 @ Facebook, http://arxiv.org/abs/1111.4503  http://arxiv.org/abs/1111.4570 ) @ Network structure chapter
+W: Facebook's data team released two papers in November 2011 which document that amongst all facebook users at the time of research (721 million users with 69 billion friendship links) there is an average distance of 4.74. Probabilistic algorithms were applied on statistical metadata to verify the accuracy of the measurements. It was also found that 99.91% of facebook users were interconnected, forming a large connected component.
+- Backstrom, Lars; Boldi, Paolo; Rosa, Marco; Ugander, Johan; Vigna, Sebastiano (2011-11-19). "Four Degrees of Separation". ArXiv. Retrieved 23 November 2011.
+- Ugander, Johan; Karrer, Brian; Backstrom, Lars; Marlow, Cameron. "The Anatomy of the Facebook Social Graph". ArXiv. Retrieved 23 November 2011.
+</text>
+
+</document>
+
+<document>
+<tag>content</tag>
+<title>Content networks</title>
+
+<text>
+WWW: 
+
+L: The structure of the Internet and WWW: an emergent property of the decentralized Internet - that it had emerged without central planning into a structure consisting of a small number of extremely popular sites called hubs, and a large number of "unpopular" sites with few links (a scale-free network).
+
+1999 Kleinberg, Kumar, Raghavan, Rajagopalan, Tomkins: Formalized model of WWW as "Webgraph"
++ We call such networks Webgraphs, because they use graph theory to understand the World Wide Web (WWW).
+(Kleinberg et al. 1999)
+[Kleinberg, J. M., S. R. Kumar, P. Raghavan, S. Rajagopalan, and A. S. Tomkins, The Web as a
+graph: Measurements, models, and methods, in T. Asano, H. Imai, D. Lee, S. Nakano, and
+T. Tokuyama, eds, Proc. 5th Annual Intnatl. Conf. Computing and Combinatorics, Tokyo,
+Lecture Notes in Computer Science, Vol. 1627, Springer-Verlag, Berlin, 1999.]
+
+2000 Broder, Kumar, Maghoul, Raghavan, Rajagopalan Stata, Tomkins, Wiener: Full Webgraph map of the WWW
++ Broder, Kumar, Maghoul, Raghavan, Rajagopalan, Stata, Tomkins, and Wiener were the first to fully map the WWW as a Webgraph and discover its structure
+[Broder, A., S. R. Kumar, F. Maghoul, P. Raghavan, S. Rajagopalan, R. Stata, A. Tomkins, and
+J. Wiener, Graph structure in the web, Comput. Networks 33(1-6):309-320, (2000).]
+
+
+1999 Albert, Jeong, Barabasi: Power law observed in WWW
+[Albert, R., H. Jeong, and A.-L. Barabasi, Diameter of the World Wide Web, Nature 401:130-131 (1999).]
+[Adamic, L. A. and B. A. Huberman, Power-law distribution of the World Wide Web, Science 287:2115 (2000).]
+
+1999 Adamic: Distance between .edu sites shown to be small-world
+[Adamic, L. A., The small world web, in Research and Advanced Technology for
+Digital Libraries, Lecture Notes in Computer Science 1696, S. Abiteboul and
+A.-M. Vercoustre, eds, Springer-Verlag, New York, 1999, 443-452.]
+
+
+2002 Levene, Fenner, Loizou, Wheeldon: Enhanced Webgraph model concluded structure of the WWW couldn't be explained by preferential
+attachment alone
+[Levene, M., T. Fenner, G. Loizou, and R. Wheeldon, A stochastic model for the evolution of
+the web, Comput. Networks 39:277-287 (2002).]
+
+
+[Tadic, B., Growth and structure of the world-wide web: Towards realistic modeling, Comput. Phys. Commun. 147(1-2):586-589 (2002).
+[Tadic, B., Temporal fractal structures: Origin of power laws in the world-wide web, Physica A 314(1-4):278-283 (2002).]
+
+</text>
+
+<cite>Liu 2011</cite>
+
+
+<text>
+++ Bibliographic <cite>Tang et al. 2008</cite>
+</text>
+
+
+</document>
+
+<document>
+<tag>economic</tag>
+<title>Economic networks</title>
+</document>
+
+<document>
+<tag>transportation</tag>
+<title>Transportation networks</title>
+
+
+<text>
+INTERNET: 
+
+L: The structure of the Internet and WWW: an emergent property of the decentralized Internet - that it had emerged without central planning into a structure consisting of a small number of extremely popular sites called hubs, and a large number of "unpopular" sites with few links (a scale-free network).
+
+1988 Waxman: First graph model of the Internet
+L: Waxman proposed a static graph theory model of the Internet in 1988 (Waxman, 1988). 
+[Waxman, B. M., Routing of multipoint connections, IEEE J. Select. Areas Commun. 6(9):1617-1622 (1988).]
+
+1999 Faloutsos brothers: Power law observed in Internet
+[Faloutsos, M., P. Faloutsos, and C. Faloutsos, On power-law relationships of the Internet
+topology, Proc. ACM SIGCOMM '99 Conf. Applications, Technologies, Architectures, and
+Protocols for Computer Communication in Cambridge, MA, USA, ACM Press, New York,
+1999, pp. 251-262.]
+</text>
+
+</document>
+
+<document>
+<tag>biological</tag>
+<title>Biological networks</title>
+
+<text>
+++ <cite>Oltvai and Barabasi 2002</cite> <cite>Barabasi and Oltvai 2004</cite> <cite>Guimera and Nunes 2005</cite> <cite>Boccaletti et al. 2009</cite>
+<cite>Barabasi et al. 2011</cite>
+</text>
+
+</document>
+
+</document>

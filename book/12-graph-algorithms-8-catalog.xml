@@ -1,0 +1,631 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<!-- Algorithm catalog -->
+
+<document>
+<tag>graph-algorithm-catalog</tag>
+<title>A catalog of graph algorithms</title>
+
+<text>
+Graphs of order n (nodes) and size m (links)...
+</text>
+
+<document>
+<tag>graph-algorithm-catalog-linear</tag>
+<title>Linear-time algorithms</title>
+
+
+<text>
+The following problems can be solved with algorithms that run in linear time (i.e. <eqn>O(n+m)</eqn>):
+</text>
+
+<list>
+
+<item>Graph traversal, either BFS, DFS, or best-first search (as in A*).</item>
+
+<item>Shortest paths in unweighted graphs (based on BFS): Finding the shortest paths and also counting the number of different shortest paths.</item>
+
+<item>Identifying connected and strongly-connected components (based on graph traversal).</item>
+
+<item>Bipartite testing (based on graph traversal) = 2-coloring.</item>
+
+<item>Cycle detection (based on DFS).</item>
+
+<item>Identification of articulation points, i.e. graph biconnectedness (based on DFS).</item>
+
+<item>Identification of bridges, i.e. edge-biconnectedness (based on DFS).</item>
+
+<item>Topological sorting (based on DFS).</item>
+
+<item>Single-source shortest paths on DAGs, even with negative weights.</item>
+
+<item>Shortest paths, longest paths, and hamiltonian paths on DAGs (topological sorting):
+"The problem of finding the longest path in a DAG can be solved in linear time using
+dynamic programming. Conveniently, the algorithm for finding the shortest
+path in a DAG (presented in Section 15.4 (page 489)) does the job if we replace min with max.
++DAGs are the most interesting case of longest path for which efficient algorithms exist."
+</item>
+
+<item>Maximum matching in a tree.</item>
+
+<item>The maximum independent set of a tree (equivalent to maximum tree matching on the complement graph): "(1)
+stripping off the leaf nodes, (2) adding them to the independent set, (3) deleting all adjacent nodes, and then (4) repeating from the first step on the resulting trees until it is empty."</item>
+
+<item>Tree partitioning: "Certain special graphs always have small separators, that partition the vertices
+into balanced pieces. For any tree, there always exists a single vertex
+whose deletion partitions the tree so that no component contains more than
+n/2 of the original n vertices. These components need not always be connected;
+consider the separating vertex of a star-shaped tree. This separating
+vertex can be found in linear time using depth first-search."
+<!--Every planar graph has a set of O(\sqrt{n}) vertices whose deletion leaves no component with
+more than 2n/3 vertices. These separators provide a useful way to decompose geometric models, which are often defined by planar graphs.-->
+</item>
+
+<item>Tree isomorphism</item>
+
+<item>Eulerian cycle: the shortest tour visiting each edge of G 
+- Checking is an Eulerian cycle exists: verify that the graph is connected using DFS or BFS, and then count the number of odd-degree vertices.
+- Constructing the cycle in linear time: Use DFS to find an arbitrary cycle in the graph. Delete this cycle and
+repeat until the entire set of edges has been partitioned into a set of edge-disjoint cycles. These cycles will have common vertices (since the graph is connected), and so can be spliced together as an "eight" at a shared vertex. By so splicing all the extracted cycles together, we construct a single circuit containing all of the edges.
+</item>
+
+
+<item>Eulerian path</item>
+
+
+</list>
+
+</document>
+
+<document>
+<tag>graph-algorithm-catalog-almost-linear</tag>
+<title>Almost linear-time algorithms</title>
+
+
+<text>
+The following algorithms are almost linear, i.e. <eqn>O(n \log n)</eqn>:
+</text>
+
+<list>
+
+<item>Minimum spanning trees (using either Prim's or Kruskal's algorithm).</item>
+
+<item>Single-source shortest paths (using Dijkstra's algorithm), only for positive weights.</item>
+
+</list>
+
+
+<text>
+NOTE: When working with large data sets, only linear (<eqn>O(n)</eqn>) or near linear (e.g. <eqn>O(n \log n)</eqn>) are likely to be suitable.
+</text>
+
+
+</document>
+
+<document>
+<tag>graph-algorithm-catalog-polynomial</tag>
+<title>Polynomial-time algorithms</title>
+
+<text>
+The following algorithms require polynomial time:
+</text>
+
+<list>
+
+<item>All-pairs shortest paths (e.g. Floyd's algorithm).</item>
+
+<item>Transitive closure (i.e. all-pairs reachability) and reduction.</item>
+
+<item>Finding a directed cycle of minimum total weight, <eqn>O(n^3)</eqn>.</item>
+
+<item>Maximum network flow.</item>
+
+<item>Minimum cuts.</item>
+
+<item>Maximum cuts in planar graphs:
+"A polynomial-time algorithm to find maximum cuts in planar graphs exists. <cite>Hadlock 1975</cite>
+The planar separator theorem and an efficient algorithm for finding such a separator
+are due to Lipton and Tarjan [LT79, LT80]. For experiences in implementing planar
+separator algorithms, see [ADGM04, HPS+05]."
+</item>
+
+<item>Maximum bipartite matching.</item>
+
+<item>Minimum vertex cover problem and maximum independent set problems for bipartite graphs (since the maximum bipartite matching is equal in size to the minimum vertex cover in bipartite graphs...)</item>
+
+<item>Minimum-size edge cover (i.e. a set of edges, of minimum size, such that each vertex in the graph is incident to at least one edge from the set). - "Cover all vertices using few edges (edge cover problem): Smallest set of edges such that each vertex is included in one of the edges. In fact, edge cover can be solved efficiently by finding a maximum cardinality matching and then selecting arbitrary edges to account for the unmatched vertices."</item>
+
+<item>Chinese postman problem (a generalization of the Eulerian circuit) introduced by <cite>Kwan 1962</cite>, hence its name: the shortest tour visiting each edge of G at least once. This minimum
+cycle will never visit any edge more than twice, so good tours exist for any road network. The optimal postman tour can be constructed by adding the appropriate edges to the graph G to make it Eulerian. Specifically, we find the shortest path between each pair of odd-degree vertices in G. Adding a path between two odd-degree vertices in G turns both of them to even-degree, moving G closer to becoming an Eulerian graph. Finding the best set of shortest paths to add to G reduces to identifying a minimum-weight perfect matching in a bipartite graph G' <cite>Edmonds and Johnson 1973</cite>. For undirected graphs, the vertices of G' correspond the odd-degree vertices of G, with the weight of edge (i, j) defined to be the length of the shortest path from i to j in G. For directed graphs, the vertices of G' correspond to the degree-imbalanced vertices from G, with the bonus that all edges in G' go from out-degree deficient vertices to in-degree deficient ones. Thus, bipartite matching algorithms suffice when G is directed. Once the graph is Eulerian, the actual cycle can be extracted in linear time.
+</item>
+
+<item>Bipartite graph edge coloring: Bipartite graphs can be edge-colored in polynomial time [Sch98].</item>
+
+<item>Planar graph isomorphism</item>
+
+</list>
+
+</document>
+
+<document>
+<tag>graph-algorithm-catalog-hard</tag>
+<title>Hard problems</title>
+
+<text>
+++ CS 
+        Many optimization problems such as the well known traveling-salesman
+problem are NP-hard. Polynomial-time algorithms are not known for these
+problems, and many researchers believe that they do not exist. Hence
+heuristics that produce suboptimal solutions have been a subject of much
+research, especially in the last decade. Other problems that arise in
+different contexts are the Steiner tree problem and the graph-coloring
+problem. In spite of being NP-hard, large instances of the Steiner-tree
+problem and the traveling-salesman problem can be solved in practice,
+that is, solutions that are very close to optimal can be obtained. On the
+other hand, even small instances of the graph-coloring problem are hard to
+solve. Formal evidence for the hardness of the approximability of problems
+such as clique, independent set, and coloring was obtained recently. The
+complexity of graph isomorphism is a major open problem. Many other problems
+on graphs are known to be NP-hard.
+</text>
+
+<note>
+<text>
+NP (non-deterministic polynomial) is the set of all decision problems whose solutions can be verified in polynomial time (or, alternatively, the set of decision problems that can be solved in polynomial time on a nondeterministic Turing machine). That is, even though any given solution to such a problem can be verified quickly (in polynomial time), there is no known efficient way to discover a solution to the problem.
+</text>
+
+<text>
+In computational complexity theory, NP-hard problems are, at least as hard as the hardest problems in NP (i.e. any NP problem can be converted into L by a transformation of the inputs in polynomial time or, in theoretical parlance, every problem in NP is reducible to L in polynomial time). A problem is NP-complete when it is in NP and also NP-hard. Hence, NP-complete is a subset of NP, which is itself a subset of NP-hard.
+</text>
+
+<text>
+This the P=NP? question is not resolved, and hence we do not know whether solution verification is really easier than solution discovery for NP problems, we could say that NP problems are <q>not-necessarily polynomial time</q> <cite>Skiena 2008</cite>.
+</text>
+
+<text>
+More general classes exist, such as PSPACE: the set of all decision problems which can be solved by a Turing machine using a polynomial amount of space. Formally, <eqn>P \subseteq NP \subseteq PSPACE</eqn>. Some graph problems are known to be PSPACE-complete, such as the Canadian Traveler Problem (CTP) <cite>Papadimitriou and Yannakakis 1989</cite> <cite>Papadimitriou and Yannakakis 1991</cite>, a generalization of the shortest path problem to graphs that are partially observable (i.e. the graph is revealed while it is being explored) that has many practical applications.
+</text>
+
+</note>
+
+
+<text>
+The following problem occupies a singular position within the complexity hierarchy, since it is not known whether the problem has a fast algorithm that solves it ot is NP-complete:
+</text>
+
+<list>
+
+<item>Isomorphism testing, i.e. checking whether the topological structure of two graphs are identical (typically solved using backtracking)</item>
+
+</list>
+
+
+<text>
+The following algorithms are known to be NP-hard (most of them are, in fact, NP-complete): 
+- Permutations/ORDERING, e.g. TSP, bandwidth, isomorphism
+- Selection: COVERING/PARTITIONING, SUBGRAPHS
+- Network design
+- Partitioning
+</text>
+
+<list>
+
+<item>Hamiltonian circuit on unweighted graphs (both directed and undirected), remains NP-complete even for directed planar graphs (graphs that can be embedded in the plane) and for cubic planar undirected graphs (graphs in which all vertices have degree three).
+
+M. R. Garey, D. S. Johnson, and L. Stockmeyer. Some simplified NP-complete problems. Proceedings of the sixth annual ACM symposium on Theory of computing, p. 47-63. 1974.
+
+<cite>Skiena 2008</cite>:
+
+</item>
+
+
+<item>The traveling salesman problem (TSP) on weighted graphs, one of the most intensively studied problems in optimization. <url>http://en.3.org/wiki/Travelling_salesman_problem</url>
+
+APPLICATIONS: 
+- transportation and routing problems.
+- optimizing tool paths for manufacturing equipment.
+- cheapest airfare between two point (Commercial air fares do not satisfy the triangle inequality; relaxed constraint: visiting the same hub several times: TSP with repeated vertices is easily solved by using any conventional TSP code on a new cost matrix D, where D(i,j) is the shortest path distance from i to j. This matrix can be constructed by solving an all-pairs shortest path and satisfies the triangle inequality.)
+
+<cite>Skiena 2008</cite>:
+
+OPTIMAL SOLUTION: Two different approaches if you insist
+- Cutting plane methods model the problem as an integer program, then solve the linear programming relaxation of it. Additional constraints designed to force integrality are added if the optimal solution is not at an integer point. 
+- Branch-and-bound algorithms perform a combinatorial search while maintaining careful upper and lower bounds on the cost of a tour. </item>
+
+
+<item>Hamiltonian cycle (a special case of TSP): TSP tour of cost n
+
+OPTIMIZATIONS: Sufficiently dense graphs always contain Hamiltonian cycles. Further, the cycles implied by such sufficiency conditions can be efficiently constructed
+
+OPTIMAL SOLUTION: Backtracking
+</item>
+
+<item>Hamiltonian path on unweighted graphs (a special case of TSP). The Hamiltonian path problem for graph G is equivalent to the Hamiltonian cycle problem in a graph H obtained from G by adding a new vertex and connecting it to all vertices of G.</item>
+
+<item>Longest simple path
+
+APPLICATION: "pattern recognition problems. Let the vertices in the graph
+correspond to possible symbols, with edges linking pairs of symbols that might
+occur next to each other. The longest path through this graph is a good candidate
+for the proper interpretation."
+</item>
+
+<item>Longest circuit</item>
+
+<item>Paths with forbidden pairs or vertices</item>
+
+
+
+
+<item>Minimum-size vertex cover: A vertex cover is a subset of vertices <eqn>V' \in V</eqn> such that every edge in E contains at least one vertex from V'. Obviously, the set of all vertices is a vertex cover. The problem of finding a minimum vertex cover is a classical optimization problem in computer science a, one of Karp's 21 NP-complete problems <cite>Karp 1972</cite>.
+
+EQUIVALENCY: "Vertex cover and independent set are very closely related graph problems. Since
+every edge in E is (by definition) incident on a vertex in any cover S, there can be
+no edge both endpoints are in V - S. Thus, V - S must be an independent set.
+Since minimizing S is the same as maximizing V -S, the problems are equivalent."
+
+RELATED TO: Any program for computing the maximum clique in a graph
+can be applied to vertex cover by complementing the input graph and selecting the
+vertices which do not appear in the clique.
+</item>
+
+<item>Dominating set problem (a variant of the vertex cover problem): "Cover all vertices using few vertices (dominating set problem): The smallest set of vertices D such that every vertex in V - D is adjacent to at
+least one vertex in the dominating set D. Every vertex cover of a nontrivial
+connected graph is also a dominating set, but dominating sets can be much
+smaller. Any single vertex represents the minimum dominating set of complete
+graph Kn, while n-1 vertices are needed for a vertex cover. Dominating
+sets tend to arise in communications problems, since they represent the hubs
+or broadcast centers sufficient to communicate with all sites/users.
+Dominating set problems can be easily expressed as instances of set cover, another NP problem:
+Each vertex vi defines a subset of vertices consisting of itself plus all the vertices it is adjacent to. 
+</item>
+
+
+
+
+<item>Maximum-size independent set <cite>Karp 1972</cite>: An independent set is a set of vertices U such that no edge in E is incident on two vertices of U. A maximum independent set is a largest independent set and the maximum independent set problem is known to be NP-hard. A set is independent if and only if its complement is a vertex cover. The sum of the size of the maximum independent set and the size of a minimum vertex cover is the number of vertices in the graph.
+
+RELATED TO graph matching (dual problem), maximal clique (equivalent on the complement graph), vertex coloring (each color defines an independent set; consequence: graphs with small chromatic numbers, such as planar and bipartite graphs, have large independent sets).
+
+APPLICATIONS: 
+- "The need to find large independent sets arises in facility dispersion
+problems, where we seek a set of mutually separated locations"
+- "Independent sets (also known as stable sets) avoid conflicts between elements,
+and hence arise often in coding theory and scheduling problems."
+</item>
+
+
+
+<item>Maximum cliques, <eqn>O(3^{n/3}) = O(1.4422^n)</eqn>, since any n-vertex graph has at most any n-vertex graph has at most <eqn>3^{n/3}</eqn> maximal cliques;  <url>http://en.wikipedia.org/wiki/Clique_problem</url>,
++ Application: identifying "clusters" of related objects, ref. more on the chapter on network motifs.</item>
+
+<item>Dense subgraph, i.e. a subgraph with exactly k vertices and at least y edges.</item>
+
+<item>Planar subgraph, i.e. a subgraph with at least k edges that can be embedded on the plane.</item>
+
+<item>Eulerian subgraph, i.e. a subgraph that contains an Eulerian cycle.</item>
+
+<item>Bipartite subgraph, i.e. a subgraph with at least k edges that is bipartite.</item>
+
+<item>Cubic subgraph, i.e. a cubic subgraph with at least k edges.</item>
+
+<item>Degree-bounded connected subgraph, i.e. a subgraph with at least k edges so that the resulting subgraph is connected and no vertex degree exceeds d.</item>
+
+<item>Transitive subgraph, i.e. (u,w) (w,v) implies (u,v).</item>
+
+<item>Uniconnected subgraph, i.e. subgraph containing at most one directed path between any pair of vertices.</item>
+
+<item>Minimum k-connected subgraph, i.e. k-connected subgraph (cannot be disconnected by removing fewer than k vertices).</item>
+
+
+
+<item>Subgraph isomorphism, i.e. given two graphs G and H as input, determine whether G contains a subgraph that is isomorphic to H.</item>
+
+<item>Largest common subgraph, i.e. given two graphs G and H as input, determine their largest isomorphic subgraphs.</item>
+
+<item>Graph contractability, i.e. given two graphs G and H as input, can a graph isomorphic to H be obtained by a sequence of edge contractions? (when two adjacent vertices are replaced by a single one that is adjacent to exactly those vertices that were adjacent to at least one of the original vertices).</item>
+
+<item>Minimum equivalent digraph. i.e. subgraph that contains a directed path from u to v only when the original graph does.</item>
+
+
+<item>The Bandwidth problem, which seeks the linear ordering of the vertices that minimizes the length of the longest edge. which can be visualized as placing the vertices of a graph at distinct integer points along the x-axis so that the length of the longest edge is minimized.  Such placement is called linear graph arrangement, linear graph layout or linear graph placement.
+
+
+e.g. the problem of placement of a set of standard cells in a singe row with the goal of minimizing the maximal propagation delay (which is assumed to be proportional to wire length).
+
+e.g. solving linear systems (Gaussian elimination can be sped up when working with banded matrices, where the bandwidth is the distance from the furthest non-zero entry to the matrix diagonal)
+
+Variants
+- Linear arrangement: minimize the sum of the edge lengths
+- Profile minimization: minimize the sum of one-way distances
+- The pathwidth problem
+
+++ applications in VLSI design, graph drawing, and computational linguistics.
+</item>
+
+
+<item>Steiner trees, i.e. find the shortest interconnect for a given set of objects = Find the smallest tree connecting all the vertices of T (as MST, but including the possibility of adding extra intermediate nodes to reduce the cost of the tree).
+
+APPLICATIONS: 
+- network design problems, e.g. water pipes, heating ducts, VLSI circuits (e.g. connect a set of sites to (say) ground under constraints such as material cost, signal propagation time, or reducing capacitance)
+- phylogenic trees (inferring trees from the similarity between different objects or species).
+- analogies can be drawn between minimum Steiner trees and minimum energy configurations
+in certain physical systems. The case that such analog systems - including the
+behavior of soap films over wire frames - solve the Steiner tree problem is discussed in [Mie58].
+
+GEOMETRIC CONSTRAINTS (used to prune the tree in backtracking or branch-and-bound): In the plane, every Steiner point will have a degree of exactly three in a minimum Steiner tree, and the angles formed
+between any two of these edges must be exactly 120 degrees
+
+VARIATION
+- rectilinear Steiner (all edges are restricted to being either horizontal or vertical), hence angles must be
+multiples of 90 degrees
+
+HISTORY
+The Euclidean Steiner problem dates back to Fermat, who asked how to find a point p
+in the plane minimizing the sum of the distances to three given points. This was solved by
+Torricelli before 1640. Steiner was apparently one of several mathematicians who worked
+the general problem for n points, and was mistakenly credited with the problem. An
+interesting, more detailed history appears in [HRW92].
+
+BOUND 
+MST guarantee a provably good approximation for both Euclidean (<eqn>\sqrt{3}/2</eqn>) and rectilinear Steiner trees (2/3).
+++ Gilbert and Pollak [GP68] first conjectured that the ratio of the length of the minimum
+Steiner tree over the MST is always ge <eqn>\sqrt{3/2}</eqn>, aprox. 0.866. After twenty years of active research,
+the Gilbert-Pollak ratio was finally proven by Du and Hwang [DH92].
+
+</item>
+
+<item>Constrained spanninig trees: degree-constrained spanning tree (a spanning tree with no vertex with degree above k), maximum-leaf spanning trees, (a spanning tree with k or more leaves), shortest-total-path-length spanning tree (i.e. minimizing the sum of the length of the path in the tree between every pair of nodes), bounded-diameter spanning tree (no simple path with more than d edges)...</item>
+
+
+<item>Matching on hypergraphs, i.e. when more than two vertices are involved in a single edge. In fact, 3-dimensional matching is known to be NP-hard whereas bipartite matching (a.k.a. 2-dimensional matching) is in P.</item>
+
+
+<item>
+Graph partitioning: a small cut that partitions
+the vertices into roughly equal-sized pieces = "Partition the vertices into m roughly equal-sized subsets such that the total edge cost spanning the subsets is at most k."
+
+
+APPLICATIONS:
+
+- Clustering: Graph partition also arises when we need to cluster the vertices into logical components. If edges link "similar" pairs of objects, the clusters remaining after partition should reflect coherent groupings.
+
+- Divide and conquer arises in many divide-and-conquer algorithms, which gain their efficiency by breaking problems into equal-sized pieces such that the respective solutions can easily be reassembled. Minimizing the number of edges cut in the partition usually simplifies the task of merging
+
+- Parallel algorithms. Consider the finite element method, which is used to compute the physical properties (such
+as stress and heat transfer) of  geometric models. Parallelizing such calculations requires partitioning the models into equal-sized pieces whose interface is small. This is a graph-partitioning problem, since the topology of a geometric model is
+usually represented using a graph.
+
+- Data locality: Large graphs are often partitioned into reasonable-sized pieces to improve data locality 
+
+- Drawing: or make less cluttered drawings.
+</item>
+
+
+<item>Minimum cut into bounded sets, i.e. imposing restrictions on the size of the disjoint sets that partition the network.
+"Minimum cut set - The smallest set of edges to cut that will disconnect a
+graph can be efficiently found using network flow  algorithms. The smallest
+cutset might split off only a single vertex, so the resulting partition could be
+very unbalanced."
+</item>
+
+<item>Maximum cut (the max-cut problem), i.e. finding a cut whose size is at least the size of any other cut. <cite>Karp 1972</cite>
+
+APPLICATION e.g. "Given an electronic circuit specified by a graph, the maximum
+cut defines the largest amount of data communication that can simultaneously
+occur in the circuit. The highest-speed communications channel should thus
+span the vertex partition defined by the maximum edge cut."
+</item>
+
+
+<item>Clique cover (a.k.a. partition into cliques), i.e. determining whether the vertices of a graph can be partitioned into k cliques. </item>
+
+
+<item>Feedback set problems (a.k.a. maximum acyclic subgraph problem).
+- Feedback vertex set, i.e. a set of vertices whose removal leaves a DAG (a graph without cycles). 
+- Feedback arc set (FAS) or feedback edge set is a set of edges which, when removed from the graph, leave a DAG.  A minimal feedback arc set has the additional property that, if the edges in it are reversed rather than removed, then the graph remains acyclic. Finding a small edge set with this property is a key step in layered graph drawing
+
+
+APPLICATIONS: Many problems are easier on directed acyclic graphs (DAGs) than general digraphs.
+
+- scheduling jobs with precedence constraints, when the constraints are all consistent, can be solved by a topological sort of the resulting DAG. "But how can you design a schedule when there are cyclic constraints?" we identify the smallest number of constraints that must be dropped to permit a valid schedule. In the feedback edge (or arc) set problem, we drop individual precedence constraints. In the feedback vertex set problem, we drop entire jobs and all constraints associated with them.
+
+- eliminating race conditions from electronic circuits (origin of the "feedback" term)
+
+- ranking tournaments, tennis or chess (a natural ranking is the topological sort resulting after deleting
+the minimum set of feedback edges from the digraph).
+
+
+
+</item>
+
+
+
+<item>Chromatic number / graph k-colorability / vertex coloring: assignment of labels traditionally called "colors" to elements of a graph subject to certain constraints. 
+
+- The smallest number of colors sufficient to vertex-color a graph is its chromatic number
+
+In its simplest form, it is a way of coloring the vertices of a graph such that no two adjacent vertices share the same color; this is called a vertex coloring. Using dynamic programming and a bound on the number of maximal independent sets, k-colorability can be decided in time and space <eqn>O(2.445^n)</eqn> <cite>Lawler 1976</cite> Using the principle of inclusion-exclusion and Yates's algorithm for the fast zeta transform, k-colorability can be decided in time <eqn>O(n2^n)</eqn> for any k <cite>Bjorklund et al. 2009</cite>. Faster algorithms are known for 3- and 4-colorability, which can be decided in time <eqn>O(1.3289^n)</eqn> <cite>Beigel and Eppstein 2005</cite> and <eqn>O(1.7504^n)</eqn> <cite>Byskov 2004</cite>, respectively. Note that 2-colorable graphs are bipartite graphs and bipartite testing can be performed in linear time.
+
+APPLICATIONS
+- many scheduling and clustering applications.
+- Register allocation in compiler optimization.
+- Printed circuit board testing
+
+BOUND: Brook's theorem states that the chromatic number Xi(G) le Delta(G) + 1, where Delta(G) is
+the maximum degree of a vertex of G. Equality holds only for odd-length cycles (which
+have chromatic number 3) and complete graphs.
+
+RESULT: The most famous problem in the history of graph theory is the four-color problem,
+first posed in 1852 and finally settled in 1976 by Appel and Haken using a proof involving
+extensive computation. Despite the four-color theorem, it is NP-complete to test whether a
+particular planar graph requires four colors or if three suffice. 
+</item>
+
+
+<item>Edge coloring: assigns a color to each edge so that no two adjacent edges share the same color. an edge coloring of a graph is just a vertex coloring of its line graph (a graph that represents the adjacencies between edges of G)
+
+APPLICATIONS
+- scheduling applications, typically associated with minimizing the number of noninterfering rounds needed to complete
+a given set of tasks.
+
+BOUND
+Edge coloring has a better (if less famous) theorem associated with it than vertex
+coloring. Vizing's theorem states that any graph with a maximum vertex degree
+of <eqn>\Delta</eqn> can be edge colored using at most <eqn>\Delta + 1</eqn> colors. To put this in perspective,
+note that any edge coloring must have at least <eqn>\Delta</eqn> colors, since all the edges incident
+on any vertex must be distinct colors. (Vizing [Viz64] and Gupta [Gup66] independently proved that)
+
+INFO
+"The minimum number of colors needed to edge color a graph is called its edge-chromatic
+number by some and its chromatic index by others. Note that an evenlength
+cycle can be edge-colored with 2 colors, while odd-length cycles have an
+edge-chromatic number of 3." it is NP-complete to compute the edge-chromatic
+number [Hol81]
+
+TRANSFORMATION
+Any edge-coloring problem on G can be converted to the problem of finding a
+vertex coloring on the line graph L(G), which has a vertex of L(G) for each edge
+of G and an edge of L(G) if and only if the two edges of G share a common vertex.
+Line graphs can be constructed in time linear to their size, and any vertex-coloring
+code can be employed to color them
+</item>
+
+<item>Face coloring of a planar graph assigns a color to each face or region so that no two faces that share a boundary have the same color. a face coloring of a planar graph is just a vertex coloring of its planar dual (a vertex for each plane region of G, and an edge for each edge in G joining two neighboring regions). </item>
+
+<item>Achromatic number: Does a graph G have an achromatic number K or greater? i.e. is there a partition of V into k disjoint sets so that each <eqn>V_i</eqn> is an independent set.</item>
+
+<item>Other graph partitioning problems: into triangles, into cliques, into isomorphic subgraphs, into Hamiltonian subgraphs, into forests, into perfect matchings... are also known NP-complete problems.</item>
+
+</list>
+
+<text>
+Contrast subtle differences: Eulerian path (easy) vs. Eulerian cycle (hard); bipartite matching (easy) vs. hypergraph matching (hard); shortest paths (easy) vs. longest paths (hard); Hamiltonian path on a graph (hard) vs. on a DAG (easy); the minimum spanning tree (easy), which is the undirected variant of the feedback arc set problem (hard)...
+</text>
+
+<text>
+Even when a problem is NP-complete, algorithms can be devised that solve them in practice, either by employing a systematic search on the problem space (e.g. employing backtracking or branch-and-bound algorithms with substantial pruning) or heuristic methods that might not find the optimal solution but often return a good-enough one (e.g. simulated annealing). Heuristics are also employed by approximation algorithms that can get reasonable solutions with guaranteed bounds; i.e. the solution they provide is related to a lower bound on the optimal solution and imposes limits on how badly the approximation algorithm might perform.
+</text>
+
+<list>
+
+<item>
+Traveling salesman problem:
+
+Geometric instances inherently satisfy the triangle inequality, so they can exploit performance guarantees from certain heuristics, e.g.
+
+- Minimum spanning trees - This heuristic starts by finding the minimum
+spanning tree (MST) of the sites, and then does a depth-first search of the
+resulting tree. In the course of DFS, we walk over each of the n - 1 edges
+exactly twice: once going down to discover a new vertex, and once going up
+when we backtrack. Now define a tour by ordering the vertices by when they
+were discovered. If the graph obeys the triangle inequality, the resulting tour
+is at most twice the length of the optimal TSP tour. In practice, it is usually
+better, typically 15% to 20% over optimal. Furthermore, the running time is
+bounded by that of computing the MST, which is only O(n lg n) in the case
+of points in the plane (see Section 15.3 (page 484)).
+
+GREEDY ALGORITHMS (without guarantees)
+- Incremental insertion methods: "A different class of heuristics starts from a
+single vertex, and then inserts new points into this partial tour one at a time
+until the tour is complete. The version of this heuristic that seems to work
+best is furthest point insertion: of all remaining points, insert the point v into
+a partial tour T such that <eqn>max_{v \in V} min_i (d(v, vi) + d(v, vi+1))</eqn>
+The "min" ensures that we insert the vertex in the position that adds the
+smallest amount of distance to the tour, while the "max" ensures that we
+pick the worst such vertex first... it 'roughs out' a partial tour first before filling in details"
+
+
+OTHER ALTERNATIVES
+
+- K-optimal tours (Kernighan-Lin, or kopt, class of heuristics): "Applies local refinements to an initially
+arbitrary tour in the hopes of improving it. In particular, subsets of k edges
+are deleted from the tour and the k remaining subchains rewired to form
+a different tour with hopefully a better cost. A tour is k-optimal when no
+subset of k edges can be deleted and rewired to reduce the cost of the tour.
+Two-opting a tour is a fast and effective way to improve any other heuristic.
+
+- Simulated annealing provides an alternate mechanism to employ edge flips to improve heuristic tours.
+
+ref. book by Applegate, Bixby, Chvatal, and Cook [ABCC07] documents the
+techniques they used in their record-setting TSP solvers, as well as the theory and history
+behind the problem.
+</item>
+
+<item>The Euclidean Traveling Salesman Problem: When the triangle inequality holds, we can approximate the TSP solution by employing minimum spanning trees. Such trees, which connect all the nodes in a graph, can be traversed in depth. That traversal provides a non-Hamiltonian cycle whose length is at most twice the optimal cycle (why? deleting any link from the cycle returns a Hamiltonian path, i.e. a tree, whose weight cannot be greater than that of the MST.
+</item>
+
+
+<item>Vertex cover: Greedy algorithm that chooses an edge at random and adds both intervening nodes to the cover. Since one of the incident vertices must always be on the minimum vertex cover, this simple algorithm efficiently returns a cover that is at most twice as large as the optimal cover.
+
+
+1) "The simplest heuristic for vertex cover selects the vertex with highest degree,
+adds it to the cover, deletes all adjacent edges, and then repeats until the graph is
+empty. With the right data structures, this can be done in linear time. However, this cover might be lg n times
+worse than the optimal cover for certain input graphs. The example that the greedy algorithm can be as bad as lg n times optimal is due to [Joh74] and presented in [PS98]. "
+
+2) "Fortunately, we can always find a vertex cover whose size is at most twice as
+large as optimal. Find a maximal matching M in the graph-i.e. , a set of edges no
+two of which share a vertex in common and which cannot be enlarged by adding
+additional edges. Such a maximal matching can be constructed incrementally, by
+picking an arbitrary edge e in the graph, deleting any edge sharing a vertex with e,
+and repeating until the graph is out of edges. Taking both of the vertices for each
+edge in a maximal matching gives us a vertex cover. Why? Because any vertex
+cover must contain at least one of the two vertices in each matching edge just to
+cover the edges of M, this cover is at most twice as large as the minimum cover.
+This heuristic can be tweaked to perform somewhat better in practice, if not
+in theory. We can select the matching edges to "kill off" as many other edges as
+possible, which should reduce the size of the maximal matching and hence the
+number of pairs of vertices in the vertex cover. Also, some of the vertices from M
+may in fact not be necessary, since all of their incident edges might also have been
+covered using other selected vertices. We can identify and delete these losers by
+making a second pass through our cover."
+
+"Experimental studies of vertex cover heuristics include [GMPV06, GW97, RHG07]."
+</item>
+
+
+<item>Independent set: "The simplest reasonable heuristic is to find the lowest-degree vertex, add it to the independent set, and then delete it and all vertices adjacent to it. Repeating this process until the graph is empty gives a maximal independent set, in that it can't be made larger by just adding vertices.
+</item>
+
+
+<item>Maximum DAG: The largest possible subset of edges so that the resulting subgraph is acyclic. Any permutation of nodes can be interpreted as a topological sorting of the graph. Removing either left-to-right or right-to-left edges, we keep at least half of the edges in the original graph, hence the solution contains at least half as many edges as the optimum.
+
+FEEDBACK EDGE SET: Linear-time heustic algorithm...
+"constructs a vertex ordering and then deletes any arc going in the wrong
+direction. At least half the arcs must go either left-to-right or right-to-left for
+any vertex order, so take the smaller partition as your feedback set.
+But what is the right vertex order to start from? One natural order is to
+sort the vertices in terms of edge-imbalance, namely in-degree minus outdegree.
+Another approach starts by picking an arbitrary vertex v. Any vertex
+x defined by an in-going edge (x, v) will be placed to the left of v. Any x
+defined by out-going edge (v, x) will analogously be placed to the right of v.
+We can now recur on the left and right subsets to complete the vertex order."
+
+FEEDBACK VERTEX SET..."The heuristics above yield vertex
+orders defining (hopefully) few back edges. We seek a small set of vertices
+that together cover these backedges. This is exactly a vertex cover problem"
+</item>
+
+
+<item>
+Graph partitioning:
+"Any random vertex partition will expect to cut half of the edges in the graph, since the
+probability that the two vertices defining an edge end up on different sides of the partition
+is 1/2. Goemans and Williamson [GW95] gave an 0.878-factor approximation algorithm
+for maximum-cut, based on semi-definite programming techniques. Tighter analysis of
+this algorithm was followed by Karloff [Kar96]."
+</item>
+
+</list>
+
+<text>
+Alternative heuristics might even get better results for particular instances of the above problems, albeit more complex heuristics do not necessarily guarantee better results. In fact, the result if often the opposite. It should also be noted that some clever postprocessing of the results provided by approximation algorithms might also be worthwhile, since it might improve the approximate solution without weakening the approximation bound.
+</text>
+
+</document>
+
+
+</document>
+

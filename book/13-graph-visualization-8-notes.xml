@@ -1,0 +1,451 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<document>
+<tag>graph-visualization-notes</tag>
+<title>Bibliographic notes</title>
+
+<text>
+ALGORITHMS
+</text>
+
+
+<text>
+Primary sources: Chapters at
+- <cite>Didimo and Liotta 2007</cite> in <cite>Cook and Holder 2007</cite> (succinct survey)
+- <cite>Skiena 2008</cite> (sections for arbitrary graphs, trees, and planar graphs)
+</text>
+
+<text>
+Force-directed drawing: 
+
+CH: Most force-directed algorithms described in the literature adopt the
+physical model by Eades <cite>Eades 1984</cite> and propose variants of the forces definition
+- Kamada <cite>Kamada and Kawai 1989</cite> <cite>Kamada and Kawai 1991</cite>
+- FR <cite>Fruchterman and Reingold 1991</cite>
+- Magnetic spring model <cite>Sugiyama and Misue 1995</cite>
+- Adaptive model <cite>Frick et al. 1995</cite>
+- Simulated annealing <cite>Davidson and Harel 1996</cite>
+
+CH: An experimental comparison of graph drawing algorithms based on force-directed methods is described in <cite>Brandenburg et al. 1996</cite>.
+</text>
+
+<text>
+Hierarchical drawing <cite>Bastert and Matuszewski 2001</cite> <cite>Di Battista et al. 1998</cite>
+- <cite>Sugiyama et al. 1981</cite>
+- <cite>Gansner et al. 1993</cite>
+- <cite>Buchheim et al. 2000</cite>
+</text>
+
+<text>
+Metrics: 
+- <cite>Tamassia 1985</cite> <cite>Batini et al. 1986</cite> <cite>Tamassia 1987</cite>: Embedded planar graph with vertices having at most four incident edges
+- Kandisky drawings <cite>Fossmeier and Kaugmann 1997</cite>: graphs of any vertex degree
+</text>
+
+
+
+<text>
+TOOLS: 
+- Design patterns <cite>Heer and Agrawala 2006</cite>
+- JSNVA network drawing framework <cite>Ye et al. 2008</cite>
+- VisNetMiner <cite>Shi et al. 2009</cite>
+
++ Force-directed: Pajek <cite>de Nooy et al. 2005</cite>, NodeXL <cite>Hansen et al. 2010</cite>...
++ Hierarchical drawing: The methodology of <cite>Sugiyama et al. 1981</cite> is used by
+Graphviz <cite>Ellson et al. 2003</cite>, Ptolomaeus <cite>Di Battista et al. 1998</cite>...
+
+</text>
+
+
+
+<text>
+Monographs <cite>Di Battista et al. 1999</cite>
+- Recent survey of visualization techniques <cite>Aigner et al. 2011</cite>
+- Focus on software: the development and evaluation of methods for graphically representing different aspects of software, including its structure, its execution, and its evolution <cite>Sugiyama 2002</cite>; <cite>Diehl 2007</cite>
+- Focus on biology: <cite>Guimera and Nunes 2005</cite>
+- General literature on visualization, what makes visualization aesthetically pleasing <cite>Cleveland 1985</cite> <cite>Tufte 2001</cite> <cite>Steele and Iliinsy 2010</cite>
+
+- Planar graphs <cite>Nishizeki and Rahman 2004</cite>
+
+</text>
+
+<text>
+Annual conference on graph drawing GD (proceedings published by Springer-Verlag's Lecture Notes in Computer Science series), since 1992:
+<url>http://graphdrawing.org/</url>
+</text>
+
+++ <cite>Kaufmann and Wagner 2001</cite>
+
+
+<cite>Jünger and Mutzel 2003</cite> is organized around systems instead of algorithms, but provides technical details about the drawing
+methods each system employs. 
+
+++ Alternative: Koren <cite>Koren et al. 2003</cite> <cite>Koren 2005</cite>
+
+<!-- Alternative -->
+
+<cite>Koren et al. 2003</cite>
+Y. Koren, L. Carmel and D. Harel, Drawing Huge Graphs by Algebraic Multigrid
+Optimization, Multiscale Modeling and Simulation, Volume 1, no. 4, pp.
+645-673, SIAM, 2003
+
+<cite>Koren 2005</cite>
+Y. Koren: "Drawing graphs by eigenvectors: Theory and practice"
+Computers and Mathematics with Applications, Volume 49 Issue 11-12, June, 2005, 
+Pergamon Press, Inc. Tarrytown, NY, USA, doi>10.1016/j.camwa.2004.08.015
+
+
+<!-- placing labels -->
+
+
+<cite>Been et al. 2006</cite>
+K. Been, E. Daiches, and C. Yap. Dynamic map labeling. IEEE Trans. Visualization and Computer Graphics, 12:773-780, 2006.
+
+<cite>Wagner and Wolff 1995</cite>
+F. Wagner and A. Wolff. Map labeling heuristics: provably good and practically useful. In Proc. 11th ACM Symp. Computational Geometry, pages 109-118, 1995.
+
+<!-- force-directed algorithms -->
+
+
+<cite>Eades 1984</cite>
+P. Eades. A heuristic for graph drawing. Congr. Numer., 42:149-160, 1984.
+
+<cite>Davidson and Harel 1996</cite>
+R. Davidson and D. Harel. Drawing graphs nicely using simulated annealing. ACM
+Transactions on Graphics, 15(4):301-331, 1996.
+
+<cite>Frick et al. 1995</cite>
+A. Frick, A. Ludwig, and H. Mehldau. A fast adaptive layout algorithm for undirected
+graphs. In R. Tamassia and I. G. Tollis, eds. Graph Drawing (Proc. GD '94), Vol. 894
+of Lecture Notes in Computer Science, pp. 388-403. Springer, Berlin, 1995.
+
+<cite>Sugiyama and Misue 1995</cite>
+K. Sugiyama and K. Misue. Graph drawing by the magnetic spring model. Journal of
+Visual Languages and Computing, 6(3):217-231, 1995.
+
+<cite>Brandenburg et al. 1996</cite>
+F. J. Brandenburg, M. Himsolt, and C. Rohrer. An experimental comparison of forcedirected
+and randomized graph drawing algorithms. In F. J. Brandenburg, ed. Graph
+Drawing (Proc. GD '95), Vol. 1027 of Lecture Notes in Computer Science, pp. 76-87.
+Springer, Berlin, 1996
+
+
+<!-- hierarchical drawing -->
+
+<cite>Sugiyama et al. 1981</cite>
+Sugiyama, Kozo; Tagawa, Shôjirô; Toda, Mitsuhiko (1981), "Methods for visual understanding of hierarchical system structures", IEEE Transactions on Systems, Man, and Cybernetics SMC-11 (2): 109-125, doi:10.1109/TSMC.1981.4308636, MR0611436.
+
+<cite>Di Battista et al. 1998</cite>
+Di Battista, Giuseppe; Eades, Peter; Tamassia, Roberto; Tollis, Ioannis G. (1998), "Layered Drawings of Digraphs", Graph Drawing: Algorithms for the Visualization of Graphs, Prentice Hall, pp. 265-302, ISBN 9780133016154.
+
+<cite>Bastert and Matuszewski 2001</cite>
+Bastert, Oliver; Matuszewski, Christian (2001), "Layered drawings of digraphs", in Kaufmann, Michael; Wagner, Dorothea, Drawing Graphs: Methods and Models, Lecture Notes in Computer Science, 2025, Springer-Verlag, pp. 87-120, doi:10.1007/3-540-44969-8_5.
+
+<!-- 1. Feedback arcs -->
+
+<cite>Eades et al. 1993</cite>
+P. Eades, X. Lin, and W. F. Smyth. A fast and effective heuristic for the feedback arc
+set problem. Information Processing Letters, 47:319-323, 1993.
+
+<cite>Jünger et al. 1995</cite>
+M. Jünger, G. Reinelt, and S. Thienel. Practical problem solving with cutting plane
+algorithms in combinatorial optimization. In P. Seymour W. Cook, L. Lov´asz, ed.
+DIMACS Series in Discrete Mathematics and Theoretical Computer Science, pp.
+111-152, Piscataway, New Jersey, 1995.
+
+<!-- 2. Layer assignment -->
+
+<cite>Coffman and Graham 1972</cite>
+E. G. Coffman and R. L. Graham. Optimal scheduling for two processor systems. Acta Informatica, 1:200-213, 1972.
+
+<cite>Gansner et al. 1993</cite>
+E. R. Gansner, E. Koutsofios, S. C. North, and K. P. Vo. A technique for drawing
+directed graphs. IEEE Transactions on Software Engineering, SE-19(3):214-230, 1993.
+
+
+<!-- 3. Crossing reduction -->
+
+<cite>Garey and Johnson 1983</cite>
+M. R. Garey and D. S. Johnson. Crossing number is NP-complete. SIAM Journal of Algebraic Discrete Methods, 4(3):312-316, 1983.
+
+<cite>Eades and Wormwald 1994</cite>
+P. Eades and N. C. Wormald. Edge crossings in drawings of bipartite graphs. Algorithmica, 11(4):379-403, 1994.
+
+<cite>Junger and Mutzel 1997</cite>
+M. Jünger and P. Mutzel. 2-layer straightline crossing minimization: Performance
+of exact and heuristic algorithms. Journal of Graph Algorithms and Applications,
+1(1):1-25, 1997
+
+<cite>Mutzel 2001a</cite>
+P. Mutzel. An alternative method to crossing minimization on hierarchical graphs.
+SIAM Journal of Optimization, 11(4):1065-1080, 2001.
+
+<cite>Mutzel 2001b</cite>
+P. Mutzel. Optimization in leveled graphs. In P. M. Pardalos and C. A. Floudas, eds.
+Encyclopedia of Optimization, pp. 189-196. Berlin, Kluwer Academic, 2001.
+
+<cite>Suderman and Whitesides 2005</cite>
+M. Suderman and S. H. Whitesides. Experiments with the fixed-parameter approach
+for two-layer planarization. Journal of Graph Algorithms and Applications, Vol. 9(1).
+pp. 149-163, 2005.
+
+<!-- 4. Coordinate assignment -->
+
+<cite>Buchheim et al. 2000</cite>
+C. Buchheim, M. Jünger, and S. Leipert. A fast layout algorithm for k-level graphs. In
+Joe Marks, ed. 8th International Symposium on Graph Drawing, GD 2000, Vol. 1984
+of Lecture Notes in Computer Science, pp. 229-240, Springer, Berlin, 2000.
+
+<cite>Brandes and Köpf 2002</cite>
+U. Brandes and B. Köpf. Fast and simple horizontal coordinate assignment. In
+S. Leipert M. Jünger, and P. Mutzel, eds. 9th International Symposium on Graph Drawing,
+GD 2001, Vol. 2265 of Lecture Notes in Computer Science, pp. 31-44, Springer,
+Berlin, 2002.
+
+
+<!-- Metrics-based methods -->
+
+
+<cite>Batini et al. 1986</cite>
+C. Batini, E. Nardelli, and R. Tamassia. A layout algorithm for data flow diagrams.
+IEEE Transactions on Software Engineering, SE-12(4):538-546, 1986.
+
+<cite>Tamassia 1987</cite>
+R. Tamassia. On embedding a graph in the grid with the minimum number of bends.
+SIAM Journal on Computing, 16(3):421-444, 1987.
+
+<cite>Tamassia 1985</cite>
+R. Tamassia. New layout techniques for entity-relationship diagrams. In Proceedings
+of 4th International Conference on Entity-Relationship Approach, pp. 304-311, IEEE
+Comp. Society, New York, 1985.
+
+<cite>Garg and Tamassia 2001</cite>
+A. Garg and R. Tamassia. On the computational complexity of upward and rectilinear
+planarity testing. SIAM Journal on Computing, 31(2):601-625, 2001
+
+<cite>Di Battista et al. 1998</cite>
+G. Di Battista, G. Liotta, and F. Vargiu. Spirality and optimal orthogonal drawings.
+SIAM Journal on Computing, 27(6):1764-1811, 1998.
+
+<cite>Bertolazzi et al. 2000</cite>
+P. Bertolazzi, G. Di Battista, and W. Didimo. Computing orthogonal drawings with
+the minimum number of bends. IEEE Transactions on Computers, 49(8), 2000
+
+<cite>Mutzel and Weiskircher 2002</cite>
+P. Mutzel and R. Weiskircher. Bend minimization in orthogonal drawings using integer
+programming. In Proceedings of COCOON 2002, pp. 484-493, Singapore, 15-17
+August, 2002.
+
+<cite>Patrignani 2001</cite>
+M. Patrignani. On the complexity of orthogonal compaction. Computational Geometry:
+Theory and Applications, 19(1):47-67, 2001.
+
+<cite>Bridgeman et al. 2000</cite>
+S. S. Bridgeman, G. Di Battista, W. Didimo, G. Liotta, R. Tamassia, and L. Vismara.
+Turn-regularity and optimal area drawings of orthogonal representations. Computational
+Geometry: Theory and Applications, 16(1):53-93, 2000.
+
+<cite>Fossmeier and Kaugmann 1997</cite>
+U. Fößmeier and M. Kaufmann. Algorithms and area bounds for non-planar orthogonal
+drawings. In G. Di Battista, ed. 5th International Symposium on Graph Drawing (GD
+1997), Vol. 1353 of Lecture Notes in Computer Science, pp. 134-145, Springer, Berlin,
+1997.
+
+<cite>Di Battista et al. 1999b</cite>
+G. Di Battista, W. Didimo, M. Patrignani, and M. Pizzonia. Orthogonal and quasiupward
+drawings with vertices of prescribed sizes. In Jan Kratochvil, ed. Graph
+Drawing (Proc. GD '99), Vol. 1731 of Lecture Notes in Computer Science, pp. 297-310.
+Springer, Berlin, 1999.
+
+<cite>Binucci et al. 2005</cite>
+C. Binucci, W. Didimo, G. Liotta, and M. Nonato. Computing orthogonal drawings of
+graphs with vertex and edge labels. Computational Geometry: Theory and Applications.
+Vol 32(2), pp. 71-114, 2005.
+
+<cite>Binucci et al. 2002</cite>
+9. C. Binucci, W. Didimo, G. Liotta, and M. Nonato. Computing labeled orthogonal drawings.
+In 10th International Symposium on Graph Drawing, GD 2002, Vol. 2528 of
+Lecture Notes in Computer Science, pp. 66-73, Springer, Berlin, 2002.
+
+
+<!-- Evaluation -->
+
+
+
+<cite>Tamassia et al. 1988</cite>
+R. Tamassia, G. Di Battista, and C. Batini. Automatic graph drawing and readability of diagrams. IEEE Transactions on Systems, Man, and Cybernetics, SMC-18(1):61-79, 1988.
+
+<cite>Vismara et al. 2000</cite>
+L. Vismara, G. Di Battista, A. Garg, G. Liotta, R. Tamassia, and F. Vargiu. Experimental
+studies on graph drawing algorithms. Software—Practice and Experience, 30(11):1235-1284, 2000.
+
+<cite>Purchase et al. 2002</cite>
+H. C. Purchase, D. Carrington, and J-A. Allder. Graph layout aesthetics in UML diagrams: User preferences. Journal of Graph Algorithms and Applications, 6(3):131-147, 2002.
+
+<cite>Purchase et al. 2004</cite>
+H. C. Purchase, D. Carrington, and J-A. Allder. Evaluating graph drawing aesthetics: Defining and exploring a new empirical research area. In J. Di Marco, ed. Computer Graphics and Multimedia: Applications, Problems and Solutions, pp. 145-178. Hershey, PA, USA, Idea Group Publishing, 2004.
+
+<!-- Planar graphs -->
+
+
+<cite>Hopcroft and Tarjan 1974</cite>
+J. Hopcroft and R. E. Tarjan. Efficient planarity testing. Journal of the ACM, 21(4):
+549-568, 1974.
+
+<cite>Booth and Lueker 1976</cite>
+K. Booth and G. Lueker. Testing for the consecutive ones property, interval
+graphs, and planarity using PQ-tree algorithms. J. Computer System Sciences, 13:335-379, 1976.
+
+<cite>Kuratowski 1930</cite>
+K. Kuratowski. Sur le problème des courbes gauches en topologie. Fund. Math., 15:217-283, 1930.
+
+<cite>Fary 1948</cite>
+I. Fáry. On straight line representation of planar graphs. Acta. Sci. Math. Szeged, 11:229-233, 1948.
+
+
+<cite>Chiba et al. 1985</cite>
+N. Chiba, T. Nishizeki, S. Abe, and T. Ozawa. A linear algorithm for embedding planar
+graphs using PQ-trees. Journal of Computer and System Sciences, 30(1):54-76, 1985.
+
+<cite>Mehlhorn and Mutzel 1996</cite>
+K. Mehlhorn and P. Mutzel. On the embedding phase of the Hopcroft and Tarjan planarity testing algorithm. Algorithmica, 16:233-242, 1996.
+
+
+<cite>Boyer et al. 2004</cite>
+J. Boyer, P. Cortese, M. Patrignani, and G. Di Battista. Stop minding your
+p's and q's: Implementing a fast and simple DFS-based planarity testing
+and embedding algorithm. In Proc. Graph Drawing (GD '03), volume 2912
+LNCS, pages 25-36, 2004.
+
+<cite>Shih and Hsu 1999</cite>
+W. Shih and W. Hsu. A new planarity test. Theoretical Computer Science, 223(1-2):179-191, 1999.
+
+
+<cite>de Fraysseix et al. 1990</cite>
+H. de Fraysseix, J. Pach, and R. Pollack. How to draw a planar graph on a grid. Combinatorica, 10:41-51, 1990.
+
+
+<cite>Liebers 2001</cite>
+A. Liebers. Planarizing graphs—a survey and annotated bibliography. Journal of Graph
+Algorithms and Applications, 5(1):1-74, 2001.
+
+<cite>Nishizeki and Rahman 2004</cite>
+T. Nishizeki and S. Rahman. Planar Graph Drawing. World Scientific, 2004.
+
+<!-- Trees --> 
+
+<cite>Reingold and Tilford 1981</cite> 
+E. Reingold and J. Tilford. Tidier drawings of trees. IEEE Trans. Software Engineering, 7:223-228, 1981.
+
+<cite>Moen 1990</cite>
+S. Moen. Drawing dynamic trees. IEEE Software, 7-4:21-28, 1990.
+
+<cite>Buchheim, et al. 2006</cite>
+C. Buchheim, M. Jünger, and S. Leipert. Drawing rooted trees in linear time. Software: Practice and Experience, 36:651-665, 2006.
+
+<cite>Supowit and Reingold 1983</cite>
+K. Supowit and E. Reingold. The complexity of drawing trees nicely. Acta Informatica, 18:377-392, 1983.
+
+
+<!-- Local neighborhood -->
+
+
+<cite>Wills 1997</cite>
+Graham J. Wills: 
+NicheWorks - Interactive Visualization of Very Large Graphs. 
+Lecture Notes in Computer Science, 1997, Volume 1353/1997, 403-414, 
+DOI: 10.1007/3-540-63938-1_85
+Giuseppe Di Battista (Ed.): Graph Drawing, 5th International Symposium, GD '97, 
+Rome, Italy, September 18-20, 1997, Proceedings. Lecture Notes in Computer Science 1353 Springer 1997, ISBN 3-540-63938-1
+
+<cite>Six and Tollis 1999a</cite>
+Janet M. Six, Ioannis G. Tollis: 
+A Framework for Circular Drawings of Networks.
+Lecture Notes in Computer Science, 1999, Volume 1731/1999, 107-116, 
+DOI: 10.1007/3-540-46648-7_11
+Jan Kratochvíl (Ed.): Graph Drawing, 7th International Symposium, GD'99, Stirín Castle, Czech Republic, September 1999, Proceedings. Lecture Notes in Computer Science 1731 Springer 1999, ISBN 3-540-66904-3
+
+<cite>Six and Tollis 1999b</cite>
+Janet M. Six, Ioannis G. Tollis: 
+Circular Drawings of Biconnected Graphs. 57-73
+ALGORITHM ENGINEERING AND EXPERIMENTATION
+Lecture Notes in Computer Science, 1999, Volume 1619/1999, 662, 
+DOI: 10.1007/3-540-48518-X_4
+Michael T. Goodrich, Catherine C. McGeoch (Eds.): Algorithm Engineering and Experimentation, International Workshop ALENEX '99, Baltimore, MD, USA, January 15-16, 1999, Selected Papers. Lecture Notes in Computer Science 1619 Springer 1999, ISBN 3-540-66227-8
+
+<cite>Kaufmann and Wiese 2002</cite> @ GD'02
+Michael Kaufmann, Roland Wiese: 
+Maintaining the Mental Map for Circular Drawings.
+GRAPH DRAWING
+Lecture Notes in Computer Science, 2002, Volume 2528/2002, 235-255, DOI: 10.1007/3-540-36151-0_2
+Stephen G. Kobourov, Michael T. Goodrich (Eds.): Graph Drawing, 10th International Symposium, GD 2002, Irvine, CA, USA, August 26-28, 2002, Revised Papers. Lecture Notes in Computer Science 2528 Springer 2002, ISBN 3-540-00158-1 
+
+
+<!-- Monographs and application-specific systems -->
+
+<cite>Kaufmann and Wagner 2001</cite>
+M. Kaufmann and D. Wagner. Drawing Graphs: Methods and Models. Springer-Verlag, 2001.
+
+<cite>Jünger and Mutzel 2003</cite>
+M. Jünger and P. Mutzel. Graph Drawing Software. Springer-Verlag, 2003.
+
+
+
+Graphviz 
+
+<cite>Ellson et al. 2003</cite>
+  J. Ellson, E. R. Gansner, E. Koutsofios, G. Woodhull, and S. C. North. G
+  raphviz and Dynagraph—static and dynamic graph drawing tools. 
+  In M. Jünger and P. Mutzel, eds. Graph Drawing Software, pp. 127-148. Springer, Berlin, 2003.
+
+<cite>Ellson et al. 2001</cite>
+John Ellson, Emden R. Gansner, Eleftherios Koutsofios, Stephen C. North and Gordon Woodhull
+Graphviz - Open Source Graph Drawing Tools. 
+Graph Drawing 2001: 483-484
+Lecture Notes in Computer Science, 2002, Volume 2265/2002, 594-597, DOI: 10.1007/3-540-45848-4_57
+Petra Mutzel, Michael Jünger, Sebastian Leipert (Eds.): Graph Drawing, 9th International Symposium, GD 2001 Vienna, Austria, September 23-26, 2001, Revised Papers. Lecture Notes in Computer Science 2265 Springer 2002, ISBN 3-540-43309-0
+
+<cite>Gansner et al. 1988</cite>
+ORIGIN OF dot :
+Emden R. Gansner, Stephen C. North, K. P. Vo, 
+"DAG - A Program to Draw Directed Graphs", 
+Software - Practice and Experience 17(1), 1988, pp. 1047-1062.
+
+
+
+Hermes: Internet topology
+
+<cite>Carmignani et al. 2002</cite>
+A. Carmignani, G. Di Battista, F. Matera, W. Didimo, and M. Pizzonia. Visualization
+of the high level structure of the internet with Hermes. Journal of Graph Algorithms
+and Applications, 6(3):281-311, 2002.
+
+
+Ptolomaeus system to draw maps of Web navigations
+
+<cite>Di Battista et al. 1998</cite>
+  G. Di Battista, R. Lillo, and F. Vernacotola. Ptolomaeus: The web cartographer. In 6th International Symposium on Graph Drawing, GD 1998, Vol. 1547 of Lecture Notes in Computer Science, pp. 444-445, Springer, Berlin, 1998.
+
+
+Social sciences
+
+<cite>Brandes et al. 2003</cite>
+U. Brandes, P. Kenis, and D. Wagner. Communicating centrality in policy network drawings. IEEE Transactions on Visualization and Computer Graphics, 9(2):241-253, 2003.
+
+<cite>Brandes and Cornelsen 2003</cite>
+U. Brandes and S. Cornelsen, Visual Rank of Link Structures, Journal of Graph Algorithms and Applications, vol. 7, no. 2, pp. 181-201, 2003.
+
+
+WilmaScope: Computational biology
+
+T. Dwyer, H. Rolletschek, and F. Schreiber. Representing experimental biological data
+in metabolic networks. In 2nd Asia-Pacific Bioinformatics Conference (APBC'04),
+Vol. 29 of CRPIT, pp. 13-20, ACS, Sydney, 2004.
+
+F. Schreiber, T. Dwyer, and H. Rolletschek. Representing experimental biological data
+in metabolic networks. In Second Asia-Pacific Bioinformatics Conference (APBC
+2004), pp. 13-20, Vol. 29 of CRPIT, ACS, Sydney, 2004.
+
+
+</document>

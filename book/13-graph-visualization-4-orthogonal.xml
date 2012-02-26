@@ -1,0 +1,83 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+<tag>graph-visualization-orthogonal</tag>
+<title>Orthogonal methods</title>
+
+
+<text>
+CH:The topology-shape-metrics approach is one of the most effective techniques for
+computing highly readable drawings of graphs. It represents graphs in the so-called
+orthogonal drawing standard, that is, each vertex of the graph is drawn as a point
+or a box and each edge is drawn as a polygonal chain of horizontal and vertical
+segments. The topology-shape-metrics approach <cite>Batini et al. 1986</cite> <cite>Tamassia 1987</cite> takes as input a graph G with
+vertices of degree at most 4 and produces as output an orthogonal drawing of G
+where each vertex is drawn as a point. It consists of three steps:
+
+1) Planarization If G is planar, then a planar embedding of G is computed. A
+planar embedding of G specifies the set of faces of a planar drawing of G. If
+G is not planar, a set of dummy vertices is added to replace edge crossings.
+
+2) Orthogonalization During this step, an orthogonal shape H of G is computed
+within the previously defined embedding. An orthogonal shape specifies the
+sequence of left and right turns along each edge, and the angles formed by
+consecutive edges incident around a vertex.
+
+3) Compaction In this step a final geometry for H is computed by assigning
+coordinates and dimensions to vertices and edge bends.
+
+As described above, the topology-shape-metrics approach deals with the topology,
+shape, and geometry of the drawing separately; in each step of the approach,
+one or more optimization goals are considered, which are related to well-known
+drawing aesthetic criteria. Namely, during planarization, since each dummy
+vertex represents an edge crossing, the goal is the minimization of the number
+of inserted dummy vertices. During orthogonalization the objective is typically to
+determine a shape with the minimum number of edge bends. Finally, in the compaction
+step, the goal can be either the minimization of the area of the drawing or
+the minimization of the total edge length.
+
+The distinct phases of the topology-shape-metrics approach have been extensively
+studied in the literature. 
+
+If G is planar, which can be tested in linear time <cite>Hopcroft and Tarjan 1974</cite>, a planar embedding of G is also computable in linear time <cite>Chiba et al. 1985</cite> <cite>Mehlhorn and Mutzel 1996</cite>. 
+
+If G is not planar, the minimum number of edge crossings required by the drawing may be <eqn>\Omega(n^4)</eqn>, although in practice this number is much smaller. Since, minimizing the number of crossings is an NP-hard problem <cite>Garey and Johnson 1983</cite>, several heuristic planarization
+techniques have been proposed in the literature <cite>Liebers 2001</cite>.
+
+A popular and very elegant algorithm for constructing an orthogonal shape
+of an embedded planar graph with vertices having at most four incident edges
+was presented by <cite>Tamassia 1985</cite>. This algorithm uses a flow network approach
+to compute an orthogonal shape that has the minimum number of edge bends,
+while preserving the given embedding. <cite>Garg and Tamassia 2001</cite> proved that the
+problem of computing an orthogonal shape with the minimum number of bends
+in a variable embedding setting is NP-hard. Polynomial time solutions for specific
+classes of graphs are studied by <cite>Di Battista et al. 1998</cite>; exponential algorithms have
+been proposed by <cite>Bertolazzi et al. 2000</cite> and by <cite>Mutzel and Weiskircher 2002</cite>.
+
+<cite>Patrignani 2001</cite> showed that the problem of compacting an orthogonal shape
+minimizing the area or the total edge length of the drawing is NP-hard, while
+polynomial time solutions for particular classes of orthogonal shapes exist <cite>Bridgeman et al. 2000</cite>.
+</text>
+
+
+<text>
+Several standards have been proposed in the literature to extend the topology-shape-metrics approach so as to work with graphs of any vertex degree. Here we recall the Kandisky drawing convention, originally described by <cite>Fossmeier and Kaugmann 1997</cite>. A Kandisky drawing is an orthogonal drawing with the following properties:
+
+- Segments representing edges cannot cross, with the exception that two segments that are incident of the same vertex may overlap (the angle between such segments has 0º).
+
+- All the polygons representing the faces have area strictly greater than 0.
+
+- Vertices are drawn as boxes with equal size and overlapping segments are drawn as very near segments.
+
+The Kandisky model has been further extended by <cite>Di Battista et al. 1999</cite> to
+deal with drawings in which the size (width and height) of each single vertex is
+assigned by the user. Having the possibility of customizing the size of each vertex
+is important in many application contexts; for example, this makes it possible to
+place a textual or graphical label in a vertex without intersecting any other element
+of the drawing <cite>Binucci et al. 2002</cite> <cite>Binucci et al. 2005</cite>.
+</text>
+
+</document>
+

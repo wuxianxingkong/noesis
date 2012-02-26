@@ -1,0 +1,261 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<!-- Minimum spanning trees -->
+
+<document>
+<tag>graph-spanning-trees</tag>
+<title>Minimum spanning trees</title>
+
+<text>
+A spanning tree of a graph <eqn>G=(V,E)</eqn> is a subset of <eqn>n-1</eqn> edges from <eqn>E</eqn> that connect all the vertices in <eqn>V</eqn> and, therefore, form a tree. In weighted graphs, where edges have numerical values associated to them, known as weights, a minimum spanning tree is a spanning tree whose sum of edge values is as small as possible. A tree is always the smallest connected graph in terms of its number of edges (and also the most vulnerable to single failures), while a MST is the cheapest connected graph in term of edge costs.
+</text>
+
+<text>
+The algorithms in this section can also be adapted to find maximum spanning trees (just negate the weights and the MST in the negated graph is the maximum spanning tree in the original graph), minimum product spanning trees (replace edge weights with their logarithms so that products are converted into sums), or minimum bottleneck spanning tree (i.e. a spanning tree that minimizes the maximum edge weight, by just employing Kruskal's algorithm). 
+</text>
+
+<text>
+However, other related problems cannot be solved using the efficient algorithms described in this section:
+- Steiner trees (when we can add intermediate vertices), NP-hard in general.
+- Low-degree spanning tree (i.e. the minimum spanning tree whose maximum node degree is smaller; in case it where a simple path, this problem would be equivalent to finding a Hamiltonian path = TSP, NP-complete)
+</text>
+
+<text>
+APPLICATIONS: 
+- Whenever we need to connect a set of nodes with minimum cost (e.g. transportation networks, communication networks, distribution networks...). 
+- Bottleneck spanning trees have applications when edge weights represent costs, capacities, or strengths
+- Clustering (e.g. hierarchical clustering)
+- They can be used to obtain approximate solutions to hard problems (Steiner trees or TSP below)
+</text>
+
+
+<text>
+In unweighted graphs (or weighted graphs where all edges have the same cost), any tree is also a minimum spanning tree. Its cost will always be <eqn>n-1</eqn> times the cost of a single edge. In this case, a spanning tree can easily be found by performing any systematic graph traversal (e.g. DFS or BFS).
+</text>
+
+<text>
+In weighted graphs, efficient greedy algorithms exist than can be employed to identify minimum spanning trees...
+</text>
+
+
+<document>
+<tag>graph-spanning-trees-greedy</tag>
+<title>Greedy MST algorithms</title>
+
+
+<text>
+@ MIT Graphs - Shortest paths
+</text>
+
+<text>
+Greedy algorithms choose what to do next by selecting the best local candidate to be added to the solution and, when the optimality of the chosen heuristics can be proved, they provide efficient algorithms for solving problems such as finding the minimum spanning tree.
+</text>
+
+<text>
+Candidates: 
+
+- Edges (Kruskal's algorithm <cite>Kruskal 1956</cite>): Each vertex starts as a separate tree and separate trees are merged by adding the lowest-cost edge to the MST that does not create a cycle (i.e. connects two separate subtrees)
+</text>
+
+<code>
+Kruskal(G):
+Sort edges in order of increasing weight
+edges_in_tree = 0
+while edges_in_tree &lt; n-1
+    get next edge (v,w)
+    if component(v) != component(w)
+       Add edge (v,w) to the MST
+       component(v) = component(w)
+       edges_in_tree++
+</code>
+
+<text>
+- Nodes (Prim's algorithm <cite>Prim 1957</cite>, rediscovered by <cite>Dijkstra 1959</cite>): Start with an arbitrary vertex and iteratively grow the tree by adding the lowest-cost edge that links some new vertex to the tree.
+</text>
+
+<code>
+Prim(G):
+Select an arbitrary vertex
+while...
+</code>
+
+<text>
+- The oldest algorithm: Boruvka's algorithm, published in 1926 <cite>Boruvka 1926</cite> and rediscovered by Choquet in 1938 <cite>Choquet 1938</cite>
+
+Since the lowest-weight edge incident on each vertex must be in the minimum spanning tree, the union of these edges will return a forest of at most n/2 trees. For each tree, select the edge (x,y) of lowest weight such that <eqn>x \in T</eqn> and <eqn>y \notin T</eqn>, which will also have to belong to the MST. Repeat until all vertices are connected. Each iteration at least halves the number of remaining trees, hence, after log n iterations, each taking linear time, we obtain the MST in O(m log n).
+
+
+- An inverse algorithm would also be possible...
+  Algoritmo de  Algoritmo de borrado borrado inverso inverso::
+  Comenzando con  Comenzando con T=A,  T=A, considerar considerar laslas aristas aristas en  en orden orden decreciente decreciente
+  de coste de coste y y eliminar eliminar laslas aristas aristas de T salvo  de T salvo que que esoeso desconectase desconectase T.T.
+
+</text>
+
+
+<text>
+MSTs are unique when all m edge weights are distinct. The way ties are broken leads to different MSTs...
+</text>
+
+<document>
+<tag>graph-spanning-trees-greedy-prim</tag>
+<title>Prim's algorithm</title>
+
+<text>
+Starts from any node and adds one edge at a time until all the vertices are connected... heuristics: select the edge with the smallest weight that will enlarge the number of vertices in the tree
+</text>
+
+<text>
+No cycles are created since only edges between tree and non-tree nodes are added to the solution
+</text>
+
+<text>
+EFFICIENCY:
+<eqn>n</eqn> iterations through <eqn>m</eqn> edges = <eqn>O(mn)</eqn>
+</text>
+
+<text>
+PROOF? by contradiction
+</text>
+
+<text>
+Tree reconstruction: parent vector or dynamic structure...
+</text>
+
+</document>
+
+<document>
+<tag>graph-spanning-trees-greedy-kruskal</tag>
+<title>Kruskal's algorithm</title>
+
+<text>
+Instead of starting on any particular node and growing a tree, Kruskal's algorithm builds the minimum spanning tree by connecting sets of vertices...
+</text>
+
+<text>
+Initially: each vertex a separate component + Iteration: consider the least cost edge and test whether it connects two separate components (if its both endpoints are already in the same connected component, the edge is discarded, since it would create a cycle; if not, it is added to the MST and the components it connects are merged).
+</text>
+
+<text>
+Since each connected component is always a tree, we do not have to check for cycles
+</text>
+
+<text>
+EFFICIENCY:
+Sorting edges <eqn>O(m \log m)</eqn> + <eqn>m</eqn> iterations / testing connectivity by BFS/DFS <eqn>O(n)</eqn> = <eqn>O(mn)</eqn>
+</text>
+
+<text>
+PROOF? by contradiction
+</text>
+
+</document>
+
+</document>
+
+
+<document>
+<tag>graph-spanning-trees-sequential</tag>
+<title>Sequential implementation of MST algorithms</title>
+
+<text>
+Naive implementation:
+<eqn>O(mn)</eqn> for Kruskal's algorithm 
+<eqn>O(mn)</eqn> for Prim's algorithm 
+(i.e. <eqn>O(n^3)</eqn> for dense graphs, <eqn>O(n^2)</eqn> for sparse graphs)
+</text>
+
+<text>
+Prim's algorithm:
+1) Maintaining a boolean flag to indicate whether a vertex is already in the tree or not, we can test whether the current edge links to a non-tree vertex in constant time, leading to a <eqn>O(n^2)</eqn> algorithm (both for dense and sparse graphs).
+2) Optimization: <eqn>O(n \log k)</eqn> on graphs that have only <eqn>k</eqn> different edge costs.
+3) The use of priority queues can lead to a more efficient implementation, by making it faster to find the minimum cost edge at each iteration.
+- <eqn>O(m \log n)</eqn> using standard binary heaps.
+- <eqn>O(m + n \log n)</eqn> using Fibonacci <cite>Fredman and Tarjan 1987</cite> or pairing heaps <cite>Stasko and Vitter 1987</cite>.
+</text>
+
+<text>
+Kruskal's algorithm:
+1) Union-find data structure for implementing the component test in <eqn>O(\log n)</eqn> = <eqn>O(m \log m)</eqn> time (i.e. needed to sort the edges).
++ Typically faster than Prim's algorithm for sparse graphs
+</text>
+
+
+<text>
+Union-find data structure for representing set partitions (a partitioning of elements, say nodes, intro a collection of disjoint subsets):
+1) Union: Component merging in <eqn>O(\log n)</eqn>
+2) Find: Same component check in <eqn>O(\log n)</eqn>
+
+Solution: Represent each component as a backwards tree, with pointers from a node to its parent (choosing how to merge in order to limit the height of the trees and reduce the effect of unbalanced trees: the smaller tree will always be a subtree of the larger tree; why? height of the nodes in the larger tree stay the same, heights in the smaller tree are increased by one)
+
+Result: We must double the number of nodes to increase the height of the resulting tree, hence the <eqn>O(\log n)</eqn> result
+</text>
+
+<text>
+Set data structures to represent unordered collections of objects. Representing subsets to efficiently test element <eqn>\in</eqn> subset, compute union/intersection of subsets, or insert/delete subset members,
+
+1) Bit vectors: Space efficient, insertion/deletion by toggling single bits, union/intersection by or-ing/and-ing bit vectors.
+
+2) Bloom filters <cite>Broder and Mitzenmacher 2005</cite> use hashing.
+
+3) Dictionaries, which can be viewed as sets (no duplicate keys).
+
+4) Standard collections, which can be viewed as multisets (may have multiple occurrences of the same element).
+
+Set partitions: Pairwise-disjoint subsets, when each element is exactly in one subset...
+
+1) Collection of sets (as a generalized bit vector, a collection of collections, or a dictionary with a subset sttribute): Costly union/intersection operations.
+
+2) Union-find data structure *
+++ Union-find can be done even faster: 
+- Optimization: Path compression. Retraversing the path on each find operation and explicitly pointing all nodes to the root leads to almost constant-height trees.
+- Limitation: Does not support breaking up unions
+- Upper bound on m union-find operations on an n-element set: <eqn>O(m \alpha(m, n))</eqn>, where alpha is the inverse Ackermann function, which grows notoriously slowly, and leads to an almost-linear performance. <cite>Tarjan 1979</cite>.
+
+
+NOTE:
+Efficient implementation of basic graph algorithms led to the discovery of several data structures, such as the "union-find"
+structure <cite>Tarjan 1979</cite> and Fibonacci heaps <cite>Fredman and Tarjan 1987</cite>. These data structures have been used to speed up many other algorithms.
+
+</text>
+
+<text>
+A combination of Boruvka's algorhtm <cite>Boruvka 1926</cite> with Prim's algorithm <cite>Prim 1957</cite> yields an O(m log log n) algorithm. Running log log n iterations of Boruvka's algorhtm yields at most n/log n trees. Then create a graph G' with a vertex for each tree and an edge whose weight corresponds to the lightest edge between <eqn>T_i</eqn> and <eqn>T_j</eqn>. The MST of G' combined with the edges selected by  Boruvka's algorhtm yields the MST of G. Since Prim's algorithm will take O(n+m) time on this n/log n vertex, m edge graph (if implemented using Fibonacci or pairing heaps). <cite>Skiena 2008</cite>. Even tighter bounds, e.g. <eqn>O(n \alpha(m,n))</eqn>, can be achieved <cite>Karger et al. 1995</cite> <cite>Chazelle 2000</cite> <cite>Pettie and Ramachandran 2002</cite> <cite>Pettie and Ramachandran 2008</cite>.
+</text>
+
+<text>
+Dynamic graph algorithms are incremental algorithms that maintain graph invariants (such as MSTs) under edge insertion and deletion operations. <cite>Holm et al. 2001</cite> describes and efficient algorithm to maintain MSTs (and several other invariant) in amortized polylogarithmic time per update.
+</text>
+
+
+</document>
+
+<document>
+<tag>graph-spanning-trees-parallel</tag>
+<title>Parallel MST algorithms</title>
+
+<text>
+Parallel Prim's algorithm
+- for dense graphs @ Section 10.2 <cite>Grama et al. 2003</cite>
+- for sparse graphs @ Section 10.7.2 <cite>Grama et al. 2003</cite>
++ Bibliographic notes
+</text>
+
+</document>
+
+<document>
+<tag>graph-spanning-trees-distributed</tag>
+<title>Distributed MST algorithms</title>
+
+<text>
+Distributed MST algorithms @ MIT 6.852: Distributed Algorithms - Lecture 4 (synchronous) + Lecture 9 (asynchronous) / Section 4.4 + Section 15.5 <cite>Lynch 1997</cite>
+</text>
+
+<text>
+<cite>Gallager et al. 1983</cite>: At most 5n log n + 2m messages...
+</text>
+
+</document>
+
+</document>

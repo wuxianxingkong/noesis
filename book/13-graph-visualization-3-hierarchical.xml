@@ -1,0 +1,88 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+<tag>graph-visualization-hierarchical</tag>
+<title>Hierarchical methods: Layered visualization</title>
+
+
+<text>
+++ BASED ON TOPOLOGICAL SORTING Layered graph drawing is a type of graph drawing in which the vertices of a directed graph are drawn in horizontal rows or layers with the edges generally directed downwards. It is also known as Sugiyama-style graph drawing after Kozo Sugiyama, who first developed this drawing style <cite>Sugiyama et al. 1981</cite>.
+</text>
+
+<text>
+++ http://en.wikipedia.org/wiki/Layered_graph_drawing
+</text>
+
+
+<text>
+CH: Hierarchies arise in a variety of applications, for example, Project Evaluation Review
+Technique (PERT) diagrams in project planning, class hierarchies in software engineering,
+and is-a relationships in knowledge representation systems. It is customary
+to represent hierarchical graphs so that all the edges flow in the same direction, for
+example, from top to bottom or from left to right. Algorithms that compute drawings
+of hierarchies generally follow a methodology first introduced by <cite>Sugiyama et al. 1981</cite> that accepts, as input, a directed graph G without any particular restriction
+(G can be planar or not, acyclic or cyclic) and that produces as output a layered
+drawing of G, that is, a representation where the vertices are on horizontal layers
+and the edges are monotone polygonal chains connecting their end vertices.
+
+
+
+CH: The methodology of <cite>Sugiyama et al. 1981</cite> consists of the following steps:
+
+1) Cycles Removal. This step removes existing cycles in the input graph by reversing the direction of some edges. Minimizing the number of reversed edges is an NPhard problem, and different heuristics have been designed to solve this problem by reversing a small number of edges. A trivial heuristic is based on performing a Depth-First-Search (DFS) of the graph and reversing all back edges; however,in the worst case this may reverse as many as m - n - 1 edges, where m is the number of edges and n is the number of vertices of G. A better performing heuristic
+was proposed by Eades et al. <cite>Eades et al. 1993</cite> who present a greedy strategy that guarantees the reversal of at most m/2 - n/6 edges. An exact solution based on branch-and-cut is also described by <cite>Jünger et al. 1995</cite>.
+
+++ A minimal feedback arc set (one that can not be reduced in size by removing any edges) has the additional property that, if the edges in it are reversed rather than removed, then the graph remains acyclic. Finding a small edge set with this property is a key step in layered graph drawing
+
+
+2) Layer Assignment. Each vertex is assigned to a horizontal line (layer) such that
+no vertices in the same layer are adjacent and if (u, v) is a directed edge of G, then
+the layer of u is above the layer of v in the drawing. Several objective functions
+can be taken into account in the layer assignment step. For example, minimizing the
+number of layers can be achieved by a simple linear-time longest-path algorithm:
+All sources are assigned to the lowest level L0; each remaining vertex v is assigned
+to level Lp where p is the length of the longest path from any source to v. If one
+wants to minimize both the number of layers and the number of vertices on each
+layer, however, the problem becomes NP-hard. The polynomial time algorithm by
+<cite>Coffman and Graham 1972</cite> receives as input a reduced digraph G and a positive
+integer W; it returns a layer assignment where each layer consists of at most W
+vertices and the number h of layers is h . (2/W)hmin where hmin is the minimum
+possible number of layers. <cite>Gansner et al. 1993</cite> present a polynomial time algorithm,
+based on a relaxed integer linear programming (ILP) formulation, to compute a layer
+assignment that minimizes the total number of crossings between layers and edges
+(thus minimizing the sum of the so-called edge spans). The layer assignment step
+is concluded by inserting dummy vertices along edges whose end vertices are not
+on consecutive layers. The result is a proper k-level graph, that is, a graph where
+an edge connects only vertices on consecutive layers.
+
+
+3) Crossing Reduction. This step aims at reducing the crossings among edges by
+permuting the order of the vertices on each layer. The number of edge crossings in
+a layered drawing does not depend on the precise position of the vertices but only
+on the ordering of the vertices within each layer. Thus the problem of reducing
+edge crossings is the combinatorial one of choosing an appropriate vertex ordering
+for each layer, not the geometric one of choosing an x coordinate for each vertex.
+This problem has been shown to be NP-hard by <cite>Garey and Johnson 1983</cite>; 
+Many heuristics for the crossing minimization problem have been published
+<cite>Junger and Mutzel 1997</cite> <cite>Mutzel 2001a</cite> <cite>Mutzel 2001b</cite> <cite>Suderman and Whitesides 2005</cite>.
+
+
+4) Horizontal Coordinate Assignment. Bends along the edges occur at the dummy
+vertices introduced in the layer assignment step. The horizontal coordinate assignment
+reduces the number of bends by readjusting the position of vertices on each
+layer without perturbing the order established in the crossing reduction step. The
+problem can be expressed as one of minimizing the total amount by which the edges
+deviate from being a straight line. This leads to the optimization
+of a quadratic objective function, and then the problem can be solved optimally
+only for small instances. In practice, a variant of the problem is often considered
+that attempts at drawing the edges as close to vertical lines as possible (see, e.g.,
+<cite>Gansner et al. 1993</cite>, <cite>Buchheim et al. 2000</cite>, and <cite>Brandes and Köpf 2002</cite>).
+
+
+</text>
+
+
+
+</document>

@@ -1,0 +1,286 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<!-- Network flows -->
+
+<document>
+<tag>graph-flow</tag>
+<title>Network flows: Maximum flow and minimum cuts</title>
+
+<text>
+Interpreting weighted graphs as distribution networks where weights represent capacities
+</text>
+
+<text>
+two primary classes of network flow problems:
+maximum flow and minimum-cost flow:
+
+- "The maximum-flow problem is that of finding a maximum flow of a
+single commodity from a source vertex to a sink vertex that satisfies
+capacity constraints on the edges and flow conservation constraints at the
+vertices. "
+
+- Associating costs with edges yields the minimum-cost flow problem. 
+where we also have a targeted amount of flow f we want to send from s to t at minimum total cost.
+
+
+Polynomial-time algorithms to solve maximum flow and minimum-cost flows are known.
+"a surprising variety of linear programming
+problems arising in practice can be modeled as network-flow problems,
+and network-flow algorithms can solve these problems much faster than
+general-purpose linear programming methods"
+
+APPLICATIONS: cost-effective way to ship goods between a set of factories and a set of stores
+defines a network-flow problem, as do many resource-allocation problems in communications
+networks
+</text>
+
+<text>
+Network flow problem: The maximum amount of flow that can be sent from s to t in a given graph.
+</text>
+
+<text>
+The two major techniques for solving flow problems are the augmenting-path method and the preflow-push method.
+
+- Augmenting paths: "These algorithms repeatedly find a path of positive
+capacity from source to sink and add it to the flow. It can be shown that
+the flow through a network is optimal if and only if it contains no augmenting
+path. Since each augmentation adds something to the flow, we eventually
+find the maximum. The difference between network-flow algorithms is in how
+they select the augmenting path."
+
+- "Preflow-push methods - These algorithms push flows from one vertex to another,
+initially ignoring the constraint that in-flow must equal out-flow at each
+vertex. Preflow-push methods prove faster than augmenting-path methods,
+essentially because multiple paths can be augmented simultaneously. These
+algorithms are the method of choice in practice"
+</text>
+
+
+<!-- Augmenting paths -->
+
+<text>
+IDEA: <b>Augmenting paths</b>
+i.e. iteratively find a path of positive capacity from s to t and add it to the flow
+- As in a traffic jam, the flow is limited by the most congested point.
+- A flow through a network is optimal if and only if it contains no augmenting path.
+</text>
+
+<text>
+MECHANISM: Directed <b>residual flow graph</b> R(G,f), where G is the graph and f the current flow
+i.e. For each edge (i,j) in G with capacity c(i,j) and flow f(i,j), R can contain two edges
+- an edge (i,j) with weight c(i,j)-f(i,j) if c(i,j)>f(i,j)
+- an edge (j,i) with weight f(i,j)-c(i,j) if f(i,j)>0
+
+An edge (i,j) in the residual flow graph indicates that flow can still be pushed from i to j (its weight determines the amount of its unused capacity). 
+
+A path from s to t in the residual graph (and the minimum edge weight on this path) defines an augmenting path (and the amount of flow that can be pushed).
+</text>
+
+<text>
+- For each edge in the residual graph: keep track of the amount of flow currently going through the edge as well as any unused capacity (the residual capacity)
+- Initialization: create directed flow edges (i,j) and (j,i); initial flows set to 0; initial residual flows set to their capacity in the original graph.
+</text>
+
+<text>
+ITERATIVE ALGORITHM
+Ford-Fulkerson algorithm <cite>Ford and Fulkerson 1956</cite>
+<url>http://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algorithm</url>
+
+- Use the augmented path to update the residual graph (transfer the maximum possible volume from the residual capacity = the path edge with the smallest amount of residual capacity; NOTE: adding positive flow to (i,j) reduces the residual capacity of (i,j) but also increases the residual capacity of (j,i), i.e. augmenting a path requires updates to both forward and reverse links along the augmenting path ).
+- Terminate when no such augmenting path exists.
+
+As described, even though the algorithm converges to the optimal solution, it may take arbitrarily long (each augmenting path might add only a little to the flow).
+</text>
+
+<text>
+IMPLEMENTATION (Edmonds-Karp algorithm <cite>Edmonds and Karp 1972</cite>):
+<url>http://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm</url>
+The algorithm is identical to the Ford-Fulkerson algorithm, except that the search order when finding the augmenting path is defined. The path found must be a shortest path that has available capacity
+
+- BFS to look for any path from the source to the sink that increases the total flow (only consider edges with residual capacity, i.e. positive residual flow)
+</text>
+
+<text>
+
+ <cite>Edmonds and Karp 1972</cite> proved that selecting the shortest unweighted augmenting path (a.k.a. shortest geodesic path) guarantees that <eqn>O(n^3)</eqn> augmentations suffice for optimization.
+
+<eqn>O(nm^2)</eqn> running time: each augmenting path can be found in <eqn>O(m)</eqn> time, every time at least one of the <eqn>m</eqn> edges becomes saturated, the distance from the saturated edge to the source along the augmenting path must be longer than last time it was saturated, and that length is at most <eqn>n</eqn>.
+
+Another property of this algorithm is that the length of the shortest augmenting path increases monotonically.
+</text>
+
+<text>
+The standard reference for network flow algorithms and their history is <cite>Ahuja et al. 1993</cite>. 
+The fastest known general network flow algorithm runs in <eqn>O(nm \log(n^2/m))</eqn> time <cite>Goldberg and Tarjan 1988</cite>.
+</text>
+
+<!-- Preflow-push -->
+
+<text>
+++ Kleinberg 7 + 13.2
+</text>
+
+<text>
+++ @ MIT Graphs - Network flow
+</text>
+
+
+<text>
+VARIANTS
+
+- multiple sources and/or sinks? - No problem. We can handle
+this by modifying the network to create a vertex to serve as a super-source
+that feeds all the sources, and a super-sink that drains all the sinks.
+
+- if all arc capacities are identical, either 0 or 1? - Faster algorithms
+exist for 0-1 network flows.
+
+- if all my edge costs are identical? - Use the simpler and faster algorithms
+for solving maximum flow as opposed to minimum-cost flow. Max-flow
+without edge costs arises in many applications, including edge/vertex connectivity
+and bipartite matching.
+
+- What if I have multiple types of material moving through the network? - In
+a telecommunications network, every message has a given source and destination.
+Each destination needs to receive exactly those calls sent to it, not
+an equal amount of communication from arbitrary places. This can be modeled
+as a multicommodity flow problem, where each call defines a different
+commodity and we seek to satisfy all demands without exceeding the total
+capacity of any edge. Linear programming will suffice for multicommodity flow if fractional flows
+are permitted. Unfortunately, integral multicommodity flow is NP-complete,
+even for only two commodities.
+
+<text>
+++ Kleinberg: Circulations with demands
+</text>
+
+</text>
+
+<document>
+<tag>graph-minimum-cuts</tag>
+<title>Minimum cuts</title>
+
+<text>
+A set of edges whose deletion separates s from t is called an s-t cut. Since no s-t flow can exceed the weight of the minimum s-t cut, finding the maximum flow is equivalent to discovering the minimum cut. In fact, the maximum s-t flow equals the weight of the minimum s-t cut. This maximum-flow, minimum-cut theorem is due to <cite>Ford and Fulkerson 1962</cite>.
+</text>
+
+<text>
+Therefore, flow algorithms can be used to solve edge and vertex connectivity problems that are employed to answer questions such as
+What is the smallest subset of vertices (or edges) whose deletion will disconnect G? Or which will separate s from t? Such problem often appear when stuydying network reliability.
+</text>
+
+<text>
+"The edge (vertex) connectivity of a graph G is the smallest number of edge
+(vertex) deletions sufficient to disconnect G. There is a close relationship between
+the two quantities. The vertex connectivity is always less than or equal to the
+edge connectivity, since deleting one vertex from each edge in a cut set succeeds
+in disconnecting the graph. But smaller vertex subsets may be possible. The minimum
+vertex degree is an upper bound for both edge and vertex connectivity, since
+deleting all its neighbors (or cutting the edges to all its neighbors) disconnects the
+graph into one big and one single-vertex component"
+</text>
+
+<text>
+- Simple depth-first or breadth-first traversals suffice to identify all connected components in linear time, including strongly-connected and weakly-connected components in directed graphs.
+
+- Weak links: We say that G is biconnected if no single vertex deletion is sufficient to disconnect G. Any vertex that is such a
+weak point is called an articulation vertex. A bridge is the analogous concept for edges, meaning a single edge whose deletion disconnects the graph. Linear-time algorithms for identifying articulation vertices and bridges also exist.
+
+- Finding the smallest cut-set that separates a given pair of vertices can be solved using network flow algorithms. 
+
+- Vertex connectivity is characterized by Menger's theorem, which states that a graph is k-connected if and only if every pair of vertices is joined by at least k vertex-disjoint paths. Network flow can again be used to perform this calculation, since a flow of k between a pair of vertices implies k edge-disjoint paths. we construct a graph G' such that any set of edge-disjoint paths in G' corresponds to vertex-disjoint paths in G. This is done by replacing each vertex vi of G with two vertices vi,1 and vi,2, such that edge (vi,1, vi,2)  G' for all vi G, and by replacing every edge (vi, x) in G by edges (vi,j, xk), j = k {0, 1} in G'. Thus two edge-disjoint paths in G' correspond to each vertex-disjoint path
+in G.
+
+A non-flow-based algorithm for edge k-connectivity in O(kn2) is due to Matula <cite>Matula 1987</cite>.
+Faster k-connectivity algorithms are known for certain small values of k. All three-connected components of a graph can be generated in linear time <cite>Hopcroft and Tarjan 1973b</cite>, while O(n2) suffices to test 4-connectivity <cite>Kanevsky and Ramachandran 1991</cite>
+
+- Graph partitioning, i.e. splitting the graph into smaller components with specific properties, is, however, an NP-complete problem. Good heuristic techniques exist for this problem <cite>Karypis and Kumar 1999</cite>, which has important applications (e.g. in VLSI circuit layout).
+
+<!-- Tools:
+- Chaco: partition graphs for parallel computing applications http://www.cs.sandia.gov/¡«bahendr/chaco.html.
+- METIS (http://glaros.dtc.umn.edu/gkhome/views/metis)successfully partitioned graphs with over 1,000,000 vertices.
+- Scotch (http://www.labri.fr/perso/pelegrin/scotch/)
+- JOSTLE (http://staffweb.cms.gre.ac.uk/¡«wc06/jostle/)
+-->
+
+</text>
+
+</document>
+
+<document>
+<tag>graph-matching</tag>
+<title>Matching</title>
+
+<text>
+A matching in a graph <eqn>G=(V,E)</eqn> is a subset of edges <eqn>E' \subset E</eqn> such that no two edges in <eqn>E'</eqn> share a vertex.
+</text>
+
+<text>
+++ Kleinberg 404-414
+</text>
+
+<text>
+PROBLEM
+Find the largest set of edges E' from E such that each
+vertex in V is incident to at most one edge of E'.
+</text>
+
+<text>
+APPLICATION: Assignment problems, with/without weights (maximum cardinality matching/ maximum weight matching).
+- Assignment problems (jobs to be done and people who can do them, male and female customers of a dating web site...)
+</text>
+
+<text>
+Matching theory and algorithms <cite>Lovasz and Plummer 1986</cite>
+</text>
+
+<text>
+++ CS 
+      A matching in a graph is a subset of edges
+that have no common incident vertices. It captures the notion of pairing
+off compatible vertices. The maximum matching problem is that of finding
+a matching of maximum cardinality. Hall and Tutte gave necessary and
+sufficient conditions for a graph to have a perfect matching - a matching
+in which all vertices are matched. Edmonds gave a polynomial-time algorithm
+for finding a maximum matching. Edges may be assigned weights that denote
+the advantage of including them in a matching. Maximum-weight bipartite
+matching, also known as the assignment problem, arises in many applications.
+Algorithms for maximum cardinality and maximum-weight matchings have been
+well studied.  See <cite>Ahuja et al. 1993</cite>,<cite>Bondy and Murty 1976</cite>, 
+, and <cite>Papadimitriou and Steiglitz 1982</cite>
+for more details.
+</text>
+
+<text>
+Standard algorithms for bipartite matching based on network flows:
+</text>
+
+<text>
+Remember that a graph is bipartite (or two-colorable) if its vertices can be divided into two sets, L and R, so that every edge in the graph connects one vertex from the first set to a different vertex on the second set.
+</text>
+<text>
+The largest possible bipartite matching can be found using network flow. Just add a source node s connected to every vertex in L with capacity 1, add a sink node t connected to every node in R, and assign each edge in the bipartite graph a capacity of 1. The maximum flow from s to t determines the largest matching in the bipartite graph.
+</text>
+
+<text>
+The best algorithm for maximum bipartite matching, based on Hopcroft and Karp's algorithm <cite>Hopcroft and Karp 1973</cite>, repeatedly finds the shortest augmenting paths instead of using network flow, and runs in <eqn>O(\sqrt{n}m)</eqn> <cite>Micali and Vazirani 1980</cite>.
+</text>
+
+<text>
+Classic algorithm: Hungarian algorithm for bipartite matching <cite>Kuhn 1955</cite>. The Hungarian algorithm runs in <eqn>O(n(m + n \log n))</eqn> time.
+</text>
+
+<text>
+Matching based on preferences (e.g. matching medical residents to hospitals or students to university courses): <eqn>O(n^2)</eqn> time using Galey and Shapley's algorithm <cite>Gale and Shapley 1962</cite>.
+</text>
+
+
+<text>
+@ MIT Graphs - Matching
+</text>
+
+
+</document>
+
+</document>

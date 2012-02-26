@@ -1,0 +1,84 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<document>
+<tag>introduction-notes</tag>
+<title>Bibliographic notes</title>
+
+<text>
+2005 NRC Definition of network science: Committee on Network Science for Future Army Applications, commissioned by the Board on Army Science and Technology in cooperation with the National Research Council of the National Academies:
+<q>organized knowledge of networks based on their study using the scientific method</q> (National Research Council, Committee on Network Science for Future Army Applications: Network Science, Board of Army Science and Technology, National Academies Press, www.nap.edu, 2005).
+</text>
+
+<text>
+<cite>Lewis 2009</cite>: <q>Network science, or the science of networks, is the study of the theoretical foundations of network structure/dynamic behavior and the application of networks to many subfields. Currently known subfields include social network analysis (SNA), collaboration networks (bibliographic citations, product marketing, online social networks), synthetic emergent systems (power grids, the Internet), physical science systems (phase transition, percolation theory, Ising theory), and life science systems (epidemics, metabolic processes, genetics).</q>
+</text>
+
+<text>
+Related fields: networks incorporates ideas from complex adaptive systems (emergence), chaos theory (synchronization), and mean-field theory (physics)
+
++ L: Holland defines emergence in general terms as <q>much coming from little</q> (Holland, 1998): A series of microlevel changes accumulate over time, until a macrolevel change in the network is realized. Emergence means that a major change in global properties comes from many small changes at the local level.  [Holland, J. H., Emergence: From Chaos to Order, Addison-Wesley, Reading, MA, 1998.]
+
++ L: Networks evolve...  have dynamic properties such as fixed points when they sync. Starting at some initial state, a dynamic network may transition
+to a second, third, fourth, and higher state until either cycling back or reaching a final state—its fixed point... networks that reach a fixed point are different from networks that oscillate, forever.
+</text>
+
+
+<document>
+<title>Survey papers</title>
+
+<text>
+++ <cite>Strogatz 2001</cite> <cite>Albert and Barabasi 2002</cite> <cite>Newman 2003</cite> <cite>Watts 2004b</cite> <cite>Boccaletti et al. 2006</cite> <cite>Borner et al. 2007</cite> <cite>Costa et al. 2007</cite> <cite>Costa et al. 2011</cite>
+</text>
+
+<text>
+++ Collection of classic papers <cite>Newman et al. 2006</cite>
+</text>
+
+<text>
+++ Network science: 2003 Virtanen Complete survey of network science results up to 2003
+[Virtanen, S., Properties of Non-uniform Random Graph Models, Helsinki Univ. Technology, Laboratory for Theoretical Computer Science, Report FIN-02015 HUT, lab@tcs.hut, 2003]
+
+++ Voon Joe Yung gives a nonmathematical introduction and includes a copy of the Milgram experiment folder (Yung, 2001).
+[Yung, V. J. An exploration in the small world networks, available as Condensed Matter/ 0004214 (2000/2001).]
+
+++ The numerous papers by Mark Newman and Duncan Watts provide compact tutorials on the fundamentals of small worlds (Watts, 1999a; Newman, 2000b).
+[Watts, D., Networks, dynamics, and the small-world phenomenon, Am. J. Sociol. 105:2 493-527 (Sept 1999).]
+[Newman, M. E. J., Models of the small world: A review, J. Stat. Phys. 101:819-841 (2000).]
+[Newman, M. E. J., Small worlds, the structure of social networks, J. Stat. Phys. 101(3/4) (2000).]
+</text>
+
+</document>
+
+
+<document>
+<title>Recommended books</title>
+
+
+<text>
+++ Networks <cite>Easley and Kleinberg 2010</cite> <cite>Newman 2010</cite> <cite>Jackson 2009</cite> <cite>Lewis 2009</cite> <cite>Cohen and Havlin 2010</cite> <cite>van Steen 2010</cite> <cite>Dogorotsev 2010</cite>
+</text>
+
+<text>
+++ Social network analysis <cite>Scott 2000</cite> <cite>Wasserman and Faust 1994</cite> <cite>Freeman 2004</cite> <cite>Thompson et al. 1991</cite> <cite>Hanneman and Riddle 2005</cite>
+</text>
+
+<text>
+++ Tool-oriented titles: Pajek <cite>de Nooy et al. 2005</cite>, NodeXL <cite>Hansen et al. 2010</cite>
+</text>
+
+<text>
+++ Monographs <cite>Bornholdt and Schuster 2003</cite> <cite>Cook and Holder 2007</cite> <cite>Yu et al. 2010</cite> <cite>Aggarwal and Wang 2010</cite> <cite>Aggarwal 2011</cite> Lecture Notes in Social Networks series from Springer <cite>Memon and Alhajj 2010</cite>
+</text>
+
+<text>
+++ Divulgative books <cite>Barabasi 2003</cite> <cite>Watts 2004</cite>...  <cite>Barabasi 2010</cite> <cite>Watts 2011</cite>
+</text>
+
+<text>
+++ <cite>Sterman 2000</cite> <cite>Goyal 2007</cite> <cite>Mitchell 2009</cite>, <cite>Sporns 2011</cite>...
+</text>
+
+</document>
+
+</document>

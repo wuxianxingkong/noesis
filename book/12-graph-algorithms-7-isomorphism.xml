@@ -1,0 +1,206 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<!-- Graph isomorphism -->
+
+<document>
+<tag>graph-isomorphism</tag>
+<title>Graph isomorphism</title>
+
+<text>
+Find a (or all) mapping f from the vertices of G to the vertices of H such that G and H are identical; i.e. (x, y) is an edge of G iff (f(x), f(y)) is an edge of H.
+</text>
+
+<text>
+"We need some terminology to settle what is meant when we say two graphs
+are the same. Two labeled graphs G = (Vg,Eg) and H = (Vh,Eh) are identical
+when (x, y) in Eg iff (x, y) in Eh. The isomorphism problem consists of finding a
+mapping from the vertices of G to H such that they are identical. Such a mapping
+is called an isomorphism; the problem of finding the mapping is sometimes called
+graph matching."
+
+"A mapping of a graph to itself is called an automorphism. For example, the complete graph Kn has n! automorphisms
+(any mapping will do), while an arbitrary random graph is likely to have few or perhaps only one, since G is always identical to itself"
+</text>
+
+<text>
+APPLICATIONS
+e.g. 
+
+- Pattern matching: The structure of chemical compounds are naturally described
+by labeled graphs, with each atom represented by a vertex. Identifying all
+molecules in a structure database containing a particular functional group is an
+instance of subgraph isomorphism testing.
+
+- Identifying symmetries (automorphism)
+
+- indexing graph databases by small substructures (and doing expensive isomorphism
+tests only against those containing the same substructures as the query graph).
+</text>
+
+<text>
+@ MIT Interactive proofs and zero knowledge
+</text>
+
+
+<text>
+VARIATIONS
+
+- "Subgraph isomorphism asks whether there is a subset of edges and vertices of H that is
+isomorphic to a smaller graph G."
+
+- "Induced subgraph isomorphism asks whether there is a subset of vertices of H whose deletion leaves a subgraph isomorphic
+to a smaller graph G. For induced subgraph isomorphism, (1) all edges of G must be present in H, and (2) no non-edges of G can be present in H."
+
+e.g. Clique happens to be an instance of both subgraph isomorphism problems, while
+Hamiltonian cycle is only an example of vanilla subgraph isomorphism
+
+</text>
+
+<text>
+SOLUTION: Backtracking
+
+The basic algorithm backtracks through
+all n! possible relabelings of the vertices of graph h with the names of vertices
+of graph g, and then tests whether the graphs are identical. Of course, we can
+prune the search of all permutations with a given prefix as soon as we detect any
+mismatch between edges whose vertices are both in the prefix.
+
+++ Labels and related constraints can be factored into any backtracking algorithm.
+
+
+++ the real key to efficient isomorphism testing is to preprocess the vertices
+into "equivalence classes," partitioning them into sets of vertices so that two
+vertices in different sets cannot possibly be mistaken for each other. All vertices
+in each equivalence class must share the same value of some invariant that is independent
+of labeling. Possibilities include:
+
+- Vertex degree - This simplest way to partition vertices is based on their degree-the number of edges incident on the vertex. Two vertices of different degrees cannot be identical. This simple partition can be a big win, but won't do much for regular (equal degree) graphs.
+
+- Shortest path matrix - For each vertex v, the all-pairs shortest path matrix defines a multiset of n-1 distances representing
+the distances between v and each of the other vertices. Any two identical vertices must define the exact same multiset of distances, so we can partition the vertices into equivalence classes defining identical distance multisets.
+
+- Counting length-k paths - Taking the adjacency matrix of G and raising it to the kth power gives a matrix where Gk[i, j] counts the number of (nonsimple) paths from i to j. For each vertex and each k, this matrix defines a multiset of path-counts, which can be used for partitioning as with distances above. You could try all 1 le k le n or beyond, and use any single deviation as an
+excuse to partition.
+
+Using these invariants, you should be able to partition the vertices of most graphs into a large number of small equivalence classes. Finishing the job off with backtracking should then be short work. We assign each vertex the name of its equivalence class as a label, and treat it as a labeled matching problem. It is harder to detect isomorphisms between highly-symmetric graphs than it is with random graphs because of the reduced effectiveness of these equivalence-class partitioning heuristics.
+
+
+
+++ Faster algorithms exist for trees and planar graphs. 
+
+- Trees (e.g. NLP, parsing):  Begin with the leaves of both trees and work inward toward the center. Each vertex in one tree is assigned a label representing the set of vertices in the second tree that might possibly be isomorphic to it, based on the constraints of labels and vertex degrees. For example, all the leaves in tree T1 are initially potentially equivalent to all
+leaves of T2. Now, working inward, we can partition the vertices adjacent to leaves in T1 into classes based on how many leaves and non-leaves they are adjacent to. By carefully keeping track of the labels of the subtrees, we can make sure that we have the same distribution of labeled subtrees for T1 and T2. Any mismatch means T1 != T2, while completing the process partitions the
+vertices into equivalence classes defining all isomorphisms. A linear-time tree isomorphism algorithm
+for both labeled and unlabeled trees is presented in [AHU74].
+
+-
+</text>
+
+
+<text>
+Practical algorithms for graph isomorphism:
+- <cite>McKay 1981</cite>
+- <cite>Corneil and Gotlieb 1970</cite>
+- <cite>Schmidt and Druffel 1976</cite>
+- <cite>Ullman 1976</cite>
+</text>
+
+
+<text>
+++ http://dabacon.org/pontiff/?p=4148
+</text>
+
+<text>
+While they seem to perform well on random graphs, a major drawback of these algorithms is their exponential time performance in the worst case.
+</text>
+
+<text>
+Best known algorithm: Luks (1983) has run time <eqn>2^O(\sqrt{n \log n})</eqn> for graphs with n vertices.
+</text>
+
+<text>
+In <q>Canonical labeling of graph</q> <cite>Babai and Luks 1983</cite>:  subexponential time algorithm for a graph with n vertices.
+</text>
+
+<text>
+Isomorphism for many special classes of graphs can be solved in polynomial time, and in practice graph isomorphism can often be solved efficiently:
+</text>
+
+<list>
+
+<item>Trees <cite>Kelly 1957</cite> @ <cite>Aho et al. 1974</cite></item>
+
+
+<item>Planar graphs <cite>Hopcroft and Wong 1974</cite></item>
+
+<item>Maximal outerplanar graphs <cite>Beyer et al. 1979</cite></item>
+
+<item>Interval graphs <cite>Lueker and Booth 1979</cite></item>
+
+<item>Permutation graphs <cite>Colbourn 1981</cite></item>
+
+<item>Trivalent graphs <cite>Galil et al. 1987</cite></item>
+
+<item>Partial k-trees <cite>Bodlaender 1990</cite></item>
+
+
+<item>Bounded-parameter graphs: 
+- Graphs of bounded genus <cite>Miller 1980</cite> <cite>Filotti and Mayer 1980</cite>
+
+- graphs of bounded degree <cite>Luks 1982</cite>
+
+- graphs with bounded eigenvalue multiplicity <cite>Babai et al. 1982</cite>
+
+- k-Contractible graphs (a generalization of bounded degree and bounded genus) <cite>Miller 1983a</cite> <cite>Miller 1983b</cite> 
+
+- Color-preserving isomorphism of colored graphs with bounded color multiplicity (i.e., at most k vertices have the same color for a fixed k)
+<cite>Luks 1986</cite>
+</item>
+
+
+</list>
+
+<text>
+SOFTWARE: ell now that you've gone and starting learning about some computational complexity in relationship to graph isomorphism, it's probably a good time to stop and look at actual practical algorithms for graph isomorphism.  The king of the hill here, as far as I know, is the program nauty (No AUTomorphism, Yes?) by Brendan D. McKay.  http://cs.anu.edu.au/people/bdm/nauty/ <cite>McKay 1981</cite>
+
+
+"The best known isomorphism testing program is nauty (No
+AUTomorphisms, Yes?) - set of very efficient C language procedures for determining
+the automorphism group of a vertex-colored graph. Nauty is also able to
+produce a canonically-labeled isomorph of the graph, to assist in isomorphism testing.
+
+
+The VFLib graph-matching library contains implementations for several different
+algorithms for both graph and subgraph isomorphism testing. This library
+has been widely used and very carefully benchmarked [FSV01]. It is available at
+http://amalfi.dis.unina.it/graph/.
+
+GraphGrep [GS02] (http://www.cs.nyu.edu/shasha/papers/graphgrep/) is a representative
+data mining tool for querying large databases of graphs.
+
+Valiente [Val02] has made available the implementations of graph/subgraph
+isomorphism algorithms for both trees and graphs in his book [Val02]. These C++
+implementations run on top of LEDA (see Section 19.1.1 (page 658)), and are
+available at http://www.lsi.upc.edu/¡«valiente/algorithm/.
+
+</text>
+
+<text>
+REFERENCES @ SKIENA
+Graph isomorphism is an important problem in complexity theory. Monographs
+on isomorphism detection include [Hof82, KST93]. Valiente [Val02] focuses on algorithms
+for tree and subgraph isomorphism. See [FSV01] for performance comparisons between different graph
+and subgraph isomorphism algorithms.
+
+Polynomial-time algorithms are known for planar graph isomorphism [HW74] and for
+graphs where the maximum vertex degree is bounded by a constant [Luk80]. The all-pairs
+shortest path heuristic is due to [SD76], although there exist nonisomorphic graphs that
+realize the exact same set of distances [BH90]. 
+
+A problem is said to be isomorphism-complete if it is provably as hard as isomorphism.
+Testing the isomorphism of bipartite graphs is isomorphism-complete, since any graph
+can be made bipartite by replacing each edge by two edges connected with a new vertex.
+Clearly, the original graphs are isomorphic if and only if the transformed graphs are.
+</text>
+</document>

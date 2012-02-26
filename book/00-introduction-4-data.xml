@@ -1,0 +1,68 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+<tag>datasets</tag>
+<title>Network data sets</title>
+
+<text>
+Large network datasets...
+</text>
+
+<list>
+
+<item>
+The Stanford Large Network Dataset Collection, <url>http://snap.stanford.edu/data/</url>, maintained by Jure Leskovec (University of Stanford, California) as part of the Stanford Network Analysis Platform (SNAP).
+</item>
+
+<item>
+The Koblenz Network Collection, <url>http://konect.uni-koblenz.de/</url>, maintained by Jérôme Kunegis (University of Koblenz-Landau, Germany).
+</item>
+
+<item>
+The UCI Network Data Repository, <url>http://networkdata.ics.uci.edu/</url>, a NSF-funded project from the University of California at Irvine led by Christopher L. DuBois.
+</item>
+
+<item>
+CASOS datasets, <url>http://www.casos.cs.cmu.edu/computational_tools/datasets/</url>, from the Center for Computational Analysis of Social and Organizational Systems at Carnegie Mellon University (Pittsburhg, Pennsylvania).
+</item>
+
+<item>
+NWB datasets, <url>https://nwb.slis.indiana.edu/community/?n=Datasets.HomePage</url>, from the wiki of the Network Workbench Project (Indiana University at Bloomington).
+</item>
+
+<item>
+The University of Florida Sparse Matrix Collection, <url>http://www.cise.ufl.edu/research/sparse/matrices/</url>.
+</item>
+
+<item>
+Pajek datasets, <url>http://vlado.fmf.uni-lj.si/pub/networks/data/</url>, by Vladimir Batagelj and Andrej Mrvar. 
+</item>
+
+<item>
+Links to network data sets collected by Mark E.J. Newman (University of Michigan): <url>http://www-personal.umich.edu/~mejn/netdata/</url>.
+</item>
+
+<item>
+The Stanford GraphBase, by Donald E. Knuth, http://www-cs-staff.stanford.edu/~knuth/sgb.html, includes some example graphs as well as a collection of programs to generate and manipulate graphs and networks (written in CWEB, which is a mix of the C programming language and Knuth's TEX typesetting language, to illustrate the use of literate programming). Such generators can be used to create test data for performing experiments and comparing algorithms.
+</item>
+
+<item>
+The Nauty graph isomorphism testing program, http://cs.anu.edu.au/~bdm/nauty/, also includes graph generators for graphs, directed graphs, bipartitue graphs, and multigraphs.
+</item>
+
+<item>
+Brendan McKay, the author of the Nauty program, also maintains collectins of various kinds of graphs at http://cs.anu.edu.au/~bdm/data/ and he recommends Gordon's Royce collection, http://mapleta.maths.uwa.edu.au/~gordon/data.html
+</item>
+
+</list>
+
+
+<text>
++ Several data mining competitions @ major conferences and sites such as Kaggle (a 2010 startup created by an Australian economist, Anthony Goldbloom, for hosting predictive modeling competitions, inspired by the Netflix competition Netflix, held from 2006 to 2009, where Netflix offered $1 million to the team that could improve the accuracy of its movie-recommendation software by 10 percent).
+</text>
+
+</document>
+
+

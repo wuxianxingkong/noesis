@@ -1,0 +1,80 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<!-- Visualization tools -->
+
+<document>
+<tag>graph-visualization-tools</tag>
+<title>Graph visualization tools</title>
+
+
+<text>
+TOOLS: 
+- Design patterns <cite>Heer and Agrawala 2006</cite>
+- JSNVA network drawing framework <cite>Ye et al. 2008</cite>
+- VisNetMiner <cite>Shi et al. 2009</cite>
+</text>
+
+<text>
+Systems described in <cite>Jünger and Mutzel 2003</cite>...
+</text>
+
+
+<text>
+Graphviz, http://www.graphviz.org, graph-drawing program developed by Stephen North of Bell Laboratories: represents edges as splines and can construct useful drawings of quite large and complicated graphs. <cite>Gansner et al. 1988</cite> <cite>Ellson et al. 2001</cite> <cite>Ellson et al. 2003</cite>
+</text>
+
+
+<list>
+
+<item>
+"hierarchical" or layered drawings of directed graphs (<type>dot</type>).
+</item>
+
+<item>
+"spring model" layouts:
+
+<type>neato</type> attempts to minimize a global energy function, which is equivalent to statistical multi-dimensional scaling <cite>Kamada and Kawai 1989</cite>; 
+
+<type>fdp</type> reduces forces rather than working with energy <cite>Fruchterman and Reingold 1991</cite>; <type>sfdpmultiscale</type> is a multi-scale version of <type>fdp</type> for the layout of large graphs.
+
+</item>
+
+<item>
+Radial layouts: <type>twopi</type> <cite>Wills 1997</cite>
+1997
+</item>
+
+<item>
+Circular layout: <type>circo</type> <cite>Six and Tollis 1999a</cite> <cite>Six and Tollis 1999b</cite> <cite>Kaufmann and Wiese 2002</cite>
+</item>
+
+</list>
+
+
+
+<text>
+The DOT language syntax: 
+- Grafos no dirigidos (graph --)
+- Grafos dirigidos (digraph ->)
+</text>
+
+
+
+<text>
+Libraries:
+++ JGraph, <url>http://www.jgraph.com/</url>,
+++ JGraphT, <url>http://jgrapht.sourceforge.net/</url>: Java graph libraries suitable for interactive applications.
+++ JGraphEd (http://www.jharris.ca/JGraphEd/): a Java graph-drawing framework that includes several planarity testing/embedding algorithms, including both the Booth-Lueker PQ-tree algorithm and the modern straight-line grid embedding
+</text>
+
+<text>
+Social network analysis tools: 
+- Pajek <cite>de Nooy et al. 2005</cite>, 
+- NodeXL <cite>Hansen et al. 2010</cite>... include implementations of force-directed methods for visualizing social networks.
+</text>
+
+
+</document>
+

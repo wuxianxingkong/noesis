@@ -1,0 +1,301 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<!-- Graph exploration -->
+
+<document>
+<tag>graph-exploration</tag>
+<title>Graph exploration</title>
+
+<text>
+A fundamental graph problem: Visiting every node (or link) in a network in a systematic way, i.e. graph traversal.
+</text>
+
+<text>
+++ CS
+Graph-searching procedures such as depth-first search (DFS)
+<cite>Tarjan 1972</cite> <cite>Hopcroft and Tarjan 1973</cite>
+and breadth-first search (BFS) 
+<cite>Moore 1959</cite>
+form the basic preprocessing steps for most graph algorithms. 
+</text>
+
+<text>
+For efficiency, we should not visit the same node repeatedly. For correctness, we should guarantee that every node is eventually visited. IDEA: Keep track of which nodes we have already visited...
+</text>
+
+
+<text>
+BFS/DFS define a tree on the vertices of the graph.
+</text>
+
+<note>
+<title>The Visitor design pattern</title>
+
+<text>
+++ Visitor design pattern <cite>Gamma et al. 1994</cite>
+</text>
+
+</note>
+
+
+<document>
+<tag>graph-exploration-dfs</tag>
+<title>Depth-first search</title>
+
+<text>
+Implementation: recursion/stack (LIFO: we explore a path until we meet a dead end (i.e. no unvisited neighbors) and then backtrack). Recursion eliminates the need of an explicit stack and provides a neat implementation of the algorithm.
+</text>
+
+
+<text>
+EFFICIENCY: <eqn>O(n+m)</eqn> using adjacency lists
+</text>
+
+
+
+<text>
+Time intervals: a clock ticks every time we enter or exit a node and we keep track of the entry and exit times for each node.
+</text>
+
+<text>
+Properties:
+
+- Time intervals are properly nested: if we enter x before y, we exit y before x; i.e. all nodes reachable from a given node are explored before we finish with it.
+
+- The difference between exit and entry times indicate the number of descendants of any given node. Actually half the time difference is the number of descendants in the search tree.
+
+- For undirected graphs, DFS partitions edges into tree edges and back edges. Tree edges appear in the DFS tree, whereas back edges always point to an ancestor in the DFS tree (never to a sibling nor cousin node, just because all nodes reachable from a given node are explored before we finish with it).
+</text>
+
+<!--
+Classifying (x,y) edges:
+
+- parent[y] == x  => Tree edge
+
+- discovered[y] and not processed[y]  => Back edge
+
+For directed graphs:
+
+- discovered[y] and (entry_time[y] &gt; entry_time[x]) => Forward edge
+
+- discovered[y] and (entry_time[y] &lt; entry_time[x]) => Cross edge
+-->
+
+
+<text>
+APPLICATIONS
+</text>
+
+<text>
+++ CS        Algorithms based on DFS have been known for a long time for the problem of searching
+mazes. However, it was the work of Hopcroft and Tarjan (for which they
+received the ACM Turing Award in 1986) that illustrated the full algorithmic
+power of DFS <cite>Hopcroft and Tarjan 1973</cite>. They demonstrated efficient algorithms for several problems,
+such as finding biconnected components and bridges of a graph and testing
+triconnectivity and planarity. DFS on directed graphs can be used to
+classify its vertices into strongly connected components, to detect cycles,
+and to find a topological order of the vertices of a DAG.
+</text>
+
+
+<text>
+Solving mazes (e.g. <cite>Moore 1959</cite>): A version of depth-first search was investigated in the 19th century by French mathematician Charles Pierre Tremaux as a strategy for solving mazes.
+</text>
+
+<text>
+ON UNDIRECTED GRAPHS
+</text>
+
+<text>
+++ Connected components: Identify the different contextec components of a graph G, where x and y are members of different components if no path exists from x to y in G. O(m+n)
+</text>
+
+
+<text>
+++ Cycle detection / tree testing: If there are no back edges, all edges belong to the DFS tree, hence the graph is actually a tree. When present, the back edge and the DFS tree define the cycle.
+</text>
+
+<text>
+++ Graph biconnectedness: Articulation vertices (a.k.a. cut-nodes): Vertices whose deletion disconnects the graph connected component (i.e. single points of failure). Graphs without articulation points are said to be biconnected, since they have no single points of failure. A brute force algorithm would remove each vertex and check whether the graph is still connected (an <eqn>O(n(n+m))</eqn> algorithm), albeit a linear algorithm is possible based on DFS if we track the earliest reachable node for each node. If the DFS tree represented the whole graph, all internal nodes would be articulation points. Three situations have to be considered <cite>Skiena 2008</cite>: 
+
+1) root cut-nodes (if the root of the DFS tree has more than one child, then it is an articulation point), 
+
+2) bridge cut-nodes (if v is an internal node in the DFS tree and its earliest reachable node is v, then v is an articulation point)
+
+3) parent cut-nodes (if v is an internal node in the DFS tree and its earliest reachable node is its parent in the tree, then the parent is an articulation point unless it is the root of the DFS tree, i.e. it cuts v and its descendants from the graph).
+</text>
+
+<text>
+++ Edge biconnectedness: Bridges (in terms of link failures instead of node failures). A single edge whose deletion disconnects the graph is called a bridge. Any graph without bridges is said to be edge-biconnected. Edge (x,y) is a bridge when it is a DFS tree edge and no back edge connects from y or below to x or above.
+</text>
+
+
+<text>
+The classic sequential algorithm for computing biconnected components in a connected undirected graph due to John Hopcroft and Robert Tarjan (1973) runs in linear time, and is based on depth-first search <cite>Hopcroft and Tarjan 1973</cite>
+
+In the online version of the problem, vertices and edges are added (but not removed) dynamically, and a data structure must maintain the biconnected components. <cite>Westbrook and Tarjan 1992</cite> developed an efficient data structure for this problem based on disjoint-set data structures. Specifically, it processes n vertex additions and m edge additions in <eqn>O(m \alpha(m, n))</eqn> total time, where alpha is the inverse Ackermann function. This time bound is proved to be optimal.
+
+<cite>Tarjan and Vishkin 1985</cite> designed a parallel algorithm on CRCW PRAM that runs in O(log n) time with n + m processors. 
+
+<cite>Cong and Bader 2005</cite> developed an algorithm that achieves a speedup of 5 with 12 processors on SMPs.
+</text>
+
+
+<text>
+ON DIRECTED GRAPHS
+</text>
+
+<text>
+++ Cycle detection / DAG testing: If there are no back edges, all edges belong to the DFS tree, hence the graph is actually a DAG. As above, when present, the back edge and the DFS tree define the cycle.
+</text>
+
+<text>
+++ Topological sorting: A common operation on directed acyclic graphs. Finding a linear ordering of the vertices so that for each arc (i,j), vertex i is to the left of vertex j (such ordering cannot exist if the graph contains a directed cycle, i.e. no back edges). Each DAG has, at least, one topological sort (often, many different ones, up to n! if there are no constraints), which gives an ordering to process each vertex before any of its successors (e.g. precedence constraints). Only DAGs can be topologically sorted. 
+
+1) Considering the nodes in the reverse order they are processed by DFS returns a valid topological sort.
+
+2) Using a DFS to identify all source vertices (of in-degree 0), which can appear at the start of the topological sort without violating any constraints. Deleting outgoing edges of the source vertices creates new source vertices. The process is repeated until all vertices are included in the topological sort. Proper use of data structures is sufficient to obtain a linear time O(n+m) algorithm.
+
+ ref. first described by <cite>Kahn 1962</cite>: <url>http://en.wikipedia.org/wiki/Topological_sorting</url>
+ Applications: scheduling tasks under precedence constraints (any topological sort, a.k.a. linear extension, defines an order to perform the tasks that satisfies all precedence constraints).
+</text>
+
+
+<text>
+++ Identifying weakly-connected components: Just ignore edge direction.
+</text>
+
+<text>
+++ Identifying strongly-connected components (first algorithm by <cite>Tarjan 1972</cite>): 1) Traverse the graph atarting from any given node to discover the nodes that are reachable from the node. 2) Build a graph G'=(V,E') with the same vertex set but all its arcs reversed; i.e. <eqn>(y,z) \in E' iff (x,y) \in E</eqn>. 3) Perform a traveral starting from v in G', which will result in discovering the set of nodes that can reach v. 
+
+If the second traversal does not completely traverse G', each DFS performed on G' will correspond to a strongly-connected component.
+</text>
+
+<text>
+Any graph can be partitioned into a set of strongly-connected components. Using DFS, we can easily identify cycles. If we take into account that all the nodes involved in a cycle must belong to the same strongly-connected component, we can collapse the nodes in the cycle into a single vertex and repeat the process. When no cycles remain, each vertex represents a different strongly-connected component.
+</text>
+
+<text>
+Linear SCC algorithms:
+
+- Kosaraju's algorithm, 1978: <url>http://en.wikipedia.org/wiki/Kosaraju%27s_algorithm</url>
+   ref.  <cite>Aho et al. 1983</cite> credit it to an unpublished paper from 1978 by S. Rao Kosaraju and Micha Sharir. (Al
+
+- Cheriyan-Mehlhorn/Gabow algorithm, 1996/1999: <url>http://en.wikipedia.org/wiki/Cheriyan%E2%80%93Mehlhorn/Gabow_algorithm</url>
+   ref. <cite>Cheriyan and Mehlhorn 1996</cite> <cite>Gabow 2003</cite>
+
+- Tarjan's strongly connected components algorithm, 1972: <url>http://en.wikipedia.org/wiki/Tarjan's_strongly_connected_components_algorithm</url>
+   ref. <cite>Tarjan 1972</cite>
+   
+
+
+ all efficiently compute the strongly connected components of a directed graph, but Tarjan's and Gabow's are favoured in practice since they require only one depth-first search rather than two. <url>http://en.wikipedia.org/wiki/Strongly_connected_component</url>
+</text> 
+
+
+<text>
+Parallelization of DFS 
+- for dense graphs @ Section 10.6 <cite>Grama et al. 2003</cite>
+- Parallel DFS @ Section 11.4  <cite>Grama et al. 2003</cite>
+</text>
+
+
+</document>
+
+
+
+<document>
+<tag>graph-exploration-bfs</tag>
+<title>Breadth-first search</title>
+
+<text>
+Implementation: queue (FIFO: we explore the oldest unexplored vertices first).
+</text>
+
+<text>
+EFFICIENCY: <eqn>O(n+m)</eqn> using adjacency lists
+</text>
+
+<text>
+Properties (due to the fact that each path in the tree must be the shortest path in the graph):
+
+- For undirected graphs, edges not appearing in the breadth-first search tree can only point to nodes on the same level or to the level directly below.
+</text>
+
+
+
+<text>
+APPLICATIONS
+</text>
+
+<text>
+++ Shortest paths can be found by performing a breadth-first search on unweighted/binary graphs <cite>Moore 1959</cite>
+
+
+(more elaborate algorithms are required for weighted graphs, as we will see later): the tree resulting from BFS defines the shortest paths from the root to the remaining nodes in the graph. IMPLEMENTATION: parent[node] @ Visitor + reversal using recursion/stack
+</text>
+
+<text>
+++ Connected components: Any node we visit is part of the same connected component. Starting the search from any unvisited node, we can obtain additional connected components.
+</text>
+
+<text>
+++ Two-coloring graphs = Bipartite testing: A graph is bipartite if it can be colored without conflicts using two colors. Whenever we visit a new node, we color it using the opposite of its parent's color. If edges appear with the same color at both ends, the graph is not bipartite. Otherwise, we have partitioned the graph.
+
+
+"Color the first vertex blue, and then do a depth-first search of the graph. Whenever we discover a new, uncolored
+vertex, color it opposite of its parent, since the same color would cause a clash. The graph cannot be bipartite if we ever find an edge (x, y) where both x and y have been colored identically. Otherwise, the final coloring will be a 2-coloring, constructed in O(n + m) time."
+</text>
+
+
+<text>
+++ Distributed algorithm @ MIT Lecture 2 (synchronous) + Lecture 9 (asynchronous) / Section 4.2 + Section 15.4 <cite>Lynch 1997</cite>
+@ MIT Distributed algorithms Lecture 21
+</text>
+
+<text>
+++ Sublinear approximate algorithm @ MIT Sublinear algorithms => Goal: Quickly distinguish inputs that have specific property from those that are far from having the property...
+</text>
+
+
+</document>
+
+
+
+<document>
+<tag>graph-exploration-best-first</tag>
+<title>Best-first search</title>
+
+<text>
+Best-first search... heuristics
+
+Judea Pearl described best-first search as estimating the promise of node n by a <q>heuristic evaluation function f(n) which, in general, may depend on the description of n, the description of the goal, the information gathered by the search up to that point, and most important, on any extra knowledge about the problem domain</q> <cite>Pearl 1984</cite>.
+
+</text>
+
+<text>
+<url>http://en.wikipedia.org/wiki/A*_search_algorithm</url>
+A* search algorithm
+
+HISTORY: In 1964 Nils Nilsson invented a heuristic based approach to increase the speed of Dijkstra's algorithm. This algorithm was called A1. In 1967 Bertram Raphael made dramatic improvements upon this algorithm, but failed to show optimality. He called this algorithm A2. Then in 1968 Peter E. Hart introduced an argument that proved A2 was optimal when using a consistent heuristic with only minor changes. His proof of the algorithm also included a section that showed that the new A2 algorithm was the best algorithm possible given the conditions. He thus named the new algorithm in Kleene star syntax to be the algorithm that starts with A and includes all possible version numbers or A*. <cite>Hart et al. 1968</cite> <cite>Hart et al. 1972</cite>
+
+Often used for path finding...
+
+++ Admissible heuristics...
+</text>
+
+
+<text>
+<url>http://en.wikipedia.org/wiki/B*</url>
+B* algorithm <cite>Berliner 1979</cite>
+</text>
+
+
+<text>
+++ Parallel best-first search @ Section 11.5 <cite>Grama et al. 2003</cite>
+</text>
+
+</document>
+
+</document>

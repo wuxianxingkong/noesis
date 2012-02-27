@@ -128,7 +128,9 @@ Implementation issues:
 
 <text>
 ++ Compression (Liu, "Web Data Mining", 232-242)
-++ SNAP
+
+++ SNAP: bignet.h (memory efficient implementation of a network with data on nodes. Use when working with very large networks)
+info: memory efficient implementation of TNodeNet (avoids memory fragmentation)
 </text>
 
 </document>

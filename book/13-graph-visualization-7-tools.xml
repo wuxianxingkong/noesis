@@ -72,7 +72,14 @@ Libraries:
 <text>
 Social network analysis tools: 
 - Pajek <cite>de Nooy et al. 2005</cite>,  output in several formats including SVG and postscript
+
+
 - NodeXL <cite>Hansen et al. 2010</cite>... include implementations of force-directed methods for visualizing social networks.
+  + Fruchterman-Reingold
+  + Harel-Koren Fast Multiscale
+  + Circle/spiral/sine wave/grid/polar
+  + Sugiyama
+  + Random
 
 - UCINET Software for Social Network Analysis, http://www.analytictech.com/ucinet/,  
 Commercial but cheap. Can read and write many types of simple text file, can deal with excel files and can export data for Mage and Pajek. Includes NetDraw for drawing diagrams. Also it contains many standard data sets from social science, such as the Karate Club, which can easily be exported to a text format. These may be available with the trial version. 

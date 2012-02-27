@@ -94,6 +94,9 @@ e.g. database of film actors, the electric power grid of the western United Stat
 L: Sparse small-world networks appear to model human social networks, because humans have limited capacity to know a large number of other humans.
 
 K: Jure Leskovec and Eric Horvitz [273]. They analyzed 30 billion conversations among 240 million active user accounts on Microsoft Instant Messenger (IM): a giant component containing almost all of the nodes, with an estimated average distance of 6.6 and an estimated median of 7 (over a random sample, due to the huge size of the graph)
+@SNAP: Largest network we analyzed so far using the library was the Microsoft Instant Messenger network from 2006 with 240 million nodes and 1.3 billion edges. WWW 2008
+[Planetary-Scale Views on a Large Instant-Messaging Network by J. Leskovec, E. Horvitz. International World Wide Web Conference (WWW), 2008. ]
+extended version @
 [Jure Leskovec and Eric Horvitz (June 2007). Planetary-Scale Views on an Instant-Messaging Network. arXiv:0803.0939.]
 http://arxiv.org/abs/0803.0939
 

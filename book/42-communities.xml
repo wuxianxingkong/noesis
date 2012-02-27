@@ -188,6 +188,19 @@ Overlapping communities, where nodes can be central to more than one community <
 ++ Survey <cite>Fortunato 2010</cite>
 </text>
 
+<text>
+++ Leskovec et al. 2010
+ author = {Leskovec, Jure and Lang, Kevin J. and Mahoney, Michael},
+ title = {Empirical comparison of algorithms for network community detection},
+ booktitle = {Proceedings of the 19th International Conference on the World Wide Web},
+ series = {WWW '10},
+ year = {2010},
+ isbn = {978-1-60558-799-8},
+ location = {Raleigh, North Carolina, USA},
+ pages = {631--640},
+ doi = {http://doi.acm.org/10.1145/1772690.1772755},
+</text>
+
 
 
 </document>

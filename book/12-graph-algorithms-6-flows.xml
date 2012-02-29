@@ -37,7 +37,14 @@ networks
 
 <text>
 Network flow problem: The maximum amount of flow that can be sent from s to t in a given graph.
+
+
 </text>
+
+
+<document>
+<tag>graph-flow-algorithms</tag>
+<title>Network flow algorithms</title>
 
 <text>
 The two major techniques for solving flow problems are the augmenting-path method and the preflow-push method.
@@ -57,7 +64,16 @@ algorithms are the method of choice in practice"
 </text>
 
 
+<text>
+The standard reference for network flow algorithms and their history is <cite>Ahuja et al. 1993</cite>. 
+The fastest known general network flow algorithm runs in <eqn>O(nm \log(n^2/m))</eqn> time <cite>Goldberg and Tarjan 1988</cite>.
+</text>
+
 <!-- Augmenting paths -->
+
+<document>
+<tag>graph-flow-augmenting-paths</tag>
+<title>Network flow algorithms: Augmenting paths</title>
 
 <text>
 IDEA: <b>Augmenting paths</b>
@@ -110,19 +126,256 @@ The algorithm is identical to the Ford-Fulkerson algorithm, except that the sear
 Another property of this algorithm is that the length of the shortest augmenting path increases monotonically.
 </text>
 
+
 <text>
-The standard reference for network flow algorithms and their history is <cite>Ahuja et al. 1993</cite>. 
-The fastest known general network flow algorithm runs in <eqn>O(nm \log(n^2/m))</eqn> time <cite>Goldberg and Tarjan 1988</cite>.
+AN ALTENATIVE 
+- the blocking flow algorithm of Dinitz
+<url>http://en.wikipedia.org/wiki/Dinitz_blocking_flow_algorithm</url>
++ conceived in 1970 by the then Soviet computer scientist Yefim Dinitz, earlier than the Edmonds–Karp algorithm. The algorithm runs in O(V2E) time and is similar to the Edmonds–Karp algorithm, which runs in O(VE2) time, in that it uses shortest augmenting paths. 
+
+Concepts: level graph and blocking flow
+
+Dinitz blocking flow algorithm	
+O(n^2m)	
+In each phase the algorithms builds a layered graph with breadth-first search on the residual graph. The maximum flow in a layered graph can be calculated in O(nm) time, and the maximum number of the phases is n-1. In networks with unit capacities, Dinitz's algorithm terminates in O(n\sqrt{m}) time.
+
+Dinitz blocking flow algorithm with dynamic trees	
+O(nm \log n)	
+The dynamic trees data structure speeds up the maximum flow computation in the layered graph to O(m \log n).
+
+A link/cut tree is a type of data structure that can merge (link) and split (cut) data sets in O(log(n)) amortized time, and can find which tree an element belongs to in O(log(n)) amortized time. In the original publication, Sleator and Tarjan referred to link/cut trees as “dynamic trees”.
+[Sleator, D. D.; Tarjan, R. E. (1983). "A Data Structure for Dynamic Trees". Proceedings of the thirteenth annual ACM symposium on Theory of computing - STOC '81. pp. 114. doi:10.1145/800076.802464]
+[Sleator, D. D.; Tarjan, R. E. (1985). "Self-Adjusting Binary Search Trees". Journal of the ACM 32 (3): 652. doi:10.1145/3828.3835]
+
+
+++ the binary blocking flow algorithm of Goldberg and Rao. 
+[Andrew V. Goldberg and S. Rao (1998). "Beyond the flow decomposition barrier". J. Assoc. Comput. Mach. 45 (5): 753–782. doi:10.1145/290179.290181]
+
+Binary blocking flow algorithm [1]		
+O(m \min \{n^{2/3}, \sqrt{m}\} \log ( n^2/m ) \log U )
+The value U corresponds to the maximum capacity of the network.
 </text>
+
+
+<text>
+SUMMARY
+Ford–Fulkerson algorithm:
+O(m max|f|)	
+As long as there is an open path through the residual graph, send the minimum of the residual capacities on the path.
+The algorithm works only if all weights are integers. Otherwise it is possible that the Ford–Fulkerson algorithm will not converge to the maximum value.
+
+Edmonds–Karp algorithm:
+O(nm^2)
+A specialization of Ford–Fulkerson, finding augmenting paths with breadth-first search.
+
+Dinitz algorithm:
+O(n^2m)
+Another augmenting-paths algorithm, based on level graphs and blocking flows
+</text>
+
+</document>
+
 
 <!-- Preflow-push -->
 
+<document>
+<tag>graph-flow-augmenting-paths</tag>
+<title>Network flow algorithms: Preflow-push methods</title>
+
+
 <text>
-++ Kleinberg 7 + 13.2
+The preflow-push maximum flow algorithm was devised by Andrew Goldberg in his Ph.D. thesis <cite>Goldberg 1986</cite>and its efficient implementation is described in <cite>Goldberg and Tarjan 1986</cite>. Goldberg, now at Microsoft Research, maintains a web site with code...
+
+[Golberg 1986]
+[GOLDBERG, A. V. A new max-flow algorithm. Tech. Rep. MIT/LCS/TM-291, Laboratory for Computer Science, Massachusetts Institute of Technology, Cambridge, Mass., 1985.]
+[GOLDBERG, A. V. Efficient graph algorithms for sequential and parallel computers. Ph.D. thesis, Laboratory for Computer Science, Massachusetts Institute of Technology, Cambridge, Mass., 1985.]
+[A V Goldberg , R E Tarjan, A new approach to the maximum flow problem, Proceedings of the 18th annual ACM symposium on Theory of computing, p.136-146, May 28-30, 1986, Berkeley, California, United States  [doi>10.1145/12130.12144] ]
+[Andrew V. Goldberg and Robert E. Tarjan (1988). "A new approach to the maximum-flow problem". Journal of the ACM 35(4): 921–940. doi:10.1145/48014.61051]
+
+[Andrew V. Goldberg , Robert E. Tarjan, Finding minimum-cost circulations by successive approximation, Mathematics of Operations Research, v.15 n.3, p.430-466, Aug. 1990  [doi>10.1287/moor.15.3.430]]
+[Goldberg, A. V.; Tarjan, R. E. (1989). "Finding minimum-cost circulations by canceling negative cycles". Journal of the ACM 36 (4): 873. doi:10.1145/76359.76368] — Application of dynamic trees to min-cost circulation
 </text>
 
 <text>
+a.k.a. push-relabel algorithm
+<url>http://en.wikipedia.org/wiki/Push-relabel_maximum_flow_algorithm</url>
+</text>
+
+<text>
+General push-relabel maximum flow algorithm	
+O(n^2m)	
+The push relabel algorithm maintains a preflow, i.e. a flow function with the possibility of excess in the vertices. The algorithm runs while there is a vertex with positive excess, i.e. an active vertex in the graph. The push operation increases the flow on a residual edge, and a height function on the vertices controls which residual edges can be pushed. The height function is changed with a relabel operation. The proper definitions of these operations guarantee that the resulting flow function is a maximum flow.
+
+Push-relabel algorithm with FIFO vertex selection rule
+O(n^3)
+Push-relabel algorithm variant which always selects the most recently active vertex, and performs push operations until the excess is positive or there are admissible residual edges from this vertex.
+
+Push-relabel algorithm with dynamic trees	
+O(nm log(n^2/m))	
+The algorithm builds limited size trees on the residual graph regarding to height function. These trees provide multilevel push operations.
+</text>
+
+<text>
+i.e. one of the most efficient algorithms to compute a maximum flow. 
++ The general algorithm has O(n^2m) time complexity, 
+- while the implementation with FIFO vertex selection rule has O(n^3) running time,
++ the highest active vertex selection rule provides O(n^2 \sqrt{m}) time complexity, 
++ the implementation with Sleator's and Tarjan's dynamic tree data structure runs in O(nm log(n^2/m)) time. 
+Asymptotically, it is more efficient than the Edmonds-Karp algorithm, which runs in O(nm^2) time.
+</text>
+
+
+<text>
+WIKIPEDIA
+
+Given a flow network G(V,E) with capacity from node u to node v given as c(u,v), source s and sink t, we want to find the maximum amount of flow you can send from s to t through the network. Two types of operations are performed on nodes, push and relabel. Throughout we maintain:
+
+- f(u,v) = Flow from u to v. Available capacity is c(u,v) - f(u,v).
+- height(u) = We only push from u to v if height(u) > height(v). For all u, height(u) is a non-negative integer.
+- excess(u) = Sum of flow to and from u.
+
+After each step of the algorithm, the flow is a preflow, satisfying:
+. The flow between u and v, does not exceed the capacity, i.e. f(u,v) \leq c(u,v)
+. We maintain the net flow: f(u,v) = -f(u,v).
+. \sum f(u,v) = excess(u) \leq 0  for all nodes u \neq s ; i.e. only the source may produce flow.
+
+Notice that the last condition for a preflow is relaxed from the corresponding condition for a legal flow in a regular flow network.
+
+We observe that the longest possible path from s to t is | V | nodes long. Therefore it must be possible to assign height to the nodes such that for any legal flow, height(s) = | V | and height(t) = 0, and if there is a positive flow from u to v, height(u) &gt; height(v). As we adjust the height of the nodes, the flow goes through the network as water through a landscape. Differing from algorithms such as Ford-Fulkerson, the flow through the network is not necessarily a legal flow throughout the execution of the algorithm.
+
+In short words, the heights of nodes (except s and t) is adjusted, and flow is sent between nodes, until all possible flow has reached t. Then we continue increasing the height of internal nodes until all the flow that went into the network, but did not reach t, has flowed back into s. A node can reach the height 2 | V | - 1 before this is complete, as the longest possible path back to s excluding t is | V | - 1 long, and height(s) = | V | . The height of t is kept at 0.
+
+
+Push
+
+A push from u to v means sending a part of the excess flow into u on to v. 
+
+Three conditions must be met for a push to take place:
+- excess(u) &gt; 0. More flow into the node than out of it so far.
+- c(u,v) - f(u,v) &gt; 0. Available capacity from u to v.
+- height(u) &gt; height(v). Can only send to lower node.
+
+We send an amount of flow equal to min(excess(u), c(u,v) - f(u,v)).
+
+
+Relabel
+
+Doing a relabel on a node u is increasing its height until it is higher than at least one of the nodes it has available capacity to. 
+Conditions for a relabel:
+- excess(u) &gt; 0. There must be a point in relabelling.
+- height(u) &lt; height(v) for all v such that c(u,v) - f(u,v) &gt; 0. The only nodes we have available capacity to are higher.
+
+When relabelling u, we set height(u) to be the lowest value such that height(u) &gt; height(v) for some v where c(u,v) - f(u,v) &gt; 0.
+
+
+Push-relabel algorithm
+
+Push-relabel algorithms in general have the following layout:
+
+  As long as there is legal push or relabel operation
+     Perform a legal push or a legal relabel.
+
+The running time for these algorithms are in general O(n^2m)
+
+
+HEURISTICS
+
+- Use a gap heuristic. If there is a k such that for no node, height(u) = k, you can set height(u) = max(height(u),height(s) + 1) for all nodes except s for which height(u) &gt; k. This is because any such k represents a minimal cut in the graph, and no more flow will go from the nodes S = {u | height(u) &gt; k} to the nodes T = {v | height(v) &lt; k}. If (S,T) was not a minimal cut, there would be an edge (u,v) such that ,  and c(u,v) - f(u,v) &gt; 0. But then height(u) would never be set higher than height(v) + 1, contradicting that height(u) &gt; k and height(v) &lt; k.
+</text>
+
+<note>
+<text>
+Relabel-to-front algorithm, i.e. using FIFO heuristic
+In the relabel-to-front algorithm, the order of the push and relabel operations is given:
+
+Send as much flow from s as possible.
+Build a list of all vertices except s and t.
+As long as we have not traversed the entire list:
+   Discharge the current vertex.
+   If the height of the current vertex changed:
+      Move the current vertex to the front of the list
+      Restart the traversal from the front of the list.
+
+
+Discharge
+
+As long as excess(u) > 0:
+   If not all neighbours have been tried since last relabel:
+      Try to push flow to an untried neighbour.
+   Else:
+      Relabel u
+
+NOTE: This requires that for each node, it is known which nodes have been tried since last relabel.
+
+
+The running time for relabel-to-front is O(n^3)
+</text>
+</note>
+
+
+</document>
+
+<document>
+<tag>graph-flow-linear-programming</tag>
+<title>Network flow as a linear program</title>
+
+<text>
+++ linear programming (constraints given by the definition of a legal flow) ++
+
+<url>http://en.wikipedia.org/wiki/Maximum_flow_problem</url>
+</text>
+
+
+</document>
+
+<document>
+<tag>graph-flow-linear-programming</tag>
+<title>Randomized and approximation algorithms</title>
+
+
+<text>
++ RANDOMIZED ALGORITHM for minimum cuts @Kleinberg 13.2
+[Karger Ph.D. thesis 1995] David R. Karger: Random sampling in graph optimization problems, Ph.D. Thesis, Stanford University, 1995
+[Karger and Stein 1996] David R. Karger and Clifford Stein. 1996. A new approach to the minimum cut problem. JACM 43, 4 (July 1996), 601-640. DOI=10.1145/234533.234534 http://doi.acm.org/10.1145/234533.234534
+
+  ABSTRACT: The fundamental principle is simple: the edges in a graph's minimum cut form an extremely small fraction of the graph's edges. Using this idea, we give a randomized, strongly polynomial algorithm that finds the minimum cut in an arbitrarily weighted undirected graph with high probability. The algorithm runs in O(n2log3n) time, a significant improvement over the previous O(mn) time bounds based on maximum flows. It is simple and intuitive and uses no complex data structures. 
+  
+  Our algorithm can be parallelized to run in RNC with n2 processors; this gives the first proof that the minimum cut problem can be solved in RNC. The algorithm does more than find a single minimum cut; it finds all of them. With minor modifications, our algorithm solves two other problems of interest. Our algorithm finds all cuts with value within a multiplicative factor of agr; of the minimum cut's in expected O(n2 agr;) time, or in RNC with n2 agr; processors. The problem of finding a minimum multiway cut of graph into r pieces is solved in expected O(n2(r-1)) time, or in RNC with n2(r-1) processors.
+  
+  The "trace" of the algorithm's execution on these two problems forms a new compact data structure for representing all small cuts and all multiway cuts in a graph. This data structure can be efficiently transformed into the more standard cactus representing for minimum cuts.
+</text>
+
+<text>
++ APPROXIMATION ALGORITHM The electrical flow algorithm of Christiano, Kelner, Madry, and Spielman finds an approximately optimal maximum flow but only works in undirected graphs.
+
+[Electrical Flows, Laplacian Systems, and Faster Approximation of Maximum Flow in Undirected Graphs , with Paul Christiano, Jonathan Kelner, Daniel Spielman, and Shang-Hua Teng, http://people.csail.mit.edu/madry/docs/maxflow.pdf]
+STOC 2011. Best Paper Award. Invited to Journal of the ACM.
+
+Paul Christiano, Jonathan A. Kelner, Aleksander Madry, Daniel A. Spielman, and Shang-Hua Teng. 2011. Electrical flows, laplacian systems, and faster approximation of maximum flow in undirected graphs. In Proceedings of the 43rd annual ACM symposium on Theory of computing (STOC '11). ACM, New York, NY, USA, 273-282. DOI=10.1145/1993636.1993674 http://doi.acm.org/10.1145/1993636.1993674
+
+
+
+  ABSTRACT: We introduce a new approach to computing an approximately maximum s-t flow in a capacitated, undirected graph. This flow is computed by solving a sequence of electrical flow problems. Each electrical flow is given by the solution of a system of linear equations in a Laplacian matrix, and thus may be approximately computed in nearly-linear time. Using this approach, we develop the fastest known algorithm for computing approximately maximum s-t flows. For a graph having n vertices and m edges, our algorithm computes a (1-e)-approximately maximum s-t flow in time ~O(mn1/3e-11/3). A dual version of our approach gives the fastest known algorithm for computing a (1+e)-approximately minimum s-t cut. It takes ~O(m+n4/3e-16/3) time. Previously, the best dependence on m and n was achieved by the algorithm of Goldberg and Rao (J. ACM 1998), which can be used to compute approximately maximum s-t flows in time ~O({mvne-1), and approximately minimum s-t cuts in time ~O(m+n3/2e-3).
+</text>
+
+</document>
+
+
+</document>
+
+<!-- Related problems -->
+
+<document>
+<tag>graph-flow-variants</tag>
+<title>Related problems</title>
+
+
+<text>
 ++ @ MIT Graphs - Network flow
+</text>
+
+<text>
+++ Kleinberg 7 
 </text>
 
 
@@ -150,11 +403,63 @@ commodity and we seek to satisfy all demands without exceeding the total
 capacity of any edge. Linear programming will suffice for multicommodity flow if fractional flows
 are permitted. Unfortunately, integral multicommodity flow is NP-complete,
 even for only two commodities.
+</text>
 
 <text>
 ++ Kleinberg: Circulations with demands
 </text>
 
+
+<text>
+WIKIPEDIA
+
+Multi-source multi-sink maximum flow problem
+Given a network N = (V,E) with a set of sources S = {s1, ..., sn} and a set of sinks T = {t1, ..., tm} instead of only one source and one sink, we are to find the maximum flow across N. We can transform the multi-source multi-sink problem into a maximum flow problem by adding a consolidated source connecting to each vertex in S and a consolidated sink connected by each vertex in T with infinite capacity on each edge (See Fig. 4.1.1.).
+Fig. 4.1.1. Transformation of a multi-source multi-sink maximum flow problem into a single-source single-sink maximum flow problem
+
+Minimum path cover in directed acyclic graph
+Given a directed acyclic graph G = (V, E), we are to find the minimum number of paths to cover each vertex in V. We can construct a bipartite graph G' = (Vout?Vin, E' ) from G, where
+Vout = {v?V: v has positive out-degree}.
+Vin = {v?V: v has positive in-degree}.
+E' = {(u,v)?(Vout,Vin): (u,v)?E}.
+Then it can be shown that G' has a matching of size m if and only if there exists n-m paths that cover each vertex in G, where n is the number of vertices in G. Therefore, the problem can be solved by finding the maximum cardinality matching in G' instead.
+
+
+Maximum cardinality bipartite matching
+Given a bipartite graph G = (X?Y, E), we are to find a maximum cardinality matching in G, that is a matching that contains the largest possible number of edges. This problem can be transformed into a maximum flow problem by constructing a network N = (X?Y?{s,t}, E' }, where
+E' contains the edges in G directed from X to Y.
+(s,x)?E' for each x?X and (y,t)?E' for each y?Y.
+c(e) = 1 for each e?E' (See Fig. 4.3.1).
+Then the value of the maximum flow in N is equal to the size of the maximum matching in G.
+Fig. 4.3.1. Transformation of a maximum bipartite matching problem into a maximum flow problem
+
+
+Maximum flow problem with vertex capacities
+Given a network N = (V, E), in which there is capacity at each node in addition to edge capacity, that is, a mapping c: V?R+, denoted by c(v), such that the flow f has to satisfy not only the capacity constraint and the conservation of flows, but also the vertex capacity constraint
+Si?Vfiv = c(v) for each v?V\{s,t}.
+In other words, the amount of flow passing through a vertex cannot exceed its capacity.
+To find the maximum flow across N, we can transform the problem into the maximum flow problem in the original sense by expanding N. First, each v?V is replaced by vin and vout, where vin is connected by edges going into v and vout is connected to edges coming out from v, then assign capacity c(v) to the edge connecting vin and vout (See Fig. 4.4.1). In this expanded network, the vertex capacity constraint is removed and therefore the problem can be treated as the original maximum flow problem.
+Fig. 4.4.1. Transformation of a maximum flow problem with vertex capacities constraint into the original maximum flow problem by node splitting
+
+Maximum independent path
+Given a directed graph G = (V, E) and two vertices s and t, we are to find the maximum number of independent paths from s to t. Two paths are said to be independent if they do not have a vertex in common apart from s and t. We can construct a network N = (V, E) from G with vertex capacities, where
+s and t are the source and the sink of N respectively.
+c(v) = 1 for each v?V.
+c(e) = 1 for each e?E.
+Then the value of the maximum flow is equal to the maximum number of independent paths from s to t.
+
+Maximum edge-disjoint path
+Given a directed graph G = (V, E) and two vertices s and t, we are to find the maximum number of edge-disjoint paths from s to t. This problem can be transformed to a maximum flow problem by constructing a network N = (V, E) from G with s and t being the source and the sink of N respectively and assign each edge with unit capacity.
+</text>
+
+<text>
+More related problems:
+++ Connectivity: Finding edge-disjoint paths (equivalent to the maximum-flow problem)
+ref. Menger's theorem <cite>Menger 1927</cite> <cite>Menger 1981</cite>
+Kerl Menger (1902-1985)
+[Karl Menger: "Zur allgemeinen Kurventheorie ("For the General Theory of Curves", in German), Fundamenta Mathematicae 19:96-115, 1927]
+[Karl Menger: On the origin of the n-arc theorem, Journal of Graph Theory 5:4 (1981), 341-350. DOI: 10.1002/jgt.3190050402 ]
+<url>http://en.wikipedia.org/wiki/Menger's_theorem</url>
 </text>
 
 <document>
@@ -168,6 +473,19 @@ A set of edges whose deletion separates s from t is called an s-t cut. Since no 
 <text>
 Therefore, flow algorithms can be used to solve edge and vertex connectivity problems that are employed to answer questions such as
 What is the smallest subset of vertices (or edges) whose deletion will disconnect G? Or which will separate s from t? Such problem often appear when stuydying network reliability.
+</text>
+
+
+<text>
+<url>http://en.wikipedia.org/wiki/Max-flow_min-cut_theorem</url>
+the max-flow min-cut theorem states that in a flow network, the maximum amount of flow passing from the source to the sink is equal to the minimum capacity which when removed in a specific way from the network causes the situation that no flow can pass from the source to the sink.
+NOTE: The max-flow min-cut theorem is a special case of the duality theorem for linear programs and can be used to derive Menger's theorem (a basic result about connectivity in finite undirected graphs) and the König-Egerváry Theorem (which  describes an equivalence between the maximum matching problem and the minimum vertex cover problem in bipartite graphs).
+
+NOTE++ In optimization theory, the duality principle states that optimization problems may be viewed from either of two perspectives, the primal problem or the dual problem, i.e. it is often possible to convert the primal problem (i.e. the original form of the optimization problem) to a dual form, which is termed a dual problem.
+</text>
+
+<text>
+In fact, as reported by <cite>Schrijver 2002</cite>, the original motivation of this problem was related to disrupting the railway transportation network through the Soviet Union, at least according to declassified U.S. Air Force documents.
 </text>
 
 <text>
@@ -259,6 +577,7 @@ Standard algorithms for bipartite matching based on network flows:
 <text>
 Remember that a graph is bipartite (or two-colorable) if its vertices can be divided into two sets, L and R, so that every edge in the graph connects one vertex from the first set to a different vertex on the second set.
 </text>
+
 <text>
 The largest possible bipartite matching can be found using network flow. Just add a source node s connected to every vertex in L with capacity 1, add a sink node t connected to every node in R, and assign each edge in the bipartite graph a capacity of 1. The maximum flow from s to t determines the largest matching in the bipartite graph.
 </text>
@@ -268,7 +587,15 @@ The best algorithm for maximum bipartite matching, based on Hopcroft and Karp's 
 </text>
 
 <text>
-Classic algorithm: Hungarian algorithm for bipartite matching <cite>Kuhn 1955</cite>. The Hungarian algorithm runs in <eqn>O(n(m + n \log n))</eqn> time.
+Classic algorithm: Hungarian algorithm for bipartite matching <cite>Kuhn 1955</cite>. The Hungarian algorithm runs in <eqn>O(n(m + n \log n))</eqn> time and predates work on network flow algorithms.
+</text>
+
+<text>
+HISTORY: 
+<cite>Hall 1935</cite> 
+[P. Hall: "On representation of subsets", J. London Mathematical Society 10:26,30, 1935]
+<cite>Konig 1916</cite>
+[D. König: "Uber Graphen und ihre Anwendung auf Determinantentheorie und Memgenlehre" (About graphs and their application to set theory and the theory of determinants, in German), Mamathemastische Annalen, 77:453-465, 1916]
 </text>
 
 <text>
@@ -280,6 +607,8 @@ Matching based on preferences (e.g. matching medical residents to hospitals or s
 @ MIT Graphs - Matching
 </text>
 
+
+</document>
 
 </document>
 

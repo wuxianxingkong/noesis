@@ -27,7 +27,22 @@ Many textbooks describe at least part of the material mentioned in this chapter.
 
 
 <text>
-Network flow; monographs <cite>Ahuja et al. 1993</cite> <cite>Ford and Fulkerson 1962</cite>; surveys <cite>Goldberg et al. 1990</cite> <cite>Schrijver 2002</cite>; original algorithms <cite> Ford and Fulkerson 1956</cite> <cite>Edmonds and Karp 1972</cite>
+Network flow:
+
+- monographs: reference <cite>Ahuja et al. 1993</cite>, original work <cite>Ford and Fulkerson 1962</cite>;
+- surveys <cite>Goldberg et al. 1990</cite> <cite>Schrijver 2002</cite>;
+- original algorithms <cite>Ford and Fulkerson 1956</cite> <cite>Edmonds and Karp 1972</cite>;
+- 114-page chapter <cite>Kleinberg and Tardos 2005</cite>, including an extensive list of exercises
+
+++ [Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. Introduction to Algorithms, Second Edition. MIT Press and McGraw-Hill, 2001. ISBN 0-262-03293-7. ... Section 26.4: Push-relabel algorithms, and section 26.5: The relabel-to-front-algorithm.]
+
++ books on combinatorial optimization <cite>Cook et al. 1998</cite>
+[W.J. Cook, W.H. Cunningham, W.R. Pulleyblank, and A. Schrijver: Combinatorial Optimization, Wiley, 1998]
+
+[Schrijver, Alexander, "On the history of the transportation and maximum flow problems", Mathematical Programming 91 (2002) 437-445]
+@ <url>http://homepages.cwi.nl/~lex/files/histtrpclean.pdf</url>
+
+++ [Ford, L.R., Jr.; Fulkerson, D.R., "Maximal Flow through a Network", Canadian Journal of Mathematics (1956), pp.399-404.]
 </text>
 
 <text>

@@ -174,7 +174,7 @@ The value U corresponds to the maximum capacity of the network.
 <text>
 SUMMARY
 Ford–Fulkerson algorithm:
-O(m max|f|)	
+O(mC)	
 As long as there is an open path through the residual graph, send the minimum of the residual capacities on the path.
 The algorithm works only if all weights are integers. Otherwise it is possible that the Ford–Fulkerson algorithm will not converge to the maximum value.
 
@@ -211,6 +211,29 @@ The preflow-push maximum flow algorithm was devised by Andrew Goldberg in his Ph
 </text>
 
 <text>
+IDEA: Instead of increasing the value of the flow for full augmenting paths, increase the flow on an edge-by-edge basis even when that violates the conservation condition.
+</text>
+
+<text>
+Preflow: An s-t preflow is a function that maps each edge e to a nonnegative real number. This function must satisfy the capacity conditions, i.e. 0 \leq f(e) \leq c(e) for all edges but, instead of imposing the conservation condition, we require the satisfaction of an inequality: each node other than the source must have at least as much flow entering as leaving.
+</text>
+
+<equation>
+\sum_{e \text{ into } v} f(e) \geq \sum_{e \text{ out of } v} f(e)
+</equation>
+
+<text>
+The difference between both quantities is the excess of the preflow at node <eqn>v</eqn>. When all nodes, apart from the source and the sink, have zero excess, then we have a flow whose value <eqn>is e_f(t)=-e_f(s)</eqn>.
+</text>
+
+<text>
+A preflow-push algorithm will work on a preflow until it becomes a flow...
+
+Since flow finds its way downhill in Nature, we will label nodes with heights and push flow from higher nodes to lower nodes.
+</text>
+
+
+<text>
 a.k.a. push-relabel algorithm
 <url>http://en.wikipedia.org/wiki/Push-relabel_maximum_flow_algorithm</url>
 </text>
@@ -245,8 +268,19 @@ WIKIPEDIA
 Given a flow network G(V,E) with capacity from node u to node v given as c(u,v), source s and sink t, we want to find the maximum amount of flow you can send from s to t through the network. Two types of operations are performed on nodes, push and relabel. Throughout we maintain:
 
 - f(u,v) = Flow from u to v. Available capacity is c(u,v) - f(u,v).
-- height(u) = We only push from u to v if height(u) > height(v). For all u, height(u) is a non-negative integer.
+
 - excess(u) = Sum of flow to and from u.
+
+- height(u) = We only push from u to v if height(u) &gt; height(v). 
+   For the source, height(s) = n
+   For the sink, height(t) = 0
+   For all u, height(u) is a non-negative integer
+   
+For that labeling to be compatible with the preflow, for all edges (v,w) in the residual graph, height(v) \leq height(w)+1 must hold. When a preflow f is compatible with a labeling h, then there is no s-t path in the residual graph G_f. Therefore, it f is a flow compatible with the labeling, then it must be a flow of maximum value.
+
+Where augmenting-path algorithms maintain a feasible flow, preflow-push algorithms maintain a condition that implies the optimality of the preflow once it becomes a flow.
+
+
 
 After each step of the algorithm, the flow is a preflow, satisfying:
 . The flow between u and v, does not exceed the capacity, i.e. f(u,v) \leq c(u,v)
@@ -260,9 +294,21 @@ We observe that the longest possible path from s to t is | V | nodes long. There
 In short words, the heights of nodes (except s and t) is adjusted, and flow is sent between nodes, until all possible flow has reached t. Then we continue increasing the height of internal nodes until all the flow that went into the network, but did not reach t, has flowed back into s. A node can reach the height 2 | V | - 1 before this is complete, as the longest possible path back to s excluding t is | V | - 1 long, and height(s) = | V | . The height of t is kept at 0.
 
 
-Push
+IDEA: Initially, h(v)=0 for all nodes but the source, h(s)=n. To make a preflow compatible with theis labeling, we make sure that no edges leaving s are in the residual graph, so that f(e)=c(e) for them and f(e)=0 for all other edges. This initial preflow is compatible with the labeling.
 
+
+Push
 A push from u to v means sending a part of the excess flow into u on to v. 
+
+(on any node v with excess flow: if an edge in the residual graph leaves v and goes to a node w at a lower height, we modify f to push some of the excess flow from v to w)
+
+
+if e is a forward edge
+   increase f(e) by \delta = min ( e_f(v), c(e)-f(e) )
+
+if e is a backward edge
+   decrease f(e) by \delta = min ( e_f(v), f(e) )
+
 
 Three conditions must be met for a push to take place:
 - excess(u) &gt; 0. More flow into the node than out of it so far.
@@ -273,6 +319,11 @@ We send an amount of flow equal to min(excess(u), c(u,v) - f(u,v)).
 
 
 Relabel
+(when we cannot push the excess of v, we raise v's height and relabel)
+
+
+When e_f(v) \geq 0 and for all edges (v,w) h(w) \geq h(v)
+  Increase h(v)
 
 Doing a relabel on a node u is increasing its height until it is higher than at least one of the nodes it has available capacity to. 
 Conditions for a relabel:
@@ -289,12 +340,41 @@ Push-relabel algorithms in general have the following layout:
   As long as there is legal push or relabel operation
      Perform a legal push or a legal relabel.
 
-The running time for these algorithms are in general O(n^2m)
 
 
-HEURISTICS
+Initialize h(v) and f(e)
+while there is a node with excess e_f(v) &gt; 0
+   choose a node with excess v
+   if there is a node w so that push can be applied
+      push flow from v to w
+   else
+      relabel v
 
-- Use a gap heuristic. If there is a k such that for no node, height(u) = k, you can set height(u) = max(height(u),height(s) + 1) for all nodes except s for which height(u) &gt; k. This is because any such k represents a minimal cut in the graph, and no more flow will go from the nodes S = {u | height(u) &gt; k} to the nodes T = {v | height(v) &lt; k}. If (S,T) was not a minimal cut, there would be an edge (u,v) such that ,  and c(u,v) - f(u,v) &gt; 0. But then height(u) would never be set higher than height(v) + 1, contradicting that height(u) &gt; k and height(v) &lt; k.
+
+
+EFFICIENCY
+
+Throughout the algorithm, all nodes have h(v) \leq 2n-1, since there can be up to n-1 edges in a path and the steepness condition implies that the height of the nodes can decrease by at most 1 and, initially, h(s)=n; i.e. h(v)-h(s) \leq |P| \leq n-1. Therefore, each node can be relabeled at most 2n-1 times and the number of relabeling operations is O(n^2)
+
+The number of saturating push operations is at most 2nm and the number of nonsaturating push operations is at most 2n^2m, which determines the running time of the algorithm. In general, the running time for preflow-push algorithms is O(n^2m)
+
+To improve the bound on the number of nonsaturating push operations: If we choose the node with excess at maximum height, the number of nonsaturating push operations is at most 4n^3.
+
+Experimentally, it has been observed that the bottleneck is the number of relabeling operations, so variants of the relabeling operation have been developed to increase labels faster than one by one:
+
+e.g. Use a gap heuristic. If there is a k such that for no node, height(u) = k, you can set height(u) = max(height(u),height(s) + 1) for all nodes except s for which height(u) &gt; k. This is because any such k represents a minimal cut in the graph, and no more flow will go from the nodes S = {u | height(u) &gt; k} to the nodes T = {v | height(v) &lt; k}. If (S,T) was not a minimal cut, there would be an edge (u,v) such that ,  and c(u,v) - f(u,v) &gt; 0. But then height(u) would never be set higher than height(v) + 1, contradicting that height(u) &gt; k and height(v) &lt; k.
+
+
+IMPLEMENTATION to perform the operations of the algorithm in constant time: 
+
+- Lists of nodes with excess at every possible height
+
+- Adjacency list representation for selecting edges leaving v in the residual graph (both forward and backward edges, linked between them, and including their capacity and flow, so that updates are done in O(1))
+
+- current(v) pointing to the last edge that has been considered for a push operation, advanced after a saturating push operation. Edges will not be reconsidered until the node is relabeled, so the relabel operation will be performed when current(v) reaches the end of the edge list (and we reset it to the first edge after relabeling the node).
+
+Therefore: initial flow and labeling in O(m); push and relabel operations in O(1); each node can be relabeled 2n times and O(d(v)) time advancing the current(v) pointer between relabelings. Dealing with current pointers is then O(\sum_{v \in V} nd(v)) = O(mn) between consecutive relabelings: O(n^2m) generic algorithm, O(n^3) selecting the maximum height node.
+
 </text>
 
 <note>

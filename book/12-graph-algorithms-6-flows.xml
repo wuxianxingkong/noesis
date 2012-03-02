@@ -500,7 +500,17 @@ even for only two commodities.
 </text>
 
 <text>
-++ Kleinberg: Circulations with demands
+++ Kleinberg: Disjoint paths (7.6)
+- If there are k edge-disjoint paths, the value of the maximum flow is at least k
+- If f is a 0-1 valued flow of value k, then the set of edges with f(e)=1 contains a set of v edge-disjoint paths
+Ford-Fulkerson algorithm: O(mn) time
+</text>
+
+<text>
+++ Kleinberg: Circulations with demands (7.7)
+- Capacity and demand conditions
+- Reducing the circulation problem to the maximum flow problem
+...
 </text>
 
 
@@ -526,6 +536,7 @@ E' contains the edges in G directed from X to Y.
 c(e) = 1 for each e?E' (See Fig. 4.3.1).
 Then the value of the maximum flow in N is equal to the size of the maximum matching in G.
 Fig. 4.3.1. Transformation of a maximum bipartite matching problem into a maximum flow problem
+e.g. O(mn) using the Ford-Fulkerson algorithm
 
 
 Maximum flow problem with vertex capacities

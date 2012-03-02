@@ -105,8 +105,20 @@ Ford-Fulkerson algorithm <cite>Ford and Fulkerson 1956</cite>
 
 - Use the augmented path to update the residual graph (transfer the maximum possible volume from the residual capacity = the path edge with the smallest amount of residual capacity; NOTE: adding positive flow to (i,j) reduces the residual capacity of (i,j) but also increases the residual capacity of (j,i), i.e. augmenting a path requires updates to both forward and reverse links along the augmenting path ).
 - Terminate when no such augmenting path exists.
+</text>
 
-As described, even though the algorithm converges to the optimal solution, it may take arbitrarily long (each augmenting path might add only a little to the flow).
+
+<text>
+As described, even though the algorithm converges to the optimal solution, it may take arbitrarily long (each augmenting path might add only a little to the flow). 
+
+Assuming all capacities in the flow network are integers, we might require up to C iterations of the Ford-Fulkerson algorithm. Since each iteration requires finding an s-t path, a problem that can be solved in O(m) time, the Ford-Fulkerson algorithm requires O(Cm) time.
+
+The way we choose an augmenting path can severely impact the efficiency of the algorithm, specially for large integer capacities. Different approaches have been proposed:
+
+- Scaling max-flow, i.e. looking for paths of at least \Delta capacity by using the residual graph G_f(\Delta) consisting only of edges with residual capacity of at least \Delta (for different values of \Delta, typically powers of two of decreasing value). When \Delta=1, G_f(\Delta)=G_f. The number of different values of \Delta that must be tried is bounded by 1 + \lceil log_2 C \rceil. For each value of \Delta, augmentation paths augment the network flow for at least \Delta, limiting the number of augmentations in each scaling phase to, at most, 2m, since v(f*) \leq v(f) + m 2\Delta. Since each augmentation requires O(m) time and the scaling max-flow algorithm finds a maximum flow in, at most, 2m(1 + \lceil log_2 C \rceil) augmentations, it runs in O(m^2 log_2 C) time. In other words, whereas the original Ford-Fulkerson algorithm requires time proportional to the magnitude of the capacities (a pseudo-polynomial algorithm), the scaling max-flow algorithm requires time proportional to the number of bits needed to represent those capacities (a truly polynomial time algorithm).
+
+
+An alternative: Choosing the augmenting path with the fewest number of edges. This strategy leads to strongly polynomial algorithms that require O(mn) iterations, such as the ones independently developed by Dinitz andd Edmonds-Karp.
 </text>
 
 <text>
@@ -119,12 +131,14 @@ The algorithm is identical to the Ford-Fulkerson algorithm, except that the sear
 
 <text>
 
- <cite>Edmonds and Karp 1972</cite> proved that selecting the shortest unweighted augmenting path (a.k.a. shortest geodesic path) guarantees that <eqn>O(n^3)</eqn> augmentations suffice for optimization.
+ <cite>Edmonds and Karp 1972</cite> proved that selecting the shortest unweighted augmenting path (a.k.a. shortest geodesic path) guarantees that <eqn>O(mn)</eqn> augmentations suffice for optimization.
 
 <eqn>O(nm^2)</eqn> running time: each augmenting path can be found in <eqn>O(m)</eqn> time, every time at least one of the <eqn>m</eqn> edges becomes saturated, the distance from the saturated edge to the source along the augmenting path must be longer than last time it was saturated, and that length is at most <eqn>n</eqn>.
 
 Another property of this algorithm is that the length of the shortest augmenting path increases monotonically.
 </text>
+
+
 
 
 <text>

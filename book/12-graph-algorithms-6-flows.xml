@@ -505,7 +505,7 @@ graph into one big and one single-vertex component"
 - Weak links: We say that G is biconnected if no single vertex deletion is sufficient to disconnect G. Any vertex that is such a
 weak point is called an articulation vertex. A bridge is the analogous concept for edges, meaning a single edge whose deletion disconnects the graph. Linear-time algorithms for identifying articulation vertices and bridges also exist.
 
-- Finding the smallest cut-set that separates a given pair of vertices can be solved using network flow algorithms. 
+- Finding the smallest cut-set that separates a given pair of vertices can be solved using network flow algorithms: Given a network flow of maximum value, we can compute a minimum cut in O(m) time just by performing a breadth-first search on the residual graph. The set A* of all the nodes reachable from s and its complement, i.e. B*=V-A*, determine the minimum cut (A*,B*). 
 
 - Vertex connectivity is characterized by Menger's theorem, which states that a graph is k-connected if and only if every pair of vertices is joined by at least k vertex-disjoint paths. Network flow can again be used to perform this calculation, since a flow of k between a pair of vertices implies k edge-disjoint paths. we construct a graph G' such that any set of edge-disjoint paths in G' corresponds to vertex-disjoint paths in G. This is done by replacing each vertex vi of G with two vertices vi,1 and vi,2, such that edge (vi,1, vi,2)  G' for all vi G, and by replacing every edge (vi, x) in G by edges (vi,j, xk), j = k {0, 1} in G'. Thus two edge-disjoint paths in G' correspond to each vertex-disjoint path
 in G.

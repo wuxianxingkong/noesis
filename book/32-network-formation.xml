@@ -286,6 +286,137 @@ L: Yule first observed preferential attachment in evolution (Yule, 1925): Darwin
 L: Preferential attachment describes an emergent process—that is, a process that results in a network topology that is not apparent by examination of the local algorithm, or microrule. It is not at all obvious that the result of repeated application of preferential attachment will result in a network with a degree sequence distribution that follows a power law. This realization would come 70 years later, when A.-L. Barabasi and R. Albert showed how to create a scale-free network by repeated application of preferential attachment.
 </text>
 
+<comment>
+<title>Random resampling</title>
+
+<text>
+Alternatives for roulette wheel selection 
+
+A) Weight normalization + cumulative weights + single random U[0,1] for each new sample
+O(n) for a single sample, O(n^2) for n samples, O(nlog n) for n samples if binary search is employed
+
+B) Wheel + multiple calls to an uniform random number generator for each new sample
+O(n) for a single sample in the worst case, O(n^2) for n samples in the worst case, i.e. a extremely skewed distribution
+O(k) for a single sample in the average case, O(kn) for n samples in the average case
+Faster than the standard roulette wheel selection, despite higher number of calls to RNG ???
+++ "B is faster when the weights are uniformly distributed, and slower when they are exponentially distributed"
+
+++ "the resampling wheel aims to take advantage of the fact that we are going to select a large number of particles at once as opposed to "a particle at a time"."
+++ "tradeoff seems to be that you want as small an interval as possible to minimize the number of particles you visit on each step but still is sufficiently random to approximate the desired distribution. If the interval was very small then all of your samples would reside on a tiny slice of the wheel. If the interval is too large then you waste time "visiting." 2 * max(w) assures that you get at least one "new" particle per iteration of the algorithm. Why not use max(w) instead? That would bias the probability of choosing the larger elements because elements close to max(w) in size are essentially guaranteed to be selected"
+i.e.  2*wmax is a somewhat arbitrary value that balances keeping the tries to keep the algorithm efficient without overly biasing the results.
+i.e. if the increment was less than wmax, you would be guaranteed to select the highest probability particle so the results would definitely be biased. If the increment was 10*wmax, you would be looping through alot more particles and you algorithm would be less efficient.
+
+
+C) Walker's alias method, slightly faster, especially if there are many samples. 
+O(n) setup time using Vose's algorithm (makes sense if you do lots of sampling) + samples in O(1).
+An implementation in python can be found @ <url>http://code.activestate.com/recipes/576564/</url>, 
+
+Walker's algorithm essentially arranges a given lot of sticks into equal-length rows: pick a row shorter than average and a row longer than average, split the longer to fill the shorter, iterate until they're all the same length.
+
+
+Walker's method involves setting up \magic" tables of length nn, where nn is the smallest power of 2 that is \geq n.
+
+
+ref. On the Alias Method for Generating Random Variables from a Discrete Distribution
+     Richard A. Kronmal and Arthur V. Peterson, Jr.
+     The American Statistician
+     Vol. 33, No. 4 (Nov., 1979), pp. 214-218
+     <url>http://www.jstor.org/discover/10.2307/2683739</url>
+
+    "A Linear Algorithm For Generating Random Numbers With a Given Distribution" by Michael Vose
+    IEEE  TRANSACTIONS ON SOFTWARE  ENGINEERING,  VOL.  17, NO.  9, 972-975  SEPTEMBER  1991
+    <url>http://web.eecs.utk.edu/~vose/Publications/random.pdf</url>
+
+
+ref. "Darts, Dice, and Coins: Sampling from a Discrete Distribution"
+     Tutorial by Keith Schwarz, lecturer in Stanford's CS department: http://www.keithschwarz.com/darts-dice-coins/
+
+++ http://www.google.com/patents/US5247677
+   "Stochastic priority-based task scheduler
+   Robert V. Welland, Walter R. Smith
+   US Patent (Apple Computer, Inc.)
+   Patent number: 5247677
+   Filing date: May 22, 1992
+   Issue date: Sep 21, 1993
+
+++  L. Devroye, Non-Uniform Random Variate Generation, 1986, p. 107 ff., http://cg.scs.carleton.ca/~luc/rnbookindex.html
+    Knuth, Stanford GraphBase, 1993, p. 392, http://tex.loria.fr/sgb.html
+    Seminumerical Algorithms, second edition, exercise 3.4.1-7. 
+    C++ hat random container by AngleWyrm, http://home.comcast.net/~anglewyrm/hat.html
+
+++ non-random resampling ;-) "sorting the weights largest to smallest and then calculating exactly how many particles correspond to each of those weights. Because it isn't homework, I assume it is okay to post this non-random resampling algorithm."
+</text>
+
+<text>
+Evaluation (Matlab):
+</text>
+
+<code>
+for i=1:N
+  distribution(i) = sum(new==i)/N; % frequency of index i
+endfor
+
+error = sqrt(sum((distribution - weight).^2))/N;
+</code>
+
+<text>
+Applications: Preferential attachment, selection method in genetic algorithms (a.k.a. fitness proportionate selection or roulette-wheel selection), resampling in particle filters (e.g. robot localization).
+</text>
+
+<text>
+ref. ON RESAMPLING ALGORITHMS FOR PARTICLE FILTERS
+<url>http://www.control.isy.liu.se/~schon/Publications/HolSG2006.pdf</url>
+</text>
+
+</comment>
+
+<algorithm>
+<title>Choosing items in proportion to their importance weights</title>
+<code>
+# 1) Roulette wheel: inefficient <eqn>O(n^2)</eqn> implementation
+
+# Weight normalization
+
+W = sum(weight)
+
+for i in range(N): 
+    weight[i] = weight[i]/W
+
+# Resampling
+
+for i in range(N):
+    r = random.random()
+    index = 0
+    s = weight[0]
+    while (index&lt;N) and (s&lt;r):
+        index = index + 1
+        s = s + weight[index]
+    if (index==N):
+        index = N-1
+    new[i] = element[index]
+
+
+# 2) Resampling wheel: starting from a (uniformly) random index
+
+# Initial selection
+
+index     = int(random.random() * N)
+beta      = 0.0
+maxWeight = max(weight)
+
+# Resampling: U[0,2*maxWeight]
+
+for i in range(N):
+    beta += 2.0 * maxWeight * random.random()
+    while (beta &gt; weight[index]):
+        beta -= weight[index]
+        index = (index+1) % N
+    new[i] = element[index]
+
+</code>
+</algorithm>
+
+
 <text>
 ++ Linear preferential attachment yields scale-free networks with an exponent of 3. Refined attachment rules that vary node attractiveness yield scale-free networks with exponents between 2 and 3.
 </text>

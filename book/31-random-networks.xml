@@ -88,7 +88,6 @@ L: A network with n nodes is constructed by inserting a link between randomly se
 </document>
 
 
-
 <document>
 <tag>random-notes</tag>
 <title>Appendix: Random walks</title>
@@ -116,6 +115,10 @@ cf. Newman 6.14
 
 <text>
 ++ Graph generation @ <cite>Skiena 2008</cite>, p. 460
+</text>
+
+<text>
+++ Random graphs from Stanford Graphbase(GB_RAND)
 </text>
 
 </document>

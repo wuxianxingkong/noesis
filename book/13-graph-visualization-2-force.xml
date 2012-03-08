@@ -20,10 +20,10 @@ drawing."
 
 
 <text>
-An example <type>graph drawing</type> algorithm is shown in Figure <ref>force-based</ref>.
+An example <type>graph drawing</type> algorithm is shown in Algorithm <ref>force-based</ref>.
 </text>
 
-<figure>
+<algorithm>
 <title>Force-based algorithm.</title>
 <tag>force-based</tag>
 <code>
@@ -49,7 +49,7 @@ An example <type>graph drawing</type> algorithm is shown in Figure <ref>force-ba
      next node
  until total_kinetic_energy is less than some small number  // the simulation has stopped moving
 </code>
-</figure>
+</algorithm>
 
 
 <text>

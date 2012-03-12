@@ -546,7 +546,6 @@ PROBLEM: For certain graphs, different initializations result in different autho
 e.g. Web search (10-30 links from millions of web pages containing some given words)
 </text>
 
-
 <document>
 <tag>ranking-pagerank</tag>
 <title>PageRank</title>
@@ -715,6 +714,16 @@ Despite their overlap and partial redundancy, different metrics provide unique i
 <text>
 Both HITS and PageRank were presented in 1998: HITS at the 9th ACM-SIAM Symposium on Discrete Algorithms in January and PageRank at the 7th International World Wide Web Conference in April.
 </text>
+
+
+<text>
+Popular Science books
+++ "Who's #1? The Science of Rating and Ranking", by Amy N. Langville and Carl D. Meyer, Princeton University Press, 2012. ISBN 0691154228
+(ranking methods and evaluation techniques)
+++ "Google PageRank and Beyond: The Science of Search Engine Rankings", by Amy N. Langville and Carld D. Meyer, Princeton University Press, 2006. ISBN 0691122024 (2012 paperback edition, ISBN 0691152667)
+(PageRank + HITS)
+</text>
+
 
 </document>
 

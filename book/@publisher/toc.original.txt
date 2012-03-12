@@ -1,0 +1,145 @@
+TENTATIVE TABLE OF CONTENTS
+
+
+1. Introduction
+1.1 Historical comments
+1.2 Kinds of networks
+	1.2.1 Social networks
+	1.2.2 Content networks
+	1.2.3 Economic networks
+	1.2.4 Transportation networks
+	1.2.5 Biological networks
+1.3 Network properties: Scale, evolution, distribution & interaction through connections 
+1.4 Network data sets
+
+
+
+PART I - FOUNDATIONS
+
+
+2. Graph Theory: The Mathematics of Networks
+2.1 The adjacency matrix
+2.2 Kinds of networks: directed/undirected, weighted, bipartite/multimodal
+2.3 Paths & distance
+2.4 Connectivity: components
+2.5 Independent paths & cut sets
+Appendix: The graph Laplacian
+
+
+3. Graph Algorithms
+3.1 Network representation: adjacency matrix & adjacency lists
+3.2 Graph exploration: BFS & DFS
+3.3 Shortests paths
+3.4 Maximum flows & minimum cuts
+3.5 A catalog of graph algorithms
+
+
+4. Graph Visualization
+4.1 Graph drawing techniques
+4.2 Force-directed methods
+4.3 Hierarchical methods
+4.4 Metrics-based methods
+
+
+
+PART II - STRUCTURAL PROPERTIES
+
+
+5. Network Structure
+5.1 Connectivity
+5.2 Shortest paths
+5.3 Degree distributions
+5.4 Clustering coefficients
+
+
+6. Network Metrics
+6.1 Centrality Measures
+	6.1.1 Matrix-based centrality measures
+	6.1.2 Hubs and authorities
+	6.1.3 Closeness
+	6.1.4 Betweenness
+6.2 Ranking
+	6.2.1 PageRank
+	6.2.2 HITS
+	6.2.3 Block-level link analysis
+6.3 Similarity
+	6.3.1 Structural equivalence
+	6.3.2 Regular equivalence
+
+
+7. Motifs
+7.1 Triads
+7.2 Cliques, plexes & cores
+7.3 Components & k-components
+Appendix: Structural balance
+
+
+
+PART III - NETWORK MODELS
+
+
+8. Regular and Random Networks
+8.1 Regular networks
+8.2 Random networks:
+	8.2.1 Random graphs: Erdos-Renyi
+	8.2.2 Random graphs with general degree distributions
+	8.2.3 Exponential random graphs
+
+
+9. Models of Network Formation
+9.1 Growing Random Networks
+	9.1.1 Watts-Strogatz model (small-world networks)
+	9.1.2 Barabasi-Albert model (scale-free networks)
+9.2 Strategic Network Formation
+
+10. Other Network Models
+10.1 Affiliation networks
+10.2 Hierarchical/modular networks
+10.3 Influence networks
+10.4 Kirchhoff networks
+10.5 Netgain networks
+
+
+
+PART IV - NETWORK DYNAMICS
+
+11. Diffusion through Networks (i.e. signal propagation)
+
+12. Synchronization & Stabilization (i.e. conflicts and consensus)
+
+13. Vulnerability / Robustness (i.e. percolation & network resilience)
+
+
+
+PART V - NETWORK DATA MINING
+
+14. Patterns
+14.1 Frequent Pattern Mining
+	14.1.1 Graph matching
+	14.1.2 Canonicalization
+	14.1.3 Algorithms for Mining Frequent Subgraphs
+		14.1.3.1 Beam search: SUBDUE
+		14.1.3.2 Inductive logic programming: WARMR
+		14.1.3.3 Apriori-like algorithms: AGM, FSG, "disjoint paths"
+		14.1.3.4 FPGrowth-like algorithms: gSpan, Gaston, CloseGraph
+	14.1.4 Frequent substructures
+14.2 Applications
+	14.2.1 Indexing, e.g. GraphGrep, Grace, gIndex
+	14.2.2 Information retrieval, e.g. Grafil
+	14.2.3 Metadata mining: Schema mapping, schema discovery, schema reformulation 
+
+
+15. Community Detection
+15.1 Graph partitioning
+	15.1.1 The Kernighan-Lin algorithm
+	15.1.2 Spectral partitioning
+15.2 Modularity maximization methods
+	15.2.1 Simple modularity maximization
+	15.2.2 Spectral modularity maximization
+15.3 Betweenness-based methods
+15.4 Hierarchical clustering
+
+16. Classification
+16.1 Object classification 
+16.2 Link prediction
+16.3 Entity resolution (a.k.a. reference reconciliation or object consolidation)

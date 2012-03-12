@@ -5,7 +5,7 @@
 
 <document>
 &bibliography;
-<title>Regular and Random Networks</title>
+<title>Random Networks</title>
 
 
 <!-- Regular networks -->
@@ -56,11 +56,21 @@ Ring networks are regular graphs, since all nodes have degree 2. Therefore, thei
 </text>
 
 <text>
-The average path length of a ring network is approximately <eqn>n/4</eqn>, since there are two paths (clockwise and counterclockwise) between every pair of nodes in the ring graph. If a single link were missing, the average path length would increase to <eqn>n/3</eqn>. Let us start with a broken ring. In such a network, there is one pair at distance <eqn>n-1</eqn> at each extreme of the broken ring, two pairs at distance <eqn>n-2</eqn>, and <eqn>2(n-1)</eqn> adjacent pairs of nodes. In general, <eqn>2(n-i)</eqn> nodes are at distance <eqn>i</eqn>. By summing those values, we can obtain the average path length of the broken ring:
+Diameter: n/2 for rings, n-1 for tandem networks.
+</text>
+
+<text>
+Bisection: 2 for rings, 1 for tandem networks.
+</text>
+
+<!-- Average path length -->
+
+<text>
+The average path length of a ring network is approximately <eqn>n/4</eqn>, since there are two paths (clockwise and counterclockwise) between every pair of nodes in the ring graph. If a single link were missing, the average path length would increase to <eqn>n/3</eqn>. Let us start with a broken ring, a.k.a. a tandem network. In such a network, there is one pair at distance <eqn>n-1</eqn> at each extreme of the broken ring, two pairs at distance <eqn>n-2</eqn>, and <eqn>2(n-1)</eqn> adjacent pairs of nodes. In general, <eqn>2(n-i)</eqn> nodes are at distance <eqn>i</eqn>. By summing those values, we can obtain the average path length of the broken ring:
 </text>
 
 <equation>
-avgPathLength(line) = \frac{ \sum_{i} 2(n-i)i } { n (n-1) } = \frac{n+1}{3}
+avgPathLength(tandem) = \frac{ \sum_{i} 2(n-i)i } { n (n-1) } = \frac{n+1}{3}
 </equation>
 
 <text>
@@ -87,9 +97,14 @@ avgPathLength(ring) &amp;= \frac{ n S } { n (n-1) } = \frac{S}{n-1} \\
 </equation>
 
 <text>
-In any case, the average path length of a ring network is approximately <eqn>n/4</eqn>. We can now proceed to compute the efficiency of a ring network:
+In any case, the average path length of a ring network is approximately <eqn>n/4</eqn> (vs. <eqn>n/3</eqn> for tandem networks).
 </text>
 
+<!-- Link efficiency -->
+
+<text>
+We can now proceed to compute the efficiency of a ring network:
+</text>
 
 <equation>
 \begin{aligned}
@@ -115,6 +130,9 @@ Since link efficiency does not approach 100% as the tree network size increases,
 A tree connects <eqn>n</eqn> using <eqn>n-1</eqn> links and, in terms of the number of links, it is the cheapest way to create a connected network, hence the importance of minimum spanning tree algorithms.
 </text>
 
+<text>
+Bisection = 1
+</text>
 
 <text>
 Density decreases as the tree network grows (i.e. tree networks are extremely sparse):
@@ -177,7 +195,7 @@ L: A balanced binary tree network is almost, but not quite, a regular network. I
 <text>
 Not all trees are equally efficient...
 
- For instance, the average path length of line graph (i.e. just a linked list of nodes) grows linearly with the size of the network (<eqn>\approx n/3</eqn>), as we saw in the previous section. A balanced binary tree is a more link-efficient alternative , since its average path length grows much slower than its number of links. In particular, the characteristic path length of balanced binary tree networks is <eqn>O(log_2 n)</eqn>, as we will now demonstrate.
+ For instance, the average path length of line graph or tandem network (i.e. just a linked list of nodes) grows linearly with the size of the network (<eqn>\approx n/3</eqn>), as we saw in the previous section. A balanced binary tree is a more link-efficient alternative , since its average path length grows much slower than its number of links. In particular, the characteristic path length of balanced binary tree networks is <eqn>O(log_2 n)</eqn>, as we will now demonstrate.
 </text>
 
 <text>
@@ -189,13 +207,17 @@ diameter(bbt) = 2*h - 1 = 2 * log_2 (n+1) - 1
 </equation>
 
 
+<!-- Average path length -->
+
 <text>
-In a complete binary tree, a nodes at level <eqn>i</eqn> is adjacent to two nodes at level <eqn>i+1</eqn> and one at level <eqn>i-1</eqn>. Since level <eqn>i</eqn> contains <eqn>2^i</eqn> nodes, the large number of leaves dominates the small number of nodes close to the root. Hence, we can expect that the average path length will be related to the tree diameter. For large balanced binary trees, with <eqn>h &gt; 9</eqn>, <cite>Lewis 2008</cite> shows that their average path length can be approximated by 
+In a complete binary tree, a nodes at level <eqn>i</eqn> is adjacent to two nodes at level <eqn>i+1</eqn> and one at level <eqn>i-1</eqn>. Since level <eqn>i</eqn> contains <eqn>2^i</eqn> nodes, the large number of leaves dominates the small number of nodes close to the root. Hence, we can expect that the average path length will be related to the tree diameter. For large balanced binary trees, with <eqn>h &gt; 9</eqn>, <cite>Lewis 2009</cite> shows that their average path length can be approximated by 
 </text>
 
 <equation>
 avgPathLength(bbt) \approx diameter(bbt) - 4
 </equation>
+
+<!-- Link efficiency -->
 
 <text>
 Now we can plug that approximate result to compute the link efficiency of large binary trees: 
@@ -212,50 +234,245 @@ Since link efficiency approaches 100% as the tree network size increases, balanc
 </document>
 
 
+
+<!-- Mesh networks &amp; Toroidal networks -->
+
 <document>
 <tag>regular-networks-toroidal</tag>
 <title>Toroidal networks</title>
 
+
 <text>
-This class of networks has <eqn>O(\sqrt{n})</eqn> characteristic path length, and network link efficiency
+L: Grid-like topology to eliminate the need to traverse all the way to the root node simply to get from one side of the tree to the other...
+</text>
+
+<text>
+L: Half of the links to create horizontal connections and the other half to create vertical connections... the mapping function connects to immediate predecessor and successor nodes, and another mapping connects node v to nodes that are <eqn>+\sqrt{n}</eqn> and <eqn>-\sqrt{n}</eqn> hops away. This leads to a Manhattan-like grid with one addition: edge nodes “wrap around” to opposite edge nodes, so that each row and column form a ring. This guarantees short paths because the average path length of a ring is <eqn>\approx n/4</eqn>... the collection of rings form a toroidal network
+</text>
+
+<text>
+L: Typical 2D  toroidal networks have <eqn>n = k^2</eqn> nodes, arranged in a <eqn>k \times k</eqn> grid. Every node has degree 4; hence there are <eqn>m = 2n = 2k^2</eqn> links. Since it is a regular graph, its entropy is 0. 
+</text>
+
+<text>
+e.g. A disadvantage in some applications:  in computer architecture, layout of m = 2k^2 links on a two-dimensional limits the toroidal network architecture to relatively small numbers of processor nodes. 
+</text>
+
+<text>
+Moreover, all nodes are at the center of the network, since the radius of all the nodes in the network is <eqn>k = \sqrt{n}</eqn>, which corresponds to the diameter of the network. 
+
+2D torus diameter = <eqn>\sqrt{n}</eqn> vs. Mesh diameter <eqn>2(\sqrt{n}-1)</eqn>
+</text>
+
+
+<text>
+Bisection: <eqn>\sqrt{n}</eqn> for meshes vs. <eqn>2\sqrt{n}</eqn> for toroidal networks
+</text>
+
+
+<text>
+Density decreases as the toroidal network grows (i.e. toroidal networks are extremely sparse):
+</text>
+
+<equation>
+density(toroid) = \frac{m}{n(n-1)} = \frac{2n}{n(n-1)} = \frac{2}{n-1}
+</equation>
+
+<text>
+L: For <eqn>n &gt; 4 </eqn>, a 2D toroidal network is also devoid of clusters: none of the neighbors of a node are connected to one another and the clustering coefficient of the network is 0.
+</text>
+
+<!-- Average path length -->
+
+<text>
+L: The average path length of a 2D toroidal network increases with <eqn>\sqrt{n}</eqn>... Assuming a <eqn>k \times k</eqn> toroidal network, a node belongs to 2 different rings of length k, hence the average distance from a node to any other node in the network is twice the average distance within a ring of size k. Since we know that the average distance within a ring is approximately <eqn>k/4</eqn>, we can conclude that the average path distance within a 2D toroidal network is twice that distance, i.e. approximately <eqn>2(k/4) = k/2 = \sqrt{n} / 2</eqn>. Actually the average path distance for <eqn>k \times k</eqn> toroidal network can be computed as
+</text>
+
+<equation>
+\begin{aligned}
+avgPathLength(toroid) &amp;= \frac{ n S } { n (n-1) } = \frac{S}{n-1} \\
+                      &amp;= \frac{ \sqrt{n} } { 2 } \frac{ n } { n-1 } \text{ for even values of } k \\
+		      &amp;= \frac{ \sqrt{n} } { 2 } \text{ for odd values of } k \\
+		      &amp;\approx \frac{1}{2} \sqrt{n}
+\end{aligned}
+</equation>
+
+<text>
+where <eqn>S/n</eqn> represents the average path distance from any node the remaining nodes within the network. Therefore, we can say that 2D toroidal networks have <eqn>O(\sqrt{n})</eqn> characteristic path length.
+</text>
+
+<text>
+L: A mesh network is a toroidal network without the wraparound links. In fact, toroidal networks are also known as wrap-around meshes. A mesh network has <eqn>m = 2n - 2\sqrt{n}</eqn> links instead of <eqn>2n</eqn> links. The general equation for average path length of a mesh of size n is 
+</text>
+
+<equation>
+\begin{aligned}
+avgPathLength(mesh) &amp;= \frac{2}{3} k = \frac{2}{3} \sqrt{n}
+\end{aligned}
+</equation>
+
+<text>
+For non-square <eqn>r \times c</eqn> toroidal networks, the average distance is <eqn>r/4 + c/4</eqn>, which would grow to <eqn>r/3 + c/3</eqn> in a 2D mesh (without the links closing the rings).
+</text>
+
+<!-- Link efficiency -->
+
+<text>
+2D toroidal networks... 
+
+Plugging the expression for average path length into the equation for link efficiency,
+and simplifying, yields toroidal network link efficiency:
 </text>
 
 
 <equation>
-efficiency(toroidal) = 1 - \frac{1}{4 \sqrt{n}}
+efficiency(toroid) = 1 - \frac{avgPathLength(toroid)}{2n} = 1 - \frac{\sqrt{n}}{4n} = 1 - \frac{1}{4\sqrt{n}}
+</equation>
+
+<text>
+- the link efficiency of a toroid is better than that of a balanced binary tree for large values of n, even though it requires twice the number of links in a tree (2n vs. n-1)
+- moreover, the resulting network is not planar, which has consequences for some applications and makes it layout harder (e.g. IC)
+</text>
+
+<text>
+If we cut the rings in the toroid, we get a mesh whose link efficiency is
+</text>
+
+<equation>
+efficiency(mesh) = 1 - \frac{avgPathLength(mesh)}{2n-2\sqrt{n}} = 1 - \frac{2}{3} \frac{\sqrt{n}}{2n-2\sqrt{n}} = 1 - \frac{1}{3\sqrt{n}-3}
 </equation>
 
 
+
 </document>
+
+<!-- Hypercube networks -->
 
 <document>
 <tag>regular-networks-hypercube</tag>
 <title>Hypercube networks</title>
 
 <text>
+L: A hypercube network connects nodes so that they are one Hamming distance apart... Hamming distance can be computed by summing the bits produced by the binary xor (exclusive-or) operator.
+</text>
+
+<text>
+L: The dimension D of a hypercube is equal to the degree of each node, <eqn>D = \log_2 n</eqn>, which contains <eqn>n = 2^D</eqn> nodes. All nodes of a two-dimensional hypercube have degree 2, all nodes of a 3D hypercube have degree 3, and so forth. The diameter of a hypercube is also equal
+to the degree of its nodes, i.e. <eqn>\log_2 n</eqn>.
+</text>
+
+
+<text>
+L: The number of links in any network is equal to one-half the sum of its node degrees: <eqn>2m = \sum_i d_i</eqn>. Hypercubes are regular graphs, with every node having degree <eqn>D = \log_2 n</eqn>. Thus, <eqn>m = (n \log_2 n)/2</eqn>.
+</text>
+
+<text>
+Bisection: <eqn>n/2</eqn> !!
+</text>
+
+<text>
+Density decreases as the hypercube network grows, but not as fast as with toroidal networks (hypercubes are less sparse than both trees and toroids):
+</text>
+
+<equation>
+density(hypercube) = \frac{m}{n(n-1)} = \frac{\log_2 n}{2(n-1)}
+</equation>
+
+
+<text>
+L: Like nested Russian matryoshka dolls, hypercube networks contain hypercube networks! 
+A hypercube of dimension D contains two hypercubes of dimension D-1
+- the one-dimensional hypercube, i.e. a barbell,  is easily constructed from two isolated nodes.
+- the 2D hypercube, i.e. a cycle of length 4, is obtained by combining two barbell hypercubes with two new links
+- in general, higher-dimensional hypercubes are created by duplicating two (D-1)-dimensional hypercubes, and adding links connecting the corresponding nodes in each (D-1)-dimensional hypercube
+</text>
+
+<!-- Average path length -->
+
+<text>
+L: Every node of a hypercube can be reached from any other node in 1,2,...,D = \log_2 n hops. This is the same for all nodes, so all nodes are central nodes, and the radius of all nodes equals the diameter of the network, D. 
+</text>
+
+<text>
+Given one particular node in a D-dimensional hypercube, its distance to the remaining nodes in the networks equals the number of bits in which they differ. <eqn>D</eqn> nodes will be at distance 1, i.e. those differing in one bit <eqn>{D \choose 1}</eqn>. Similarly, <eqn>D(D-1)/2</eqn> nodes with be at distance 2, since there are <eqn>{D \choose 2} = D(D-1)/2</eqn> pairs of bits that can be changed. In general, there will be <eqn>{D \choose i}</eqn> nodes at distance <eqn>i</eqn>.
+</text>
+
+<text>
+Therefore, the average distance from any node to the remaining (n-1) nodes in a D-dimensional hypecube is
+</text>
+
+<equation>
+\begin{aligned}
+avgDistance(hypercube) &amp; = \frac{1}{n-1} \sum_{i=1}^{D} i {D \choose i} \\
+                       &amp; = \frac{1}{n-1} \sum_{i=0}^{D-1} (i+1) {D \choose i+1} \\
+                       &amp; = \frac{1}{n-1} \sum_{i=0}^{D-1} (i+1) \frac{D!}{(i+1)!(D-i-1)!} \\
+                       &amp; = \frac{1}{n-1} \sum_{i=0}^{D-1} (i+1) \frac{D(D-1)!}{(i+1)i!(D-i-1)!} \\
+                       &amp; = \frac{1}{n-1} \sum_{i=0}^{D-1} \frac{D(D-1)!}{i!(D-i-1)!} \\
+                       &amp; = \frac{1}{n-1} \sum_{i=0}^{D-1} D \frac{(D-1)!}{i!(D-i-1)!} \\
+                       &amp; = \frac{D}{n-1} \sum_{i=0}^{D-1} \frac{(D-1)!}{i!(D-i-1)!} \\
+                       &amp; = \frac{D}{n-1} \sum_{i=0}^{D-1} {D-1 \choose i} \\
+                       &amp; = \frac{D}{n-1} 2^{D-1} \\
+                       &amp; = \frac{D}{n-1} \frac{n}{2} \\
+                       &amp; = \frac{n}{n-1} \frac{D}{2} \\
+		       &amp; \approx \frac{D}{2} = \frac{\log_2 n}{2} 
+\end{aligned}
+</equation>
+
+<text>
+since we expect two nodes to differ in only one half of the bits in their respective addresses.
+</text>
+
+<text>
+Since the average path length for all nodes is the same, the average path length of the whole hypercube is just
+</text>
+
+<equation>
+\begin{aligned}
+avgPathLength(hypercube) &amp; = \frac{n}{n-1} \frac{D}{2} \approx \frac{D}{2} = \frac{\log_2 n}{2} 
+\end{aligned}
+</equation>
+
+<!-- Link efficiency -->
+
+<text>
 L: Both sparse and link-efficient. Hypercube characteristic path length is <eqn>O(log_2 n)</eqn> like binary treee, but its link efficiency is
 </text>
 
 <equation>
-efficiency(hypercube) = 1 - \frac{1}{n-1}
+\begin{aligned}
+efficiency(hypercube) &amp; = 1 - \frac{avgPathLength(hypercube)}{m} \\
+                      &amp; = 1 - \frac{ \frac{n}{n-1} \frac{\log_2 n}{2} } { \frac{n \log_2 n}{2} } \\
+                      &amp; = 1 - \frac{ 1 } { n - 1 } 
+\end{aligned}
 </equation>
 
 <text>
-++ hypercubes = the most link-efficient of all regular networks studied here, they are the preferred structure for the design of multiprocessor computer systems and low-latency communication networks.
+As they increases in size, hypercubes become more efficient. As balanced binary trees and toroidal networks, they are scalable. However, they also require more links. This fact explains why hypercube interconnection networks are used in small multiprocessor systems while toroidal networks are more common in massively parallel systems.
+
+++ hypercubes = the most link-efficient of all regular networks studied here, they have traditionally been the preferred structure for the design of multiprocessor computer systems and low-latency communication networks.
 
 i.e. the traditional hierarchical tree network is not as efficient as other types of networks.
 </text>
 
 <text>
-Note that a complete network would exhbit an efficiency of 1.0, but it would require <eqn>m = n(n-1)/2</eqn> links...
+Note that a complete network would always exhibit an efficiency as close to 100% as possible, but it would require <eqn>m = n(n-1)/2</eqn> links...
 </text>
 
 <equation>
-efficiency(complete) = \frac{m-1}{m} \rightarrow 1
+efficiency(complete) = 1 - \frac{1}{m} = 1 - \frac{2}{n(n-1)} 
 </equation>
 
 <text>
-L: Binary tree, toroid, hypercube, and complete networks are obviously scalable because efficiency approaches 100% as network size n increases. However, rings are non-scalable
+L: Binary tree, toroid, hypercube, and complete networks are obviously scalable because efficiency approaches 100% as network size n increases. However, ring networks are not scalable. For large enough networks, 
+</text>
+
+<equation>
+efficiency(complete) &gt; efficiency(hypercube) &gt; efficiency(toroid) &gt; efficiency(bbt) &gt; efficiency(ring)
+</equation>
+
+<text>
+++ Figure LINK EFFICIENCY for different kinds of regular networks
+++ Figure AVERAGE PATH LENGTH for different kinds of regular networks
 </text>
 
 </document>
@@ -279,6 +496,7 @@ systems from linking of many smaller, local, independent operators
 </text>
 
 
+</document>
 
 
 <document>
@@ -349,7 +567,6 @@ cf. Newman 15.2
 
 </document>
 
-</document>
 
 
 <document>
@@ -366,6 +583,14 @@ cf. Newman 6.14
 <document>
 <tag>random-notes</tag>
 <title>Bibliographic notes</title>
+
+<text>
+The section on regular networks is heavily based on the corresponding chapter in <cite>Lewis 2009</cite>.
+</text>
+
+<text>
+++ Catalog of network connectivity models and their properties at <url>http://w3.antd.nist.gov/wctg/netanal/netanal_netmodels.html</url>
+</text>
 
 
 <text>
@@ -384,6 +609,7 @@ cf. Newman 6.14
 <text>
 ++ Random graphs from Stanford Graphbase(GB_RAND)
 </text>
+
 
 </document>
 

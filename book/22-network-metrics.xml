@@ -729,7 +729,11 @@ network...
 
 <text>
 L: Link efficiency is used for comparing the efficiency of a network in terms of its average path length and number of links. A link-efficient
-network utilizes its links in an efficient manner to reduce average path length. In many applications of network science we want the shortest average path length possible while simultaneously conserving the number of links. We define link efficiency E(G) as follows:
+network utilizes its links in an efficient manner to reduce average path length. In many applications of network science we want the shortest average path length possible while simultaneously conserving the number of links. 
+
+++ efficient network are sparse and efficiently utilize links to reduce average path length.
+
+We define link efficiency E(G) as follows:
 </text>
 
 <equation>

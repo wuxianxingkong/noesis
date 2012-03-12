@@ -146,11 +146,17 @@ PART III - NETWORK MODELS
 
 
 -- 9. Models of Network Formation
-** 9.1 Growing Random Networks
-	- 9.1.1 Watts-Strogatz model (small-world networks)
-	- 9.1.2 Barabasi-Albert model (scale-free networks)
-	+ 9.1.3 Exponential random graphs
--- 9.2 Strategic Network Formation
+** 9.1 Small-world networks
+	+ Watts-Strogatz model
+** 9.1 Scale-free networks
+	+ Barabasi-Albert model
+-- 9.3 Strategic Network Formation
+
+	@ EACH MODEL
+	+ Properties
+	+ Examples
+	+ Models 
+	+ Dynamics
 
 
 -- 10. Other Network Models

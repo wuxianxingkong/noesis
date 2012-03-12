@@ -12,17 +12,14 @@
 L: random graphs have random structure, and k-regular graphs have purely deterministic structure. In between these two extremes lie two important classes of graphs: the class of small-world (mostly structured, partly random), and the class of scale-free (mostly random, partly structured) graphs. Each class has its own characteristic property: the Poisson distribution for random graphs, powerlaw distribution for scale-free graphs, high average cluster coefficient for small-world graphs, and zero-entropy value for k-regular graphs.
 </text>
 
-<document>
-<tag>growing-random-networks</tag>
-<title>Growing random networks</title>
+<text>Growing random networks ++</text>
 
 
 <!-- Small worlds -->
 
 <document>
-<tag>formation-watts-strogatz</tag>
-<title>Watts-Strogatz model (small-world networks)</title>
-
+<tag>small-worlds</tag>
+<title>Small worlds</title>
 
 <text>
 <cite>Pool and Kochen 1978</cite> @ inaugual issue of the Social Networks journal (a draft widely circulated two decades before its publication): the world of social relationships is much smaller than expected given the size of the social network.
@@ -45,6 +42,9 @@ Two decades later (Kleinfeld, 2002).
 
 </text>
 
+<document>
+<tag>small-worlds-properties</tag>
+<title>Properties of small-world networks</title>
 
 <text>
 DEGREE DISTRIBUTION
@@ -73,21 +73,15 @@ number of links.
 <cite>Kleinberg 2000</cite>, not only surprisingly short paths, but also the remarkable ability of individuals to identify links that lead to those short paths...
 </text>
 
-<text>
-++
-<cite>Watts and Strogatz 1998</cite> created a simple model that originates small worlds + discovered that these patterns are present in a broad range of networks. 
+</document>
 
-Algorithm: initially construct a graph with regular structure. Next, apply rewiring to every link with probability p, such that p*m links are randomized (redirected to a randomly selected node). Parameter p is the rewiring probability, and m is the number of links in the original regular graph.
 
-L: increasing p also increases the randomness of the small world. This means we can produce a network with any desired level of randomness—entropy, if you will—by adjusting rewiring probability p—a low rewiring probability generates a nonrandom structure, and a high probability generates a random structure
 
-L: At a certain rewiring probability called the crossover point (also length scale), the network transitions from mostly structured to mostly random network. Typically, the crossover point is very small—on the order of 2-3%. Watts and Strogatz attached a meaning to the crossover, suggesting that it corresponds to phase transition in materials (the crossover point is also known as the phase transition threshold).
-
-L: Watts and Strogatz: small worlds as networks with relatively short distances (hops) between node pairs chosen at random, even as the size of the network grows. Specifically, the diameter of a network increases as ln(n) while its size increases by O(n), where n is number of nodes.
-</text>
+<document>
+<tag>small-worlds-examples</tag>
+<title>Small-world networks in the real world</title>
 
 <text>
-SMALL WORLDS IN THE REAL WORLD
 L: Very sparse networks with small diameter (small worlds) at diverse phenomena such as phase transitions in materials, functionality of biological organisms, and behavior of electrical power grids.
 e.g. database of film actors, the electric power grid of the western United States, and the neural network of the nematode worm C. elegans (Caenorhabditis elegans)
 
@@ -151,9 +145,40 @@ A different class of small-world networks <cite>Sporns 2006</cite>: modular smal
 [Yung, V. J. An exploration in the small world networks, available as Condensed Matter 0004214 (2000/2001)]
 </text>
 
+</document>
+
+
+<document>
+<tag>small-worlds-formation</tag>
+<title>Models of small-world network formation</title>
+
+<document>
+<tag>formation-watts-strogatz</tag>
+<title>Watts-Strogatz model (small-world networks)</title>
+
 <text>
-DYNAMICS
+++
+<cite>Watts and Strogatz 1998</cite> created a simple model that originates small worlds + discovered that these patterns are present in a broad range of networks. 
+
+Algorithm: initially construct a graph with regular structure. Next, apply rewiring to every link with probability p, such that p*m links are randomized (redirected to a randomly selected node). Parameter p is the rewiring probability, and m is the number of links in the original regular graph.
+
+L: increasing p also increases the randomness of the small world. This means we can produce a network with any desired level of randomness—entropy, if you will—by adjusting rewiring probability p—a low rewiring probability generates a nonrandom structure, and a high probability generates a random structure
+
+L: At a certain rewiring probability called the crossover point (also length scale), the network transitions from mostly structured to mostly random network. Typically, the crossover point is very small—on the order of 2-3%. Watts and Strogatz attached a meaning to the crossover, suggesting that it corresponds to phase transition in materials (the crossover point is also known as the phase transition threshold).
+
+L: Watts and Strogatz: small worlds as networks with relatively short distances (hops) between node pairs chosen at random, even as the size of the network grows. Specifically, the diameter of a network increases as ln(n) while its size increases by O(n), where n is number of nodes.
 </text>
+
+
+</document>
+
+</document>
+
+
+<document>
+<tag>small-worlds-dynamics</tag>
+<title>The dynamics of small-world networks</title>
+
 
 <text>
 ++ 1999 Walsh: Difficulty of search in small worlds using local properties
@@ -197,12 +222,13 @@ MORE
 
 </document>
 
+</document>
+
 <!-- Scale-free networks -->
 
-
 <document>
-<tag>formation-barabasi-albert</tag>
-<title>Barabasi-Albert model (scale-free networks)</title>
+<tag>scale-free</tag>
+<title>Scale-free networks</title>
 
 
 <text>
@@ -213,6 +239,10 @@ Anthropologists such as Elman Service, when studying cultural evolution, envisio
 A wide range of real-world networks have been found to exhibit power-law degree distributions: the World Wide Web, citation networks, cellular metabolism networks...
 </text>
 
+
+<document>
+<tag>scale-free-properties</tag>
+<title>Properties of scale-free networks</title>
 
 <text>
 Degree distribution: 
@@ -260,9 +290,6 @@ graphs.
 IDEA: The fluctuations in degree are unbounded, i.e., the standard deviation is bounded only by the finite size of the graph.
 </text>
 
-<text>
-<cite>Clauset et al. 2009</cite> examine how power laws are best detected in practice: regression analysis of linear relationships in log-log scale (the standard method) results in many false positives (e.g. networks that might be better approximated by exponential or log-normal distributions). Sampling might also introduce false negatives <cite>Stumpf et al. 2005</cite>.
-</text> 
 
 <text>
 The <q>scale-free</q> term refers to the fact that nodes in a scale-free network do not have a characteristic scale. You can zoom in on any segment of the distribution and it does not change its shape.
@@ -271,17 +298,57 @@ L: scale-free networks... The name came from observing that a function f(x) scal
 what a power law does. Therefore, if the degree sequence distribution obeys the power law, h(x) = x ^-q, then it is clear that h(ax) = (ax)^-q = (a ^-q)h(x) = a' h(x).
 </text>
 
+</document>
+
+
+
+<document>
+<tag>scale-free-examples</tag>
+<title>Scale-free networks in the real world</title>
+
+<text>
+<cite>Clauset et al. 2009</cite> examine how power laws are best detected in practice: regression analysis of linear relationships in log-log scale (the standard method) results in many false positives (e.g. networks that might be better approximated by exponential or log-normal distributions). Sampling might also introduce false negatives <cite>Stumpf et al. 2005</cite>.
+</text> 
+
+<text>
+EXAMPLES
+distribution of number of papers published by scientists, distribution of cities by population, distribution of wealth, and
+distribution of species among genera all obey a power law.
+[Mitzenmacher, M., A brief history of generative models for power law and lognormal distributions, Internet Math. 1(2):226-251 (2004).] 
+
+1999:
++ M. Faloutsos, P. Faloutsos, and C. Faloutsos observed a power law in their graph models of the Internet
++ Albert, Jeong, and Barabasi obtained similar results for the WWW
+
+Scale-free networks appear to model economic constructs such as the Internet and
+monopolies within industrial segments, because preferential attachment is essentially
+the law of increasing returns of economics.
+</text>
+
+</document>
+
+
+
+<document>
+<tag>scale-free-models</tag>
+<title>Models of scale-free network formation</title>
+
+
+<document>
+<tag>formation-barabasi-albert</tag>
+<title>Barabasi-Albert model (scale-free networks)</title>
+
 <text>
 ++
-
 L: "a microrule called preferential attachment - that the probability a site will obtain a new link is directly proportional to the number of links it already has" (the <q>rich get richer</q> phenomenon).
-
 
 <cite>Barabasi and Albert 1999</cite> demonstrated that power-law degree distributions can be generated by a <q>preferential attachment</q> growth process. This process is a well-known example of how local processes can determine the global properties of complex networks. 
 
 L: Yule first observed preferential attachment in evolution (Yule, 1925): Darwinian algorithm = Connect the new node to an existing node with probability proportional to the number of links already connected to the existing node, i.e. its degree
 [Yule, G. U., A Mathematical theory of evolution based on the conclusions of Dr. J. C. Willis, Phil. Trans. Roy. Soc. Lond. B 213:21-87 (1925).]
 ++ Yule-Simon distribution
+
+L: the idea of nonrandomness as a factor in behavior and the connection between preferential attachment and nonrandom distributions occurred to Simon in 1955 [Simon, H. A., On a class of skew distribution functions, Biometrika 42(3/4):425-440 (1955).]
 
 L: Preferential attachment describes an emergent process—that is, a process that results in a network topology that is not apparent by examination of the local algorithm, or microrule. It is not at all obvious that the result of repeated application of preferential attachment will result in a network with a degree sequence distribution that follows a power law. This realization would come 70 years later, when A.-L. Barabasi and R. Albert showed how to create a scale-free network by repeated application of preferential attachment.
 </text>
@@ -425,29 +492,19 @@ for i in range(N):
 ++ When new links involve a cost, i.e. they cost energy or occupy space, the degree distribution becomes truncated for high degrees <cite>Amaral et al. 2000</cite>. Networks that exhibit a scale-free behavior only through a range of node degrees are called broad-scale networks.
 </text>
 
+</document>
+
 
 <text>
-EXAMPLES
-distribution of number of papers published by scientists, distribution of cities by population, distribution of wealth, and
-distribution of species among genera all obey a power law.
-[Mitzenmacher, M., A brief history of generative models for power law and lognormal distributions, Internet Math. 1(2):226-251 (2004).] 
-
-1999:
-+ M. Faloutsos, P. Faloutsos, and C. Faloutsos observed a power law in their graph models of the Internet
-+ Albert, Jeong, and Barabasi obtained similar results for the WWW
-
-Scale-free networks appear to model economic constructs such as the Internet and
-monopolies within industrial segments, because preferential attachment is essentially
-the law of increasing returns of economics.
+Alternative formation model: <cite>Alava and Dogorotsev 2005</cite>
 </text>
 
-<text>
-DYNAMICS
-</text>
+</document>
 
-<text>
-L: the idea of nonrandomness as a factor in behavior and the connection between preferential attachment and nonrandom distributions occurred to Simon in 1955 [Simon, H. A., On a class of skew distribution functions, Biometrika 42(3/4):425-440 (1955).]
-</text>
+
+<document>
+<tag>scale-free-dynamics</tag>
+<title>The dynamics of scale-free networks</title>
 
 <text>
 L: Albert, Jeong, and Barabasi observed that scale-free networks were extremely resilient
@@ -505,9 +562,6 @@ preferential linking, Phys. Rev. Lett. 85(21):4633-4636 (2000).]
 Phys. Rev. Lett. 85(21):4629-4632 (2000).]
 </text>
 
-<text>
-Alternative formation model: <cite>Alava and Dogorotsev 2005</cite>
-</text>
 
 <text>
 <cite>Caldarelli 2007</cite>
@@ -518,17 +572,18 @@ Alternative formation model: <cite>Alava and Dogorotsev 2005</cite>
 
 </document>
 
-<document>
-<tag>formation-exponential</tag>
-<title>Exponential random graphs</title>
 </document>
 
-</document>
 
 
 <document>
 <tag>strategic-network-formation</tag>
 <title>Strategic network formation</title>
+
+<text>
+cf. Jackson 6
+</text>
+
 </document>
 
 

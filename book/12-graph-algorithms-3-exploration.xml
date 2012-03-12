@@ -210,6 +210,10 @@ Parallelization of DFS
 <title>Breadth-first search</title>
 
 <text>
+L: From a given starting node, breadth-first search visits its immediate neighbors first. Then the immediate neighbors of neighbors, and so on, until either reaching a node that has already been visited or reaching a node that has no other neighbors. Breadth-first search of an arbitrary network organizes surrounding nodes into levels, so the algorithm simply finds the smallest number of hops from a starting node v to the remaining nodes in the network. The level number of node w, relative to v, equals the number of hops from v to w. 
+</text>
+
+<text>
 Implementation: queue (FIFO: we explore the oldest unexplored vertices first).
 </text>
 

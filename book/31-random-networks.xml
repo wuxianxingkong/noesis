@@ -8,11 +8,263 @@
 <title>Regular and Random Networks</title>
 
 
+<!-- Regular networks -->
+
 <document>
 <tag>regular-networks</tag>
 <title>Regular networks</title>
+
+<text>
+++ Motivation
+
+L: In general, the goal of many practical network designs is to connect n nodes to one another in the least expensive way. A network topology is “least expensive” when it has the fewest links... In one application, we might want to minimize the diameter (worst-case path length), and in another application, the goal might be to minimize the average path length (average case).
+</text>
+
+<text>
+L: A regular network is a network with regular graph structure - a repeating pattern of links. Because of their regularity, this class exhibits low or zero entropy. The networks studied here also exhibit an economy of links, whereby every node is reachable from every other node in a relatively small number of hops. These regular networks are sparse; are connected; and have a relatively small diameter, small central node radius, and small average path length. These properties make them excellent candidates for real network designs.
+
+We are particularly interested in sparse regular networks with small average path length because they have many applications. For example, in the design of multiprocessor computer systems, it is important to minimize both the number of links, average path length, and diameter of the interconnection network that ties processors together. Highly link-efficient networks make good communication networks because they reduce network latency and transmission delay. 
+
+Efficient regular networks are also good human communication structures because an organization chart with a short average path length makes the corporation more productive. A network-centric organization is optimized to reduce cost by eliminating links, and reduce latency by minimizing average path length. 
+</text>
+
+<text>
+L: e.g. The Manhattan street layout—north–south/east–west rectangular grid—used by many cities minimizes the time to get from one intersection (node) to any other. But a street grid requires many links—too many to connect all major cities to one another. Therefore, a line network connects most major cities to one another because fewer links are required. The intracity (i.e., within-city) street grid minimizes transit time, but the intercity (i.e., between-city) road network minimizes the number of links (roads) needed to connect cities to one another.
+</text>
+
+<text>
+L: The tradeoff between number of links and number of hops in the average path length of a network can be captured by a metric called the link efficiency... 
+</text>
+
+<equation>
+efficiency(G) =  \frac{m - avgPathLength(G)}{m} = 1 - \frac{avgPathLength(G)}{m}
+</equation>
+
+<text>
+In increasing order of path efficiency: rings, trees, toroidal, and hypercube networks
+
+++ L: Surprisingly, we will later find that random networks are link-efficient (due to the small-world effect)...
+</text>
+
+<document>
+<tag>regular-networks-rings</tag>
+<title>Ring networks</title>
+
+
+<text>
+Ring networks are regular graphs, since all nodes have degree 2. Therefore, their degree distribution is <eqn>(0,1)</eqn> and their entropy is <eqn>0</eqn>. A ring is the most sparse network containing an Eulerian circuit, since a ring of <eqn>n</eqn> contains exactly <eqn>n</eqn> links.
+</text>
+
+<text>
+The average path length of a ring network is approximately <eqn>n/4</eqn>, since there are two paths (clockwise and counterclockwise) between every pair of nodes in the ring graph. If a single link were missing, the average path length would increase to <eqn>n/3</eqn>. Let us start with a broken ring. In such a network, there is one pair at distance <eqn>n-1</eqn> at each extreme of the broken ring, two pairs at distance <eqn>n-2</eqn>, and <eqn>2(n-1)</eqn> adjacent pairs of nodes. In general, <eqn>2(n-i)</eqn> nodes are at distance <eqn>i</eqn>. By summing those values, we can obtain the average path length of the broken ring:
+</text>
+
+<equation>
+avgPathLength(line) = \frac{ \sum_{i} 2(n-i)i } { n (n-1) } = \frac{n+1}{3}
+</equation>
+
+<text>
+When the ring is intact, half the shortest paths are found clockwise and the other half is found counterclockwise. Hence, every node is at distance <eqn>1</eqn> from its two neighbors, at distance <eqn>2</eqn> from the neighbors' neightbors, and so on, until we get to the opposite node (or pair of nodes) at distance <eqn>n/2</eqn>. Therefore, the sum of the distances from a node to the remaining nodes in the ring can be either
+</text>
+
+<equation>
+\begin{aligned}
+S &amp; = 2 \sum_{i=1}^{(n/2)-1} i + \frac{n}{2} = \frac { n^2 } { 4 } \text{ for even values of } n {, or }\\
+S &amp; = 2 \sum_{i=1}^{(n-1)/2} i = \frac{1}{4} (n-1) (n+1) \text{ for odd values of } n
+\end{aligned} 
+</equation>
+
+<text>
+Then, the average path length of a ring network is
+</text>
+
+<equation>
+\begin{aligned}
+avgPathLength(ring) &amp;= \frac{ n S } { n (n-1) } = \frac{S}{n-1} \\
+                    &amp;= \frac{ n^2 } { 4 (n-1) } \text{ for even values of } n \\
+		    &amp;= \frac{ n+1 } { 4 }  \text{ for odd values of } n
+\end{aligned}
+</equation>
+
+<text>
+In any case, the average path length of a ring network is approximately <eqn>n/4</eqn>. We can now proceed to compute the efficiency of a ring network:
+</text>
+
+
+<equation>
+\begin{aligned}
+efficiency(ring) &amp;= 1 - \frac{avgPathLength(ring)}{n} \\
+                 &amp;= 1 - \frac{ n } { 4 (n-1) } = \frac{3n-4}{4n-4} \text{ for even values of } n \\
+                 &amp;= 1 - \frac{ n+1 } { 4n } = \frac{3n-1}{4n}  \text{ for odd values of } n \\
+                 &amp;\approx \frac{ 3 } { 4 }
+\end{aligned} 
+</equation>
+
+<text>
+Since link efficiency does not approach 100% as the tree network size increases, rings are considered to be non-scalable.
+</text>
+
 </document>
 
+
+<document>
+<tag>regular-networks-trees</tag>
+<title>Tree networks</title>
+
+<text>
+A tree connects <eqn>n</eqn> using <eqn>n-1</eqn> links and, in terms of the number of links, it is the cheapest way to create a connected network, hence the importance of minimum spanning tree algorithms.
+</text>
+
+
+<text>
+Density decreases as the tree network grows (i.e. tree networks are extremely sparse):
+</text>
+
+<equation>
+density(tree) = \frac{m}{n(n-1)} = \frac{n-1}{n(n-1)} = \frac{1}{n}
+</equation>
+
+
+
+<text>
+Tree networks are not regular. Leaf nodes have degree 1, whereas internal nodes have higher degrees. For complete binary trees, the root is the only node with degree 2 and all the other internal tree nodes have degree 3. The degree sequence for a complete binary tree is, therefore
+</text>
+
+<equation>
+( \lfloor n/2 \rfloor + 1, 1, \lfloor n/2 \rfloor - 1 )
+</equation>
+
+<text>
+for odd values of <eqn>n</eqn> (since binary trees with an even number of nodes necessarily contain at least one internal node with degree two apart from the root, given that the number of nodes with odd degree must always be even).
+</text>
+
+<text>
+In terms of probabilities, we obtain the following degree distribution
+</text>
+
+<equation>
+\left( \frac{n+1}{2n}, \frac{1}{n}, \frac{n-3}{2n} \right)
+</equation>
+
+<text>
+From the degree distribution above, we can obtain the entropy of a complete binary tree:
+</text>
+
+<equation>
+H(bt) = - \sum_i P(deg_G(v)=i) \log_2 P(deg_G(v)=i)
+</equation>
+
+<equation>
+H(bt) = - \frac{n+1}{2n} \log_2 \frac{n+1}{2n} - \frac{1}{n} \log_2 \frac{1}{n} - \frac{n-3}{2n} \log_2 \frac{n-3}{2n}
+</equation>
+
+<text>
+which, for large values of <eqn>n</eqn>, can be approximated as:
+</text>
+
+<equation>
+H(bt) = - \frac{1}{2} \log_2 \frac{1}{2} + \frac{1}{n} \log_2 n - \frac{1}{2} \log_2 \frac{1}{2}
+</equation>
+
+<equation>
+H(bt) = + \frac{1}{2} + \frac{1}{n} \log_2 n + \frac{1}{2} = 1 + \frac{log_2 n}{n}
+</equation>
+
+<text>
+L: A balanced binary tree network is almost, but not quite, a regular network. It is irregular at the root and leaf nodes. These irregularities account for approximately 1 bit of entropy and those irregularities diminish as n grows.
+</text>
+
+<text>
+Not all trees are equally efficient...
+
+ For instance, the average path length of line graph (i.e. just a linked list of nodes) grows linearly with the size of the network (<eqn>\approx n/3</eqn>), as we saw in the previous section. A balanced binary tree is a more link-efficient alternative , since its average path length grows much slower than its number of links. In particular, the characteristic path length of balanced binary tree networks is <eqn>O(log_2 n)</eqn>, as we will now demonstrate.
+</text>
+
+<text>
+The height <eqn>h</eqn> of a complete balanced binary tree with <eqn>n</eqn> is <eqn>log_2 (n+1)</eqn>, whereas the tree diameter is given by <eqn>2*h - 1</eqn>. That means that the diameter grows logarithmically for balanced tree networks:
+</text>
+
+<equation>
+diameter(bbt) = 2*h - 1 = 2 * log_2 (n+1) - 1
+</equation>
+
+
+<text>
+In a complete binary tree, a nodes at level <eqn>i</eqn> is adjacent to two nodes at level <eqn>i+1</eqn> and one at level <eqn>i-1</eqn>. Since level <eqn>i</eqn> contains <eqn>2^i</eqn> nodes, the large number of leaves dominates the small number of nodes close to the root. Hence, we can expect that the average path length will be related to the tree diameter. For large balanced binary trees, with <eqn>h &gt; 9</eqn>, <cite>Lewis 2008</cite> shows that their average path length can be approximated by 
+</text>
+
+<equation>
+avgPathLength(bbt) \approx diameter(bbt) - 4
+</equation>
+
+<text>
+Now we can plug that approximate result to compute the link efficiency of large binary trees: 
+</text>
+
+<equation>
+efficiency(bbt) = 1 - \frac{avgPathLength(bbt)}{n-1} \approx 1 - \frac{2 log_2 (n+1) - 5}{n - 1} \rightarrow 1 - \frac{2 log_2 n}{n}
+</equation>
+
+<text>
+Since link efficiency approaches 100% as the tree network size increases, balanced tree networks are scalable, although shorter average path lengths can be achieved using alternative topologies, which makes them more suitable for designing the interconnection network in a multiprocessor or the organization chart for a large corporation (at least, in theory).
+</text>
+
+</document>
+
+
+<document>
+<tag>regular-networks-toroidal</tag>
+<title>Toroidal networks</title>
+
+<text>
+This class of networks has <eqn>O(\sqrt{n})</eqn> characteristic path length, and network link efficiency
+</text>
+
+
+<equation>
+efficiency(toroidal) = 1 - \frac{1}{4 \sqrt{n}}
+</equation>
+
+
+</document>
+
+<document>
+<tag>regular-networks-hypercube</tag>
+<title>Hypercube networks</title>
+
+<text>
+L: Both sparse and link-efficient. Hypercube characteristic path length is <eqn>O(log_2 n)</eqn> like binary treee, but its link efficiency is
+</text>
+
+<equation>
+efficiency(hypercube) = 1 - \frac{1}{n-1}
+</equation>
+
+<text>
+++ hypercubes = the most link-efficient of all regular networks studied here, they are the preferred structure for the design of multiprocessor computer systems and low-latency communication networks.
+
+i.e. the traditional hierarchical tree network is not as efficient as other types of networks.
+</text>
+
+<text>
+Note that a complete network would exhbit an efficiency of 1.0, but it would require <eqn>m = n(n-1)/2</eqn> links...
+</text>
+
+<equation>
+efficiency(complete) = \frac{m-1}{m} \rightarrow 1
+</equation>
+
+<text>
+L: Binary tree, toroid, hypercube, and complete networks are obviously scalable because efficiency approaches 100% as network size n increases. However, rings are non-scalable
+</text>
+
+</document>
+
+
+</document>
+
+
+<!-- Random networks -->
 
 <document>
 <tag>random-networks</tag>
@@ -26,17 +278,25 @@ of large cities from small communities; and formation of global telecommunicatio
 systems from linking of many smaller, local, independent operators
 </text>
 
+
+
+
+<document>
+<tag>random-erdos-renyi</tag>
+<title>Poisson random graphs: Erdos-Renyi's model</title>
+
+
 <text>
 L: Solomonoff and Rappaport were the first to apply the ideas of epidemics to RANDOM networks (Solomonoff, 1951)
-[Solomonoff, R. and A. Rapoport, Connectivity of random nets, Bull. Math. Biophys. 13:107–117 (1951).]
+[Solomonoff, R. and A. Rapoport, Connectivity of random nets, Bull. Math. Biophys. 13:107-117 (1951).]
 </text>
 
 <text>
 L: Gilbert showed how to build a random graph by first constructing a complete graph and then deleting randomly selected links until reaching the desired number of links (Gilbert, 1959)... cumbersome algorithm was quickly surpassed by the elegant and widely promoted algorithm
 of Erdos and Renyi (Erdos, 1960).
 
-[Gilbert, E. N., Random graphs, Ann. Math. Stat. 30(4):1141–1144 (1959).]
-[Erdo¨s, P. and A. Re´nyi, On the evolution of random graphs, Publ. Math. Inst. Hungar. Acad. Sci. 5:17–61 (1960).]
+[Gilbert, E. N., Random graphs, Ann. Math. Stat. 30(4):1141-1144 (1959).]
+[Erdo¨s, P. and A. Re´nyi, On the evolution of random graphs, Publ. Math. Inst. Hungar. Acad. Sci. 5:17-61 (1960).]
 </text>
  
 
@@ -55,17 +315,11 @@ B(k,m) is approximated by the Poisson distribution by replacing p with (\lambda/
 H(k) = \lambda^k \frac{e^{-\lambda}}{k!}
 </equation>
 
+<text>
 where \lambda is the mean node degree and k is the node degree.
 
-
 ++ Figure
-
-
-
-
-<document>
-<tag>random-erdos-renyi</tag>
-<title>Random graphs: Erdos-Renyi</title>
+</text>
 
 <text>
 L: A network with n nodes is constructed by inserting a link between randomly selected nodepairs. The process is repeated until m links have been inserted.
@@ -77,12 +331,22 @@ L: A network with n nodes is constructed by inserting a link between randomly se
 
 <document>
 <tag>random-degree-distributions</tag>
-<title>Random graphs with general degree distributions</title>
+<title>Random graphs with general degree distributions: The configuration model</title>
+
+<text>
+cf. Newman 13
+</text>
+
 </document>
 
 <document>
 <tag>random-exponential</tag>
 <title>Exponential random graphs</title>
+
+<text>
+cf. Newman 15.2
+</text>
+
 </document>
 
 </document>

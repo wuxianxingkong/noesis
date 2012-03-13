@@ -109,6 +109,7 @@ C_{closeness}(i) = \frac{ n-1 }{ \sum_{j=1}^{n} distance(i,j)}
 Value within <eqn>[0,1]</eqn>.
 </text>
 
+
 <text>
 A node with a high closeness centrality lies close to the rest of the nodes in the network and, since it can reach them through short paths, it can exert a stronger influence on them than other nodes with a lower closeness centrality.
 </text>
@@ -188,6 +189,11 @@ A node with a high betweenness centrality can control information because it lie
 <text>
 Unlike the closeness measure, betweenness can also be computed for non-connected graphs.
 </text>
+
+<text>
+For computing the number of shortest paths from every other node u to every other node v running through node w, we must trace the <eqn>n^2</eqn> shortest paths traversed from every node to every other node, count the number of paths running through the nodes along each path, and then sum the counts for each node...
+</text>
+
 
 <text>
 It should be noted that both closeness and betweenness only consider what happens on the shortest paths between nodes, ignoring the network traffic that might occur on longer paths that also contribute to global network communication patterns. Moreover, betweenness assumes that flow along the shortest path is unaffected by bifurcations and confluences along the path. Matrix-based centrality metric take them into account.

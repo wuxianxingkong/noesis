@@ -346,10 +346,10 @@ For non-square <eqn>r \times c</eqn> toroidal networks, the average distance is 
 </text>
 
 <text>
-It is also possible to define a multidimensional mesh. The diameter of a D-dimensional mesh is <eqn>D (\sqrt[D]{n}-1)</eqn>, its bisection width is <eqn>\sqrt[D]{n^{D-1}}</eqn> and its average path length is <eqn>(D/3) \sqrt[D]{n}}</eqn> without end-around connections. 
+It is also possible to define a multidimensional mesh. The diameter of a D-dimensional mesh is <eqn>D (\sqrt[D]{n}-1)</eqn>, its bisection width is <eqn>\sqrt[D]{n^{D-1}}</eqn> and its average path length is <eqn>(D/3) \sqrt[D]{n}</eqn> without end-around connections. 
 
 
-In the case of D-dimensional toruses, all their nodes have degree <eqn>2D</eqn>, their diameter is <eqn>(D/2) \sqrt[D]{n}</eqn>, their bisection width is <eqn>2 \sqrt[D]{n^{D-1}}</eqn>, and their average path length is <eqn>(D/4) \sqrt[D]{n}}</eqn>.
+In the case of D-dimensional toruses, all their nodes have degree <eqn>2D</eqn>, their diameter is <eqn>(D/2) \sqrt[D]{n}</eqn>, their bisection width is <eqn>2 \sqrt[D]{n^{D-1}}</eqn>, and their average path length is <eqn>(D/4) \sqrt[D]{n}</eqn>.
 </text>
 
 <!-- Link efficiency -->

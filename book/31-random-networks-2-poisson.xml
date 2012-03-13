@@ -219,7 +219,7 @@ extremely rare, but the possibility exists)
 <title>Degree distribution</title>
 
 <text>
-The degree distributions obtained by by both Gilbert and ER generation algorithms obey a binomial distribution, which can be approximated by a Poisson distribution for large networks (n &gt;&gt;1), since the binomial distribution is asymptotically equal to the Poisson distribution for
+The degree distributions obtained by by both Gilbert and ER generation algorithms obey a binomial distribution, which can be approximated by a Poisson distribution for large networks (n &gt;&gt; 1), since the binomial distribution is asymptotically equal to the Poisson distribution for
 very large m. 
 
 Both distributions represent the probability of a node having degree k, but the Poisson distribution eliminates m (number of links) from the equation, hence it is often preferred.

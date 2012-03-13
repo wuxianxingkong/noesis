@@ -88,7 +88,7 @@ P_G(d) = \frac { n_d } { n }
 
 <text>
 where <eqn>n_d</eqn> is the number of nodes with degree <eqn>d</eqn> in the network.
-</eqn>
+</text>
 
 <text>
 As in any probability distribution, the sum of the values in the degree distribution must add up to 1. 

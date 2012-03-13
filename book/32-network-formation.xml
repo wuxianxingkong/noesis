@@ -21,6 +21,11 @@ L: random graphs have random structure, and k-regular graphs have purely determi
 <tag>small-worlds</tag>
 <title>Small worlds</title>
 
+
+<text>
+In general, the term small-world phenomenom refers to networks where the average path length grows slower than any positive power of the number of nodes in the network. Or, alternatively, to networks whose number of nodes grows faster than any power of its average path length.
+</text>
+
 <text>
 <cite>Pool and Kochen 1978</cite> @ inaugual issue of the Social Networks journal (a draft widely circulated two decades before its publication): the world of social relationships is much smaller than expected given the size of the social network.
 

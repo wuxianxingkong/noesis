@@ -84,6 +84,8 @@ WWW:
 
 L: The structure of the Internet and WWW: an emergent property of the decentralized Internet - that it had emerged without central planning into a structure consisting of a small number of extremely popular sites called hubs, and a large number of "unpopular" sites with few links (a scale-free network).
 
+In 1999, the average number of incoming and outcoming links per web page was about eight, an extremely sparse network...
+
 1999 Kleinberg, Kumar, Raghavan, Rajagopalan, Tomkins: Formalized model of WWW as "Webgraph"
 + We call such networks Webgraphs, because they use graph theory to understand the World Wide Web (WWW).
 (Kleinberg et al. 1999)
@@ -124,6 +126,9 @@ the web, Comput. Networks 39:277-287 (2002).]
 
 <text>
 ++ Bibliographic <cite>Tang et al. 2008</cite>
+
+ref. [D.J. de S. Price: "Networks of scientific papers", Science 149:150, 1965]
+
 </text>
 
 

@@ -25,8 +25,8 @@ Graph theory is the study of network structure, while game theory provides model
  The Prussian city of Königsberg, founded in 1255, was annexed by the Soviet Union at the end of World War II in 1945 and later renamed Kaliningrad in 1946 after the death of Chairman of the Presidium of the Supreme Soviet of the USSR Mikhail Kalinin, one of the original Bolsheviks. This Russian city is on the banks of the Pregel river, part of it on two islands in the middle of the river: Four bridges connected the banks of the river to the island; two bridges cross the forks of the river, and one bridge connects the island to the landmass located between the forks. Figure <ref>fig-konigsberg</ref>.
 
 "The history of graph theory began in 1736, when Euler <cite>Euler 1736</cite> first solved the
-seven bridges of K¨onigsberg problem.) . In Euler's day there were seven bridges linking the banks and
-two islands, which can be modeled as a multigraph with seven edges and four vertices.
+seven bridges of K¨onigsberg problem.) . In Euler's day there were seven bridges linking the banks of the Pregel river and
+its two islands, which can be modeled as a multigraph with seven edges and four vertices.
 Euler sought a way to walk over each of the bridges exactly once and return home - i.e.
 , an Eulerian cycle. Euler proved that such a tour is impossible, since all four of the
 vertices had odd degrees."
@@ -269,6 +269,9 @@ Boston... sixty-four chains that succeeded in reaching the target; the median le
 ... That so many letters reached their destination, and by such short paths,was a striking fact when itwas first discovered
 ... many letters never arrived
 
+Actually, Milgram made two attempts: one starting from Wichita, Kansas, and the other from Omaha, Nebraska.  The one starting in Wichita, with a target person in Sharon, Massachusetts, resulting in only 3 completed chains. The second one was more successful...
+
+
 K: Milgram himself mused about this in his original paper
 [Stanley Milgram. The small-world problem. Psychology Today, 2:60–67, 1967.]; his observation, paraphrased slightly, was that if we think of each person as the
 center of their own social “world,” then “six short steps” becomes “six worlds apart” –
@@ -328,6 +331,12 @@ Some communities, such as the Sentinelese, are completely isolated, disrupting t
 
 In addition to these methodological critiques, conceptual issues are debated. One regards the social relevance of indirect contact chains of different degrees of separation. Much formal and empirical work focuses on diffusion processes, but the literature on the small-world problem also often illustrates the relevance of the research using an example (similar to Milgram's experiment) of a targeted search in which a starting person tries to obtain some kind of resource (e.g., information) from a target person, using a number of intermediaries to reach that target person. However, there is little empirical research showing that indirect channels with a length of about six degrees of separation are actually used for such directed search, or that such search processes are more efficient compared to other means (e.g., finding information in a directory).[Schnettler, Sebastian. 2009. "A structured overview of 50 years of small-world research" Social Networks, 31(3), pp. 165-178, doi:10.1016/j.socnet.2008.12.004]
 
+
+Kleinfeld's critique: Our desire to believe in a small world 
+[J. Kleinfeld: "The small world problem (Could it be a big world after all? The 'six degrees of separation' myth)". Society, 39:62, 2002] 
+
+
+LOL... A theoretical physicist would say that <q>it is dangerous to believe sociologists too much: (i) they have to work with poorly defined and ubjective material, (ii) they have to use poor statistics</q> <cite>Dogorotsev 2010</cite>
 
 Conclusion:
 Society is not a nonrandom network.

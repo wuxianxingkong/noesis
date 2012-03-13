@@ -36,7 +36,7 @@ L: Let <eqn>d_{i,j}</eqn> the length of the shortest path between node <eqn>v_i<
 </text>
 
 <equation>
-avgPathLength(G) = \sum_{i} \sum_{j} \frac{d_{i,j}}{n(n-1)}
+L(G) = \sum_{i} \sum_{j} \frac{d_{i,j}}{n(n-1)}
 </equation>
 
 <text>
@@ -44,7 +44,7 @@ L: The tradeoff between number of links and number of hops in the average path l
 </text>
 
 <equation>
-efficiency(G) =  \frac{m - avgPathLength(G)}{m} = 1 - \frac{avgPathLength(G)}{m}
+E(G) =  \frac{m - L(G)}{m} = 1 - \frac{L(G)}{m}
 </equation>
 
 <text>
@@ -91,7 +91,7 @@ The average path length of a ring network is approximately <eqn>n/4</eqn>, since
 </text>
 
 <equation>
-avgPathLength(tandem) = \frac{ \sum_{i} 2(n-i)i } { n (n-1) } = \frac{n+1}{3}
+L(tandem) = \frac{ \sum_{i} 2(n-i)i } { n (n-1) } = \frac{n+1}{3}
 </equation>
 
 <text>
@@ -111,9 +111,9 @@ Then, the average path length of a ring network is
 
 <equation>
 \begin{aligned}
-avgPathLength(ring) &amp;= \frac{ n S } { n (n-1) } = \frac{S}{n-1} \\
-                    &amp;= \frac{ n^2 } { 4 (n-1) } \text{ for even values of } n \\
-		    &amp;= \frac{ n+1 } { 4 }  \text{ for odd values of } n
+L(ring) &amp;= \frac{ n S } { n (n-1) } = \frac{S}{n-1} \\
+        &amp;= \frac{ n^2 } { 4 (n-1) } \text{ for even values of } n \\
+        &amp;= \frac{ n+1 } { 4 }  \text{ for odd values of } n
 \end{aligned}
 </equation>
 
@@ -129,10 +129,10 @@ We can now proceed to compute the efficiency of a ring network:
 
 <equation>
 \begin{aligned}
-efficiency(ring) &amp;= 1 - \frac{avgPathLength(ring)}{n} \\
-                 &amp;= 1 - \frac{ n } { 4 (n-1) } = \frac{3n-4}{4n-4} \text{ for even values of } n \\
-                 &amp;= 1 - \frac{ n+1 } { 4n } = \frac{3n-1}{4n}  \text{ for odd values of } n \\
-                 &amp;\approx \frac{ 3 } { 4 }
+E(ring) &amp;= 1 - \frac{L(ring)}{n} \\
+        &amp;= 1 - \frac{ n } { 4 (n-1) } = \frac{3n-4}{4n-4} \text{ for even values of } n \\
+        &amp;= 1 - \frac{ n+1 } { 4n } = \frac{3n-1}{4n}  \text{ for odd values of } n \\
+        &amp;\approx \frac{ 3 } { 4 }
 \end{aligned} 
 </equation>
 
@@ -163,7 +163,7 @@ Density decreases as the tree network grows (i.e. tree networks are extremely sp
 </text>
 
 <equation>
-density(tree) = \frac{m}{n(n-1)} = \frac{n-1}{n(n-1)} = \frac{1}{n}
+\rho(tree) = \frac{m}{n(n-1)} = \frac{n-1}{n(n-1)} = \frac{1}{n}
 </equation>
 
 
@@ -219,7 +219,7 @@ L: A balanced binary tree network is almost, but not quite, a regular network. I
 <text>
 Not all trees are equally efficient...
 
- For instance, the average path length of line graph or tandem network (i.e. just a linked list of nodes) grows linearly with the size of the network (<eqn>\approx n/3</eqn>), as we saw in the previous section. A balanced binary tree is a more link-efficient alternative , since its average path length grows much slower than its number of links. In particular, the characteristic path length of balanced binary tree networks is <eqn>O(log_2 n)</eqn>, as we will now demonstrate.
+ For instance, the average path length of line graph or tandem network (i.e. just a linked list of nodes) grows linearly with the size of the network (<eqn>\approx n/3</eqn>), as we saw in the previous section. A balanced binary tree is a more link-efficient alternative , since its average path length grows much slower than its number of links. In particular, the characteristic path length of balanced binary tree networks is <eqn>\sim log_2 n</eqn>, as we will now demonstrate.
 </text>
 
 <text>
@@ -238,7 +238,7 @@ In a complete binary tree, a nodes at level <eqn>i</eqn> is adjacent to two node
 </text>
 
 <equation>
-avgPathLength(bbt) \approx diameter(bbt) - 4
+L(bbt) \approx diameter(bbt) - 4
 </equation>
 
 <!-- Link efficiency -->
@@ -248,7 +248,7 @@ Now we can plug that approximate result to compute the link efficiency of large 
 </text>
 
 <equation>
-efficiency(bbt) = 1 - \frac{avgPathLength(bbt)}{n-1} \approx 1 - \frac{2 log_2 (n+1) - 5}{n - 1} \rightarrow 1 - \frac{2 log_2 n}{n}
+E(bbt) = 1 - \frac{L(bbt)}{n-1} \approx 1 - \frac{2 log_2 (n+1) - 5}{n - 1} \rightarrow 1 - \frac{2 log_2 n}{n}
 </equation>
 
 <text>
@@ -305,7 +305,7 @@ Density decreases as the toroidal network grows (i.e. toroidal networks are extr
 </text>
 
 <equation>
-density(toroid) = \frac{m}{n(n-1)} = \frac{2n}{n(n-1)} = \frac{2}{n-1}
+\rho(toroid) = \frac{m}{n(n-1)} = \frac{2n}{n(n-1)} = \frac{2}{n-1}
 </equation>
 
 <text>
@@ -320,15 +320,15 @@ L: The average path length of a 2D toroidal network increases with <eqn>\sqrt{n}
 
 <equation>
 \begin{aligned}
-avgPathLength(toroid) &amp;= \frac{ n S } { n (n-1) } = \frac{S}{n-1} \\
-                      &amp;= \frac{ \sqrt{n} } { 2 } \frac{ n } { n-1 } \text{ for even values of } k \\
-		      &amp;= \frac{ \sqrt{n} } { 2 } \text{ for odd values of } k \\
-		      &amp;\approx \frac{1}{2} \sqrt{n}
+L(toroid) &amp;= \frac{ n S } { n (n-1) } = \frac{S}{n-1} \\
+          &amp;= \frac{ \sqrt{n} } { 2 } \frac{ n } { n-1 } \text{ for even values of } k \\
+          &amp;= \frac{ \sqrt{n} } { 2 } \text{ for odd values of } k \\
+          &amp;\approx \frac{1}{2} \sqrt{n}
 \end{aligned}
 </equation>
 
 <text>
-where <eqn>S/n</eqn> represents the average path distance from any node the remaining nodes within the network. Therefore, we can say that 2D toroidal networks have <eqn>O(\sqrt{n})</eqn> characteristic path length.
+where <eqn>S/n</eqn> represents the average path distance from any node the remaining nodes within the network. Therefore, we can say that 2D toroidal networks have <eqn>\sim \sqrt{n}</eqn> characteristic path length.
 </text>
 
 <text>
@@ -337,7 +337,7 @@ L: A mesh network is a toroidal network without the wraparound links. In fact, t
 
 <equation>
 \begin{aligned}
-avgPathLength(mesh) &amp;= \frac{2}{3} k = \frac{2}{3} \sqrt{n}
+L(mesh) &amp;= \frac{2}{3} k = \frac{2}{3} \sqrt{n}
 \end{aligned}
 </equation>
 
@@ -363,7 +363,7 @@ and simplifying, yields toroidal network link efficiency:
 
 
 <equation>
-efficiency(toroid) = 1 - \frac{avgPathLength(toroid)}{2n} = 1 - \frac{\sqrt{n}}{4n} = 1 - \frac{1}{4\sqrt{n}}
+E(toroid) = 1 - \frac{L(toroid)}{2n} = 1 - \frac{\sqrt{n}}{4n} = 1 - \frac{1}{4\sqrt{n}}
 </equation>
 
 <text>
@@ -376,7 +376,7 @@ If we cut the rings in the toroid, we get a mesh whose link efficiency is
 </text>
 
 <equation>
-efficiency(mesh) = 1 - \frac{avgPathLength(mesh)}{2n-2\sqrt{n}} = 1 - \frac{2}{3} \frac{\sqrt{n}}{2n-2\sqrt{n}} = 1 - \frac{1}{3\sqrt{n}-3}
+E(mesh) = 1 - \frac{L(mesh)}{2n-2\sqrt{n}} = 1 - \frac{2}{3} \frac{\sqrt{n}}{2n-2\sqrt{n}} = 1 - \frac{1}{3\sqrt{n}-3}
 </equation>
 
 
@@ -412,7 +412,7 @@ Density decreases as the hypercube network grows, but not as fast as with toroid
 </text>
 
 <equation>
-density(hypercube) = \frac{m}{n(n-1)} = \frac{\log_2 n}{2(n-1)}
+\rho(hypercube) = \frac{m}{n(n-1)} = \frac{\log_2 n}{2(n-1)}
 </equation>
 
 
@@ -435,23 +435,24 @@ Given one particular node in a D-dimensional hypercube, its distance to the rema
 </text>
 
 <text>
-Therefore, the average distance from any node to the remaining (n-1) nodes in a D-dimensional hypecube is
+Therefore, the average distance <eqn>\langle \ell \rangle</eqn> from any node to the remaining (n-1) nodes in a D-dimensional hypecube is
 </text>
 
 <equation>
 \begin{aligned}
-avgDistance(hypercube) &amp; = \frac{1}{n-1} \sum_{i=1}^{D} i {D \choose i} \\
-                       &amp; = \frac{1}{n-1} \sum_{i=0}^{D-1} (i+1) {D \choose i+1} \\
-                       &amp; = \frac{1}{n-1} \sum_{i=0}^{D-1} (i+1) \frac{D!}{(i+1)!(D-i-1)!} \\
-                       &amp; = \frac{1}{n-1} \sum_{i=0}^{D-1} (i+1) \frac{D(D-1)!}{(i+1)i!(D-i-1)!} \\
-                       &amp; = \frac{1}{n-1} \sum_{i=0}^{D-1} \frac{D(D-1)!}{i!(D-i-1)!} \\
-                       &amp; = \frac{1}{n-1} \sum_{i=0}^{D-1} D \frac{(D-1)!}{i!(D-i-1)!} \\
-                       &amp; = \frac{D}{n-1} \sum_{i=0}^{D-1} \frac{(D-1)!}{i!(D-i-1)!} \\
-                       &amp; = \frac{D}{n-1} \sum_{i=0}^{D-1} {D-1 \choose i} \\
-                       &amp; = \frac{D}{n-1} 2^{D-1} \\
-                       &amp; = \frac{D}{n-1} \frac{n}{2} \\
-                       &amp; = \frac{n}{n-1} \frac{D}{2} \\
-		       &amp; \approx \frac{D}{2} = \frac{\log_2 n}{2} 
+\langle \ell(hypercube) \rangle
+  &amp; = \frac{1}{n-1} \sum_{i=1}^{D} i {D \choose i} \\
+  &amp; = \frac{1}{n-1} \sum_{i=0}^{D-1} (i+1) {D \choose i+1} \\
+  &amp; = \frac{1}{n-1} \sum_{i=0}^{D-1} (i+1) \frac{D!}{(i+1)!(D-i-1)!} \\
+  &amp; = \frac{1}{n-1} \sum_{i=0}^{D-1} (i+1) \frac{D(D-1)!}{(i+1)i!(D-i-1)!} \\
+  &amp; = \frac{1}{n-1} \sum_{i=0}^{D-1} \frac{D(D-1)!}{i!(D-i-1)!} \\
+  &amp; = \frac{1}{n-1} \sum_{i=0}^{D-1} D \frac{(D-1)!}{i!(D-i-1)!} \\
+  &amp; = \frac{D}{n-1} \sum_{i=0}^{D-1} \frac{(D-1)!}{i!(D-i-1)!} \\
+  &amp; = \frac{D}{n-1} \sum_{i=0}^{D-1} {D-1 \choose i} \\
+  &amp; = \frac{D}{n-1} 2^{D-1} \\
+  &amp; = \frac{D}{n-1} \frac{n}{2} \\
+  &amp; = \frac{n}{n-1} \frac{D}{2} \\
+  &amp; \approx \frac{D}{2} = \frac{\log_2 n}{2} 
 \end{aligned}
 </equation>
 
@@ -465,21 +466,21 @@ Since the average path length for all nodes is the same, the average path length
 
 <equation>
 \begin{aligned}
-avgPathLength(hypercube) &amp; = \frac{n}{n-1} \frac{D}{2} \approx \frac{D}{2} = \frac{\log_2 n}{2} 
+L(hypercube) &amp; = \frac{n}{n-1} \frac{D}{2} \approx \frac{D}{2} = \frac{\log_2 n}{2} 
 \end{aligned}
 </equation>
 
 <!-- Link efficiency -->
 
 <text>
-L: Both sparse and link-efficient. Hypercube characteristic path length is <eqn>O(log_2 n)</eqn> like binary treee, but its link efficiency is
+L: Both sparse and link-efficient. Hypercube characteristic path length is <eqn>\sim log_2 n</eqn>, like binary treee, but its link efficiency is
 </text>
 
 <equation>
 \begin{aligned}
-efficiency(hypercube) &amp; = 1 - \frac{avgPathLength(hypercube)}{m} \\
-                      &amp; = 1 - \frac{ \frac{n}{n-1} \frac{\log_2 n}{2} } { \frac{n \log_2 n}{2} } \\
-                      &amp; = 1 - \frac{ 1 } { n - 1 } 
+E(hypercube) &amp; = 1 - \frac{L(hypercube)}{m} \\
+             &amp; = 1 - \frac{ \frac{n}{n-1} \frac{\log_2 n}{2} } { \frac{n \log_2 n}{2} } \\
+             &amp; = 1 - \frac{ 1 } { n - 1 } 
 \end{aligned}
 </equation>
 
@@ -501,7 +502,7 @@ Bisection width = (n/2)^2
 </text>
 
 <equation>
-efficiency(complete) = 1 - \frac{1}{m} = 1 - \frac{2}{n(n-1)} 
+E(complete) = 1 - \frac{1}{m} = 1 - \frac{2}{n(n-1)} 
 </equation>
 
 <text>
@@ -509,7 +510,7 @@ L: Binary tree, toroid, hypercube, and complete networks are obviously scalable 
 </text>
 
 <equation>
-efficiency(complete) &gt; efficiency(hypercube) &gt; efficiency(toroid) &gt; efficiency(bbt) &gt; efficiency(ring)
+E(complete) &gt; E(hypercube) &gt; E(toroid) &gt; E(bbt) &gt; E(ring)
 </equation>
 
 <text>

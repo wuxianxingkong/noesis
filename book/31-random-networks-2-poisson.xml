@@ -36,8 +36,8 @@ The generation of random networks with no duplicate links, loops, isolated nodes
 </text>
 
 <text>
-Generative algorithms attempt to randomize the degree sequence distribution of a network... A “perfectly random” network is one that follows a binomial
-degree sequence distribution
+Generative algorithms attempt to randomize the degree distribution of a network... A “perfectly random” network is one that follows a binomial
+degree distribution
 </text>
 
 <text>
@@ -48,6 +48,11 @@ of Erdos and Renyi (Erdos, 1960).
 [Erdo¨s, P. and A. Re´nyi, On the evolution of random graphs, Publ. Math. Inst. Hungar. Acad. Sci. 5:17-61 (1960).]
 </text>
 
+<note>
+<text>
+For statistical physicists, a random network is not a particular network, but a statistical ensemble. Such ensembles are defined by their members and their statistical weights, which are proportional to their probabilities. In fact, the classical random graph model is the Gilbert model, <eqn>G_{n,p}</eqn>, where <eqn>n</eqn> is the number of (labeled) nodes and <eqn>p</eqn> is the probability of links. This model represents all possible random graphs with <eqn>n</eqn> nodes and their realization probabilities. Strictly speaking, the notion of randomness is not applicable to individual finite networks <cite>Dogorotsev 2010</cite>. Whereas empirical researchers and computer scientists work with single realizations of networks (or a bunch of them when performing computer simulations), theoretical physicists consider all the members of the corresponding statistical ensemble.
+</text>
+</note>
 
 <document>
 <tag>random-poisson-generation-gilbert</tag>
@@ -124,7 +129,7 @@ Given n and m,
 
 <text>
 - Unlike Gilbert's algorithm, ER networks are guaranteed to have exactly m links, obey the binomial
-degree sequence distribution, and are easy to generate.
+degree distribution, and are easy to generate.
 
 - it can leave some nodes isolated (This can occur
 because each node pair is selected at random, which means that it is possible a node is
@@ -140,7 +145,7 @@ L: Erdos–Renyi networks always have a specific number of links, so the density i
 <text>
 L: Gilbert and ER networks have essentially the same properties even though two different sets of microrules produce them.
 
-Both ER and Gilbert procedures produce a random network because the degree sequence distribution asymptotically approaches the Poisson distribution in both cases. Consequently, the entropy and cluster coefficients are comparable when the number of nodes and number of links are equivalent. However, the
+Both ER and Gilbert procedures produce a random network because the degree distribution asymptotically approaches the Poisson distribution in both cases. Consequently, the entropy and cluster coefficients are comparable when the number of nodes and number of links are equivalent. However, the
 Gilbert procedure generates a random network with a certain density, and the ER procedure generates a random network with a certain number of links. i.e., the ER procedure fixes the number of links while the Gilbert does not
 </text>
 
@@ -190,9 +195,9 @@ Given n and m, construct an anchored random network as follows:
 - The resulting anchored random network must have at least n/2 links, so that every node has at least one link attached to it.
 
 - small bias introduced by the first systematic pass over all nodes in order.
-The degree sequence distribution is skewed slightly because all nodes have nonzero
+The degree distribution is skewed slightly because all nodes have nonzero
 degree when m \geq (n/2). This bias shows up as an entropy that is slightly lower than
-that of a purely random network. Recall that the degree sequence distribution obeys a
+that of a purely random network. Recall that the degree distribution obeys a
 binomial distribution, and the probability that a node links to nothing is given by B(0,n), which is nonzero.
 
 - While the anchored random network procedure guarantees that all nodes connect
@@ -221,11 +226,11 @@ Both distributions represent the probability of a node having degree k, but the 
 </text>
 
 <text>
-Let \lambda the average degree  from the degree sequence distribution
+Let \lambda the average degree  from the degree distribution
 </text>
 
 <equation>
-\lambda = avgDegree(G) = 2m/n
+\lambda = \langle d \rangle = 2m/n
 </equation>
 
 <text>
@@ -269,6 +274,16 @@ where the success probability in each trial of the binomial distribution is give
 <text>
 The mean of a binomial distribution <eqn>B(n,p)</eqn> with parameters <eqn>n</eqn> and <eqn>p</eqn> is <eqn>np</eqn>, hence the mean number of times a node is choosen will be <eqn>\mu = np = m * (\lambda/m) = \lambda</eqn> as expected. The variance of the binomial distribution is <eqn>\sigma^2=np(1-p)</eqn>, which can be expressed in terms of our initial parameters as <eqn>\sigma^2 = \lambda (1- \lambda/m)</eqn>. When the number of trials is large enough, the skew of the binomial distribution is not too large and an excellent approximation to the binomial distribution is given by the normal distribution <eqn>N(\mu,\sigma^2)</eqn>, which indicates that the binomial distribution exhibits a exponentially-bounded tail.
 </text>
+
+<note>
+<text>
+In random networks, degree distributions decay fast, <eqn>P(k) \sim 1/k!</eqn>. All the moments <eqn>\sum_k k^n P(k)</eqn> of their degree distribution are always finite, hence the mean degree <eqn>\langle k \rangle = \sum_k k P(k)</eqn> is a typical scale for degrees, even on infinite networks. Other kinds of networks, such as scale-free networks, have slowly decaying degree distributions that follow a power-law, <eqn>P(k) \sim k^{-\gamma}</eqn>, are characterized by the lack of a typical node degree. In particular, if the exponent <eqn>\gamma \leq n+1</eqn>, the <eqn>n</eqn>th and higher moments of the distribution diverge (i.e. they are not finite, at least in theory, not so in a particular network instance). In practice, that means that we cannot pick a single node and assume that the rest of the network behaves in a similar way, an assumption often employed to analyze complex networks using a mean-field approximation. 
+</text>
+
+<text>
+Mean-field theory, from statistical physics, is a method employed to analyze physical systems with multiple bodies. When all the elements (bodies) are considered equivalent, no individual properties can distiguish them from the rest. Their expected value <eqn>\langle f_i \rangle</eqn> for a given property <eqn>f</eqn> is the same. Then, we can often approximate a property of the whole system <eqn>\langle \sum_i f_i \rangle</eqn> by estimating a property for an individual element, <eqn>\sum_i \langle f_i \rangle</eqn>, which greatly simplifies our original problem (provided that we are able to properly capture the effects of the interactions among the elements within the complex system).
+</text>
+</note>
 
 <text>
 However, we will prefer a different approximation. The binomial distribution converges towards the Poisson distribution as the number of trials goes to infinity while its mean <eqn>np = \lambda</eqn> remains fixed. Therefore the Poisson distribution with parameter <eqn>\lambda</eqn> will be used to describe the degree distribution of a random network with average degree <eqn>\lambda</eqn>.
@@ -355,8 +370,10 @@ Combining both expressions, we get
 </text>
 
 <equation>
-H(\rho) = \frac{1}{2} H_{0-50\%}(\rho) + \frac{1}{2} H_{50-100\%}(\rho)
-        \approx M \left( 1 - \frac{1}{2} e^{-R\rho} - \frac{1}{2} e^{-R(1-\rho)} \right)
+\begin{aligned}
+H(\rho) &amp; = \frac{1}{2} H_{0-50\%}(\rho) + \frac{1}{2} H_{50-100\%}(\rho) \\
+        &amp; \approx M \left( 1 - \frac{1}{2} e^{-R\rho} - \frac{1}{2} e^{-R(1-\rho)} \right)
+\end{aligned}
 </equation>
 
 <text>
@@ -484,7 +501,7 @@ that is, clustering is directly proportional to the number of (random) links add
 
 <text>
 By definition, cluster coefficient of average node v with mean degree <eqn>\lambda</eqn> is:
-</text>>
+</text>
 
 <equation>
 CC(v) = \frac { 2c } { \lambda (\lambda -1 ) }
@@ -593,7 +610,7 @@ two factors: average path length and number of shortestt paths.
 
 <text>
 We estimate the number of paths passing through a typical node using a mean-field approach. Node v has an average of \lambda links attached to it.
-Each link connects v to approximately \lambda^D other nodes, where D is the diameter of the network. Therefore, the number of paths through node v should be proportional to \lambda^D. But we know that increases in density lead to shortcuts around node v. The number of paths through v decreases with density, according to (1-\rho). As an approximation, we get betweenness(random) = O((1 - \rho) \lambda^D), which supports the conjecture
+Each link connects v to approximately \lambda^D other nodes, where D is the diameter of the network. Therefore, the number of paths through node v should be proportional to \lambda^D. But we know that increases in density lead to shortcuts around node v. The number of paths through v decreases with density, according to (1-\rho). As an approximation, we get betweenness(random) \sim (1 - \rho) \lambda^D, which supports the conjecture
 that average betweenness is a function of sparseness (1-density) and average path length.
 </text>
 
@@ -603,7 +620,7 @@ DRAFT...
 
 Apparently, there is a somewhat linear relationship between betweenness and path length:
 ...
-betweenness(random) = O ( avgPathLength ) = D - 1
+betweenness(random) \sim L(random) = D 
 
 D = \frac{\log n}{\log \lambda}
 D = \frac{ \log n - \log \lambda }{ \log(\lambda-1) + 1 } 
@@ -613,7 +630,7 @@ D = \frac{ \log n - \log \lambda }{ \log(\lambda-1) + 1 }
 betweenness(random) = \frac { \log n } { \log (n\rho) } = \frac {1}{\rho}
 ...
 
-In addition, the number of paths running through the closest node varies according to #paths(intermediary) = O(avg_path_length)
+In addition, the number of paths running through the closest node varies according to #paths(intermediary)  \sim \ell
 </text>
 
 

@@ -177,6 +177,10 @@ The degree of a node: <eqn>d_i = deg(v_i) = a_{ii}^{(2)}</eqn>. Note: k_i (physi
 </item>
 
 <item>
+The size of the network: <eqn>m = \frac{1}{2} \sum d_i = \frac{1}{2} \sum a_{ii}^{(2)} =  \frac{1}{2} \sum a_{ij}</eqn>. Note: k_i (physicists)
+</item>
+
+<item>
 The number of triangles in G than contain a given node: <eqn>triangles(v_i) = a_{ii}^{(3)} / 2</eqn>.
 </item>
 
@@ -229,6 +233,10 @@ A^\Sigma = A + A^2+ A^3 + ... + A^{n-1}
   <image scale="25" file="image/graphs/bowtie"/>
   <title>The bowtie graph.</title>
 </figure>
+
+<text>
+Any structural property of a network can be expressed in terms of its adjacency matrix, even though it is not practical to perform numerical computations on adjacency matrices for large networks, since such computations would require huge amounts of memory. Moreover, most real-world adjacency matrices are sparse, hence we would waste a lot of time dealing with their zero entries.
+</text>
 
 <text>
 For instance, consider the bowtie graph in Figure <ref>fig-bowtie</ref> and the powers of its adjacency matrix:
@@ -307,9 +315,9 @@ Alternatively, we can describe a graph by means of an edge incidence matrix. The
 b_{ij} = 
 \left \{
 \begin{matrix}
- +1 &amp; \text{if the head of edge} i \text{is attached to vertex} j\\ 
- -1 &amp; \text{if the tail of edge} i \text{is attached to vertex} j\\
- 0  &amp; \text{otherwise}
+ +1 &amp; \text{ if the head of edge } i \text{ is attached to vertex } j\\ 
+ -1 &amp; \text{ if the tail of edge } i \text{ is attached to vertex } j\\
+ 0  &amp; \text{ otherwise}
 \end{matrix}
 \right.
 </equation>

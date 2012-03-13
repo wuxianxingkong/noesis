@@ -23,6 +23,115 @@ Many of the key structural measures have grown out of insights of researchers tr
 Local metrics quantify the properties of the local neighborhoods of individual nodes, while global metrics can capture network communication properties.
 </text>
 
+
+<!-- Connectivity -->
+
+<document>
+<tag>connectivity</tag>
+<title>Connectivity</title>
+
+<text>
+++ <cite>Barzel and Biham 2009</cite>
+</text>
+
+<document>
+<tag>connectivity-density</tag>
+<title>Density</title>
+
+<text>
+L: Density is the ratio of the number of actual links to the maximum number possible.
+</text>
+
+<equation>
+density(G) = \frac{m}{n(n-1)}
+</equation>
+
+</document>
+
+<document>
+<tag>connectivity-path-length</tag>
+<title>Average path length</title>
+
+<text>
+The path length (or distance) between two nodes is the length of the shortest path between them, a.k.a. internode distance.  The maximum internode distance corresponds to the diameter of the network.
+</text>
+
+<text>
++ average path length is the average over all shortest paths.
+
+The average path length of a network (a.k.a. characteristic path length, mean internode distance, or mean geodesic distance) is defined as the average path length over all (shortest) direct paths between all pairs of nodes in the network, i.e. the average shortest path length over all pairs of nodes between which there is at least one connecting path.
+</text>
+
+<text>
+L: Let <eqn>\ell_{i,j}</eqn> the length of the shortest path between node <eqn>v_i</eqn> and <eqn>v_j</eqn>. Then, the average over all <eqn>\ell_{i,j}</eqn> is just
+</text>
+
+<equation>
+L(G) = \langle \ell_{i,j} \rangle = \sum_{i} \sum_{j} \frac{d_{i,j}}{n(n-1)}
+</equation>
+
+<text>
+Since we have to find all paths between nodes in the network, we could resort to an all-pairs shortest path algorithm. However, if link costs are equal, a simple breadth-first traversal suffices and computes the average path length in quadratic time.
+</text>
+
+<text>
+L: In terms of the path matrix, row v of the path matrix corresponds to starting node v, and the elements of row v correspond to the other nodes in the network. If a node is not reachable from node v, then the length of the path between them is zero. We construct the path matrix, row-by-row, and then compute the average value of the nonzero elements of the path matrix. Averaging over all paths from all pairs of nodes yields the characteristic or average path length. 
+</text>
+
+<text>
+i.e. <eqn>O(n^2)</eqn> algorithm
+</text>
+
+<note>
+<text>
+L: While we are computing the network characteristic path legth, we can also compute its diameter and radius as a byproduct of the path length calculation. Diameter is the largest value of k in the network, and a node’s radius is the maximum distance of this node from all others. The node with the smallest radius is the central node—it is as close or closer to all nodes than any other node (i.e. computes a measure of centrality for all nodes, and designates the most central node as the network’s center). We could also calculate closeness as a byproduct of finding all paths through the
+network...
+</text>
+</note>
+
+</document>
+
+
+<document>
+<tag>connectivity-efficiency</tag>
+<title>Link efficiency</title>
+
+<text>
+L: Link efficiency is used for comparing the efficiency of a network in terms of its average path length and number of links. A link-efficient
+network utilizes its links in an efficient manner to reduce average path length. In many applications of network science we want the shortest average path length possible while simultaneously conserving the number of links. 
+
+++ efficient network are sparse and efficiently utilize links to reduce average path length.
+
+We define link efficiency E(G) as follows:
+</text>
+
+<equation>
+E(G) =  \frac{m - L(G)}{m} = 1 - \frac{L(G)}{m}
+</equation>
+
+<text>
+L: this metric ranges from zero, when the
+average path length is m, to 100%, when the average path length is zero. In
+the extreme case, E = 1.0, every link contributes to link efficiency. When E = 0,
+the average path length equals m, which is the worst path length possible. Link
+efficiency is a measure of how effective links are at shortening characteristic path
+length. Higher values of E correspond to networks that are more efficient.
+</text>
+
+<text>
+L: In general, we are interested in efficient utilization of links as the size of a network
+increases. A network is scalable if link efficiency approaches 100% as network size
+n approaches infinity. Otherwise, a network is non-scalable.
+</text>
+
+</document>
+
+</document>
+
+
+
+<!-- Centrality -->
+
 <document>
 <tag>centrality</tag>
 <title>Centrality measures</title>
@@ -665,105 +774,6 @@ A measure based on degree <cite>Newman 2002</cite>, defined as the correlation c
 </document>
 
 
-<document>
-<tag>connectivity</tag>
-<title>Connectivity</title>
-
-<text>
-++ <cite>Barzel and Biham 2009</cite>
-</text>
-
-<document>
-<tag>connectivity-density</tag>
-<title>Density</title>
-
-<text>
-L: Density is the ratio of the number of actual links to the maximum number possible.
-</text>
-
-<equation>
-density(G) = \frac{m}{n(n-1)}
-</equation>
-
-</document>
-
-<document>
-<tag>connectivity-path-length</tag>
-<title>Average path length</title>
-
-<text>
-L: Path length is the shortest path between two nodes, and average path length is the average over all shortest paths.
-</text>
-
-<text>
-The average path length of a network (a.k.a. characteristic path length) is defined as the average path length over all (shortest) direct paths between all pairs of nodes in the network.
-</text>
-
-<text>
-L: Let <eqn>d_{i,j}</eqn> the length of the direct path between node <eqn>v_i</eqn> and <eqn>v_j</eqn>. Then, the average over all <eqn>d_{i,j}</eqn> is just
-</text>
-
-<equation>
-avgPathLength(G) = \sum_{i} \sum_{j} \frac{d_{i,j}}{n(n-1)}
-</equation>
-
-<text>
-Since we have to find all paths between nodes in the network, we could resort to an all-pairs shortest path algorithm. However, if link costs are equal, a simple breadth-first traversal suffices and computes the average path length in quadratic time.
-</text>
-
-<text>
-L: In terms of the path matrix, row v of the path matrix corresponds to starting node v, and the elements of row v correspond to the other nodes in the network. If a node is not reachable from node v, then the length of the path between them is zero. We construct the path matrix, row-by-row, and then compute the average value of the nonzero elements of the path matrix. Averaging over all paths from all pairs of nodes yields the characteristic or average path length. 
-</text>
-
-<text>
-i.e. <eqn>O(n^2)</eqn> algorithm
-</text>
-
-<note>
-<text>
-L: While we are computing the network characteristic path legth, we can also compute its diameter and radius as a byproduct of the path length calculation. Diameter is the largest value of k in the network, and a node’s radius is the maximum distance of this node from all others. The node with the smallest radius is the central node—it is as close or closer to all nodes than any other node (i.e. computes a measure of centrality for all nodes, and designates the most central node as the network’s center). We could also calculate closeness as a byproduct of finding all paths through the
-network...
-</text>
-</note>
-
-</document>
-
-
-<document>
-<tag>connectivity-efficiency</tag>
-<title>Link efficiency</title>
-
-<text>
-L: Link efficiency is used for comparing the efficiency of a network in terms of its average path length and number of links. A link-efficient
-network utilizes its links in an efficient manner to reduce average path length. In many applications of network science we want the shortest average path length possible while simultaneously conserving the number of links. 
-
-++ efficient network are sparse and efficiently utilize links to reduce average path length.
-
-We define link efficiency E(G) as follows:
-</text>
-
-<equation>
-efficiency(G) =  \frac{m - avgPathLength(G)}{m} = 1 - \frac{avgPathLength(G)}{m}
-</equation>
-
-<text>
-L: this metric ranges from zero, when the
-average path length is m, to 100%, when the average path length is zero. In
-the extreme case, E = 1.0, every link contributes to link efficiency. When E = 0,
-the average path length equals m, which is the worst path length possible. Link
-efficiency is a measure of how effective links are at shortening characteristic path
-length. Higher values of E correspond to networks that are more efficient.
-</text>
-
-<text>
-L: In general, we are interested in efficient utilization of links as the size of a network
-increases. A network is scalable if link efficiency approaches 100% as network size
-n approaches infinity. Otherwise, a network is non-scalable.
-</text>
-
-</document>
-
-</document>
 
 <document>
 <tag>modularity</tag>

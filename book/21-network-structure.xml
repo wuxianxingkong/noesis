@@ -109,12 +109,10 @@ The clustering coefficient of an individual node measure the density of connecti
 </text>
 
 <text>
-In its original form, the clustering coefficient is the fraction of fully connected triangles among the node's neighbors (a.k.a. three-node motifs).
+The clustering coefficient measures how many nodes form triangular subgraphs with their adjacent nodes. In its original form, the clustering coefficient is the fraction of fully connected triangles among the node and its neighbors (a.k.a. three-node motifs). The clustering coefficient, therefore, measures how the neighbors of a node are interconnected.
 </text>
 
 <text>
-L: Cluster coefficient is a measure of how many nodes form triangular subgraphs with their adjacent nodes.
-
 L: Suppose that we compare the number of links connecting a group of k adjacent nodes
 to the maximum possible number,which is given by a complete subgraph with (k(k.))/2 links. 
 Each subgraph formed around a node in this k-node neighborhood forms a triangular
@@ -131,16 +129,48 @@ A more visual way to think of cluster coefficient is the following: A node u wit
 neighbors may be part of c triangular subgraphs, each containing node u as one of the
 triangle’s three nodes. Cluster coefficient is the ratio of the actual number of triangular
 subgraphs c to the maximum possible number.
+</text>
 
-L: The cluster coefficient of an entire graph G is the average over all node
-coefficients... maximum for complete graphs CC(K_n) = 1 and minimum for trees CC(T)= 0 (e.g. stars)
+<text>
+The clustering coefficient of can be interpreted as the probability that two of its neighbors are adjacent in the network. However, this probability often depends on the node degree. Hence it is often expressed as a degree-dependent function:
+</text>
 
+<equation>
+C(k) = \langle CC(u)|_{degree(u)=k} \rangle
+</equation>
+
+
+<text>
+The cluster coefficient of the whole network CC(G) is the average over all node clustering
+coefficients. It is less informative, but it is often employed.
+The clustering coefficient reaches it maximum for complete graphs CC(K_n) = 1 and its minimum for trees CC(T)=0 (e.g. stars).
+</text>
+
+<text>
+Sometimes, the clustering coefficient just counts (three times) the number of triangles in the network, a measure known as transitivity by sociologists:
+</text>
+
+<equation>
+transitivity(G) = 3 \frac{ \#triangles }{ \#connectedTriples }
+</equation>
+
+<text>
+It should be noted that each triangle consists of three connected triples, hence the constant 3 in the expression above. The number of connected triples of nodes equals <eqn>\sum_i d_i(d_i-1)/2</eqn> <eqn>= n ( \langle d^2 \rangle - \langle d \rangle)/2</eqn>. Finally, the number of triangles <eqn>T</eqn> can be computed from the adjacency matrix as follows:
+</text>
+
+<equation>
+T = \frac{1}{6} \sum_i a_{ii}^{(3)} = \frac{1}{6} Tr A^3
+</equation>
+
+<text>
+where <eqn>Tr A^3</eqn> is the trace (the sum of the diagonal elements) of the cube of the graph adjacency matrix.
 </text>
 
 
 <text>
 Low-degree nodes can disproportionately influence their neighbors' clustering coefficients, a problem solved by transitivity <cite>Newman 2003</cite>... a collectively normalized variant of the clustering coefficient.
 </text>
+
 
 <text>
 Clustering coefficients and trasitivity have been generalized for weighted and directed networks <cite>Onnela et al. 2005</cite> <cite>Fagiolo 2007</cite>.

@@ -166,13 +166,13 @@ digraph on n vertices."
 <title>Cubic graphs</title>
 
 <text>
-A cubic graph is a graph in which all vertices have degree three, i.e. a 3-regular graph. Cubic graphs are also called trivalent graphs.
+A <text>cubic graph</text> is a graph in which all vertices have degree three, i.e. a 3-regular graph. Cubic graphs are also called trivalent graphs.
 
 Their (vertex) connectivity and edge connectivity always coincide, i.e. <eqn>\kappa(K_n) = \lambda(K_n)</eqn>, and they can be either 1 or 2.
 
 There are many well-known individual cubic graphs, including the complete graph <eqn>K_4</eqn>, the utility graph (<eqn>K_{3,3}</eqn>), the Petersen graph, the Heawood graph, the Möbius-Kantor graph, the Pappus graph, the Desargues graph, the Nauru graph, the Coxeter graph, the Tutte-Coxeter graph (a.k.a. Tutte eight-cage), the Dyck graph, the Foster graph, or the Biggs-Smith graph.
 
-For instance, the Petersen graph is an undirected small regular graph, named after the Danish mathematician Julius Petersen, who initiated the study of regular graphs in 1891. The Petersen graph, which includes 10 vertices and 15 edges, is often employed as an useful example or counterexample for many proofs in graph theory.
+For instance, the <term>Petersen graph</term> is an undirected small regular graph, named after the Danish mathematician Julius Petersen, who initiated the study of regular graphs in 1891. The Petersen graph, which includes 10 vertices and 15 edges, is often employed as an useful example or counterexample for many proofs in graph theory. It is also an example of cage graphs, namely, a <eqn>(3,5)</eqn> cage graph. A <eqn>(d,g)</eqn> <term>cage graph</term> is a regular graph with the minimum number of possible nodes for a given node degree <eqn>d</eqn> and a given length <eqn>g</eqn> of its shortest cycle. In synchronized systems, cage graphs provide optimal synchronization.
 </text>
 
 <figure>
@@ -379,10 +379,17 @@ There are several well-known classes of trees:
 </text>
 
 <list>
+
 <item>Paths <eqn>P_n</eqn>, which are the trees with the minimum number of leaves (just <eqn>2</eqn> of them).</item>
+
 <item>Stars <eqn>K_{1,n-1}</eqn>, which are the trees with the maximum possible number of leaves: <eqn>n-1</eqn> leaves.</item>
+
 <item>Double stars, i.e. a tree containing exactly two non-leaves, which must be adjacent.</item>
+
 <item>Caterpillars, when the removal of the tree leaves produces a path (the spine of the caterpillar). Paths, stars, and double stars are also caterpillars.</item>
+
+<item>Cayley trees, which are trees in which each non-leaf node has a constant number of links <eqn>n</eqn>, sometimes referred to as <eqn>n</eqn>-Cayley trees. Paths are 2-Cayley trees. 3-Cayley trees are also called trivalent trees, binary trees, or boron trees. Finally, a star is the only <eqn>n</eqn>-Cayley tree with <eqn>n+1</eqn> nodes.</item>
+
 </list>
 
 <figure>

@@ -1,0 +1,53 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<!-- Poisson random networks -->
+
+<document>
+<tag>random-poisson</tag>
+<title>Poisson random graphs: Erdos-Renyi's model</title>
+
+
+<text>
+L: Solomonoff and Rappaport were the first to apply the ideas of epidemics to RANDOM networks (Solomonoff, 1951)
+[Solomonoff, R. and A. Rapoport, Connectivity of random nets, Bull. Math. Biophys. 13:107-117 (1951).]
+</text>
+
+<text>
+L: Gilbert showed how to build a random graph by first constructing a complete graph and then deleting randomly selected links until reaching the desired number of links (Gilbert, 1959)... cumbersome algorithm was quickly surpassed by the elegant and widely promoted algorithm
+of Erdos and Renyi (Erdos, 1960).
+
+[Gilbert, E. N., Random graphs, Ann. Math. Stat. 30(4):1141-1144 (1959).]
+[Erdo¨s, P. and A. Re´nyi, On the evolution of random graphs, Publ. Math. Inst. Hungar. Acad. Sci. 5:17-61 (1960).]
+</text>
+ 
+
+<!-- Degree distribution -->
+
+L: The general shape... approximates a Poisson distribution because random selection of node pairs is a Poisson process - the probability of
+obtaining exactly k successes in m trials is given by the binomial distribution: 
+
+<equation> 
+B(k,m) = C {m \choose k } p^k (1-p)^{m-k}
+</equation>
+
+B(k,m) is approximated by the Poisson distribution by replacing p with (\lambda/m), in B(k,m), and letting m grow without bound:
+
+<equation> 
+H(k) = \lambda^k \frac{e^{-\lambda}}{k!}
+</equation>
+
+<text>
+where \lambda is the mean node degree and k is the node degree.
+
+++ Figure
+</text>
+
+<text>
+L: A network with n nodes is constructed by inserting a link between randomly selected nodepairs. The process is repeated until m links have been inserted.
+
+... it can leave some nodes isolated, and unless it is slightly modified, it can insert duplicate and loop links into the network.
+</text>
+
+</document>

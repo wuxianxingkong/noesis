@@ -1,0 +1,14 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<!-- Random walks -->
+
+<document>
+<tag>random-walks</tag>
+<title>Random walks</title>
+
+<text>
+cf. Newman 6.14
+</text>
+
+</document>

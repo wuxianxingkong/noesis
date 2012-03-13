@@ -1,0 +1,14 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<!-- Exponential random graphs -->
+
+<document>
+<tag>random-networks-exponential</tag>
+<title>Exponential random graphs</title>
+
+<text>
+cf. Newman 15.2
+</text>
+
+</document>

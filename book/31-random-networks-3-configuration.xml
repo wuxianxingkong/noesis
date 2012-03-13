@@ -1,0 +1,15 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<!-- The configuration model -->
+
+<document>
+<tag>random-networks-configuration</tag>
+<title>Random graphs with general degree distributions: The configuration model</title>
+
+<text>
+cf. Newman 13
+</text>
+
+</document>
+

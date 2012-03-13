@@ -694,11 +694,11 @@ The average path length of a network (a.k.a. characteristic path length) is defi
 </text>
 
 <text>
-L: Let <eqn>r_{i,j}</eqn> the length of the direct path between node <eqn>v_i</eqn> and <eqn>v_j</eqn>. Then, the average over all <eqn>r_{i,j}</eqn> is just
+L: Let <eqn>d_{i,j}</eqn> the length of the direct path between node <eqn>v_i</eqn> and <eqn>v_j</eqn>. Then, the average over all <eqn>d_{i,j}</eqn> is just
 </text>
 
 <equation>
-avgPathLength(G) = \sum_{i} \sum_{j} \frac{r_{i,j}}{n(n-1)}
+avgPathLength(G) = \sum_{i} \sum_{j} \frac{d_{i,j}}{n(n-1)}
 </equation>
 
 <text>

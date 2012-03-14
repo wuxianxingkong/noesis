@@ -99,7 +99,6 @@ public class RingNetworkTest
 		apl.compute();
 		
 		assertEquals( ring.averagePathLength(), apl.averagePathLength(), EPSILON );
-		System.out.println(apl.averagePathLength());
 			
 		for (int i=0; i<ring.size(); i++) {
 			assertEquals ( ring.averagePathLength(), apl.get(i), EPSILON);
@@ -115,8 +114,6 @@ public class RingNetworkTest
 		apl.compute();
 		
 		assertEquals( oddRing.averagePathLength(), apl.averagePathLength(), EPSILON );
-			
-		System.out.println(apl.averagePathLength());
 		
 		for (int i=0; i<oddRing.size(); i++) {
 			assertEquals ( oddRing.averagePathLength(), apl.get(i), EPSILON);

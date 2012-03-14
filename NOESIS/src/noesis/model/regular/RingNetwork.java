@@ -25,6 +25,21 @@ public class RingNetwork extends RegularNetwork
 			return size()-diff;
 	}
 	
+	public int diameter ()
+	{
+		return size()/2;
+	}
+	
+	public int radius (int i)
+	{
+		return diameter();
+	}	
+	
+	
+	public double averageDegree ()
+	{
+		return 2;
+	}
 	
 	public double averagePathLength ()
 	{

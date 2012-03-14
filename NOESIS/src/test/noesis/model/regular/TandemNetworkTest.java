@@ -54,12 +54,15 @@ public class TandemNetworkTest
 		
 		outDegrees.compute();
 		inDegrees.compute();
-		
-		assertEquals(1, (int) outDegrees.getVector().min());
-		assertEquals(2, (int) outDegrees.getVector().max());
 
-		assertEquals(1, (int) inDegrees.getVector().min());
-		assertEquals(2, (int) inDegrees.getVector().max());
+		assertEquals(tandem.averageDegree(), outDegrees.average(), EPSILON);
+		assertEquals(tandem.averageDegree(), inDegrees.average(), EPSILON);
+
+		assertEquals(1, (int) outDegrees.min());
+		assertEquals(2, (int) outDegrees.max());
+
+		assertEquals(1, (int) inDegrees.min());
+		assertEquals(2, (int) inDegrees.max());
 
 		assertEquals ( 1, (int) outDegrees.get(0));
 		assertEquals ( 1, (int) inDegrees.get(0));
@@ -100,11 +103,36 @@ public class TandemNetworkTest
 		apl.compute();
 		
 		assertEquals( tandem.averagePathLength(), apl.averagePathLength(), EPSILON );
+		assertEquals( tandem.diameter(), apl.diameter() );
 			
 		for (int i=0; i<tandem.size(); i++) {
 			assertEquals ( tandem.averagePathLength(i), apl.get(i), EPSILON);
 		}
 	}
 	
+	@Test
+	public void testRadius()
+	{
+		Radius radius = new Radius(tandem);
+		
+		radius.compute();
+		
+		assertEquals( tandem.diameter(), radius.diameter() );
+			
+		for (int i=0; i<tandem.size(); i++) {
+			assertEquals ( tandem.radius(i), radius.get(i), EPSILON);
+		}
+	}
 	
+	@Test
+	public void testCloseness()
+	{
+		Closeness closeness = new Closeness(tandem);
+		
+		closeness.compute();
+			
+		for (int i=0; i<tandem.size(); i++) {
+			assertEquals ( 1.0/tandem.averagePathLength(i), closeness.get(i), EPSILON);
+		}
+	}	
 }

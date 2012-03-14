@@ -47,7 +47,7 @@ public class PathLength extends NodeMetrics
 	public double averagePathLength ()
 	{
 		checkDone();		
-		return getVector().sum() / (getNetwork().size()-1);
+		return sum() / (size()-1);
 	}
 	
 	

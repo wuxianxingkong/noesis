@@ -52,18 +52,20 @@ public class RingNetworkTest
 		OutDegree outDegrees = new OutDegree(ring);
 		InDegree  inDegrees = new InDegree(ring);
 		
+		
 		outDegrees.compute();
 		inDegrees.compute();
-		
-		assertEquals(2, (int) outDegrees.getVector().min());
-		assertEquals(2, (int) outDegrees.getVector().max());
-		assertEquals(2, (int) outDegrees.getVector().average());
-		assertEquals(0.0, outDegrees.getVector().deviation(), EPSILON);
 
-		assertEquals(2, (int) inDegrees.getVector().min());
-		assertEquals(2, (int) inDegrees.getVector().max());
-		assertEquals(2, (int) inDegrees.getVector().average());
-		assertEquals(0.0, outDegrees.getVector().deviation(), EPSILON);
+		assertEquals( ring.averageDegree(), outDegrees.average(), EPSILON );
+		assertEquals( ring.averageDegree(), inDegrees.average(), EPSILON );
+		
+		assertEquals(2, (int) outDegrees.min());
+		assertEquals(2, (int) outDegrees.max());
+		assertEquals(0.0, outDegrees.deviation(), EPSILON);
+
+		assertEquals(2, (int) inDegrees.min());
+		assertEquals(2, (int) inDegrees.max());
+		assertEquals(0.0, outDegrees.deviation(), EPSILON);
 
 		for (int i=0; i<ring.size(); i++) {
 			assertEquals ( 2, (int) outDegrees.get(i));
@@ -99,6 +101,8 @@ public class RingNetworkTest
 		apl.compute();
 		
 		assertEquals( ring.averagePathLength(), apl.averagePathLength(), EPSILON );
+		assertEquals( ring.diameter(), apl.diameter() );
+		
 			
 		for (int i=0; i<ring.size(); i++) {
 			assertEquals ( ring.averagePathLength(), apl.get(i), EPSILON);
@@ -120,5 +124,36 @@ public class RingNetworkTest
 		}
 	}
 
-
+	
+	@Test
+	public void testRadius()
+	{
+		Radius radius = new Radius(ring);
+		
+		radius.compute();
+		
+		assertEquals( ring.diameter(), radius.min(), EPSILON );
+		assertEquals( ring.diameter(), radius.max(), EPSILON );
+		assertEquals( ring.diameter(), radius.average(), EPSILON );
+		
+		assertEquals( ring.diameter(), radius.diameter() );
+		
+			
+		for (int i=0; i<ring.size(); i++) {
+			assertEquals ( ring.diameter(), (int) radius.get(i) );
+		}
+	}	
+	
+	@Test
+	public void testCloseness()
+	{
+		Closeness closeness = new Closeness(ring);
+		
+		closeness.compute();
+		
+		for (int i=0; i<ring.size(); i++) {
+			assertEquals ( 1.0/ring.averagePathLength(), closeness.get(i), EPSILON);
+		}
+	}
+	
 }

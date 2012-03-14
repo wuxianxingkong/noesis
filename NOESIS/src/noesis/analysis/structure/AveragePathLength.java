@@ -4,17 +4,27 @@ import noesis.Network;
 
 public class AveragePathLength extends NodeMetrics 
 {
+	int diameter;
+	
 	public AveragePathLength (Network network)
 	{
 		super(network);
+		diameter = 0;
 	}	
 
 	
 	public double compute(int node) 
 	{
+		int radius;
+		
 		PathLength paths = new PathLength(getNetwork(), node);
 		
 		paths.compute();
+		
+		radius = (int) paths.max();
+		
+		if (radius>diameter)
+			diameter = radius;
 		
 		return paths.averagePathLength();
 	}	
@@ -23,7 +33,14 @@ public class AveragePathLength extends NodeMetrics
 	{
 		checkDone();
 		
-		return getVector().average();
-	}	
+		return average();
+	}
+	
+	public int diameter ()
+	{
+		checkDone();
+		
+		return diameter;
+	}
 
 }

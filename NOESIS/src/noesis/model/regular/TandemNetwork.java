@@ -24,6 +24,22 @@ public class TandemNetwork extends RegularNetwork
 		return Math.abs( destination - origin );
 	}
 	
+	public int diameter ()
+	{
+		return size()-1;
+	}
+	
+	public int radius (int i)
+	{
+		return Math.max ( i, size()-i-1 );
+	}
+	
+	
+	public double averageDegree ()
+	{
+		return ((size()-2)*2.0+2*1.0) / size();
+	
+	}
 	
 	public double averagePathLength ()
 	{

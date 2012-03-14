@@ -5,15 +5,15 @@ import noesis.Network;
 
 import ikor.math.Vector;
 
-public abstract class NodeMetrics 
+public abstract class NodeMetrics extends Vector
 {
 	private Network network;
-	private Vector  metrics;
 	
 	protected NodeMetrics (Network network)
 	{
+		super(network.size());
+		
 		this.network = network;
-		this.metrics = new Vector(network.size());
 	}
 	
 	public final Network getNetwork ()
@@ -21,22 +21,7 @@ public abstract class NodeMetrics
 		return this.network;
 	}
 	
-	public final Vector getVector ()
-	{
-		return this.metrics;
-	}
-	
-	public final double get(int i)
-	{
-		return metrics.get(i);
-	}
-	
-	public final void set (int i, double value)
-	{
-		metrics.set(i,value);
-	}
-	
-	
+
 	// Computation
 	
 	protected boolean done = false;
@@ -66,6 +51,6 @@ public abstract class NodeMetrics
 	
 	public String toString ()
 	{
-		return metrics.toStringSummary();
+		return toStringSummary();
 	}
 }

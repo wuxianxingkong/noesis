@@ -2,8 +2,8 @@ package test.noesis.model.regular;
 
 import static org.junit.Assert.*;
 
-import noesis.analysis.structure.InDegree;
-import noesis.analysis.structure.OutDegree;
+import noesis.analysis.structure.*;
+
 import noesis.model.regular.RingNetwork;
 
 import org.junit.Test;
@@ -13,7 +13,7 @@ public class RingNetworkTest
 {
 
 	public final int SIZE = 64;
-	public final double EPSILON = 0;
+	public final double EPSILON = 1e-9;
 	
 	private RingNetwork ring;
 	
@@ -71,5 +71,57 @@ public class RingNetworkTest
 		}
 		
 	}
+	
+	@Test
+	public void testPathLength()
+	{
+		int        source;
+		PathLength paths;
+		
+		
+		for (source=0; source<ring.size(); source++) {
+			
+			paths = new PathLength(ring,source);
+			paths.compute();
+		
+			for (int i=0; i<ring.size(); i++) {
+				assertEquals ( ring.distance(source,i), (int) paths.get(i));
+			}
+		}
+	}
+	
+	
+	@Test
+	public void testAveragePathLength()
+	{
+		AveragePathLength apl = new AveragePathLength(ring);
+		
+		apl.compute();
+		
+		assertEquals( ring.averagePathLength(), apl.averagePathLength(), EPSILON );
+		System.out.println(apl.averagePathLength());
+			
+		for (int i=0; i<ring.size(); i++) {
+			assertEquals ( ring.averagePathLength(), apl.get(i), EPSILON);
+		}
+	}
+
+	@Test
+	public void testOddAveragePathLength()
+	{
+		RingNetwork oddRing = new RingNetwork(SIZE-1);
+		AveragePathLength apl = new AveragePathLength(oddRing);
+		
+		apl.compute();
+		
+		assertEquals( oddRing.averagePathLength(), apl.averagePathLength(), EPSILON );
+			
+		System.out.println(apl.averagePathLength());
+		
+		for (int i=0; i<oddRing.size(); i++) {
+			assertEquals ( oddRing.averagePathLength(), apl.get(i), EPSILON);
+		}
+	}
+
 
 }

@@ -31,18 +31,33 @@ public abstract class NodeMetrics
 		return metrics.get(i);
 	}
 	
-	private final void set (int i, double value)
+	public final void set (int i, double value)
 	{
 		metrics.set(i,value);
 	}
 	
-	public final void compute ()
+	
+	// Computation
+	
+	protected boolean done = false;
+	
+	public void compute ()
 	{
 		Network net = getNetwork();
 		int     size = net.size();
 	
 		for (int node=0; node<size; node++)
 			set (node, compute(node));
+		
+		done = true;
+	}
+	
+	public final boolean checkDone ()
+	{
+		if (!done)
+			compute();
+		
+		return done;
 	}
 	
 	public abstract double compute (int node);

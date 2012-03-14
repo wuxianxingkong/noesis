@@ -156,4 +156,16 @@ public class RingNetworkTest
 		}
 	}
 	
+	@Test
+	public void testClusteringCoefficient()
+	{
+		ClusteringCoefficient clustering = new ClusteringCoefficient(ring);
+		
+		clustering.compute();
+		
+		for (int i=0; i<ring.size(); i++) {
+			assertEquals ( 0.0, clustering.get(i), EPSILON);
+		}
+	}	
+	
 }

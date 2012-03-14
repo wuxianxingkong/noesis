@@ -141,11 +141,12 @@ public class SimpleNetwork extends Network<Integer,Integer>
 	@Override
 	public final Integer get(int source, int destination) 
 	{
-		for (int i=0; i<outLinks[source][0]; i++)
-			if (outLinks[source][START_INDEX+i] == destination)
-				return destination;
+		if (outLinks[source]!=null)
+			for (int i=0; i<outLinks[source][0]; i++)
+				if (outLinks[source][START_INDEX+i] == destination)
+					return destination;
 		
-		return -1;
+		return null;
 	}
 
 	@Override

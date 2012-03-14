@@ -5,7 +5,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses( { test.noesis.model.regular.RingNetworkTest.class,
+@Suite.SuiteClasses( { test.noesis.model.regular.CompleteNetworkTest.class,
+					   test.noesis.model.regular.IsolateNetworkTest.class,
+					   test.noesis.model.regular.RingNetworkTest.class,
 					   test.noesis.model.regular.TandemNetworkTest.class
 					 } )
 public class AllTests {

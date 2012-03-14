@@ -135,4 +135,16 @@ public class TandemNetworkTest
 			assertEquals ( 1.0/tandem.averagePathLength(i), closeness.get(i), EPSILON);
 		}
 	}	
+	
+	@Test
+	public void testClusteringCoefficient()
+	{
+		ClusteringCoefficient clustering = new ClusteringCoefficient(tandem);
+		
+		clustering.compute();
+			
+		for (int i=0; i<tandem.size(); i++) {
+			assertEquals ( 0.0, clustering.get(i), EPSILON);
+		}
+	}		
 }

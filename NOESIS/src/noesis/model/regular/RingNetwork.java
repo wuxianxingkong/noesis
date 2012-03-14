@@ -35,6 +35,15 @@ public class RingNetwork extends RegularNetwork
 		return diameter();
 	}	
 	
+	public int minDegree ()
+	{
+		return 2;
+	}
+	
+	public int maxDegree ()
+	{
+		return 2;
+	}	
 	
 	public double averageDegree ()
 	{
@@ -51,10 +60,19 @@ public class RingNetwork extends RegularNetwork
 			return (n+1)/4;
 		}
 	}
-	
-	public double linkEfficiency ()
+
+	public double averagePathLength (int node)
 	{
-		return 1 - averagePathLength()/size();
+		return averagePathLength();
 	}
 
+
+	@Override
+	public double clusteringCoefficient(int node) 
+	{
+		if (size()==3)
+			return 1;
+		else
+			return 0;
+	}
 }

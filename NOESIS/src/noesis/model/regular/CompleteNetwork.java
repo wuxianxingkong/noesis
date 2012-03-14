@@ -35,6 +35,16 @@ public class CompleteNetwork extends RegularNetwork
 	}	
 	
 	
+	public int minDegree ()
+	{
+		return size()-1;
+	}
+	
+	public int maxDegree ()
+	{
+		return size()-1;
+	}	
+	
 	public double averageDegree ()
 	{
 		return size()-1;
@@ -49,10 +59,10 @@ public class CompleteNetwork extends RegularNetwork
 	{
 		return averagePathLength();
 	}
-	
-	public double linkEfficiency ()
-	{
-		return 1 - averagePathLength()/size();
-	}
 
+	@Override
+	public double clusteringCoefficient(int node) 
+	{
+		return 1.0;
+	}
 }

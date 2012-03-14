@@ -35,6 +35,16 @@ public class TandemNetwork extends RegularNetwork
 	}
 	
 	
+	public int minDegree ()
+	{
+		return 1;
+	}
+	
+	public int maxDegree ()
+	{
+		return 2;
+	}	
+	
 	public double averageDegree ()
 	{
 		return ((size()-2)*2.0+2*1.0) / size();
@@ -53,10 +63,11 @@ public class TandemNetwork extends RegularNetwork
 	
 		return (sumLeft+sumRight)/(size()-1.0);
 	}
-	
-	public double linkEfficiency ()
-	{
-		return 1 - averagePathLength()/size();
-	}
 
+
+	@Override
+	public double clusteringCoefficient(int node) 
+	{
+		return 0;
+	}
 }

@@ -44,6 +44,16 @@ public class StarNetwork extends RegularNetwork
 	}	
 	
 	
+	public int minDegree ()
+	{
+		return 1;
+	}
+	
+	public int maxDegree ()
+	{
+		return size()-1;
+	}
+	
 	public double averageDegree ()
 	{
 		return 2.0*(size()-1.0)/size();
@@ -61,10 +71,10 @@ public class StarNetwork extends RegularNetwork
 		else
 			return (2.0*size()-3.0)/(size()-1);
 	}
-	
-	public double linkEfficiency ()
-	{
-		return 1 - averagePathLength()/size();
-	}
 
+	@Override
+	public double clusteringCoefficient(int node) 
+	{
+		return 0;
+	}
 }

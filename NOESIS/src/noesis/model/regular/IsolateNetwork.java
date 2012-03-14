@@ -27,6 +27,15 @@ public class IsolateNetwork extends RegularNetwork
 		return diameter();
 	}	
 	
+	public int minDegree ()
+	{
+		return 0;
+	}
+	
+	public int maxDegree ()
+	{
+		return 0;
+	}	
 	
 	public double averageDegree ()
 	{
@@ -42,10 +51,11 @@ public class IsolateNetwork extends RegularNetwork
 	{
 		return averagePathLength();
 	}
-	
-	public double linkEfficiency ()
-	{
-		return 1 - averagePathLength()/size();
-	}
 
+
+	@Override
+	public double clusteringCoefficient(int node) 
+	{
+		return 0;
+	}
 }

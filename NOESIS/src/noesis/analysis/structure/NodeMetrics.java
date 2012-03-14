@@ -21,6 +21,11 @@ public abstract class NodeMetrics
 		return this.network;
 	}
 	
+	public final Vector getVector ()
+	{
+		return this.metrics;
+	}
+	
 	public final double get(int i)
 	{
 		return metrics.get(i);

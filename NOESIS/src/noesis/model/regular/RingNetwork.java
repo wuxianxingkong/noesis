@@ -58,9 +58,9 @@ public class RingNetwork extends RegularNetwork
 		double n = size();
 		
 		if ((n%2) == 0) {
-			return (n*n)/(4*(n-1));
+			return (n*n)/(4.0*(n-1));
 		} else {
-			return (n+1)/4;
+			return (n+1)/4.0;
 		}
 	}
 

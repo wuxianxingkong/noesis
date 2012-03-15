@@ -10,7 +10,9 @@ import org.junit.Test;
 
 public abstract class RegularNetworkBasicTest 
 {
-	public final int    SIZE = 32;
+    // Perfect square + Power of 2: 4, 16, 64...
+	public final int    SIZE = 16;
+	
 	public final double EPSILON = 1e-9;
 	
 	public abstract RegularNetwork network();

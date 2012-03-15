@@ -176,14 +176,58 @@ public class BinaryTreeNetwork extends RegularNetwork
 		return (leaves()+2.0*oneChildNodes()+3.0*twoChildrenNodes()-1.0)/size();
 	}
 	
+	
+	// WARNING: Valid only for complete binary trees (size = 2^k-1)
+	//
+	// sum = { 0, 2, 8, 20, 36, 64, 96, 142, 192, 254, 320, 414, 512, 622, 736, 878...}
+
 	public double averagePathLength ()
 	{
-		throw new UnsupportedOperationException("Unknown analytic expression for average path length");
+		double s = 0;
+		
+		for (int i=0; i<size(); i++)
+			s += averagePathLength(i);
+		
+		return s/size();
 	}
+	
+	// WARNING: Valid only for complete binary trees (size = 2^k-1)
 
 	public double averagePathLength (int i)
 	{
-		throw new UnsupportedOperationException("Unknown analytic expression for average path length");
+		double sum = 0;
+		int    treeHeight = height();
+		int    nodeHeight = height(i);
+		int    up,down;
+		
+		// Down
+		
+		down = 1;
+		
+		while (nodeHeight+down <= treeHeight) {
+			// 2^d nodes at distance d
+			sum += Math.pow(2,down) * down;
+			down++;
+		}
+		
+		// Up
+		
+		up = 1;
+		
+		while (nodeHeight-up >= 0) {
+			// 1 node at distance u
+			sum += 1*up;
+			// down again
+			down = 1;
+			while (nodeHeight-up+down <= treeHeight) {
+				// 2^(d-1) unseen nodes at distance u+d
+				sum += Math.pow(2,down-1) * (up+down);
+				down++;
+			}
+			up++;
+		}
+		
+		return sum/(size()-1);
 	}
 
 	@Override
@@ -192,8 +236,16 @@ public class BinaryTreeNetwork extends RegularNetwork
 		return 0.0;
 	}
 	
+	// WARNING: Valid only for complete binary trees (size = 2^k-1)
+	
 	public double betweenness (int node)
 	{
-		throw new UnsupportedOperationException("Unknown analytic expression for betweenness");
+		int h = height() - height(node);
+		double leftChildren = Math.pow(2,h)-1;
+		double rightChildren = Math.pow(2,h)-1;
+		double upNodes = size()-leftChildren-rightChildren-1;
+		
+		return (2*size()-1) + 2*leftChildren*rightChildren
+		                    + 2*upNodes*(leftChildren+rightChildren);
 	}
 }

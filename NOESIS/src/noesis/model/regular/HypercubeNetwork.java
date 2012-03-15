@@ -77,7 +77,9 @@ public class HypercubeNetwork extends RegularNetwork
 		return 0.0;
 	}
 	
-	// 2, 8, 20, 48, 112, 256, 576, 1280... http://oeis.org/A045623
+	// 2^(D-1) * (D+2) 
+	// 2, 8, 20, 48, 112, 256, 576, 1280... 
+	// http://oeis.org/A001792
 	
 	public double betweenness (int node)
 	{

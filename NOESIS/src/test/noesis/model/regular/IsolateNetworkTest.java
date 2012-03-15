@@ -10,10 +10,6 @@ import org.junit.Before;
 
 public class IsolateNetworkTest extends RegularNetworkTest
 {
-
-	public final int SIZE = 32;
-	public final double EPSILON = 1e-9;
-	
 	private IsolateNetwork network;
 	
 	@Override

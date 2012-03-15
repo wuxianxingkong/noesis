@@ -30,11 +30,12 @@ public abstract class RegularNetwork extends SimpleNetwork
 			return 0.0;
 	}
 	
-	public abstract double clusteringCoefficient (int node);
-	
 	public final double linkEfficiency ()
 	{
 		return 1 - averagePathLength()/size();
 	}
+
+	public abstract double clusteringCoefficient (int node);
 	
+	public abstract double betweenness (int node);
 }

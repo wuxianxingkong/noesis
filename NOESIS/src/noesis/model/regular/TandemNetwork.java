@@ -42,13 +42,18 @@ public class TandemNetwork extends RegularNetwork
 	
 	public int maxDegree ()
 	{
-		return 2;
+		if (size()>2)
+			return 2;
+		else
+			return size()-1;
 	}	
 	
 	public double averageDegree ()
 	{
-		return ((size()-2)*2.0+2*1.0) / size();
-	
+		if (size()>2)
+			return ((size()-2)*2.0+2*1.0) / size();
+		else
+			return size()-1;
 	}
 	
 	public double averagePathLength ()
@@ -70,4 +75,10 @@ public class TandemNetwork extends RegularNetwork
 	{
 		return 0;
 	}
+	
+	@Override
+	public double betweenness (int node) 
+	{
+		return 2*(node+1)*(size()-node)-1;
+	}	
 }

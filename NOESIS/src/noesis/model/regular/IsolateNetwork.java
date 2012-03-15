@@ -58,4 +58,9 @@ public class IsolateNetwork extends RegularNetwork
 	{
 		return 0;
 	}
+	
+	public double betweenness (int node)
+	{
+		return 1;
+	}
 }

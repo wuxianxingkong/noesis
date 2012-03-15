@@ -15,6 +15,7 @@ public abstract class NetworkTraversal<V,E>
 
 	private Visitor<V>  nodeContentVisitor;
 	private Visitor<E>  linkContentVisitor;
+	
 	private NodeVisitor nodeVisitor;
 	private LinkVisitor linkVisitor;
 
@@ -48,7 +49,7 @@ public abstract class NetworkTraversal<V,E>
 	{
 		this.nodeVisitor = nodeVisitor;
 	}
-
+	
 	public void setLinkVisitor (LinkVisitor linkVisitor)
 	{
 		this.linkVisitor = linkVisitor;
@@ -60,7 +61,7 @@ public abstract class NetworkTraversal<V,E>
 	{
 		this.nodeContentVisitor = visitor;
 	}
-
+	
 	// Edge visitor
 
 	public void setLinkVisitor (Visitor<E> visitor)

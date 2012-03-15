@@ -126,4 +126,18 @@ public abstract class RegularNetworkTest
 			assertEquals ( network.clusteringCoefficient(i), clustering.get(i), EPSILON);
 		}
 	}		
+	
+	
+	@Test
+	public final void testBetweenness()
+	{
+		RegularNetwork  network = network();		
+		Betweenness     betweenness = new Betweenness(network);
+		
+		betweenness.compute();
+			
+		for (int i=0; i<network.size(); i++) {
+			assertEquals ( network.betweenness(i), betweenness.get(i), EPSILON);
+		}
+	}		
 }

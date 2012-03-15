@@ -32,15 +32,20 @@ public class StarNetwork extends RegularNetwork
 	
 	public int diameter ()
 	{
-		return 2;
+		if (size()>2)
+			return 2;
+		else
+			return size()-1;
 	}
 	
 	public int radius (int node)
 	{
 		if (node==CENTER)
 			return 1;
-		else
+		else if (size()>2)
 			return 2;
+		else
+			return size()-1;
 	}	
 	
 	
@@ -76,5 +81,13 @@ public class StarNetwork extends RegularNetwork
 	public double clusteringCoefficient(int node) 
 	{
 		return 0;
+	}
+	
+	public double betweenness (int node)
+	{
+		if (node==CENTER)
+			return size()*size() - (size()-1);
+		else
+			return 2*size()-1;
 	}
 }

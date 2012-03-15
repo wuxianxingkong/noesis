@@ -19,7 +19,7 @@ public class RingNetwork extends RegularNetwork
 	{
 		int diff = Math.abs( destination - origin );
 		
-		if (diff<size()/2)
+		if (diff<(size()/2.0))
 			return diff;
 		else
 			return size()-diff;
@@ -32,7 +32,10 @@ public class RingNetwork extends RegularNetwork
 	
 	public int radius (int i)
 	{
-		return diameter();
+		if (size()>2)
+			return diameter();
+		else
+			return size()-1;
 	}	
 	
 	public int minDegree ()
@@ -75,4 +78,10 @@ public class RingNetwork extends RegularNetwork
 		else
 			return 0;
 	}
+	
+	@Override
+	public double betweenness (int node) 
+	{
+		return size()*size()/4 + size();
+	}		
 }

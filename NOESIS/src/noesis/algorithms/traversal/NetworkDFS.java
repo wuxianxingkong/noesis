@@ -3,9 +3,35 @@ package noesis.algorithms.traversal;
 import ikor.collection.Visitor;
 
 import noesis.Network;
+import noesis.algorithms.NodeVisitor;
 
 public class NetworkDFS<V,E> extends NetworkTraversal<V,E>
 {
+	private Visitor<V>  postContentVisitor;
+	private NodeVisitor postVisitor;
+	
+	public void setNodePostVisitor (NodeVisitor nodeVisitor)
+	{
+		this.postVisitor = nodeVisitor;
+	}	
+
+	public void setNodePostVisitor (Visitor<V> visitor)
+	{
+		this.postContentVisitor = visitor;
+	}	
+	
+	
+	protected final void postVisitNode (int node)
+	{
+		if (postVisitor!=null)
+			postVisitor.visit(node);
+		
+		if (postContentVisitor!=null) {
+			V nodeContent = network.get(node);
+			postContentVisitor.visit(nodeContent);
+		}
+	}	
+	
     // Constructor
 
 	public NetworkDFS (Network<V,E> network)
@@ -49,6 +75,8 @@ public class NetworkDFS<V,E> extends NetworkTraversal<V,E>
 				}
 			}
 		}
+		
+		postVisitNode(current);
 
    	    state[current] = NetworkTraversal.State.EXPLORED;
 	}

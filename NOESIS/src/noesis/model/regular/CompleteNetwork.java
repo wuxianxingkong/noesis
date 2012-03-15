@@ -63,6 +63,14 @@ public class CompleteNetwork extends RegularNetwork
 	@Override
 	public double clusteringCoefficient(int node) 
 	{
-		return 1.0;
+		if (size()>2)
+			return 1.0;
+		else
+			return 0.0;
+	}
+	
+	public double betweenness (int node)
+	{
+		return 2*size()-1; // Just the paths to the node
 	}
 }

@@ -9,7 +9,9 @@ import org.junit.runners.Suite;
 					   test.noesis.model.regular.IsolateNetworkTest.class,
 					   test.noesis.model.regular.RingNetworkTest.class,
 					   test.noesis.model.regular.TandemNetworkTest.class,
-					   test.noesis.model.regular.StarNetworkTest.class
+					   test.noesis.model.regular.StarNetworkTest.class,
+					   test.noesis.model.regular.BinaryTreeNetworkTest.class,
+					   test.noesis.model.regular.HypercubeNetworkTest.class
 					 } )
 public class AllTests {
 

@@ -177,7 +177,7 @@ Given n and m, construct an anchored random network as follows:
 1. Initially: Generate n nodes
 2. Initially: m \geq (n/2) given, and #links=0.
 3. Repeat until m = #links have been inserted:
-	a. Round robin: i ¼ 0,1,2, . . . ,(n21); 0,1,2, . . . .
+	a. Round robin: i = 0,1,2, . . . ,(n-1); 0,1,2, . . . .
 		b. Select tail: 
 			If (degree(i) &gt; 0) 
 				tail = random(n), 

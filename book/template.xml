@@ -112,7 +112,7 @@ donde <eqn id="maxwellE">\vec{\mathbf{E}}</eqn> representa...
 <tag>misc</tag>
 <title>Ejemplos</title>
 
-	<example>
+	<algorithm>
 	  <title>Ejemplo de código</title>
 	  <code>
 def eratosthenes_sieve(n):
@@ -129,7 +129,7 @@ def eratosthenes_sieve(n):
     # Filter out non-primes and return the list.
     return [i for i in candidates[2:] if i]
 	  </code>
-	</example>
+	</algorithm>
 
 <comment>
   <title>Descripción del algoritmo</title>

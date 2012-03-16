@@ -8,7 +8,7 @@ import noesis.model.regular.RegularNetwork;
 import org.junit.Test;
 import org.junit.Before;
 
-public class ToroidalNetworkTest extends RegularNetworkBasicTest
+public class ToroidalNetworkTest extends RegularNetworkTest
 {
 	private ToroidalNetwork network;
 	

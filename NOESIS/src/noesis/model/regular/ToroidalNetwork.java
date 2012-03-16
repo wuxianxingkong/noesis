@@ -84,9 +84,21 @@ public class ToroidalNetwork extends RegularNetwork
 		
 	// Approximate value
 	
+	private double ringSumPathLengths (int n)
+	{
+		int d = n/2;  // Ring diameter
+		
+		if ((n%2) == 0) {
+			return (d*(d-1))+d;
+		} else {
+			return (d*(d-1))+2*d;
+		}
+	}	
+	
 	public double averagePathLength ()
 	{
-		return (rows+columns)/4.0;
+		return (columns*ringSumPathLengths(rows)
+				+ rows*ringSumPathLengths(columns)) / (size()-1);
 	}
 
 	public double averagePathLength (int i)
@@ -100,11 +112,19 @@ public class ToroidalNetwork extends RegularNetwork
 		return 0.0;
 	}
 
-	// Approximate value
 	
 	@Override
 	public double betweenness (int node)
 	{
-		return size()*((rows+columns)/4.0+1.0);
+		double x = rows+columns+4;
+		
+		if ((rows%2==0) && (columns%2==0))
+			return size()*x/4.0;
+		else if ((rows%2==1) && (columns%2==0))
+			return columns*(rows*x-1)/4.0;
+		else if ((rows%2==0) && (columns%2==1))
+			return rows*(columns*x-1)/4.0;
+		else // Warning: rounding errors in practice might differ from this value
+			return ((rows*x-1)*(columns*x-1))/(4.0*x);
 	}
 }

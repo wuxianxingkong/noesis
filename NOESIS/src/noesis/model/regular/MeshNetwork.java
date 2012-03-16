@@ -113,6 +113,21 @@ public class MeshNetwork extends RegularNetwork
 	@Override
 	public double betweenness (int node)
 	{
-		throw new UnsupportedOperationException("Unknown analytical expression for betweenness in mesh networks");
+		// Same column (as a tandem network)
+		
+		// double totalColumn = 2*(column(node)+1)*(columns-column(node))-1;
+		
+		// Same row (as a tandem network)
+		
+		// double totalRow = 2*(row(node)+1)*(rows-row(node))-1;
+		
+		// Opposite quadrants (#paths in a Manhattan network through the node=
+		
+		// For each pair:
+		// - Total number of paths = C(dx+dy, min{dx,dy})
+		// - Paths through X = C(x1+y1,min{x1,y1})*C(x2+y2,min{x2,y2})
+		// - Betweenness score += X/T
+		
+		throw new UnsupportedOperationException ("Unknown analytic expression for betweenness in a 2D mesh");
 	}
 }

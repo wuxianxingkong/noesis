@@ -8,11 +8,11 @@ package noesis;
 
 
 /**
- * Simple network ADT implementation using arrays (without attached content).
+ * Basic network ADT implementation using arrays
  * 
  * @author Fernando Berzal
  */
-public class SimpleNetwork extends Network<Integer,Integer> 
+public class BasicNetwork extends Network<Integer,Integer> 
 {
 	private int size;
 	private int nlinks;
@@ -136,6 +136,17 @@ public class SimpleNetwork extends Network<Integer,Integer>
 	public final Integer get(int index) 
 	{
 		return index;
+	}
+	
+	
+	public final int getLinkIndex(int source, int destination)
+	{
+		if (outLinks[source]!=null)
+			for (int i=0; i<outLinks[source][0]; i++)
+				if (outLinks[source][START_INDEX+i] == destination)
+					return i;
+		
+		return -1;
 	}
 
 	@Override

@@ -1,8 +1,8 @@
 package noesis.model.regular;
 
-import noesis.SimpleNetwork;
+import noesis.BasicNetwork;
 
-public abstract class RegularNetwork extends SimpleNetwork 
+public abstract class RegularNetwork extends BasicNetwork 
 {
 	public abstract int distance (int origin, int destination);
 

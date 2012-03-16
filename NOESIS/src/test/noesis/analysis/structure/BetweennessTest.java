@@ -2,7 +2,7 @@ package test.noesis.analysis.structure;
 
 import static org.junit.Assert.*;
 
-import noesis.SimpleNetwork;
+import noesis.BasicNetwork;
 import noesis.Network;
 
 import noesis.analysis.structure.Betweenness;
@@ -25,7 +25,7 @@ public class BetweennessTest
 	public void setUp() throws Exception 
 	{
 		// From Newman's "Introduction to Networks," 10.3.6 Betweenness centrality,  page 326
-		tree = new SimpleNetwork(); 
+		tree = new BasicNetwork(); 
 		tree.setSize(7);
 		
 		addLink(tree,0,1);
@@ -35,7 +35,7 @@ public class BetweennessTest
 		addLink(tree,2,5);
 		addLink(tree,5,6);
 		
-		graph = new SimpleNetwork();
+		graph = new BasicNetwork();
 		graph.setSize(7);
 		
 		addLink(graph,0,1);

@@ -1,0 +1,372 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<!-- Scale-free networks -->
+
+<document>
+<tag>scale-free</tag>
+<title>Scale-free networks</title>
+
+
+<text>
+Anthropologists such as Elman Service, when studying cultural evolution, envision chiefdoms being formed when several villages were bound by commerce. The village located at the nexus would naturally become the richest and would gradually grow dominant <cite>Wright 2000</cite>. This <q>rich get richer</q> effect is pervasive in networks...
+</text>
+
+<text>
+A wide range of real-world networks have been found to exhibit power-law degree distributions: the World Wide Web, citation networks, cellular metabolism networks...
+</text>
+
+
+<document>
+<tag>scale-free-properties</tag>
+<title>Properties of scale-free networks</title>
+
+<text>
+Degree distribution: 
+
+L: Networks whose degree distribution approximates a power law,
+<eqn>H(k)=k^{-q}</eqn>, for some power <eqn>q &gt; 1</eqn>. 
+
+L:Such graphs are called scale-free because the power-law distribution has no scale parameter; that is, the variance of a power-law is
+infinite, versus the finite variance of most other distributions such as the Gaussian or normal distribution. Power laws are also sometimes called “fat tailed” because they do not decline as k increases as fast as an exponential or normal distribution.
+
+Random graphs more or less distribute links uniformly across n nodes. But... scale-free graphs are lopsided - a vast number of nodes have only one or two links, while a rare few nodes have perhaps hundreds of links... 
+
+
+scale-free graphs have less entropy than random graphs, but more than small worlds...
+The entropy of a scale-free graph is generally lower than the entropy of a random
+graph because scale-free networks contain some structure. Scale-free networks are closer to the random end of the "graph structure" spectrum
+than to the structured extreme. At one end is the class of structured k-regular graphs
+(where entropy equals zero), and the other end is the class of random networks that
+have no discernable structure or topology. In between is the class of scale-free networks,
+which have some structure, because the degree sequence distribution obeys a power law.
+
+A conjecture: a scale-free graph is more random than structured; a small-world graph is more structured than random
+</text>
+
+
+<text>
+A power law implies that the probability of finding a node with a degree that is twice as large as a given number decreases by a constant factor, rather than following an exponential falloff. ++ exponent of the power law distribution.
+
+L: "the probability that a site has k links obeys a power law, which drops off quickly for large k"
+... A network that follows a power-law distribution means that it has a
+hub, and many other nodes with many fewer links than the average. This lopsided
+preference for hubs seemed counter to nature, which typically follows a normal distribution.
+
+L: A scale-free graph has many nodes with very low degree, and one node with very
+high degree. Hence, its degree distribution is skewed to the left—toward small degree
+values. Because so many nodes are connected to the graph’s hub node, the scale-free
+graph also exhibits a small graph diameter—similar to a random graph. It is nearly
+one-half the diameter of the small-world graph, and 50% smaller than the diameter
+of a random graph. This is a consequence of the high concentration of links attached
+to the hub. The unexpectedly large hub degree is a distinguishing property of scalefree
+graphs.
+</text>
+
+<text>
+IDEA: The fluctuations in degree are unbounded, i.e., the standard deviation is bounded only by the finite size of the graph.
+</text>
+
+
+<text>
+The <q>scale-free</q> term refers to the fact that nodes in a scale-free network do not have a characteristic scale. You can zoom in on any segment of the distribution and it does not change its shape.
+
+L: scale-free networks... The name came from observing that a function f(x) scales if f(ax) = a*f(x), which is
+what a power law does. Therefore, if the degree sequence distribution obeys the power law, h(x) = x ^-q, then it is clear that h(ax) = (ax)^-q = (a ^-q)h(x) = a' h(x).
+</text>
+
+</document>
+
+
+
+<document>
+<tag>scale-free-examples</tag>
+<title>Scale-free networks in the real world</title>
+
+<text>
+<cite>Clauset et al. 2009</cite> examine how power laws are best detected in practice: regression analysis of linear relationships in log-log scale (the standard method) results in many false positives (e.g. networks that might be better approximated by exponential or log-normal distributions). Sampling might also introduce false negatives <cite>Stumpf et al. 2005</cite>.
+</text> 
+
+<text>
+EXAMPLES
+distribution of number of papers published by scientists, distribution of cities by population, distribution of wealth, and
+distribution of species among genera all obey a power law.
+[Mitzenmacher, M., A brief history of generative models for power law and lognormal distributions, Internet Math. 1(2):226-251 (2004).] 
+
+1999:
++ M. Faloutsos, P. Faloutsos, and C. Faloutsos observed a power law in their graph models of the Internet
++ Albert, Jeong, and Barabasi obtained similar results for the WWW
+
+Scale-free networks appear to model economic constructs such as the Internet and
+monopolies within industrial segments, because preferential attachment is essentially
+the law of increasing returns of economics.
+</text>
+
+</document>
+
+
+
+<document>
+<tag>scale-free-models</tag>
+<title>Models of scale-free network formation</title>
+
+
+<document>
+<tag>formation-barabasi-albert</tag>
+<title>Barabasi-Albert model (scale-free networks)</title>
+
+<text>
+++
+L: "a microrule called preferential attachment - that the probability a site will obtain a new link is directly proportional to the number of links it already has" (the <q>rich get richer</q> phenomenon).
+
+<cite>Barabasi and Albert 1999</cite> demonstrated that power-law degree distributions can be generated by a <q>preferential attachment</q> growth process. This process is a well-known example of how local processes can determine the global properties of complex networks. 
+
+L: Yule first observed preferential attachment in evolution (Yule, 1925): Darwinian algorithm = Connect the new node to an existing node with probability proportional to the number of links already connected to the existing node, i.e. its degree
+[Yule, G. U., A Mathematical theory of evolution based on the conclusions of Dr. J. C. Willis, Phil. Trans. Roy. Soc. Lond. B 213:21-87 (1925).]
+++ Yule-Simon distribution
+
+L: the idea of nonrandomness as a factor in behavior and the connection between preferential attachment and nonrandom distributions occurred to Simon in 1955 [Simon, H. A., On a class of skew distribution functions, Biometrika 42(3/4):425-440 (1955).]
+
+L: Preferential attachment describes an emergent process—that is, a process that results in a network topology that is not apparent by examination of the local algorithm, or microrule. It is not at all obvious that the result of repeated application of preferential attachment will result in a network with a degree sequence distribution that follows a power law. This realization would come 70 years later, when A.-L. Barabasi and R. Albert showed how to create a scale-free network by repeated application of preferential attachment.
+</text>
+
+<comment>
+<title>Random resampling</title>
+
+<text>
+Alternatives for roulette wheel selection 
+
+A) Weight normalization + cumulative weights + single random U[0,1] for each new sample
+O(n) for a single sample, O(n^2) for n samples, O(nlog n) for n samples if binary search is employed
+
+B) Wheel + multiple calls to an uniform random number generator for each new sample
+O(n) for a single sample in the worst case, O(n^2) for n samples in the worst case, i.e. a extremely skewed distribution
+O(k) for a single sample in the average case, O(kn) for n samples in the average case
+Faster than the standard roulette wheel selection, despite higher number of calls to RNG ???
+++ "B is faster when the weights are uniformly distributed, and slower when they are exponentially distributed"
+
+++ "the resampling wheel aims to take advantage of the fact that we are going to select a large number of particles at once as opposed to "a particle at a time"."
+++ "tradeoff seems to be that you want as small an interval as possible to minimize the number of particles you visit on each step but still is sufficiently random to approximate the desired distribution. If the interval was very small then all of your samples would reside on a tiny slice of the wheel. If the interval is too large then you waste time "visiting." 2 * max(w) assures that you get at least one "new" particle per iteration of the algorithm. Why not use max(w) instead? That would bias the probability of choosing the larger elements because elements close to max(w) in size are essentially guaranteed to be selected"
+i.e.  2*wmax is a somewhat arbitrary value that balances keeping the tries to keep the algorithm efficient without overly biasing the results.
+i.e. if the increment was less than wmax, you would be guaranteed to select the highest probability particle so the results would definitely be biased. If the increment was 10*wmax, you would be looping through alot more particles and you algorithm would be less efficient.
+
+
+C) Walker's alias method, slightly faster, especially if there are many samples. 
+O(n) setup time using Vose's algorithm (makes sense if you do lots of sampling) + samples in O(1).
+An implementation in python can be found @ <url>http://code.activestate.com/recipes/576564/</url>, 
+
+Walker's algorithm essentially arranges a given lot of sticks into equal-length rows: pick a row shorter than average and a row longer than average, split the longer to fill the shorter, iterate until they're all the same length.
+
+
+Walker's method involves setting up \magic" tables of length nn, where nn is the smallest power of 2 that is \geq n.
+
+
+ref. On the Alias Method for Generating Random Variables from a Discrete Distribution
+     Richard A. Kronmal and Arthur V. Peterson, Jr.
+     The American Statistician
+     Vol. 33, No. 4 (Nov., 1979), pp. 214-218
+     <url>http://www.jstor.org/discover/10.2307/2683739</url>
+
+    "A Linear Algorithm For Generating Random Numbers With a Given Distribution" by Michael Vose
+    IEEE  TRANSACTIONS ON SOFTWARE  ENGINEERING,  VOL.  17, NO.  9, 972-975  SEPTEMBER  1991
+    <url>http://web.eecs.utk.edu/~vose/Publications/random.pdf</url>
+
+
+ref. "Darts, Dice, and Coins: Sampling from a Discrete Distribution"
+     Tutorial by Keith Schwarz, lecturer in Stanford's CS department: http://www.keithschwarz.com/darts-dice-coins/
+
+++ http://www.google.com/patents/US5247677
+   "Stochastic priority-based task scheduler
+   Robert V. Welland, Walter R. Smith
+   US Patent (Apple Computer, Inc.)
+   Patent number: 5247677
+   Filing date: May 22, 1992
+   Issue date: Sep 21, 1993
+
+++  L. Devroye, Non-Uniform Random Variate Generation, 1986, p. 107 ff., http://cg.scs.carleton.ca/~luc/rnbookindex.html
+    Knuth, Stanford GraphBase, 1993, p. 392, http://tex.loria.fr/sgb.html
+    Seminumerical Algorithms, second edition, exercise 3.4.1-7. 
+    C++ hat random container by AngleWyrm, http://home.comcast.net/~anglewyrm/hat.html
+
+++ non-random resampling ;-) "sorting the weights largest to smallest and then calculating exactly how many particles correspond to each of those weights. Because it isn't homework, I assume it is okay to post this non-random resampling algorithm."
+</text>
+
+<text>
+Evaluation (Matlab):
+</text>
+
+<code>
+for i=1:N
+  distribution(i) = sum(new==i)/N; % frequency of index i
+endfor
+
+error = sqrt(sum((distribution - weight).^2))/N;
+</code>
+
+<text>
+Applications: Preferential attachment, selection method in genetic algorithms (a.k.a. fitness proportionate selection or roulette-wheel selection), resampling in particle filters (e.g. robot localization).
+</text>
+
+<text>
+ref. ON RESAMPLING ALGORITHMS FOR PARTICLE FILTERS
+<url>http://www.control.isy.liu.se/~schon/Publications/HolSG2006.pdf</url>
+</text>
+
+</comment>
+
+<algorithm>
+<title>Choosing items in proportion to their importance weights</title>
+<code>
+# 1) Roulette wheel: inefficient <eqn>O(n^2)</eqn> implementation
+
+# Weight normalization
+
+W = sum(weight)
+
+for i in range(N): 
+    weight[i] = weight[i]/W
+
+# Resampling
+
+for i in range(N):
+    r = random.random()
+    index = 0
+    s = weight[0]
+    while (index&lt;N) and (s&lt;r):
+        index = index + 1
+        s = s + weight[index]
+    if (index==N):
+        index = N-1
+    new[i] = element[index]
+
+
+# 2) Resampling wheel: starting from a (uniformly) random index, O(n) on average, but might be O(n^2)
+
+# Initial selection
+
+index     = int(random.random() * N)
+beta      = 0.0
+maxWeight = max(weight)
+
+# Resampling: U[0,2*maxWeight]
+
+for i in range(N):
+    beta += 2.0 * maxWeight * random.random()
+    while (beta &gt; weight[index]):
+        beta -= weight[index]
+        index = (index+1) % N
+    new[i] = element[index]
+
+
+# 3) Improved resampling wheel, O(n) worst case (Curt Welch)
+# + Only one loop around the wheel, instead of many.
+# + Wheel divided into N slices
+# + Noise in w rather than calls to random() !!
+# ref. "On Resampling Algorithms for Particle Filters"
+
+    p3 = [0]*N  # minor speed up by pre-allocating list
+    index = 0
+    w_sum = sum(w)
+    step = w_sum / N
+    beta = (w_sum * w_sum) % step
+    for i in range(N):
+        while beta &gt; w[index]:
+            beta -= w[index]
+            index = (index + 1) % N
+        beta += step
+        p3[i] = p[index]
+    p = p3
+</code>
+</algorithm>
+
+
+<text>
+++ Linear preferential attachment yields scale-free networks with an exponent of 3. Refined attachment rules that vary node attractiveness yield scale-free networks with exponents between 2 and 3.
+</text>
+
+<text>
+++ When new links involve a cost, i.e. they cost energy or occupy space, the degree distribution becomes truncated for high degrees <cite>Amaral et al. 2000</cite>. Networks that exhibit a scale-free behavior only through a range of node degrees are called broad-scale networks.
+</text>
+
+</document>
+
+
+<text>
+Alternative formation model: <cite>Alava and Dogorotsev 2005</cite>
+</text>
+
+</document>
+
+
+<document>
+<tag>scale-free-dynamics</tag>
+<title>The dynamics of scale-free networks</title>
+
+<text>
+L: Albert, Jeong, and Barabasi observed that scale-free networks were extremely resilient
+against random attacks, but extremely vulnerable to systematic attacks on hubs
+(Albert, 2000). This makes sense—a random attack will most likely strike and destroy
+a node with only a few links, because a scale-free network has many such nodes. On
+the contrary, since hubs are rare, it is unlikely that a hub is attacked. But a hub has
+many links, and so its demise damages a large percentage of the network. Let pc
+be the fraction of damaged nodes that dismantles the network. When pc is high,
+the network is resilient, because many nodes must be knocked out to dismantle the
+network. When it is low, the network is vulnerable. In simulations, Albert et al.
+found threshold values of pc = 28% for random networks versus nearly 99% for
+scale-free networks under random attacks; that is, a random network dismantles
+when an average of 28% of its nodes are damaged. But the tables are turned when
+hubs are systematically attacked—only 18% of the nodes need to be attacked to dismantle
+a scale-free network. Thus, a scale-freenetwork is more vulnerable than a
+random network when its hubs are targeted.
+
+2000 Albert, Jeong, Barabasi: Scale-free networks are resilient if hubs are protected (Internet's "Achilles heel")
+  [Albert, R., H. Jeong, and A. L. Barabasi, The Internet's Achilles' heel: Error and attack tolerance of complex networks, Nature 406:378-382 (2000).]
+</text>
+
+<text>
+L: In related work, Pastor-Satorras and Vespignani observed that populations forming
+a scale-free network have no minimum epidemic threshold that prevents an infectious
+disease from recurring (Pastor-Satorras, 2001). Once an infection enters a network, it
+rises and falls repeatedly. Persistent epidemics are real—they occur in human networks
+as well as on the Internet.
+
+
+2001 Pastor-Satorras, Vespignani: Claim no epidemic threshold in scale-free networks; Internet susceptible to SIS viruses
+  [Pastor-Satorras, R. and A. Vespignani, Epidemic spreading in scale-free networks, Phys. Rev. Lett. 86(14):3200-3203 (2001).]
+</text>
+
+<text>
+L: Wang and coworkers showed the initial claim of Pastor-Satorrus to be generally
+false (Wang, 2003a). Instead, persistence of an infection is determined not by the network's
+degree sequence but by its spectral radius, which is defined as the largest nontrivial
+eigenvalue of a network's connection matrix. Therefore, network topology
+determines its susceptibility to epidemics, but not because it is scale-free. This profound
+result has significant implications for fighting both kinds of viruses—Internet
+and human. It also has implications for the product marketer.
+</text>
+
+
+<text>
+MORE...
+</text>
+
+<text>
+1999 Dorogovtsev, Mendes, Samukhim, Krapivsky, Redner: Exact solution to scale-free network degree sequence
+[Dorogovtsev, S. N., J. F. F. Mendes, and A. N. Samukhin, Structure of growing networks with
+preferential linking, Phys. Rev. Lett. 85(21):4633-4636 (2000).]
+[Krapivsky, P. L., S. Redner, and F. A. Leyvraz, Connectivity of growing random networks,
+Phys. Rev. Lett. 85(21):4629-4632 (2000).]
+</text>
+
+
+<text>
+<cite>Caldarelli 2007</cite>
+<cite>Cohen and Havlin 2003</cite>
+<cite>Barabasi and Bonabeau 2003</cite>
+</text>
+
+
+</document>
+
+</document>

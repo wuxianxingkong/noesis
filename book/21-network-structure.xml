@@ -113,6 +113,10 @@ The clustering coefficient measures how many nodes form triangular subgraphs wit
 </text>
 
 <text>
+L: In social network analysis, high clustering means that friends of friends are linked to one another. It is network science’s way of saying, “Birds of a feather, flock together.”
+</text>
+
+<text>
 L: Suppose that we compare the number of links connecting a group of k adjacent nodes
 to the maximum possible number,which is given by a complete subgraph with (k(k.))/2 links. 
 Each subgraph formed around a node in this k-node neighborhood forms a triangular

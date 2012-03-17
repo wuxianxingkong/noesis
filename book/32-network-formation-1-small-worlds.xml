@@ -1,0 +1,988 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<!-- Small worlds -->
+
+<document>
+<tag>small-worlds</tag>
+<title>Small-world networks</title>
+
+
+<text>
+In general, the term small-world effect refers to networks where the average path length grows slower than any positive power of the number of nodes in the network. Or, alternatively, to networks whose number of nodes grows faster than any power of its average path length.
+In fact, the small-world effect is often observed as a rapid decline in average path length when a small number of random links are added to a  network, even when it is random. This result is not completely surprising, since a single link connects separate parts of a network and brings distant nodes closer.
+</text>
+
+<text>
+<cite>Pool and Kochen 1978</cite> @ inaugual issue of the Social Networks journal (a draft widely circulated two decades before its publication): the world of social relationships is much smaller than expected given the size of the social network.
+
+i.e. the earliest known theoretical analysis of small-world networks
+</text>
+
+<text>
+<cite>Travers and Milgram 1969</cite> famous experiments...
+
++ White identified biases in Milgram's experiment and suggested modifications that lead to an average of seven intermediaries (White, 1970). 
+[White, H. C., Search parameters for the small world problem, Soc. Forces 49:259-264 (1970).]
+
++ Hunter and Shotland modeled the experiment as a Markov process to determine average distances between groups (Hunter, 1974).
+[Hunter, J. and R. L. Shotland, Treating data collected by the small world method as a Markov process, Social Forces 52:321-332 (1974).]
+
+Two decades later (Kleinfeld, 2002).
+[Kleinfeld, J., Six degrees of separation: Urban myth? Psychol. Today (2002)]
+2002 Kleinfeld, Claims Milgram experiments not well founded: small-world social network is an "urban myth"
+
+</text>
+
+
+
+<document>
+<tag>small-worlds-formation</tag>
+<title>Models of small-world network formation</title>
+
+<document>
+<tag>formation-watts-strogatz</tag>
+<title>Watts-Strogatz model (WS)</title>
+
+<text>
+++
+<cite>Watts and Strogatz 1998</cite> created a simple model that originates small worlds + discovered that these patterns are present in a broad range of networks. 
+
+L: The canonical form of the WS algorithm
+starts with a 2-ring network (each node connected to 2 nodes on its right and 2 on its left). 
+
+A small-world network emerges from the 2-ring
+network by randomly rewiring pm links, where p is the rewiring probability. The
+random rewiring injects a (limited) amount of randomness into the regular
+network. As it turns out, a very small amount of randomness goes a long way.
+
+
+Algorithm: initially construct a graph with regular structure. Next, apply rewiring to every link with probability p, such that p*m links are randomized (redirected to a randomly selected node). Parameter p is the rewiring probability, and m is the number of links in the original regular graph.
+
+L: Rewiring probability p is similar to the link probability used to generate the Gilbert random network. However,
+instead of determining whether to include a link in the network, rewiring probability p is used to determinewhether one end of a link is switched to a randomly selected node
+
+L: The class of WS small-world networks can be generated with a small amount of
+randomness (small p), or a large amount (large p), depending on the value of p.
+
+L: increasing p also increases the randomness of the small world. This means we can produce a network with any desired level of randomness—entropy, if you will—by adjusting rewiring probability p—a low rewiring probability generates a nonrandom structure, and a high probability generates a random structure
+
+L: Each link is visited and rewired (connected
+to a randomly chosen head node), with probability p. In the end, this leaves
+(1-p)m links as they were (part of the initial 2-ring network), and randomizes
+the remaining pm links. The resulting small world is partly structured and partly
+random—and so its degree distribution falls in between the spike of a
+k-ring network, and the Poisson distribution of a random network.
+
+</text>
+
+
+<text>
+Algorithm:
+
+L: Watts and Strogatz devised the Watts-Strogatz small-world network generation procedure
+in 1998; hence the name Watts-Strogatz or WS small-world network.
+</text>
+
+<text>
+The WS generation procedure is simple—start with a 2-ring network and rewire
+a percentage of its links to “randomize them.” The initial 2-ring network has a
+and the resulting small-world network has some regular and some random structure. 
+</text>
+
+
+
+<text>
+Rewiring consists
+of replacing the head node of a link with a randomly selected different node. Each
+link is visited and rewired with probability p; hence, a small-world network
+evolves into a semistructured, semirandom network. On the average, pm links are
+“random” and (1-p)m links are structured.
+</text>
+
+<text>
+1. Given n, rewiring probability p, and k = 2, generate a k-ring network by
+connecting each of n nodes to their immediate neighbors, and neighbor’s
+neighbors. This network has m = 2n links [\lambda = 4, density = (4/n)].
+
+2. For every link m, rewire it with probability p, as follows. If
+(Math.random() &lt; p), disconnect the head(m), and rewire it to a different
+randomly selected node. Avoid (v_random = head(m)), and duplicate links.
+</text>
+
+<text>
+L: This generation procedure is simple, but does not guarantee a connected network.
+If all links connecting a node to the network are rewired, it is possible for that node to
+become isolated. Therefore, a number of enhancements (proposed by a variety of
+researchers) can be applied to the basic algorithm to remove this deficiency.For
+example, we can modify the WS procedure to avoid rewiring when it would
+remove the final link from a node. This is similar to the anchored random network
+modification applied to the Erdos-Renyi procedure described in the previous
+chapter.
+</text>
+
+</document>
+
+
+<document>
+<tag>formation-nsws</tag>
+<title>Newman... (NSWS)</title>
+
+<text>
+L: Newman et al. modified the procedure to avoid isolated nodes and components,
+which led to the NSWS model (Newman, 2000a, 2000b). The Newman et al. generation
+procedure is similar to the Gilbert random network generation procedure
+because it uses a similar "anchoring" algorithm to avoid the separation of the network
+into components. 
+</text>
+
+ref.
+Newman, M. E. J., Models of the small world: A review, J. Stat. Phys. 101:819-841 (2000).
+Newman, M. E. J., Small worlds, the structure of social networks, J. Stat. Phys. 101(3/4)(2000).
+
+</document>
+
+
+
+<document>
+<tag>formation-watts-strogatz</tag>
+<title>Generalized Watts-Strogatz model (k-WS)</title>
+
+
+<text>
+L: The density of a small world can be adjusted by modifying the initialization procedure
+of WS. Instead of starting with a 2-ring network, we can start with a k-ring
+network, where k = m/n. 
+</text>
+
+<text>
+L: The WS generative procedure assumes an initial 2-ring
+network, but we generalize the procedure to allow density to vary, which is achieved
+by setting k = (n/m), and starting with a k-ring network (\lambda = 2k).
+</text>
+
+
+
+<text>
+1. Given n, rewiring probability p, and k =m/n, generate a k-ring network by
+connecting each of n nodes to their immediate neighbors, and neighbor’s
+neighbors. This network has m = 2kn links [l = 2k, density = (2k/n)].
+
+2. For every link m, rewire it with probability p, as follows. If
+(Math.random() &lt; p), disconnect the head(m), and rewire it to a different
+randomly selected node. Avoid (v_random = head(m)), and duplicate links.
+</text>
+
+
+<text>
+Alternative method:
+
+L: round-robin algorithm for inserting links into the k-ring starting network. The value of k depends on the number of nodes and links specified by the user. This requires insertion of k = m/n rings to generate the initial k-ring network.
+</text>
+
+<text>
+L: The k-WS model is used to study changes in smallworld properties as a function of rewiring probability p and density d.
+</text>
+
+</document>
+
+
+</document>
+
+
+<!-- Properties -->
+
+<document>
+<tag>small-worlds-properties</tag>
+<title>Structural properties of small-world networks</title>
+
+<text>
+Watts-Strogatz networks are hybrids — part k-rings and part random. Therefore, the topology of a small-world network should fall somewhere between that of a k-ring network and random network.
+</text>
+
+<text>
+Link rewiring... 
+
+L: The dramatic impact that a relatively small amount of
+randomness has on path length, clustering, and entropy is the most impressive
+attribute of a small-world network... that introduction of a small
+amount of randomness or entropy into a structured network leads to a significant
+change in the properties of a structured network (
+
+
+L:  has a dramatic impact on several properties
+of interest: degree distribution, diameter, radius, and average path length.
+For small rewiring probability p, most of the network remains structured. Because
+the k-ring network has a high cluster coefficient, the resulting small-world
+network also has a high cluster coefficient. But even a small amount of rewiring
+radically decreases network diameter, radius, and average path length, while
+retaining most of the clustering inherent in the k-ring network. The
+dramatic decrease in diameter, radius, and average path length is known as the
+small-world effect.
+</text>
+
+<text>
+L: Small-world networks are indeed structured networks with the addition of a small
+amount of randomness. Some properties of the small-world network are inherited
+from the structured network underlying the small world, and others are a consequence
+of rewiring. Small worlds owe their average path length to the introduction of randomness,
+but other properties, such as cluster coefficient, are due to starting
+network topology.
+</text>
+
+<text>
+WS small-world networks are sparse, yet they exhibit short average path lengths. They also have high clustering coefficients and their degree distribution is similar to that of random networks.
+
+L: Generally, a slightly smallworld
+network has a high cluster coefficient and lower average path length than
+does its underlying regular network.
+
+L: A small-world graph, G(small world), is a graph with relatively small average path
+length, and a relatively high cluster coefficient, CC(G). Generally, the average path
+length of a small world grows proportional to O(log(n)/log(lambda)), where where lambda is the mean node degree,
+and the clustering coefficient tends to be greater than 50%.
+
+</text>
+
+
+<text>
+L: Watts and Strogatz: small worlds as networks with relatively short distances (hops) between node pairs chosen at random, even as the size of the network grows. Specifically, the diameter of a network increases as ln(n) while its size increases by O(n), where n is number of nodes.
+</text>
+
+ref.
+Newman, M. E. J., C. Moore, and D. J. Watts, Mean-field solution of the small-world network model, Phys. Rev. Lett. 84(14):3201-3204 (2000).
+Barrat, A., Comment on Small-world networks: Evidence for a crossover picture, preprint 9903323 available from http://arxiv.org/abs/cond-mat/ (1999).
+Barrat, A. and M. Weigt, On the properties of small-world network models, Eur. Phys. J. B 13:547 (2000); available as Condensed Matter/9903411.
+
+
+<!-- Degree distribution -->
+
+<document>
+<tag>small-worlds-properties-degree</tag>
+<title>Degree distribution</title>
+
+<text>
+L: A small-world network ... is a slightly structured and partially random network that is closer to the structured end of the spectrum than to the class of random networks that have no discernable structure or topology.
+
+... [expect something between k-ring networks and random networks] ... In this case, intuition is correct, as the degree distribution
+of a small-world network is taller and thinner than the distribution of an equivalent random network.
+
+L: The degree distribution of a WS-generated small world is taller and thinner than an equivalent random network
+</text>
+
+<text>
+L: The degree of all nodes of the initial k-ring network is 2k. Therefore,
+the degree distribution is a spike at d = 2k, but this spike begins to
+flatten out and spread wider as links are rewired.
+</text>
+
+<text>
+L:... (1-p)m links as they were (part of the initial 2-ring network), and randomizes
+the remaining pm links. The resulting small world is partly structured and partly
+random—and so its degree distribution falls in between the spike of a
+k-ring network, and the Poisson distribution of a random network.
+</text>
+
+
+<text>
+L: Barrat and Weigt (Barrat, 2000) derived a closed-form expression for degree distribution of small worlds by observing the following:
+</text>
+
+<list>
+
+<item>
+The degree of a typical node u stays the same if none of its links are rewired, and increases if other node's links are redirected to u.
+</item>
+
+<item>
+The probability that links are not rewired follows a binomial distribution, B(k,i,(1-p)), where k = m/n, i = number of links not rewired, and p = rewiring probability.
+</item>
+
+<item>
+The probability that another node's links are redirected to node u follows a Poisson distribution, P(\lambda_1, d - k - i); d \geq k, where \lambda_1 = pk is the expected value of redirected links, d = degree, and i = number of links redirected to u
+</item>
+
+<item>
+The probability of increasing the degree of node u is equal to the joint probability, B(k,i,(1-p))P(\lambda,d-k-i).
+</item>
+
+<item>
+The degree distribution h(d) is equal to the sum of joint probabilities over i = 1, 2, 3, . . . min{d-k,k} links.
+</item>
+
+</list>
+
+
+<text>
+The distribution of nodes with d links after rewiring is the sum:
+</text>
+
+<equation>
+h(d) = \sum_{i=1}^{min\{d-k,k\}} B(k,i,1-p) P(\lambda_1,d-k-i)
+</equation>
+
+<text>
+where
+</text>
+
+<equation>
+\lambda_1 = pk
+</equation>
+
+<equation>
+B(k,i,1-p) = {k \choose i} (1-p)^i p^{k-i}
+</equation>
+
+<equation>
+P(\lambda_1,d-k-i) = (pk)^{d-k-i} e^{ \frac{-pk}{(d-k-i)!} }
+</equation>
+
+<text>
+The above expression is valid for <eqn>d \geq k</eqn> but it is undefined for <eqn>d &lt; k</eqn> and all the values of <eqn>i</eqn> outside the interval <eqn>[k, min\{d-k, k\}]</eqn>, where we assume it to be zero.
+</text>
+
+<text>
+Generally, the Barrat-Weigt equation provides vales that are slightly lower than those observed in actual small-world networks.
+</text>
+
+
+<!-- Entropy -->
+
+
+<document>
+<tag>small-worlds-properties-entropy</tag>
+<title>Entropy</title>
+
+<text>
+L: Entropy of the class of small-world networks is scalable from nearly structured
+(low entropy) to fully random networks (high entropy). Entropy can be
+adjusted by the designer through selection of the WS rewiring probability
+p or number of links (density).
+
+</text>
+
+<text>
+Starting with a k-ring network k = m/n, with density 2k/(n-1),
+</text>
+
+<text>
+Varying the rewiring probability from 0 to 100% (constant size and densities):
+</text>
+
+<text>
+- Nearly one-half of the increase in entropy occurs between 1% and 10% (confirming that a little randomness goes a long way toward dramatically changing the properties of a small-world or random network).
+
+- For sufficiently large rewiring probabilities, 
+the experimentally derived semilog plot of entropy versus rewiring probability fits a straight line almost exactly: 
+2-ring WS small-world entropy is proportional to log_2 (p)
+L: This is intuitively satisfying because it says that the number of bits of entropy in a small world is directly proportional to
+rewiring probability p: # bits of entropy \propto p
+
+++ the number of bits of randomness rises from 0 (at p=0%) to approximately 2.9 (at p=100%)
+vs. 6.64 bits of information in a random message with 100 symbols, occurring with equal probability 1/100
+i.e. no more than half the bits of information in a sequence of random numbers
+L: When p = 100%, a WS small-world network is identical, in terms of entropy, to
+an equivalent random network with the same number of nodes and links. Unlike a random network, we can “tune” a small world to match the randomness that we want.
+</text>
+
+<text>
+Varying the density (constant size and rewiring probability):
+</text>
+
+<text>
+- Entropy rises very slowly with density according to the logarithmic function: H_{WS} \propto \log(density, i.e. H_{WS} \propto \log \left( \frac{kç}{n}  \right). 
+
+- Once again, the number of bits of entropy grows linearly with density: # bits of entropy \propto density
+L: ... agrees with intuition because it says that entropy in small-world networks increases to the same extent, regardless of the source of randomness (either rewiring or adding links).
+</text>
+
+</document>
+
+</document>
+
+
+<!-- Clustering coefficient -->
+
+<document>
+<tag>small-worlds-properties-clustering</tag>
+<title>Clustering coefficient</title>
+
+<text>
+The small-world graph has the largest cluster coefficient even though its
+degree distribution is very similar to that of a random graph....
+The class of small-world graphs is characterized by an unexpectedly large cluster
+coefficient when compared to the class of random graphs, but it also has some properties
+in common with the class of random graphs. For example, small-world and
+random graphs have similar degree distributions and diameters.
+
+The cluster coefficient of a small world can be several orders of magnitude
+larger that that of an equivalent random graph of the same size and with an equivalent
+number of links.
+</text>
+
+
+<text>
+The cluster coefficient of WS networks varies by changing density, rewiring probability, or both. 
+
+First, suppose that we hold density constant while varying rewiring probability p. What happens to a 2-regular WS network when entropy is
+increased? Surprisingly, the cluster coefficient decreases as entropy increases!
+
+Alternatively, the cluster coefficient increases with network density because the number of links available to form triangular subgraphs also increases.
+</text>
+
+<text>
+L: Intuition says that the small-world cluster coefficient should approximate the (high) cluster coefficient of the class of regular networks at one extreme and the (low) cluster coefficient of the class of random networks at the other extreme.
+For low rewiring probability, a WS network is mostly regular, and for high probability p, the network is mostly random.
+
+</text>
+
+<text>
+Initially, before any rewiring, the cluster coefficient of every node in a 2-ring WS network is the same. The cluster coefficient of the initial k-ring network, CC(WS_0), is equal to the ratio of number of triangles attached to each node, divided by one-third of the number of connected triples:
+</text>
+
+<equation>
+CC(WS_0) = CC(k-ring) = 3 \frac {\#\text{triangles}} {\#\text{connected triples}} = 3 \frac {k(k-1)} {2k(2k-1)} =  \frac{3}{2} \frac {k-1} {2k-1}
+</equation>
+
+<text>
+L: For example, k = 2 in the initial network, CC(WS_0) = 1/2. As k increases, the highest possible cluster coefficient is 3/4 because
+CC(WS_0) \sim 3k / 4k = 3/4. Therefore, the cluster coefficient of the initial regular WS network will fall in the interval [0.5,0.75].
+</text>
+
+<text>
+L: When the small world emerges from rewiring, pm links will be rewired, which means that some links have been diverted from triangular subgraphs while
+others remain as they were, initially. This causes clustering to decline with corresponding increases in rewiring probability p. When p=1.0, the WS small-world cluster coefficient equals that of a random network. Newman and Watts derived a complex equation for cluster coefficient using a
+combinatorial approach (Albert, 2000???): 
+</text>
+
+[Albert, R., H. Jeong, and A. L. Barabasi, The Internet’s Achilles’ heel: Error and attack tolerance
+of complex networks, Nature 406:378-382 (2000).]
+[Albert, R. and A.-L. Barabasi, Statistical mechanics of complex networks, Rev. Mod. Phys.
+74:47-97 (2002).]
+
+<equation>
+CC(WS_p) = \frac {3k(k-1)} {2k(2k-1) + 8pk^2 + 4p^2k^2}
+</equation>
+
+
+
+<text>
+L: Barrat and Weigt made an elegant and simple assumption that gives a more accurate result: the cluster coefficient is
+proportional to the probability that a triangular subgraph will not be rewired (Barrat, 2000):
+</text>
+
+[Barrat, A. and M. Weigt, On the properties of small-world network models, Eur. Phys. J. B
+13:547 (2000); available as Condensed Matter/9903411.]
+
+<equation>
+CC(WS_p) = CC(k-ring) * (1-p)^3
+</equation>
+
+<text>
+where, as above,
+</text>
+
+<equation>
+CC(k-ring) = \frac{3}{2} \frac {k-1} {2k-1}
+</equation>
+
+<text>
+L: When p=0, the initial cluster coefficient is that of the underlying regular network. When p&gt;0, rewiring simply destroys triangles with probability p, and leaves them intact with probability (1-p).  Failure to rewire one link occurs with probability (1-p). Failure to rewire all three links occurs with probability (1-p)^3. All three links have to survive rewiring; otherwise, the triangular subgraph is destroyed. Therefore, rewiring has to fail 3 times. The probability of three failures is (1-p)^3  == the triangular sub-graph remains intact with probability (1-p)^3.
+</text>
+
+<text>
+Whereas the Newman-Watts  approximation overestimates cluster coefficient, the Barrat-Weigt approximation fits the data much better, but slightly
+underestimates the actual clustering coefficient.
+</text>
+
+<text>
+L: Clustering decreases as randomness increases because clustering is a form of structure (order), whereas rewiring links is a form of randomness (disorder). Increasing rewiring probability increases disorder, which decreases clustering.
+</text>
+
+<text>
+++ Now let us hold rewiring probability constant and let density vary. Cluster coefficient slowly rises with increase in density because increasing density moves any network closer to a complete network. We know that the cluster coefficient of a complete network is 1.0, so the cluster coefficient must asymptotically approach 1.0 as density approaches 100%. Notice that the bounds on cluster coefficient are increased: 0.5 = CC(density) = 1.0, which seems to contradict to the Barrat-Weigt approximation. In this case k \rightarrow n/2, since (k=n density / 2), so there is no contradiction.
+Therefore, the cluster coefficient slowly rises with rising density...
+... more links means more triangular subgraphs to begin with, and relatively fewer rewired links for a fixed probability p. As density increases, so does the number of triangular subgraphs, which increases cluster coefficient. 
+</text>
+
+
+<text>
+NOTE:  this clustering coefficient is more a property of the underlying regular network than an inherent property of all small worlds. For instance, clustering coefficients would be higher if we started with hypercube or toroidal networks ranteher than a simple k-ring.
+
+Experiment <cite>Lewis 2009</cite>
+
+Start with a 5x5 toroidal network, and apply the same rewiring microrule used in the WS generation procedure. What are the
+properties of the resulting network?... The results suggest that initial configuration has some impact on entropy and average path length, but the cluster coefficient is much lower in networks generated by the WS microrule that starts with a toroidal network than with a 2-ring network. The standard WS network model starts and ends with high clustering. The toroidal WS network procedure starts and ends with less clustering.
+i.e. the starting network matters = the WS network generation algorithm produces small worlds with the cluster coefficient determined by the topology of the 2-ring network. In general, the underlying k-ring network determines the cluster coefficient of the resulting small world!
+</text>
+
+</document>
+
+
+<!-- Average path lentgh -->
+
+<document>
+<tag>small-worlds-properties-path-length</tag>
+<title>Average path length</title>
+
+<text>
+Path length rapidly declines as the rewiring probability, and thus the randomness, increases...
+</text>
+
+<text>
+L: Does a small world become even smaller as more links are “randomized”? 
+
+Actually, the average path length of a WS small-world network decreases exponentially as entropy increases, but it never shrinks below that of an equivalent random network... a small world does indeed become smaller as more links are randomized
+
+As rewiring increases, a small world becomes more randomized and its average path length
+approaches that of a random network. But the average path length of a small-world
+network is no less than that of an equivalent random network.
+</text>
+
+
+<text>
+L: Newman, Moore, and Watts (Newman, 1999a) derived an estimate for describing the average path length of a  small-world based on the following reasoning:
+</text>
+
+<list>
+
+<item>
+When rewiring is nonexistent, and the initial network is a 2-ring, average path length is n/4k.
+</item>
+
+<item>
+For very small rewiring probability p, average path length begins a rapid decline, after <eqn>p \geq 1/m</eqn>.
+</item>
+
+<item>
+At some (early) point <eqn>p^*</eqn>, rewiring is sufficiently large that the network transitions from mostly regular, to mostly random. This is known as the crossover point <eqn>p^*</eqn>, and indicates a phase transition in the network.
+</item>
+
+</list>
+
+<text>
+Newman, Moore, and Watts (Newman, 1999b; Newman, 2000a) argued that average path length declines from an initial (p=0) value of n/4k according to a scaling function f(r), where r is 2 times the average number of rewired links, r = 2pm, which act as shortcuts:
+</text>
+
+<equation>
+f(r) = \frac{4}{\beta} tanh^{-1} \left( \frac{r}{\beta} \right)
+</equation>
+
+<text>
+where <eqn>tanh^{-1}</eqn> is the inverse hypertangent function <eqn>arc tanh</eqn> and
+</text>
+
+<equation>
+\beta = \sqrt{r^2+4r}
+</equation>
+
+<text>
+Therefore, the average path length of a 2-ring WS small world is approximated by the Newman-Moore-Watts equation:
+</text>
+
+<equation>
+L(WS) = n \frac{f(r)}{2k} = \frac{2 n}{\beta k} tanh^{-1} \left( \frac{r}{\beta} \right)
+</equation>
+
+<text>
+with <eqn>r = 2pm</eqn> and <eqn>\beta = \sqrt{r^2+4r}</eqn>.
+</text>
+
+<text>
+L: The Newman-Moore-Watts equation is proportional to 1/p for large, sparse networks. 
+
+L: The Newman-Moore-Watts expression overestimates average path length, especially as rewiring probability p decreases. However, its underlying assumptions that path length shrinks as rewiring increases suggests an intuitive approach for an alternative appromxation <cite>Lewis 2009</cite>. 
+</text>
+
+<text>
+L: Average path length is n/4k initially, but as links are rewired, they introduce shortcut
+links that divide the network into smaller and smaller subgraphs. Specifically, one
+random link cuts the network in half, on average, and two links cut it into one-fourth,
+and so on. However, shortcuts overlap, and  addition of rewired links cuts the network into a fraction of 1/2.
+The effect on the logarithm of average path length is a logarithmic function of rewired links.
+Let r = pm = pkn shortcut links reduce logarithmic growth in path length by
+\log_2 (pm), on average, because of the partial bisecting that occurs. Therefore,
+the logarithm of the average path length is equal to the logarithm of the path
+length of the initial 2-ring network, minus the effects of partial bisection:
+</text>
+
+<equation>
+\log_2 L(r) =  \log_2 \left( \frac{n}{4k} \right) - q \log (r)
+</equation>
+
+<text>
+where <eqn>q</eqn> is constant. This expression fits a straight line on a log-log plot, where the exponent <eqn>q</eqn> can be approximated by curve fitting. For 2-ring WS networks, <eqn>q_2 \approx 1/3</eqn>, whereas for 4-ring WS networks, <eqn>q_4 \approx 1/6</eqn>. We might conjectture that doubling k halves q...
+</text>
+
+<text>
+Rearranging the terms in the expression above, we get an approximation for the average path length of WS networks that is simpler than the Newman-Moore-Watts equation and valid for small values of p:
+</text>
+
+<equation>
+L(WS) = \frac { n } { 4 k r^q}
+</equation>
+
+<text>
+where <eqn>r = pm = pkn</eqn> and <eqn>q></eqn> is a constant obtained by curve fitting.
+</text>
+
+<text>
+When <eqn>k=2</eqn>, average path length is inversely proportional to the cube root of the rewiring probability <eqn>p</eqn>, i.e.
+</text>
+
+<equation>
+L(WS_2) = \frac { n } { 4 k  \sqrt[3]{q}} = \frac { n } { 4 k  \sqrt[3]{pm}} \propto \frac{1}{ \sqrt[3]{p} }
+</equation>
+
+<text>
+This power law tends to underestimate, while the Newman-Moore-Watts equation tends to overestimate path length.
+</text>
+
+
+<text>
+L: WS networks exhibit the small-world effect because of the abrupt
+decline in average path length while maintaining the cluster coefficient of
+the underlying regular network. 
+
+vs. random networks of equal density
+
+L: An equivalent random network is really an asymptotic extreme of a small-world network with an
+average path length less than or equal to an equivalent small world. Small-world
+path length shrinks with increasing probability of link rewiring, reaching p =
+100% as a limit. At low rewiring probability values, the WS small-world network
+path length is similar to that of a 2-ring network (higher than that of a random
+network). At high rewiring probability values, the path length of the class of WS
+small-worlds and the class of random networks are similar (low).
+</text>
+
+
+
+</document>
+
+
+
+<document>
+<tag>small-worlds-properties-betweenness</tag>
+<title>Betweenness</title>
+
+<text>
+L: ...the average betweenness of a small-world network rises, falls, and then rises again, according to density d, size n, mean degree \lambda, and rewiring probability p:
+</text>
+
+<equation>
+betweenness(WS) \propto \rho \lambda^r
+</equation>
+
+<text>
+where 
+</text>
+
+<equation>
+r \propto \frac { \lambda log (n - (1 - p)) } { \log(\lambda) }
+</equation>
+
+<text>
+L: betweenness in a small-world, unlike a random, network is correlated
+with both density and the underlying regularity of the initial k-ring
+network.
+
+++ Contrary to intuition, betweenness of a node does not improve the
+ability of a message to rapidly find its way through a small-world network.
+</text>
+
+<text>
+++ L (p.154-156):
+
+Intuitively, average betweenness of nodes in a small world should follow the same
+pattern as betweenness in a random network, especially as rewiring probability increases.
+But this turns out to be false because of the WS small-world generative procedure,
+which has a k-ring network as its underpinning. As density increases, small
+worlds become more regular and asymptotically approach a complete network just
+as does a random network. But the transition is not smooth... 
+
+In fact, the transition dramatically follows a lazy-Z-shaped curve—completely
+unexpected compared to the average betweenness of random and small-world
+networks. The small-world network’s cluster coefficient undergoes a nonlinear
+transformation at approximately 50% density.
+
+betweenness increases with increasing density—up to a point—and then dips as the
+network begins to act more like a k-ring network than a small-world network. After
+the dip, regularity takes over, and betweenness once again rises until reaching a peak
+near 100% density. A very rough approximation to this nonlinear behavior is obtained
+by performing a mean-field analysis, as with random networks.
+
+Here is the strategy:
+
+1. Modify the mean-field approximation obtained in the previous
+chapter, betweenness(random) = O((1 - density)z), to accommodate the impact
+of regularity on the network, where z = lr, l = mean degree, and
+r(random) = O( log (n)= log (l)):
+
+a. Replace (1-density) with density because small worlds increase betweenness as
+density increases—up to a point (50%),
+
+b. Note that the transformation from small-world to k-ring network occurs
+around r = 1.
+
+c. Use the fact that a direct path of length 1 contributes zero betweenness because
+of the way betweenness is defined.
+
+2. Estimate curve-fit parameters C1 and C2
+
+A small-world network of arbitrary density is generated by first constructing a
+k-ring lattice. Then, a percentage
+of links p are randomly rewired. This random rewiring injects shortcuts through the
+network, which leads to a reduction in the number of nodes eligible to lie on a path
+between any other pair of nodes. The effect of rewiring pm links is modeled as a
+reduction in number of paths, as follows:
+
+r = ( A log2 (n - (1 - p)\lambda) ) / log2 (\lambda)
+
+The mean-field number of paths through a typical node is proportional to z, as before: z = \lambda^r.
+
+When r &lt; 1, the small world ceases to behave like a small world, and becomes
+more like a k-ring network, as far as betweenness is concerned. Therefore, we
+require a different model for z when r , 1. In fact, the dense small world behaves
+more like a k-ring network with k ¼ l=2 direct paths, instead. Therefore, only
+k = \lambda / 2 paths run through a typical node: z = k = \lambda / 2
+
+Combining these two effects, we obtain
+z = \lambda^r if r &gt; 1 1
+z = 2 otherwise
+
+There is a major difference between the betweenness properties of random and small-world
+networks. Random networks have no regularity until density approaches 100%. Hence
+average betweenness is (mainly) a function of average path length and sparseness. On the
+other hand, small-world networks have a great amount of regularity regardless of
+density—and the impact of regularity on average betweenness increases as density
+increases. A “tipping point” is reached around 50% density, which results in the small
+world behaving more like a k-ring network than a random network. This regularity
+becomes the most significant factor in determining betweenness. Generally, clustering
+tends to increase average betweenness, while randomizing tends to decrease it, beyond
+~20% density. 
+</text>
+
+</document>
+
+
+
+</document>
+
+
+
+
+<document>
+<tag>small-worlds-examples</tag>
+<title>Small-world networks in the real world</title>
+
+<text>
+L: Very sparse networks with small diameter (small worlds) at diverse phenomena such as phase transitions in materials, functionality of biological organisms, and behavior of electrical power grids.
+e.g. database of film actors, the electric power grid of the western United States, and the neural network of the nematode worm C. elegans (Caenorhabditis elegans)
+
+L: Sparse small-world networks appear to model human social networks, because humans have limited capacity to know a large number of other humans.
+
+K: Jure Leskovec and Eric Horvitz [273]. They analyzed 30 billion conversations among 240 million active user accounts on Microsoft Instant Messenger (IM): a giant component containing almost all of the nodes, with an estimated average distance of 6.6 and an estimated median of 7 (over a random sample, due to the huge size of the graph)
+@SNAP: Largest network we analyzed so far using the library was the Microsoft Instant Messenger network from 2006 with 240 million nodes and 1.3 billion edges. WWW 2008
+[Planetary-Scale Views on a Large Instant-Messaging Network by J. Leskovec, E. Horvitz. International World Wide Web Conference (WWW), 2008. ]
+extended version @
+[Jure Leskovec and Eric Horvitz (June 2007). Planetary-Scale Views on an Instant-Messaging Network. arXiv:0803.0939.]
+http://arxiv.org/abs/0803.0939
+
+W: algorithm finds an average degree of separation of 3.43 between two random Twitter users, requiring an average of only 67 requests for information over the Internet to Twitter. A near-optimal solution of length 3.88 can be found by making an average of 13.3 requests.
+[Reza Bakhshandeh, Mehdi Samadi, Zohreh Azimifar, Jonathan Schaeffer, "Degrees of Separation in Social Networks", Fourth Annual Symposium on Combinatorial Search, 2011] 
+http://www.aaai.org/ocs/index.php/SOCS/SOCS11/paper/view/4031
+
+W: Facebook's data team released two papers in November 2011 which document that amongst all facebook users at the time of research (721 million users with 69 billion friendship links) there is an average distance of 4.74. Probabilistic algorithms were applied on statistical metadata to verify the accuracy of the measurements.[23] It was also found that 99.91% of facebook users were interconnected, forming a large connected component.[24]
+- Backstrom, Lars; Boldi, Paolo; Rosa, Marco; Ugander, Johan; Vigna, Sebastiano (2011-11-19). "Four Degrees of Separation". ArXiv. Retrieved 23 November 2011.
+- Ugander, Johan; Karrer, Brian; Backstrom, Lars; Marlow, Cameron. "The Anatomy of the Facebook Social Graph". ArXiv. Retrieved 23 November 2011.
+
+
+Common Examples of Small-World Networks <cite>Lewis 2009</cite>
+
+Graph, n, Small-World Cluster Coefficient, Random Cluster Coefficient
+World Wide Web            153,127 0.11 0.00023
+Internet                    6,209 0.30 0.00100
+Actors in same movie      225,226 0.79 0.00027
+Coauthor scientific papers 52,909 0.43 0.00018
+Western US power grid       4,941 0.08 0.00200
+C. elegans neural network     282 0.28 0.05000
+Foodweb (ecological chain)    134 0.22 0.06000
+
+several order of magnitude larger clustering coefficients than equivalent random networks!!!
+
+Albert and Barabasi summarize a number of real-world networks with high cluster
+coefficients (Albert, 2002).  For example, the social network formed by movie actors
+who appeared in the same movie has a cluster coefficient of 0.79; coauthorship
+network of scholarly papers, CC = 0.72; the chemical reaction network of the
+Escherichia coli organism, CC = 0.59; and network formed by linking synonyms
+in an English language thesaurus, CC = 0.7. 
+[Albert, R. and A.-L. Barabasi, Statistical mechanics of complex networks, Rev. Mod. Phys.
+74:47-97 (2002).]
+
+</text>
+
+<text>
+<cite>Uzzi et al. 2007</cite>
+</text>
+
+<text>
+Dorogovtsev, Mendes, Samukhim, Krapivsky, and Redner derived
+an exact formula for the power law of a purely scale-free network and showed that
+it describes many biological systems (Dorogovtsev, 2000; 2002a; 2002b; 2003).
+</text>
+
+<text>
+Networks are considered to be small worlds when they have a high clustering coefficient but exhibit a similar path length when compared to random networks with the same number of nodes and links.
+</text>
+
+<text>
+Small-world-ness measure <cite>Humphries and Gurney 2008</cite>: The small-world index = ratio of the clustering coefficient to the path length after normalizing by the corresponding values for random networks.
+</text>
+
+
+<text>
+A different class of small-world networks <cite>Sporns 2006</cite>: modular small-world networks (generated from isolated modules by gradually redistributing connections from within modules to between modules).
+</text>
+
+
+<text>
+2001 Yung Taxonomy of applications of small-world theory to: SNA, collaboration, Internet, business, life sciences
+[Yung, V. J. An exploration in the small world networks, available as Condensed Matter 0004214 (2000/2001)]
+</text>
+
+</document>
+
+
+
+<document>
+<tag>small-worlds-dynamics</tag>
+<title>The dynamics of small-world networks</title>
+
+
+<text>
+L: small-world networks share some properties of random networks—such as short
+path length—some researchers have jumped to the conclusion they also behave
+like random networks. Some of these claims have been verified experimentally.
+Some are myths.
+</text>
+
+
+<text>
+Strogatz claimed that the beating of a human's heart, the chirping of crickets, and
+other biological systems naturally sync because they are small-worlds (Strogatz,
+2003). But today we know that network synchronization has little to do with small-world
+topology, and everything to do with the Laplacian of the connection matrix, and
+the length of circuits within the network.
+
+... pursued the idea that small-world network behavior explained synchrony ...
+
+L: Strogatz suggested that the synchronized chirping of a certain species of
+crickets is a consequence of the small-world effect (Strogatz, 2003).
+
+ref. Atay networks (Atay, 2006), We examine stability of Atay networks,
+which have applications in marketing, as well as understanding the chirping of crickets,
+and show that sync is a property of emergent networks that contain triangleshaped
+subgraphs. As it turns out, small-world networks have an abundance of
+triangular subgraphs! Moreover, a network can be synchronized, by adding a triangular
+subgraph to one of its nodes.
+</text>
+
+
+
+<document>
+<tag>small-worlds-dynamics-phase-transition</tag>
+<title>Phase transition</title>
+
+<text>
+L: Phase transition in the physical world occurs when matter changes from a solid state
+to a liquid, from liquid to gas, and so on. The Ising effect, for example, explains the
+phase transition that occurs when inert iron converts into magnetic iron. The idea is
+related to the sudden transition from a 2-regular to random network as rewiring probability
+increases. Watts argued that phase transition is a particular property of small
+worlds, and that it is the same fundamental phenomenon observed in different fields.
+</text>
+
+<text>
+L: At a certain rewiring probability called the crossover point (also length scale), the network transitions from mostly structured to mostly random network. Typically, the crossover point is very small—on the order of 2-3%. Watts and Strogatz attached a meaning to the crossover, suggesting that it corresponds to phase transition in materials (the crossover point is also known as the phase transition threshold).
+
+
+L: Typically, the small-world transitions from purely regular to slightly random for
+p* = 1-4%. This phase transition threshold, or crossover point, has taken on a
+number of meanings in various applications. For example, phase transition is
+claimed to explain the Ising effect—the transition to magnetic polarity in ferrous
+materials. It has also been used to explain why small-world networks tend to synchronize
+more than do purely random or purely structured networks.
+
+
+
+++ 2-ring WS small-world networks transition from regular to random topology near a crossover
+rewiring probability p* \sim 1/n. This marks the transition from "mostly
+structured” to “mostly random” topology. The value of p is of
+interest to physicists, who associate it with phase transitions in materials.
+For this reason, small worlds make
+good models of phase transition phenomena, such as the transition of a
+liquid to a solid, or inert iron to magnetic iron.
+
+
+The rapid change in network properties as entropy rises begs a number of questions
+about WS small worlds and the transition from predominantly structured networks,
+to partially structured, and then fully random networks.
+++ does this phenomenon occur in the transition from other structured networks to small worlds, or is it dependent on the initial 2-ring lattice? - ++ 
+
+</text>
+
+</document>
+
+
+<document>
+<tag>small-worlds-dynamics-navigation</tag>
+<title>Network navigation</title>
+
+
+<text>
+++ 1999 Walsh: Difficulty of search in small worlds using local properties
+[Walsh, T., Search in a small world, IJCAI'99, Proc. 16th Intnatl. Joint Conf. Artificial
+Intelligence, Stockholm, Sweden, Morgan Kaufmann Publishers, San Francisco, 1999,
+Vol. 2, pp. 1172-1177.]
+
+++ 2000 Kleinberg: Shows O(n) search in small world using "Manhattan distance"
+[Kleinberg, J. M., Navigation in a small world, Nature 406:845 (2000).]
+</text>
+
+<text>
+L: <cite>Kleinberg 2000</cite>, not only surprisingly short paths, but also the remarkable ability of individuals to identify links that lead to those short paths...
+</text>
+
+<text>
+L: Kleinberg gives a formal explanation for Milgram's experiment based on
+the "Manhattan distance" between source and target nodes. The "Manhattan distance"
+is defined as the number of blocks, traversed along streets in Manhattan,
+New York, between source and destination intersections. Kleinberg showed that it
+takes only O(n) steps to navigate such a small world (Kleinberg, 2002a).
+
+L: Navigation of a network using local properties of nodes is faster using a
+maximum-degree selection algorithm than a minimum-radius, maximumbetweenness,
+or random selection algorithm. In the study performed in this
+chapter, WS small-world networks are shown to be more difficult to navigate
+than random or scale-free networks. While small worlds tend to have relatively
+short average path length, it is more difficult to find the shortest path through a
+small world using local information such as node degree, betweenness, and node
+radius than equivalent random networks. This has profound implications for
+packet-switching communication networks.
+</text>
+
+
+<text>
+MORE
+</text>
+
+<text>
+2000 Marchiori, Latora: Harmonic distance replaces path length: works for disconnected networks
+[Marchiori, M. and V. Latora, Harmony in the small-world, Physica A 285(3-4):539-546 (2000).]
+</text>
+
+</document>
+
+</document>
+
+</document>

@@ -1,0 +1,27 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography SYSTEM "bibliography.xml"> ]> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+&bibliography;
+<tag>affiliation-networks</tag>
+<title>Affiliation networks</title>
+
+<text>
+Affiliation networks (a.k.a. membership networks) are a special kind of two-mode network: bipartite graph, actors + events the actor is associated to (e.g. organizations, clubs, meetings, groups...). Events, therefore define subsets of actors, whose belonging to the group can be described by means of a binary affiliation variable (for each relevant subset).
+</text>
+
+<text>
+e.g. Club membership, voluntary organizations, attendance to social events, sitting on a board of directors, countries belonging to treaty organiztions...
+</text>
+
+<text>
+++ Projection
+</text>
+
+<text>
+e.g. interlocking boards of directors
+</text>
+
+</document>

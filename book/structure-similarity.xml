@@ -1,0 +1,33 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography SYSTEM "bibliography.xml"> ]> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+&bibliography;
+<tag>similarity</tag>
+<title>Similarity</title>
+
+
+<document>
+<tag>similarity-assortativity</tag>
+<title>Assortativity</title>
+
+<text>
+A measure based on degree <cite>Newman 2002</cite>, defined as the correlation coefficient for the degrees of neighboring nodes, indicates whether edges tend to link nodes of similar degrees (positive assortativity) or high-degree nodes preferentially connect to low-degree nodes (negative assortativity).
+</text>
+
+</document>
+
+
+<document>
+<tag>similarity-structural</tag>
+<title>Structural equivalence</title>
+</document>
+
+<document>
+<tag>similarity-regular</tag>
+<title>Regular equivalence</title>
+</document>
+
+</document>

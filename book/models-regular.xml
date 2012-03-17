@@ -1,9 +1,12 @@
 <?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography  SYSTEM "bibliography.xml"> ]>
 <?xml-stylesheet type="text/xsl" href="../book.xsl"?>
 
 <!-- Regular networks -->
 
 <document>
+&bibliography;
+
 <tag>regular-networks</tag>
 <title>Regular networks</title>
 
@@ -520,9 +523,64 @@ E(complete) &gt; E(hypercube) &gt; E(toroid) &gt; E(bbt) &gt; E(ring)
 ++ Tabla resumen: links, degree, diameter, bisection, average path length, link efficiency
 </text>
 
+</document>
+
+
+<document>
+<tag>random-notes</tag>
+<title>Bibliographic notes</title>
+
+<text>
+Corresponding chapter in <cite>Lewis 2009</cite>...
+</text>
+
+<text>
+++ Interconnection networks @ computer architecture...
+Catalog of network connectivity models and their properties at <url>http://w3.antd.nist.gov/wctg/netanal/netanal_netmodels.html</url>
+
+e.g.
+
+Dhritiman Banerjee; Biswanath Mukherjee; S. Ramamurthy:
+The multidimensional torus: Analysis of average hop distance and application as a multihop lightwave network
+IEEE International Conference on Communications, 1994. ICC '94, SUPERCOMM/ICC '94
+On page(s): 1675 - 1680 vol.3 
+Meeting Date: 01 May 1994 - 05 May 1994 
+Location: New Orleans, LA , USA 
+Print ISBN: 0-7803-1825-0 
+Digital Object Identifier: 10.1109/ICC.1994.368748  
+1994 ICC Multidimensional torus.pdf
+
+Jordi Arjona Aroca; Antonio Fernández Anta:
+Bisection (Band)Width of Product Networks with Application to Data Centers
+arXiv:1202.6291v1 [cs.NI] 28 Feb 2012
+http://arxiv.org/abs/1202.6291
+2012 arXiv - Bisection widths.pdf
+
+Behrooz Parhami, Ding-Ming Kwai: 
+Comparing four classes of torus-based parallel architectures: Networkparameters and communication performance. 
+Mathematical and Computer Modelling 40(7-8): 701-720 (2004)
+http://dx.doi.org/10.1016/j.mcm.2004.10.002
+2004 MSM Torus-based architectures.pdf
+
+Chi-Hsiang Yeh, Behrooz Parhami 
+ART: robustness of meshes and tori for parallel and distributed computation
+International Conference on Parallel Processing, 2002, ICPP'2002
+On page(s): 463 - 472 
+ISSN: 0190-3918 
+Print ISBN: 0-7695-1677-7 
+Digital Object Identifier: 10.1109/ICPP.2002.1040903  
+2002 ICPP Robustness of Meshes and Tori.pdf
+	
+Behrooz Parhami:
+Periodically regular chordal rings are preferable to double-ring networks
+Journal of Interconnection Networks (JOIN)
+Volume: 9, Issues: 1-2(2008) pp. 99-126     
+DOI: 10.1142/S0219265908002187
+2008 JOIN Regular chordal rings.pdf
+</text>
+
 
 
 </document>
-
 
 </document>

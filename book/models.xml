@@ -1,0 +1,136 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography SYSTEM "bibliography.xml"> ]> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+&bibliography;
+<tag>models</tag>
+<title>Network Models</title>
+
+<text>
+<q>Pushing into the unknown, the mathematician is an explorer who is likely to find what he did not seek and who cannot predict how others will use his discoveries.</q>
+-- Sherman K. Stein: <q>The Mathematician as an Explorer,</q> Scientific American, May 1961
+<url>http://www.scientificamerican.com/article.cfm?id=stein-the-mathematician-as-an-explorer</url>
+</text>
+
+
+<text>
+The most famous classes of networks <cite>Lewis 2009</cite>; namely, regular, random, scale-free, and small-world networks.
+</text>
+
+
+<text>
+L: Structure and function arise out
+of chaos, more as a result of serendipity than determinism. Examples are formation
+of large conglomerates from the merger of small companies; emergence
+of large cities from small communities; and formation of global telecommunication
+systems from linking of many smaller, local, independent operators
+</text>
+
+
+<text>
+L: random graphs have random structure, and k-regular graphs have purely deterministic structure. In between these two extremes lie two important classes of graphs: the class of small-world (mostly structured, partly random), and the class of scale-free (mostly random, partly structured) graphs. Each class has its own characteristic property: the Poisson distribution for random graphs, powerlaw distribution for scale-free graphs, high average cluster coefficient for small-world graphs, and zero-entropy value for k-regular graphs.
+</text>
+
+<text>
+<cite>Sole and Valverde 2004</cite> arrange network classes in a qualitative space by considering three dimensions: randomness, heterogeneity, and modularity. The first introduces the amount of randomness involved in the process of network's building. The second measures how diverse is the link distribution and the third would measure how modular is the architecture. The position of different examples are only a visual guide. The domain
+of highly heterogeneous, random hierarchical networks appears much more occupied than others. Scale-free like networks belong to this domain.
+
+Each class results from a different formation process and exhibits different patterns of behavior. 
+
+Not all niches in this space are occupied by real-world networks (empty regions might correspond to unrealistic growth strategies or unstable network configurations).
+</text>
+
+<text>
+++ <cite>Jackson 2009</cite>
+</text>
+
+<text>
+Hierarchical models can combine scale-free degree distributions and high clustering coefficients <cite>Ravasz and Barabasi 2003</cite>
+</text>
+
+
+
+<!-- Regular networks -->
+
+<document>
+<tag>models-regular</tag>
+<title>Regular networks</title>
+
+<list>
+
+<item>Ring (and tandem) networks.</item>
+<item>Tree (and star) networks.</item>
+<item>Toroidal (and mesh) networks.</item>
+<item>Hypercube networks.</item>
+<item>Complete networks.</item>
+
+</list>
+
+</document>
+
+<!-- Random networks -->
+
+<document>
+<tag>models-random</tag>
+<title>Random networks</title>
+
+<list>
+
+<item>Poisson random graphs: the Gilbert model and Erdos-Renyi random graphs.</item>
+<item>Random graphs with arbitrary degree distributions: The configuration model.</item>
+<item>Exponential random graphs.</item>
+
+</list>
+
+</document>
+
+
+
+<!-- Models of network formation -->
+
+<document>
+<tag>models-formation</tag>
+<title>Models of network formation</title>
+
+
+<text>Growing random networks vs. strategic network formation</text>
+
+<list>
+
+<item>Small-world networks: the Watts-Strogatz model <cite>Watts and Strogatz 1998</cite>.</item>
+<item>Scale-free networks: the Barabasi-Albert model <cite>Barabasi and Albert 1999</cite>.</item>
+<item>Strategic networks.</item>
+
+</list>
+
+<text>
+<cite>Lewis 2009</cite>, chapter 7... how to produce networks with almost any desired level of clustering, path length, and entropy. With
+this ability, we can produce <q>designer networks</q> with arbitrary properties.
+</text>
+
+</document>
+
+
+
+<!-- Additional network models -->
+
+<document>
+<tag>models-more</tag>
+<title>Additional network models</title>
+
+
+<list>
+
+<item>Affiliation networks.</item>
+<item>Hierarchical/modular networks.</item>
+<item>Influence networks.</item>
+<item>Kirchhoff networks.</item>
+<item>Netgain networks.</item>
+
+</list>
+
+</document>
+
+</document>

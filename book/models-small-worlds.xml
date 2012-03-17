@@ -1,9 +1,11 @@
 <?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography  SYSTEM "bibliography.xml"> ]>
 <?xml-stylesheet type="text/xsl" href="../book.xsl"?>
 
 <!-- Small worlds -->
 
 <document>
+&bibliography;
 <tag>small-worlds</tag>
 <title>Small-world networks</title>
 
@@ -917,7 +919,7 @@ more than do purely random or purely structured networks.
 
 ++ 2-ring WS small-world networks transition from regular to random topology near a crossover
 rewiring probability p* \sim 1/n. This marks the transition from "mostly
-structured” to “mostly random” topology. The value of p is of
+structured” to “mostly random” topology. The value of p* is of
 interest to physicists, who associate it with phase transitions in materials.
 For this reason, small worlds make
 good models of phase transition phenomena, such as the transition of a

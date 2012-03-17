@@ -1,10 +1,12 @@
 <?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography  SYSTEM "bibliography.xml"> ]>
 <?xml-stylesheet type="text/xsl" href="../book.xsl"?>
 
 
 <!-- Poisson random networks -->
 
 <document>
+&bibliography;
 <tag>random-poisson</tag>
 <title>Poisson random graphs</title>
 
@@ -210,6 +212,11 @@ extremely rare, but the possibility exists)
 
 </document>
 
+
+
+<document>
+<tag>random-poisson-properties</tag>
+<title>Structural properties of random graphs</title>
 
 <!-- Degree distribution -->
 
@@ -641,7 +648,31 @@ In addition, the number of paths running through the closest node varies accordi
 
 </document>
 
+</document>
 
+
+<document>
+<tag>random-notes</tag>
+<title>Bibliographic notes</title>
+
+<text>
+++ <cite>Erdos and Renyi 1959</cite> <cite>Erdos and Renyi 1960</cite>
+</text>
+
+<text>
+++ <cite>Bornholdt and Schuster 2003</cite> <cite>Bollobas et al. 2009</cite>
+</text>
+
+<text>
+++ Graph generation @ <cite>Skiena 2008</cite>, p. 460
+</text>
+
+<text>
+++ Random graphs from Stanford Graphbase(GB_RAND)
+</text>
+
+
+</document>
 
 
 </document>

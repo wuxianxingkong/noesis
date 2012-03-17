@@ -1,0 +1,58 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography SYSTEM "bibliography.xml"> ]> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+&bibliography;
+<title>Structural properties of networks</title>
+
+
+<quote author="Charles Goodhart" source="Monetary Relationships: A View from Threadneedle Street (1975)">
+Goodhart's Law: Any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes.
+</quote>
+
+<text>
+In other words: "Once a social or economic indicator or other surrogate measure is made a target for the purpose of conducting social or economic policy, then it will lose the information content that would qualify it to play that role" @ Wikipedia.
+</text>
+
+<text>
+Many of the key structural measures have grown out of insights of researchers trying to describe empirical phenomena and are motivated by central concepts in social theory <cite>Wasserman and Faust 1994</cite>. Many of the formal concepts in network analysis were introduced in the 1950's and 1960's to describe properties of social structures.
+</text>
+
+<text>
+Local metrics quantify the properties of the local neighborhoods of individual nodes, while global metrics can capture network communication properties.
+</text>
+
+
+<text>
+<cite>Lewis 2009</cite>: Networks have structure—they are not random collections of nodes and links. Real-world networks have a distinct format or topology. This suggests that function follows form - many real-world phenomena behave the way they do because of their network structure...
+
+The architecture or topology of a network is a property that emerges over time as a consequence of distributed—and often subtle—forces or autonomous
+behaviors of its nodes. 
+</text>
+
+
+<text>
+Topics:
+</text>
+
+<list>
+
+<item>Degree distribution.</item>
+
+<item>Network connectivity.</item>
+
+<item>Shortest paths in networks.</item>
+
+<item>Clustering coefficients.</item>
+
+<item>Network motifs.</item>
+
+<item>Centrality.</item>
+
+<item>Similarity.</item>
+
+</list>
+
+</document>

@@ -1,12 +1,14 @@
 <?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography  SYSTEM "bibliography.xml"> ]>
 <?xml-stylesheet type="text/xsl" href="../book.xsl"?>
 
 <document>
+&bibliography;
 <tag>strategic-network-formation</tag>
 <title>Strategic network formation</title>
 
 <text>
-cf. Jackson 6
+cf. <cite>Jackson 2009</cite>, Chapter 6
 </text>
 
 </document>

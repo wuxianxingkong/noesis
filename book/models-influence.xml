@@ -1,0 +1,17 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography SYSTEM "bibliography.xml"> ]> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+&bibliography;
+<tag>influence-networks</tag>
+<title>Influence networks</title>
+
+<text>
+L: Chapter 10 @ <cite>Lewis 2009</cite>, <q>Influence Networks,</q> is mostly new material and
+suggests what conditions must be met in order for a social network to come to consensus.
+As it turns out, it is not easy for groups to agree! 
+</text>
+
+</document>

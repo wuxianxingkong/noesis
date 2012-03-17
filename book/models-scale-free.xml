@@ -1,10 +1,12 @@
 <?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography SYSTEM "bibliography.xml"> ]> 
 <?xml-stylesheet type="text/xsl" href="../book.xsl"?>
 
 
 <!-- Scale-free networks -->
 
 <document>
+&bibliography;
 <tag>scale-free</tag>
 <title>Scale-free networks</title>
 
@@ -17,93 +19,6 @@ Anthropologists such as Elman Service, when studying cultural evolution, envisio
 A wide range of real-world networks have been found to exhibit power-law degree distributions: the World Wide Web, citation networks, cellular metabolism networks...
 </text>
 
-
-<document>
-<tag>scale-free-properties</tag>
-<title>Properties of scale-free networks</title>
-
-<text>
-Degree distribution: 
-
-L: Networks whose degree distribution approximates a power law,
-<eqn>H(k)=k^{-q}</eqn>, for some power <eqn>q &gt; 1</eqn>. 
-
-L:Such graphs are called scale-free because the power-law distribution has no scale parameter; that is, the variance of a power-law is
-infinite, versus the finite variance of most other distributions such as the Gaussian or normal distribution. Power laws are also sometimes called “fat tailed” because they do not decline as k increases as fast as an exponential or normal distribution.
-
-Random graphs more or less distribute links uniformly across n nodes. But... scale-free graphs are lopsided - a vast number of nodes have only one or two links, while a rare few nodes have perhaps hundreds of links... 
-
-
-scale-free graphs have less entropy than random graphs, but more than small worlds...
-The entropy of a scale-free graph is generally lower than the entropy of a random
-graph because scale-free networks contain some structure. Scale-free networks are closer to the random end of the "graph structure" spectrum
-than to the structured extreme. At one end is the class of structured k-regular graphs
-(where entropy equals zero), and the other end is the class of random networks that
-have no discernable structure or topology. In between is the class of scale-free networks,
-which have some structure, because the degree sequence distribution obeys a power law.
-
-A conjecture: a scale-free graph is more random than structured; a small-world graph is more structured than random
-</text>
-
-
-<text>
-A power law implies that the probability of finding a node with a degree that is twice as large as a given number decreases by a constant factor, rather than following an exponential falloff. ++ exponent of the power law distribution.
-
-L: "the probability that a site has k links obeys a power law, which drops off quickly for large k"
-... A network that follows a power-law distribution means that it has a
-hub, and many other nodes with many fewer links than the average. This lopsided
-preference for hubs seemed counter to nature, which typically follows a normal distribution.
-
-L: A scale-free graph has many nodes with very low degree, and one node with very
-high degree. Hence, its degree distribution is skewed to the left—toward small degree
-values. Because so many nodes are connected to the graph’s hub node, the scale-free
-graph also exhibits a small graph diameter—similar to a random graph. It is nearly
-one-half the diameter of the small-world graph, and 50% smaller than the diameter
-of a random graph. This is a consequence of the high concentration of links attached
-to the hub. The unexpectedly large hub degree is a distinguishing property of scalefree
-graphs.
-</text>
-
-<text>
-IDEA: The fluctuations in degree are unbounded, i.e., the standard deviation is bounded only by the finite size of the graph.
-</text>
-
-
-<text>
-The <q>scale-free</q> term refers to the fact that nodes in a scale-free network do not have a characteristic scale. You can zoom in on any segment of the distribution and it does not change its shape.
-
-L: scale-free networks... The name came from observing that a function f(x) scales if f(ax) = a*f(x), which is
-what a power law does. Therefore, if the degree sequence distribution obeys the power law, h(x) = x ^-q, then it is clear that h(ax) = (ax)^-q = (a ^-q)h(x) = a' h(x).
-</text>
-
-</document>
-
-
-
-<document>
-<tag>scale-free-examples</tag>
-<title>Scale-free networks in the real world</title>
-
-<text>
-<cite>Clauset et al. 2009</cite> examine how power laws are best detected in practice: regression analysis of linear relationships in log-log scale (the standard method) results in many false positives (e.g. networks that might be better approximated by exponential or log-normal distributions). Sampling might also introduce false negatives <cite>Stumpf et al. 2005</cite>.
-</text> 
-
-<text>
-EXAMPLES
-distribution of number of papers published by scientists, distribution of cities by population, distribution of wealth, and
-distribution of species among genera all obey a power law.
-[Mitzenmacher, M., A brief history of generative models for power law and lognormal distributions, Internet Math. 1(2):226-251 (2004).] 
-
-1999:
-+ M. Faloutsos, P. Faloutsos, and C. Faloutsos observed a power law in their graph models of the Internet
-+ Albert, Jeong, and Barabasi obtained similar results for the WWW
-
-Scale-free networks appear to model economic constructs such as the Internet and
-monopolies within industrial segments, because preferential attachment is essentially
-the law of increasing returns of economics.
-</text>
-
-</document>
 
 
 
@@ -297,6 +212,96 @@ Alternative formation model: <cite>Alava and Dogorotsev 2005</cite>
 </text>
 
 </document>
+
+<!-- Properties -->
+
+<document>
+<tag>scale-free-properties</tag>
+<title>Structural properties of scale-free networks</title>
+
+<text>
+Degree distribution: 
+
+L: Networks whose degree distribution approximates a power law,
+<eqn>H(k)=k^{-q}</eqn>, for some power <eqn>q &gt; 1</eqn>. 
+
+L:Such graphs are called scale-free because the power-law distribution has no scale parameter; that is, the variance of a power-law is
+infinite, versus the finite variance of most other distributions such as the Gaussian or normal distribution. Power laws are also sometimes called “fat tailed” because they do not decline as k increases as fast as an exponential or normal distribution.
+
+Random graphs more or less distribute links uniformly across n nodes. But... scale-free graphs are lopsided - a vast number of nodes have only one or two links, while a rare few nodes have perhaps hundreds of links... 
+
+
+scale-free graphs have less entropy than random graphs, but more than small worlds...
+The entropy of a scale-free graph is generally lower than the entropy of a random
+graph because scale-free networks contain some structure. Scale-free networks are closer to the random end of the "graph structure" spectrum
+than to the structured extreme. At one end is the class of structured k-regular graphs
+(where entropy equals zero), and the other end is the class of random networks that
+have no discernable structure or topology. In between is the class of scale-free networks,
+which have some structure, because the degree sequence distribution obeys a power law.
+
+A conjecture: a scale-free graph is more random than structured; a small-world graph is more structured than random
+</text>
+
+
+<text>
+A power law implies that the probability of finding a node with a degree that is twice as large as a given number decreases by a constant factor, rather than following an exponential falloff. ++ exponent of the power law distribution.
+
+L: "the probability that a site has k links obeys a power law, which drops off quickly for large k"
+... A network that follows a power-law distribution means that it has a
+hub, and many other nodes with many fewer links than the average. This lopsided
+preference for hubs seemed counter to nature, which typically follows a normal distribution.
+
+L: A scale-free graph has many nodes with very low degree, and one node with very
+high degree. Hence, its degree distribution is skewed to the left—toward small degree
+values. Because so many nodes are connected to the graph’s hub node, the scale-free
+graph also exhibits a small graph diameter—similar to a random graph. It is nearly
+one-half the diameter of the small-world graph, and 50% smaller than the diameter
+of a random graph. This is a consequence of the high concentration of links attached
+to the hub. The unexpectedly large hub degree is a distinguishing property of scalefree
+graphs.
+</text>
+
+<text>
+IDEA: The fluctuations in degree are unbounded, i.e., the standard deviation is bounded only by the finite size of the graph.
+</text>
+
+
+<text>
+The <q>scale-free</q> term refers to the fact that nodes in a scale-free network do not have a characteristic scale. You can zoom in on any segment of the distribution and it does not change its shape.
+
+L: scale-free networks... The name came from observing that a function f(x) scales if f(ax) = a*f(x), which is
+what a power law does. Therefore, if the degree sequence distribution obeys the power law, h(x) = x ^-q, then it is clear that h(ax) = (ax)^-q = (a ^-q)h(x) = a' h(x).
+</text>
+
+</document>
+
+
+
+<document>
+<tag>scale-free-examples</tag>
+<title>Scale-free networks in the real world</title>
+
+<text>
+<cite>Clauset et al. 2009</cite> examine how power laws are best detected in practice: regression analysis of linear relationships in log-log scale (the standard method) results in many false positives (e.g. networks that might be better approximated by exponential or log-normal distributions). Sampling might also introduce false negatives <cite>Stumpf et al. 2005</cite>.
+</text> 
+
+<text>
+EXAMPLES
+distribution of number of papers published by scientists, distribution of cities by population, distribution of wealth, and
+distribution of species among genera all obey a power law.
+[Mitzenmacher, M., A brief history of generative models for power law and lognormal distributions, Internet Math. 1(2):226-251 (2004).] 
+
+1999:
++ M. Faloutsos, P. Faloutsos, and C. Faloutsos observed a power law in their graph models of the Internet
++ Albert, Jeong, and Barabasi obtained similar results for the WWW
+
+Scale-free networks appear to model economic constructs such as the Internet and
+monopolies within industrial segments, because preferential attachment is essentially
+the law of increasing returns of economics.
+</text>
+
+</document>
+
 
 
 <document>

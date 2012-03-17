@@ -1,0 +1,49 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography SYSTEM "bibliography.xml"> ]> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+&bibliography;
+<tag>structure-shortest-paths</tag>
+<title>Shortest paths in networks</title>
+
+<text>
+The strength of interactions often diminishes as node become more remote. In fact, in weighted networks, link length is inversely proportional to link weight, since weights indicate the strength of the connection between the linked nodes (a measure of similarity) whereas lengths indicate the conceptual distance between the nodes (a measure of dissimilarity).
+</text>
+
+
+<text>
+As mentioned in the chapter on Graph Theory, the distance matrix represents the the pairwise distance corresponding to the shortest paths linking the nodes in a network. The characteristic path length of the network can be computed as the average (sometimes the median) of the graph distance matrix.
+</text>
+
+<text>
+The average path length varies with the size of the network, often in what might seem non-intuitive ways. <cite>Leskovek et al. 2005</cite> found that...
+</text>
+
+<text>
+<q>six degrees of separation</q>
+
++ Stanley Milgram (1967): 296 volunteers were asked to send a message by postcard 
+ experiments reported in The Small World Problem [7] in popular science journal Psychology Today, with a more rigorous version of the paper appearing in Sociometry two years later.
+<cite>Travers and Milgram 1969</cite>
+[Stanley Milgram, "The Small World Problem", Psychology Today, 1967, Vol. 2, 60-67]
+
+
++ Facebook (2011): the average number of acquaintances separating any two people in the world was 4.74, calculating the average distance between any two people by computing a vast number of sample paths among Facebook users (721 million, more than one-tenth of the world’s population) <cite>Backstrom et al. 2011</cite>
+</text>
+
+
+<text>
+The average path length, however, can be influenced by a small number of outliers (e.g. disconnected or remote nodes), hence a more robust measure is often employed: the global efficiency <cite>Latora and Marchiori 2001</cite>. The global efficiency is computed as the average of the inverse of the distance matrix. A fully connected network has maximum global efficiency (all pairs of nodes are connected by links), while a fully disconnected network has minimum global efficiency (all distances between nodes are infinite).
+</text>
+
+<text>
+The average path length and the global efficiency are global measures of network connectivity. Low path lengths and high efficiencies indicate short shortest paths, but they do not consider other paths that might exist in the network (not even the number of different shortest paths that might exist). Alternative metrics of network integration consider them.
+</text>
+
+<text>
+Communicability measures global information flow within a network based on the number of walks between nodes <cite>Estrada and Hatano 2008</cite> <cite>Crofts and Higham 2009</cite>.
+</text>
+
+</document>

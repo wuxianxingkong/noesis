@@ -1,0 +1,124 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography SYSTEM "bibliography.xml"> ]> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<!-- Ranking -->
+
+<document>
+&bibliography;
+<tag>ranking</tag>
+<title>Ranking</title>
+
+<text>
+e.g. Web search (10-30 links from millions of web pages containing some given words)
+</text>
+
+<document>
+<tag>ranking-pagerank</tag>
+<title>PageRank</title>
+
+<text>
+++ <cite>Page et al. 1998</cite> <cite>Brin and Page 1998</cite>
+</text>
+
+
+<text>
+++ Facebook has its own algorithm, EdgeRank, which (in conjunction with September’s addition, GraphRank) determines which items appear at the top of an individual's news feed. EdgeRank is based on many variables, including who Facebook thinks are a user's closest friends and how many people have interacted with a piece of content.
+
+@ FT Tech Hub:
+The unexpected impact of Facebook’s <q>seamless sharing</q> on newspaper sites.
+November 18, 2011 4:52 pm by Tim Bradshaw.
+
+ <url>http://blogs.ft.com/fttechhub/2011/11/unexpected-impact-facebook-newspaper-sites</url>
+ <url>http://econsultancy.com/uk/blog/7885-edgerank-the-most-important-algorithm-you-ve-never-heard-of</url>
+</text>
+
+<text>
+++ Other ranking method, based on the user search log: BrowseRank (SIGIR'2008)
+++ TrustRank (VLDB'2004).
+</text>
+
+<text>
+++ Considering time (recency search): TS-Rank, time-sensitive ranking (ICDM'2008) and chapter in <cite>Yu et al. 2010</cite> @ p.187-209, also described within a subsection in <cite>Liu 2011</cite> @ p. 286-288.
+</text>
+
+</document>
+
+<document>
+<tag>ranking-HITS</tag>
+<title>HITS</title>
+
+<text>
+++ <cite>Kleinberg 1998</cite> <cite>Kleinberg 1999a</cite> <cite>Kleinberg 1999b</cite>
+</text>
+
+<text>
+CITATION ANALYSIS: Top authorities are like influential research papers cited by many other papers. Top hubs correspond to relevant surveys citing many influential papers. 
+</text>
+
+
+<text>
+Sometimes, we might be interested in finding hubs and authorities within densely-linked collections (HITS returns just the major cluster corresponding to top-ranked hubs and authorities). These might correspond to non-principal eigenvectors, which can be computed using other numerical computing algorithms, such as orthogonal iteration or QR iteration. Examples: polysemic words, controversial issues (reflected as polarized groups within a network).
+</text>
+
+<text>
+NOTE: Minor perturbations on the network can greatly influcence hub and authority scores, whereas they have little effect on PageRank scores 
+</text>
+
+<text>
+(ref. Ng, Zheng, Jordan: "Stable algorithms for link analysis", SIGIR'2001) introduced the random jump step of PageRank into HITS to improve its stability.
+</text>
+
+<text>
+(ref. Lempel, Moran: "The stochastic approach for link-structure analysis (SALSA) and the TKC effect." Computer Networks 33(1-6):387-401, 2000 ) proposed SALSA, a stochastic algorithm for link structure analysis that combines PageRank and HITS features to improve authority and hub computation by using two Markov chains: one for hubs and a different one for authorities.
+</text>
+
+</document>
+
+<document>
+<tag>ranking-blocks</tag>
+<title>Block-level link analysis</title>
+
+<text>
+Multi-topic pages... (+ the problem of topic drifting, i.e. returning pages that have nothing to do with the topic search just because they are collected due to the presence of out-links that connect to them or even spamming in-links).
+</text>
+
+<text>
+(ref. Chakrabarti: "Integrating the document object model with hyperlinks for enhanced topic distillation and information extraction" WWW'2001, 221-220) segments the page based on its DOM tree structure to identify the subtrees that are more related to a query topic.
+</text>
+
+<text>
+(ref. Cai, Yu, Wen, Ma: "Block-based web search", SIGIR'2004) segments each Web page into different blocks, which are given importance value according, for instance, to their location. This importance value is then used to weight the links in the HITS or PageRank computation, thus reducing the impract of unimportant links.
+</text>
+
+</document>
+
+
+
+
+<document>
+<tag>metrics-notes</tag>
+<title>Bibliographic notes</title>
+
+<text>
+Despite their overlap and partial redundancy, different rankjing metrics provide unique information about individual nodes and their neighborhoods, hence each one is suitable for particular applications...
+</text>
+
+<text>
+Both HITS and PageRank were presented in 1998: HITS at the 9th ACM-SIAM Symposium on Discrete Algorithms in January and PageRank at the 7th International World Wide Web Conference in April.
+</text>
+
+
+<text>
+Popular Science books
+++ "Who's #1? The Science of Rating and Ranking", by Amy N. Langville and Carl D. Meyer, Princeton University Press, 2012. ISBN 0691154228
+(ranking methods and evaluation techniques)
+++ "Google PageRank and Beyond: The Science of Search Engine Rankings", by Amy N. Langville and Carld D. Meyer, Princeton University Press, 2006. ISBN 0691122024 (2012 paperback edition, ISBN 0691152667)
+(PageRank + HITS)
+</text>
+
+
+</document>
+
+
+</document>

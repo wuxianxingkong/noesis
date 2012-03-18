@@ -16,9 +16,61 @@ Anthropologists such as Elman Service, when studying cultural evolution, envisio
 </text>
 
 <text>
-A wide range of real-world networks have been found to exhibit power-law degree distributions: the World Wide Web, citation networks, cellular metabolism networks...
+A scale-free network is a network whose degree distribution obeys a power law, h(k) \sim k^{-q}, where k is the degree and q is an exponent typically between 2 and 3. Informally, a scale-free network is one with a small but significant number of nodes with a high degree and a large majority of nodes with a low degree. The nodes with high degree are called hubs. 
+...
+Scale-free networks are networks with hubs, which skew the degree distribution of the network.
+...
+Key properties not shared by other networks: 
+- hubs 
 </text>
 
+<text>
+A wide range of real-world networks have been found to exhibit power-law degree distributions: the World Wide Web, citation networks, cellular metabolism networks... 
+
+
+L: Barabasi, Albert, and Jeong (Barabasi, 1999) argued that random or small-world network classes fail to model some real-world systems because they assume that the number of nodes n is set prior to activation of the underlying microrules. Real networks are dynamic, not static and therefore should be modeled as growth phenomena... They grow from a few nodes to many millions of nodes through an evolutionary process called preferential attachment. In simple terms, preferential attachment is biased—not random—which leads to networks with hubs. These early researchers concluded that the dynamic nature of some real-world systems is better represented by networks that “unfairly” add nodes and links as they evolve into nonrandom semistructured networks
+[Barabasi, A.-L., R. Albert, and H. Jeong, Emergence of scaling in random networks, Science 286:509–512 (1999).]
+</text>
+
+
+<text>
+Preferential attachment derives its name from the fact that the probability of a new node attaching to an existing node is proportional to the degree of the existing node. The higher the degree, the more likely a new link will be attached to the node. Clearly, high-degreed nodes become more connected and low-degreed nodes become less connected as the network grows. The resulting degree sequence distribution is skewed toward low degree, because an increasing number of nodes decrease in degree as a few nodes greatly increase in degree.
+
+L: Yule first observed preferential attachment in evolution (Yule, 1925): Darwinian algorithm = Connect the new node to an existing node with probability proportional to the number of links already connected to the existing node, i.e. its degree
+[Yule, G. U., A Mathematical theory of evolution based on the conclusions of Dr. J. C. Willis, Phil. Trans. Roy. Soc. Lond. B 213:21-87 (1925).]
+++ Yule-Simon distribution
+
+L: the idea of nonrandomness as a factor in behavior and the connection between preferential attachment and nonrandom distributions occurred to Simon in 1955 [Simon, H. A., On a class of skew distribution functions, Biometrika 42(3/4):425-440 (1955).]
+
+L: the earliest definition of preferential attachment, called cumulative advantage by Price (Price, 1965, 1976), explained the power-law property of scale-free networks before such networks were called scale-free. Price’s model was slightly different from the BA model. The BA procedure ignores link direction, while the Price model did not, and the BA model starts from scratch, while the Price model assumes an existing network. Nonetheless, preferential attachment and cumulative advantage are identical concepts.
+[Price, D. J. de S., Networks of scientific papers, Science 149:510–515 (1965). ]
+[Price, D. J. de S., A general theory of bibliometric and other cumulative advantage processes, J. Am. Soc. Inform. Sci. 27:292–306 (1976).]
+
+
+L: In fact, preferential attachment is known as the law of increasing returns in economics, adaptive
+learning in artificial intelligence, and natural selection in biology. It is often
+called “the rich get richer” (or the Matthew effect).
+++ L: "a microrule called preferential attachment - that the probability a site will obtain a new link is directly proportional to the number of links it already has" (the <q>rich get richer</q> phenomenon).
+
+1) a  form of positive feedback that accelerates the acquisition of a commodity on the basis of the widespread or mainstream adoption of that commodity (increasing returns means a commodity becomes more valuable as it becomes more plentiful)
+
+2) Adaptive learning in artificial intelligence: "Each response to a stimulus is
+rewarded by increasing the probability that the same response will result from the
+stimulus. Repetition increases the probability, which in turn increases the repetition
+of the stimulus–response pair. Learning is a form of conditioning based on the
+probability distribution established by repetition and positive feedback"
+
+3) Natural selection is a similar process. In most species, stronger genes are replicated
+in subsequent generations while weaker genes fade. The so-called fitness function of
+an individual is akin to a power law—the more fit an individual is, the more likely it is
+to survive, reproduce, and pass its genes on to the next generation. As fitness
+increases, the gene is more likely to survive, and as survivability increases, so
+does fitness. This feedback mechanism repeats many times, usually in extremely
+small increments. Over time, fitter individuals emerge from weaker ancestors.
+
+
+L: Preferential attachment describes an emergent process—that is, a process that results in a network topology that is not apparent by examination of the local algorithm, or microrule. It is not at all obvious that the result of repeated application of preferential attachment will result in a network with a degree sequence distribution that follows a power law. This realization would come 70 years later, when A.-L. Barabasi and R. Albert showed how to create a scale-free network by repeated application of preferential attachment.
+</text>
 
 
 
@@ -43,23 +95,79 @@ Network creation algorithm
 - Start with a random network
 - Take two vertex at random and add a link if it brings the distribution of z nearer to power-law
 - Continue until correct coordination numbers reached
-- Still otherwise as random graph
+- Still otherwise a random graph
 
 The network could also be created by generating N vertices with lines out of them according to power-law distribution and joining lines randomly until none are left.
 
-++
-L: "a microrule called preferential attachment - that the probability a site will obtain a new link is directly proportional to the number of links it already has" (the <q>rich get richer</q> phenomenon).
 
-<cite>Barabasi and Albert 1999</cite> demonstrated that power-law degree distributions can be generated by a <q>preferential attachment</q> growth process. This process is a well-known example of how local processes can determine the global properties of complex networks. 
 
-L: Yule first observed preferential attachment in evolution (Yule, 1925): Darwinian algorithm = Connect the new node to an existing node with probability proportional to the number of links already connected to the existing node, i.e. its degree
-[Yule, G. U., A Mathematical theory of evolution based on the conclusions of Dr. J. C. Willis, Phil. Trans. Roy. Soc. Lond. B 213:21-87 (1925).]
-++ Yule-Simon distribution
+[Barabasi, A.-L., R. Albert, and H. Jeong, Emergence of scaling in random networks, Science 286:509–512 (1999).]
+demonstrated that power-law degree distributions can be generated by a <q>preferential attachment</q> growth process... the preferential attachment rule, which states that the probability of a link connecting node pairs is proportional to the degree of the new node.
 
-L: the idea of nonrandomness as a factor in behavior and the connection between preferential attachment and nonrandom distributions occurred to Simon in 1955 [Simon, H. A., On a class of skew distribution functions, Biometrika 42(3/4):425-440 (1955).]
-
-L: Preferential attachment describes an emergent process—that is, a process that results in a network topology that is not apparent by examination of the local algorithm, or microrule. It is not at all obvious that the result of repeated application of preferential attachment will result in a network with a degree sequence distribution that follows a power law. This realization would come 70 years later, when A.-L. Barabasi and R. Albert showed how to create a scale-free network by repeated application of preferential attachment.
+L: random networks obey a uniformly random attachment rule, whereby the probability of attachment of a link to a pair of nodes is uniformly random... 
+Instead of sampling from a uniformly random distribution, the Barabasi–Albert (BA) generative procedure creates dynamic networks by sampling from the degree sequence distribution of network G at timestep t, namely, g0(t). The probability of a high-degreed node obtaining a subsequent link continues to rise as new nodes and links are added. The probability of a low-degreed node obtaining a subsequent link declines, so that over time, “popular nodes” become more popular, and out-of-favor nodes become less popular. 
 </text>
+
+
+<text>
+[Barabasi, A.-L., R. Albert, and H. Jeong, Emergence of scaling in random networks, Science 286:509–512 (1999).]
+
+  (1) Growth: Starting with a small number (m_0) of vertices, at every time step we add a new vertex with m (\leq m_0) edges (that will be connected to the vertices already present in the system).
+
+  (2) Preferential attachment: When choosing the vertices to which the new vertex connects, we assume that the probability P that a new vertex will be connected to vertex i depends on the connectivity k_i of that vertex, such that P(k_i) = k_i / \sum_j k_j
+
+  (3) After t time steps the model leads to a random network with N = t + m_0 vertices and mt edges.
+</text>
+
+<text>
+BA generative procedure begins with a “triangular network” consisting of three nodes and three links, and then attaches a new node to as many as Dm other nodes by preferential attachment. setting n_0 = m_0 = 3, and substituting m for \Delta m to avoid confusion with the total number of links in a network...
+Starting with n = 3 nodes, each of the remaining (n - 3) nodes are attached to the network by adding \Delta m links to existing nodes. For sufficiently large networks and sufficiently small \Delta m, m is approximately (\Delta m)n, and the degree sequence distribution obeys a power law of the form h(k) \sim k^{-3}.
+</text>
+
+<text>
+Parameters:
+\Delta m = number of links to add to each new node;
+n = desired network size.
+
+
+L: The BA scale-free network is generated by repeated application of a simple dynamic network construction algorithm:
+
+  1. Starting with three nodes and three links, grow the network by adding one node at each timestep t.
+  2. Link the new node to \Delta m other nodes using preferential attachment.
+  3. Repeat this until all n nodes have been added to the network.
+
+This takes an additional t = (n - 3) steps to add (n - 3) additional nodes to the initial three nodes and three links. In the early stages of formation, fewer than \Delta m links are added because network size n is too small. When n &lt; Dm, only n links are added. Thus, at the end of the growth stage, the scale-free network has
+</text>
+
+<equation>
+m = (\Delta m) n - \sum_{i=1}{\Delta m} i = (\Delta m) n - \frac{ \Delta m ( \Delta m - 1)} {2}
+</equation>
+
+<text>
+IMPLEMENTING PREFERENTIAL ATTACHMENT
+
+L: Of particular interest is the method of finding a replacement node when the node
+selected by preferential attachment leads to a duplicate link. When this happens, the
+code rolls variable j forward, seeking a node with higher index. This is achieved by
+incrementing j until it exceeds nNodes, and then starting over again with node 0.
+
+1. select an existing head node u by sampling from the degree sequence cumulative distribution function CDF(i) defined by
+
+CDF(i) = \sum_{j=1}{i} \frac {d(n_j)}{total}
+
+where total is given by the current number of nodes in the network
+
+ii. Let r be a uniform random number from [0,1). Then u is a random variate sampled from CDF(i) as follows:
+CDF(u - 1) \geq r \geq CDF(u);
+
+iii. Connect v with u, taking care to avoid duplicate links.
+
+
+NOTE: CDF is recomputed each time a new node is added because total number of links and node degrees change after each insertion.
+</text>
+
+
+
 
 <comment>
 <title>Random resampling</title>
@@ -239,6 +347,127 @@ Alternative formation model: <cite>Alava and Dogorotsev 2005</cite>
 <title>Degree distribution</title>
 
 <text>
+L: ++ Before Barabasi-Albert model, most networks were thought to be random, with Poisson degree distributions.
+</text>
+
+<text>
+<cite>Newman 2003</cite> proved that the scale-free network degree sequence distribution, h(k) \sim k^{-3}, is a direct consequence of the change in the expected number of nodes with degree k after each new node is added.
+
+A fraction of nodes with degree (k - 1) increase their degree to k, and another fraction of nodes increase their degree from k to (k + 1). The net change in fraction of nodes with degree k is the difference between these two.
+
+we approximate the net change in nodes with degree k by observing that a new node is attached to the network by Dm links, which transitions
+a fraction of nodes of degree (k - 1) to nodes of k degrees, and another fraction of nodes of degree k to nodes of (k + 1) degree. The difference between the distribution before adding a node and after adding a node is averaged, which leads to a mean-field equation whose solution is h(k).
+
+The derivation given by Newman makes a number of assumptions that may not be valid for all scale-free networks. For example, the derivation assumes linearity—the probability of link attachment varies directly proportional to the degree of the destination node. Alternately, the relationship could be proportional to the square of destination node degree, square root, and so on. Nonetheless, Newman’s linear model seems to give an accurate result for the BA generative procedure. 
+
+
+Strategy:
+
+
+1. Let h_t(k) be the degree sequence distribution at timestep t, and let Dm be the number of links attached each time a new node is added. One new node and Dm links are added at each timestep; hence the number of nodes with degree k at time t is nh_t(k), and the number of nodes with degree k at timestep (t + 1) is (n + 1)h_{t+1}(k).
+
+2. Using the degree sequence distribution h_t(k) at timestep t, construct a meanfield equation expressing the expected change in number of nodes with
+degree k for a typical timestep. Note that the expected number of nodes with degree k after insertion of a new node is Dmh_t(k - 1), and the expected
+number of nodes that no longer have degree k is Dmh_t(k) after the new node is inserted. In other words, some nodes transition from degree (k - 1) to k, and others transition from degree k to degree (k + 1).
+
+3. Solve the mean-field equation for the stationary (time-invariant) case, yielding h(k). We do this by removing t from the mean-field equation. Time invariance means that h_{t-1}(k) = h_t(k) = h(k). This is the so-called stationary process solution, which represents the end state of the scale-free network. h(k) is the degree sequence distribution function after n nodes have been attached.
+</text>
+
+<text>
+1. linear relation between probability of attachment and degree sequence distribution.
+
+The degree sequence distribution h_t(k) is the fraction of nodes with degree k, at timestep t. Note that \sum_k h_t(k) = 1, which is independent of t. Preferential attachment uses this fraction to select the node with degree k that is linked to the new node with the following probability:
+</text>
+
+<equation>
+\frac{ k h_t(k) } { \sum_k h_t(k) } =  \frac{ k h_t(k) } { \lambda }
+</equation>
+
+<text>
+where <eqn>\lambda</eqn> is the average degree, as usual. We also know that \lambda = 2(m/n) for any network, and m \approx \Delta m n. 
+Thus, the fraction of nodes with degree k is (kh_t(k))/2Dm, after substituting \lambda \approx 2 \Delta m into the equation for h_t(k).
+</text>
+
+<text>
+2. Mean-field equation that relates the “before”/“after” change in number of nodes with degree k
+
+Change in number of nodes with degree k equals the number of nodes increased from degree (k - 1) to degree k, minus the number of nodes increased from degree k to degree (k + 1).
+</text>
+
+<text>
+The left-hand side of the mean-field equation is the expected number of nodes with degree k after insertion of a new node, minus the number before insertion:
+</text>
+
+<equation>
+(n+1) h_{t+1}(k) - n h_t(k)
+</equation>
+
+<text>
+The right-hand-side is the expected number of links connecting to nodes with degree (k - 1) minus the number of nodes that are no longer of degree k because they increased to degree (k + 1):
+</text>
+
+<equation>
+\Delta m (k - 1) \frac { h_t(k-1)} { 2 \Delta m } - \Delta m \frac { k h_t(k)} { 2 \Delta m }
+</equation>
+
+<text>
+which can be simplified to
+</text>
+
+<equation>
+(k - 1) \frac { h_t(k-1)} { 2 } - \frac { k h_t(k)} { 2 }
+</equation>
+
+<text>
+The time-varying mean-field equation for <eqn>k &gt; \Delta m</eqn> is
+</text>
+
+<equation>
+(n+1) h_{t+1}(k) - n h_t(k) = \frac {k-1} { 2 } h_t(k-1) - \frac { k } { 2 } h_t(k)
+</equation>
+
+<text>
+3. The stationary, or time-invariant solution, obtained by setting <eqn>h_{t+1}(k) = h_t(k) = h(k)</eqn>,  yields a first-order difference equation. </text>
+
+<equation>
+h(k) = \frac {k-1} { 2 } h(k-1) - \frac{k}{2} hk 
+</equation>
+
+<text>
+When k = \Delta m, only one node increases from degree (k - 1) to k, so the mean-field equation is limited to k = Dm, Dm + 1, Dm + 2, . . . when k = Dm:
+</text>
+
+<equation>
+h(\Delta m) = 1 - \frac{\Delta m^2}{2} h 
+</equation>
+
+<equation>
+h(\Delta m) = \frac{2}{\Delta m + 2}
+</equation>
+
+<text>
+Backsubstitution into the mean-field equation for k &gt; \Delta m yields the general solution:
+</text>
+
+<equation>
+h(k) = 2 \Delta m \frac{\Delta m + 2}{k(k+1)(k+2)}
+</equation>
+
+<text>
+For large <eqn>k</eqn> and constant <eqn>\Delta m</eqn>, <eqn>h(k)</eqn> is a power law with <eqn>q = 3</eqn>, since <eqn>h(k) \sim k^{-3}</eqn>.
+
+++ Notice how the above determines the degree distribution regardless of the network size, which has no influence in the BA model.
+
+Barabasi et al. (Barabasi, 1999) describe another alternative to the derivation given by Newman...
+[Barabasi, A.-L., R. Albert, and H. Jeong, Emergence of scaling in random networks, Science 286:509–512 (1999).]
+and <cite>Newman 2003</cite> discusses other solutions, yielding different values of q, based on different assumptions.
+</text>
+
+
+<text>
+++ This derivation yields an exponent q=3 for BA scale-free networks, but in practice, a network is considered scale-free if 2 \leq q \leq 3. 
+Technically, any value of q satisfies the scale-free relation h(\alpha k) = \beta h(k).
+
 L: Networks whose degree distribution approximates a power law,
 <eqn>H(k)=k^{-q}</eqn>, for some power <eqn>q &gt; 1</eqn>. 
 
@@ -255,19 +484,44 @@ than to the structured extreme. At one end is the class of structured k-regular 
 (where entropy equals zero), and the other end is the class of random networks that
 have no discernable structure or topology. In between is the class of scale-free networks,
 which have some structure, because the degree sequence distribution obeys a power law.
-
-A conjecture: a scale-free graph is more random than structured; a small-world graph is more structured than random
 </text>
 
 
 <text>
-A power law implies that the probability of finding a node with a degree that is twice as large as a given number decreases by a constant factor, rather than following an exponential falloff. ++ exponent of the power law distribution.
+A power law implies that the probability of finding a node with a degree that is twice as large as a given number decreases by a constant factor, rather than following an exponential falloff. 
+
+L: Power-law distributions are not exponential distributions even though they appear
+to be similar. The tail of an exponential distribution vanishes much faster. For this
+reason, power-law distributions are often called “fat tail” distributions.
+
+L: The power law  declines more slowly than the exponential distribution so commonly found to model phenomena in the physical world. 
+k^-q &gt; exp(-qk)  for most values of 1 &lt; q &lt; 3. Even when the power-law function is
+adjusted to match at k=1, the exponential function declines more rapidly as k increases. This is why power-law distributions are sometimes
+called “long” or “fat tail” distributions.
+
+
+The power law is related to Zipf’s, Pareto’s, and Yule–Simon’s laws, but is somewhat more general.
+
+- Zipf’s law states that the frequency of a word w in the English language is inversely proportional to its rank in the frequency table: f(w) = c/(r(w)), where r(w) is the word’s rank and c is a constant.
+
+- Pareto’s distribution—also known as the 80/20 rule—says that 20% of the population has 80% of the wealth. 
+
+- The Yule–Simon distribution is asymptotic to a power law: f (k) * 1/k^{p+1}. Yule may have been the first modern scientist to identify
+natural processes that follow a power law (Yule, 1925).
+
+[Zipf, G. K., Human Behavior and the Principle of Least Effort, Addison-Wesley Press, Cambridge, MA, 1949.]
+[Yule, G. U., A Mathematical theory of evolution based on the conclusions of Dr. J. C. Willis, Phil. Trans. Roy. Soc. Lond. B 213:21–87 (1925).]
+
+++ exponent of the power law distribution.
 
 L: "the probability that a site has k links obeys a power law, which drops off quickly for large k"
 ... A network that follows a power-law distribution means that it has a
 hub, and many other nodes with many fewer links than the average. This lopsided
 preference for hubs seemed counter to nature, which typically follows a normal distribution.
+</text>
 
+
+<text>
 L: A scale-free graph has many nodes with very low degree, and one node with very
 high degree. Hence, its degree distribution is skewed to the left—toward small degree
 values. Because so many nodes are connected to the graph’s hub node, the scale-free
@@ -288,7 +542,68 @@ The <q>scale-free</q> term refers to the fact that nodes in a scale-free network
 
 L: scale-free networks... The name came from observing that a function f(x) scales if f(ax) = a*f(x), which is
 what a power law does. Therefore, if the degree sequence distribution obeys the power law, h(x) = x ^-q, then it is clear that h(ax) = (ax)^-q = (a ^-q)h(x) = a' h(x).
+
+L: Any function that obeys the relation h(\alpha k) = \beta h(k), for constants \alpha and \beta, is considered scale-free because scaling the x axis (independent variable) by a constant factor \alpha, results in scaling the y axis (dependent variable) also by a constant factor \beta. 
+In this case, \beta = \alpha ^q, which is a constant relative to k. The effect of scaling the independent variable by a constant factor of a is to move the powerlaw curve up or down vertically, but does not change the shape or range of the curve...
+
 </text>
+
+<document>
+<tag>scale-free-properties-density</tag>
+<title>Density</title>
+
+<text>
+The density of a canonical BA scale-free network depends on the preferential attachment parameter \Delta m, which is the number of links used to attach each new node to other nodes during construction. This parameter determines the number of links in BA scale-free networks and, therefore, their density
+</text>
+
+<equation>
+m = (\Delta m) n -  \frac{ \Delta m ( \Delta m - 1)} {2}
+</equation>
+
+<equation>
+\rho = \frac {2m}{n(n-1)} = (\Delta m) \frac{ 2n - ( \Delta m + 1)} {n(n-1)} \approx \frac { 2 \Delta m} {n} 
+</equation>
+
+
+<text>
+The degree  distribution of the canonical BA scale-free network is a power law which can be expressed in terms of the network density:
+</text>
+
+<equation>
+\begin{aligned}
+h(k) &amp; = \frac{ 2 \Delta m ( \Delta m + 1)} { k(k+1)(k+2) } \\
+     &amp; = \frac{ n \rho ( n \rho + 2)} { 2k(k+1)(k+2) } \\
+     &amp; \approx \frac { n^2 \rho^2 } {2k^3} 
+\end{aligned}
+</equation>
+
+<text>
+++ ability to scale network density while retaining a power-law relationship in its degree distribution.
+</text>
+
+</document>
+
+
+<document>
+<tag>scale-free-properties-hub</tag>
+<title>Hub degree</title>
+
+<text>
+- Hub degree grows logarithmically with density: degree(hub) \sim log_2(density).
+- Average path length linearly declines with hub degree
+</text>
+
+</document>
+
+<document>
+<tag>scale-free-properties-entropy</tag>
+<title>Entropy</title>
+
+<text>
+A conjecture: a scale-free graph is more random than structured; a small-world graph is more structured than random
+</text>
+
+</document>
 
 </document>
 
@@ -297,7 +612,9 @@ what a power law does. Therefore, if the degree sequence distribution obeys the 
 <title>Average path length</title>
 
 <text>
-Average path length of a scale-free network follows a logarithmic approximation rather than a power law:
+Average path length of a scale-free network follows a logarithmic approximation rather than a power law.
+L: Bollobas and Riordan report good approximation to large networks such as the Internet with a double-logarithmic approximation
+[Bollobas, B., O. Riordan, J. Spencer, and G. Tusnady, The degree sequence of a scale-free random graph process, Random Struct. Algorithms 18(3):279–290 (2001).]
 </text>
 
 <equation>
@@ -306,10 +623,65 @@ L(SF) = log (n) / log (log (n))
 
 <text>
 L: The small path length of a scale-free network is due to its hubs—very high-degreed
-nodes—rather than random links, acting as shortcuts. 
+nodes—rather than random links, acting as shortcuts.
+
+L: The average path length of a (sparse) BA scale-free network is lower than the average path length of a (sparse) random network.
+</text>
+
+<text>
+L: It is possible to control the path length of a scale-free network while simultaneously controlling the hub structure by changing density.
 </text>
 
 </document>
+
+
+<document>
+<tag>scale-free-clustering</tag>
+<title>Clustering</title>
+
+<text>
+L: The cluster coefficient of a scale-free network generally varies inversely with n, and linearly with increase in density: CC(scale-free) \sim density. 
+
+Barabasi claims that there is no analytic approximation of cluster coefficient for the BA-generated scale-free network, but suggests that it follows a power law: CC(scale-free) \sim n^{3/4}. 
+
+Because the density of a scale-free network is approximately d \approx 2(\Delta m/n), the clustering coefficient also increases with \Delta m:
+CC(scale-free) \sim \Delta m. 
+
+The cluster coefficient of individual nodes is inversely proportional to the degree of individual nodes in a sparse scale-free network; hubs have low cluster coefficients, while non-hubs have high cluster coefficients. 
+
+Cluster coefficient is bounded by \Delta m /(d -\Delta m) for low values of \Delta m.
+</text>
+
+</document>
+
+
+<document>
+<tag>scale-free-betweenness</tag>
+<title>Betweenness</title>
+
+
+<text>
+L: The average betweenness of a scale-free network is determined by its density and the size of its largest hub:
+</text>
+
+<equation>
+betweenness(SF) \sim \rho \lambda^r
+</equation>
+
+<text>
+where
+</text>
+
+<equation>
+r = \frac { log_2 (n - d_{hub}) } { log_2 \lambda }
+</equation>
+
+<text>
+A a hub tends to directly connect to the majority of other nodes, therefore it tends to remove d_{hub} nodes from consideration as potential intermediaries. In terms of average betweenness, network classes are ranked as follows: random (highest), small-world (medium), and scale-free (lowest).
+</text>
+
+</document>
+
 
 </document>
 
@@ -324,6 +696,17 @@ nodes—rather than random links, acting as shortcuts.
 </text> 
 
 <text>
+Many real-world networks have been shown to obey a power-law
+degree sequence distribution rather than a binomial or Poisson distribution. 
+
+
+
+Barabasi (Barabasi, 2001, 2002a, 2002b) and others <cite>Newman 2003</cite> (Adamic, 2000) have extensively studied networks with fat-tail distributions and found many applications of their theories in physical and biological sciences.
+[Barabasi, A.-L., E. Ravasz, and T. Vicsek, Deterministic scale-free networks, Physica A 299(3–4):559–564 (2001).]
+[Barabasi, A.-L., Linked: The New Science of Networks, Perseus Publishing, Cambridge, MA, 2002.]
+[Barabasi, A.-L., H. Jeong, Z. Neda, E. Ravasz, A. Schubert, and T. Vicsek, Evolution of the social network of scientific collaborations, Physica A 311(3–4):590–614 (2002).]
+[Adamic, L. A. and B. A. Huberman, Power-law distribution of the World Wide Web, Science 287:2115 (2000).]
+
 EXAMPLES
 distribution of number of papers published by scientists, distribution of cities by population, distribution of wealth, and
 distribution of species among genera all obey a power law.
@@ -333,9 +716,14 @@ distribution of species among genera all obey a power law.
 + M. Faloutsos, P. Faloutsos, and C. Faloutsos observed a power law in their graph models of the Internet
 + Albert, Jeong, and Barabasi obtained similar results for the WWW
 
+Many critical infrastructure systems such as the Internet, railroads, and
+gas/oil pipeline systems have been shown to be scale-free 
+[Lewis, Ted G., Critical Infrastructure Protection in Homeland Security: Defending a Networked Nation, Wiley, 2006]
+
 Scale-free networks appear to model economic constructs such as the Internet and
 monopolies within industrial segments, because preferential attachment is essentially
 the law of increasing returns of economics.
+
 </text>
 
 <text>
@@ -358,6 +746,21 @@ path length equal to 9 hops when measured at the Internet’s router level
 L: GSCC path length is a consequence of hub topology (scale-free), not random rewiring (small-world). 
 
 While clustering is modest in the domain-level Webgraph, Internet clustering is higher than expected of a purely random network. Yook et al. place the cluster coefficient of the domain level Internet in the range 0.18–0.30, versus 0.001 for an equivalent random network (Albert, 2002).
+</text>
+
+<text>
+L: the pure power law may not always model of reality. 
+
+Laherrere and Sornette suggest that a stretched exponential distribution may be more precise in natural and economic systems (Laherrere, 1998):
+[Laherrere, J. and D. Sornette, Stretched exponential distributions in nature and economy: “Fat tails with characteristic scales,” Eur. Phys. J. B 2:525–539 (1998).]
+</text>
+
+<equation>
+exp_{stretched}(x) = c \left( \frac { x_{c-1} } { x_0^c } \right) e^{ - \left( \frac{x}{x_0} \right) ^ c }
+</equation>
+
+<text>
+Typically, exponent c is less than one. When c = 1, the stretched exponential is simply the well-known exponential distribution. Laherrere and Sornette list a number of natural and economic systems that obey this law: distribution of the 1300 largest earthquakes, temperature variations over the past 420,000 years, radio and light emissions from galaxies, oilfield reserve sizes, US and French company sizes, United Nations country sizes, citation distribution of the most frequently cited physicists, and the distribution of biological extinction events.
 </text>
 
 </document>

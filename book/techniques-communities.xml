@@ -201,6 +201,30 @@ Overlapping communities, where nodes can be central to more than one community <
  doi = {http://doi.acm.org/10.1145/1772690.1772755},
 </text>
 
+<text>
+Chayant Tantipathananandh, Tanya Berger-Wolf, David Kempe A Framework for Community Identification in Dynamic Social Networks. KDD 2007, San Jose, CA.
+
+M. E. J. Newman, Finding community structure in networks using the eigenvectors of matrices, Phys. Rev. E 74, 036104 (2006).
+
+R. Kumar, P. Raghavan, S. Rajagopalan, A. Tomkins. Trawling the web for emerging cyber-communities. 8th International World Wide Web Conference, May 1999.
+
+A. Clauset. Finding local community structures in networks. Phys Rev E Stat Nonlin Soft Matter Phys. 2005 Aug;72(2 Pt 2):026132. 2005.
+
+Hopcroft, O. Khan, B. Kulis, and B. Selman. Natural communities in large linked networks. In Proceedings of the 9th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, pages 541--546,
+
+Ravi Kannan, Santos Vempala, Adrian Vetta, On clusterings: good, bad and spectral. Journal of the ACM (JACM) 51(3), 497--515, 2004.
+
+E. A. Leicht, Petter Holme, and M. E. J. Newman, Vertex similarity in networks, Phys. Rev. E 73, 026120 (2006).
+
+M. E. J. Newman, M. Girvan. Finding and evaluating community structure in networks. Phys. Rev. E 69, 026113 (2004)
+
+M. E. J. Newman Fast algorithm for detecting community structure in networks. Phys. Rev. E 69, 066133 (2004)
+
+C. Faloutsos, K. McCurley and A. Tomkins. Fast Discovery of Connection Subgraphs. In Tenth ACM SIGKDD Conference, Seattle, WA, 2004.
+
+Satu Elisa Schaeffer. Graph Clustering. Computer Science Review 1(1):27-64,2007.
+</text>
+
 
 
 </document>

@@ -61,6 +61,19 @@ APPLICATIONS
 K: One natural setting for this exploration is in models of trade and other forms of economic activity. The interactions among buyers and sellers, or pairs of counterparties to a trade or loan, naturally forms a network...
 </text>
 
+
+Christos H. Papadimitriou, Algorithms, Games, and the Internet. Proc. 33rd ACM Symposium on Theory of Computing, 2001.
+http://www.eecs.harvard.edu/~parkes/cs286r/spring02/papers/stoc01.pdf
+
+L. Blume, D. Easley, J. Kleinberg and E. Tardos. Trading Networks with Price-Setting Agents. EC'07.
+http://www.santafe.edu/research/publications/workingpapers/07-04-006.pdf
+
+T. Roughgarden and E. Tardos. How Bad is Selfish Routing? Journal of the ACM, 2002, Volume 49 , Issue 2.
+http://portal.acm.org/citation.cfm?id=506153
+
+E. Anshelevich, A. Dasgupta, J. Kleinberg, E. Tardos, T. Wexler, T. Roughgarden. The Price of Stability for Network Design with Fair Cost Allocation. In FOCS 2004.
+http://www.cs.cornell.edu/home/kleinber/focs04-game.pdf
+
 </document>
 
 <!-- Spectral analysis -->
@@ -288,6 +301,47 @@ EXAMPLES
 - computer viruses spreading in networks such as the Internet.
 - The spread of information (advertising or "buzz") in a social network is much like the spread of an epidemic.
 </text>
+
+<text>
+Reading list
+
+Propagation effects in networks: gossips, epidemics and trust.
+
+Jure Leskovec, Andreas Krause, Carlos Guestrin, Christos Faloutsos, Jeanne VanBriesen, Natalie Glance. Cost-effective Outbreak Detection in Networks. ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (ACM KDD), 2007.
+
+P. Dodds and D. J. Watts. Universal Behavior in a Generalized Model of Contagion. Phyical Review Letters, 2004.
+
+Pedro Domingos, Matt Richardson. Mining Knowledge-Sharing Sites for Viral Marketing. Eighth International Conference on Knowledge Discovery and Data Mining, KDD-2002.
+
+Pedro Domingos, Matt Richardson. Mining the Network Value of Customers, Proceedings of the Seventh International Conference on Knowledge Discovery and Data Mining (pp. 57-66), 2001.
+
+D. Kempe, J. Kleinberg, E. Tardos. Maximizing the Spread of Influence through a Social Network. Proc. 9th ACM SIGKDD Intl. Conf. on Knowledge Discovery and Data Mining, 2003.
+
+D. Gruhl, R. Guha, D. Liben-Nowell, A. Tomkins. Information Diffusion through Blogspace. Proc. International WWW Conference, 2004.
+
+D. Kempe, J. Kleinberg, A. Demers. Spatial gossip and resource location protocols. Proc. 33rd ACM Symposium on Theory of Computing, 2001.
+
+R. Karp, C. Schindelhauer, S. Shenker, B. Vocking. Randomized Rumor Spreading. 41st IEEE Symposium on Foundations of Computer Science, 2000.
+
+Jure Leskovec, Lada Adamic, Bernardo Huberman. The Dynamics of Viral Marketing. ACM Transactions on the Web (ACM TWEB), 1(1), 2007.
+
+Jure Leskovec, Mary McGlohon, Christos Faloutsos, Natalie Glance, Matthew Hurst. Cascading Behavior in Large Blog Graphs SIAM International Conference on Data Mining (SDM) 2007.
+
+Y.ang Wang, Deepayan Chakrabarti, Chenxi Wang, Christos Faloutsos, Epidemic Spreading in Real Networks: An Eigenvalue Viewpoint, SDRS, 2003
+
+M. Richardson, R. Agrawal, and P. Domingos, Trust Management for the Semantic Web, Proc. of Int. Semantic Web Conf. 2003, PP.351-368.
+
+R. Guha and R. Kumar, Propagation of Trust and Distrust, WWW2004, New York, 2004.
+
+A. Calvo-Armengol, M. Jackson. Networks in Labor Markets: Wage and Employment Dynamics and Inequality. Journal of Economic Theory, to appear.
+
+M. Baccara and H. Bar-Isaac. How to Organize Crime. SSRN preprint, April 2006.
+
+A. Calvo-Armengol, Y. Zenou. Social Networks and Crime Decisions: The Role of Social Structure in Facilitating Delinquent Behavior. International Economic Review 45(3), 200
+
+Zoltán Gyöngyi, Hector Garcia-Molina, Jan Pedersen. Combating Web Spam with TrustRank. 30th International Conference on Very Large Data Bases (VLDB), Toronto, Ontario, Canada, 2004.
+</text>
+
 </document>
 
 

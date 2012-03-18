@@ -29,9 +29,24 @@ A wide range of real-world networks have been found to exhibit power-law degree 
 
 <document>
 <tag>formation-barabasi-albert</tag>
-<title>Barabasi-Albert model (scale-free networks)</title>
+<title>Barabasi-Albert model</title>
 
 <text>
+
+Network model based on their observations on the World Wide Web
+- Small-world models operate only on sparse graphs.
+- Highly connected sites dominate the Web.
+- Distribution of the coordination numbers of sites is not bimodal but follows power-law.
+- Does not show clustering which is present in the Web as well.
+
+Network creation algorithm
+- Start with a random network
+- Take two vertex at random and add a link if it brings the distribution of z nearer to power-law
+- Continue until correct coordination numbers reached
+- Still otherwise as random graph
+
+The network could also be created by generating N vertices with lines out of them according to power-law distribution and joining lines randomly until none are left.
+
 ++
 L: "a microrule called preferential attachment - that the probability a site will obtain a new link is directly proportional to the number of links it already has" (the <q>rich get richer</q> phenomenon).
 
@@ -219,9 +234,11 @@ Alternative formation model: <cite>Alava and Dogorotsev 2005</cite>
 <tag>scale-free-properties</tag>
 <title>Structural properties of scale-free networks</title>
 
-<text>
-Degree distribution: 
+<document>
+<tag>scale-free-properties-degree</tag>
+<title>Degree distribution</title>
 
+<text>
 L: Networks whose degree distribution approximates a power law,
 <eqn>H(k)=k^{-q}</eqn>, for some power <eqn>q &gt; 1</eqn>. 
 
@@ -275,6 +292,27 @@ what a power law does. Therefore, if the degree sequence distribution obeys the 
 
 </document>
 
+<document>
+<tag>scale-free-properties-path-length</tag>
+<title>Average path length</title>
+
+<text>
+Average path length of a scale-free network follows a logarithmic approximation rather than a power law:
+</text>
+
+<equation>
+L(SF) = log (n) / log (log (n))
+</equation>
+
+<text>
+L: The small path length of a scale-free network is due to its hubs—very high-degreed
+nodes—rather than random links, acting as shortcuts. 
+</text>
+
+</document>
+
+</document>
+
 
 
 <document>
@@ -298,6 +336,28 @@ distribution of species among genera all obey a power law.
 Scale-free networks appear to model economic constructs such as the Internet and
 monopolies within industrial segments, because preferential attachment is essentially
 the law of increasing returns of economics.
+</text>
+
+<text>
+INTERNET 
+
+L: <cite>Broder et al. 2000</cite> analyzed over 200 million servers in the Internet’s Webgraph, and discovered its giant component, called the giant strongly connected component (GSCC).  The Internet’s Webgraph is shaped like a “bowtie”—44 million nodes (21%) are predominantly incoming nodes that send messages such as email; another 44 million are predominantly outgoing nodes that receive messages. A larger cluster, 56 million (27%) make up the GSCC.  
+
+L: In terms of small-world effect (short average path length), GSCC is a small-world
+network. The average path length (out of 56 million nodes in the GSCC) reported by
+Broder et al. is a mere 16–20 hops! According to WWW high-level measurements
+made by Adamic, of which the GSCC is a component, the average path length is 35 hops.
+[Adamic, L. A., The small world web, in Research and Advanced Technology for
+Digital Libraries, Lecture Notes in Computer Science 1696, S. Abiteboul and
+A.-M. Vercoustre, eds, Springer-Verlag, New York, 1999, 443–452.]
+
+At the other extreme, Yook et al. estimates an average
+path length equal to 9 hops when measured at the Internet’s router level 
+[Yook, S. H., H. Jeong, A.-L. Barabasi, and Y. Tu, Phys. Rev. Lett. 86:5835 (2001).]
+
+L: GSCC path length is a consequence of hub topology (scale-free), not random rewiring (small-world). 
+
+While clustering is modest in the domain-level Webgraph, Internet clustering is higher than expected of a purely random network. Yook et al. place the cluster coefficient of the domain level Internet in the range 0.18–0.30, versus 0.001 for an equivalent random network (Albert, 2002).
 </text>
 
 </document>
@@ -371,6 +431,26 @@ Phys. Rev. Lett. 85(21):4629-4632 (2000).]
 <cite>Barabasi and Bonabeau 2003</cite>
 </text>
 
+
+</document>
+
+
+<document>
+<tag>scale-free-notes</tag>
+<title>Bibliographic notes</title>
+
+<text>
+M. Faloutsos, P. Faloutsos and C. Faloutsos. On Power-Law Relatonships of the Internet Topology. ACM SIGCOMM 1999.
+M. E. J. Newman, Power laws, Pareto distributions and Zipf's law, Contemporary Physics.
+M. Mitzenmacher, A Brief History of Generative Models for Power Law and Lognormal Distributions, Internet Mathematics, 2004
+B. Bollobas, Mathematical Results in Scale-Free random Graphs.
+L. A. Adamic, R. M. Lukose, A. R. Puniyani, B. A. Huberman. Search in Power-Law Networks. Phys. Rev. E, 64 46135, 2001.
+R. Albert. Scale-free networks in cell biology.
+A.-L. Barabasi, Reka Albert, and Hawoong Jeong. Mean-field theory for scale-free random networks. Physica A 272 173-187 (1999).
+B. Bollobas, C. Borgs, J. Chayes, and O. Riordan Directed scale-free graphs Proceedings of the 14th ACM-SIAM Symposium on Discrete Algorithms (2003), 132-139.
+A. Fabrikant, E. Koutsoupias, C. Papadimitriou. Heuristically Optimized Trade-offs: A New Paradigm for Power Laws in the Internet. 29th International Colloquium on Automata, Languages, and Programming (ICALP), 2002.
+Qian Chen, Hyunseok Chang. Ramesh Govindan, Sugih Jamin, Scott J. Shenker, Walter Willinger. The Origin of Power Laws in Internet Topologies Revisited. Proc. of IEEE Infocom 2002.
+</text>
 
 </document>
 

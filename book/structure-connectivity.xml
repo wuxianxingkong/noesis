@@ -23,6 +23,10 @@ network, “These structures reflect relationships that may be long over, and they
 </text>
 
 <text>
+L: <cite>Broder et al. 2000</cite> analyzed over 200 million servers in the Internet’s Webgraph, and discovered its giant component, called the giant strongly connected component (GSCC).  The Internet’s Webgraph is shaped like a “bowtie”—44 million nodes (21%) are predominantly incoming nodes that send messages such as email; another 44 million are predominantly outgoing nodes that receive messages. A larger cluster, 56 million (27%) make up the GSCC.  
+</text>
+
+<text>
 Facebook <cite>Ugander at al. 2011</cite>: (1) global structure of the graph: the social network is nearly fully connected, with 99.91% of individuals belonging to a single large connected component, (2) by studying the average local clustering coefficient and degeneracy of graph neighborhoods: the Facebook graph as a whole is clearly sparse, the graph neighborhoods of users contain surprisingly dense structure; (3) assortativity patterns present in the graph by studying the basic demographic and network properties of users. We observe clear degree assortativity and characterize the extent to which "your friends have more friends than you". Furthermore, we observe a strong effect of age on friendship preferences as well as a globally modular community structure driven by nationality, but we do not find any strong gender homophily. 
 </text>
 

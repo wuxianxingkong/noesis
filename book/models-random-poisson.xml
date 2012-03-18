@@ -44,10 +44,9 @@ degree distribution
 
 <text>
 L: Gilbert showed how to build a random graph by first constructing a complete graph and then deleting randomly selected links until reaching the desired number of links (Gilbert, 1959)... cumbersome algorithm was quickly surpassed by the elegant and widely promoted algorithm
-of Erdos and Renyi (Erdos, 1960).
+of Erdos and Renyi <cite>Erdos and Renyi 1960</cite>.
 
 [Gilbert, E. N., Random graphs, Ann. Math. Stat. 30(4):1141-1144 (1959).]
-[Erdo¨s, P. and A. Re´nyi, On the evolution of random graphs, Publ. Math. Inst. Hungar. Acad. Sci. 5:17-61 (1960).]
 </text>
 
 <note>
@@ -649,6 +648,74 @@ In addition, the number of paths running through the closest node varies accordi
 </document>
 
 </document>
+
+
+<document>
+<tag>random-phase-transition</tag>
+<title>Phase transition</title>
+
+
+<text>
+Giant component...
+
+i.e. starting with a random graph that may contain multiple components, observe how a giant component forms. I
+- uniformly random network so p and density are related by pm = n(n - 1)(density/2). 
+- Adding links at a constant rate increases density at a constant rate. At some point, the network is dense enough to form a giant component.
+=  a giant component “suddenly” forming as density increases.
+
+</text>
+
+<text>
+L: The same fundamental phenomenon observed in different fields: Phase transition 
+occurs in a variety of real-world phenomena in the physical world 
+
+1) matter changes from a solid state to a liquid, from liquid to gas, and so on. 
+= the transition of a liquid to a solid
+= a liquid “suddenly” converting to a solid, 
+= The “crystallization” of a liquid into a solid, 
+= between liquid and solid phases 
+
+2) The Ising effect, for example, explains the phase transition that occurs when inert iron converts into magnetic iron. 
+= phase transition is claimed to explain the Ising effect—the transition to magnetic polarity in ferrous materials. 
+= inert iron to magnetic iron.
+= nonmagnetic iron “suddenly” becoming magnetic—the so-called Ising model in statistical physics. 
+= transition from nonmagnetic to magnetic iron
+= between nonmagnetic and magnetic phases.
+
+</text>
+
+<text>
+Such abrupt changes near a crossover point may also help explain other
+phenomena in biology (neurological modeling) and consumer behavior (fads and
+products that suddenly “catch on”).
+</text>
+
+<text>
+++ <cite>Albert and Barabasi 2002</cite> provide succinct surveys of transitions of interest in physical and biological science. 
+</text>
+
+<text>
+Percolation theory
+
+In percolation theory, p* is called the percolation threshold.
+
+L: e.g. Bond percolation is modeled as a two-dimensional grid with pm links. Links are constrained by a flat 2D surface, so each node can connect only along NEWS directions (=north, east, west, south); hence m is bounded by 4n, and so pm \leq 4n (density). Starting with p = 0, p increases until a giant connected component emerges. If it is possible to reach every other node from any node, the entire network is one giant component.
+
+L: Materials also transition the other way—from structured to random. Consider a fully connected complete network with m = n((n-1)/2) links. This giant connected network represents a frozen cube of water or fully magnetized metal. Now, randomly select at link and remove it with probability (1-p). Test the network to see if it is still one giant component. Repeat the random link removal process until the giant component is no longer connected. At this point, pm links remain. What is the significance of p*, now? A percolation network is in its subcritical phase when p &lt; p*, and its supercritical phase when p &gt; p*. 
+
+In certain restricted cases (Cayley graphs), p* = 1/n. 
+
+Below this threshold, no giant component forms. At this threshold, a giant cluster forms of size n^{2/3}, and above this threshold, a complex giant component forms with cycles.  p* is the tipping point
+</text>
+
+<text>
+L: Percolation has also been observed in artificial networks such as the Internet. <cite>Broder et al. 2000</cite> analyzed over 200 million servers in the Internet’s Webgraph, and discovered its giant component, called the giant strongly connected component (GSCC).
+... The Internet topology, however, is not random, but scale-free.
+</text>
+
+
+</document>
+
 
 
 <document>

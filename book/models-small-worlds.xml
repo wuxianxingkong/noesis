@@ -11,9 +11,16 @@
 
 
 <text>
+L: The class of small-world networks lies between structured and random networks...
+</text>
+
+<text>
+++ The small-world phenomenon: in a social network each pair of nodes is connected with a fairly short path.
+
 In general, the term small-world effect refers to networks where the average path length grows slower than any positive power of the number of nodes in the network. Or, alternatively, to networks whose number of nodes grows faster than any power of its average path length.
 In fact, the small-world effect is often observed as a rapid decline in average path length when a small number of random links are added to a  network, even when it is random. This result is not completely surprising, since a single link connects separate parts of a network and brings distant nodes closer.
 </text>
+
 
 <text>
 <cite>Pool and Kochen 1978</cite> @ inaugual issue of the Social Networks journal (a draft widely circulated two decades before its publication): the world of social relationships is much smaller than expected given the size of the social network.
@@ -44,11 +51,18 @@ Two decades later (Kleinfeld, 2002).
 
 <document>
 <tag>formation-watts-strogatz</tag>
-<title>Watts-Strogatz model (WS)</title>
+<title>Original Watts-Strogatz model (WS)</title>
 
 <text>
 ++
 <cite>Watts and Strogatz 1998</cite> created a simple model that originates small worlds + discovered that these patterns are present in a broad range of networks. 
+
+IDEA: Balance between the clustering property of a regular lattice and small-world properties of a random graph
+
+Begin with a low-dimensional regular lattice
+Randomly rewire some of the links with a probability p
+For small p a mostly regular graph is produced
+Small-world properties are obtained through the randomly wired links
 
 L: The canonical form of the WS algorithm
 starts with a 2-ring network (each node connected to 2 nodes on its right and 2 on its left). 
@@ -126,23 +140,6 @@ chapter.
 </document>
 
 
-<document>
-<tag>formation-nsws</tag>
-<title>Newman... (NSWS)</title>
-
-<text>
-L: Newman et al. modified the procedure to avoid isolated nodes and components,
-which led to the NSWS model (Newman, 2000a, 2000b). The Newman et al. generation
-procedure is similar to the Gilbert random network generation procedure
-because it uses a similar "anchoring" algorithm to avoid the separation of the network
-into components. 
-</text>
-
-ref.
-Newman, M. E. J., Models of the small world: A review, J. Stat. Phys. 101:819-841 (2000).
-Newman, M. E. J., Small worlds, the structure of social networks, J. Stat. Phys. 101(3/4)(2000).
-
-</document>
 
 
 
@@ -185,6 +182,40 @@ L: round-robin algorithm for inserting links into the k-ring starting network. T
 <text>
 L: The k-WS model is used to study changes in smallworld properties as a function of rewiring probability p and density d.
 </text>
+
+<text>
+L: ... the reader should be aware of the biases introduced into the small-world effect by the WS generative procedure. In particular, it is not necessary to use a k-regular lattice as the starting point of a small world. Any sparse and regular network will do. However, properties such as... 
+will be affected...
+</text>
+
+</document>
+
+
+
+<document>
+<tag>formation-nsws</tag>
+<title>Newman and Watts model (NW)</title>
+
+<text>
+L: Newman et al. modified the procedure to avoid isolated nodes and components,
+which led to the NSWS model (Newman, 2000a, 2000b). The Newman et al. generation
+procedure is similar to the Gilbert random network generation procedure
+because it uses a similar "anchoring" algorithm to avoid the separation of the network
+into components. 
+</text>
+
+<text>
+Differences to Watts-Strogatz model
+- Added shortcuts
+- No links removed from the underlying lattice
+- No disconnected parts of the graph
+- Easier to analyze as no distance is infinite
+</text>
+
+
+ref.
+Newman, M. E. J., Models of the small world: A review, J. Stat. Phys. 101:819-841 (2000).
+Newman, M. E. J., Small worlds, the structure of social networks, J. Stat. Phys. 101(3/4)(2000).
 
 </document>
 
@@ -457,10 +488,8 @@ others remain as they were, initially. This causes clustering to decline with co
 combinatorial approach (Albert, 2000???): 
 </text>
 
-[Albert, R., H. Jeong, and A. L. Barabasi, The Internet’s Achilles’ heel: Error and attack tolerance
-of complex networks, Nature 406:378-382 (2000).]
-[Albert, R. and A.-L. Barabasi, Statistical mechanics of complex networks, Rev. Mod. Phys.
-74:47-97 (2002).]
+[Albert, R., H. Jeong, and A. L. Barabasi, The Internet’s Achilles’ heel: Error and attack tolerance of complex networks, Nature 406:378-382 (2000).]
+++ <cite>Albert and Barabasi 2002</cite>
 
 <equation>
 CC(WS_p) = \frac {3k(k-1)} {2k(2k-1) + 8pk^2 + 4p^2k^2}
@@ -516,6 +545,11 @@ Experiment <cite>Lewis 2009</cite>
 Start with a 5x5 toroidal network, and apply the same rewiring microrule used in the WS generation procedure. What are the
 properties of the resulting network?... The results suggest that initial configuration has some impact on entropy and average path length, but the cluster coefficient is much lower in networks generated by the WS microrule that starts with a toroidal network than with a 2-ring network. The standard WS network model starts and ends with high clustering. The toroidal WS network procedure starts and ends with less clustering.
 i.e. the starting network matters = the WS network generation algorithm produces small worlds with the cluster coefficient determined by the topology of the 2-ring network. In general, the underlying k-ring network determines the cluster coefficient of the resulting small world!
+
+L: The topology of a small-world network includes relatively high clustering, but this property is inherited from the initial k-regular network in
+the WS generative procedure. If the small-world effect is desired in a network with low cluster coefficient, then start rewiring from a low-cluster regular network such as a grid or toroid. 
+
+++ We conclude that small-world clustering is a consequence of two factors: the inherent clustering of the initial network and the manner of rewiring. The WS procedure preserves a certain amount of clustering because one end of each rewired link is anchored at a high-cluster-coefficient node. The Gilbert procedure does not preserve anchors; hence the inherent clustering of its initial complete network is lost.
 </text>
 
 </document>
@@ -526,6 +560,11 @@ i.e. the starting network matters = the WS network generation algorithm produces
 <document>
 <tag>small-worlds-properties-path-length</tag>
 <title>Average path length</title>
+
+<text>
+... relatively low average path length... long-haul nature of random links... average path length declines at least as fast as a power
+law (the essence of the small-world effect)
+</text>
 
 <text>
 Path length rapidly declines as the rewiring probability, and thus the randomness, increases...
@@ -655,6 +694,9 @@ path length shrinks with increasing probability of link rewiring, reaching p =
 path length is similar to that of a 2-ring network (higher than that of a random
 network). At high rewiring probability values, the path length of the class of WS
 small-worlds and the class of random networks are similar (low).
+
+NOTE: cluster coefficient and path length move in opposite directions, as density increases. when the density of a k-regular WS network approaches
+100%...  Cluster coefficient slowly rises to 100%, and path length rapidly drops to 1. (Cluster coefficient for small values of p is determined by the underlying k-regular network, not by the small-world effect)
 </text>
 
 
@@ -762,6 +804,10 @@ world behaving more like a k-ring network than a random network. This regularity
 becomes the most significant factor in determining betweenness. Generally, clustering
 tends to increase average betweenness, while randomizing tends to decrease it, beyond
 ~20% density. 
+
+L: The topology of a small-world network includes relatively high betweenness, but this property is inherited from the initial k-regular network in
+the WS generative procedure. If a higher degree of betweenness is desired, start with a high-average-betweenness network such as a hypercube
+
 </text>
 
 </document>
@@ -777,9 +823,21 @@ tends to increase average betweenness, while randomizing tends to decrease it, b
 <tag>small-worlds-examples</tag>
 <title>Small-world networks in the real world</title>
 
+
+<text>
+... a small-world architecture that values economy of links and neighborhood clustering above all else...
+
+Real-world graphs show clustering effects (Your friends are usually friends with each other as well) but random graph do not exhibit clustering properties
+</text>
+
 <text>
 L: Very sparse networks with small diameter (small worlds) at diverse phenomena such as phase transitions in materials, functionality of biological organisms, and behavior of electrical power grids.
 e.g. database of film actors, the electric power grid of the western United States, and the neural network of the nematode worm C. elegans (Caenorhabditis elegans)
+
+Network C Crandom
+movie actors 0.79 0.00027
+neural network 0.28 0.05
+power grid 0.08 0.0005
 
 L: Sparse small-world networks appear to model human social networks, because humans have limited capacity to know a large number of other humans.
 
@@ -852,6 +910,28 @@ A different class of small-world networks <cite>Sporns 2006</cite>: modular smal
 [Yung, V. J. An exploration in the small world networks, available as Condensed Matter 0004214 (2000/2001)]
 </text>
 
+<text>
+Several studies use small-world structures instead of regular lattices
+in dynamical systems problems:
+- Cellular automata: density classi?cation becomes easier
+- In simple games: e.g. multi-player Prisoner’s dilemma is more di?cult
+- In oscillators: Small-world topology helps oscillators to synchronize
+- Solution for the ferromagnetic Ising model for d=1 with a phase transition in a ?nite temperature
+- Small-world graph as a model of a neural network: able to produce fast responses to external stimuli and coherent oscillation.
+- Model of species coevolution
+
+e.g. spread of diseases
+Small-world graphs are suitable for modeling spread of disease (or information) in a population 
+
+First idea: use the approximate distribution of the average path length as a simple model.
+- Disease spreads from neighborhoods of the infected people
+- Number of people n infected after t time steps: those t steps away from the initial carrier.
+
+More complex idea: Only a certain fraction q is susceptible What does the fraction q need to be to make disease an epidemic?
+
+Transition from large-world to small-world implication: disease for information spreads first as a power of time, then changes to exponential increase and flattens off when the graph becomes saturated
+</text>
+
 </document>
 
 
@@ -860,6 +940,10 @@ A different class of small-world networks <cite>Sporns 2006</cite>: modular smal
 <tag>small-worlds-dynamics</tag>
 <title>The dynamics of small-world networks</title>
 
+
+<text>
+...Dynamical systems behave differently on small-world graphs than on regular lattice...
+</text>
 
 <text>
 L: small-world networks share some properties of random networks—such as short
@@ -895,83 +979,246 @@ subgraph to one of its nodes.
 <tag>small-worlds-dynamics-phase-transition</tag>
 <title>Phase transition</title>
 
+
 <text>
-L: Phase transition in the physical world occurs when matter changes from a solid state
-to a liquid, from liquid to gas, and so on. The Ising effect, for example, explains the
-phase transition that occurs when inert iron converts into magnetic iron. The idea is
-related to the sudden transition from a 2-regular to random network as rewiring probability
-increases. Watts argued that phase transition is a particular property of small
-worlds, and that it is the same fundamental phenomenon observed in different fields.
+The rapid change in network properties in WS small worlds, from predominantly structured networks, to partially structured, and then fully random networks... 
 </text>
 
 <text>
-L: At a certain rewiring probability called the crossover point (also length scale), the network transitions from mostly structured to mostly random network. Typically, the crossover point is very small—on the order of 2-3%. Watts and Strogatz attached a meaning to the crossover, suggesting that it corresponds to phase transition in materials (the crossover point is also known as the phase transition threshold).
+The phase transition idea is related to the sudden transition from a 2-regular to random network as rewiring probability
+increases. Watts argued that phase transition is a particular property of small worlds...
+</text>
+
+<text>
+L: At a certain rewiring probability called the crossover point (also length scale), the network transitions from mostly structured to mostly random network. 
+
+++ the crossover point p*, also known as the phase transition threshold
+[Barthelemy, M. and L. A. N. Amaral, Small-world networks: Evidence for a crossover picture, Phys. Rev. Lett. 82:3180 (1999).]
+</text>
 
 
-L: Typically, the small-world transitions from purely regular to slightly random for
-p* = 1-4%. This phase transition threshold, or crossover point, has taken on a
-number of meanings in various applications. For example, phase transition is
-claimed to explain the Ising effect—the transition to magnetic polarity in ferrous
-materials. It has also been used to explain why small-world networks tend to synchronize
-more than do purely random or purely structured networks.
+<text>
+Estimate from <cite>Lewis 2009</cite>
 
+Define p* as the point where the slope of the avg_path_length L versus p equals -45º. This corresponds with a rate of change <eqn>\delta L / \delta r = -1</eqn>:
+</text>
 
+<equation>
+\frac{\delta L}{\delta r} = - \frac { n } { 4 k r^{q+1}} = -1
+</equation>
+
+<equation>
+r = \left( \frac{n q}{4 k} \right) ^ {\frac {1} {q+1} }
+</equation>
+
+<text>
+Since <eqn>r=pm</eqn>, then
+</text>
+
+<equation>
+r = \frac {r} {m} = \left( \frac{n q}{4 k} \right) ^ {\frac {1} {q+1} }
+</equation>
+
+<text>
+L: Barrat and Weigt claim that <eqn>p \sim (1/n)</eqn> (Barrat, 2000) for similar small worlds, which yields a much smaller estimate. Visually, the Barrat–Weigt approximation makes more sense. Rewiring 0.2% of the 1000 links means redirecting only 2 links, while rewiring 1% means redirecting
+10 links. Two rewired links may cause upward of a four-fold drop in path length, which means that path length declines by as much as (125 - 125/4) / 125 = 75%.  i.e. "back of the envelope" estimate
 
 ++ 2-ring WS small-world networks transition from regular to random topology near a crossover
 rewiring probability p* \sim 1/n. This marks the transition from "mostly
-structured” to “mostly random” topology. The value of p* is of
-interest to physicists, who associate it with phase transitions in materials.
-For this reason, small worlds make
-good models of phase transition phenomena, such as the transition of a
-liquid to a solid, or inert iron to magnetic iron.
+structured” to “mostly random” topology. 
+</text>
 
 
-The rapid change in network properties as entropy rises begs a number of questions
-about WS small worlds and the transition from predominantly structured networks,
-to partially structured, and then fully random networks.
-++ does this phenomenon occur in the transition from other structured networks to small worlds, or is it dependent on the initial 2-ring lattice? - ++ 
+<text>
+Typically, the crossover point is very small... around just 1%
+</text>
 
+
+<text>
+The value of p* is of interest to physicists, who associate it with phase transitions in materials.
+L: Watts and Strogatz attached a meaning to the crossover, suggesting that it corresponds to phase transition in materials (the crossover point is also known as the phase transition threshold).
+</text>
+
+<text>
+L: Typically, the small-world transitions from purely regular to slightly random for
+p* = 1-4%. This phase transition threshold, or crossover point, has taken on a number of meanings in various applications. 
+It has also been used to (try to) explain why small-world networks tend to synchronize more than do purely random or purely structured networks.
 </text>
 
 </document>
 
 
 <document>
-<tag>small-worlds-dynamics-navigation</tag>
-<title>Network navigation</title>
+<tag>small-worlds-dynamics-search</tag>
+<title>Search on networks</title>
+
+
+<text>
+K: ... the way people can explore chains of social contacts for information or
+referrals to others. The surprising effectiveness with which people are able to accomplish
+such tasks, confirmed by both experiments and everyday experience, suggests
+characteristic patterns of structure at the network level that help facilitate these types
+of activities.
+</text>
+
+<text>
+MOTIVATION
+
+L: Network navigation is a search process whereby a message finds its way from a source to a destination node using only local information such as node degree, radius, or betweenness. The lengths of such search paths are much greater than average path length; this is due to the trial-and-error wayfinding made necessary because of incomplete information about shortest paths. But network navigation is an important topic because it models a number of important processes in a variety of fields such as communication. In fact, network navigation in small worlds may explain how large communication systems work—or not—depending on search efficiency.
+</text>
+
+<text>
+EXAMPLES
+
+L: The Internet, and telecommunication systems in general, carry packets of information
+that must find their way through a complex network, much as the letters
+sent by Stanley Milgram had to find their way from sender to recipient. 
+
+L: Network navigation has applications in peer-to-peer file sharing. For example,
+several file-sharing applications found their way into the popular culture during the
+late 1990s when music files were stored on consumer’s local disks, and navigation
+software was used to find them. Without a global map of the peer-to-peer network,
+a search program would have to perform a depth-first search (DFS) on adjacent
+servers, and expand the search until locating the desired file.
+</text>
+
+<text>
+Does the structure of a communication network make any difference to their efficiency?
+DIAMETER 
+
+L: In real-world natural or synthetic systems, small-world structure is usually a consequence
+of microrules that favor high clustering, low path length, or both. For
+example, a communication network’s efficiency is a function of the number of
+hops separating any two nodes. In a neurological network, maximum transmission
+time is kept to a minimum by making the diameter of the network low. 
+</text>
 
 
 <text>
 ++ 1999 Walsh: Difficulty of search in small worlds using local properties
-[Walsh, T., Search in a small world, IJCAI'99, Proc. 16th Intnatl. Joint Conf. Artificial
-Intelligence, Stockholm, Sweden, Morgan Kaufmann Publishers, San Francisco, 1999,
-Vol. 2, pp. 1172-1177.]
+[Walsh, T., Search in a small world, IJCAI'99, Proc. 16th Intnatl. Joint Conf. Artificial Intelligence, Stockholm, Sweden, Morgan Kaufmann Publishers, San Francisco, 1999, Vol. 2, pp. 1172-1177.]
+</text>
 
-++ 2000 Kleinberg: Shows O(n) search in small world using "Manhattan distance"
-[Kleinberg, J. M., Navigation in a small world, Nature 406:845 (2000).]
+
+<text>
+How to find the best path through the network?
+(without some kind of global routing table)
+
+1. Random—the next node in the navigation path is selected at random.
+2. Maximum-degree—the adjacent node with the highest degree is selected next.
+3. Minimum-radius—the adjacent node that is more central is selected next.
+4. Maximum-betweenness—the adjacent node that has the highest betweenness rating is selected next. 
+
+For 2-ring WS small-world networks: From worst (most hops), to best (fewest hops) gives
+1. Slowest: max-betweenness
+2. Slow: random
+3. Medium: min-radius
+4. Fast: max_degree
+
+
+L: <cite>Lewis 2009</cite> Navigation of a network using local properties of nodes is faster using a
+maximum-degree selection algorithm than a minimum-radius, maximum-betweenness,
+or random selection algorithm. 
+
+++ The random node selection algorithm will serve as a baseline. As each node is visited along the navigation path, the next node to be searched is randomly selected from adjacent nodes. Intuitively, the resulting navigation path will be a random walk through the network.
+
+++ the maximum-betweenness algorithm is worse than random!
 </text>
 
 <text>
+Ordered DFS: 
+
+L: 4) Intuitively, a high-degree node is more likely to be connected to the destination node. Therefore, the maximum-degree algorithm ranks the adjacent nodes according to their degree—from highest to lowest—and then selects the link leading to the highest-degree neighbor. If the search fails, the next-highest-degree node is tried, and so forth, until all adjacent nodes have been searched, or the destination node is found.
+
+L: 3) Intuitively, a more central node is “closer” to the destination node. In this sense, “closer” means that nodes are ranked according to their radii. Adjacent nodes are ranked according to their radii, and traversed in order from lowest to highest. If a search backtracks, the second-larger-radius neighbor is selected and traversed, and so forth, as in the random and maximum-degree search.
+
+L: 2)  Finally, a node that is between other nodes because of its betweenness should lie on a path leading to the destination node. Therefore, adjacent nodes are ranked according to their intermediary status and tried in order: highest betweenness value, first, followed by next betweenness value, and so on. until the destination node is reached, or deadends prevent a successful search.
+</text>
+
+<text>
+L: WS small-world networks are shown to be more difficult to navigate
+than random or scale-free networks. While small worlds tend to have relatively
+short average path length, it is more difficult to find the shortest path through a
+small world using local information such as node degree, betweenness, and node
+radius than equivalent random networks.
+
+== navigation performance among the three classes of networks follows the rank order
+1. Slow: small world with small rewiring probability p
+2. Medium: random network
+3. Fast: scale-free network
+(Note that scale-free networks can be navigated much faster than can either small-world or random networks.)
+++ Small worlds are the most difficult to navigate with only local information, despite their their small diameter and short characteristic path length
+
+
+Why? average path length of a network is based on the shortest path between all pairs of nodes. Navigation along the path between two nodes using local information about each node does not guarantee the shortest path, i.e. finds the first path, not the shortest path. 
+</text>
+
+<text>
+++ Communication networks must consider the bandwidth or capacity limitations of nodes and links.
+e.g. High-degree nodes are also highly burdened nodes, because they must handle the sum total of all bandwidth converging on them.
+Thus, a max-degree navigation algorithm may actually be bogged down by the bottleneck of congestion brought about by high degree nodes
+</text>
+
+
+<text>
+++ 2000 Kleinberg: Shows  O(n) search in small world using "Manhattan distance"
+
 L: <cite>Kleinberg 2000</cite>, not only surprisingly short paths, but also the remarkable ability of individuals to identify links that lead to those short paths...
-</text>
 
-<text>
 L: Kleinberg gives a formal explanation for Milgram's experiment based on
 the "Manhattan distance" between source and target nodes. The "Manhattan distance"
 is defined as the number of blocks, traversed along streets in Manhattan,
 New York, between source and destination intersections. Kleinberg showed that it
-takes only O(n) steps to navigate such a small world (Kleinberg, 2002a).
+takes only O(n) steps to navigate such a small world
 
-L: Navigation of a network using local properties of nodes is faster using a
-maximum-degree selection algorithm than a minimum-radius, maximumbetweenness,
-or random selection algorithm. In the study performed in this
-chapter, WS small-world networks are shown to be more difficult to navigate
-than random or scale-free networks. While small worlds tend to have relatively
-short average path length, it is more difficult to find the shortest path through a
-small world using local information such as node degree, betweenness, and node
-radius than equivalent random networks. This has profound implications for
-packet-switching communication networks.
+
+Kleinberg model
++ On Watts-Strogatz model: No simple algorithm for ?nding the path using only local information
++ For Kleinberg’s model there is a simple algorithm for finding a short path using only local information for those structures for which the exponent of the power law is the dimension of the grid
+Comments from the article:
+- For other values of r than r = d path-finding becomes a hard task.
+- There is more to the small-world effect than the existence of short paths
+
+Let the edges be directed.
+- Model the network as a two-dimensional n x n grid and use the Manhattan distance.
+- Each element has an outgoing edge to each node within distance p \geq 1.
+- Each element also has q randomly selected long-range outgoing edges.
+- The length of these long-range edges will be decisive.
+
+If we just select the long-range edges uniformly at random, there will be no small-world.
+
+Look at the nodes at most \sqrt{n} away from target t: Probability of hitting one of them is 1/\sqrt{n}. It would take O(\sqrt{n}) to get there in average. The problem here is that the closer we are to t, the more probably the long-range edges will take us to totally elsewhere.
+
+Say we are selecting the long-range edges of u. A node v will be selected with probability proportional to d(u, v)^{-r}.
++ This r will be the concentration exponent.
+
+The model now has parameters p, q and r, but only r has any real effect on the model’s behaviour
+
+Decentralized algorithms:
+- An entity knows only what it has been told.
+- It knows the location of the target, its own links and the grid structure of the lattice.
+
+NETWORKS WITHOUT A SMALL-WORLD
+
+For large r, the close neighbours of t will be proportionally quite far away from everything else. 
+- The links should now be more tightly concentrated.
++ Therefore getting to the neighbourhood will easily take too long, because the long links are not long enough.
+(too introvert)
+
+For small r, there are also problems
+- we need precision to hit the proportionally small neighbourhood.
+- Small r makes the algorithms to easily overshoot.
+- This means that the long links don’t give enough advantage
+(too imprecise)
+
+r=2 (navigable network)
++ the only exponent for which the long-range links are uniformly distributed over distance scales
+i.e. Links of length 2^{j} to 2^{j+1} have the same probabilities for all j. Thus we have enough precision in every case.
+
+In a large network one has to manage local and global relations simultaneously.
+
 </text>
+
 
 
 <text>
@@ -984,6 +1231,44 @@ MORE
 </text>
 
 </document>
+
+
+</document>
+
+
+
+<document>
+<tag>small-worlds-notes</tag>
+<title>Bibliographic notes</title>
+
+<text>
++ Yung Ph.D. thesis, 2001
+
+Kasturirangan, R.
+Multiple scales in small-world graphs.
+Massachusetts Institute of Technology AI Lab Memo 1663.
+1999. Also cond-mat/9904055
+
+Newman, M.E.J.
+The Structure and Function of Complex Networks,
+SIAM Reviews, 45(2): 167-256, 2003. Also
+cond-mat/0303516
+
+Watts, D.J. and Strogatz, S.H.
+Collective dynamics of "small-world" networks.
+Nature, 393, 440–442. 1998.
+
+
+V. Nguyen and C. Martel. Analyzing and characterizing small-world graphs. 2005 ACM-SIAM symposium on Discrete Algorithms.
+D.J. Watts. Networks, Dynamics and Small-World Phenomenon, American Journal of Sociology, Vol. 105, Number 2, 493-527, 1999
+J. Kleinberg. The small-world phenomenon: An algorithmic perspective. Proc. 32nd ACM Symposium on Theory of Computing, 2000
+J. Kleinberg. Small-World Phenomena and the Dynamics of Information. Advances in Neural Information Processing Systems (NIPS) 14, 2001.
+D. J. Watts, P. S. Dodds, and M. E. J. Newman. Identity and search in social networks, Science 296, 1302-1305 (2002).
+Adamic L., Lukose R., Puniyani A., and Huberman B., Search in power law networks, Physical review Vol 64.
+L. Adamic, E. Adar. How To Search a Social Network. Social Networks Journal. Vol 27, Is 3, 2005, Pages 187-203
+J. Leskovec, J. Kleinberg, C. Faloutsos: Graphs over time: densification laws, shrinking diameters and possible explanations. KDD 2005: 177-187
+M. E. J. Newman, Models of the small world, J. Stat. Phys. 101, 819-841 (2000).
+</text>
 
 </document>
 

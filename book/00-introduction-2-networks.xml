@@ -119,6 +119,40 @@ the web, Comput. Networks 39:277-287 (2002).]
 [Tadic, B., Growth and structure of the world-wide web: Towards realistic modeling, Comput. Phys. Commun. 147(1-2):586-589 (2002).
 [Tadic, B., Temporal fractal structures: Origin of power laws in the world-wide web, Physica A 314(1-4):278-283 (2002).]
 
+Broder, R. Kumar, F. Maghoul, P. Raghavan, S. Rajagopalan, R. Stata, A. Tomkins, J. Wiener. Graph structure in the web. 9th International World Wide Web Conference, May 2000.
+J. Kleinberg, S.R. Kumar, P. Raghavan, S. Rajagopalan, A. Tomkins. The Web as a graph: Measurements, models and methods. Invited survey at the International Conference on Combinatorics and Computing, 1999.
+K. Bharat and A. Broder. A technique for measuring the relative size and overlap of public Web search engines. Proc. 7th International World Wide Web Conference, 1998.
+S. Dill, R. Kumar, K. McCurley, S. Rajagopalan, D. Sivakumar, A. Tomkins. Self-similarity in the Web. 27th International Conference on Very large Data Bases, 2001.
+
+Web search, Link analysis, Spectral analysis.
+
+J. Kleinberg. Authoritative sources in a hyperlinked environment. Proc. 9th ACM-SIAM Symposium on Discrete Algorithms, 1998. Extended version in Journal of the ACM 46(1999). Also appears as IBM Research Report RJ 10076, May 1997.
+[Taken] S. Brin and L. Page. The Anatomy of a Large-Scale Hypertextual Web Search Engine. Proc. 7th International World Wide Web Conference, 1998.
+S. Chakrabarti, B. Dom, D. Gibson, J. Kleinberg, S.R. Kumar, P. Raghavan, S. Rajagopalan, A. Tomkins, Mining the link structure of the World Wide Web. IEEE Computer, August 1999.
+[Taken] A. Arasu, J. Cho, H. Garcia-Molina, A. Paepcke, S. Raghavan. Searching the Web. ACM Transactions on Internet Technology 1(1): 2-43 (2001)
+A. Borodin, J. S. Rosenthal, G. O. Roberts, P. Tsaparas, Finding Authorities and Hubs From Link Structures on the World Wide Web. 10th International World Wide Web Conference, May 2001.
+A. Borodin, G. Roberts, J. Rosenthal, P. Tsaparas, Link Analysis Ranking: Algorithms, Theory and Experiments, ACM Transactions on Internet Technologies (TOIT), 5(1), 2005
+P. Tsaparas, Using Non-Linear Dynamical Systems for Web Searching and Ranking, Principles of Database Systems (PODS), Paris, 2004
+Dimitris Achlioptas, Amos Fiat, Anna Karlin, Frank McSherry, Web Search via Hub Synthesis. 42nd IEEE Symposium on Foundations of Computer Science, 2001, p.611-618.
+[Taken] Davood Rafiei, Alberto Mendelzon. What is this Page Known for? Computing Web Page Reputations. Proc. WWW9 Conference, Amsterdam, May 2000
+Pedro Domingos, Matt Richardson. The Intelligent Surfer: Probabilistic Combination of Link and Content Information in PageRank. Advances in Neural Information Processing Systems 14, 2002.
+Taher H. Haveliwala. Topic-Sensitive PageRank. 11th International World Wide Web Conference, 2002.
+Alon Altman and Moshe Tennenholtz. Ranking Systems: The PageRank Axioms. Proceedings of ACM EC 2005.
+A. Y. Ng, A. X. Zheng, and M. I. Jordan. Link analysis, eigenvectors, and stability. International Joint Conference on Artificial Intelligence (IJCAI), 2001.
+S. Chien, C. Dwork, R. Kumar, D. Simon, and D. Sivakumar, Link Evolution: Analysis and Algorithms
+A. Y. Ng, A. X. Zheng, and M. I. Jordan. Stable algorithms for link analysis. 24th International Conference on Research and Development in Information Retrieval (SIGIR 2001).
+L. Lovasz. Random Walks on Graphs: A Survey. Combinatorics: Paul Erdos is Eighty (vol. 2), 1996, pp. 353-398.
+R. Lempel and S. Moran, Rank Stability and Rank Similarity of Link-Based Web Ranking Algorithms in Authority Connected Graphs, Information Retrieval 8 (special issue on advances in mathematics/formal methods in information retrieval), pp. 245-264, 2005.
+Ziv Bar-Yossef, Alexander Berg, Steve Chien, Jittat Fakcharoenphol, and Dror Weitz. Approximating Aggregate Queries about Web Pages via Random Walks. 26th International Conference on Very Large Databases (VLDB), 2000, pages 535-544.
+Soumen Chakrabarti, Mukul Joshi, Kunal Punera, and David M. Pennock. The structure of broad topics on the Web. 11th World Wide Web conference, May 2002.
+Cynthia Dwork, Ravi Kumar, Moni Naor, D. Sivakumar. Rank Aggregation Methods for the Web. 10th International World Wide Web Conference, May 2001.
+Weiyi Meng, Clement Yu, King-Lup Liu. Building Efficient and Effective Metasearch Engines. ACM Computing Surveys 34(2002).
+T. Joachims. Optimizing Search Engines Using Clickthrough Data. Eighth International Conference on Knowledge Discovery and Data Mining, KDD-2002.
+Ron Fagin, Ravi Kumar and D. Sivakumar. Comparing top k lists, Extended abstract in 2003 ACM-SIAM Symposium on Discrete Algorithms (SODA '03), pp. 28-36.
+Ron Fagin, Ravi Kumar and D. Sivakumar, Efficient similarity search and classification via rank aggregation, Proc. 2003 ACM SIGMOD Conference (SIGMOD '03), pp. 301-312.
+[Taken] J. Cho, S. Roy, Impact Of Search Engines On Page Popularity, WWW 2004
+D. Liben-Nowell, J. Kleinberg. The Link Prediction Problem for Social Networks. Proc. 12th International Conference on Information and Knowledge Management (CIKM), 2003.
+Zoltán Gyöngyi, Hector Garcia-Molina. Link Spam Alliances. 31st International Conference on Very Large Data Bases (VLDB), Trondheim, Norway, 2005.
 </text>
 
 <cite>Liu 2011</cite>
@@ -169,6 +203,10 @@ Protocols for Computer Communication in Cambridge, MA, USA, ACM Press, New York,
 <text>
 ++ <cite>Oltvai and Barabasi 2002</cite> <cite>Barabasi and Oltvai 2004</cite> <cite>Guimera and Nunes 2005</cite> <cite>Boccaletti et al. 2009</cite>
 <cite>Barabasi et al. 2011</cite>
+
++ A.-L. Barabási and Z. N. Oltvai. Network Biology: Understanding the Cell's Functional Organization. Nature Reviews Genetics 5, 101-113 (2004)
++ Kevin Bleakley, Gérard Biau and Jean-Philippe Vert. Supervised reconstruction of biological networks with local models. ISMB/ECCB 2007.
+
 </text>
 
 </document>

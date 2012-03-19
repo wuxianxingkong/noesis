@@ -427,30 +427,61 @@ The time-varying mean-field equation for <eqn>k &gt; \Delta m</eqn> is
 </equation>
 
 <text>
-3. The stationary, or time-invariant solution, obtained by setting <eqn>h_{t+1}(k) = h_t(k) = h(k)</eqn>,  yields a first-order difference equation. </text>
-
-<equation>
-h(k) = \frac {k-1} { 2 } h(k-1) - \frac{k}{2} hk 
-</equation>
-
-<text>
-When k = \Delta m, only one node increases from degree (k - 1) to k, so the mean-field equation is limited to k = Dm, Dm + 1, Dm + 2, . . . when k = Dm:
+Since there are no nodes with a degree lower than <eqn>\Delta m</eqn>, we know that <eqn>h(k)=0</eqn> for <eqn>k &lt; \Delta m</eqn>. For <eqn>k = \Delta m</eqn>, we obtain the following expression given that a single node increases its degree to <eqn>\Delta m</eqn> (i.e. the new one):
 </text>
 
 <equation>
-h(\Delta m) = 1 - \frac{\Delta m^2}{2} h 
+(n+1) h_{t+1}(\Delta m) - n h_t(\Delta m) = 1 - \frac { \Delta m } { 2 } h_t(\Delta m)
 </equation>
+
+
+<text>
+3. The stationary, or time-invariant solution, obtained by setting <eqn>h_{t+1}(k) = h_t(k) = h(k)</eqn>:
+</text>
+
+<equation>
+h(k) = \frac {k-1} { 2 } h(k-1) - \frac{k}{2} h(k) 
+</equation>
+
+<text>
+for <eqn>k &gt; \Delta m</eqn>, and
+</text>
+
+<equation>
+h(\Delta m) = 1 - \frac{\Delta m}{2} h(\Delta m)
+</equation>
+
+<text>
+when <eqn>k = \Delta m</eqn>. Therefore
+</text>
 
 <equation>
 h(\Delta m) = \frac{2}{\Delta m + 2}
 </equation>
 
 <text>
-Backsubstitution into the mean-field equation for k &gt; \Delta m yields the general solution:
+And, rearranging for <eqn>k &gt; \Delta m</eqn>:
 </text>
 
 <equation>
-h(k) = 2 \Delta m \frac{\Delta m + 2}{k(k+1)(k+2)}
+h(k) = \frac {k-1} {k-2} h(k-1)
+</equation>
+
+
+<text>
+Expanding the recurrence, we obtain
+</text>
+
+<equation>
+h(k) = \frac{(k-1)(k-2)...\Delta m}{(k+2)(k+1)...(\Delta m+3)} h(\Delta m)
+</equation>
+
+<text>
+which yields the solution for the degree distribution of the Barabasi-Albert model:
+</text>
+
+<equation>
+h(k) = \frac{2 \Delta m (\Delta m + 1)}{(k+2)(k+1)k}
 </equation>
 
 <text>

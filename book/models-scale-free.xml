@@ -31,10 +31,10 @@ features of the network.
 ++ An alternative and intriguing idea, which has so far not been in-
 vestigated in much depth, is that features such as power-law de-
 gree distributions may arise through network optimization. See...
-[Banavar, J. R., Maritan, A., and Rinaldo, A., Size and form in ecient transportation networks, Nature 399, 130{132 (1999).]
-[Ferrer i Cancho, R. and Sole, R. V., Optimization in complex networks, Preprint cond-mat/0111222 (2001]
-[Gaychuk, V., Lubashevsky, I., and Stosyk, A., Remarks on scaling properties inherent to the systems with hierarchically organized supplying network, Preprint nlin/0004033 (2000).]
-[Valverde, S., Cancho, R. F., and Sole, R. V., Scale-free networks from optimal design, Europhys. Lett. 60, 512{517 (2002).]
+[Banavar, J. R., Maritan, A., and Rinaldo, A., Size and form in efficient transportation networks, Nature 399, 130{132 (1999).]
+[Ferrer i Cancho, R. and Solé, R. V., Optimization in complex networks, Preprint cond-mat/0111222 (2001]
+[Gaychuk, V., Lubashevsky, I., and Stosyk, A., Remarks on scaling properties inherent to the systems with hierarchically organized supplying network, Preprint nlin/0004033 (2000).]
+[Valverde, S., Cancho, R. F., and Solé, R. V., Scale-free networks from optimal design, Europhys. Lett. 60, 512{517 (2002).]
 [West, G. B., Brown, J. H., and Enquist, B. J., A general model for the origin of allometric scaling laws in biology, Science 276, 122{126 (1997).
 [West, G. B., Brown, J. H., and Enquist, B. J., A general model for the structure, and allometry of plant vascular systems, Nature 400, 664{667 (1999)]
 
@@ -45,8 +45,8 @@ gree distributions may arise through network optimization. See...
 [Jin, E. M., Girvan, M., and Newman, M. E. J., The structure of growing social networks, Phys. Rev. E 64, 046132 (2001).]
 [Jost, J. and Joy, M. P., Evolving networks with distance preferences, Phys. Rev. E 66, 036126 (2002).]
 [Klemm, K. and Eguiluz, V. M., Highly clustered scalefree networks, Phys. Rev. E 65, 036123 (2002).]
-[Vazquez, A., Growing networks with local rules: Preferential attachment, clustering hierarchy and degree correlations, Preprint cond-mat/0211528 (2002).]
-[Vazquez, A., Bogu~na, M., Moreno, Y., Pastor-Satorras, R., and Vespignani, A., Topology and correlations in structured scale-free networks, Preprint condmat/0209183 (2002).]
+[Vázquez, A., Growing networks with local rules: Preferential attachment, clustering hierarchy and degree correlations, Preprint cond-mat/0211528 (2002).]
+[Vázquez, A., Boguña, M., Moreno, Y., Pastor-Satorras, R., and Vespignani, A., Topology and correlations in structured scale-free networks, Preprint condmat/0209183 (2002).]
 [Watts, D. J., Networks, dynamics, and the small world phenomenon, Am. J. Sociol. 105, 493{592 (1999).
 [Watts, D. J., Small Worlds, Princeton University Press, Princeton (1999).]
 
@@ -87,7 +87,7 @@ L: Yule first observed preferential attachment in evolution (Yule, 1925): Darwin
 L: the idea of nonrandomness as a factor in behavior and the connection between preferential attachment and nonrandom distributions occurred to Simon in 1955 [Simon, H. A., On a class of skew distribution functions, Biometrika 42(3/4):425-440 (1955).]
    ++ [Bornholdt, S. and Ebel, H., World Wide Web scaling exponent from Simon's 1955 model, Phys. Rev. E 64, 035104 (2001).]
 
-  ++ Herbert Simon, who showed that power laws arise when \the rich get richer," when the amount you get goes up with the amount you already have. In sociology this is referred to as the Matthew effect, after the biblical edict, \For to every one that hath shall be given. . . " (Matthew 25:29). Price called it cumulative advantage. Today it is usually known under the name preferential attachment, coined by Barabasi and Albert.
+  ++ Herbert Simon, who showed that power laws arise when \the rich get richer," when the amount you get goes up with the amount you already have. In sociology this is referred to as the Matthew effect, after the biblical edict, \For to every one that hath shall be given. . . " (Matthew 25:29). Price called it cumulative advantage. Today it is usually known under the name preferential attachment, coined by Barabasi and Albert.
   [Merton, R. K., The Matthew effect in science, Science 159, 56{63 (1968).]
 
 
@@ -96,11 +96,11 @@ L: the earliest definition of preferential attachment, called cumulative advanta
 [Price, D. J. de S., Networks of scientific papers, Science 149:510–515 (1965). ]
 [Price, D. J. de S., A general theory of bibliometric and other cumulative advantage processes, J. Am. Soc. Inform. Sci. 27:292–306 (1976).]
 
-  ++ N'2003: A the physicist-turned-historian-of-science Derek de Solla Price described in 1965 probably the rst example of what would now be called a scale-free network; he studied the network of citations between scientific papers and found that both in- and out-degrees (number of times a paper has been cited and number of other papers a paper cites) have power-law distributions...
+  ++ N'2003: A the physicist-turned-historian-of-science Derek de Solla Price described in 1965 probably the first example of what would now be called a scale-free network; he studied the network of citations between scientific papers and found that both in- and out-degrees (number of times a paper has been cited and number of other papers a paper cites) have power-law distributions...
 
   the resulting degree distribution has a power-law tail with exponent \alpha = 2 + 1/m, where m is  the mean in-degree of the network (which is also the the mean out-degree of the network)
 
-  ++ N'2003: In fact, this is really only a half of the Matthew eect, since the same verse continues, \. . . but from him that hath not, that also which he seemeth to have shall be taken away." In the processes studied by Simon and Price nothing is taken away from anyone. The full Matthew eect, with both the giving and the taking away, corresponds more closely to the Polya urn process than to Price's cumulative advantage. Price points out this distinction in his paper.
+  ++ N'2003: In fact, this is really only a half of the Matthew effect, since the same verse continues, \. . . but from him that hath not, that also which he seemeth to have shall be taken away." In the processes studied by Simon and Price nothing is taken away from anyone. The full Matthew effect, with both the giving and the taking away, corresponds more closely to the Polya urn process than to Price's cumulative advantage. Price points out this distinction in his paper.
 
 
 L: In fact, preferential attachment is known as the law of increasing returns in economics, adaptive
@@ -403,7 +403,7 @@ for i in range(N):
 ++ Generalizations of the Barabaasi-Albert model <cite>Newman 2003</cite>, p. 34ff
 e.g. Table III in <cite>Albert and Barabasi 2002</cite>
 
-Krapivsky et al. also consider another important generalization of the model, to the case where the probability of attachment to a vertex is not linear in the degree k of the vertex, but goes instead as some general power of degree k^\gamma... this model is solvable using methods similar to those above, and the authors nd three general classes of behavior. 
+Krapivsky et al. also consider another important generalization of the model, to the case where the probability of attachment to a vertex is not linear in the degree k of the vertex, but goes instead as some general power of degree k^\gamma... this model is solvable using methods similar to those above, and the authors find three general classes of behavior. 
 [Krapivsky, P. L. and Redner, S., Organization of growing random networks, Phys. Rev. E 63, 066123 (2001).]
 [Krapivsky, P. L., Redner, S., and Leyvraz, F., Connectivity of growing random networks, Phys. Rev. Lett. 85, 4629{4632 (2000).]
 
@@ -413,31 +413,31 @@ Krapivsky et al. also consider another important generalization of the model, to
   - For \gamma &gt; 2, there is a non-zero probability that this \gel node" will be connected to every other vertex on the graph. The remainder of the vertices have an exponentially decaying degree distribution.
 
 Another variation on the basic growing network theme is to make the mean degree change over time, Dorogovtsev and Mendes
-[Dorogovtsev, S. N. and Mendes, J. F. F., Eect of the accelerating growth of communications networks on their structure, Phys. Rev. E 63, 025101 (2001).]
+[Dorogovtsev, S. N. and Mendes, J. F. F., Effect of the accelerating growth of communications networks on their structure, Phys. Rev. E 63, 025101 (2001).]
 [Dorogovtsev, S. N. and Mendes, J. F. F., Accelerated growth of networks, in S. Bornholdt and H. G. Schuster
 (eds.), Handbook of Graphs and Networks, pp. 318{341, Wiley-VCH, Berlin (2003).]
 
-Dorogovtsev and Mendes have proposed a model that adds to the standard Barabasi{Albert model an extra mechanism whereby edges appear and  disappear between pre-existing vertices with stochastically constant but possibly dierent rates.
+Dorogovtsev and Mendes have proposed a model that adds to the standard Barabasi{Albert model an extra mechanism whereby edges appear and  disappear between pre-existing vertices with stochastically constant but possibly different rates.
 [Dorogovtsev, S. N. and Mendes, J. F. F., Scaling behaviour of developing and decaying networks, Europhys. Lett. 52, 33{39 (2000).]
 
 Krapivsky and Redner have also proposed a model that allows edges to be added after vertices are created, which we discuss in the next section. 
 [Krapivsky, P. L. and Redner, S., A statistical physics perspective on Web growth, Computer Networks 39, 261{276 (2002).]
 
-Albert and Barabasi and Tadic have studied models in which edges can move around the network after they are added. These models can show both power-law and exponential degree distributions depending on the model parameters.
-[Albert, R. and Barabasi, A.-L., Topology of evolving networks: Local events and universality, Phys. Rev. Lett. 85, 5234{5237 (2000).]
-[Tadic, B., Dynamics of directed graphs: The World-Wide Web, Physica A 293, 273{284 (2001).]
-[Tadic, B., Temporal fractal structures: Origin of power laws in the World-Wide Web, Physica A 314, 278{283 (2002).]
+Albert and Barabasi and Tadic have studied models in which edges can move around the network after they are added. These models can show both power-law and exponential degree distributions depending on the model parameters.
+[Albert, R. and Barabasi, A.-L., Topology of evolving networks: Local events and universality, Phys. Rev. Lett. 85, 5234{5237 (2000).]
+[Tadic, B., Dynamics of directed graphs: The World-Wide Web, Physica A 293, 273{284 (2001).]
+[Tadic, B., Temporal fractal structures: Origin of power laws in the World-Wide Web, Physica A 314, 278{283 (2002).]
 
 Adamic and Huberman have shown that the real World Wide Web does not have the correlations between age and degree of vertices that
-are found in the model of Barabasi and Albert. Adamic and Huberman suggest that this is because the degree of vertices is also a function of their intrinsic worth; some Web sites are useful to more people than others and so gain links at a higher rate. 
+are found in the model of Barabasi and Albert. Adamic and Huberman suggest that this is because the degree of vertices is also a function of their intrinsic worth; some Web sites are useful to more people than others and so gain links at a higher rate. 
 [Adamic, L. A. and Huberman, B. A., Power-law distribution of the world wide web, Science 287, 2115 (2000).]
-Bianconi and Barabasi have proposed an extension of the Barabasi{Albert model that mimics this process.
-[Bianconi, G. and Barabasi, A.-L., Bose{Einstein condensation in complex networks, Phys. Rev. Lett. 86, 5632{5635 (2001).]
-[Bianconi, G. and Barabasi, A.-L., Competition and multiscaling in evolving networks, Europhys. Lett. 54, 436{442 (2001).]
+Bianconi and Barabasi have proposed an extension of the Barabasi{Albert model that mimics this process.
+[Bianconi, G. and Barabasi, A.-L., Bose{Einstein condensation in complex networks, Phys. Rev. Lett. 86, 5632{5635 (2001).]
+[Bianconi, G. and Barabasi, A.-L., Competition and multiscaling in evolving networks, Europhys. Lett. 54, 436{442 (2001).]
 
-+ variations on the tness theme have been studied by Ergün and Rodgers
-[Ergun, G. and Rodgers, G. J., Growing random networks with tness, Physica A 303, 261{272 (2002).],
-  + A model with vertex tness but no preferential attachment has been studied by Caldarelli et al., and also gives power-law degree distributions under some circumstances.  [Caldarelli, G., Capocci, A., De Los Rios, P., and Mu~noz, M. A., Scale-free networks from varying vertex intrinsic fitness, Phys. Rev. Lett. 89, 258702 (2002).]
++ variations on the fitness theme have been studied by Ergün and Rodgers
+[Ergun, G. and Rodgers, G. J., Growing random networks with fitness, Physica A 303, 261{272 (2002).],
+  + A model with vertex fitness but no preferential attachment has been studied by Caldarelli et al., and also gives power-law degree distributions under some circumstances.  [Caldarelli, G., Capocci, A., De Los Rios, P., and Mu~noz, M. A., Scale-free networks from varying vertex intrinsic fitness, Phys. Rev. Lett. 89, 258702 (2002).]
 </text>
 
 <text>
@@ -1050,9 +1050,9 @@ N'2003: A number of authors have subsequently published more extensive simulatio
  [Dorogovtsev, S. N. and Mendes, J. F. F., Scaling behaviour of developing and decaying networks, Europhys. Lett. 52, 33{39 (2000).]
  [Krapivsky, P. L. and Redner, S., Finiteness and fluctuations in growing networks, J. Phys. A 35, 9517{9534 (2002).]
 
-N'2003: A crucial element of both the models of Price and of Barabasi and Albert is the assumption of linear preferential attachment. It is worth asking whether there is any empirical evidence in support of this assumption. Two studies indicate that it may be a reasonable approximation to the truth:
+N'2003: A crucial element of both the models of Price and of Barabasi and Albert is the assumption of linear preferential attachment. It is worth asking whether there is any empirical evidence in support of this assumption. Two studies indicate that it may be a reasonable approximation to the truth:
  - Jeong et al. looked at the time evolution of citation networks, the Internet, and actor and scientist collaboration networks, and measured the number of new edges a vertex acquires in a single year as a function of the number of previously existing edges. They found that the one quantity was roughly proportional  to the other and hence concluded that linear preferential attachment was at work in these networks. 
- [Jeong, H., Neda, Z., and Barabasi, A.-L., Measuring preferential attachment in evolving networks, Europhys. Lett. 61, 567{572 (2003).]
+ [Jeong, H., Neda, Z., and Barabasi, A.-L., Measuring preferential attachment in evolving networks, Europhys. Lett. 61, 567{572 (2003).]
  - Newman performed a similar study for scientific collaboration networks, but with finer time resolution, measured by the publication of individual papers, and came to similar conclusions.
  [Newman, M. E. J., Clustering and preferential attachment in growing networks, Phys. Rev. E 64, 025102 (2001).]
 

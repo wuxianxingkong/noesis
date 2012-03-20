@@ -66,6 +66,10 @@ Scale-free networks are networks with hubs, which skew the degree distribution o
 ...
 Key properties not shared by other networks: 
 - hubs 
+
+L: A scale-free network connects a large proportion of the network’s nodes to a small fraction of nodes. This simple architecture is responsible for nearly all of the distinguishing properties of the class, from average path length, fast navigation, to local clustering
+
+L: Scale-free networks exhibit structure by shifting from random connectivity to hub-like connectivity. In return, they sacrifice clustering and entropy. Intuitively,entropy goes into hub-like topology in a scale-free network, clustering in a small-world network, and disorder in a random network. This is why the class of scale-free networks is known as the “class with hubs,” and the class of small-world networks is known as the “class with clusters.”... Intuitively, a small-world network is a scale-free network with constraints on the degree of hubs, whereas a scale-free network has no such constraints.
 </text>
 
 <text>
@@ -927,6 +931,8 @@ This result indicates that the entropy of the degree distribution for a Barabasi
 
 <text>
 A conjecture: a scale-free graph is more random than structured; a small-world graph is more structured than random
++ a scale-free network behaves more like a small-world network than a random network with respect to entropy
+
 </text>
 
 </document>
@@ -937,15 +943,6 @@ A conjecture: a scale-free graph is more random than structured; a small-world g
 <tag>scale-free-properties-path-length</tag>
 <title>Average path length</title>
 
-<text>
-Average path length of a scale-free network follows a logarithmic approximation rather than a power law.
-L: Bollobas and Riordan report good approximation to large networks such as the Internet with a double-logarithmic approximation
-[Bollobas, B., O. Riordan, J. Spencer, and G. Tusnady, The degree sequence of a scale-free random graph process, Random Struct. Algorithms 18(3):279–290 (2001).]
-</text>
-
-<equation>
-L(SF) = log (n) / log (log (n))
-</equation>
 
 <text>
 L: The small path length of a scale-free network is due to its hubs—very high-degreed
@@ -954,10 +951,54 @@ nodes—rather than random links, acting as shortcuts.
 L: The average path length of a (sparse) BA scale-free network is lower than the average path length of a (sparse) random network.
 </text>
 
+<text>
+L: Intuitively, the average path length of a sparse scale-free network should be shorter than that of a random network of equal density because there are more long-haul links in a scale-free network...  path length slowly decreases with an increase in density—just as it does in a random network. But the decline in average path length of a scale-free network is more pronounced in sparse scale-free networks than in sparse random networks. This is
+due to... hub nodes... 
+...
+But the difference quickly vanishes with increasing density
+</text>
 
 
 <text>
-NOTE: Average path length linearly declines with hub degree
+Average path length of a scale-free network follows a logarithmic approximation rather than a power law.
+</text>
+
+<text>
+(1) L: Albert and Barabasi approximated the average path length of a BA scale-free network with average degree \lambda= 4
+by fitting simulation data to a logarithmic curve (Albert, 2002): L(SF) = a \log (n+b) + c
+</text>
+
+<equation>
+L(SF) \sim log (n)
+</equation>
+
+<text>
+(2) L: More accurate estimates by Bollobas and Riordan do not appreciably improve the simple approximation given by Albert and Barabasi for small networks, yet they report their double-logarithmicapproximation seems to be more accurate for large networks such as the Internet:
+[Bollobas, B., O. Riordan, J. Spencer, and G. Tusnady, The degree sequence of a scale-free random graph process, Random Struct. Algorithms 18(3):279–290 (2001).]
+</text>
+
+<equation>
+L(SF) \sim log (n) / log (log (n))
+</equation>
+
+
+<text>
+DENSITY: Recall that density = \lambda/n for any network, and if n remains constant, then density decreases with increasing size n. Therefore, average path length gradually rises with increase in size, because density declines.
+
+L: Unfortunately, these theoretical estimates do not directly relate path length to adjustments in number of links, or hub size. For example, if we hold n constant and vary density, the average path length should rise and fall inversely with the rise and fall of density; the higher the density, the lower the path length. <cite>Lewis 2009</cite> studies the influence of network density on average path length... 
+
+L: Average path length declines with increasing density of (any) network, because there are more alternate paths—some shorter than others—through a denser network. When a network is extremely sparse, fewer alternative paths are available to connect node u to node w. The lack of alternative paths in sparse scale-free networks can partially, but not completely, be made up by high-degreed hubs. Low-degreed nodes are more likely to be connected to hubs, and hubs establish long-haul links.
+</text>
+
+<text>
+HUB DEGREE: Average path length linearly declines with hub degree
+
+L: When dealing with very sparse scale-free networks, the degree of the hub may be a better predictor of the average path length for sparse networks...
+
+L: If this hypothesis is true, we should be able to observe a correlation between hub degree and path length in a scale-free network. Intuitively, path length declines as hub degree increases because there are more long-haul links in a scale-free network...
+The correlation is not strong, but the trend is clear—path length trends downward with increasing hub degree as hypothesized
+...
+the higher the hub degree of a scale-free network, the shorter the average path length
 </text>
 
 <text>
@@ -967,25 +1008,6 @@ L: It is possible to control the path length of a scale-free network while simul
 </document>
 
 
-<document>
-<tag>scale-free-clustering</tag>
-<title>Clustering</title>
-
-<text>
-L: The cluster coefficient of a scale-free network generally varies inversely with n, and linearly with increase in density: CC(scale-free) \sim density. 
-
-Barabasi claims that there is no analytic approximation of cluster coefficient for the BA-generated scale-free network, but suggests that it follows a power law: CC(scale-free) \sim n^{3/4}. 
-
-Because the density of a scale-free network is approximately d \approx 2(\Delta m/n), the clustering coefficient also increases with \Delta m:
-CC(scale-free) \sim \Delta m. 
-
-The cluster coefficient of individual nodes is inversely proportional to the degree of individual nodes in a sparse scale-free network; hubs have low cluster coefficients, while non-hubs have high cluster coefficients. 
-
-Cluster coefficient is bounded by \Delta m /(d -\Delta m) for low values of \Delta m.
-</text>
-
-</document>
-
 
 <document>
 <tag>scale-free-betweenness</tag>
@@ -993,7 +1015,14 @@ Cluster coefficient is bounded by \Delta m /(d -\Delta m) for low values of \Del
 
 
 <text>
+L: ... hubs are  the largest intermediary nodes... i.e. most paths traverse them when connecting any two nodes
+...  their betweenness property is also the highest.
+... The dominant hub node of a scale-free network tends to insert direct links between itself and the majority of all other nodes, which eliminates intermediaries and reduces betweenness by an amount proportional to the degree of the hub
+</text>
+
+<text>
 L: The average betweenness of a scale-free network is determined by its density and the size of its largest hub:
+L: a suitable model of average betweenness in scale-free networks is...
 </text>
 
 <equation>
@@ -1009,10 +1038,78 @@ r = \frac { log_2 (n - d_{hub}) } { log_2 \lambda }
 </equation>
 
 <text>
-A a hub tends to directly connect to the majority of other nodes, therefore it tends to remove d_{hub} nodes from consideration as potential intermediaries. In terms of average betweenness, network classes are ranked as follows: random (highest), small-world (medium), and scale-free (lowest).
+A a hub tends to directly connect to the majority of other nodes, therefore it tends to remove d_{hub} nodes from consideration as potential intermediaries. 
+
+</text>
+
+<text>
+L: ++ generalizations can be made from this model:  average betweenness smoothly increases to a peak value, and then smoothly declines beyond 50% density, as fewer nodes escape direct connections with the dominant hub;
+</text>
+
+<text>
+In terms of the importance of the most connected node: scale-free (highest), small-world (medium), random (lowest).
+
+In terms of average betweenness, network classes are ranked as follows: random (highest), small-world (medium), and scale-free (lowest).
+
+L: ... the average betweenness of scale-free networks is much lower than that of equivalent random and small-world networks. Generally, the average betweenness of a node in a scale-free network is one-half that of nodes in the other classes of network. There are far fewer, and less powerful, intermediaries in a scale-free network, on average. In a sense, the hub is the sole intermediary, with intermediary power over nearly all other nodes.
+Scale-free networks have weaker intermediaries, on average, but the hub is much stronger than the strongest intermediary possible in small-world and random networks.
 </text>
 
 </document>
+
+
+<document>
+<tag>scale-free-clustering</tag>
+<title>Clustering coefficient</title>
+
+<text>
+Barabasi claims that there is no analytic approximation of cluster coefficient for the BA-generated scale-free network, but suggests that it follows a power law for networks with \lambda = 4: CC(scale-free) \sim n^{3/4}. 
+</text>
+
+<text>
+L: The cluster coefficient of a scale-free network generally varies inversely with n, and linearly with increase in density: 
+
+CC(scale-free) \sim density... 
+
+...by simulation and curve fitting that cluster coefficient of scale-free networks is much like that of a random network.
+</text>
+
+<text>
+L: Curve fitting determines that cluster coefficient slowly increases as a linear function of density in a scale-free network, but the increase is nonlinear and rapid in an equivalent small-world network (clustering rises quickly with slight increase in density)...
+
+L: As density increases, a small-world network transitions into a highly clustered network while a scale-free network transitions into a high-degree
+hub network. This is a direct consequence of the high cluster coefficient of the underlying k-regular network.
+
+L: In short, scale-free networks have large hubs and small clustering. Small-world networks have large clusters and small hubs.
+</text>
+
+<text>
+Because the density of a scale-free network is approximately \rho \approx 2(\Delta m/n), the clustering coefficient also increases with \Delta m:
+CC(scale-free) \sim \Delta m. 
+
+
+L: Local clustering around scale-free network nodes is indeed correlated with node
+degree, but in a negative manner... The cluster coefficient of individual nodes is inversely proportional to the degree of individual nodes in a sparse scale-free network; hubs have low cluster coefficients, while non-hubs have high cluster coefficients. 
+++ The nodes with highest connectivity appear to be the nodes with the smallest number of connected neighboring nodes.
+++ There is a correlation between local cluster coefficient and node degree in scale-free networks that does not exist in random and small-world networks, e.g. CC(random) \sim (\lambda/n) = density, for random networks (Albert, 2002).
+
+
+L: As density increases, the degree of hub of a scale-free network also increases. High-degreed hubs tend to lower the cluster coefficient because density increases linearly while cluster coefficient must increase as a quadratic: Degree(degree - 1)/2.
+
+
+</text>
+
+<text>
+Empirical approximation <cite>Lewis 2009</cite>: In scale-free networks, cluster coefficient is bounded by \Delta m /(d -\Delta m) for low values of \Delta m (\Delta m &lt;&lt; n). 
+</text>
+
+
+
+</document>
+
+
+
+
 
 
 </document>
@@ -1074,6 +1171,12 @@ Scale-free networks appear to model economic constructs such as the Internet and
 monopolies within industrial segments, because preferential attachment is essentially
 the law of increasing returns of economics.
 
+INTERNET, known to have hubs of extremely high degree, and exhibit the small-world effect
+Scale-free nature of the Internet (Huberman, 1999; Kim, 2002; Kleinberg, 2000a, 2000b).
+[Huberman, B. A. and L. A. Adamic, Growth dynamics of the worldwide web, Nature 401:131–132 (1999)]
+
+WWW
+[Adamic, L. A. and B. A. Huberman, Power-law distribution of the World Wide Web, Science 287:2115 (2000).
 </text>
 
 <text>
@@ -1097,6 +1200,8 @@ L: GSCC path length is a consequence of hub topology (scale-free), not random re
 
 While clustering is modest in the domain-level Webgraph, Internet clustering is higher than expected of a purely random network. Yook et al. place the cluster coefficient of the domain level Internet in the range 0.18–0.30, versus 0.001 for an equivalent random network (Albert, 2002).
 </text>
+
+
 
 <text>
 L: the pure power law may not always model of reality. 
@@ -1164,6 +1269,39 @@ result has significant implications for fighting both kinds of viruses—Internet
 and human. It also has implications for the product marketer.
 </text>
 
+
+
+<text>
+NAVIGATION
+
+L: ... messages should flow quickly from one node to another using hubs. In fact, navigating a scale-free network by hopping from hub to hub is a fast path through a scale-free network because average path length declines with density and hub degree. In particular, the relationship between hub degree and path length leads to fast navigation in scale-free networks when using the max-degree search algorithm, described next (Paxson, 1997; Adamic, 2001, 2002)...
+
+[Paxson, V. and S. Floyd, Why we don’t know how to simulate the internet, Proc. 1997 Winter Simulation Conf., Atlanta, GA, ACM Press, New York, 1997, pp. 1037–1044]
+[Adamic, L. A., R. M. Lukose, A. R., Puniyani, and B. A. Huberman, Search in power-law networks, Phys. Rev. E 64(4):046135 (2001).]
+[Adamic, L. A., R. M. Lukose, and B. A. Huberman, Local Search in Unstructured Networks, Wiley-VCH, Verlag, Berlin, 2002.]
+
+The max-degree navigation algorithm is simple. Starting at node u0, hop to the adjacent node u1 with the highest degree among all adjacent nodes. Then hop from u1 to u2, the node adjacent to u1, with the highest degree, and so on, until reaching the destination node. Of course, the algorithm must avoid cycling back to a previously visited node, and it must back up when encountering a deadend. In the worst-case scenario, a max-degree search traverses the entire network.
+...
+practical application in peer-to-peer network design.
+
+[Kim, B. J., C. N. Yoon, S. K. Han, and H. Jeong, Path finding strategies in scale-free networks, Phys. Rev. E 65(2):027103, (2002).]
+[Kleinberg, J. M., Navigation in a small world, Nature 406:845 (2000).]
+[Kleinberg, J. M., The small-world phenomenon: An algorithm perspective, in STOC, Proc. 32nd Annual ACM Symp. Theory of Computing, Portland, OR, ACM Press, New York, 2000, pp. 163–170.]
+
+
+
+L: ... the impact of density and hub degree on navigation speed and show that the higher the degree of a hub, the faster the navigation time...
+
+- The average length of a path—using max-degree navigation—is O(1/density), and therefore the expected time to navigate through this network diminishes inversely with density. Compare this with the shortest-path-length average, which drops off far more slowly, since it is \sim density^{-1/3}
+
+- we should expect navigation time to improve with increases in hub degree... Hub_degree increases logarithmically with density, so the relationship between expected navigation time and hub degree fits an exponential curve... Hub degree has a dramatic impact on navigation time
+
+L: Scale-free networks are intrinsically more efficient to navigate than are random or small-world networks. They both have small-world effect and low clustering. In a sense, scale-free networks perform better than do small-world networks, leading to the conclusion that scalefree networks are “smaller than small worlds”!
+++ greater number of long-haul links in a scale-free network compared to an equivalent small-world network. 
+++ LIMIT: Star network
+
+NOTE: Hubs are also the most powerful intermediary nodes—and because they capture more paths than do other nodes, they require greater bandwidth. Therefore, a max-betweenness search is equivalent to a max-degree search. But it is much easier to calculate the degree of a node than its betweenness value.
+</text>
 
 <text>
 MORE...

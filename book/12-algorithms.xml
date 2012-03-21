@@ -1,22 +1,17 @@
 <?xml version="1.0"  encoding="ISO-8859-1" ?> 
 <!DOCTYPE sys-ents [ 
   <!ENTITY bibliography   SYSTEM "bibliography.xml">
-  <!ENTITY preliminaries  SYSTEM "12-graph-algorithms-1-preliminaries.xml">
-  <!ENTITY representation SYSTEM "12-graph-algorithms-2-representation.xml">
-  <!ENTITY exploration    SYSTEM "12-graph-algorithms-3-exploration.xml">
-  <!ENTITY mst            SYSTEM "12-graph-algorithms-4-mst.xml">
-  <!ENTITY paths          SYSTEM "12-graph-algorithms-5-paths.xml">
-  <!ENTITY flows          SYSTEM "12-graph-algorithms-6-flows.xml">
-  <!ENTITY isomorphism    SYSTEM "12-graph-algorithms-7-isomorphism.xml">
-  <!ENTITY catalog        SYSTEM "12-graph-algorithms-8-catalog.xml">
-  <!ENTITY notes          SYSTEM "12-graph-algorithms-9-notes.xml">
+  <!ENTITY analysis       SYSTEM "12-algorithms-analysis.xml">
+  <!ENTITY data           SYSTEM "12-algorithms-data-structures.xml">
+  <!ENTITY representation SYSTEM "12-algorithms-graph-representation.xml">
+  <!ENTITY notes          SYSTEM "12-algorithms-notes.xml">
 ]> 
 <?xml-stylesheet type="text/xsl" href="../book.xsl"?>
 
 
 <document>
 &bibliography;
-<title>Graph Algorithms</title>
+<title>Programs = Algorithms + Data Structures</title>
 
 
 <text>
@@ -36,14 +31,9 @@
 
 <!-- Sections -->
 
-&preliminaries;
+&analysis;
+&data;
 &representation;
-&exploration;
-&mst;
-&paths;
-&flows;
-&isomorphism;
-&catalog;
 &notes;
 
 </document>

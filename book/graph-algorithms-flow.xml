@@ -1,11 +1,15 @@
 <?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ 
+  <!ENTITY bibliography   SYSTEM "bibliography.xml">
+]> 
 <?xml-stylesheet type="text/xsl" href="../book.xsl"?>
 
 <!-- Network flows -->
 
 <document>
+&bibliography;
 <tag>graph-flow</tag>
-<title>Network flows: Maximum flow and minimum cuts</title>
+<title>Network flow</title>
 
 <text>
 Interpreting weighted graphs as distribution networks where weights represent capacities

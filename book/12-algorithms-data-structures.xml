@@ -4,60 +4,7 @@
 <!-- Propaedeutic -->
 
 <document>
-<tag>preliminaries</tag>
-<title>Preliminaries</title>
-
-<text>
-An introduction to an art and science of algorithm analysis and design... as a prerrequisite for later sections.
-</text>
-
-<document>
-<title>A primer on algorithm analysis</title>
-
-<text>
-Big-Oh notation...
-</text>
-
-<text>
-Worst-case analysis...
-</text>
-
-<text>
-Amortized analysis bounds the total amount of time used by any sequence of operations (e.g. coffee @ office or coffee shop). Used when single operations might prove costly but their cost is distributed among many fast operations... O(f(n)) in amortized analysis is worse than O(f(n)) in the worst case, but it might still be useful in practice. Provided that individual response time is not critical, amortized operations might help obtain a good throughput...
-</text>
-
-<text>
-The dominance pecking order in algorithm analysis <cite>Skiena 2008</cite>:
-</text>
-
-<equation>
-n! >> c^n >> n^3 >> n^2 >> n^{1+\epsilon} >> n \log n 
-</equation>
-
-<equation>
->> n >> sqrt(n) >> \log^2 n >> \log n
-</equation>
-
-<equation>
->> \log n / \log \log n >> \log \log n >> \alpha(n) >> 1
-</equation>
-
-<list>
-<item><eqn>\alpha(n)</eqn>: Inverse Ackerman's function, which grows notoriously slowly (union-find data structure).</item>
-<item><eqn>\log n / \log \log n</eqn>: Height of an n-leaf tree of degree <eqn>d = \log n</eqn>.</item>
-<item><eqn>n^{1+\epsilon}</eqn>, e.g. <eqn>2^c*n^{1+1/c}</eqn> where <eqn>c</eqn> cannot be arbitrarily large (<eqn>2^c!</eqn>).</item>
-</list>
-
-<text>
-++ polylogarithmic, polylogarithmic function in n is a polynomial in the logarithm of n,
-<eqn>a_k \log^k (n) + ... + a_1 \log(n) + a_0</eqn>
-
-</text>
-
-</document>
-
-
-<document>
+<tag>data-structures</tag>
 <title>Fundamental data structures</title>
 
 
@@ -73,6 +20,7 @@ DESIGN IDEA: Isolate the interface of the data structure from its particular imp
 
 
 <document>
+<tag>data-structures-collections</tag>
 <title>Collections</title>
 
 <text>
@@ -94,6 +42,7 @@ Standard collection frameworks: C++ Standard Template Library (STL), Java Collec
 
 
 <document>
+<tag>data-structures-dictionaries</tag>
 <title>Dictionaries</title>
 
 <text>
@@ -132,6 +81,7 @@ Choosing the proper alternative: access patterns (e.g. relative frequencies of i
 
 
 <document>
+<tag>data-structures-priority-queues</tag>
 <title>Priority queues</title>
 
 <text>
@@ -176,9 +126,6 @@ ISSUES:
 <text>
 Example application: Simulation (a queue of forthcoming events is kept.
 </text>
-
-
-</document>
 
 
 </document>

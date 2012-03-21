@@ -88,6 +88,7 @@ Hierarchical models can combine scale-free degree distributions and high cluster
 <item>Poisson random graphs: the Gilbert model and Erdos-Renyi random graphs.</item>
 <item>Random graphs with arbitrary degree distributions: The configuration model.</item>
 <item>Exponential random graphs.</item>
+<item>Small-world networks: the Watts-Strogatz model <cite>Watts and Strogatz 1998</cite>.</item>
 
 </list>
 
@@ -106,7 +107,6 @@ Hierarchical models can combine scale-free degree distributions and high cluster
 
 <list>
 
-<item>Small-world networks: the Watts-Strogatz model <cite>Watts and Strogatz 1998</cite>.</item>
 <item>Scale-free networks: the Barabasi-Albert model <cite>Barabasi and Albert 1999</cite>.</item>
 <item>Strategic networks.</item>
 

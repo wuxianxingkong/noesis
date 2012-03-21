@@ -1,155 +1,14 @@
 <?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ 
+  <!ENTITY bibliography   SYSTEM "bibliography.xml">
+]> 
 <?xml-stylesheet type="text/xsl" href="../book.xsl"?>
 
-<!-- Algorithm catalog -->
+<!-- Hard problems -->
 
 <document>
-<tag>graph-algorithm-catalog</tag>
-<title>A catalog of graph algorithms</title>
-
-<text>
-Graphs of order n (nodes) and size m (links)...
-</text>
-
-<document>
-<tag>graph-algorithm-catalog-linear</tag>
-<title>Linear-time algorithms</title>
-
-
-<text>
-The following problems can be solved with algorithms that run in linear time (i.e. <eqn>O(n+m)</eqn>):
-</text>
-
-<list>
-
-<item>Graph traversal, either BFS, DFS, or best-first search (as in A*).</item>
-
-<item>Shortest paths in unweighted graphs (based on BFS): Finding the shortest paths and also counting the number of different shortest paths.</item>
-
-<item>Identifying connected and strongly-connected components (based on graph traversal).</item>
-
-<item>Bipartite testing (based on graph traversal) = 2-coloring.</item>
-
-<item>Cycle detection (based on DFS).</item>
-
-<item>Identification of articulation points, i.e. graph biconnectedness (based on DFS).</item>
-
-<item>Identification of bridges, i.e. edge-biconnectedness (based on DFS).</item>
-
-<item>Topological sorting (based on DFS).</item>
-
-<item>Single-source shortest paths on DAGs, even with negative weights.</item>
-
-<item>Shortest paths, longest paths, and hamiltonian paths on DAGs (topological sorting):
-"The problem of finding the longest path in a DAG can be solved in linear time using
-dynamic programming. Conveniently, the algorithm for finding the shortest
-path in a DAG (presented in Section 15.4 (page 489)) does the job if we replace min with max.
-+DAGs are the most interesting case of longest path for which efficient algorithms exist."
-</item>
-
-<item>Maximum matching in a tree.</item>
-
-<item>The maximum independent set of a tree (equivalent to maximum tree matching on the complement graph): "(1)
-stripping off the leaf nodes, (2) adding them to the independent set, (3) deleting all adjacent nodes, and then (4) repeating from the first step on the resulting trees until it is empty."</item>
-
-<item>Tree partitioning: "Certain special graphs always have small separators, that partition the vertices
-into balanced pieces. For any tree, there always exists a single vertex
-whose deletion partitions the tree so that no component contains more than
-n/2 of the original n vertices. These components need not always be connected;
-consider the separating vertex of a star-shaped tree. This separating
-vertex can be found in linear time using depth first-search."
-<!--Every planar graph has a set of O(\sqrt{n}) vertices whose deletion leaves no component with
-more than 2n/3 vertices. These separators provide a useful way to decompose geometric models, which are often defined by planar graphs.-->
-</item>
-
-<item>Tree isomorphism</item>
-
-<item>Eulerian cycle: the shortest tour visiting each edge of G 
-- Checking is an Eulerian cycle exists: verify that the graph is connected using DFS or BFS, and then count the number of odd-degree vertices.
-- Constructing the cycle in linear time: Use DFS to find an arbitrary cycle in the graph. Delete this cycle and
-repeat until the entire set of edges has been partitioned into a set of edge-disjoint cycles. These cycles will have common vertices (since the graph is connected), and so can be spliced together as an "eight" at a shared vertex. By so splicing all the extracted cycles together, we construct a single circuit containing all of the edges.
-</item>
-
-
-<item>Eulerian path</item>
-
-
-</list>
-
-</document>
-
-<document>
-<tag>graph-algorithm-catalog-almost-linear</tag>
-<title>Almost linear-time algorithms</title>
-
-
-<text>
-The following algorithms are almost linear, i.e. <eqn>O(n \log n)</eqn>:
-</text>
-
-<list>
-
-<item>Minimum spanning trees (using either Prim's or Kruskal's algorithm).</item>
-
-<item>Single-source shortest paths (using Dijkstra's algorithm), only for positive weights.</item>
-
-</list>
-
-
-<text>
-NOTE: When working with large data sets, only linear (<eqn>O(n)</eqn>) or near linear (e.g. <eqn>O(n \log n)</eqn>) are likely to be suitable.
-</text>
-
-
-</document>
-
-<document>
-<tag>graph-algorithm-catalog-polynomial</tag>
-<title>Polynomial-time algorithms</title>
-
-<text>
-The following algorithms require polynomial time:
-</text>
-
-<list>
-
-<item>All-pairs shortest paths (e.g. Floyd's algorithm).</item>
-
-<item>Transitive closure (i.e. all-pairs reachability) and reduction.</item>
-
-<item>Finding a directed cycle of minimum total weight, <eqn>O(n^3)</eqn>.</item>
-
-<item>Maximum network flow.</item>
-
-<item>Minimum cuts.</item>
-
-<item>Maximum cuts in planar graphs:
-"A polynomial-time algorithm to find maximum cuts in planar graphs exists. <cite>Hadlock 1975</cite>
-The planar separator theorem and an efficient algorithm for finding such a separator
-are due to Lipton and Tarjan [LT79, LT80]. For experiences in implementing planar
-separator algorithms, see [ADGM04, HPS+05]."
-</item>
-
-<item>Maximum bipartite matching.</item>
-
-<item>Minimum vertex cover problem and maximum independent set problems for bipartite graphs (since the maximum bipartite matching is equal in size to the minimum vertex cover in bipartite graphs...)</item>
-
-<item>Minimum-size edge cover (i.e. a set of edges, of minimum size, such that each vertex in the graph is incident to at least one edge from the set). - "Cover all vertices using few edges (edge cover problem): Smallest set of edges such that each vertex is included in one of the edges. In fact, edge cover can be solved efficiently by finding a maximum cardinality matching and then selecting arbitrary edges to account for the unmatched vertices."</item>
-
-<item>Chinese postman problem (a generalization of the Eulerian circuit) introduced by <cite>Kwan 1962</cite>, hence its name: the shortest tour visiting each edge of G at least once. This minimum
-cycle will never visit any edge more than twice, so good tours exist for any road network. The optimal postman tour can be constructed by adding the appropriate edges to the graph G to make it Eulerian. Specifically, we find the shortest path between each pair of odd-degree vertices in G. Adding a path between two odd-degree vertices in G turns both of them to even-degree, moving G closer to becoming an Eulerian graph. Finding the best set of shortest paths to add to G reduces to identifying a minimum-weight perfect matching in a bipartite graph G' <cite>Edmonds and Johnson 1973</cite>. For undirected graphs, the vertices of G' correspond the odd-degree vertices of G, with the weight of edge (i, j) defined to be the length of the shortest path from i to j in G. For directed graphs, the vertices of G' correspond to the degree-imbalanced vertices from G, with the bonus that all edges in G' go from out-degree deficient vertices to in-degree deficient ones. Thus, bipartite matching algorithms suffice when G is directed. Once the graph is Eulerian, the actual cycle can be extracted in linear time.
-</item>
-
-<item>Bipartite graph edge coloring: Bipartite graphs can be edge-colored in polynomial time [Sch98].</item>
-
-<item>Planar graph isomorphism</item>
-
-</list>
-
-</document>
-
-<document>
-<tag>graph-algorithm-catalog-hard</tag>
+&bibliography;
+<tag>graph-np</tag>
 <title>Hard problems</title>
 
 <text>
@@ -623,9 +482,6 @@ this algorithm was followed by Karloff [Kar96]."
 <text>
 Alternative heuristics might even get better results for particular instances of the above problems, albeit more complex heuristics do not necessarily guarantee better results. In fact, the result if often the opposite. It should also be noted that some clever postprocessing of the results provided by approximation algorithms might also be worthwhile, since it might improve the approximate solution without weakening the approximation bound.
 </text>
-
-</document>
-
 
 </document>
 

@@ -9,8 +9,49 @@
 <tag>random-networks-exponential</tag>
 <title>Exponential random graphs</title>
 
+
+<text>
+<q>Exponential</q> does not refer to the degree distribution but to the model construction!
+</text>
+
+<text>
+A method for generating an ensemble of graphs with N nodes
+</text>
+
+<text>
+1. Select a set of informative network measures (e.g. number of edges, number of triangles, degree distribution)
+</text>
+
+<text>
+2. Then generate an ensemble of graphs that have the those measures using the probability
+</text>
+
+<equation>
+P(G) \sim exp \left( \sum_i \beta_i \epsilon_i \right)
+</equation>
+
+<text>
+where <eqn>\beta_i</eqn> are parameters and <eqn>\epsilon_i</eqn> are network measures.
+</text>
+
+<text>
+3. Estimate the coefficients such that an observed network corresponds to the most likely graph in that ensemble – maximum likelihood estimation 
+</text>
+
+<text>
+Assumption: Markov graphs: edges that do not share a node are independent
+</text>
+
+<text>
+cf. <cite>Newman 2003</cite>, Section V
+</text>
+
 <text>
 cf. <cite>Newman 2010</cite>, Section 15.2
+</text>
+
+<text>
+cf. Frank &amp; Strauss 1986
 </text>
 
 </document>

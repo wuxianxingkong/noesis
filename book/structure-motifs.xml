@@ -230,6 +230,25 @@ A measure of network modularity characterizes the balance of within-module and b
 <tag>similarity-assortativity</tag>
 <title>Assortativity</title>
 
+
+<text>
+Mixing in social networks
+- assortative: people prefer to associate with others who are like them
+- disassortative: people prefer to associate with others who are different
+
+In general mixing is defined in terms of node attributes
+
+Mixing with respect of node degree:
+- assortative: high degree nodes tend to be connected to high degree nodes
+- disassortative: high degree nodes tend to be connected to low degree nodes
+
+Focus on edge i, denote the excess in-degree of its starting point with ji and the excess out-degree of its endpoint with ki
+Mixing is quantified by the assortativity coefficient characterizing the correlation between ji and ki over all i
+Similar to a Pearson correlation coefficient
+- Positive correlation - assortative,
+- Negative correlation - disassortative
+</text>
+
 <text>
 A measure based on degree <cite>Newman 2002</cite>, defined as the correlation coefficient for the degrees of neighboring nodes, indicates whether edges tend to link nodes of similar degrees (positive assortativity) or high-degree nodes preferentially connect to low-degree nodes (negative assortativity).
 </text>
@@ -239,6 +258,15 @@ A measure based on degree <cite>Newman 2002</cite>, defined as the correlation c
 ++ A wide range of empirical networks – whether biological, technological, information-related or linguistic
 – generically exhibit important degree-degree anticorrelations (i.e., they are disassortative), the only exceptions
 usually being social ones, which tend to be positively correlated (assortative).
+
+Social networks tend to be assortative, technological and biological networks tend to be disassortative.
+
+Mechanisms that influence mixing properties
+In social relationships there is a documented attraction between individuals of similar temperament
+- Group affiliations can create assortativity
+On the WWW or Internet service relationships (directories, connectivity providers) can create disassortativity
+- Constraints on the network assembly process (e.g. no multiple edges among pairs of nodes) can cause disassortativity
+[M. E. J. Newman, Phys. Rev. E (2003)]
 </text>
 
 </document>

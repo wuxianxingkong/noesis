@@ -96,9 +96,10 @@ GUESS is an exploratory data analysis and visualisation tool for graphs and netw
 ++ Cytoscape: An Open Source Platform for Complex Network Analysis and Visualization, ++ http://www.cytoscape.org/
  Visualisations can be hand edited and may be exported in all the useful formats PDF, EPS, SVG, PNG, JPEG, and BMP. 
 
+
 ++ yFiles, from yworks http://www.yworks.com/, a commercial java library of algorithms and components for the visualisation and analysis of networks. Used by both visone and yed,
 - http://visone.info/ A software tool intended for research and teaching in social network analysis.
-- yED, free multiplatform graph editor, from yWorks
+- yED, free multiplatform graph editor, from yWorks (++ yED editor is free but yFiles is pricey)
 </text>
 
 </document>

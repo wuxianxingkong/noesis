@@ -25,6 +25,10 @@ in some manner intended to reflect growth processes that
 might be taking place on the real networks, and it is these
 growth processes that lead to the characteristic structural
 features of the network.
+
+In random networks, the average degree gives the characteristic scale (value) of the degree.
+In scale-free networks: Large variability, the average degree not informative, no characteristic scale for the degree (hence "scale-free").
+Scale-free
 </text>
 
 <text>
@@ -130,6 +134,11 @@ small increments. Over time, fitter individuals emerge from weaker ancestors.
 
 
 L: Preferential attachment describes an emergent process—that is, a process that results in a network topology that is not apparent by examination of the local algorithm, or microrule. It is not at all obvious that the result of repeated application of preferential attachment will result in a network with a degree distribution that follows a power law. This realization would come 70 years later, when A.-L. Barabasi and R. Albert showed how to create a scale-free network by repeated application of preferential attachment.
+
+Mechanisms for preferential attachment
+1. Copying mechanism: select a node and an edge of this node + attach to the endpoint of this edge
+2. Walking on a network: the new node connects to a node, then to every first, second... neighbor of this node
+3. Attaching to edges: select an edge attach to both endpoints of this edge
 </text>
 
 
@@ -416,6 +425,8 @@ Krapivsky et al. also consider another important generalization of the model, to
   - For \gamma &gt; 1 there is a \condensation" phenomenon, in which a single vertex gets a finite fraction of all the connections in the network
   - For \gamma &gt; 2, there is a non-zero probability that this \gel node" will be connected to every other vertex on the graph. The remainder of the vertices have an exponentially decaying degree distribution.
 
+
+
 Another variation on the basic growing network theme is to make the mean degree change over time, Dorogovtsev and Mendes
 [Dorogovtsev, S. N. and Mendes, J. F. F., Effect of the accelerating growth of communications networks on their structure, Phys. Rev. E 63, 025101 (2001).]
 [Dorogovtsev, S. N. and Mendes, J. F. F., Accelerated growth of networks, in S. Bornholdt and H. G. Schuster
@@ -448,6 +459,35 @@ Bianconi and Barabasi have proposed an extension of the Barabasi{Albert model th
 Alternative formation model: <cite>Alava and Dogorotsev 2005</cite>
 </text>
 
+
+
+
+
+
+<document>
+<tag>formation-barabasi-albert</tag>
+<title>Klemm-Eguiluz model</title>
+
+A model with high clustering coefficient
+- Each node of the network can be either active or inactive.
+- There are only m active nodes in the network at any instance.
+
+1. Start with m active, completely connected nodes
+2. At each timestep add a new node (active) that connects to m active nodes.
+3. Deactivate one active node
+
+p_d(k_i) \propto (a+k_j)^-1
+
+\Pi k \approx a + k
+
+p(k) \approx k_{-2-a/m}
+
+[K. Klemm and V. Eguiluz, Phys. Rev. E 65, 036123 (2002)]
+
+
+</document>
+
+
 </document>
 
 <!-- Properties -->
@@ -455,6 +495,14 @@ Alternative formation model: <cite>Alava and Dogorotsev 2005</cite>
 <document>
 <tag>scale-free-properties</tag>
 <title>Structural properties of scale-free networks</title>
+
+<text>
+- The degree distribution is a decreasing function, usually a power-law
+- The betweenness centrality distribution is a power law as well
+* Both indicate heterogeneity and the existence of hubs.
+- The distances scale logarithmically with the network size
+- The clustering coefficient does not seem to depend on the network size CC \propto \langle d \rangle
+</text>
 
 <document>
 <tag>scale-free-properties-degree</tag>
@@ -1100,10 +1148,31 @@ L: As density increases, the degree of hub of a scale-free network also increase
 </text>
 
 <text>
-Empirical approximation <cite>Lewis 2009</cite>: In scale-free networks, cluster coefficient is bounded by \Delta m /(d -\Delta m) for low values of \Delta m (\Delta m &lt;&lt; n). 
+Empirical approximation <cite>Lewis 2009</cite>: 
+In scale-free networks, cluster coefficient is bounded by \Delta m /(d -\Delta m) for low values of \Delta m (\Delta m &lt;&lt; n). 
 </text>
 
+<text>
+Theoretical
+</text>
 
+<equation>
+CC = \frac {\langle d \rangle} {n} \left( \frac {\langle d^2 \rangle - \langle d \rangle^2} {\langle d \rangle^2} \right)^2
+</equation>
+
+<text>
+The second term depends on the variance of the degree distribution
+</text>
+
+<text>
+When <eqn>p(k) \sim k^{-\gamma}</eqn> for <eqn>\gamma &lt; 7/3</eqn>, the clustering coefficient increases with network size:
+</text>
+
+<equation>
+CC(SF) \approx n ^{- \frac{3\gamma - 7}{\gamma - 1}}
+</equation>
+
+[M. E. J. Newman, SIAM Review 45, 167 (2003)]
 
 </document>
 
@@ -1127,6 +1196,19 @@ Empirical approximation <cite>Lewis 2009</cite>: In scale-free networks, cluster
 <text>
 Many real-world networks have been shown to obey a power-law degree distribution rather than a binomial or Poisson distribution. 
 
+Expectations:
+- Connectedness: \gamma \leq 2, \lambda \geq \ln n
+- Giant connected component \gamma \leq 3.47, \lambda \geq 1
+[W. Aiello, F. Chung, L. Lu, Proc. 32th ACM Theor. Comp., 171 (2000)]
+[M. E. J. Newman, S. H. Strogatz, D. J. Watts, Phys. Rev. E 64, 026118 (2001)]
+
+There is no universal exponent characterizing all networks.
+2. The origins of the preferential attachment might be systemdependent.
+3. It is generally true that networks evolve.
+4. Modeling real networks:
+	- identify the processes that play a role
+	- measure their frequency from real data
+	- develop dynamical models that capture these processes
 
 
 Barabasi (Barabasi, 2001, 2002a, 2002b) and others <cite>Newman 2003</cite> (Adamic, 2000) have extensively studied networks with fat-tail distributions and found many applications of their theories in physical and biological sciences.
@@ -1162,6 +1244,8 @@ distribution of species among genera all obey a power law.
 1999:
 + M. Faloutsos, P. Faloutsos, and C. Faloutsos observed a power law in their graph models of the Internet
 + Albert, Jeong, and Barabasi obtained similar results for the WWW
+[R. Albert, H. Jeong, A.-L. Barabási, Nature 401, 130 (1999)]
+
 
 Many critical infrastructure systems such as the Internet, railroads, and
 gas/oil pipeline systems have been shown to be scale-free 
@@ -1183,6 +1267,7 @@ WWW
 INTERNET 
 
 L: <cite>Broder et al. 2000</cite> analyzed over 200 million servers in the Internet’s Webgraph, and discovered its giant component, called the giant strongly connected component (GSCC). The Internet’s Webgraph is shaped like a “bowtie”—44 million nodes (21%) are predominantly incoming nodes that send messages such as email; another 44 million are predominantly outgoing nodes that receive messages. A larger cluster, 56 million (27%) make up the GSCC.
+[A. Broder et al., Comput. Netw. 33, 309 (1999)]
 
 L: In terms of small-world effect (short average path length), GSCC is a small-world
 network. The average path length (out of 56 million nodes in the GSCC) reported by
@@ -1201,6 +1286,8 @@ L: GSCC path length is a consequence of hub topology (scale-free), not random re
 While clustering is modest in the domain-level Webgraph, Internet clustering is higher than expected of a purely random network. Yook et al. place the cluster coefficient of the domain level Internet in the range 0.18–0.30, versus 0.001 for an equivalent random network (Albert, 2002).
 </text>
 
+[R. Govindan, H. Tangmunarunkit, IEEE Infocom (2000)]
+[A.-L. Barabási, R. Albert, Science 286, 509 (1999)]
 
 
 <text>

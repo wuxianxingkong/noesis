@@ -21,6 +21,21 @@
 
 
 <text>
+e.g.
+- nodes: individuals
+- edges: social interaction
+• “six degrees of separation”: the social distance between people is small
+
+++
+actor collaboration 
+- nodes: actors
+- edges: cast jointly
+scientific coauthorship
+- nodes: scientists
+- edges: wrote a paper
+</text>
+
+<text>
 The first use of the <q>social network</q> term is often attributed to John Arundel Barnes <cite>Barnes 1954</cite>, an anthropologist who conducted a field study to analyze the social structure and decision-making processes in Bremnes, a small island in western Norway. Since then, social networks denote patterns of ties that encompass many concepts used by the social sciences, including bounded groups (e.g., tribes or families) and social categories (e.g., gender or ethnicity).
 </text>
 
@@ -81,6 +96,11 @@ W: Facebook's data team released two papers in November 2011 which document that
 
 <text>
 WWW: 
+- nodes: webpages
+- edges: hyperlinks - directed
+= the largest network with topological information available.
+[S. Lawrence, C. L. Giles, Nature 400, 107 (1999).]
+Structure of a website [M. E. J. Newman and M. Girvan, Phys. Rev. E (2004]
 
 L: The structure of the Internet and WWW: an emergent property of the decentralized Internet - that it had emerged without central planning into a structure consisting of a small number of extremely popular sites called hubs, and a large number of "unpopular" sites with few links (a scale-free network).
 
@@ -163,6 +183,9 @@ Zoltán Gyöngyi, Hector Garcia-Molina. Link Spam Alliances. 31st International Co
 
 ref. [D.J. de S. Price: "Networks of scientific papers", Science 149:150, 1965]
 
+++ Semantic associations between terms
+[Steyvers, M, J. B. Tenenbaum (2005). Cognitive Science 29(1): 41-78.]
+Based on the University of South Florida Word Association, Rhyme and Word Fragment Norms
 </text>
 
 
@@ -180,6 +203,16 @@ ref. [D.J. de S. Price: "Networks of scientific papers", Science 149:150, 1965]
 
 <text>
 INTERNET: 
+
+Router-level
+- nodes: routers, hosts
+- edges: wires, cables
+- undirected
+
+Domain-level
+- nodes: domains (ISPs)
+- edges: gateway protocols
+- undirected
 
 L: The structure of the Internet and WWW: an emergent property of the decentralized Internet - that it had emerged without central planning into a structure consisting of a small number of extremely popular sites called hubs, and a large number of "unpopular" sites with few links (a scale-free network).
 
@@ -201,12 +234,50 @@ Protocols for Computer Communication in Cambridge, MA, USA, ACM Press, New York,
 <title>Biological networks</title>
 
 <text>
-++ <cite>Oltvai and Barabasi 2002</cite> <cite>Barabasi and Oltvai 2004</cite> <cite>Guimera and Nunes 2005</cite> <cite>Boccaletti et al. 2009</cite>
-<cite>Barabasi et al. 2011</cite>
+Cellular interaction networks: signal transduction, gene regulation, metabolism
+</text>
+
+<text>
+++ Life's complexity pyramid  <cite>Oltvai and Barabasi 2002</cite>
+
+++ <cite>Barabasi and Oltvai 2004</cite> <cite>Guimera and Nunes 2005</cite> <cite>Boccaletti et al. 2009</cite>
+++ <cite>Barabasi et al. 2011</cite>
 
 + A.-L. Barabási and Z. N. Oltvai. Network Biology: Understanding the Cell's Functional Organization. Nature Reviews Genetics 5, 101-113 (2004)
 + Kevin Bleakley, Gérard Biau and Jean-Philippe Vert. Supervised reconstruction of biological networks with local models. ISMB/ECCB 2007.
 
+
+</text>
+
+<text>
+GENOME: protein-gene interactions
+
+Regulatory networks:
+- nodes: genes, proteins
+- edges: translation or regulation (activating or inhibiting)
+
+PROTEOME: protein-protein interactions
+
+
+METABOLISM: Bio-chemical reactions
+- Metabolism: sum of chemical processes by which energy is stored or released.
+-Metabolic pathway: sequence of enzyme reactions.
+- nodes: metabolites
+- edges: reactions
+
+Reaction networks
+- nodes: substrates, enzymes
+- edges: chemical reactions
+</text>
+
+<text>
+Map of yeast proteinprotein interactions, by Hawoong Jeong
+</text>
+<text>
+Food webs
+- nodes: species
+- edges: predator-prey relationships
+- directed edges
 </text>
 
 </document>

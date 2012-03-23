@@ -17,6 +17,12 @@ Many textbooks describe at least part of the material mentioned in this chapter.
 
 </text>
 
+<text>
+Libraries: LEDA, boost, pygraphlib
+++ LEDA: A Platform for Combinatorial and Geometric Computing, by Kurt Mehlhorn and Stefan Näher
+++ NetworkX - Python graph library, https://networkx.lanl.gov/
+</text>
+
 
 <text>
 <cite>Grama et al. 2003</cite> includes a chapter on parallel graph algorithms.

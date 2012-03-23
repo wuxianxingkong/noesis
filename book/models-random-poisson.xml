@@ -16,8 +16,9 @@ Purely random networks were among the earliest studied networks, despite the fac
 </text>
 
 <text>
-L: Solomonoff and Rappaport were the first to apply the ideas of epidemics to RANDOM networks (Solomonoff, 1951)
-[Solomonoff, R. and A. Rapoport, Connectivity of random nets, Bull. Math. Biophys. 13:107-117 (1951).]
+L: Solomonoff and Rappaport were the first to apply the ideas of epidemics to RANDOM networks and they proposed the Gilbert model of random graphs, as it is known since it was rediscovered by E. N. Gilbert in 1959 
+[Ray L. Solomonoff and Anatol Rapoport, Connectivity of random nets, Bulletin of Mathematical Biophysics 13:107-117 (1951).]
+[Ray L. Solomonoff and Anatol Rapoport, An exact method for the computation of the connectivity of random nets, Bulletin of Mathematical Biophysics 14:153 (1952).]
 </text>
 
 <text>
@@ -230,6 +231,11 @@ extremely rare, but the possibility exists)
 <tag>random-poisson-degree</tag>
 <title>Degree distribution</title>
 
+
+<text>
+The degree distribution in random graphs completely describes their architecture since links are independent and even connected nodes are statistically independent. Because of this, random graphs are <term>uncorrelated network</term>s and the absence of correlation between node degrees allows the factorization of joint distributions (i.e. the probability that a node has degree x and another one has degree y is just P(x,y)=p(x)p(y)).
+</text>
+
 <text>
 The degree distributions obtained by by both Gilbert and ER generation algorithms obey a binomial distribution, which can be approximated by a Poisson distribution for large networks (n &gt;&gt; 1), since the binomial distribution is asymptotically equal to the Poisson distribution for
 very large m. 
@@ -242,8 +248,9 @@ Let \lambda the average degree  from the degree distribution
 </text>
 
 <equation>
-\lambda = \langle d \rangle = 2m/n
+\lambda = \langle d \rangle = 2m/n \approx p (n-1)
 </equation>
+
 
 <text>
 According to the ER generation procedure, each node receives an average of <eqn>\lambda</eqn> connections out of <eqn>m</eqn> links.
@@ -338,10 +345,29 @@ Named after the French mathematician Siméon-Denis Poisson (Pithiviers, Loiret, 2
 ++ Figure: @L: Gilbert and ER distributions are similar, but the anchored network distribution is slightly skewed to the left, and has a slightly smaller variance. This bias is a consequence of the anchored ER generation procedure, which purposely connects all nodes to at least one other node, which makes the resulting networks "almost" random.
 </text>
 
+
+
+<document>
+<tag>random-poisson-neighbor</tag>
+<title>Neighbor degree distribution</title>
+
+<text>
+Let the number of nodes with degree <eqn>d</eqn> be <eqn>n(d)</eqn>. Then <eqn>n = \sum_d n(d)</eqn> and the total degree of the graph is <eqn>\sum_d d n(d) = n \lambda</eqn>, since <eqn>n(d)</eqn> nodes of degree <eqn>d</eqn> connect to <eqn>d n(d)</eqn> nodes. 
+</text>
+
+<text>
+Starting from any node in the network, the frequency with which one of its neighbors chosen at random will have degree <eqn>d</eqn> is <eqn>d n(d) / n \lambda</eqn>. In terms of probabilities, the probability that a randomly-chosen neighbor has degree <eqn>d</eqn> equals <eqn>d p(d) / \lambda</eqn>, where <eqn>\lambda = \langle d \rangle</eqn>. 
+</text>
+
+<text>
+In other words, the degree distribution of the neighbors is different from the degree distribution of the nodes in a random network. The average degree of a neighbor will be <eqn>\langle d^2 \rangle / \langle d \rangle</eqn>, which is greater than the network average degree <eqn>\langle d \rangle</eqn>.
+</text>
+
+<text>
+The above result indicates that, even on random networks, your friends will tend to have more friends than you.
+</text>
+
 </document>
-
-
-
 
 <document>
 <tag>random-poisson-entropy</tag>
@@ -401,6 +427,10 @@ The key result from this section is that the entropy of a random network is a fu
 </document>
 
 
+</document>
+
+
+
 <document>
 <tag>random-poisson-diameter</tag>
 <title>Network diameter</title>
@@ -423,19 +453,6 @@ Albert, R. and A.-L. Barabasi, Statistical mechanics of complex networks, Rev. M
 [Chung and Lu, Adv. Appl. Math 26, 257 (2001)] derived an approximation for the distance between nodes in a random network with average node degree <eqn>\lambda</eqn>, by assuming that the number of nodes reached along a path from arbitrary node to another node is approximately <eqn>\lambda^D = n</eqn>. Since <eqn>\lambda</eqn> nodes can be reached in 1 hop, <eqn>\lambda^2</eqn> in 2 hops, <eqn>\lambda^3</eqn> in 3 hops, and so on, until n nodes are reached in <eqn>\lambda^D</eqn> hops.
 </text>
 
-<text>
-- nr. of first neighbors: <eqn>n_1 \approx \lambda</eqn>
-- nr. of second neighbors: <eqn>n_2 \approx \lambda^2</eqn>
-...
-</text>
-
-<text>
-... estimate maximum distance:
-</text>
-
-<equation>>
-1 + \sum_{i=1}^{D} \lambda^i = n
-</equation>
 
 <text>
 Solving for <eqn>D</eqn>, we obtain the network diameter
@@ -466,7 +483,7 @@ D = \frac{ \log n - \log \lambda }{ \log(\lambda-1) + 1 }
 
 
 <document>
-<tag>random-poisson-properties</tag>
+<tag>random-poisson-path-length</tag>
 <title>Average path length</title>
 
 
@@ -492,9 +509,44 @@ falls off as density increases up to 100%.
 The average path length of a uniformly random network is proportional to its diameter, and so <eqn>D</eqn> could be used as a relatively good approximation for the average path length, as 
 </text>
 
-<equation>
-L \approx D - 1 
+<text>
+Since there is a small number of cycles in a random network (more on that below, when we discuss their clustering coefficients), we can make use of the local tree-like structure of random graphs
+</text>
+
+<text>
+- nr. of first neighbors: <eqn>n_1 \approx \lambda</eqn>
+- nr. of second neighbors: <eqn>n_2 \approx \lambda^2</eqn>
+- ... at maximum distance:
+</text>
+
+<equation>>
+1 + \sum_{i=1}^{D} \lambda^i = n
 </equation>
+
+<text>
+If we ignore the presence of cycles, we can assume that <eqn>n \approx \lambda^D</eqn> for large random networks and also that <eqn>n \approx \lambda^L</eqn>, being <eqn>L</eqn> the average path length in the network. Therefore,
+</text>
+
+<equation>
+L \approx D 
+</equation>
+
+<text>
+or, equivalently,
+</text>
+
+<equation>
+L \approx \frac{ \log n }{ \log \lambda } 
+</equation>
+
+<text>
+This formal result is valid for all uncorrelated networks and can be achieved using a different route. The average branching of a node is the average of the number of connections at the end of a randomly chosen link, minus one (the link itself). Since that average is given by the neighbor degree distribution, we know that the average branching will be <eqn>\langle d^2 \rangle / \langle d \rangle - 1</eqn>. But, for Poisson distributions <eqn>\langle d^2 \rangle - \langle d \rangle = \langle d^2 \rangle</eqn>. Therefore, the average branching for a random network is <eqn>\langle d \rangle = \lambda</eqn> and, given that <eqn>n \approx \lambda^L</eqn> ignoring cycles, we obtain the same approximation for the average path length in random networks:
+</text>
+
+<equation>
+L \approx \frac{ \log n }{ \log \lambda } 
+</equation>
+
 
 <text>
 Link efficiency... Random networks are highly efficient users of links because of the small-world effect.
@@ -594,6 +646,36 @@ Substituting in the expression for the clustering coefficient, we obtain:
 <equation>
 CC(v) = \frac { 2c } { \lambda (\lambda -1 ) } =  \rho = \frac { \lambda } { n }
 </equation>
+
+<text>
+i.e. the CC for an infinite sparse random network approaches zero
+</text>
+
+<text>
+From this result, we can estimate the number of triangles in a random network:
+</text>
+
+<equation>
+C_3 = \frac { \lambda^3} { 6 }
+</equation>
+
+<text>
+since <eqn>C_3</eqn> is one third of the clustering coefficient times the number of connected triples in the network. The number of connected triples of nodes is <eqn>n(\langle \lambda^2 \rangle - \langle \lambda \rangle)/2</eqn> and, for Poisson distributions, their first and second moments are related: <eqn>\langle \lambda^2 \rangle - \langle \lambda \rangle = \langle \lambda \rangle^2</eqn>. Surprisingly, this number does not depend on the network size.
+</text>
+
+<text>
+Similarly, we could also estimate the number of cycles of a given length, which does not depend on the network size either:
+</text>
+
+
+<equation>
+C_L = \frac { \lambda^L} { 2L }
+</equation>
+
+<text>
+when the cycle length <eqn>L</eqn> is smaller than the network diameter (expected to be of the order of <eqn>\log n</eqn>). When the network size increases, the neighborhood of a node is almost guaranteed to contain no cycles. However, it should also be noted that there might be many cycles whose length exceeds the network diameter (<eqn>\log C_L \sim n</eqn> when <eqn>L \gg \log n</eqn>). Hence, random networks are said to be <term>locally tree-like networks</term>. 
+</text>
+
 
 
 </document>
@@ -699,33 +781,47 @@ In addition, the number of paths running through the closest node varies accordi
 </document>
 
 
+
+<!-- Giant components -->
+
 <document>
 <tag>random-phase-transition</tag>
-<title>Phase transition</title>
+<title>The giant component</title>
 
 
 <text>
 Giant component...
 
-i.e. starting with a random graph that may contain multiple components, observe how a giant component forms. I
+i.e. starting with a random graph that may contain multiple components, observe how a giant component forms. 
 - uniformly random network so p and density are related by pm = n(n - 1)(density/2). 
 - Adding links at a constant rate increases density at a constant rate. At some point, the network is dense enough to form a giant component.
-=  a giant component “suddenly” forming as density increases.
-
+=  a giant component "suddenly" forming as density increases.
 </text>
 
+<text>
+When the average degree of a random network approaches 0, the random graph is disconnected
+When <text>\lambda</text> barely exceeds 1, the giant component suddenly emerges, a fact already observed by Solomonoff and Rapoport in 1951.  
+</text>
 
 <text>
 What is the probability that a graph with n nodes and connection probability p is connected?
 Some of these properties appear suddenly, at a threshold p_c(N)
 
-- If <eqn>p = c/n</eqn> with <eqn>c &lt; 1</eqn> (i.e. <eqn>p &lt; 1/n</eqn>), the graph contains only isolated trees and some cycles.
-- At <eqn>p = c/n</eqn> with <eqn>c = 1</eqn>, a giant component appears.
-
-
-The size of the giant cluster approaches n rapidly as c increases: s = (f(1)-f(c))n
-- The graph becomes connected if <eqn>\lim_{n \rightarrow \infty} \frac{p}{\ln n / n} \rightarrow \infty</eqn>
+- If <eqn>p = c/n</eqn> with <eqn>c &lt; 1</eqn> (i.e. <eqn>p &lt; 1/n</eqn>), the graph contains only isolated trees (with a small number of cycles).
+- At <eqn>p = c/n</eqn> with <eqn>c = 1</eqn>, a giant component appears (i.e. a large connected component containing a significant fraction of nodes).
 </text>
+
+<text>
+A component is considered to be giant when its number of nodes grows proportionally to the network size. 
+
+The appearance of the giant component is the most important structural change in a network, since many of its features will be affected by the existence of such a giant component.
+</text>
+
+
+<!-- Phase transitions -->
+
+<comment>
+<title>Phase transitions</title>
 
 <text>
 L: The same fundamental phenomenon observed in different fields: Phase transition 
@@ -754,13 +850,57 @@ products that suddenly “catch on”).
 
 <text>
 ++ <cite>Albert and Barabasi 2002</cite> provide succinct surveys of transitions of interest in physical and biological science. 
-
-e.g. <cite>Broder et al. 2000</cite> analyzed over 200 million servers in the Internet’s Webgraph, and discovered its giant component, called the giant strongly connected component (GSCC)... The Internet topology, however, is not random, but scale-free.
 </text>
 
 <text>
-Percolation theory
+ p* is the tipping point...
+</text>
 
+</comment>
+
+<!-- Component sizes -->
+
+
+<text>
+When the average degree <eqn>\lambda</eqn> is greater than one, the network will contain a giant component and potentially many smaller connected components (as the ones that appear when there are more nodes than links). 
+</text>
+
+<text>
+The size of the giant cluster approaches the size of the complete network as the average node degree increases: 
+
+- Below this threshold, no giant component forms.
+
+- Exactly at the critical point, all the biggest connected components are of size <eqn>n^{2/3}</eqn>, which is much smaller than <eqn>n</eqn> and much bigger than <eqn>\log n</eqn>.
+
+- Above this threshold, a complex giant component forms (with a limited number of cycles, as you know from our study of the properties of random networks). 
+
+	- Near the critical point, s = 2(\lambda-1)n
+
+	- Even for very sparse networks, e.g. with <eqn>\lambda = 5</eqn>, the relative size of the giant component is above 99%. 
+
+	- The graph becomes connected if <eqn>\lim_{n \rightarrow \infty} \frac{p}{\ln n / n} \rightarrow \infty</eqn>
+</text>
+
+
+<text>
+The theoretical study of the size of connected components in random networks has shown that their size follows a power law <eqn>P(s) \sim s^{-5/2}</eqn> at the critical point, whereas their distribution has an exponential decay in their normal phase (many small connected components, mostly of one or two nodes) and also in their phase with a giant component.
+</text>
+
+<text>
+What is the probability that a randomly-chosen node is in a connected component of <eqn>s</eqn> nodes? This probability <eqn>P'(s)</eqn>is proportional to <eqn>sP(s)</eqn>. At the critical point, <eqn>P'(s) \sim s^{-3/2}</eqn> and the average size <eqn>\langle s \rangle'</eqn> of the connected component diverges. The analytical form of such size is  <eqn>\langle s \rangle' \approx 1/ | \lambda - 1 |</eqn> and is analogous to the Curie-Weiss law for susceptibility in Physics.
+</text>
+
+
+<!-- Percolation theory -->
+
+<comment>
+<title>Percolation theory</title>
+
+<text>
+Condensed-matter physicists would establish an analogy with percolation clusters: remove some nodes from a lattice until it gets disconnected below some critical value (the percolation threshold). For them, the birth of a giant component is an example of a continuous phase transition (i.e. there is no abrupt change of the relative size of the giant component at the critical point).
+</text>
+
+<text>
 In percolation theory, p* is called the percolation threshold.
 
 L: e.g. Bond percolation is modeled as a two-dimensional grid with pm links. Links are constrained by a flat 2D surface, so each node can connect only along NEWS directions (=north, east, west, south); hence m is bounded by 4n, and so pm \leq 4n (density). Starting with p = 0, p increases until a giant connected component emerges. If it is possible to reach every other node from any node, the entire network is one giant component.
@@ -769,12 +909,15 @@ L: Materials also transition the other way—from structured to random. Consider a
 
 In certain restricted cases (Cayley graphs), p* = 1/n. 
 
-Below this threshold, no giant component forms. At this threshold, a giant cluster forms of size n^{2/3}, and above this threshold, a complex giant component forms with cycles.  p* is the tipping point
 </text>
+</comment>
 
 
 </document>
 
+
+
+<!-- Real world -->
 
 <document>
 <tag>random-real-world</tag>
@@ -787,8 +930,23 @@ Empirical analysis: Determine L, CC and P(k) for a random graph with the same <e
 - Their degree distribution is often a power law.
 </text>
 
+<text>
+e.g.
+Internet: half a million routers with average degree 10 and CC=0.1. If it were a random network, CC \approx 10^{-5} <cite>Dogorotsev 2010</cite>
+
+e.g. 
+WWW <cite>Broder et al. 2000</cite> analyzed over 200 million servers in the Internet’s Webgraph, and discovered its giant component, called the giant strongly connected component (GSCC)... The Internet topology, however, is not random, but scale-free.
+
+</text>
+
+<text>
+Therefore, our answer to the question that appears in the title of this section should be <q>not really</q>. Despite this apparently discouraging conclusion, random graphs are more than toy models. Among other things, they help us explain some of the properties that are observed in real-world networks. And they will also serve as the baseline benchmark against which we will compare more sophisticated network models.
+</text>
 
 </document>
+
+
+<!-- Bibliographic notes -->
 
 
 <document>

@@ -16,6 +16,47 @@ Affiliation networks (a.k.a. membership networks) are a special kind of two-mode
 e.g. Club membership, voluntary organizations, attendance to social events, sitting on a board of directors, countries belonging to treaty organiztions...
 </text>
 
+
+<text>
+Representation mechanism for hypergraphs:
+- When sets of elements have something in common (beyond pairwise associations)
+</text>
+
+<text>
+e.g. 
+
+bipartite networks such as...
+
+- directors sitting on Fortune 1000 boards
+
+- human disease network: 
+	nodes: human genetic disorders and all known disease genes
+	links: when mutations in a gene are involved in some disorder
+	goal: network analysis might uncover unknown relations
+[
+K.-I. Goh, M. E. Cusick, D. Valle, B. Childs, M. Vidal, A.-L. Barabási 
+The human disease network 
+Proceedings of the National Academy of Sciences 104:21, 8685 (2007).
+PNAS May 22, 2007 vol. 104 no. 21 8685-8690
+doi: 10.1073/pnas.0701361104
+]
+
+tripartite hypergraphs:
+
+- tagged social networks, 
+	nodes: users + tags + photos (Flickr) or scientific papers (CiteULike)
+	hyperedges = (user,tag,document)
+	+ three hyperedge distributions of different features: the user distribution decays more slowly 
+	(more tagging people than popular tags or documents!)
+[
+Vinko Zlatic, Gourab Ghoshal, Guido Caldarelli (2009)  
+Hypergraph topological quantities for tagged social networks.   
+Phys Rev E Stat Nonlin Soft Matter Phys 80: 3 Pt 2. Sep  
+http://link.aps.org/abstract/PRE/v80/p036118
+]
+	
+</text>
+
 <text>
 ++ Projection
 </text>

@@ -96,13 +96,28 @@ W: Facebook's data team released two papers in November 2011 which document that
 
 <text>
 WWW: 
-- nodes: webpages
-- edges: hyperlinks - directed
+- nodes: web pages
+- edges: hyperlinks - directed connections (references in web documents)
+++ up to 60% reciprocal connections (two web pages can cite each other, something more uncommon in scientific papers)
+[
+Jean-Pierre Eckmann and Elisha Moses:
+Curvature of co-links uncovers hidden thematic layers in the World Wide Web
+PNAS April 30, 2002 vol. 99 no. 9 5825-5829
+doi: 10.1073/pnas.032093399
+]
+
 = the largest network with topological information available.
+
+@ 1 trillion unique URLs indexed by Google on July 25th, 2008, just on the Surface Web (access to the Deep Web is restricted)
+i.e. unknown true size
+
 [S. Lawrence, C. L. Giles, Nature 400, 107 (1999).]
 Structure of a website [M. E. J. Newman and M. Girvan, Phys. Rev. E (2004]
 
 L: The structure of the Internet and WWW: an emergent property of the decentralized Internet - that it had emerged without central planning into a structure consisting of a small number of extremely popular sites called hubs, and a large number of "unpopular" sites with few links (a scale-free network).
+
+
+Origin: Tim Berners-Lee proposal of an hypertext system for CERN (European Laboratory for Particle Physics, Geneve, Switzerland)
 
 In 1999, the average number of incoming and outcoming links per web page was about eight, an extremely sparse network...
 
@@ -118,16 +133,37 @@ Lecture Notes in Computer Science, Vol. 1627, Springer-Verlag, Berlin, 1999.]
 
 1999 Albert, Jeong, Barabasi: Diameter of the WWW (at least, within a small part of the Web, the nd.edu domain from the University of Notre Dame)
 nd.edu with 325729 pages and 1469680 links
-average path length estimated to be 0.35 + 0.89 ln n
++ average path length estimated to be 0.35 + 0.89 ln n
++ clustering coefficient: 0.3 (ignoring the directedness of links)
 [Albert, R., H. Jeong, and A.-L. Barabasi, Diameter of the World Wide Web, Nature 401:130-131 (1999).]
++ taking into account the directedness of links: very few short loops as compared to random models
+[
+Ginestra Bianconi, Natali Gulbahce, and Adilson E. Motter:
+Local Structure of Directed Networks
+Phys. Rev. Lett. 100, 118701 (2008).
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.100.118701
+DOI:	10.1103/PhysRevLett.100.118701
+]
 
 
 2000 Broder, Kumar, Maghoul, Raghavan, Rajagopalan Stata, Tomkins, Wiener: Full Webgraph map of the WWW
 + Group of computer scientists from AltaVista, IBM, and Compaq (now part of HP)
 + the first to fully map the WWW as a Webgraph and discover its structure
-+ Diameter around 16 for the 200M pages indexed by AltaVista at the time, i.e. a small world
+	- Giant weakly-connected component composed of a giant strongly-connected component (30%), a giant out-component, and a giant in-component, plus tendrils (25%)
++ Average directed path length around 16 for the 200M pages indexed by AltaVista at the time, i.e. a small world
++ Maximum separation (diameter): about 1000 !, not so small
++ Average in- and out-degree: 7.22 in May 1999, 7.85 in October 1999
++ Power law distribution with exponent 2.1 for in-degrees and 2.7 for out-degrees (range much narrower for out-degrees, obviously)
+	- Doubts about the scale-free structure w.r.t. out-degrees
+	- Scale-free network w.r.t. the in-degree distribution
 [Broder, A., S. R. Kumar, F. Maghoul, P. Raghavan, S. Rajagopalan, R. Stata, A. Tomkins, and
 J. Wiener, Graph structure in the web, Comput. Networks 33(1-6):309-320, (2000).]
+[
+D. Donato, L. Laura, S. Leonardi, S. Millozzi. 
+Large Scale properties of the Webgraph.
+European Physical Journal B, Vol. 38 (March 2004), pp. 239-243, 
+doi:10.1140/epjb/e2004-00056-6
+]
 
 2000: Power law observed in the WWW
 [Adamic, L. A. and B. A. Huberman, Power-law distribution of the World Wide Web, Science 287:2115 (2000).]
@@ -210,29 +246,50 @@ Based on the University of South Florida Word Association, Rhyme and Word Fragme
 
 
 <text>
-INTERNET: 
+INTERNET as a transportation network (rather than a content network such as the WWW)
 
-Router-level
-- nodes: routers, hosts
-- edges: wires, cables
+Router-level 
+- nodes: routers, hosts (i.e. computers++) [billions of them]
+- edges: wires/cables and wireless connections
 - undirected
+++ the complete structure of this network has never been analyzed (it cannot be analyzed?)
 
-Domain-level
-- nodes: domains (ISPs)
-- edges: gateway protocols
+AS level (autonomous systems)
+- nodes: autonomously-administered subnetworks (ISPs) [tens of thousands, including millions of routers]
+- edges: gateway protocols (e.g. BGP), 2 ASs are connected by a link when two of their routers are directly connected
 - undirected
+++ geographical mapping is only partially possible (so it is often ignored)
 
-L: The structure of the Internet and WWW: an emergent property of the decentralized Internet - that it had emerged without central planning into a structure consisting of a small number of extremely popular sites called hubs, and a large number of "unpopular" sites with few links (a scale-free network).
+1969 Original ARPANET with just 4 linked nodes @ University of California at Los Angeles, Stanford Research Institute, University of California at Santa Barbara, and the University of Utah
 
 1988 Waxman: First graph model of the Internet
 L: Waxman proposed a static graph theory model of the Internet in 1988 (Waxman, 1988). 
 [Waxman, B. M., Routing of multipoint connections, IEEE J. Select. Areas Commun. 6(9):1617-1622 (1988).]
 
-1999 Faloutsos brothers: Power law observed in Internet
-[Faloutsos, M., P. Faloutsos, and C. Faloutsos, On power-law relationships of the Internet
-topology, Proc. ACM SIGCOMM '99 Conf. Applications, Technologies, Architectures, and
-Protocols for Computer Communication in Cambridge, MA, USA, ACM Press, New York,
-1999, pp. 251-262.]
+1999 Faloutsos brothers: Power law observed in Internet at the AS level
+- for a small fraction of the Internet
+[
+Faloutsos, M., P. Faloutsos, and C. Faloutsos, 
+On power-law relationships of the Internet topology, 
+Proc. ACM SIGCOMM '99 Conf. Applications, Technologies, Architectures, and Protocols for Computer Communication 
+in Cambridge, MA, USA, ACM Press, New York, 1999, pp. 251-262.
+]
++ for a larger AS network (11000 ASs with 4.2 connections on average,October/November 1999) 
++ IR map (230000 Internet routers with 2.8 average degree, May 2001)
+[
+Romualdo Pastor-Satorras, Alexei Vázquez, and Alessandro Vespignani:
+Dynamical and Correlation Properties of the Internet
+Phys. Rev. Lett. 87, 258701 (2001)
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.87.258701
+DOI:	10.1103/PhysRevLett.87.258701
+]
+[
+Alexei Vázquez, Romualdo Pastor-Satorras, and Alessandro Vespignani:
+Large-scale topological and dynamical properties of the Internet
+Phys. Rev. E 65, 066130 (2002)
+URL:	http://link.aps.org/doi/10.1103/PhysRevE.65.066130
+DOI:	10.1103/PhysRevE.65.066130
+]
 </text>
 
 </document>
@@ -243,6 +300,30 @@ Protocols for Computer Communication in Cambridge, MA, USA, ACM Press, New York,
 
 <text>
 Cellular interaction networks: signal transduction, gene regulation, metabolism
+</text>
+
+
+<text>
+2000: Jeong, Tombor, Albert, Oltvai, and Barabasi studied the networks of metabolic chemical reactions for 43 simple organisms, 
+- small networks, from 200 to 800 nodes (chemical compounds)
+- 43 sparse directed graphs
++ in- and out-degree distributions, approximately scale-fee with exponent 2.2
++ the lower the exponent, the wider the range of degrees and the more
+[
+H. Jeong, B. Tombor, R. Albert, Z. N. Oltvai & A.-L. Barabási
+The large-scale organization of metabolic networks
+Nature 407, 651-654 (5 October 2000)
+doi:10.1038/35036627
+]
+
++ skewed metabolic reaction fluxes
+[
+E. Almaas, B. Kovacs, T. Vicsek, Z.N. Oltvai, A.-L. Barabási 
+Global organization of metabolic fluxes in the bacterium Escherichia coli 
+Nature 427, 839-843 (2004). 
+doi:10.1038/nature02289
+]
+
 </text>
 
 <text>
@@ -279,8 +360,29 @@ Reaction networks
 </text>
 
 <text>
-Map of yeast proteinprotein interactions, by Hawoong Jeong
+Map of yeast protein-protein interactions, by Hawoong Jeong
+[
+H. Jeong, S. P. Mason, A.-L. Barabási, Z. N. Oltvai 
+Lethality and centrality in protein networks 
+Nature 411, 41-42 (2001).
+doi:10.1038/35075138
+]
++ The yeast Saccharomyces cerevisiae
++ 1870 nodes (proteins) and 2240 undirected links (physical interactions between proteins)
++ Power law (exponent 2.5) with an exponential-cutoff
++ General architecture similar to the Internet at the AS-level
 </text>
+
+<text>
+The underlying network is not always easy to obtain...
+e.g. genome 
+- genes are expressed in terms of traits (features) of living organisms
+- the expression of a gene is quantitatively described by its expression level
+- the expression of a gene depends on other genes
+- correlations between expression levels are treated as interactions between genes, revealing their potential cooperation 
+++ suitable problem for weighted networks 
+</text>
+
 <text>
 Food webs
 - nodes: species

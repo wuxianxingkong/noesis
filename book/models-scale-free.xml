@@ -1189,6 +1189,20 @@ CC(SF) \approx n ^{- \frac{3\gamma - 7}{\gamma - 1}}
 <tag>scale-free-examples</tag>
 <title>Scale-free networks in the real world</title>
 
+
+<text>
+Measuring the exponent:
++ Use cumulative degree distributions to smooth fluctuations in the region of large degrees (i.e. note the inverse definition of the traditional cumulative probabilities)
+</text>
+
+<equation>
+P_{cumulative}(d) = \sum_{d' \geq d} P(d')
+</equation>
+
+<text>
+When <eqn>P(d) \sim d^{-\gamma}</eqn>, then <eqn>P_{cumulative} \sim d^{1-\gamma)</eqn>. Binning/partitioning could also be used...
+</text>
+
 <text>
 <cite>Clauset et al. 2009</cite> examine how power laws are best detected in practice: regression analysis of linear relationships in log-log scale (the standard method) results in many false positives (e.g. networks that might be better approximated by exponential or log-normal distributions). Sampling might also introduce false negatives <cite>Stumpf et al. 2005</cite>.
 </text> 
@@ -1264,7 +1278,7 @@ WWW
 </text>
 
 <text>
-INTERNET 
+WWW
 
 L: <cite>Broder et al. 2000</cite> analyzed over 200 million servers in the Internet’s Webgraph, and discovered its giant component, called the giant strongly connected component (GSCC). The Internet’s Webgraph is shaped like a “bowtie”—44 million nodes (21%) are predominantly incoming nodes that send messages such as email; another 44 million are predominantly outgoing nodes that receive messages. A larger cluster, 56 million (27%) make up the GSCC.
 [A. Broder et al., Comput. Netw. 33, 309 (1999)]
@@ -1284,6 +1298,154 @@ path length equal to 9 hops when measured at the Internet’s router level
 L: GSCC path length is a consequence of hub topology (scale-free), not random rewiring (small-world). 
 
 While clustering is modest in the domain-level Webgraph, Internet clustering is higher than expected of a purely random network. Yook et al. place the cluster coefficient of the domain level Internet in the range 0.18–0.30, versus 0.001 for an equivalent random network (Albert, 2002).
+
+WWW: 
+- nodes: web pages
+- edges: hyperlinks - directed connections (references in web documents)
+++ up to 60% reciprocal connections (two web pages can cite each other, something more uncommon in scientific papers)
+[
+Jean-Pierre Eckmann and Elisha Moses:
+Curvature of co-links uncovers hidden thematic layers in the World Wide Web
+PNAS April 30, 2002 vol. 99 no. 9 5825-5829
+doi: 10.1073/pnas.032093399
+]
+
+= the largest network with topological information available.
+
+@ 1 trillion unique URLs indexed by Google on July 25th, 2008, just on the Surface Web (access to the Deep Web is restricted)
+i.e. unknown true size
+
+[S. Lawrence, C. L. Giles, Nature 400, 107 (1999).]
+Structure of a website [M. E. J. Newman and M. Girvan, Phys. Rev. E (2004]
+
+L: The structure of the Internet and WWW: an emergent property of the decentralized Internet - that it had emerged without central planning into a structure consisting of a small number of extremely popular sites called hubs, and a large number of "unpopular" sites with few links (a scale-free network).
+
+
+Origin: Tim Berners-Lee proposal of an hypertext system for CERN (European Laboratory for Particle Physics, Geneve, Switzerland)
+
+In 1999, the average number of incoming and outcoming links per web page was about eight, an extremely sparse network...
+
+1999 Kleinberg, Kumar, Raghavan, Rajagopalan, Tomkins: Formalized model of WWW as "Webgraph"
++ We call such networks Webgraphs, because they use graph theory to understand the World Wide Web (WWW).
+(Kleinberg et al. 1999)
+[Kleinberg, J. M., S. R. Kumar, P. Raghavan, S. Rajagopalan, and A. S. Tomkins, The Web as a
+graph: Measurements, models, and methods, in T. Asano, H. Imai, D. Lee, S. Nakano, and
+T. Tokuyama, eds, Proc. 5th Annual Intnatl. Conf. Computing and Combinatorics, Tokyo,
+Lecture Notes in Computer Science, Vol. 1627, Springer-Verlag, Berlin, 1999.]
+
+
+
+1999 Albert, Jeong, Barabasi: Diameter of the WWW (at least, within a small part of the Web, the nd.edu domain from the University of Notre Dame)
+nd.edu with 325729 pages and 1469680 links
++ average path length estimated to be 0.35 + 0.89 ln n
++ clustering coefficient: 0.3 (ignoring the directedness of links)
+[Albert, R., H. Jeong, and A.-L. Barabasi, Diameter of the World Wide Web, Nature 401:130-131 (1999).]
++ taking into account the directedness of links: very few short loops as compared to random models
+[
+Ginestra Bianconi, Natali Gulbahce, and Adilson E. Motter:
+Local Structure of Directed Networks
+Phys. Rev. Lett. 100, 118701 (2008).
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.100.118701
+DOI:	10.1103/PhysRevLett.100.118701
+]
+
+
+2000 Broder, Kumar, Maghoul, Raghavan, Rajagopalan Stata, Tomkins, Wiener: Full Webgraph map of the WWW
++ Group of computer scientists from AltaVista, IBM, and Compaq (now part of HP)
++ the first to fully map the WWW as a Webgraph and discover its structure
+	- Giant weakly-connected component composed of a giant strongly-connected component (30%), a giant out-component, and a giant in-component, plus tendrils (25%)
++ Average directed path length around 16 for the 200M pages indexed by AltaVista at the time, i.e. a small world
++ Maximum separation (diameter): about 1000 !, not so small
++ Average in- and out-degree: 7.22 in May 1999, 7.85 in October 1999
++ Power law distribution with exponent 2.1 for in-degrees and 2.7 for out-degrees (range much narrower for out-degrees, obviously)
+	- Doubts about the scale-free structure w.r.t. out-degrees
+	- Scale-free network w.r.t. the in-degree distribution
+[Broder, A., S. R. Kumar, F. Maghoul, P. Raghavan, S. Rajagopalan, R. Stata, A. Tomkins, and
+J. Wiener, Graph structure in the web, Comput. Networks 33(1-6):309-320, (2000).]
+[
+D. Donato, L. Laura, S. Leonardi, S. Millozzi. 
+Large Scale properties of the Webgraph.
+European Physical Journal B, Vol. 38 (March 2004), pp. 239-243, 
+doi:10.1140/epjb/e2004-00056-6
+]
+
+2000: Power law observed in the WWW
+[Adamic, L. A. and B. A. Huberman, Power-law distribution of the World Wide Web, Science 287:2115 (2000).]
+
+1999 Adamic: Distance between .edu sites shown to be small-world
+[Adamic, L. A., The small world web, in Research and Advanced Technology for
+Digital Libraries, Lecture Notes in Computer Science 1696, S. Abiteboul and
+A.-M. Vercoustre, eds, Springer-Verlag, New York, 1999, 443-452.]
+
+
+2002 Levene, Fenner, Loizou, Wheeldon: Enhanced Webgraph model concluded structure of the WWW couldn't be explained by preferential
+attachment alone
+[Levene, M., T. Fenner, G. Loizou, and R. Wheeldon, A stochastic model for the evolution of
+the web, Comput. Networks 39:277-287 (2002).]
+</text>
+
+<text>
+INTERNET
+
+1999 Faloutsos brothers: Power law observed in Internet at the AS level
+- for a small fraction of the Internet
+[
+Faloutsos, M., P. Faloutsos, and C. Faloutsos, 
+On power-law relationships of the Internet topology, 
+Proc. ACM SIGCOMM '99 Conf. Applications, Technologies, Architectures, and Protocols for Computer Communication 
+in Cambridge, MA, USA, ACM Press, New York, 1999, pp. 251-262.
+]
++ for a larger AS network (11000 ASs with 4.2 connections on average,October/November 1999) 
++ IR map (230000 Internet routers with 2.8 average degree, May 2001)
+[
+Romualdo Pastor-Satorras, Alexei Vázquez, and Alessandro Vespignani:
+Dynamical and Correlation Properties of the Internet
+Phys. Rev. Lett. 87, 258701 (2001)
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.87.258701
+DOI:	10.1103/PhysRevLett.87.258701
+]
+[
+Alexei Vázquez, Romualdo Pastor-Satorras, and Alessandro Vespignani:
+Large-scale topological and dynamical properties of the Internet
+Phys. Rev. E 65, 066130 (2002)
+URL:	http://link.aps.org/doi/10.1103/PhysRevE.65.066130
+DOI:	10.1103/PhysRevE.65.066130
+]
+- Both of these studies concluded that degree distributions followed an imperfect power law with exponent \gamma = 2.1
+- Caveat: Incomplete maps obtained by sending packet probes from just a few sources
+(i.e. nodes with a small degree might not be mapped, resulting in more skewed distributions)
+[
+Aaron Clauset and Cristopher Moore
+Accuracy and Scaling Phenomena in Internet Mapping
+Phys. Rev. Lett. 94, 018701 (2005)
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.94.018701
+DOI:	10.1103/PhysRevLett.94.018701
+]
+[
+T. Petermann and P. De Los Rios 
+Exploration of scale-free networks: Do we measure the real exponents?
+Eur. Phys. J. B 38, 201-204 (2004) 
+DOI: 10.1140/epjb/e2004-00021-5
+]
+
++ Small path lengths: 3-4 average path length @ AS, about 9 @ IR
+
++ High clustering: 0.3 @ AS, 0.03 @ IR
+++ The clustering depends strongly on the node degree (CC decreases with degree increases)
+
++ Pastor-Satorras et al. also measured the average degree of the nearest neighbors of a node with k connections: d_{nn}(k)
+++ d_nn independent of k in uncorrelated networks
+++ d_nn dependent of k in the Internet (a correlation found in many real-world networks)
+
++ Evolution (denser networks?)
+++ Theoretical suggestion: 
+[
+S.N. Dorogovtsev and J.F.F. Mendes:
+Effect of the accelerated growth of communications networks on their structure, 
+Phys. Rev. E 63, 025101 1-4 (2001) (R); cond-mat/0009065. 
+]
+++ Empirical confirmation <cite>Leskovek et al. 2007b</cite>: Networks become denser with time, as the number of links grows faster than the number of nodes. This growing average degree also increases clustering and reduces network diameter (networks grow exponentially, yet their diameter are kept constant or even decrease).
+
 </text>
 
 [R. Govindan, H. Tangmunarunkit, IEEE Infocom (2000)]

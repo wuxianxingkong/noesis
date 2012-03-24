@@ -59,8 +59,10 @@ Two decades later (Kleinfeld, 2002).
 
 IDEA: Balance between the clustering property of a regular lattice and small-world properties of a random graph
 
-Begin with a low-dimensional regular lattice
-Randomly rewire some of the links with a probability p
+Begin with a low-dimensional regular lattice (which includes lots of triangles and, unlike a random network, will allow for hig clustering coefficients). For that to happen, the lattice must include triangles in its unit cells. Even when they do not have them, the resulting network is still a small-world (the clustering coefficient is a secondary effect of the original Watts-Strogatz model).
+
+Randomly rewire some of the links with a probability p, so that small-world features are included (i.e. long-range shortcuts that make the original lattice more compact)
+
 For small p a mostly regular graph is produced
 Small-world properties are obtained through the randomly wired links
 
@@ -212,10 +214,11 @@ Differences to Watts-Strogatz model
 - Easier to analyze as no distance is infinite
 </text>
 
-
+<text>
 ref.
-Newman, M. E. J., Models of the small world: A review, J. Stat. Phys. 101:819-841 (2000).
-Newman, M. E. J., Small worlds, the structure of social networks, J. Stat. Phys. 101(3/4)(2000).
+[Newman, M. E. J., Models of the small world: A review, J. Stat. Phys. 101:819-841 (2000).]
+[Newman, M. E. J., Small worlds, the structure of social networks, J. Stat. Phys. 101(3/4)(2000).]
+</text>
 
 </document>
 
@@ -562,12 +565,17 @@ the WS generative procedure. If the small-world effect is desired in a network w
 <title>Average path length</title>
 
 <text>
-... relatively low average path length... long-haul nature of random links... average path length declines at least as fast as a power
-law (the essence of the small-world effect)
+... relatively low average path length... 
+
+long-haul nature of random links... 
++ dramatic influence of shorcuts on the average path length
++ average path length declines at least as fast as a power law (the essence of the small-world effect)
 </text>
 
 <text>
 Path length rapidly declines as the rewiring probability, and thus the randomness, increases...
+
+With respect to the underlying lattice, the diameter of the small-world is expected to be np/\ln(np) times smaller than the lattice <cite>Dogorotsev 2010</cite>.
 </text>
 
 <text>
@@ -678,6 +686,7 @@ L(WS_2) = \frac { n } { 4 k  \sqrt[3]{q}} = \frac { n } { 4 k  \sqrt[3]{pm}} \pr
 <text>
 This power law tends to underestimate, while the Newman-Moore-Watts equation tends to overestimate path length.
 </text>
+
 
 
 <text>

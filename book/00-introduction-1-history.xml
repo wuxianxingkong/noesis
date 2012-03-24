@@ -225,6 +225,14 @@ Social Science. Ann Arbor: University of Michigan Press.]
 <tag>history-random-graphs</tag>
 <title>Random graphs</title>
 
+
+<text>
+L: Solomonoff and Rappaport were the first to apply the ideas of epidemics to RANDOM networks and they proposed the Gilbert model of random graphs, as it is known since it was rediscovered by E. N. Gilbert in 1959 
+[Ray L. Solomonoff and Anatol Rapoport, Connectivity of random nets, Bulletin of Mathematical Biophysics 13:107-117 (1951).]
+[Ray L. Solomonoff and Anatol Rapoport, An exact method for the computation of the connectivity of random nets, Bulletin of Mathematical Biophysics 14:153 (1952).]
+</text>
+
+
 <text>
 L: 1959 Gilbert: First generative procedure for random graphs
 + first constructing a complete graph and then deleting randomly selected links until reaching the desired number of links 
@@ -356,7 +364,9 @@ NOTE: In fact, Bacon does not even make the top 100 list of average personality 
 
 + a mathematician’s Erdös number is the distance from him or her to Erdös in a graph connecting pairs
 of mathematicians who have jointly authored a paper.
-NOTE: Paul Erdös published 1,500 papers during his career, most mathematicians have Erd¨os numbers of at most 4 or 5
+NOTE: Paul Erdös, well-known for his Diogenes-like austerity and his battered suitcases, published 1,500 papers during his career, with 507 coauthors. 
+Erdös has Erdös number 0, his coauthors have Erdös number 1, his coauthors' coauthors have Erdös number 2, and so on.
+The average distance from a mathematician to Erdös is around 5
 
 </text>
 

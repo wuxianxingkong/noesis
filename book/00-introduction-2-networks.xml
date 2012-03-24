@@ -114,14 +114,22 @@ graph: Measurements, models, and methods, in T. Asano, H. Imai, D. Lee, S. Nakan
 T. Tokuyama, eds, Proc. 5th Annual Intnatl. Conf. Computing and Combinatorics, Tokyo,
 Lecture Notes in Computer Science, Vol. 1627, Springer-Verlag, Berlin, 1999.]
 
+
+
+1999 Albert, Jeong, Barabasi: Diameter of the WWW (at least, within a small part of the Web, the nd.edu domain from the University of Notre Dame)
+nd.edu with 325729 pages and 1469680 links
+average path length estimated to be 0.35 + 0.89 ln n
+[Albert, R., H. Jeong, and A.-L. Barabasi, Diameter of the World Wide Web, Nature 401:130-131 (1999).]
+
+
 2000 Broder, Kumar, Maghoul, Raghavan, Rajagopalan Stata, Tomkins, Wiener: Full Webgraph map of the WWW
-+ Broder, Kumar, Maghoul, Raghavan, Rajagopalan, Stata, Tomkins, and Wiener were the first to fully map the WWW as a Webgraph and discover its structure
++ Group of computer scientists from AltaVista, IBM, and Compaq (now part of HP)
++ the first to fully map the WWW as a Webgraph and discover its structure
++ Diameter around 16 for the 200M pages indexed by AltaVista at the time, i.e. a small world
 [Broder, A., S. R. Kumar, F. Maghoul, P. Raghavan, S. Rajagopalan, R. Stata, A. Tomkins, and
 J. Wiener, Graph structure in the web, Comput. Networks 33(1-6):309-320, (2000).]
 
-
-1999 Albert, Jeong, Barabasi: Power law observed in WWW
-[Albert, R., H. Jeong, and A.-L. Barabasi, Diameter of the World Wide Web, Nature 401:130-131 (1999).]
+2000: Power law observed in the WWW
 [Adamic, L. A. and B. A. Huberman, Power-law distribution of the World Wide Web, Science 287:2115 (2000).]
 
 1999 Adamic: Distance between .edu sites shown to be small-world

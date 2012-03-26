@@ -87,8 +87,30 @@ while...
 <text>
 - The oldest algorithm: Boruvka's algorithm, published in 1926 <cite>Boruvka 1926</cite> and rediscovered by Choquet in 1938 <cite>Choquet 1938</cite>
 
+An MST algorithm that does not require a priority queue for its efficient implementation:
+
+T initially a subgraph containing just the vertices in V
+while tree T has less than n-1 edges
+	for each connected component C_i of T
+		Find the smallest-weight edge (uv) in E with u in C_i and v not in C_i
+		Add e to T 
+return T
+
+
+
 Since the lowest-weight edge incident on each vertex must be in the minimum spanning tree, the union of these edges will return a forest of at most n/2 trees. For each tree, select the edge (x,y) of lowest weight such that <eqn>x \in T</eqn> and <eqn>y \notin T</eqn>, which will also have to belong to the MST. Repeat until all vertices are connected. Each iteration at least halves the number of remaining trees, hence, after log n iterations, each taking linear time, we obtain the MST in O(m log n).
 
+Implementation details
+
+1) Maintain the forest T using adjacency lists to support O(1) edge insertion
+2) Traverse the forest T to identify connected components in O(n) using DFS
+3) Mark vertices with the ID of the connected component they belong to (extra variable for each vertex)
+4) Identify the smallest-weight edge, just by scanning the adjacency lists for the vertices in C_i
+
+</text>
+
+
+<text>
 
 - An inverse algorithm would also be possible...
   Algoritmo de  Algoritmo de borrado borrado inverso inverso::

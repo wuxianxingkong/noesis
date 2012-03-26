@@ -427,8 +427,8 @@ The running time for relabel-to-front is O(n^3)
 </document>
 
 <document>
-<tag>graph-flow-linear-programming</tag>
-<title>Randomized and approximation algorithms</title>
+<tag>graph-flow-karger</tag>
+<title>Karger's randomized algorithm</title>
 
 
 <text>
@@ -445,10 +445,12 @@ Karger's algorithm is the fastest known minimum cut algorithm, is randomized, an
   Our algorithm can be parallelized to run in RNC with n2 processors; this gives the first proof that the minimum cut problem can be solved in RNC. The algorithm does more than find a single minimum cut; it finds all of them. With minor modifications, our algorithm solves two other problems of interest. Our algorithm finds all cuts with value within a multiplicative factor of agr; of the minimum cut's in expected O(n2 agr;) time, or in RNC with n2 agr; processors. The problem of finding a minimum multiway cut of graph into r pieces is solved in expected O(n2(r-1)) time, or in RNC with n2(r-1) processors.
   
   The "trace" of the algorithm's execution on these two problems forms a new compact data structure for representing all small cuts and all multiway cuts in a graph. This data structure can be efficiently transformed into the more standard cactus representing for minimum cuts.
+</text>
 
+<text>
 Karger's algorithm is a Monte Carlo method to compute the minimum cut of a connected graph.
 
-IDEA: contraction of an edge in a graph. Informally speaking, the contraction of an edge makes the two nodes joined by the edge overlap, reducing the total number of nodes of the graph by one. It is possible to prove that this operation doesn't reduce the cardinality of the minimum cut, but that it might increase it.
+IDEA: contraction of an edge in a graph. Informally speaking, the contraction of an edge makes the two nodes joined by the edge overlap, reducing the total number of nodes of the graph by one. 
 
 
 Algorithm based on a sequences of contractions of a randomly chosen edge in a graph. The edges are selected proportionally to their weights. 
@@ -460,8 +462,140 @@ The contraction of G to <eqn>\lceil n/\sqrt{2}+1 \rceil</eqn> vertices can be im
 The solution to this recurrence is <eqn>O(n^2 log n)</eqn>. 
 
 One run of an algorithm finds a particular minimum cut with probability <eqn>\Omega(1/\log n)</eqn> and running algorithm <eqn>log^2 n</eqn> times reduces the chance of missing any particular minimum cut to <eqn>O(1/n^2)</eqn>.
-
 </text>
+
+<note>
+<title>Monte Carlo algorithms</title>
+<text>
+On any given trial, the algorithm might succeed (finding the min cut) or might fail (finding a cut that's too big).  The probability of success is Pr(success) &gt; p, for some value p. We can improve the chance of success by running r times and taking the best one, to get Pr(success) &gt;1 - (1-p)^r.  For instance, if r = 5*ln(n)/p, then this is &gt; 1 - 1/n^5.  But, we'll never really know if we failed.  In complexity-theoretic terms, this is an RP algorithm for the question "is there a cut of size &lt;= k?".
+</text>
+</note>
+
+
+<text>
+KARGER'S MIN CUT ALGORITHM (naive version)
+
+   1. Start with each vertex in its own component.
+
+   2. Pick a random edge out of all those that go between two
+      different components (so now we have one fewer component).
+
+   3. When only two components left, output (the edges between) them
+      as the cut.
+
+Easy algorithm:  at least a 1/n^2 chance of working. 
+(Can think of as: give random edge lengths and then run Kruskal until only two trees left.)
+</text>
+
+<text>
+NOTES
+http://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15750-s01/www/notes/lect0213
+
+- At the end there is only one cut alive. The size of the minimum live cut can only go UP as the algorithm progresses, since all alive cuts at time i are also alive at time j&lt;i. It is possible to prove that the contraction operation doesn't reduce the cardinality of the minimum cut, but that it might increase it.
+
+- Original graph has min cut of size k. Then, at any point in time, there are at least k*(#components)/2 ALIVE edges remaining.
+Why? Proof: each component must have at least k alive edges leaving it in the new graph, otherwise we would have a live cut of size &lt; k
+
+- If C is some live cut, and we choose an edge not in C, then C remains alive. The point is that we want to have lots of live edges to reduce the chance that we kill our favorite cut. [Think of  the min cut as hiding out, trying not to get picked...]
+
+The probability that C survives (is still ALIVE after) the first round?   
+
+	1 - k/(# edges) &gt;=  1 - k/(nk/2)  =  1 - 2/n = (n-2)/n.
+
+Suppose it's survived so far, and there are now n-i components. Probability of survival is at least:
+
+				1 - 2/(n-i) = (n-i-2)/(n-i)
+
+So, probability that C survives overall is at least:
+
+	Prod_{i=0}^{n-3} (n-i-2)/(n-i) 	= (n-2)/n * (n-3)/(n-1) * (n-4)/(n-2) * ... * 1/3 = 2/(n(n-1)).
+</text>
+
+
+<text>
+How many minimum cuts are there? At most n(n-1)/2.
+
+Running time (naive version): can implement in O(m alpha(m)) time, or in terms of n
+only, time O(n^2).  But, if we want to only have an epsilon chance of
+failure, need to run it O(n^2*log(1/epsilon)) times.  So, if set
+epsilon to constant, this is O(mn^2*alpha(m)), or O(n^4) if in terms
+of n only.  So, it's simple, but not all THAT fast.  How can we speed
+all this up?
+</text>
+
+<text>
+Improvement <cite>Karger and Stein 1996</cite>:
+
+Observation: earlier steps are less risky than later steps.  
+
+Why? At what point is our chance of having lost C about 50/50?  
+
+Ans: when we have about n/sqrt(2) components left.  By that time, our success probability is about: 
+
+		(n/sqrt(2))^2 / n^2 = 1/2.
+
+So, this suggests a speedup: Instead of repeating from the start, let's repeat from only partway down.  
+E.g., from when we had just n/sqrt(2) components left.
+
+Can think of this as building a binary tree (where root has degree 1)
+of depth 2lg(n), # leaves is n^2, where then each edge is
+independently destroyed with prob 1/2.  Edge being destroyed
+corresponds to losing the minimum cut.  What we want is for some path
+to the leaf to survive.  [We proved prob of losing cut in any step
+given that we hadn't lost it yet was a most 1/2, so if we can prove
+good things for this idealized process, we will have what we want]
+
+Q: What's the probability some path to a leaf survives?
+
+	(can think of the strategy of doing n^2 repititions as a root
+	with n^2 branches leading, in depth 2lg(n), to n^2 leaves.)
+
+First, what is running time?  Let's just do as a function of n.  In
+order to make this efficient, after going partway down, lets contract
+components into vertices and keep multi-edges as a single edge with a
+weight (and then pick randomly from this weighted distribution).  The
+point is, this allows us to view the second part as two recursive
+calls on a smaller graph.  So, our running time is:
+
+	T(n) &lt;= O(n^2) + 2T(n/sqrt(2)) = O(n^2 log n)
+
+
+Now: want to show that a path survives with probability at least 1/log(n).
+So, we can just run our algorithm log(n) times to get constant
+fraction prob of success, or log^2(n) times to get high probability.
+Then total time is O(n^2 log^3(n))
+
+Proof:
+
+ For tree of depth d, let P_d be the probability a path survives.
+Looking recursively, we get:
+
+	P_d = (1/2) (Prob at least one of two subtrees has path that survives)
+
+            = (1/2) (2P_{d-1} - (P_{d-1})^2)
+		(using Pr(A or B) = Pr(A) + Pr(B) - Pr(A and B))
+
+            = P_{d-1} - (1/2) (P_{d-1})^2.
+
+We can now verify that P_d &gt;= 1/(d+1), since:
+   
+              1/d - 1/(2d^2)  &gt;  1/d - 1/(d(d+1)) = 1/d
+
+
+
+One good way of looking at what we've shown is this:  we have shown
+that we can replace n^2 independent runs of the algorithm by n^2
+DEPENDENT runs of the algorithm in a way that drastically reduces
+running time ((n^2 * cost-of-one-run) versus (log(n) * cost-of-one-run), 
+but only slightly reduces the chance of success (constant versus 1/log(n)).
+</text>
+
+</document>
+
+
+<document>
+<tag>graph-flow-approximation</tag>
+<title>Approximation algorithms</title>
 
 <text>
 + APPROXIMATION ALGORITHM The electrical flow algorithm of Christiano, Kelner, Madry, and Spielman finds an approximately optimal maximum flow but only works in undirected graphs.
@@ -470,7 +604,6 @@ One run of an algorithm finds a particular minimum cut with probability <eqn>\Om
 STOC 2011. Best Paper Award. Invited to Journal of the ACM.
 
 Paul Christiano, Jonathan A. Kelner, Aleksander Madry, Daniel A. Spielman, and Shang-Hua Teng. 2011. Electrical flows, laplacian systems, and faster approximation of maximum flow in undirected graphs. In Proceedings of the 43rd annual ACM symposium on Theory of computing (STOC '11). ACM, New York, NY, USA, 273-282. DOI=10.1145/1993636.1993674 http://doi.acm.org/10.1145/1993636.1993674
-
 
 
   ABSTRACT: We introduce a new approach to computing an approximately maximum s-t flow in a capacitated, undirected graph. This flow is computed by solving a sequence of electrical flow problems. Each electrical flow is given by the solution of a system of linear equations in a Laplacian matrix, and thus may be approximately computed in nearly-linear time. Using this approach, we develop the fastest known algorithm for computing approximately maximum s-t flows. For a graph having n vertices and m edges, our algorithm computes a (1-e)-approximately maximum s-t flow in time ~O(mn1/3e-11/3). A dual version of our approach gives the fastest known algorithm for computing a (1+e)-approximately minimum s-t cut. It takes ~O(m+n4/3e-16/3) time. Previously, the best dependence on m and n was achieved by the algorithm of Goldberg and Rao (J. ACM 1998), which can be used to compute approximately maximum s-t flows in time ~O({mvne-1), and approximately minimum s-t cuts in time ~O(m+n3/2e-3).

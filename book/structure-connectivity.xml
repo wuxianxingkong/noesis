@@ -46,6 +46,14 @@ Facebook <cite>Ugander at al. 2011</cite>: (1) global structure of the graph: th
 <tag>connectivity-degree-distribution</tag>
 <title>Degree distribution</title>
 
+
+<text>
+NOTE:
++ Binomial/Poisson degree distributions
++ Power laws
++ Power laws with exponential cut-offs (any finite network with a heavy tail necessarily includes a cut-off, i.e. an end-part of the distribution with a rapid exponential decay)
+</text>
+
 </document>
 
 

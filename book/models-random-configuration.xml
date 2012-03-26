@@ -113,10 +113,10 @@ For sufficiently large networks, this random network generation process produces
 <title>Generating functions</title>
 
 <text>
-Necessary condition for the graph construction?
-
 Theory of general random graphs: Looks at a characteristic member of the ensemble of graphs with given degree distribution
+</text>
 
+<text>
 The theoretical concept needed for the analysis is the generating function <cite>Wilf 1994</cite>
 </text>
 
@@ -157,6 +157,7 @@ G_1 (x) = \frac { \sum_{k} k p(k) x^{k-1} } { \sum_{k} k p(k) } = \frac { G_0'(x
 </equation>
 
 <cite>Newman et al. 2001</cite>
+<cite>Newman 2010</cite>
 
 </document>
 
@@ -195,20 +196,45 @@ The average degree of an end of a randomly-chosen link is <eqn>\langle k^2 \rang
 <tag>random-arbitrary-properties-components</tag>
 <title>Connected components</title>
 
-
 <text>
-Generating functions for connected components
+Two mathematicians, Michael Molloy and Bruce A. Reed, proposed a method to analyze the statistics of connected components in the configuration model <cite>Molloy and Reed 1995</cite> <cite>Molloy and Reed 1998</cite>.
 </text>
 
 <text>
-P_s: distribution of component sizes
+When we choose a link at random and one of its ends (also uniformly at random), let <eqn>x</eqn> be the probability of arriving to a finite connected component (i.e. those connected components different from the giant connected component when such a giant component exists). If we can obtain <eqn>x</eqn>, then we can derive the relative size <eqn>S</eqn> of the giant connected component. The probability <eqn>1-S</eqn> that a randomly-chosen node belongs to one of the finite components is the sum of the probability of the node having no links, plus the probability of having a single link connected to a finite component, plus the probability of having two links connected to finite components... Mathematically, we can state:
+</text>
+
+<equation>
+1 - S = \sum_k P(k) x^k
+</equation>
+
+<text>
+Taking into account that the neighbor degree distribution is given by <eqn>k P(k) / \langle k \rangle</eqn>, we can derive an equation for <eqn>x</eqn>:
 </text>
 
 
 <equation>
-H_0 (x) = \sum_{s=0}^{\infty} p_s(k) x^s
+x = \sum_k \frac{k P(k)}{\langle k \rangle} x^{k-1}
 </equation>
 
+<text>
+When this equation has a non-trivial solution <eqn>x &lt; 1</eqn>, the network has a giant connected component. This happens when the average number of second nearest neighbors of a node exceeds the average number of nearest neighbors, a result known as the Molloy-Reed criterion <cite>Molloy and Reed 1995</cite>. This criterion can be stated as <eqn>z_2 &gt; z_1</eqn>, or, using our previous notation, as <eqn>\langle k^2 \rangle - \langle k \rangle &gt; \langle k \rangle</eqn>.
+</text>
+
+<text>
+The birth point of the giant component is <eqn>z_2 = z_1</eqn>, which corresponds to <eqn>\langle k \rangle = 1</eqn> for Poisson random graphs.
+</text>
+
+<text>
+Generating functions can also be applied for describing finite connected components in random networks with arbitrary degree distributions <cite>Newman et al. 2001</cite>. As happened in traditional random graphs, the distribution of finite component sizes, <eqn>P_s(s)</eqn>, follows a power law at the birth point of the giant component. When the network contains a giant connected component, the finite component size distribution, however, decays exponentially. When the giant component does not exists, networks can have very different distributions of finite components <cite>Newman 2007</cite>.
+</text>
+
+
+<!--
+
+<equation>
+H_0 (x) = \sum_{s=0}^{\infty} p_s(k) x^s
+</equation>
 
 <equation>
 H_1 (x) = \frac { \sum_{k} k [H_1(x)]^{k-1} } { \sum_{k} k p(k) } = x G_1 ( H_1(x)) 
@@ -219,11 +245,7 @@ H_0 (x) = x G_0 ( H_1(x))
 </equation>
 
 <text>
-Existence of a giant connected cluster
-</text>
-
-<text>
-Average size of marked clusters
+Existence of a giant connected cluster: Average size of marked clusters
 </text>
 
 <equation>
@@ -246,9 +268,7 @@ Equivalent to:
 \frac{ \langle k^2 \rangle } { \langle k \rangle } = 2
 </equation>
 
-<text>
-A giant connected component exists if the graph is sufficiently heterogeneous.
-</text>
+-->
 
 </document>
 
@@ -320,7 +340,7 @@ where <eqn>\overline{b}</eqn> is the mean branching of the network, which is def
 </text>
 
 <equation>
-\overline{b} = \frac {\langle k^2 \rangle - \langle k \rangle} { \langle k \rangle } = \frac {\langle k^2 \rangle} { \langle k \rangle } - 1
+\overline{b} =  \frac {z_2}{z_1} = \frac {\langle k^2 \rangle - \langle k \rangle} { \langle k \rangle } = \frac {\langle k^2 \rangle} { \langle k \rangle } - 1
 </equation>
 
 <text>
@@ -382,17 +402,12 @@ URL:	http://link.aps.org/doi/10.1103/PhysRevE.70.056126
 DOI:	10.1103/PhysRevE.70.056126
 
 
+<text>
 ++
-M. Molloy and B. Reed (1995),  
-A critical point for random graphs with a given degree sequence,  
-{\em Random Struct. Algorithms} {\bf 6}, 161. %%(\pageref{pr17}, \pageref{pr24}) 
-
-++
-M. Molloy and B. Reed (1998),  
-The size of the giant component of a random graph with 
-a given degree sequence,  
-{\em Combinatorics, Probab. Comput.} {\bf 7}, 295. 
-
+A way to obtain the statistics of connected components in the configuration model
+<cite>Molloy and Reed 1995</cite>
+<cite>Molloy and Reed 1998</cite>
+</text>
 
 <text>
 cf. <cite>Newman 2010</cite>, Chapter 13

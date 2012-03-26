@@ -369,7 +369,7 @@ doi:10.1038/35075138
 ]
 + The yeast Saccharomyces cerevisiae
 + 1870 nodes (proteins) and 2240 undirected links (physical interactions between proteins)
-+ Power law (exponent 2.5) with an exponential-cutoff
++ Power law (exponent 2.5) with an exponential cut-off (actually, any finite network with a heavy tail must have a cut-off, i.e. an end-part of the distribution with a rapid decay)
 + General architecture similar to the Internet at the AS-level
 </text>
 

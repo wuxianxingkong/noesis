@@ -1602,6 +1602,22 @@
  <!--<file>Networks/algorithms/graphs/isomorphism/1981 Networks...</file>-->
 </reference>
 
+   
+
+<reference id="Colizza et al. 2006">
+ <author>Vittoria Colizza</author>
+ <author>Alessandro Flammini</author>
+ <author>M. Angeles Serrano</author>
+ <author>Alessandro Vespignani</author>
+ <title>Detecting rich-club ordering in complex networks</title>
+ <journal>Nature Physics</journal>
+ <volume>2</volume>
+ <pages>110-115</pages>
+ <year>2006</year>
+ <doi>10.1038/nphys209</doi>
+ <file>Networks/structure/2006 Nature Physics [Vespignani] Rich-club ordering.pdf</file>
+</reference>
+
 
 <reference id="Cormen et al. 1990">
  <author>Thomas H. Cormen</author>
@@ -4224,6 +4240,31 @@
 </reference>
 
 
+<reference id="Molloy and Reed 1995">
+ <author>Michael Molloy</author>
+ <author>Bruce Reed</author>
+ <title>A critical point for random graphs with a given degree sequence</title>
+ <journal>Random Structures and Algorithms</journal>
+ <volume>6</volume>
+ <number>2-3</number>
+ <pages>161-180</pages>
+ <year>1995</year>
+ <doi>10.1002/rsa.3240060204</doi>
+ <file>Networks/models/random/1995 RSA [Molloy &amp; Reed] A critical point for random graphs.pdf</file>
+</reference>
+
+<reference id="Molloy and Reed 1998">
+ <author>Michael Molloy</author>
+ <author>Bruce Reed</author>
+ <title>The size of the giant component of a random graph with a given degree sequence</title>
+ <journal>Combinatorics, Probability and Computing</journal>
+ <volume>7</volume>
+ <pages>295-305</pages>
+ <year>1998</year>
+ <doi>10.1017/S0963548398003526</doi>
+ <file>Networks/models/random/1998 CPC [Molloy &amp; Reed] The size of the giant component of a random graph.pdf</file>
+</reference>
+
 
 <reference id="Mondragon 2008">
  <author>Raúl J. Mondragón</author>
@@ -4421,6 +4462,17 @@
  <file>Networks/algorithms/clustering/2006 Physical Review E [Newman] Finding community structure using eigenvectors.pdf</file>
 </reference>
 
+<reference id="Newman 2007">
+ <author>Mark E.J. Newman</author>
+ <title>Component sizes in networks with arbitrary degree distributions</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>76</volume>
+ <number>4</number>
+ <pages>045101(R)</pages>
+ <year>2007</year>
+ <doi>10.1103/PhysRevE.76.045101</doi>
+ <file>Networks/models/random/2007 Physical Review E [Newman] Component sizes.pdf</file>
+</reference>
 
 <reference id="Newman 2010">
  <author>Mark E.J. Newman</author>
@@ -5908,6 +5960,20 @@
  <year>2010</year>
  <doi>10.1103/PhysRevE.82.026116</doi>
  <file>Networks/dynamics/2010 PhysRevE - Mapping from structure to dynamics.pdf</file>
+</reference>
+
+
+<reference id="Zhou and Mondragon 2004">
+ <author>Shi Zhou</author>
+ <author>Raúl J. Mondragón</author>
+ <title>The rich-club phenomenon in the Internet topology</title>
+ <journal>IEEE Communications Letters</journal>
+ <volume>8</volume>
+ <number>3</number>
+ <pages>180-182</pages>
+ <year>2004</year>
+ <doi>10.1109/LCOMM.2004.823426</doi>
+ <file>Networks/applications/communication/internet/2004 IEEE Communications - Rich-Club Phenomenon in the Internet.pdf</file>
 </reference>
 
 

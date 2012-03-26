@@ -600,6 +600,20 @@
 
 
 
+<reference id="Bender and Canfield 1978">
+ <author>Edward A. Bender</author>
+ <author>E. Rodney Canfield</author>
+ <title>The asymptotic number of labeled graphs with given degree sequences</title>
+ <journal>Journal of Combinatorial Theory, Series A</journal>
+ <volume>24</volume>
+ <number>3</number>
+ <pages>296–307</pages>
+ <year>1978</year>
+ <doi>10.1016/0097-3165(78)90059-6</doi>
+ <file>Networks/models/random/1978 JCT [Bender &amp; Canfield] Configuration model.pdf</file>
+</reference>
+
+
 <reference id="Berge 1958">
  <author>Claude Berge</author>
  <title>Théorie des Graphes et ses Applications</title>
@@ -656,6 +670,34 @@
  <file>Networks/algorithms/graphs/isomorphism/1979 JACM Outerplanar graph isomorphism.pdf</file>
 </reference>
 
+
+
+<reference id="Bianconi and Capocci 2003">
+ <author>Ginestra Bianconi</author>
+ <author>Andrea Capocci</author>
+ <title>Number of Loops of Size h in Growing Scale-Free Networks</title>
+ <journal>Physical Review Letters</journal>
+ <volume>90</volume>
+ <number>7</number>
+ <pages>078701</pages>
+ <year>2003</year>
+ <doi>10.1103/PhysRevLett.90.078701</doi>
+ <file>Networks/models/random/2003 PRL Number of loops.pdf</file>
+</reference>
+
+
+<reference id="Bianconi and Marsili 2005">
+ <author>Ginestra Bianconi</author>
+ <author>Matteo Marsili</author>
+ <title>Loops of any size and Hamilton cycles in random scale-free networks</title>
+ <journal>Journal of Statistical Mechanics: Theory and Experiment</journal>
+ <volume>2005</volume>
+ <number>6</number>
+ <pages>P06005</pages>
+ <year>2005</year>
+ <doi>10.1088/1742-5468/2005/06/P06005</doi>
+ <file>Networks/models/random/2005 JSM Loops of any size.pdf</file>
+</reference>
 
 
 <reference id="Bird et al. 2006a">
@@ -829,6 +871,16 @@
  <file>Networks/models/scale-free/2004 EPJB Cut-offs and finite size effects in scale-free networks.pdf</file>
 </reference>
 
+
+
+<reference id="Bollobas 1980">
+ <author>Bela Bollobas</author>
+ <title>A probabilistic proof of an asymptotic formula for the number of labelled random graphs</title>
+ <journal>European Journal of Combinatorics</journal>
+ <volume>1</volume>
+ <pages>311-316</pages>
+ <year>1980</year>
+</reference>
 
 <reference id="Bollobas 2002">
  <author>Bela Bollobas</author>
@@ -1350,7 +1402,7 @@
 <reference id="Christakis and Fowler 2007">
  <author>Nicholas A. Christakis</author>
  <author>James H. Fowler</author>
- <title>The Spread of Obesity in a Large Social Network over 32 Years</title>
+ <title>The spread of obesity in a large social network over 32 years</title>
  <journal>The New England Journal of Medicine</journal>
  <volume>357</volume>
  <pages>370-379</pages>
@@ -1359,6 +1411,20 @@
  <file>Networks/applications/social/2007 NEJM Obesity in social networks.pdf</file>
 </reference>
 
+
+
+<reference id="Chung and Lu 2002">
+ <author>Fan Chung</author>
+ <author>Linyuan Lu</author>
+ <title>Connected components in random graphs with given expected degree sequences</title>
+ <journal>Annals of Combinatorics</journal>
+ <volume>6</volume>
+ <number>2</number>
+ <pages>125-145</pages>
+ <year>2002</year>
+ <doi>10.1007/PL00012580</doi>
+ <file>Networks/models/random/2002 AC Connected components @ configuration model.pdf</file>
+</reference>
 
 
 <reference id="Clauset et al. 2004">
@@ -2433,6 +2499,22 @@
  <year>2009</year>
  <doi>10.1103/PhysRevE.80.036104</doi>
  <file>Networks/applications/economic/2009 PhysRevE - Backbone of complex networks of corporations.pdf</file>
+</reference>
+
+
+
+<reference id="Goh et al. 2001">
+ <author>K.-I. Goh</author>
+ <author>B. Kahng</author>
+ <author>D. Kim</author>
+ <title>Universal behavior of load distribution in scale-free networks</title>
+ <journal>Physical Review Letters</journal>
+ <volume>87</volume>
+ <number>27</number>
+ <pages>278701</pages>
+ <year>2001</year>
+ <doi>10.1103/PhysRevLett.87.278701</doi>
+ <file>Networks/models/random/2001 PRL Universal behavior of load distribution.pdf</file>
 </reference>
 
 
@@ -5696,6 +5778,17 @@
  <year>1992</year>
  <doi>10.1007/BF01758773</doi>
  <file>Networks/algorithms/graphs/connectivity/1992 Algorithmica [Westbrook &amp; Tarjan] Bridge-connected and biconnected components.pdf</file>
+</reference>
+
+
+<reference id="Wilf 1994">
+ <author>Herbert S. Wilf</author>
+ <title>generatingfunctionology</title>
+ <publisher>Academic Press</publisher>
+ <edition>2nd edition</edition>
+ <year>1994</year>
+ <isbn>0127519564</isbn>
+ <file>[books]/mathematics/0127519564 [Herbert S. Wilf] generatingfunctionology.pdf</file>
 </reference>
 
 

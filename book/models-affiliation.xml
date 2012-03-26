@@ -27,7 +27,7 @@ e.g.
 
 bipartite networks such as...
 
-- directors sitting on Fortune 1000 boards
+- directors sitting on Fortune 1000 boards <cite>Newman et al. 2001</cite>
 
 - human disease network: 
 	nodes: human genetic disorders and all known disease genes
@@ -63,6 +63,12 @@ http://link.aps.org/abstract/PRE/v80/p036118
 
 <text>
 e.g. interlocking boards of directors
+
+Fortune 1000 board membership <cite>Newman et al. 2001</cite>
++ bipartite network (boards and directors)
++ three empirical degree distributions: boards + directors + one-mode projection to the set of directors
++ an uncorrelated bipartite network with the same degree distribution, whose projection is correlated and remarkably close to the real-world data.
++ the clustering coefficient of the one-mode projection is almost the same as the measured one (a coincidence?)
 </text>
 
 </document>

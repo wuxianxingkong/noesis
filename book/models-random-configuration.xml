@@ -7,31 +7,118 @@
 <document>
 &bibliography;
 <tag>random-networks-configuration</tag>
-<title>Random graphs with general degree distributions: The configuration model</title>
+<title>Random graphs with arbitrary degree distributions</title>
+
+
+
+
+
+<document>
+<tag>random-arbitrary-generation</tag>
+<title>Generation of random graphs with arbitrary degree distributions</title>
+
+
+<document>
+<tag>random-configuration-model</tag>
+<title>The configuration model</title>
 
 
 <text>
-Constructing graphs with a given degree distribution
+Origin:
 
-Configuration model:
-- choose a degree sequence N(k) = N P(k)
-- give the nodes k <q>stubs</q> according to N(k) 
-- connect stubs randomly
+Random networks with more varied architectures than the one provided by the Erdös-Rényi model <cite>Bender and Canfield 1978</cite>.
 
-[M. E. J. Newman, S. H. Strogatz, and D. J. Watts, Phys. Rev. E 64, 026118 (2001)]
+The Hungarian mathematician Béla Bollobás coined the term <q>configuration model</q> <cite>Bollobas 1980</cite>.
 </text>
+
+<text>
+Erdös-Rényi sets the number of nodes and the number of links, two constraints that result in a Poisson degree distribution... mean degree
+
+Generalization: any degree distribution 
+- Parameter: degree sequence
+- Result: Any of the labelled graphs with the given degree sequence
+</text>
+
+<text>
+Constructing graphs with a given degree distribution:
+</text>
+
+<list>
+
+<item>
+Choose a degree sequence <eqn>n(k) = n p(k)</eqn>
+</item>
+
+<item>
+Give the nodes <eqn>k</eqn> <q>stubs</q> of links according to <eqn>n(k)</eqn>.
+</item>
+
+<item>
+Choose pairs of stubs at random (i.e. uniformly at random) and connect them to create links until no stubs are left unconnected.
+</item>
+
+</list>
+
+
+<text>
+When every node has the same degree, we obtain a random regular graph. When the degree sequence is drawn from a Poisson distribution, we get a Poisson random graph. 
+
+<cite>Newman et al. 2001</cite>
+
+In any case, the network is uncorrelated (unlike real-world networks), yet still useful as a model for many applications.
+</text>
+
+</document>
+
+<document>
+<tag>random-static-model</tag>
+<title>The static model</title>
+
+<text>
+Alternative generation algorithm for uncorrelated networks with arbitrary degree distributions: A generalization of the Gilbert model.
+</text>
+
+<text>
+Based on the idea of <q>hidden variables</q>:
+</text>
+
+<list>
+
+<item>
+Ascribe a number <eqn>d_i</eqn> (the hidden variable) to each node
+</item>
+
+<item>
+Connect nodes in pairs with probabilities depending on their hidden variables: <eqn>p_ij = f(d_i, d_j)</eqn>
+</item>
+
+</list>
+
+<text>
+When <eqn>p_ij</eqn> is constant, we get the Gilbert model. When we use the desired degrees as hidden variables, we get a network with the desired degree distribution <cite>Chung and Lu 2002</cite>. I particular, we assign the desired degrees to the n network nodes (using random numbers drawn from the desired degree distribution) and connect pairs of nodes with probabilities proportional to the <eqn>d_id_j</eqn> products, which are normalized by setting <eqn>p_ij = d_i d_j / n \lambda</eqn>. Care must be taken when <eqn>d_i d_j &gt; n \lambda</eqn>, hence the original proposal suggested choosing probabilities <eqn>p_{ij} \propto 1 - exp(-d_i d_j / n \lambda)</eqn> <cite>Goh et al. 2001</cite>.
+</text>
+
+<text>
+For sufficiently large networks, this random network generation process produces the same networks that result from the configuration model and it is usually preferred in practice <cite>Dogorotsev 2010</cite>.
+</text>
+
+</document>
+
+</document>
+
+
+
+<document>
+<tag>configuration-generating-functions</tag>
+<title>Generating functions</title>
 
 <text>
 Necessary condition for the graph construction?
 
 Theory of general random graphs: Looks at a characteristic member of the ensemble of graphs with given degree distribution
-The theoretical concept needed for the analysis is the generating function 
-[H. Wilf, Generatingfunctionology (1994)]
-</text>
 
-<document>
-<tag>configuration-generating-functions</tag>
-<title>Generating functions</title>
+The theoretical concept needed for the analysis is the generating function <cite>Wilf 1994</cite>
+</text>
 
 
 <text>
@@ -69,7 +156,44 @@ Generating function for the degree of nodes at the end of a random edge
 G_1 (x) = \frac { \sum_{k} k p(k) x^{k-1} } { \sum_{k} k p(k) } = \frac { G_0'(x) }{ G_0'(1) }
 </equation>
 
-[M. E. J. Newman, S. H. Strogatz, D. J. Watts, Phys. Rev. E 64, 026118 (2001)]
+<cite>Newman et al. 2001</cite>
+
+</document>
+
+
+
+
+<document>
+<tag>random-arbitrary-properties</tag>
+<title>Properties of random graphs with arbitrary degree distributions</title>
+
+
+<document>
+<tag>random-arbitrary-properties-neighbors</tag>
+<title>Neighbor degree distribution</title>
+
+<text>
+Given the degree distribution of an arbitrary network <eqn>p(k)</eqn> and a randomly-chosen link, the degree distribution of any of its end nodes is given by <eqn>k p(k) / \langle k \rangle</eqn>.
+</text>
+
+<text>
+When node degrees are indepenent (i.e. in uncorrelated networks), the joint degree distribution <eqn>p(k,k')</eqn> of the end nodes of a randomly-chosen link is
+</text>
+
+<equation>
+p(k,k') = \frac{k p(k)}{\langle k \rangle} \frac{k' p(k')}{\langle k \rangle}
+</equation>
+
+<text>
+The average degree of an end of a randomly-chosen link is <eqn>\langle k^2 \rangle / \langle k \rangle</eqn>, which is typically greater than the  average degree of a node in the network <eqn>\langle k \rangle</eqn>, often denoted by <eqn>\lambda</eqn>.
+</text>
+
+</document>
+
+
+<document>
+<tag>random-arbitrary-properties-components</tag>
+<title>Connected components</title>
 
 
 <text>
@@ -130,8 +254,145 @@ A giant connected component exists if the graph is sufficiently heterogeneous.
 
 
 <document>
-<tag>configuration-notes</tag>
+<tag>random-arbitrary-properties-clustering</tag>
+<title>Clustering coefficient</title>
+
+<text>
+Should we expect to find a small number of cycles in the configuration model, as happened with classical random graphs?
+</text>
+
+<text>
+We must determine the probability of a link between two neighbors of a randomly-chosen node. Let us assume that those neighbors have degrees <eqn>k_i</eqn> and <eqn>k_j</eqn>, respectively. Then, there are <eqn>k_i - 1</eqn> and <eqn>k_j - 1</eqn> stubs at those nodes, as well as approxaimately <eqn>n \langle k \rangle</eqn> stubs at other nodes in a large network. The probability that a stub at the first node is linked to a stub at the second node is <eqn>(k_j - 1)/(n \langle k \rangle)</eqn>. For all its stubs, therefore, the probability is <eqn>(k_i - 1)(k_j - 1)/(n \langle k \rangle)</eqn>.
+</text>
+
+<text>
+Taking into account that the degrees of neighboring nodes are distributed according to <eqn>k p(k) / \langle k \rangle</eqn>, we can estimate the clustering coefficient of any uncorrelated network as:
+</text>
+
+<equation>
+CC = \frac{1}{n \langle k \rangle} \left( \frac{ \langle k^2 \rangle - \langle k \rangle} { \langle k \rangle } \right) ^ 2
+</equation>
+
+<text>
+For Poisson degree distributions, where <eqn>\langle k^2 \rangle - \langle k \rangle = \langle k \rangle^2</eqn>, the above expression can be reduced to <eqn>CC= \langle k \rangle / n</eqn>.
+</text>
+
+<text>
+In any random network, therefore, the clustering coefficient vanishes as the network size increases. For heavy-tail distributions, <eqn> \langle k^2 \rangle</eqn> is large enough to account for the clustering found in some real-world networks, albeit the expression above will still underestimate the clustering coefficient of actual networks (a hint of non-random network formation).
+</text>
+
+</document>
+
+
+<document>
+<tag>random-arbitrary-properties-cycles</tag>
+<title>Cycles</title>
+
+<text>
+Similarly, we could also estimate the number of cycles of a given length in an uncorrelated network, which does not depend on the network size <cite>Bianconi and Capocci 2003</cite> <cite>Bianconi and Marsili 2005</cite>:
+</text>
+
+<equation>
+C_L \sim \frac {1}{2L} \left( \frac {\langle k^2 \rangle - \langle k \rangle} { \langle k \rangle } \right) ^ L
+</equation>
+
+<text>
+when the cycle length <eqn>L</eqn> is smaller than the network diameter. As in classical random graphs, when the network size increases, the neighborhood of a node is almost guaranteed to contain no cycles. However, it should also be noted that there will be a large number of cycleswhose length exceeds the network diameter (<eqn>\log C_L \propto n</eqn> when <eqn>L \gg \log n</eqn>). This situation, again, corresponds to locally tree-like networks and is a necessary feature of uncorrelated networks. Due to this architecture, random networks have no central nodes and their nodes can only be distinguished by their degrees. Apart from their degrees, the nodes in random networks are statistically equivalent.
+</text>
+
+</document>
+
+
+<document>
+<tag>random-arbitrary-properties-paths</tag>
+<title>Average path length</title>
+
+<text>
+Resorting to the locally tree-like assumption, which is often valid, we can also estimate the average path length (and diameter) of any uncorrelated network:
+</text>
+
+<equation>
+L \approx \frac { \ln n } { \ln \overline{b} }
+</equation>
+
+<text>
+where <eqn>\overline{b}</eqn> is the mean branching of the network, which is defined as the mean degree of an end of a randomly-chosen link, <eqn>\langle k^2 \rangle / \langle k \rangle </eqn>, minus 1 (i.e. the connection corresponding to the followed link). Formally,
+</text>
+
+<equation>
+\overline{b} = \frac {\langle k^2 \rangle - \langle k \rangle} { \langle k \rangle } = \frac {\langle k^2 \rangle} { \langle k \rangle } - 1
+</equation>
+
+<text>
+This result, however, is not always valid. In particular, <eqn>L \sim \frac { \ln n } { \ln \ln n }</eqn> for scale-free networks with <eqn>\gamma = 3</eqn>, while <eqn>L \sim \ln \ln n</eqn> for scale-free networks with exponent <eqn>\gamma</eqn> smaller than 3 <cite>Cohen and Havlin 2003</cite>. Sometimes, <eqn>L</eqn> is constant and, in actual networks, it might even decrease with network size.
+</text>
+
+</document>
+
+<document>
+<tag>random-arbitrary-properties-betweenness</tag>
+<title>Betweenness</title>
+
+<text>
+The betweenness centrality (a.k.a. load by physicists) characterizes the distribution of shortest paths within a network. For random networks, we can describe their betweenness centrality distrbution.
+</text>
+
+<text>
+Even though an exact betweenness distribution for random graphs has not been found (due to the complications that arise from the presence of cycles), the observed distribution for a wide range of random networks <cite>Goh et al. 2001</cite> can be approximated by 
+</text>
+
+<equation>
+P(B) \sim B^{-2}
+</equation>
+
+</document>
+
+</document>
+
+
+<document>
+<tag>random-arbitrary-notes</tag>
 <title>Bibliographic notes</title>
+
+
+<text>
+++ Configuration model
+<cite>Bender and Canfield 1978</cite>
+<cite>Bollobas 1980</cite>
+</text>
+
+<text>
+++ Static model: Hidden variables
+<cite>Goh et al. 2001</cite>
+<cite>Chung and Lu 2002</cite>
+</text>
+
+
+++
+G. Caldarelli, A. Capocci, P. De Los Rios and M. A. Muñoz
+Scale-Free Networks from Varying Vertex Intrinsic Fitness
+Physical Review Letters, volume 89, number 25, 2002
+DOI: 10.1103/PhysRevLett.89.258702
+
+++
+Vito D. P. Servedio, Guido Caldarelli, Paolo Buttà 
+Vertex intrinsic fitness: How to produce arbitrary scale-free networks
+Phys. Rev. E 70, 056126 (2004)
+URL:	http://link.aps.org/doi/10.1103/PhysRevE.70.056126
+DOI:	10.1103/PhysRevE.70.056126
+
+
+++
+M. Molloy and B. Reed (1995),  
+A critical point for random graphs with a given degree sequence,  
+{\em Random Struct. Algorithms} {\bf 6}, 161. %%(\pageref{pr17}, \pageref{pr24}) 
+
+++
+M. Molloy and B. Reed (1998),  
+The size of the giant component of a random graph with 
+a given degree sequence,  
+{\em Combinatorics, Probab. Comput.} {\bf 7}, 295. 
+
 
 <text>
 cf. <cite>Newman 2010</cite>, Chapter 13

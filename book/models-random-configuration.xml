@@ -349,23 +349,6 @@ This result, however, is not always valid. In particular, <eqn>L \sim \frac { \l
 
 </document>
 
-<document>
-<tag>random-arbitrary-properties-betweenness</tag>
-<title>Betweenness</title>
-
-<text>
-The betweenness centrality (a.k.a. load by physicists) characterizes the distribution of shortest paths within a network. For random networks, we can describe their betweenness centrality distrbution.
-</text>
-
-<text>
-Even though an exact betweenness distribution for random graphs has not been found (due to the complications that arise from the presence of cycles), the observed distribution for a wide range of random networks <cite>Goh et al. 2001</cite> can be approximated by 
-</text>
-
-<equation>
-P(B) \sim B^{-2}
-</equation>
-
-</document>
 
 </document>
 

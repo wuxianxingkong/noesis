@@ -1063,6 +1063,18 @@ L: It is possible to control the path length of a scale-free network while simul
 
 
 <text>
+The betweenness centrality (a.k.a. load by physicists) characterizes the distribution of shortest paths within a network. Even though an exact betweenness distribution for random graphs has not been found (due to the complications that arise from the presence of cycles), the observed distribution for a wide range of scale-free networks <cite>Goh et al. 2001</cite> follows a power law:
+</text>
+
+<equation>
+P(B) \sim B^{-\delta}
+</equation>
+
+<text>
+with exponent <eqn>\delta \approx 2.2</eqn>. This exponent has been found to be nsensitive to different values of <eqn>\gamma</eqn> in the range <eqn>2 &lt; \gamma \leq 3</eqn> for different mean degrees, and it is valid for both undirected and directed cases. In fact, <cite>Goh et al. 2001</cite> conjecture that the load exponent is a universal quantity that characterizes scale-free networks. For <eqn>\gamma &gt; 3, however, the load exponent <eqn>\delta</eqn> increases as the degree exponent <eqn>\gamma</eqn> increases, and eventually the load distribution decays exponentially.
+</text>
+
+<text>
 L: ... hubs are  the largest intermediary nodes... i.e. most paths traverse them when connecting any two nodes
 ...  their betweenness property is also the highest.
 ... The dominant hub node of a scale-free network tends to insert direct links between itself and the majority of all other nodes, which eliminates intermediaries and reduces betweenness by an amount proportional to the degree of the hub

@@ -169,6 +169,10 @@ A node with a high betweenness centrality can control information because it lie
 </text>
 
 <text>
+The betweenness centrality is also known as load by physicists, since it is related to the total number of data packets passing through a node when every pair of nodes sends and receives packets through the shortest path connecting the pair.
+</text>
+
+<text>
 Unlike the closeness measure, betweenness can also be computed for non-connected graphs.
 </text>
 
@@ -179,6 +183,81 @@ For computing the number of shortest paths from every other node u to every othe
 
 <text>
 It should be noted that both closeness and betweenness only consider what happens on the shortest paths between nodes, ignoring the network traffic that might occur on longer paths that also contribute to global network communication patterns. Moreover, betweenness assumes that flow along the shortest path is unaffected by bifurcations and confluences along the path. Matrix-based centrality metric take them into account.
+</text>
+
+<text>
+++ ALGORITHMS
+http://www.cs.ucc.ie/~rb4/resources/betweennessFull_studentThesis.pdf
+
+All algorithms have in common that they need to solve the SSSP problem resulting in a shortest
+path tree with root s on forward search (or root t on backward search). For unweighted graphs
+this is possible with breath ?rst search (BFS), for weighted graphs Dijkstra’s algorithm is used.
+
+The fastest algorithm up to date to calculate exact general betweenness centrality is Brandes' exact algorithm. 
+It requires O(nm+n^2log(n)) time for a weighted graph where n = |V |, m = |E|. It solves n SSSP (Single Source Shortest Path) 
+problems with Dijkstra's algorithm. Then it adds counter values from leaves to the top.
+[
+Ulrik Brandes. 
+A faster algorithm for betweenness centrality. 
+Journal of Mathematical Sociology, 25(2):163–177, 2001.
+DOI:10.1080/0022250X.2001.9990249
+]
+
+
+Brandes and Pich introduced a unbiased technique to approximate general betweenness by choosing only k \ll n pivots as source for the SSSP algorithm. They turned their attention especially to the pivot selection method. As their results show no significant advantage of specialized methods over random pivot selection no other selection method was used by us. Another advantage of random selection is its performance.
+[
+Ulrik Brandes, Christian Pich: 
+Centrality Estimation in Large Networks. 
+International Journal of Bifurcation and Chaos 17(7): 2303-2318 (2007)
+http://dx.doi.org/10.1142/S0218127407018403
+]
+
+Bader and Madduri [2] introduced parallel algorithms to calculate exact general betweenness centrality. Their algorithms can reduce execution time by some multipliers but need many CPU cores and much RAM. This is useful if exact general betweenness centrality values are necessary and resources are available. But if good estimations are suficient or resources are too expensive, approximation algorithms should be preferred.
+[
+David A. Bader and Kamesh Madduri. 
+Parallel algorithms for evaluating centrality indices in real-world networks. 
+ICPP '06 Proceedings of the 2006 International Conference on Parallel Processing
+In ICPP, pages 539–550. IEEE Computer Society, 2006
+ISBN:0-7695-2636-5
+DOI 10.1109/ICPP.2006.57
+]
+
+
+++
+Approximating betweenness centrality
+Authors:	
+David A. Bader	College of Computing, Georgia Institute of Technology
+Shiva Kintali	College of Computing, Georgia Institute of Technology
+Kamesh Madduri	College of Computing, Georgia Institute of Technology
+Milena Mihail	
+Published in:
+WAW'07 Proceedings of the 5th international conference on Algorithms and models for the web-graph
+Springer-Verlag Berlin, Heidelberg ©2007 
+ISBN:3-540-77003-8 978-3-540-77003-9
+ABSTRACT: Betweenness is a centrality measure based on shortest paths, widely used in complex network analysis. It is computationally-expensive to exactly determine betweenness; currently the fastest-known algorithm by Brandes requires O(nm) time for unweighted graphs and O(nm + n2 log n) time for weighted graphs, where n is the number of vertices and m is the number of edges in the network. These are also the worstcase time bounds for computing the betweenness score of a single vertex. In this paper, we present a novel approximation algorithm for computing betweenness centrality of a given vertex, for both weighted and unweighted graphs. Our approximation algorithm is based on an adaptive sampling technique that significantly reduces the number of single-source shortest path computations for vertices with high centrality. We conduct an extensive experimental study on real-world graph instances, and observe that our random sampling algorithm gives very good betweenness approximations for biological networks, road networks and web crawls.
+
+++
+Performance analysis of an algorithm for computation of betweenness centrality
+Authors:	
+Shivam Bhardwaj	Department of Electronics and Computer Engineering, Indian Institute of Techology Roorkee, Roorkee, India
+Rajdeep Niyogi	Department of Electronics and Computer Engineering, Indian Institute of Techology Roorkee, Roorkee, India
+Alfredo Milani	Department of Mathematics and Computer Science, University of Perugia, Perugia, Italy
+Published in:
+ICCSA'11 Proceedings of the 2011 international conference on Computational science and Its applications - Volume Part V
+Springer-Verlag Berlin, Heidelberg ©2011 
+ISBN: 978-3-642-21933-7
+ABSTRACT: In social network analysis, graph-theoretic perceptions are used to realize and explain social experience. Centrality indices are essential in the analysis of social networks, but are costly to compute. An efficient algorithm for the computation of betweenness centrality is given by Brandes that has time complexity O(nm + n2logn) and O(n + m) space complexity, where n, m are the number of vertices and edges in a graph, respectively. Some social network graphs are invariably huge and dense. Moreover, size of memory is rapidly increasing and the cost of memory is decreasing day by day. Under these circumstances, we investigate how the computation of centrality measures can be done efficiently when space is not very significant. In this paper, we introduce a time efficient and scalable algorithm for the accurate computation of betweenness centrality. We have made a thorough analysis of our algorithm visà-vis Brandes' algorithm. Experimental results show that our algorithm has a better performance with respect to time, but at the expense of using higher memory. Further performance improvement of our algorithm has been achieved by implementing it on parallel architectures.
+
+++
+David A. Bader:
+Petascale computing for large-scale graph problems
+PPAM'07 Proceedings of the 7th international conference on Parallel processing and applied mathematics
+Springer-Verlag Berlin, Heidelberg ©2008 
+ISBN:3-540-68105-1 978-3-540-68105-2
+PARALLEL PROCESSING AND APPLIED MATHEMATICS
+Lecture Notes in Computer Science, 2008, Volume 4967/2008, 166-169, DOI: 10.1007/978-3-540-68111-3_18
+
+ABSTRACT: Graph theoretic problems are representative of fundamental kernels in traditional and emerging computational sciences such as chemistry, biology, and medicine, as well as applications in national security. Yet they pose serious challenges for parallel machines due to non-contiguous, concurrent accesses to global data structures with low degrees of locality. Few parallel graph algorithms outperform their best sequential implementation due to long memory latencies and high synchronization costs. In this talk, we consider several graph theoretic kernels for connectivity and centrality and discuss how the features of petascale architectures will affect algorithm development, ease of programming, performance, and scalability.
 </text>
 
 </document>

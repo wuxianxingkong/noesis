@@ -433,6 +433,10 @@ The running time for relabel-to-front is O(n^3)
 
 <text>
 + RANDOMIZED ALGORITHM for minimum cuts @Kleinberg 13.2
+http://en.wikipedia.org/wiki/Karger's_algorithm
+
+Karger's algorithm is the fastest known minimum cut algorithm, is randomized, and computes a minimum cut with high probability in time O(n^2 log^3 n).
+
 [Karger Ph.D. thesis 1995] David R. Karger: Random sampling in graph optimization problems, Ph.D. Thesis, Stanford University, 1995
 [Karger and Stein 1996] David R. Karger and Clifford Stein. 1996. A new approach to the minimum cut problem. JACM 43, 4 (July 1996), 601-640. DOI=10.1145/234533.234534 http://doi.acm.org/10.1145/234533.234534
 
@@ -441,6 +445,22 @@ The running time for relabel-to-front is O(n^3)
   Our algorithm can be parallelized to run in RNC with n2 processors; this gives the first proof that the minimum cut problem can be solved in RNC. The algorithm does more than find a single minimum cut; it finds all of them. With minor modifications, our algorithm solves two other problems of interest. Our algorithm finds all cuts with value within a multiplicative factor of agr; of the minimum cut's in expected O(n2 agr;) time, or in RNC with n2 agr; processors. The problem of finding a minimum multiway cut of graph into r pieces is solved in expected O(n2(r-1)) time, or in RNC with n2(r-1) processors.
   
   The "trace" of the algorithm's execution on these two problems forms a new compact data structure for representing all small cuts and all multiway cuts in a graph. This data structure can be efficiently transformed into the more standard cactus representing for minimum cuts.
+
+Karger's algorithm is a Monte Carlo method to compute the minimum cut of a connected graph.
+
+IDEA: contraction of an edge in a graph. Informally speaking, the contraction of an edge makes the two nodes joined by the edge overlap, reducing the total number of nodes of the graph by one. It is possible to prove that this operation doesn't reduce the cardinality of the minimum cut, but that it might increase it.
+
+
+Algorithm based on a sequences of contractions of a randomly chosen edge in a graph. The edges are selected proportionally to their weights. 
+
+Recursive algorithm: One level of recursion consists of two independent trials of contraction of G to <eqn>\lceil n/\sqrt{2}+1 \rceil</eqn> vertices followed by a recursion call.
+
+The contraction of G to <eqn>\lceil n/\sqrt{2}+1 \rceil</eqn> vertices can be implemented in O(n^2) time. Hence, the running time of the algorithm is <eqn>T(n) = 2(n^2 + T(\lceil n/\sqrt{2}+1 \rceil))</eqn>.
+
+The solution to this recurrence is <eqn>O(n^2 log n)</eqn>. 
+
+One run of an algorithm finds a particular minimum cut with probability <eqn>\Omega(1/\log n)</eqn> and running algorithm <eqn>log^2 n</eqn> times reduces the chance of missing any particular minimum cut to <eqn>O(1/n^2)</eqn>.
+
 </text>
 
 <text>

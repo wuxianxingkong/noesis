@@ -64,6 +64,27 @@ UCINET, by Lin Freeman, Steve Borgatti, and Martin Everett.
 NEGOPY
 </item>
 
+<item>
+GBASE
+
+GBASE: a scalable and general graph management system
+
+Authors:	
+U. Kang	Carnegie Mellon University, Pittsburgh, PA, USA
+Hanghang Tong	IBM T.J. Watson, Hawthorne, NY, USA
+Jimeng Sun	IBM T.J. Watson, Hawthorne, NY, USA
+Ching-Yung Lin	IBM T.J. Watson, Hawthorne, NY, USA
+Christos Faloutsos	Carnegie Mellon University, Pittsburgh, PA, USA
+
+Published in: 
+KDD '11 Proceedings of the 17th ACM SIGKDD international conference on Knowledge discovery and data mining
+ACM New York, NY, USA ©2011 
+ISBN: 978-1-4503-0813-7 
+doi 10.1145/2020408.2020580
+
+Abstract: Graphs appear in numerous applications including cyber-security, the Internet, social networks, protein networks, recommendation systems, and many more. Graphs with millions or even billions of nodes and edges are common-place. How to store such large graphs efficiently? What are the core operations/queries on those graph? How to answer the graph queries quickly? We propose GBASE, a scalable and general graph management and mining system. The key novelties lie in 1) our storage and compression scheme for a parallel setting and 2) the carefully chosen graph operations and their efficient implementation. We designed and implemented an instance of GBASE using MapReduce/Hadoop. GBASE provides a parallel indexing mechanism for graph mining operations that both saves storage space, as well as accelerates queries. We ran numerous experiments on real graphs, spanning billions of nodes and edges, and we show that our proposed GBASE is indeed fast, scalable and nimble, with significant savings in space and time.
+
+</item>
 </list>
 
 </document>

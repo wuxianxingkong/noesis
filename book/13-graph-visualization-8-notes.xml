@@ -131,6 +131,16 @@ Drawing (Proc. GD '95), Vol. 1027 of Lecture Notes in Computer Science, pp. 76-8
 Springer, Berlin, 1996
 
 
+
+<cite>Brandes and Pich 2008</cite>
+Ulrik Brandes and Christian Pich
+An Experimental Study on Distance-Based Graph Drawing (Extended Abstract)
+GRAPH DRAWING'2008
+Lecture Notes in Computer Science, 2009, Volume 5417/2009, 218-229, 
+DOI: 10.1007/978-3-642-00219-9_21
+Abstract: In numerous application areas, general undirected graphs need to be drawn, and force-directed layout appears to be the most frequent choice. We present an extensive experimental study showing that, if the goal is to represent the distances in a graph well, a combination of two simple algorithms based on variants of multidimensional scaling is to be preferred because of their efficiency, reliability, and even simplicity. We also hope that details in the design of our study help advance experimental methodology in algorithm engineering and graph drawing, independent of the case at hand.
+
+
 <!-- hierarchical drawing -->
 
 <cite>Sugiyama et al. 1981</cite>

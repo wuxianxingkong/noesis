@@ -575,7 +575,7 @@ long-haul nature of random links...
 <text>
 Path length rapidly declines as the rewiring probability, and thus the randomness, increases...
 
-With respect to the underlying lattice, the diameter of the small-world is expected to be np/\ln(np) times smaller than the lattice <cite>Dogorotsev 2010</cite>.
+With respect to the underlying lattice, the diameter of the small-world is expected to be np/\ln(np) times smaller than the lattice <cite>Dorogotsev 2010</cite>.
 </text>
 
 <text>

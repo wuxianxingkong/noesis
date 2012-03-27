@@ -58,7 +58,7 @@ of Erdos and Renyi <cite>Erdos and Renyi 1960</cite>.
 
 <note>
 <text>
-For statistical physicists, a random network is not a particular network, but a statistical ensemble. Such ensembles are defined by their members and their statistical weights, which are proportional to their probabilities. In fact, the classical random graph model is the Gilbert model, <eqn>G_{n,p}</eqn>, where <eqn>n</eqn> is the number of (labeled) nodes and <eqn>p</eqn> is the probability of links. This model represents all possible random graphs with <eqn>n</eqn> nodes and their realization probabilities. Strictly speaking, the notion of randomness is not applicable to individual finite networks <cite>Dogorotsev 2010</cite>. Whereas empirical researchers and computer scientists work with single realizations of networks (or a bunch of them when performing computer simulations), theoretical physicists consider all the members of the corresponding statistical ensemble.
+For statistical physicists, a random network is not a particular network, but a statistical ensemble. Such ensembles are defined by their members and their statistical weights, which are proportional to their probabilities. In fact, the classical random graph model is the Gilbert model, <eqn>G_{n,p}</eqn>, where <eqn>n</eqn> is the number of (labeled) nodes and <eqn>p</eqn> is the probability of links. This model represents all possible random graphs with <eqn>n</eqn> nodes and their realization probabilities. Strictly speaking, the notion of randomness is not applicable to individual finite networks <cite>Dorogotsev 2010</cite>. Whereas empirical researchers and computer scientists work with single realizations of networks (or a bunch of them when performing computer simulations), theoretical physicists consider all the members of the corresponding statistical ensemble.
 </text>
 </note>
 
@@ -932,7 +932,7 @@ Empirical analysis: Determine L, CC and P(k) for a random graph with the same <e
 
 <text>
 e.g.
-Internet: half a million routers with average degree 10 and CC=0.1. If it were a random network, CC \approx 10^{-5} <cite>Dogorotsev 2010</cite>
+Internet: half a million routers with average degree 10 and CC=0.1. If it were a random network, CC \approx 10^{-5} <cite>Dorogotsev 2010</cite>
 
 e.g. 
 WWW <cite>Broder et al. 2000</cite> analyzed over 200 million servers in the Internet’s Webgraph, and discovered its giant component, called the giant strongly connected component (GSCC)... The Internet topology, however, is not random, but scale-free.

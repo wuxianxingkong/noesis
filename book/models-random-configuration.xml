@@ -99,7 +99,7 @@ When <eqn>p_ij</eqn> is constant, we get the Gilbert model. When we use the desi
 </text>
 
 <text>
-For sufficiently large networks, this random network generation process produces the same networks that result from the configuration model and it is usually preferred in practice <cite>Dogorotsev 2010</cite>.
+For sufficiently large networks, this random network generation process produces the same networks that result from the configuration model and it is usually preferred in practice <cite>Dorogotsev 2010</cite>.
 </text>
 
 </document>

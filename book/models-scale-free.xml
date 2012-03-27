@@ -88,9 +88,12 @@ L: Barabasi, Albert, and Jeong (Barabasi, 1999) argued that random or small-worl
 <text>
 Preferential attachment derives its name from the fact that the probability of a new node attaching to an existing node is proportional to the degree of the existing node. The higher the degree, the more likely a new link will be attached to the node. Clearly, high-degreed nodes become more connected and low-degreed nodes become less connected as the network grows. The resulting degree distribution is skewed toward low degree, because an increasing number of nodes decrease in degree as a few nodes greatly increase in degree.
 
-L: Yule first observed preferential attachment in evolution (Yule, 1925): Darwinian algorithm = Connect the new node to an existing node with probability proportional to the number of links already connected to the existing node, i.e. its degree
+L: 1925: Yule first observed preferential attachment in evolution
+- A possible explanation for the observed power-law distriution of the number of species in genera (with exponent close to 2)
+- Darwinian algorithm = the frequency of appearance of new species is proiportional to the number of species in a genus
+i.e. Connect the new node to an existing node with probability proportional to the number of links already connected to the existing node, i.e. its degree
 [Yule, G. U., A Mathematical theory of evolution based on the conclusions of Dr. J. C. Willis, Phil. Trans. Roy. Soc. Lond. B 213:21-87 (1925).]
-++ Yule-Simon distribution
+
 
 L: the idea of nonrandomness as a factor in behavior and the connection between preferential attachment and nonrandom distributions occurred to Simon in 1955 [Simon, H. A., On a class of skew distribution functions, Biometrika 42(3/4):425-440 (1955).]
    ++ [Bornholdt, S. and Ebel, H., World Wide Web scaling exponent from Simon's 1955 model, Phys. Rev. E 64, 035104 (2001).]
@@ -98,9 +101,13 @@ L: the idea of nonrandomness as a factor in behavior and the connection between 
   ++ Herbert Simon, who showed that power laws arise when \the rich get richer," when the amount you get goes up with the amount you already have. In sociology this is referred to as the Matthew effect, after the biblical edict, \For to every one that hath shall be given. . . " (Matthew 25:29). Price called it cumulative advantage. Today it is usually known under the name preferential attachment, coined by Barabasi and Albert.
   [Merton, R. K., The Matthew effect in science, Science 159, 56{63 (1968).]
 
+  e.g. D: rich attracts more wealth, attractive woman attracts more looks, and also superstitions (a failure attracts more misfortunes)
+
+++ Yule-Simon distribution
 
 
-L: the earliest definition of preferential attachment, called cumulative advantage by Price (Price, 1965, 1976), explained the power-law property of scale-free networks before such networks were called scale-free. Price’s model was slightly different from the BA model. The BA procedure ignores link direction, while the Price model did not, and the BA model starts from scratch, while the Price model assumes an existing network. Nonetheless, preferential attachment and cumulative advantage are identical concepts.
+L: the earliest definition of preferential attachment, called cumulative advantage by Derek de Solla Price (Price, 1965, 1976), explained the power-law property of scale-free networks before such networks were called scale-free. Price’s model was slightly different from the BA model. The BA procedure ignores link direction, while the Price model did not, and the BA model starts from scratch, while the Price model assumes an existing network. Nonetheless, preferential attachment and cumulative advantage are identical concepts.
+i.e. for explaining the growing directed network of scientific citations
 [Price, D. J. de S., Networks of scientific papers, Science 149:510–515 (1965). ]
 [Price, D. J. de S., A general theory of bibliometric and other cumulative advantage processes, J. Am. Soc. Inform. Sci. 27:292–306 (1976).]
 
@@ -401,9 +408,7 @@ for i in range(N):
 </algorithm>
 
 
-<text>
-++ Linear preferential attachment yields scale-free networks with an exponent of 3. Refined attachment rules that vary node attractiveness yield scale-free networks with exponents between 2 and 3.
-</text>
+
 
 <text>
 ++ When new links involve a cost, i.e. they cost energy or occupy space, the degree distribution becomes truncated for high degrees <cite>Amaral et al. 2000</cite>. Networks that exhibit a scale-free behavior only through a range of node degrees are called broad-scale networks.
@@ -412,19 +417,13 @@ for i in range(N):
 </document>
 
 
+<document>
+<tag>formation-barabasi-albert-generalizations</tag>
+<title>Generalizations of the Barabasi-Albert model</title>
+
 <text>
-++ Generalizations of the Barabaasi-Albert model <cite>Newman 2003</cite>, p. 34ff
+++ Generalizations of the Barabasi-Albert model <cite>Newman 2003</cite>, p. 34ff
 e.g. Table III in <cite>Albert and Barabasi 2002</cite>
-
-Krapivsky et al. also consider another important generalization of the model, to the case where the probability of attachment to a vertex is not linear in the degree k of the vertex, but goes instead as some general power of degree k^\gamma... this model is solvable using methods similar to those above, and the authors find three general classes of behavior. 
-[Krapivsky, P. L. and Redner, S., Organization of growing random networks, Phys. Rev. E 63, 066123 (2001).]
-[Krapivsky, P. L., Redner, S., and Leyvraz, F., Connectivity of growing random networks, Phys. Rev. Lett. 85, 4629{4632 (2000).]
-
-  - For \gamma = 1 exactly, we recover the normal linear preferential attachment and power-law degree sequences. 
-  - For \gamma &lt; 1, the degree distribution is a power law multiplied by a stretched exponential, whose exponent is a complicated function of \gamma.
-  - For \gamma &gt; 1 there is a \condensation" phenomenon, in which a single vertex gets a finite fraction of all the connections in the network
-  - For \gamma &gt; 2, there is a non-zero probability that this \gel node" will be connected to every other vertex on the graph. The remainder of the vertices have an exponentially decaying degree distribution.
-
 
 
 Another variation on the basic growing network theme is to make the mean degree change over time, Dorogovtsev and Mendes
@@ -455,17 +454,11 @@ Bianconi and Barabasi have proposed an extension of the Barabasi{Albert model th
   + A model with vertex fitness but no preferential attachment has been studied by Caldarelli et al., and also gives power-law degree distributions under some circumstances.  [Caldarelli, G., Capocci, A., De Los Rios, P., and Mu~noz, M. A., Scale-free networks from varying vertex intrinsic fitness, Phys. Rev. Lett. 89, 258702 (2002).]
 </text>
 
-<text>
-Alternative formation model: <cite>Alava and Dogorotsev 2005</cite>
-</text>
-
-
-
-
+</document>
 
 
 <document>
-<tag>formation-barabasi-albert</tag>
+<tag>formation-klemm-eguiluz</tag>
 <title>Klemm-Eguiluz model</title>
 
 A model with high clustering coefficient
@@ -487,6 +480,34 @@ p(k) \approx k_{-2-a/m}
 
 </document>
 
+<document>
+<tag>formation-aggregation</tag>
+<title>Aggregation models</title>
+
+
+<text>
+Aggregation as an alternative formation model:  
+
+<cite>Alava and Dorogotsev 2005</cite>
+[
+ABSTRACT: ... aggregation as a mechanism for the creation of complex networks. In this evolution process vertices merge together, which increases a number of highly connected hubs. We study a range of complex network architectures produced by the aggregation. Fat-tailed (in particular, scale-free) distributions of connections are obtained for both networks with a finite number of vertices and growing networks. We observe a strong variation of a network structure with growing density of connections and find the phase transition of the condensation of edges. Finally, we demonstrate the importance of structural correlations in these networks.
+]
+</text>
+
+<text>
+Another alternative model that yields a power law degree distribution:  
+When the network evolution allows merging nodes (i.e. a pair of nodes is merged and their degrees are added).
+[
+B.J. Kim, A. Trusina, P. Minnhagen, and K. Sneppen
+Self organized scale-free networks from merging and regeneration
+Eur. Phys. J. B 43, 369-372 (2005) 
+DOI: 10.1140/epjb/e2005-00065-y
+
+ABSTRACT: ... the ubiquitous scale free nature of many real world networks may emerge from a steady state process where nodes are created and merged randomly. The merging may be viewed as an optimization of efficiency by minimizing redundancy.
+]
+</text>
+
+</document>
 
 </document>
 
@@ -657,7 +678,31 @@ and <cite>Newman 2003</cite> discusses other solutions, yielding different value
 <text>
 ++ This derivation yields an exponent q=3 for BA scale-free networks, but in practice, a network is considered scale-free if 2 \leq q \leq 3. 
 Technically, any value of q satisfies the scale-free relation p(\alpha k) = \beta p(k).
+</text>
 
+
+<text>
+++ Proportional preferential attachment yields scale-free networks with an exponent of 3. Refined attachment rules that vary node attractiveness yield scale-free networks with exponents between 2 and 3.
+
+A slight change in the rule for preferential attachment is sufficient. The probability of linking to a node of degree <eqn>k</eqn> is made proportional to a preference function <eqn>f(k)</eqn>. Instead of maintaining a proportional preference, as in the Barabasi-Albert model, where <eqn>f_{BA}(k) = k</eqn>, we make it linear by incorporating an additional attrativeness to each node, so that <eqn>f_{linear}(k) = k + \alpha \Delta m</eqn>, where <eqn>\alpha &gt; -1</eqn> is a constant. This linear preference function leads to power laws with exponent <eqn>\lambda = 3 + \alpha</eqn>.
+
+Actually, <eqn>\gamma</eqn> can take values from 2 to infinity, which would correspond to a growing random network with uniform attachment and not a scale-free network.
+
+The preferential attachment mechanism generates power-law degree distributions only when the preference function is linear. 
+Krapivsky et al. also consider another important generalization of the model, to the case where the probability of attachment to a vertex is not linear in the degree k of the vertex, but goes instead as some general power of degree k^\gamma... this model is solvable using methods similar to those above, and the authors find three general classes of behavior. 
+[Krapivsky, P. L. and Redner, S., Organization of growing random networks, Phys. Rev. E 63, 066123 (2001).]
+[Krapivsky, P. L., Redner, S., and Leyvraz, F., Connectivity of growing random networks, Phys. Rev. Lett. 85, 4629{4632 (2000).]
+Pavel Krapivski and Sid Reiner have shown that when the preference function is <eqn>k^\gamma</eqn>:
+
+  - For \phi = 1 exactly, we recover the normal linear preferential attachment and power-law degree sequences. 
+  - For \phi &lt; 1, the degree distribution is a power law multiplied by a stretched exponential, whose exponent is a complicated function of \gamma. (i.e. the degree distribution decays slower than exponentially but faster than a power law when)
+  - For \gamma &gt; 1 there is a \condensation" phenomenon, in which a single vertex gets a finite fraction of all the connections in the network
+  - For \gamma &gt; 2, there is a non-zero probability that this \gel node" will be connected to every other vertex on the graph. The remainder of the vertices have an exponentially decaying degree distribution.
+</text>
+
+
+
+<text>
 L: Networks whose degree distribution approximates a power law,
 <eqn>p(k)=k^{-q}</eqn>, for some power <eqn>q &gt; 1</eqn>. 
 
@@ -688,6 +733,13 @@ L: The power law  declines more slowly than the exponential distribution so comm
 k^-q &gt; exp(-qk)  for most values of 1 &lt; q &lt; 3. Even when the power-law function is
 adjusted to match at k=1, the exponential function declines more rapidly as k increases. This is why power-law distributions are sometimes
 called “long” or “fat tail” distributions.
+
+
+Power laws:
+- Vilfredo Pareto: Income distribution (1897)
+- J.B. Estoup (1916) and George Kingsley Zipf (1932): frequency of occurrence of distinct words in a text
+- F. Auerbach (1913): Distribution of city size
+- Alfred James Lotka (1926): Number of papers by a scientist
 
 
 The power law is related to Zipf’s, Pareto’s, and Yule–Simon’s laws, but is somewhat more general.
@@ -863,7 +915,7 @@ Cohen et al. employs a simple rule of thumb that leads to the same result: the m
 
 
 <text>
-NOTE: Power laws with exponential cut-offs (any finite network with a heavy tail necessarily includes a cut-off, i.e. an end-part of the distribution with a rapid exponential decay). The highest possible cut-off point <eqn>k_{cut}(n)</eqn> is estimated to be of the order of <eqn>n^{1/(\gamma - 1)}</eqn> <cite>Dogorotsev 2010</cite>. When such a cut-off is present, it is called a <q>natural cut-off</q>.
+NOTE: Power laws with exponential cut-offs (any finite network with a heavy tail necessarily includes a cut-off, i.e. an end-part of the distribution with a rapid exponential decay). The highest possible cut-off point <eqn>k_{cut}(n)</eqn> is estimated to be of the order of <eqn>n^{1/(\gamma - 1)}</eqn> <cite>Dorogotsev 2010</cite>. When such a cut-off is present, it is called a <q>natural cut-off</q>.
 </text>
 
 <text>
@@ -1032,12 +1084,29 @@ L(SF) \sim log (n)
 <text>
 (2) L: More accurate estimates by Bollobas and Riordan do not appreciably improve the simple approximation given by Albert and Barabasi for small networks, yet they report their double-logarithmicapproximation seems to be more accurate for large networks such as the Internet:
 [Bollobas, B., O. Riordan, J. Spencer, and G. Tusnady, The degree sequence of a scale-free random graph process, Random Struct. Algorithms 18(3):279–290 (2001).]
+[
+Béla Bollobás, Oliver Riordan
+The Diameter of a Scale-Free Random Graph
+Combinatorica, Volume 24 Issue 1, January 2004 
+doi: 10.1007/s00493-004-0002-2
+]
+</text>
+
+<equation>
+L(SF) \sim log (n) 
+</equation>
+
+<text>
+when <eqn>\Delta m = 1</eqn>, and
 </text>
 
 <equation>
 L(SF) \sim log (n) / log (log (n))
 </equation>
 
+<text>
+when <eqn>\Delta m &gt; 1</eqn> (i.e. cycles make the network more compact).
+</text>
 
 <text>
 DENSITY: Recall that density = \lambda/n for any network, and if n remains constant, then density decreases with increasing size n. Therefore, average path length gradually rises with increase in size, because density declines.
@@ -1080,7 +1149,7 @@ P(B) \sim B^{-\delta}
 </equation>
 
 <text>
-with exponent <eqn>\delta \approx 2.2</eqn>. This exponent has been found to be nsensitive to different values of <eqn>\gamma</eqn> in the range <eqn>2 &lt; \gamma \leq 3</eqn> for different mean degrees, and it is valid for both undirected and directed cases. In fact, <cite>Goh et al. 2001</cite> conjecture that the load exponent is a universal quantity that characterizes scale-free networks. For <eqn>\gamma &gt; 3, however, the load exponent <eqn>\delta</eqn> increases as the degree exponent <eqn>\gamma</eqn> increases, and eventually the load distribution decays exponentially.
+with exponent <eqn>\delta \approx 2.2</eqn>. This exponent has been found to be nsensitive to different values of <eqn>\gamma</eqn> in the range <eqn>2 &lt; \gamma \leq 3</eqn> for different mean degrees, and it is valid for both undirected and directed cases. In fact, <cite>Goh et al. 2001</cite> conjecture that the load exponent is a universal quantity that characterizes scale-free networks. For <eqn>\gamma &gt; 3</eqn>, however, the load exponent <eqn>\delta</eqn> increases as the degree exponent <eqn>\gamma</eqn> increases, and eventually the load distribution decays exponentially.
 </text>
 
 <text>
@@ -1133,6 +1202,18 @@ Scale-free networks have weaker intermediaries, on average, but the hub is much 
 
 <text>
 Barabasi claims that there is no analytic approximation of cluster coefficient for the BA-generated scale-free network, but suggests that it follows a power law for networks with \lambda = 4: CC(scale-free) \sim n^{3/4}. 
+</text>
+
+<text>
+For large Barabasi-Albert scale-free networks, the locally tree-like of the network makes its clustering coefficient approach zero in the limit <cite>Dorogotsev 2010</cite>:
+</text>
+
+<equation>
+CC \approx (\Delta m - 1) \frac { \ln^2 n } { n }
+</equation>
+
+<text>
+Note that a Barabasi-Albert scale-free network is actually a tree when <eqn>\Delta m = 1</eqn>, hence its clustering coefficient is 0 in that case.
 </text>
 
 <text>

@@ -173,7 +173,7 @@
 </reference>
 
 
-<reference id="Alava and Dogorotsev 2005">
+<reference id="Alava and Dorogotsev 2005">
  <author>Mikko J. Alava</author>
  <author>Sergey Dorogovtsev</author>
  <title>Complex networks created by aggregation</title>
@@ -1796,15 +1796,6 @@
  <file>Networks/algorithms/graphs/paths/1959 NM [Dijkstra] MST &amp; Shortest paths.pdf</file>
 </reference>
 
-<reference id="Dogorotsev 2010">
- <author>Sergey Dorogovtsev</author>
- <title>Lectures on Complex Networks</title>
- <publisher>Oxford University Press</publisher>
- <year>2010</year>
- <isbn>0199548935</isbn>
- <file>[books]/algorithms/graphs/0199548935 [Dogorotsev] Lectures on Complex Networks.zip</file>
-</reference>
-
 
 <reference id="Donato et al. 2004a">
  <author>D. Donato</author>
@@ -1839,7 +1830,7 @@
 
 
 <reference id="Dorogovtsev et al. 2008">
- <author>S. N. Dorogovtsev</author>
+ <author>Sergey N. Dorogovtsev</author>
  <author>A. V. Goltsev</author>
  <author>J. F. F. Mendes</author>
  <title>Critical phenomena in complex networks</title>
@@ -1857,7 +1848,7 @@
 
 
 <reference id="Dorogovtsev and Mendes 2002">
- <author>S. N. Dorogovtsev</author>
+ <author>Sergey N. Dorogovtsev</author>
  <author>J. F. F. Mendes</author>
  <title>Evolution of networks</title>
  <journal>Advances in Physics</journal>
@@ -1874,7 +1865,7 @@
 
 
 <reference id="Dorogovtsev and Mendes 2003">
- <author>S. N. Dorogovtsev</author>
+ <author>Sergey N. Dorogovtsev</author>
  <author>J. F. F. Mendes</author>
  <title>Evolution of Networks: From Biological Nets to the Internet and WWW</title>
  <publisher>Oxford University Press</publisher>
@@ -1886,6 +1877,14 @@
  </comment>
 </reference>
 
+<reference id="Dorogotsev 2010">
+ <author>Sergey N. Dorogovtsev</author>
+ <title>Lectures on Complex Networks</title>
+ <publisher>Oxford University Press</publisher>
+ <year>2010</year>
+ <isbn>0199548935</isbn>
+ <file>[books]/algorithms/graphs/0199548935 [Dogorotsev] Lectures on Complex Networks.zip</file>
+</reference>
 
 
 <reference id="Durugbo et al. 2011">

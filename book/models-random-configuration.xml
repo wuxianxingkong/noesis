@@ -353,6 +353,151 @@ This result, however, is not always valid. In particular, <eqn>L \sim \frac { \l
 </document>
 
 
+
+
+<document>
+<tag>random-arbitrary-epidemics</tag>
+<title>Epidemics</title>
+
+<text>
+The spread of infectious diseases is an interesting problem, thoroughly studied by epidemiologists...
+
+e.g. Simplistic epidemiological models
+</text>
+
+<text>
+SIS model: 
+- An individual can be in any of two states: susceptible (S) and infected (I).
+- Rate of recovery of an infected individual (from I to S): <eqn>\mu</eqn>
+- Infection/transmission rate <eqn>\beta</eqn> (the probability of a susceptible individual to become infected if one of his neighbors is infected).
+</text>
+
+<text>
+SIR model (susceptible-infected-removed): 
+- An individual can be in any of three states: susceptible (S), infected (I), and recovered (R, also removed).
+- Rate of recovery of an infected individual (from I to R): <eqn>\mu</eqn>
+- Infection/transmission rate <eqn>\beta</eqn> (the probability of a susceptible individual to become infected if one of his neighbors is infected).
+</text>
+
+<text>
+Basic reproductive number: <eqn>\lambda = \beta / \mu</eqn>
+
+e.g. measles (\approx 15), mumps (\approx 5), flu (\approx 3)
+</text>
+
+<text>
+Epidemic threshold: 
+- The disease will die out if its reproductive number is below the epidemic threhold. 
+- Above this value, the disease will spread throughout the network.
+</text>
+
+<text>
+Epidemic threshold in classical random graphs:
+</text>
+
+<equation>
+\lambda_c \sim \frac{1}{\langle k \rangle}
+</equation>
+
+<text>
+In a sparsely-connected random networks, the disease will not spread if <eqn>\lambda &lt; \lambda_c</eqn>. 
++ Vaccination reduces the effective value of <eqn>\lambda</eqn>: 
+
+V = % vaccinated population: 
+
+\lambda_v = (1-V) \lambda
+
+The disease will not spread if <eqn>V &gt; 1 - 1/(\lambda \langle k \rangle)</eqn> and even unvaccinated members of the population will be safe.
+</text>
+
+
+<text>
+In uncorrelated networks with arbitrary degree distributions <cite>Pastor-Satorras and Vespignani 2001</cite>:
+</text>
+
+<text>
+SIS model:
+</text>
+
+<equation>
+\lambda_c = \frac{\langle k \rangle}{\langle k^2 \rangle}
+</equation>
+
+
+<text>
+SIR model:
+</text>
+
+<equation>
+\lambda_c = \frac{\langle k \rangle}{\langle k^2 \rangle - \langle k \rangle} = \frac { 1 } { \overline{b} }
+</equation>
+
+<text>
+which, unsurprisingly, corresponds to the percolation threshold (the birth point of a giant connected component.
+</text>
+
+<text>
+In real-world networks, with heavy-tailed distributions, the epidemic threshold can be much lower than the <eqn>\frac{1}{\langle k \rangle}</eqn> value obtained for classical random graphs.
+</text>
+
+<text>
+The protection of such networks against epidemics, therefore, requires the inmunization of the most strongly-connected nodes. When such nodes do not exist, effective inmunization strategies can be used to replace targeted inmunization <cite>Cohen et al. 2003</cite>.
+</text>
+
+<text>
+cf.
+
+[
+Romualdo Pastor-Satorras and Alessandro Vespignani: 
+Epidemic Spreading in Scale-Free Networks
+Phys. Rev. Lett. » Volume 86 » Issue 14
+Phys. Rev. Lett. 86, 3200–3203 (2001)
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.86.3200
+DOI:	10.1103/PhysRevLett.86.3200
+]
+
+[
+Reuven Cohen1,*, Shlomo Havlin1, and Daniel ben-Avraham2 
+Efficient Immunization Strategies for Computer Networks and Populations
+Phys. Rev. Lett. » Volume 91 » Issue 24
+Phys. Rev. Lett. 91, 247901 (2003) [4 pages]
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.91.247901
+DOI:	10.1103/PhysRevLett.91.247901
+]
+</text>
+
+<text>
+More realistic models can still benefit from the insight simple models provide:
+
+Metapopulation network <cite>Colizza and Vespignani 2007</cite>:
+- Individuals travel from city to city with a mobility rate <eqn>\kappa</eqn>
+- Within cities, the spread of a disease is described by standard epidemiological models (e.g. SIR).
+- The conclusions for SIS and SIR models remain valid in metapopulation models
+e.g. the invasion threshold for an epidemic in a metapopulation SIR model for uncorrelated networks is still 
+</text>
+
+<equation>
+\kappa_c = \frac{\langle k \rangle}{\langle k^2 \rangle - \langle k \rangle} = \frac { 1 } { \overline{b} }
+</equation>
+
+<text>
+for the network describing the connections between cities.
+</text>
+
+<text>
+cf.
+
+[
+Vittoria Colizza and Alessandro Vespignani
+Invasion Threshold in Heterogeneous Metapopulation Networks
+Physical Review Letters (2007)
+Volume: 99, Issue: 14, Pages: 4
+DOI: 10.1103/PhysRevLett.99.148701
+]
+</text>
+
+</document>
+
 <document>
 <tag>random-arbitrary-notes</tag>
 <title>Bibliographic notes</title>

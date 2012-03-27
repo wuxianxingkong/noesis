@@ -71,6 +71,35 @@ Dyadic analysis focuses on the properties of pairwise relationships, e.g. recipr
 <tag>motifs-cliques</tag>
 <title>Cliques, plexes &amp; cores</title>
 
+<text>
+A <term>k-core</term> is a maximal subgraph whose nodes have at least k connections within the subgraph.
+
+- k-cores are typically nested, as Russian matrioshka dolls.
+
+- 1-cores are connected components.
+
+- 2-cores are connected components without dangling chains.
+e.g. trees have no k-cores with k \geq 2.
+
+cf.
+The architecture of randomly damaged uncorrelated networks as a set of successively enclosed substructures...
+as random damage increases, the highest k-cores disappear (i.e. the best connected areas within the network)
+
+Sergey N. Dorogovtsev, Alexander V. Goltsev, J. F. F. Mendes: 
+k-Core Organization of Complex Networks
+Phys. Rev. Lett. » Volume 96 » Issue 4
+Phys. Rev. Lett. 96, 040601 (2006)
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.96.040601
+DOI:	10.1103/PhysRevLett.96.040601
+
+Sergey N. Dorogovtsev, Alexander V. Goltsev, J. F. F. Mendes: 
+k-core organization of complex networks CoRR abs/cond-mat/0509102: (2005)
+http://arxiv.org/abs/cond-mat/0509102
+
+Alexander V. Goltsev, Sergey N. Dorogovtsev, J. F. F. Mendes: k-core (bootstrap) percolation on complex networks: Critical phenomena and nonlocal effects CoRR abs/cond-mat/0602611: (2006)
+http://arxiv.org/abs/cond-mat/0602611
+
+</text>
 
 <text>
 CLIQUES <cite>Skiena 2008</cite>:

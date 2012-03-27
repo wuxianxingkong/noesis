@@ -861,6 +861,15 @@ Cohen et al. employs a simple rule of thumb that leads to the same result: the m
 [Barabasi, A.-L. and Albert, R., Emergence of scaling in random networks, Science 286, 509{512 (1999).]
 [Moreira, A. A., Andrade, Jr., J. S., and Amaral, L. A. N., Extremum statistics in scale-free network models, Preprint cond-mat/0205411 (2002).]
 
+
+<text>
+NOTE: Power laws with exponential cut-offs (any finite network with a heavy tail necessarily includes a cut-off, i.e. an end-part of the distribution with a rapid exponential decay). The highest possible cut-off point <eqn>k_{cut}(n)</eqn> is estimated to be of the order of <eqn>n^{1/(\gamma - 1)}</eqn> <cite>Dogorotsev 2010</cite>. When such a cut-off is present, it is called a <q>natural cut-off</q>.
+</text>
+
+<text>
+In scale-free networks, when parallel links and loops are not allowed, the cut-off cannot be higher than <eqn>n^{1/2}</eqn> for <eqn>\gamma &lt; 3</eqn>. When nodes with higher degrees are present, the <term>rich club phenomenon</term> appears: such nodes form a densely-connected cluster within an otherwise sparse network. This phenomenon has been observed in many real-world networks, such as the Internet at both the AS and router levels <cite>Zhou and Mondragon 2004</cite>. It should be noted, however, that this club contains only a tiny fraction of the nodes in the network, about <eqn>n^{(3-\gamma)/2}</eqn> according to <cite>Colizza et al. 2006</cite>.
+</text>
+
 </document>
 
 <document>
@@ -1221,12 +1230,6 @@ When <eqn>P(d) \sim d^{-\gamma}</eqn>, then <eqn>P_{cumulative} \sim d^{1-\gamma
 
 <text>
 Many real-world networks have been shown to obey a power-law degree distribution rather than a binomial or Poisson distribution. 
-
-NOTE: Power laws with exponential cut-offs (any finite network with a heavy tail necessarily includes a cut-off, i.e. an end-part of the distribution with a rapid exponential decay). The highest possible cut-off point <eqn>k_{cut}(n)</eqn> is estimated to be of the order of <eqn>n^{1/(\gamma - 1)}</eqn> <cite>Dogorotsev 2010</cite>. When such a cut-off is present, it is called a <q>natural cut-off</q>.
-</text>
-
-<text>
-In scale-free networks where parallel links and loops are not allowed, however, the cut-off cannot be higher than <eqn>n^{1/2}</eqn> for <eqn>\gamma &lt; 3</eqn>. When nodes with higher degrees are present, the rich club phenomenon appears: such nodes form a densely-connected cluster within an otherwise sparse network <cite>Colizza et al. 2006</cite>. This phenomenon has been observed in many real-world networks, such as the Internet at both the AS and router levels <cite>Zhou and Mondragon 2004</cite>.
 </text>
 
 Expectations:

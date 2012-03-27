@@ -15,6 +15,55 @@
 </text>
 
 <text>
+Define the energy of a network as a quantity determined by some structural characteristics 
+(e.g. the number of triangles = transitivity).
++ Implement Boltzmann statistics to the ensemble of the graph.
++ Simulate using the Metropolis algorithm 
+i.e. 
+at each iteration
+- select a random element with a given property
+- compare the energies of two configurations (with the original and a modified value for the chosen property)
+- if the modified configuration has a lower energy, modify the current configuration
+- else accept the modified configuration with a given probability 
+until the system approaches an equilibrium state
+http://en.wikipedia.org/wiki/Metropolis_algorithm
+
+
+HISTORY
+The algorithm was named after Nicholas Metropolis, who was an author along with Arianna W. Rosenbluth, Marshall N. Rosenbluth, Augusta H. Teller, and Edward Teller of the 1953 paper Equation of State Calculations by Fast Computing Machines <cite>Metropolis et al. 1953</cite> which first proposed the algorithm for the specific case of the Boltzmann distribution; and W. Keith Hastings,  who extended it to the more general case in <cite>Hastings 1970</cite>.
+
+<cite>Metropolis et al. 1953</cite>
+Metropolis, N.; Rosenbluth, A.W.; Rosenbluth, M.N.; Teller, A.H.; Teller, E. (1953). "Equations of State Calculations by Fast Computing Machines". Journal of Chemical Physics 21 (6): 1087–1092. Bibcode 1953JChPh..21.1087M. doi:10.1063/1.1699114.
+<cite>Hastings 1970</cite>
+^ Hastings, W.K. (1970). "Monte Carlo Sampling Methods Using Markov Chains and Their Applications". Biometrika 57 (1): 97–109. doi:10.1093/biomet/57.1.97. JSTOR 2334940. Zbl 0219.65008.
+
+
+
+The Gibbs sampling algorithm <cite>Geman and Geman 1984</cite> is a special case of the Metropolis–Hastings algorithm which is usually faster and easier to use but is less generally applicable.
+
+<cite>Geman and Geman 1984</cite>
+Stuart Geman; Donald Geman (1984). "Stochastic Relaxation, Gibbs Distributions, and the Bayesian Restoration of Images". IEEE Transactions on Pattern Analysis and Machine Intelligence 6 (6): 721–741. doi:10.1109/TPAMI.1984.4767596.
+
+HISTORY
+
+Gibbs sampling is named after the physicist J. W. Gibbs, in reference to an analogy between the sampling algorithm and statistical physics. The algorithm was described by brothers Stuart and Donald Geman in 1984, some eight decades after the death of Gibbs
+
+</text>
+
+<text>
+cf. 
+[
+David Strauss
+On a General Class of Models for Interaction
+SIAM Review / Volume 28 / Issue 4 
+SIAM Rev. 28, pp. 513-527 (15 pages)
+http://dx.doi.org/10.1137/1028156
+
+Abstract: This paper develops a class of probability models for configurations of interacting points in a domain. The distributions depend on a function which may be viewed as giving the potential energy of the configurations. Examples include models for interaction in a spatial region and on lattices and graphs. New models in the general class arise naturally, an example being a spatial model for points of different categories. Some general methods, including series expansions and a simulation method known from statistical mechanics, can be useful for many of these models...
+]
+</text>
+
+<text>
 A method for generating an ensemble of graphs with N nodes
 </text>
 

@@ -516,6 +516,28 @@ DOI: 10.1103/PhysRevLett.99.148701
 </text>
 
 
+
+++ 
+Newman's generalization of the configuration model: 
+- 2 motifs: triangles (3-cliques) and links (2-cliques)
+- Instead of giving a degree sequence, for each node two values are given: the number of triangles the node belongs to and the number of remaining connections (single links), so that the node degree is d_i = s_i + 2t_i
+- Generate a uniformly random graph with a given {s_i,t_i} sequence
+- Triangles have no joint links, so that local clustering is not too strong: CC(i) \leq 1 / (d_i+1)
+
+cf.
+M. E. J. Newman 
+Random Graphs with Clustering
+Phys. Rev. Lett. » Volume 103 » Issue 5
+Phys. Rev. Lett. 103, 058701 (2009)
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.103.058701
+DOI:	10.1103/PhysRevLett.103.058701
+
+Al alternative approach based on the idea of hidden variable <cite>Dorogotsev 2010</cite>: 
+- connect pairs of nodes (i,j) with probability p_ij \propto s_i s_j
+- connect triplets (i,j,k) with probability p_ijk \propto t_i t_j t_k
+More complex structural properties could also be used... exponential random graphs...
+
+
 ++
 G. Caldarelli, A. Capocci, P. De Los Rios and M. A. Muñoz
 Scale-Free Networks from Varying Vertex Intrinsic Fitness

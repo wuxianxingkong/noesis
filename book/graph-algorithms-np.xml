@@ -49,6 +49,10 @@ More general classes exist, such as PSPACE: the set of all decision problems whi
 </note>
 
 
+<document>
+<tag>graph-np-list</tag>
+<title>Some relevant NP problems</title>
+
 <text>
 The following problem occupies a singular position within the complexity hierarchy, since it is not known whether the problem has a fast algorithm that solves it ot is NP-complete:
 </text>
@@ -482,6 +486,29 @@ this algorithm was followed by Karloff [Kar96]."
 <text>
 Alternative heuristics might even get better results for particular instances of the above problems, albeit more complex heuristics do not necessarily guarantee better results. In fact, the result if often the opposite. It should also be noted that some clever postprocessing of the results provided by approximation algorithms might also be worthwhile, since it might improve the approximate solution without weakening the approximation bound.
 </text>
+
+</document>
+
+
+<document>
+<tag>graph-np-backtracking</tag>
+<title>Backtracking</title>
+
+<document>
+<tag>graph-np-backtracking-asynchronous</tag>
+<title>Asynchronous backtracking</title>
+
+</document>
+
+
+</document>
+
+<document>
+<tag>graph-np-branch-and-bound</tag>
+<title>Branch and bound</title>
+
+</document>
+
 
 </document>
 

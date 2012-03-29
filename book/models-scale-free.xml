@@ -1694,6 +1694,35 @@ A. Fabrikant, E. Koutsoupias, C. Papadimitriou. Heuristically Optimized Trade-of
 Qian Chen, Hyunseok Chang. Ramesh Govindan, Sugih Jamin, Scott J. Shenker, Walter Willinger. The Origin of Power Laws in Internet Topologies Revisited. Proc. of IEEE Infocom 2002.
 </text>
 
+<text>
+++
+Models of weighted network formation...
+
+e.g.
+New links according to node strengths (sum of their weights) + weight increase (e.g. airport connections)
+
+Title: Modeling the evolution of weighted networks 
+A. Barrat, M. Barthélemy, A. Vespignani
+Journal-ref: Phys. Rev. E 70 (2004) 066149. 
+cond-mat/0406238 
+
+Title: Weighted evolving networks: coupling topology and weights dynamics
+A. Barrat, M. Barthélemy, A. Vespignani
+Journal-ref: Phys. Rev. Lett. 92 (2004) 228701. 
+cond-mat/0401057 
+
+Title: Characterization and Modeling of weighted networks (pdf) 
+Authors: M. Barthélemy, A. Barrat, R. Pastor-Satorras, A. Vespignani 
+Ref: cond-mat/0408566; Physica A 346 (2005) 34
+
+G. Bianconi, 
+Emergence of weight-topology correlations in complex networks,
+Europhys. Lett. 71, 1029 (2005).
+http://www.iop.org/EJ/abstract/0295-5075/71/6/1029
+(combination of Barrat et al.'s model with the BA preferential attachment model)
+
+</text>
+
 </document>
 
 </document>

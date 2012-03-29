@@ -88,6 +88,27 @@ W: Facebook's data team released two papers in November 2011 which document that
 - Ugander, Johan; Karrer, Brian; Backstrom, Lars; Marlow, Cameron. "The Anatomy of the Facebook Social Graph". ArXiv. Retrieved 23 November 2011.
 </text>
 
+
+<text>
+++ Cell phone network (conversations): millions of nodes and links
+
+J. Candia, M. C. Gonzalez, P. Wang, T. Schoenharl, G. Madey, A.-L. Barabási 
+Uncovering individual and collective human dynamics from mobile phone records 
+Journal of Physics A: Mathematical and Theoretical 41, 1-11 (2008). 
+
+C. A. Hidalgo, C. Rodriguez-Sickert 
+The dynamics of a mobile phone network 
+Physica A 387:12, 3017-3024 (2008).
+
+ J.-P. Onnela, J. Saramaki, J. Hyvonen, G. Szabo, D. Lazer, K. Kaski, J. Kertesz, A.-L. Barabási 
+Structure and tie strengths in mobile communication networks 
+Proceedings of the National Academy of Sciences 104 (18), 7332-7336 (2007).
+
+J.-P. Onnela, J. Saramäki, J. Hyvönen, G. Szabó, M A. de Menezes, K. Kaski, A.-L. Barabási, J. Kertész 
+Analysis of a large-scale weighted network of one-to-one human communication 
+New Journal of Physics 9, 1-27 (2007).
+</text>
+
 </document>
 
 <document>
@@ -227,6 +248,13 @@ Zoltán Gyöngyi, Hector Garcia-Molina. Link Spam Alliances. 31st International Co
 
 ref. [D.J. de S. Price: "Networks of scientific papers", Science 149:150, 1965]
 
+ref.
+The architecture of complex weighted networks 
+A. Barrat, M. Barthélemy, R. Pastor-Satorras, A. Vespignani
+Journal-ref: Proc. Natl. Acad. Sci. USA 101 (2004) 3747.    
+cond-mat/0311416
+
+
 ++ Semantic associations between terms
 [Steyvers, M, J. B. Tenenbaum (2005). Cognitive Science 29(1): 41-78.]
 Based on the University of South Florida Word Association, Rhyme and Word Fragment Norms
@@ -292,6 +320,31 @@ DOI:	10.1103/PhysRevE.65.066130
 ]
 </text>
 
+<text>
+AIRPORTS: 3880 airports and 18810 direct flight connections...
+
+The architecture of complex weighted networks 
+A. Barrat, M. Barthélemy, R. Pastor-Satorras, A. Vespignani
+Journal-ref: Proc. Natl. Acad. Sci. USA 101 (2004) 3747.    
+cond-mat/0311416
+
+The role of the airline transportation network in the prediction and predictability of global epidemics 
+V. Colizza, A. Barrat, M. Barthélemy, A. Vespignani
+Journal-ref: Proc. Natl. Acad. Sci. USA 103 (2006) 2015. 
+q-bio/0507029
+
+Title: Vulnerability of weighted networks 
+L. Dall'Asta, A. Barrat, M. Barthélemy A. Vespignani
+Journal-ref: J. Stat. Mech. (2006) P04006. 
+physics/0603163
+
+The effects of spatial constraints in the evolution of weighted complex networks 
+A. Barrat, M. Barthélemy, A. Vespignani
+Journal-ref: J. Stat. Mech. (2005) P05003. 
+physics/0504029
+
+</text>
+
 </document>
 
 <document>
@@ -310,7 +363,7 @@ Cellular interaction networks: signal transduction, gene regulation, metabolism
 + in- and out-degree distributions, approximately scale-fee with exponent 2.2
 + the lower the exponent, the wider the range of degrees and the more
 [
-H. Jeong, B. Tombor, R. Albert, Z. N. Oltvai & A.-L. Barabási
+H. Jeong, B. Tombor, R. Albert, Z. N. Oltvai, and A.-L. Barabási
 The large-scale organization of metabolic networks
 Nature 407, 651-654 (5 October 2000)
 doi:10.1038/35036627

@@ -21,7 +21,7 @@ Make four copies of the graph, again connect peripheral nodes to the central nod
 </text>
 
 <text>
-cf. [E. Ravasz, A.-L. Barabasi, Phys Rev E 67, 026112 (2003)]
+cf. <cite>Ravasz and Barabasi 2003</cite>
 </text>
 
 <text>
@@ -57,7 +57,10 @@ Also observed in various cellular networks - sign of hierarchical, modular archi
 </text>
 
 <text>
-cf. [E. Ravasz et al., Science 297, 1551 (2002)]
+cf. 
+E. Ravasz, A. L. Somera, D. A. Mongru, Z. N. Oltvai, A.-L. Barabási 
+Hierarchical organization of modularity in metabolic networks 
+Science 297, 1551-1555 (2002). 
 </text>
 
 </document>

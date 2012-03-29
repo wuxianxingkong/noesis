@@ -12,7 +12,11 @@ Specific aspects of the general idea of social group have led to more precise ne
 </text>
 
 <text>
-++ Identification of various kinds of subgraphs, i.e. communities
+++ Identification of various kinds of subgraphs, i.e. communities (the coarse structure of the network)
+
+Ideally, natural groups of heavily-connected nodes within a network
+
+
 </text>
 
 <text>
@@ -68,6 +72,11 @@ usually represented using a graph.
 <tag>community-detection-partitioning</tag>
 <title>Graph partitioning</title>
 
+
+<text>
+Non-overlapping communities...
+</text>
+
 <text>
 GRAPH PARTITIONING HEURISTICS
 
@@ -94,6 +103,15 @@ Empirical results on graph partitioning heuristics include [BG95, LR93].
 <document>
 <tag>community-detection-spectral</tag>
 <title>Spectral partitioning</title>
+
+
+<text>
+Random walk process: move from a node to any of its d neighbors with equal probability p=1/d. A random walk will spend more time in areas with high density of links, indicating the existence of communities
+</text>
+
+<text>
+Instead of tracing random walks, researchers resort to a mathematical operator that generates such random walks. This is more covenient in practice and more elegant in theory...  <cite>Newman 2006</cite>
+</text>
 
 
 <text>
@@ -160,8 +178,66 @@ If we return to our disconnected network, we can easily obtain <eqn>c</eqn> eige
 <tag>community-detection-hierarchical</tag>
 <title>Hierarchical clustering</title>
 
+++ Nested structure of communities (hierarchically embedded communities) vs. non-overlapping communities
+
+++ dendrogram...
+ideally, the dendrogram 
+- represents the most natural partition of a given network for every possible number of communities
+- reflects the global organization of the network
+
+
+<document>
+<tag>community-detection-newman-girvan</tag>
+<title>The Newman-Girvan algorithm</title>
+
+
+Newman-Girvan algorithm <cite>Newman and Girvan 2004</cite>:
+Uncover communities by removing the links that carry the highest numbers of shortest paths (using the link betweenness centrality)
+
+1) Compute the betweenness centrality for all the links in the network
+
+Repeat until no links remain:
+
+2) Remove the link with the highest betweenness
+
+3) Recompute betweenness centrality for the remaining links
+
+
+NOTE: Recomputing betweenness in necessary (e.g. communities connected by two links, one with high initial betweenness, the other with low betweenness in the original network; after the first link removal, the second link betweenness will soar [and the link will be removed soon, hence uncovering the original communities]).
+
+Reasonable results, albeit the algorithm might fail (e.g. three equal cliques connected by three links)
+
++ Once the dendrogram is built, the modularity measure Q can be used to determine the best possible partition (i.e. the number of partitions).
+
 </document>
 
+
+</document>
+
+
+
+
+<document>
+<tag>community-detection-overlapping</tag>
+<title>Overlapping communities</title>
+
+
+<text>
+A single individual might belong to different communities...
+</text>
+
+cf. <cite>Palla et al. 2005</cite>
+
+A community = A connected k-clique component
+++ A k-clique is a fully-connected subgraph with k nodes. (e.g. triangles are 3-cliques
+++ two k-cliques are adjacent if they share k-1 nodes 
+(communities can overlap, but not by more than k-2 nodes)
+
+Results depend on the value of k
+- k too large: separate communities
+- k too small: too large communities (k=2 == connected components)
+
+</document>
 
 
 <document>
@@ -204,7 +280,7 @@ Overlapping communities, where nodes can be central to more than one community <
 <text>
 Chayant Tantipathananandh, Tanya Berger-Wolf, David Kempe A Framework for Community Identification in Dynamic Social Networks. KDD 2007, San Jose, CA.
 
-M. E. J. Newman, Finding community structure in networks using the eigenvectors of matrices, Phys. Rev. E 74, 036104 (2006).
+<cite>Newman 2006</cite>
 
 R. Kumar, P. Raghavan, S. Rajagopalan, A. Tomkins. Trawling the web for emerging cyber-communities. 8th International World Wide Web Conference, May 1999.
 
@@ -216,9 +292,9 @@ Ravi Kannan, Santos Vempala, Adrian Vetta, On clusterings: good, bad and spectra
 
 E. A. Leicht, Petter Holme, and M. E. J. Newman, Vertex similarity in networks, Phys. Rev. E 73, 026120 (2006).
 
-M. E. J. Newman, M. Girvan. Finding and evaluating community structure in networks. Phys. Rev. E 69, 026113 (2004)
+<cite>Newman and Girvan 2004</cite>
 
-M. E. J. Newman Fast algorithm for detecting community structure in networks. Phys. Rev. E 69, 066133 (2004)
+<cite>Newman 2004a</cite>
 
 C. Faloutsos, K. McCurley and A. Tomkins. Fast Discovery of Connection Subgraphs. In Tenth ACM SIGKDD Conference, Seattle, WA, 2004.
 

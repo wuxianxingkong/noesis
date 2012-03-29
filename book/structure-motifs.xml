@@ -21,6 +21,36 @@ Large networks can be decomposed into smaller <q>building blocks</q> or <q>netwo
 Every network can be uniquely decomposed into a set of motifs, and the number and distribution of individual motifs can reflect some functional characteristics of the network <cite>Sporns 2011</cite>.
 </text>
 
+++
+R. Milo, S. Shen-Orr, S. Itzkovitz, N. Kashtan, D. Chklovskii and U. Alon
+Network Motifs: Simple Building Blocks of Complex Networks
+Science 25 October 2002: 
+Vol. 298 no. 5594 pp. 824-827 
+DOI: 10.1126/science.298.5594.824
+
+e.g. 
+only two different 3-node connected motifs in undirected networks
+13 different 3-node connected motifs in directed networks
+
+NAIVE IDEA: Network function explained in terms of the repeated appearances of the most significant motifs?
+If that were true, motifs could explain not just network structure, but also determine its behavior.
+
+
+++ empirical study of network motifs
+
+cf.
+
+Kim Baskerville, Peter Grassberger, Maya Paczuski
+Graph animals, subgraph sampling, and motif search in large networks.
+Phys. Rev. E » Volume 76 » Issue 3, 036107, 2007
+DOI: 10.1103/PhysRevE.76.036107 
+URL: http://link.aps.org/doi/10.1103/PhysRevE.76.036107
+
+A. Vazquez, R. Dobrin, D. Sergi, J.-P. Eckmann, Z. N. Oltvai, A.-L. Barabási 
+The topological relationship between the large-scale attributes and local interactions patterns of complex networks 
+Proceedings of the National Academy of Sciences 101, 17940-17945 (2004).
+
+
 <document>
 <tag>motifs-dyads</tag>
 <title>Dyads</title>
@@ -70,6 +100,26 @@ Dyadic analysis focuses on the properties of pairwise relationships, e.g. recipr
 <document>
 <tag>motifs-cliques</tag>
 <title>Cliques, plexes &amp; cores</title>
+
+<text>
+A <term>k-clique</term> is a fully-connected subgraph with k nodes.
+
+e.g. triangles are 3-cliques (and two connected nodes always form a 2-clique)
+
+
+++ two k-cliques are adjacent if they share k-1 nodes 
+
+cf.
+Imre Derényi, Gergely Palla, Tamás Vicsek:
+Clique Percolation in Random Networks
+Physical Review Letters, Volume 94, Issue 16, 160202 (2005)
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.94.160202
+DOI:	10.1103/PhysRevLett.94.160202
+
+IDEA (D): One can replace a network by the complete set of its cliques connected in accordance to the definition of adjacent cliques
+
+</text>
+
 
 <text>
 A <term>k-core</term> is a maximal subgraph whose nodes have at least k connections within the subgraph.
@@ -243,12 +293,61 @@ Clustering (segregation) - efficiency (integration) trade-off... Optimal cluster
 <text>
 Networks with high levels of clustering are often composed of local communities or modules, which consist of densely connected sets of nodes. A module is separated from other modules in the sense that most links connect nodes within the module and only a few links extend beyond the module boundaries. </text>
 
+i.e. modules without joint nodes (overlapping is absent by definition)
++ many links within modules
++ few links between nodes in different modules
+
+Modular organization = about large-scale clustering of nodes within a network 
+
+
 <text>
 A measure of network modularity characterizes the balance of within-module and between-modules connections.
 </text>
 
+
+
 <text>
-++ <cite>Girvan and Newman 2002</cite> <cite>Newman 2006</cite>
+Modularity Q for a given partition of the network (finding the optimal partition is the problem addressed by community detection algorithms):
+</text>
+
+<cite>Girvan and Newman 2002</cite>
+
+Network of m links divided into k modules, with m_i links in module i
+
+Maximum modularity when modules are clearly separated from each other and minimum modularity when the network is homogeneous (imperceptible modules)
+
+Idea: Compare two networks, the given one and its zero-modularity counterpart (an uniform random network with the same degree sequence)
+
+Quantity: Ratio of the total number of links within modules and the number of links in the network
+
+<equation>
+Q = \frac{1}{m} \sum_{r=1}^{k} m_r \bigg|_{network} - \frac{1}{m} \sum_{r=1}^{k} m_r \bigg|_{uniform}
+</equation>
+
+
+For the uniform random counterpart, the ratio involved in the modularity measure can be computed from the node degrees. Let <eqn>q_r</eqn> be the total degree of the nodes in module <eqn>r</eqn>, i.e. <eqn>\sum_r q_r = 2m</eqn>. Then, the modularity <eqn>Q</eqn> can be computed as:
+
+
+<equation>
+Q = \sum_{r=1}^{k} \left[ \frac{m_r}{m} - \left( \frac{q_r}{2m} \right)^2 \right]
+</equation>
+
+Q will be close to 1 when the partition exhibits a strong community structure and close to 0 (even negative) when it does not.
+Warning: A chain will yield non-zero modularity (hardly a modular network)
+
+An equivalent expression in terms of the adjacency matrix is often employed:
+
+
+<equation>
+Q = \frac{1}{2m} \sum_{r=1}^{k} \sum_{i,j \in r} \left( a_{ij} - \frac{d_i d_j}{2m} \right)^2
+</equation>
+
+<text>
+where the second sum is computed over all pairs of nodes within module <eqn>r</eqn> and the term <eqn>a_{ij} - d_i d_j / 2m</eqn> defines the so-called modularity matrix.
+</text>
+
+<text>
+++  <cite>Newman 2006</cite> reports modularity values between 0.3 and 0.8 for some real-world networks (for their optimal partitions). It is hard to find a real network with a low modularity value... 
 </text>
 
 </document>

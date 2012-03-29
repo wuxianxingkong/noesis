@@ -1222,9 +1222,17 @@ For small r, there are also problems
 
 r=2 (navigable network)
 + the only exponent for which the long-range links are uniformly distributed over distance scales
+(navigable = a greedy algorithm provides fast navigation)
 i.e. Links of length 2^{j} to 2^{j+1} have the same probabilities for all j. Thus we have enough precision in every case.
 
-In a large network one has to manage local and global relations simultaneously.
+At this unique point, r=D, the average delivery time is very slow (polylogarithmic, <eqn>\sim ln^2 L</eqn> for a D-dimensional lattice of LxLx...xL nodes), while the delivery time increases as a power of L for all other values of r <cite>Carmi et al. 2009</cite> <cite>Cartozo and De Los Rios 2009</cite>. 
+
+
+
+
+In a large network, one has to manage local and global relations simultaneously.
+
+
 
 </text>
 
@@ -1269,14 +1277,76 @@ Nature, 393, 440–442. 1998.
 
 
 V. Nguyen and C. Martel. Analyzing and characterizing small-world graphs. 2005 ACM-SIAM symposium on Discrete Algorithms.
+
 D.J. Watts. Networks, Dynamics and Small-World Phenomenon, American Journal of Sociology, Vol. 105, Number 2, 493-527, 1999
-J. Kleinberg. The small-world phenomenon: An algorithmic perspective. Proc. 32nd ACM Symposium on Theory of Computing, 2000
-J. Kleinberg. Small-World Phenomena and the Dynamics of Information. Advances in Neural Information Processing Systems (NIPS) 14, 2001.
-D. J. Watts, P. S. Dodds, and M. E. J. Newman. Identity and search in social networks, Science 296, 1302-1305 (2002).
-Adamic L., Lukose R., Puniyani A., and Huberman B., Search in power law networks, Physical review Vol 64.
-L. Adamic, E. Adar. How To Search a Social Network. Social Networks Journal. Vol 27, Is 3, 2005, Pages 187-203
+
 J. Leskovec, J. Kleinberg, C. Faloutsos: Graphs over time: densification laws, shrinking diameters and possible explanations. KDD 2005: 177-187
+
 M. E. J. Newman, Models of the small world, J. Stat. Phys. 101, 819-841 (2000).
+</text>
+
+<text>
+SEARCH
+</text>
+
+<text>
+<cite>Kleinberg 2000</cite>: Navigation in a Small World. Nature 406(2000), 845.
+
+J. Kleinberg. The small-world phenomenon: An algorithmic perspective. Proc. 32nd ACM Symposium on Theory of Computing, 2000
+
+J. Kleinberg. Small-World Phenomena and the Dynamics of Information. Advances in Neural Information Processing Systems (NIPS) 14, 2001.
+
+J. Kleinberg. The Small-World Phenomenon and Decentralized Search. SIAM News 37(3), April 2004
+
+J. Kleinberg. Complex Networks and Decentralized Search Algorithms. Proceedings of the International Congress of Mathematicians (ICM), 2006.
+
+Cécile Caretta Cartozo and Paolo De Los Rios 
+Extended Navigability of Small World Networks: Exact Results and New Insights
+Phys. Rev. Lett. » Volume 102 » Issue 23
+Phys. Rev. Lett. 102, 238703 (2009) [4 pages]
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.102.238703
+DOI:	10.1103/PhysRevLett.102.238703
+
+Shai Carmi, Stephen Carter, Jie Sun, and Daniel ben-Avraham
+Asymptotic Behavior of the Kleinberg Model
+Phys. Rev. Lett. » Volume 102 » Issue 23
+Phys. Rev. Lett. 102, 238702 (2009) [4 pages]
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.102.238702
+DOI:	10.1103/PhysRevLett.102.238702
+
+
+++ Searchable networks:
+(when a large fraction of search chains are successful, the network is searchable)
+(networks with efficient greedy routing are said to be navigable)
+
+D. J. Watts, P. S. Dodds, and M. E. J. Newman. Identity and search in social networks, Science 296, 1302-1305 (2002).
+
+Adamic L., Lukose R., Puniyani A., and Huberman B., Search in power law networks, Physical review Vol 64.
+
+L. Adamic, E. Adar. How To Search a Social Network. Social Networks Journal. Vol 27, Is 3, 2005, Pages 187-203
+
+
+++ Hidden metric spaces
+(conjecture: presence of hidden metric spaces in many real-world networks)
+
+M. A. Serrano, D. Krioukov, and M. Boguñá. 
+Self-similarity of complex networks and hidden metric spaces. 
+Physical Review Letters » Volume 100 » Issue 7, 078701 (2008)
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.100.078701
+DOI:	10.1103/PhysRevLett.100.078701
+
+Navigability of complex networks
+Marián Boguñá, Dmitri Krioukov, K. C. Claffy
+Nature Physics 5, 74 - 80 (2009) 
+doi:10.1038/nphys1130
+
+Marián Boguñá and Dmitri Krioukov
+Navigating Ultrasmall Worlds in Ultrashort Time
+Physical Review Letters » Volume 102 » Issue 5, 058701 (2009)
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.102.058701
+DOI:	10.1103/PhysRevLett.102.058701
+(hidden-metric-space models of scale-free networks are navigable for a wide range of parameters vs. Kleinberg's model single-point navigation)
+
 </text>
 
 </document>

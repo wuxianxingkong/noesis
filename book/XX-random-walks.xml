@@ -1,14 +1,51 @@
 <?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography SYSTEM "bibliography.xml"> ]> 
 <?xml-stylesheet type="text/xsl" href="../book.xsl"?>
 
 <!-- Random walks -->
 
 <document>
+&bibliography;
 <tag>random-walks</tag>
 <title>Random walks</title>
 
 <text>
-cf. Newman 6.14
+cf. <cite>Newman 2010</cite> 6.14
+</text>
+
+<text>
+cf. <cite>Dorogotsev 2010</cite> 11.1 (random walks) - 11.2 (biased random walks)
+</text>
+
+
+<text>
+RANDOM WALKS
+
+Jae Dong Noh, Heiko Rieger 
+Phys. Rev. Lett. » Volume 92 » Issue 11
+Phys. Rev. Lett. 92, 118701 (2004)
+Random Walks on Complex Networks
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.92.118701
+DOI:	10.1103/PhysRevLett.92.118701
+</text>
+
+
+<text>
+BIASED RANDOM WALKS
+
+Vishal Sood and Peter Grassberger
+Localization Transition of Biased Random Walks on Random Networks
+Phys. Rev. Lett. » Volume 99 » Issue 9
+Phys. Rev. Lett. 99, 098701 (2007) [4 pages]
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.99.098701
+DOI:	10.1103/PhysRevLett.99.098701
+
+O. Bénichou and R. Voituriez 
+Comment on “Localization Transition of Biased Random Walks on Random Networks”
+Phys. Rev. Lett. » Volume 99 » Issue 20
+Phys. Rev. Lett. 99, 209801 (2007) [1 pages]
+URL:	http://link.aps.org/doi/10.1103/PhysRevLett.99.209801
+DOI:	10.1103/PhysRevLett.99.209801
 </text>
 
 </document>

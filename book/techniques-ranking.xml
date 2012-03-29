@@ -21,6 +21,41 @@ e.g. Web search (10-30 links from millions of web pages containing some given wo
 ++ <cite>Page et al. 1998</cite> <cite>Brin and Page 1998</cite>
 </text>
 
+<text>
+IDEA: The popularity of a web page is proportional to the number of times a web surfer would visit  the page when randomly surfing the Web. Since the WWW is a directed network, random walks could be trapped into dead ends (out-components). Therefore, we must allow random restarts...
+</text>
+
+<equation>
+r_i = \frac{p}{n} + (1-p) \sum_{j: j \rightarrow i} \frac{r_j}{d_{out,j}}
+</equation>
+
+<text>
+where <eqn>n</eqn> is the size of the network, <eqn>d_{out,j}</eqn> is the out-degree of node <eqn>j</eqn>, and <eqn>p</eqn> is the probability that the web surfer jumps to a node chosen uniformly at random (claimed to be about 0.15).
+</text>
+
+<text>
+Typically, the higher the number of incoming links, the higher the PageRank of a given page. In uncorrelated networks (i.e. without node-degree correlations), the PageRank value for a node with a given number of links can be computed as <cite>Fortunato et al. 2008</cite>
+</text>
+
+<equation>
+r(d_{in}, d_{out}) = \frac{p}{n} + \frac{1-p}{n} \frac{d_{in}}{\langle d_{in} \rangle}
+</equation>
+
+cf.
+Santo Fortunato
+Marián Boguñá
+Alessandro Flammini
+Filippo Menczer:
+Approximating PageRank from In-Degree
+Lecture Notes in Computer Science, 2008, Volume 4936/2008, 59-71, 
+Fourth International Workshop on Algorithms and Models for the Web-Graph, WAW 2006, Banff, Canada, November 30 - December 1, 2006. Revised Papers
+DOI: 10.1007/978-3-540-78808-9_6
+ISBN: 978-3-540-78807-2 
+
+
+<text>
+However, the rank of the pages providing incoming links is what determines the rank of a given page... and this is hard to manipulate for high PageRank values.
+</text>
 
 <text>
 ++ Facebook has its own algorithm, EdgeRank, which (in conjunction with September’s addition, GraphRank) determines which items appear at the top of an individual's news feed. EdgeRank is based on many variables, including who Facebook thinks are a user's closest friends and how many people have interacted with a piece of content.

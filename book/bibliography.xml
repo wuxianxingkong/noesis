@@ -364,6 +364,7 @@
  <author>Sebastiano Vigna</author>
  <title>Four Degrees of Separation</title>
  <journal>arXiv</journal>
+ <article>1111.4570</article>
  <year>2011</year>
  <url>http://arxiv.org/abs/1111.4570</url>
  <file>Networks/applications/social/2011 arXiv - Facebook degrees of separation.pdf</file>
@@ -607,7 +608,7 @@
  <journal>Journal of Combinatorial Theory, Series A</journal>
  <volume>24</volume>
  <number>3</number>
- <pages>296–307</pages>
+ <pages>296-307</pages>
  <year>1978</year>
  <doi>10.1016/0097-3165(78)90059-6</doi>
  <file>Networks/models/random/1978 JCT [Bender &amp; Canfield] Configuration model.pdf</file>
@@ -1042,6 +1043,9 @@
  <author>Daniel S. Halgin</author>
  <title>On Network Theory</title>
  <journal>Organization Science</journal>
+ <volume>22</volume>
+ <number>5</number>
+ <pages>1168-1181</pages>
  <year>2011</year>
  <doi>10.1287/orsc.1110.0641</doi>
  <file>Networks/2011 OS Network Theory.pdf</file>
@@ -1750,6 +1754,7 @@
  <author>Daniel N. Rockmore</author>
  <title>Robustness and Contagion in the International Financial Network</title>
  <journal>arXiv</journal>
+ <article>1104.4249</article>
  <year>2011</year>
  <url>http://arxiv.org/abs/1104.4249</url>
  <file>Networks/applications/economic/2011 arXiv Robustness and contagion in the international financial network.pdf</file>
@@ -2234,6 +2239,7 @@
  <author>Daniel N. Rockmore</author>
  <title>Stability of the World Trade Web over Time - An Extinction Analysis</title>
  <journal>arXiv</journal>
+ <article>1104.4380</article>
  <year>2011</year>
  <url>http://arxiv.org/abs/1104.4380</url>
  <file>Networks/applications/economic/2011 arXiv Trade Stability.pdf</file>
@@ -2386,7 +2392,7 @@
  <author>Eugene M. Luks</author>
  <author>Claus P. Schnorr</author>
  <author>Andreas Weber</author>
- <title>An $O(n^3 log n)$ deterministic and an $O(n^3)$ Las Vegas isomorphism test for trivalent graphs</title>
+ <title>An $O(n^3 \log n)$ deterministic and an $O(n^3)$ Las Vegas isomorphism test for trivalent graphs</title>
  <journal>Journal of the ACM</journal>
  <volume>34</volume>
  <number>3</number>
@@ -4055,7 +4061,8 @@
  <author>Brendan D. McKay</author>
  <title>Practical graph isomorphism</title>
  <proceedings>10th Manitoba Conference on Numerical Mathematics and Computing</proceedings>
- <booktitle>Congressus Numerantium 30</booktitle>
+ <series>Congressus Numerantium</series>
+ <volume>30</volume>
  <location>Winnipeg, Canada</location>
  <year>1980</year>
  <pages>45-87</pages>
@@ -5473,6 +5480,7 @@
  <author>Cameron Marlow</author>
  <title>The Anatomy of the Facebook Social Graph</title>
  <journal>arXiv</journal>
+ <article>1111.4503</article>
  <year>2011</year>
  <url>http://arxiv.org/abs/1111.4503</url>
  <file>Networks/applications/social/2011 arXiv - Facebook social graph.pdf</file>

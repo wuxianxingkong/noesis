@@ -163,6 +163,45 @@ ON DIRECTED GRAPHS
 
  ref. first described by <cite>Kahn 1962</cite>: <url>http://en.wikipedia.org/wiki/Topological_sorting</url>
  Applications: scheduling tasks under precedence constraints (any topological sort, a.k.a. linear extension, defines an order to perform the tasks that satisfies all precedence constraints).
+
+
+TOPOLOGICAL SORT
+
+Reading: CLRS 22.4
+
+Absent-minded Mr. Sandler (like professor Budimlic before him) has a problem when getting ready to go to work in the morning: he sometimes dresses out of order. For example, he might put his shoes on before putting the socks on, so he’ll have to take the shoes off, put the socks on and than the shoes back on. There’s also a shirt, tie, belt, shorts, pants, watch and jacket that have to be put on in a certain order. (There will be no in-class demo.)
+
+
+
+The order between different parts of clothing forms a graph: shorts before pants means there’s an edge between shorts and pants. (We generally call a graph like this a dependancy graph, because it describes dependencies between pairs of tasks.)
+
+Let’s do a DFS of this graph. The discovery and finishing times (d/f; see the lecture on DFS) might be:
+
+Shorts: (1/10), pants(2/9), belt(3/6), jacket(4/5), shoes (7/8), socks (11/12), tie(13/14), watch(15/16), shirt(17/18).
+If we order the nodes based on the decreasing finishing time of the DFS, we get: shirt, watch, tie, socks, shorts, pants, shoes, belt, jacket. (This is an order that is sure to get Mr. Sandler dressed without any time-consuming backtracking.)
+
+This is called topological sort. It only makes sense for directed acyclic graphs. If the graph is cyclic, no topological order exists (because something always depends on something else). The topological order is a linear order of vertices such that if there exists an edge (u,v) ? G, vertex u appears before v in the ordering.
+
+Here’s some pseudocode for an implementation of topological sort:
+
+TOPOLOGICAL-SORT(G):
+  call DFS(G) to compute f[v] for each vertex v in G;
+  as each vertex v is finished, and f[v] computed,
+      put v on the front of a linked list;
+  return the linked list of vertices.
+
+Lemma 1. A directed graph G is acyclic if and only if a DFS of G yields no back edges.
+
+Proof:
+
+= &gt;: If there is a back edge (u,v) then v is an anchestor of u in the DF forest, so there is a path from v to u, which with the (u,v) edge forms a cycle.
+
+&lt; =: Suppose G has a cycle. Let v be the first vertex on the cycle that is discovered in the DFS. Let (u,v) be the incoming edge in the cycle. Since u is not yet discovered, there is a white-path from v to u at this point. According to the white-path theorem (see the DFS notes), u will be v’s descendant in the DF forest. Thus, (u,v) will become a back edge.
+
+Theorem 2. TOPOLOGICAL-SORT(G) produces a topological sort of a directed acyclic graph G.
+
+Proof: It is enough to show that for every edge (u,v) in G, f[u] > f[v]. Let’s look at the time d[u]: at this point, v cannot be gray, since then (u,v) would be a back edge, and G cyclic. v therefore has to be black or white. If v is white, than v is a descendant of u in the DF forest, and by parenthesis theorem f[u] > f[v]. If v is black, that means that v is already finished, so f[v] &lt; d[u] &lt; f[u].
+
 </text>
 
 
@@ -174,6 +213,7 @@ ON DIRECTED GRAPHS
 ++ Identifying strongly-connected components (first algorithm by <cite>Tarjan 1972</cite>): 1) Traverse the graph atarting from any given node to discover the nodes that are reachable from the node. 2) Build a graph G'=(V,E') with the same vertex set but all its arcs reversed; i.e. <eqn>(y,z) \in E' iff (x,y) \in E</eqn>. 3) Perform a traveral starting from v in G', which will result in discovering the set of nodes that can reach v. 
 
 If the second traversal does not completely traverse G', each DFS performed on G' will correspond to a strongly-connected component.
+
 </text>
 
 <text>
@@ -195,6 +235,59 @@ Linear SCC algorithms:
 
 
  all efficiently compute the strongly connected components of a directed graph, but Tarjan's and Gabow's are favoured in practice since they require only one depth-first search rather than two. <url>http://en.wikipedia.org/wiki/Strongly_connected_component</url>
+
+
+STRONGLY CONNECTED COMPONENTS
+
+Reading: CLRS 22.5
+
+Many algorithms need a decomposition of a directed graph into strongly connected components. A strongly connected componentof a directed graph G is a maximal subset G' ? G such that there is a path in G' from every vertex to every other vertex in G'. For example, many compiler algorithms decompose the programs into strongly connected components (loops) and optimize the components independently.
+
+Here’s an example of a graph, with strongly connected components indicated. The nodes also have their d[v] and f[v] times indicated from a DFS.
+
+
+
+Now for a bit of notation: We say GT, the transpose of G, is the graph G with all its edges reversed in direction.
+
+Note that graphs G = (V,E) and GT = (V,ET) have identical sets of strongly connected components. (Why?)
+
+How do you construct GT? If the representation is an adjacency matrix, just compute the transpose of that matrix. That’s O(|V|2) time (It can be O(1) time if you don’t need G any more: just invert the meaning of the matrix dimensions). If the representation is adjacency lists, then for every vertex v, for every vertex u in v’s adjacency list, add v to u’s adjacency list in GT Cost: O(E+V).
+
+A component graph GSCC is a graph in which all the SCC are collapsed into single nodes, and edges between SCCs are maintained. For the graph above, the component graph looks like this:
+
+
+
+We compute SCC by doing two DF traversals: first on G, and the second on GT, but in order of decreasing f[v] computed by first DFS.
+
+STRONGLY-CONNECTED-COMPONENTS(G):
+  call DFS(G) to compute f[v] for each vertex v
+  compute GT
+  call DFS(GT), but in the main loop of DFS,
+      consider the vertices in order of decreasing f[v]
+  output the vertices of each tree in the new DFS forest as a separate SCC
+To show that the SCC algorithm computes SCCs, we need to make some key observations:
+
+Lemma 3: GSCC is a DAG.
+
+Proof: If there’s a path from C1 to C2 (meaning there is a path from some vertex u1 ? C1 to some vertex u2 in C2), there cannot be a path from C2 to C1 (a path from v2 in C2 to v1 in C1) , since that would imply that there is a path from u2 to v2, a path from v2 to v1 and a path from v1 to u1, meaning that there is a path from u2 to u1, contradicting the premise that C1 and C2 are distinct SCCs.
+
+Since GSCC is a DAG, it can be topologically sorted. If we do a DFS on the topologically sorted GSCC in reverse order of the topologically sorted SCCs, then all the edges in GSCC will be cross edges, meaning that each SCC will be a tree in the second DFS.
+
+We define f(C), where C is a subset of V, as max(f[v] | v ? C).
+
+There are a couple of observations that formalize this intuition:
+
+Lemma 4: Let C and C' be distinct SCCs in directed graph G = (V,E). Suppose there is an edge (u,v) in E, where u is in C and v is in C'. Then f(C) &gt; f(C').
+
+Corollary 5: Suppose that there is an edge (u,v) in ET, where u is in C and v is in C'. Then f(C) &lt; f(C').
+
+Latest corollary gives an insight of why the algorithms works. We start the second DFS with the SCC C that has the highest f(C). By Corollary 5, there are no edges going from C to any other strongly connected components. All vertices in C are reachable from the start, and all are on white paths, so they will all be on the DF tree. Thus, the first DF tree we produce will be the first SCC.
+
+When we start the DFS on a strongly connected component C later in the algorithm, f(C) &gt; f(C') for all other C' that have yet to be visited (that’s how we choose roots for the second DFS). All the vertices in the C are on a white path from the root, so they will all be on a DF tree. Also, all the edges coming out of C will be the edges to the SCCs that are already visited (by Corollary 5), which means that no vertices other than the ones in C will be on that tree. So, the DF tree created at that point is an SCC.
+
+The roots for the DF trees in the second DFS in our example graph will be b, c, g and h, in that order, and the discovered DF trees will be bae, cd, gf and h, which are the SCCs.
+
+
 </text> 
 
 

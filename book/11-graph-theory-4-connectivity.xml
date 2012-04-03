@@ -381,6 +381,10 @@ radius(G) \leq diameter(G) \leq 2 radius(G)
 </equation>
 
 <text>
+++  let l(s) denote the maximum, over all vertices t, of the shortest-path distance between s and t. The radius of a graph is the minimum of l(s) over all choices of the vertex s.  Let c minimize radius(s) over all vertices s. Since every pair of vertices s and t have paths to c with at most r edges, stitching these paths together yields an s-t with only 2r edges; of course, the shortest s-t path is only shorter.
+</text>
+
+<text>
 L: Diameter is amaximum value, while average path length is an average value. Thus, average path length is never greater than the diameter of the entire graph. However, it can be smaller than the radius... ?
 </text>
 

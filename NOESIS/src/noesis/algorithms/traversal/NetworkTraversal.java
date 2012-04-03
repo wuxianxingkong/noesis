@@ -74,7 +74,9 @@ public abstract class NetworkTraversal<V,E>
 
 	public final void traverse ()
 	{
-		traverse (0);
+		for (int i=0; i<network.size(); i++)
+			if (state[i] == State.UNDISCOVERED)
+		       traverse (i);
 	}
 
 	public abstract void traverse (int index);

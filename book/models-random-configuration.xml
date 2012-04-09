@@ -441,7 +441,11 @@ In real-world networks, with heavy-tailed distributions, the epidemic threshold 
 </text>
 
 <text>
-The protection of such networks against epidemics, therefore, requires the inmunization of the most strongly-connected nodes. When such nodes do not exist, effective inmunization strategies can be used to replace targeted inmunization <cite>Cohen et al. 2003</cite>.
+The protection of such networks against epidemics, therefore, requires the inmunization of the most strongly-connected nodes (to make the network disconnected, so that the disease cannot spread).
+
+e.g. Potential targets: people whose professions put them in contact with lots of people (doctors, nurses, bus drivers, school teachers...)
+
+When such nodes do not exist or we are unable to identify them, effective inmunization strategies can still be used to replace targeted inmunization <cite>Cohen et al. 2003</cite>.
 </text>
 
 <text>

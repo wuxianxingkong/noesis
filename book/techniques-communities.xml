@@ -72,6 +72,7 @@ usually represented using a graph.
 <tag>community-detection-partitioning</tag>
 <title>Graph partitioning</title>
 
+++ http://en.wikipedia.org/wiki/Graph_partition
 
 <text>
 Non-overlapping communities...
@@ -82,22 +83,64 @@ GRAPH PARTITIONING HEURISTICS
 
 - Local improvement heuristics for graph partitioning (.e.g sweep through the vertices, deciding
 whether the size of the cut would improve if we moved this vertex over to the other
-side) are due to Kernighan-Lin [KL70] and Fiduccia-Mattheyses [FM82].
+side) are due to Kernighan-Lin and Fiduccia-Mattheyses.
+
+http://en.wikipedia.org/wiki/Kernighan%E2%80%93Lin_algorithm
+[Kernighan, B. W.; Lin, Shen (1970). "An efficient heuristic procedure for partitioning graphs". Bell Systems Technical Journal 49: 291–307.]
++ One of the early fundamental works in the field. However, performance is O(n^2), so it is no longer commonly used.
+
+http://en.wikipedia.org/wiki/Fiduccia-Mattheyses_algorithm
+[CM Fiduccia, RM Mattheyses (1982). "A Linear-Time Heuristic for Improving Network Partitions". 19th Design Automation Conference]
+On page(s): 175
+Conference Location :  Las Vegas, NV, USA
+ISSN :  0146-7123
+Print ISBN: 0-89791-020-6
+Digital Object Identifier :  10.1109/DAC.1982.1585498
++ A later variant that is linear time, very commonly used, both by itself and as part of multilevel partitioning...
+
+
+- Multilevel partitioning
+
+[G Karypis, V Kumar (1999). "A Fast and High Quality Multilevel Scheme for Partitioning Irregular Graphs". Siam Journal on Scientific Computing. ] Multi-level partitioning is the current state of the art. This paper also has good explanations of many other methods, and comparisons of the various methods on a wide variety of problems.
+
+[Karypis, G., Aggarwal, R., Kumar, V., and Shekhar, S. (March 1999). "Multilevel hypergraph partitioning: applications in VLSI domain". IEEE Transactions on Very Large Scale Integration (VLSI) Systems 7 (1): pp. 69–79. doi:10.1109/92.748202]
+Graph partitioning (and in particular, hypergraph partitioning) has many applications to IC design.
+
+[S. Kirkpatrick, C. D. Gelatt Jr., and M. P. Vecchi (13 May 1983). "Optimization by Simulated Annealing". Science 220 (4598): 671–680. doi:10.1126/science.220.4598.671. PMID 17813860] Simulated annealing can be used as well.
+
+
+
 
 - Spectral partitioning methods use sophisticated linear algebra techniques to
 obtain a good partitioning. The spectral bisection method uses the second-lowest
 eigenvector of the Laplacian matrix of the graph to partition it into two pieces. 
-Spectral methods for graph partition are discussed in [Chu97, PSL90]. 
 
-When more than two components are desired, the partitioning heuristic should
-be applied recursively.
 
-Empirical results on graph partitioning heuristics include [BG95, LR93].
+[Hagen, L. and Kahng, A.B. (September 1992). "New spectral methods for ratio cut partitioning and clustering". IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems 11,  (9): 1074–1085. doi:10.1109/43.159993]
++ a whole class of spectral partitioning methods, which use the Eigenvectors of the Laplacian of the connectivity graph. 
+
+Spectral methods for graph partition are discussed in 
+[Fan R.K. Chung. Spectral Graph Theory (CBMS Regional Conference Series in Mathematics, No. 92). American Mathematical Society, 1997.]
+and
+[A. Pothen, H. D. Simon, and K.-P. Liou. Partitioning sparse matrices with eigenvectors of graphs. SIAM J.  Matrix Analysis Appl., 11:430–452, 1990.]
+
+
+When more than two components are desired, the partitioning heuristic should be applied recursively.
+
+
+Empirical results on graph partitioning heuristics include 
+[J. Berry and M. Goldberg. Path optimization and near-greedy analysis for graph partitioning: An empirical study. In Proc. 6th ACM-SIAM Symposium on Discrete Algorithms, pages 223–232, 1995.]
+and
+[K. Lang and S. Rao. Finding near-optimal cuts: An empirical evaluation. In Proc. 4th Annual ACM-SIAM Symposium on Discrete Algorithms (SODA
+’93), pages 212–221, 1993.]
+
 </text>
 
 <document>
 <tag>community-detection-kernighan-lin</tag>
 <title>The Kernighan-Lin algorithm</title>
+
+Kernighan–Lin is a O(n^2 log n ) heuristic algorithm for solving the graph partitioning problem. The algorithm has important applications in the layout of digital circuits and components in VLSI... 
 </document>
 
 <document>
@@ -299,9 +342,77 @@ E. A. Leicht, Petter Holme, and M. E. J. Newman, Vertex similarity in networks, 
 C. Faloutsos, K. McCurley and A. Tomkins. Fast Discovery of Connection Subgraphs. In Tenth ACM SIGKDD Conference, Seattle, WA, 2004.
 
 Satu Elisa Schaeffer. Graph Clustering. Computer Science Review 1(1):27-64,2007.
+
+
+
+Jure Leskovec, Kevin J. Lang, Anirban Dasgupta, Michael W. Mahoney:
+"Community Structure in Large Networks: Natural Cluster Sizes and the Absence of Large Well-Defined Clusters"
+Internet Mathematics, Volume 6, Issue 1, pages 29-123, 2009
+DOI:10.1080/15427951.2009.10129177
+
 </text>
 
 
+
+<text>
+<cite>Han and Kamber 2006</cite>, 568-571: 
+<cite>Han and et al. 2011</cite>, Section 11.3, e.g. SCAN algorithm 
+
+Most community mining methods assume that there is only one kind of relation in the
+network, and moreover, the mining results are independent of the users’ information
+needs. In reality, there may be multiple relations between objects, which collectively
+formamultirelational social network (or heterogeneous social network). Relation selection
+and extraction in such networks evaluates the importance of the different relations
+with respect to user information provided as queries. In addition, it searches for a
+combination of the existing relations that may reveal a hidden community within the
+multirelational network.
+
+- Bhattacharya and Getoor proposed a method for clustering linked data, which can be used to solve the data mining tasks of entity deduplication and group discovery. 
+[I. Bhattacharya and L. Getoor. Iterative record linkage for cleaning and integration. In Proc. SIGMOD 2004 Workshop on Research Issues on Data Mining and Knowledge Discovery (DMKD’04), Paris, France, pages 11–18, June 2004.]
+
+- A method for group discovery was proposed by Kubica, Moore, and Schneider 
+[J. Kubica, A. Moore, and J. Schneider. Tractable group detection on large link data sets. In Proc. 3rd IEEE International Conference on Data Mining, pages 573–576, Melbourne, FL, Nov. 2003.]
+
+- Mining newsgroups to partition discussion participants into opposite camps using quotation networks was proposed by Agrawal, Rajagopalan, Srikant, and Xu 
+[R. Agrawal, S. Rajagopalan, R. Srikant, and Y. Xu. Mining newsgroups using networks arising from social behavior. In Proc. 2003 Int.WorldWideWeb Conf. (WWW’03), pages 529–535, New York, NY, May 2004.]
+
+- The relation selection and extraction approach to community mining from multirelational networks was described in Cai, Shao, He, et al.
+[D. Cai, Z. Shao, X. He, X. Yan, and J. Han. Community mining from multi-relational networks. In Proc. 2005 European Conf. Principles and Practice of Knowledge Discovery in Databases (PKDD’05), pages 445–452, Porto, Portugal, Oct. 2005.]
+
+
+SURVEY
+[Schaeffer, S.E.,  Graph clustering,   Computer Science Rev.  1  (2007) 27–64]
+
+
+The SimRank measure of similarity
+[Jeh, G.;  Widom, J.,  SimRank: A measure of structural-context similarity,   In:  Proc. 2002 ACM SIGKDD Int. Conf. Knowledge Discovery and Data Mining (KDD’02)  Edmonton, Alberta, Canada.  (July 2002), pp.  538–543]
+
+
+the SCAN algorithm. 
+[Xu, X.;  Yuruk, N.;  Feng, Z.;  Schweiger, T.A.J.,  SCAN: A structural clustering algorithm for networks,   In:  Proc. 2007 ACM SIGKDD Int. Conf. Knowledge Discovery in Databases (KDD’07)  San Jose, CA.  (Aug. 2007), pp.  824–833]
+
+Sparsest cuts and approximation algorithms.
+[Arora, S.;  Rao, S.;  Vazirani, U.,  Expander flows, geometric embeddings and graph partitioning,   J. ACM  56  (2)  (2009) 1–37]
+
+
+CLUSTERING
+[Newman, M.E.J.;  Girvan, M.,  Finding and evaluating community structure in networks,   Physical Rev. E  69  (2004) 113–128]
+[Yin, X.;  Han, J.;  Yu, P.S.,  Cross-relational clustering with user's guidance,   In:  Proc. 2005 ACM SIGKDD Int. Conf. Knowledge Discovery in Databases (KDD’05)  Chicago, IL.  (Aug. 2005), pp.  344–353.]
+[Kulis, B.;  Basu, S.;  Dhillon, I.;  Mooney, R.,  Semi-supervised graph clustering: A kernel approach,   Machine Learning  74  (2009) 1–22.]
+[Sun, Y.;  Han, J.;  Zhao, P.;  Yin, Z.;  Cheng, H.;  Wu, T.,  RankClus: Integrating clustering with ranking for heterogeneous information network analysis,   In:  Proc. 2009 Int. Conf. Extending Data Base Technology (EDBT’09)  Saint Petersburg, Russia.  (Mar. 2009), pp.  565–576.]
+
+
+
+EVOLUTION of social and information networks has been studied by many researchers, 
+[Chakrabarti, D.;  Kumar, R.;  Tomkins, A.,  Evolutionary clustering,   In:  Proc. 2006 ACM SIGKDD Int. Conf. Knowledge Discovery in Databases (KDD’06)  Philadelphia, PA.  (Aug. 2006), pp.  554–560.]
+[ Chi, Y.;  Song, X.;  Zhou, D.;  Hino, K.;  Tseng, B.L.,  Evolutionary spectral clustering by incorporating temporal smoothness,   In:  Proc. 2007 ACM SIGKDD Intl. Conf. Knowledge Discovery and Data Mining (KDD’07)  San Jose, CA.  (Aug. 2007), pp.  153–162.]
+[Tang, L.;  Liu, H.;  Zhang, J.;  Nazeri, Z.,  Community evolution in dynamic multi-mode networks,   In:  Proc. 2008 ACM SIGKDD Int. Conf. Knowledge Discovery and Data Mining (KDD’08)  Las Vegas, NV.  (Aug. 2008), pp.  677–685]
+[Xu, T.;  Zhang, Z.M.;  Yu, P.S.;  Long, B.,  Evolutionary clustering by hierarchical Dirichlet process with hidden Markov state,   In:  Proc. 2008 Int. Conf. Data Mining (ICDM’08)  Pisa, Italy.  (Dec. 2008), pp.  658–667.]
+[Kim, M.-S.;  Han, J.,  A particle-and-density based evolutionary clustering method for dynamic networks,   In:  Proc. 2009 Int. Conf. Very Large Data Bases (VLDB’09)  Lyon, France.  (Aug. 2009).]
+[Sun, Y.;  Tang, J.;  Han, J.;  Gupta, M.;  Zhao, B.,  Community evolution detection in dynamic heterogeneous information networks,   In:  Proc. 2010 KDD Workshop Mining and Learning with Graphs (MLG’10)  Washington, DC.  (July 2010).]
+
+
+</text>
 
 </document>
 

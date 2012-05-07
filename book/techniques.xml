@@ -15,4 +15,8 @@ facts to suit theories, instead of theories to suit facts.</q>
 -- Sir Arthur Conan Doyle, <i>A Scandal in Bohemia</i>, <i>The Adventures of Sherlock Holmes</i> (1892)
 </text>
 
+<text>
+<cite>Han and Kamber 2006</cite>: Link mining is a confluence of research in social networks, link analysis, hypertext and Web mining, graph mining, relational learning, and inductive logic programming.  Link mining tasks include link-based object classification, object type prediction, link type prediction, link existence prediction, link cardinality estimation, object reconciliation (which predicts whether two objects are, in fact, the same), and group detection (which clusters objects). Other tasks include subgraph identification (which finds characteristic subgraphs within networks) and metadata mining (which uncovers schema-type information regarding unstructured data).
+</text>
+
 </document>

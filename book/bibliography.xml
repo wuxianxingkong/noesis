@@ -2820,6 +2820,16 @@
  <file>[books]/algorithms/AI/1558609016 [Han] Data Mining.2ed.pdf</file>
 </reference>
 
+<reference id="Han et al. 2011">
+ <author>Jiawei Han</author>
+ <author>Micheline Kamber</author>
+ <title>Data Mining: Concepts and Techniques</title>
+ <publisher>Morgan Kaufmann</publisher>
+ <edition>3rd edition</edition>
+ <year>2011</year>
+ <isbn>0123814790</isbn>
+ <file>[books]/algorithms/AI/0123814790 [Han] Data Mining.3rd.2011.epub</file>
+</reference>
 
 <reference id="Hanneman and Riddle 2005">
  <author>Robert A. Hanneman</author>
@@ -3405,6 +3415,28 @@
  <file>Networks/structure/metrics/1999 ACM Computing Surveys [Kleinberg] Hubs, authorities, and communities.pdf</file>
 </reference>
 
+
+<reference id="Kleinberg et al. 1999">
+ <author>Jon Kleinberg</author>
+ <author>Ravi Kumar</author>
+ <author>Prabhakar Raghavan</author>
+ <author>Sridhar Rajagopalan</author>
+ <author>Andrew S. Tomkins</author>
+ <title>The Web as a graph: Measurements, models, and methods</title>
+ <proceedings>5th Annual International Conference on Computing and Combinatorics</proceedings>
+ <conference>COCOON</conference>
+ <year>1999</year>
+ <isbn>3-540-66200-6</isbn>
+ <location>Tokyo, Japan</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>1627</volume>
+ <pages>1-17</pages>
+ <doi>10.1007/3-540-48686-0_1</doi>
+ <file>Networks/models/1999 COCOON [Kleinberg] Copying model.pdf</file>
+</reference>
+
+
+
 <reference id="Kleinberg 2000">
  <author>Jon Kleinberg</author>
  <title>Navigation in a small world</title>
@@ -3508,6 +3540,25 @@
  <file>Networks/applications/www/1999 WWW Emerging cyber-communities.web.pdf</file>
 </reference>
 
+
+
+<reference id="Kumar et al. 2000">
+ <author>Ravi Kumar</author>
+ <author>Prabhakar Raghavan</author>
+ <author>Sridhar Rajagopalan</author>
+ <author>D. Sivakumar</author>
+ <author>Andrew Tomkins</author>
+ <author>Eli Upfal</author>
+ <title>Stochastic models for the web graph</title>
+ <proceedings>41st Annual Symposium on Foundations of Computer Science</proceedings>
+ <conference>FOCS</conference>
+ <year>2000</year>
+ <location>Redondo Beach, California</location>
+ <isbn>0-7695-0850-2</isbn>
+ <pages>57-65</pages>
+ <doi>10.1109/SFCS.2000.892065</doi>
+ <file>Networks/models/2000 FOCS [Kumar] Copying model.pdf</file>
+</reference>
 
 
 <reference id="Kumar et al. 2003">

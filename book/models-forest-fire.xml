@@ -1,0 +1,74 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography SYSTEM "bibliography.xml"> ]> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+
+<document>
+&bibliography;
+<tag>forest-fire-model</tag>
+<title>Forest fire model</title>
+
+<text>
+@<cite>Han and Kamber 2006</cite>:
+
+The Forest Fire model for network generation was proposed in <cite>Leskovek et al. 2005</cite>...
+[Leskovec, J.;  Kleinberg, J.;  Faloutsos, C.,  Graphs over time: Densification laws, shrinking diameters and possible explanations,   In:  Proc. 2005 ACM SIGKDD Int. Conf. Knowledge Discovery and Data Mining (KDD’05)  Chicago, IL.  (Aug. 2005), pp.  177–187]
+
+A Forest Fire model for graph generation was proposed, which captures characteristics of graph evolution over time. It is based on the notion that new nodes attach to the network by burning through existing edges in epidemic fashion. 
+
+Two parameters:
+- forward burning probability, p, 
+- backward burning ratio, r, 
+
+Suppose a new node, v, arrives at time t. It attaches to G_t, the graph constructed so far, in the following steps:
+
+1. It chooses an ambassador node, w, at random, and forms a link to w.
+
+2. It selects x links incident to w, where x is a random number that is binomially distributed
+with mean (1-p)^{-1}. It chooses from out-links and in-links of w but selects
+in-links with probability r times lower than out-links. Let w_1, w_2, ... w_x denote the
+nodes at the other end of the selected edges.
+
+3. Our new node, v, forms out-links to w_1, w_2, ... w_x and then applies step 2 recursively
+to each of w_1, w_2, ... w_x. Nodes cannot be visited a second time so as to prevent the
+construction from cycling. The process continues until it dies out.
+
+
+e.g. a citation network.
+
+The author of a new paper, v, initially consults w, and follows a subset of its references
+(which may be either forward or backward) to the papers w_1, w_2, ... w_x. It continues
+accumulating references recursively by consulting these papers.
+
+
+The Forest Fire model combines the essence of several
+earlier models, while considering the evolution of networks over time. The heavy-tailed
+out-degrees property is observed in that, owing to the recursive nature of link formation,
+new nodes have a good chance of burning many edges and thus producing large outdegrees.
+The heavy-tailed in-degrees property is preserved in that Forest Fire follows the
+rich-get-richer rule: highly linked nodes can easily be reached by a new node, regardless
+of which ambassador the new node starts from. 
+</text>
+
+
+EARLIER MODELS
+
+<text>
+@<cite>Han and Kamber 2006</cite>:
+
+Several earlier models of network evolution were based on static graphs, identifying
+network characteristics from a single or small number of snapshots, with little emphasis
+on finding trends over time. 
+
+The copying model was explored in <cite>Kleinberg et al. 1999</cite> and <cite>Kumar et al. 2000</cite>.
+
++ a new node copies many of the neighbors of its ambassador. The densification power law is upheld in that a new node will have many
+links near the community of its ambassador, a few links beyond this, and much fewer farther away. Empirical studies found that the shrinking diameter property was upheld. 
+
+Nodes with heavy-tailed out-degrees may serve as “bridges” that connect formerly
+disparate parts of the network, decreasing the network diameter.
+
+</text>
+
+
+</document>

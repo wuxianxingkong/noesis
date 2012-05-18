@@ -516,14 +516,21 @@ L: Binary tree, toroid, hypercube, and complete networks are obviously scalable 
 E(complete) &gt; E(hypercube) &gt; E(toroid) &gt; E(bbt) &gt; E(ring)
 </equation>
 
+
+</document>
+
+<text>
+++ Broadcast algorithms... @ Kumar, ch. 3
+
+NOTE: queue management and "bufferbloat" problem, which happens when packet buffering causes high latency and jitter and reduces overall network throughput. 
+</text>
+
 <text>
 ++ Figure LINK EFFICIENCY for different kinds of regular networks
 ++ Figure AVERAGE PATH LENGTH for different kinds of regular networks
 
 ++ Tabla resumen: links, degree, diameter, bisection, average path length, link efficiency
 </text>
-
-</document>
 
 
 <document>
@@ -537,6 +544,8 @@ Corresponding chapter in <cite>Lewis 2009</cite>...
 <text>
 ++ Interconnection networks @ computer architecture...
 Catalog of network connectivity models and their properties at <url>http://w3.antd.nist.gov/wctg/netanal/netanal_netmodels.html</url>
+Kumar's Introduction to Parallel Programming, chapter 3: Communication operations
+
 
 e.g.
 

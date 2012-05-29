@@ -8,21 +8,179 @@
 <title>A primer on algorithm analysis</title>
 
 <text>
-An introduction to an art and science of algorithm analysis and design... as a prerrequisite for later sections.
+An introduction to an art and science of algorithm analysis and design... as a prerrequisite for later chapters.
 </text>
 
 <text>
-The key performance metric for an algorithm is usually its execution time. But rather than measuring the actual time required to execute an algorithm for a particular input using a given hardware/software configuration, algorithm execution time is typically described as a function of the size of its input...
+The analysis of algorithms is the determination of the amount of resources needed to execute them, such as CPU time (time complexity) or memory/storage use (space complexity). The key performance measure for an algorithm is usually (but not always) its execution time. 
 </text>
+
+<text>
+Given two algorithms that solve the same particular problem, which one is better? When designing our own algorithm, we will typically focus on the computing resources needed to execute the algorithm, expressed in terms of execution time or memory use. In practice, however, other factors might influence our decision, such as the development effort they would require, which is determined by the algorithm analysis, design, and implementation complexity. We could also take into account the availability of libraries or open-source implementations that already solve our problem and we could easily reuse (provided that they meet our basic requirements, of course).
+</text>
+
 
 <document>
-<tag>algorithm-analysis-worst</tag>
-<title>Worst-case analysis</title>
+<tag>algorithm-analysis-asymptotic</tag>
+<title>Asymptotic analysis</title>
+
 
 <text>
-...
-Big-Oh notation...
+Rather than measuring the actual time required to execute an algorithm for a particular input using a given hardware/software configuration, algorithm execution time is typically described as a function of the size of its input. 
 </text>
+
+<text>
+Problem size can be expressed as a parameter of the input size; e.g. n for operations involving <eqn>n \times n</eqn> matrices. However, this naive definition is not always suitable for comparing algorithms and analyzing the feasibility of the algorithmic solution for a given problem. In the case of matrices, doubling n results in a four-fold increase in the actual number of items involved in any matrix computation, which results in a four-fold increase in execution time for matrix addition and an eight-fold increase for matrix multiplication using the conventional row-by-column matrix multiplication algorithm. 
+</text>
+
+
+<text>
+Given two alternative algorithms, we could implement both and test them on the same hardware/software configuration. We cannot use different configurations since differences in hardware (e.g. processor speed or memory bandwidth) or software (e.g. compiler optimizations) might give misleading results. However, running times for a particular instance of our problem might not correspond to the running time we could observe in practice.
+</text>
+
+<text>
+In particular, how do we measure the time required by a particular algorithm?
+</text>
+
+<list>
+
+<item>We might run our algorithm trying to highlight its strength for a particular input (i.e. its best case). However, such evaluation is not used in practice because it is too optimistic and its results might be misleading (just think of a linear search for the first element of a list and compare it to a linear search for the last element of the list).</item>
+
+<item>We might try to get the running time of our algorithm for an average case. However, such an average case is difficult to characterize in practice. What is an average input? Even if we can formally describe a particular <q>average case</q>, its analysis might still be quite complicated.</item>
+
+<item>We might be tempted to perform a probabilistic analysis, defining a probability distribution over the set of potential inputs our algorithm might see during its lifetime. Such analysis might be useful for obtaining an expected running time, but its assumption might be unrealistic (our actual data might not fit the particular probability distribution employed to get the result) and the analysis could be too cumbersome in practice.</item>
+
+<item>Finally, we could just turn our attention to the worst possible input our algorithm might encounter and such an input would easily provide us an upper bound on the actual running time for our algorithm. This worst-case analysis is the method of choice for the analysis of algorithms in practice. Even though the actual worst-case might be hard to characterize or even impossible to determine, we can still find the slowest execution of our algorithm just by analyzing its structure (e.g. the maximum number of iterations for each loop). The worst-case analysis is pessimistic (our algorithm might still behave much better than predicted) but it is safe (the worst case is never underestimated, so there will not be unexpected surprises down the road).
+</item>
+
+</list>
+
+<text>
+Fortunately, we do not have to implement all the algorithms we might think of. A better approach exists that lets us analyze the performance of an algorithm without having to create an actual implementation. 
+</text>
+
+
+<text>
+We will assume that the execution times of two different implementations of the same algorithm will not differ by more than a multiplicative constant. Formally, if <eqn>t_1(n)</eqn> and <eqn>t_2(n)</eqn> represent the running time of our two implementations of the same algorithm, we can assert the following:
+</text>
+
+<equation>
+\exists c \in \mathbb{R}, \quad t_1(n) \leq c t_2(n)
+</equation>
+
+<equation>
+\exists d \in \mathbb{R}, \quad t_2(n) \leq d t_2(n)
+</equation>
+
+<text>
+Unfortunately, this is not enough for comparing two different algorithms, since we can measure the computing resources required by the algorithm for an input of size <eqn>n</eqn> but particular implementation constants might still lead us astray. Hence, we will typically resort to an asymptotic analysis. The asymptotic analysis studies the behavior of an algorithm for large input sizes without taking into account what happens when the input size is small nor taking into account any implementation constants.
+</text>
+
+
+<document>
+<tag>algorithm-analysis-asymptotic-oh</tag>
+<title>The Big-Oh notation</title>
+
+<text>
+An algorithm running time is said to be of order <eqn>O(f(n))</eqn>, for a given function <eqn>f</eqn>, when there exists a positive constant <eqn>c</eqn> and an algorithm implementation is able to complete its execution in a time bounded by <eqn>c f(n)</eqn>, where <eqn>n</eqn> is the input size.
+</text>
+
+<text>
+Formally, we say that a function <eqn>t(n)</eqn> is <eqn>O(f(n))</eqn> if there exist two constants, <eqn>n_0 \in \mathbb{N} </eqn> and <eqn>c \in \mathbb{R}^+</eqn>, so that, for every <eqn>n \geq n_0</eqn>, <eqn>t(n) \leq c f(n)</eqn>. Using a set notation, we can also write:
+</text>
+
+<equation>
+\begin{eqnarray*}
+
+t(n) \in O(f(n)) \Leftrightarrow \\
+
+\exists c \in \mathbb{R}^+  \exists n_0 \in \mathbb{N} \forall n \geq n_0 \\
+
+t(n) \leq c f(n)
+
+\end{eqnarray*}
+</equation>
+
+<text>
+Since it provides an upper bound, the Big-Oh notation is convenient for expressing the worst-case scenario for a given algorithm, although it can also be used to express the average-case. For instance, the worst-case scenario for the quicksort sorting algorithm is <eqn>O(n^2)</eqn>, but its average-case run time is <eqn>O(n \log n)</eqn>.
+</text>
+
+
+</document>
+
+
+<document>
+<tag>algorithm-analysis-asymptotic-lower</tag>
+<title>Lower bounds and exact order</title>
+
+<text>
+Alternatively, we can also define a lower bound for an algorithm running times as follows:
+</text>
+
+<text>
+We say that a function <eqn>t(n)</eqn> is <eqn>\Omega(f(n))</eqn> if there exist two constants, <eqn>n_0 \in \mathbb{N} </eqn> and <eqn>c \in \mathbb{R}^+</eqn>, so that, for every <eqn>n \geq n_0</eqn>, <eqn>t(n) \geq c f(n)</eqn>. Using a set notation, we can write:
+</text>
+
+<equation>
+\begin{eqnarray*}
+
+t(n) \in Omega(f(n)) \Leftrightarrow \\
+
+\exists c \in \mathbb{R}^+  \exists n_0 \in \mathbb{N} \forall n \geq n_0 \\
+
+t(n) \geq c f(n)
+
+\end{eqnarray*}
+</equation>
+
+
+<text>
+When the same function <eqn>f(n)</eqn> can be used both as an asymptotic upper bound and as an asymptotic lower bound for the running time of a given algorithm, we say that the algorithm exhibits exact order <eqn>\Theta(f(n))</eqn>.
+</text>
+
+<equation>
+\begin{eqnarray*}
+
+t(n) \in Theta(f(n)) \Leftrightarrow \\
+
+
+t(n) \in O(f(n)) \quad and \quad t(n) \in \Omegha(f(n)) \Leftrightarrow \\
+
+\exists c,d \in \mathbb{R}^+  \exists n_0 \in \mathbb{N} \forall n \geq n_0 \\
+
+c f(n) \leq t(n) \leq d f(n)
+
+\end{eqnarray*}
+</equation>
+
+<text>
+The Theta notation, therefore, formalizes the idea of <q>asymptotically equivalent to</q>, or <q>of the exact order of</q>, whereas the big-Oh notation (a.k.a. big-O or big-Omicron notation) is used for upper bounds only. Since we will often be interested in the worst-case analysis of algorithms, the big-Oh notation will be much more common in our discussions.
+</text>
+
+</document>
+
+
+
+<document>
+<tag>algorithm-analysis-asymptotic-orders</tag>
+<title>Common orders of growth</title>
+
+e.g.
+
+Linear: Time proportional to the input size (maximum of n numbers)=
+
+Quadratic: Enumerating pairs (given a set of points on the plane, find the closest pair)
+
+
+Logarithmic: Recursive algorithms, e.g. divide &amp; conquer
+- O(log n) Binary search
+- O(n log n) Mergesort or heapsort
+
+Exponential: Combinatorial problems (enumerating subsets)
+
+
+++ Table @ slide 13 (TA)
+
 
 
 <text>
@@ -54,9 +212,17 @@ n! >> c^n >> n^3 >> n^2 >> n^{1+\epsilon} >> n \log n
 
 </document>
 
+</document>
+
+
+
 <document>
 <tag>algorithm-analysis-amortized</tag>
 <title>Amortized analysis</title>
+
+
+Wikipedia: In some situations it may be necessary to use a pessimistic analysis in order to guarantee safety. Often however, a pessimistic analysis may be too pessimistic, so an analysis that gets closer to the real value but may be optimistic (perhaps with some known low probability of failure) can be a much more practical approach. When analyzing algorithms which often take a small time to complete, but periodically require a much larger time, amortized analysis can be used to determine the worst-case running time over a (possibly infinite) series of operations. This amortized worst-case cost can be much closer to the average case cost, while still providing a guaranteed upper limit on the running time.
+
 
 <text>
 Amortized analysis bounds the total amount of time used by any sequence of operations (e.g. coffee @ office or coffee shop). Used when single operations might prove costly but their cost is distributed among many fast operations... O(f(n)) in amortized analysis is worse than O(f(n)) in the worst case, but it might still be useful in practice. Provided that individual response time is not critical, amortized operations might help obtain a good throughput...
@@ -277,6 +443,9 @@ E = \frac{n}{p + 2 p \log p}
 Speedup does not increase linearly as the number of processors is increased. Moreover, as a consequence of Amdahl's law, speedup saturates, the speedup curve flattens, and efficiency drops with an increasing number of processors.
 </text>
 
+++ ref. G.M. Amdahl: "Validity of the single processor approach to achieving large scale computing capabilities". AFIPS Conference Proceedings, 483-485, 1967.
+i.e. If a problem of size w has a sequential component of size w_s, w/w_s is an upper bound on its potential speedup, no matter how many processors are used.
+
 <text>
 Larger instances of the problem yield higher speedup and efficiency for a given number of processors.
 </text>
@@ -284,9 +453,6 @@ Larger instances of the problem yield higher speedup and efficiency for a given 
 <text>
 Combining the two observations above, we can keep the efficiency of the system for a larger problem size if we increase the number of processors. Parallel systems whose efficiency can be maintained at a fixed value are said to be scalable. The scalability of a parallel system measures its capacity to increase speedup in proportion to the number of processors and reflects its ability to employ increasing computing resources effectively.
 </text>
-
-e.g. Adding n numbers on p processors: As <eqn>p</eqn> is increased, <eqn>n</eqn> can be increased in proportion to <eqn>\Theta (p \log p)</eqn>.
-
 </document>
 
 
@@ -294,15 +460,198 @@ e.g. Adding n numbers on p processors: As <eqn>p</eqn> is increased, <eqn>n</eqn
 <tag>algorithm-analysis-isoefficiency</tag>
 <title>Isoefficiency analysis</title>
 
+<text>
+A parallel system is scalable when its efficiency can be kept fixed as the number of processors is increased, provided that the problem size is also increased <cite>Grama et al. 2003</cite>. For different systems, the rate at which the problem size must increase with respect to the number of processors determines the degree of scalability of the parallel system.
+</text>
 
-IDEA: How the size must scale with p to keep E constant.
+e.g. Adding n numbers on p processors: As <eqn>p</eqn> is increased, <eqn>n</eqn> can be increased in proportion to <eqn>\Theta (p \log p)</eqn>.
 
-Isoefficiency function 
-- Linear, O(p) = Highly scalable
-- Quadratic or exponential = Poorly scalable ???
+<text>
+For parallel systems, problem size is defined by the number of basic computation steps in the best sequential algorithm that solves the problem. The problem size <eqn>W</eqn> is, therefore, defined in terms of sequential time complexity, which is expressed as a function of the input size <eqn>n</eqn>. Ignoring constants related to the actual implementation of the algorithm in a particular software/hardware configuration, problem size <eqn>w</eqn> corresponds to the serial run time <eqn>t_s</eqn> of the fastest sequential algorithm for the problem.
+</text>
+
+<text>
+On actual parallel systems, part of the time is unavoidable spent on communication among processors and the implementation of a parallel algorithm also introduces other sources of overhead which prevent us from achieving a <eqn>p</eqn> speedup. The <term>overhead function</term> of a parallel system, a.k.a. <term>total overhead</term>, is the part of its cost that is not incurred by the fastest sequential algorithm on a single processor. This overhead depends on the problem size <eqn>w</eqn> and the number of processors <eqn>p</eqn>, hence it is expressed as <eqn>t_o(w,p)</eqn>.
+</text>
+
+<text>
+We can approximate the cost of solving a problem of size <eqn>w</eqn> on <eqn>p</eqn> processors as <eqn>p t_p</eqn>. Since <eqn>w</eqn> units of time are spent on useful work (the work performed by the fastest sequential algorithm to solve the problem), the overhead of a parallel system can be computed as:
+</text>
+
+<equation>
+t_o (w,p) = p t_p - w
+</equation>
+
+<text>
+This overhead encapsulates all the potential causes for inefficiencies in a parallel system, which can be due to the algorithm itself, the parallel architecture, or the algorithm-architecture interaction. The major causes of degradation for the performance of a parallel system are interprocessor communication, extra computation, and load imbalance.
+</text>
+
+<list>
+
+<item>Communication overhead is caused by the time needed to transfer data among processors.</item>
+
+<item>Extra computation overhead is due to the fact that the fastest sequential algorithm <eqn>w</eqn> is not always parallelizable. Hence, a slower sequential algorithm <eqn>w'</eqn> will be parallelized and the difference <eqn>w'-w</eqn> will be part of the overhead function of the parallel algorithm. Even when the best algorithm is parallelized, we may still need to perform additional computations, such as when partial results cannot be reused because they are generated by different processors and the same results are computed multiple times on different processors.</item>
+
+<item>Sequential parts of the algorithm, which are not parallelizable and must be executed sequentially by a single processor, also contribute to the parallel overhead. Each sequential part <eqn>w_s</eqn> contributes with <eqn>(p-1)w_s</eqn> to the overhead function.</item>
+
+<item>Load imbalance appears when it is difficult, or even impossible, to predict the size of the tasks assigned to each processor, different processors will end up with different work loads.</item>
+
+<item>Synchronization requirements also cause some overhead. When processors must sync at certain points during the execution of a parallel algorithm, if not all processors are ready for synchronization at the same time, some of them will stay idle while waiting for the rest to be ready.</item>
+
+</list>
+
+e.g. Adding n numbers on a hypercube: <eqn>t_o \approx p ( (n/p) + 2 \log p ) - n = 2 p \log p</eqn>, which corresponds to the <eqn>2 \log p</eqn> time each processor spends communicating and collecting partial sums (a.k.a. communication overhead).
+
+
+<text>
+Rewriting the above equation, we get an expression for the parallel run time of a parallel algorithm:
+</text>
+
+<equation>
+t_p = \frac{ w + t_o (w,p)}{p}
+</equation>
+
+<text>
+The resulting speedup is, then,
+</text>
+
+<equation>
+S = \frac{t_s}{t_p} = w \frac {p} { w + t_o (w,p)}
+</equation>
+
+<text>
+Finally, efficiency is given by
+</text>
+
+<equation>
+E = \frac{S}{p} = \frac {w} { w + t_o (w,p)} = \frac {1} { 1 + t_o (w,p)/w }
+</equation>
+
+<text>
+For a given problem size <eqn>w</eqn>, if the number of processors <eqn>p</eqn> is increased, efficiency decreases, since the total overhead <eqn>t_o</eqn> increases with <eqn>p</eqn>. For scalable systems, the total overhead <eqn>t_o</eqn> increases slower than problem size <eqn>w</eqn> for a given number of processors <eqn>p</eqn>. Hence, efficiency increases for scalable systems when the problem size is increased while keeping the number of processors fixed. For such systems, we can maintain efficiency at a desired value.
+</text>
+
+<text>
+For different parallel systems, work <eqn>w</eqn> must be increased at different rates with respect to the number of processors <eqn>p</eqn> in order to maintain the desired level of efficiency:
+</text>
+
+<list>
+
+<item>In poorly-scalable systems, <eqn>w</eqn> might need to grow exponentially to avoid an efficiency loss as <eqn>p</eqn> increases.</item>
+
+<item>In highly-scalable systems, <eqn>w</eqn> needs to grow linearly with respect to <eqn>p</eqn> in order to avoid an efficiency loss.</item>
+
+</list>
+
+<text>
+In most situations, additional processors are used to solve bigger problems, hence the previous assertions might seem somewhat counterintuitive. Yhis is due to the fact that our definition of scalability refers to efficiency, not execution time. In poorly-scalable systems, it is difficult to obtain a high speedup unless the problem size growth is spectacular. In highly-scalable systems, you can easily obtain a nice speedup, proportional to the number of processors, even for standard problem sizes. 
+
+</text>
+
+++ A variety of constraints might guide the scaling up of the workload with respect to the number of processors
++ ref. J. Singh, J.L. Hennessy, A. Gupta: "Scaling parallel programs for multiprocessors: Methodology and examples", IEEE Computer 26(7):42-50, 1993
+
+++ For some problems, such as weather forecasting, problem size is increased with the number of processors so that the parallel run time remains fixed (time-constrained scaling). Another scaling strategy focuses on solving the largest problem that fits the available memory (memory-bounded scaling)
++ ref. J.L. Gustafson "Reevaluating Amdahl's law", CACM 31(5):532-533, 1988
+
+++ ref. Eager, Zahorjan, Lazowska: "Speedup versus efficiency in parallel systems", IEEE Transactions on Computers, 38(3):408-423, 1989
+(criterion of optimality that balances speedup and efficiency: operating point choice = where efficiency is 1/2)
+
+++ ref. Kumar, Gupta: "Analyzing the scalability of parallel algorithms and architectures", Journal of Parallel and Distributed Computing, 1994
+(survey of scalability and performance measures)
+
+<text>
+In scalable systems, efficiency can be kept constant if we fix the <eqn>t_o/w</eqn> ratio, since 
+</text>
+
+<equation>
+\frac{t_o (w,p)}{w} = \frac {1-E} {E} = K
+</equation>
+
+
+<text>
+which provides yet another way to define the problem size
+</text>
+
+<equation>
+w = K t_o (w,p)
+</equation>
+
+<text>
+This equation determines the growth rate of <eqn>w</eqn> in terms of <eqn>p</eqn> for a desired efficiency level (given by <eqn>K</eqn>) and it is called the <term>isoefficiency function</term> of the parallel system.
+</text>
+
+++ ref. Grama, Gupta, Kumar: "Isoefficiency function: A scalability metric for parallel algorithms and architectures", IEEE PDT 1993
+
+<text>
+This function does not even exists for unscalable systems, where the efficiency cannot be maintained as the number of processors is increased.
+</text>
+
+<text>
+<eqn>\Omega(p)</eqn> is an asymptotic lower bound on the isoefficiency function. If the problem size grows at a rate slower that <eqn>\Theta(p)</eqn> as the number of processor increases, the number of processors will eventually exceed the problem size and any additional processors would be idle. Therefore, efficiency would drop and the system would not be scalable. In ideal parallel systems with no overhead, therefore, the isoefficiency function is <eqn>\Theta(p)</eqn>.
+</text>
+
+<text>
+A small isoefficiency function indicates that small increments in problem size are enough to maintain a constant efficiency and, therefore, achieve linear speedups (for highly-scalable systems). 
+</text>
+
+e.g. Adding numbers on an hypercube: <eqn>w = 2K p \log p</eqn>. The asymptotic isoefficiency function is, therefore, <eqn>\Theta ( p \log p )</eqn>. When the number of processors is increased from <eqn>p</eqn> to <eqn>p'</eqn>, the problem size must be increased by a factor of <eqn>( p' \log p' ) / ( p \log p )</eqn> to achieve the same efficiency as on <eqn>p</eqn> processors. In other words, increasing the speedup by a factor of <eqn> p'/ p</eqn>, which corresponds to the increase in the number of processors, requires a problem size increased by a factor of <eqn>( p' \log p' ) / ( p \log p )</eqn>.
+
+
+
+<text>
+The isoefficiency function captures the key characteristics of a parallel algorithm and the parallel architecture on which it is implemented. Once we have computed the isoefficiency function of a parallel system and tested it on a particular hardware/software configuration, we can predict its performance for a larger number of processors. We can also study the behavior of the parallel system with respect to hardware changes, such as processor speed or communication channel bandwidth, as the isoefficiency function captures the inherent parallelism is a parallel algorithm <cite>Grama et al. 2003</cite>, as we will see in the next section.
+</text>
+
+
+<note>
+<title>Isoefficiency and cost-optimality</title>
+
+<text>
+The isoefficiency function can also be related to the cost-optimality of a parallel system. If we recall that a parallel system is cost-optimal when <eqn>p t_p \in \Theta (w)</eqn>, we can see that
+</text>
+
+<equation>
+w + t_o(w,p) \in \Theta(w)
+</equation>
+
+<equation>
+t_o(w,p) \in \Theta(w)
+</equation>
+
+<equation>
+w \in \Omega ( t_o(w,p) )
+</equation>
+
+<text>
+That is, a parallel system is cost-optimal if and only if its overhead function does not exceed the problem size. Given an isoefficiency function <eqn>f(p)</eqn>, it follows that <eqn>w \in \Omega ( f(p) )</eqn> to ensure the cost-optimality of a parallel system as it is scaled up.
+</text>
+
+</note>
 
 
 </document>
+
+
+
+<document>
+<tag>algorithm-analysis-concurrency-degree</tag>
+<title>Degree of concurrency</title>
+
+<text>
+The maximum number of tasks that can be executed simultaneously in a parallel algorithm is its <term>degree of concurrency</term>. This degree of concurrency depends on the problem size <eqn>w</eqn> and it is independent of the parallel architecture, hence it is often denoted as <eqn>C(w)</eqn>. For a given problem size <eqn>w</eqn>, no more than <eqn>C(w)</eqn> processors can be employed effectively.
+</text>
+
+<text>
+Example from <cite>Grama et al. 2003</cite>: Solving a system of n equations in n variables using Gaussian elimination requires a <eqn>\Theta(n^3)</eqn> algorithm, but the <eqn>n</eqn> variables must be eliminated sequentially. Therefore, at most <eqn>\Theta(n^2)</eqn> processors can be used in parallel. Since <eqn>w \in \Theta(n^3)</eqn>, the degree of concurrency is <eqn>C(w) \in \Theta(w^{2/3})</eqn>. Given <eqn>p</eqn> processors, the problem size should be at least <eqn>\Omega(p^{3/2})</eqn> to use them all and the isoefficiency function for this parallel computation is <eqn>\Theta(p^{3/2})</eqn>.
+</text>
+
+<text>
+The isoefficiency function is optimal, i.e. <eqn>\Theta(p)</eqn>, only when the degree of concurrency of a parallel algorithm is <eqn>\Theta(w)</eqn>. When the degree of concurrency is smaller, the isoefficiency function will necessarily be worse (i.e. greater) than <eqn>\Theta(p)</eqn>. In such cases, the isoefficiency function of the parallel system will be determined by the maximum of the isoefficiency functions due to concurrency, communication, and other overhead sources such as load imbalance.
+</text>
+
+</document>
+
 
 </document>
 

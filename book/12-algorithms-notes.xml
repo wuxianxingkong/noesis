@@ -24,8 +24,16 @@ Libraries: LEDA, boost, pygraphlib
 </text>
 
 
+The Big O(micron), Big Omega, and Big Theta asymptotic notations for the analysis of algorithma are explained in detail in <cite>Knuth 1976</cite>.
+
+ref.	Donald E. Knuth
+	B I G   O M I C R O N   A N D   B I G   O M E G A   A N D   B I G   T H E T A  
+	SIGACT News, April-June 1976
+
+
+
 <text>
-<cite>Grama et al. 2003</cite> includes a chapter on parallel graph algorithms.
+<cite>Grama et al. 2003</cite> includes a chapter on parallel graph algorithms ++
 
 + <cite>Lynch 1997</cite> textbook on distributed algorithms.
 </text>

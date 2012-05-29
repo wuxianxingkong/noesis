@@ -4,7 +4,7 @@
 <!-- Propaedeutic -->
 
 <document>
-<tag>foundations-algorithms</tag>
+<tag>algorithm-analysis</tag>
 <title>A primer on algorithm analysis</title>
 
 <text>
@@ -12,16 +12,18 @@ An introduction to an art and science of algorithm analysis and design... as a p
 </text>
 
 <text>
+The key performance metric for an algorithm is usually its execution time. But rather than measuring the actual time required to execute an algorithm for a particular input using a given hardware/software configuration, algorithm execution time is typically described as a function of the size of its input...
+</text>
+
+<document>
+<tag>algorithm-analysis-worst</tag>
+<title>Worst-case analysis</title>
+
+<text>
+...
 Big-Oh notation...
 </text>
 
-<text>
-Worst-case analysis...
-</text>
-
-<text>
-Amortized analysis bounds the total amount of time used by any sequence of operations (e.g. coffee @ office or coffee shop). Used when single operations might prove costly but their cost is distributed among many fast operations... O(f(n)) in amortized analysis is worse than O(f(n)) in the worst case, but it might still be useful in practice. Provided that individual response time is not critical, amortized operations might help obtain a good throughput...
-</text>
 
 <text>
 The dominance pecking order in algorithm analysis <cite>Skiena 2008</cite>:
@@ -48,8 +50,263 @@ n! >> c^n >> n^3 >> n^2 >> n^{1+\epsilon} >> n \log n
 <text>
 ++ polylogarithmic, polylogarithmic function in n is a polynomial in the logarithm of n,
 <eqn>a_k \log^k (n) + ... + a_1 \log(n) + a_0</eqn>
-
 </text>
+
+</document>
+
+<document>
+<tag>algorithm-analysis-amortized</tag>
+<title>Amortized analysis</title>
+
+<text>
+Amortized analysis bounds the total amount of time used by any sequence of operations (e.g. coffee @ office or coffee shop). Used when single operations might prove costly but their cost is distributed among many fast operations... O(f(n)) in amortized analysis is worse than O(f(n)) in the worst case, but it might still be useful in practice. Provided that individual response time is not critical, amortized operations might help obtain a good throughput...
+</text>
+
+ref. 
+DANIEL D. SLEATOR and ROBERT E. TARJAN
+"Amortized Efficiency Of List Update and Paging Rules"
+Communications of the ACM, February 1985, Volume 28, Number 2, pp. 202-208
+
+"By amortization we mean averaging the running time
+of an algorithm over a worst-case sequence of executions.
+This complexity measure is meaningful if successive
+executions of the algorithm have correlated behavior,
+as occurs often in manipulation of data structures.
+Amortized complexity analysis combines aspects of
+worst-case and average-case analysis, and for many
+problems provides a measure of algorithmic efficiency
+that is more robust than average-case analysis and
+more realistic than worst-case analysis."
+
+"In this article we study the amortized complexity of
+two well-known algorithms used in system software.
+These are the “move-to-front’’ rule for maintaining an
+unsorted linear list used to store a set and the “least
+recently used” replacement rule for reducing page
+faults in a two-level paged memory. Although much
+previous work has been done on these algorithms, most
+of it is average-case analysis. By studying the amortized
+complexity of these algorithms, we are able to gain
+additional insight into their behavior."
+
+"In this article we study the amortized
+efficiency of the “move-to-front” and similar rules for
+dynamically maintaining a linear list. Under the assumption
+that accessing the ith element from the front of the list takes
+e(i) time, we show that move-to-front is within a constant
+factor of optimum among a wide class of list maintenance
+rules. Other natural heuristics, such as the transpose and
+frequency count rules, do not share this property. We
+generalize our results to show that move-to-front is within a
+constant factor of optimum as long as the access cost is a
+convex function. We also study paging, a setting in which
+the access cost is not convex. The paging rule corresponding
+to move-to-front is the “least recently used“
+replacement rule. We analyze the amortized complexity of
+LRU, showing that its efficiency differs from that of the offline
+paging rule (Belady’s MlN algorithm) by a factor that
+depends on the size of fast memory. No on-line paging
+algorithm has better amortized performance."
+
+
+
+</document>
+
+
+
+<document>
+<tag>algorithm-analysis-parallel</tag>
+<title>Analysis of parallel algorithms</title>
+
+<text>
+Even though the asymptotic bound on the execution time of a sequential algorithm is the key driver behind the algorithm performance in practice, much more important than the particular hardware it is run on, we might still be interested in studying the performance of parallel algorithms.
+</text>
+
+
+<text>
+The execution time of a parallel algorithm depends on its input size, as you might expect, but it also depends on the architecture of the parallel computer and the number of processors available. In fact, a parallel algorithm cannot be evaluated in isolation, without considering the archiecture of the parallel system it is run onto <cite>Grama et al. 2003</cite>.
+</text>
+
+<text>
+Metrics for evaluating the performance of parallel systems...
+
+e.g. scalability = ability to achieve performance proportional to the number of processors
+</text>
+
+<text>
+<eqn>t_s</eqn> serial run time, algorithm execution time on a sequential computer.
+
+<eqn>t_p</eqn> parallel run time, time from the start of the parallel computation to the moment when the last processor finishes.
+</text>
+
+<document>
+<tag>algorithm-analysis-speedup</tag>
+<title>Speedup</title>
+
+<text>
+... performance gain achieved by parallelizing an algorithm over a sequential implementation
+</text>
+
+<equation>
+S = \frac{t_s}{t_p}
+</equation>
+
+<text>
+where <eqn>t_p</eqn> is the time required to solve the problem on a parallel computer with <eqn>p</eqn> processors, which are assumed to be identical to the processor used by the sequential algorithm.
+</text>
+
+<text>
+Different sequential algorithms might be used for solving a particular problem, but not all of them might be suitable for parallelization...
+
+The performance of the chosen parallel algorithm should always be compared with that of the best sequential algorithm for a single processor.
+</text>
+
+e.g. Adding n numbers (divide &amp; conquer algorithm)
+
+<equation>
+S = \Theta \left ( \frac{n}{\log n} \right )
+</equation>
+
+<text>
+Ideal speedup = Number of processors...
+
+t_s vs t_s/p in the best case (if each processor spends less than t_s/p, then the sequential processor could emulate the p processor and complete the computation in less than t_s).
+
+Always computed with respect to the best sequential algorithm
+</text>
+
+<text>
+<term>Superlinear speedup</term> can be observed, most often because a nonoptimal sequential algorithm was chosen. It might be due to genuine causes, however, if the hardware imposes constraints to the sequential implementation of the algorithm. For instance, data might be too large to fit into the main memory of a single processor, hence degrading the performance of the sequential algorithm, which requires swapping pages from main memory to secondary storage.
+</text>
+
+</document>
+
+<document>
+<tag>algorithm-analysis-efficiency</tag>
+<title>Efficiency</title>
+
+<text>
+Ideally, p processor can deliver a p speedup. However, communication among processors requires time that is not employed for computation, hence parallel processors are not fully exploited. Efficiency measures the fraction of time for which a processor is usefully employed:
+</text>
+
+<equation>
+E = \frac{S}{p}
+</equation>
+
+<text>
+In an ideal system, with no communication overhead, efficiency is equal to 1. However, in practice it will be a number between 0 and 1...
+</text>
+
+e.g. Adding n numbers on an n-processor hypercube
+
+<equation>
+E = \Theta \left ( \frac{1}{\log n} \right )
+</equation>
+
+
+<note>
+<title>Cost-optimality</title>
+
+<text>
+The cost of solving a problem on a parallel system is the total CPU time required to solve the problem, i.e. the sum of time spent by each processor of the parallel system. Typically, it is approximated by the product of the parallel run time and the number of processors, hence it is often called <term>processor-time product</term>.
+</text>
+
+<text>
+A parallel system is cost-optimal if the cost of solving a problem on a parallel system is proportional to the execution time of the fastest-known sequential algorithm on a single processor, i.e. a cost-optimal parallel system has an efficiency of <eqn>\Theta(1)</eqn>.
+</text>
+
+e.g. Adding n numbers on an n-processor hypercube
+
+<equation>
+C = \Theta ( n \log n )
+</equation>
+
+
+</note>
+
+</document>
+
+
+<document>
+<tag>algorithm-analysis-granularity</tag>
+<title>Granularity</title>
+
+
+<text>
+Using as many processors as data items is overkill, hence parallel systems are scaled down to increase the granularity of computation on each processor.
+</text>
+
+<text>
+Naive approach: Design a parallel algorithm using one data item per processor and then use the physically available processors to simulate a larger number of processors. Each one of the <eqn>p</eqn> physical processors emulates <eqn>n/p</eqn> virtual processors. As the number of processor decreases by a factor <eqn>n/p</eqn>, the computation at each processor increases by a factor <eqn>n/p</eqn> and the communication time also grows by <eqn>n/p</eqn> if properly implemented.
+</text>
+
+<text>
+For cost-optimal parallel systems, the naive approach preserves cost-optimality, but greater care must be taken for non-cost-optimal systems.
+</text>
+
+e.g. Adding n numbers on a p-processor hypercube: 
+
+- Naive approach: Parallel run time is <eqn>\Theta ( (n/p) \log p )</eqn> instead of <eqn>\Theta ( (n/p) \log n )</eqn>, but yet non-optimal.
+
+- Cost-optimal approach: Each processor adds its <eqn>n/p</eqn> numbers in <eqn>\Theta (n/p)</eqn> and then the <eqn>p</eqn> partial sums are added on <eqn>p</eqn> processors. Parallel run time is then <eqn>\Theta ( n/p + \log p )</eqn> and its cost is <eqn>\Theta ( n + p \log p )</eqn>. When <eqn>n = \Omega ( p \log p )</eqn>, the cost is <eqn>\Theta (n)</eqn>, which makes the system cost-optimal.
+
+<text>
+The moral: Designing efficient parallel algorithms involves more than developing a fine-grained algorithm and scaling it down. The complete design of an algorithm takes into account the mapping of data onto processors and keeps input size and number of processors as two separate variables.
+</text>
+
+
+e.g. Adding n numbers on a p-processor hypercube (or a symmetric multiprocessor) assuming unit communication cost equals unit computation cost (an unrealistic assumption):
+
+<equation>
+t_p = \frac{n}{p} + 2 \log p
+</equation>
+
+<equation>
+t_s = n 
+</equation>
+
+<equation>
+S = \frac{np}{p + 2 p \log p}
+</equation>
+
+<equation>
+E = \frac{n}{p + 2 p \log p}
+</equation>
+
+<text>
+Speedup does not increase linearly as the number of processors is increased. Moreover, as a consequence of Amdahl's law, speedup saturates, the speedup curve flattens, and efficiency drops with an increasing number of processors.
+</text>
+
+<text>
+Larger instances of the problem yield higher speedup and efficiency for a given number of processors.
+</text>
+
+<text>
+Combining the two observations above, we can keep the efficiency of the system for a larger problem size if we increase the number of processors. Parallel systems whose efficiency can be maintained at a fixed value are said to be scalable. The scalability of a parallel system measures its capacity to increase speedup in proportion to the number of processors and reflects its ability to employ increasing computing resources effectively.
+</text>
+
+e.g. Adding n numbers on p processors: As <eqn>p</eqn> is increased, <eqn>n</eqn> can be increased in proportion to <eqn>\Theta (p \log p)</eqn>.
+
+</document>
+
+
+<document>
+<tag>algorithm-analysis-isoefficiency</tag>
+<title>Isoefficiency analysis</title>
+
+
+IDEA: How the size must scale with p to keep E constant.
+
+Isoefficiency function 
+- Linear, O(p) = Highly scalable
+- Quadratic or exponential = Poorly scalable ???
+
+
+</document>
+
+</document>
+
+
 
 </document>
 

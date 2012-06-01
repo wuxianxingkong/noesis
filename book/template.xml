@@ -172,6 +172,95 @@ def eratosthenes_sieve(n):
 
 
 <document>
+<tag>tables</tag>
+<title>Tablas</title>
+
+
+<dataset>
+ <title>Controles HTML en ASP.NET</title>
+ <metadata>
+  <field width="25">Control HTML</field>
+  <field width="25" align="center">Etiqueta HTML</field>
+  <field width="50">Descripción</field>
+ </metadata>
+ <record>
+  <field><type>HtmlAnchor</type></field>
+  <field><type>&lt;a&gt;</type></field>
+  <field>Enlace</field>
+ </record>
+ <record>
+  <field><type>HtmlButton</type></field>
+  <field><type>&lt;button&gt;</type></field>
+  <field>Botón</field>
+ </record>
+ <record>
+  <field><type>HtmlForm</type></field>
+  <field><type>&lt;form&gt;</type></field>
+  <field>Formulario</field>
+ </record>
+ <record>
+  <field><type>HtmlGenericControl</type></field>
+  <field></field>
+  <field>Cualquier elemento HTML para el cual no existe un control HTML específico</field>
+ </record>
+ <record>
+  <field><type>HtmlImage</type></field>
+  <field><type>&lt;image&gt;</type></field>
+  <field>Imagen</field>
+ </record>
+ <record>
+  <field><type>HtmlInput...</type></field>
+  <field><type>&lt;input type="..."&gt;</type></field>
+  <field>Distintos tipos de entradas en un formulario HTML: botones (<type>button</type>, <type>submit</type> y <type>reset</type>), texto (<type>text</type> y <type>password</type>), opciones (<type>checkbox</type> y <type>radio</type>), imágenes (<type>image</type>), ficheros (<type>file</type>) y entradas ocultas (<type>hidden</type>).</field>
+ </record>
+ <record>
+  <field><type>HtmlSelect</type></field>
+  <field><type>&lt;select&gt;</type></field>
+  <field>Lista de opciones en un formulario</field>
+ </record>
+ <record>
+  <field><type>HtmlTable...</type></field>
+  <field><type>&lt;table&gt;</type> <type>&lt;tr&gt;</type> <type>&lt;td&gt;</type></field>
+  <field>Tablas, filas y celdas</field>
+ </record>
+ <record>
+  <field><type>HtmlTextArea</type></field>
+  <field><type>&lt;textarea&gt;</type></field>
+  <field>Texto en un formulario</field>
+ </record>
+</dataset>
+
+
+<dataset>
+ <title>Prim's and Dijkstra's algorithms on different architectures</title>
+ <metadata>
+  <field>Architecture</field>
+  <field>Parallel run time</field>
+  <field>Isoefficiency</field>
+ </metadata>
+ <record>
+  <field>Ring</field>
+  <field><eqn>\Theta(n^{1.5})</eqn></field>
+  <field><eqn>\Theta(p^{4})</eqn></field>
+ </record>
+ <record>
+  <field>Mesh</field>
+  <field><eqn>\Theta(n^{1.33})</eqn></field>
+  <field><eqn>\Theta(p^{3})</eqn></field>
+ </record>
+ <record>
+  <field>Hypercube</field>
+  <field><eqn>\Theta(n \log n)</eqn></field>
+  <field><eqn>\Theta(p^{2} \log^2 p)</eqn></field>
+ </record>
+</dataset>
+
+
+</document>
+
+
+
+<document>
 <tag>bibliography</tag>
 <title>Bibliografía</title>
 

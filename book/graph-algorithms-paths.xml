@@ -125,6 +125,36 @@ Parallelization of Dijkstra's algorithm
 + Bibliographic notes
 </text>
 
+
+
+<dataset>
+ <title>Performance of Dijkstra's algorithm on different parallel architectures</title>
+ <metadata>
+  <field width="25">Architecture</field>
+  <field width="25">Maximum number of processors for <eqn>E \in \Theta(1)</eqn></field>
+  <field width="25">Parallel run time</field>
+  <field width="25">Isoefficiency function</field>
+ </metadata>
+ <record>
+  <field>Hypercube</field>
+  <field><eqn>\Theta(n / \log n)</eqn></field>
+  <field><eqn>\Theta(n \log n)</eqn></field>
+  <field><eqn>\Theta(p^2 \log^2 p)</eqn></field>
+ </record>
+ <record>
+  <field>2D Mesh</field>
+  <field><eqn>\Theta(n^{2/3})</eqn></field>
+  <field><eqn>\Theta(n^{4/3})</eqn></field>
+  <field><eqn>\Theta(p^3)</eqn></field>
+ </record>
+ <record>
+  <field>Bus / Ring</field>
+  <field><eqn>\Theta(\sqrt{n})</eqn></field>
+  <field><eqn>\Theta(n^{3/2})</eqn></field>
+  <field><eqn>\Theta(p^4)</eqn></field>
+ </record>
+</dataset>
+
 </document>
 
 

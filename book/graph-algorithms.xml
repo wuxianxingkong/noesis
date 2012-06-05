@@ -11,7 +11,7 @@
 
 
 <text>
-<q>The key to solving many algorithmic problems is to think of them in terms of graphs... it is amazing how often messy applied problems have a simple description and solution in terms of classical graph properties</q> <cite>Skiena 2008</cite>.
+Graphs play a key role in Computer Science because they provide a formal model for many problems. In fact, <q>the key to solving many algorithmic problems is to think of them in terms of graphs... it is amazing how often messy applied problems have a simple description and solution in terms of classical graph properties</q> <cite>Skiena 2008</cite>.
 </text>
 
 

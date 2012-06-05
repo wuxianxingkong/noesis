@@ -24,7 +24,7 @@ SNA: nodes/points, edges/lines
 </text>
 
 <text>
-Any member <eqn>e={u,v}</eqn> of <eqn>E(G)</eqn> is an <term>edge</term> in <eqn>G</eqn> with end vertices <eqn>u</eqn> and <eqn>v</eqn>. Both <eqn>u</eqn> and <eqn>v</eqn> are incident with the edge <eqn>e</eqn>, and the edge is incident with them.
+Any member <eqn>e={u,v}</eqn> of <eqn>E(G)</eqn> is an <term>edge</term> in <eqn>G</eqn> with end vertices <eqn>u</eqn> and <eqn>v</eqn>. Both <eqn>u</eqn> and <eqn>v</eqn> are incident with the edge <eqn>e</eqn>, and the edge is incident on them.
 
 An edge <eqn>e={u,v}</eqn> is said to join <eqn>u</eqn> and <eqn>v</eqn> and can be denoted by <eqn>uv</eqn> or <eqn>vu</eqn>. 
 </text>
@@ -166,7 +166,7 @@ J: Formally, a directed graph or, for short, a digraph is a pair G = (V,E) consi
 E of ordered pairs (a, b), where a \neq b are elements of V. The term arc is usually employed instead
 of edge to distinguish between the directed and the undirected case. 
 
-Instead of e = (a, b), we again write e = ab; a is called the start vertex or tail, and b the end vertex or head of e; i.e. <eqn>tail \rightarrow head</eqn>. We say that a and b are incident with e, and call two edges of the form ab and ba antiparallel. 
+Instead of e = (a, b), we again write e = ab; a is called the start vertex or tail, and b the end vertex or head of e; i.e. <eqn>tail \rightarrow head</eqn>. We say that a and b are incident with e, e is incident from a, e is incident to b, and we say that two edges of the form ab and ba antiparallel. 
 
 (u,v): u is said to be adjacent to v and v is said to be adjacent from u (in undirected graphs: nodes adjacent WITH edges, rather than TO/FROM edges).
 </text>
@@ -206,6 +206,10 @@ We say that a digraph G is symmetric if,whenever (u,v) is an arc of G, then (v,u
 a.k.a. valued graphs
 
 - Each edge is assigned a numerical value or weigth; e.g. road network (length, traversal time, construction cost, speed limit...)
+
+++ Weighted graphs <eqn>G_w = (G,E,w)</eqn>
+- weights <eqn>w: E \rightarrow \mathbb{R}</eqn> 
+- Weight of a graph = Sum of its weights.
 </text>
 
 <text>

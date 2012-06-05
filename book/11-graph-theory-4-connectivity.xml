@@ -37,6 +37,7 @@ When, both edges and nodes are distinct, the trail becomes a path. It should be 
 paths \subset trails \subset walks
 </equation>
 
+
 <!-- @ directed graphs -->
 
 <text>
@@ -55,7 +56,7 @@ Inverse walk: <eqn>W^{-1}</eqn>, from the destination to the origin
 <!-- @ weighted graphs -->
 
 <text>
-Paths: value (min), length/distance/cost (sum)
+Paths: value (min), length/distance/cost/weight (sum) of the weights of its edges
 </text>
 
 
@@ -84,7 +85,12 @@ Acyclic graphs do not contain any cycles. ++ important classes: DAGs, trees
 <text>
 a.k.a. semiwalks/semipaths/semicycles (ignoring arc orientation) <eqn>X \subset semiX</eqn>
 </text> 
- 
+
+<!-- Reachability -->
+
+<text>
+When a path exists from v to w, we say that w is reachable from v.
+</text>
 
 <document>
 <tag>graph-theory-eulerian</tag>

@@ -42,6 +42,9 @@ In unweighted graphs (or weighted graphs where all edges have the same cost), an
 In weighted graphs, efficient greedy algorithms exist than can be employed to identify minimum spanning trees...
 </text>
 
+<text>
+Note: If the graph is not connected, it cannot have a spanning tree but it has a spanning forest. MST algorithms can be easily modified to output minimum spanning forests if needed.
+</text>
 
 <document>
 <tag>graph-spanning-trees-greedy</tag>
@@ -138,7 +141,8 @@ No cycles are created since only edges between tree and non-tree nodes are added
 
 <text>
 EFFICIENCY:
-<eqn>n</eqn> iterations through <eqn>m</eqn> edges = <eqn>O(mn)</eqn>
+<eqn>n</eqn> iterations through <eqn>m</eqn> edges = <eqn>O(mn)</eqn> using adjacency lists, 
+<eqn>O(n^2)</eqn> using a weighted adjacency matrix.
 </text>
 
 <text>
@@ -189,7 +193,7 @@ PROOF? by contradiction
 Naive implementation:
 <eqn>O(mn)</eqn> for Kruskal's algorithm 
 <eqn>O(mn)</eqn> for Prim's algorithm 
-(i.e. <eqn>O(n^3)</eqn> for dense graphs, <eqn>O(n^2)</eqn> for sparse graphs)
+(i.e. <eqn>O(n^3)</eqn> for dense graphs, <eqn>O(n^2)</eqn> for sparse graphs when adjacency lists are used)
 </text>
 
 <text>
@@ -267,6 +271,163 @@ Parallel Prim's algorithm
 - for sparse graphs @ Section 10.7.2 <cite>Grama et al. 2003</cite>
 + Bibliographic notes
 </text>
+
+
+<text>
+Prim's and Kruskal's algorithms are iterative (each iteration adds a new vertex or edge to the minimum spanning tree), so different iterations of their main loop cannot be performed in parallel. However, each particular iteration can be parallelized:
+
+- p processors, n vertices: V is partitioned into p subsets using block-striped partitioning (each block containing n/p consecutive vertices)
+
+- Processor P_i stores the data corresponding to the vertex set V_i
+
+- Prim's algorithm: Each processor computers d_i(u) = min { d_i(v) | v \in (V-V_T) \cap V_i } and the global minimum is obtained by single-node accumulation. P_0 will then know which node u to add to the minimum spanning tree and will broadcast it to all processors. The processor P_i responsible for node u will mark it as belonging to the set V_T and each processor will update the values of d[v] for its local vertices.
+
+- Each processor needs w(u,v) for the vertices v \in V_i, so it needs to store the columns of the adjacency matrix corresponding to the vertices it has been assigned. Space requirements \Theta(n/p) using an adjacency matrix, O((n+m)/p) for adjacency lists (if the load is distributed evenly among the different processors).
+
+
+Efficiency (for dense graphs, using their adjacency matrix)
+
+1) Computation: \Theta(n/p)
+
+2) Single-node accumulation (global minimum): \Theta(log p) @ hypercube network, \Theta(\sqrt{p}) @ 2D mesh network, \Theta(p) @ bus network (using a collision-free protocol)
+
+3) One-to-all broadcast: \Theta(log p) @ hypercube network, \Theta(\sqrt{p}) @ 2D mesh network, \Theta(1) @ bus network
+
+Overall
+
+1) Computation: \Theta(n^2/p)
+
+2) Communication: 
+- \Theta(n \log p) @ hypercube
+- \Theta(n \sqrt{p}) @ 2D mesh
+- \Theta(n p) @ bus
+
+
+Hypercube: 
+t_p = \Theta \left ( \frac{n^2}{p} + n \log p \right ) 
+
+Mesh:
+t_p = \Theta \left ( \frac{n^2}{p} + n \sqrt{p} \right ) 
+
+Bus:
+t_p = \Theta \left ( \frac{n^2}{p} + n p \right ) 
+
+
+
+Since the sequential run time is W=\Theta(n^2),
+
+speedup
+
+S_{hypercube} \in \Theta \left ( \frac{n}{n/p + \log p} \right ) 
+
+S_{mesh} \in \Theta \left ( \frac{n}{n/p + \sqrt{p}} \right ) 
+
+S_{bus} \in \Theta \left ( \frac{n}{n/p + p} \right ) 
+
+
+efficiency
+
+E_{hypercube} = \frac{1}{1 + \Theta ( (p \log p) / n ) }
+
+E_{mesh} = \frac{1}{1 + \Theta ( (p^{1.5} / n ) }
+
+E_{bus} = \frac{1}{1 + \Theta ( (p^2 / n ) }
+
+i.e. 
+hypercube: a cost optimal parallel implementation requires (p \log p) / n  \in O(1), hence the hypercube implementation of Prim's algorithm can use only p=O(n \log n) different processors.  Isoefficiency function \Theta(p^2 \log p^2) for hypercube networks
+
+tp = n^2/p + n log(p)
+ts = n^2 = W
+
+to = p*tp - W = n^2 + np log(p) - n^2 = n p log(p)
+
+E = 1 / (1 + to/W)
+
+Communication overhead: p^2 log^2(p)
+	tc = n p log (p)
+	W  = n^2
+	W = K tc  ===  n^2 = n p log(p)  ===  n = p log(p)  === W=n^2= p^2 log^2(p)
++
+Concurrency: p^2
+	Since n must grow at least as fast as p... W = n^2 = p^2 
+=
+Isoefficiency: \Theta(p^2 \log p^2)
+
+
+
+mesh: a cost optimal parallel implementation requires p^{1.5}/n  \in O(1), hence the mesh implementation of Prim's algorithm can use only p=O(n^{2/3}) different processors. Isoefficiency function \Theta(p^3) for meshes
+
+tp = n^2/p + n sqrt(p)
+ts = n^2 = W
+
+to = p*tp - W = n^2 + np sqrt(p) - n^2 = n p sqrt(p)
+
+E = 1 / (1 + to/W)
+
+Communication overhead: p^3
+	tc = n p sqrt (p)
+	W  = n^2
+	W  = K tc  ===  n^2 = K n p log(p)  ===  n = K p log(p)  ===  W = n^2 = K^2 p^2 p = K^2 p^3
++
+Concurrency: p^2
+	Since n must grow at least as fast as p... W = n^2 = p^2 
+=
+Isoefficiency: \Theta(p^3)
+
+
+
+bus: a cost optimal parallel implementation requires p^{2}/n \in O(1), hence the bus implementation of Prim's algorithm can use only p=O(\sqrt{n}) different processors. Isoefficiency function: \Theta(p^4) for bus
+
+tp = n^2/p + np
+ts = n^2 = W
+
+to = p*tp - W = n^2 + np^2 - n^2 = np^2
+
+to = p*tp - W = n^2 + np sqrt(p) - n^2 = n p sqrt(p)
+
+E = 1 / (1 + to/W)
+
+Communication overhead: p^3
+	tc = n p^2
+	W  = n^2
+	W  = K tc  ===  n^2 = K n p^2  ===  n = K p^2  ===  W = n^2 = K^2 p^4
++
+Concurrency: p^2
+	Since n must grow at least as fast as p... W = n^2 = p^2 
+=
+Isoefficiency: \Theta(p^4)
+
+</text>
+
+
+<dataset>
+ <title>Performance of Prim's algorithm on different parallel architectures</title>
+ <metadata>
+  <field width="25">Architecture</field>
+  <field width="25">Maximum number of processors for <eqn>E \in \Theta(1)</eqn></field>
+  <field width="25">Parallel run time</field>
+  <field width="25">Isoefficiency function</field>
+ </metadata>
+ <record>
+  <field>Hypercube</field>
+  <field><eqn>\Theta(n / \log n)</eqn></field>
+  <field><eqn>\Theta(n \log n)</eqn></field>
+  <field><eqn>\Theta(p^2 \log^2 p)</eqn></field>
+ </record>
+ <record>
+  <field>2D Mesh</field>
+  <field><eqn>\Theta(n^{2/3})</eqn></field>
+  <field><eqn>\Theta(n^{4/3})</eqn></field>
+  <field><eqn>\Theta(p^3)</eqn></field>
+ </record>
+ <record>
+  <field>Bus / Ring</field>
+  <field><eqn>\Theta(\sqrt{n})</eqn></field>
+  <field><eqn>\Theta(n^{3/2})</eqn></field>
+  <field><eqn>\Theta(p^4)</eqn></field>
+ </record>
+</dataset>
+
 
 </document>
 

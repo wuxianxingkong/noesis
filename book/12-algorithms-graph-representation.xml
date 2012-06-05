@@ -11,6 +11,9 @@
 Graphs <eqn>G=(V,E)</eqn> of order <eqn>n</eqn> (number of vertices or nodes) and size <eqn>m</eqn> (number of edges or links)
 </text>
 
+<text>
+Two standard methods for representing graphs in a computer program: matrix or linked lists...
+</text>
 
 <document>
 <tag>graph-representation-matrix</tag>
@@ -132,6 +135,13 @@ Implementation issues:
 ++ SNAP: bignet.h (memory efficient implementation of a network with data on nodes. Use when working with very large networks)
 info: memory efficient implementation of TNodeNet (avoids memory fragmentation)
 </text>
+
+
+++ Comparison table: adjacency matrix vs. adjacency list
+- space: \Omega(n^2) vs. \Omega(n+m)
+- sequential run time of algorithms bounded below by \Omega(n^2) vs. \Omega(n+m)
+
++ adjacency list much better for sparse graphs
 
 </document>
 

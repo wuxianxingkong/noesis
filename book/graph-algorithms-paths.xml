@@ -120,6 +120,7 @@ In a geometric setting, more efficient geometric algorithms compute the shortest
 
 
 <text>
+PARALLELIZATION:
 Parallelization of Dijkstra's algorithm
 - for dense graphs @ Section 10.3 <cite>Grama et al. 2003</cite>
 
@@ -221,16 +222,41 @@ A first solution: Repeating Dijkstra's algorithm for each node
 <url>http://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm</url>
 Floyd-Warshall algorithm: <cite>Floyd 1962</cite>
 often referred to as Floyd's algorithm, albeit the same algorithm was published by Bernard Roy in 1959 <cite>Roy 1959</cite> and by Stephen Warshall in 1962 <cite>Warshall 1962</cite>
+</text>
 
-
-<eqn>O(n^3)</eqn>
 
 - Define the length of the shortest path from i to j using only the k first vertices as possible intermediate nodes: <eqn>W[i,j]^k</eqn>
+
 - Initial shortest-path matrix = adjacency matrix
+
 - <eqn>W[i,j]^k = min \{ W[i,j]^{k-1}, W[i,k]^{k-1} + W[k,j]^{k-1} \}</eqn>
+
+
+IDEA: 
+
+- Minimum-weight path p^{(k)}_{i,j} from v_i to v_j among the subset of k vertices
+- Minimum distance d^{(k)}_{i,j} = weight of p^{(k)}_{i,j}
+
+When a vertex v_k is not in the shortest path from v_i to v_j, then p^{(k)}_{i,j} = p^{(k-1)}_{i,j}
+When the vertex v_k is in the shortest path from v_i to v_j, then p^{(k)}_{i,j} = p^{(k-1)}_{i,k} + p^{(k-1)}_{k,j}
+
+<equation>
+d^{(k)}_{i,j} = min \{ d^{(k-1)}_{i,j}, d^{(k-1)}_{i,k} + d^{(k-1)}_{k,j} \}
+</equation>
+
+given that
+
+<equation>
+d^{(0)}_{i,j} = w (v_i, v_j)
+</equation>
+
+
+Simple <eqn>\Theta(n^3)</eqn> implementation (for dense graphs)
 - Compact implementation: 3 nested loops
 - Ancillary matrix to reconstruct the paths
-</text>
+
+<eqn>\Theta(n^2)</eqn> space complexity, since <eqn>D^(k)</eqn> can be computed from <eqn>D^(k-1)</eqn>
+
 
 <code>
 D0 = M
@@ -354,13 +380,230 @@ and adds these edges to those bridging the different components.
 <!-- Parallelization -->
 
 <text>
-Parallelization of Floyd's algorithm 
+PARALLELIZATION:
 - for dense graphs @ Section 10.4 <cite>Grama et al. 2003</cite>
 + Bibliographic notes
 </text>
 
+3 algorithms: matrix multiplication, Dijkstra's single-source shortest paths, Floyd's algorithm
+
+Note: Dijkstra's algorithm requires non-negative edge weights, the other two algorithms work with graphs containing negative-weight edges provided that there are not negative-weight cycles.
+
+<document>
+<title>Parallel algorithm based on matrix multiplication</title>
 
 <text>
+Matrix-multiplication-based algorithm:
+</text>
+
+- Minimum-weight path p^{(k)}_{i,j} from v_i to v_j containing k edges
+
+- Minimum distance d^{(k)}_{i,j} = weight of p^{(k)}_{i,j}
+
+- Path decomposition: p^{(k)}_{i,j} = p^{(k-1)}_{i,m} + (v_m, v_j)
+
+- Therefore,  d^{(k)}_{i,j} = min { d^{(k-1)}_{i,j}, d^{(k-1)}_{i,m} + w(v_m,v_j) }
+
+
+- Taking into account that w(v_j,v_j)=0
+
+<equation>
+d^{(k)}_{i,j} = min \{ d^{(k-1)}_{i,m} + w(v_m,v_j) \}
+</equation>
+
+If we consider the matrix <eqn>D^(k) = ( d^{(k)}_{i,j} )</eqn>, then <eqn>D^(n-1)</eqn> contains the weights of the shortest paths between all pairs of vertices in G. Given that <eqn>D^(k)</eqn> can be computed from <eqn>D^(k-1)</eqn> using a modified matrix multiplication algorithm (performing addition and minimization instead of multiplication and addition), we can design a divide-and-conquer algorithm that obtains the desired result after <eqn>\lceil \log (n-1) \rceil</eqn> modified multiplications, i.e. <eqn>D^(n-1)</eqn> is computed by computing <eqn>D^2</eqn>, <eqn>D^2</eqn>, <eqn>D^8</eqn>...
+
+The conventional <eqn>\Theta(n^3)</eqn> matrix-multiplication algorithm results in an <eqn>\Theta(n^3 \log n)</eqn> sequential all-pairs shortest paths algorithm that is easily parallelizable using parallel matrix multiplication algorithms such as Cannon's algorithm or the DNS algorithm, which are specially useful in massively-parallel architectures. 
+
+- Cannon's algorithm <cite>Cannon 1969</cite> partitions matrices into p square blocks and schedules the computations so that each processor performs <eqn>\sqrt{p}</eqn> multiplications of <eqn>n/\sqrt{p} \times n/\sqrt{p}</eqn> matrices in <eqn>O(n^3/p)</eqn>. This parallel algorithm is optimal for <eqn>O(n^2)</eqn> processors and the isoefficiency function is <eqn>\Theta(p^{3/2)}</eqn>.
+
+- The DNS algorithm, due to Dekel, Nassimi and Sahni <cite>Dekel et al. 1981</cite>, can use up to <eqn>n^3</eqn> processors in parallel and performs matrix multiplication in <eqn>\Theta(\log n)</eqn> time by using <eqn>\Theta(n^3 / \log n)</eqn> processors. The algorithm is cost-optimal for <eqn>O(p \log^3 p)</eqn> processors and its isoefficiency function is <eqn>\Theta(p \log^3 p)</eqn>.
+
+ref. L. E. Cannon. A cellular computer to implement the Kalman Filter Algorithm. Ph.D. Thesis, Montana State University, Bozman, MT, 1969.
+ref. E. Dekel, D. Nassimi, and S. Sahni. Parallel matrix and graph algorithms. SIAM Journal on Computing, 10:657–673, 1981
+ref. G. C. Fox, S. W. Otto, and A. J. G. Hey. Matrix algorithms on a hypercube I: Matrix multiplication. Parallel Computing, 4:17–31, 1987.
+
+++ Gupta and Kumar [GK91] present a detailed scalability analysis of several matrix multiplication algorithms
+ref. A. Gupta and V. Kumar. The scalability of matrix multiplication algorithms on parallel computers. Technical Report TR 91-54, Department of Computer Science, University of Minnesota, Minneapolis, MN, 1991. A short version appears in Proceedings of 1993 International Conference on Parallel Processing, pages III-115–III-119, 1993.
+
+Therefore, if we use the DNS algorithm with <eqn>n^3</eqn> processors, which requires <eqn>\Theta(\log n)</eqn> time for matrix multiplication, we can obtain a <eqn>\Theta(\log^2 n)</eqn> algorithm for solving the all-pairs shortest path problem. Since the best-known sequential algorithm has <eqn>\Theta(n^3)</eqn> time complexity, the speedup and efficiency of the parallel algorithm are:
+
+<equation>
+S \in \Theta \left ( \frac{n^3}{\log^2 n} \right ) 
+</equation>
+
+<equation>
+E \in \Theta \left ( \frac{1}{\log^2 n} \right ) 
+</equation>
+
+<text>
+When we use <eqn>\Theta(n^3 / \log n)</eqn> processors, the efficiency of this algorithm can be improved to <eqn>\Theta(1 / \log n)</eqn>, yet the algorithm is still unscalable. This is the fastest-known parallel algorithm for solving the all-pairs shortest paths problem. However, slower cost-optimal algorithms are employed in practice.
+</text>
+
+</document>
+
+<document>
+<title>Parallelization based on Dijkstra's algorithm</title>
+
+<text>
+Dijkstra's single-source shortest paths algorithms can be used to solve the all-pairs shortest paths problem just by executing it for each vertex. Dijkstra's all-pairs shortest paths algorithm can be parallelized in two different ways:
+</text>
+
+<list>
+
+<item>Source-partitioned Dijkstra's all-pairs shortest paths: Vertices are partitioned among different processors and each processor computes the single-source shortest paths for its assigned vertices.</item>
+
+<item>Source-parallel Dijkstra's all-pairs shortest paths: Each vertex is assigned to a set of processors and the parallel version of Dijkstra's single-source shortest paths algorithm is used.</item>
+
+</list>
+
+
+<text>
+The source-partitioned version requires no interprocessor communication, hence the parallel run time is <eqn>t_p \in \Theta(n^2)</eqn> for dense graphs. Since the sequential time for the all-pairs shortest paths problem is <eqn>W=\Theta(n^3)</eqn> for dense graphs, the source-partitioned version achieves a linear speedup <eqn>\Theta(n)</eqn> and optimal efficiency <eqn>\Theta(1)</eqn>. However, the algorithm is poorly scalable, since it can use <eqn>n</eqn> processors at most and its isoefficiency function due to concurrency is <eqn>\Theta(p^3)</eqn>.
+</text>
+
+<text>
+When the number of available processors p is greater than the number of nodes n, the source-parallel version can improve the performance of the source-partitioned version by partitioning the p processors into n partitions with p/n processors. Parallelizing both the all-pairs algorithm by assigning each vertex to a separate set of processors and the single-source algorithm by using sets of p/n processors, we could use up to n^2 processors in parallel. Assuming an hypercube interconnection network or an equivalent message-passing parallel computer, the source-parallel algorithm can use <eqn>O(n^2 / \log n)</eqn> processors efficiently, requires just <eqn>O(n \log n)</eqn> parallel run time, and its isoefficiency function drops to <eqn>O(p^{3/2} \log^{3/2} p )</eqn>, a substantial improvement over the source-partitioned version.
+</text>
+
+</document>
+
+<document>
+<title>Parallelization of Floyd's algorithm</title>
+
+<text>
+Parallelization strategy for computing the <eqn>D^{(k)}</eqn> matrix using <eqn>p</eqn> processors: Matrix <eqn>D^{(k)}</eqn> is partitioned into <eqn>p</eqn> parts and each part is assigned to a different processor. In order to perform this, each processor need access to segments of rows and columns of the <eqn>D^{(k-1)}</eqn> matrix.
+</text>
+
+<text>
+Techniques for partitioning the <eqn>D^{(k)}</eqn> matrix:
+</text>
+
+<list>
+
+<item>
+Block-striped mapping: Each of the <eqn>p</eqn> processors is assigned <eqn>n/p</eqn> consecutive columns of the <eqn>D^{(k)}</eqn> matrix.
+</item>
+
+<item>
+Block-checkerboard mapping: The <eqn>D^{(k)}</eqn> matrix is divided into <eqn>p</eqn> squares of size <eqn>n/\sqrt{p} \times n/\sqrt{p}</eqn> and each square is assigned to a different processor.
+</item>
+
+<item>
+Pipelined block-checkerboard mapping: Rather than waiting for the (k-1)-th iteration to complete and ensure that all processors have the appropriate segments of the <eqn>D^{(k-1)}</eqn> matrix, a processor can start its work on the k-th iteration as soon as it has computed its part of the <eqn>D^{(k-1)}</eqn> matrix and has received the relevant parts of the <eqn>D^{(k-1)}</eqn> matrix.
+</item>
+
+</list>
+
+
+<text>
+Using the last parallelization strategy, let us consider what happens on a p-processor 2D mesh. In each algorithm step, <eqn>n/\sqrt{p}</eqn> elements from a row are sent from processor <eqn>P_{i,j}</eqn> to processors <eqn>P_{i+1,j}</eqn> and <eqn>P_{i-1,j}</eqn>. Likewise, <eqn>n/\sqrt{p}</eqn> elements from a column are sent from processor <eqn>P_{i,j}</eqn> to processors <eqn>P_{i,j+1}</eqn> and <eqn>P_{i,j-1}</eqn>. Each step requires <eqn>\Theta(n/\sqrt{p})</eqn> time and after <eqn>\Theta(\sqrt{p})</eqn> steps, i.e. in <eqn>\Theta(n)</eqn> time, every processor gets the relevant elements it needs from the first row (and column). Successive rows and columns are received every <eqn>\Theta(n^2/p)</eqn> time in pipeline mode. Hence, every processor can complete its computation in time <eqn>\Theta(n^3/p)</eqn> and send the relevant information to other processors in <eqn>\Theta(n)</eqn> time. The parallel run time required by the algorithm is, therefore,
+</text>
+
+<equation>
+t_p \in \theta \left( \frac{n^3}{p} + n \right )
+</equation>
+
+<text>
+Since the sequential run time for dense networks is <eqn>W \in \Theta(n^3)</eqn>, the parallel algorithm speedup and efficiency are
+</text>
+
+<equation>
+S \in \Theta \left ( \frac{n^2}{n^2/p + 1} \right )
+</equation>
+
+<equation>
+E = \frac{1}{1 + \Theta(p/n^2)}
+</equation>
+
+<text>
+This algorithm is cost-optimal for <eqn>p/n^2 \in O(1)</eqn>, hence the pipelined algorithm can use up to <eqn>O(n^2)</eqn> processors efficiently and its isoefficiency function is <eqn>\Theta(p^{3/2})</eqn>.
+</text>
+
+tp = n^3/p + n
+ts = n^3 = W
+
+to = p*tp - W = n^3 + np - n^3 = np
+
+E = 1 / (1 + to/W) = 1 / (1 + p/n^2)
+
+	p = n^2 === n = p^{1/2}
+	W  = n^3
+	W  = K to  ===  n^3 = K p^{3/2}
+
+Communication overhead: p^{3/2}
+	tc = np
+	W = n^3
+	W = K to  ===  n^3 = np  ===  n = sqrt(p)  === W = n^3 = p^{3/2}
++
+Concurrency: p
+	Since n must grow at least as fast as p... W = n^3 = p^3
+=
+Isoefficiency: \Theta(p^{3/2})
+
+
+<text>
+Table <ref>parallel-all-pairs</ref> compares the performance and scalability properties of different algorithms for solving the all-pairs shortest paths problem for dense networks on architectures with <eqn>O(p)</eqn> bisection bandwidth. The pipelined parallel implementation of Floyd's algorithm is the most scalable: it can use up to <eqn>\Theta(n^2)</eqn> processors to compute the all-pairs shortest paths in linear <eqn>\Theta(n)</eqn> time and it performs equally well on hypercubes with <eqn>O(p)</eqn> bisection bandwidth and meshes with <eqn>O(\sqrt{p})</eqn> bisection bandwidth, both with store-and-forward and cut-through routing <cite>Grama et al. 2003</cite>.
+</text>
+
+
+<dataset>
+ <tag>parallel-all-pairs</tag>
+ <title>Performance and scalability of parallel all-pairs shortest paths algorithms</title>
+ <metadata>
+  <field width="25">Algorithm</field>
+  <field width="25">Maximum number of processors for <eqn>E \in \Theta(1)</eqn></field>
+  <field width="25">Parallel run time</field>
+  <field width="25">Isoefficiency function</field>
+ </metadata>
+ <record>
+  <field>Matrix multiplication</field>
+  <field><eqn>-</eqn></field>
+  <field><eqn>\Theta(\log^2 n)</eqn></field>
+  <field><eqn>-</eqn></field>
+ </record>
+ <record>
+  <field>Dijkstra (source-partitioned)</field>
+  <field><eqn>\Theta(n)</eqn></field>
+  <field><eqn>\Theta(n^2)</eqn></field>
+  <field><eqn>\Theta(p^3)</eqn></field>
+ </record>
+ <record>
+  <field>Dijkstra (source-parallel)</field>
+  <field><eqn>\Theta(n^2 / \log n)</eqn></field>
+  <field><eqn>\Theta(n \log n)</eqn></field>
+  <field><eqn>\Theta(p^{3/2} \log^{3/2} p)</eqn></field>
+ </record>
+
+ <record>
+  <field>Floyd (block-striped)</field>
+  <field><eqn>\Theta(n / \log n)</eqn></field>
+  <field><eqn>\Theta(n^2 \log n)</eqn></field>
+  <field><eqn>\Theta(p^3 \log^3 p)</eqn></field>
+ </record>
+ <record>
+  <field>Floyd (block-checkerboard)</field>
+  <field><eqn>\Theta(n^2 / \log^2 n)</eqn></field>
+  <field><eqn>\Theta(n \log^2 n)</eqn></field>
+  <field><eqn>\Theta(p^{3/2} \log^3 p)</eqn></field>
+ </record>
+ <record>
+  <field>Floyd (pipelined block-checkerboard)</field>
+  <field><eqn>\Theta(n^2)</eqn></field>
+  <field><eqn>\Theta(n)</eqn></field>
+  <field><eqn>\Theta(p^{3/2})</eqn></field>
+ </record>
+
+</dataset>
+
+
+</document>
+
+
+<!-- Distributed algorithm -->
+
+<text>
+DISTRIBUTED ALGORITHM:
 Wikipedia: A distributed variant of the Bellman-Ford algorithm is used in distance-vector routing protocols, for example the Routing Information Protocol (RIP). The algorithm is distributed because it involves a number of nodes (routers) within an Autonomous system, a collection of IP networks typically owned by an ISP. It consists of the following steps:
 - Each node calculates the distances between itself and all other nodes within the AS and stores this information as a table.
 - Each node sends its table to all neighboring nodes.

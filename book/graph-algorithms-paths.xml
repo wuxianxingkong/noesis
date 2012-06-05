@@ -57,6 +57,9 @@ Approximate shortest paths in road networks, for instance, typically employ a hi
 </text>
 
 
+<document>
+<tag>graph-shortest-paths-dijkstra</tag>
+<title>Dijkstra's algorithm</title>
 
 <text>
 IDEA: Shortest path from s to t goes through x, then that path contains the shortest path from s to x
@@ -111,13 +114,17 @@ you must use the more general, but less efficient, Bellman-Ford algorithm.
 NOTE: negative cost cycles =the shortest x to y path in such a graph is not defined because we can detour
 from x to the negative cost cycle and repeatedly loop around it, making the total cost arbitrarily small.
 
-
 </text>
 
 <text>
 In a geometric setting, more efficient geometric algorithms compute the shortest path directly from the arrangement of obstacles: motion planning algorithms <cite>Latombe 1991</cite> <cite>LaValle 2006</cite>
 </text>
 
+</document>
+
+<document>
+<tag>graph-shortest-paths-dijkstra-parallelization</tag>
+<title>Parallelization of Dijkstra's algorithm</title>
 
 <text>
 PARALLELIZATION:
@@ -186,6 +193,7 @@ Isoefficiency: \Theta(p^2 \log p^2)
 </text>
 
 
+</document>
 
 </document>
 
@@ -207,16 +215,61 @@ EXAMPLE:
 - bounding the amount of time needed to deliver a packet through a network
 </text>
 
+<!-- Applications -->
+
 <text>
-+ Best on adjacency matrix (anyway we will need to store <eqn>n \times n</eqn> distances), i.e. one of the rare cases where algorithms on adjacency matrices work better
+All-pairs shortest paths algorithms can be used to find the shortest cycle in a graph: its girth. Floyd's algorithm can be used to compute <eqn>d_ii</eqn>, which is the shortest way to get from vertex i to itself (i.e. the shortest cycle that goes through i). If you want the shortest simple cycle, the easiest
+approach is to compute the lengths of the shortest paths from i to all other vertices, and then explicitly check whether there is an acceptable edge from each vertex back to i.
 </text>
 
+
+<text>
+- Reachability questions (can I get to x from y?)
+
+RELATED PROBLEMS 
++ Transitive closure, construct a graph G' = (V,E') with edge (i, j) in E' iff there is a directed path from i to j in G. 
++ Transitive reduction (also known as minimum equivalent digraph), the inverse operation of transitive closure: reducing the number of edges while maintaining identical reachability properties, i.e. construct a small graph G'' = (V,E'') with a directed path from i to j in G'' iff there is a directed path from i to j in G
+
+- transitive closure 
+
+1) using graph traversal algorithms O(n(n+m)), 
+2) an all-pairs shortest path algorithms returns them all in a whole batch, albeit less efficiently, <eqn>O(n^3)</eqn> using Warshall's algorithm.
+3) using matrix multiplication: O(log n) multiplications using a divide-and-conquer algorithm
+
+- transitive reduction
+
+Approximate solution: A linear-time, quick-and-dirty transitive reduction algorithm identifies the
+strongly connected components of G, replaces each by a simple directed cycle,
+and adds these edges to those bridging the different components.
+
++ Transitive reduction also arises in graph drawing, where it is important to eliminate as many unnecessary edges as possible to reduce the visual clutter
+</text>
+
+
+<text>
+- pattern recognition problems, e.g. Viterbi algorithm, a dynamic programming algorithm that basically solves a shortest path problem on a DAG.
+</text>
+
+
+<!-- Algorithms -->
+
+<document>
+<tag>graph-all-shortest-paths-sequential</tag>
+<title>Sequential algorithms</title>
 
 <text>
 A first solution: Repeating Dijkstra's algorithm for each node
 </text>
 
+<text>
++ Best on adjacency matrix (anyway we will need to store <eqn>n \times n</eqn> distances), i.e. one of the rare cases where algorithms on adjacency matrices work better
+</text>
+
 <!-- Floyd-Warshall -->
+
+<document>
+<tag>graph-shortest-paths-floyd-warshall</tag>
+<title>Floyd-Warshall algorithm</title>
 
 <text>
 <url>http://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm</url>
@@ -276,11 +329,56 @@ return Dn
 
 </code>
 
+
+<!-- Transitive closure -->
+
+<note>
+<title>Warshall's algorithm: The transitive closure of directed graphs</title>
+
 <text>
-Transitive closure of directed graphs (Warshall's algorithm). In Warshall's original formulation of the algorithm, the graph is unweighted and represented by a Boolean adjacency matrix. Then the addition operation is replaced by logical conjunction (AND) and the minimum operation by logical disjunction (OR).
+Formally, given a graph G = (V, E), the transitive closure of the graph G is defined as the graph G* = (V, E*), where E* = {(vi, vj)| there is a path from vi to vj in G}.
 </text>
 
+<text>
+The transitive closure of a graph is obtained by computing the connectivity matrix A*. The connectivity matrix of G is a matrix <eqn>A^* = (a^*_{i,j})</eqn> such that <eqn>a^*_{i,j} = 1</eqn> if there is a path from vi to vj or i = j, and <eqn>a^*_{i,j} = \infty</eqn> otherwise.
+</text>
+
+<text>
+Warshall's algorithm can be used to compute the transitive closure of a graph and, therefore, determine whether two vertices are connected or not.
+
+In Warshall's original formulation of the algorithm, the graph is unweighted and represented by a Boolean adjacency matrix. 
+
+Warshall's transitive closure algorithm is actually equivalent to Floyd's shortest path algorithm.
+
+The only difference is that the addition operation in Floyd's algorithm is replaced by a logical conjunction (and), while the minimum operation in Floyd's algorithm is replaced by logical disjunction (or). Initially, we would set <eqn>d_{i,j} = 1</eqn> if <eqn>i = j</eqn> or <eqn>(v_i, v_j) \in E</eqn>, and <eqn>d_{i,j} = 0</eqn> otherwise. Matrix A* would be obtained by setting <eqn>a^*_{i,j} = \infty</eqn> when <eqn>d_{i,j} = 0</eqn> and  <eqn>a^*_{i,j} = 1</eqn> otherwise.
+</text>
+
+<text>
+As you can easily check, the connectivity matrix A* can also be obtained from the distance matrix D returned by any of the all-pairs shortest paths algorithms discussed in this chapter. Given a shortest-path distance matrix, the connectivity matrix can then be defined as
+</text>
+
+<equation>
+a^*_{ij} = 
+\left \{
+\begin{matrix}
+ \infty &amp; if &amp; d_{i,j} = \infty \\ 
+ 1 &amp; if &amp; d_{i,j} \geq 0
+\end{matrix}
+\right.
+</equation>
+
+</note>
+
+
+
+</document>
+
+
 <!-- Bellman-Ford -->
+
+<document>
+<tag>graph-shortest-paths-bellman-ford</tag>
+<title>Bellman-Ford algorithm</title>
 
 <text>
 <url>http://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm</url>
@@ -315,7 +413,14 @@ Bellman-Ford algorithm <cite>Bellman 1958</cite> <cite>Ford and Fulkerson 1962</
            error "Graph contains a negative-weight cycle"
 </code>
 
+</document>
+
+
 <!-- Johnson -->
+
+<document>
+<tag>graph-shortest-paths-johnson</tag>
+<title>Johnson's algorithm</title>
 
 <text>
 <url>http://en.wikipedia.org/wiki/Johnson%27s_algorithm</url>
@@ -341,43 +446,19 @@ It allows some of the edge weights to be negative
 </text>
 
 
-<!-- Applications -->
+</document>
 
-<text>
-All-pairs shortest paths algorithms can be used to find the shortest cycle in a graph: its girth. Floyd's algorithm can be used to compute <eqn>d_ii</eqn>, which is the shortest way to get from vertex i to itself (i.e. the shortest cycle that goes through i). If you want the shortest simple cycle, the easiest
-approach is to compute the lengths of the shortest paths from i to all other vertices, and then explicitly check whether there is an acceptable edge from each vertex back to i.
-</text>
+</document>
 
-
-<text>
-- Reachability questions (can I get to x from y?)
-
-RELATED PROBLEMS 
-+ Transitive closure, construct a graph G' = (V,E') with edge (i, j) in E' iff there is a directed path from i to j in G. 
-+ Transitive reduction (also known as minimum equivalent digraph), the inverse operation of transitive closure: reducing the number of edges while maintaining identical reachability properties, i.e. construct a small graph G'' = (V,E'') with a directed path from i to j in G'' iff there is a directed path from i to j in G
-
-- transitive closure 
-
-1) using graph traversal algorithms O(n(n+m)), 
-2) an all-pairs shortest path algorithms returns them all in a whole batch, albeit less efficiently, <eqn>O(n^3)</eqn> using Warshall's algorithm.
-3) using matrix multiplication: O(log n) multiplications using a divide-and-conquer algorithm
-
-- transitive reduction
-
-Approximate solution: A linear-time, quick-and-dirty transitive reduction algorithm identifies the
-strongly connected components of G, replaces each by a simple directed cycle,
-and adds these edges to those bridging the different components.
-
-+ Transitive reduction also arises in graph drawing, where it is important to eliminate as many unnecessary edges as possible to reduce the visual clutter
-</text>
-
-
-<text>
-- pattern recognition problems, e.g. Viterbi algorithm, a dynamic programming algorithm that basically solves a shortest path problem on a DAG.
-</text>
 
 
 <!-- Parallelization -->
+
+<document>
+<tag>graph-all-shortest-paths-parallel</tag>
+<title>Parallel algorithms</title>
+
+
 
 <text>
 PARALLELIZATION:
@@ -599,8 +680,14 @@ Table <ref>parallel-all-pairs</ref> compares the performance and scalability pro
 
 </document>
 
+</document>
+
 
 <!-- Distributed algorithm -->
+
+<document>
+<tag>graph-all-shortest-paths-distributed</tag>
+<title>Distributed algorithms</title>
 
 <text>
 DISTRIBUTED ALGORITHM:
@@ -614,6 +701,14 @@ Wikipedia: A distributed variant of the Bellman-Ford algorithm is used in distan
 <text>
 Distributed shortest paths @ MIT 6.852: Lectures 2-3 (synchronous) + Lectures 8-9 (asynchronous)  / Section 4.3 + Section 15.4 <cite>Lynch 1997</cite>
 </text>
+
+</document>
+
+</document>
+
+<document>
+<tag>graph-shortest-paths-notes</tag>
+<title>Bibliographic notes</title>
 
 </document>
 

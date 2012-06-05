@@ -30,7 +30,8 @@ For efficiency, we should not visit the same node repeatedly. For correctness, w
 
 
 <text>
-BFS/DFS define a tree on the vertices of the graph.
+BFS/DFS define a tree on the vertices of the graph. 
++ Actually, for arbitrary graphs, which might not be connected, DFS/BFS return a forest of trees, with each tree in the forest containing the vertices that belong to each connected component of the graph.
 </text>
 
 <note>
@@ -290,12 +291,92 @@ The roots for the DF trees in the second DFS in our example graph will be b, c, 
 
 </text> 
 
+<!-- Parallelization -->
 
 <text>
 Parallelization of DFS 
 - for dense graphs @ Section 10.6 <cite>Grama et al. 2003</cite>
 - Parallel DFS @ Section 11.4  <cite>Grama et al. 2003</cite>
 </text>
+
+<text>
+An algorithm based on a depth-first search, such as those employed to discover the connected components of a network, can be parallelized by partitioning the adjacency matrix into p parts and assigning each part to a different processor. Each processor <eqn>P_i</eqn> will store a subgraph <eqn>G_i</eqn> of <eqn>G</eqn>. This subgraph <eqn>G_i=(V,E_i)</eqn> will contain the edges <eqn>E_i</eqn> included in the part of the adjacency matrix assigned to the processor. A parallel algorithm that computes the connected component of a network can be devised using a MergeSort-like divide-and-conquer strategy:
+</text>
+
+<list>
+
+<item>Divide: Each processor computes the depth-first spanning forest of the graph <eqn>G_i</eqn>. At the end of this phase, <eqn>p</eqn> spanning forests have been obtained.</item>
+
+<item>Conquer: Spanning forests are merged pairwise until a single spanning forest remains. In this forest, two vertices will be in the same connected component if and only if they are in the same tree.</item>
+
+</list>
+
+
+<text>
+Partitioning the adjacency matrix and distributing it among p processors can be performed by block-striped mapping (each processor is assigned <eqn>n/p</eqn> consecutive rows or columns) or block-checkerboard mapping (the matrix is divided into <eqn>p</eqn> squares of size <eqn>n/\sqrt{p} \times n/\sqrt{p}</eqn> and each square is assigned to a different processor).
+</text>
+
+
+<text>
+Merging pairs of forests requires combining disjoint sets of edges. An union-find data structure can be used to perform an efficient merge:
+
+- find(x) returns the representative element of the set containing x.
+
+- union(x,y) merges the sets containing the elements x and y.
+
+Given two spanning forests to be merged, at most n-1 edges have to be merged (since they are forests spanning n nodes at most and not arbitrary graphs). For each edge (x,y) in the first forest, a find operation is performed to determine whether both vertices already belong to the same tree in the second forest. If not, the two trees in the second forest should be merged using an union operation. In the worst case, merging two forest requires 2(n-1) find operations and (n-1) union operations. Using an efficient implementation of the union-find data structure, e.g. by employing disjoint-set forests with ranking and path compression, all the required find and union operations can be performed in <eqn>O(n)</eqn> time.
+</text>
+
+
+<text>
+Let us consider a p-processor message-passing computer:
+
+- Computing the spanning forest from the <eqn>(n/p) \times n</eqn> adjacency matrix assigned to each processor requires <eqn>\Theta(n^2/p)</eqn> time.
+
+- Merging all the <eqn>p</eqn> spanning forests requires <eqn>\log p</eqn> merging stages, each one taking <eqn>\Theta(n)</eqn> time. Therefore, the computational cost of merging is <eqn>\Theta(n \log p)</eqn>. In each merging process, spanning forests must be sent across processors. Since <eqn>\Theta(n)</eqn> edges must be transmitted, the overall communication cost of the merging algorithm is <eqn>\Theta(n \log p)</eqn>
+
+The parallel run time of the resulting parallel algorithm is
+</text>
+
+<equation>
+t_p \in \Theta \left ( \frac{n^2}{p} + n \log p \right ) 
+</equation>
+
+<text>
+Since the sequential complexity of the algorithm is <eqn>W \in \Theta(n^2(</eqn> for dense networks, the speedup and efficiency of the parallel algorithm are
+</text>
+
+<equation>
+S \in  \Theta \left ( \frac{n}{n/p + \log p} \right ) 
+</equation>
+
+<equation>
+E = \frac{1}{1 + \Theta  ( (p \log p) / n ) }
+</equation>
+
+<text>
+This algorithm is cost-optimal for <eqn>(p \log p) / n \in O(1)</eqn>, hence the parallel implementation can use <eqn>O(n / \log n)</eqn> different processors. Its isoefficiency function is <eqn>\Theta(p^2 \log p^2)</eqn>, which is due to communication costs in the merging phase (the isoefficiency function due to concurrency is <eqn>\Theta(n^2)</eqn>).
+</text>
+
+tp = n^2/p + n log(p)
+ts = n^2 = W
+
+to = p*tp - W = n^2 + np log(p) - n^2 = n p log(p)
+
+E = 1 / (1 + to/W)
+
+Communication overhead: p^2 log^2(p)
+	tc = n p log (p)
+	W  = n^2
+	W = K tc  ===  n^2 = n p log(p)  ===  n = p log(p)  === W=n^2= p^2 log^2(p)
++
+Concurrency: p^2
+	Since n must grow at least as fast as p... W = n^2 = p^2 
+=
+Isoefficiency: \Theta(p^2 \log p^2)
+
+NOTE: The performance of this parallel formulation is similar to that of Prim's minimum spanning tree algorithm and Dijkstra's single-source shortest paths algorithm on a message-passing computer.
+
 
 
 </document>

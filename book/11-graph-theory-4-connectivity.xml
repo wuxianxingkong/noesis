@@ -254,6 +254,8 @@ It should be noted that the number of different Hamiltonian cycles in a complete
 <text>
 ++ Connected graphs, weakly-connected vs. strongly-connected components (a.k.a. blocks)
 
++ The connected components of an undirected graph are the equivalence classes of the <q>is reachable</q> from relation.
+
 A graph G is strongly connected if all nodes in G can reach v and are reachable from v.
 
 J: Finally, a directed multigraph G is called connected if the underlying graph |G| is connected.
@@ -268,6 +270,7 @@ A vertex a from which every other vertex is accessible is called a root of G. Th
 
 
 Weakly-connected and strongly-connected components define unique partitions of the graph nodes.
+
 </text>
 
 <text>

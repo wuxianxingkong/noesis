@@ -85,20 +85,81 @@ In each iteration, we identify the edge (u,v) so that
 This edge (u, v) gets added to a shortest path tree, whose root is x and describes
 all the shortest paths from x.
 
-If we just need to know the shortest
-path from x to y, terminate the algorithm as soon as y enters S.
+If we just need to know the shortest path from x to y, terminate the algorithm as soon as y enters S.
 </text>
+
+
+
+<code>
+procedure DIJKSTRA(V, E, w, s) 
+2.   begin 
+3.      VT := {s}; 
+4.      for all v \in (V - V_T ) do 
+5.         if (s, v) exists set l[v] := w(s, v); 
+6.         else set l[v] := \infty; 
+7.      while V_T \neq V do 
+8.      begin 
+9.         find a vertex u such that l[u] := min{l[v]|v \in (V - V_T)}; 
+10.        VT := VT \cup {u}; 
+11.        for all v \in (V - V_T ) do 
+12.            l[v] := min{l[v], l[u] + w(u, v)}; 
+13.     endwhile 
+14.  end DIJKSTRA
+</code>
+
+
+Recall that Dijkstra's algorithm performs the following two steps in each iteration. 
+- First, it extracts a vertex u \in (V - V_T) such that l[u] = min{l[v]|v \in (V - V_T)} and inserts it into set V_T. 
+- Second, for each vertex v \in (V - V_T), it computes l[v] = min{l[v], l[u] + w(u, v)}. 
+
+Note that, during the second step, only the vertices in the adjacency list of vertex u need to be considered. Since the graph is sparse, the number of vertices adjacent to vertex u is considerably smaller than \Theta(n); thus, using the adjacency-list representation improves performance.
+
+
+
+
+<code>
+1.   procedure JOHNSON(V, E, s) 
+2.   begin 
+3.      Q := V ; 
+4.      for all v \in Q do 
+5.          l[v] := \infty; 
+6.      l[s] := 0; 
+7.      while Q \neq \emptyset do 
+8.      begin 
+9.         u := extract min( Q); 
+10.        for each v \in Adj [u] do 
+11.           if v \in Q and l[u] + w(u, v) &lt; l[v] then 
+12.               l[v] := l[u] + w(u, v); 
+13.     endwhile 
+14.  end JOHNSON
+</code>
+
+Johnson's algorithm = Dijkstra's algorithm using a priority queue Q to store the value l[v] for each vertex v \in (V - V_T). 
+- The priority queue is constructed so that the vertex with the smallest value in l is always at the front of the queue. 
+- A common way to implement a priority queue is as a binary min-heap. A binary min-heap allows us to update the value l[v] for each vertex v in time O (log n). 
+
+Algorithm:
+- Initially, for each vertex v other than the source, it inserts l[v] = \infty in the priority queue. 
+- For the source vertex s it inserts l[s] = 0. 
+- At each step of the algorithm, the vertex u \in (V - V_T) with the minimum value in l is removed from the priority queue. 
+- The adjacency list for u is traversed, and for each edge (u, v) the distance l[v] to vertex v is updated in the heap. Updating vertices in the heap dominates the overall run time of the algorithm. The total number of updates is equal to the number of edges; thus, the overall complexity of Johnson's algorithm is <eqn>\Theta(m log n)</eqn>.
+
 
 <text>
 EFFICIENCY:
 - <eqn>O(n^2)</eqn> using a naive implementation with arrays
+
 - Using binary heaps: <eqn>O(m \log n)</eqn>
+
 - Fastest implementation: <eqn>O(m + n \log n)</eqn> amortized time using Fibonacci heaps <cite>Fredman and Tarjan 1987</cite>
 </text>
+
+
 
 <text>
 Related problem: Single-destination shortest path problem for directed graphs.
 </text>
+
 
 <text>
 CORRECTNESS: Only on graphs without negative edges!!!
@@ -123,8 +184,8 @@ In a geometric setting, more efficient geometric algorithms compute the shortest
 </document>
 
 <document>
-<tag>graph-shortest-paths-dijkstra-parallelization</tag>
-<title>Parallelization of Dijkstra's algorithm</title>
+<tag>graph-shortest-paths-parallel-dense</tag>
+<title>Parallel algorithm for dense networks</title>
 
 <text>
 PARALLELIZATION:
@@ -188,14 +249,94 @@ Concurrency: p^2
 	Since n must grow at least as fast as p... W = n^2 = p^2 
 =
 Isoefficiency: \Theta(p^2 \log p^2)
+</text>
 
-+ Bibliographic notes
+
+<text>
+The performance of the parallel version of a sequential algorithm for dense networks:
+- each processor performs roughly the same amount of work
+- communication is localized (i.e. limited)
 </text>
 
 
 </document>
 
+
+<document>
+<tag>graph-shortest-paths-parallel-sparse</tag>
+<title>Parallel algorithm for sparse networks</title>
+
+@10.7.2 <cite>Grama et al. 2003</cite>
+
+<text>
+It is difficult to achieve an even work load distribution among processors and a low communication overhead for sparse graphs
+- equal number of vertices? random number of edges incident on a given vertex, leading to work imbalance among processors
+- equal number of edges? adjacency lists might be splitted among different processors and communication overhead might dramatically increase
+
+Hard problem for arbitrary networks, albeit efficient parallel algorithms can be devised if the sparse graph has some structure (e.g. grid graphs, finite element meshes, planar graphs such as maps)...
+</text>
+
+
+1) Find the shortest paths to the vertices in the same order as the serial algorithm, and explores concurrently only safe vertices. However, this approach leads to complicated algorithms and limited concurrency. 
+
+PRIORITY QUEUE
+The maintainance of the priority queue is key for an efficient parallel version of Dijkstra's algorithm:
+
+- A simple strategy is for a single process, for example, P_0, to maintain Q. All other processes will then compute new values of l[v] for v \in (V - V_T), and give them to P0 to update the priority queue. There are two main limitations of this scheme. 
+
+	1) Because a single process is responsible for maintaining the priority queue, the overall parallel run time is O (m \log n) (there are O (m) queue updates and each update takes time O (\log n)). This leads to a parallel formulation with no asymptotic speedup, since O (|E| log n) is the sequential run time of the algorithm.
+
+	2) During each iteration, the algorithm updates roughly m/n vertices. As a result, no more than m/n processes can be kept busy at any given time, which is very small for most of the interesting classes of sparse graphs, and to a large extent, independent of the size of the graphs.
+
+The first limitation can be alleviated by distributing the maintainance of the priority queue to multiple processes. This is a non-trivial task, and can only be done effectively on architectures with low latency, such as shared-address-space computers. However, even in the best case, when each priority queue update takes only time O (1), the maximum speedup that can be achieved is O (log n), which is quite small. 
+
+The second limitation can be alleviated by recognizing the fact that depending on the l value of the vertices at the top of the priority queue, more than one vertex can be extracted at the same time. In particular, if v is the vertex at the top of the priority queue, all vertices u such that l[u] = l[v] can also be extracted, and their adjacency lists processed concurrently. Such vertices are at the same minimum distance from the source and they can be processed in any order. Note that in order for this approach to work, all the vertices that are at the same minimum distance must be processed in lock-step. An additional degree of concurrency can be extracted if we know that the minimum weight over all the edges in the graph is m. In that case, all vertices u such that l[u] \leq l[v] + m can be processed concurrently (and in lock-step). We will refer to these as the safe vertices. However, this additional concurrency can lead to asymptotically better speedup than O (log n) only if more than one update operation of the priority queue can proceed concurrently, substantially complicating the parallel algorithm for maintaining the single priority queue.
+
+
+2) Parallel algorithm that processes both safe and unsafe vertices concurrently, as long as these unsafe vertices can be reached from the source via a path involving vertices whose shortest paths have already been computed (i.e., their corresponding l-value in the priority queue is not infinite). 
+
+Each one of the p processes extracts one of the p top vertices and proceeds to update the l values of the vertices adjacent to it. The algorithm does not ensure that the l values of the vertices extracted from the priority queue correspond to the cost of the shortest path. However, the correctness of the results can be ensured by detecting when we have incorrectly computed the shortest path to a particular vertex, and inserting it back into the priority queue with the updated value. 
+
+Detection: Consider a vertex v that has just been extracted from the queue, and let u be a vertex adjacent to v that has already been extracted from the queue. If l[v] + w(v, u) is smaller than l[u], then the shortest path to u has been incorrectly computed, and u needs to be inserted back into the priority queue with l[u] = l[v] + w(v, u).
+
+This approach for parallelizing Dijkstra's algorithm falls into the category of speculative decomposition (when a program may take one of many possible computationally significant branches depending on the output of other computations that precede it. In this situation, while one task is performing the computation whose output is used in deciding the next computation, other tasks can concurrently start the computations of the next stage). Essentially, the algorithm assumes that the l[] values of the top p vertices in the priority queue will not change as a result of processing some of these vertices, and proceeds to perform the computations required by Johnson's algorithm. However, if at some later point it detects that its assumptions were wrong, it goes back and recomputes the shortest paths of the affected vertices.
+
+In order for such a speculative decomposition approach to be effective, we must also remove the bottleneck of working with a single priority queue:
+
+Let p be the number of processes, and let G = (V, E) be a sparse graph. We partition the set of vertices V into p disjoint sets V1, V2, ..., Vp, and assign each set of vertices and its associated adjacency lists to one of the p processes.
+
+Each process maintains a priority queue for the vertices assigned to it, and computes the shortest paths from the source to these vertices. Thus, the priority queue Q is partitioned into p disjoint priority queues Q1, Q2, ..., Qp, each assigned to a separate process. 
+
+In addition to the priority queue, each process Pi also maintains an array sp such that sp[v] stores the cost of the shortest path from the source vertex to v for each vertex v  Vi. The cost sp[v] is updated to l[v] each time vertex v is extracted from the priority queue. Initially, sp[v] = \infty for every vertex v other than the source, and we insert l[s] into the appropriate priority queue for the source vertex s. Each process executes Dijkstra's algorithm on its local priority queue. At the end of the algorithm, sp[v] stores the length of the shortest path from source to vertex v.
+
+When process Pi extracts the vertex u \in Vi with the smallest value l[u] from Qi, the l values of vertices assigned to processes other than Pi may need to be updated. Process Pi sends a message to processes that store vertices adjacent to u, notifying them of the new values. Upon receiving these values, processes update the values of l. For example, assume that there is an edge (u, v) such that u \in Vi and v \in Vj, and that process Pi has just extracted vertex u from its priority queue. Process Pi then sends a message to Pj containing the potential new value of l[v], which is l[u] + w(u, v). Process Pj, upon receiving this message, sets the value of l[v] stored in its priority queue to min{l[v], l[u] + w(u, v)}.
+
+Since both processes Pi and Pj execute Dijkstra's algorithm, it is possible that process Pj has already extracted vertex v from its priority queue. This means that process Pj might have already computed the shortest path sp[v] from the source to vertex v. Then there are two possible cases: either sp[v] \leq l[u] + w(u, v), or sp[v] &gt; l[u] + w(u, v). The first case means that there is a longer path to vertex v passing through vertex u, and the second case means that there is a shorter path to vertex v passing through vertex u. For the first case, process Pj needs to do nothing, since the shortest path to v does not change. For the second case, process Pj must update the cost of the shortest path to vertex v. This is done by inserting the vertex v back into the priority queue with l[v] = l[u] + w(u, v) and disregarding the value of sp[v]. Since a vertex v can be reinserted into the priority queue, the algorithm terminates only when all the queues become empty.
+
+Initially, only the priority queue of the process with the source vertex is non-empty. After that, the priority queues of other processes become populated as messages containing new l values are created and sent to adjacent processes. When processes receive new l values, they insert them into their priority queues and perform computations. 
+
+Consider the problem of computing the single-source shortest paths in a grid graph where the source is located at the bottom-left corner. The computations propagate across the grid graph in the form of a wave. A process is idle before the wave arrives, and becomes idle again after the wave has passed. At any time during the execution of the algorithm, only the processes along the wave are busy. The other processes have either finished their computations or have not yet started them. 
+
+<!--
+Three mappings of grid graphs onto a p-process mesh <cite>Grama et al. 2003<\cite>:
+
+- Block-Checkerboard Mapping (2D Block Mapping): p processors as a logical mesh and assign a different block of vertices to each process. At any time, the number of busy processes is equal to the number of processes intersected by the wave. Since the wave moves diagonally, no more than O (\sqrt{p}) processors are busy at any time. Ignoring  the overhead due to interprocess communication and extra work, then the maximum efficiency is poor, E = 1/\sqrt{n}, and becomes worse as the number of processors increases.
+
+- Cyclic-Checkerboard Mapping (2D Cyclic Mapping): make each process responsible for scattered areas of the grid to increase the time during which a processor stays busy. In 2-D cyclic mapping, the n x n grid graph is divided into n^2/p blocks, each of size <eqn>\sqrt{p} \times \sqrt{p}</eqn>. Each block is mapped onto the <eqn>\sqrt{p} \times \sqrt{p}</eqn> process mesh. As the wave propagates through the graph, processors remain busy for most of the algorithm at the cost of a higher communication overhead than 2-D block mapping: since adjacent vertices reside on separate processes, every time a process extracts a vertex u from its priority queue it must notify other processes of the new value of l[u].
+
+- Block-Striped Mapping (1D Block Mapping) assigns n/p stripes of the grid graph to each processor. If we assume that the wave propagates at a constant rate, then p/2 processes (on the average) are busy. Ignoring any overhead, the speedup and efficiency of this mapping are p/2 and 1/2, respctively. The 1-D block mapping is substantially better than the 2-D block mapping but cannot use more than O(n) processes.
+
+
+The 2-D block mapping, 2-D block-cyclic mapping, and 1-D block mapping formulation of Johnson's algorithm are due to Wada and Ichiyoshi [WI89]. They also presented theoretical and experimental evaluation of these schemes on a mesh-connected parallel computer.
+
+[WI89] K. Wada and N. Ichiyoshi. A distributed shortest path algorithm and its mapping on the Multi-PSI. In Proceedings of International Conference of Parallel Processing, 1989.
+
+-->
+
 </document>
+
+</document>
+
 
 
 
@@ -709,6 +850,101 @@ Distributed shortest paths @ MIT 6.852: Lectures 2-3 (synchronous) + Lectures 8-
 <document>
 <tag>graph-shortest-paths-notes</tag>
 <title>Bibliographic notes</title>
+
+
+From <cite>Grama et al. 2003</cite>:
+
+
+SINGLE-SOURCE
+
+- Algorithm discovered by Dijkstra [Dij59]. Due to the similarity between Dijkstra's algorithm and Prim's MST algorithm, all the parallel formulations of Prim's algorithm discussed in a previous chapter can also be applied to the single-source shortest paths problem. 
+
+[Dij59] E. W. Dijkstra. A note on two problems in connection with graphs. Numerische Mathematik, 1:269–271, 1959.
+
+
+- Bellman [Bel58] and Ford [FR62] independently developed a single-source shortest paths algorithm that operates on graphs with negative weights but without negative-weight cycles. The Bellman-Ford single-source algorithm has a sequential complexity of O (nm). 
+
+[Bel58] R. Bellman. On a routing problem. Quarterly of Applied Mathematics, 16(1):87–90, 1958.
+
+[FR62] L. R. Ford and R. L. Rivest. Flows in Networks. Princeton University Press, Princeton, NJ, 1962.
+
+
+- Paige and Kruskal [PK89] present parallel formulations of both the Dijkstra and Bellman-Ford single-source shortest paths algorithm. Their formulation of Dijkstra's algorithm runs on an EREW PRAM of Q(n) processes and runs in time Q(n log n). Their formulation of Bellman-Ford's algorithm runs in time Q(nmp + n log p) on a p-process EREW PRAM where p \leq m. They also present algorithms for the CRCW PRAM [PK89].
+
+[PK89] R. C. Paige and C. P. Kruskal. Parallel algorithms for shortest path problems. In Proceedings of 1989 International Conference on Parallel Processing, 14– 19, 1989.
+
+
+... for sparse graphs
+
+The single-source shortest paths algorithm for sparse graphs was discovered by Johnson [Joh77]. 
+
+[Joh77] D. B. Johnson. Efficient algorithms for shortest paths in sparse networks. Journal of the ACM, 24(1):1–13, March 1977.
+
+
+Paige and Kruskal [PK89] discuss the possibility of maintaining the queue Q in parallel. Rao and Kumar [RK88a] presented techniques to perform concurrent insertions and deletions in a priority queue. 
+
+[PK89] R. C. Paige and C. P. Kruskal. Parallel algorithms for shortest path problems. In Proceedings of 1989 International Conference on Parallel Processing, 14– 19, 1989.
+
+[RK88a] V. N. Rao and V. Kumar. Concurrent access of priority queues. IEEE Transactions on Computers, C–37 (12), 1988.
+
+
+
+
+
+
+
+
+ALL-PAIRS
+
+
+The source-partitioning formulation of Dijkstra's all-pairs shortest paths is discussed by Jenq and Sahni [JS87] and Kumar and Singh [KS91b]. 
+
+[JS87] J.-F. Jenq and S. Sahni. All pairs shortest paths on a hypercube multiprocessor. In Proceedings of the 1987 International Conference on Parallel Processing, 713–716, 1987.
+
+[KS91b] V. Kumar and V. Singh. Scalability of parallel algorithms for the all-pairs shortest path problem. Journal of Parallel and Distributed Computing, 13(2):124–138, October 1991. A short version appears in the Proceedings of the International Conference on Parallel Processing, 1990.
+
+
+The source parallel formulation of Dijkstra's all-pairs shortest paths algorithm is discussed by Paige and Kruskal [PK89] and Kumar and Singh [KS91b]. 
+
+[PK89] R. C. Paige and C. P. Kruskal. Parallel algorithms for shortest path problems. In Proceedings of 1989 International Conference on Parallel Processing, 14– 19, 1989.
+
+[KS91b] V. Kumar and V. Singh. Scalability of parallel algorithms for the all-pairs shortest path problem. Journal of Parallel and Distributed Computing, 13(2):124–138, October 1991. A short version appears in the Proceedings of the International Conference on Parallel Processing, 1990.
+
+
+The Floyd's all-pairs shortest paths algorithm discussed is due to Floyd [Flo62]. 
+
+[Flo62] R. W. Floyd. Algorithm 97: Shortest path. Communications of the ACM, 5(6):345, June 1962.
+
+
+The 1-D and 2-D block mappings are presented by Jenq and Sahni [JS87], and the pipelined version of Floyd's algorithm is presented by Bertsekas and Tsitsiklis [BT89] and Kumar and Singh [KS91b].
+
+[JS87] J.-F. Jenq and S. Sahni. All pairs shortest paths on a hypercube multiprocessor. In Proceedings of the 1987 International Conference on Parallel Processing, 713–716, 1987.
+
+[BT89] D. P. Bertsekas and J. N. Tsitsiklis. Parallel and Distributed Computation: Numerical Methods. Prentice-Hall, NJ, 1989.
+
+[BT97] D. P. Bertsekas and J. N. Tsitsiklis. Parallel and Distributed Computation: Numerical Methods. Athena Scientific, 1997.
+
+[KS91b] V. Kumar and V. Singh. Scalability of parallel algorithms for the all-pairs shortest path problem. Journal of Parallel and Distributed Computing, 13(2):124–138, October 1991. A short version appears in the Proceedings of the International Conference on Parallel Processing, 1990.
+
+
+
+++ <cite>Grama et al. 2003</cite>: Kumar and Singh [KS91b] present isoefficiency analysis and performance comparison of different parallel formulations for the all-pairs shortest paths on hypercube- and mesh-connected computers. The discussion in Section 10.4.3 is based upon the work of Kumar and Singh [KS91b] and of Jenq and Sahni [JS87]. 
+
+
+Levitt and Kautz [LK72] present a formulation of Floyd's algorithm for two-dimensional cellular arrays that uses n^2 processors and runs in time Q(n). 
+
+[LK72] K. N. Levitt and W. T. Kautz. Cellular arrays for the solution of graph problems. Communications of the ACM, 15(9):789–801, September 1972.
+
+
+Deo, Pank, and Lord have developed a parallel formulation of Floyd's algorithm for the CREW PRAM model that has complexity Q(n) on n^2 processes.
+
+
+
+Chandy and Misra [CM82] present a distributed all-pairs shortest-path algorithm based on diffusing computation.
+
+[CM82] K. M. Chandy and J. Misra. Distributed computation on graphs: Shortest path algorithms. Communications of the ACM, 25(11):833–837, November 1982.
+
+
 
 </document>
 

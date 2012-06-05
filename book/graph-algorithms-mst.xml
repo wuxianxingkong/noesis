@@ -190,11 +190,19 @@ PROOF? by contradiction
 <title>Sequential implementation of MST algorithms</title>
 
 <text>
+IDEA: Efficient implementation for sparse networks based on adjacency lists
+- The complexity of algorithms that work on the adjacency matrix is <eqn>\Omega(n^2)</eqn>, no matter how dense or sparse the network is.
+- In contrast, the complexity of algorithms that work on adjacency lists is usually <eqn>\Omega(n+m)</eqn>.
+</text>
+
+<text>
 Naive implementation:
 <eqn>O(mn)</eqn> for Kruskal's algorithm 
 <eqn>O(mn)</eqn> for Prim's algorithm 
 (i.e. <eqn>O(n^3)</eqn> for dense graphs, <eqn>O(n^2)</eqn> for sparse graphs when adjacency lists are used)
 </text>
+
+
 
 <text>
 Prim's algorithm:
@@ -203,6 +211,8 @@ Prim's algorithm:
 3) The use of priority queues can lead to a more efficient implementation, by making it faster to find the minimum cost edge at each iteration.
 - <eqn>O(m \log n)</eqn> using standard binary heaps.
 - <eqn>O(m + n \log n)</eqn> using Fibonacci <cite>Fredman and Tarjan 1987</cite> or pairing heaps <cite>Stasko and Vitter 1987</cite>.
+
+i.e. the version using binaryheaps outperforms the standard algorithm as long as <eqn>m \in O(n^2 / \log n)</eqn>
 </text>
 
 <text>
@@ -400,7 +410,7 @@ Isoefficiency: \Theta(p^4)
 
 
 
-Using a less naive approach, both the all-to-one reduction and the one-to-all broadcast take \Theta(\log p) time for a p-process message-passing parallel computer... hence the same results obtained for hypercube interconnection networks can be obtained for conventional message-passing parallel computers. !!!
+Using a less naive approach, both the all-to-one reduction and the one-to-all broadcast take \Theta(\log p) time for a p-process message-passing parallel computer... hence the same results obtained for hypercube interconnection networks can be obtained for more conventional message-passing parallel computers. !!!
 
 </text>
 
@@ -433,6 +443,21 @@ Using a less naive approach, both the all-to-one reduction and the one-to-all br
  </record>
 </dataset>
 
+<text>
+The performance of the parallel version of a sequential algorithm for dense networks:
+- each processor performs roughly the same amount of work
+- communication is localized (i.e. limited)
+</text>
+
+<text>
+It is difficult to achieve an even work load distribution among processors and a low communication overhead for sparse graphs
+- equal number of vertices? random number of edges incident on a given vertex, leading to work imbalance among processors
+- equal number of edges? adjacency lists might be splitted among different processors and communication overhead might dramatically increase
+
+Hard problem for arbitrary networks, albeit efficient parallel algorithms can be devised if the sparse graph has some structure (e.g. grid graphs, finite element meshes, planar graphs such as maps).
+</text>
+
+
 
 </document>
 
@@ -449,5 +474,61 @@ Distributed MST algorithms @ MIT 6.852: Distributed Algorithms - Lecture 4 (sync
 </text>
 
 </document>
+
+
+<document>
+<tag>graph-spanning-trees-notes</tag>
+<title>Bibliographic notes</title>
+
+From <cite>Grama et al. 2003</cite>:
+
+- Sequential minimum spanning tree algorithm due to Prim [Pri57], can be also computed by using either Kruskal's [Kru56] or Sollin's [Sol77] sequential algorithms. 
+
+[Kru56] J. B. Kruskal. On the shortest spanning subtree of a graph and the traveling salesman problem. In Proceedings of the AMS, volume 7, 48–50, 1956.
+
+[Pri57] R. C. Prim. Shortest connection network and some generalizations. Bell Systems Technical Journal, 36:1389–1401, 1957.
+
+
+- Sollin's (???) algorithm [Sol77] starts with a forest of n isolated vertices. In each iteration, the algorithm simultaneously determines, for each tree in the forest, the smallest edge joining any vertex in that tree to a vertex in another tree. All such edges are added to the forest. Furthermore, two trees are never joined by more than one edge. This process continues until there is only one tree in the forest – the minimum spanning tree. Since the number of trees is reduced by a factor of at least two in each iteration, this algorithm requires at most log n iterations to find the MST. Each iteration requires at most O (n^2) comparisons to find the smallest edge incident on each vertex; thus, its sequential complexity is Q(n^2 log n). 
+
+[Sol77] M. Sollin. An algorithm attributed to Sollin. In S. Goodman and S. Hedetniemi, editors, Introduction to The Design and Analysis of Algorithms. McGraw-Hill, Cambridge, MA, 1977.
+
+
+
+- Bentley [Ben80] and Deo and Yoo [DY81] present parallel formulations of Prim's MST algorithm. Deo and Yoo's algorithm is suited to a shared-address-space computer. It finds the MST in Q(n^{1.5}) using Q(n^{0.5}) processors. Bentley's algorithm works on a tree-connected systolic array and finds the MST in time Q(n log n) using n/log n processors. The hypercube formulation of Prim's MST algorithm is similar to Bentley's algorithm.
+
+[Ben80] J. L. Bentley. A parallel algorithm for constructing minimum spanning trees. Journal of the ACM, 27(1):51–59, March 1980.
+
+[DY81] N. Deo and Y. B. Yoo. Parallel algorithms for the minimum spanning tree problem. In Proceedings of the 1981 International Conference on Parallel Processing, 188–189, 1981.
+
+
+
+Parallel algorithms based on Sollin's sequential algorithm include:
+- Savage and Jaja's Q(log^2 n) algorithm using n^2 processors for the CREW PRAM [SJ81], 
+- Chin, Lam, and Chen's Q(log^2 n) algorithm using n \lceil n/\log n \rceil processors for the CREW PRAM [CLC82]
+- Awerbuch and Shiloach's Q(log^2 n) algorithm using Q(n^2) for the shuffle-exchange network [AS87]
+- Doshi and Varman's Q(n2/p) time algorithm for a p-process ring-connected computer [DV87]
+- Leighton's Q(log2 n) algorithm for an n x n mesh of trees network [Lei83]
+- Nath, Maheshwari, and Bhatt's Q(log4 n) algorithm for an n x n mesh of trees network [NMB83]
+- Huang's Q(n^2/p) for a \sqrt{n} x \sqrt{n} mesh of trees [Hua85].
+
+[SJ81] C. Savage and J. Jaja. Fast, efficient parallel algorithms for some graph problems. SIAM Journal of Computing, 10(4):682–690, November 1981.
+
+[CLC82] F. Y. Chin, J. Lam, and I. Chen. Efficient parallel algorithms for some graph problems. Communications of the ACM, 25(9):659–665, September 1982.
+
+[AS87] B. Awerbuch and Y. Shiloach. New connectivity and MSF algorithms for shuffle-exchange network and PRAM. IEEE Transactions on Computers, C– 36(10):1258–1263, October 1987.
+
+[DV87] K. A. Doshi and P. J. Varman. Optimal graph algorithms on a fixed-size linear array. IEEE Transactions on Computers, C–36(4):460–470, April 1987.
+
+[Lei83] F. T. Leighton. Parallel computation using mesh of trees. In Proceedings of International Workshop on Graph-Theoretic Concepts in Computer Science, 1983.
+
+[NMB83] D. Nath, S. N. Maheshwari, and P. C. P. Bhatt. Efficient VLSI networks for parallel processing based on orthogonal trees . IEEE Transactions on Computers, C–32:21–23, June 1983.
+
+[Hua85] M. A. Huang. Solving some graph problems with optimal or near-optimal speedup on mesh-of-trees networks. In Proceedings of the 26th Annual IEEE Symposium on Foundations of Computer Science, 232–340, 1985.
+
+
+
+</document>
+
 
 </document>

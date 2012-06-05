@@ -874,4 +874,19 @@ Matching based on preferences (e.g. matching medical residents to hospitals or s
 
 </document>
 
+
+
+<document>
+<tag>graph-flow-notes</tag>
+<title>Bibliographic notes</title>
+
+
+Shiloach and Vishkin [SV82] presented an algorithm for finding the maximum flow in a directed flow network with n vertices that runs in time O (n^2 log n) on an n-process EREW PRAM. Goldberg and Tarjan [GT88] presented a different maximum-flow algorithm that runs in time O (n^2 log n) on an n-process EREW PRAM but requires less space. 
+
+[SV82] Y. Shiloach and U. Vishkin. An O (n^2 log n) parallel max-flow algorithm. Journal of Algorithms, 3:128–146, 1982.
+
+[GT88] A. V. Goldberg and R. E. Tarjan. A new approach to the maximum-flow problem. Journal of the ACM, 35(4):921–940, October 1988.
+
+</document>
+
 </document>

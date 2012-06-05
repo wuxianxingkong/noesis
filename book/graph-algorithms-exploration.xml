@@ -343,7 +343,7 @@ t_p \in \Theta \left ( \frac{n^2}{p} + n \log p \right )
 </equation>
 
 <text>
-Since the sequential complexity of the algorithm is <eqn>W \in \Theta(n^2(</eqn> for dense networks, the speedup and efficiency of the parallel algorithm are
+Since the sequential complexity of the algorithm is <eqn>W \in \Theta(n^2)</eqn> for dense networks, the speedup and efficiency of the parallel algorithm are
 </text>
 
 <equation>
@@ -431,6 +431,13 @@ vertex, color it opposite of its parent, since the same color would cause a clas
 </text>
 
 
+
+
+
+
+
+
+
 <text>
 ++ Distributed algorithm @ MIT Lecture 2 (synchronous) + Lecture 9 (asynchronous) / Section 4.2 + Section 15.4 <cite>Lynch 1997</cite>
 @ MIT Distributed algorithms Lecture 21
@@ -477,6 +484,103 @@ B* algorithm <cite>Berliner 1979</cite>
 <text>
 ++ Parallel best-first search @ Section 11.5 <cite>Grama et al. 2003</cite>
 </text>
+
+</document>
+
+
+
+<document>
+<tag>graph-algorithm-example</tag>
+<title>An easy graph problem: Maximal independent sets</title>
+
+<text>
+@ 10.7.1 <cite>Grama et al. 2003</cite>
+
+Consider the problem of finding a maximal independent set (MIS) of vertices of a graph. We are given a sparse undirected graph G = (V, E). A set of vertices I \in V is called independent if no pair of vertices in I is connected via an edge in G. An independent set is called maximal if by including any other vertex not in I, the independence property is violated. 
++ Maximal independent sets are not unique. 
++ Maximal independent sets of vertices can be used to determine which computations can be done in parallel in certain types of task graphs.
+
+
+Many algorithms have been proposed for computing a maximal independent set of vertices:
+
+1) Greedy algorithm: 
+
+The simplest class of algorithms starts by initially setting I to be empty, and assigning all vertices to a set C that acts as the candidate set of vertices for inclusion in I. Then the algorithm proceeds by repeatedly moving a vertex v from C into I and removing all vertices adjacent to v from C. This process terminates when C becomes empty, in which case I is a maximal independent set. The resulting set I will contain an independent set of vertices, because every time we add a vertex into I we remove from C all the vertices whose subsequent inclusion will violate the independence condition. Also, the resulting set is maximal, because any other vertex that is not already in I is adjacent to at least one of the vertices in I.
+
+2) Luby's randomized algorithm: 
+
+Even though the above algorithm is very simple, it is not well suited for parallel processing, as it is serial in nature. For this reason parallel MIS algorithms are usually based on the randomized algorithm originally developed by Luby for computing a coloring of a graph. Using Luby's algorithm, a maximal independent set I of vertices V a graph is computed in an incremental fashion as follows. 
+  - The set I is initially set to be empty, and the set of candidate vertices, C, is set to be equal to V.
+  - A unique random number is assigned to each vertex in C, and if a vertex has a random number that is smaller than all of the random numbers of the adjacent vertices, it is included in I.
+  - The set C is updated so that all the vertices that were selected for inclusion in I and their adjacent vertices are removed from it. Note that the vertices that are selected for inclusion in I are indeed independent (i.e., not directly connected via an edge). This is because, if v was inserted in I, then the random number assigned to v is the smallest among the random numbers assigned to its adjacent vertices; thus, no other vertex u adjacent to v will have been selected for inclusion. 
+Now the above steps of random number assignment and vertex selection are repeated for the vertices left in C, and I is augmented similarly. This incremental augmentation of I ends when C becomes empty. On the average, this algorithm converges after <eqn>O(\log n)</eqn> such augmentation steps. 
+
+
+3) PARALLEL ALGORITHM: Shared-address-space parallel formulation of Luby's algorithm.
+
+A parallel formulation of Luby's MIS algorithm for a shared-address-space parallel computer is as follows. Let I be an array of size |V|. At the termination of the algorithm, I[i] will store one, if vertex vi is part of the MIS, or zero otherwise. Initially, all the elements in I are set to zero, and during each iteration of Luby's algorithm, some of the entries of that array will be changed to one. Let C be an array of size |V|. During the course of the algorithm, C [i] is one if vertex vi is part of the candidate set, or zero otherwise. Initially, all the elements in C are set to one. Finally, let R be an array of size |V| that stores the random numbers assigned to each vertex.
+
+During each iteration, the set C is logically partitioned among the p processes. Each process generates a random number for its assigned vertices from C. When all the processes finish generating these random numbers, they proceed to determine which vertices can be included in I. In particular, for each vertex assigned to them, they check to see if the random number assigned to it is smaller than the random numbers assigned to all of its adjacent vertices. If it is true, they set the corresponding entry in I to one. Because R is shared and can be accessed by all the processes, determining whether or not a particular vertex can be included in I is quite straightforward.
+
+Array C can also be updated in a straightforward fashion as follows. Each process, as soon as it determines that a particular vertex v will be part of I, will set to zero the entries of C corresponding to its adjacent vertices. Note that even though more than one process may be setting to zero the same entry of C (because it may be adjacent to more than one vertex that was inserted in I), such concurrent writes will not affect the correctness of the results, because the value that gets concurrently written is the same.
+
+The complexity of each iteration of Luby's algorithm is similar to that of the serial algorithm, with the extra cost of the global synchronization after each random number assignment.
+
+  Bibliography: The serial maximal independent set algorithm was developed by Luby [Lub86] and its parallel formulation on shared-address-space architectures was motivated by the algorithm described by Karypis and Kumar [KK99]. 
+
+  ref. M. Luby. A simple parallel algorithm for the maximal independent set problem. SIAM Journal on Computing, 15(4):1036–1053, 1986
+  ref. G. Karypis and V. Kumar. Parallel multilevel k-way partitioning for irregular graphs. SIAM Review, 41(2):278–300, 1999.
+
+  Jones and Plassman [JP93] have developed an asynchronous variation of Luby's algorithm that is particularly suited for distributed memory parallel computers. In their algorithm, each vertex is assigned a single random number, and after a communication step, each vertex determines the number of its adjacent vertices that have smaller and greater random numbers. At this point each vertex gets into a loop waiting to receive the color values of its adjacent vertices that have smaller random numbers. Once all these colors have been received, the vertex selects a consistent color, and sends it to all of its adjacent vertices with greater random numbers. The algorithm terminates when all vertices have been colored. Note that besides the initial communication step to determine the number of smaller and greater adjacent vertices, this algorithm proceeds asynchronously.
+
+  ref. M. T. Jones and P. E. Plassmann. A parallel graph coloring heuristic. SIAM Journal on Scientific Computing, 14:654–669, 1993.
+</text>
+
+</document>
+
+
+<!-- Bibliographic notes -->
+
+<document>
+<tag>graph-exploration-notes</tag>
+<title>Bibliographic notes</title>
+ 
+<!-- Connected components -->
+
+The connected-components algorithm was discovered by Woo and Sahni [WS89]. 
+[WS89] J. Woo and S. Sahni. Hypercube computing: Connected components. Journal of Supercomputing, 3:209–234, 1989.
+
+
+Cormen, Leiserson, and Rivest [CLR90] discusses ways to efficiently implement disjoint-set data structures with ranking and path compression.
+[CLR90] T. H. Cormen, C. E. Leiserson, and R. L. Rivest. Introduction to Algorithms. MIT Press, McGraw-Hill, New York, NY, 1990.
+
+
+Several algorithms exist for computing the connected components; many of them are based on the technique of vertex collapsing, similar to Sollin's algorithm for the minimum spanning tree. Most of the parallel formulations of Sollin's algorithm can also find the connected components. 
+Hirschberg [Hir76] and Hirschberg, Chandra, and Sarwate [HCS79] developed formulations of the connected-components algorithm based on vertex collapsing. The former has a complexity of Q(log2 n) on a CREW PRAM with n2 processes, and the latter has similar complexity and uses <eqn>n \lceil n/\log n \rceil</eqn> processors. Chin, Lam, and Chen [CLC81] made the vertex collapse algorithm more efficient by reducing the number of processors to <eqn>n \lceil n/\log^2 n \rceil</eqn> for a CREW PRAM, while keeping the run time at Q(log^2 n). Nassimi and Sahni [NS80] used the vertex collapsing technique to develop a formulation for a mesh-connected computer that finds the connected components in time Q(n) by using n^2 processes.
+
+[Hir76] D. S. Hirschberg. Parallel algorithms for the transitive closure and connected component problem. In Proceedings of the 8th Annual ACM Symposium on the Theory of Computing, 55–57, 1976.
+
+[HCS79] D. S. Hirschberg, A. K. Chandra, and D. V. Sarwate. Computing connected components on parallel computers. Communications of the ACM, 22(8):461– 464, August 1979.
+
+[CLC81] F. Y. Chin, J. Lam, and I. Chen. Optimal parallel algorithms for the connected component problem. In Proceedings of the 1981 International Conference on Parallel Processing, 170–175, 1981.
+
+[NS80] D. Nassimi and S. Sahni. Finding connected components and connected ones on a mesh-connected computer. SIAM Journal of Computing, 9(4):744–757, November 1980.
+
+
+
+
+Other parallel graph algorithms...
+
+
+Atallah and Kosaraju [AK84] proposed a number of algorithms for a mesh-connected parallel computer. The algorithms they considered are for finding the bridges and articulation points of an undirected graph, finding the length of the shortest cycle, finding an MST, finding the cyclic index, and testing if a graph is bipartite. 
+
+  [AK84] M. J. Atallah and S. R. Kosaraju. Graph problems on a mesh-connected processor array. Journal of ACM, 31(3):649–667, July 1984.
+
+
+Tarjan and Vishkin [TV85] presented algorithms for computing the biconnected components of a graph. Their CRCW PRAM formulation runs in time Q(log n) by using Q(m+n) processors, and their CREW PRAM formulation runs in time Q(log^2 n) by using Q(n^2/log^2 n) processors.
+
+  [TV85] R. E. Tarjan and U. Vishkin. An efficient parallel biconnectivity algorithm. SIAM Journal on Computing, 14(4):862–874, November 1985.
+
 
 </document>
 

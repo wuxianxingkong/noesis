@@ -289,9 +289,9 @@ Efficiency (for dense graphs, using their adjacency matrix)
 
 1) Computation: \Theta(n/p)
 
-2) Single-node accumulation (global minimum): \Theta(log p) @ hypercube network, \Theta(\sqrt{p}) @ 2D mesh network, \Theta(p) @ bus network (using a collision-free protocol)
+2) Single-node accumulation = all-to-one reduction (global minimum): \Theta(log p) @ hypercube network, \Theta(\sqrt{p}) @ 2D mesh network, \Theta(p) @ bus and ring networks 
 
-3) One-to-all broadcast: \Theta(log p) @ hypercube network, \Theta(\sqrt{p}) @ 2D mesh network, \Theta(1) @ bus network
+3) One-to-all broadcast: \Theta(log p) @ hypercube network, \Theta(\sqrt{p}) @ 2D mesh network, \Theta(1) @ bus network, \Theta(p) @ ring network
 
 Overall
 
@@ -300,7 +300,7 @@ Overall
 2) Communication: 
 - \Theta(n \log p) @ hypercube
 - \Theta(n \sqrt{p}) @ 2D mesh
-- \Theta(n p) @ bus
+- \Theta(n p) @ bus/ring
 
 
 Hypercube: 
@@ -309,8 +309,9 @@ t_p = \Theta \left ( \frac{n^2}{p} + n \log p \right )
 Mesh:
 t_p = \Theta \left ( \frac{n^2}{p} + n \sqrt{p} \right ) 
 
-Bus:
+Bus/ring:
 t_p = \Theta \left ( \frac{n^2}{p} + n p \right ) 
+
 
 
 
@@ -376,7 +377,7 @@ Isoefficiency: \Theta(p^3)
 
 
 
-bus: a cost optimal parallel implementation requires p^{2}/n \in O(1), hence the bus implementation of Prim's algorithm can use only p=O(\sqrt{n}) different processors. Isoefficiency function: \Theta(p^4) for bus
+ring/bus: a cost optimal parallel implementation requires p^{2}/n \in O(1), hence the bus implementation of Prim's algorithm can use only p=O(\sqrt{n}) different processors. Isoefficiency function: \Theta(p^4) for bus
 
 tp = n^2/p + np
 ts = n^2 = W
@@ -396,6 +397,10 @@ Concurrency: p^2
 	Since n must grow at least as fast as p... W = n^2 = p^2 
 =
 Isoefficiency: \Theta(p^4)
+
+
+
+Using a less naive approach, both the all-to-one reduction and the one-to-all broadcast take \Theta(\log p) time for a p-process message-passing parallel computer... hence the same results obtained for hypercube interconnection networks can be obtained for conventional message-passing parallel computers. !!!
 
 </text>
 
@@ -421,7 +426,7 @@ Isoefficiency: \Theta(p^4)
   <field><eqn>\Theta(p^3)</eqn></field>
  </record>
  <record>
-  <field>Bus / Ring</field>
+  <field>Ring / Bus</field>
   <field><eqn>\Theta(\sqrt{n})</eqn></field>
   <field><eqn>\Theta(n^{3/2})</eqn></field>
   <field><eqn>\Theta(p^4)</eqn></field>

@@ -122,38 +122,69 @@ In a geometric setting, more efficient geometric algorithms compute the shortest
 <text>
 Parallelization of Dijkstra's algorithm
 - for dense graphs @ Section 10.3 <cite>Grama et al. 2003</cite>
+
+Dijkstra's algorithm is almost identical to Prim's minimum spanning tree algorithm. The main difference is that, for each vertex, Dijkstra's algorithm stores the minimum cost to reach the vertex from the source, whereas Prim's algorithm stores the cost of the minimum-cost edge connecting the vertex to the minimum spanning tree. 
+
+"The parallel formulation of Dijkstra's single-source shortest path algorithm is very similar to the parallel formulation of Prim's algorithm for minimum spanning trees. The weighted adjacency matrix is partitioned using the 1-D block mapping. Each of the p processes is assigned n/p consecutive columns of the weighted adjacency matrix, and computes n/p values of the array l. During each iteration, all processes perform computation and communication similar to that performed by the parallel formulation of Prim's algorithm. Consequently, the parallel performance and scalability of Dijkstra's single-source shortest path algorithm is identical to that of Prim's minimum spanning tree algorithm."
+
+
+Efficiency (for dense graphs, using their adjacency matrix)
+
+1) Computation: \Theta(n/p)
+
+2) Single-node accumulation = all-to-one reduction (global minimum): \Theta(log p) @ message-passing parallel computer
+
+3) One-to-all broadcast: \Theta(log p) @ message-passing parallel computer
+
+Overall
+
+1) Computation: \Theta(n^2/p)
+
+2) Communication: \Theta(n \log p)
+
+
+Parallel run time:
+t_p = \Theta \left ( \frac{n^2}{p} + n \log p \right ) 
+
+
+Since the sequential run time is W=\Theta(n^2),
+
+speedup
+
+S \in \Theta \left ( \frac{n}{n/p + \log p} \right ) 
+
+
+efficiency
+
+E = \frac{1}{1 + \Theta ( (p \log p) / n ) }
+
+
+i.e. 
+A cost-optimal parallel implementation requires (p \log p) / n  \in O(1), hence the parallel implementation of Dijkstra's algorithm can use only p=O(n \log n) different processors.  
+
+Isoefficiency function: \Theta(p^2 \log p^2)
+
+tp = n^2/p + n log(p)
+ts = n^2 = W
+
+to = p*tp - W = n^2 + np log(p) - n^2 = n p log(p)
+
+E = 1 / (1 + to/W)
+
+Communication overhead: p^2 log^2(p)
+	tc = n p log (p)
+	W  = n^2
+	W = K tc  ===  n^2 = n p log(p)  ===  n = p log(p)  === W=n^2= p^2 log^2(p)
++
+Concurrency: p^2
+	Since n must grow at least as fast as p... W = n^2 = p^2 
+=
+Isoefficiency: \Theta(p^2 \log p^2)
+
 + Bibliographic notes
 </text>
 
 
-
-<dataset>
- <title>Performance of Dijkstra's algorithm on different parallel architectures</title>
- <metadata>
-  <field width="25">Architecture</field>
-  <field width="25">Maximum number of processors for <eqn>E \in \Theta(1)</eqn></field>
-  <field width="25">Parallel run time</field>
-  <field width="25">Isoefficiency function</field>
- </metadata>
- <record>
-  <field>Hypercube</field>
-  <field><eqn>\Theta(n / \log n)</eqn></field>
-  <field><eqn>\Theta(n \log n)</eqn></field>
-  <field><eqn>\Theta(p^2 \log^2 p)</eqn></field>
- </record>
- <record>
-  <field>2D Mesh</field>
-  <field><eqn>\Theta(n^{2/3})</eqn></field>
-  <field><eqn>\Theta(n^{4/3})</eqn></field>
-  <field><eqn>\Theta(p^3)</eqn></field>
- </record>
- <record>
-  <field>Bus / Ring</field>
-  <field><eqn>\Theta(\sqrt{n})</eqn></field>
-  <field><eqn>\Theta(n^{3/2})</eqn></field>
-  <field><eqn>\Theta(p^4)</eqn></field>
- </record>
-</dataset>
 
 </document>
 

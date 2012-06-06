@@ -63,6 +63,8 @@ Proceedings of the National Academy of Sciences 101, 17940-17945 (2004).
 At the most basic level, a link establishes a relationship between two nodes. The link is a property of the pair, not of any single node...
 </text>
 
+The simplest network is a dyad. Relationships in a dyad can be undirected, mutual, or directed. When there is more than one relationship between a pair, such as coworkers and friends, it is called multiplex.
+
 <text>
 Dyadic analysis focuses on the properties of pairwise relationships,
 </text>
@@ -170,14 +172,129 @@ Social engineering efforts... "bringing pairs together in the long term when the
 = Three actors and their ties
 </text>
 
+Network analysis really begins with triads, for they are the beginnings of a “society” that is independent of the ties between a dyad (USN'2012):
+
+
+
+
+... <q>no matter how close a triad may be, there is always the occasion on which two of the three members regard the third as an intruder</q> (Simmel 1950, 135) 
+In Simmel’s view, the third can be non-partisan and a mediator, but can also be “the Tertius Gaudens” (the third who enjoys; Simmel 1950, 154).
+[Georg Simmel: 1950. The sociology of Georg Simmel. New York: Free Press.]
+
+
+The third can line up with one of the two others and thereby gain his or her own advantage or can act as a broker between them and make a broker’s profit === structural hole (Burt 1992)
+[Burt, Ronald S. 1982. Toward a structural theory of action: Network models of social structure, perception and action. New York: Academic Press.]
+
+
+
+Each connected triad is composed of three dyads—within the pair the choices or connections are either reciprocated or not.
+
+There are actually 16 possible configurations of triads...
+
+
+The triad census is thus a ‘periodic table of social elements’ and similarly able to categorize and build social structures.” (USN'2012)
+
+ID:
+1) The first character in the triad name gives the number of mutual dyads.
+2) The second character gives the number of asymmetric dyads.
+3) The third character gives the number of null dyads
+4) The fourth character, if present, distinguishes between triads which are otherwise identical. 
+e.g.
+- 003 (disconnected)
+- 012 (single link)
+- 102 (mutual link)
+- three 021 triads: source (021D), sink (021U), and path (021C)
+- two 111 triads: mutual link + outgoing link (111U), mutual link + ingoing link (111D)
+- two 030 triads: transitive link (030T) and cycle (030C)
+- 201 (two mutual links)
+- three 120 triads: mutual link + outgoing links (120U), mutual link + ingoing links (120D), mutual link + path (120C)
+- 210 (two mutual links + single link)
+- 300 (three mutual links)
+
+
+USN'2012: ... the census or count of configurations can be compared with the chance distributions of these configurations in any network and yield important insights about the network. 
+
+In general, the triad census, that is, the distribution of the 16 types of triads in an actual network, the “local” processes in the network, has been very useful in evaluating theories about the global attributes of the entire network, especially since some theoretical structures of a network may be contradicted by the distribution of the triad types in a particular network. 
+
+
+While the distribution of triads seems at first to be a limited idea, the prevalence of different combinations of triads can reveal a great deal about the entire network. 
+
+
+
+The distribution of reciprocated or unreciprocated dyads, centrality, and overall network density may account for most of the variance in the distribution of triads in human sociability networks (Faust 2007).
+[Faust, Katherine. 2007. Very local structure in social networks. Sociological Methodology 37:209–256.]
+
+
+There is a class of network models that utilize the dependence of types of dyads and triads on various attributes of the actors within the network that are extremely useful in shedding light on the social processes within these networks, though work in this field is just beginning to receive wide application (Robins and
+Pattison 2005; Snijders, van de Bunt, and Steglich 2010; Wasserman and Robins 2005). 
+
+[Robins, Garry, and Phillipa Pattison. 2005. Interdependencies and social processes: Dependence graphs and generalized dependence structures. In Models and methods in social network analysis, edited by P. Carrington, J. Scott, and S. Wasserman. New York: Cambridge University Press.]
+[Snijders, Tom A. B., Gerhard G. van de Bunt, and Christian E. G. Steglich. 2010. Introduction to stochastic actor-based models for network dynamics. Social Networks 32 (1): 44–60.]
+[Wasserman, Stanley, and Garry Robins. 2005. An introduction to random graphs, dependence graphs, and p*. In Models and methods in social network analysis, edited by P. Carrington, J. Scott, and S. Wasserman. New York: Cambridge University Press.]
+
+
+<document>
+<tag>motifs-triads-transitivity</tag>
+<title>Transitivity</title>
+
 <text>
 ++ Transitivity (if A likes B and B likes C, then A will like C)
+
+Triad 030T contains one transitive relationship, triad 120D contains two, and triad 300 contains six transitive relationships. In contrast, triad 021C is intransitive. 
+
+Statistical tests “are very supportive of the proposition that interpersonal choices tend to be transitive” (Wasserman and Faust, 598). Intransitive triads are very rare.
+
+
+Transitivity defines the boundaries of a small group if we follow the heuristic that networks are built up from smaller components.
+
 </text>
+
+</document>
+
+<document>
+<tag>motifs-triads-balance</tag>
+<title>Structural balance</title>
+
+<text>
+Stuctural balance, postulated by Fritz Heider in the 1940's <cite>Heider 1946</cite> and Theodore M. Newcomb in the 1950's <cite>Newcomb 1953</cite>, led to research on triples of individuals, since balanced relations are common in empirical work...
+</text>
+
+<text>
+<cite>Cartwright and Harary 1956</cite> were among the first to quantify structural balance...
+</text>
+
+<text>
+Balance theory influenced the development of other structural theories, such as transitivity...
+</text>
+
 
 <text>
 ++ Balance (if A and B like each other, they will have a similar opinion of C; if they dislike each other, they will not agree on C)
+
+the balance between the three members of a triad and leads to the classic “Balance Hypothesis”: “a friend of my friend is a friend of mine” and “an enemy of my friend is an enemy of mine.
+
+“In the case of three entities, a balanced state exists if all three relations are positive in all respects, or if two are negative and one is positive” (Heider 1946, 110).
+[Heider, Fritz. 1946. Attitudes and cognitive organization. Journal of Psychology 21:107–112]
++ tendency over time toward balance: "[i]f a not balanced state exists, then forces towards this state will arise.” 
++ “[i]f a change is not possible, the state of imbalance will produce tension.”
+
++ “my enemy’s friend is my enemy. It is a poor sort of enemy who allows himself to be guided by this maxim” (Martin 2009, 45). Martin explains that if A and B are enemies, it is good strategy for A to try to make friends with B’s friend C and all of B’s friends, thus leaving B completely isolated.
+
+
+e.g.
+
+- A network of interpersonal choices must have only certain kinds of triads. From the balance hypothesis, it follows that friends are likely to agree about a third party—if one of them likes a third party, both will like that person. And close friends agree more strongly about a third party than friends who are not particularly close. Configurations 111D and 111U that conform to this hypothesis should be statistically more frequent in a social network than configurations that do not. This balance tends to be supported in a wide variety of social networks in which the nodes are people <cite>Wasserman and Faust 1994</cite>, p.596
+
+- International alliances also seem to follow the hypothesis 
+
+[Antal, T., P. L. Krapivsky, and S. Redner. 2006. Social balance on networks: The dynamics of friendship and enmity. Physica D: Nonlinear Phenomena 224 (1–2): 130–136.]
+
+
+USN'2012: Bbalance is only one theory about choice in a network and does have its limitations by postulating rigorous rules for relations that in messy social life do not always hold. Homophily and peer effects are another cause of connections and, though related to balance, homophily takes account of the social and cultural structures in which a network is embedded. 
+
 </text>
 
+</document>
 
 <text>
 <cite>Wasserman and Faust 1994</cite>: chapters 6 and 14...
@@ -462,24 +579,6 @@ where the second sum is computed over all pairs of nodes within module <eqn>r</e
 </document>
 
 
-<document>
-<tag>structural-balance</tag>
-<title>Structural balance</title>
-
-
-<text>
-Stuctural balance, postulated by Fritz Heider in the 1940's <cite>Heider 1946</cite> and Theodore M. Newcomb in the 1950's <cite>Newcomb 1953</cite>, led to research on triples of individuals, since balanced relations are common in empirical work...
-</text>
-
-<text>
-<cite>Cartwright and Harary 1956</cite> were among the first to quantify structural balance...
-</text>
-
-<text>
-Balance theory influenced the development of other structural theories, such as transitivity...
-</text>
-
-</document>
 
 
 

@@ -63,6 +63,14 @@ Proceedings of the National Academy of Sciences 101, 17940-17945 (2004).
 At the most basic level, a link establishes a relationship between two nodes. The link is a property of the pair, not of any single node...
 </text>
 
+<text>
+Dyadic analysis focuses on the properties of pairwise relationships,
+</text>
+
+
+<document>
+<tag>motifs-dyads-propinquity</tag>
+<title>Propinquity</title>
 
 Propinquity (social networks): Nodes are more likely to be connected with one another if they are geographically close.
 
@@ -80,6 +88,12 @@ e.g.
 - Trade between countries, other things being equal, is more likely if the countries have common borders. But, for example, “averaged over all EU countries, intranational trade is about ten times as high as international trade with an EU partner country of similar size and distance” (Volker 2000). Economists tend to define propinquity in terms of cost of transportation rather than the actual number of miles between nodes or sheer border crossings when tariff is not an issue (Krugman and Obstfeld 2000)
 [Volker, Nitsch. 2000. National borders and international trade: Evidence from the European Union. Canadian Journal of Economics 33 (4): 1091–1105.]
 [Krugman, Paul R., and Maurice Obstfeld. 2000. International economics: Theory and policy. Reading, Mass.: Addison-Wesley.]
+
+</document>
+
+<document>
+<tag>motifs-dyads-homophily</tag>
+<title>Homophily</title>
 
 
 Homophily, a different kind of propinquity.
@@ -109,13 +123,37 @@ Chicken-and-egg situation: we do not know whether people hang around together be
 e.g. email interactions, over a year, of a population of over 30,000 students and staff in a university, Kossinets and Watts (2009) were able to determine that individual preferences for like persons and common social location both produced homophily. But modest initial preferences for similar others became amplified over many email exchanges into stronger patterns of homophily; similar interests led to similar locations in which similar interests were more available. The feedback between network structure and individual preference thus becomes especially noticeable over time.
 [Kossinets, Gueorgi, and Duncan J. Watts. 2009. Origins of homophily in an evolving social network. American Journal of Sociology 115 (2): 405–450.]
 
+</document>
 
 
+<document>
+<tag>motifs-dyads-reciprocity</tag>
+<title>Reciprocity</title>
 
-<text>
-Dyadic analysis focuses on the properties of pairwise relationships, e.g. reciprocity.
-</text>
+USN'2012: ...  in directed graphs or networks, there can be four possible relationships: none at all (they are not connected), A relates to B, B relates to A, and A and B both relate to one another. We are concerned here with the fourth relationship, reciprocity or mutuality.
 
+
+The concept of mutuality implies first, that relations are reciprocal, that is, they involve a give and take between the two parties; and second, that power or asymmetry in the relationship is of little or no consequence.
+
+e.g.
+- husband-wife relationship (even when their roles might be unequal in practice)
+- mutuality is strong factor in the formation of children’s friendships (Schaefer et al. 2010)
+[Schaefer, David R., John M. Light, Richard A. Fabes, Laura D. Hanish, and Carol Lynn Martin. 2010. Fundamental principles of network formation among preschool children. Social Networks 32 (1): 61–71.]
+- in elementary school, girls are more likely to reciprocate friendship choice than are boys
+- doctor-patient relationship can be a close one, but the relationship is inherently anti-symmetric.
+- trade (between individuals and organizations)
+- trade relations between nations
+- reciprocity between countries in the global telecom network was found to have increased between 1989 and 1999 (Monge and Matei 2004)
+[Monge, Peter, and Sorin Adam Matei. 2004. The role of the global telecommunications network in bridging economic and political divides, 1989 to 1999. Journal of Communication 54 (3): 511–531.]
+
++ “coalition building” consists of creating mutual flows between pairs that do not share many attributes
+e.g. 
+- public health and in drug-and alcohol-addiction-prevention programs
+
+Social engineering efforts... "bringing pairs together in the long term when they have quite different characteristics is difficult and rare" (USN'2012)
+
+
+</document>
 
 <text>
 <cite>Wasserman and Faust 1994</cite>: chapters 13, 15 &amp; 16...

@@ -63,9 +63,59 @@ Proceedings of the National Academy of Sciences 101, 17940-17945 (2004).
 At the most basic level, a link establishes a relationship between two nodes. The link is a property of the pair, not of any single node...
 </text>
 
+
+Propinquity (social networks): Nodes are more likely to be connected with one another if they are geographically close.
+
+e.g. 
+
+- friends and neighbors @ a pioneering study of the propinquity effect, Festinger, Schacter, and Back (1950)
+[Festinger, L., S. Schacter, and K. Back. 1950. Social pressures in informal groups: A study of human factors in housing. Stanford, Calif.: Stanford University Press.]
+
+- “interlocking directorates”: people who serve together on several different corporate boards of directors... “[i]nterlocks are concentrated in firms headquartered in the same locale” (Kono et al. 1998). 
+[Kono, Clifford, Donald Palmer, Roger Friedland, and Matthew Zafonte. 1998. Lost in space: The geography of corporate interlocking directorates. American Journal of Sociology 103 (4): 863–911.]
+
+- Common interests (e.g., music) and common arenas or foci for meeting (e.g., mothers at the playground) are another mode for drawing people together
+[Feld, Scott L. 1981. The focused organization of social ties. American Journal of Sociology 86 (5): 1015–1035]
+
+- Trade between countries, other things being equal, is more likely if the countries have common borders. But, for example, “averaged over all EU countries, intranational trade is about ten times as high as international trade with an EU partner country of similar size and distance” (Volker 2000). Economists tend to define propinquity in terms of cost of transportation rather than the actual number of miles between nodes or sheer border crossings when tariff is not an issue (Krugman and Obstfeld 2000)
+[Volker, Nitsch. 2000. National borders and international trade: Evidence from the European Union. Canadian Journal of Economics 33 (4): 1091–1105.]
+[Krugman, Paul R., and Maurice Obstfeld. 2000. International economics: Theory and policy. Reading, Mass.: Addison-Wesley.]
+
+
+Homophily, a different kind of propinquity.
+
+USN'2012: (from the Greek, “love of the same”) is a concept introduced into social theory by Lazarsfeld and Merton (1978 [1955]) that embeds a folk proposition: “birds of a feather flock together.” More formally, if two people have characteristics that match in a proportion greater than expected in the population from which they are drawn or the network of which they are a part, then they are more likely to be connected (Verbrugge 1977). The converse is also true: if two people are connected, then they are more likely to have common characteristics or attributes. There is also an implied feedback: over time, relationships tend to sort out so that they become more homophilous.
+
+[Lazarsfeld, Paul F., and Robert K. Merton. 1978 [1955]. Freedom and control in modern society. In Friendship as a social process: A substantive and methodological analysis, edited by M. Berger, T. Abel, and C. H. Page. New York: Octagon Books.]
+[Verbrugge, Lois M. 1977. The structure of adult friendship choices. Social Forces 56:576–597.]
+
+
+Lazarsfeld and Merton distinguished between status-homophily, which can be ascribed (e.g., age, race, sex) or acquired (e.g., marital status, education, occupation), and value-homophily (e.g., attitudes, stereotypes), which has also been termed homogeneity (Hall and Wellman 1985).
+[Hall, Alan, and Barry Wellman, 1985. Social networks and social support. In Social support and health, edited by Sheldon Cohen and S. Leonard Syme. Orlando: Academic Press.]
+
+e.g.
+- dating and matching services offer checklists through which they attempt to bring people together.
+
+There are two kinds of causes of homophily. 
+
+1) Common norms or values may bring nodes with common attributes together, or the reverse, common attributes and contacts may lead to common norms, and this holds true for both individuals and collectivities
+e.g. behaviors such as binge eating, alcohol use, dietary restraint, and so on. 
+
+While common norms are promoted through common attributes, so are common attributes likely when association or friendship occurs as a result of co-location and commonly situated activities...
+Chicken-and-egg situation: we do not know whether people hang around together because they share similar habits (homophily), or they have become similar to each other while hanging around with one another (peer effects)
+
+
+2) Structural location. Two nodes may have the same attributes because both operate in the same arena, and again, vice versa 
+e.g. email interactions, over a year, of a population of over 30,000 students and staff in a university, Kossinets and Watts (2009) were able to determine that individual preferences for like persons and common social location both produced homophily. But modest initial preferences for similar others became amplified over many email exchanges into stronger patterns of homophily; similar interests led to similar locations in which similar interests were more available. The feedback between network structure and individual preference thus becomes especially noticeable over time.
+[Kossinets, Gueorgi, and Duncan J. Watts. 2009. Origins of homophily in an evolving social network. American Journal of Sociology 115 (2): 405–450.]
+
+
+
+
 <text>
 Dyadic analysis focuses on the properties of pairwise relationships, e.g. reciprocity.
 </text>
+
 
 <text>
 <cite>Wasserman and Faust 1994</cite>: chapters 13, 15 &amp; 16...

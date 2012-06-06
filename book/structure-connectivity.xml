@@ -71,6 +71,28 @@ L: Density is the ratio of the number of actual links to the maximum number poss
 density(G) = \frac{m}{n(n-1)}
 </equation>
 
+++ Density (the number of connections contained within the network) and its opposite, Structural Holes (concerned with the lack of connections)
+
+[White, Douglas R., and Frank Harary. 2001. The cohesiveness of blocks in social networks: Node connectivity and conditional density. Sociological Methodology 31:305–359.]
+
+
+USN'2012: 
+
+"Density is at the heart of community, social support, and high visibility (when people in a network can see what others are doing and monitor and sanction their behavior). Density facilitates the transmission of ideas, rumors, and diseases. Other things being equal, the greater the density, the more likely is a network to be considered a cohesive community, a source of social support, and an effective transmitter. Classic agricultural communities or villages have greater density than modern cities, and people tend to know one another in many contexts—as relatives, coworkers, church attendees, and so forth. Given the human limitation on the number of sustainable connections, smaller networks will have greater density. It is easier to know everyone in a small group than in a large community. In comparing different networks in terms of density, one therefore has to take into account their size.
+
+"STRUCTURAL HOLES: 
+Density is based on the idea of connection. But one can turn the idea on its head and focus on the lack of a connection (Burt 1992).
+[Burt, Ronald S. 1982. Toward a structural theory of action: Network models of social structure, perception and action. New York: Academic Press.]
+Ronald Burt calls the situation in which a node Ego connects individuals who are themselves connected but who, without the presence of Ego would have no connection with one another, a “structural hole.” 
+e.g. In the karate club sociogram, nodes 1 and 34 are the key linkers, and their actions are the least constrained by others in the network.
+
+"Like structural holes, “weak ties” also focuses on holes in the network. 
+
+[Granovetter, Mark S. 1973. The strength of weak ties. American Journal of Sociology 78:1360–1380.]
+[Granovetter, Mark S. 1982. The strength of weak ties: A network theory revisited. In Social structure and network analysis, edited by P. Marsden and N. Linn. Beverly Hills, Calif.: Sage.]
+
+
+
 </document>
 
 
@@ -238,7 +260,7 @@ Empirical data
 Characterization of complex networks: A survey of measurements
 by Luciano Da F Costa, Francisco A Rodrigues, Gonzalo Travieso, P R Villas Boas
 Advances in Physics (2005)
-Volume: 56, Issue: 1, Publisher: Taylor & Francis, Pages: 78
+Volume: 56, Issue: 1, Publisher: Taylor &amp; Francis, Pages: 78
 DOI: 10.1080/00018730601170527
 arXiv: cond-mat/0505185
 ]

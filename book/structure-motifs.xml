@@ -36,6 +36,10 @@ NAIVE IDEA: Network function explained in terms of the repeated appearances of t
 If that were true, motifs could explain not just network structure, but also determine its behavior.
 
 
+network effects:
+- homophily (the tendency of pairs of nodes to share the same characteristics) 
+- balance (the tendency of the third in a triad to share or have a characteristic that complements the other two)
+
 ++ empirical study of network motifs
 
 cf.
@@ -182,7 +186,7 @@ In Simmel’s view, the third can be non-partisan and a mediator, but can also be 
 [Georg Simmel: 1950. The sociology of Georg Simmel. New York: Free Press.]
 
 
-The third can line up with one of the two others and thereby gain his or her own advantage or can act as a broker between them and make a broker’s profit === structural hole (Burt 1992)
+The third can line up with one of the two others and thereby gain his or her own advantage or can act as a broker between them and make a broker’s profit === ref. structural hole (Burt 1992)
 [Burt, Ronald S. 1982. Toward a structural theory of action: Network models of social structure, perception and action. New York: Academic Press.]
 
 

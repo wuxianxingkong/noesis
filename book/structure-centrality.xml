@@ -13,6 +13,8 @@
 Local centrality measures let us infer the potential influence of individual nodes or links within a network and quantify their centrality with respect to the network structure (and information flow therein). In other words, centrality measures try to highlight the most influential nodes within a network, either because their loss might prove to be disruptive for the rest of the network or just because they play key roles within the communication patterns that take place on the network.
 </text>
 
+akin to "popularity"
+
 <text>
 L: Power. The power of a node is proportional to its degree (number of links connecting
 it to the network) influence (link values); and betweenness or closeness;
@@ -33,6 +35,12 @@ or infection rate.
 <text>
 The use of a particular metric to characterize the centrality of a node within a given network makes assumptions on the nature of the information flow or the dynamic processes on the network <cite>Borgatti 2005</cite>.
 </text>
+
+
+An aside (USN'2012):
+"A classic series of experiments with networks of various shapes showed that “where centrality and hence, independence are evenly distributed, there will be no leader, many errors, high activity, slow organization, and high satisfaction” (Leavitt 1951, 50). On the other hand, when a network was shaped in a “wheel” pattern—so called because individual persons, the
+spokes, were coordinated by a central person—the organization was efficient, but only the personin the center had high satisfaction"
+[Leavitt, Harold J. 1951. Some effects of certain communication patterns on group performance. Journal of Abnormal and Social Psychology 46:38–50.]
 
 
 <document>
@@ -113,6 +121,10 @@ and destination nodes.
 <text>
 As it happened with closeness, betweenness is also based on the network shortest paths.
 </text>
+
+
+USN'2012: Some popular nodes play a key role as middlemen... One can get to other members via these leaders. This is called “betweenness” (Freeman 1979). There are various methods for measuring betweenness, but all are based on the idea of a switching point. The person or organization that serves as a connector or a switching point can be very important...
+
 
 <text>
 IDEA: If non-adjacent nodes j and k want to interact and node i is on the path between them, then i may have some control over their interactions.

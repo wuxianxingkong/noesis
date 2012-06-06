@@ -17,6 +17,12 @@
 &bibliography;
 <title>Visualization</title>
 
+++ A sociogram, the graph or diagram of a whole network (beyond the local neighborhood of network motifs)
+
+++ valid only for small networks
+
+
+
 &techniques;
 &force;
 &hierarchical;

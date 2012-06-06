@@ -419,6 +419,32 @@ six degrees of separation.
 
 cf. <cite>Granovetter 1983</cite>
 
+ 
+USN'2012: The most authoritative statement of the idea is Granovetter’s 1982 reprise:
+
+  
+[O]ur acquaintances (“weak ties’) are less likely to be socially involved with one another than are our close friends (“strong ties”). Thus the set of people made up of any individual and his or her acquaintances will constitute a low-density network (one in which many of the possible ties are absent), whereas the set consisting of the same individual and his or her close friends will be densely knit (many of the possible lines present).
+
+  ...Ego will have a collection of close friends, most of whom are in touch with one another—a dense “clump” of social structure. Ego will [also] have a collection of acquaintances, few of whom know one another. Each of these acquaintances, however, is likely to have close friends in his or her own right and therefore to be enmeshed in a closely knit clump of social structure, but one different from Ego’s… These clumps would not… be connected with one another at all were it not for the existence of weak ties. (Granovetter 1982, 105–106)
+
+Interesting consequences of weak ties:
+
+1) weak ties facilitate the flow of information from otherwise-distant parts of a network. Individuals with few weak ties will be deprived of information from distant parts of the social system and will be confined to the provincial news and views of their close friends.
+
+2) weak ties help to integrate social systems. The macroscopic side of this communication argument is that social systems lacking in weak ties will be fragmented and incoherent. New ideas will spread slowly, scientific endeavors will be handicapped, and subgroups that are separated by race, ethnicity, geography, or other characteristics will have difficulty reaching a modus vivendi.
+
+Complications
+
+1) the definition of what constitutes a weak tie or relationship can be somewhat slippery. Is it the length of time one knows someone else, the frequency of interaction, the subjective “closeness” one feels, or whether the others one is connected with are defined as relatives, friends, or acquaintances? 
+
+2) it is important to understand that the critical function of weak ties is one of bridges between network segments. As Granovetter puts it, “The importance of weak ties is asserted to be that they are disproportionately likely to be bridges as compared to strong ties, which should be underrepresented in that role. This does not preclude the possibility that most weak ties have no such function” (Granovetter 1982, 130). 
+
+3) it must be the case that “(1) something flows through these bridges—they actually serve as conduits bearing information and influence to groups they otherwise would not get, and (2) whatever it is that flows actually plays some important role in the social life of individuals, groups, and societies” (ibid.). A flow can occur only under some circumstances. Passing along information or exercising influence should not be too costly to the weak tie that constitutes the bridge; otherwise, strong ties that are willing to bear the cost will be more effective in making the bridge. For example, if a mere acquaintance knows about a job (the original context of Granovetter’s study), and the acquaintance does not need the job himself or herself, then there is little cost in passing along the information. It would take a strong tie to pass along information that might cause a loss to the person passing it along.
+
+
+[Granovetter, Mark S. 1973. The strength of weak ties. American Journal of Sociology 78:1360–1380.]
+[Granovetter, Mark S. 1982. The strength of weak ties: A network theory revisited. In Social structure and network analysis, edited by P. Marsden and N. Linn. Beverly Hills, Calif.: Sage.]
+
 </document>
 
 <!-- Network models -->

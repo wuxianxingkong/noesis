@@ -3505,6 +3505,7 @@
  <!--<file>Networks/algorithms/graphs/matching...</file>-->
 </reference>
 
+
 <reference id="Kumar et al. 1994">
  <author>Vipin Kumar</author>
  <author>Ananth Grama</author>
@@ -3514,11 +3515,7 @@
  <publisher>Benjamin Cummings</publisher>
  <year>1994</year>
  <isbn>0805331700</isbn>
- <comment>
-  <text>TBD</text>
- </comment>
 </reference>
-
 
 
 <reference id="Kumar et al. 1999">

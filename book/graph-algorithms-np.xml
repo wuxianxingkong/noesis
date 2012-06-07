@@ -492,23 +492,183 @@ Alternative heuristics might even get better results for particular instances of
 
 <document>
 <tag>graph-np-backtracking</tag>
-<title>Backtracking</title>
+<title>Backtracking: Solving constraint satisfaction problems</title>
+
+<text>
+Solving computationally hard problems usually requires enumerating candidate solutions to find one that satisfies the problem-specific constraints. Also known as combinatorial problems, they can be solved using backtracking...
+</text>
+
+<text>
+Backtracking is a depth-first search method that terminates when a solution is found...
+</text>
+
+<text>
+As described above, <term>simple backtracking</term> uses no heuristic information to guide the search, so that the children of a node are typically explored in a first-come, first-served manner. On the other hand, <term>ordered backtracking</term> employs heuristics to determine the order in which children nodes will be explored. More sophisticated versions of ordered backtracking allow us to change the order in which variables are fixed. For instance, let us consider the problem of solving a Sudoku puzzle. If empty Sudoku cells are filled as they appear on the Sudoku board, the resulting search tree will be much larger than if we start by filling those empty cells whose potential values are more constrained (i.e. those cells with the smallest set of values compatible with those already present on the Sudoku board). Obviously, the depth of the search tree will stay the same, but its branching factor will be reduced. Moreover, as soon as we discard a particular combination of values to solve the Sudoku, a larger number of nodes will be pruned from the search tree, hence the search problem will be solved earlier. In practice, this simple heuristics reduces execution time from full minutes to just a few seconds on a conventional PC using a sequential implementation of backtracking. For many problems, including Sudoku puzzles, when the search process is guided by heuristics, the search will terminate earlier, provided that the chosen heuristics are suitable for the problem at hand, of course. 
+</text>
+
+
+<document>
+<tag>graph-np-backtracking-parallel</tag>
+<title>Parallel backtracking</title>
+
+
+Section 11.4 <cite>Grama et al. 2003</cite>: 
+
+The critical issue in parallel depth-first search algorithms is the distribution of the search space among the processors:
+
+<list>
+
+<item>
+1) Statically assigning a node in the tree to a processor, it is possible to expand the whole subtree rooted at that node without communicating with another processor. Since the search space is usually generated dynamically, it is difficult to get a good estimate of the size of the search space beforehand. Due to the ensuing workload imbalance, some processors will be idle for a significant amount of time.
+</item>
+
+<item>
+2) "In dynamic load balancing, when a processor runs out of work, it gets more work from another processor that has work." Each processor performs DFS on a disjoint part of the search space. When a processor finishes searching its part of the search space, it requests an unsearched part from other processors. This takes the form of work request and response messages in message passing architectures, and locking and extracting work in shared address space machines. 
+...  In the beginning, the entire search space is assigned to one processor, and other processors are assigned null search spaces (that is, empty stacks). The search space is distributed among the processors as they request work.
+... when active, a processor does a fixed amount of work (expands a fixed number of nodes) and then checks for pending work requests. When a work request is received, the processor partitions its work into two parts and sends one part to the requesting processor. When a processor has exhausted its own search space, it becomes idle. 
+... This process continues until a solution is found or until the entire space has been searched. If a solution is found, a message is broadcast to all processors to stop searching. A termination detection algorithm is used to detect whether all processors have become idle without finding a solution, which incurs in additional communication overhead (e.g. Dijkstra's token termination detection or tree-based termination detection).
+
+... results in communication overhead for work requests and work transfers, but reduces load imbalance among processors. 
+</item>
+
+</list>
+
+<note>
+OVERHEAD:  Search Overhead Factor @ Section 11.3 <cite>Grama et al. 2003</cite>
+
+"Parallel search algorithms incur overhead from several sources. These include communication overhead, idle time due to load imbalance, and contention for shared data structures. Thus, if both the sequential and parallel formulations of an algorithm do the same amount of work, the speedup of parallel search on p processors is less than p. However, the amount of work done by a parallel formulation is often different from that done by the corresponding sequential formulation because they may explore different parts of the search space.
+
+"Let W be the amount of work done by a single processor, and W_p be the total amount of work done by p processors. The search overhead factor of the parallel system is defined as the ratio of the work done by the parallel formulation to that done by the sequential formulation, or W_p/W. Thus, the upper bound on speedup for the parallel system is given by pW/W_p. The actual speedup, however, may be less due to other parallel processing overhead. The search overhead factor is typically greater than one.
+
+If we assume that the time to expand each node is the same, then W and W_p represent the number of nodes expanded by the serial and the parallel formulations, respectively. If the time for each expansion is t_c, then the sequential run time is given by t_s = t_c W. 
+</note>
+
+
+<text>
+Strategies for work splitting <cite>Grama et al. 2003</cite>:
+
+Ideally, the workload is split into two equal pieces (a half-split) such that the size of the search space assigned to each processor will be the same. However, this is hard to achieve: an good estimate of the size of the tree rooted at an unexpanded node is difficult. Close to the initial node, the subtree will be larger that deep into the search process, hence nodes beyond a specified depth (the cutoff depth) are not given away to avoid the overhead incurred in the transfer of small amounts of work.
+</text>
+
+<list>
+<item>Strategy 1: Send nodes near the initial search node.</item>
+<item>Strategy 2: Send nodes near the cutoff depth.</item>
+<item>Strategy 3: Send half the nodes between the initial node and the cutoff depth. </item>
+</list>
+
+<text>
+The suitability of a splitting strategy depends on the particular problem and the structure of the search space. When the search space is uniform, strategies 1 and 3 might work. When the search space is highly irregular, strategy 3 usually works well . When heuristic information is available and can be used to order successor nodes, strategy 2 is likely to perform better, since it tries to distribute those parts of the search space likely to contain a solution. The cost of splitting becomes important deep into the search, where strategy 1 presents lower costs than strategies 2 and 3.
+</text>
+
+<text>
+Strategies for load balancing <cite>Grama et al. 2003</cite>:
+</text>
+
+<list>
+
+<item>
+1) Asynchronous Round Robin (ARR): Each processor maintains an independent variable, target. Whenever a processor runs out of work, it uses target as the label of a donor processor and attempts to get work from it. The value of target is incremented (modulo p) each time a work request is sent. The initial value of target at each processor is set to ((label + 1) modulo p) where label is the local processor label.
+</item>
+
+<item>
+2) Global Round Robin (GRR) uses a single global variable called target. This variable can be stored in a globally accessible space in shared address space machines or at a designated processor in message passing machines. Whenever a processor needs work, it requests and receives the value of target, either by locking, reading, and unlocking on shared address space machines or by sending a message requesting the designated processor (say P0). The value of target is incremented (modulo p) before responding to the next request. The recipient processor then attempts to get work from a donor processor whose label is the value of target. GRR ensures that successive work requests are distributed evenly over all processors. A drawback of this scheme is the contention for access to target.
+</item>
+
+<item>
+3) Random Polling (RP) is the simplest load-balancing scheme. When a processor becomes idle, it randomly selects a donor. Each processor is selected as a donor with equal probability, ensuring that work requests are evenly distributed.
+</item>
+
+</list>
+
+<text>
+<cite>Kumar et al. 1994</cite> and <cite>Grama et al. 2003</cite> provide a detailed analysis of the performance and scalability of parallel seach algorithms using these load balancing schemes. Communication overhead due to work requests and work transfers is expected to be higher in ARR than in GRR or RP, albeit GRR introduces overhead due to contention for the shared variable (which assymptotically dominates the isoefficiency function due to communication). When communication is performed on a bus network, such as those typically employed in Ethernet local-area networks, access to the common bus introduces an additional contention overhead that is not present in hypercube interconnection networks. Table <ref>table-load-balancing-strategies</ref> summarizes the results presented by <cite>Kumar et al. 1994</cite> and <cite>Grama et al. 2003</cite>. From that table, it can be seen that the overall isoefficiency function for global round robin is <eqn>O(p^2 \log p)</eqn>, whereas it is <eqn>O(p^2 \log^2 p)</eqn> for random polling and <eqn>O(p^3 \log p)</eqn> for asynchronous round robin. Experimental results, however, show that ARR is more scalable than GRR, but significantly less scalable than RP: ARR performs better than GRR because the value <eqn>V(p) \in O (p^2)</eqn> in only is only a loose upper bound for ARR, while the value of <eqn>V(p) \in \Theta(p)</eqn> is a tight bound. In contrast, the experimental isoefficiency function for RP is cloe to the theoretically-derived one that appears on Table <ref>table-load-balancing-strategies</ref>.
+</text>
+
+<dataset>
+<tag>table-load-balancing-strategies</tag>
+<title>Theoretical scalability of three different load-balancing schemes</title>
+<metadata>
+ <field>Strategy</field>
+ <field width="20">Frequency of work requests <eqn>V(p)</eqn></field>
+ <field width="20">Isoefficiency function due to communication</field>
+ <field width="20">Isoefficiency function due to contention (data)</field>
+ <field width="20">Isoefficiency function due to contention (bus)</field>
+</metadata>
+<record>
+ <field>Asynchronous round robin</field>
+ <field><eqn>O(p^2)</eqn></field>
+ <field><eqn>O(p^2 \log p)</eqn></field>
+ <field><eqn>-</eqn></field>
+ <field><eqn>O(p^3 \log p)</eqn></field>
+</record>
+<record>
+ <field>Global round robin</field>
+ <field><eqn>\Theta(p)</eqn></field>
+ <field><eqn>O(p \log p)</eqn></field>
+ <field><eqn>O(p^2 \log p)</eqn></field>
+ <field><eqn>O(p^2 \log p)</eqn></field>
+</record>
+<record>
+ <field>Random polling</field>
+ <field><eqn>O(p \log p)</eqn></field>
+ <field><eqn>O(p \log^2 p)</eqn></field>
+ <field><eqn>-</eqn></field>
+ <field><eqn>O(p^2 \log^2 p)</eqn></field>
+</record>
+</dataset>
+
+</document>
+
+
 
 <document>
 <tag>graph-np-backtracking-asynchronous</tag>
 <title>Asynchronous backtracking</title>
 
+<cite>Shoham and Leyton-Brown 2008</cite>
+</document>
+
 </document>
 
 
-</document>
 
 <document>
 <tag>graph-np-branch-and-bound</tag>
-<title>Branch and bound</title>
+<title>Branch and bound: Solving discrete optimization problems</title>
+
+
+
+<document>
+<tag>graph-np-branch-and-bound-parallel</tag>
+<title>Parallel branch and bound</title>
+
+<text>
+Parallel formulations of branch-and-bound algorithms are similar to those of backtracking algorithms, with one key modification: all processors should be informed of the best solution found so far. It should be noted that. when a processor's current best solution is not up-to-date, the efficiency of the search is affected but not its correctness.
+</text>
+
+<text>
+In shared-memory multiprocessors, such as current multi-core microprocessors, the best solution can be kept in the global memory (at the cost of some contention overhead). On message-passing multicomputers, however, it has to be broadcast to all processors every time it changes. Since just the value of the best solution must be communicated and it will not change too frequently, the communication overhead introduced by communicating this value is typically small. The performance and scalability of parallel branch-and-bound will be similar to that of parallel backtracking.
+</text>
 
 </document>
 
+</document>
+
+
+
+<document>
+<tag>graph-np-notes</tag>
+<title>Bibliographic notes</title>
+
+
+<cite>Skiena 2008</cite> catalogs many graph problems and provides insightful comments on how to solve them.
+
+<cite>Grama et al. 2003</cite> include a whole chapter on parallel search algorithms for solving discrete optimization problems.
+
+<cite>Shoham and Leyton-Brown 2008</cite> discuss asynchronous backtracking as...
+
+
+</document>
 
 </document>
 

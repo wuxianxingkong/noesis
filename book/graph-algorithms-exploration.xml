@@ -457,10 +457,17 @@ vertex, color it opposite of its parent, since the same color would cause a clas
 <title>Best-first search</title>
 
 <text>
-Best-first search... heuristics
+Best-first search algorithms use heuristics to direct the search to portions of the search space that are presumably more likely to yield solutions. 
+
 
 Judea Pearl described best-first search as estimating the promise of node n by a <q>heuristic evaluation function f(n) which, in general, may depend on the description of n, the description of the goal, the information gathered by the search up to that point, and most important, on any extra knowledge about the problem domain</q> <cite>Pearl 1984</cite>.
 
+Typically, smaller heuristic values are assigned to more promising nodes. 
+
+"BFS maintains two lists: open and closed. At the beginning, the initial node is placed on the open list. 
+- Open list: This list is sorted according to a heuristic evaluation function that measures how likely each node is to yield a solution. 
+
+"In each step of the search, the most promising node from the open list is removed. If this node is a goal node, then the algorithm terminates. Otherwise, the node is expanded. The expanded node is placed on the closed list. The successors of the newly expanded node are placed on the open list under one of the following circumstances: (1) the successor is not already on the open or closed lists, and (2) the successor is already on the open or closed list but has a lower heuristic value. In the second case, the node with the higher heuristic value is deleted.
 </text>
 
 <text>
@@ -472,6 +479,16 @@ HISTORY: In 1964 Nils Nilsson invented a heuristic based approach to increase th
 Often used for path finding...
 
 ++ Admissible heuristics...
+
+<cite>Gramma et al. 2003</cite>: "For some problems, it is possible to estimate the cost to reach the goal state from an intermediate state. This cost is called a heuristic estimate. Let h(x) denote the heuristic estimate of reaching the goal state from state x and g(x) denote the cost of reaching state x from initial state s along the current path. The function h is called a heuristic function. If h(x) is a lower bound on the cost of reaching the goal state from state x for all x, then h is called admissible. We define function f(x) as the sum h(x) + g(x). If h is admissible, then f(x) is a lower bound on the cost of the path to a goal state that can be obtained by extending the current path between s and x...
+
+"The A* algorithm uses the lower bound function f(x) as a heuristic evaluation function to order the nodes in the open list. 
+- At each step, the node with the smallest l-value (that is, the best node) is removed from the open list and expanded. 
+- Its successors are inserted into the open list at the proper positions and the node itself is inserted into the closed list. 
+
+++ For an admissible heuristic function, A* finds an optimal solution at the least possible cost.
+
+Memory use (BFS vs. DFS): The main drawback of any BFS algorithm is that its memory requirement is linear in the size of the search space explored. For many problems, the size of the search space is exponential in the depth of the tree expanded. For problems with large search spaces, memory becomes a limitation.
 </text>
 
 
@@ -481,8 +498,16 @@ B* algorithm <cite>Berliner 1979</cite>
 </text>
 
 
+<cite>Gramma et al. 2003</cite>: Iterative deepening A* (IDA*) is a cost-bounded variant of the standard A* algorithm that expands nodes depth-first. When the heusristic value f(x) of the node to be expanded is greater than the cost bound, then IDA* backtracks. If a solution is not found within the current cost bound, then IDA* repeats the entire depth-first search using a higher cost bound. In the first iteration, the cost bound is set to the heuristic value of the initial state s: f(s) = h(s) since g(s) is zero. In each subsequent iteration, the cost bound is increased. The new cost bound is equal to the minimum heuristic value of the nodes that were generated but could not be expanded in the previous iteration. IDA* is also guaranteed to find an optimal solution if the heuristic function is admissible. It may appear that IDA* performs a lot of redundant work across iterations. However, for many problems the redundant work performed by IDA* is minimal, because most of the work is done deep in the search space.
+
+
+
+
 <text>
 ++ Parallel best-first search @ Section 11.5 <cite>Grama et al. 2003</cite>
+
+
+
 </text>
 
 </document>

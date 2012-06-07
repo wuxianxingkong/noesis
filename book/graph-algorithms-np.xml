@@ -526,7 +526,13 @@ The critical issue in parallel depth-first search algorithms is the distribution
 2) "In dynamic load balancing, when a processor runs out of work, it gets more work from another processor that has work." Each processor performs DFS on a disjoint part of the search space. When a processor finishes searching its part of the search space, it requests an unsearched part from other processors. This takes the form of work request and response messages in message passing architectures, and locking and extracting work in shared address space machines. 
 ...  In the beginning, the entire search space is assigned to one processor, and other processors are assigned null search spaces (that is, empty stacks). The search space is distributed among the processors as they request work.
 ... when active, a processor does a fixed amount of work (expands a fixed number of nodes) and then checks for pending work requests. When a work request is received, the processor partitions its work into two parts and sends one part to the requesting processor. When a processor has exhausted its own search space, it becomes idle. 
-... This process continues until a solution is found or until the entire space has been searched. If a solution is found, a message is broadcast to all processors to stop searching. A termination detection algorithm is used to detect whether all processors have become idle without finding a solution, which incurs in additional communication overhead (e.g. Dijkstra's token termination detection or tree-based termination detection).
+... This process continues until a solution is found or until the entire space has been searched. If a solution is found, a message is broadcast to all processors to stop searching. A termination detection algorithm is used to detect whether all processors have become idle without finding a solution, which incurs in additional communication overhead (e.g. Dijkstra's ring termination detection algorithm [DSG83] and more efficient tree-based termination detection techniques [RICN88][DM93]).
+[DSG83] E. W. Dijkstra, W. H. Seijen, and A. J. M. V. Gasteren. Derivation of a termination detection algorithm for a distributed computation. Information Processing Letters, 16(5):217–219, 1983.
+[RICN88] K. Rokusawa, N. Ichiyoshi, T. Chikayama, and H. Nakashima. An efficient termination detection and abortion algorithm for distributed processing systems. In Proceedings of 1988 International Conference on Parallel Processing: Vol. I, 18–22, 1988.
+[DM93] S. Dutt and N. R. Mahapatra. Parallel A* algorithms and their performance on hypercube multiprocessors. In Proceedings of the Seventh International Parallel Processing Symposium, 797–803, 1993.
+
+
+
 
 ... results in communication overhead for work requests and work transfers, but reduces load imbalance among processors. 
 </item>
@@ -581,7 +587,11 @@ Strategies for load balancing <cite>Grama et al. 2003</cite>:
 </list>
 
 <text>
-<cite>Kumar et al. 1994</cite> and <cite>Grama et al. 2003</cite> provide a detailed analysis of the performance and scalability of parallel seach algorithms using these load balancing schemes. Communication overhead due to work requests and work transfers is expected to be higher in ARR than in GRR or RP, albeit GRR introduces overhead due to contention for the shared variable (which assymptotically dominates the isoefficiency function due to communication). When communication is performed on a bus network, such as those typically employed in Ethernet local-area networks, access to the common bus introduces an additional contention overhead that is not present in hypercube interconnection networks. Table <ref>table-load-balancing-strategies</ref> summarizes the results presented by <cite>Kumar et al. 1994</cite> and <cite>Grama et al. 2003</cite>. From that table, it can be seen that the overall isoefficiency function for global round robin is <eqn>O(p^2 \log p)</eqn>, whereas it is <eqn>O(p^2 \log^2 p)</eqn> for random polling and <eqn>O(p^3 \log p)</eqn> for asynchronous round robin. Experimental results, however, show that ARR is more scalable than GRR, but significantly less scalable than RP: ARR performs better than GRR because the value <eqn>V(p) \in O (p^2)</eqn> in only is only a loose upper bound for ARR, while the value of <eqn>V(p) \in \Theta(p)</eqn> is a tight bound. In contrast, the experimental isoefficiency function for RP is cloe to the theoretically-derived one that appears on Table <ref>table-load-balancing-strategies</ref>.
+<cite>Kumar et al. 1994</cite> and <cite>Grama et al. 2003</cite> provide a detailed analysis of the performance and scalability of parallel seach algorithms using these load balancing schemes. Communication overhead due to work requests and work transfers is expected to be higher in ARR than in GRR or RP, albeit GRR introduces overhead due to contention for the shared variable (which assymptotically dominates the isoefficiency function due to communication). When communication is performed on a bus network, such as those typically employed in Ethernet local-area networks, access to the common bus introduces an additional contention overhead that is not present in hypercube interconnection networks. Table <ref>table-load-balancing-strategies</ref> summarizes the results presented by <cite>Kumar et al. 1994</cite> and <cite>Grama et al. 2003</cite>. For shared bus networks of workstations, it can be seen from Table <ref>table-load-balancing-strategies</ref> that the overall isoefficiency function for global round robin is <eqn>O(p^2 \log p)</eqn>, whereas it is <eqn>O(p^2 \log^2 p)</eqn> for random polling and <eqn>O(p^3 \log p)</eqn> for asynchronous round robin.
+</text>
+
+<text>
+Experimental results on a MIMD parallel computer with a hypercube interconnection network, however, show that ARR is more scalable than GRR, yet significantly less scalable than RP (as expected once we discard the influence of contention on a shared bus). ARR performs better than GRR because the value <eqn>V(p) \in O (p^2)</eqn> in only is only a loose upper bound for ARR, while the value of <eqn>V(p) \in \Theta(p)</eqn> is a tight bound. The experimental isoefficiency function for RP is found to be close to the theoretically-derived one that appears on Table <ref>table-load-balancing-strategies</ref>.
 </text>
 
 <dataset>
@@ -617,6 +627,17 @@ Strategies for load balancing <cite>Grama et al. 2003</cite>:
 </record>
 </dataset>
 
+
+<text>
+++ Speedup anomalies in parallel search algorithms @ Section 11.6 <cite>Grama et al. 2003</cite>
+
+In parallel search algorithms, speedup can vary greatly from one execution to another because the portions of the search space examined by various processors are determined dynamically and can differ for each execution. The parallel execution might arrive at a solution after searching fewer nodes than its sequential counterpart, which, when communication overhead is not too large, results in a superlinear speedup. But it could also generate more nodes than the sequential algorithm, hence yielding a sublinear speedup.
+
+If the speedup were shown to be superlinear on average, then it might make sense to run the parallel search algorithm even on a sequential processor, just by emulating a parallel processor with the help of time-slicing. In fact, parallel backtracking results in superlinear speedup over sequential backtracking provided that the solutions are not distributed uniformly in the search space and that no information about solution density in various regions of the search space is available.
+[RK93] V. N. Rao and V. Kumar. On the efficicency of parallel backtracking. IEEE Transactions on Parallel and Distributed Systems, 4(4):427–437, April 1993. available as a technical report TR 90-55, Computer Science Department, University of Minnesota.
+</text>
+
+
 </document>
 
 
@@ -638,16 +659,97 @@ Strategies for load balancing <cite>Grama et al. 2003</cite>:
 
 
 
+NOTE: Alpha-beta search is essentially a depth-first branch-and-bound search technique that finds an optimal solution tree of an AND/OR graph 
+[KK83] V. Kumar and L. N. Kanal. A general branch-and-bound formulation for understanding and synthesizing and/or tree search procedures. Artificial Intelligence, 21:179–198, 1983.
+
+
+
 <document>
 <tag>graph-np-branch-and-bound-parallel</tag>
 <title>Parallel branch and bound</title>
 
 <text>
-Parallel formulations of branch-and-bound algorithms are similar to those of backtracking algorithms, with one key modification: all processors should be informed of the best solution found so far. It should be noted that. when a processor's current best solution is not up-to-date, the efficiency of the search is affected but not its correctness.
+BEST VALUE
+
+++ Parallel formulations of depth-first branch-and-bound search @ Section 11.4.6 <cite>Grama et al. 2003</cite>
+</text>
+
+<text>
+Parallel formulations of branch-and-bound algorithms are similar to those of backtracking algorithms, with one key modification: all processors should be informed of the best solution found so far. It should be noted that, when a processor's current best solution is not up-to-date, the efficiency of the search is affected but not its correctness.
 </text>
 
 <text>
 In shared-memory multiprocessors, such as current multi-core microprocessors, the best solution can be kept in the global memory (at the cost of some contention overhead). On message-passing multicomputers, however, it has to be broadcast to all processors every time it changes. Since just the value of the best solution must be communicated and it will not change too frequently, the communication overhead introduced by communicating this value is typically small. The performance and scalability of parallel branch-and-bound will be similar to that of parallel backtracking.
+</text>
+
+
+<text>
+OPEN LIST
+
+++ Parallel best-first search @ Section 11.5 <cite>Grama et al. 2003</cite>
+
+In a parallel implementation of best-first search, different processors can concurrently expand different nodes from the open list...
+</text>
+
+<text>
+Centralized open list: 
+Each processor is assigned one of the current best nodes from a single global open list.  Since more than one node is expanded at a time, this strategy may expand nodes that would not be expanded by a sequential algorithm. Two problems:
+
+ALGORITHM
+loop
+  lock the open list
+  place generated nodes on the list
+  pick the best node on the list
+  unlock the open list
+  expand the node
+
+1) The termination criterion of sequential BFS fails for parallel BFS: While p nodes from the open list are being expanded, it is possible that one of the nodes mught look as a solution, even though it is not the best solution (the remaining p - 1 nodes may lead to search spaces containing better solutions). A solution with cost c is not guaranteed to correspond to the best solution until the cost of nodes being searched at other processors is known to be at least c.
+
+2) Since the open list is frequently accessed (for each node expansion, by all processors), it introduces a contention overhead that has a severe impact on performance and limits the potential speedup to <eqn>(t_{access} + t_{expansion})/t_{access}</eqn>, where <eqn>t_{expansion}</eqn> is the average time needed to expand a single node and <eqn>t_{access}</eqn> is the average time needed to access the open list.
+</text>
+
+
+<text>
+Distributed open list:
+
+Local open lists at each processor avoid the contention due to a centralized open list
+
+
+ALGORITHM
++ Initially, the search space is statically divided among the processors by expanding some nodes and distributing them to the local open lists of various processors. All the processors then select and expand nodes simultaneously. 
+
+Without communication, some processors might explore parts of the search space that would not be explored by the sequential algorithm (high search overhead factor and poor speedup). 
+
+Therefore, processors must communicate among themselves to minimize unnecessary search. 
+
+Communication-computation trade-off: "decreasing communication between distributed open lists increases search overhead factor, and decreasing search overhead factor with increased communication increases communication overhead"
+
+
+COMMUNICATION STRATEGIES
+A communication strategy allows state-space nodes to be exchanged between open lists on different processors. The objective of a communication strategy is to ensure that nodes with good f-values are distributed evenly among processors.
+
+
+1) Random communication strategy: each processor periodically sends some of its best nodes to the open list of a randomly selected processor. If nodes are transferred frequently, the search overhead factor can be made very small; otherwise it can become quite large. 
+
+2) Ring communication strategy: the processors are mapped in a virtual ring, where each processor periodically exchanges some of its best nodes with the open lists of its neighbors in the ring. Unless the search space is highly uniform, the search overhead factor of this scheme is very high (it takes a long time to distribute good nodes from one processor to all other processors).
+
+3) Blackboard communication strategy: a shared blackboard through which nodes are switched among processors. After selecting the best node from its local open list, a processor expands the node only if its f-value is within a tolerable limit of the best node on the blackboard. If the selected node is much better than the best node on the blackboard, the processor sends some of its best nodes to the blackboard before expanding the current node. If the selected node is much worse than the best node on the blackboard, the processor retrieves some good nodes from the blackboard and reselects a node for expansion. 
+
+4) Hashing: A hash function takes a node as input and returns a processor label. When a node is generated, it is sent to the processor whose label is returned by the hash function for that node. Upon receiving the node, a processor checks whether it already exists in the local open or closed lists. If not, the node is inserted in the open list. If the node already exists, and if the new node has a better cost associated with it, then the previous version of the node is replaced by the new node on the open list. For a random hash function, the load-balancing property of this distribution strategy is similar to the random-distribution technique discussed above. This result follows from the fact that each processor is equally likely to be assigned a part of the search space that would also be explored by a sequential formulation. This method ensures an even distribution of nodes with good heuristic values among all the processors. However, hashing techniques degrade performance because each node generation results in communication 
+(Problem 11.11: For the parallel formulation in Problem 11.10, assume that the number of nodes expanded by the sequential and parallel formulations are the same. Analyze the communication overhead of this formulation for a message passing architecture. Is the formulation scalable? If so, what is the isoefficiency function? If not, for what interconnection network would the formulation be scalable? Hint: Note that a fully random hash function corresponds to an all-to-all personalized communication operation, which is bandwidth sensitive.).
+
+
+The best choice of communication strategy depends on whether the search space is a tree or a graph, since searching a graph incurs the additional overhead of checking for duplicate nodes on the closed list. 
+
+- Trees (1-3)
+
+Random and ring communication strategies can be implemented on message passing as well as shared address space machines and the communication cost determines the best node transfer frequency. If the communication cost is low, it is best to communicate after every node expansion.
+
+The blackboard strategy is suited only to shared-address-space computers, because the value of the best node in the blackboard has to be checked after each node expansion.
+
+- Graphs (4)
+
+While searching graphs, an algorithm must check for node replication. One way to check for replication is to map each node to a specific processor (hashing). Subsequently, whenever a node is generated, it is mapped to the same processor, which checks for replication locally. 
 </text>
 
 </document>
@@ -666,6 +768,137 @@ In shared-memory multiprocessors, such as current multi-core microprocessors, th
 <cite>Grama et al. 2003</cite> include a whole chapter on parallel search algorithms for solving discrete optimization problems.
 
 <cite>Shoham and Leyton-Brown 2008</cite> discuss asynchronous backtracking as...
+
+
+Parallel algorithms:
+
+Backtracking
+[FM87] R. A. Finkel and U. Manber. DIB—a distributed implementation of backtracking. ACM Transactions on Programming Languages and Systems, 9(2):235–256, April 1987.
+[KR87b] V. Kumar and V. N. Rao. Parallel depth-first search, part II: Analysis. International Journal of Parallel Programming, 16(6):501–519, 1987.
+
+Alpha-beta pruning
+[FF82] R. A. Finkel and J. P. Fishburn. Parallelism in alpha-beta search. Artificial Intelligence, 19:89–106, 1982.
+[MC82] T. A. Marsland and M. S. Campbell. Parallel search of strongly ordered game trees. Computing Surveys, 14:533–551, 1982.
+[MP85] T. A. Marsland and F. Popowich. Parallel game tree search. IEEE Transactions on Pattern Analysis and Machine Intelligence, PAMI-7(4):442–452, July 1985.
+[FK88] C. Ferguson and R. Korf. Distributed tree search and its application to alpha-beta pruning. In Proceedings of the 1988 National Conference on Artificial Intelligence, 1988.
+[HB88] M. M. Huntbach and F. W. Burton. Alpha-beta search on virtual tree machines. Information Science, 44:3–17, 1988.
+e.g. chess 
+  (Deep Thought)
+  [Hsu90] F.-H. Hsu. Large scale parallelization of alpha-beta search: An algorithmic and architectural study with computer chess. Technical report, Carnegie Mellon University, Pittsburgh, PA, 1990. Ph.D. Thesis.
+  (Deep Blue: a combination of dedicated hardware for generating and evaluating board positions and parallel search of the game tree using an IBM SP2 to beat the current world chess champion, Gary Kasparov)
+  [HCH95] F.-H. Hsu, M. S. Campbell, and A. J. Hoane. Deep Blue system overview. In Proceedings of the 1995 International Conference on Supercomputing, Barcelona, Spain, 240–244, 1995.
+  [HG97] S. Hamilton and L. Garber. Deep Blue's hardware-software synergy. IEEE Computer, 30(10):29–35, October 1997.
+  (distributed algorithm)
+  [FMM94] R. Feldmann, P. Mysliwietz, and B. Monien. Studying overheads in massively parallel min/max-tree evaluation. In Proc. of the 6th ACM Symposium on Parallel Algorithms and Architectures, 94–103, 1994.
+
+
+Load-balancing
+[KGR94] V. Kumar, A. Grama, and V. N. Rao. Scalable load balancing techniques for parallel computers. Journal of Parallel and Distributed Computing, 22(1):60– 79, July 1994.
+
+1) Receiver-initiated schemes: a processor requests work when it goes idle
+[FM87] R. A. Finkel and U. Manber. DIB—a distributed implementation of backtracking. ACM Transactions on Programming Languages and Systems, 9(2):235–256, April 1987.
+
+1.1) Stack-splitting
+[KR87b] V. Kumar and V. N. Rao. Parallel depth-first search, part II: Analysis. International Journal of Parallel Programming, 16(6):501–519, 1987.
+
+1.2) Node-splitting (a single node is given out)
+[FK88] C. Ferguson and R. Korf. Distributed tree search and its application to alpha-beta pruning. In Proceedings of the 1988 National Conference on Artificial Intelligence, 1988.
+
+2) Sender-initiated schemes: a processor that has work gives away part of its work to another processor
+[KN91] K. Kimura and I. Nobuyuki. Probabilistic analysis of the efficiency of the dynamic load distribution. In Sixth Distributed Memory Computing Conference Proceedings, 1991.
+
+
+Complete list of references provided by <cite>Grama et al. 2003</cite>
+
+
+
+Branch and bound
+[LW66] E. L. Lawler and D. Woods. Branch-and-bound methods: A survey. Operations Research, 14, 1966.
+[AJM88] D. P. Agrawal, V. K. Janakiram, and R. Mehrotra. A randomized parallel branch-and-bound algorithm. In Proceedings of the 1988 International Conference on Parallel Processing, 1988.
+[WY85] B. W. Wah and C. F. Yu. Stochastic modeling of branch-and-bound algorithms with best-first search. IEEE Transactions on Software Engineering, SE-11, September 1985.
+
+A*
+[KZ88] R. M. Karp and Y. Zhang. A randomized parallel branch-and-bound procedure. In Proceedings of the ACM Annual Symposium on Theory of Computing, 290–300, 1988.
+
+Branch-and-cut
+"When Padberg and Rinaldi introduced the branch-and-cut algorithm in 1987, they used it to solve a 532 city TSP, which was the largest TSP solved optimally at that time. Subsequent improvements to the method led to the solution of a a 2392 city problem [PR91]."
+[PR91] M. Padberg and G. Rinaldi. A branch-and-cut algorithm for the resolution of large-scale symmetric traveling salesman problems. SIAM Review, 33:60– 100, 1991.
+"Heuristics have several important implications for exploiting parallelism. Strong heuristics narrow the state space and thus reduce the concurrency available in the search space. Use of powerful heuristics poses other computational challenges for parallel processing as well. For example, in branch-and-cut methods, a cut generated at a certain state may be required by other states. Therefore, in addition to balancing load, the parallel branch-and-cut formulation must also partition cuts among processors so that processors working in certain LP domains have access to the desired cuts 
+e.g. 
+[Eck97] J. Eckstein. Distributed versus centralized storage and control for parallel branch and bound: Mixed integer programming on the cm-5. Computational Optimization and Applications, 7(2):199–220, 1997.
+
+
+- centralized strategy
+[Moh83] J. Mohan. Experience with two parallel programs solving the traveling salesman problem. In Proceedings of the 1983 International Conference on Parallel Processing, 191–193, 1983.
+[HD87] S.-R. Huang and L. S. Davis. A tight upper bound for the speedup of parallel best-first branch-and-bound algorithms. Technical report, Center for Automation Research, University of Maryland, College Park, MD, 1987.
+
+- random communication
+[Vor87b] O. Vornberger. Load balancing in a network of transputers. In Proceedings of the Second International Workshop on Distributed Parallel Algorithms, 1987.
+[Dal87] W. J. Dally. A VLSI Architecture for Concurrent Data Structures. Kluwer Academic Publishers, Boston, MA, 1987.
+[KRR88] V. Kumar, K. Ramesh, and V. N. Rao. Parallel best-first search of state-space graphs: A summary of results. In Proceedings of the 1988 National Conference on Artificial Intelligence, 122–126, 1988.
+
+- ring communication
+[Vor86] O. Vornberger. Implementing branch-and-bound in a ring of processors. Technical Report 29, University of Paderborn, Germany, 1986.
+[WM84] B. W. Wah and Y. W. E. Ma. MANIP—a multicomputer architecture for solving combinatorial extremum-search problems. IEEE Transactions on Computers, C–33, May 1984.
+
+- blackboard communication
+[KRR88] V. Kumar, K. Ramesh, and V. N. Rao. Parallel best-first search of state-space graphs: A summary of results. In Proceedings of the 1988 National Conference on Artificial Intelligence, 122–126, 1988.
+
+- hashing
+[MS90] G. Manzini and M. Somalvico. Probabilistic performance analysis of heuristic search using parallel hash tables. In Proceedings of the International Symposium on Artificial Intelligence and Mathematics, 1990.
+[EHMN90] M. Evett, J. Hendler, A. Mahanti, and D. Nau. PRA*: A memory-limited heuristic search procedure for the connection machine. In Proceedings of the Third Symposium on the Frontiers of Massively Parallel Computation, 145– 149, 1990.
+
+
+evaluation of different strategies
+[KRR88] V. Kumar, K. Ramesh, and V. N. Rao. Parallel best-first search of state-space graphs: A summary of results. In Proceedings of the 1988 National Conference on Artificial Intelligence, 122–126, 1988.
+[DM93] S. Dutt and N. R. Mahapatra. Parallel A* algorithms and their performance on hypercube multiprocessors. In Proceedings of the Seventh International Parallel Processing Symposium, 797–803, 1993.
+[MD93] N. R. Mahapatra and S. Dutt. Scalable duplicate pruning strategies for parallel A* graph search. In Proceedings of the Fifth IEEE Symposium on Parallel and Distributed Processing, 1993.
+
+
+
+Speedup anomalies
+
+[LS84] T. H. Lai and S. Sahni. Anomalies in parallel branch and bound algorithms. Communications of the ACM, 594–602, 1984.
+[LS86] T. H. Lai and A. Sprague. A note on anomalies in parallel branch-and-bound algorithms with one-to-one bounding functions. Information Processing Letters, 23:119–122, October 1986.
+[MVS86] B. Monien, O. Vornberger, and E. Spekenmeyer. Superlinear speedup for parallel backtracking. Technical Report 30, University of Paderborn, Germany, 1986.
+= early work
+
+[LW86] G.-J. Li and B. W. Wah. Coping with anomalies in parallel branch-and-bound algorithms. IEEE Transactions on Computers, C-35, June 1986.
+= an analytical model and derive characteristics of the lower-bound function for which anomalies are guaranteed not to occur as the number of processors is increased
+
+[QD86] M. J. Quinn and N. Deo. An upper bound for the speedup of parallel branch-and-bound algorithms. BIT, 26(1), March 1986.
+= an upper bound on the speedup attainable by any parallel formulation of the branch-and-bound algorithm using the best-bound search strategy.
+
+[RK88b] V. N. Rao and V. Kumar. Superlinear speedup in state-space search. In Proceedings of the 1988 Foundation of Software Technology and Theoretical Computer Science, number 338, 161–174. Springer-Verlag Series Lecture Notes in Computer Science, 1988.
+[RK93] V. N. Rao and V. Kumar. On the efficicency of parallel backtracking. IEEE Transactions on Parallel and Distributed Systems, 4(4):427–437, April 1993. available as a technical report TR 90-55, Computer Science Department, University of Minnesota.
+= average speedup in parallel DFS for two separate models with and without heuristic ordering information
+
+
+Parallel search implementation
+MANIP
+  [WLY84] B. W. Wah, G.-J. Li, and C. F. Yu. The status of MANIP—a multicomputer architecture for solving combinatorial extremum-search problems. In Proceedings of 11th Annual International Symposium on Computer Architecture, 56–63, 1984.
+DIB
+ [FM87] R. A. Finkel and U. Manber. DIB—a distributed implementation of backtracking. ACM Transactions on Programming Languages and Systems, 9(2):235–256, April 1987.
+Chare-Kernel
+ [SK89] W. Shu and L. V. Kale. A dynamic scheduling strategy for the chare-kernel system. In Proceedings of Supercomputing Conference, 389–398, 1989.
+PICOS
+ [RDK89] C. Renolet, M. Diamond, and J. Kimbel. Analytical and heuristic modeling of distributed algorithms. Technical Report E3646, FMC Corporation, Advanced Systems Center, Minneapolis, MN, 1989.
+
+
+
+The importance of heuristics: 
+- In best-first search techniques, heuristics focus search by lowering the effective branching factor. 
+- In branch-and-bound methods, heuristics provide better ounds, and thus serve to prune the search space.
+
+Trade-off: Better heuristics result in smaller search spaces but are also more expensive to compute.
+
+The average time complexity of heuristic search algorithms for many problems is shown to be polynomial...
+[Smi84] D. R. Smith. Random trees and the analysis of branch and bound procedures. Journal of the ACM, 31(1), 1984.
+[Wil86] H. S. Wilf. Algorithms and Complexity. Prentice-Hall, NJ, 1986.
+[Rao90] V. N. Rao. Parallel Processing of Heuristic Search. Ph.D. Thesis, University of Texas, Austin, TX, 1990.
+
+A general parallel framework for computing heuristic solutions to problems is presented by Pramanick and Kuhl [PK95].
+[PK95] I. Pramanick and J. G. Kuhl. An inherently parallel method for heuristic problem-solving: Part I – general framework. IEEE Transactions on Parallel and Distributed Systems, 6(10), October 1995.
 
 
 </document>

@@ -503,12 +503,6 @@ B* algorithm <cite>Berliner 1979</cite>
 
 
 
-<text>
-++ Parallel best-first search @ Section 11.5 <cite>Grama et al. 2003</cite>
-
-
-
-</text>
 
 </document>
 
@@ -605,6 +599,12 @@ Atallah and Kosaraju [AK84] proposed a number of algorithms for a mesh-connected
 Tarjan and Vishkin [TV85] presented algorithms for computing the biconnected components of a graph. Their CRCW PRAM formulation runs in time Q(log n) by using Q(m+n) processors, and their CREW PRAM formulation runs in time Q(log^2 n) by using Q(n^2/log^2 n) processors.
 
   [TV85] R. E. Tarjan and U. Vishkin. An efficient parallel biconnectivity algorithm. SIAM Journal on Computing, 14(4):862–874, November 1985.
+
+
+
+<!-- Heuristics -->
+
+[Pea84] J. Pearl. Heuristics—Intelligent Search Strategies for Computer Problem Solving. Addison-Wesley, Reading, MA, 1984.
 
 
 </document>

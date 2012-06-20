@@ -60,12 +60,24 @@ However, the rank of the pages providing incoming links is what determines the r
 <text>
 ++ Facebook has its own algorithm, EdgeRank, which (in conjunction with September’s addition, GraphRank) determines which items appear at the top of an individual's news feed. EdgeRank is based on many variables, including who Facebook thinks are a user's closest friends and how many people have interacted with a piece of content.
 
+++ The social network's news feed sorting filter is called EdgeRank. It helps Facebook keep users updated on friends' activity without overwhelming them with every single post, "like," and comment spilling out of their social graph.
+
+In 2010, *the company first provided public details on how it curates users' news feeds... The details are few, but what's known is that the EdgeRank formula is based on how Facebook judges the closeness of two people (or a person and a brand), how valuable an activity is (sharing a photo is better than clicking "like," for instance), and how long ago it took place. Precisely how these factors are measured is not revealed, and, like Google, Facebook is constantly making tweaks.
+
 @ FT Tech Hub:
 The unexpected impact of Facebook’s <q>seamless sharing</q> on newspaper sites.
 November 18, 2011 4:52 pm by Tim Bradshaw.
 
  <url>http://blogs.ft.com/fttechhub/2011/11/unexpected-impact-facebook-newspaper-sites</url>
  <url>http://econsultancy.com/uk/blog/7885-edgerank-the-most-important-algorithm-you-ve-never-heard-of</url>
+
+
+ "Climbing to the top of Google's search results—by tweaking the structure and contents of a Web page—is the basis for the multibillion dollar industry known as search-engine optimization. It's an industry that has boomed over the last decade because businesses of all sizes can gain and lose a fortune depending on where their Web pages rank. Scammers also came in droves, seeking to trick Google's algorithms into showing pages hawking their unsavory wares when searchers enter common queries. 
+
+ "The rise of Facebook as a destination of businesses as well as people poses a new problem for tech-savvy marketers. Many companies have attracted thousands or even millions of "fans" to their Facebook page, but because Facebook filters the posts that people see in their news feed—using its own mysterious algorithm—those companies aren't reaching many of their Facebook fans with updates. 
+
+ http://www.technologyreview.com/news/428230/marketers-try-to-master-facebooks-feed
+
 </text>
 
 <text>

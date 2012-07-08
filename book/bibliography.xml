@@ -77,7 +77,7 @@
  <publisher>Springer</publisher>
  <year>2010</year>
  <isbn>1441960449</isbn>
- <file>[books]/algorithms/graphs/1441960449 Managing and Mining Graph Data.2010.pdf</file>
+ <file>[books]/networks/1441960449 Managing and Mining Graph Data.2010.pdf</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -90,7 +90,7 @@
  <publisher>Springer</publisher>
  <year>2011</year>
  <isbn>1441984615</isbn>
- <file>[books]/algorithms/graphs/1441984615 Social Network Data Analytics.2011.pdf</file>
+ <file>[books]/networks/1441984615 Social Network Data Analytics.2011.pdf</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -166,7 +166,7 @@
  <publisher>Prentice Hall</publisher>
  <year>1993</year>
  <isbn>013617549X</isbn>
- <file>[books]/algorithms/graphs/013617549X [Ahuja] Network Flows.1993.zip</file>
+ <file>[books]/networks/013617549X [Ahuja] Network Flows.1993.zip</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -318,7 +318,7 @@
  <publisher>Springer</publisher>
  <year>2005</year>
  <isbn>0387255915</isbn>
- <file>[books]/algorithms/graphs/0387255915 [Avis, Hertz &amp; Marcotte] Graph Theory and Combinatorial Optimization.pdf</file>
+ <file>[books]/networks/0387255915 [Avis, Hertz &amp; Marcotte] Graph Theory and Combinatorial Optimization.pdf</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -392,8 +392,8 @@
  <publisher>Plume</publisher>
  <year>2003</year>
  <isbn>0452284392</isbn>
- <file>[books]/algorithms/graphs/9780786746965 [Albert-Laszlo Barabasi] Linked.free.epub</file>
- <file>[books]/algorithms/graphs/9780786746965 [Albert-Laszlo Barabasi] Linked.nook.epub</file>
+ <file>[books]/networks/9780786746965 [Albert-Laszlo Barabasi] Linked.free.epub</file>
+ <file>[books]/networks/9780786746965 [Albert-Laszlo Barabasi] Linked.nook.epub</file>
  <comment>
   <text>One of the best-known divulgative books on basic network research.</text>
  </comment>
@@ -418,7 +418,7 @@
  <publisher>Dutton</publisher>
  <year>2010</year>
  <isbn>0525951601</isbn>
- <file>[books]/algorithms/graphs/0525951601 [Barabasi] Bursts.2010.pdf</file>
+ <file>[books]/networks/0525951601 [Barabasi] Bursts.2010.pdf</file>
  <comment>
   <text>Recent divulgative book with an odd organization: Hungarian History in even chapters, bursts as a consequence of power laws in odd chapters.</text>
  </comment>
@@ -501,7 +501,7 @@
  <publisher>Cambridge University Press</publisher>
  <year>2008</year>
  <isbn>0521879507</isbn>
- <file>[books]/algorithms/graphs/0521879507 [Barrat, Barthelemy &amp; Vespignani] Dynamical Processes on Complex Networks.pdf</file>
+ <file>[books]/networks/0521879507 [Barrat, Barthelemy &amp; Vespignani] Dynamical Processes on Complex Networks.pdf</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -527,7 +527,7 @@
  <publisher>Westview Press</publisher>
  <year>2003</year>
  <isbn>0813341213</isbn>
- <file>[books]/algorithms/graphs/0813341213 [Bar-Yam] Dynamics of Complex Systems.zip</file>
+ <file>[books]/networks/0813341213 [Bar-Yam] Dynamics of Complex Systems.zip</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -650,7 +650,7 @@
  <publisher>Athena Scientific</publisher>
  <year>1998</year>
  <isbn>1886529027</isbn>
- <file>[books]/algorithms/graphs/1886529027 [Bertsekas] Network Optimization - Continuous and Discrete Models.pdf</file>
+ <file>[books]/networks/1886529027 [Bertsekas] Network Optimization - Continuous and Discrete Models.pdf</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -812,7 +812,7 @@
  <publisher>World Scientific Publishing Company</publisher>
  <year>2009</year>
  <isbn>9812838791</isbn>
- <file>[books]/algorithms/graphs/9812838791 Handbook of Biological Networks.pdf</file>
+ <file>[books]/networks/9812838791 Handbook of Biological Networks.pdf</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -1087,7 +1087,7 @@
  <publisher>Wiley-VCH</publisher>
  <year>2003</year>
  <isbn>3527403361</isbn>
- <file>[books]/algorithms/graphs/3527403361 [Bornholdt &amp; Schuster] Handbook of Graphs And Networks.pdf</file>
+ <file>[books]/networks/3527403361 [Bornholdt &amp; Schuster] Handbook of Graphs And Networks.pdf</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -1587,7 +1587,7 @@
  <publisher>Wiley-Interscience</publisher>
  <year>2007</year>
  <isbn>0471731900</isbn>
- <file>[books]/algorithms/graphs/0471731900 Mining Graph Data.pdf</file>
+ <file>[books]/networks/0471731900 Mining Graph Data.pdf</file>
  <comment>
   <text>Good survey of some relevant topics: graph matching, graph visualization, graph generation, pattern mining, supervised &amp; unsupervised learning, applications...</text>
  </comment>
@@ -1715,7 +1715,7 @@
  <edition>1st edition</edition>
  <year>2006</year>
  <isbn>3540311513</isbn>
- <file>[books]/algorithms/graphs/3540311513 [Csermely] Weak Links.pdf</file>
+ <file>[books]/networks/3540311513 [Csermely] Weak Links.pdf</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -1730,7 +1730,7 @@
  <publisher>Cambridge University Press</publisher>
  <year>2005</year>
  <isbn>0521602629</isbn>
- <file>[books]/algorithms/graphs/0521602629 [de Nooy] Exploratory Social Network Analysis With Pajek.pdf</file>
+ <file>[books]/networks/0521602629 [de Nooy] Exploratory Social Network Analysis With Pajek.pdf</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -1770,7 +1770,7 @@
  <year>2007</year>
  <pages>35-63</pages>
  <isbn>0471731900</isbn>
- <file>[books]/algorithms/graphs/0471731900 Mining Graph Data.pdf</file>
+ <file>[books]/networks/0471731900 Mining Graph Data.pdf</file>
 </reference>
 
 
@@ -1876,7 +1876,7 @@
  <publisher>Oxford University Press</publisher>
  <year>2003</year>
  <isbn>0198515901</isbn>
- <file>[books]/algorithms/graphs/0198515901 [Dorogovtsev &amp; Mendes] Evolution of Networks.chm</file>
+ <file>[books]/networks/0198515901 [Dorogovtsev &amp; Mendes] Evolution of Networks.chm</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -1888,7 +1888,7 @@
  <publisher>Oxford University Press</publisher>
  <year>2010</year>
  <isbn>0199548935</isbn>
- <file>[books]/algorithms/graphs/0199548935 [Dogorotsev] Lectures on Complex Networks.zip</file>
+ <file>[books]/networks/0199548935 [Dogorotsev] Lectures on Complex Networks.zip</file>
 </reference>
 
 
@@ -1921,7 +1921,7 @@
  <edition>1st edition</edition>
  <year>2010</year>
  <isbn>978-0-521-19533-1</isbn>
- <file>[books]/algorithms/graphs/0521195330 [Easley &amp; Kleinberg] Networks, Crowds, and Markets.pdf</file>
+ <file>[books]/networks/0521195330 [Easley &amp; Kleinberg] Networks, Crowds, and Markets.pdf</file>
  <comment>
   <text>Excellent introductory textbook.</text>
  </comment>
@@ -2209,7 +2209,7 @@
  <publisher>Princeton University Press</publisher>
  <year>1962</year>
  <isbn>0691079625</isbn>
- <file>[books]/algorithms/graphs/0691079625 [Ford &amp; Fulkerson] Flows in Networks.1962.djvu</file>
+ <file>[books]/networks/0691079625 [Ford &amp; Fulkerson] Flows in Networks.1962.djvu</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -2308,7 +2308,7 @@
  <edition>1st edition</edition>
  <year>2004</year>
  <isbn>1594577145</isbn>
- <file>[books]/algorithms/graphs/1594577145 [Freeman] The Development of Social Network Analysis.pdf</file>
+ <file>[books]/networks/1594577145 [Freeman] The Development of Social Network Analysis.pdf</file>
  <comment>
   <text>On the historical development of social network analysis.</text>
  </comment>
@@ -2368,7 +2368,7 @@
  <year>2003</year>
  <pages>953-984</pages>
  <isbn>1584880902</isbn>
- <file>[books]/algorithms/graphs/1584880902 [Gross &amp; Yellen] Handbook of Graph Theory - Discrete Mathematics and Its Applications.pdf</file>
+ <file>[books]/networks/1584880902 [Gross &amp; Yellen] Handbook of Graph Theory - Discrete Mathematics and Its Applications.pdf</file>
 </reference>
 
 
@@ -2440,7 +2440,7 @@
  <publisher>Birkhäuser Boston</publisher>
  <year>2009</year>
  <isbn>0817647503</isbn>
- <file>[books]/algorithms/graphs/0817647503 [Ganguly, Deutsch &amp; Mukherjee] Dynamics On and Of Complex Networks.2009.pdf</file>
+ <file>[books]/networks/0817647503 [Ganguly, Deutsch &amp; Mukherjee] Dynamics On and Of Complex Networks.2009.pdf</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -2635,7 +2635,7 @@
  <publisher>Princeton University Press</publisher>
  <year>2007</year>
  <isbn>069112650X</isbn>
- <file>[books]/algorithms/graphs/069112650X [Goyal] Connections.pdf</file>
+ <file>[books]/networks/069112650X [Goyal] Connections.pdf</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -2718,7 +2718,7 @@
  <publisher>CRC Press</publisher>
  <year>2003</year>
  <isbn>1584880902</isbn>
- <file>[books]/algorithms/graphs/1584880902 [Gross &amp; Yellen] Handbook of Graph Theory - Discrete Mathematics and Its Applications.pdf</file>
+ <file>[books]/networks/1584880902 [Gross &amp; Yellen] Handbook of Graph Theory - Discrete Mathematics and Its Applications.pdf</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -2850,7 +2850,7 @@
  <publisher>Morgan Kaufmann</publisher>
  <year>2010</year>
  <isbn>0123822297</isbn>
- <file>[books]/algorithms/graphs/0123822297 Analyzing Social Media Networks with NodeXL.pdf</file>
+ <file>[books]/networks/0123822297 Analyzing Social Media Networks with NodeXL.pdf</file>
  <comment>
   <text>Qualitative description of social network analysis with many Web 2.0 case studies... using NodeXL for Excel.</text>
  </comment>
@@ -2863,8 +2863,8 @@
  <publisher>Addison Wesley</publisher>
  <year>1969</year>
  <isbn>0201410338</isbn>
- <file>[books]/algorithms/graphs/1969 [Harary] Graph Theory.pdf</file>
- <file>[books]/algorithms/graphs/1969 [Harary] Graph Theory.djvu</file>
+ <file>[books]/networks/1969 [Harary] Graph Theory.pdf</file>
+ <file>[books]/networks/1969 [Harary] Graph Theory.djvu</file>
  <comment>
   <text>Classic book on graph theory.</text>
  </comment>
@@ -3096,7 +3096,7 @@
  <edition>1st edition</edition>
  <year>2010</year>
  <isbn>978-0-691-14820-5</isbn>
- <file>[books]/algorithms/graphs/0691134405 [Jackson] Social and Economic Networks.pdf</file>
+ <file>[books]/networks/0691134405 [Jackson] Social and Economic Networks.pdf</file>
  <comment>
   <text>Good introductory textbook.</text>
  </comment>
@@ -3668,7 +3668,7 @@
  <publisher>Holt, Rinehart and Winston</publisher>
  <year>1976</year>
  <isbn>0030848660</isbn>
- <file>[books]/algorithms/graphs/0030848660 [Lawler] Combinatorial Optimization - Networks and Matroids.pdf</file>
+ <file>[books]/networks/0030848660 [Lawler] Combinatorial Optimization - Networks and Matroids.pdf</file>
 </reference>
 
 
@@ -3846,7 +3846,7 @@
  <edition>1st edition</edition>
  <year>2009</year>
  <isbn>978-0-470-33188-0</isbn>
- <file>[books]/algorithms/graphs/0470331887 [Lewis] Network Science - Theory and Applications.pdf</file>
+ <file>[books]/networks/0470331887 [Lewis] Network Science - Theory and Applications.pdf</file>
  <comment>
   <text>Good introductory textbook.</text>
  </comment>
@@ -3919,7 +3919,7 @@
  <edition>2nd edition</edition>
  <year>2011</year>
  <isbn>3642194591</isbn>
- <file>[books]/algorithms/graphs/3642194591 [Liu] Web Data Mining.pdf</file>
+ <file>[books]/networks/3642194591 [Liu] Web Data Mining.pdf</file>
 </reference>
 
 
@@ -4129,7 +4129,7 @@
  <publisher>Springer</publisher>
  <year>2010</year>
  <isbn>3709102936</isbn>
- <file>[books]/algorithms/graphs/3709102936 LNSN From Sociology to Computing in Social Networks.2010.pdf</file>
+ <file>[books]/networks/3709102936 LNSN From Sociology to Computing in Social Networks.2010.pdf</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -4224,7 +4224,7 @@
  <publisher>Princeton University Press</publisher>
  <year>2007</year>
  <isbn>0691127026</isbn>
- <file>[books]/algorithms/graphs/0691127026 [Miller &amp; Page] Complex Adaptive Systems.pdf</file>
+ <file>[books]/networks/0691127026 [Miller &amp; Page] Complex Adaptive Systems.pdf</file>
 </reference>
 
 
@@ -4539,8 +4539,8 @@
  <comment>
   <text>Excellent introductory textbook.</text>
  </comment>
- <file>[books]/algorithms/graphs/0199206651 [Newman] Networks.epub</file>
- <file>[books]/algorithms/graphs/0199206651 [Newman] Networks.mobi</file>
+ <file>[books]/networks/0199206651 [Newman] Networks.epub</file>
+ <file>[books]/networks/0199206651 [Newman] Networks.mobi</file>
 </reference>
 
 
@@ -4643,7 +4643,7 @@
  <publisher>American Mathematical Society Colloquium Publications</publisher>
  <year>1962</year>
  <isbn>0821810383</isbn>
- <file>[books]/algorithms/graphs/1962 [Ore] Theory of graphs.pdf</file>
+ <file>[books]/networks/1962 [Ore] Theory of graphs.pdf</file>
 </reference>
 
 
@@ -4737,7 +4737,7 @@
  <publisher>Cambridge University Press</publisher>
  <year>2007</year>
  <isbn>052171477X</isbn>
- <file>[books]/algorithms/graphs/052171477X [Pastor-Satorras &amp; Vespignani] Evolution and Structure of the Internet.pdf</file>
+ <file>[books]/networks/052171477X [Pastor-Satorras &amp; Vespignani] Evolution and Structure of the Internet.pdf</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -4940,7 +4940,7 @@
  <publisher>O'Reilly Media</publisher>
  <year>2011</year>
  <isbn>1449388345</isbn>
- <file>[books]/algorithms/graphs/1449388345 Mining the Social Web.2011.pdf</file>
+ <file>[books]/networks/1449388345 Mining the Social Web.2011.pdf</file>
 </reference>
 
 
@@ -5023,7 +5023,7 @@
  <edition>2nd edition</edition>
  <year>2000</year>
  <isbn>978-0-761-96339-4</isbn>
- <file>[books]/algorithms/graphs/0761963391 [Scott] Social Network Analysis - A Handbook.pdf</file>
+ <file>[books]/networks/0761963391 [Scott] Social Network Analysis - A Handbook.pdf</file>
  <comment>
   <text>Introductory textbook on social network analysis.</text>
  </comment>
@@ -5517,7 +5517,7 @@
  <publisher>Oxford University Press</publisher>
  <year>1998</year>
  <isbn>0198502516</isbn>
- <file>[books]/algorithms/graphs/1998 [Tutte] Graph Theory as I Have Known It.djvu</file>
+ <file>[books]/networks/1998 [Tutte] Graph Theory as I Have Known It.djvu</file>
 </reference>
 
 
@@ -5777,7 +5777,7 @@
  <edition>1st edition</edition>
  <year>1994</year>
  <isbn>0-521-38707-8</isbn>
- <file>[books]/algorithms/graphs/0521387078 [Wasserman] Social Network Analysis - Methods and Applications.pdf</file>
+ <file>[books]/networks/0521387078 [Wasserman] Social Network Analysis - Methods and Applications.pdf</file>
  <comment>
   <text>Classic textbook on social network analysis.</text>
  </comment>
@@ -5804,7 +5804,7 @@
  <publisher>Princeton University Press</publisher>
  <year>1999</year>
  <isbn>0691005419</isbn>
- <file>[books]/algorithms/graphs/0691005419 [Watts] Small Worlds.1999.pdf</file>
+ <file>[books]/networks/0691005419 [Watts] Small Worlds.1999.pdf</file>
 </reference>
 
 <reference id="Watts 2004">
@@ -5813,8 +5813,8 @@
  <publisher>W. W. Norton &amp; Company</publisher>
  <year>2004</year>
  <isbn>0393325423</isbn>
- <file>[books]/algorithms/graphs/9780393076127 [Duncan J. Watts] Six Degrees.free.epub</file>
- <file>[books]/algorithms/graphs/9780393076127 [Duncan J. Watts] Six Degrees.nook.epub</file>
+ <file>[books]/networks/9780393076127 [Duncan J. Watts] Six Degrees.free.epub</file>
+ <file>[books]/networks/9780393076127 [Duncan J. Watts] Six Degrees.nook.epub</file>
  <comment>
   <text>Classic divulgative book on basic network research.</text>
  </comment>
@@ -5980,7 +5980,7 @@
  <publisher>Springer</publisher>
  <year>2010</year>
  <isbn>1441965149</isbn>
- <file>[books]/algorithms/graphs/1441965149 Link Mining.2010.pdf</file>
+ <file>[books]/networks/1441965149 Link Mining.2010.pdf</file>
  <comment>
   <text>TBD</text>
  </comment>
@@ -6077,7 +6077,7 @@
  <publisher>Prentice Hall</publisher>
  <year>1999</year>
  <isbn>0133016153</isbn>
- <file>[books]/algorithms/graphs/drawing/0133016153 Graph Drawing.1999.djvu</file>
+ <file>[books]/networks/drawing/0133016153 Graph Drawing.1999.djvu</file>
 </reference>
 
 <reference id="Aigner et al. 2011">
@@ -6089,7 +6089,7 @@
  <publisher>Springer</publisher>
  <year>2011</year>
  <isbn>0857290789</isbn>
- <file>[books]/algorithms/graphs/drawing/0857290789 Visualization of Time-Oriented Data.2011.pdf</file>
+ <file>[books]/networks/drawing/0857290789 Visualization of Time-Oriented Data.2011.pdf</file>
 </reference>
 
 <reference id="Sugiyama 2002">
@@ -6099,7 +6099,7 @@
  <publisher>World Scientific Publishing</publisher>
  <year>2002</year>
  <isbn>9810248792</isbn>
- <file>[books]/algorithms/graphs/drawing/9810248792 Graph Drawing and Applications for Software and Knowledge Engineers.2002.djvu</file>
+ <file>[books]/networks/drawing/9810248792 Graph Drawing and Applications for Software and Knowledge Engineers.2002.djvu</file>
 </reference>
 
 <reference id="Diehl 2007">

@@ -6,6 +6,12 @@
 <tag>introduction-tools</tag>
 <title>Software tools for network analysis</title>
 
+
+<document>
+<tag>introduction-tools-analysis</tag>
+<title>Software packages for network analysis</title>
+
+
 <list>
 
 <item>
@@ -68,10 +74,49 @@ UCINET, by Lin Freeman, Steve Borgatti, and Martin Everett.
 NEGOPY
 </item>
 
-<item>
-GBASE
+</list>
 
-GBASE: a scalable and general graph management system
+
+
+También hay que mencionar existen productos software específicamente diseñados para analizar redes
+sociales. Estos productos utilizan grafos con atributos en vez de tablas como modelo subyacente de
+representación de los datos. Algunos ejemplos representativos de sistemas de este tipo son:
+
+• GRADAP (GRaph Definition and Analysis Package, resultado de un proyecto coordinado de varias
+universidades holandesas coordinado por Karel Sprenger y Frans Stokman).
+• UCINET (proyecto de Lin Freeman, Steve Borgatti y Martin Everett, de la Universidad de California en
+Irvine, EE.UU., y ahora comercializado por una empresa llamada
+AnalyticTech, http://www.analytictech.com/ucinet/).
+• Pajek (de la Universidad de Ljubljana en Eslovenia, http://vlado.fmf.uni-lj.si/pub/networks/pajek/).
+• NWB (Network Workbench: A Large-Scale Network Analysis, Modeling and Visualization Toolkit for
+Biomedical, Social Science and Physics Research, de la Universidad de Indiana, EE.UU.,
+http://nwb.slis.indiana.edu).
+• SNAP (Stanford Network Analysis Package, http://snap.stanford.edu/), paquete creado por Jure
+Leskovec y utilizado internamente por herramientas como NodeXL, patrocinada por Microsoft
+Research (http://nodexl.codeplex.com/)
+• BCT (Brain Connectivity Toolbox, http://www.brain-connectivity-toolbox.net), biblioteca para Matlab
+mantenida por Olaf Sporns (Universidad de Indiana, EE.UU.) y Mikail Rubinov (Universidad de
+Cambridge, UK).
+
+Aparte de los proyectos mencionados, existen otras muchas herramientas que también son de interés en el
+ámbito de este proyecto, tales como MatlabBGL (de David Gleich, Purdue University), ROLE (de Ron Breiger,
+Universidad de Arizona), SNAPS (de Noah Friedkin, Universidad de California en Santa Barbara) o STRUCTURE
+(de Ron Burt, Booth School of Business, University of Chicago). No obstante, estos sistemas no ofrecen la
+posibilidad de utilizar técnicas de minería de datos sobre estructuras de datos complejas, más allá de técnicas
+rudimentarias de análisis y visualización de datos. 
+
+</document>
+
+<document>
+<tag>introduction-tools-database</tag>
+<title>Graph databases</title>
+
+
+Graph databases
+http://www.graph-database.org/
+http://en.wikipedia.org/wiki/Graph_database
+
+- GBASE, a scalable and general graph management system
 
 Authors:	
 U. Kang	Carnegie Mellon University, Pittsburgh, PA, USA
@@ -88,7 +133,228 @@ doi 10.1145/2020408.2020580
 
 Abstract: Graphs appear in numerous applications including cyber-security, the Internet, social networks, protein networks, recommendation systems, and many more. Graphs with millions or even billions of nodes and edges are common-place. How to store such large graphs efficiently? What are the core operations/queries on those graph? How to answer the graph queries quickly? We propose GBASE, a scalable and general graph management and mining system. The key novelties lie in 1) our storage and compression scheme for a parallel setting and 2) the carefully chosen graph operations and their efficient implementation. We designed and implemented an instance of GBASE using MapReduce/Hadoop. GBASE provides a parallel indexing mechanism for graph mining operations that both saves storage space, as well as accelerates queries. We ran numerous experiments on real graphs, spanning billions of nodes and edges, and we show that our proposed GBASE is indeed fast, scalable and nimble, with significant savings in space and time.
 
-</item>
-</list>
+
+- FlockDB <url>http://en.wikipedia.org/wiki/FlockDB</url>, an open source distributed, fault-tolerant graph database based on MySQL and the Gizzard framework ( http://en.wikipedia.org/wiki/Gizzard_(Scala_framework) ) for managing Twitter-like graph data (single-hop relationships) at webscale FlockDB on GitHub.
+https://github.com/twitter/flockdb
+
+
+MARKET
+
+- GraphBase - a customizable, distributed, small-footprint, high-performance graph store with a rich tool set from FactNexus
+http://graphbase.net/
+
+Neo4j is a disk-based transactional graph database. 
+-  dual license model: open-source / commercial (GPLv3 community edition, AGPLv3 advanced and enterprise edition) graph database
+http://neo4j.org/
+http://en.wikipedia.org/wiki/Neo4j
+
+HyperGraphDB is based on key/value pair store Berkeley DB. 
+- open-source (LGPL) graph database supporting generalized hypergraphs where edges can point to other edges
+http://www.hypergraphdb.org/
+
+InfiniteGraph is a distributed system for large graph data analysis.
+- a highly scalable, distributed and cloud-enabled commercial product with flexible licensing for startups.
+http://www.infinitegraph.com/
+
+Trinity, C#
+http://research.microsoft.com/en-us/projects/trinity/
+Trinity is a graph database and graph computation platform over distributed memory cloud. At the heart of Trinity is a distributed RAM-based key-value store. As an all-in-memory key-value store, Trinity provides fast random data access. This feature naturally makes Trinity suitable for large graph processing. Trinity is a graph database from the perspective of data management. It is a parallel graph computation platform from the perspective of graph analytics. As a database, it provides features such as data indexing, concurrent query processing, concurrency control. As a computation platform, it provides vertex-based parallel graph computation on large scale graphs.
+- Memory based distributed key-value store: Provides fast random data access.
+- Graph database.
+- Graph computation platform. 
+- Flexible data model: A wide range of graph models are supported by Trinity, such as simple graph, weighted simple graph, hypergraph and extended hypergraph.
+- High Performance: suitable for low-latency, high-throughput graph applications.
+
+OrientDB - a high-performance open source document-graph database
+http://www.orientdb.org/
+http://en.wikipedia.org/wiki/OrientDB
+
+DEX[2] - A high-performance graph database from Sparsity Technologies, a technology transition company from DAMA-UPC ( (Data Management group at the Polytechnic University of Catalonia). http://en.wikipedia.org/wiki/DEX_(Graph_database)
+http://sparsity-technologies.com/dex
+
+InfoGrid - an open-source / commercial (AGPLv3, free for small entities)[3] graph database with web front end and configurable storage engines (MySQL, PostgreSQL, Files, Hadoop)
+http://infogrid.org/trac/
+
+sones GraphDB - an open-source / commercial (AGPLv3)[5] graph database and universal access layer (funded by Deutsche Telekom AG)
+http://en.wikipedia.org/wiki/Sones_GraphDB
+http://www.sones.de/static-en/
+
+
+
+
+Feature matrix, adapted and extended from http://www.graph-database.org/implementations/
+
+
+Neo4j
+Graph model	Property-Graph
+Schema	Schemaless, but schema via external API
+Query-Methods	Traverser API, Blueprints, Rexster, Gremlin, SPARQL
+Goals	Embedded graph database
+Written in	Java
+APIs	Java, JPython, JRuby
+Protocols	REST+JSON
+Persistency	Own on disc format
+Transactions	ACID
+Distribution	MySQL style master/slave replication
+License	AGPLv3 Open Source license, commercial license
+
+OrientDB
+Graph model	Property-Graph; may have vertex and edge schemata
+Schema	Schemaless and vertex/edge schema
+Query-Methods	Traverser API, Blueprints, Rexster, Gremlin, Own SQL-like Query Language
+Goals	Integrated NoSQL-solution providing a key/value-store, document-database and a graph-database.
+Written in	Java 6
+APIs	Java
+Protocols	REST+JSON
+Persistency	Own on disc format
+Transactions	ACID, MVCC
+Distribution	?
+License	Apache 2.0
+
+DEX
+Written in	Java, C++ core
+Graph-Model	Labeled and directed attributed multigraph
+Goals	High performance
+Query-Methods	Traverser API, Graph API, Blueprints, Rexster, Gremlin
+APIs	Java
+Protocols	not applicable, Java API
+Persistency	disk
+Transactions	patial ACID support (consistency and isolation)
+Distribution	-
+License	Academic/Personal/Community licence – Restricted to 1 milion nodes and 1 temporary graph.
+
+InfoGrid
+Written in	Java
+Graph-Model	dynamically typed, object-oriented graph. Supports directed and undirected edges, multigraphs, semantic models.
+Goals	REST-ful web applications
+Query-Methods	Web user interface with html, RSS, Atom, JSON output, Java native.
+APIs	Java
+Protocols	XPRISO, HTTP, REST, OpenID, RSS, Atom, JSON
+Persistency	-
+Transactions	-
+Distribution	peer-to-peer replication
+License	Open Source AGPLv3 or commercial (free for small organizations)
+
+HyperGraphDB
+Written in	Java
+Graph-Model	Object-oriented multi-relational labeled hypergraph.
+Goals	AI and the semantic web
+Query-Methods	Property lookup, Traverser API
+APIs	Java
+Protocols	-
+Persistency	-
+Transactions	-
+Distribution	-
+License	LGPL
+…
+Infinitegraph
+Written in	Java, Core C++
+Graph-Model	Labelled directed multigraph
+Goals	Building a fully-distributed and high performance graph-database.
+Query-Methods	Traverser API
+APIs	Java(, C# announced)
+Protocols	-
+Persistency	via Objectivity/DB
+Transactions	via Objectivity/DB
+Distribution	via Objectivity/DB
+License	Closed Source, commercial (free under certain conditions)
+
+sones
+Graph model	Object-oriented Property-Graph with a simple Node-Ontology
+Schema	Schemaless and vertex/edge schema
+Query-Methods	Own Graph Query Language (GQL), Traverser API
+Goals	Efficient handling of semi-structured (binary) graph data
+Written in	C#
+APIs	.NET
+Protocols	REST+JSON/XML/HTML/GEXF, WebDAV
+Persistency	Own on disc format, AmazonS3/AzurePageBlobs
+Transactions	
+Distribution	CouchDB-like P2P-Replication
+License	AGPLv3 Open Source license, commercial and SaaS/DaaS-license
+…
+
+
+</document>
+
+<document>
+<tag>introduction-tools-distribued</tag>
+<title>Distributed graph processing</title>
+
+
+Distributed Graph Processing (mostly in memory)
+
+MAPREDUCE
+
+
+Titan - A distributed, disk-based graph computing engine developed by Aurelius, 
+- connectivity to both Cassandra(http://cassandra.apache.org/) and HBase (http://hbase.apache.org/) NoSQL databases.
+- implements the Blueprints graph API (https://github.com/tinkerpop/blueprints/wiki/), analogous to the JDBC, but for graph databases
+http://thinkaurelius.github.com/titan/
+
+
+
+- Vertex-centric model
+i.e. BSP Computational model http://en.wikipedia.org/wiki/Bulk_synchronous_parallel
+i.e. makes calculating data for each vertex and edge in parallel possible on a cluster of nodes
+
+
+PREGEL
+While it sounds similar to mapreduce, Pregel is optimized for graph operations, by reducing I/O, ensuring data locality, but also preserving processing state between phases.
+http://nosql.mypopescu.com/post/841789848/comparing-pregel-and-mapreduce
+Pregel (Google) @ SIGMOD 2010
+http://googleresearch.blogspot.com.es/2009/06/large-scale-graph-computing-at-google.html
+http://horicky.blogspot.com.es/2010/07/google-pregel-graph-processing.html
+http://www.rene-pickhardt.de/some-thoughts-on-google-mapeduce-and-google-pregel-after-our-discussions-in-the-reading-club/
+http://blog.acaro.org/entry/google-pregel-the-rise-of-the-clones
+- Pregel - Google's internal graph processing platform, released details in ACM paper.
+http://googleresearch.blogspot.com/2009/06/large-scale-graph-computing-at-google.html
+http://dl.acm.org/citation.cfm?id=1582723
+- GoldenOrb - Pregel implementation built on top of Apache Hadoop, http://www.goldenorbos.org/, sponsored by Ravel, an Austin-based company dedicated to making enterprise grade analytics solutions
+- Phoebus - Pregel implementation written in Erlang, https://github.com/xslogic/phoebus, Developed by Arun Suresh (Yahoo!)
+- JPregel - In-memory java based Pregel implementation, http://kowshik.github.com/JPregel/
+- sedge, open source version of Google's Pregel, a framework for distributed large graph processing and graph partition management (including an )
+http://grafia.cs.ucsb.edu/sedge/
+
+
+- Apache Hama - a Graph processing framework that runs on top of Apache Hadoop. = a pure BSP (Bulk Synchronous Parallel) computing framework on top of HDFS (Hadoop Distributed File System) for massive scientific computations such as matrix, graph and network algorithms.
+http://hama.apache.org/
+- Angrapa - graph package in Hama, a bulk synchronous parallel (BSP) platform
+http://people.apache.org/~edwardyoon/site/hama_graph_tutorial.html
+
+
+- Giraph - a Graph processing infrastructure that runs on Hadoop (Yahoo!).
+http://incubator.apache.org/giraph/
+
+- HipG (VU University Amsterdam)
+http://www.cs.vu.nl/~ekr/hipg/
+
+
+- Trinity - Distributed in-memory graph engine under development at Microsoft Research Labs.
+http://research.microsoft.com/en-us/projects/trinity/
+
+
+- KDT - An open-source distributed graph library with a Python front-end and C++/MPI backend (Combinatorial BLAS).
+http://kdt.sourceforge.net/
+
+
+
+Pegasus (CMU) @ ICDM 2009, KAIS 2010
+http://www.cs.cmu.edu/~pegasus/
+	
+GraphLab (CMU) @ VLDB 2012	
+http://graphlab.org/
+	
+GraphChi (CMU)
+http://code.google.com/p/graphchi/
+
+
+Signal/Collect framework (University of Zurich) 
+http://code.google.com/p/signal-collect/
+http://www.rene-pickhardt.de/google-pregel-vs-signal-collect-for-distributed-graph-processing-pros-and-cons/
+- Signal-collect model
+http://www.rene-pickhardt.de/google-pregel-vs-signal-collect-for-distributed-graph-processing-pros-and-cons/
+
+
+</document>
 
 </document>

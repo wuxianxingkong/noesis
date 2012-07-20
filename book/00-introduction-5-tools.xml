@@ -33,7 +33,7 @@ Network Workbench (Indiana), by Katy Börner
 </item>
 
 <item>
-NetworkX, in Python, http://networkx.lanl.gov/
+NetworkX, in Python, http://networkx.lanl.gov/ <cite>Hagberg et al. 2008</cite>
 </item>
 
 <item>
@@ -105,7 +105,42 @@ Universidad de Arizona), SNAPS (de Noah Friedkin, Universidad de California en S
 posibilidad de utilizar técnicas de minería de datos sobre estructuras de datos complejas, más allá de técnicas
 rudimentarias de análisis y visualización de datos. 
 
+
+
+STANDARD LIBRARIES
+
+Using a single-computer graph algorithm library, such
+as BGL, LEDA, NetworkX <cite>Hagberg et al. 2008</cite>, JDSL, Stanford GraphBase, or FGL <cite>Erwig 2001</cite>, limiting the scale of problems that can be addressed.
+
+  BGL
+  Jeremy G. Siek, Lie-Quan Lee, and Andrew Lumsdaine, The Boost Graph Library: User Guide and Reference Manual. Addison Wesley, 2002.
+
+  LEDA
+  Kurt Mehlhorn and Stefan Näher, The LEDA Platform of Combinatorial and Geometric Computing. Cambridge University Press, 1999. ISBN:0-521-56329-1
+
+  JDSL
+  Michael T. Goodrich and Roberto Tamassia, Data Structures and Algorithms in JAVA. (second edition). John Wiley and Sons, Inc., 2001.
+
+  Stanford GraphBase
+  Donald E. Knuth, Stanford GraphBase: A Platform for Combinatorial Computing. ACM Press, 1994.
+
+
+
+Using an existing parallel graph system. The Parallel BGL and CGMgraph libraries address parallel graph algorithms, but do not address specific issues that are important for very large scale distributed systems.
+
+  Parallel BGL = The Parallel Boost Graph Library
+  http://osl.iu.edu/research/pbgl/
+  <cite>Gregor and Lumsdaine 2005</cite>
+
+
+  CGMgraph
+  http://people.scs.carleton.ca/~dehne/projects/Cgmlib/
+  <cite>Chan and Dehne 2005</cite>
+
+
 </document>
+
+
 
 <document>
 <tag>introduction-tools-database</tag>
@@ -134,8 +169,11 @@ doi 10.1145/2020408.2020580
 Abstract: Graphs appear in numerous applications including cyber-security, the Internet, social networks, protein networks, recommendation systems, and many more. Graphs with millions or even billions of nodes and edges are common-place. How to store such large graphs efficiently? What are the core operations/queries on those graph? How to answer the graph queries quickly? We propose GBASE, a scalable and general graph management and mining system. The key novelties lie in 1) our storage and compression scheme for a parallel setting and 2) the carefully chosen graph operations and their efficient implementation. We designed and implemented an instance of GBASE using MapReduce/Hadoop. GBASE provides a parallel indexing mechanism for graph mining operations that both saves storage space, as well as accelerates queries. We ran numerous experiments on real graphs, spanning billions of nodes and edges, and we show that our proposed GBASE is indeed fast, scalable and nimble, with significant savings in space and time.
 
 
-- FlockDB <url>http://en.wikipedia.org/wiki/FlockDB</url>, an open source distributed, fault-tolerant graph database based on MySQL and the Gizzard framework ( http://en.wikipedia.org/wiki/Gizzard_(Scala_framework) ) for managing Twitter-like graph data (single-hop relationships) at webscale FlockDB on GitHub.
+- FlockDB (Twitter) <url>http://en.wikipedia.org/wiki/FlockDB</url>, an open source distributed, fault-tolerant graph database based on MySQL and the Gizzard framework ( http://en.wikipedia.org/wiki/Gizzard_(Scala_framework) ) for managing Twitter-like graph data (single-hop relationships) at webscale FlockDB on GitHub.
 https://github.com/twitter/flockdb
+
+http://gigaom.com/2010/04/12/twitter-open-sources-the-home-of-its-social-graph/
+Twitter today open-sourced the code that it used to build its database of users and manage their relationships to one another, called FlockDB. The move comes shortly after Twitter released its Gizzard framework, which it uses to query the FlockDB distributed data store up to 10,000 times a second without creating a logja
 
 
 MARKET
@@ -274,16 +312,73 @@ License	AGPLv3 Open Source license, commercial and SaaS/DaaS-license
 …
 
 
+Neo4j
+
+? Neo4j is an embedded, disk-based, fully transactional Java persistence engine that stores data structured in graphs rather than in tables.
+
+DEX
+
+? DEX is a high performance library to manage very large graphs or networks
+
+HyperGraphDB
+
+? HyperGraphDB: a general purpose, extensible, portable, distributed, embeddable, open-source data storage mechanism.
+
+InfoGrid
+
+? InfoGrid: an Internet Graph Database with a many additional software components that make the development of REST-ful web applications on a graph foundation easy.
+
+vertexdb
+
+? vertexdb: a high performance graph database server that supports automatic garbage collection.
+
+Note: by checking the project homepage I cannot tell if the project is still active or not.
+
+AllegroGraph
+
+? AllegroGraph RDFStore: a modern, high-performance, persistent RDF graph database.
+
+Note: AllegroGraph seems to be positioned in the RDF stores space, which features some other solutions too.
+
+Filament
+
+? Filament: a graph persistence framework and associated toolkits based on a navigational query style.
+
+Sones
+
+? Sones GraphDS provides an inherent support for high-level data abstraction concepts (graph structures, walks, consistency, editions, revisions, copies), its own Graph Query Language, an underlying distributed file system and various interfaces like SOAP, REST or WebDAV.
+
+
 </document>
+
+
 
 <document>
 <tag>introduction-tools-distribued</tag>
 <title>Distributed graph processing</title>
 
 
+SIGMOD 2012 Mining Large Graphs tutorials...
+
+<cite>Faloutsus and Kang 2012</cite>
+
+<cite>Shao et al. 2012</cite>
+
+
+
 Distributed Graph Processing (mostly in memory)
 
-MAPREDUCE
+
+MAPREDUCE <cite>Dean and Ghemawat 2004</cite>
+
+Graph Twiddling in MapReduce <cite>Cohen 2009</cite>
+Design Patterns <cite>Lin and Schatz 2010</cite>
+
+
+Pegasus (CMU) @ ICDM 2009, KAIS 2010
+@ ICDM 2009 <cite>Kang et al. 2009</cite>
+@ KAIS 2011 <cite>Kang et al. 2011</cite>, special issue: Best Papers of the Fifth International Conference on Advanced Data Mining and Applications (ADMA 2009)
+http://www.cs.cmu.edu/~pegasus/
 
 
 Titan - A distributed, disk-based graph computing engine developed by Aurelius, 
@@ -297,10 +392,18 @@ http://thinkaurelius.github.com/titan/
 i.e. BSP Computational model http://en.wikipedia.org/wiki/Bulk_synchronous_parallel
 i.e. makes calculating data for each vertex and edge in parallel possible on a cluster of nodes
 
+ BSP (Bulk Synchronous Processing) model. In this model, there are multiple processing units proceeding in parallel in a sequence of “supersteps”. Within each “superstep”, each processing units first receive all messages delivered to them from the preceding “superstep”, and then manipulate their local data and may queue up the message that it intends to send to other processing units. This happens asynchronously and simultaneously among all processing units. The queued up message will be delivered to the destined processing units but won’t be seen until the next “superstep”. When all the processing unit finishes the message delivery (hence the synchronization point), the next superstep can be started, and the cycle repeats until the termination condition has been reached.
+
 
 PREGEL
 While it sounds similar to mapreduce, Pregel is optimized for graph operations, by reducing I/O, ensuring data locality, but also preserving processing state between phases.
 http://nosql.mypopescu.com/post/841789848/comparing-pregel-and-mapreduce
+
+  Since Pregel model retain worker state (the same worker is responsible for the same set of nodes) across iteration, the graph can be loaded in memory once and reuse across iterations. This will reduce I/O overhead as there is no need to read and write to disk at each iteration. For fault resilience, there will be a periodic check point where every worker write their in-memory state to disk.
+
+  SIGMOD'2010 paper <cite>Malewicz et al. 2010</cite>: we present a computational model suitable for this task. Programs are expressed as a sequence of iterations, in each of which a vertex can receive messages sent in the previous iteration, send messages to other vertices, and modify its own state and that of its outgoing edges or mutate graph topology. This vertex-centric approach is flexible enough to express a broad set of algorithms. The model has been designed for efficient, scalable and fault-tolerant implementation on clusters of thousands of commodity computers, and its implied synchronicity makes reasoning about programs easier. Distribution-related details are hidden behind an abstract API. The result is a framework for processing large graphs that is expressive and easy to program.
+
+Also, Pregel (with its stateful characteristic), only send local computed result (but not the graph structure) over the network, which implies the minimal bandwidth consumption.
 Pregel (Google) @ SIGMOD 2010
 http://googleresearch.blogspot.com.es/2009/06/large-scale-graph-computing-at-google.html
 http://horicky.blogspot.com.es/2010/07/google-pregel-graph-processing.html
@@ -325,7 +428,7 @@ http://people.apache.org/~edwardyoon/site/hama_graph_tutorial.html
 - Giraph - a Graph processing infrastructure that runs on Hadoop (Yahoo!).
 http://incubator.apache.org/giraph/
 
-- HipG (VU University Amsterdam)
+- HipG (VU University Amsterdam) <cite>Krepska et al. 2011a</cite> <cite>Krepska et al. 2011b</cite> <cite>Krepska et al. 2011c</cite>
 http://www.cs.vu.nl/~ekr/hipg/
 
 
@@ -338,17 +441,17 @@ http://kdt.sourceforge.net/
 
 
 
-Pegasus (CMU) @ ICDM 2009, KAIS 2010
-http://www.cs.cmu.edu/~pegasus/
 	
-GraphLab (CMU) @ VLDB 2012	
+GraphLab (CMU) @ VLDB 2012 <cite>Low at al. 2012</cite>
 http://graphlab.org/
 	
-GraphChi (CMU)
+GraphChi (CMU): GraphChi[huahua] is a spin-off of the GraphLab[rador's retriever] project
++ run very large graph computations on just a single machine, by using a novel algorithm for processing the graph from disk (SSD or hard drive). Programs for GraphChi are written in similar vertex-centric model as  GraphLab. GraphChi runs vertex-centric programs asynchronously (i.e changes written to edges are immediately visible to subsequent computation), and in parallel. GraphChi also supports streaming graph updates and changing the graph structure while computing.
 http://code.google.com/p/graphchi/
 
 
-Signal/Collect framework (University of Zurich) 
+
+Signal/Collect framework (University of Zurich) <cite>Stutz et al. 2010</cite>
 http://code.google.com/p/signal-collect/
 http://www.rene-pickhardt.de/google-pregel-vs-signal-collect-for-distributed-graph-processing-pros-and-cons/
 - Signal-collect model

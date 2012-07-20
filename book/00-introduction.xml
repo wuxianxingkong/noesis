@@ -27,6 +27,10 @@ K: A network perspective... involves formulating and reasoning about mathematica
 internal structure and the rich feedback effects that result.
 </text>
 
+
+<q>The ability for a graph to denote objects and their relationships to one another allow for a surprisingly large number of things to be modeled as a graph. From the dependencies that link software packages to the wood beams that provide the framing to a house, most anything has a corresponding graph representation.</q> <cite>Rodriguez and Neubauer 2010</cite>
+
+
 <text>
 A network is described <q>by its structure (e.g., nodes and links), and its behavior (what the network 'does' as a result of the interactions among the nodes and links).</q> In other words, networks are graphs that represent something real, <q>a representation or model of observable reality.</q> (National Research Council, Committee on Network Science for Future Army Applications: Network Science, Board of Army Science and Technology, National Academies Press, www.nap.edu, 2005).
 </text>

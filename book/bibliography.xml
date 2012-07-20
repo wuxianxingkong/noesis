@@ -1325,6 +1325,21 @@
 </reference>
 
 
+
+<reference id="Chan and Dehne 2005">
+ <author>Albert Chan</author>
+ <author>Frank Dehne</author>
+ <title>CGMGRAPH/CGMLIB: Implementing and Testing CGM Graph Algorithms on PC Clusters and Shared Memory Machines</title>
+ <journal>International Journal of High Performance Computing Applications</journal>
+ <volume>19</volume>
+ <number>1</number>
+ <pages>81-97</pages>
+ <year>2005</year>
+ <doi>10.1177/1094342005051196</doi>
+ <file>Networks/software/2005 IJHPCA CGMGRAPH.pdf</file>
+</reference>
+
+
 <reference id="Chartrand 1984">
  <author>Gary Chartrand</author>
  <title>Introductory Graph Theory</title>
@@ -1491,6 +1506,20 @@
  <doi>10.1137/070710111</doi>
  <file>Networks/models/scale-free/2009 SIAM Review [Clauset] Power-law distributions.pdf</file>
  <!-- arXiv:0706.1062 -->
+</reference>
+
+
+
+<reference id="Cohen 2009">
+ <author>Jonathan Cohen</author>
+ <title>Graph Twiddling in a MapReduce World</title>
+ <journal>Computing in Science and Engineering</journal>
+ <volume>11</volume>
+ <number>4</number>
+ <pages>29-41</pages>
+ <year>2009</year>
+ <doi>10.1109/MCSE.2009.120</doi>
+ <file>Networks/software/2009 CISE Graph Twiddling in MapReduce.pdf</file>
 </reference>
 
 
@@ -1734,6 +1763,20 @@
  <comment>
   <text>TBD</text>
  </comment>
+</reference>
+
+
+<reference id="Dean and Ghemawat 2004">
+ <author>Jeffrey Dean</author>
+ <author>Sanjay Ghemawat</author>
+ <title>MapReduce: Simplified data processing on large clusters</title>
+ <proceedings>6th Symposium on Operating Systems Design and Implementation</proceedings>
+ <conference>OSDI</conference>
+ <year>2004</year>
+ <location>San Francisco, California, USA</location>
+ <pages>137-149</pages>
+ <url>http://static.usenix.org/events/osdi04/tech/dean.html</url>
+ <file>Networks/software/2004 OSDI MapReduce.pdf</file>
 </reference>
 
 
@@ -2019,6 +2062,20 @@
 </reference>
 
 
+
+<reference id="Erwig 2001">
+ <author>Martin Erwig</author>
+ <title>Inductive graphs and functional graph algorithms</title>
+ <journal>Journal of Functional Programming</journal>
+ <volume>11</volume>
+ <number>5</number>
+ <pages>467-492</pages>
+ <year>2001</year>
+ <doi>10.1017/S0956796801004075</doi>
+ <file>Networks/software/2001 JFP [Erwig] FGL.pdf</file>
+</reference>
+
+
 <reference id="Estrada 2006">
  <author>Ernesto Estrada</author>
  <title>Network robustness to targeted attacks. The interplay of expansibility and degree distribution</title>
@@ -2132,6 +2189,22 @@
  <year>2007</year>
  <doi>10.1103/PhysRevE.76.026107</doi>
  <file>Networks/structure/metrics/2008 PhysRevE [Fagiolo] Clustering in directed networks.pdf</file>
+</reference>
+
+
+
+<reference id="Faloutsos and Kang 2012">
+ <author>Christos Faloutsos</author>
+ <author>Unmi Tina Kang</author>
+ <title>Managing and mining large graphs: Patterns and algorithms</title>
+ <proceedings>2012 ACM SIGMOD International Conference on Management of Data</proceedings>
+ <conference>SIGMOD</conference>
+ <year>2012</year>
+ <isbn>978-1-4503-1247-9</isbn>
+ <location>Scottsdale, Arizona, USA</location>
+ <pages>585-588</pages>
+ <doi>10.1145/2213836.2213906</doi>
+ <file>Networks/software/2012 SIGMOD Tutorial - Algorithms.pdf</file>
 </reference>
 
 
@@ -2680,6 +2753,18 @@
 </reference>
 
 
+<reference id="Gregor and Lumsdaine 2005">
+ <author>Douglas Gregor</author>
+ <author>Andrew Lumsdaine</author>
+ <title>The Parallel BGL: A Generic Library for Distributed Graph Computations</title>
+ <proceedings>4th Workshop on Parallel Object-Oriented Scientific Computing</proceedings>
+ <conference>POOSC</conference>
+ <year>2005</year>
+ <location>Glasgow, UK</location>
+ <url>http://osl.iu.edu/research/pbgl/</url>
+ <file>Networks/software/2005 POOSC Parallel BGL.pdf</file>
+</reference>
+
 
 <reference id="Gregory 2007">
  <author>Steve Gregory</author>
@@ -2807,6 +2892,22 @@
  <year>1975</year>
  <doi>10.1137/0204019</doi>
 </reference>
+
+
+<reference id="Hagberg et al. 2008">
+ <author>Aric A. Hagberg</author>
+ <author>Daniel A. Schult</author>
+ <author>Pieter J. Swart</author>
+ <title>Exploring network structure, dynamics, and function using NetworkX</title>
+ <proceedings>7th Python in Science Conference</proceedings>
+ <conference>SciPy</conference>
+ <year>2008</year>
+ <location>Pasadena, California, USA</location>
+ <pages>11-15</pages>
+ <url>http://conference.scipy.org/proceedings/scipy2008/paper_2/</url>
+ <file>Networks/software/2008 SciPy NetworkX.pdf</file>
+</reference>
+
 
 
 <reference id="Han and Kamber 2006">
@@ -3173,6 +3274,21 @@
 </reference>
 
 
+<reference id="Kang et al. 2009">
+ <author>Unmi Tina Kang</author>
+ <author>Charalampos E. Tsourakakis</author>
+ <author>Christos Faloutsos</author>
+ <title>PEGASUS: A Peta-Scale Graph Mining System - Implementation and Observations</title>
+ <proceedings>9th International Conference on Data Mining</proceedings>
+ <conference>ICDM</conference>
+ <year>2009</year>
+ <isbn>978-0-7695-3895-2</isbn>
+ <location>Miami, Florida, USA</location>
+ <pages>229-238</pages>
+ <doi>10.1109/ICDM.2009.14</doi>
+ <file>Networks/software/2009 ICDM Pegasus.pdf</file>
+</reference>
+
 
 <reference id="Kang et al. 2011">
  <author>Unmi Tina Kang</author>
@@ -3189,6 +3305,21 @@
  <doi>10.1145/1921632.1921634</doi>
  <file>Networks/structure/metrics/2011 TKDD HADI Radii of Large Graphs.pdf</file>
 </reference>
+
+<reference id="Kang et al. 2011b">
+ <author>Unmi Tina Kang</author>
+ <author>Charalampos E. Tsourakakis</author>
+ <author>Christos Faloutsos</author>
+ <title>PEGASUS: Mining peta-scale graphs</title>
+ <journal>Knowledge and Information Systems</journal>
+ <volume>27</volume>
+ <number>2</number>
+ <pages>303-325</pages>
+ <year>2011</year>
+ <doi>10.1007/s10115-010-0305-0</doi>
+ <file>Networks/software/2011 KAIS PEGASUS.pdf</file>
+</reference>
+
 
 
 <reference id="Karger et al. 1995">
@@ -3478,6 +3609,53 @@
  <year>1990</year>
  <isbn>0817633898</isbn>
  <!-- Translated from German by Richard McCoart -->
+</reference>
+
+
+
+<reference id="Krepska et al. 2011a">
+ <author>Elzbieta Krepska</author>
+ <author>Thilo Kielmann</author>
+ <author>Wan Fokkink</author>
+ <author>Henri Bal</author>
+ <title>A high-level framework for distributed processing of large-scale graphs</title>
+ <proceedings>12th International Conference on Distributed Computing and Networking</proceedings>
+ <conference>ICDCN</conference>
+ <year>2011</year>
+ <location>Bangalore, India</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>6522</volume>
+ <pages>155-166</pages>
+ <doi>10.1007/978-3-642-17679-1_14</doi>
+ <file>Networks/software/2011 ICDCN HipG.pdf</file>
+</reference>
+
+<reference id="Krepska et al. 2011b">
+ <author>Elzbieta Krepska</author>
+ <author>Thilo Kielmann</author>
+ <author>Wan Fokkink</author>
+ <author>Henri Bal</author>
+ <title>HipG: Parallel processing of large-scale graphs</title>
+ <journal>ACM SIGOPS Operating Systems Review</journal>
+ <volume>45</volume>
+ <number>2</number>
+ <pages>3-13</pages>
+ <year>2011</year>
+ <doi>10.1145/2007183.2007185</doi>
+ <file>Networks/software/2011 OSR HipG.pdf</file>
+</reference>
+
+<reference id="Krepska et al. 2011c">
+ <author>Elzbieta Krepska</author>
+ <author>Thilo Kielmann</author>
+ <author>Wan Fokkink</author>
+ <author>Henri Bal</author>
+ <title>A high-level framework for distributed processing of large-scale graphs</title>
+ <publisher>VU University Amsterdam</publisher>
+ <edition>Technical Report IR-CS-62</edition>
+ <year>2011</year>
+ <url>http://www.cs.vu.nl/~ekr/papers/graphs-tr-62.pdf</url>
+ <file>Networks/software/2011 TR HipG.pdf</file>
 </reference>
 
 
@@ -3872,6 +4050,19 @@
 </reference>
 
 
+<reference id="Lin and Schatz 2010">
+ <author>Jimmy Lin</author>
+ <author>Michael Schatz</author>
+ <title>Design patterns for efficient graph algorithms in MapReduce</title>
+ <proceedings>8th Workshop on Mining and Learning with Graphs</proceedings>
+ <conference>MLG</conference>
+ <year>2010</year>
+ <isbn>978-1-4503-0214-2</isbn>
+ <location>Washington DC, USA</location>
+ <pages>78-85</pages>
+ <doi>10.1145/1830252.1830263</doi>
+ <file>Networks/software/2010 MLG MapReduce Graph Algorithms.pdf</file>
+</reference>
 
 
 <reference id="Lin et al. 2009">
@@ -3946,6 +4137,26 @@
  <publisher>Elsevier B.V.</publisher>
  <year>1986</year>
  <isbn>0444879161</isbn>
+</reference>
+
+
+
+<reference id="Low et al. 2012">
+ <author>Yucheng Low</author>
+ <author>Joseph Gonzalez</author>
+ <author>Aapo Kyrola</author>
+ <author>Danny Bicksonv</author>
+ <author>Carlos Guestrin</author>
+ <author>Joseph M. Hellerstein</author>
+ <title>Distributed GraphLab: A Framework for Machine Learning in the Cloud</title>
+ <proceedings>38th International Conference on Very Large Data Bases</proceedings>
+ <conference>VLDB</conference>
+ <year>2012</year>
+ <issn>ISSN 2150-8097</issn>
+ <location>Istambul, Turkey</location>
+ <pages>716-727</pages>
+ <url>http://vldb.org/pvldb/vol5/p716_yuchenglow_vldb2012.pdf</url>
+ <file>Networks/software/2012 VLDB GraphLab.pdf</file>
 </reference>
 
 
@@ -4075,6 +4286,65 @@
  <pages>701-710</pages>
  <doi>10.1145/1772690.1772762</doi>
  <file>Networks/algorithms/graphs/sampling/2010 WWW Sampling community structure.pdf</file>
+</reference>
+
+
+
+<reference id="Malewicz et al. 2009a">
+ <author>Grzegorz Malewicz</author>
+ <author>Matthew H. Austern</author>
+ <author>Aart J.C. Bik</author>
+ <author>James C. Dehnert</author>
+ <author>Ilan Horn</author>
+ <author>Naty Leiser</author>
+ <author>Grzegorz Czajkowski</author>
+ <title>Pregel: A system for large-scale graph processing</title>
+ <proceedings>28th ACM Symposium on Principles of Distributed Computing</proceedings>
+ <conference>PODC</conference>
+ <year>2009</year>
+ <isbn>978-1-60558-396-9</isbn>
+ <location>Calgary, Alberta, Canada</location>
+ <pages>6-6</pages>
+ <doi>10.1145/1582716.1582723</doi>
+ <file>Networks/software/2009 PODC Pregel.pdf</file>
+</reference>
+
+<reference id="Malewicz et al. 2009b">
+ <author>Grzegorz Malewicz</author>
+ <author>Matthew H. Austern</author>
+ <author>Aart J.C. Bik</author>
+ <author>James C. Dehnert</author>
+ <author>Ilan Horn</author>
+ <author>Naty Leiser</author>
+ <author>Grzegorz Czajkowski</author>
+ <title>Pregel: A system for large-scale graph processing</title>
+ <proceedings>21st Annual Symposium on Parallelism in Algorithms and Architectures</proceedings>
+ <conference>SPAA</conference>
+ <year>2009</year>
+ <isbn>978-1-60558-606-9</isbn>
+ <location>Calgary, Alberta, Canada</location>
+ <pages>48-48</pages>
+ <doi>10.1145/1583991.1584010</doi>
+ <file>Networks/software/2009 SPAA Pregel.pdf</file>
+</reference>
+
+<reference id="Malewicz et al. 2010">
+ <author>Grzegorz Malewicz</author>
+ <author>Matthew H. Austern</author>
+ <author>Aart J.C. Bik</author>
+ <author>James C. Dehnert</author>
+ <author>Ilan Horn</author>
+ <author>Naty Leiser</author>
+ <author>Grzegorz Czajkowski</author>
+ <title>Pregel: A system for large-scale graph processing</title>
+ <proceedings>2010 ACM SIGMOD International Conference on Management of Data</proceedings>
+ <conference>SIGMOD</conference>
+ <year>2010</year>
+ <isbn>978-1-4503-0032-2</isbn>
+ <location>Indianapolis, Indiana, USA</location>
+ <pages>135-146</pages>
+ <doi>10.1145/1807167.1807184</doi>
+ <file>Networks/software/2010 SIGMOD Pregel.pdf</file>
 </reference>
 
 
@@ -4909,6 +5179,21 @@
 </reference>
 
 
+<reference id="Rodriguez and Neubauer 2010">
+ <author>Marko A. Rodriguez</author>
+ <author>Peter Neubauer</author>
+ <title>Constructions from dots and lines</title>
+ <journal>Bulletin of the American Society for Information Science and Technology</journal>
+ <volume>36</volume>
+ <number>6</number>
+ <pages>35-41</pages>
+ <year>2010</year>
+ <url>http://www.asis.org/Bulletin/Aug-10/AugSep10_Rodriguez_Neubauer.pdf</url>
+ <file>Networks/2010 BASIST Constructions from Dots and Lines.pdf</file>
+</reference>
+
+
+
 <reference id="Roy 1959">
  <author>Bernard Roy</author>
  <title>Transitivité et connexité (Transitivity and connectivity, in French)</title>
@@ -5134,6 +5419,21 @@
 </reference>
 
 
+<reference id="Shao et al. 2012">
+ <author>Bin Shao</author>
+ <author>Haixun Wang</author>
+ <author>Yanghua Xiao</author>
+ <title>Managing and mining large graphs: Systems and implementations</title>
+ <proceedings>2012 ACM SIGMOD International Conference on Management of Data</proceedings>
+ <conference>SIGMOD</conference>
+ <year>2012</year>
+ <isbn>978-1-4503-1247-9</isbn>
+ <location>Scottsdale, Arizona, USA</location>
+ <pages>589-592</pages>
+ <doi>10.1145/2213836.2213907</doi>
+ <file>Networks/software/2012 SIGMOD Tutorial - Systems.pdf</file>
+</reference>
+
 
 <reference id="Shen and Cheng 2010">
  <author>Hua-Wei Shen</author>
@@ -5358,6 +5658,25 @@
  <doi>10.1073/pnas.0501179102</doi>
  <file>Networks/models/scale-free/2005 PNAS Subnets of scale-free networks.pdf</file>
  <!-- arXiv:0706.1062 -->
+</reference>
+
+
+
+<reference id="Stutz et al. 2010">
+ <author>Philip Stutz</author>
+ <author>Abraham Bernstein</author>
+ <author>William Cohen</author>
+ <title>Signal/Collect: Graph Algorithms for the (Semantic) Web</title>
+ <proceedings>9th International Semantic Web Conference</proceedings>
+ <conference>ISWC</conference>
+ <year>2010</year>
+ <isbn>978-3-642-17745-3</isbn>
+ <location>Shanghai, Chin</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>6496</volume>
+ <pages>764-780</pages>
+ <doi>10.1007/978-3-642-17746-0_48</doi>
+ <file>Networks/software/2010 ISWC SignalCollect.pdf</file>
 </reference>
 
 

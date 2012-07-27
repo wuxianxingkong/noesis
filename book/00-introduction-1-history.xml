@@ -365,6 +365,25 @@ Wikipedia: Guare, in interviews, attributed his awareness of the "six degrees" t
 note (USN'2012): The number of steps was higher than the theoretical number because there were social structural barriers to network linkages. In the first experiment, Milgram reported that links between men and women were much less frequent than same-sex linkages, a finding repeated in the recent experiment. Similarly, there were barriers between social classes. Hence, personal agency or motivation became a factor in establishing linkages. Organizations, too, vary in the extent to which they actively seek to relate to other organizations and are skilled in this endeavor.
 
 
++ Facebook:  The best-known real-world study, in 1967, involved a few hundred people trying to send postcards to a particular Boston stockholder. Facebook's version, conducted in collaboration with researchers from the University of Milan, involved the entire social network as of May 2011, which amounted to more than 10 percent of the world's population. Analyzing the 69 billion friend connections among those 721 million people showed that the world is smaller than we thought: four intermediary friends are usually enough to introduce anyone to a random stranger. "When considering another person in the world, a friend of your friend knows a friend of their friend, on average," the technical paper pithily concluded
+
+- Facebook's data scientist Lars Backstrom was able to work with a much bigger data sample. His social network had 721 million members at the time of the experiment - representing around 10% of the global population - with a total of 69 billion friendships between them. Despite the vast quantity of data, Mr Backstrom and four researchers from the University of Milan were able to crunch the data using a 24-core computer with a 1 terabyte hard disk
+- Facebook limits users to having 5,000 friends, but the median figure was far lower at just 100 contacts, or 0.000014% of Facebook's total membership.
+- Despite this relatively small number, the results showed 99.6% of all pairs of users were connected by five degrees of separation, and 92% were connected by four degrees.
+- On average, the distance between any two members was 3.74 degrees.
+- That was shorter than the average 4.28 degrees of separation registered by Facebook's 2008 membership, when the network was smaller.
+
+J. Ugander, B. Karrer, L. Backstrom, C. Marlow.
+The Anatomy of the Facebook Social Graph,
+http://arxiv.org/abs/1111.4503
+ 
+L. Backstrom, P. Boldi, M. Rosa, J. Ugander, S. Vigna.
+Four Degrees of Separation,
+http://arxiv.org/abs/1111.4570
+
+
+
+
 
 + Kevin Bacon game: created in early 1994 by four Albright College students, Craig Fass, Christian Gardner, Brian Turtle, and Mike Ginelli.
 NOTE: On April 7, 1994, a lengthy newsgroup thread headed "Kevin Bacon is the Center of the Universe"

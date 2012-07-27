@@ -374,6 +374,9 @@ MAPREDUCE <cite>Dean and Ghemawat 2004</cite>
 Graph Twiddling in MapReduce <cite>Cohen 2009</cite>
 Design Patterns <cite>Lin and Schatz 2010</cite>
 
++ CACM'2008
++ CACM'2010
+
 
 Pegasus (CMU) @ ICDM 2009, KAIS 2010
 @ ICDM 2009 <cite>Kang et al. 2009</cite>
@@ -448,7 +451,7 @@ http://graphlab.org/
 GraphChi (CMU): GraphChi[huahua] is a spin-off of the GraphLab[rador's retriever] project
 + run very large graph computations on just a single machine, by using a novel algorithm for processing the graph from disk (SSD or hard drive). Programs for GraphChi are written in similar vertex-centric model as  GraphLab. GraphChi runs vertex-centric programs asynchronously (i.e changes written to edges are immediately visible to subsequent computation), and in parallel. GraphChi also supports streaming graph updates and changing the graph structure while computing.
 http://code.google.com/p/graphchi/
-
+http://www.technologyreview.com/news/428497/your-laptop-can-now-analyze-big-data/?nlid=nlcomm&amp;nld=2012-07-23
 
 
 Signal/Collect framework (University of Zurich) <cite>Stutz et al. 2010</cite>
@@ -457,6 +460,10 @@ http://www.rene-pickhardt.de/google-pregel-vs-signal-collect-for-distributed-gra
 - Signal-collect model
 http://www.rene-pickhardt.de/google-pregel-vs-signal-collect-for-distributed-graph-processing-pros-and-cons/
 
+
+
+
++ http://www.graph500.org/
 
 </document>
 

@@ -97,13 +97,31 @@ Jennifer Fewell, from Arizona State University, illustrates the importance of [i
 + http://arxiv.org/abs/1105.5170 Validation of Dunbar's Number In Twitter Conversations  @ Network structure chapter
 </text>
 
+
+<text>
++ Why Your Friends Have More Friends Than You Do
+Scott L. Feld
+American Journal of Sociology
+Vol. 96, No. 6 (May, 1991), pp. 1464-1477
+Published by: The University of Chicago Press
+Article Stable URL: http://www.jstor.org/stable/2781907
+</text>
+
 <text>
 ++ Milgram's Six Degrees of separation (4.74 @ Facebook, http://arxiv.org/abs/1111.4503  http://arxiv.org/abs/1111.4570 ) @ Network structure chapter
 W: Facebook's data team released two papers in November 2011 which document that amongst all facebook users at the time of research (721 million users with 69 billion friendship links) there is an average distance of 4.74. Probabilistic algorithms were applied on statistical metadata to verify the accuracy of the measurements. It was also found that 99.91% of facebook users were interconnected, forming a large connected component.
 - Backstrom, Lars; Boldi, Paolo; Rosa, Marco; Ugander, Johan; Vigna, Sebastiano (2011-11-19). "Four Degrees of Separation". ArXiv. Retrieved 23 November 2011.
 - Ugander, Johan; Karrer, Brian; Backstrom, Lars; Marlow, Cameron. "The Anatomy of the Facebook Social Graph". ArXiv. Retrieved 23 November 2011.
-</text>
 
+J. Ugander, B. Karrer, L. Backstrom, C. Marlow.
+The Anatomy of the Facebook Social Graph,
+http://arxiv.org/abs/1111.4503
+ 
+L. Backstrom, P. Boldi, M. Rosa, J. Ugander, S. Vigna.
+Four Degrees of Separation,
+http://arxiv.org/abs/1111.4570
+
+</text>
 
 <text>
 e.g. Karate club (a conflict divided the network into two communities), a small network often used to illustrate community detection algorithms
@@ -136,11 +154,47 @@ Analysis of a large-scale weighted network of one-to-one human communication
 New Journal of Physics 9, 1-27 (2007).
 </text>
 
+
++ Applications, e.g. Culturomics (http://www.nics.tennessee.edu/leetarurelease)
+
+++ Affiliation networks
+
+
+Examples [Newman 3]
+            FOAF ("friend of a friend"), e.g. Facebook
+            Organization networks
+            Socioeconomic networks
+
+The strength of ties (e.g. "weak ties") [Kleinberg 3]
+Homophily + assortative mixing [Newman 7.13 + 8.7][Kleinberg 4.1]
+    Mechanisms: Selection and social influence [Kleinberg 4.2][Kleinberg 4.4]
+Community formation 
+    Affiliation [Kleinberg 4.3]
+    Segregation [Kleinberg 4.5]
+Structural balance [Kleinberg 5]
+
+++ Network Dynamics: Social Influence Models 
+
+++ Aggregate behavior
+        Voting systems [Kleinberg 23]
+
+[Han 9.2.1]
+
 </document>
 
 <document>
 <tag>content</tag>
 <title>Content networks</title>
+
+Examples [Newman 4]
+            WWW: Structure and search [Newman 4.1][Kleinberg 13]
+            P2P networks: Decentralized search [Newman 4.3.1]
+            Social media networks [NodeXL] [Newman 4.3.2+4.3.3]
+            Citation networks, e.g. bibliographic networks + patent networks  [Newman 4.2]
+            "Software Networks"
+
+++ Network Dynamics: 
+        Search on Networks [Newman 19][Kleinberg 14]
 
 <text>
 WWW: 
@@ -290,15 +344,17 @@ Based on the University of South Florida Word Association, Rhyme and Word Fragme
 
 </document>
 
-<document>
-<tag>economic</tag>
-<title>Economic networks</title>
-</document>
 
 <document>
 <tag>transportation</tag>
 <title>Transportation networks</title>
 
+Examples [Newman 2]
+            Communication networks, e.g. Internet
+            Distribution networks, e.g. power grid
+            Transportation networks
+
+Modeling network traffic using Game Theory [Kleinberg 8]
 
 <text>
 INTERNET as a transportation network (rather than a content network such as the WWW)
@@ -374,9 +430,41 @@ physics/0504029
 
 </document>
 
+
+<document>
+<tag>economic</tag>
+<title>Economic networks</title>
+
+
+Auctions [Kleinberg 9]
+Markets 
+    Matching Markets [Kleinberg 10]
+    Markets with Intermediaries [Kleinberg 11]
+Bargaining [Kleinberg 12]
+Advertising, e.g. sponsored search markets [Kleinberg 15]
+Network effects [Kleinberg 17]
+
+++ Aggregate behavior
+        Markets and information [Kleinberg 22]
+        Property rights [Kleinberg 24]
+
+
+
+</document>
+
+
 <document>
 <tag>biological</tag>
 <title>Biological networks</title>
+
+
+Examples [Newman 5]
+            Ecological networks [Newman 5.3]
+            Neural networks [Newman 5.2]
+            Biochemical networks [Newman 5.1]
+                Genomic networks: gene-protein interactions
+                Proteomic networks: protein-protein interactions
+                Biological pathways
 
 <text>
 Cellular interaction networks: signal transduction, gene regulation, metabolism

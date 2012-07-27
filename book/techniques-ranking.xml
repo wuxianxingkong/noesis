@@ -9,9 +9,70 @@
 <tag>ranking</tag>
 <title>Ranking</title>
 
+
 <text>
-e.g. Web search (10-30 links from millions of web pages containing some given words)
+PROBLEM: Arrange a set of items in order of importance
+
+RELATED
+- Ranking (a rank-ordered list of items = a permutation of items)
+- Rating (a numerical score assigned to each item)
+
+Any rating scheme can be used to produce a ranking list
 </text>
+
+
+<text>
+EXAMPLES
+
+- Web search: 
+PageRank (Google) and HITS (Ask.com)...  10-30 links from millions of web pages containing some given words
+
+- Product recommendation: 
+Netflix, 
+IMDb (Internet Movie Database), 
+Amazon...
+
+- Economics: 
+United Nations HDI (Human Development Index), http://hdr.undp.org/en/statistics/
+Index of Economic Freewdom (Heritage Foundation), http://www.heritage.org/index/
+
+- Education:
+US News ranking of colleges and universities (http://www.usnews.com/rankings), 
+Financial Times business school rankings (http://rankings.ft.com/businessschoolrankings/), 
+The Times Higher Education Suplement ranking of World universities (http://www.timeshighereducation.co.uk/world-university-rankings/), 
+the Academic Ranking of World Universities from the Shanghai Jiao Tong University a.k.a Shanghai ranking (http://www.arwu.org/), 
+Webometrics ranking of the web presence of 20000 higher education institutions (http://www.webometrics.info/), 
+
+- Sports: 
+BCS (Bowl Championship Series) ratings for college football teams (invitations to bowl games), 
+RPI (Rating Percentage Index) for college basketball teams (invitations to the March Madness tournament), 
+ATP World Tour ranking of tennis players, http://www.atpworldtour.com/Rankings/Singles.aspx
+FIDE chess ratings, http://ratings.fide.com/
+
+- Politics, i.e. voting
+
+Other domains: citation databases (scientific papers, patents, legal cases,...), social networks...
+</text>
+
+
+<text>
+CAVEAT: Arrow's Impossibility Theorem
+
+A perfect voting system does not exist
+
+Incompatible requirements, from Kenneth Arrow's 1951 Ph.D. dissertation:
+
+- Every voter ranks the candidates in the order he desires (unrestristed domain)
+
+- If all voters prefer A over B, A should be ranked ahead of B (Pareto principle)
+
+- When, within a subset of candidates, voters choose A over B, this relative order should be maintained over the whole set of candidates. Changes in the order of other candidates outside the subset should not affect the relative ranking of A and B (independence of irrelevant alternatives)
+
+- No voter should have a disproportionate control over the election (non-dictatorship)
+
+No voting system with three or more candidates can simultaneously satisfy these four (reasonable) criteria.
+</text>
+
 
 <document>
 <tag>ranking-pagerank</tag>
@@ -158,9 +219,9 @@ Both HITS and PageRank were presented in 1998: HITS at the 9th ACM-SIAM Symposiu
 
 <text>
 Popular Science books
-++ "Who's #1? The Science of Rating and Ranking", by Amy N. Langville and Carl D. Meyer, Princeton University Press, 2012. ISBN 0691154228
+++ <cite>Langville and Meyer 2012</cite>
 (ranking methods and evaluation techniques)
-++ "Google PageRank and Beyond: The Science of Search Engine Rankings", by Amy N. Langville and Carld D. Meyer, Princeton University Press, 2006. ISBN 0691122024 (2012 paperback edition, ISBN 0691152667)
+++ <cite>Langville and Meyer 2006</cite>
 (PageRank + HITS)
 </text>
 

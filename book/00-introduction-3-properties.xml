@@ -5,6 +5,16 @@
 <tag>properties</tag>
 <title>Network properties</title>
 
+
+Common network features:
+   Large scale.
+   Continuous evolution.
+   Distribution (nodes decide their connections).
+   Interactions only through existing links
+  
+  [Han 9.2.2]
+
+
 <text>
 ++ Scale, evolution, distribution &amp; interaction through connections...
 </text>
@@ -15,5 +25,46 @@ Reka Albert: Network topology related questions:
 - How did networks get to be the way they are?
 - What are the consequences of a specific network organization?
 </text>
+
+
+Some interesting structural properties:
+   Connected components: How many? Of what size?.
+   Network diameter: Average distance, worst case…
+   Node degree distribution
+&amp; existence of "hubs" (heavily-connected nodes).
+   Groupings (balance between local and large-distance
+connections, as well as their roles).
+
+
+The countless ways in which network structures
+affect our lives make it critical to understand:
+1. How network structures affect behavior.
+2. Which network structures are likely to emerge.
+
+
+Research problems
+   Search on networks
+(with partial local information)
+   Diffusion problems:
+epidemics, social contagion (ideas, fads, products…)
+   Analysis of network properties
+e.g. robustness/vulnerability
+
+
+From an algorithmic point of view…
+
+   Objects:
+   Ranking (HITS, PageRank…).
+   Classification &amp; anomaly detection.
+   Clustering &amp; community analysis.
+   Object identification (e.g. “entity resolution”).
+
+   Links:
+   Link prediction.
+
+   Graphs:
+   Subgraph detection.
+   Graph classification.
+   Graph generation models.
 
 </document>

@@ -1,13 +1,13 @@
-<?xml version="1.0"  encoding="ISO-8859-1" ?> 
-<!DOCTYPE sys-ents [ 
-  <!ENTITY bibliography SYSTEM "bibliography.xml"> 
-  <!ENTITY history      SYSTEM "00-introduction-1-history.xml"> 
-  <!ENTITY networks     SYSTEM "00-introduction-2-networks.xml"> 
-  <!ENTITY properties   SYSTEM "00-introduction-3-properties.xml"> 
-  <!ENTITY data         SYSTEM "00-introduction-4-data.xml"> 
-  <!ENTITY tools        SYSTEM "00-introduction-5-tools.xml"> 
-  <!ENTITY notes        SYSTEM "00-introduction-6-notes.xml"> 
-]> 
+<?xml version="1.0"  encoding="ISO-8859-1" ?>
+<!DOCTYPE sys-ents [
+  <!ENTITY bibliography SYSTEM "bibliography.xml">
+  <!ENTITY history      SYSTEM "00-introduction-1-history.xml">
+  <!ENTITY networks     SYSTEM "00-introduction-2-networks.xml">
+  <!ENTITY properties   SYSTEM "00-introduction-3-properties.xml">
+  <!ENTITY data         SYSTEM "00-introduction-4-data.xml">
+  <!ENTITY tools        SYSTEM "00-introduction-5-tools.xml">
+  <!ENTITY notes        SYSTEM "00-introduction-6-notes.xml">
+]>
 <?xml-stylesheet type="text/xsl" href="../book.xsl"?>
 
 
@@ -22,24 +22,65 @@ Reka Albert: It is increasingly recognized that complex systems cannot be descri
 - Topological information is fundamental in constructing realistic models for the function of the network.
 </text>
 
+
+As a field of study…
+1   How relationships between parts give rise to the
+collective behaviors of a system and how the system
+interacts and forms relationships with its environment
+(complex systems).
+2   Common principles, algorithms and tools that govern
+network behavior (network science).
+
 <text>
 K: A network perspective... involves formulating and reasoning about mathematicalmodels and also reasoning qualitatively about these models and searching for their broader implications... a powerful way of looking at complex systems in general - a way of thinking about social dynamics, economic interaction, online information, designed technology, and natural processes, and approaching such systems with an eye toward their patterns of
 internal structure and the rich feedback effects that result.
 </text>
 
 
+Networks permeate our lives.
+Networks play a central role in determining
+   the transmission of information about job opportunities,
+   how diseases spread,
+   which products we buy,
+   our likelihood of succeeding professionally,
+
+
 <q>The ability for a graph to denote objects and their relationships to one another allow for a surprisingly large number of things to be modeled as a graph. From the dependencies that link software packages to the wood beams that provide the framing to a house, most anything has a corresponding graph representation.</q> <cite>Rodriguez and Neubauer 2010</cite>
+
+
+“Cheminformatics”: Chemical compounds.
+   “Bioinformatics”: Protein networks &amp; bio-pathways
+   Software Engineering: Program analysis…
+   Network flow analysis (transport, workflows…)
+   Semi-structured databases, e.g. XML
+   Knowledge management: Ontologies &amp; semantic nets
+   Computer-aided design (CAD): IC design…
+   Geographic information systems (GIS) &amp; cartography
+   Social networks, e.g. Web
+   Economic networks, e.g. markets
 
 
 <text>
 A network is described <q>by its structure (e.g., nodes and links), and its behavior (what the network 'does' as a result of the interactions among the nodes and links).</q> In other words, networks are graphs that represent something real, <q>a representation or model of observable reality.</q> (National Research Council, Committee on Network Science for Future Army Applications: Network Science, Board of Army Science and Technology, National Academies Press, www.nap.edu, 2005).
 </text>
 
+Networks as graphs “on steroids”…
+Objects: Graph vertices.
+   Objects can be of different kinds.
+   Objects can be labeled.
+   Objects can have attributes
+Links between objects: Graph edges.
+   Links can be of different kinds.
+   Links can be directed (arcs) or undirected (edges).
+   Links can have attributes.
+
 <text>
 Two key ingredients of networks <cite>Lewis 2009</cite>:
 (1) the study of the structure of a collection of nodes and links that represent something real,
 (2) the study of the dynamic behavior of the aggregation of nodes and links.
 </text>
+
+
 
 <text>
 The study of networks encompasses theories, models, and applications expressed in terms of <q>relational concepts</q> <cite>Wasserman and Faust 1994</cite>. In other words, the relationships defined by the existing links among the elements of a complex system are the fundamental ingredient of networks, where
@@ -58,7 +99,7 @@ L: A network forms by the autonomous and spontaneous action of independent nodes
 </text>
 
 <text>
-Connections in a network provide opportunities for and impose constraints on the elements of the network. Ties among elements are primary and attributes of elements are secondary (and they can often be understood in terms of the role they play within the network structure). 
+Connections in a network provide opportunities for and impose constraints on the elements of the network. Ties among elements are primary and attributes of elements are secondary (and they can often be understood in terms of the role they play within the network structure).
 
 + results seem to correlate form with function and structure with behavior <cite>Lewis 2009</cite>.
 </text>
@@ -76,7 +117,7 @@ Most applications focus on networks of elements of the same type (one-mode netwo
 </text>
 
 <text>
-++ Modes = distinct sets of entities on which the structural variables are measured. Single set (uni-mode networks), two sets (two-mode networks) or even more (multi-mode networks). 
+++ Modes = distinct sets of entities on which the structural variables are measured. Single set (uni-mode networks), two sets (two-mode networks) or even more (multi-mode networks).
 
 The mode of the network = the number of sets of entities on which structural variables are measured.
 
@@ -97,10 +138,74 @@ Modeling units (level at which network data are studied): actor, dyad (pair of a
 ++ the need to understand the interconnectivity of our relationship with customers and the groups they interact with, whom, how and why.
 </text>
 
+
+An interdisciplinary field: Complex systems
+(“networks of heterogeneous components that interact”)
+   Physics: Nonlinear dynamics &amp; chaos.
+Dynamical systems that are highly sensitive to initial conditions
+(a.k.a. butterfly effect).
+   Economics: Markets.
+Spontaneous (or emergent) order as the result of human action,
+but not the execution of any human design [Austrian perspective].
+   Information theory: Complex adaptive systems.
+(focus on the ability to change and learn from experience).
+
+A complex system is a system composed of
+interconnected parts that, as a whole, exhibit one or
+more properties (behavior) not obvious from the
+properties of the individual parts (i.e. emergence).
+
+
+
 <text>
-Need for new data mining techniques ++ Today's data, however, doesn't take the familiar form of the database. <q>The information's not coming at you in a clean tabular form, it's coming at you in a network form.</q> [Chid Apte, director of analytics research at IBM and chair of the KDD'2011 conference]. It arrives in a graph, that records not only the complex connections between nodes but also other types of information in a diversity of formats (e.g. the videos, images, and comments that people post on social networks). Social media may have started the trend toward analyzing such graphs, Apte says, but network data comes from other sources as well-for example, from complex engineering systems such as the electric power grid, water distribution systems, and traffic management systems. <cite>Naone 2011</cite>
+
+DATA MINING
+“Non-trivial extraction of implicit, previously unknown
+and potentially useful information from data.”
+Frawley, Piatetsky-Shapiro &amp; Matheus:
+Knowledge Discovery in Databases: An Overview.
+MIT Press, 1991.
+   “Exploration and analysis, by automatic or
+semi-automatic means, of large quantities of data in
+order to discover meaningful patterns.”
+Berry &amp; Linoff:
+Data Mining Techniques.
+Wiley, 1997
+
+
+multidisciplinary:
+- Databases (large data volume)
+- AI (ML, knowledge representation)
+- HCI (visualization, presentation of results)
+- Statistics (data summarization, model evaluation)
+
+
+Need for new data mining techniques ++
+
+Today's data, however, doesn't take the familiar form of the database. <q>The information's not coming at you in a clean tabular form, it's coming at you in a network form.</q> [Chid Apte, director of analytics research at IBM and chair of the KDD'2011 conference]. It arrives in a graph, that records not only the complex connections between nodes but also other types of information in a diversity of formats (e.g. the videos, images, and comments that people post on social networks). Social media may have started the trend toward analyzing such graphs, Apte says, but network data comes from other sources as well-for example, from complex engineering systems such as the electric power grid, water distribution systems, and traffic management systems. <cite>Naone 2011</cite>
 </text>
 
+
+ during an interview for The McKinsey Quarterly:
+ "Hal Varian on how the Web challenges managers"
+ JANUARY 2009
+ http://www.mckinseyquarterly.com/Strategy/Innovation/Hal_Varian_on_how_the_Web_challenges_managers_2286
+
+
+“I keep saying the sexy job in the next ten years will be
+statisticians. People think I’m joking, but who would’ve
+guessed that computer engineers would’ve been the sexy
+job of the 1990s? The ability to take data—to be able to
+understand it, to process it, to extract value from it, to
+visualize it, to communicate it—that’s going to be a hugely
+important skill in the next decades…
+Because now we really do have essentially free and
+ubiquitous data. So the complimentary scarce factor is the
+ability to understand that data and extract value from it.”
+Hal R. Varian
+Google’s Chief Economist
+Professor of Information Sciences, Business, and Economics
+at the University of California at Berkeley
 
 
 

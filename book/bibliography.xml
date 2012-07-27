@@ -3797,6 +3797,28 @@
 </reference>
 
 
+
+<reference id="Langville and Meyer 2006">
+ <author>Amy N. Langville</author>
+ <author>Carl D. Meyer</author>
+ <title>Google's PageRank and Beyond: The Science of Search Engine Rankings</title>
+ <publisher>Princeton University Press</publisher>
+ <year>2006</year>
+ <isbn>0691122024</isbn>
+ <file>[books]/networks/0691122024 [Langville &amp; Meyer] Google's PageRank and Beyond.djvu</file>
+</reference>
+
+<reference id="Langville and Meyer 2012">
+ <author>Amy N. Langville</author>
+ <author>Carl D. Meyer</author>
+ <title>Who's #1? The Science of Rating and Ranking</title>
+ <publisher>Princeton University Press</publisher>
+ <year>2012</year>
+ <isbn>0691154228</isbn>
+</reference>
+
+
+
 <reference id="Latombe 1991">
  <author>Jean Claude Latombe</author>
  <title>Robot Motion Planning</title>

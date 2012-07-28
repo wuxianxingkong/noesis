@@ -4152,6 +4152,18 @@
 
 
 
+<reference id="Lopez and Touchette 2012">
+ <author>Javier López Peña</author>
+ <author>Hugo Touchette</author>
+ <title>A network theory analysis of football strategies</title>
+ <journal>arXiv</journal>
+ <article>1206.6904</article>
+ <year>2012</year>
+ <url>http://arxiv.org/abs/1206.6904</url>
+ <file>Networks/applications/social/sports/2012 arXiv - Football.pdf</file>
+</reference>
+
+
 <reference id="Lovasz and Plummer 1986">
  <author>László Lovász</author>
  <author>M.D. Plummer</author>
@@ -4835,6 +4847,30 @@
  <file>[books]/networks/0199206651 [Newman] Networks.mobi</file>
 </reference>
 
+<reference id="Newman 2011">
+ <author>Mark E.J. Newman</author>
+ <title>Complex Systems: A Survey</title>
+ <journal>American Journal of Physics</journal>
+ <volume>79</volume>
+ <number>8</number>
+ <pages>800-810</pages>
+ <year>2011</year>
+ <doi>10.1119/1.3590372</doi>
+ <file>Networks/2011 AJP [Newman] Complex Systems.arXiv.1112.1440v1.pdf</file>
+</reference>
+
+
+<reference id="Newman 2012">
+ <author>Mark E.J. Newman</author>
+ <title>Communities, modules and large-scale structure in networks</title>
+ <journal>Nature Physics</journal>
+ <volume>8</volume>
+ <pages>25-31</pages>
+ <year>2012</year>
+ <doi>10.1038/nphys2162</doi>
+ <file>Networks/algorithms/clustering/2012 Nature Physics [Newman] Communities.pdf</file>
+</reference>
+
 
 <reference id="Newman et al. 2006">
  <author>Mark E.J. Newman</author>
@@ -5167,6 +5203,20 @@
  <year>2004</year>
  <doi>10.1073/pnas.0400054101</doi>
  <file>Networks/algorithms/clustering/2004 PNAS Defining and identifying communities in networks.pdf</file>
+</reference>
+
+
+
+<reference id="Radicchi 2011">
+ <author>Filippo Radicchi</author>
+ <title>Who Is the Best Player Ever? A Complex Network Analysis of the History of Professional Tennis</title>
+ <journal>PLoS ONE</journal>
+ <volume>6</volume>
+ <number>2</number>
+ <pages>e17249</pages>
+ <year>2011</year>
+ <doi>10.1371/journal.pone.0017249</doi>
+ <file>Networks/applications/social/sports/2011 PONE Tennis.0017249.pdf</file>
 </reference>
 
 
@@ -5564,6 +5614,20 @@
  <file>[books]/algorithms/1848000693 [Skiena] The Algorithm Design Manual.2nd.pdf</file>
 </reference>
 
+
+
+<reference id="Skinner 2010">
+ <author>Brian Skinner</author>
+ <title>The price of anarchy in basketball</title>
+ <journal>Journal of Quantitative Analysis in Sports</journal>
+ <volume>6</volume>
+ <number>1</number>
+ <pages>3</pages>
+ <year>2010</year>
+ <doi>10.2202/1559-0410.1217</doi>
+ <file>Networks/applications/social/sports/2010 JQAS Basketball.pdf</file>
+ <file>Networks/applications/social/sports/2010 JQAS Basketball.arXiv.0908.1801v4.pdf</file>
+</reference>
 
 
 

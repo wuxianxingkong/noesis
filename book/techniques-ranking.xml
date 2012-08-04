@@ -118,6 +118,9 @@ ISBN: 978-3-540-78807-2
 However, the rank of the pages providing incoming links is what determines the rank of a given page... and this is hard to manipulate for high PageRank values.
 </text>
 
+
+
+
 <text>
 ++ Facebook has its own algorithm, EdgeRank, which (in conjunction with September’s addition, GraphRank) determines which items appear at the top of an individual's news feed. EdgeRank is based on many variables, including who Facebook thinks are a user's closest friends and how many people have interacted with a piece of content.
 
@@ -224,6 +227,58 @@ Popular Science books
 ++ <cite>Langville and Meyer 2006</cite>
 (PageRank + HITS)
 </text>
+
+
+<note>
+<title>Spectral ranking</title>
+
+<text>
+Even though made famous by Google, eigenvalues and eigenvectors have been used in ranking techniques for more than 50 years. Collectively, such techniques are known as spectral ranking techniques.
+
+ref. Sebastiano Vigna: Spectral Ranking, arXiv, December 2009, http://arxiv.org/abs/0912.0238/
+
+
+Theory (origin): Study of nonnegative matrices by Oskar Perron (1880-1975) and Ferdinand George Frobenius (1849-1917). In fact, the unique largest eigenvalue of a real square matrix with positive entries and its corresponding eigenvector are also known as Perron value and Perron vector, respectively.
+
+ref. Perron, Oskar (1907), "Zur Theorie der Matrices", Mathematische Annalen 64 (2): 248–263, doi:10.1007/BF01449896
+ref. Frobenius, Georg (1912), "Ueber Matrizen aus nicht negativen Elementen", Sitzungsber. Königl. Preuss. Akad. Wiss.: 456–477
+
+Practice (application to ranking):
+fundamental contributions of Seeley and Wei (the dominant eigenvector, possibly with stochastic normalisation), Katz (damping) and Hubbell (boundary condition)
+
+ref. John R. Seeley. The net of reciprocal influence: A problem in treating sociometric data. Canadian Journal of Psychology, 3:234–240, 1949.
+
+ref. T.H. Wei: The algebraic foundations of ranking theory, Ph.D. Thesis, Cambridge University, 1952
+
+
+ref. Leo Katz. A new status index derived from sociometric analysis. Psychometrika, 18(1):39-43, 1953.
+== if M has spectral radius smaller than one, that is, |\lambda_0| &lt; 1, an attenuation or damping factor is introduced to guarantee convergence
+
+ref. Maurice G. Kendall: Further contributions to the theory of paired comparisons, Biometrics 11, 1955
+
+ref. Charles H. Hubbell. An input-output approach to clique identification. Sociometry, 28(4):377–399, 1965.
+== initial preference, or boundary condition (preference vector in PageRank terms) 
+
+ref. T.L. Saaty: Rank according to Perron: A new insight, Mathematics Magazine 60(4):211-213, 1967
+
+++ Bonacich proposes to use spectral ranking on zero-one matrices representing entities and their relationships to identify the most important entities
+ref. Phillip Bonacich. Factoring and weighting approaches to status scores and clique identi?cation. Journal of Mathematical Sociology, 2(1):113–120, 1972.
+
+++ Mark E. Frisse. Searching for information in a hypertext medical handbook. Communications of the ACM, 31(7):880-886, 1988.
+
+James Keener's ranking method for sports @ <cite>Langville and Meyer 2012</cite>, 29-52 
+ref. James P. Keener. 1993. The Perron-Frobenius theorem and the ranking of football teams. SIAM Rev. 35, 1 (March 1993), 80-93. DOI=10.1137/1035004 http://dx.doi.org/10.1137/1035004
+
+
+
+"PageRank is the damped Markovian spectral ranking of the adjacency matrix of a web graph. The boundary condition is called preference vector, and it can be used to bias PageRank with respect to a topic, to personal preferences, or to generate trust scores" 
+ref. 
+
+</text>
+
+
+</note>
+
 
 
 ++

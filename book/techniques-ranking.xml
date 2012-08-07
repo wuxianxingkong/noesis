@@ -102,6 +102,11 @@ Typically, the higher the number of incoming links, the higher the PageRank of a
 r(d_{in}, d_{out}) = \frac{p}{n} + \frac{1-p}{n} \frac{d_{in}}{\langle d_{in} \rangle}
 </equation>
 
+
+++ Random walks and Markov chains... e.g. www.whydomath.com video describing PageRank teleportation, dangling nodes, and random surfers to a non-mathematical audience
+
+
+
 cf.
 Santo Fortunato
 Marián Boguñá
@@ -183,6 +188,14 @@ NOTE: Minor perturbations on the network can greatly influcence hub and authorit
 <text>
 (ref. Lempel, Moran: "The stochastic approach for link-structure analysis (SALSA) and the TKC effect." Computer Networks 33(1-6):387-401, 2000 ) proposed SALSA, a stochastic algorithm for link structure analysis that combines PageRank and HITS features to improve authority and hub computation by using two Markov chains: one for hubs and a different one for authorities.
 </text>
+
+
+<note>
+<title>The offense-defense rating method</title>
+
+A nonlinear cousin of Kleinberg's HITS algorithm, ref. <cite>Langville and Meyer 2012</cite>, chapter 7
+
+</note>
 
 </document>
 

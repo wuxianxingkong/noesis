@@ -219,9 +219,142 @@ Multi-topic pages... (+ the problem of topic drifting, i.e. returning pages that
 
 
 
+<document>
+<tag>ranking-evaluation</tag>
+<title>Rank evaluation</title>
+
+How far apart are two ranked lists?
+e.g. comparing to a known standard, an agreed-upon yardstick (a.k.a. gold standard)
+
+++ An alternative = Retroactive scoring: click-through rate, predictions of the past, A/B tests...
 
 <document>
-<tag>metrics-notes</tag>
+<tag>ranking-evaluation-kendall</tag>
+<title>Kendall's tau</title>
+
+ref. Maurice Kendall: A new measure for rank correlation. Biometrika, 30, 1938
+
+Kendall's <eqn>\tau</eqn> correlation measure:
+
+<equation>
+\tau = \frac { n_c - n_d } { \binom{n}{2} }
+</equation>
+
+where <eqn>n_c</eqn> is the number of concordant pairs and <eqn>n_d</eqn> is the number of discordant pairs. Since <eqn>\binom{n}{2} = n(n-1)/2</eqn> is just the number of pairs of items in the list, <eqn>-1 \leq \tau \leq 1</eqn>. 
+
+Perfect agreement: <eqn>\tau = 1</eqn>
+
+Perfect disagreement: <eqn>\tau = -1</eqn>
+
+Computation:
+ref. Ronald Fagin, Ravi Kumar, D. Sivakumar: Comparing top k lists. ACM SIAM Symposium on Discrete Algorithms, 2003, 28-36
+
+Variations for dealing with partial lists, lists of varying size, and lists containing ties
+ref. Cynthia Dwork, Ravi Kumar, Moni Naor, D. Sivakumar: Rank aggregation methods for the Web, WWW Conference, 2001
+ref. Cynthia Dwork, Ravi Kumar, Moni Naor, D. Sivakumar: Rank aggregation revisited, CiteseerX
+ref. Ronald Fagin, Ravi Kumar, D. Sivakumar: Comparing top k lists. SIAM 17, 2003
+
+e.g. 
+
+<equation>
+\tau_{partial} = \frac { n_c - n_d - n_u } { \binom{n}{2} - n_u }
+</equation>
+
+where <eqn>n</eqn> is the number of unique items in all the lists under consideration (otherwise, we could not make pairwise comparisons of the resulting <eqn>\tau_{partial}</eqn> values) and <eqn>n_u</eqn> is the number of unlabeled pairs. Hence, 
+
+<equation>
+\frac { - \binom{n}{2} } { \binom{n}{2} - n_u } \leq \tau_{partial} \leq = \frac { \binom{n}{2} } { \binom{n}{2} - n_u }
+</equation>
+
+Intuitive feature: <eqn>\tau_{partial}</eqn> penalizes disjoint partial lists more than reverse partial lists.
+
+
+
+Drawback: Disagreements at the bottom of the list incur the same penalties that disagreements at the top (typically, errors at the bottom are less important)
+
+</document>
+
+
+<document>
+<tag>ranking-evaluation-spearman</tag>
+<title>Spearman's footrule</title>
+
+Charles Spearman
+
+Spearman's measure weighs disagreements according to their position in the lists:
+
+<equation>
+\rho = \| l - \tilde{l} \|_1 = \sum_{i=1}^n | l(i) - \tilde{l}(i)|
+</equation>
+
+
+Taking the particular position within the ranked lists  into account, we can define a weighted footrule measure <cite>Langville and Meyer 2012</cite>:
+
+<equation>
+\rho_{weighted} = \sum_{i=1}^n \frac { | l(i) - \tilde{l}(i)| } { min \{ l(i), \tilde{l}(i)\} }
+</equation>
+
+Extension to partial lists @ <cite>Langville and Meyer 2012</cite>, pages 207-209
+</document>
+
+
+</document>
+
+
+
+<document>
+<tag>ranking-aggregation</tag>
+<title>Rank aggregation</title>
+
+
+<cite>Langville and Meyer 2012</cite>, chapters 14-15, pages 159-200:
+
+e.g. meta-search engines
+
+- Arrow's criteria (not all of them are always required...)
+
+- Aggregation methods:
+
+<list>
+
+<item>Borda count (ref. J.C. Borda: Mémoire sur les élections au scrutin. Histoire de l'Académe Royales des Sciences, 1781)</item>
+
+<item>Average rank</item>
+
+<item>Simulated data</item>
+
+<item>Graph-based approach</item>
+
+<item>MRV = Minimum Violation Ranking</item>
+
+</list>
+
+
+<note>
+<title>Rating aggregation</title>
+
++ Matrix form
++ Matrix normalization
++ Aggregation (e.g. weighted average)
++ Rating vectors from rating aggregation matrices
+
+</note>
+
+
+
+Aggregation refinement: O(n) local Kemenization
+ref. Cynthia Dwork, Ravi Kumar, Moni Naor, D. Sivakumar: Rank aggregation revisited, CiteseerX
+- An aggregated list is locally Kemeny optimal is there are no pair-wise swaps of items that reduce the sum of Kendall tau measures between each input list and the aggregated list
+
+
+Effect of aggregation: Reducing the impact of outliers (e.g. anti-spam method for Google bombs and link farms)
+
+</document>
+
+
+
+<document>
+<tag>ranking-notes</tag>
 <title>Bibliographic notes</title>
 
 <text>

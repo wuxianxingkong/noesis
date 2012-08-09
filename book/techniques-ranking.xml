@@ -195,6 +195,8 @@ NOTE: Minor perturbations on the network can greatly influcence hub and authorit
 
 A nonlinear cousin of Kleinberg's HITS algorithm, ref. <cite>Langville and Meyer 2012</cite>, chapter 7
 
+++ Park-Newman method: direct and indirect wins (discounting parameter)
+ref. Juyong Park and M.E.J. Newman: A network-based ranking system for US college football. Journal of Statistical Mechanics: Theory and Experiment, October 2005
 </note>
 
 </document>
@@ -432,6 +434,14 @@ RANKING
 [Brin, S.;  Page, L.,  The anatomy of a large-scale hypertextual web search engine,   In:  Proc. 7th Int. World Wide Web Conf. (WWW’98)  Brisbane, Australia.  (Apr. 1998), pp.  107–117]
 [Kleinberg, J.M.,  Authoritative sources in a hyperlinked environment,   J. ACM  46  (1999) 604–632.]
 [Sun, Y.;  Han, J.;  Zhao, P.;  Yin, Z.;  Cheng, H.;  Wu, T.,  RankClus: Integrating clustering with ranking for heterogeneous information network analysis,   In:  Proc. 2009 Int. Conf. Extending Data Base Technology (EDBT’09)  Saint Petersburg, Russia.  (Mar. 2009), pp.  565–576.]
+
+
+++
+Ranking based on network optimization (e.g. Dorit Hochbaum)
+ref. R.K. Ahuja, Dorit S. Hochbaum, J.B. Orlin: Solving the convex cost integer dual of minimum cost network flow problem. Management Science, 49:950-964, 2003
+ref. Dorit S. Hochbaum: Ranking sports teams and the inverse equal paths problem. LNCS 4286:307-318, 2006
+ref. Dorit S. Hochbaum, A. Levin: Methodologies for the group rankings decision. Management Science, 52:1394-1408, 2006
+ref. Dorit S. Hochbaum, E. Moreno-Centeno: Country credit-risk rating aggregation via the separation-deviation model. Optimization Methods and Software, 23:741-762, 2008
 
 
 

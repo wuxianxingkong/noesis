@@ -354,6 +354,19 @@ Society is not a nonrandom network.
 Instead of randomly bouncing from person to person, some folders reached their destinations and the path they followed was not planned out ahead of
 time (there was no assurance that a chain of intermediaries existed between sender and receiver).
 
+
+How?
+
+USN: This corresponds to Killworth and Bernard (1978) who found in a reverse small world experiment (asking subjects how they would go about finding a particular person in a named city with a given occupation, sex, and ethnicity) that in choosing the category of the person who might help complete the chain, about half the choices were location and another half were occupation. Blau space was apparently invoked by most of the participants. The next variety of categories was less than 7%
+ref. Killworth, Peter D., and H. Russell Bernard. 1978. The reverse small-world experiment. Social Networks 1:159–192
+
+
+++ USN: One study, not of the whole world but an HP laboratory’s email network of 430 individuals (still relatively large), with a median number of 10 acquaintances and a mean of 12.9, showed that the communications were largely pegged to the formal hierarchical structure; focusing on individuals with high degree was not an effective connection strategy, rather, one looked to the official hierarchy (Adamic and Adar 2005)
+
+ref. Adamic, Lada, and Eytan Adar. 2005. How to search a social network. Social Networks 27 (3): 187–203
+
+
+
 + Milgram's experiment inspired a 1990 Broadway play and movie by John Guare called <q>Six Degrees of Separation: A Play</q>.
 K: A line uttered by one of the play’s characters: <q>I read somewhere that everybody on this planet is separated by only six other people. Six degrees of separation. Between us and everyone else on this planet.</q>
 Wikipedia: Guare, in interviews, attributed his awareness of the "six degrees" to Marconi. Although this idea had been circulating in various forms for decades, it is Guare's piece that is most responsible for popularizing the phrase "six degrees of separation." Following Guare's lead, many future television and film sources would later incorporate the notion into their stories.
@@ -363,6 +376,9 @@ Wikipedia: Guare, in interviews, attributed his awareness of the "six degrees" t
 [Dodds, P. S., R. Muhamad, and D. J. Watts. 2003. An experimental study of search in global social networks. Science 301 (5634): 827–829.]
 
 note (USN'2012): The number of steps was higher than the theoretical number because there were social structural barriers to network linkages. In the first experiment, Milgram reported that links between men and women were much less frequent than same-sex linkages, a finding repeated in the recent experiment. Similarly, there were barriers between social classes. Hence, personal agency or motivation became a factor in establishing linkages. Organizations, too, vary in the extent to which they actively seek to relate to other organizations and are skilled in this endeavor.
+
+USN'2012: Milgram’s original experiment has been difficult to duplicate. In a recent attempt using email, more than 60,000 email users attempted to reach 18 target persons in 13 countries, but only 1.6% of the 24,163 chains reached their target (Dodds, Muhamad, and Watts 2003). Judgments about the number of steps and the strategies used by participants, given the tiny proportion of completed networks, are dubious in my view. The difficulty of gathering empirical data on large-scale social networks is illustrated by this study.
+
 
 
 + Facebook:  The best-known real-world study, in 1967, involved a few hundred people trying to send postcards to a particular Boston stockholder. Facebook's version, conducted in collaboration with researchers from the University of Milan, involved the entire social network as of May 2011, which amounted to more than 10 percent of the world's population. Analyzing the 69 billion friend connections among those 721 million people showed that the world is smaller than we thought: four intermediary friends are usually enough to introduce anyone to a random stranger. "When considering another person in the world, a friend of your friend knows a friend of their friend, on average," the technical paper pithily concluded

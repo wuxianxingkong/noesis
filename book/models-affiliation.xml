@@ -17,6 +17,12 @@ e.g. Club membership, voluntary organizations, attendance to social events, sitt
 </text>
 
 
+USN:
+"a key feature of social networks is high transitivity, meaning that if A and B are connected and there is also a connection between B and C, it is likely that there is also a connection between A and C (discussed in chapter 2). This situation does not occur in physical and biological networks (Newman 2006b; Newman and Park 2003). Transitivity leads to clustering into “communities” (chapter 3) and calls for quite different models than those that work for other kinds of networks. The clustering occurs because people belong to groups and organizations of one kind or another, or write papers together, or appear in the same movies, or belong to the same boards of directors. They also live in geographically delineated neighborhoods and, as we saw in the chapter on small groups, may attend the same events. People are said to be connected when they share membership in one of these “communities”; conversely, the “communities” are linked when they share at least one person in common. This duality was first called attention to in an aptly titled paper, “The Duality of Persons and Groups” (Breiger 1974). In the mathematical language of graph theory, this duality is called a bipartite graph"
+
+ref. Breiger, Ronald. 1974. The duality of persons and groups. Social Forces 53:181–190. 
+
+
 <text>
 Representation mechanism for hypergraphs:
 - When sets of elements have something in common (beyond pairwise associations)

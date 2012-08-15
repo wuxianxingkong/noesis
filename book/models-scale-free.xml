@@ -741,6 +741,8 @@ Power laws:
 - Alfred James Lotka (1926): Number of papers by a scientist
 
 
+  ref. Pareto, Vilfredo. 1896. Cours d’économie politique professé à l’Université de Lausanne. 2 vols. Lausanne, Paris: F. Rouge; Pichon 
+
 The power law is related to Zipf’s, Pareto’s, and Yule–Simon’s laws, but is somewhat more general.
 
 - Zipf’s law states that the frequency of a word w in the English language is inversely proportional to its rank in the frequency table: f(w) = c/(r(w)), where r(w) is the word’s rank and c is a constant.

@@ -47,9 +47,13 @@ spokes, were coordinated by a central person—the organization was efficient, but
 <tag>centrality-degree</tag>
 <title>Node degree</title>
 
+
+SNA: Most intuitive form of centrality = Number of immediate contacts an actor has in a network
+
 <text>
-Node degree is the simplest indicator of the node importance within the network. As a matter of fact, node degree, or strength in weighted networks, is a simple measure of direct interaction. The balance of in-degree and out-degree might also indicate the role of the node within the network (e.g. whether it primarity sends or receives information).
+Node degree is the simplest indicator of the node importance within the network. As a matter of fact, node degree, or strength in weighted networks, is a simple measure of direct interaction. The balance of in-degree and out-degree might also indicate the role of the node within the network (e.g. whether it primarily sends or receives information).
 </text>
+
 
 <text>
 Node degree is highly informative in networks where a small fraction of nodes collect the vast majority of links (a.k.a. scale-free networks). In such networks, high-degree nodes (often called hubs) are essential for maintaining the network connectivity and targeted attacks might be fatal for the network to continue its operation. Just think of major airports and the disruptions they cause on the air traffic when they have to be closed.
@@ -64,15 +68,26 @@ C_{degree}(i) = \frac{degree(i)}{n-1}
 </equation>
 
 <text>
-Degree centrality for undirected graphs:
+Degree centrality for directed graphs:
 </text>
 
 <equation>
-C'_{degree}(i) = \frac{degree_{out}(i)}{n-1}
+C_{out-degree}(i) = \frac{degree_{out}(i)}{n-1}
 </equation>
 
+Likewise, in-degree centrality (see below on prestige)...
+
+<equation>
+C_{in-degree}(i) = \frac{degree_{in}(i)}{n-1}
+</equation>
+
++ indegree centrality = measure of prestige or popularity
+
++ outdegree centrality = measure of expansiveness / direct reach
+
+
 <text>
-Value within <eqn>[0,1]</eqn>.
+Normalization = Value within <eqn>[0,1]</eqn>, so that centrality values can be compared between different networks (caveat: such comparison should not be done if the networks significantly differ in size, since network size biases normalized degree measures of centrality, e.g. in small networks, individual nodes have a greater chance of connecting to a large proportion of the nodes in the network).
 </text>
 
 
@@ -109,6 +124,16 @@ L: Closeness—as defined here—is not a perfect measure of an intermediary’s power
 over others. Consider the case of a symmetric graph. It
 is highly likely that several shortest paths exist between two arbitrarily chosen source
 and destination nodes.
+
+SNA'2012: when an actor is not central, he needs to rely on others to relay messages through the network (Bavelas 1950)
+= an actor close to many other actors is independent (also, able to more easily reach everyone in a network, e.g. to influence them)
+++ <cite>Prell 2012</cite>: closeness has been linked to the ability to access information (Leavitt 1951), power (Coleman 1973), and influence (Friedkin 1991)
+
+refs.
+A. Bavelas: "Communication patterns in task-oriented groups", Journal of the Accoustical Society of America, 57:271-282, 1950
+H. Leavitt: "Some effects of certain communication patterns on group performance", Journal of Abnormal and Social Psychology, 20:353-387, 1951
+J.S. Coleman: "The mathematics of collective action", Chicago: Aldine, 1973
+N.E. Friedkin: "Theoretical foundations for centrality measures", American Journal of Sociology, 96:1478-1504, 1991
 </text>
 
 </document>
@@ -120,18 +145,23 @@ and destination nodes.
 
 <text>
 As it happened with closeness, betweenness is also based on the network shortest paths.
+
+SNA: Sometimes, it is not so important how many people you know, but where you are placed within the network.
 </text>
 
 
-USN'2012: Some popular nodes play a key role as middlemen... One can get to other members via these leaders. This is called “betweenness” (Freeman 1979). There are various methods for measuring betweenness, but all are based on the idea of a switching point. The person or organization that serves as a connector or a switching point can be very important...
+USN'2012: Some popular nodes play a key role as middlemen... One can get to other members via these leaders. This is called “betweenness” <cite>Freeman 1978</cite>. There are various methods for measuring betweenness, but all are based on the idea of a switching point. The person or organization that serves as a connector or a switching point can be very important...
+
 
 
 <text>
 IDEA: If non-adjacent nodes j and k want to interact and node i is on the path between them, then i may have some control over their interactions.
+
+i.e. potential control on the flow of information
 </text>
 
 <text>
-The betweenness centrality of a given node is degined as the fraction of all the shortest paths within the network that go through the node.
+The betweenness centrality of a given node is degined as the fraction of all the shortest paths (a.k.a. geodesics) within the network that go through the node.
 </text>
 
 <text>
@@ -366,6 +396,8 @@ The above matrix equation is the one employed for finding the eigensystem of <eq
 
 </document>
 
+
+
 <document>
 <tag>centrality-matrix</tag>
 <title>Matrix-based centrality measures</title>
@@ -463,8 +495,48 @@ NOTE: As in the standard Matlab notation, A' indicates the transpose of A.
 
 <text>
 ++ <cite>Bonacich 1972</cite> <cite>Bonacich 2007</cite>: Eigenvector centrality (takes into account interactions of different path lengths and their dispersion, relying on walks rather than shortest paths).
+
+Degree centrality focuses on a node local neighborhood, whereas eigenvector centrality generalizes this idea = weighting by neighbor centrality
+
+Note: As an extension of degree centrality, eigenvector centrality will yield the same results than degree centrality for regular networks, i.e. when all nodes have the same degree.
+
+Eigenvector centrality takes into account situations when low-degree nodes are connected to high-degree nodes (e.g. <cite>Prell 2012</cite>, p.102)
+
+ref.
+P. Bonacich, P. Lloyd: "Eigenvector-like measures of centrality for asymmetric relations", Social Networks 23:191-201, 2001
+P. Bonacich: "Some unique properties of eigenvector centrality", Social Networks 29:555-564, 2007 
 </text>
 
+
+<note>
+<title>Beta centrality</title>
+
+<cite>Prell 2012</cite> 109-113
+
+Traditional centrality measures work when the network represents "positive" relations (e.g. communication, influence, friendship), but fail for "negative" relations.
+
+<equation>
+C_{\beta}(i) = \sum_{j=1}^{n} A_{ij} ( \alpha + \beta C_{\beta}(i) )
+</equation>
+
+Parameters: 
+<eqn>\beta</eqn> = Extent to which the global network structure influences a particular node centrality score (i.e. dependence of ego centrality on the centrality of alters).
+<eqn>\alpha</eqn> = Scaling parameter (selected to that the sum of the squares of the centrality scores equals the size of the network).
+
+This measure of centrality offers flexibility when analyzing a particular network:
+- A positive <eqn>\beta</eqn> parameter is used when it is good to be connected to central nodes (as in eigenvector centrality). 
+- A negative value when it is disadvantageous to be connected to central nodes (e.g. zero-sum relations = one actor's gain is other actor's loss, as in exchange networks (Willer 1992)).
+
+NOTE: Bonacich's power centrality is caled alpha centrality in UCINET.
+
+Example: (Bonacich 1987), as in <cite>Prell 2012</cite>, page 112
+
+ref.
+P. Bonacich: "Power and centrality: A family of measures", The American Journal of Sociology, 92:1170-1982, 1987
+D. Willer: "Predicting power in exchange networks: A brief history and introduction to the issues", Social Networks 14:187-211, 1992
+
+
+</note>
 
 
 </document>
@@ -618,6 +690,21 @@ PROBLEM: For certain graphs, different initializations result in different autho
 </document>
 
 
+<document>
+<tag>centrality-multimodal</tag>
+<title>Centrality in two-mode networks</title>
+
+<cite>Prell 2012</cite>, pp.115-116
+
++ Modifications to standard measures of centrality (e.g. normalization)
+
+refs.
+
+Katherine Faust: "Centrality in affiliation networks", Social Networks 19:157-191, 1997
+S.P. Borgatti, M.G. Everett: "Network analysis of 2-mode data", Social Networks 19:243-269
+
+
+</document>
 
 <document>
 <tag>metrics-notes</tag>
@@ -625,10 +712,22 @@ PROBLEM: For certain graphs, different initializations result in different autho
 
 <text>
 Despite their overlap and partial redundancy, different centrality metrics provide unique information about individual nodes and their neighborhoods, hence each one is suitable for particular applications...
+
+
+SNA:
+- Degree focuses on how many people you know (activity, popularity/prestige) = immediate contacts
+- Eigenvector considers whether you are connected to well-connected people = degree centralities of alters
+- Betweenness indicates whether you are placed between disconnected actors,  e.g. cutpoints (potential control over information flow) = ego on geodesics
+- Closeness emphasizes actor's independence (i.e. reach others without having to rely on intermediaries) = path lengths
 </text>
 
 <text>
 ++ Studies <cite>Varlamis et al. 2010</cite> <cite>Maiya and Berger-Wolf 2010b</cite> <cite>Rubinov and Sporns 2010</cite>
+</text>
+
+<text>
+SNA: <cite>Prell 2012</cite> chapter "Actor Level in Complete Networks"...
+++ <cite>Kadushin 2011</cite> <cite>Prell 2012</cite>
 </text>
 
 

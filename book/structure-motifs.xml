@@ -71,6 +71,11 @@ The simplest network is a dyad. Relationships in a dyad can be undirected, mutua
 
 <text>
 Dyadic analysis focuses on the properties of pairwise relationships,
+
+DYAD CENSUS: MAN (Mutual, Asymmetric, Null)
++ In SNA, mutual dyads are viewed as more stable ties (e.g. reciprocal friendship), e.g. Facebook (undirected) vs. Google+ (directed)
++ Friendship networks contain a large number of asymmetric dyads !
++ Advice relations are even more likely to contain asymmetric dyads
 </text>
 
 
@@ -129,6 +134,10 @@ Chicken-and-egg situation: we do not know whether people hang around together be
 e.g. email interactions, over a year, of a population of over 30,000 students and staff in a university, Kossinets and Watts (2009) were able to determine that individual preferences for like persons and common social location both produced homophily. But modest initial preferences for similar others became amplified over many email exchanges into stronger patterns of homophily; similar interests led to similar locations in which similar interests were more available. The feedback between network structure and individual preference thus becomes especially noticeable over time.
 [Kossinets, Gueorgi, and Duncan J. Watts. 2009. Origins of homophily in an evolving social network. American Journal of Sociology 115 (2): 405–450.]
 
+
+Quantification: Ratio of homophilous ties in ego networks (UCINET: Ego network homophily) = Ties in the ego network that are homophilous / Ties in the ego network
+
+Support for homophily in actual networks: Age, sex, race, education, status, attitudes, behaviors...
 </document>
 
 
@@ -186,6 +195,8 @@ In Simmel’s view, the third can be non-partisan and a mediator, but can also be 
 [Georg Simmel: 1950. The sociology of Georg Simmel. New York: Free Press.]
 
 
+Simmel noted that two people in a dyadic relationship tend to share a stronger, more durable tie if their dyad is embedded in a triad <cite>Prell 2012</cite> = what has become to be known as "Simmelian ties"
+
 The third can line up with one of the two others and thereby gain his or her own advantage or can act as a broker between them and make a broker’s profit === ref. structural hole (Burt 1992)
 [Burt, Ronald S. 1982. Toward a structural theory of action: Network models of social structure, perception and action. New York: Academic Press.]
 
@@ -194,6 +205,12 @@ The third can line up with one of the two others and thereby gain his or her own
 Each connected triad is composed of three dyads—within the pair the choices or connections are either reciprocated or not.
 
 There are actually 16 possible configurations of triads...
+
+
+TRIAD CENSUS
+ref. 
+P.W. Holland and S. Leinhardt: "A method for detecting structure in sociometric data", American Journal of Sociology, 76:492-512, 1970
+P.W. Holland and S. Leinhardt: "Transitivity in structural models of small groups", Small Group Research, 2:107-124, 1971
 
 
 The triad census is thus a ‘periodic table of social elements’ and similarly able to categorize and build social structures.” (USN'2012)
@@ -227,6 +244,44 @@ While the distribution of triads seems at first to be a limited idea, the preval
 
 The distribution of reciprocated or unreciprocated dyads, centrality, and overall network density may account for most of the variance in the distribution of triads in human sociability networks (Faust 2007).
 [Faust, Katherine. 2007. Very local structure in social networks. Sociological Methodology 37:209–256.]
+
+
+CATEGORIZATION
+- Transitive triads: All (6) triples within the triad are transitive (i tied to j, j tied to k, i tied to k), i.e. "a friend of my friend is also my friend" = 030T, 120U, 120D, 300
+- Vacuously transitive: Either i is not tied to j and/or j is not tied to k = 003, 012, 021U, 021D, 102
+- Intransitive: One or more intransitive triples within the triad (i tied to j, j tied to k, but i not tied to k) = 021C, 030C, 111D, 111U, 120C, 201, 210 
+
+Note: Networks can contain vacuously transitive triads and still have the property of transitivity.
+
+
+STRUCTURAL CONCEPTS
+Different kinds of triads can be linked to to different structural concepts:
+- Structural Balance: 300, 102
+- Clustering:         300, 102, 003
+- Ranked clustering:  300, 102, 003, 120D, 120U, 021U, 030T
+- Transitivity:       300, 102, 003, 120D, 120U, 021U, 030T, 012
+- Cycles			  120C
+
+refs.
+
+Clustering and structural balance
+[J.A. Davis: "Clustering and structural balance in graphs", Human Relations, 20:181-187, 1967]
+- Balance as a constrained form of transitivity (300, 102, but not all transitive triads are considered to be balanced)
+- All balanced graphs are clusterable (a network is clusterable if it contains no cycle with a negative tie)
+
+Ranked clustering
+[J.A. Davis, S. Leinhardt: "The structure of positive interpersonal relations in small groups". In M. Berger, J. Zelditch, B. Anderson (eds.): "Sociological theories in progress", Houghton-Mifflin, 1972
+- The role of asymmetric ties: Actors that hold mutual ties are not only in the same cluster, they are also in the same rank. An asymmetric tie implies that one actor is in a different rank than the other (the receiver is viewed in a higher position than the sender, since the receiver can afford not to reciprocate <cite>Prell 2012</cite>).
+
+Cycles
+[P.S. Bearman: "Generalized exchange", American Journal of Sociology, 102:1383-1415, 1997]
+- Cyclic triads as "generalized exchange", where favors are done with the hope of being, indirectly, returned
+
+
+No real network is perfectly balanced, ranked, nor transitive, but looking at the triad census you can observe the tendency that a network exhibits towards balance, ranked clustering, or transitivity.
+
+e.g. UCINET (Triad census), Pajek (Triadic census)
+
 
 
 There is a class of network models that utilize the dependence of types of dyads and triads on various attributes of the actors within the network that are extremely useful in shedding light on the social processes within these networks, though work in this field is just beginning to receive wide application (Robins and
@@ -444,7 +499,18 @@ A more visual way to think of cluster coefficient is the following: A node u wit
 neighbors may be part of c triangular subgraphs, each containing node u as one of the
 triangle’s three nodes. Cluster coefficient is the ratio of the actual number of triangular
 subgraphs c to the maximum possible number.
+
+
+In directed networks, the formula is modified...
+
+CC(u) = 2c / ( degree(u) (degree(u) - 1) )
+
+
+In SNA, the clustering coefficient as defined above is also known as the ego density in ego networks (networks composed of a focal node [ego], its immediate neighbors [alters/altria], and the ties between ego and alters, as well as between the alters).
 </text>
+
+
+
 
 <text>
 The clustering coefficient of can be interpreted as the probability that two of its neighbors are adjacent in the network. However, this probability often depends on the node degree. Hence it is often expressed as a degree-dependent function:
@@ -595,6 +661,9 @@ where the second sum is computed over all pairs of nodes within module <eqn>r</e
 <document>
 <tag>motifs-notes</tag>
 <title>Bibliographic notes</title>
+
+
+SNA: <cite>Kadushin 2012</cite>, <cite>Prell 2012</cite> chapter on analysis at the dyad and triad levels... 
 
 <text>
 Motif analysis extended to weighted networks <cite>Onnela et al. 2005</cite>.

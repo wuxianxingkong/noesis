@@ -371,6 +371,27 @@ USN'2012: Bbalance is only one theory about choice in a network and does have it
 <tag>motifs-cliques</tag>
 <title>Cliques, plexes &amp; cores</title>
 
+
+Cliques + n-cliques + strong/weak components 
+= Number of direct (indirect) ties linking nodes in the group
+= Extent to which nodes can reach each other
+
+
+k-cores
+= Extent to which a group is vulnerable to fragmentation
+
+SNA 
+[R.J. Mokken: "Cliques, clubs and clans", Quality and Quantity 13:161-173]
+[J. Moody, D.R. White: "Structural cohesion and embeddedness: A hiearchical concept of social groups", Americal Sociological Review, 68:103-127, 2003]
+
+
+Focus
+- Components: Reachability
+- Cliques: Mutuality (relaxation: n-cliques, k-cores)
+- k-cores (when multiple, redundant paths among group members are important)
+- n-cliques (when it is important how information can quickly reach others in the subgroup) 
+
+
 <text>
 A <term>k-clique</term> is a fully-connected subgraph with k nodes.
 
@@ -388,6 +409,17 @@ DOI:	10.1103/PhysRevLett.94.160202
 
 IDEA (D): One can replace a network by the complete set of its cliques connected in accordance to the definition of adjacent cliques
 
+
+SNA:
+[Festinger 1949] L. Festinger: "The analysis of sociograms using matrix algebra", Human Relations 2:153-158, 1949
+[Luce 1950] R. Luce: "Connectivity and generalized n-cliques in sociometric group structure", Psychometrika 15:169-190, 1950
+[Luce and Perry 1949] R. Luce, A.D. Perry: "A method od matrix analysis of group structure", Psychometrika 14, 1949
+
+Overlapping cliques: Clique overlap graph @ UCINET
+[Everett and Borgatti 1998] M.G. Everett, S.P. Borgatti: "Analyzing clique overlap", Connections 21:49-61, 1998
+
+
+
 </text>
 
 
@@ -400,6 +432,12 @@ A <term>k-core</term> is a maximal subgraph whose nodes have at least k connecti
 
 - 2-cores are connected components without dangling chains.
 e.g. trees have no k-cores with k \geq 2.
+
+
+
+Hierarchy of subgroups:
+As k becomes higher, it becomes harder to join a k-core
+
 
 cf.
 The architecture of randomly damaged uncorrelated networks as a set of successively enclosed substructures...
@@ -418,6 +456,7 @@ http://arxiv.org/abs/cond-mat/0509102
 
 Alexander V. Goltsev, Sergey N. Dorogovtsev, J. F. F. Mendes: k-core (bootstrap) percolation on complex networks: Critical phenomena and nonlocal effects CoRR abs/cond-mat/0602611: (2006)
 http://arxiv.org/abs/cond-mat/0602611
+
 
 </text>
 
@@ -466,7 +505,24 @@ in massive graphs. In Proc. 31st Int. Conf on Very Large Data Bases, pages
 
 
 <document>
-&bibliography;
+<tag>motifs-lambda-sets</tag>
+<title>Lambda sets</title>
+
+
+LS: Relative isolation of groups to outsiders
+
+Identification of cohesive subgroups by contrasting the links within the group to the links outside the group
+(cohesive subgroups = difficult to break apart by the removal of links)
+(well-connected nodes = more than one path between them)
+
+Lambda set: Two nodes in the same \lambda-set if the number of paths connecting them (\lambda) is larger than the number of paths connecting them to outside nodes.
+
+Lambda sets help identify vulnerable bridges in a network (eliminating them fragments the network)
+
+</document>
+
+
+<document>
 <tag>clustering-coefficient</tag>
 <title>Clustering coefficients</title>
 
@@ -663,7 +719,7 @@ where the second sum is computed over all pairs of nodes within module <eqn>r</e
 <title>Bibliographic notes</title>
 
 
-SNA: <cite>Kadushin 2012</cite>, <cite>Prell 2012</cite> chapter on analysis at the dyad and triad levels... 
+SNA: <cite>Kadushin 2012</cite>, <cite>Prell 2012</cite> chapters on analysis at the dyad/triad and subgroup (components, cliques, k-cores, n-cliques, lambda-sets) levels... 
 
 <text>
 Motif analysis extended to weighted networks <cite>Onnela et al. 2005</cite>.

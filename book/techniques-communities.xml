@@ -285,6 +285,13 @@ Results depend on the value of k
 - k too large: separate communities
 - k too small: too large communities (k=2 == connected components)
 
+
+
+ref.
+[David and Carley 2008] G.B. Davis, K.M Carley: "Clearing the FOG: Fuzzy, overlapping groups for social networks", Social Networks 30:201-212, 2008
+
+Fuzzy overlapping groups: Relative strength of membership to different groups
+
 </document>
 
 

@@ -8,7 +8,6 @@
 <title>Network Motifs</title>
 
 
-
 <document>
 <tag>motifs</tag>
 <title>Network building blocks</title>
@@ -686,27 +685,6 @@ where the second sum is computed over all pairs of nodes within module <eqn>r</e
 <text>
 ++  <cite>Newman 2006</cite> reports modularity values between 0.3 and 0.8 for some real-world networks (for their optimal partitions). It is hard to find a real network with a low modularity value... 
 </text>
-
-</document>
-
-
-
-
-
-<document>
-<tag>equivalence</tag>
-<title>Equivalence</title>
-
-
-<document>
-<tag>equivalence-structural</tag>
-<title>Structural equivalence</title>
-</document>
-
-<document>
-<tag>equivalence-regular</tag>
-<title>Regular equivalence</title>
-</document>
 
 </document>
 

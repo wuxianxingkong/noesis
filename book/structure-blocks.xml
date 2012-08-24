@@ -1,0 +1,119 @@
+<?xml version="1.0"  encoding="ISO-8859-1" ?> 
+<!DOCTYPE sys-ents [ <!ENTITY bibliography SYSTEM "bibliography.xml"> ]> 
+<?xml-stylesheet type="text/xsl" href="../book.xsl"?>
+
+<document>
+&bibliography;
+<tag>blocks</tag>
+<title>Block Models: Positional and Role Analysis</title>
+
+
+Origin:
+[Lorraine and White 1971]
+F. Lorraine, H.C. White: "Structural equivalence of individuals in social networks". Journal of Mathematical Sociology, 1:49-80, 1971
+
+Group nodes into blocks according to how similar they are in their connections to others...
+
+e.g. multirelational networks
+
+Steps <cite>Prell 2012</cite>:
+1. Define equivalence, e.g. structural or regular
+2. Choose a similarity measure for equivalence, e.g. correlation coefficient or Euclidean distance
+3. Assign nodes to positions (blocks)
+4. Analyze relations to positions and interpret result
+
+
+
+
+<document>
+<tag>equivalence-structural</tag>
+<title>Structural equivalence</title>
+
+
+"Same ties to the same nodes"
+
+[Lorraine and White 1971]
+F. Lorraine, H.C. White: "Structural equivalence of individuals in social networks". Journal of Mathematical Sociology, 1:49-80, 1971
+
+
+Approximate structural equivalence: distance and correlation...
+[Burt 1976]
+R.S. Burt: "Positions in networks", Social Forces 55:93-122
+[Faust and Romney 1985]
+K. Faust, A.K. Romney: "Does STRUCTURE find structure? A critique of Burt's use of distance as a measure of structural equivalence", Social Networks 7:77-103, 1985
+[Burt 1986]
+R.S. Burt: "A cautionary note", Social Networks 8(2):205-211, 1986
+[Faust and Romney 1986]
+K. Faust, A.K. Romney: "Comment on 'A cautionary note'", Social Networks 8(2):213, 1986
+
+
+
+<document>
+<tag>blocks-structural-concor</tag>
+<title>CONCOR algorithm</title>
+
+[White et al. 1976]
+H.C. White, S.A. Boorman, R.L. Breiger: "Social structure from multiple networks - I - Blockmodels of roles and positions", The American Journal of Sociology, 81:730-780, 1976
+
+- Correlation matrix
+- Iteration
+- Density matrix (density within each block)
+- Image matrix (binarized version of the density matrix, e.g. density criterion rule [Arabie et al. 1978])
+- Reduced network (analysis of results)
+
+[Arabie et al. 1978]
+P. Arabie, S.A. Boorman, P.R. Levitt: "Constructing blockmodels: How and why", Journal of Mathematical Sociology, 17:21-63, 1978
+
+</document>
+
+</document>
+
+<document>
+<tag>equivalence-regular</tag>
+<title>Regular equivalence</title>
+
+
+"Similar ties to similar others"
+
+[White and Reitz 1983]
+D.R. White, K.P. Reitz: "Graph and semigroup homomorphisms on networks of relations", Social Networks 5:193-235, 1983
+
+e.g. Figure 9.7 @ <cite>Prell 2012</cite>, page 191
+
+[Borgatti and Everett 1992]
+S.P. Borgatti, M.G. Everett: "Notions of positions in network analysis", Sociological Methodology 22:1-35, 1992
+
+Structural vs. regular equivalence:
+- Local vs. wider structure
+- Surface vs. deeper structure
+- Exactness vs. abstractness
+
+
+<document>
+<tag>blocks-structural-concor</tag>
+<title>REGE algorithm</title>
+
+[White and Reitz 1983]
+D.R. White, K.P. Reitz: "Graph and semigroup homomorphisms on networks of relations", Social Networks 5:193-235, 1983
+
+[Borgatti and Everett 1993]
+S.P. Borgatti, M.G. Everett: "Two algorithms for computing regular equivalence", Social Networks 15:361-375, 1993
+
+</document>
+
+
+</document>
+
+
+<document>
+<tag>blocks-notes</tag>
+<title>Bibliographic notes</title>
+
+
+SNA: 
+<cite>Prell 2012</cite> chapter on positions and roles analysis... 
+<cite>Wasserman and Faust 1994</cite>
+
+</document>
+
+</document>

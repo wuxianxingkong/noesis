@@ -63,13 +63,21 @@ NOTE:
 <tag>connectivity-density</tag>
 <title>Density</title>
 
+
+
 <text>
 L: Density is the ratio of the number of actual links to the maximum number possible.
+
+For directed networks:
 </text>
 
 <equation>
 density(G) = \frac{m}{n(n-1)}
 </equation>
+
+
+For undirected networks: twice that...
+
 
 ++ Density (the number of connections contained within the network) and its opposite, Structural Holes (concerned with the lack of connections)
 
@@ -79,6 +87,54 @@ density(G) = \frac{m}{n(n-1)}
 USN'2012: 
 
 "Density is at the heart of community, social support, and high visibility (when people in a network can see what others are doing and monitor and sanction their behavior). Density facilitates the transmission of ideas, rumors, and diseases. Other things being equal, the greater the density, the more likely is a network to be considered a cohesive community, a source of social support, and an effective transmitter. Classic agricultural communities or villages have greater density than modern cities, and people tend to know one another in many contexts—as relatives, coworkers, church attendees, and so forth. Given the human limitation on the number of sustainable connections, smaller networks will have greater density. It is easier to know everyone in a small group than in a large community. In comparing different networks in terms of density, one therefore has to take into account their size.
+
+
+
+
+Warning! Density depends on network size, so it cannot be used for comparing networks of different size (average node degree is the preferred choice)
+
+
+</document>
+
+<document>
+<tag>connectivity-centralization</tag>
+<title>Centralization</title>
+
+Degree centralization score <cite>Freeman 1978</cite>
+
+Evaluating the extent to which network density depends on individual nodes (akin to standard deviation vs. mean in descriptive statistics)
+i.e. different networks with the same density can still have very different structures (e.g. interconnectedness/distribution vs. centralization)
+
+<equation>
+centralization(G) = \frac{ \sum_{i=1}^{n} [ degree(max) - degree(i) ] }{ \max \sum_{i=1}^{n} [ degree(max^*) - degree(i^*) ]}
+</equation>
+
+where <eqn>degree(max)</eqn> is the largest node degree in the network and <eqn>\max \sum_{i=1}^{n} [ degree(max^*) - degree(i^*) ]</eqn> is the maximum possible sun of differences in node degree for any network of size n.
+
+The maximum node degree for a network of size n is n-1. In a star network, the differences will be (n-1)-1 = n-2. Hence, The difference sum will be (n-1)(n-2) = n^2 - 3n + 2 for a star network. 
+
++ Any additional link in the network cannot involve the center of the star. Therefore, the difference corresponding to the nodes involved will be (n-1)-2 = n-3.   
+
+- The removal of a link to the star network, likewise, will result in a disconnected node (whose different will still be n-2) and n-2 nodes with reduced differences: n-3.
+
++ A change in a link in the star network will also result in reduced differences, since the hub degree will be n-2 and the differences will be reduced to n-3 for those nodes with degree 1
+
+Therefore, the star is the most centralized graph and yields the largest difference sum: n^2 - 3n + 2.
+
+<note>
+Approach valid for any centrality measure.
+</note>
+
+</document>
+
+
+<document>
+<tag>connectivity-structuralº-holes</tag>
+<title>Structural holes</title>
+
+
+
+
 
 "STRUCTURAL HOLES: 
 Density is based on the idea of connection. But one can turn the idea on its head and focus on the lack of a connection (Burt 1992).
@@ -106,9 +162,8 @@ Broker roles (Gould and Fernandez 1989): coordinator, consultant, representative
 ref.
 R.V. Gould, R.M. Fernandez: "Structures of mediation: A formal approach to brokerage in transaction networks". Sociological Methodology, 19:89-126, 1989
 
-
-
 </document>
+
 
 
 <!-- Shortest paths -->

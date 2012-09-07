@@ -7,7 +7,7 @@
 
 
 Common network features:
-   Large scale: large collection of individual components (agents in a market, ants in their colony, neurons in the brain, different kinds of cells in the inmune system, web pages...).
+   Large scale: large collection of individual components (agents in a market, ants in their colony, neurons in the brain, cells in a beating heart, different kinds of cells in the inmune system, web pages...).
    Interactions only through existing links / signaling and information processing
    Distribution (nodes decide their connections) / self-organization.
    Collective behavior / emergence: the whole is more than the sum of its parts (vs. reductionism)
@@ -24,11 +24,16 @@ Common network features:
 
 Complex (emergence + self-organization) vs. complicated (reductionism: the whole understood as the sum of its parts)
 
+Linear vs. nonlinear: A linear system can be understood by understanding its individual parts and putting them together <cite>Mitchell 2009</cite>. 
+Nonlinearities lead to systems that are subject to sensitive dependence on initial conditions: measurement errors, no matter how small, lead to inaccurate, even impossible, long-term predictions (chaos theory = deterministic yet unpredictable systems = apparently random behavior from deterministic systems), e.g. weather beyond one week in the future
+Origins: Henri Poincaré's work on the many body problem (Newtonian dynamics, 1887), Edward Lorenz's weather models (1963)
+Note: Predictions might be impossible at the microlevel, yet macroscopic properties of chaotic systems are still predictable <cite>Mitchell 2009</cite>
+
 Macroscopic properties cannot be inferred directly from the microscopic properties of the network elements. Interactions must be taken into account...
 
 
 
-ALGORITHMIC PERSPECTIVE
+ALGORITHMIC PERSPECTIVE: A more prosaic perspective on networks and complex systems
 
 <text>
 Reka Albert: Network topology related questions:

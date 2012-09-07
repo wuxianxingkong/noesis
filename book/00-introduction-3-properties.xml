@@ -7,17 +7,28 @@
 
 
 Common network features:
-   Large scale.
-   Continuous evolution.
-   Distribution (nodes decide their connections).
-   Interactions only through existing links
+   Large scale: large collection of individual components (agents in a market, ants in their colony, neurons in the brain, different kinds of cells in the inmune system, web pages...).
+   Interactions only through existing links / signaling and information processing
+   Distribution (nodes decide their connections) / self-organization.
+   Collective behavior / emergence: the whole is more than the sum of its parts (vs. reductionism)
+
+   Continuous evolution / adaptation: change through learning or evolution. (note: nonadaptive complex systems, e.g. weather)
   
   [Han 9.2.2]
+
 
 
 <text>
 ++ Scale, evolution, distribution &amp; interaction through connections...
 </text>
+
+Complex (emergence + self-organization) vs. complicated (reductionism: the whole understood as the sum of its parts)
+
+Macroscopic properties cannot be inferred directly from the microscopic properties of the network elements. Interactions must be taken into account...
+
+
+
+ALGORITHMIC PERSPECTIVE
 
 <text>
 Reka Albert: Network topology related questions:

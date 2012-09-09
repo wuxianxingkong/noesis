@@ -4382,6 +4382,16 @@
 </reference>
 
 
+<reference id="Mandelbrot 1982">
+ <author>Benoit B. Mandelbrot</author>
+ <title>The Fractal Geometry of Nature</title>
+ <publisher>W.H. Freeman</publisher>
+ <year>1982</year>
+ <isbn>0716711869</isbn>
+ <file>[books]/Mathematics/0716711869 [Mandelbrot] The Fractal Geometry of Nature.1982.djvu</file>
+</reference>
+
+
 <reference id="Matula 1987">
  <author>David W. Matula</author>
  <title>Determining edge connectivity in O(nm)</title>
@@ -5372,6 +5382,14 @@
 </reference>
 
 
+<reference id="Schroeder 2009">
+ <author>Manfred Schroeder</author>
+ <title>Fractals, Chaos, Power Laws: Minutes from an Infinite Paradise</title>
+ <publisher>Dover Publications</publisher>
+ <year>2009</year>
+ <isbn>0486472043</isbn>
+</reference>
+
 
 <reference id="Scott 2000">
  <author>John P. Scott</author>
@@ -5716,6 +5734,17 @@
 </reference>
 
 
+
+<reference id="Strogatz 1994">
+ <author>Steven H. Strogatz</author>
+ <title>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering</title>
+ <publisher>Westview Press</publisher>
+ <year>1994</year>
+ <isbn>0201543443</isbn>
+ <file>[readings]/[Science]/[Physics]/0201543443 [Strogatz] Nonlinear Dynamics And Chaos.pdf</file>
+</reference>
+
+
 <reference id="Strogatz 2001">
  <author>Steven H. Strogatz</author>
  <title>Exploring Complex Networks</title>
@@ -5728,6 +5757,18 @@
  <comment>
   <text>Survey paper on networks...</text>
  </comment>
+</reference>
+
+
+<reference id="Strogatz 2004">
+ <author>Steven H. Strogatz</author>
+ <title>Sync: How Order Emerges From Chaos In the Universe, Nature, and Daily Life</title>
+ <publisher>Hyperion</publisher>
+ <year>2004</year>
+ <isbn>0786887214</isbn>
+ <file>[books]/networks/9781401304461 [Steven H. Strogatz] Sync.free.epub</file>
+ <file>[books]/networks/9781401304461 [Steven H. Strogatz] Sync.nook.epub</file>
+ <file>[ebooks]/Science/[Steven H. Strogatz] Sync.9781401304461.free.epub</file>
 </reference>
 
 

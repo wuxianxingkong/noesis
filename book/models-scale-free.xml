@@ -746,6 +746,8 @@ Power laws:
 The power law is related to Zipf’s, Pareto’s, and Yule–Simon’s laws, but is somewhat more general.
 
 - Zipf’s law states that the frequency of a word w in the English language is inversely proportional to its rank in the frequency table: f(w) = c/(r(w)), where r(w) is the word’s rank and c is a constant.
+[G.K. Zipf: "Selected studies of the principle of relative frequency in language", Harvard University Press, 1932]
+
 
 - Pareto’s distribution—also known as the 80/20 rule—says that 20% of the population has 80% of the wealth. 
 
@@ -1682,6 +1684,50 @@ MORE...
 <document>
 <tag>scale-free-notes</tag>
 <title>Bibliographic notes</title>
+
+
+Many phenomena have been described as scale-free (or power laws), probably more than there are due to imperfect data collection and reckless curve fitting.
+
+Possible causes of power law distributions:
+
+1 - Preferential attachment
+<cite>Barabasi and Albert 1999</cite> 
+[Yule, G. U., A Mathematical theory of evolution based on the conclusions of Dr. J. C. Willis, Phil. Trans. Roy. Soc. Lond. B 213:21-87 (1925).]
+
+[Simon, H. A., On a class of skew distribution functions, Biometrika 42(3/4):425-440 (1955).]
+Adding words one at a time, with probability proportional to word frequency (nonzero for words that have not yet appeared, as in Laplacian smoothing.
+
+[Price, D. J. de S., Networks of scientific papers, Science 149:510–515 (1965). ]
+
+[G.K. Zipf: "Selected studies of the principle of relative frequency in language", Harvard University Press, 1932]
+"Principle of least effort" (once a word has been used, it takes less effort to use it again for similar meanings) + disambiguation (using different words for similar but nonidentical meanings) = Power law
+
+
+2 - Fractal structure
+<cite>Mandelbrot 1982</cite> <cite>Schroeder 2009</cite>
+
+In terms of information content: maximizing the amount of information while minimizing the cost of sending that information results in a power law
+[B. Mandelbrot: "An informational theory of the statistical structure of languages". In W. Jackson (editor): "Communication Theory", Butterworth, 1953, pp. 486-502]
+
+
+3 - Self-organized criticality (SOC), sometimes dissed as "self-aggrandizing triviality" <cite>Strogatz 2004</cite>
+[Per Bak: "How Nature works: The science of self-organized criticality", Springer, 1996]
+
+4 - Highly-optimized tolerance (HOT)
+[J.M. Carlson, J. Doyle: "Complexity and robustness". Proceedings of the National Academy of Science, USA 99, 2002, pp. 2538-2545]
+
+
+Historical account...
+[M. Mitzenmacher: "A brief history of generative models for power law and lognormal distributions". Internet Mathematics 1(2):226-251, 2003]
+
+e.g. even monkeys typing randomly will follow a power law 
+[George A. Miller: "Some effects of intermittent silence", The Americal Journal of Psychology 70:311-314, 1957]
+
+Another survey <cite>Newman 2005</cite>
+
+
+
+MORE REFERENCES
 
 <text>
 M. Faloutsos, P. Faloutsos and C. Faloutsos. On Power-Law Relatonships of the Internet Topology. ACM SIGCOMM 1999.

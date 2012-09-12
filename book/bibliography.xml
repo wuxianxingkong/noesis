@@ -2597,6 +2597,16 @@
 </reference>
 
 
+<reference id="Gleick 1988">
+ <author>James Gleick</author>
+ <title>Chaos: Making a New Science</title>
+  <publisher>Penguin</publisher>
+  <year>1988</year>
+  <isbn>0140092501</isbn>
+ <file>[ebooks]/Science/[James Gleick] Chaos.epub</file>
+</reference>
+
+
 
 <reference id="Goh et al. 2001">
  <author>K.-I. Goh</author>
@@ -2924,6 +2934,7 @@
 <reference id="Han et al. 2011">
  <author>Jiawei Han</author>
  <author>Micheline Kamber</author>
+ <author>Jian Pei</author>
  <title>Data Mining: Concepts and Techniques</title>
  <publisher>Morgan Kaufmann</publisher>
  <edition>3rd edition</edition>
@@ -4908,6 +4919,15 @@
 </reference>
 
 
+<reference id="NRC 2005">
+ <author>Committee on Network Science for Future Army Applications, National Research Council</author>
+ <title>Network Science</title>
+ <publisher>The National Academies Press</publisher>
+ <year>2005</year>
+ <isbn>0309100267</isbn>
+ <url>http://www.nap.edu/catalog.php?record_id=11516</url>
+</reference>
+
 
 <reference id="Okamoto et al. 2008">
  <author>Kazuya Okamoto</author>
@@ -6602,6 +6622,27 @@
  <publisher>Sage Publications Ltd</publisher>7
  <year>2012</year>
  <isbn>1412947146</isbn>
+</reference>
+
+
+<reference id="Berry and Linoff 1997">
+ <author>Michael J. Berry</author>
+ <author>Gordon Linoff</author>
+ <title>Data Mining Techniques: For Marketing, Sales, and Customer Support</title>
+  <publisher>Wiley</publisher>
+  <year>1997</year>
+  <isbn>0471179809</isbn>
+</reference>
+
+
+<reference id="Frawley et al. 1991">
+ <author>William Frawley</author>
+ <author>Gregory Piatetsky-Shapiro</author>
+ <author>C.J. Matheus</author>
+ <title>Knowledge Discovery in Databases: An Overview</title>
+ <publisher>AAAI Press</publisher>
+ <year>1991</year>
+ <isbn>0262660709</isbn>
 </reference>
 
 

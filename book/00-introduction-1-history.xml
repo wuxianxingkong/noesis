@@ -6,6 +6,9 @@
 <tag>history</tag>
 <title>Historical comments</title>
 
+<text>
+L: Selection of topics about what some have called <term>network science</term> <cite>Lewis 2009</cite>: <q>one has to include the work of pioneers such as Adamic, Albert, Barabasi, Barrat, Bollobas, Erdos, Granovetter, Kephart, Lin, Liu, Mihail, Milgram, Molloy, Moore, Newman, Pastor-Satorras, Renyi, Strogatz, Tadic, Wang, Watts, Weigt, White, Zhang, and Zhu.</q>
+</text>
 
 <text>
 K: two main bodies of theory that we will be building on: graph theory and game theory. These are theories of structure and behavior, respectively.

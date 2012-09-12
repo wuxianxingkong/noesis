@@ -13,6 +13,18 @@
 - physicist thinks of networks as models of phase transition, magnetism...
 - Biologists use the network metaphor to understand epidemics, genetics, and metabolic systems within cells
 - Power engineers think of electrical power grids.
+
+“Cheminformatics”: Chemical compounds.
+   “Bioinformatics”: Protein networks &amp; bio-pathways
+   Software Engineering: Program analysis…
+   Network flow analysis (transport, workflows…)
+   Semi-structured databases, e.g. XML
+   Knowledge management: Ontologies &amp; semantic nets
+   Computer-aided design (CAD): IC design…
+   Geographic information systems (GIS) &amp; cartography
+   Social networks, e.g. Web
+   Economic networks, e.g. markets
+
 </text>
 
 <document>
@@ -53,6 +65,7 @@ Kinds of relations in a social network:
 - Knoke/Kuklinski (1982): individual evaluations (sentiments: friendship, liking, respect...), kinship (family ties: marriage and descent relationships), transactions or transfers of material resources (lending/borrowing, buying/selling, exchange of gifts), transfer of non-material resources (communication, i.e. sending/receiving information, let it be e-mail messages, advice, or mere gossip), interactions (e.g. attending the same event, hitting...), movement (physical, between locations, or social, between occupations), formal roles (boss/employee, teacher/student, doctor/patient...)...
 </text>
 
+(e.g. e-mail message exchanges and telephone conversations)
 
 Understanding social networks '2012:
 
@@ -120,7 +133,7 @@ Stiller, J. and R. I. M. Dunbar. 2007. Perspective-taking and memory capacity pr
 
 Killworth, Peter D., Eugene C. Johnsen, H. Russell Bernard, Gene Anne Shelley, and Christopher McCarty. 1990. Estimating the size of personal networks. Social Networks 12:289–312. 
 
-Killworth, P. D., C. McCarty, E. C. Johnsen, H. R. Bernard, and G. A. Shelley. 2006. Investigating the variation of personal network size under unknown error conditions. Sociological Methods & Research 35 (1): 84–112
+Killworth, P. D., C. McCarty, E. C. Johnsen, H. R. Bernard, and G. A. Shelley. 2006. Investigating the variation of personal network size under unknown error conditions. Sociological Methods &amp; Research 35 (1): 84–112
 
 Zheng, Tian, Matthew J. Salganik, and Andrew Gelman. 2006. How many people do you know in prison? Using overdispersion in count data to estimate social structure in networks. Journal of the American Statistical Association 101:409–423
 </text>
@@ -215,6 +228,9 @@ Structural balance [Kleinberg 5]
 <document>
 <tag>content</tag>
 <title>Content networks</title>
+
+It arrives in a graph, that records not only the complex connections between nodes but also other types of information in a diversity of formats (e.g. the videos, images, and comments that people post on social networks). Social media may have started the trend toward analyzing such graphs, Apte says, 
+<cite>Naone 2011</cite>
 
 Examples [Newman 4]
             WWW: Structure and search [Newman 4.1][Kleinberg 13]
@@ -378,6 +394,8 @@ Based on the University of South Florida Word Association, Rhyme and Word Fragme
 <document>
 <tag>transportation</tag>
 <title>Transportation networks</title>
+
+Network data comes from other sources as well-for example, from complex engineering systems such as the electric power grid, water distribution systems, and traffic management systems... 
 
 Examples [Newman 2]
             Communication networks, e.g. Internet

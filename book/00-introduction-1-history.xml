@@ -123,55 +123,42 @@ In graph theory, for any arbitrary connected network, we can define a spanning t
 <title>The icosian game</title>
 
 <text>
-At the same time that Arthur Cayley introduced the term tree in his study of isomers, an Irish physicist and mathematician named William Rowan Hamilton invented the icosian game...
+Sir William Rowan Hamilton, an Irish physicist and mathematician, is known to mathematicians for the quaternions, a number system that extends the complex numbers, and the theorem of Cayley-Hamilton in linear algebra (yes, the same Cayley we have just met when talking about trees). Hamilton was interested in the study of symmetries in the icosahedron, for which he devised the icosians, a specific set of quaternions.
 </text>
-
 
 <text>
-The icosian game is a mathematical game invented in 1857 by William Rowan Hamilton. The game's object is finding a Hamiltonian cycle along the edges of a dodecahedron such that every vertex is visited a single time, no edge is visited twice, and the ending point is the same as the starting point. The puzzle was distributed commercially as a pegboard with holes at the nodes of the dodecahedral graph and was subsequently marketed in Europe in many forms.
-
-The motivation for Hamilton was the problem of symmetries of an icosahedron, for which he invented icosians—an algebraic tool to compute the symmetries. The solution of the puzzle is a cycle containing twenty (in ancient Greek icosa) edges (i.e. a Hamiltonian circuit on the icosahedron).
-
-a Hamiltonian path (or traceable path) is a path in an undirected graph that visits each vertex exactly once. A Hamiltonian cycle (or Hamiltonian circuit) is a Hamiltonian path that is a cycle.
-
-J: In 1857 Sir William Rowan Hamilton (1805-1865, known to every mathematician
-for the quaternions and the theorem of Cayley-Hamilton) invented the
-following Icosian game which he then sold to a London game dealer in 1859
-for 25 pounds; it was realized physically as a pegboard with holes. The corners
-of a regular dodecahedron are labelled with the names of cities; the task is
-to find a circular tour along the edges of the dodecahedron visiting each city
-exactly once, where sometimes the first steps of the tour might also be prescribed.
-More about this game can be found in [BaCo87]. We may model the
-Icosian game by looking for a cycle in the corresponding dodecahedral graph
-which contains each vertex exactly once. Such a cycle is therefore called a
-Hamiltonian cycle. 
-
-All platonic solids, including the dodecahedron in Figure <ref>fig-hamiltonian</ref>.
-
-Awell-known example of a graph that may or may not be Eulerian is the
-Hamiltonian circuit, named after the Irish mathematician William Rowan
-Hamilton (1805–1865). Formally, it is a path traced on a graph that visits
-each vertex on the graph only once, except possibly for the start and the finish,
-which may be on the same vertex. Hamilton presented it as a game in
-1857 called Around the World. The object of the game is to travel around the
-world, along the edges of the following map, visiting each of the twenty
-cities exactly once:
-Hamiltonian circuits must be examined individually, and finding a Eulerian
-path—if one exists—is a matter of trial and error, insight, and luck! Readers
-may wish to play Hamilton’s game, finding out for themselves if the map
-can be traversed as stipulated.
-
-
-
+A regular icosahedron is a regular polyhedron with 20 identical equilateral triangular faces, five of them meeting at each vertex. The regular icosahedron has 12 vertices and 30 edges. It is one of the five Platonic solids, which also include the tetrahedron, the cube or hexahedron, the octahedron, and the dodecahedron that eventually led to the icosian board game. A dodecahedron is, in general, any polyhedron with 12 flat faces. In particular, regular dodecahedrons are composed of 12 regular pentagonal faces, with three of them meeting at each vertex, 20 vertices and 30 edges.
 </text>
+
+<note>
+<text>
+You might have noticed that both icosahedrons and dodecahedrons have 30 edges. But, where the dodecahedron has 12 faces and 20 vertices, the icosahedron has 20 faces and 12 vertices. In fact, they are duals: the vertices of one correspond to the faces of the other.
+</text>
+</note>
 
 <figure>
   <tag>fig-hamiltonian</tag>
   <image scale="30" file="image/history/Hamiltonian-path"/>
-  <title>A Hamiltonian cycle in a dodecahedron. Source: Wikipedia Commons.</title>
+  <title>A Hamiltonian cycle in the dodecahedron graph. Source: Wikipedia Commons.</title>
 </figure>
 
+
+<text>
+At the same time that Arthur Cayley introduced the term tree in his study of isomers, Hamilton devised the icosian game. The game was invented in 1857 with the name of <q>Around the World</q> and sold to a London game dealer for 25 pounds in 1859, just over 2500 current pounds if we adjust for inflation, i.e. somewhat more than $4000 in current U.S. dollars. The goal of the game was finding a cycle along the edges of a dodecahedron so that every vertex is visited just once, no edge is visited twice, and the ending point is the same as the starting point. The game was commercialized as a pegboard with holes at the nodes of the dodecahedral graph, which is shown in Figure <ref>fig-hamiltonian</ref> with a solution to the game. Each node was labeled with the name of a city and players had to travel around the world following the edges of the map and visiting each city exactly once.
+</text>
+
+<text>
+While we were interested in visiting all links without repeating them in Eulerian circuits, we have imposed a similar constraint on the icosian game, but defined over the nodes of the graph. Given the inventor of the icosian game, it comes as no surprise that circuits in which each node is visited just once are known as Hamiltonian circuits. Computers scientists know them well, since they are at the heart of the traveling salesman problem, an NP-hard problem in combinatorial optimization with important applications in many domains. Eulerian circuits, in contrast, can be found in linear time when they exist.
+</text>
+
+<note>
+<text>
+It should be noted that we can find Hamiltonian circuits in graphs that may or may not be Eulerian. The dodecahedral graph in Figure <ref>fig-hamiltonian</ref> is clearly Hamiltonian but not Eulerian, since all its nodes have an odd degree, i.e. 3.
+</text>
+</note>
+
 </document>
+
 
 <!-- Terminology -->
 

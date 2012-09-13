@@ -6646,4 +6646,44 @@
 </reference>
 
 
+<reference id="Danesi 2004">
+ <author>Marcel Danesi</author>
+ <title>The Liar Paradox and the Towers of Hanoi: The Ten Greatest Math Puzzles of All Time</title>
+ <publisher>Wiley</publisher>
+ <year>2004</year>
+ <isbn>0471648167</isbn>
+ <file>[books]/mathematics/0471648167 [Marcel Danesi] The Liar Paradox and the Towers of Hanoi.pdf</file>
+</reference>
+
+
+<reference id="Kirchhoff 1847">
+ <author>Gustav Kirchhoff</author>
+ <title>Über die Auflösung der Gleichungen, auf welche man bei der Untersuchung der linearen Verteilung galvanischer Ströme gefuhrt wird (About the solutions of equations, on which one is guided in the investigation of the linear distribution of galvanic currents, in German)</title>
+ <journal>Annalen der Physik und Chemie</journal>
+ <volume>72</volume>
+ <pages>497-508</pages>
+ <year>1847</year>
+</reference>
+
+
+<reference id="Cayley 1857">
+ <author>Arthur Cayley</author>
+ <title>On the theory of the analytical forms called trees</title>
+ <journal>Philosophical Magazine</journal>
+ <volume>13</volume>
+ <pages>172-176</pages>
+ <year>1857</year>
+ <doi>10.1017/CBO9780511703690.046</doi>
+</reference>
+
+<reference id="Cayley 1889">
+ <author>Arthur Cayley</author>
+ <title>A theorem on trees</title>
+ <journal>Quarterly Journal of Pure and Applied Mathematics</journal>
+ <volume>23</volume>
+ <pages>376-378</pages>
+ <year>1889</year>
+ <url>http://books.google.com/?id=M7c4AAAAIAAJ&amp;pg=PA26</url>
+</reference>
+
 </bibliography>

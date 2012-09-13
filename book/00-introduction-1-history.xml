@@ -7,13 +7,9 @@
 <title>Historical comments</title>
 
 <text>
-L: Selection of topics about what some have called <term>network science</term> <cite>Lewis 2009</cite>: <q>one has to include the work of pioneers such as Adamic, Albert, Barabasi, Barrat, Bollobas, Erdos, Granovetter, Kephart, Lin, Liu, Mihail, Milgram, Molloy, Moore, Newman, Pastor-Satorras, Renyi, Strogatz, Tadic, Wang, Watts, Weigt, White, Zhang, and Zhu.</q>
+Before we start the study of a new discipline, it is always a good idea to learn something about its origins, the motivations that led people towards the problems that will be addressed, and hopefully solved, with the help network concepts. At the same time, we will get acquainted with the scientists whose pioneering work has shaped the field now called <term>network science</term> <cite>Lewis 2009</cite>. As we will see during the next few pages, the network hall of fame includes mathematicians, sociologists, physicists, and computer scientists.  
 </text>
 
-<text>
-K: two main bodies of theory that we will be building on: graph theory and game theory. These are theories of structure and behavior, respectively.
-Graph theory is the study of network structure, while game theory provides models of individual behavior in settings where outcomes depend on the behavior of others.
-</text>
 
 <!-- 18th Century: Euler -->
 
@@ -22,37 +18,59 @@ Graph theory is the study of network structure, while game theory provides model
 <title>The Königsberg bridges</title>
 
 <text>
-1736: Leonhard Euler
-++ Konisberg @ 0471648167 [Marcel Danesi] The Liar Paradox and the Towers of Hanoi.pdf
- 
- The Prussian city of Königsberg, founded in 1255, was annexed by the Soviet Union at the end of World War II in 1945 and later renamed Kaliningrad in 1946 after the death of Chairman of the Presidium of the Supreme Soviet of the USSR Mikhail Kalinin, one of the original Bolsheviks. This Russian city is on the banks of the Pregel river, part of it on two islands in the middle of the river: Four bridges connected the banks of the river to the island; two bridges cross the forks of the river, and one bridge connects the island to the landmass located between the forks. Figure <ref>fig-konigsberg</ref>.
-
-"The history of graph theory began in 1736, when Euler <cite>Euler 1736</cite> first solved the
-seven bridges of K¨onigsberg problem.) . In Euler's day there were seven bridges linking the banks of the Pregel river and
-its two islands, which can be modeled as a multigraph with seven edges and four vertices.
-Euler sought a way to walk over each of the bridges exactly once and return home - i.e.
-, an Eulerian cycle. Euler proved that such a tour is impossible, since all four of the
-vertices had odd degrees."
-
-circular walk through the town of K¨onigsberg (now Kaliningrad) in such a way as to cross over each of the seven bridges spanning the river Pregel once, and only once... the precise shapes of the island and the other three territories involved are not important; the
-solvability depends only on their connection properties. Let us represent the four territories by points (called vertices), and the bridges by curves joining the respective points; then we get the graph also drawn in Figure <ref>fig-konigsberg-graph</ref>.
-
-Euler gave a necessary and sufficient condition for an arbitrary graph to admit a circular tour of the above kind...
-
-
+Graph theory is the starting point of modern network theory. In fact network theory rests on two main bodies of knowledge from a formal point of view: graph theory and game theory. Graph theory studies network structure, whereas game theory serves as the foundation for the study of network behavior, as it provides models of individual behavior in settings where outcomes depend on the behavior of others.
 </text>
 
 <figure>
-  <tag>fig-history-konigsberg</tag>
+  <tag>fig-konigsberg</tag>
   <image scale="80" file="image/history/konigsberg"/>
   <title>The seven bridges of Königsberg.</title>
 </figure>
 
 <figure>
-  <tag>fig-history-konigsberg-graph</tag>
+  <tag>fig-konigsberg-graph</tag>
   <image scale="30" file="image/history/konigsberg-graph"/>
   <title>The graph representing the seven bridges of Königsberg problem.</title>
 </figure>
+
+<text>
+The origins of graph theory can be traced back to the work of Leonhard Euler, the famous 18th-century Swiss mathematician, on the Königsberg seven bridges problem. His paper on the solution to this problem in 1736 <cite>Euler 1736</cite> led to the development of two branches of mathematics: the already-mentioned graph theory but also topology, the study of shapes and their properties.
+</text>
+
+<text>
+Königsberg is a seaport city known today as Kaliningrad, the Russian exclave between Poland and Lithuania on the Baltic Sea. The city was annexed by the Soviet Union at the end of World War II in 1945 and renamed in 1946 after the death Mikhail Kalinin, a Bolshevik who was the Chairman of the Presidium of the Supreme Soviet of the USSR, i.e. the de jure head of state in the Soviet Union. When Euler lived, Königsberg was a Prussian city, located on the banks of the Pregel river, which also occupied two islands in the middle of the river. Four bridges connected the banks of the river to one of the islands, two bridges crossed the river to connect to the second island, and a seventh bridge connected the two islands, as shown in Figure <ref>fig-konigsberg</ref>.
+</text>
+
+<text>
+At the time, nobody knew whether it was possible to take a walk from any point in the city, cross each bridge once, and return to the starting point, what is now known as an Eulerian circuit. Well, nobody was able to explain why it seemed so hard to find such a circuit until Euler proved that it was, in fact, impossible.
+</text>
+
+<text>
+The banks of the Pregel river, the two islands on it, and the seven bridges in Königsberg can be modeled as a graph, a sketch of the problem that retains its key properties. The banks and the islands become the points in that sketch, i.e. the nodes in the graph. The seven bridges can now be displayed as curved lines that connect those four points, the network links in modern terms. Technically, such a sketch of the problem is a multigraph because there are multiple links between some pairs of nodes. The resulting network, therefore, contains four nodes and seven links, as depicted in Figure <ref>fig-konigsberg-graph</ref>.
+</text>
+
+<text>
+As it always happens with good models, the graph representation of the Könisberg bridges problem removes unnecessary detail, such as the precise shapes of the islands and the forks of the river. This graph retains the essence of the problem and lets us focus on its connectivity properties. The number of links that arrive to a particular node is known as the node degree and a simple observation of this quantity solves the problem. Even nodes are those nodes with an even degree, whereas odd nodes are those nodes with an odd degree.
+</text>
+
+<text>
+Euler went beyond the particular Königsberg bridges problem and he gave the necessary and sufficient condition for any arbitrary graph to admit a circular tour through all its nodes without going through the same link twice. It is just not possible to traverse such a network when there are more than two odd nodes.
+</text>
+
+<text>
+How can be prove such a general result? Let us first consider even nodes. Every time we arrive to an even node through a particular link, we must leave that node through a different link, using up a pair of links. Obviously, we can easily traverse all the links that lead to an even node without problems. At odd nodes, however, there will always be a final single link, which we can use to return to the node. Once there, we will be stuck, since there are no remaining links that have not been traversed. Euler observed this fact to conclude that we cannot traverse a network without revisiting some links when there are more than two odd nodes. These nodes will necessarily be the starting and ending points of our tour through the network.
+</text>
+
+<text>
+For the particular case of seven bridges of Königsberg, an Eulerian tour is impossible because all its four nodes have odd degrees: <q>the network cannot
+be traced by one continuous stroke of a pencil without having to double back over paths that have already been traced</q> <cite>Danesi 2004</cite>.
+</text>
+
+<note>
+<text>
+It should also be noted that there will always be an even number of odd nodes, since links always connect nodes in pairs.
+</text>
+</note>
 
 </document>
 
@@ -65,17 +83,49 @@ Euler gave a necessary and sufficient condition for an arbitrary graph to admit 
 <tag>history-trees</tag>
 <title>Trees</title>
 
+
 <text>
-Trees (i.e. connected acyclic graphs) implicitly appeared in the study of currents in electrical networks performed by Gustav Kirchhoff, while Arthur Cailey used them in 1957 to count chemical compounds.
+Already in the 19th century, a particular kind of graph attracted the attention of some scientists: trees. From a formal point of view, trees are connected acyclic graphs. When there are no cycles, any pair of nodes in a network is connected by just a single path and the network becomes disconnected if a single link is removed. In this sense, trees are the smallest of the possible connected networks.
+</text>
+
+<text>
+If we look at natural trees, those belonging to the plant category, and observe their branching structures, which are also without cycles, we can easily recognize why mathematicians borrowed some terms from biology to describe this kind of graphs. Apart from the tree term itself, the leaf term is often used to describe tree nodes with degree 1. Another analogy is established with forests, which are networks whose connected components are trees, i.e. sets of trees.
+</text>
+
+<text>
+Trees implicitly appeared in the study of currents in electrical networks performed by Gustav Kirchhoff <cite>Kirchhoff 1847</cite>. Gustav Kirchhoff was a German physicist who, rather curiously, was born in our well-known city Königsberg, then in East Prussia. He established the foundations of circuit analysis and electrical engineering with his famous circuit laws in 1845:
+</text>
+
+<list>
+
+<item>Kirchhoff's current law, KCL, also known as Kirchhoff's first law, Kirchhoff's point rule, Kirchhoff's junction rule, or Kirchhoff's nodal rule: At any node in an electrical circuit, the sum of currents flowing into that node is equal to the sum of currents flowing out of that node.</item>
+
+<item>Kirchhoff's voltage law, KVL, also known as Kirchhoff's second law, Kirchhoff's loop rule, and Kirchhoff's mesh rule: The directed sum of the electrical potential differences, i.e. voltages, around any closed network is zero.</item>
+
+</list>
+
+<text>
+Arthur Cayley, a British mathematician, introduced the term tree in 1857 without defining it formally <cite>Cayley 1857</cite>. Cayley used trees to count the number of different alkanes, chemical compounds also known as paraffins or saturated hydrocarbons. Alkanes, as all hydrocarbons, consist only of hydrogen and carbon atoms. They are bonded by single bonds, i.e. they are saturated compounds, and they do not contain cycles. Carbon atoms have 4 bonds, either C-C or C-H in hydrocarbons, i.e. their valency is 4. Hence the use of the term valency to refer to node degree in early graph theory monographs. The valency of hydrogen is 1: hydrogen atoms have a single bond to another atom, which is always an H-C bond in hydrocarbons. The resulting chemical formula for alkanes is always <eqn>C_{n}H_{2n+2}</eqn>. However, alkanes can present different structures depending on how their carbon atoms are bonded together: alkanes with more than three carbon atoms can be arranged in various different ways, forming structural isomers. Cayley studied such structures and organized them.
+</text>
+
+
+<text>
+In graph theory, for any arbitrary connected network, we can define a spanning tree as a tree connecting all of its nodes. Kirchhoff's matrix tree theorem, which was named after Gustav Kirchhoff, shows that the number of spanning trees in a graph can be computed in polynomial time as the determinant of a matrix that is derived from the graph. In fact, it is a generalization of Cayley's formula <cite>Cayley 1889</cite>, which provides the number of different spanning trees in a complete graph. From an alternative point of view, Cayley's formula establishes that we can define <eqn>n^{n-2}</eqn> different trees on <eqn>n</eqn> labeled nodes.
 </text>
 
 </document>
+
 
 <!-- Hamilton -->
 
 <document>
 <tag>history-icosian</tag>
 <title>The icosian game</title>
+
+<text>
+At the same time that Arthur Cayley introduced the term tree in his study of isomers, an Irish physicist and mathematician named William Rowan Hamilton invented the icosian game...
+</text>
+
 
 <text>
 The icosian game is a mathematical game invented in 1857 by William Rowan Hamilton. The game's object is finding a Hamiltonian cycle along the edges of a dodecahedron such that every vertex is visited a single time, no edge is visited twice, and the ending point is the same as the starting point. The puzzle was distributed commercially as a pegboard with holes at the nodes of the dodecahedral graph and was subsequently marketed in Europe in many forms.
@@ -97,6 +147,22 @@ which contains each vertex exactly once. Such a cycle is therefore called a
 Hamiltonian cycle. 
 
 All platonic solids, including the dodecahedron in Figure <ref>fig-hamiltonian</ref>.
+
+Awell-known example of a graph that may or may not be Eulerian is the
+Hamiltonian circuit, named after the Irish mathematician William Rowan
+Hamilton (1805–1865). Formally, it is a path traced on a graph that visits
+each vertex on the graph only once, except possibly for the start and the finish,
+which may be on the same vertex. Hamilton presented it as a game in
+1857 called Around the World. The object of the game is to travel around the
+world, along the edges of the following map, visiting each of the twenty
+cities exactly once:
+Hamiltonian circuits must be examined individually, and finding a Eulerian
+path—if one exists—is a matter of trial and error, insight, and luck! Readers
+may wish to play Hamilton’s game, finding out for themselves if the map
+can be traversed as stipulated.
+
+
+
 </text>
 
 <figure>

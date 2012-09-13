@@ -16,6 +16,14 @@
 &bibliography;
 <title>Graph Theory: The Mathematics of Networks</title>
 
+
+<text>
+From a formal point of view, network theory rests on two main bodies of knowledge: graph theory and game theory. Graph theory...
+K: two main bodies of theory that we will be building on: graph theory and game theory. These are theories of structure and behavior, respectively.
+Graph theory is the study of network structure, while game theory provides models of individual behavior in settings where outcomes depend on the behavior of others.
+</text>
+
+
 <text>
 Graph Theory is the mathematical study of graphs (or networks).
 </text>

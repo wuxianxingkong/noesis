@@ -17,12 +17,12 @@
 
 
 <quote author="Hal R. Varian" source="The McKinsey Quarterly, January 2009">
-I keep saying the sexy job in the next ten years will be statisticians. People think I’m joking, but who would’ve guessed that computer engineers would’ve been the sexy job of the 1990s? The ability to take data—to be able to understand it, to process it, to extract value from it, to visualize it, to communicate it—that’s going to be a hugely
+I keep saying the sexy job in the next ten years will be statisticians. People think I'm joking, but who would've guessed that computer engineers would've been the sexy job of the 1990s? The ability to take data—to be able to understand it, to process it, to extract value from it, to visualize it, to communicate it—that's going to be a hugely
 important skill in the next decades... Because now we really do have essentially free and ubiquitous data. So the complimentary scarce factor is the ability to understand that data and extract value from it.
 
 <!--
 Hal R. Varian
-Google’s Chief Economist
+Google's Chief Economist
 Professor of Information Sciences, Business, and Economics
 at the University of California at Berkeley 
 
@@ -44,15 +44,15 @@ Most existing data mining techniques have been designed to work on highly struct
 </text>
 
 <text>
-In their broadest sense, networks are no more than potentially heterogeneous multi-relational datasets that can be represented by means of attribute graphs (or hi-graphs, if we allow for hierarchical structures within networks). Nodes in such graphs represent objects, whereas edges or arcs represent links or relationships between those objects. Finally, attributes can be employed to label both nodes and links, thereby attaching information to network elements or their relationships. 
+In their broadest sense, networks are no more than potentially heterogeneous multi-relational datasets that can be represented by means of attribute graphs, or hi-graphs, in case we allow for hierarchical structures within networks. Nodes in such graphs represent objects, whereas edges or arcs represent links or relationships between those objects. Finally, attributes can be employed to label both nodes and links, thereby attaching information to network elements or their relationships. 
 </text>
 
 <text>
-Networks are extremely useful for studying social phenomena (i.e. social network analysis), but also for modeling important biological and economic problems, which range from the the spread of infectious diseases to the dynamics of power distribution networks. They are also key for the analysis of the so-called content networks, which explicitly represent links between web pages, references in blog postings, retweets in Twitter, and citations in scientific papers or patents. 
+Networks are extremely useful for studying social phenomena, as it is done in social network analysis, but also for modeling important biological and economic problems, which range from the the spread of infectious diseases to the dynamics of power distribution networks. They are also key for the analysis of the so-called content networks, which explicitly represent links between web pages, references in blog postings, retweets in Twitter, and citations in scientific papers or patents. 
 </text>
 
 <text>
-The analysis of network data is crucial for many different application domains because, in complex systems, network topology (i.e. structure) is a often key factor in network behavior (i.e. dynamics). In other words, existing links between the elements within a network influence the behavior of the network as a whole. This influence, however, cannot be attributed to individual network elements. It is now widely recognized that complex systems cannot be described using a reductionist approach, i.e. teasing them apart and analyzing their components in isolation. In complex systems, the whole is more than the sum of its parts: interactions between individual components lead to a phenomenon known as emergence in the complex systems literature.
+The analysis of network data is crucial for many different application domains because, in complex systems, network topology is a often key factor in network behavior. Structure shapes dynamics: existing links between the elements within a network influence the behavior of the network as a whole. This influence, however, cannot be attributed to individual network elements. It is now widely recognized that complex systems cannot be described using a reductionist approach, i.e. teasing them apart and analyzing their components in isolation. In complex systems, the whole is more than the sum of its parts: interactions between individual components lead to a phenomenon known as emergence in the complex systems literature.
 </text>
 
 
@@ -82,7 +82,7 @@ If we keep a keen eye on our daily activities, we easily realize that networks o
 <title>The field of study</title>
 
 <text>
-As a field of study, networks help us understand the behavior on complex systems. Complex systems are composed of many interacting parts that, as a whole, display collective emergent properties, which does not follow from the properties of the individual parts <cite>Newman 2011</cite>. If the behavior of such systems could be predicted by the behavior of their individual parts, they would be merely complicated, but not complex. The qualitative understanding of complex systems requires the development of (simplified) theoretical models, whereas its quantitative understanding involves the use of data mining techniques and computer simulation.
+As a field of study, networks help us understand the behavior on complex systems. Complex systems are composed of many interacting parts that, as a whole, display collective emergent properties, which does not follow from the properties of the individual parts <cite>Newman 2011</cite>. If the behavior of such systems could be predicted by the behavior of their individual parts, they would be merely complicated, but not complex. The qualitative understanding of complex systems requires the development of simplified theoretical models, whereas its quantitative understanding involves the use of data mining techniques and computer simulation.
 </text>
 
 
@@ -97,11 +97,11 @@ It should be noted, however, that the study of networks often raises more questi
 
 <list>
 
-<item>How interactions between elements give rise to the collective behavior of complex systems (emergence).</item> 
+<item>Emergence: How interactions between elements give rise to the collective behavior of complex systems.</item> 
 
-<item>How those systems interact with their environment (complexity).</item>
+<item>Complexity: How complex systems interact with their environment and the feedback effects that result in complex behavior.</item>
 
-<item>The common principles that govern network behavior (network science).</item>
+<item>Network science: The common principles that govern network behavior and models that try to explain that behavior.</item>
 
 </list>
 
@@ -119,9 +119,9 @@ Many fundamental scientific and technological problems can be posed in term of n
 
 <list>
 
-<item>Tools for analyzing the structural properties of complex networks (static point of view), but also</item>
+<item>From a static point of view: Tools for analyzing the structural properties of complex networks.</item>
 
-<item>tools to make sense of the observable behavior that is caused by the interactions among the elements in a complex system (dynamic point of view).</item>
+<item>From a dynamic point of view: Tools to make sense of the observable behavior that is caused by the interactions among the elements in a complex system.</item>
 
 </list>
 
@@ -130,7 +130,7 @@ This simplistic categorization corresponds to the two key ingredients of the so-
 </text>
 
 <text>
-A network is described <q>by its structure (e.g., nodes and links), and its behavior (what the network 'does' as a result of the interactions among the nodes and links).</q> In other words, networks are graphs that represent something real, <q>a representation or model of observable reality</q> <cite>NRC 2005</cite>. In some sense, we can view networks as graphs on steroids. In networks, graph vertices represent objects, which can be of different kinds, can be labeled, and can have attributes. Likewise, graph edges represent links between pairs of objects and they can also be of different kinds and have their own attributes. Formally, those links are called arcs when they are directed and edges when they are not.
+A network is fully described by its structure, i.e. its nodes and links, and its behavior, what the network does as a result of the interactions among the nodes and links. In other words, networks are graphs that represent something real, <q>a representation or model of observable reality</q> <cite>NRC 2005</cite>. In some sense, we can view networks as graphs on steroids. In networks, graph vertices represent objects, which can be of different kinds, can be labeled, and can have attributes. Likewise, graph edges represent links between pairs of objects and they can also be of different kinds and have their own attributes. Formally, those links are called arcs when they are directed and edges when they are not.
 </text>
 
 
@@ -152,17 +152,17 @@ Nodes and links are the constituent elements of networks:
 
 <list>
 
-<item><term>Nodes</term> represent elements in complex systems. They are also known as agents in complex systems, actors in social network analysis, and vertices in graph theory. In networks, nodes are supposed to be autonomous yet interdependent. Nodes in a social network might be people from a given group, departments within a corporation, whole corporations, public agencies, neighborhoods, cities, regions, and even nation-states. In other kinds of networks, they might represent atoms, molecules, genes, neurons, transistors, routers, transformers (in power grids), airports, geographical locations, Web pages, research papers, patents, legal cases...
+<item><term>Nodes</term> represent elements in complex systems. They are also known as agents in complex systems, actors in social network analysis, and vertices in graph theory. In networks, nodes are supposed to be autonomous yet interdependent. Nodes in a social network might be people from a given group, departments within a corporation, whole corporations, public agencies, neighborhoods, cities, regions, and even nation-states. In other kinds of networks, they might represent atoms, molecules, genes, neurons, transistors, routers, transformers in power grids, airports, geographical locations, Web pages, research papers, patents, legal cases...
 </item>
 
-<item><term>Links</term> connect elements and they can receive many different names: connections, ties, arcs, edges, relations, and even <q>relational contents</q>. They represent the only channels through which resources can flow, let them be material (e.g. network packets in the Internet) or immaterial (e.g. information or gossip in social networks).
+<item><term>Links</term> connect elements and they can receive many different names: connections, ties, arcs, edges, relations, and even <q>relational contents</q>. They represent the only channels through which resources can flow, let them be material, such as network packets in the Internet, or immaterial, like information or gossip in social networks.
 Connections in a social network may represent kinship, friendship, liking, romantic involvement, supervisor-employee relationships, interactions, transactions, resource flows, group co-membership, and other kinds of social ties, even several of these at the same time. In other kinds of networks, links might represent chemical bonds, gene interactions, contagions, synapses, wires, data links, power lines, airline routes, roads, Web links, citations...
 </item>
 </list>
 
 
 <text>
-In both natural and man-made systems, networks are created by the autonomous and spontaneous action of independent nodes that voluntarily come together and establish connections among them, rather than through central control or central planning <cite>Lewis 2009</cite>. Of course, this is not always the case, but centrally-planned networks are easier to analyze (provided that we know their plan) and we will be often more interested in unraveling the complexity of self-organized networks consisting of semi-autonomous individuals. Connections in a network provide opportunities for and impose constraints on the nodes of the network. 
+In both natural and man-made systems, networks are created by the autonomous and spontaneous action of independent nodes that voluntarily come together and establish connections among them, rather than through central control or central planning <cite>Lewis 2009</cite>. Of course, this is not always the case, but centrally-planned networks are easier to analyze, assuming that that we know their designer's plan, and we will be often more interested in unraveling the complexity of self-organized networks consisting of semi-autonomous individuals. Connections in a network provide opportunities for and impose constraints on the nodes of the network. 
 </text>
 
 </document>
@@ -174,7 +174,7 @@ In both natural and man-made systems, networks are created by the autonomous and
 <title>Attributes</title>
 
 <text>
-From a network perspective, links between nodes (ties between actors in social network terms) are considered to be primary, whereas <term>attributes</term> are seen as secondary. However, they can often play an important role within networks, so we will have to take them into account. For example, a phenomenon known as homophily is common in social networks: people literally choose other people like them. Even though this sorting is not always easy to differentiate from peer effects, i.e. when we change our behavior to match those of people around us, both mechanisms create groups of people who look similar to each other (i.e. have similar attribute values).
+From a network perspective, links between nodes are considered to be primary, e.g. the ties between actors in social network terms. On the other hand, <term>attributes</term> are seen as secondary. But they can also play an important role within networks, so we will have to take them into account. For example, a phenomenon known as homophily is common in social networks: people literally choose other people like them. Even though this sorting is not always easy to differentiate from peer effects, i.e. when we change our behavior to match those of people around us, both mechanisms create groups of people who look similar to each other, i.e. they have similar attribute values.
 </text>
 
 <text>
@@ -190,7 +190,7 @@ In social networks analysis, attributes are known as <term>structural variables<
 <title>Modes</title>
 
 <text>
-<term>Modes</term> are the distinct sets of entities on which attributes are defined. In computer science terms, they represent the different types within a network. Most applications focus on networks that consist of elements of the same type (<term>one-mode networks</term>), albeit you can also find networks that are conformed by elements of different types (<term>multi-mode networks</term>). The mode of the network is then defined as the number of different types, i.e. different sets of entities on which structural or composition variables are measured.
+<term>Modes</term> are the distinct sets of entities on which attributes are defined. In computer science terms, they represent the different types within a network. Most applications focus on networks that consist of elements of the same type: they are <term>one-mode networks</term>. You can also find networks that are conformed by elements of different types: the so-called <term>multi-mode networks</term>. The mode of the network is, therefore, defined as the number of different types, i.e. the number of different sets of entities on which structural or composition variables are measured.
 </text>
 
 <text>
@@ -199,14 +199,14 @@ When there are exactly two different kinds of nodes within the network, and also
 
 <list>
 
-<item><term>Dyadic two-mode networks</term> that contain two sets of actors of the same kind: relations are dyads with the first actor in one set and the second actor in the other set (e.g. romantic relationships in a heterosexual population).</item>
+<item><term>Dyadic two-mode networks</term> that contain two sets of actors of the same kind: relations are dyads with the first actor in one set and the second actor in the other set, e.g. romantic relationships in a heterosexual population.</item>
 
-<item><term>Non-dyadic two-mode networks</term>, or <term>affiliation networks</term>, that contain two different kinds of nodes, typically one set of actors and one set of events or activities, which define subsets of actors (e.g. club membership, attendance to social events, countries belonging to supranational organizations...).</item>
+<item><term>Non-dyadic two-mode networks</term>, or <term>affiliation networks</term>, that contain two different kinds of nodes, typically one set of actors and one set of events or activities, which define subsets of actors, e.g. club membership, attendance to social events, or countries belonging to supranational organizations.</item>
 
 </list>
 
 <text>
-In both examples, the resulting networks can be formally interpreted as <term>bipartite networks</term>, whose links always connect nodes from two different sets that partition the set of nodes in the network. The difference lies in whether those nodes represent elements of the same nature (dyadic) or they correspond to elements of a different nature (non-dyadic).
+In both examples, the resulting networks can be formally interpreted as <term>bipartite networks</term>, whose links always connect nodes from two different sets that partition the set of nodes in the network. The difference lies in whether those nodes represent elements of the same nature, which is the case in dyadic two-mode networks, or they correspond to elements of a different nature, when we talk about non-dyadic two-mode networks.
 </text>
 
 </document>
@@ -223,20 +223,20 @@ Networks can be analyzed at different levels of detail <cite>Prell 2012</cite>. 
 
 <list>
 
-<item>Actors (nodes), as independent entities at the individual level.</item>
+<item>Actors or nodes, as independent entities at the individual level.</item>
 
-<item>Dyads (pairs of actors with or without a link without them).</item>
+<item>Dyads, i.e. pairs of actors with or without a link without them.</item>
 
-<item>Triads (triplets of actors).</item>
+<item>Triads, i.e. triplets of actors.</item>
 
-<item>Communities (subsets of actors).</item>
+<item>Communities, which correspond to closely-knit subsets of actors.</item>
 
 <item>The network as a whole.</item>
 
 </list>
 
 <text>
-Specific techniques have been developed for each one of these modeling units or levels of analysis. The results they provide offer alternative perspectives on networks and they are  often complementary. Looking at individual actors corresponds to traditional non-network studies, which assume that the whole is just the sum of its parts, a reductionist approach that does not bode well on complex systems. Dyads and triads are the local building blocks of networks, whose census can provide some insight into the overall properties of the network (a rather crude form of network analysis). Communities correspond to clusters in AI terms and they can be detected by non-supervised machine learning techniques, which are known as community detection algorithms in this context. Finally, considering the network as a whole, metrics can offer a glimpse into the network structure at the macroscopic level.
+Specific techniques have been developed for each one of these modeling units or levels of analysis. The results they provide offer alternative perspectives on networks and they are  often complementary. Looking at individual actors corresponds to traditional non-network studies, which assume that the whole is just the sum of its parts, a reductionist approach that does not bode well on complex systems. Dyads and triads are the local building blocks of networks, whose census can provide some insight into the overall properties of the network as a rather crude form of network analysis. Communities correspond to clusters in AI terms and they can be detected by non-supervised machine learning techniques, which are known as community detection algorithms in this context. Finally, considering the network as a whole, metrics can offer a glimpse into the network structure at the macroscopic level.
 </text>
 
 <text>

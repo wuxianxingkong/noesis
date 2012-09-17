@@ -2208,6 +2208,19 @@
 </reference>
 
 
+<reference id="Festinger 1949">
+ <author>Leon Festinger</author>
+ <title>The analysis of sociograms using matrix algebra</title>
+ <journal>Human Relations</journal>
+ <volume>2</volume>
+ <number>3/4</number>
+ <pages>153-158</pages>
+ <year>1949</year>
+ <doi>10.1177/001872674900200205</doi>
+ <file>Networks/applications/social/1949 Human Relations [Festinger] Sociograms and matrix algebra.pdf</file>
+</reference>
+
+
 <reference id="Fewell and O'Donnell 2009">
  <author>Jennifer H. Fewell</author>
  <author>Sean O'Donnell</author>
@@ -2969,6 +2982,15 @@
 </reference>
 
 
+
+<reference id="Harary and Norman 1953">
+ <author>Frank Harary</author>
+ <author>Robert Z. Norman</author>
+ <title>Graph Theory as a mathematical model in Social Science</title>
+ <publisher>University of Michigan Press</publisher>
+ <year>1953</year>
+</reference>
+
 <reference id="Harary 1969">
  <author>Frank Harary</author>
  <title>Graph Theory</title>
@@ -3462,6 +3484,46 @@
  <file>Networks/algorithms/graphs/connectivity/1999 SIAMSC [Karypis &amp; Kumar] METIS.pdf</file>
 </reference>
 
+
+
+
+<reference id="Forsyth and Katz 1946">
+ <author>Elaine Forsyth</author>
+ <author>Leo Katz</author>
+ <title>A matrix approach to the analysis of sociometric data: Preliminary report</title>
+ <journal>Sociometry</journal>
+ <volume>9</volume>
+ <number>4</number>
+ <pages>340-347</pages>
+ <year>1946</year>
+ <url>http://www.jstor.org/stable/2785498</url>
+ <file>Networks/applications/social/1946 Sociometry [Forsyth &amp; Katz] A Matrix Approach to the Analysis of Sociometric Data.pdf</file>
+</reference>
+
+<reference id="Moreno 1946">
+ <author>Jacob L. Moreno</author>
+ <title>Sociogram and sociomatrix: A note to the paper by Forsyth and Katz</title>
+ <journal>Sociometry</journal>
+ <volume>9</volume>
+ <number>4</number>
+ <pages>348-349</pages>
+ <year>1946</year>
+ <url>http://www.jstor.org/stable/2785499</url>
+ <file>Networks/applications/social/1946 Sociometry [Moreno] Sociogram and sociomatrix.pdf</file>
+</reference>
+
+
+<reference id="Katz 1947">
+ <author>Leo Katz</author>
+ <title>On the matric analysis of sociometric data</title>
+ <journal>Sociometry</journal>
+ <volume>10</volume>
+ <number>3</number>
+ <pages>233-241</pages>
+ <year>1947</year>
+ <url>http://www.jstor.org/stable/2785073</url>
+ <file>Networks/applications/social/1947 Sociometry [Katz] Matric analysis of sociometric data.pdf</file>
+</reference>
 
 <reference id="Katz 1953">
  <author>Leo Katz</author>
@@ -4205,6 +4267,34 @@
 </reference>
 
 
+
+<reference id="Luce and Perry 1949">
+ <author>Robert Duncan Luce</author>
+ <author>Albert D. Perry</author>
+ <title>A method of matrix analysis of group structure</title>
+ <journal>Psychometrika</journal>
+ <volume>14</volume>
+ <number>1</number>
+ <pages>95-116</pages>
+ <year>1949</year>
+ <doi>10.1007/BF02289146</doi>
+ <file>Networks/applications/social/1949 Psychometrika [Luce &amp; Perry] Matrix analysis of group structure.pdf</file>
+</reference>
+
+<reference id="Luce 1950">
+ <author>Robert Duncan Luce</author>
+ <title>Connectivity and generalized cliques in sociometric group structure</title>
+ <journal>Psychometrika</journal>
+ <volume>15</volume>
+ <number>2</number>
+ <pages>169-190</pages>
+ <year>1950</year>
+ <doi>10.1007/BF02289199</doi>
+ <file>Networks/applications/social/1950 Psychometrika [Luce] Connectivity and generalized cliques in sociometric group structure.pdf</file>
+</reference>
+
+
+
 <reference id="Lueker and Booth 1979">
  <author>George S. Lueker</author>
  <author>Kellogg S.Booth</author>
@@ -4667,10 +4757,19 @@
 </reference>
 
 
+<reference id="Moreno 1934">
+ <author>Jacob L. Moreno</author>
+ <title>Who shall survive? Foundations of sociometry, group psychotherapy, and sociodrama</title>
+ <publisher>Nervous and Mental Disease Publishing Co.</publisher>
+ <edition>1st edition, reprinted in 1953 and 1978 by Beacon House, Inc.</edition>
+ <year>1934</year>
+</reference>
+
+
 <reference id="Moreno and Jennings 1938">
  <author>Jacob L. Moreno</author>
  <author>Helen H. Jennings</author>
- <title>Statistics of Social Configurations</title>
+ <title>Statistics of social configurations</title>
  <journal>Sociometry</journal>
  <volume>1</volume>
  <number>3/4</number>
@@ -4678,6 +4777,15 @@
  <year>1938</year>
  <url>http://www.jstor.org/stable/2785588</url>
  <file>Networks/applications/social/1938 Sociometry [Moreno &amp; Jennings] Social configurations.pdf</file>
+</reference>
+
+<reference id="Moreno and Jennings 1945">
+ <author>Jacob L. Moreno</author>
+ <author>Helen H. Jennings</author>
+ <title>Sociometric measurement of social configurations, based on deviations from chance</title>
+ <publisher>Beacon House</publisher>
+ <edition>Sociometric Monographs, No. 3</edition>
+ <year>1945</year>
 </reference>
 
 

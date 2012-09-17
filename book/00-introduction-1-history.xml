@@ -11,15 +11,15 @@ Before we start the study of a new discipline, it is always a good idea to learn
 </text>
 
 
+<text>
+Graph theory is the starting point of modern network theory. In fact network theory rests on two main bodies of knowledge from a formal point of view: graph theory and game theory. Graph theory studies network structure, whereas game theory serves as the foundation for the study of network behavior, as it provides models of individual behavior in settings where outcomes depend on the behavior of others.
+</text>
+
 <!-- 18th Century: Euler -->
 
 <document>
 <tag>history-konigsberg</tag>
-<title>The Königsberg bridges</title>
-
-<text>
-Graph theory is the starting point of modern network theory. In fact network theory rests on two main bodies of knowledge from a formal point of view: graph theory and game theory. Graph theory studies network structure, whereas game theory serves as the foundation for the study of network behavior, as it provides models of individual behavior in settings where outcomes depend on the behavior of others.
-</text>
+<title>Eulerian circuits: The Königsberg bridges</title>
 
 <figure>
   <tag>fig-konigsberg</tag>
@@ -68,7 +68,7 @@ be traced by one continuous stroke of a pencil without having to double back ove
 
 <note>
 <text>
-It should also be noted that there will always be an even number of odd nodes, since links always connect nodes in pairs.
+It should also be noted that there will always be an even number of odd nodes, since links always connect pairs of nodes.
 </text>
 </note>
 
@@ -81,7 +81,7 @@ It should also be noted that there will always be an even number of odd nodes, s
 
 <document>
 <tag>history-trees</tag>
-<title>Trees</title>
+<title>Trees: Electrical circuits and isomers</title>
 
 
 <text>
@@ -120,7 +120,7 @@ In graph theory, for any arbitrary connected network, we can define a spanning t
 
 <document>
 <tag>history-icosian</tag>
-<title>The icosian game</title>
+<title>Hamiltonian circuits: The icosian game</title>
 
 <text>
 Sir William Rowan Hamilton, an Irish physicist and mathematician, is known to mathematicians for the quaternions, a number system that extends the complex numbers, and the theorem of Cayley-Hamilton in linear algebra (yes, the same Cayley we have just met when talking about trees). Hamilton was interested in the study of symmetries in the icosahedron, for which he devised the icosians, a specific set of quaternions.
@@ -144,7 +144,7 @@ You might have noticed that both icosahedrons and dodecahedrons have 30 edges. B
 
 
 <text>
-At the same time that Arthur Cayley introduced the term tree in his study of isomers, Hamilton devised the icosian game. The game was invented in 1857 with the name of <q>Around the World</q> and sold to a London game dealer for 25 pounds in 1859, just over 2500 current pounds if we adjust for inflation, i.e. somewhat more than $4000 in current U.S. dollars. The goal of the game was finding a cycle along the edges of a dodecahedron so that every vertex is visited just once, no edge is visited twice, and the ending point is the same as the starting point. The game was commercialized as a pegboard with holes at the nodes of the dodecahedral graph, which is shown in Figure <ref>fig-hamiltonian</ref> with a solution to the game. Each node was labeled with the name of a city and players had to travel around the world following the edges of the map and visiting each city exactly once.
+At the same time that Arthur Cayley introduced the term tree in his study of isomers, Hamilton devised the icosian game. The game was invented in 1857 with the name of <q>Around the World</q> and sold to a London game dealer for 25 pounds in 1859, just over 2500 current pounds if we adjust for inflation, i.e. somewhat more than 4000 current U.S. dollars. The goal of the game was finding a cycle along the edges of a dodecahedron so that every vertex is visited just once, no edge is visited twice, and the ending point is the same as the starting point. The game was commercialized as a pegboard with holes at the nodes of the dodecahedral graph, which is shown in Figure <ref>fig-hamiltonian</ref> with a solution to the game. Each node was labeled with the name of a city and players had to travel around the world following the edges of the map and visiting each city exactly once.
 </text>
 
 <text>
@@ -164,114 +164,74 @@ It should be noted that we can find Hamiltonian circuits in graphs that may or m
 
 <document>
 <tag>history-graphs</tag>
-<title>The graph term</title>
+<title>The graph term: From linkages to graphs</title>
 
 <text>
-Historically, <term>linkage</term>s was the term sometimes employed to refer to graphs. The graph term was later standardized by James Joseph Sylvester, a 19th-century British mathematician who founded the American Journal of Mathematics, the first mathematics journal in the United States <cite>Gross and Yellen 2004</cite> <cite>Chartrand et al. 2011</cite> .
+Historically, <term>linkage</term>s was the term sometimes employed to refer to graphs. The graph term was standardized by James Joseph Sylvester, a 19th-century British mathematician <cite>Gross and Yellen 2004</cite> <cite>Chartrand et al. 2011</cite>. 
+</text>
 
-W: James Joseph Sylvester (3 September 1814 – 15 March 1897) was an English mathematician. 
-+ Sylvester invented a great number of mathematical terms such as discriminant.
-+ In 1877 Sylvester again crossed the Atlantic Ocean to become the inaugural professor of mathematics at the new Johns Hopkins University in Baltimore, Maryland.
-+ In 1878 he founded the American Journal of Mathematics. The only other mathematical journal in the U.S. at that time was the Analyst, which eventually became the Annals of Mathematics (now published  by Princeton University and the Institute for Advanced Study, originally edited by Joel E. Hendricks and published in Des Moines, Iowa, from 1874 to 1883; continued from March 1884 as the Annals of Mathematics, edited by Ormond Stone (University of Virginia): it moved to Harvard in 1899 before reaching its current home in Princeton in 1911; until 1933, when the Institute for Advanced Study took joint editorial control)
+<text>
+J.J. Sylvester was known for his extraordinary ability to coin new terms and create notations for mathematical concepts. For instance, he invented terms such as discriminant, i.e. functions that give information about the roots of a polynomial. Many results in mathematics have been named after Sylvester, apart from a crater on the Moon and the Sylvester Medal. This medal, awarded by the Royal Society in London for the encouragement of mathematical research, has been received by Henri Poincaré, Georg Cantor, Alfred North Whitehead, and Bertrand Russell, among others.
+</text>
 
+<text>
+Sylvester was the inaugural professor of mathematics at the new Johns Hopkins University in Baltimore, Maryland, where he founded the American Journal of Mathematics in 1878. The American Journal of Mathematics is the oldest continuously published mathematical journal in the United States. When it was created at the John Hopkins University, the only other mathematical journal in the U.S. was the Analyst, originally edited by Joel E. Hendricks and published in Des Moines, Iowa, from 1874 to 1883. The Analyst later became the Annals of Mathematics, published by the University of Virginia since 1884 and continued by the University of Harvard since 1899, until it finally settled at Princeton University in 1911. Since 1933, it is jointly published by Princeton University and the Institute for Advanced Study, also in Princeton, New Jersey, one of the most famous theoretical research centers in the world. Albert Einstein, John von Neumann, Kurt Gödel, and J. Robert Oppenheimer worked there, next to other prominent theoretical physicists, mathematicians, and economists at Princeton, such as Oskar Morgenstern, Paul Dirac, or Paul Erdös, who we will meet later in this chapter.
 </text>
 
 </document>
 
-<!-- 20th Century -->
 
+<!-- 20th Century -->
 
 <document>
 <tag>history-social-networks</tag>
-<title>Social network analysis</title>
+<title>Sociometry and social network analysis</title>
 
 <text>
-WF: THE SOCIOGRAM: This innovation, developed by Moreno along
-with Jennings, marked the beginning of sociometry (the precursor to
-social network analysis and much of social psychology).
-
-Moreno was the founder of the field of sociometry - the measurement of interpersonal
-relations in small groups... Driven by an interest
-in understanding human social and psychological behavior, especially
-group dynamics, Moreno was led to invent a means for depicting the interpersonal
-structure of groups: the sociogram.
-
-... people (or more generally, any social units) are represented as
-points in two-dimensional space, and relationships among pairs of people
-are represented by lines linking the corresponding points
-
-+ revealed to the public in Apri1 1933 at a convention
-of medical scholars, and was found to be so intriguing that the story was
-immediately picked up by The New York Times (April 3, 1933, page 17),
-and carried in newspapers across the United States
-
-[Moreno, J.L. (1934). Who Shall Survive?: Foundations of Sociometry, Group
-Psychotherapy, and Sociodrama. Washington, D.C. : Nervous and Mental
-Disease Publishing Co. Reprinted in 1953 (Second Edition) and in 1978
-(Third Edition) by Beacon House, Inc" Beacon, NY.]
-
-[Moreno, J.L., and Jennings, H.H. (1938). Statistics of social configurations.
-Sociometry. 1, 342-374.]
-
-[Moreno, J.L., and Jennings, H.H. (1945). Sociometric measurement of social
-configurations, based on deviations from chance. Sociometric Monographs,
-No. 3. Beacon House, NY.]
-
+Jacob L. Moreno was a Romanian-born Austrian-American psychotherapist who developed sociometry as a quantitative method for measuring social relationships in small groups. Sociometry is the precursor to social network analysis and much of social psychology.
 </text>
 
 <text>
-
-WF: Sociometry is the study of positive and negative affective relations, such
-as liking/disliking and friends/enemies, among a set of people. Relational data are often presented in  matrices termed sociomatrices.
-A sociomatrix for a dichotomous relation is exactly the adjacency
-matrix for the graph (or sociogram) quantifying the ties between the
-actors for the relation in question...
+While at Columbia University, Moreno devised the sociogram as a means for depicting the interpersonal structure of groups of people. In a sociogram, people are represented as points and relationships between pairs of people are represented by lines linking the corresponding points. First used at a meeting of the Medical Society of the state of New York in April 1933, sociograms were featured by The New York Times and they immediately caught on as a visual display of the effect of networks in, for example, the propagation of diseases.
+</text> <!-- The New York Times, April 3, 1933, page 17 -->
 
 
-WF: Visual displays... analytic techniques: that matrices could be used to represent
-social network data. Forsyth and Katz
-(1946), Katz (1947), Lucc and Perry (1949), Festinger(1949) were the first to use matrices in
-novel methods for the study of social networks... and Harary and Norman (1953) monograph
+<text>
+The sociogram jumpstarted the study of sociometry <cite>Moreno 1934</cite>, which was further developed by Jacob Moreno and Helen Jennings <cite>Moreno and Jennings 1938</cite> <cite>Moreno and Jennings 1945</cite> with the goal of analyzing the relationship between social structures and psychological well-being, i.e. social and psychological behavior.
+Pioneering work on sociometry was published in the journal Sociometry, edited and published by Moreno in 1937. The journal was transferred to the American Sociological Association in 1955. It as renamed as Social Psychology in 1978 and obtained its current name in 1979: Social Psychology Quarterly.
+</text>
 
-WF: The first sociometricians published much of
-their research in the journal Sociometry, which was renamed first Social
-Psychology and then Social Psychology Quarterly in the late 1970's.
-Moreno was Sociometry's founding editor (in 1937). The literature in the 1940's presented a variety of methods
-for analyzing and manipulating sociomatrices:
+<text>
+Sociometry focused on small group dynamics by representing positive and negative affective relations within human groups, such as linking, disliking, friendship, or enmity.
+The visual display of social relations eventually led to the development of analytic techniques. Data collected to make relations explicit, a.k.a. relational data, can also be represented in matrix form. The resulting matrices are called sociomatrices by sociologists. In a sociomatrix, each cell quantifies the tie between two particular actors in the relation. When the relation is dichotomous or binary, i.e. 0/1, the sociomatrix is just the adjacency matrix of the graph depicted by the sociogram.
+</text>
 
-Forsyth and Katz (1946) advocated the use of
-sociomatrices over sociograms to standardize the quantification of social
-interactions and to represent network data "more objectively"
+<text>
+Leo Katz, Robert Duncan Luce, and Leon Festinger were among the first to use matrices to represent social network data:
+</text>
 
-Moreno actually preferred the use of sociograms to sociomatrices... Moreno used his position as editor of Sociometry frequently to
-interject editor's notes into articles in his journal
+<list>
 
-Katz (1947) proposed a "canonical" decomposition of a sociomatrix
-to facilitate the comparison of an observed sociomatrix to a target
-sociomatrix,
+<item>Elaine Forsyth and Leo Katz preferred the use of sociomatrices over sociograms <q>to present sociometric data more objectively, and to make possible a more detailed analysis of group structure</q> <cite>Forsyth and Katz 1946</cite>. Even though matrices are easier to manipulate from an algebraic point of view, Jacob Moreno still believed that the sociomatrix was not <q>superior and more objective in its presentation than the sociogram</q> <cite>Moreno 1946</cite>. At the time, when computers were not as available as they are today, he preferred direct visualization for making precise observations, sociograms over sociomatrices.</item> <!-- Moreno used his position as editor of Sociometry frequently to interject editor's notes into articles in his journal -->
 
-Festinger (1949) applied matrix multiplication to sociomatriccs and described how
-products of a sociomatrix (particularly squares and cubes) can be used
-to find cliques or subgroups of similar actors
 
-Luce and Perry (1949) and Luce (1950) proposed one of the first techniques to find
-cliques or subgroups of actor
+<item>
+Leo Katz, from Michigan State College, thought that the sociogram <q>had apparently reached the limits of its usefulness in the interpretation of sociometric data</q> <cite>Katz 1947</cite> and he proceeded to develop methods for quantifying relational data with the help of matrices and <q>matric operations</q> (sic). He considered some matrix operations and showed their interpretation in sociological terms. Some years later, in 1953, he would introduce a centrality measure or <q>status index</q> that computed the influence of an actor in a social network <cite>Katz 1953</cite>. This index, currently known as Katz centrality, is the forerunner of algorithms such as PageRank, the algorithm employed by Google to rank its search results <cite>Page et al. 1998</cite>.
+</item>
 
-[Forsyth, E., and Katz, L. (1946). A matrix approach to the analysis of
-sociometric data: Preliminary report. Sociometry. 9, 340-347.]
-[Moreno, J.L. (1946). Sociogram and sociomatrix: A note to the paper by
-Forsyth and Katz. Sociometry, 9, 348-349.]
-[Katz, L. (1947). On the matric analysis of sociometric data. Sociometry. 1 0,
-233-241.]
-[Luce, RD., and Perry, AD. (1949). A method of matrix analysis of group
-structure. Psychometrika. 14, 95-116.]
-[Luce, R.D. ( 1950). Connectivity and generalized cliques in sociometric group
-structure. Psychometrika. 15, 159-190]
-[Festinger, L. (1949). The analysis of sociograms using matrix algebra. Human
-Relations. 2, 153-158.]
+<item>
+Robert Duncan Luce, a renowned social scientist who held positions at Columbia University, the University of Pennsylvania, the Institute for Advanced Study at Princeton, and the University of California at Irvine, introduced graph-theoretic methods into the social sciences. For instance, the French term <q>clique</q> refers to a complete subgraph in graph theory and, as a graduate student at MIT, Luce developed the first techniques for finding cliques in social networks by observing that cliques <q>have simple relationships to the powers of certain matrices</q> <cite>Luce and Perry 1949</cite> <cite>Luce 1950</cite>. His pioneering work set the stage for community detection algorithms, the name received by clustering algorithms when they are applied to network data.
+</item>
 
-[Harary, F., and Norman, R.z. (1953). Graph Theory as a Mathematical Model in
-Social Science. Ann Arbor: University of Michigan Press.]
+<item>
+At around the same time, Leon Festinger also applied matrix multiplication to sociomatrices and he described how the cube of the sociomatrix can determine the existence of cliques of various sizes and with various degrees of <q>cliquishness</q> <cite>Festinger 1949</cite>, a rather crude method for finding subgroups of similar actors in a network. No wonder Festinger is better known by his work on other areas of psychology, such as the Theory of Cognitive Dissonance, which suggests that an uncomfortable psychological tension appears when people are induced to behave in ways that are inconsistent with their beliefs.
+</item>
+
+</list>
+
+<text>
+A  monograph describing the application of graph theory to the social sciences was published by Frank Harary and Robert Z. Norman as early as 1953 <cite>Harary and Norman 1953</cite>.
+The historical development of sociometry and other related areas that led to the social network analysis field is described, e.g., in <cite>Wasserman and Faust 1994</cite>, <cite>Kadushin 2012</cite>, and <cite>Prell 2012</cite>. 
 </text>
 
 </document>

@@ -104,6 +104,16 @@ Trees implicitly appeared in the study of currents in electrical networks perfor
 
 </list>
 
+
+<figure>
+  <tag>fig-konigsberg-graph</tag>
+  <image scale="50" file="image/history/tree-n-butane"/>
+  <text></text>
+  <image scale="41" file="image/history/tree-i-butane"/>
+  <title>The two structural isomers of isobutane, <eqn>C_{4}H_{10}</eqn>: n-butane (top) and i-butane (bottom), also known as isobutane or 2-methylpropane.</title>
+</figure>
+
+
 <text>
 Arthur Cayley, a British mathematician, introduced the term tree in 1857 without defining it formally <cite>Cayley 1857</cite>. Cayley used trees to count the number of different alkanes, chemical compounds also known as paraffins or saturated hydrocarbons. Alkanes, as all hydrocarbons, consist only of hydrogen and carbon atoms. They are bonded by single bonds, i.e. they are saturated compounds, and they do not contain cycles. Carbon atoms have 4 bonds, either C-C or C-H in hydrocarbons, i.e. their valency is 4. Hence the use of the term valency to refer to node degree in early graph theory monographs. The valency of hydrogen is 1: hydrogen atoms have a single bond to another atom, which is always an H-C bond in hydrocarbons. The resulting chemical formula for alkanes is always <eqn>C_{n}H_{2n+2}</eqn>. However, alkanes can present different structures depending on how their carbon atoms are bonded together: alkanes with more than three carbon atoms can be arranged in various different ways, forming structural isomers. Cayley studied such structures and organized them.
 </text>
@@ -167,7 +177,7 @@ It should be noted that we can find Hamiltonian circuits in graphs that may or m
 <title>The graph term: From linkages to graphs</title>
 
 <text>
-Historically, <term>linkage</term>s was the term sometimes employed to refer to graphs. The graph term was standardized by James Joseph Sylvester, a 19th-century British mathematician <cite>Gross and Yellen 2004</cite> <cite>Chartrand et al. 2011</cite>. 
+Historically, <term>linkage</term>s was the term sometimes employed to refer to graphs. The graph term was standardized by James Joseph Sylvester, a 19th-century British mathematician <cite>Gross and Yellen 2003</cite> <cite>Chartrand et al. 2011</cite>. 
 </text>
 
 <text>
@@ -191,10 +201,15 @@ Sylvester was the inaugural professor of mathematics at the new Johns Hopkins Un
 Jacob L. Moreno was a Romanian-born Austrian-American psychotherapist who developed sociometry as a quantitative method for measuring social relationships in small groups. Sociometry is the precursor to social network analysis and much of social psychology.
 </text>
 
+<figure>
+  <tag>fig-sociogram</tag>
+  <image scale="80" file="image/history/sociogram1938"/>
+  <title>A sociogram from <cite>Moreno and Jennings 1938</cite>.</title>
+</figure>
+
 <text>
 While at Columbia University, Moreno devised the sociogram as a means for depicting the interpersonal structure of groups of people. In a sociogram, people are represented as points and relationships between pairs of people are represented by lines linking the corresponding points. First used at a meeting of the Medical Society of the state of New York in April 1933, sociograms were featured by The New York Times and they immediately caught on as a visual display of the effect of networks in, for example, the propagation of diseases.
 </text> <!-- The New York Times, April 3, 1933, page 17 -->
-
 
 <text>
 The sociogram jumpstarted the study of sociometry <cite>Moreno 1934</cite>, which was further developed by Jacob Moreno and Helen Jennings <cite>Moreno and Jennings 1938</cite> <cite>Moreno and Jennings 1945</cite> with the goal of analyzing the relationship between social structures and psychological well-being, i.e. social and psychological behavior.
@@ -587,28 +602,68 @@ A small-world network has relatively small diameter and average path length, and
 <title>Timeline</title>
 
 <text>
-TIMELINE, excerpted from <cite>Lewis 2008</cite>:
+TIMELINE, excerpted and extended from <cite>Lewis 2008</cite>, shown in Table <ref>table-milestones</ref>.
+</text>
 
-1736 Euler: Bridges of Königsberg <cite>Euler 1736</cite>
+<dataset>
+ <tag>table-milestones</tag>
+ <title>Some milestones in the history of networks</title>
+ <metadata>
+  <field width="07">Year</field>
+  <field width="50">Milestone (author: result)</field>
+  <field width="23">Reference(s)</field>
+ </metadata>
+ <record>
+  <field>1736</field>
+  <field>Euler: Bridges of Königsberg</field>
+  <field><cite>Euler 1736</cite></field>
+ </record>
+ <record>
+  <field>1955</field>
+  <field>Simon: Power law observed in word analysis</field>
+  <field><cite>Simon 1955</cite></field>
+ </record>
+ <record>
+  <field>1960</field>
+  <field>Erdös, Renyi: Random graphs</field>
+  <field><cite>Erdos and Renyi 1959</cite> <cite>Erdos and Renyi 1960</cite></field>
+ </record>
+ <record>
+  <field>1967</field>
+  <field>Milgram: Small-world experiments</field>
+  <field><cite>Travers and Milgram 1969</cite></field>
+ </record>
+ <record>
+  <field>1973</field>
+  <field>Granovetter: <q>Weak links</q> between clusters in job seeking</field>
+  <field><cite>Granovetter 1973</cite></field>
+ </record>
+ <record>
+  <field>1978</field>
+  <field>Pool, Kochen: First theoretical examination of small worlds</field>
+  <field><cite>Pool and Kochen 1978</cite></field>
+ </record>
+ <record>
+  <field>1998</field>
+  <field>Watts, Strogatz: First generative procedure for small worlds</field>
+  <field><cite>Watts and Strogatz 1998</cite></field>
+ </record>
+ <record>
+  <field>1999</field>
+  <field>Barabasi, Albert: Scale-free network model</field>
+  <field><cite>Barabasi and Albert 1999</cite></field>
+ </record>
+</dataset>
 
+<text>
 1951 Solomonoff, Rappaport: Spread of infection in random networks
   [Solomonoff, R. and A. Rapoport, Connectivity of random nets, Bull. Math. Biophys. 13:107-117 (1951).]
-
-1955 Simon: Power law observed in word analysis <cite>Simon 1955</cite>
 
 1959 Gilbert: First generative procedure for random graphs
   [Gilbert, E. N., Random graphs, Ann. Math. Stat. 30(4):1141-1144 (1959)]
 
-1960 Erdos, Renyi: Random graphs <cite>Erdos and Renyi 1959</cite> <cite>Erdos and Renyi 1960</cite>
-
-1967 Milgram: Small-world experiments <cite>Travers and Milgram 1969</cite>
-
 1972 Bonacich: Idea of influence in social networks leading to influence diagrams
   [Bonacich, P., Factoring and weighing approaches to clique identification, J. Math. Sociol. 2:113-120 (1972).]
-
-1973 Granovetter: Job-seeking networks formed clusters with "weak links" between them <cite>Granovetter 1973</cite>
-
-1978 Pool, Kochen: First theoretical examination of small worlds <cite>Pool and Kochen 1978</cite>
 
 1989 Bristor, Ryan: "Buying networks" i.e. application of network science to model economic system
   [Bristor, J. M. and M. J. Ryan, Applying the small world phenomenon to organizational buying, in M. Kochen, ed., The Small World, Ablex, Norwood, NJ, 1989, Chapter 4, pp. 87-99.]
@@ -618,10 +673,6 @@ TIMELINE, excerpted from <cite>Lewis 2008</cite>:
 
 1998 Holland: Emergence in complex adaptive systems
   [Holland, J. H., Emergence: From Chaos to Order, Addison-Wesley, Reading, MA, 1998.]
-
-1998 Watts, Strogatz: Frst generative procedure for small worlds <cite>Watts and Strogatz 1998</cite>
-
-1999 Barabasi, Albert: Scale-free network model <cite>Barabasi and Albert 1999</cite>
 </text>
 
 </document>

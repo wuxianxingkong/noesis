@@ -1,0 +1,41 @@
+graph NButane {
+
+node[fontname="Helvetica",style=filled,fillcolor="#d0d0d0",label="", shape=circle, fixedsize=true, width=0.3, height=0.3]
+edge[fontname="Helvetica",style=bold, color=blue];
+
+c1[pos="150,100!", label="C"];
+c2[pos="225,100!", label="C"];
+c3[pos="300,100!", label="C"];
+c4[pos="375,100!", label="C"];
+
+h11[pos="75,100!", label="H"];
+h12[pos="150,175!", label="H"];
+h13[pos="150,25!", label="H"];
+
+h21[pos="225,175!", label="H"];
+h22[pos="225,25!", label="H"];
+
+h31[pos="300,175!", label="H"];
+h32[pos="300,25!", label="H"];
+
+h41[pos="450,100!", label="H"];
+h42[pos="375,175!", label="H"];
+h43[pos="375,25!", label="H"];
+
+c1--c2--c3--c4;
+
+c1--h11;
+c1--h12;
+c1--h13;
+
+c2--h21;
+c2--h22;
+
+c3--h31;
+c3--h32;
+
+c4--h41;
+c4--h42;
+c4--h43;
+
+}

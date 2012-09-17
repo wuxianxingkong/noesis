@@ -1,0 +1,42 @@
+graph IButane {
+
+node[fontname="Helvetica",style=filled,fillcolor="#d0d0d0",label="", shape=circle, fixedsize=true, width=0.3, height=0.3]
+edge[fontname="Helvetica",style=bold, color=blue];
+
+c1[label="C"];
+c2[label="C"];
+c3[label="C"];
+c4[label="C"];
+
+h11[label="H"];
+h12[label="H"];
+h13[label="H"];
+
+h21[label="H"];
+
+h31[ label="H"];
+h32[label="H"];
+h33[label="H"];
+
+h41[label="H"];
+h42[label="H"];
+h43[label="H"];
+
+c1--c2--c3;
+c2--c4;
+
+c1--h11;
+c1--h12;
+c1--h13;
+
+c2--h21;
+
+c3--h31;
+c3--h32;
+c3--h33;
+
+c4--h41;
+c4--h42;
+c4--h43;
+
+}

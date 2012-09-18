@@ -1845,6 +1845,21 @@
 </reference>
 
 
+<reference id="Dodds et al. 2003">
+ <author>Peter Sheridan Dodds</author>
+ <author>Roby Muhamad</author>
+ <author>Duncan J. Watts</author>
+ <title>An Experimental Study of Search in Global Social Networks</title>
+ <journal>Science</journal>
+ <volume>301</volume>
+ <number>5634</number>
+ <pages>827-829</pages>
+ <year>2003</year>
+ <doi>10.1126/science.1081058</doi>
+ <file>Networks/applications/social/2003 Science [Dodds et al.] Search in global social networks.pdf</file>
+</reference>
+
+
 <reference id="Donato et al. 2004a">
  <author>D. Donato</author>
  <author>L. Laura</author>
@@ -3564,6 +3579,21 @@
  <file>Networks/algorithms/graphs/isomorphism/1957 PJM [Kelly] Congruence theorem for trees.pdf</file>
 </reference>
 
+
+
+<reference id="Killworth and Bernard 1978">
+ <author>Peter D. Killworth</author>
+ <author>H. Russell Bernard</author>
+ <title>The reversal small-world experiment</title>
+ <journal>Social Networks</journal>
+ <volume>1</volume>
+ <number>2</number>
+ <pages>159-192</pages>
+ <year>1978</year>
+ <doi>10.1016/0378-8733(78)90018-7</doi>
+ <file>Networks/applications/social/1968 SN [Killworth &amp; Bernard] Reversal small-world experiment.pdf</file>
+</reference>
+
 <reference id="Kim et al. 2004">
  <author>D.-H. Kim</author>
  <author>B. Kahng</author>
@@ -3979,7 +4009,7 @@
 </reference>
 
 
-<reference id="Leskovek et al. 2005">
+<reference id="Leskovec et al. 2005">
  <author>Jure Leskovec</author>
  <author>Jon Kleinberg</author>
  <author>Christos Faloutsos</author>
@@ -4566,6 +4596,20 @@
  <year>1981</year>
  <file>Networks/algorithms/graphs/isomorphism/1981 CN [McKay] Practical Graph Isomorphism.pdf</file>
  <url>http://cs.anu.edu.au/~bdm/papers/pgi.pdf</url>
+</reference>
+
+
+
+<reference id="McPherson 1983">
+ <author>Miller McPherson</author>
+ <title>An Ecology of Affiliation</title>
+ <journal>American Sociological Review</journal>
+ <volume>48</volume>
+ <number>4</number>
+ <pages>519-532</pages>
+ <year>1983</year>
+ <url>http://www.jstor.org/stable/2117719</url>
+ <file>Networks/applications/social/1983 ASR [McPherson] An Ecology of Affiliation.pdf</file>
 </reference>
 
 
@@ -6191,7 +6235,7 @@
 </reference>
 
 
-<reference id="Ugander at al. 2011">
+<reference id="Ugander et al. 2011">
  <author>Johan Ugander</author>
  <author>Brian Karrer</author>
  <author>Lars Backstrom</author>

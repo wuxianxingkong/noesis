@@ -106,11 +106,11 @@ Trees implicitly appeared in the study of currents in electrical networks perfor
 
 
 <figure>
-  <tag>fig-konigsberg-graph</tag>
+  <tag>fig-isomers</tag>
   <image scale="50" file="image/history/tree-n-butane"/>
   <text></text>
   <image scale="41" file="image/history/tree-i-butane"/>
-  <title>The two structural isomers of isobutane, <eqn>C_{4}H_{10}</eqn>: n-butane (top) and i-butane (bottom), also known as isobutane or 2-methylpropane</title>
+  <title>The two structural isomers of isobutane, <eqn>C_{4}H_{10}</eqn>: normal butante or n-butane (top) and isobutane or i-butane (bottom), also known as 2-methylpropane</title>
 </figure>
 
 
@@ -285,7 +285,7 @@ One of the interesting properties of random networks is that their diameter rapi
 </text>
 
 <text>
-Random graph theory has shown that even networks with no real topological structure exhibit the small-world phenomenon. Random networks are, in network parlance, highly link-efficient because, as their density increases, they become <q>smaller</q>. A small increase in number of links in the network has a major impact on the decline of average path length betwwen nodes in the network. Can we observe that phenomenon in real-world networks, such as the social networks that weave modern societies?
+Random graph theory has shown that even networks with no real topological structure exhibit the small-world phenomenon. Random networks are, in network parlance, highly link-efficient because, as their density increases, they become <q>smaller</q>. A small increase in number of links in the network has a major impact on the decline of average path length between nodes in the network. Can we observe that phenomenon in real-world networks, such as the social networks that weave modern societies?
 </text>
 
 <text>
@@ -293,7 +293,7 @@ Stanley Milgram, a famed social psychologist, resolved to answer that question w
 </text>
 
 <text>
-Returning to our discussion on networks, Milgram is also credited with the introduction of the notion of small worlds in networks. Milgram wanted to measure the average path length between between any two individuals in the United States and determine whether social networks are small worlds or not, so he designed experiments that would let him count the number of ties between any two people, at least an approximate count given that the resulting paths might not be the shortest ones. His famous experiments were reported in the inaugural issue of the popular magazine Psychology Today in May 1967 <cite>Milgram 1967</cite> and, two years later, in the research journal Sociometry <cite>Travers and Milgram 1969</cite>. Randomly-selected participants from Wichita, Kansas, and Omaha, Nebraska, were asked to forward a letter to an unfamiliar target through their acquaintances. Milgram, therefore, estinmated how closely-knit our society is by measuring the number of steps required by the letters to achieve their destination.
+Returning to our discussion on networks, Milgram is also credited with the introduction of the notion of small worlds in networks. Milgram wanted to measure the average path length between between any two individuals in the United States and determine whether social networks are small worlds or not, so he designed experiments that would let him count the number of ties between any two people, at least an approximate count given that the resulting paths might not be the shortest ones. His famous experiments were reported in the inaugural issue of the popular magazine Psychology Today in May 1967 <cite>Milgram 1967</cite> and, two years later, in the research journal Sociometry <cite>Travers and Milgram 1969</cite>. Randomly-selected participants from Wichita, Kansas, and Omaha, Nebraska, were asked to forward a letter to an unfamiliar target through their acquaintances. Milgram, therefore, estimated how closely-knit our society is by measuring the number of steps required by the letters to achieve their destination.
 </text>
 
 <!-- EXPERIMENT -->
@@ -308,7 +308,7 @@ The folder contained the name of the target person and some information about hi
 </text>
 
 <text>
-A roster was also in the folder, on which each person in the chain had to write his name. This roster prevented the formation of loops in the chains and was also supposed to motivate prople to continue the chains. 
+A roster was also in the folder, on which each person in the chain had to write his name. This roster prevented the formation of loops in the chains and was also supposed to motivate people to continue the chains. 
 </text>
 
 <text>
@@ -330,7 +330,7 @@ Finally, the participants received the following specific instructions <cite>Tra
 <!-- RESULTS -->
 
 <text>
-Using his small budget, Milgram needed two attempts to complete his experiments: the first one starting from Wichita, Kansas, and the second one from Omaha, Nebraska. The one starting in Wichita resulted in only 3 completed chains. However, Milgram obtained a surprising result. Just four days after the folders had been sent, an Episcopalian instructor approached the target person on the street and handed her a folder. This folder only took two intermediate acquaintances, an Episcopalian minister in Kansas and the Episcopaian instructor in Cambridge, to arrive from a farmer in Kansas to the wife of the student in Cambridge.
+Using his small budget, Milgram needed two attempts to complete his experiments: the first one starting from Wichita, Kansas, and the second one from Omaha, Nebraska. The one starting in Wichita resulted in only 3 completed chains. However, Milgram obtained a surprising result. Just four days after the folders had been sent, an Episcopalian instructor approached the target person on the street and handed her a folder. This folder only took two intermediate acquaintances, an Episcopalian minister in Kansas and the Episcopalian instructor in Cambridge, to arrive from a farmer in Kansas to the wife of the student in Cambridge.
 </text>
 
 <text>
@@ -346,7 +346,7 @@ Milgram also found that many of the completed chains passed through a small numb
 </text> <!--Of those that reached him at his office, more than half came from two other men.-->
 
 <text>
-For folders that never reached their destination, 232 out of 296, the incoming postcards helped identify the break points in the chains. For those that arrived, Milgram examined the chains that were created. Folders quickly reached geographic proximity to the target. Provided that geographic information was available to identify the target, it seems reasonable to use that information to forward the folder. Once the folders were geographically close to the tarhet, they tended to circle the target almost randomly until they hit the target's inner circle of friends.
+For folders that never reached their destination, 232 out of 296, the incoming postcards helped identify the break points in the chains. For those that arrived, Milgram examined the chains that were created. Folders quickly reached geographic proximity to the target. Provided that geographic information was available to identify the target, it seems reasonable to use that information to forward the folder. Once the folders were geographically close to the target, they tended to circle the target almost randomly until they hit the target's inner circle of friends.
 </text>
 
 <text>
@@ -357,7 +357,7 @@ Analyzing the chains, Milgram also observed that the number of steps required to
 
 <text>
 Milgram's experiments have been criticized for his small sample size and also for biasing his results. Results are biased both by the method employed to recruit the starting population in Nebraska, which contained one half of stockholders who were instructed to reach a stockbroker, and by not taking into account incomplete chains in his estimate of average path length. <!--  Starters were recruited through an advertisement that specifically sought for people who considered themselves as well-connected. -->
-Assuming a constant probability of non-response by each person in a chain, longer chains will be underrepresented since it is more likely thay they will be broken somewhere along the path from the starter to the target. Therefore, Milgram underestimates the true average path length. Some methods have been proposed to correct these estimates, e.g. by taking into account information collected from partially-completed chains <cite>Schnettler 2009b</cite>.
+Assuming a constant probability of non-response by each person in a chain, longer chains will be underrepresented since it is more likely that they will be broken somewhere along the path from the starter to the target. Therefore, Milgram underestimates the true average path length. Some methods have been proposed to correct these estimates, e.g. by taking into account information collected from partially-completed chains <cite>Schnettler 2009b</cite>.
 </text>
 
 <text>
@@ -380,56 +380,20 @@ Due to the difficulty in obtaining exhaustive data from actual social networks, 
 <list>
 
 <item>
-<b>Reverse small world experiments:</b>
-
-USN: This corresponds to Killworth and Bernard (1978) who found in a reverse small world experiment (asking subjects how they would go about finding a particular person in a named city with a given occupation, sex, and ethnicity) that in choosing the category of the person who might help complete the chain, about half the choices were location and another half were occupation. Blau space was apparently invoked by most of the participants. The next variety of categories was less than 7%
-ref. Killworth, Peter D., and H. Russell Bernard. 1978. The reverse small-world experiment. Social Networks 1:159–192
+<b>Reverse small world experiments</b> ask participants how they would find a particular person in a given town with a given occupation, together with information about sex and ethnic background. <cite>Killworth and Bernard 1978</cite> found that about one half of the people would choose location and another half would choose occupation to determine the person who might help them complete the chain in a small-world experiment. Ethnicity and other reasons were rarely used. People typically chose friends or acquaintances rather than family members. 
+In their decision, most participants invoked the use of Blau space, a theoretical construct named after the sociologist Peter Blau that considers socio-demographic variables as dimensions in a multidimensional coordinate system <cite>McPherson 1983</cite>.
 </item>
 
-
 <item>
-<b>The Columbia Small Worlds Project:</b>
-
-+ a more recent experiment using the Internet found that few of the chains were actually completed and concluded that, although in principle people were connected, the actual successes depended on their motivations and incentives (Dodds, Muhamad, and Watts 2003).
-[Dodds, P. S., R. Muhamad, and D. J. Watts. 2003. An experimental study of search in global social networks. Science 301 (5634): 827–829.]
-
-The Columbia Small Worlds Project:
-– Dodds, Muhamad, Watts 2003
-– web-based, email tracking
-Basic methodology:
-– 18 targets from 13 countries
-– on-line registration of initial participants, all tracking electronic
-– 99K registered, 24K initiated chains, 384 reached targets
-Some findings:
-– Less than  5% of messages through any penultimate individual
-– large “friend degree” rarely (les than 10%) cited
-– interesting analysis of navigation method vs. chain length
-
-USN'2012: Milgram’s original experiment has been difficult to duplicate. In a recent attempt using email, more than 60,000 email users attempted to reach 18 target persons in 13 countries, but only 1.6% of the 24,163 chains reached their target (Dodds, Muhamad, and Watts 2003). Judgments about the number of steps and the strategies used by participants, given the tiny proportion of completed networks, are dubious in my view. The difficulty of gathering empirical data on large-scale social networks is illustrated by this study.
-
+<b>The Columbia Small Worlds Project</b> is a more recent experiment that used the Internet to reproduce Milgram's results <cite>Dodds et al. 2003</cite>. Using e-mail, more than 60,000 participants from 166 countries attempted to reach 18 target persons in 13 different countries. 24,163 distinct message chains were started, but only 384 reached their target, a completion rate below 2 percent. Researchers assumed that chains were terminated because of individual apathy or disinclination to participate, probably due to the lack of incentives to continue the chains. Even though the individual participation rate was relatively high, at least when compared to conventional e-mail surveys, the compounding effect of attrition resulted in the exponential attenuation of chains in terms of their length. The difficulty of gathering empirical data on large-scale social networks becomes manifest in this experiment. As in previous studies, senders resorted to friends much more frequently than they used business or family ties, even though almost half of these friendships were reported to be originated by either work or school affiliations. Successful chains, however, disproportionately involved professional ties and were likely to entail links that originated through work or higher education. As observed by Milgram, same-sex links were more common: men passed messages more frequently to other men, and women to other women. Geographical proximity of the acquaintance to the target and similarity of occupation accounted for at least half of all choices, thus corroborating the results of previous reverse small world experiments. However, the presence of highly-connected individuals, the hubs that appeared in Milgram's original experiments, was not found in this study: at most <eqn>5\%</eqn> of messages passed through any single acquaintance of any target. Participants rarely nominated an acquaintance because he or she had many friends. Moreover, individuals in successful chains were less likely than those in incomplete chains to send messages to hubs.
 </item>
 
-
+<item>
+A larger experiment was performed on a snapshot of the <b>Microsoft Messenger</b> instant-messaging network. The whole Microsoft Messenger network contained 240 million nodes and 9.1 billion edges, but researchers analyzed a communication graph with 180 million nodes and 1.3 billion links, which was the largest social network analyzed at the time <cite>Leskovec and Horwitz 2008</cite>. The communication graph only included a link between two people if they had communicated during a one-month observation period. Therefore, experimenters did not consider friendship links through which no communication was detected during the observation period. They reported an average path length of 6.6 using this communication graph, an overestimation of the actual number.
+</item>
 
 <item>
-<b>Facebook:</b>
-
-+ Facebook:  Facebook's version, conducted in collaboration with researchers from the University of Milan, involved the entire social network as of May 2011, which amounted to more than 10 percent of the world's population. Analyzing the 69 billion friend connections among those 721 million people showed that the world is smaller than we thought: four intermediary friends are usually enough to introduce anyone to a random stranger. "When considering another person in the world, a friend of your friend knows a friend of their friend, on average," the technical paper pithily concluded
-
-- Facebook's data scientist Lars Backstrom was able to work with a much bigger data sample. His social network had 721 million members at the time of the experiment - representing around 10% of the global population - with a total of 69 billion friendships between them. Despite the vast quantity of data, Mr Backstrom and four researchers from the University of Milan were able to crunch the data using a 24-core computer with a 1 terabyte hard disk
-- Facebook limits users to having 5,000 friends, but the median figure was far lower at just 100 contacts, or 0.000014% of Facebook's total membership.
-- Despite this relatively small number, the results showed 99.6% of all pairs of users were connected by five degrees of separation, and 92% were connected by four degrees.
-- On average, the distance between any two members was 3.74 degrees.
-- That was shorter than the average 4.28 degrees of separation registered by Facebook's 2008 membership, when the network was smaller.
-(In 2008, a study by Microsoft showed that the average chain of contacts between users of its .NET Messenger Service was 6.6 people.[10])
-
-J. Ugander, B. Karrer, L. Backstrom, C. Marlow.
-The Anatomy of the Facebook Social Graph,
-http://arxiv.org/abs/1111.4503
- 
-L. Backstrom, P. Boldi, M. Rosa, J. Ugander, S. Vigna.
-Four Degrees of Separation,
-http://arxiv.org/abs/1111.4570
+A similar experiment involved the entire <b>Facebook social network</b> in May 2011, which then comprised more than 10 percent of the whole Earth's human population <cite>Ugander et al. 2011</cite> <cite>Backstrom et al. 2011</cite>. Lars Backstrom, a data scientist at Facebook, and his collaborators from the University of Milan analyzed a social network that included 721 million people and 69 billion friendship relationships, and they did so using just a single 24-core computer with a 1 terabyte hard disk!  Most Facebook users have less than 200 friends, and the median number of friends was 99 in this study <cite>Ugander et al. 2011</cite>, just above one tenth of a millionth of the global Facebook user base. Despite this small number, the team of researchers found that <eqn>99.6\%</eqn> of all pairs of users were connected by five degrees of separation, and <eqn>92\%</eqn> were connected by four degrees. The world, according to Facebook, is actually smaller than expected: the average distance between any two Facebook users was 3.74 degrees. Actually, it was even smaller than the average 4.28 degrees of separation registered by Facebook in 2008, when the network was smaller, a shrinking phenomenon that had already been observed in the evolution of networks over time <cite>Leskovec et al. 2005</cite>. In summary, four intermediary friends are usually enough to introduce anyone to a random stranger: <q>When considering another person in the world, a friend of your friend knows a friend of their friend, on average</q> <cite>Backstrom et al. 2011</cite>.
 </item>
 
 </list>
@@ -444,7 +408,7 @@ The idea of <q>six degrees of separation</q>...
 
 The six degrees of separation concept originates from Milgram's "small world experiment" in 1967 that tracked chains of acquaintances in the United States...
 + Milgram's experiment inspired a 1990 Broadway play and movie by John Guare called <q>Six Degrees of Separation: A Play</q>.
-K: A line uttered by one of the play’s characters: <q>I read somewhere that everybody on this planet is separated by only six other people. Six degrees of separation. Between us and everyone else on this planet.</q>
+K: A line uttered by one of the play's characters: <q>I read somewhere that everybody on this planet is separated by only six other people. Six degrees of separation. Between us and everyone else on this planet.</q>
 Wikipedia: Guare, in interviews, attributed his awareness of the "six degrees" to Marconi. Although this idea had been circulating in various forms for decades, it is Guare's piece that is most responsible for popularizing the phrase "six degrees of separation." Following Guare's lead, many future television and film sources would later incorporate the notion into their stories.
 
 This concept became popularized by Jon Stewart's Daily Show in the mid-1990's -according to its creators, "a stupid party trick"-called Six Degrees of Kevin Bacon. 
@@ -468,7 +432,7 @@ NOTE: In fact, Bacon does not even make the top 100 list of average personality 
 
 <item>
 
-+ a mathematician’s Erdös number is the distance from him or her to Erdös in a graph connecting pairs
++ a mathematician's Erdös number is the distance from him or her to Erdös in a graph connecting pairs
 of mathematicians who have jointly authored a paper.
 NOTE: Paul Erdös, well-known for his Diogenes-like austerity and his battered suitcases, published 1,500 papers during his career, with 507 coauthors. 
 Erdös has Erdös number 0, his coauthors have Erdös number 1, his coauthors' coauthors have Erdös number 2, and so on.
@@ -493,7 +457,7 @@ networks tend to have very short paths between essentially arbitrary pairs of pe
 – these properties are true of other types of networks, too
 
 There must be some limits to degrees
-– can’t be “close friends” with too many people (150? 1000?)
+– can't be “close friends” with too many people (150? 1000?)
 - Large N, small diameter and limited degrees are in tension (not all combinations are possible)
 e.g. Let N be population size, M be the maximum degree, and D be the diameter: if M=2, then D ~ N/4 ( much greatear than 6 or log(N))
 
@@ -536,7 +500,7 @@ ties, representing more casual and distinct social contacts, tend to cross betwe
 regions. Such a dichotomy suggests a way of thinking about social networks in terms
 of their dense pockets of strong ties and the ways in which they interact with each
 other through weaker ties. In a professional setting, it suggests a strategy for navigating
-one’s way through the social landscape of a large organization by finding the structural
+one's way through the social landscape of a large organization by finding the structural
 holes between parts of the network that interact very little with each other. At a global
 scale, it suggests some of the ways in which weak ties can act as “shortcuts” that link
 together distant parts of the world, resulting in the phenomenon colloquially known as
@@ -546,12 +510,12 @@ six degrees of separation.
 cf. <cite>Granovetter 1983</cite>
 
  
-USN'2012: The most authoritative statement of the idea is Granovetter’s 1982 reprise:
+USN'2012: The most authoritative statement of the idea is Granovetter's 1982 reprise:
 
   
-[O]ur acquaintances (“weak ties’) are less likely to be socially involved with one another than are our close friends (“strong ties”). Thus the set of people made up of any individual and his or her acquaintances will constitute a low-density network (one in which many of the possible ties are absent), whereas the set consisting of the same individual and his or her close friends will be densely knit (many of the possible lines present).
+[O]ur acquaintances (“weak ties') are less likely to be socially involved with one another than are our close friends (“strong ties”). Thus the set of people made up of any individual and his or her acquaintances will constitute a low-density network (one in which many of the possible ties are absent), whereas the set consisting of the same individual and his or her close friends will be densely knit (many of the possible lines present).
 
-  ...Ego will have a collection of close friends, most of whom are in touch with one another—a dense “clump” of social structure. Ego will [also] have a collection of acquaintances, few of whom know one another. Each of these acquaintances, however, is likely to have close friends in his or her own right and therefore to be enmeshed in a closely knit clump of social structure, but one different from Ego’s… These clumps would not… be connected with one another at all were it not for the existence of weak ties. (Granovetter 1982, 105–106)
+  ...Ego will have a collection of close friends, most of whom are in touch with one another—a dense “clump” of social structure. Ego will [also] have a collection of acquaintances, few of whom know one another. Each of these acquaintances, however, is likely to have close friends in his or her own right and therefore to be enmeshed in a closely knit clump of social structure, but one different from Ego's… These clumps would not… be connected with one another at all were it not for the existence of weak ties. (Granovetter 1982, 105–106)
 
 Interesting consequences of weak ties:
 
@@ -565,7 +529,7 @@ Complications
 
 2) it is important to understand that the critical function of weak ties is one of bridges between network segments. As Granovetter puts it, “The importance of weak ties is asserted to be that they are disproportionately likely to be bridges as compared to strong ties, which should be underrepresented in that role. This does not preclude the possibility that most weak ties have no such function” (Granovetter 1982, 130). 
 
-3) it must be the case that “(1) something flows through these bridges—they actually serve as conduits bearing information and influence to groups they otherwise would not get, and (2) whatever it is that flows actually plays some important role in the social life of individuals, groups, and societies” (ibid.). A flow can occur only under some circumstances. Passing along information or exercising influence should not be too costly to the weak tie that constitutes the bridge; otherwise, strong ties that are willing to bear the cost will be more effective in making the bridge. For example, if a mere acquaintance knows about a job (the original context of Granovetter’s study), and the acquaintance does not need the job himself or herself, then there is little cost in passing along the information. It would take a strong tie to pass along information that might cause a loss to the person passing it along.
+3) it must be the case that “(1) something flows through these bridges—they actually serve as conduits bearing information and influence to groups they otherwise would not get, and (2) whatever it is that flows actually plays some important role in the social life of individuals, groups, and societies” (ibid.). A flow can occur only under some circumstances. Passing along information or exercising influence should not be too costly to the weak tie that constitutes the bridge; otherwise, strong ties that are willing to bear the cost will be more effective in making the bridge. For example, if a mere acquaintance knows about a job (the original context of Granovetter's study), and the acquaintance does not need the job himself or herself, then there is little cost in passing along the information. It would take a strong tie to pass along information that might cause a loss to the person passing it along.
 
 
 [Granovetter, Mark S. 1973. The strength of weak ties. American Journal of Sociology 78:1360–1380.]

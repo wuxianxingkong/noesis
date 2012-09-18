@@ -3680,6 +3680,27 @@
 </reference>
 
 
+<reference id="Kleinfeld 2002a">
+ <author>Judith S. Kleinfeld</author>
+ <title>The small world problem</title>
+ <journal>Society</journal>
+ <volume>39</volume>
+ <pages>61-66</pages>
+ <year>2002</year>
+ <url>http://www.judithkleinfeld.com/ar_bigworld.html</url>
+ <file>Networks/applications/social/2002 Society [Kleinfeld] The small world problem.pdf</file>
+</reference>
+
+<reference id="Kleinfeld 2002b">
+ <author>Judith S. Kleinfeld</author>
+ <title>Six Degrees: Urban Myth?</title>
+ <journal>Psychology Today</journal>
+ <volume>March</volume>
+ <year>2002</year>
+ <url>http://www.psychologytoday.com/articles/200203/six-degrees-urban-myth</url>
+</reference>
+
+
 
 <reference id="Konig 1936">
  <author>Dénes König</author>
@@ -4605,6 +4626,18 @@
 </reference>
 
 
+<reference id="Milgram 1967">
+ <author>Stanley Milgram</author>
+ <title>The small-world problem</title>
+ <journal>Psychology Today</journal>
+ <volume>1</volume>
+ <number>1</number>
+ <pages>61-67</pages>
+ <year>1967</year>
+ <file>Networks/applications/social/1967 PT [Milgram] The small-world problem.pdf</file>
+</reference>
+
+
 <reference id="Miller 1980">
  <author>Gary L. Miller</author>
  <title>Isomorphism testing for graphs of bounded genus</title>
@@ -5505,6 +5538,31 @@
  <year>1976</year>
  <doi>10.1145/321958.321963</doi>
  <file>Networks/algorithms/graphs/isomorphism/1976 JACM [Schmidt &amp; Druffel] Graph isomorphism.pdf</file>
+</reference>
+
+
+<reference id="Schnettler 2009a">
+ <author>Sebastian Schnettler</author>
+ <title>A structured overview of 50 years of small-world research</title>
+ <journal>Social Networks</journal>
+ <volume>31</volume>
+ <number>3</number>
+ <pages>165-178</pages>
+ <year>2009</year>
+ <doi>10.1016/j.socnet.2008.12.004</doi>
+ <file>Networks/applications/social/2009 SN [Schnettler] 50 years of small-world research.pdf</file>
+</reference>
+
+<reference id="Schnettler 2009b">
+ <author>Sebastian Schnettler</author>
+ <title>A small world on feet of clay? A comparison of empirical small-world studies against best-practice criteria</title>
+ <journal>Social Networks</journal>
+ <volume>31</volume>
+ <number>3</number>
+ <pages>179-189</pages>
+ <year>2009</year>
+ <doi>10.1016/j.socnet.2008.12.005</doi>
+ <file>Networks/applications/social/2009 SN [Schnettler] Small world studies.pdf</file>
 </reference>
 
 

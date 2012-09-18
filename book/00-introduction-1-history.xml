@@ -24,13 +24,13 @@ Graph theory is the starting point of modern network theory. In fact network the
 <figure>
   <tag>fig-konigsberg</tag>
   <image scale="80" file="image/history/konigsberg"/>
-  <title>The seven bridges of Königsberg.</title>
+  <title>The seven bridges of Königsberg</title>
 </figure>
 
 <figure>
   <tag>fig-konigsberg-graph</tag>
   <image scale="30" file="image/history/konigsberg-graph"/>
-  <title>The graph representing the seven bridges of Königsberg problem.</title>
+  <title>The graph representing the seven bridges of Königsberg problem</title>
 </figure>
 
 <text>
@@ -110,7 +110,7 @@ Trees implicitly appeared in the study of currents in electrical networks perfor
   <image scale="50" file="image/history/tree-n-butane"/>
   <text></text>
   <image scale="41" file="image/history/tree-i-butane"/>
-  <title>The two structural isomers of isobutane, <eqn>C_{4}H_{10}</eqn>: n-butane (top) and i-butane (bottom), also known as isobutane or 2-methylpropane.</title>
+  <title>The two structural isomers of isobutane, <eqn>C_{4}H_{10}</eqn>: n-butane (top) and i-butane (bottom), also known as isobutane or 2-methylpropane</title>
 </figure>
 
 
@@ -149,7 +149,7 @@ You might have noticed that both icosahedrons and dodecahedrons have 30 edges. B
 <figure>
   <tag>fig-hamiltonian</tag>
   <image scale="30" file="image/history/Hamiltonian-path"/>
-  <title>A Hamiltonian cycle in the dodecahedron graph. Source: Wikipedia Commons.</title>
+  <title>A Hamiltonian cycle in the dodecahedron graph. Source: Wikipedia Commons</title>
 </figure>
 
 
@@ -204,7 +204,7 @@ Jacob L. Moreno was a Romanian-born Austrian-American psychotherapist who develo
 <figure>
   <tag>fig-sociogram</tag>
   <image scale="80" file="image/history/sociogram1938"/>
-  <title>A sociogram from <cite>Moreno and Jennings 1938</cite>.</title>
+  <title>A sociogram from <cite>Moreno and Jennings 1938</cite></title>
 </figure>
 
 <text>
@@ -256,28 +256,24 @@ The historical development of sociometry and other related areas that led to the
 <tag>history-random-graphs</tag>
 <title>Random graphs</title>
 
-
 <text>
-L: Solomonoff and Rappaport were the first to apply the ideas of epidemics to RANDOM networks and they proposed the Gilbert model of random graphs, as it is known since it was rediscovered by E. N. Gilbert in 1959 
-[Ray L. Solomonoff and Anatol Rapoport, Connectivity of random nets, Bulletin of Mathematical Biophysics 13:107-117 (1951).]
-[Ray L. Solomonoff and Anatol Rapoport, An exact method for the computation of the connectivity of random nets, Bulletin of Mathematical Biophysics 14:153 (1952).]
+From a mathematical point of view, the earliest statistical analysis of networks were done in the 1950's. The first researchers to study how networks affect to the spread of epidemics were Ray Solomonoff, a student at the University of Chicago who later became one of the 10 participants at the 1956 Darmouth Conference that led to the development of artificial intelligence as a field of study within computer science, and Anatol Rapoport, a Russian-born American mathematical psychologist. They studied the connectivity of random networks and how it determines the diffusion of an epidemic under certain conditions, first by an approximation <cite>Solomonoff and Rapoport 1951</cite> and later more rigorously <cite>Solomonoff 1952</cite>. The formal problem they addressed, which falls within the category of diffusion problems, spurred the study of how resources are distributed through a network, let them be information, ideas, rumors, fads, or viruses.
 </text>
 
-
 <text>
-L: 1959 Gilbert: First generative procedure for random graphs
-+ first constructing a complete graph and then deleting randomly selected links until reaching the desired number of links 
-[Gilbert, E. N., Random graphs, Ann. Math. Stat. 30(4):1141-1144 (1959).]
+Even though Solomonoff and Rapoport were the first to study random networks and the relation between their connectivity and the spread of epidemics, the model they proposed is currently known as the Gilbert model of random graphs. Edgar Nelson Gilbert was a researcher at Bell Laboratories who formalized the first generative procedure, i.e. algorithm, for creating random graphs <cite>Gilbert 1959</cite>. Basically, a random network with a particular number of links can be created by first constructing a complete graph and then deleting randomly selected links until the desired number of links is achieved.
 </text>
 
-<!-- Erdos -->
 <text>
-L: The Hungarian mathematician Paul Erdos (1913-1996)... papers on random graphs ... today, we use the Erdos-Renyi (ER) random graph as a kind of benchmark—to compare with nonrandom graphs (ER model, 1959-1960)
-+ inserting a link between randomly selected node pairs until the desired number of links is achieved.
-[Erdo¨s, P. and A. Re´nyi, On the evolution of ra ndom graphs, Publ. Math. Inst. Hungar. Acad. Sci. 5:17-61 (1960).]
+Gilbert's procedure for creating random graphs is not too efficient, since it requires the creation of a complete graph, a step that requires a quadratic number of operations given that a complete graph with <eqn>n</eqn> nodes contains <eqn>{n \choose 2} = \frac{n(n-1)}{2}</eqn> links, i.e. a link between every pair of nodes in the graph. The Hungarian mathematician Paul Erdös, who published more papers than any other mathematician in history with hundreds of collaborators, also wrote on random graphs. In papers he coauthored with Alfréd Rényi, another Hungarian mathematician, they developed the Erdös-Rényi random graph model <cite>Erdos and Renyi 1959</cite> <cite>Erdos and Renyi 1960</cite>. Instead of removing links from a complete network, as in the Gilbert model, the ER model starts with a set of isolated nodes, a network with no links. The ER generative procedure to create a random graph is then just a linear-time iterative algorithm that inserts links between randomly-selected pairs of nodes until the desired number of links is reached.
+</text>
+
+<text>
+Random graph models, although they might seem to be just mathematical curiosities, are important in practice because they are used as benchmarks to determine whether a network is random or non-random. We can compare actual networks with synthetic random graphs in order to assess whether the properties we observe in the real networks are just the logical consequence of their connectivity or there is something more behind the scenes.
 </text>
 
 </document>
+
 
 
 <document>

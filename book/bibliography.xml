@@ -2582,6 +2582,19 @@
 </reference>
 
 
+<reference id="Gilbert 1959">
+ <author>Edgar Nelson Gilbert</author>
+ <title>Random graphs</title>
+ <journal>Annals of Mathematical Statistics</journal>
+ <volume>30</volume>
+ <number>4</number>
+ <pages>1141-1144</pages>
+ <year>1959</year>
+ <doi>10.1214/aoms/1177706098</doi>
+ <file>Networks/models/random/1959 AMS [Gilbert] Random graphs.pdf</file>
+</reference>
+
+
 <reference id="Girvan and Newman 2002">
  <author>Michelle Girvan</author>
  <author>Mark E.J. Newman</author>
@@ -5786,6 +5799,33 @@
  <file>Networks/models/2004 LNP Information Theory of Complex Networks.pdf</file>
 </reference>
 
+
+<reference id="Solomonoff and Rapoport 1951">
+ <author>Ray L. Solomonoff</author>
+ <author>Anatol Rapoport</author>
+ <title>Connectivity of random nets</title>
+ <journal>Bulletin of Mathematical Biophysics</journal>
+ <volume>13</volume>
+ <number>42</number>
+ <pages>107-117</pages>
+ <year>1951</year>
+ <doi>10.1007/BF02478357</doi>
+ <file>Networks/models/random/1951 BMB [Solomonoff &amp; Rapoport] Connectivity of random nets.pdf</file>
+</reference>
+
+<reference id="Solomonoff 1952">
+ <author>Ray L. Solomonoff</author>
+ <title>An exact method for the computation of the connectivity of random nets</title>
+ <journal>Bulletin of Mathematical Biophysics</journal>
+ <volume>14</volume>
+ <number>2</number>
+ <pages>153-157</pages>
+ <year>1952</year>
+ <doi>10.1007/BF02477714</doi>
+ <file>Networks/models/random/1952 BMB [Solomonoff] Connectivity of random nets.pdf</file>
+</reference>
+
+
 <reference id="Sporns and Kotter 2004">
  <author>Olaf Sporns</author>
  <author>Rolf Kötter</author>
@@ -6711,6 +6751,7 @@
  <isbn>0534037291</isbn>
 </reference>
 
+<!-- History -->
 
 <reference id="Kadushin 2012">
  <author>Charles Kadushin</author>
@@ -6793,5 +6834,7 @@
  <year>1889</year>
  <url>http://books.google.com/?id=M7c4AAAAIAAJ&amp;pg=PA26</url>
 </reference>
+
+
 
 </bibliography>

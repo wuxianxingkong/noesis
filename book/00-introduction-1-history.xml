@@ -4,7 +4,7 @@
 
 <document>
 <tag>history</tag>
-<title>Historical comments</title>
+<title>The history of networks</title>
 
 <text>
 Before we start the study of a new discipline, it is always a good idea to learn something about its origins, the motivations that led people towards the problems that will be addressed, and hopefully solved, with the help network concepts. At the same time, we will get acquainted with the scientists whose pioneering work has shaped the field now called <term>network science</term> <cite>Lewis 2009</cite>. As we will see during the next few pages, the network hall of fame includes mathematicians, sociologists, physicists, and computer scientists.  
@@ -413,7 +413,7 @@ The phrase <q>six degrees of separation</q> caught on and it has been incorporat
 <list>
 
 <item>
-The party game <term>Six Degrees of Kevin Bacon game</term>, was created in early 1994 by four Albright College students, Craig Fass, Christian Gardner, Brian Turtle, and Mike Ginelli. The game consists of linking any actor to Kevin Bacon through no more than six connections, where two actors are considered to be connected if they have appeared together in the same movie. The game became popular once it was featured by the mass media, it led to newsgroup thread with gripping titles such as <q>Kevin Bacon is the Center of the Universe</q>, and its creators even published a book whose prologue was written by Bacon himself. The web version of the game, called the <term>Oracle of Bacon</term>, was originally conceived and implemented in 1996 by Brett Tjaden at the University of Virginia. Available at <url>http://oracleofbacon.org/</url>, the Oracle builds on top of the Internet Movie Database, <url>http://www.imdb.com</url>, and, when queried by users, it automatically finds the shortest paths between any pair of actors on the graph defined by the IMDb. The Bacon number of an actor or actress is the number of degrees of separation between he/she and Kevin Bacon. Analyzing the IMDb, researchers have found that the average Bacon number for most actors is about 2.99, even though a significant fraction of the actors in the IMDb cannot be connected to Bacon. Curiously, analyses of the IMDb have shown that Kevin Bacon is not even in the top 400 list of the most central actors in the network, so we can conclude that he is certainly not the center of the Hollywood universe. Dennis Hopper, Harvey Keitel, Donald Sutherland, David Carradine, Udo Kier, Martin Sheen, Michael Caine, Max von Sydow, Michael Madsen, and Seymour Cassel are currently the top 10 actors in this list.
+The party game <term>Six Degrees of Kevin Bacon game</term>, was created in early 1994 by four Albright College students, Craig Fass, Christian Gardner, Brian Turtle, and Mike Ginelli. The game consists of linking any actor to Kevin Bacon through no more than six connections, where two actors are considered to be connected if they have appeared together in the same movie. The game became popular once it was featured by the mass media, it led to newsgroup thread with gripping titles such as <q>Kevin Bacon is the Center of the Universe</q>, and its creators even published a book whose prologue was written by Bacon himself. The web version of the game, called the <term>Oracle of Bacon</term>, was originally conceived and implemented in 1996 by Brett Tjaden at the University of Virginia. Available at <url>http://oracleofbacon.org/</url>, the Oracle builds on top of the Internet Movie Database, <url>http://www.imdb.com</url>. When queried by users, the Oracle automatically finds the shortest paths between any pair of actors on the graph defined by the IMDb. The Bacon number of an actor or actress is the number of degrees of separation between he/she and Kevin Bacon. Analyzing the IMDb, researchers have found that the average Bacon number for most actors is about 2.99, even though a significant fraction of the actors in the IMDb cannot be connected to Bacon. Curiously, analyses of the IMDb have shown that Kevin Bacon is not even in the top 400 list of the most central actors in the network, so we can conclude that he is certainly not the center of the Hollywood universe. Dennis Hopper, Harvey Keitel, Donald Sutherland, David Carradine, Udo Kier, Martin Sheen, Michael Caine, Max von Sydow, Michael Madsen, and Seymour Cassel are currently the top 10 actors in this list.
 </item>
 
 <item>
@@ -507,37 +507,39 @@ Unfortunately, it is not so clear how we can take advantage of the weak links th
 <title>Network models</title>
 
 <text>
-L: ... scientists in other fields began to use networks as models of physical and biological phenomena... pioneering work of Duncan Watts, Steven Strogatz, and Albert-Laszlo Barabasi ...
+By the end of the 20th century, scientists had already observed that many natural and man-made networks tend to share many of their features. For instance, networks typically have just a few connected components, with the largest one covering more than one half of the nodes in the network. This giant component, as it is called, appears even in random networks, like the ones we have already discussed when talking about the works of Ray Solomonoff <cite>Solomonoff and Rapoport 1951</cite> <cite>Solomonoff 1952</cite>, Edgar Gilbert <cite>Gilbert 1959</cite>, and Paul Erdös <cite>Erdos and Renyi 1959</cite> <cite>Erdos and Renyi 1960</cite>. Small network diameters are also observed, as happened with small world and the <q>six degrees of separation</q> idea. This diameter sometimes increases logarithmically as the network grows, but it can even decrease with network size <cite>Leskovec et al. 2005</cite>. The appearance of clusters, i.e. densely-knit communities, and a mixture of local and long-distance connections, i.e. weak links, are also common in most observed networks.
 </text>
 
 <text>
-Small worlds (sparse networks with small diameter): <cite>Watts and Strogatz 1998</cite>
-
-Algorithm: initially construct a graph with regular structure. Next, apply rewiring to every link with probability p, such that p*m links are randomized (redirected to a randomly selected node). Parameter p is the rewiring probability, and m is the number of links in the original regular graph.
-
-Watts and Strogatz: small worlds as networks with relatively short distances (hops) between node pairs chosen at random, even as the size of the network grows. Specifically, the diameter of a network increases as ln(n) while its size increases by O(n), where n is number of nodes.
-
+These observations led to a renewed interest in network models. Many scientists from different fields, most notably physicists, proposed alternative models for the formation of networks. These theoretical models were used in computer simulations to study a wide range of physical and biological phenomena. As theoretical constructs, they provide a practical way of formulating hypothesis about the structure and behavior of actual networks. With the help of computer simulations, scientists are able to check whether the mechanisms embodied by the models can explain observed phenomena.
 </text>
 
 <text>
-Scale-free networks (nonrandom networks with hubs): <cite>Barabasi and Albert 1999</cite>
-
-
-L: "the probability that a site has k links obeys a power law, which drops off quickly for large k"
-... A network that follows a power-law distribution means that it has a
-hub, and many other nodes with many fewer links than the average. This lopsided
-preference for hubs seemed counter to nature, which typically follows a normal distribution.
-
-L: "a microrule called preferential attachment - that the probability a site will obtain a new link is directly proportional to the number of links it already has" (the <q>rich get richer</q> phenomenon).
-
-L: scale-free networks... The name came from observing that a function f(x) scales if f(ax) = a*f(x), which is
-what a power law does. Therefore, if the degree sequence distribution obeys the power law, h(x) = x ^-q, then it is clear that h(ax) = (ax)^-q = (a ^-q)h(x) = a' h(x).
+A flurry of different network models have been proposed in the literature, especially after the widespread diffusion of the pioneering network models of Duncan J. Watts, Steven H. Strogatz, Albert-László Barabási, and Réka Albert.
 </text>
 
 <text>
-A small-world network has relatively small diameter and average path length, and a scale-free network has hubs.
-= Small worlds had characteristic short path length, but power-law networks had hubs—nodes with extremely high degree.
+Duncan Watts is an Australian physicist who completed his Ph.D. at Cornell University under the supervision of Steven H. Strogatz, an applied mathematician who graduated from Princeton University and obtained a Ph.D. from Harvard University. Strogatz is known for his contributions to the study of synchronization in complex systems <cite>Strogatz 2004</cite>, albeit he is best-known for being the author of an outstanding textbook on nonlinear dynamics and chaos <cite>Strogatz 1994</cite>, which he wrote at MIT. Watts and Strogatz coauthored a highly-cited paper in Nature <cite>Watts and Strogatz 1998</cite>. In this paper, they proposed a simple algorithm to create small worlds, i.e. sparse networks with small diameters. Their algorithm initially constructs a network with a regular structure, e.g. a ring where each network is connected to a few of its neighbors at both sides. Then, links are rewired with a probability <eqn>p</eqn> so that <eqn>p*m</eqn> links are redirected to a randomly-chosen node in the network. The model only parameter, <eqn>p</eqn>, is the rewiring probability, while <eqn>m</eqn> is just the number of links in the original regular graph. This simple algorithm, known as the Watts-Strogatz model, produces graphs with small-world properties, including short average path lengths and high clustering: networks with short distances between node chosen at random, even as the size of the network grows, and local clusters derived from the regular structure of the network before the randomized rewiring process.
 </text>
+
+<text>
+It has been observed that many real-world networks exhibit power-law, or scale-free, degree distributions. In practice, these scale-free networks are characterized by the presence of hubs, nodes with extremely high degrees. The existence of hubs is common, but not ubiquitous in natural networks. Sometimes, networks are subject to constraints in their evolution that prevent the formation of hubs. Road networks, due to physical space constraints, or social networks, due to the limited amount of time you have to nurture friendship relationships, do not typically include hubs. Air traffic networks, however, include hubs: those major regional airports where most connections are made in multi-leg flights. Likewise, the physical network of routers that make the physical substrate of the Internet will not exhibit the scale-free architecture of the World-Wide Web, where a handful of domains hoard a disproportionate amount of links.
+</text>
+
+<text>
+As we have mentioned above, small-world networks, such as those generated by the Watts-Strogatz model, have small diameters and short average path lengths, but they do not have hubs. The random graph models proposed by Erdös-Renyi and Watts-Strogatz generate degree distributions with exponentially-decaying tails, not power laws. And exponentially-decaying degree distributions prevent the appearance of hubs. 
+</text>
+
+<text>
+Just one year later after the publication of the Watts-Strogatz model, Albert-László Barabási, a Romanian-born Hungarian physicist, published a joint paper with Réka Albert, then a graduate student at the University of Notre Dame, Indiana. Their paper, published in Science <cite>Barabasi and Albert 1999</cite>, described a general model to generate scale-free networks. The Barabási-Albert model creates networks with hubs using a rule called preferential attachment: Nodes will receive new links with a probability that is directly proportional to the number of links they already have. Preferential attachment, described in other domains as the <q>rich get richer</q> phenomenon or the Matthew effect, leads naturally to power-law degree distributions in networks. In fact, it has been conjectured that preferential attachment actually exists in many real networks, hence the importance of the Barabási-Albert scale-free network model.
+</text>
+
+<note>
+<text>
+The term scale-free comes from the fact that a function <eqn>f(x)</eqn> scales if <eqn>f(ax) = a f(x)</eqn>, which is exactly what a power law does. When the degree distribution of a network obeys a power law, <eqn>h(x) = x^{-q}</eqn>, then it is clear that <eqn>h(ax) = (ax)^{-q} = (a^{-q}) h(x) = a' h(x)</eqn>.
+</text>
+</note>
+
 
 </document>
 
@@ -547,7 +549,7 @@ A small-world network has relatively small diameter and average path length, and
 <title>Timeline</title>
 
 <text>
-TIMELINE shown in Table <ref>table-milestones</ref>.
+To conclude our brief survey of the history of networks, Table <ref>table-milestones</ref> summarizes some of the key milestones we have described in the previous sections and provides a bird's-eye view of the historical development of the field, shown in the stylized form of a timeline. 
 </text>
 
 <dataset>
@@ -610,7 +612,7 @@ TIMELINE shown in Table <ref>table-milestones</ref>.
  </record>
  <record>
   <field>1973</field>
-  <field>Granovetter: <q>Weak links</q> between clusters in job seeking</field>
+  <field><q>Weak links</q> between clusters, in job seeking</field>
   <field><cite>Granovetter 1973</cite></field>
  </record>
  <record>
@@ -630,7 +632,7 @@ TIMELINE shown in Table <ref>table-milestones</ref>.
  </record>
  <record>
   <field>1998</field>
-  <field>Google PageRank</field>
+  <field>Google's PageRank</field>
   <field><cite>Page et al. 1998</cite></field>
  </record>
  <record>
@@ -640,12 +642,10 @@ TIMELINE shown in Table <ref>table-milestones</ref>.
  </record>
  <record>
   <field>1999</field>
-  <field>Barabasi-Albert scale-free network model</field>
+  <field>Barabási-Albert scale-free network model</field>
   <field><cite>Barabasi and Albert 1999</cite></field>
  </record>
 </dataset>
-
-
 
 </document>
 

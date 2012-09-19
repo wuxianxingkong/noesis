@@ -418,7 +418,7 @@ The party game <term>Six Degrees of Kevin Bacon game</term>, was created in earl
 
 <item>
 Mathematicians also have their own version of the Kevin number. A mathematician's <term>Erdös number</term> is the distance from him or her to Erdös in a graph connecting pairs
-of mathematicians who have jointly authored a paper. Paul Erdös, a peculiar mathematician who was known for his Diogenes-like austerity<!-- and his battered suitcases-->, published 1,500 papers during his career, more than any other mathematician. Erdös has Erdös number 0, his 507 coauthors have Erdös number 1, his coauthors' coauthors have Erdös number 2, and so on. The average distance from a mathematician to Erdös is around 5 and many mathematicians indicate their Erdös number on their personal web pages.
+of mathematicians who have jointly authored a paper. Paul Erdös, a peculiar mathematician who was known for his Diogenes-like austerity<!-- and his battered suitcases-->, published 1,500 papers during his career, more than any other mathematician in history. Erdös has Erdös number 0, his 507 coauthors have Erdös number 1, his coauthors' coauthors have Erdös number 2, and so on. The average distance from a mathematician to Erdös is around 5 and many mathematicians indicate their Erdös number on their personal web pages.
 </item>
 
 </list>
@@ -441,72 +441,64 @@ Thanks to Milgram's experiments and others that followed, we know that society i
 <title>Weak ties</title>
 
 <text>
-L: The small-world idea is related to the "weak ties" theory of Granovetter, who postulated
-that social networks contain both strong (direct) and weak ties (long-distance
-connections) that bind society together <cite>Granovetter 1973</cite>. In a cleverly titled paper,
-"The strength of weak ties," Granovetter suggests that social networks are held
-together by strong connections between friends and family members, as well as
-weaker, long-distance connections among casual acquaintances. This explains why
-it is possible to span a large sparse network in a small number of hops. The links
-of a social network are like freeways and streets—freeways have few intersections
-(nodes) and allow you to travel long distances without stopping. City streets, on
-the other hand, allow you to pinpoint a single person or house within a dense neighborhood.
-Freeways (weak ties) get you to a local neighborhood quickly, while streets
-(strong ties) zero in on a specific person or house.
-
-The strength proportional to the frequency (or intensity) of social interactions: 
-- close friends (strong ties) vs. acquaintances (weak ties)
-- dense clusters (strong ties) vs. low-density network (acquaintances)
-- Information: local (received from strong ties) vs. from other parts of the network (received through weak ties)
-- Lack of weak ties = disadvantaged position in the labor market
-i.e. weak ties interconnect dense communities (the strength-of-weak-ties hypothesis)
-i.e. weak ties provide access to remote information
-
-
-K: ... the communication is balanced between staying within small organizational units and
-cutting across organizational boundaries. This is an example of a much more general
-principle in social networks – that strong ties, representing close and frequent social
-contacts, tend to be embedded in tightly-linked regions of the network, whereas weak
-ties, representing more casual and distinct social contacts, tend to cross between these
-regions. Such a dichotomy suggests a way of thinking about social networks in terms
-of their dense pockets of strong ties and the ways in which they interact with each
-other through weaker ties. In a professional setting, it suggests a strategy for navigating
-one's way through the social landscape of a large organization by finding the structural
-holes between parts of the network that interact very little with each other. At a global
-scale, it suggests some of the ways in which weak ties can act as “shortcuts” that link
-together distant parts of the world, resulting in the phenomenon colloquially known as
-six degrees of separation.
+Somewhat surprisingly, sociologists were not involved in the initial development of social network analysis. They did not play a major role in the field until the 1970's. Social psychologists, such as Jacob Moreno or Stanley Milgram, had led the field. At least until Harrison C. White, a mathematical physicist from MIT who obtained a second Ph.D. in sociology at Princeton, spurred the Harvard revolution in social network analysis. White applied mathematical techniques to structural problems in social network analysis. For instance, he studied how vacancy chains are created in organizations when top employees leave their job and create promotion opportunities for those below them.
 </text>
 
-cf. <cite>Granovetter 1983</cite>
+<text>
+White also initiated research on position and roles analysis. When two actors are in contact with the same, or many of the same, actors in the network, they occupy similar positions within the network. This simple idea led to the notion of <term>structural equivalence</term> <cite>Lorraine and White 1971</cite>. 
+</text>
 
- 
-USN'2012: The most authoritative statement of the idea is Granovetter's 1982 reprise:
+<text>
+But White is usually acknowledged for his influential role in shaping a generation of social network researchers <cite>Prell 2012</cite>. Actually, one of his Ph.D. students, Philip Bonacich made significant contributions to the study of influence in social networks, for which he developed measures of network centrality <cite>Bonacich 1972</cite>.
+</text>
 
-  
-[O]ur acquaintances (“weak ties') are less likely to be socially involved with one another than are our close friends (“strong ties”). Thus the set of people made up of any individual and his or her acquaintances will constitute a low-density network (one in which many of the possible ties are absent), whereas the set consisting of the same individual and his or her close friends will be densely knit (many of the possible lines present).
+<text>
+Another of White's graduate students was Mark Granovetter, now a Professor at Stanford University. Granovetter studied how people get job opportunities and published his results in a famous paper entitled <q>The strength of weak ties</q> <cite>Granovetter 1973</cite>. He found that people are more likely to get jobs through acquaintances than through close friends or family members. He postulated that social networks contain both strong and weak ties. Strong ties form closely-knit groups, whereas weak ties help establish long-distance connections between casual acquaintances. Those long-distance connections, which bind society and explain the small world phenomenon, are precisely the ones that play a key role in the diffusion of information through the network, e.g. becoming aware of job openings. According to Granovetter, society is made of dense groups with weak ties between them.
+</text>
 
-  ...Ego will have a collection of close friends, most of whom are in touch with one another—a dense “clump” of social structure. Ego will [also] have a collection of acquaintances, few of whom know one another. Each of these acquaintances, however, is likely to have close friends in his or her own right and therefore to be enmeshed in a closely knit clump of social structure, but one different from Ego's… These clumps would not… be connected with one another at all were it not for the existence of weak ties. (Granovetter 1982, 105–106)
-
-Interesting consequences of weak ties:
-
-1) weak ties facilitate the flow of information from otherwise-distant parts of a network. Individuals with few weak ties will be deprived of information from distant parts of the social system and will be confined to the provincial news and views of their close friends.
-
-2) weak ties help to integrate social systems. The macroscopic side of this communication argument is that social systems lacking in weak ties will be fragmented and incoherent. New ideas will spread slowly, scientific endeavors will be handicapped, and subgroups that are separated by race, ethnicity, geography, or other characteristics will have difficulty reaching a modus vivendi.
-
-Complications
-
-1) the definition of what constitutes a weak tie or relationship can be somewhat slippery. Is it the length of time one knows someone else, the frequency of interaction, the subjective “closeness” one feels, or whether the others one is connected with are defined as relatives, friends, or acquaintances? 
-
-2) it is important to understand that the critical function of weak ties is one of bridges between network segments. As Granovetter puts it, “The importance of weak ties is asserted to be that they are disproportionately likely to be bridges as compared to strong ties, which should be underrepresented in that role. This does not preclude the possibility that most weak ties have no such function” (Granovetter 1982, 130). 
-
-3) it must be the case that “(1) something flows through these bridges—they actually serve as conduits bearing information and influence to groups they otherwise would not get, and (2) whatever it is that flows actually plays some important role in the social life of individuals, groups, and societies” (ibid.). A flow can occur only under some circumstances. Passing along information or exercising influence should not be too costly to the weak tie that constitutes the bridge; otherwise, strong ties that are willing to bear the cost will be more effective in making the bridge. For example, if a mere acquaintance knows about a job (the original context of Granovetter's study), and the acquaintance does not need the job himself or herself, then there is little cost in passing along the information. It would take a strong tie to pass along information that might cause a loss to the person passing it along.
+<text>
+Granovetter recapitulates his argument as follows: <q>... our acquaintances (weak ties) are less likely to be socially involved with one another than are our close friends (strong ties). Thus the set of people made up of any individual and his or her acquaintances comprises a low-density network (one in which many of the possible relational lines are absent) whereas the set consisting of the same individual and his or her close friends will be densely knit (many of the possible lines are present). The overall social structural picture suggested by this argument can be seen by considering the situation of some arbitrarily selected individual - call him Ego. Ego will have a collection of close friends, most of whom are in touch with one another -a densely knit clump of social structure. Moreover, Ego will have a collection of acquaintances, few of whom know one another. Each of these acquaintances, however, is likely to have close friends in his own right and therefore to be enmeshed in a closely knit clump of social structure, but one different from Ego's. The weak tie between Ego and his acquaintance, therefore, becomes not merely a trivial acquaintance tie but rather a crucial bridge between the two densely knit clumps of close friends... these clumps would not, in fact, be connected to one another at all were it not for the existence of weak ties </q> <cite>Granovetter 1983</cite>.
+</text>
 
 
-<cite>Granovetter 1973</cite>
-<cite>Granovetter 1983</cite>
+
+<text>
+<cite>Lewis 2009</cite> proposes an interesting analogy to describe the role of weak links in social networks. Links in a social network are like the freeways and streets in a road network. Freeways have few intersections (nodes) and allow you to travel long distances without stopping. City streets, on the other hand, allow you to pinpoint a single person or house within a dense neighborhood. Freeways (weak ties) get you to a local neighborhood quickly, while streets (strong ties) zero in on a specific person or house. Individuals without access to freeways will be deprived of information from distant parts of the social network and they will be confined to a provincial life, just receiving the news from their close friends and relative, with whom they will share their views. This isolation will put them at a disadvantage in many situations, including the labor market originally studied by Granovetter <cite>Granovetter 1973</cite>.
+</text>
+
+
+<text>
+In organizations, a balance should be achieved between constraining communication within small organizational units and cutting across organizational boundaries. The dynamics of organizations is also affected by the presence of weak ties. Their absence, as in a purely-hierarchical structure might lead to the creation of information bottlenecks and the appearance of disfunctional behavior. The identification of <q>structural holes</q> between parts of the network that do not interact with each other can be important for organizational consultants.
+</text>
+
+<text>
+From a macroscopic point of view, social networks without weak ties <q>will be fragmented and incoherent. New ideas will spread slowly, scientific endeavors will be handicapped,
+and subgroups separated by race, ethnicity, geography, or other characteristics will have difficulty reaching a modus vivendi</q> <cite>Granovetter 1983</cite>, among many other effects that are of interest to sociologists and social planners.
+</text>
+
+<text>
+From a more pragmatic point of view, how could we ascertain the effects of weak links, or just detect their mere presence? Typically, the strength of existing links will be considered to be proportional to the frequency or intensity of social interactions. If we could somehow overcome the data collection problems associated to social network studies, this apparently simple criterion would help us distinguish close friends, i.e. strong ties, from casual acquaintances, i.e. weak links. However, the concept of weak link itself is ill-defined. Apart from the an objective measure of the frequence of interaction, we could resort to alternative definitions of strength. We could employ subjective evaluations of closeness. We could define social circles according to general categories, such as friends, relatives, or acquaintances. But we could also try to define some kind of structural measure, e.g. number of shared neighbors in the network. In the latter case, we would just analyze the structure of the network: dense clusters would correspond to strong ties, while low-density network fragments would represent the weak links to casual acquaintances. The problem is that we have just replaced the slippery notion of weak links with the equally-vague idea of clusters.
+</text>
+
+<text>
+In summary, the strength-of-weak-ties hypothesis has two interesting consequences:
+</text>
+
+<list>
+
+<item>Information spreads throughout a network by means of weak ties that connect distant parts of the network. Weak ties facilitate the flow of information and provide access to remote information, while strong ties gives us access to local information.</item>
+
+<item>Weak ties integrate social systems by interconnecting dense communities, which would be isolated from the rest of social network unless the weak links established shortcuts between them.</item>
+
+</list>
+
+<text>
+Unfortunately, it is not so clear how we can take advantage of the weak links that bridge network segments. Weak links <q>are disproportionately likely to be bridges as compared to strong ties, which should be underrepresented in that role</q> <cite>Granovetter 1983</cite>. They play an important role in transmitting information and influencing the dynamics of the network, but there is not an easy way to identify them in practice. Moreover, important information can also propagate through strong ties: if one of your friends knows about a job opening but he does not need the job, there is little cost to him in passing that information along. In some sense, all the weak links that connect the members of your social circles with the exterior determine the information you finally receive. The arbitrary distinction between strong and weak ties is, therefore, more of theoretical interest than useful in practice. 
+</text>
 
 </document>
+
+
 
 <!-- Network models -->
 
@@ -605,6 +597,11 @@ TIMELINE shown in Table <ref>table-milestones</ref>.
   <field>1967</field>
   <field>Small-world experiments</field>
   <field><cite>Milgram 1967</cite> <cite>Travers and Milgram 1969</cite></field>
+ </record>
+ <record>
+  <field>1971</field>
+  <field>Structural equivalence</field>
+  <field><cite>Lorraine and White 1971</cite></field>
  </record>
  <record>
   <field>1972</field>

@@ -920,6 +920,7 @@
  <pages>113-120</pages>
  <year>1972</year>
  <doi>10.1080/0022250X.1972.9989806</doi>
+ <file>Networks/applications/social/1972 JMS [Bonacich] Status scores and clique identification.pdf</file>
 </reference>
 
 
@@ -1088,9 +1089,6 @@
  <year>2003</year>
  <isbn>3527403361</isbn>
  <file>[books]/networks/3527403361 [Bornholdt &amp; Schuster] Handbook of Graphs And Networks.pdf</file>
- <comment>
-  <text>TBD</text>
- </comment>
 </reference>
 
 
@@ -2801,6 +2799,7 @@
  <year>1983</year>
  <url>http://www.jstor.org/stable/202051</url>
  <file>Networks/applications/social/1983 Sociological Theory [Granovetter] Strength of Weak Ties - Revisited.pdf</file>
+ <!-- Also in Social structure and network analysis, edited by P. Marsden and N. Linn. Beverly Hills, Calif.: Sage, 1982 -->
 </reference>
 
 

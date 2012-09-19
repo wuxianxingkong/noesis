@@ -21,6 +21,35 @@ Related fields: networks incorporates ideas from complex adaptive systems (emerg
 
 + L: Holland defines emergence in general terms as <q>much coming from little</q> (Holland, 1998): A series of microlevel changes accumulate over time, until a macrolevel change in the network is realized. Emergence means that a major change in global properties comes from many small changes at the local level.  [Holland, J. H., Emergence: From Chaos to Order, Addison-Wesley, Reading, MA, 1998.]
 
+<reference id="Holland 1998">
+ <author>John H. Holland</author>
+ <title>Emergence: From Chaos to Order</title>
+ <publisher>Oxford University Press</publisher>
+ <year>1998</year>
+ <isbn>0198504098</isbn>
+</reference>
+
+
+Complex adaptive systems (cas) – systems that involve many components that adapt or
+learn as they interact – are at the heart of important contemporary problems. The study of cas poses
+unique challenges: Some of our most powerful mathematical tools, particularly methods involving fixed
+points, attractors, and the like, are of limited help in understanding the development of cas. This paper
+suggests ways to modify research methods and tools, with an emphasis on the role of computer-based
+models, to increase our understanding of cas. <cite>Holland 2006</cite>
+
+<reference id="Holland 2006">
+ <author>John H. Holland</author>
+ <title>Studying Complex Adaptive Systems</title>
+ <journal>Journal of Systems Science and Complexity</journal>
+ <volume>19</volume>
+ <number>1</number>
+ <pages>1-8</pages>
+ <year>2006</year>
+ <doi>10.1007/s11424-006-0001-z</doi>
+ <file>Networks/2006 JSSC [Holland] Complex adaptive systems.pdf</file>
+</reference>
+
+
 + L: Networks evolve...  have dynamic properties such as fixed points when they sync. Starting at some initial state, a dynamic network may transition
 to a second, third, fourth, and higher state until either cycling back or reaching a final state—its fixed point... networks that reach a fixed point are different from networks that oscillate, forever.
 </text>
@@ -68,6 +97,8 @@ to a second, third, fourth, and higher state until either cycling back or reachi
 
 <text>
 ++ Networks <cite>Easley and Kleinberg 2010</cite> <cite>Newman 2010</cite> <cite>Jackson 2009</cite> <cite>Lewis 2009</cite> <cite>Cohen and Havlin 2010</cite> <cite>van Steen 2010</cite> <cite>Dogorotsev 2010</cite>
+
+TIMELINE, excerpted and extended from <cite>Lewis 2009</cite>
 </text>
 
 <text>

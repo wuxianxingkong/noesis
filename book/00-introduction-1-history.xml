@@ -231,7 +231,7 @@ Leo Katz, Robert Duncan Luce, and Leon Festinger were among the first to use mat
 
 
 <item>
-Leo Katz, from Michigan State College, thought that the sociogram <q>had apparently reached the limits of its usefulness in the interpretation of sociometric data</q> <cite>Katz 1947</cite> and he proceeded to develop methods for quantifying relational data with the help of matrices and <q>matric operations</q> (sic). He considered some matrix operations and showed their interpretation in sociological terms. Some years later, in 1953, he would introduce a centrality measure or <q>status index</q> that computed the influence of an actor in a social network <cite>Katz 1953</cite>. This index, currently known as Katz centrality, is the forerunner of algorithms such as PageRank, the algorithm employed by Google to rank its search results <cite>Page et al. 1998</cite>.
+Leo Katz, from Michigan State College, thought that the sociogram <q>had apparently reached the limits of its usefulness in the interpretation of sociometric data</q> <cite>Katz 1947</cite> and he proceeded to develop methods for quantifying relational data with the help of matrices and <q>matric operations</q> (sic). He considered some matrix operations and showed their interpretation in sociological terms. Some years later, in 1953, he would introduce a centrality measure or <q>status index</q> that computed the influence of an actor in a social network <cite>Katz 1953</cite>. This index, currently known as Katz centrality, is the forerunner of algorithms such as PageRank, the algorithm employed by Google to rank its search results <cite>Page et al. 1998</cite>, and Kleinberg's HITS ranking algorithm <cite>Kleinberg 1998</cite>.
 </item>
 
 <item>
@@ -296,7 +296,7 @@ Stanley Milgram, a famed social psychologist, resolved to answer that question w
 Returning to our discussion on networks, Milgram is also credited with the introduction of the notion of small worlds in networks. Milgram wanted to measure the average path length between between any two individuals in the United States and determine whether social networks are small worlds or not, so he designed experiments that would let him count the number of ties between any two people, at least an approximate count given that the resulting paths might not be the shortest ones. His famous experiments were reported in the inaugural issue of the popular magazine Psychology Today in May 1967 <cite>Milgram 1967</cite> and, two years later, in the research journal Sociometry <cite>Travers and Milgram 1969</cite>. Randomly-selected participants from Wichita, Kansas, and Omaha, Nebraska, were asked to forward a letter to an unfamiliar target through their acquaintances. Milgram, therefore, estimated how closely-knit our society is by measuring the number of steps required by the letters to achieve their destination.
 </text>
 
-<!-- EXPERIMENT -->
+<!-- Milgram's experiments -->
 
 <text>
 Milgram invited participants, first from Kansas and later from Nebraska, to participate in his <q>communications project</q> to <q>better understand social contact in American
@@ -370,8 +370,7 @@ Finally, we should also consider the existence of completely isolated communitie
 
 
 
-<!-- FOLLOW UP -->
-
+<!-- More experiments -->
 
 <text>
 Due to the difficulty in obtaining exhaustive data from actual social networks, social network research on the small world problem is often based on targeted local search procedures similar to those in Milgram's experiments <cite>Schnettler 2009a</cite>. Below we describe some of the follow-up studies that have been performed on small worlds:
@@ -403,63 +402,35 @@ A similar experiment involved the entire <b>Facebook social network</b> in May 2
 <!-- SIX DEGREES -->
 
 <text>
-The idea of <q>six degrees of separation</q>...
+The idea of six degrees of separation is often attributed to Milgram's original experiments on small worlds, where he reported an average length of 6 for the letter chains that were completed, somewhere between the results obtained from the analysis of the Microsoft Messenger and Facebook networks. However, the phrase <q>six degrees of separation</q> was popularized by a 1990 Broadway play of the same name written by John Guare, which would become a movie in 1993. One of the characters in that play states: <q>I read somewhere that everybody on this planet is separated by only six other people. Six degrees of separation. Between us and everyone else on this planet.</q> Guare, in an interview, attributed his awareness of the idea of six degrees of separation to the Italian inventor Guglielmo Marconi, who is often credited as the inventor of the radio. Milgram's findings, loosely interpreted, reinforced the notion of six degrees of separation, although he never used the phrase <q>six degrees of separation</q>. In his original paper <cite>Milgram 1967</cite>, however, he observed that the apparent closeness of the ends of the chains is misleading. Five is a small quantity, but five intermediate acquaintances represent <q>an enormous psychological distance</q>, <q>five circles of acquaintances apart</q> rather than just <q>five persons apart</q>. In some sense, people are not just six short steps apart, but six worlds apart, a change in the frame of reference that makes six degrees a much larger number.
 </text>
 
-The six degrees of separation concept originates from Milgram's "small world experiment" in 1967 that tracked chains of acquaintances in the United States...
-+ Milgram's experiment inspired a 1990 Broadway play and movie by John Guare called <q>Six Degrees of Separation: A Play</q>.
-K: A line uttered by one of the play's characters: <q>I read somewhere that everybody on this planet is separated by only six other people. Six degrees of separation. Between us and everyone else on this planet.</q>
-Wikipedia: Guare, in interviews, attributed his awareness of the "six degrees" to Marconi. Although this idea had been circulating in various forms for decades, it is Guare's piece that is most responsible for popularizing the phrase "six degrees of separation." Following Guare's lead, many future television and film sources would later incorporate the notion into their stories.
-
-This concept became popularized by Jon Stewart's Daily Show in the mid-1990's -according to its creators, "a stupid party trick"-called Six Degrees of Kevin Bacon. 
-
-K: Milgram himself mused about this in his original paper <cite>Milgram 1967</cite>; his observation, paraphrased slightly, was that if we think of each person as the
-center of their own social “world,” then “six short steps” becomes “six worlds apart” – a change in perspective that makes six sound like a much larger number.
-
-Hence, the researchers concluded that people in the United States are separated by about six people on average. Although Milgram himself never used the phrase "six degrees of separation", these findings are likely to have contributed to its widespread acceptance.
+<text>
+The phrase <q>six degrees of separation</q> caught on and it has been incorporated into the scripts of many television shows and movies. Its widespread acceptance might also be related to the proliferation of some games:
+</text>
 
 
 <list>
 
 <item>
-
-+ Kevin Bacon game: created in early 1994 by four Albright College students, Craig Fass, Christian Gardner, Brian Turtle, and Mike Ginelli.
-NOTE: On April 7, 1994, a lengthy newsgroup thread headed "Kevin Bacon is the Center of the Universe"
-+ http://oracleofbacon.org/ - The Oracle of Bacon, created by Brett Tjaden of the University of Virginia originally conceived and implemented in 1996
-NOTE: average Bacon number, for most actors in the IMDb, is approximately 2.9,
-NOTE: In fact, Bacon does not even make the top 100 list of average personality number...
+The party game <term>Six Degrees of Kevin Bacon game</term>, was created in early 1994 by four Albright College students, Craig Fass, Christian Gardner, Brian Turtle, and Mike Ginelli. The game consists of linking any actor to Kevin Bacon through no more than six connections, where two actors are considered to be connected if they have appeared together in the same movie. The game became popular once it was featured by the mass media, it led to newsgroup thread with gripping titles such as <q>Kevin Bacon is the Center of the Universe</q>, and its creators even published a book whose prologue was written by Bacon himself. The web version of the game, called the <term>Oracle of Bacon</term>, was originally conceived and implemented in 1996 by Brett Tjaden at the University of Virginia. Available at <url>http://oracleofbacon.org/</url>, the Oracle builds on top of the Internet Movie Database, <url>http://www.imdb.com</url>, and, when queried by users, it automatically finds the shortest paths between any pair of actors on the graph defined by the IMDb. The Bacon number of an actor or actress is the number of degrees of separation between he/she and Kevin Bacon. Analyzing the IMDb, researchers have found that the average Bacon number for most actors is about 2.99, even though a significant fraction of the actors in the IMDb cannot be connected to Bacon. Curiously, analyses of the IMDb have shown that Kevin Bacon is not even in the top 400 list of the most central actors in the network, so we can conclude that he is certainly not the center of the Hollywood universe. Dennis Hopper, Harvey Keitel, Donald Sutherland, David Carradine, Udo Kier, Martin Sheen, Michael Caine, Max von Sydow, Michael Madsen, and Seymour Cassel are currently the top 10 actors in this list.
 </item>
 
 <item>
-
-+ a mathematician's Erdös number is the distance from him or her to Erdös in a graph connecting pairs
-of mathematicians who have jointly authored a paper.
-NOTE: Paul Erdös, well-known for his Diogenes-like austerity and his battered suitcases, published 1,500 papers during his career, with 507 coauthors. 
-Erdös has Erdös number 0, his coauthors have Erdös number 1, his coauthors' coauthors have Erdös number 2, and so on.
-The average distance from a mathematician to Erdös is around 5
+Mathematicians also have their own version of the Kevin number. A mathematician's <term>Erdös number</term> is the distance from him or her to Erdös in a graph connecting pairs
+of mathematicians who have jointly authored a paper. Paul Erdös, a peculiar mathematician who was known for his Diogenes-like austerity<!-- and his battered suitcases-->, published 1,500 papers during his career, more than any other mathematician. Erdös has Erdös number 0, his 507 coauthors have Erdös number 1, his coauthors' coauthors have Erdös number 2, and so on. The average distance from a mathematician to Erdös is around 5 and many mathematicians indicate their Erdös number on their personal web pages.
 </item>
 
 </list>
 
 
 <text>
-Our desire to believe in a small world might also bias our judgment. Psychological research provides explanations of why people may fall prey to the six degrees of separation illusion. When people experience an unexpected social connection, the event is likely to be vivid and salient in a person's memory <cite>Kleinfeld 2002a</cite>. Because of this, the small world might be just an urban myth <cite>Kleinfeld 2002b</cite>, we do not know. The only thing that is clear, thanks to Milgram's experiments and others that followed, is that society is not a random network. Folders did not reach their destination bouncing randomly from person to person. Using local information, they followed paths that were not planned ahead of time, sometimes surprisingly short paths. Whether there is always a path connecting every two people in the world is yet a mystery.
+Our desire to believe in a small world might bias our judgment and make us believe that the world is smaller than it is, actually. Psychological research provides explanations of why people may fall prey to the six degrees of separation illusion. When people experience an unexpected social connection, the event is likely to be vivid and salient in their memory <cite>Kleinfeld 2002a</cite>. Because of this, the small world might be just an urban myth <cite>Kleinfeld 2002b</cite>, we just do not know. Social networks tend to include very short paths between arbitrary pairs of people, but this fact might not have broader consequences. Whether there is always a path connecting every two people in the world is still a mystery.
 </text>
 
-
-K: overall conclusion has been accepted in a broad sense: social
-networks tend to have very short paths between essentially arbitrary pairs of people
-
-[Kearns]
-– large-scale social networks reliably have high-degree vertices
-– large-scale social networks have small diameter
-– furthermore, people can find or navigate the short paths from only local, distributed knowledge
-– these properties are true of other types of networks, too
-
-There must be some limits to degrees
-– can't be “close friends” with too many people (150? 1000?)
-- Large N, small diameter and limited degrees are in tension (not all combinations are possible)
-e.g. Let N be population size, M be the maximum degree, and D be the diameter: if M=2, then D ~ N/4 ( much greatear than 6 or log(N))
+<text>
+Thanks to Milgram's experiments and others that followed, we know that society is not a random network. The folders in Milgram's experiments did not reach their destination bouncing randomly from person to person. Using local information and distributed knowledge, people were able to find and navigate paths that were not planned ahead of time, sometimes surprisingly short paths. In other words, large-scale social networks tend to have a very  small diameter, a feature we will discover in many other kinds of networks.
+</text>
 
 </document>
 
@@ -532,8 +503,8 @@ Complications
 3) it must be the case that “(1) something flows through these bridges—they actually serve as conduits bearing information and influence to groups they otherwise would not get, and (2) whatever it is that flows actually plays some important role in the social life of individuals, groups, and societies” (ibid.). A flow can occur only under some circumstances. Passing along information or exercising influence should not be too costly to the weak tie that constitutes the bridge; otherwise, strong ties that are willing to bear the cost will be more effective in making the bridge. For example, if a mere acquaintance knows about a job (the original context of Granovetter's study), and the acquaintance does not need the job himself or herself, then there is little cost in passing along the information. It would take a strong tie to pass along information that might cause a loss to the person passing it along.
 
 
-[Granovetter, Mark S. 1973. The strength of weak ties. American Journal of Sociology 78:1360–1380.]
-[Granovetter, Mark S. 1982. The strength of weak ties: A network theory revisited. In Social structure and network analysis, edited by P. Marsden and N. Linn. Beverly Hills, Calif.: Sage.]
+<cite>Granovetter 1973</cite>
+<cite>Granovetter 1983</cite>
 
 </document>
 
@@ -584,7 +555,7 @@ A small-world network has relatively small diameter and average path length, and
 <title>Timeline</title>
 
 <text>
-TIMELINE, excerpted and extended from <cite>Lewis 2008</cite>, shown in Table <ref>table-milestones</ref>.
+TIMELINE shown in Table <ref>table-milestones</ref>.
 </text>
 
 <dataset>
@@ -592,28 +563,53 @@ TIMELINE, excerpted and extended from <cite>Lewis 2008</cite>, shown in Table <r
  <title>Some milestones in the history of networks</title>
  <metadata>
   <field width="07">Year</field>
-  <field width="50">Milestone (author: result)</field>
+  <field width="50">Milestone</field>
   <field width="23">Reference(s)</field>
  </metadata>
  <record>
   <field>1736</field>
-  <field>Euler: Bridges of Königsberg</field>
+  <field>Bridges of Königsberg</field>
   <field><cite>Euler 1736</cite></field>
  </record>
  <record>
+  <field>1933</field>
+  <field>Sociograms</field>
+  <field><cite>Moreno 1934</cite></field>
+ </record>
+ <record>
+  <field>1951</field>
+  <field>Spread of infection in random networks</field>
+  <field><cite>Solomonoff and Rapoport 1951</cite></field>
+ </record>
+ <record>
+  <field>1953</field>
+  <field><q>Status index</q>, i.e. Katz centrality index</field>
+  <field><cite>Katz 1953</cite></field>
+ </record>
+ <record>
   <field>1955</field>
-  <field>Simon: Power law observed in word analysis</field>
+  <field>Power law observed in word analysis</field>
   <field><cite>Simon 1955</cite></field>
  </record>
  <record>
+  <field>1959</field>
+  <field>First generative procedure for random graphs</field>
+  <field><cite>Gilbert 1959</cite></field>
+ </record>
+ <record>
   <field>1960</field>
-  <field>Erdös, Renyi: Random graphs</field>
+  <field>Random graphs</field>
   <field><cite>Erdos and Renyi 1959</cite> <cite>Erdos and Renyi 1960</cite></field>
  </record>
  <record>
   <field>1967</field>
-  <field>Milgram: Small-world experiments</field>
-  <field><cite>Travers and Milgram 1969</cite></field>
+  <field>Small-world experiments</field>
+  <field><cite>Milgram 1967</cite> <cite>Travers and Milgram 1969</cite></field>
+ </record>
+ <record>
+  <field>1972</field>
+  <field>Influence in social networks</field>
+  <field><cite>Bonacich 1972</cite></field>
  </record>
  <record>
   <field>1973</field>
@@ -622,40 +618,37 @@ TIMELINE, excerpted and extended from <cite>Lewis 2008</cite>, shown in Table <r
  </record>
  <record>
   <field>1978</field>
-  <field>Pool, Kochen: First theoretical examination of small worlds</field>
+  <field>First theoretical examination of small worlds</field>
   <field><cite>Pool and Kochen 1978</cite></field>
  </record>
  <record>
+  <field>1995</field>
+  <field>Generation of networks with arbitrary degree distributions</field>
+  <field><cite>Molloy and Reed 1995</cite></field>
+ </record>
+ <record>
   <field>1998</field>
-  <field>Watts, Strogatz: First generative procedure for small worlds</field>
+  <field>HITS ranking algorithm</field>
+  <field><cite>Kleinberg 1998</cite></field>
+ </record>
+ <record>
+  <field>1998</field>
+  <field>Google PageRank</field>
+  <field><cite>Page et al. 1998</cite></field>
+ </record>
+ <record>
+  <field>1998</field>
+  <field>Watts-Strogatz small-world network model</field>
   <field><cite>Watts and Strogatz 1998</cite></field>
  </record>
  <record>
   <field>1999</field>
-  <field>Barabasi, Albert: Scale-free network model</field>
+  <field>Barabasi-Albert scale-free network model</field>
   <field><cite>Barabasi and Albert 1999</cite></field>
  </record>
 </dataset>
 
-<text>
-1951 Solomonoff, Rappaport: Spread of infection in random networks
-  [Solomonoff, R. and A. Rapoport, Connectivity of random nets, Bull. Math. Biophys. 13:107-117 (1951).]
 
-1959 Gilbert: First generative procedure for random graphs
-  [Gilbert, E. N., Random graphs, Ann. Math. Stat. 30(4):1141-1144 (1959)]
-
-1972 Bonacich: Idea of influence in social networks leading to influence diagrams
-  [Bonacich, P., Factoring and weighing approaches to clique identification, J. Math. Sociol. 2:113-120 (1972).]
-
-1989 Bristor, Ryan: "Buying networks" i.e. application of network science to model economic system
-  [Bristor, J. M. and M. J. Ryan, Applying the small world phenomenon to organizational buying, in M. Kochen, ed., The Small World, Ablex, Norwood, NJ, 1989, Chapter 4, pp. 87-99.]
-
-1995 Molloy, Reed: Generation of networks with arbitrary degree sequence distribution
-  [Molloy, M. and B. Reed, A critical point for random graphs with a given degree sequence, Random Struct. Algorithms 6:161-180 (1995).]
-
-1998 Holland: Emergence in complex adaptive systems
-  [Holland, J. H., Emergence: From Chaos to Order, Addison-Wesley, Reading, MA, 1998.]
-</text>
 
 </document>
 

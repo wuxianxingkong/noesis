@@ -111,6 +111,12 @@ Jennifer Fewell, from Arizona State University, illustrates the importance of [i
 </text>
 
 <text>
+– large-scale social networks reliably have high-degree vertices
+There must be some limits to degrees
+– can't be “close friends” with too many people (150? 1000?)
+- Large N, small diameter and limited degrees are in tension (not all combinations are possible)
+e.g. Let N be population size, M be the maximum degree, and D be the diameter: if M=2, then D ~ N/4 ( much greatear than 6 or log(N))
+
 ++ Dunbar's number: http://www.technologyreview.com/blog/arxiv/26824/ 
 + http://arxiv.org/abs/1105.5170 Validation of Dunbar's Number In Twitter Conversations  @ Network structure chapter
 
@@ -121,6 +127,9 @@ refs.
 Hill, R. A., and R. I. M. Dunbar. 2003. Social network size in humans. Human Nature 14:53–72
 
 Dunbar, R. I. M. 1993. Coevolution of neocortical size, group size and language in humans. Behavioral and Brain Sciences 16:681–694
+
+
+
 
 
 Using samples of convenience in Britain and Belgium and such techniques as inquiring about Christmas card sending, and administering tests of cognitive ability, Dunbar and associates confirm the size of about 150, but with a large standard deviation (about 85) for close personal relationships (Roberts et al. 2009; Stiller and Dunbar 2007; Hill and Dunbar 2003). The results, however, are based on small data sets of white Europeans whose sampling characteristics are unknown. In a series of interesting studies, Killworth, Bernard and members of their research team have attempted empirically to find the number of persons known to an average contemporary American. Their latest finding is that the number is larger than the historical 150: somewhere around 280. But there is a very wide standard deviation, meaning that some people have a much larger effective circle and some a much smaller one (Killworth et al. 2006). ... Recent analyses..., using data from the Killworth et al. studies, but applying a different statistical technique, suggest that the mean size of one’s circle of acquaintances may be as high as 650 for men and 590 for women, again with a highly skewed distribution in which a few people have very large circles (Zheng, Salganik, and Gelman 2006)
@@ -515,6 +524,16 @@ Network effects [Kleinberg 17]
 ++ Aggregate behavior
         Markets and information [Kleinberg 22]
         Property rights [Kleinberg 24]
+
+<reference id="Bristor and Ryan 1989">
+ <author>Julia M. Bristor</author>
+ <author>Michael J. Ryan</author>
+ <title>Applying the small world phenomenon to organizational buying</title>
+ <booktitle>The Small World: A Volume of Recent Research Advances Commemorating Ithiel de Sola Pool, Stanley Milgram, Theodore Newcomb.</booktitle>
+ <publisher>Ablex Publishing</publisher>
+ <year>1989</year>
+ <isbn>0893914797</isbn>
+</reference>
 
 
 

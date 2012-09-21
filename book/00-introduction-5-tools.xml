@@ -8,29 +8,134 @@
 
 
 <document>
-<tag>introduction-tools-analysis</tag>
+<tag>introduction-tools-packages</tag>
 <title>Software packages for network analysis</title>
+
+
+También hay que mencionar existen productos software específicamente diseñados para analizar redes
+sociales. Estos productos utilizan grafos con atributos en vez de tablas como modelo subyacente de
+representación de los datos. Algunos ejemplos representativos de sistemas de este tipo son:
+
+
+
 
 
 <list>
 
 <item>
-Pajek
-
-[Nooy, Wouter de, Andrej Mrvar, and Vladimir Batagelj. 2005. Exploratory social network analysis with Pajek. Structural analysis in the social sciences. New York: Cambridge University Press.]
+Pajek <cite>de Nooy et al. 2005</cite>
+- Pajek (de la Universidad de Ljubljana en Eslovenia, http://vlado.fmf.uni-lj.si/pub/networks/pajek/).
 </item>
 
 <item>
-NodeXL
+UCINET, by Lin Freeman, Steve Borgatti, and Martin Everett.
+http://www.analytictech.com/ucinet
+
+- UCINET (proyecto de Lin Freeman, Steve Borgatti y Martin Everett, de la Universidad de California en
+Irvine, EE.UU., y ahora comercializado por una empresa llamada
+AnalyticTech, http://www.analytictech.com/ucinet/).
+</item>
+
+<item>
+NodeXL <cite>Hansen et al. 2010</cite>
 </item>
 
 <item>
 SNAP (Stanford Network Analysis Package), by Jure Leskovec
+
+SNAP (Stanford Network Analysis Package, http://snap.stanford.edu/), paquete creado por Jure
+Leskovec y utilizado internamente por herramientas como NodeXL, patrocinada por Microsoft
+Research (http://nodexl.codeplex.com/)
+
 </item>
 
 <item>
 Network Workbench (Indiana), by Katy Börner
+
+NWB (Network Workbench: A Large-Scale Network Analysis, Modeling and Visualization Toolkit for Biomedical, Social Science and Physics Research, de la Universidad de Indiana, EE.UU.,
+http://nwb.slis.indiana.edu).
 </item>
+
+
+
+<item>
+GRADAP, by Karel Sprenger and Frans Stokman
+
+- GRADAP (GRaph Definition and Analysis Package, resultado de un proyecto coordinado de varias universidades holandesas coordinado por Karel Sprenger y Frans Stokman).
+</item>
+
+<item>
+Brain Connectivity Toolbox, <url>http://www.brain-connectivity-toolbox.net</url>. Matlab library containing a large selection of complex network measures. BCT is maintained by Olaf Sporns and Mikail Rubinov.
+
+BCT (Brain Connectivity Toolbox, http://www.brain-connectivity-toolbox.net), biblioteca para Matlab
+mantenida por Olaf Sporns (Universidad de Indiana, EE.UU.) y Mikail Rubinov (Universidad de
+Cambridge, UK).
+</item>
+
+<item>
+ROLE, by Ron Breiger (Universidad de Arizona)
+
+</item>
+
+<item>
+SNAPS, by Noah Friedkin (Universidad de California en Santa Barbara)
+</item>
+
+<item>
+STRUCTURE, by Ron Burt (Booth School of Business, University of Chicago)
+</item>
+
+
+<item>
+NEGOPY
+</item>
+
+</list>
+
+
++ No obstante, estos sistemas no ofrecen técnicas (rudimentarias) de análisis y visualización de datos. 
+
+</document>
+
+
+
+
+<document>
+<tag>introduction-tools-graph-algorithms</tag>
+<title>Graph algorithm libraries</title>
+
+
+STANDARD LIBRARIES:
+
+Using a single-computer graph algorithm library, such
+as BGL <cite>Siek et al. 2002</cite>, LEDA, NetworkX <cite>Hagberg et al. 2008</cite>, JDSL <cite>Goodrich and Tamassia 2010</cite>, Stanford GraphBase <cite>Knuth 1994</cite>, or FGL <cite>Erwig 2001</cite>, limiting the scale of problems that can be addressed.
+
+<list>
+
+<item>
+  BGL
+  http://www.boost.org/libs/graph/
+  <cite>Siek et al. 2002</cite>
+</item>
+
+<item>
+MatlabBGL, by David Gleich (then at Stanford, now at Purdue)
+
+http://www.cs.purdue.edu/homes/dgleich/packages/matlab_bgl/
+http://www.mathworks.com/matlabcentral/fileexchange/10922-matlabbgl
+
+gaimc : Graph Algorithms In Matlab Code
+Efficient pure-Matlab implementations of graph algorithms to complement MatlabBGL's mex functions
+
+http://www.mathworks.com/matlabcentral/fileexchange/24134
+</item>
+
+<item>
+  LEDA
+  http://www.algorithmic-solutions.com/leda/
+  <cite>Mehlhorn and Naher 1999</cite>
+</item>
+
 
 <item>
 NetworkX, in Python, http://networkx.lanl.gov/ <cite>Hagberg et al. 2008</cite>
@@ -41,104 +146,43 @@ igraph, written in C, but accessible from Python or Ruby, and also from the free
 </item>
 
 <item>
-Brain Connectivity Toolbox, <url>http://www.brain-connectivity-toolbox.net</url>. Matlab library containing a large selection of complex network measures. BCT is maintained by Olaf Sporns and Mikail Rubinov.
+  JDSL = the Library of Data Structures in Java (Center for Geometric Computing at Brown University + Johns Hopkins University)
+  http://www.cs.brown.edu/cgc/jdsl-1.0/
+  <cite>Goodrich and Tamassia 2010</cite>
 </item>
 
 <item>
-MatlabBGL, by David Gleich (Stanford)
+  FGL <cite>Erwig 2001</cite>
 </item>
 
 <item>
-GRADAP, by Karel Sprenger and Frans Stokman
-</item>
-
-<item>
-ROLE, by Ron Breiger
-</item>
-
-<item>
-SNAPS, by Noah Friedkin
-</item>
-
-<item>
-STRUCTURE, by Ron Burt
-</item>
-
-<item>
-UCINET, by Lin Freeman, Steve Borgatti, and Martin Everett.
-
-[Stephen P. Borgatti and Linton C. Freeman. 2004. UCINET 6 for Windows: Software for social network analysis. Analytic Technologies, Harvard, Cambridge, Mass.]
-</item>
-
-<item>
-NEGOPY
+  The Stanford Graphbase
+  <cite>Knuth 1994</cite>
 </item>
 
 </list>
 
 
-
-También hay que mencionar existen productos software específicamente diseñados para analizar redes
-sociales. Estos productos utilizan grafos con atributos en vez de tablas como modelo subyacente de
-representación de los datos. Algunos ejemplos representativos de sistemas de este tipo son:
-
-• GRADAP (GRaph Definition and Analysis Package, resultado de un proyecto coordinado de varias
-universidades holandesas coordinado por Karel Sprenger y Frans Stokman).
-• UCINET (proyecto de Lin Freeman, Steve Borgatti y Martin Everett, de la Universidad de California en
-Irvine, EE.UU., y ahora comercializado por una empresa llamada
-AnalyticTech, http://www.analytictech.com/ucinet/).
-• Pajek (de la Universidad de Ljubljana en Eslovenia, http://vlado.fmf.uni-lj.si/pub/networks/pajek/).
-• NWB (Network Workbench: A Large-Scale Network Analysis, Modeling and Visualization Toolkit for
-Biomedical, Social Science and Physics Research, de la Universidad de Indiana, EE.UU.,
-http://nwb.slis.indiana.edu).
-• SNAP (Stanford Network Analysis Package, http://snap.stanford.edu/), paquete creado por Jure
-Leskovec y utilizado internamente por herramientas como NodeXL, patrocinada por Microsoft
-Research (http://nodexl.codeplex.com/)
-• BCT (Brain Connectivity Toolbox, http://www.brain-connectivity-toolbox.net), biblioteca para Matlab
-mantenida por Olaf Sporns (Universidad de Indiana, EE.UU.) y Mikail Rubinov (Universidad de
-Cambridge, UK).
-
-Aparte de los proyectos mencionados, existen otras muchas herramientas que también son de interés en el
-ámbito de este proyecto, tales como MatlabBGL (de David Gleich, Purdue University), ROLE (de Ron Breiger,
-Universidad de Arizona), SNAPS (de Noah Friedkin, Universidad de California en Santa Barbara) o STRUCTURE
-(de Ron Burt, Booth School of Business, University of Chicago). No obstante, estos sistemas no ofrecen la
-posibilidad de utilizar técnicas de minería de datos sobre estructuras de datos complejas, más allá de técnicas
-rudimentarias de análisis y visualización de datos. 
-
-
-
-STANDARD LIBRARIES
-
-Using a single-computer graph algorithm library, such
-as BGL, LEDA, NetworkX <cite>Hagberg et al. 2008</cite>, JDSL, Stanford GraphBase, or FGL <cite>Erwig 2001</cite>, limiting the scale of problems that can be addressed.
-
-  BGL
-  Jeremy G. Siek, Lie-Quan Lee, and Andrew Lumsdaine, The Boost Graph Library: User Guide and Reference Manual. Addison Wesley, 2002.
-
-  LEDA
-  Kurt Mehlhorn and Stefan Näher, The LEDA Platform of Combinatorial and Geometric Computing. Cambridge University Press, 1999. ISBN:0-521-56329-1
-
-  JDSL
-  Michael T. Goodrich and Roberto Tamassia, Data Structures and Algorithms in JAVA. (second edition). John Wiley and Sons, Inc., 2001.
-
-  Stanford GraphBase
-  Donald E. Knuth, Stanford GraphBase: A Platform for Combinatorial Computing. ACM Press, 1994.
-
-
-
 Using an existing parallel graph system. The Parallel BGL and CGMgraph libraries address parallel graph algorithms, but do not address specific issues that are important for very large scale distributed systems.
 
+<list>
+
+<item>
   Parallel BGL = The Parallel Boost Graph Library
   http://osl.iu.edu/research/pbgl/
   <cite>Gregor and Lumsdaine 2005</cite>
+</item>
 
-
+<item>
   CGMgraph
   http://people.scs.carleton.ca/~dehne/projects/Cgmlib/
   <cite>Chan and Dehne 2005</cite>
+</item>
 
+</list>
 
 </document>
+
 
 
 
@@ -207,13 +251,13 @@ OrientDB - a high-performance open source document-graph database
 http://www.orientdb.org/
 http://en.wikipedia.org/wiki/OrientDB
 
-DEX[2] - A high-performance graph database from Sparsity Technologies, a technology transition company from DAMA-UPC ( (Data Management group at the Polytechnic University of Catalonia). http://en.wikipedia.org/wiki/DEX_(Graph_database)
+DEX - A high-performance graph database from Sparsity Technologies, a technology transition company from DAMA-UPC ( (Data Management group at the Polytechnic University of Catalonia). http://en.wikipedia.org/wiki/DEX_(Graph_database)
 http://sparsity-technologies.com/dex
 
-InfoGrid - an open-source / commercial (AGPLv3, free for small entities)[3] graph database with web front end and configurable storage engines (MySQL, PostgreSQL, Files, Hadoop)
+InfoGrid - an open-source / commercial (AGPLv3, free for small entities) graph database with web front end and configurable storage engines (MySQL, PostgreSQL, Files, Hadoop)
 http://infogrid.org/trac/
 
-sones GraphDB - an open-source / commercial (AGPLv3)[5] graph database and universal access layer (funded by Deutsche Telekom AG)
+sones GraphDB - an open-source / commercial (AGPLv3) graph database and universal access layer (funded by Deutsche Telekom AG)
 http://en.wikipedia.org/wiki/Sones_GraphDB
 http://www.sones.de/static-en/
 

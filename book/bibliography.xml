@@ -998,6 +998,17 @@
  <file>Networks/structure/metrics/2003 DSNMA Key Player Problem.pdf</file>
 </reference>
 
+<reference id="Borgatti et al. 2002">
+ <author>Stephen P. Borgatti</author>
+ <author>Martin G. Everett</author>
+ <author>Linton C. Freeman</author>
+ <title>UCINET for Windows: Software for Social Network Analysis</title>
+ <publisher>Analytic Technologies</publisher>
+ <year>2002</year>
+ <url>http://www.analytictech.com/ucinet</url>
+ <file>Networks/software/2002 UCINET 6 User's Guide.pdf</file>
+</reference>
+
 
 <reference id="Borgatti and Cross 2003">
  <author>Stephen P. Borgatti</author>
@@ -2751,6 +2762,17 @@
 </reference>
 
 
+<reference id="Goodrich and Tamassia 2010">
+ <author>Michael T. Goodrich</author>
+ <author>Roberto Tamassia</author>
+ <title>Data Structures and Algorithms in Java</title>
+ <edition>5th edition</edition>
+ <publisher>Wiley</publisher>
+ <year>2010</year>
+ <isbn>0470383267</isbn>
+</reference>
+
+
 <reference id="Goyal 2007">
  <author>Sanjeev Goyal</author>
  <title>Connections: An Introduction to the Economics of Networks</title>
@@ -3730,6 +3752,16 @@
 </reference>
 
 
+<reference id="Knuth 1994">
+ <author>Donald E. Knuth</author>
+ <title>The Stanford GraphBase: A Platform for Combinatorial Computing</title>
+ <publisher>ACM Press</publisher>
+ <year>1994</year>
+ <isbn>0201542757</isbn>
+ <file>Networks/software/Graphbase/</file>
+</reference>
+
+
 
 <reference id="Konig 1936">
  <author>Dénes König</author>
@@ -4624,6 +4656,18 @@
  <year>1983</year>
  <url>http://www.jstor.org/stable/2117719</url>
  <file>Networks/applications/social/1983 ASR [McPherson] An Ecology of Affiliation.pdf</file>
+</reference>
+
+
+
+<reference id="Mehlhorn and Naher 1999">
+ <author>Kurt Mehlhorn</author>
+ <author>Stefan Näher</author>
+ <title>LEDA: A Platform for Combinatorial and Geometric Computing</title>
+ <publisher>Cambridge University Press</publisher>
+ <year>1999</year>
+ <isbn>0521563291</isbn>
+ <url>http://www.mpi-inf.mpg.de/~mehlhorn/LEDAbook.html</url>
 </reference>
 
 
@@ -5849,6 +5893,18 @@
  <comment>
   <text>Graduate-level textbook on multiagent systems, mostly focused on game theory.</text>
  </comment>
+</reference>
+
+
+<reference id="Siek et al. 2002">
+ <author>Jeremy G. Siek</author>
+ <author>Lie-Quan Lee</author>
+ <author>and Andrew Lumsdaine</author>
+ <title>The Boost Graph Library: User Guide and Reference Manual</title>
+ <publisher>Addison-Wesley</publisher>
+ <year>2002</year>
+ <isbn>0201729148</isbn>
+ <url>http://www.mpi-inf.mpg.de/~mehlhorn/LEDAbook.html</url>
 </reference>
 
 

@@ -23,6 +23,36 @@
 
 
 
+
+<reference id="Adamic 1999">
+ <author>Lada Adamic</author>
+ <title>The Small World Web</title>
+ <proceedings>3rd European Conference on Research and Advanced Technology for Digital Libraries</proceedings>
+ <conference>ECDL</conference>
+ <year>1999</year>
+ <isbn>3-540-48155-9</isbn>
+ <location>Paris, France</location>
+ <series>Lecture Notes in Computer Science</series>
+ <volume>1696</volume>
+ <pages>443-452</pages>
+ <doi>10.1007/3-540-48155-9_27</doi>
+ <file>Networks/applications/www/1999 ECDL [Adamic] Small World Web.pdf</file>
+</reference>
+
+
+<reference id="Adamic and Huberman 2000">
+ <author>Lada Adamic</author>
+ <author>Bernardo A. Huberman</author>
+ <title>Power-law distribution of the World Wide Web</title>
+ <journal>Science</journal>
+ <volume>287</volume>
+ <number>5461</number>
+ <pages>2115</pages>
+ <year>2000</year>
+ <doi>10.1126/science.287.5461.2115a</doi>
+ <file>Networks/applications/www/2000 Science [Adamic] Power law @ WWW.pdf</file>
+</reference>
+
 <reference id="Adamic and Huberman 2001">
  <author>Lada Adamic</author>
  <author>Bernardo A. Huberman</author>
@@ -200,6 +230,19 @@
  <file>Networks/models/scale-free/2005 PhysRevE [Alava &amp; Dogorovtsev] Complex networks created by aggregation.pdf</file>
 </reference>
 
+
+<reference id="Albert et al. 1999">
+ <author>Réka Albert</author>
+ <author>Hawoong Jeong</author>
+ <author>Albert-László Barabási</author>
+ <title>Diameter of the World Wide Web</title>
+ <journal>Nature</journal>
+ <volume>400</volume>
+ <pages>130-131</pages>
+ <year>1999</year>
+ <doi>10.1038/43601</doi>
+ <file>Networks/applications/www/1999 Nature [Barabasi] Diameter of the WWW.pdf</file>
+</reference>
 
 <reference id="Albert and Barabasi 2002">
  <author>Réka Albert</author>
@@ -694,6 +737,22 @@
 </reference>
 
 
+<reference id="Bharat and Broder 1998">
+ <author>Krishna Bharat</author>
+ <author>Andrei Broder</author>
+ <title>A technique for measuring the relative size and overlap of public Web search engines</title>
+ <proceedings>7th International Conference on the World Wide Web</proceedings>
+ <conference>WWW</conference>
+ <year>1998</year>
+ <location>Brisbane, Australia</location>
+ <journal>Computer Networks and ISDN Systems</journal>
+ <volume>30</volume>
+ <number>1-7</number>
+ <pages>379-388</pages>
+ <doi>10.1016/S0169-7552(98)00127-5</doi>
+ <file>Networks/applications/www/1998 CN Size and overlap of public Web search engines.pdf</file>
+</reference>
+
 
 <reference id="Bianconi and Capocci 2003">
  <author>Ginestra Bianconi</author>
@@ -720,6 +779,21 @@
  <year>2005</year>
  <doi>10.1088/1742-5468/2005/06/P06005</doi>
  <file>Networks/models/random/2005 JSM Loops of any size.pdf</file>
+</reference>
+
+
+<reference id="Bianconi et al. 2008">
+ <author>Ginestra Bianconi</author>
+ <author>Natali Gulbahce</author>
+ <author>Adilson E. Motter</author>
+ <title>Local structure of directed networks</title>
+ <journal>Physical Review Letters</journal>
+ <volume>100</volume>
+ <number>11</number>
+ <pages>118701</pages>
+ <year>2008</year>
+ <doi>10.1103/PhysRevLett.100.118701</doi>
+ <file>Networks/applications/www/2008 PRL Local structure of directed networks.pdf</file>
 </reference>
 
 
@@ -1895,6 +1969,17 @@
 </reference>
 
 
+
+<reference id="Diehl 2007">
+ <author>Stephan Diehl</author>
+ <title>Software Visualization: Visualizing the Structure, Behaviour, and Evolution of Software</title>
+ <publisher>Springer</publisher>
+ <year>2007</year>
+ <isbn>3540465049</isbn>
+ <file>[books]/programming/3540465049 [Diehl] Software Visualization.pdf</file>
+</reference>
+
+
 <reference id="Diestel 2005">
  <author>Reinhard Diestel</author>
  <title>Graph Theory</title>
@@ -1921,6 +2006,27 @@
  <doi>10.1007/BF01386390</doi>
  <file>Networks/algorithms/graphs/paths/1959 NM [Dijkstra] MST &amp; Shortest paths.pdf</file>
 </reference>
+
+
+<reference id="Dill et al. 2001">
+ <author>Stephen Dill</author>
+ <author>Ravi Kumar</author>
+ <author>Kevin McCurley</author>
+ <author>Sridhar Rajagopalan</author>
+ <author>D. Sivakumar</author>
+ <author>Andrew Tomkins</author>
+ <title>Self-similarity in the Web</title>
+ <proceedings>27th International Conference on Very Large Data Bases</proceedings>
+ <conference>VLDB</conference>
+ <year>2001</year>
+ <issn>2150-8097</issn>
+ <isbn>1-55860-804-4</isbn>
+ <location>Roma, Italy</location>
+ <pages>69-78</pages>
+ <url>http://www.vldb.org/conf/2001/P069.pdf</url>
+ <file>Networks/applications/www/2001 VLDB Self-similarity in the web.pdf</file>
+</reference>
+
 
 
 <reference id="Dodds et al. 2003">
@@ -2090,6 +2196,20 @@
  </comment>
 </reference>
 
+
+
+<reference id="Eckmann and Moses 2002">
+ <author>Jean-Pierre Eckmann</author>
+ <author>Elisha Moses</author>
+ <title>Curvature of co-links uncovers hidden thematic layers in the World Wide Web</title>
+ <journal>Proceedings of the National Academy of Sciences</journal>
+ <volume>99</volume>
+ <number>9</number>
+ <pages>5825-5829</pages>
+ <year>2002</year>
+ <doi>10.1073/pnas.032093399</doi>
+ <file>Networks/applications/www/2002 PNAS Curvature of co-links in the WWW.pdf</file>
+</reference>
 
 
 <reference id="Edmonds and Johnson 1973">
@@ -2341,6 +2461,20 @@
  <file>Networks/applications/social/1991 AJS [Feld] Why your friends have more friends than you do.pdf</file>
 </reference>
 
+
+<reference id="Fenner et al. 2006">
+ <author>Trevor I. Fenner</author>
+ <author>Mark Levene</author>
+ <author>George Loizou</author>
+ <title>A stochastic model for the evolution of the Web allowing link deletion</title>
+ <journal>ACM Transactions on Internet Technology</journal>
+ <volume>6</volume>
+ <number>2</number>
+ <pages>117-130</pages>
+ <year>2006</year>
+ <doi>10.1145/1149121.1149122</doi>
+ <file>Networks/applications/www/2006 TIT Stochastic model for the evolution of the Web.pdf</file>
+</reference>
 
 
 <reference id="Festinger 1949">
@@ -3924,6 +4058,7 @@
  <pages>1-17</pages>
  <doi>10.1007/3-540-48686-0_1</doi>
  <file>Networks/models/1999 COCOON [Kleinberg] Copying model.pdf</file>
+ <file>Networks/applications/www/1999 COCOON [Kleinberg] The Web as a graph.pdf</file>
 </reference>
 
 
@@ -4274,6 +4409,19 @@
 </reference>
 
 
+<reference id="Lawrence and Giles 1999">
+ <author>Steve Lawrence</author>
+ <author>C. Lee Giles</author>
+ <title>Accessibility of information on the web</title>
+ <journal>Nature</journal>
+ <volume>400</volume>
+ <pages>107-109</pages>
+ <year>1999</year>
+ <doi>10.1038/21987</doi>
+ <file>Networks/applications/www/1999 Nature [Lawrence &amp; Giles] Information on the web.pdf</file>
+</reference>
+
+
 <reference id="Leskovec et al. 2005">
  <author>Jure Leskovec</author>
  <author>Jon Kleinberg</author>
@@ -4440,6 +4588,21 @@
  <file>Networks/algorithms/patterns/2010 CIKM Link formation rules.pdf</file>
 </reference>
 
+<reference id="Levene et al. 2002">
+ <author>Mark Levene</author>
+ <author>Trevor I. Fenner</author>
+ <author>George Loizou</author>
+ <author>Richard Wheeldon</author>
+ <title>A stochastic model for the evolution of the Web</title>
+ <journal>Computer Networks</journal>
+ <volume>39</volume>
+ <number>3</number>
+ <pages>277-287</pages>
+ <year>2002</year>
+ <doi>10.1016/S1389-1286(02)00209-8</doi>
+ <file>Networks/applications/www/2002 CN Stochastic model for the evolution of the Web.pdf</file>
+</reference>
+
 
 <reference id="Lewis 2009">
  <author>Ted G. Lewis</author>
@@ -4603,7 +4766,7 @@
  <proceedings>38th International Conference on Very Large Data Bases</proceedings>
  <conference>VLDB</conference>
  <year>2012</year>
- <issn>ISSN 2150-8097</issn>
+ <issn>2150-8097</issn>
  <location>Istambul, Turkey</location>
  <pages>716-727</pages>
  <url>http://vldb.org/pvldb/vol5/p716_yuchenglow_vldb2012.pdf</url>
@@ -6516,6 +6679,32 @@
 </reference>
 
 
+
+<reference id="Tadic 2002a">
+ <author>Bosiljka Tadic</author>
+ <title>Growth and structure of the world-wide web: Towards realistic modeling</title>
+ <journal>Computer Physics Communications</journal>
+ <volume>147</volume>
+ <number>1-2</number>
+ <pages>586-589</pages>
+ <year>2002</year>
+ <doi>10.1016/S0010-4655(02)00373-9</doi>
+ <file>Networks/applications/www/2002 CPC [Tadic] Growth and structure of the WWW.pdf</file>
+</reference>
+
+<reference id="Tadic 2002b">
+ <author>Bosiljka Tadic</author>
+ <title>Temporal fractal structures: Origin of power laws in the world-wide web</title>
+ <journal>Physica A: Statistical Mechanics and its Applications</journal>
+ <volume>314</volume>
+ <number>1-4</number>
+ <pages>278-283</pages>
+ <year>2002</year>
+ <doi>10.1016/S0378-4371(02)01072-5</doi>
+ <file>Networks/applications/www/2002 Physica A [Tadic] Origin of power laws in the WWW.pdf</file>
+</reference>
+
+
 <reference id="Tan et al. 2006">
  <author>Pang-Ning Tan</author>
  <author>Michael Steinbach</author>
@@ -7293,14 +7482,6 @@
  <file>[books]/networks/drawing/9810248792 Graph Drawing and Applications for Software and Knowledge Engineers.2002.djvu</file>
 </reference>
 
-<reference id="Diehl 2007">
- <author>Stephan Diehl</author>
- <title>Software Visualization: Visualizing the Structure, Behaviour, and Evolution of Software</title>
- <publisher>Springer</publisher>
- <year>2007</year>
- <isbn>3540465049</isbn>
- <file>[books]/programming/3540465049 [Diehl] Software Visualization.pdf</file>
-</reference>
 
 <reference id="Steele and Iliinsy 2010">
  <title>Beautiful Visualization: Looking at Data through the Eyes of Experts</title>

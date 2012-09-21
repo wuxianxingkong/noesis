@@ -14,8 +14,8 @@
 - Biologists use the network metaphor to understand epidemics, genetics, and metabolic systems within cells
 - Power engineers think of electrical power grids.
 
-“Cheminformatics”: Chemical compounds.
-   “Bioinformatics”: Protein networks &amp; bio-pathways
+   "Cheminformatics": Chemical compounds.
+   "Bioinformatics": Protein networks &amp; bio-pathways
    Software Engineering: Program analysis…
    Network flow analysis (transport, workflows…)
    Semi-structured databases, e.g. XML
@@ -36,7 +36,7 @@
 e.g.
 - nodes: individuals
 - edges: social interaction
-• “six degrees of separation”: the social distance between people is small
+• "six degrees of separation": the social distance between people is small
 
 ++
 actor collaboration 
@@ -89,7 +89,7 @@ Social scientists have investigated three kinds of networks: ego-centric, socioc
 
 - Ego-centric networks are those networks that are connected with a single node or individual,
 
-- Socio-centric networks are networks in a “box.” Connections between children in a classroom or between executives or workers in an organization are closed system networks and the ones most often studied in terms of the fine points of network structure. 
+- Socio-centric networks are networks in a "box." Connections between children in a classroom or between executives or workers in an organization are closed system networks and the ones most often studied in terms of the fine points of network structure. 
 - Open system networks are networks in which the boundaries are not necessarily clear, for example, the elite of the United States, connections between corporations, the chain of influencers of a particular decision, or the adopters of new practices. In some ways, these are the most interesting networks. 
 
 
@@ -124,7 +124,7 @@ DUNBAR'S NUMBER
 
 – large-scale social networks reliably have high-degree vertices
 There must be some limits to degrees
-– can't be “close friends” with too many people (150? 1000?)
+– can't be "close friends" with too many people (150? 1000?)
 - Large N, small diameter and limited degrees are in tension (not all combinations are possible)
 e.g. Let N be population size, M be the maximum degree, and D be the diameter: if M=2, then D ~ N/4 ( much greatear than 6 or log(N))
 
@@ -132,8 +132,8 @@ e.g. Let N be population size, M be the maximum degree, and D be the diameter: i
 + http://www.technologyreview.com/blog/arxiv/26824/ 
 + <cite>Goncalves et al. 2011</cite> Validation of Dunbar's Number In Twitter Conversations  @ Network structure chapter
 
-Hill and Dunbar argue that “[i]n primates, social networks are more easy to define… and are often delimited by the size of the social group” <cite>Hill and Dunbar 2003</cite>. 
-Primate relationships involve intense social grooming. The grooming group size is relative to neocortical volume. “Since the size of the human neocortex is known, the relationship between group size and neocortex size in primates can be used to predict the cognitive group size for humans” (ibid.). Dunbar therefore predicts that preliterate humans should live in groups of about 150 in size <cite>Dunbar 1993</cite>
+Hill and Dunbar argue that "[i]n primates, social networks are more easy to define… and are often delimited by the size of the social group" <cite>Hill and Dunbar 2003</cite>. 
+Primate relationships involve intense social grooming. The grooming group size is relative to neocortical volume. "Since the size of the human neocortex is known, the relationship between group size and neocortex size in primates can be used to predict the cognitive group size for humans" (ibid.). Dunbar therefore predicts that preliterate humans should live in groups of about 150 in size <cite>Dunbar 1993</cite>
 
 @ Primates <cite>Dunbar 1992</cite>
 
@@ -219,11 +219,13 @@ LOL... A theoretical physicist would say that <q>it is dangerous to believe soci
 
 Beyond social networks, there is a branch of network theory that deals with the networks that appear associated to physical phenomena, though such networks tend to be considerably simpler than social networks. At least, they are not so messy.
 
-
-
 In social networking, personal agency or motivation is a also key factor in establishing social connections. Even organizations vary in the extent to which they actively seek to relate to other organizations and their skilled in this endeavor <cite>Kadushin 2012</cite>.
 
 </document>
+
+
+
+<!-- Content networks -->
 
 <document>
 <tag>content</tag>
@@ -242,25 +244,26 @@ Examples [Newman 4]
 ++ Network Dynamics: 
         Search on Networks [Newman 19][Kleinberg 14]
 
+
 <text>
 WWW: 
-- nodes: web pages
-- edges: hyperlinks - directed connections (references in web documents)
-++ up to 60% reciprocal connections (two web pages can cite each other, something more uncommon in scientific papers)
-[
-Jean-Pierre Eckmann and Elisha Moses:
-Curvature of co-links uncovers hidden thematic layers in the World Wide Web
-PNAS April 30, 2002 vol. 99 no. 9 5825-5829
-doi: 10.1073/pnas.032093399
-]
-
 = the largest network with topological information available.
+
 
 @ 1 trillion unique URLs indexed by Google on July 25th, 2008, just on the Surface Web (access to the Deep Web is restricted)
 i.e. unknown true size
 
-[S. Lawrence, C. L. Giles, Nature 400, 107 (1999).]
-Structure of a website [M. E. J. Newman and M. Girvan, Phys. Rev. E (2004]
+- nodes: web pages
+- edges: hyperlinks - directed connections (references in web documents)
+++ up to 60% reciprocal connections (two web pages can cite each other, something more uncommon in scientific papers) <cite>Eckmann and Moses 2002</cite>
+
+
+Structure of a website 
+
+++ <cite>Lawrence and Giles 1999</cite>
+
+++ <cite>Newman and Girvan 2004</cite>
+
 
 L: The structure of the Internet and WWW: an emergent property of the decentralized Internet - that it had emerged without central planning into a structure consisting of a small number of extremely popular sites called hubs, and a large number of "unpopular" sites with few links (a scale-free network).
 
@@ -269,32 +272,28 @@ Origin: Tim Berners-Lee proposal of an hypertext system for CERN (European Labor
 
 In 1999, the average number of incoming and outcoming links per web page was about eight, an extremely sparse network...
 
+
 1999 Kleinberg, Kumar, Raghavan, Rajagopalan, Tomkins: Formalized model of WWW as "Webgraph"
 + We call such networks Webgraphs, because they use graph theory to understand the World Wide Web (WWW).
-(Kleinberg et al. 1999)
-[Kleinberg, J. M., S. R. Kumar, P. Raghavan, S. Rajagopalan, and A. S. Tomkins, The Web as a
-graph: Measurements, models, and methods, in T. Asano, H. Imai, D. Lee, S. Nakano, and
-T. Tokuyama, eds, Proc. 5th Annual Intnatl. Conf. Computing and Combinatorics, Tokyo,
-Lecture Notes in Computer Science, Vol. 1627, Springer-Verlag, Berlin, 1999.]
-
+<cite>Kleinberg et al. 1999</cite>
 
 
 1999 Albert, Jeong, Barabasi: Diameter of the WWW (at least, within a small part of the Web, the nd.edu domain from the University of Notre Dame)
 nd.edu with 325729 pages and 1469680 links
 + average path length estimated to be 0.35 + 0.89 ln n
 + clustering coefficient: 0.3 (ignoring the directedness of links)
-[Albert, R., H. Jeong, and A.-L. Barabasi, Diameter of the World Wide Web, Nature 401:130-131 (1999).]
-+ taking into account the directedness of links: very few short loops as compared to random models
-[
-Ginestra Bianconi, Natali Gulbahce, and Adilson E. Motter:
-Local Structure of Directed Networks
-Phys. Rev. Lett. 100, 118701 (2008).
-URL:	http://link.aps.org/doi/10.1103/PhysRevLett.100.118701
-DOI:	10.1103/PhysRevLett.100.118701
-]
+<cite>Albert et al. 1999</cite>
++ taking into account the directedness of links: very few short loops as compared to random models 
+<cite>Bianconi et al. 2008</cite>
 
 
-2000 Broder, Kumar, Maghoul, Raghavan, Rajagopalan Stata, Tomkins, Wiener: Full Webgraph map of the WWW
+
+
+2000 Broder, Kumar, Maghoul, Raghavan, Rajagopalan, Stata, Tomkins, Wiener: Full Webgraph map of the WWW
+<cite>Broder et al. 2000</cite>
+
+@ 9th International World Wide Web Conference, May 2000.
+
 + Group of computer scientists from AltaVista, IBM, and Compaq (now part of HP)
 + the first to fully map the WWW as a Webgraph and discover its structure
 	- Giant weakly-connected component composed of a giant strongly-connected component (30%), a giant out-component, and a giant in-component, plus tendrils (25%)
@@ -304,38 +303,40 @@ DOI:	10.1103/PhysRevLett.100.118701
 + Power law distribution with exponent 2.1 for in-degrees and 2.7 for out-degrees (range much narrower for out-degrees, obviously)
 	- Doubts about the scale-free structure w.r.t. out-degrees
 	- Scale-free network w.r.t. the in-degree distribution
-[Broder, A., S. R. Kumar, F. Maghoul, P. Raghavan, S. Rajagopalan, R. Stata, A. Tomkins, and
-J. Wiener, Graph structure in the web, Comput. Networks 33(1-6):309-320, (2000).]
-[
-D. Donato, L. Laura, S. Leonardi, S. Millozzi. 
-Large Scale properties of the Webgraph.
-European Physical Journal B, Vol. 38 (March 2004), pp. 239-243, 
-doi:10.1140/epjb/e2004-00056-6
-]
 
-2000: Power law observed in the WWW
-[Adamic, L. A. and B. A. Huberman, Power-law distribution of the World Wide Web, Science 287:2115 (2000).]
 
-1999 Adamic: Distance between .edu sites shown to be small-world
-[Adamic, L. A., The small world web, in Research and Advanced Technology for
-Digital Libraries, Lecture Notes in Computer Science 1696, S. Abiteboul and
-A.-M. Vercoustre, eds, Springer-Verlag, New York, 1999, 443-452.]
++++ Large scale properties of the webgraph <cite>Donato et al. 2004a</cite>
+
+2000: Power law observed in the WWW <cite>Adamic and Huberman 2000</cite>
+
+@CACM <cite>Adamic and Huberman 2001</cite>
+
+1999 Adamic: Distance between .edu sites shown to be small-world <cite>Adamic 1999</cite>
+
 
 
 2002 Levene, Fenner, Loizou, Wheeldon: Enhanced Webgraph model concluded structure of the WWW couldn't be explained by preferential
-attachment alone
-[Levene, M., T. Fenner, G. Loizou, and R. Wheeldon, A stochastic model for the evolution of
-the web, Comput. Networks 39:277-287 (2002).]
+attachment alone <cite>Levene et al. 2002</cite> <cite>Fenner et al. 2006</cite>
 
 
-[Tadic, B., Growth and structure of the world-wide web: Towards realistic modeling, Comput. Phys. Commun. 147(1-2):586-589 (2002).
-[Tadic, B., Temporal fractal structures: Origin of power laws in the world-wide web, Physica A 314(1-4):278-283 (2002).]
 
-Broder, R. Kumar, F. Maghoul, P. Raghavan, S. Rajagopalan, R. Stata, A. Tomkins, J. Wiener. Graph structure in the web. 9th International World Wide Web Conference, May 2000.
-J. Kleinberg, S.R. Kumar, P. Raghavan, S. Rajagopalan, A. Tomkins. The Web as a graph: Measurements, models and methods. Invited survey at the International Conference on Combinatorics and Computing, 1999.
-K. Bharat and A. Broder. A technique for measuring the relative size and overlap of public Web search engines. Proc. 7th International World Wide Web Conference, 1998.
-S. Dill, R. Kumar, K. McCurley, S. Rajagopalan, D. Sivakumar, A. Tomkins. Self-similarity in the Web. 27th International Conference on Very large Data Bases, 2001.
 
+++ <cite>Tadic 2002a</cite> <cite>Tadic 2002b</cite>
+
+
+++ <cite>Dill et al. 2001</cite>
+
+
+++ <cite>Bharat and Broder 1998</cite>
+
+
+</text>
+
+
+
+
+
+<text>
 Web search, Link analysis, Spectral analysis.
 
 J. Kleinberg. Authoritative sources in a hyperlinked environment. Proc. 9th ACM-SIAM Symposium on Discrete Algorithms, 1998. Extended version in Journal of the ACM 46(1999). Also appears as IBM Research Report RJ 10076, May 1997.
@@ -367,7 +368,11 @@ D. Liben-Nowell, J. Kleinberg. The Link Prediction Problem for Social Networks. 
 Zoltán Gyöngyi, Hector Garcia-Molina. Link Spam Alliances. 31st International Conference on Very Large Data Bases (VLDB), Trondheim, Norway, 2005.
 </text>
 
+<text>
+++
 <cite>Liu 2011</cite>
+</text>
+
 
 
 <text>
@@ -496,7 +501,7 @@ Network effects [Kleinberg 17]
         Markets and information [Kleinberg 22]
         Property rights [Kleinberg 24]
 
-<cite>Bristor and Ryan 1989</cite>
+e.g. L'2009: <cite>Bristor and Ryan 1989</cite>
 
 
 

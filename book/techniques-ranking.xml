@@ -431,8 +431,65 @@ ref.
 
 ++
 RANKING
-[Brin, S.;  Page, L.,  The anatomy of a large-scale hypertextual web search engine,   In:  Proc. 7th Int. World Wide Web Conf. (WWW’98)  Brisbane, Australia.  (Apr. 1998), pp.  107–117]
-[Kleinberg, J.M.,  Authoritative sources in a hyperlinked environment,   J. ACM  46  (1999) 604–632.]
+
+- HITS, as an IBM research report <cite>Kleinberg 1997</cite>, SODA conference paper <cite>Kleinberg 1998</cite>, and JACM paper <cite>Kleinberg 1999a</cite>
+
+- Google <cite>Brin and Page 1998</cite>: PageRank <cite>Page et al. 1998</cite>
+
+++
+Link analysis + Spectral analysis:
+
+A. Borodin, J. S. Rosenthal, G. O. Roberts, P. Tsaparas, Finding Authorities and Hubs From Link Structures on the World Wide Web. 10th International World Wide Web Conference, May 2001.
+A. Borodin, G. Roberts, J. Rosenthal, P. Tsaparas, Link Analysis Ranking: Algorithms, Theory and Experiments, ACM Transactions on Internet Technologies (TOIT), 5(1), 2005
+Dimitris Achlioptas, Amos Fiat, Anna Karlin, Frank McSherry, Web Search via Hub Synthesis. 42nd IEEE Symposium on Foundations of Computer Science, 2001, p.611-618.
+R. Lempel and S. Moran, Rank Stability and Rank Similarity of Link-Based Web Ranking Algorithms in Authority Connected Graphs, Information Retrieval 8 (special issue on advances in mathematics/formal methods in information retrieval), pp. 245-264, 2005.
+
+Pedro Domingos, Matt Richardson. The Intelligent Surfer: Probabilistic Combination of Link and Content Information in PageRank. Advances in Neural Information Processing Systems 14, 2002.
+Taher H. Haveliwala. Topic-Sensitive PageRank. 11th International World Wide Web Conference, 2002.
+Alon Altman and Moshe Tennenholtz. Ranking Systems: The PageRank Axioms. Proceedings of ACM EC 2005.
+
+
+P. Tsaparas, Using Non-Linear Dynamical Systems for Web Searching and Ranking, Principles of Database Systems (PODS), Paris, 2004
+
+
+Davood Rafiei, Alberto Mendelzon. What is this Page Known for? Computing Web Page Reputations. Proc. WWW9 Conference, Amsterdam, May 2000
+
+
+A. Y. Ng, A. X. Zheng, and M. I. Jordan. Link analysis, eigenvectors, and stability. International Joint Conference on Artificial Intelligence (IJCAI), 2001.
+A. Y. Ng, A. X. Zheng, and M. I. Jordan. Stable algorithms for link analysis. 24th International Conference on Research and Development in Information Retrieval (SIGIR 2001).
+
+
+S. Chien, C. Dwork, R. Kumar, D. Simon, and D. Sivakumar, Link Evolution: Analysis and Algorithms
+
+
+Soumen Chakrabarti, Mukul Joshi, Kunal Punera, and David M. Pennock. The structure of broad topics on the Web. 11th World Wide Web conference, May 2002.
+
+
+L. Lovasz. Random Walks on Graphs: A Survey. Combinatorics: Paul Erdos is Eighty (vol. 2), 1996, pp. 353-398.
+Ziv Bar-Yossef, Alexander Berg, Steve Chien, Jittat Fakcharoenphol, and Dror Weitz. Approximating Aggregate Queries about Web Pages via Random Walks. 26th International Conference on Very Large Databases (VLDB), 2000, pages 535-544.
+
+
+Ron Fagin, Ravi Kumar and D. Sivakumar. Comparing top k lists, Extended abstract in 2003 ACM-SIAM Symposium on Discrete Algorithms (SODA '03), pp. 28-36.
+
+
+J. Cho, S. Roy, Impact Of Search Engines On Page Popularity, WWW 2004
+T. Joachims. Optimizing Search Engines Using Clickthrough Data. Eighth International Conference on Knowledge Discovery and Data Mining, KDD-2002.
+Zoltán Gyöngyi, Hector Garcia-Molina. Link Spam Alliances. 31st International Conference on Very Large Data Bases (VLDB), Trondheim, Norway, 2005.
+
+
+Weiyi Meng, Clement Yu, King-Lup Liu. Building Efficient and Effective Metasearch Engines. ACM Computing Surveys 34(2002).
+
+
+D. Liben-Nowell, J. Kleinberg. The Link Prediction Problem for Social Networks. Proc. 12th International Conference on Information and Knowledge Management (CIKM), 2003.
+
+
+++ 
+Rank aggregation
+Cynthia Dwork, Ravi Kumar, Moni Naor, D. Sivakumar. Rank Aggregation Methods for the Web. 10th International World Wide Web Conference, May 2001.
+Ron Fagin, Ravi Kumar and D. Sivakumar, Efficient similarity search and classification via rank aggregation, Proc. 2003 ACM SIGMOD Conference (SIGMOD '03), pp. 301-312.
+
+++ 
+Rank clustering
 [Sun, Y.;  Han, J.;  Zhao, P.;  Yin, Z.;  Cheng, H.;  Wu, T.,  RankClus: Integrating clustering with ranking for heterogeneous information network analysis,   In:  Proc. 2009 Int. Conf. Extending Data Base Technology (EDBT’09)  Saint Petersburg, Russia.  (Mar. 2009), pp.  565–576.]
 
 
@@ -442,6 +499,7 @@ ref. R.K. Ahuja, Dorit S. Hochbaum, J.B. Orlin: Solving the convex cost integer 
 ref. Dorit S. Hochbaum: Ranking sports teams and the inverse equal paths problem. LNCS 4286:307-318, 2006
 ref. Dorit S. Hochbaum, A. Levin: Methodologies for the group rankings decision. Management Science, 52:1394-1408, 2006
 ref. Dorit S. Hochbaum, E. Moreno-Centeno: Country credit-risk rating aggregation via the separation-deviation model. Optimization Methods and Software, 23:741-762, 2008
+
 
 
 

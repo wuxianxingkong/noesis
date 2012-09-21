@@ -314,11 +314,8 @@ nd.edu with 325729 pages and 1469680 links
 1999 Adamic: Distance between .edu sites shown to be small-world <cite>Adamic 1999</cite>
 
 
-
 2002 Levene, Fenner, Loizou, Wheeldon: Enhanced Webgraph model concluded structure of the WWW couldn't be explained by preferential
 attachment alone <cite>Levene et al. 2002</cite> <cite>Fenner et al. 2006</cite>
-
-
 
 
 ++ <cite>Tadic 2002a</cite> <cite>Tadic 2002b</cite>
@@ -334,41 +331,16 @@ attachment alone <cite>Levene et al. 2002</cite> <cite>Fenner et al. 2006</cite>
 
 
 
-
-
 <text>
-Web search, Link analysis, Spectral analysis.
+Link analysis and Web search:
 
-J. Kleinberg. Authoritative sources in a hyperlinked environment. Proc. 9th ACM-SIAM Symposium on Discrete Algorithms, 1998. Extended version in Journal of the ACM 46(1999). Also appears as IBM Research Report RJ 10076, May 1997.
-[Taken] S. Brin and L. Page. The Anatomy of a Large-Scale Hypertextual Web Search Engine. Proc. 7th International World Wide Web Conference, 1998.
-S. Chakrabarti, B. Dom, D. Gibson, J. Kleinberg, S.R. Kumar, P. Raghavan, S. Rajagopalan, A. Tomkins, Mining the link structure of the World Wide Web. IEEE Computer, August 1999.
-[Taken] A. Arasu, J. Cho, H. Garcia-Molina, A. Paepcke, S. Raghavan. Searching the Web. ACM Transactions on Internet Technology 1(1): 2-43 (2001)
-A. Borodin, J. S. Rosenthal, G. O. Roberts, P. Tsaparas, Finding Authorities and Hubs From Link Structures on the World Wide Web. 10th International World Wide Web Conference, May 2001.
-A. Borodin, G. Roberts, J. Rosenthal, P. Tsaparas, Link Analysis Ranking: Algorithms, Theory and Experiments, ACM Transactions on Internet Technologies (TOIT), 5(1), 2005
-P. Tsaparas, Using Non-Linear Dynamical Systems for Web Searching and Ranking, Principles of Database Systems (PODS), Paris, 2004
-Dimitris Achlioptas, Amos Fiat, Anna Karlin, Frank McSherry, Web Search via Hub Synthesis. 42nd IEEE Symposium on Foundations of Computer Science, 2001, p.611-618.
-[Taken] Davood Rafiei, Alberto Mendelzon. What is this Page Known for? Computing Web Page Reputations. Proc. WWW9 Conference, Amsterdam, May 2000
-Pedro Domingos, Matt Richardson. The Intelligent Surfer: Probabilistic Combination of Link and Content Information in PageRank. Advances in Neural Information Processing Systems 14, 2002.
-Taher H. Haveliwala. Topic-Sensitive PageRank. 11th International World Wide Web Conference, 2002.
-Alon Altman and Moshe Tennenholtz. Ranking Systems: The PageRank Axioms. Proceedings of ACM EC 2005.
-A. Y. Ng, A. X. Zheng, and M. I. Jordan. Link analysis, eigenvectors, and stability. International Joint Conference on Artificial Intelligence (IJCAI), 2001.
-S. Chien, C. Dwork, R. Kumar, D. Simon, and D. Sivakumar, Link Evolution: Analysis and Algorithms
-A. Y. Ng, A. X. Zheng, and M. I. Jordan. Stable algorithms for link analysis. 24th International Conference on Research and Development in Information Retrieval (SIGIR 2001).
-L. Lovasz. Random Walks on Graphs: A Survey. Combinatorics: Paul Erdos is Eighty (vol. 2), 1996, pp. 353-398.
-R. Lempel and S. Moran, Rank Stability and Rank Similarity of Link-Based Web Ranking Algorithms in Authority Connected Graphs, Information Retrieval 8 (special issue on advances in mathematics/formal methods in information retrieval), pp. 245-264, 2005.
-Ziv Bar-Yossef, Alexander Berg, Steve Chien, Jittat Fakcharoenphol, and Dror Weitz. Approximating Aggregate Queries about Web Pages via Random Walks. 26th International Conference on Very Large Databases (VLDB), 2000, pages 535-544.
-Soumen Chakrabarti, Mukul Joshi, Kunal Punera, and David M. Pennock. The structure of broad topics on the Web. 11th World Wide Web conference, May 2002.
-Cynthia Dwork, Ravi Kumar, Moni Naor, D. Sivakumar. Rank Aggregation Methods for the Web. 10th International World Wide Web Conference, May 2001.
-Weiyi Meng, Clement Yu, King-Lup Liu. Building Efficient and Effective Metasearch Engines. ACM Computing Surveys 34(2002).
-T. Joachims. Optimizing Search Engines Using Clickthrough Data. Eighth International Conference on Knowledge Discovery and Data Mining, KDD-2002.
-Ron Fagin, Ravi Kumar and D. Sivakumar. Comparing top k lists, Extended abstract in 2003 ACM-SIAM Symposium on Discrete Algorithms (SODA '03), pp. 28-36.
-Ron Fagin, Ravi Kumar and D. Sivakumar, Efficient similarity search and classification via rank aggregation, Proc. 2003 ACM SIGMOD Conference (SIGMOD '03), pp. 301-312.
-[Taken] J. Cho, S. Roy, Impact Of Search Engines On Page Popularity, WWW 2004
-D. Liben-Nowell, J. Kleinberg. The Link Prediction Problem for Social Networks. Proc. 12th International Conference on Information and Knowledge Management (CIKM), 2003.
-Zoltán Gyöngyi, Hector Garcia-Molina. Link Spam Alliances. 31st International Conference on Very Large Data Bases (VLDB), Trondheim, Norway, 2005.
-</text>
+- HITS: Determining the relative authority of pages, as an IBM research report <cite>Kleinberg 1997</cite>, SODA conference <cite>Kleinberg 1998</cite>, and extended journal version <cite>Kleinberg 1999a</cite>
 
-<text>
+- Google <cite>Brin and Page 1998</cite>: PageRank <cite>Page et al. 1998</cite>
+
+1999 divulgative paper @ Computer <cite>Chakrabarti et al. 1999</cite>
+2001 journal paper <cite>Arasu et al. 2001</cite>
+
 ++
 <cite>Liu 2011</cite>
 </text>
@@ -376,20 +348,21 @@ Zoltán Gyöngyi, Hector Garcia-Molina. Link Spam Alliances. 31st International Co
 
 
 <text>
-++ Bibliographic <cite>Tang et al. 2008</cite>
+++ Bibliographic citation networks:
 
-ref. [D.J. de S. Price: "Networks of scientific papers", Science 149:150, 1965]
+original reference <cite>Price 1965</cite>
 
-ref.
-The architecture of complex weighted networks 
-A. Barrat, M. Barthélemy, R. Pastor-Satorras, A. Vespignani
-Journal-ref: Proc. Natl. Acad. Sci. USA 101 (2004) 3747.    
-cond-mat/0311416
+<cite>Newman 2001a</cite> <cite>Newman 2001b</cite>
 
+<cite>Barrat et al. 2004</cite> <cite>Barthelemy et al. 2005</cite>
 
-++ Semantic associations between terms
-[Steyvers, M, J. B. Tenenbaum (2005). Cognitive Science 29(1): 41-78.]
-Based on the University of South Florida Word Association, Rhyme and Word Fragment Norms
+<cite>Menczer 2004</cite>
+
+ArNetMiner <cite>Tang et al. 2008</cite>
+</text>
+
+<text>
+++ Semantic associations between terms <cite>Steyvers and Tenenbaum 2005</cite>, based on the University of South Florida Word Association, Rhyme and Word Fragment Norms
 </text>
 
 
@@ -407,7 +380,8 @@ Examples [Newman 2]
             Distribution networks, e.g. power grid
             Transportation networks
 
-Modeling network traffic using Game Theory [Kleinberg 8]
+Modeling network traffic using Game Theory [Kleinberg 8]: de Braess' paradox
+
 
 <text>
 INTERNET as a transportation network (rather than a content network such as the WWW)
@@ -427,62 +401,44 @@ AS level (autonomous systems)
 1969 Original ARPANET with just 4 linked nodes @ University of California at Los Angeles, Stanford Research Institute, University of California at Santa Barbara, and the University of Utah
 
 1988 Waxman: First graph model of the Internet
-L: Waxman proposed a static graph theory model of the Internet in 1988 (Waxman, 1988). 
-[Waxman, B. M., Routing of multipoint connections, IEEE J. Select. Areas Commun. 6(9):1617-1622 (1988).]
+L: Waxman proposed a static graph theory model of the Internet in 1988 <cite>Waxman 1988</cite>
+
 
 1999 Faloutsos brothers: Power law observed in Internet at the AS level
 - for a small fraction of the Internet
-[
-Faloutsos, M., P. Faloutsos, and C. Faloutsos, 
-On power-law relationships of the Internet topology, 
-Proc. ACM SIGCOMM '99 Conf. Applications, Technologies, Architectures, and Protocols for Computer Communication 
-in Cambridge, MA, USA, ACM Press, New York, 1999, pp. 251-262.
-]
+<cite>Faloutsos et al. 1999</cite>
+
 + for a larger AS network (11000 ASs with 4.2 connections on average,October/November 1999) 
 + IR map (230000 Internet routers with 2.8 average degree, May 2001)
-[
-Romualdo Pastor-Satorras, Alexei Vázquez, and Alessandro Vespignani:
-Dynamical and Correlation Properties of the Internet
-Phys. Rev. Lett. 87, 258701 (2001)
-URL:	http://link.aps.org/doi/10.1103/PhysRevLett.87.258701
-DOI:	10.1103/PhysRevLett.87.258701
-]
-[
-Alexei Vázquez, Romualdo Pastor-Satorras, and Alessandro Vespignani:
-Large-scale topological and dynamical properties of the Internet
-Phys. Rev. E 65, 066130 (2002)
-URL:	http://link.aps.org/doi/10.1103/PhysRevE.65.066130
-DOI:	10.1103/PhysRevE.65.066130
-]
+<cite>Pastor-Satorras et al. 2001</cite>
+<cite>Vazquez et al. 2002</cite>
+
+
 </text>
 
 <text>
 AIRPORTS: 3880 airports and 18810 direct flight connections...
 
-The architecture of complex weighted networks 
-A. Barrat, M. Barthélemy, R. Pastor-Satorras, A. Vespignani
-Journal-ref: Proc. Natl. Acad. Sci. USA 101 (2004) 3747.    
-cond-mat/0311416
+<cite>Barrat et al. 2004</cite>
 
-The role of the airline transportation network in the prediction and predictability of global epidemics 
-V. Colizza, A. Barrat, M. Barthélemy, A. Vespignani
-Journal-ref: Proc. Natl. Acad. Sci. USA 103 (2006) 2015. 
-q-bio/0507029
+<cite>Colizza et al. 2006b</cite>
 
-Title: Vulnerability of weighted networks 
-L. Dall'Asta, A. Barrat, M. Barthélemy A. Vespignani
-Journal-ref: J. Stat. Mech. (2006) P04006. 
-physics/0603163
+<cite>Dall'Asta et al. 2006</cite>
 
-The effects of spatial constraints in the evolution of weighted complex networks 
-A. Barrat, M. Barthélemy, A. Vespignani
-Journal-ref: J. Stat. Mech. (2005) P05003. 
-physics/0504029
+<cite>Barrat et al. 2005</cite>
+
+<cite>Barthelemy et al. 2005</cite>
+
+++ <cite>Guimera and Amaral 2004</cite>
+
 
 </text>
 
 </document>
 
+
+
+<!-- Economic networks -->
 
 <document>
 <tag>economic</tag>
@@ -504,10 +460,10 @@ Network effects [Kleinberg 17]
 e.g. L'2009: <cite>Bristor and Ryan 1989</cite>
 
 
-
-
 </document>
 
+
+<!-- Biological networks -->
 
 <document>
 <tag>biological</tag>
@@ -533,31 +489,22 @@ Cellular interaction networks: signal transduction, gene regulation, metabolism
 - 43 sparse directed graphs
 + in- and out-degree distributions, approximately scale-fee with exponent 2.2
 + the lower the exponent, the wider the range of degrees and the more
-[
-H. Jeong, B. Tombor, R. Albert, Z. N. Oltvai, and A.-L. Barabási
-The large-scale organization of metabolic networks
-Nature 407, 651-654 (5 October 2000)
-doi:10.1038/35036627
-]
+<cite>Jeong et al. 2000</cite>
 
 + skewed metabolic reaction fluxes
-[
-E. Almaas, B. Kovacs, T. Vicsek, Z.N. Oltvai, A.-L. Barabási 
-Global organization of metabolic fluxes in the bacterium Escherichia coli 
-Nature 427, 839-843 (2004). 
-doi:10.1038/nature02289
-]
+<cite>Almaas et al. 2004</cite>
+
 
 </text>
 
 <text>
 ++ Life's complexity pyramid  <cite>Oltvai and Barabasi 2002</cite>
 
-++ <cite>Barabasi and Oltvai 2004</cite> <cite>Guimera and Nunes 2005</cite> <cite>Boccaletti et al. 2009</cite>
+++ <cite>Barabasi and Oltvai 2004</cite> 
+++ <cite>Guimera and Nunes 2005</cite> <cite>Boccaletti et al. 2009</cite>
 ++ <cite>Barabasi et al. 2011</cite>
 
-+ A.-L. Barabási and Z. N. Oltvai. Network Biology: Understanding the Cell's Functional Organization. Nature Reviews Genetics 5, 101-113 (2004)
-+ Kevin Bleakley, Gérard Biau and Jean-Philippe Vert. Supervised reconstruction of biological networks with local models. ISMB/ECCB 2007.
++ <cite>Bleakley et al. 2007</cite>
 
 
 </text>
@@ -584,13 +531,7 @@ Reaction networks
 </text>
 
 <text>
-Map of yeast protein-protein interactions, by Hawoong Jeong
-[
-H. Jeong, S. P. Mason, A.-L. Barabási, Z. N. Oltvai 
-Lethality and centrality in protein networks 
-Nature 411, 41-42 (2001).
-doi:10.1038/35075138
-]
+Map of yeast protein-protein interactions, by Hawoong Jeong <cite>Jeong et al. 2001</cite>
 + The yeast Saccharomyces cerevisiae
 + 1870 nodes (proteins) and 2240 undirected links (physical interactions between proteins)
 + Power law (exponent 2.5) with an exponential cut-off (actually, any finite network with a heavy tail must have a cut-off, i.e. an end-part of the distribution with a rapid decay)
@@ -606,6 +547,7 @@ e.g. genome
 - correlations between expression levels are treated as interactions between genes, revealing their potential cooperation 
 ++ suitable problem for weighted networks 
 </text>
+
 
 <text>
 Food webs

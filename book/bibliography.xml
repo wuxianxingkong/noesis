@@ -273,6 +273,22 @@
 </reference>
 
 
+<reference id="Almaas et al. 2004">
+ <author>E. Almaas</author>
+ <author>B. Kovacs</author>
+ <author>T. Vicsek</author>
+ <author>Zoltán N. Oltvai</author>
+ <author>Albert-László Barabási</author>
+ <title>Global organization of metabolic fluxes in the bacterium Escherichia coli</title>
+ <journal>Nature</journal>
+ <volume>427</volume>
+ <pages>839-843</pages>
+ <year>2004</year>
+ <doi>10.1038/nature02289</doi>
+ <file>Networks/applications/biological/2004 Nature [Barabasi] Metabolic reaction fluxes.pdf</file>
+</reference>
+
+
 <reference id="Alvarez-Hamelin and Schabanel 2004">
  <author>J.I. Alvarez-Hamelin</author>
  <author>N. Schabanel</author>
@@ -327,6 +343,23 @@
  <year>2004</year>
  <doi>10.1140/epjb/e2004-00110-5</doi>
  <file>Networks/2004 EPJB [Amaral &amp; Ottino] Complex networks.pdf</file>
+</reference>
+
+
+<reference id="Arasu et al. 2001">
+ <author>Arvind Arasu</author>
+ <author>Junghoo Cho</author>
+ <author>Hector Garcia-Molina</author>
+ <author>Andreas Paepcke</author>
+ <author>Sriram Raghavan</author>
+ <title>Searching the Web</title>
+ <journal>ACM Transactions on Internet Technology</journal>
+ <volume>1</volume>
+ <number>1</number>
+ <pages>2-43</pages>
+ <year>2001</year>
+ <doi>10.1145/383034.383035</doi>
+ <file>Networks/applications/www/2001 TOIT Searching the Web.pdf</file>
 </reference>
 
 
@@ -558,6 +591,37 @@
 </reference>
 
 
+<reference id="Barrat et al. 2004">
+ <author>Alain Barrat</author>
+ <author>Marc Barthélemy</author>
+ <author>Romualdo Pastor-Satorras</author>
+ <author>Alessandro Vespignani</author>
+ <title>The architecture of complex weighted networks</title>
+ <journal>Proceedings of the National Academy of Sciences</journal>
+ <volume>101</volume>
+ <number>11</number>
+ <pages>3747-3752</pages>
+ <year>2004</year>
+ <doi>10.1073/pnas.0400087101</doi>
+ <file>Networks/structure/2004 PNAS Complex weighted networks.pdf</file>
+</reference>
+
+
+<reference id="Barrat et al. 2005">
+ <author>Alain Barrat</author>
+ <author>Marc Barthélemy</author>
+ <author>Alessandro Vespignani</author>
+ <title>The effects of spatial constraints in the evolution of weighted complex networks</title>
+ <journal>Journal of Statistical Mechanics: Theory and Experiment</journal>
+ <volume>2005</volume>
+ <number>5</number>
+ <paper>P05003</paper>
+ <year>2005</year>
+ <doi>10.1088/1742-5468/2005/05/P05003</doi>
+ <file>Networks/applications/transport/2005 JSM Spatial constraints on the evolution of weighted complex networks.pdf</file>
+</reference>
+
+
 <reference id="Barrat et al. 2008">
  <author>Alain Barrat</author>
  <author>Marc Barthélemy</author>
@@ -584,6 +648,23 @@
  <doi>10.1140/epjb/e2004-00111-4</doi>
  <file>Networks/structure/metrics/2004 EPJB [Barthelemy] Betweenness centrality.pdf</file>
 </reference>
+
+
+<reference id="Barthelemy et al. 2005">
+ <author>Marc Barthélemy</author>
+ <author>Alain Barrat</author>
+ <author>Romualdo Pastor-Satorras</author>
+ <author>Alessandro Vespignani</author>
+ <title>Characterization and modeling of weighted networks</title>
+ <journal>Physica A: Statistical Mechanics and its Applications</journal>
+ <volume>346</volume>
+ <number>1-2</number>
+ <pages>34-43</pages>
+ <year>2005</year>
+ <doi>10.1016/j.physa.2004.08.047</doi>
+ <file>Networks/models/weighted/2005 PhysicaA - Weighted networks.pdf</file>
+</reference>
+
 
 
 <reference id="Bar-Yam 2003">
@@ -845,6 +926,22 @@
  <year>2009</year>
  <doi>10.1137/070683933</doi>
  <file>Networks/algorithms/graphs/np/2009 SIAM JC Set partitioning via inclusion-exclusion.pdf</file>
+</reference>
+
+
+
+<reference id="Bleakley et al. 2007">
+ <author>Kevin Bleakley</author>
+ <author>Gérard Biau</author>
+ <author>Jean-Philippe Vert</author>
+ <title>Supervised reconstruction of biological networks with local models</title>
+ <journal>Bioinformatics</journal>
+ <volume>23</volume>
+ <number>13</number>
+ <pages>i57-i65</pages>
+ <year>2007</year>
+ <doi>10.1093/bioinformatics/btm204</doi>
+ <file>Networks/applications/biological/2007 Bioinformatics - Biological networks.pdf</file>
 </reference>
 
 
@@ -1226,7 +1323,7 @@
 <reference id="Brin and Page 1998">
  <author>Sergey Brin</author>
  <author>Lawrence Page</author>
- <title>The Anatomy of a Large-Scale Hypertextual Web Search Engine</title>
+ <title>The anatomy of a large-scale hypertextual Web search engine</title>
  <proceedings>7th International Conference on the World Wide Web</proceedings>
  <conference>WWW</conference>
  <year>1998</year>
@@ -1445,6 +1542,26 @@
  <url>http://books.google.com/?id=M7c4AAAAIAAJ&amp;pg=PA26</url>
 </reference>
 
+
+
+<reference id="Chakrabarti et al. 1999">
+ <author>Soumen Chakrabarti</author>
+ <author>Byron E. Dom</author>
+ <author>Ravi Kumar</author>
+ <author>Prabhakar Raghavan</author>
+ <author>Sridhar Rajagopalan</author>
+ <author>Andrew Tomkins</author>
+ <author>David Gibson</author>
+ <author>Jon Kleinberg</author>
+ <title>Mining the Web's link structure</title>
+ <journal>Computer</journal>
+ <volume>32</volume>
+ <number>8</number>
+ <pages>60-67</pages>
+ <year>1999</year>
+ <doi>10.1109/2.781636</doi>
+ <file>Networks/applications/www/1999 Computer - Web's link structure.pdf</file>
+</reference>
 
 <reference id="Chakrabarti and Faloutsos 2006">
  <author>Deepayan Chakrabarti</author>
@@ -1803,6 +1920,21 @@
  <file>Networks/structure/2006 Nature Physics [Vespignani] Rich-club ordering.pdf</file>
 </reference>
 
+<reference id="Colizza et al. 2006b">
+ <author>Vittoria Colizza</author>
+ <author>Alain Barrat</author>
+ <author>Marc Barthélemy</author>
+ <author>Alessandro Vespignani</author>
+ <title>The role of the airline transportation network in the prediction and predictability of global epidemics</title>
+ <journal>Proceedings of the National Academy of Sciences</journal>
+ <volume>103</volume>
+ <number>7</number>
+ <pages>2015-2020</pages>
+ <year>2006</year>
+ <doi>10.1073/pnas.0510525103</doi>
+ <file>Networks/applications/transport/2006 PNAS Airline transportation network and global epidemics.pdf</file>
+</reference>
+
 
 <reference id="Cormen et al. 1990">
  <author>Thomas H. Cormen</author>
@@ -1902,6 +2034,31 @@
  </comment>
 </reference>
 
+
+
+<reference id="Dall'Asta et al. 2006">
+ <author>Luca Dall'Asta</author>
+ <author>Alain Barrat</author>
+ <author>Marc Barthélemy</author>
+ <author>Alessandro Vespignani</author>
+ <title>Vulnerability of weighted networks</title>
+ <journal>Journal of Statistical Mechanics: Theory and Experiment</journal>
+ <volume>2006</volume>
+ <number>4</number>
+ <paper>P04006</paper>
+ <year>2006</year>
+ <doi>10.1088/1742-5468/2006/04/P04006</doi>
+ <file>Networks/applications/transport/2006 JSM Vulnerability of weighted networks.pdf</file>
+</reference>
+
+<reference id="Danesi 2004">
+ <author>Marcel Danesi</author>
+ <title>The Liar Paradox and the Towers of Hanoi: The Ten Greatest Math Puzzles of All Time</title>
+ <publisher>Wiley</publisher>
+ <year>2004</year>
+ <isbn>0471648167</isbn>
+ <file>[books]/mathematics/0471648167 [Marcel Danesi] The Liar Paradox and the Towers of Hanoi.pdf</file>
+</reference>
 
 <reference id="de Nooy et al. 2005">
  <author>Wouter de Nooy</author>
@@ -2431,6 +2588,21 @@
  <file>Networks/structure/metrics/2008 PhysRevE [Fagiolo] Clustering in directed networks.pdf</file>
 </reference>
 
+
+<reference id="Faloutsos et al. 1999">
+ <author>Michalis Faloutsos</author>
+ <author>Petros Faloutsos</author>
+ <author>Christos Faloutsos</author>
+ <title>On power-law relationships of the Internet topology</title>
+ <proceedings>ACM SIGCOMM '99 Conference on Applications, Technologies, Architectures, and Protocols for Computer Communication</proceedings>
+ <conference>SIGCOMM</conference>
+ <year>1999</year>
+ <isbn>1-58113-135-6</isbn>
+ <location>Cambridge, Massachusetts, USA</location>
+ <pages>251-262</pages>
+ <doi>10.1145/316188.316229</doi>
+ <file>Networks/applications/communication/internet/1999 SIGCOMM Internet topology.pdf</file>
+</reference>
 
 
 <reference id="Faloutsos and Kang 2012">
@@ -3185,7 +3357,7 @@
  <pages>381-385</pages>
  <year>2004</year>
  <doi>10.1140/epjb/e2004-00131-0</doi>
- <file>Networks/applications/transportation/2004 EPJB Airport network.pdf</file>
+ <file>Networks/applications/transport/2004 EPJB Airport network.pdf</file>
 </reference>
 
 
@@ -3611,6 +3783,36 @@
 </reference>
 
 
+<reference id="Jeong et al. 2000">
+ <author>Hawoong Jeong</author>
+ <author>B. Tombor</author>
+ <author>Réka Albert</author>
+ <author>Zoltán N. Oltvai</author>
+ <author>Albert-László Barabási</author>
+ <title>The large-scale organization of metabolic networks</title>
+ <journal>Nature</journal>
+ <volume>407</volume>
+ <pages>651-654</pages>
+ <year>2000</year>
+ <doi>10.1038/35036627</doi>
+ <file>Networks/applications/biological/2000 Nature [Barabasi] Metabolic networks.pdf</file>
+</reference>
+
+<reference id="Jeong et al. 2001">
+ <author>Hawoong Jeong</author>
+ <author>S.P. Mason</author>
+ <author>Albert-László Barabási</author>
+ <author>Zoltán N. Oltvai</author>
+ <title>Lethality and centrality in protein networks</title>
+ <journal>Nature</journal>
+ <volume>411</volume>
+ <pages>41-42</pages>
+ <year>2001</year>
+ <doi>10.1038/3507513800</doi>
+ <file>Networks/applications/biological/2001 Nature [Barabasi] Protein networks.pdf</file>
+</reference>
+
+
 <reference id="Johnson 1977">
  <author>Donald B. Johnson</author>
  <title>Efficient algorithms for shortest paths in sparse networks</title>
@@ -4001,6 +4203,15 @@
 </reference>
 
 
+
+<reference id="Kleinberg 1997">
+ <author>Jon Kleinberg</author>
+ <title>Authoritative sources in a hyperlinked environment</title>
+ <publisher>IBM</publisher>
+ <edition>Research Report RJ10076</edition>
+ <year>1997</year>
+ <file>Networks/structure/metrics/1998 IBM [Kleinberg] HITS.pdf</file>
+</reference>
 
 <reference id="Kleinberg 1998">
  <author>Jon Kleinberg</author>
@@ -5093,7 +5304,7 @@
  <pages>211-221</pages>
  <year>2004</year>
  <doi>10.1140/epjb/e2004-00114-1</doi>
- <file>Networks/applications/bibliographic/2004 EPJB Correlated topologies in citation networks and the Web.pdf</file>
+ <file>Networks/applications/citation/2004 EPJB Correlated topologies in citation networks and the Web.pdf</file>
 </reference>
 
 
@@ -5396,6 +5607,32 @@
  <file>Networks/models/small-world/2000 JSS [Newman] Models of the small world.pdf</file>
  <!-- arXiv: http://arxiv.org/abs/cond-mat/0001118 -->
 </reference>
+
+
+<reference id="Newman 2001a">
+ <author>Mark E.J. Newman</author>
+ <title>Scientific collaboration networks I. Network construction and fundamental results</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>64</volume>
+ <number>1</number>
+ <pages>016131</pages>
+ <year>2001</year>
+ <doi>10.1103/PhysRevE.64.016131</doi>
+ <file>Networks/applications/citation/2001 PhysRevE [Newman] Scientific collaboration networks 1.pdf</file>
+</reference>
+
+<reference id="Newman 2001b">
+ <author>Mark E.J. Newman</author>
+ <title>Scientific collaboration networks. II. Shortest paths, weighted networks, and centrality</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>64</volume>
+ <number>1</number>
+ <pages>016132</pages>
+ <year>2001</year>
+ <doi>10.1103/PhysRevE.64.016132</doi>
+ <file>Networks/applications/citation/2001 PhysRevE [Newman] Scientific collaboration networks 2.pdf</file>
+</reference>
+
 
 <reference id="Newman et al. 2001">
  <author>Mark E.J. Newman</author>
@@ -5802,6 +6039,21 @@
 </reference>
 
 
+
+<reference id="Pastor-Satorras et al. 2001">
+ <author>Romualdo Pastor-Satorras</author>
+ <author>Alexei Vázquez</author>
+ <author>Alessandro Vespignani</author>
+ <title>Dynamical and correlation properties of the Internet</title>
+ <journal>Physical Review Letters</journal>
+ <volume>87</volume>
+ <number>25</number>
+ <pages>258701</pages>
+ <year>2001</year>
+ <doi>10.1103/PhysRevLett.87.258701</doi>
+ <file>Networks/applications/communication/internet/2001 PRL Dynamical and correlation properties of the Internet.pdf</file>
+</reference>
+
 <reference id="Pastor-Satorras and Vespignani 2007">
  <author>Romualdo Pastor-Satorras</author>
  <author>Alessandro Vespignani</author>
@@ -5918,6 +6170,19 @@
  <edition>3rd edition</edition>
  <year>2007</year>
  <isbn>0521880688</isbn>
+</reference>
+
+
+<reference id="Price 1965">
+ <author>Derek J. de Solla Price</author>
+ <title>Networks of scientific papers</title>
+ <journal>Science</journal>
+ <volume>149</volume>
+ <number>3683</number>
+ <pages>510-515</pages>
+ <year>2002</year>
+ <doi>10.1126/science.149.3683.510</doi>
+ <file>Networks/applications/citation/1965 Science [Price] Networks of scientific papers.pdf</file>
 </reference>
 
 
@@ -6562,6 +6827,19 @@
 </reference>
 
 
+<reference id="Steyvers and Tenenbaum 2005">
+ <author>Mark Steyvers</author>
+ <author>Joshua B. Tenenbaum</author>
+ <title>The large-scale structure of semantic networks: Statistical analyses and a model of semantic growth</title>
+ <journal>Cognitive Science</journal>
+ <volume>29</volume>
+ <number>1</number>
+ <pages>41-78</pages>
+ <year>2005</year>
+ <doi>10.1207/s15516709cog2901_3</doi>
+ <file>Networks/applications/language/2005 Cognitive Science - Semantic networks.pdf</file>
+</reference>
+
 
 <reference id="Stiller and Dunbar 2007">
  <author>James Stiller</author>
@@ -6731,7 +7009,7 @@
  <location>Las Vegas, Nevada, USA</location>
  <pages>990-998</pages>
  <doi>10.1145/1401890.1402008</doi>
- <file>Networks/applications/bibliographic/2008 KDD ArnetMiner.pdf</file>
+ <file>Networks/applications/citation/2008 KDD ArnetMiner.pdf</file>
 </reference>
 
 
@@ -6969,6 +7247,22 @@
 </reference>
 
 
+<reference id="Vazquez et al. 2002">
+ <author>Alexei Vázquez</author>
+ <author>Romualdo Pastor-Satorras</author>
+ <author>Alessandro Vespignani</author>
+ <title>Large-scale topological and dynamical properties of the Internet</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>65</volume>
+ <number>6</number>
+ <pages>066130</pages>
+ <year>2002</year>
+ <doi>10.1103/PhysRevE.65.066130</doi>
+ <file>Networks/applications/communication/internet/2002 PhysRevE - Topological and dynamical properties of the Internet.pdf</file>
+</reference>
+
+
+
 <reference id="Villas Boas et al. 2010">
  <author>Paulino Ribeiro Villas Boas</author>
  <author>Francisco Aparecido Rodrigues</author>
@@ -7198,6 +7492,21 @@
   <text>Recent divulgative book on common and uncommon sense.</text>
  </comment>
 </reference>
+
+
+
+<reference id="Waxman 1988">
+ <author>Bernard M. Waxman</author>
+ <title>Routing of multipoint connections</title>
+ <journal>IEEE Journal on Selected Areas in Communications</journal>
+ <volume>6</volume>
+ <number>9</number>
+ <pages>1617-1622</pages>
+ <year>1988</year>
+ <doi>10.1109/49.12889</doi>
+ <file>Networks/applications/communication/internet/1988 IEEE JSAC [Waxman] Routing.pdf</file>
+</reference>
+
 
 
 <reference id="Weisbuch 2004">
@@ -7554,15 +7863,6 @@
  <isbn>0262660709</isbn>
 </reference>
 
-
-<reference id="Danesi 2004">
- <author>Marcel Danesi</author>
- <title>The Liar Paradox and the Towers of Hanoi: The Ten Greatest Math Puzzles of All Time</title>
- <publisher>Wiley</publisher>
- <year>2004</year>
- <isbn>0471648167</isbn>
- <file>[books]/mathematics/0471648167 [Marcel Danesi] The Liar Paradox and the Towers of Hanoi.pdf</file>
-</reference>
 
 
 

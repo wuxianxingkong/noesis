@@ -3134,6 +3134,27 @@
 </reference>
 
 
+<reference id="Holland 1998">
+ <author>John H. Holland</author>
+ <title>Emergence: From Chaos to Order</title>
+ <publisher>Oxford University Press</publisher>
+ <year>1998</year>
+ <isbn>0198504098</isbn>
+</reference>
+
+<reference id="Holland 2006">
+ <author>John H. Holland</author>
+ <title>Studying Complex Adaptive Systems</title>
+ <journal>Journal of Systems Science and Complexity</journal>
+ <volume>19</volume>
+ <number>1</number>
+ <pages>1-8</pages>
+ <year>2006</year>
+ <doi>10.1007/s11424-006-0001-z</doi>
+ <file>Networks/2006 JSSC [Holland] Complex adaptive systems.pdf</file>
+</reference>
+
+
 <reference id="Holm et al. 2001">
  <author>Jacob Holm</author>
  <author>Kristian de Lichtenberg</author>
@@ -4976,6 +4997,30 @@
 
 
 
+
+<reference id="Newman 1999">
+ <author>Mark E.J. Newman</author>
+ <title>Small worlds, the structure of social networks</title>
+ <publisher>Santa Fe Institute</publisher>
+ <edition>Working Paper 99-12-080</edition>
+ <year>1999</year>
+ <url>http://www.santafe.edu/research/working-papers/</url>
+ <file>Networks/models/small-world/1999 TR [Newman] Small worlds.SFI-99-12-080.pdf</file>
+</reference>
+
+<reference id="Newman 2000">
+ <author>Mark E.J. Newman</author>
+ <title>Models of the small world</title>
+ <journal>Journal of Statistical Physics</journal>
+ <volume>101</volume>
+ <number>3/4</number>
+ <pages>819-841</pages>
+ <year>2000</year>
+ <doi>10.1023/A:1026485807148</doi>
+ <file>Networks/models/small-world/2000 JSS [Newman] Models of the small world.pdf</file>
+ <!-- arXiv: http://arxiv.org/abs/cond-mat/0001118 -->
+</reference>
+
 <reference id="Newman et al. 2001">
  <author>Mark E.J. Newman</author>
  <author>Steven H. Strogatz</author>
@@ -6453,6 +6498,17 @@
  <file>Networks/structure/metrics/2010 JSM Sensitivity of complex networks measurements.pdf</file>
 </reference>
 
+<reference id="Virtanen 2003">
+ <author>Satu Virtanen</author>
+ <title>Properties of Nonuniform Random Graph Models</title>
+ <publisher>Helsinki University of Technology</publisher>
+ <edition>Laboratory for Theoretical Computer Science, Research Report HUT-TCS-A77</edition>
+ <year>2003</year>
+ <isbn>9512264838</isbn>
+ <url>http://www.tcs.hut.fi/Publications/bibdb/HUT-TCS-A77.pdf</url>
+ <file>Networks/models/2003 TR [Virtanen] Nonuniform random graph models.pdf</file>
+</reference>
+
 
 <reference id="Wan et al. 2008">
  <author>Li Wan</author>
@@ -6590,6 +6646,19 @@
  <isbn>0691005419</isbn>
  <file>[books]/networks/0691005419 [Watts] Small Worlds.1999.pdf</file>
 </reference>
+
+<reference id="Watts 1999b">
+ <author>Duncan J. Watts</author>
+ <title>Networks, dynamics, and the small-world phenomenon</title>
+ <journal>American Journal of Sociology</journal>
+ <volume>105</volume>
+ <number>2</number>
+ <pages>493-527</pages>
+ <year>1999</year>
+ <doi>10.1086/210318</doi>
+ <file>Networks/applications/social/1999 AJS [Wattls] Small-world phenomenon.pdf</file>
+</reference>
+
 
 <reference id="Watts 2004">
  <author>Duncan J. Watts</author>
@@ -6769,6 +6838,18 @@
   <text>TBD</text>
  </comment>
 </reference>
+
+
+<reference id="Yung 2001">
+ <author>Voon Joe Yung</author>
+ <title>An exploration in the small-world networks</title>
+ <publisher>National University of Singapore</publisher>
+ <year>2001</year>
+ <url>http://bschool.nus.edu/staff/bizteocp/smallworld.pdf</url>
+ <file>Networks/applications/social/2001 TR [Yung] Small world.pdf</file>
+</reference>
+
+
 
 
 <reference id="Zhang et al. 2007">

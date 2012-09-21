@@ -19,15 +19,7 @@ Selection of topics about what some have called <term>network science</term> <ci
 <text>
 Related fields: networks incorporates ideas from complex adaptive systems (emergence), chaos theory (synchronization), and mean-field theory (physics)
 
-+ L: Holland defines emergence in general terms as <q>much coming from little</q> (Holland, 1998): A series of microlevel changes accumulate over time, until a macrolevel change in the network is realized. Emergence means that a major change in global properties comes from many small changes at the local level.  [Holland, J. H., Emergence: From Chaos to Order, Addison-Wesley, Reading, MA, 1998.]
-
-<reference id="Holland 1998">
- <author>John H. Holland</author>
- <title>Emergence: From Chaos to Order</title>
- <publisher>Oxford University Press</publisher>
- <year>1998</year>
- <isbn>0198504098</isbn>
-</reference>
++ L: Holland defines emergence in general terms as <q>much coming from little</q> (Holland, 1998): A series of microlevel changes accumulate over time, until a macrolevel change in the network is realized. Emergence means that a major change in global properties comes from many small changes at the local level.  <cite>Holland 1998</cite>
 
 
 Complex adaptive systems (cas) – systems that involve many components that adapt or
@@ -37,17 +29,6 @@ points, attractors, and the like, are of limited help in understanding the devel
 suggests ways to modify research methods and tools, with an emphasis on the role of computer-based
 models, to increase our understanding of cas. <cite>Holland 2006</cite>
 
-<reference id="Holland 2006">
- <author>John H. Holland</author>
- <title>Studying Complex Adaptive Systems</title>
- <journal>Journal of Systems Science and Complexity</journal>
- <volume>19</volume>
- <number>1</number>
- <pages>1-8</pages>
- <year>2006</year>
- <doi>10.1007/s11424-006-0001-z</doi>
- <file>Networks/2006 JSSC [Holland] Complex adaptive systems.pdf</file>
-</reference>
 
 
 + L: Networks evolve...  have dynamic properties such as fixed points when they sync. Starting at some initial state, a dynamic network may transition
@@ -56,6 +37,7 @@ to a second, third, fourth, and higher state until either cycling back or reachi
 
 
 <document>
+<tag>introduction-notes-surveys</tag>
 <title>Survey papers</title>
 
 <text>
@@ -76,22 +58,24 @@ to a second, third, fourth, and higher state until either cycling back or reachi
 </text>
 
 <text>
-++ Network science: 2003 Virtanen Complete survey of network science results up to 2003
-[Virtanen, S., Properties of Non-uniform Random Graph Models, Helsinki Univ. Technology, Laboratory for Theoretical Computer Science, Report FIN-02015 HUT, lab@tcs.hut, 2003]
-
-++ Voon Joe Yung gives a nonmathematical introduction and includes a copy of the Milgram experiment folder (Yung, 2001).
-[Yung, V. J. An exploration in the small world networks, available as Condensed Matter/ 0004214 (2000/2001).]
-
-++ The numerous papers by Mark Newman and Duncan Watts provide compact tutorials on the fundamentals of small worlds (Watts, 1999a; Newman, 2000b).
-[Watts, D., Networks, dynamics, and the small-world phenomenon, Am. J. Sociol. 105:2 493-527 (Sept 1999).]
-[Newman, M. E. J., Models of the small world: A review, J. Stat. Phys. 101:819-841 (2000).]
-[Newman, M. E. J., Small worlds, the structure of social networks, J. Stat. Phys. 101(3/4) (2000).]
+++ Network science: 2003 Virtanen Complete survey of network science results up to 2003 <cite>Virtanen 2003</cite>
 </text>
+
+<text>
+++ Voon Joe Yung gives a nonmathematical introduction and includes a copy of the Milgram experiment folder <cite>Yung 2001</cite>.
+</text>
+
+<text>
+++ The numerous papers by Mark Newman and Duncan Watts provide compact tutorials on the fundamentals of small worlds
+<cite>Watts 1999b</cite> <cite>Newman 1999</cite> <cite>Newman 2000</cite>
+</text>
+
 
 </document>
 
 
 <document>
+<tag>introduction-notes-books</tag>
 <title>Recommended books</title>
 
 

@@ -37,6 +37,20 @@
 </reference>
 
 
+<reference id="Adamic and Adar 2005">
+ <author>Lada Adamic</author>
+ <author>Eytan Adar</author>
+ <title>How to search a social network</title>
+ <journal>Social Networks</journal>
+ <volume>27</volume>
+ <number>3</number>
+ <pages>187-203</pages>
+ <year>2005</year>
+ <doi>10.1016/j.socnet.2005.01.007</doi>
+ <file>Networks/applications/communication/email/2005 SN How to search a social network.pdf</file>
+</reference>
+
+
 <reference id="Adamic et al. 2008">
  <author>Lada Adamic</author>
  <author>Jun Zhang</author>
@@ -362,7 +376,7 @@
  <author>Marco Rosa</author>
  <author>Johan Ugander</author>
  <author>Sebastiano Vigna</author>
- <title>Four Degrees of Separation</title>
+ <title>Four degrees of separation</title>
  <journal>arXiv</journal>
  <article>1111.4570</article>
  <year>2011</year>
@@ -490,6 +504,14 @@
  <doi>10.1177/001872675400700102</doi>
  <file>Networks/applications/social/1954 Human Relations [Barnes] Social Network.pdf</file>
  <file>Networks/applications/social/1954 Human Relations [Barnes] Social Network.classics.pdf</file>
+</reference>
+
+<reference id="Barnes 1972">
+ <author>John Arundel Barnes</author>
+ <title>Social Networks</title>
+ <publisher>Addison-Wesley</publisher>
+ <year>1972</year>
+ <isbn>0201112205</isbn>
 </reference>
 
 
@@ -1147,6 +1169,16 @@
 
 
 
+<reference id="Bristor and Ryan 1989">
+ <author>Julia M. Bristor</author>
+ <author>Michael J. Ryan</author>
+ <title>Applying the small world phenomenon to organizational buying</title>
+ <booktitle>The Small World: A Volume of Recent Research Advances Commemorating Ithiel de Sola Pool, Stanley Milgram, Theodore Newcomb</booktitle>
+ <publisher>Ablex Publishing</publisher>
+ <year>1989</year>
+ <isbn>0893914797</isbn>
+</reference>
+
 
 <reference id="Broder et al. 2000">
  <author>Andrei Broder</author>
@@ -1237,6 +1269,23 @@
  <file>[books]\algorithms\graphs\0199211515 [Caldarelli] Scale-Free Networks.pdf</file>
 </reference>
 
+<reference id="Candia et al. 2008">
+ <author>Julián Candia</author>
+ <author>Marta C. González</author>
+ <author>Pu Wang</author>
+ <author>Timothy Schoenhar</author>
+ <author>Greg Madey</author>
+ <author>Albert-László Barabási</author>
+ <title>Uncovering individual and collective human dynamics from mobile phone records</title>
+ <journal>Journal of Physics A: Mathematical and Theoretical</journal>
+ <volume>41</volume>
+ <number>22</number>
+ <pages>224015</pages>
+ <year>2008</year>
+ <doi>10.1088/1751-8113/41/22/224015</doi>
+ <file>Networks/applications/communication/phone/2008 JPA [Barabasi] Human dynamics from mobile phone records.pdf</file>
+</reference>
+
 
 <reference id="Capocci et al. 2006">
  <author>A. Capocci</author>
@@ -1301,6 +1350,26 @@
  <file>Networks/algorithms/clustering/2004 EPJB Self-contained algorithms to detect communities in networks.pdf</file>
 </reference>
 
+
+<reference id="Cayley 1857">
+ <author>Arthur Cayley</author>
+ <title>On the theory of the analytical forms called trees</title>
+ <journal>Philosophical Magazine</journal>
+ <volume>13</volume>
+ <pages>172-176</pages>
+ <year>1857</year>
+ <doi>10.1017/CBO9780511703690.046</doi>
+</reference>
+
+<reference id="Cayley 1889">
+ <author>Arthur Cayley</author>
+ <title>A theorem on trees</title>
+ <journal>Quarterly Journal of Pure and Applied Mathematics</journal>
+ <volume>23</volume>
+ <pages>376-378</pages>
+ <year>1889</year>
+ <url>http://books.google.com/?id=M7c4AAAAIAAJ&amp;pg=PA26</url>
+</reference>
 
 
 <reference id="Chakrabarti and Faloutsos 2006">
@@ -1959,6 +2028,33 @@
 </reference>
 
 
+
+
+<reference id="Dunbar 1992">
+ <author>Robin I.M. Dunbar</author>
+ <title>Neocortex size as a constraint on group size in primates</title>
+ <journal>Journal of Human Evolution</journal>
+ <volume>22</volume>
+ <number>6</number>
+ <pages>469-493</pages>
+ <year>1992</year>
+ <doi>10.1016/0047-2484(92)90081-J</doi>
+ <file>Networks/applications/social/1992 JHE [Dunbar] Neocortex size as a constraint on group size.pdf</file>
+</reference>
+
+<reference id="Dunbar 1993">
+ <author>Robin I.M. Dunbar</author>
+ <title>Coevolution of neocortical size, group size and language in humans</title>
+ <journal>Behavioral and Brain Sciences</journal>
+ <volume>16</volume>
+ <number>4</number>
+ <pages>681-694</pages>
+ <year>1993</year>
+ <doi>10.1017/S0140525X00032325</doi>
+ <file>Networks/applications/social/1993 BBS [Dunbar] Coevolution of neocortical size, group size, and language.pdf</file>
+</reference>
+
+
 <reference id="Durugbo et al. 2011">
  <author>Christopher Durugbo</author>
  <author>Windo Hutabarat</author>
@@ -2230,6 +2326,21 @@
  <doi>10.1145/2213836.2213906</doi>
  <file>Networks/software/2012 SIGMOD Tutorial - Algorithms.pdf</file>
 </reference>
+
+
+
+<reference id="Feld 1991">
+ <author>Scott L. Feld</author>
+ <title>Why your friends have more friends than you do</title>
+ <journal>American Journal of Sociology</journal>
+ <volume>96</volume>
+ <number>6</number>
+ <pages>1464-1477</pages>
+ <year>1991</year>
+ <url>http://www.jstor.org/stable/2781907</url>
+ <file>Networks/applications/social/1991 AJS [Feld] Why your friends have more friends than you do.pdf</file>
+</reference>
+
 
 
 <reference id="Festinger 1949">
@@ -2734,6 +2845,24 @@
 </reference>
 
 
+
+
+<reference id="Goncalves et al. 2011">
+ <author>Bruno Goncalves</author>
+ <author>Nicola Perra</author>
+ <author>Alessandro Vespignani</author>
+ <title>Modeling Users' Activity on Twitter Networks: Validation of Dunbar's Number</title>
+ <journal>PLoS ONE</journal>
+ <volume>6</volume>
+ <number>8</number>
+ <pages>e22656</pages>
+ <year>2011</year>
+ <doi>10.1371/journal.pone.0022656</doi>
+ <!-- arXiv: http://arxiv.org/abs/1105.5170 -->
+ <file>Networks/applications/communication/twitter/2011 PONE Dunbar's number @ Twitter.pdf</file>
+</reference>
+
+
 <reference id="Gonnet and Munro 1982">
  <author>Gaston H. Gonnet</author>
  <author>J. Ian Munro</author>
@@ -3122,6 +3251,34 @@
  <doi>10.1080/00223980.1946.9917275</doi>
  <url>http://psychclassics.yorku.ca/Heider/attitudes.htm</url>
  <file>Networks/structure/motifs/1946 JP [Heider] Structural balance.pdf</file>
+</reference>
+
+
+<reference id="Hidalgo and Rodriguez-Sickert 2008">
+ <author>Cesar A. Hidalgo</author>
+ <author>C. Rodriguez-Sickert</author>
+ <title>The dynamics of a mobile phone network</title>
+ <journal>Physica A: Statistical Mechanics and its Applications</journal>
+ <volume>387</volume>
+ <number>12</number>
+ <pages>3017-3024</pages>
+ <year>2008</year>
+ <doi>10.1016/j.physa.2008.01.073</doi>
+ <file>Networks/applications/communication/phone/2008 PhysA [Hidalgo] Mobile phone network.pdf</file>
+</reference>
+
+
+<reference id="Hill and Dunbar 2003">
+ <author>R.A. Hill</author>
+ <author>Robin I.M. Dunbar</author>
+ <title>Social network size in humans</title>
+ <journal>Human Nature</journal>
+ <volume>14</volume>
+ <number>1</number>
+ <pages>53-72</pages>
+ <year>2003</year>
+ <doi>10.1007/s12110-003-1016-y</doi>
+ <file>Networks/applications/social/2003 HN [Hill &amp; Dunbar] Social network size.pdf</file>
 </reference>
 
 
@@ -3636,6 +3793,41 @@
  <file>Networks/applications/social/1968 SN [Killworth &amp; Bernard] Reversal small-world experiment.pdf</file>
 </reference>
 
+
+<reference id="Killworth et al. 1990">
+ <author>Peter D. Killworth</author>
+ <author>Eugene C. Johnsen</author>
+ <author>H. Russell Bernard</author>
+ <author>Gene Ann Shelley</author>
+ <author>Christopher McCarty</author>
+ <title>Estimating the size of personal networks</title>
+ <journal>Social Networks</journal>
+ <volume>12</volume>
+ <number>4</number>
+ <pages>289-312</pages>
+ <year>1990</year>
+ <doi>10.1016/0378-8733(90)90012-X</doi>
+ <file>Networks/applications/social/1990 SN Estimating personal network size.pdf</file>
+</reference>
+
+
+<reference id="Killworth et al. 2006">
+ <author>Peter D. Killworth</author>
+ <author>Christopher McCarty</author>
+ <author>Eugene C. Johnsen</author>
+ <author>H. Russell Bernard</author>
+ <author>Gene Ann Shelley</author>
+ <title>Investigating the variation of personal network size under unknown error conditions</title>
+ <journal>Sociological Methods &amp; Research</journal>
+ <volume>35</volume>
+ <number>1</number>
+ <pages>84-112</pages>
+ <year>2006</year>
+ <doi>10.1177/0049124106289160</doi>
+ <file>Networks/applications/social/2006 SMR Variation of personal network size.pdf</file>
+</reference>
+
+
 <reference id="Kim et al. 2004">
  <author>D.-H. Kim</author>
  <author>B. Kahng</author>
@@ -3662,6 +3854,16 @@
  <year>2008</year>
  <doi>10.1016/j.physa.2008.01.015</doi>
  <file>Networks/2008 Physica A [Kim &amp; Wilhelm] Complex graph.pdf</file>
+</reference>
+
+
+<reference id="Kirchhoff 1847">
+ <author>Gustav Kirchhoff</author>
+ <title>Über die Auflösung der Gleichungen, auf welche man bei der Untersuchung der linearen Verteilung galvanischer Ströme gefuhrt wird (About the solutions of equations, on which one is guided in the investigation of the linear distribution of galvanic currents, in German)</title>
+ <journal>Annalen der Physik und Chemie</journal>
+ <volume>72</volume>
+ <pages>497-508</pages>
+ <year>1847</year>
 </reference>
 
 
@@ -3772,6 +3974,17 @@
  <url>http://www.psychologytoday.com/articles/200203/six-degrees-urban-myth</url>
 </reference>
 
+
+
+<reference id="Knoke and Kuklinski 1982">
+ <author>David Knoke</author>
+ <author>James H. Kuklinski</author>
+ <title>Network Analysis</title>
+ <series>Quantitative Applications in the Social Sciences</series>
+ <publisher>Sage Publications</publisher>
+ <year>1982</year>
+ <isbn>080391914X</isbn>
+</reference>
 
 <reference id="Knuth 1994">
  <author>Donald E. Knuth</author>
@@ -5294,6 +5507,45 @@
 </reference>
 
 
+<reference id="Onnela et al. 2007a">
+ <author>Jukka-Pekka Onnela</author>
+ <author>Jari Saramäki</author>
+ <author>Jörkki Hyvönen</author>
+ <author>Gábor Szabó</author>
+ <author>D. Lazer</author>
+ <author>Kimmo Kaski</author>
+ <author>János Kertész</author>
+ <author>Albert-László Barabási</author>
+ <title>Structure and tie strengths in mobile communication networks</title>
+ <journal>Proceedings of the National Academy of Sciences</journal>
+ <volume>104</volume>
+ <number>18</number>
+ <pages>7332-7336</pages>
+ <year>2007</year>
+ <doi>10.1073/pnas.0610245104</doi>
+ <file>Networks/applications/communication/phone/2007 PNAS [Barabasi] Tie strengths in mobile communication networks.pdf</file>
+</reference>
+
+
+<reference id="Onnela et al. 2007b">
+ <author>Jukka-Pekka Onnela</author>
+ <author>Jari Saramäki</author>
+ <author>Jörkki Hyvönen</author>
+ <author>Gábor Szabó</author>
+ <author>M. Argollo de Menezes</author>
+ <author>Kimmo Kaski</author>
+ <author>Albert-László Barabási</author>
+ <author>János Kertész</author>
+ <title>Analysis of a large-scale weighted network of one-to-one human communication</title>
+ <journal>New Journal of Physics</journal>
+ <volume>9</volume>
+ <article>179</article>
+ <year>2007</year>
+ <doi>10.1088/1367-2630/9/6/179</doi>
+ <file>Networks/applications/communication/phone/2007 NJP [Barabasi] One-to-one human communication.pdf</file>
+</reference>
+
+
 <reference id="Ore 1962">
  <author>Oystein Ore</author>
  <title>Theory of Graphs</title>
@@ -5562,6 +5814,24 @@
 </reference>
 
 
+
+
+<reference id="Roberts et al. 2009">
+ <author>Sam G.B. Roberts</author>
+ <author>Robin I.M. Dunbar</author>
+ <author>Thomas V. Pollet</author>
+ <author>Toon Kuppens</author>
+ <title>Exploring variation in active network size: Constraints and ego characteristics</title>
+ <journal>Social Networks</journal>
+ <volume>31</volume>
+ <number>2</number>
+ <pages>138-146</pages>
+ <year>2009</year>
+ <doi>10.1016/j.socnet.2008.12.002</doi>
+ <file>Networks/applications/social/2009 SN Variation in active network size.pdf</file>
+</reference>
+
+
 <reference id="Rodrigues et al. 2006">
  <author>José F. Rodrigues, Jr.</author>
  <author>Hanghang Tong</author>
@@ -5674,6 +5944,7 @@
 </reference>
 
 
+
 <reference id="Schmidt and Druffel 1976">
  <author>Douglas C. Schmidt</author>
  <author>Larry E. Druffel</author>
@@ -5733,6 +6004,17 @@
  <year>2009</year>
  <isbn>0486472043</isbn>
 </reference>
+
+
+
+<reference id="Schumacher 1973">
+ <author>Ernst Friedrich Schumacher</author>
+ <title>Small Is Beautiful: Economics as if People Mattered</title>
+ <publisher>Sage Publications</publisher>
+ <year>1973</year>
+ <isbn>0061317780)</isbn>
+</reference>
+
 
 
 <reference id="Scott 2000">
@@ -6118,6 +6400,20 @@
 
 
 
+<reference id="Stiller and Dunbar 2007">
+ <author>James Stiller</author>
+ <author>Robin I.M. Dunbar</author>
+ <title>Perspective-taking and memory capacity predict social network size</title>
+ <journal>Social Networks</journal>
+ <volume>29</volume>
+ <number>1</number>
+ <pages>93-104</pages>
+ <year>2007</year>
+ <doi>10.1016/j.socnet.2006.04.001</doi>
+ <file>Networks/applications/social/2007 SN Predicting social network size.pdf</file>
+</reference>
+
+
 <reference id="Strogatz 1994">
  <author>Steven H. Strogatz</author>
  <title>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering</title>
@@ -6355,7 +6651,7 @@
  <author>Brian Karrer</author>
  <author>Lars Backstrom</author>
  <author>Cameron Marlow</author>
- <title>The Anatomy of the Facebook Social Graph</title>
+ <title>The anatomy of the Facebook social graph</title>
  <journal>arXiv</journal>
  <article>1111.4503</article>
  <year>2011</year>
@@ -6852,6 +7148,19 @@
 
 
 
+<reference id="Zachary 1977">
+ <author>Wayne W. Zachary</author>
+ <title>An information flow model for conflict and fission in small groups</title>
+ <journal>Journal of Anthropological Research</journal>
+ <volume>33</volume>
+ <number>4</number>
+ <pages>452-473</pages>
+ <year>1977</year>
+ <url>http://www.jstor.org/stable/3629752</url>
+ <file>Networks/applications/social/1977 JAR [Zachary] Conflict and fission in small groups.pdf</file>
+</reference>
+
+
 <reference id="Zhang et al. 2007">
  <author>Jun Zhang</author>
  <author>Mark S. Ackerman</author>
@@ -6882,6 +7191,23 @@
  <doi>10.1103/PhysRevE.82.026116</doi>
  <file>Networks/dynamics/2010 PhysRevE - Mapping from structure to dynamics.pdf</file>
 </reference>
+
+
+
+<reference id="Zheng et al. 2006">
+ <author>Tian Zheng</author>
+ <author>Matthew J. Salganik</author>
+ <author>Andrew Gelman</author>
+ <title>How many people do you know in prison? Using overdispersion in count data to estimate social structure in networks</title>
+ <journal>Journal of the American Statistical Association</journal>
+ <volume>101</volume>
+ <number>474</number>
+ <pages>409-423</pages>
+ <year>2006</year>
+ <doi>10.1198/016214505000001168</doi>
+ <file>Networks/applications/social/2006 JASA Estimating social structure in networks.pdf</file>
+</reference>
+
 
 
 <reference id="Zhou and Mondragon 2004">
@@ -7057,36 +7383,6 @@
  <file>[books]/mathematics/0471648167 [Marcel Danesi] The Liar Paradox and the Towers of Hanoi.pdf</file>
 </reference>
 
-
-<reference id="Kirchhoff 1847">
- <author>Gustav Kirchhoff</author>
- <title>Über die Auflösung der Gleichungen, auf welche man bei der Untersuchung der linearen Verteilung galvanischer Ströme gefuhrt wird (About the solutions of equations, on which one is guided in the investigation of the linear distribution of galvanic currents, in German)</title>
- <journal>Annalen der Physik und Chemie</journal>
- <volume>72</volume>
- <pages>497-508</pages>
- <year>1847</year>
-</reference>
-
-
-<reference id="Cayley 1857">
- <author>Arthur Cayley</author>
- <title>On the theory of the analytical forms called trees</title>
- <journal>Philosophical Magazine</journal>
- <volume>13</volume>
- <pages>172-176</pages>
- <year>1857</year>
- <doi>10.1017/CBO9780511703690.046</doi>
-</reference>
-
-<reference id="Cayley 1889">
- <author>Arthur Cayley</author>
- <title>A theorem on trees</title>
- <journal>Quarterly Journal of Pure and Applied Mathematics</journal>
- <volume>23</volume>
- <pages>376-378</pages>
- <year>1889</year>
- <url>http://books.google.com/?id=M7c4AAAAIAAJ&amp;pg=PA26</url>
-</reference>
 
 
 

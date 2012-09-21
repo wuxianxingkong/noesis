@@ -61,15 +61,22 @@ Widely used in the social and behavioral sciences, social network analysis focus
 
 <text>
 Kinds of relations in a social network: 
-- John Barnes (1972): attitudes, roles, and transactions.
-- Knoke/Kuklinski (1982): individual evaluations (sentiments: friendship, liking, respect...), kinship (family ties: marriage and descent relationships), transactions or transfers of material resources (lending/borrowing, buying/selling, exchange of gifts), transfer of non-material resources (communication, i.e. sending/receiving information, let it be e-mail messages, advice, or mere gossip), interactions (e.g. attending the same event, hitting...), movement (physical, between locations, or social, between occupations), formal roles (boss/employee, teacher/student, doctor/patient...)...
+- John Barnes <cite>Barnes 1972</cite>: attitudes, roles, and transactions.
+- Knoke/Kuklinski <cite>Knoke and Kuklinski 1982</cite>: individual evaluations (sentiments: friendship, liking, respect...), kinship (family ties: marriage and descent relationships), transactions or transfers of material resources (lending/borrowing, buying/selling, exchange of gifts), transfer of non-material resources (communication, i.e. sending/receiving information, let it be e-mail messages, advice, or mere gossip), interactions (e.g. attending the same event, hitting...), movement (physical, between locations, or social, between occupations), formal roles (boss/employee, teacher/student, doctor/patient...)...
 </text>
+
+
+   
+
 
 (e.g. e-mail message exchanges and telephone conversations)
 
 Understanding social networks '2012:
 
-"Some of the questions that are addressed, though hardly solved, are: What is the relationship between basic personality constructs and social relations? How do groups form? What is the nature and source of leadership? How can we best describe the way social positions relate to one another? What is the nature of authority in organizations and society? What are the ways of constructing efficient organizations that benefit their stakeholders? What is the nature of community, and how are people world-wide related to one another? How do new ideas spread and develop? What are the basic social resources of individuals and societies and how can they best be utilized? From time to time, we will reference classic social theorists to see to what extent social network ideas illuminate the problems that they posed. In this view, social networks are not only structural abstractions and the study of networks is not an alternative to classic ways of understanding society, but is a way of gaining greater insight into social life. Though networks also characterize the inanimate world such as electrical power grids, social networks have to be understood, to quote E. F. Schumacher (1973), <q>as if people mattered</q>.
+"Some of the questions that are addressed, though hardly solved, are: What is the relationship between basic personality constructs and social relations? How do groups form? What is the nature and source of leadership? How can we best describe the way social positions relate to one another? What is the nature of authority in organizations and society? What are the ways of constructing efficient organizations that benefit their stakeholders? What is the nature of community, and how are people world-wide related to one another? How do new ideas spread and develop? What are the basic social resources of individuals and societies and how can they best be utilized? From time to time, we will reference classic social theorists to see to what extent social network ideas illuminate the problems that they posed. In this view, social networks are not only structural abstractions and the study of networks is not an alternative to classic ways of understanding society, but is a way of gaining greater insight into social life. Though networks also characterize the inanimate world such as electrical power grids, social networks have to be understood, to quote <cite>Schumacher 1973</cite>, <q>as if people mattered</q>.
+
+
+
 
 "At each level of analysis—individual, organization, or nation-state, for example—what are the conditions that make it more or less likely that a path will exist between two nodes, that the nodes will have the same attributes, that they will be reciprocally or mutually related to one another, and that triads will be balanced? The answers lie in social theory.
 
@@ -87,11 +94,13 @@ Social scientists have investigated three kinds of networks: ego-centric, socioc
 
 
 <text>
-Ego-centered networks (a.k.a. personal or local networks) consist of a focal actor, called ego, a set of alters who have ties to ego, and measurements on the ties among the alters, e.g. Facebook friends or people in your Google+ circles [difference between dichotomous links @Facebook vs. valued links @Google+, e.g. trusty friend, well-known, acquaintance, name associated to face, unknown]. Applications: study of the social envionment surrounding a given individual (you!) and what social scientists call social support, i.e. how social relationships can affect the emotional and physical well-being of a given individual.
+Ego-centered networks (a.k.a. personal or local networks) consist of a focal actor, called ego, a set of alters who have ties to ego, and measurements on the ties among the alters, e.g. Facebook friends or people in your Google+ circles 
+++ difference between dichotomous links @Facebook vs. valued links @Google+, e.g. trusty friend, well-known, acquaintance, name associated to face, unknown
+++ Applications: study of the social envionment surrounding a given individual (you!) and what social scientists call social support, i.e. how social relationships can affect the emotional and physical well-being of a given individual.
 </text>
 
 <text>
-Two students of Leslie White, a renowned anthropologists, offer complementary views on the forces behind cooperation [of people within societies].
+Two students of Leslie White, a renowned anthropologists, offer complementary views on the forces behind cooperation of people within societies.
 <cite>Wright 2000</cite>. Whereas Robert Carneiro's focus was on pushing people together as the rational response against external threats, Elman Service thought that it was clear in some cases and probable in many others that neighboring societies were pulled together because of economic causes. Either by pushing or pulling people, opportunities for gain originate and draw people in closer cooperation, because of the benefits of participation in the total network. 
 </text>
 
@@ -111,109 +120,71 @@ Jennifer Fewell, from Arizona State University, illustrates the importance of [i
 </text>
 
 <text>
+DUNBAR'S NUMBER
+
 – large-scale social networks reliably have high-degree vertices
 There must be some limits to degrees
 – can't be “close friends” with too many people (150? 1000?)
 - Large N, small diameter and limited degrees are in tension (not all combinations are possible)
 e.g. Let N be population size, M be the maximum degree, and D be the diameter: if M=2, then D ~ N/4 ( much greatear than 6 or log(N))
 
-++ Dunbar's number: http://www.technologyreview.com/blog/arxiv/26824/ 
-+ http://arxiv.org/abs/1105.5170 Validation of Dunbar's Number In Twitter Conversations  @ Network structure chapter
+++ Dunbar's number: 
++ http://www.technologyreview.com/blog/arxiv/26824/ 
++ <cite>Goncalves et al. 2011</cite> Validation of Dunbar's Number In Twitter Conversations  @ Network structure chapter
 
-Hill and Dunbar argue that “[i]n primates, social networks are more easy to define… and are often delimited by the size of the social group” (Hill and Dunbar 2003, 54). Primate relationships involve intense social grooming. The grooming group size is relative to neocortical volume. “Since the size of the human neocortex is known, the relationship between group size and neocortex size in primates can be used to predict the cognitive group size for humans” (ibid.). Dunbar therefore predicts that preliterate humans should live in groups of about 150 in size (Dunbar 1993)
+Hill and Dunbar argue that “[i]n primates, social networks are more easy to define… and are often delimited by the size of the social group” <cite>Hill and Dunbar 2003</cite>. 
+Primate relationships involve intense social grooming. The grooming group size is relative to neocortical volume. “Since the size of the human neocortex is known, the relationship between group size and neocortex size in primates can be used to predict the cognitive group size for humans” (ibid.). Dunbar therefore predicts that preliterate humans should live in groups of about 150 in size <cite>Dunbar 1993</cite>
 
-refs.
-
-Hill, R. A., and R. I. M. Dunbar. 2003. Social network size in humans. Human Nature 14:53–72
-
-Dunbar, R. I. M. 1993. Coevolution of neocortical size, group size and language in humans. Behavioral and Brain Sciences 16:681–694
+@ Primates <cite>Dunbar 1992</cite>
 
 
+Using samples of convenience in Britain and Belgium and such techniques as inquiring about Christmas card sending, and administering tests of cognitive ability, Dunbar and associates confirm the size of about 150, but with a large standard deviation (about 85) for close personal relationships <cite>Roberts et al. 2009</cite> <cite>Stiller and Dunbar 2007</cite> <cite>Hill and Dunbar 2003</cite>. 
 
+The results, however, are based on small data sets of white Europeans whose sampling characteristics are unknown. In a series of interesting studies, Killworth, Bernard and members of their research team have attempted empirically to find the number of persons known to an average contemporary American. Their latest finding is that the number is larger than the historical 150: somewhere around 280. But there is a very wide standard deviation, meaning that some people have a much larger effective circle and some a much smaller one
+<cite>Killworth et al. 1990</cite> <cite>Killworth et al. 2006</cite>... 
 
-
-Using samples of convenience in Britain and Belgium and such techniques as inquiring about Christmas card sending, and administering tests of cognitive ability, Dunbar and associates confirm the size of about 150, but with a large standard deviation (about 85) for close personal relationships (Roberts et al. 2009; Stiller and Dunbar 2007; Hill and Dunbar 2003). The results, however, are based on small data sets of white Europeans whose sampling characteristics are unknown. In a series of interesting studies, Killworth, Bernard and members of their research team have attempted empirically to find the number of persons known to an average contemporary American. Their latest finding is that the number is larger than the historical 150: somewhere around 280. But there is a very wide standard deviation, meaning that some people have a much larger effective circle and some a much smaller one (Killworth et al. 2006). ... Recent analyses..., using data from the Killworth et al. studies, but applying a different statistical technique, suggest that the mean size of one’s circle of acquaintances may be as high as 650 for men and 590 for women, again with a highly skewed distribution in which a few people have very large circles (Zheng, Salganik, and Gelman 2006)
-
-refs.
-
-Roberts, S. G. B., R. I. M. Dunbar, T. V. Pollet, and T. Kuppens. 2009. Exploring variation in active network size: Constraints and ego characteristics. Social Networks 31:138–146
-
-Stiller, J. and R. I. M. Dunbar. 2007. Perspective-taking and memory capacity predict social network size. Social Networks 29:93–104
-
-Killworth, Peter D., Eugene C. Johnsen, H. Russell Bernard, Gene Anne Shelley, and Christopher McCarty. 1990. Estimating the size of personal networks. Social Networks 12:289–312. 
-
-Killworth, P. D., C. McCarty, E. C. Johnsen, H. R. Bernard, and G. A. Shelley. 2006. Investigating the variation of personal network size under unknown error conditions. Sociological Methods &amp; Research 35 (1): 84–112
-
-Zheng, Tian, Matthew J. Salganik, and Andrew Gelman. 2006. How many people do you know in prison? Using overdispersion in count data to estimate social structure in networks. Journal of the American Statistical Association 101:409–423
+Recent analyses..., using data from the Killworth et al. studies, but applying a different statistical technique, suggest that the mean size of one’s circle of acquaintances may be as high as 650 for men and 590 for women, again with a highly skewed distribution in which a few people have very large circles <cite>Zheng et al. 2006</cite>
 </text>
 
 
+
+
 <text>
-+ Why Your Friends Have More Friends Than You Do
-Scott L. Feld
-American Journal of Sociology
-Vol. 96, No. 6 (May, 1991), pp. 1464-1477
-Published by: The University of Chicago Press
-Article Stable URL: http://www.jstor.org/stable/2781907
++ Why Your Friends Have More Friends Than You Do <cite>Feld 1991</cite>: 
 
 USN: most people believe others have more friends than they do. The explanation is straightforward. People who have many friends are necessarily more likely to be in one’s interpersonal environment than people who have few friends. So looking at my interpersonal environment, I come to the conclusion that most people have more friends than I do
 </text>
 
+
 <text>
-++ Milgram's Six Degrees of separation (4.74 @ Facebook, http://arxiv.org/abs/1111.4503  http://arxiv.org/abs/1111.4570 ) @ Network structure chapter
+++ Milgram's Six Degrees of separation
+
++ FACEBOOK: 4.74 @ Network structure chapter
 W: Facebook's data team released two papers in November 2011 which document that amongst all facebook users at the time of research (721 million users with 69 billion friendship links) there is an average distance of 4.74. Probabilistic algorithms were applied on statistical metadata to verify the accuracy of the measurements. It was also found that 99.91% of facebook users were interconnected, forming a large connected component.
-- Backstrom, Lars; Boldi, Paolo; Rosa, Marco; Ugander, Johan; Vigna, Sebastiano (2011-11-19). "Four Degrees of Separation". ArXiv. Retrieved 23 November 2011.
-- Ugander, Johan; Karrer, Brian; Backstrom, Lars; Marlow, Cameron. "The Anatomy of the Facebook Social Graph". ArXiv. Retrieved 23 November 2011.
-
-J. Ugander, B. Karrer, L. Backstrom, C. Marlow.
-The Anatomy of the Facebook Social Graph,
-http://arxiv.org/abs/1111.4503
- 
-L. Backstrom, P. Boldi, M. Rosa, J. Ugander, S. Vigna.
-Four Degrees of Separation,
-http://arxiv.org/abs/1111.4570
-
+<cite>Backstrom et al. 2011</cite>
+<cite>Ugander et al. 2011</cite>
 </text>
-
-
-
-<b>E-mail networks:</b>
-
-++ USN: One study, not of the whole world but an HP laboratory’s email network of 430 individuals (still relatively large), with a median number of 10 acquaintances and a mean of 12.9, showed that the communications were largely pegged to the formal hierarchical structure; focusing on individuals with high degree was not an effective connection strategy, rather, one looked to the official hierarchy (Adamic and Adar 2005)
-
-ref. Adamic, Lada, and Eytan Adar. 2005. How to search a social network. Social Networks 27 (3): 187–203
-
 
 <text>
 e.g. Karate club (a conflict divided the network into two communities), a small network often used to illustrate community detection algorithms
 
-Wayne W. Zachary
-An Information Flow Model for Conflict and Fission in Small Groups
-Journal of Anthropological Research
-Vol. 33, No. 4 (Winter, 1977), pp. 452-473
-URL: http://www.jstor.org/stable/3629752
+<cite>Zachary 1977</cite>
 
 </text>
+
+
+<text>
+<b>E-mail networks:</b>
+
+++ USN: One study, not of the whole world but an HP laboratory’s email network of 430 individuals (still relatively large), with a median number of 10 acquaintances and a mean of 12.9, showed that the communications were largely pegged to the formal hierarchical structure; focusing on individuals with high degree was not an effective connection strategy, rather, one looked to the official hierarchy <cite>Adamic and Adar 2005</cite>
+</text>
+
 
 <text>
 ++ Cell phone network (conversations): millions of nodes and links
-
-J. Candia, M. C. Gonzalez, P. Wang, T. Schoenharl, G. Madey, A.-L. Barabási 
-Uncovering individual and collective human dynamics from mobile phone records 
-Journal of Physics A: Mathematical and Theoretical 41, 1-11 (2008). 
-
-C. A. Hidalgo, C. Rodriguez-Sickert 
-The dynamics of a mobile phone network 
-Physica A 387:12, 3017-3024 (2008).
-
- J.-P. Onnela, J. Saramaki, J. Hyvonen, G. Szabo, D. Lazer, K. Kaski, J. Kertesz, A.-L. Barabási 
-Structure and tie strengths in mobile communication networks 
-Proceedings of the National Academy of Sciences 104 (18), 7332-7336 (2007).
-
-J.-P. Onnela, J. Saramäki, J. Hyvönen, G. Szabó, M A. de Menezes, K. Kaski, A.-L. Barabási, J. Kertész 
-Analysis of a large-scale weighted network of one-to-one human communication 
-New Journal of Physics 9, 1-27 (2007).
+<cite>Candia et al. 2008</cite> <cite>Hidalgo and Rodriguez-Sickert 2008</cite> <cite>Onnela et al. 2007a</cite> <cite>Onnela et al. 2007b</cite>
 </text>
+
 
 
 + Applications, e.g. Culturomics (http://www.nics.tennessee.edu/leetarurelease)
@@ -525,15 +496,8 @@ Network effects [Kleinberg 17]
         Markets and information [Kleinberg 22]
         Property rights [Kleinberg 24]
 
-<reference id="Bristor and Ryan 1989">
- <author>Julia M. Bristor</author>
- <author>Michael J. Ryan</author>
- <title>Applying the small world phenomenon to organizational buying</title>
- <booktitle>The Small World: A Volume of Recent Research Advances Commemorating Ithiel de Sola Pool, Stanley Milgram, Theodore Newcomb.</booktitle>
- <publisher>Ablex Publishing</publisher>
- <year>1989</year>
- <isbn>0893914797</isbn>
-</reference>
+<cite>Bristor and Ryan 1989</cite>
+
 
 
 

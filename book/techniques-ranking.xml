@@ -106,6 +106,22 @@ r(d_{in}, d_{out}) = \frac{p}{n} + \frac{1-p}{n} \frac{d_{in}}{\langle d_{in} \r
 ++ Random walks and Markov chains... e.g. www.whydomath.com video describing PageRank teleportation, dangling nodes, and random surfers to a non-mathematical audience
 
 
+<code>
+% MATLAB http://www.mathworks.com/moler/exm/chapters/pagerank.pdf
+G = A'
+p = 0.85;
+delta = (1-p)/n;
+c = sum(G,1);
+k = find(c~=0);
+D = sparse(k,k,1./c(k),n,n);
+e = ones(n,1);j
+I = speye(n,n);
+x = (I - p*G*D)\e;
+x = x/sum(x)
+</code>
+
+
+
 
 cf.
 Santo Fortunato

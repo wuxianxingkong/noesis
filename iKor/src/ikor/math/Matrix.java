@@ -121,7 +121,18 @@ public class Matrix implements java.io.Serializable
 	{
 		datos[i][j] = v;
 	}
-
+	
+	public void set(int i, double v[])
+	{
+		datos[i] = v;
+	}
+	
+	public void set(double v[][])
+	{
+		datos = v;
+	}
+	
+	
 	/* ------------------------ */
 	/* OPERACIONES CON MATRICES */
 	/* ------------------------ */

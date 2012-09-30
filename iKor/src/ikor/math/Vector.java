@@ -32,6 +32,11 @@ public class Vector extends Matrix
 		super.set(0,i,value);
 	}
 	
+	public void set (double[] values)
+	{
+		super.set(0,values);
+	}
+	
 	// Arithmetic
 	
 	public double magnitude ()

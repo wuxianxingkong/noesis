@@ -117,7 +117,7 @@ public class BasicNetwork extends Network<Integer,Integer>
 			
 			nlinks++;
 			outLinks[source] = extend(outLinks[source], destination);
-			inLinks[destination] = extend(inLinks[destination], destination);
+			inLinks[destination] = extend(inLinks[destination], source);
 			return true;
 			
 		} else {

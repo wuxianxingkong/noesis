@@ -102,49 +102,39 @@ public class PageRankTest
 		noInDegree.add(3,2);
 	}
 	
+	private void checkPageRank (Network net, double theta, double[] rank)
+	{
+		PageRank pagerank = new PageRank(net, theta);
+		
+		pagerank.compute();
+		
+		for (int i=0; i<net.size(); i++)
+			assertEquals ( rank[i], pagerank.get(i), EPSILON); 
+	}
+	
 	
 	@Test
 	public void testPageRank ()
 	{
-		PageRank net20Qpagerank = new PageRank(net20Q);
-		
-		net20Qpagerank.compute();
-		
-		for (int i=0; i<net20Q.size(); i++)
-			assertEquals ( net20Qrank[i], net20Qpagerank.get(i), EPSILON); 
+		checkPageRank(net20Q, PageRank.DEFAULT_THETA, net20Qrank);
 	}
 
 	@Test
 	public void testDanglingNode ()
 	{
-		PageRank danglingPageRank = new PageRank(danglingNode,1.0);
-		
-		danglingPageRank.compute();
-		
-		for (int i=0; i<danglingNode.size(); i++)
-			assertEquals ( danglingNodeRank[i], danglingPageRank.get(i), EPSILON); 
+		checkPageRank(danglingNode, 1.0, danglingNodeRank);
 	}
 	
 	@Test
 	public void testDisconnected ()
 	{
-		PageRank disconnectedPageRank = new PageRank(disconnected,1.0);
-		
-		disconnectedPageRank.compute();
-		
-		for (int i=0; i<disconnected.size(); i++)
-			assertEquals ( disconnectedRank[i], disconnectedPageRank.get(i), EPSILON); 
+		checkPageRank(disconnected, 1.0, disconnectedRank);
 	}
 
 	@Test
 	public void testNoInDegree ()
 	{
-		PageRank indegreePageRank = new PageRank(noInDegree,1.0);
-		
-		indegreePageRank.compute();
-		
-		for (int i=0; i<noInDegree.size(); i++)
-			assertEquals ( noInDegreeRank[i], indegreePageRank.get(i), EPSILON); 
+		checkPageRank(noInDegree, 1.0, noInDegreeRank);
 	}
 	
 }

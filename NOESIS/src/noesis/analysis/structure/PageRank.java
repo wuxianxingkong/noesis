@@ -24,7 +24,6 @@ public class PageRank  extends NodeMetrics
 
 	double  pagerank[];
 	double  weight[];
-	boolean dangling[];
 	
 	public void compute ()
 	{
@@ -32,6 +31,9 @@ public class PageRank  extends NodeMetrics
 		int     size = net.size();
 		boolean changes;
 		double  old;
+		boolean dangling[];
+		double  danglingRank;
+		double  randomRank;
 		
 		// Initialization: 1/N
 		
@@ -55,23 +57,37 @@ public class PageRank  extends NodeMetrics
 		}
 			
 
-		// Iterative algorithm
+		// Iterative algorithm: O(k(n+m))
 		
 	    do {	
 	    	
 	    	changes = false;
 			pagerank = new double[size];
 	    	
+			// Dangling nodes (common calculation): O(n) 
+			
+			danglingRank = 0;
+			
+			for (int i=0; i<size; i++)
+				if (dangling[i])
+					danglingRank += get(i);
+			
+			danglingRank /= size;
+			
+			// Random walk: O(1)
+			
+			randomRank = 1.0/size;
+			
+			// For each node: O(m)
+			
 		    for (int node=0; node<size; node++) {
 		    	
 		    	old = get(node);
-		    	pagerank[node] = pagerank(net,node);
+		    	pagerank[node] = pagerank (net, node, danglingRank, randomRank);
 		    	
 		    	if (!changes && (Math.abs(pagerank[node]-old)>EPSILON) ) {
 		    		changes = true;
 		    	}
-
-		    	System.out.println(node+ " " + pagerank[node]);
 		    }
 		    
 		    updateRank(pagerank);
@@ -92,14 +108,11 @@ public class PageRank  extends NodeMetrics
 	}
 	
 	
-	private double pagerank (Network net, int node)
+	private double pagerank (Network net, int node, double danglingRank, double randomRank)
 	{
-		int    size    = net.size();
 		int    degree  = net.inDegree(node);
 		int    links[] = net.inLinks(node);
-		double rank;
-		double danglingRank;
-		double randomWalk;
+		double rank    = 0;
 
 		// Network structure
 		
@@ -111,21 +124,9 @@ public class PageRank  extends NodeMetrics
 			}
 		}
 		
-		// Dangling nodes
+		// PageRank: Incoming links + Dangling nodes + Random walk
 		
-		danglingRank = 0;
-		
-		for (int i=0; i<size; i++)
-			if (dangling[i])
-				danglingRank += get(i);
-		
-		danglingRank /= size;
-		
-		// Random walk
-		
-		randomWalk = 1.0/size;
-		
-		return theta*(rank + danglingRank) + (1-theta)*randomWalk;
+		return theta*(rank + danglingRank) + (1-theta)*randomRank;
 	}
 	
 	

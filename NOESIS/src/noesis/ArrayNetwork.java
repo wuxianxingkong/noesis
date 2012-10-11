@@ -1,10 +1,10 @@
 package noesis;
 
-//Title:       Network ADT
-//Version:     1.0
-//Copyright:   2011
-//Author:      Fernando Berzal
-//E-mail:      berzal@acm.org
+// Title:       Network ADT
+// Version:     1.0
+// Copyright:   2011
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
 
 import ikor.collection.DynamicList;
 import ikor.collection.DynamicDictionary;

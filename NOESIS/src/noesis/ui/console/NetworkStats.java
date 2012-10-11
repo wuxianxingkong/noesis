@@ -7,12 +7,16 @@ import ikor.math.Decimal;
 import ikor.util.Benchmark;
 
 import noesis.Network;
+import noesis.Attribute;
+import noesis.AttributeNetwork;
 
+import noesis.analysis.structure.Betweenness;
 import noesis.analysis.structure.NodeMetrics;
 import noesis.analysis.structure.InDegree;
 import noesis.analysis.structure.OutDegree;
 
 import noesis.io.NetworkReader;
+import noesis.io.GMLNetworkReader;
 import noesis.io.PajekNetworkReader;
 import noesis.io.SNAPNetworkReader;
 import noesis.io.SNAPGZNetworkReader;
@@ -49,13 +53,15 @@ public class NetworkStats {
 				reader = new SNAPNetworkReader(new FileReader(args[0]));
 			else if (args[0].endsWith(".gz"))
 				reader = new SNAPGZNetworkReader(new FileInputStream(args[0]));
+			else if (args[0].endsWith(".gml"))
+				reader = new GMLNetworkReader(new FileReader(args[0]));
 			else
 				throw new IOException("Unknown network file format.");
 			
 			reader.setType(noesis.ArrayNetwork.class);     // NDwww.net 5.2s
 			// reader.setType(noesis.GraphNetwork.class);  // NDwww.net 9.6s
 			
-			Network<String,Decimal> net = reader.read();
+			Network net = reader.read();
 			
 			
 			System.out.println("NETWORK STATISTICS");
@@ -81,6 +87,50 @@ public class NetworkStats {
 			System.out.println("- Out-degrees: "+outDegrees);
 			System.out.println("- In-degrees:  "+inDegrees);
 			
+			if (net instanceof AttributeNetwork) {
+				
+				AttributeNetwork anet = (AttributeNetwork) net;
+				int index;
+				
+				index = outDegrees.maxIndex();
+				
+				System.out.println("Node of maximum out-degree: " + outDegrees.get(index) + " out-links" );
+				
+				for (int i=0; i<anet.getNodeAttributeCount(); i++) {
+					Attribute attribute = anet.getNodeAttribute(i);
+					System.out.println("- "+attribute.getID()+": "+attribute.get(index));
+				}
+				
+
+				index = inDegrees.maxIndex();
+				
+				System.out.println("Node of maximum in-degree: " + inDegrees.get(index) + " in-links" );
+				
+				for (int i=0; i<anet.getNodeAttributeCount(); i++) {
+					Attribute attribute = anet.getNodeAttribute(i);
+					System.out.println("- "+attribute.getID()+": "+attribute.get(index));
+				}
+			}
+			
+			// Betweenness 
+
+			Betweenness betweenness = new Betweenness(net);
+			betweenness.compute();
+			System.out.println("Betweenness");
+			System.out.println(betweenness);
+
+			if (net instanceof AttributeNetwork) {
+				AttributeNetwork anet = (AttributeNetwork) net;
+				int index = betweenness.maxIndex();
+				
+				System.out.println("Node of maximum betweenness: " + betweenness.get(index) );
+				
+				for (int i=0; i<anet.getNodeAttributeCount(); i++) {
+					Attribute attribute = anet.getNodeAttribute(i);
+					System.out.println("- "+attribute.getID()+": "+attribute.get(index));
+				}
+			}
+
 			crono.stop();
 			
 			System.out.println();

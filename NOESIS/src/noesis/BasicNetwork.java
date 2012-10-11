@@ -1,10 +1,10 @@
 package noesis;
 
-//Title:       Network ADT
-//Version:     1.0
-//Copyright:   2012
-//Author:      Fernando Berzal
-//E-mail:      berzal@acm.org
+// Title:       Network ADT
+// Version:     1.0
+// Copyright:   2012
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
 
 
 /**
@@ -61,7 +61,7 @@ public class BasicNetwork extends Network<Integer,Integer>
 		int pos = node;
 					
 		if (pos>=size)
-			setSize(pos);
+			setSize(pos+1);
 
 		return pos;
 	}
@@ -108,7 +108,7 @@ public class BasicNetwork extends Network<Integer,Integer>
 	}
 
 	@Override
-	public final boolean add(int source, int destination) 
+	public boolean add(int source, int destination) 
 	{
 		if (  (source>=0) 
 		   && (source<size())

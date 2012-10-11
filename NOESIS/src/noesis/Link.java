@@ -1,10 +1,10 @@
 package noesis;
 
-//Title:       Network helper class
-//Version:     1.0
-//Copyright:   2011
-//Author:      Fernando Berzal
-//E-mail:      berzal@acm.org
+// Title:       Network helper class
+// Version:     1.0
+// Copyright:   2011
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
 
 /**
  * Network ADT: Network link.

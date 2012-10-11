@@ -1,10 +1,10 @@
 package noesis;
 
-//Title:       Network base class
-//Version:     1.0
-//Copyright:   2011
-//Author:      Fernando Berzal
-//E-mail:      berzal@acm.org
+// Title:       Network base class
+// Version:     1.0
+// Copyright:   2011
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
 
 import java.util.Iterator;
 
@@ -178,10 +178,7 @@ public abstract class Network<V, E> implements Graph<V,E>
 	@Override
 	public String toString ()
 	{
-		if (id!=null)
-			return id;
-		else
-			return "Network";
+		return ((id!=null)? id: "Network") + " ("+size()+" nodes, "+links()+" links)";
 	}
 
 }

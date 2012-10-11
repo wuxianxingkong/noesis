@@ -127,7 +127,18 @@ public class Vector extends Matrix
 		
 		return min;
 	}
-	
+
+	public int minIndex ()
+	{
+		int min = 0;
+		
+		for (int i=1; i<size(); i++)
+			if (get(i)<get(min))
+				min = i;
+		
+		return min;
+	}
+
 	public double max ()
 	{
 		double max = get(0);
@@ -138,7 +149,18 @@ public class Vector extends Matrix
 		
 		return max;
 	}
-	
+
+	public int maxIndex ()
+	{
+		int max = 0;
+		
+		for (int i=1; i<size(); i++)
+			if (get(i)>get(max))
+				max = i;
+		
+		return max;
+	}
+
 	public double sum ()
 	{
 		double sum = 0;

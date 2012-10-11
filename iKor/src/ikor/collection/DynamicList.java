@@ -84,6 +84,12 @@ public class DynamicList<T> implements MutableList<T>
 
 	@Override
 	public T set(int index, T object) {
+		
+		if (index>=list.size()) {
+			list.ensureCapacity(index+1);
+			while (list.size()<=index)
+				list.add(null);
+		}
 		return list.set(index,object);
 	}
 

@@ -20,5 +20,22 @@ public class Pair<S,T>
 	{
 		return t;
 	}
-
+	
+		  
+	@Override
+    public boolean equals ( Object obj ) 
+    { 
+    	if ((obj==null) || !(obj instanceof Pair)) {
+    		return false;
+        } else {
+    		Pair other = (Pair) obj;
+    		return other.s.equals(this.s) && other.t.equals(this.t);
+    	}
+	}
+    
+	@Override
+    public int hashCode() 
+    { 
+    	return s.hashCode() + 31*t.hashCode();
+    }	
 }

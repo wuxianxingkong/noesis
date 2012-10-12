@@ -43,6 +43,10 @@ public abstract class Network<V, E> implements Graph<V,E>
 		return directed;
 	}
 	
+	public void setDirected (boolean directed)
+	{
+		this.directed = directed;
+	}
 	
 	// Network size
 	

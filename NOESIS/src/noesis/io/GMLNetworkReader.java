@@ -46,7 +46,7 @@ public class GMLNetworkReader extends NetworkReader
 			line = input.readLine();
 			
 			if (line!=null)
-				line = line.trim();
+				line = line.replace('[',' ').replace(']',' ').trim();
 			
 		} while ((line!=null) && (line.length()==0));
 		
@@ -67,8 +67,8 @@ public class GMLNetworkReader extends NetworkReader
 	public Network read() throws IOException 
 	{	
 		AttributeNetwork net; 
-        boolean in_node = false;
-        boolean in_edge = false;
+        boolean inNode = false;
+        boolean inEdge = false;
         int     source = 0;
         int     target = 0;
         int     nodes;
@@ -81,42 +81,53 @@ public class GMLNetworkReader extends NetworkReader
             
         	String line = currentLine();
             String[] items = line.split("\\s+");
+            String key = line.toLowerCase();
             
-            	String key = line.toLowerCase();
+            	
+            if ( key.startsWith("node") ) {
 
-            	if ( key.startsWith("node") ) {
+            	nodes++;
+            	net.add(nodes-1);
+            	inNode = true;
+            	inEdge = false;
 
-            		nodes++;
-            		net.add(nodes-1);
-            		in_node = true;
-            		in_edge = false;
+            } else if ( key.startsWith("edge") ) {
 
-            	} else if ( key.startsWith("edge") ) {
+            	inNode = false;
+            	inEdge = true;
 
-            		in_node = false;
-            		in_edge = true;
+            } else if ( inNode && key.startsWith("id") ) {
 
-            	} else if ( in_node && key.startsWith("id") ) {
+            	setNodeID(net, nodes-1, items[1]);
 
-            		setNodeID(net, nodes-1, items[1]);
+            } else if ( inEdge && key.startsWith("source") ) {
 
-            	} else if ( in_edge && key.startsWith("source") ) {
+            	source = ids.get(items[1]);
 
-            		source = ids.get(items[1]);
+            } else if ( inEdge && key.startsWith("target") ) {
 
-            	} else if ( in_edge && key.startsWith("target") ) {
+            	target = ids.get(items[1]);
+            	addLink (net, source,target);
 
-            		target = ids.get(items[1]);
-            		addLink (net, source,target);
+            } else if ( Character.isAlphabetic(key.charAt(0)) ){ // Attribute value
 
-            	} else if ( Character.isAlphabetic(key.charAt(0)) ){ // Attribute value
-
-            		if (in_node) {	
-            			setNodeAttribute(net, nodes-1, items[0], line);
-            		} else if (in_edge) {
-            			setLinkAttribute(net, source, target, items[0], line);
+            	if (inNode) {	
+            		setNodeAttribute(net, nodes-1, items[0], line);
+            	} else if (inEdge) {
+            		setLinkAttribute(net, source, target, items[0], line);
+            	} else {
+            	
+            		if (key.startsWith("directed")) {
+            			
+            			int val = Integer.parseInt(items[1]);
+            					
+            			if (val!=0)
+            				net.setDirected(true);
+            			else
+            				net.setDirected(false);
             		}
             	}
+            }
         }
         		
 		return net;		
@@ -137,6 +148,9 @@ public class GMLNetworkReader extends NetworkReader
 	private void addLink (AttributeNetwork net, int source, int target)
 	{
 		net.add(source, target);	
+
+		if (!net.isDirected())
+			net.add(target,source);
 	}
 	
 	// Attributes
@@ -177,6 +191,9 @@ public class GMLNetworkReader extends NetworkReader
 		
 		if (value!=null) {
 			net.setLinkAttribute(id, source, target, value);
+			
+			if (!net.isDirected())
+				net.setLinkAttribute(id, target, source, value);
 		}
 	}
 

@@ -16,7 +16,7 @@ import org.junit.Test;
 
 public class GMLNetworkReaderTest {
 
-	// Sample Pajek networks 
+	// Sample GML networks 
 	
 	private String[] gml3cycle = new String[] {
 		"graph [",
@@ -53,6 +53,39 @@ public class GMLNetworkReaderTest {
 		"]" 
 	};
 	
+	private String[] gml3undirected = new String[] {
+			"graph [",
+			" comment \"This is a sample graph\"",
+			" directed 0",
+			" node [",
+			"   id 1",
+			"   label \"Node 1\"",
+			" ]",
+			" node [",
+			"   id 2",
+			"   label \"Node 2\"",
+			" ]",
+			" node [",
+			"   id 3",
+			"   label \"Node 3\"",
+			" ]",
+			" edge [",
+			"   source 1",
+			"   target 2",
+			"   label \"Edge from node 1 to node 2\"",
+			" ]",
+			" edge [",
+			"   source 2",
+			"   target 3",
+			"   label \"Edge from node 2 to node 3\"",
+			" ]",
+			" edge [",
+			"   source 3",
+			"   target 1",
+			"   label \"Edge from node 3 to node 1\"",
+			" ]",
+			"]" 
+		};
 	
 	private String networkString (String[] lines)
 	{
@@ -104,7 +137,22 @@ public class GMLNetworkReaderTest {
 		assertNull(net.get(1,1));
 		assertNull(net.get(2,2));
 	}
-	
+
+	public void checkUndirectedLinks (AttributeNetwork net)
+	{		
+		assertEquals(6, net.links());
+		
+		assertNotNull(net.get(0,1));
+		assertNotNull(net.get(1,2));
+		assertNotNull(net.get(2,0));
+		assertNotNull(net.get(1,0));
+		assertNotNull(net.get(2,1));
+		assertNotNull(net.get(0,2));
+		assertNull(net.get(0,0));
+		assertNull(net.get(1,1));
+		assertNull(net.get(2,2));
+	}
+
 	public void checkLinkLabels (AttributeNetwork net)
 	{		
 		LinkAttribute label = net.getLinkAttribute("label");
@@ -121,7 +169,24 @@ public class GMLNetworkReaderTest {
 		assertNull(label.get(1,1));
 		assertNull(label.get(2,2));
 	}
-	
+
+	public void checkUndirectedLinkLabels (AttributeNetwork net)
+	{		
+		LinkAttribute label = net.getLinkAttribute("label");
+		
+		assertEquals(6, net.links());
+		
+		assertEquals("Edge from node 1 to node 2", label.get(0,1));
+		assertEquals("Edge from node 2 to node 3", label.get(1,2));
+		assertEquals("Edge from node 3 to node 1", label.get(2,0));
+		assertEquals("Edge from node 1 to node 2", label.get(1,0));
+		assertEquals("Edge from node 2 to node 3", label.get(2,1));
+		assertEquals("Edge from node 3 to node 1", label.get(0,2));
+		assertNull(label.get(0,0));
+		assertNull(label.get(1,1));
+		assertNull(label.get(2,2));
+	}
+
 	public void checkAttributes (AttributeNetwork net)
 	{
 		assertEquals(2, net.getNodeAttributeCount());
@@ -139,16 +204,35 @@ public class GMLNetworkReaderTest {
 		GMLNetworkReader reader = new GMLNetworkReader(sr);
 	
 		AttributeNetwork net = (AttributeNetwork) reader.read();
+
+		checkAttributes(net);
 		
-		assertEquals(3, net.size());
+		assertEquals(3, net.size());		
+		checkNodeLabels(net);
+		checkNodeIDs(net);
+		
 		assertEquals(3, net.links());
+		checkLinks(net);
+		checkLinkLabels(net);
+	}
+
+	@Test
+	public void testGML3Undirected() throws IOException
+	{
+		StringReader sr = new StringReader( networkString(gml3undirected));
+		GMLNetworkReader reader = new GMLNetworkReader(sr);
+	
+		AttributeNetwork net = (AttributeNetwork) reader.read();
 		
 		checkAttributes(net);
 		
+		assertEquals(3, net.size());
 		checkNodeLabels(net);
 		checkNodeIDs(net);
-		checkLinks(net);
-		checkLinkLabels(net);
+
+		assertEquals(6, net.links());
+		checkUndirectedLinks(net);
+		checkUndirectedLinkLabels(net);
 	}
 
 }

@@ -1,5 +1,11 @@
 package noesis.ui.console;
 
+// Title:       Network statistics
+// Version:     1.0
+// Copyright:   2012
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
+
 import java.io.*;
 
 import ikor.math.Decimal;
@@ -21,6 +27,11 @@ import noesis.io.PajekNetworkReader;
 import noesis.io.SNAPNetworkReader;
 import noesis.io.SNAPGZNetworkReader;
 
+/**
+ * Network statistics.
+ * 
+ * @author Fernando Berzal
+ */
 
 public class NetworkStats {
 
@@ -88,28 +99,12 @@ public class NetworkStats {
 			System.out.println("- In-degrees:  "+inDegrees);
 			
 			if (net instanceof AttributeNetwork) {
-				
-				AttributeNetwork anet = (AttributeNetwork) net;
-				int index;
-				
-				index = outDegrees.maxIndex();
-				
-				System.out.println("Node of maximum out-degree: " + outDegrees.get(index) + " out-links" );
-				
-				for (int i=0; i<anet.getNodeAttributeCount(); i++) {
-					Attribute attribute = anet.getNodeAttribute(i);
-					System.out.println("- "+attribute.getID()+": "+attribute.get(index));
-				}
-				
+								
+				System.out.println("Node of maximum out-degree:");
+				printNode ( (AttributeNetwork) net, outDegrees.maxIndex());				
 
-				index = inDegrees.maxIndex();
-				
-				System.out.println("Node of maximum in-degree: " + inDegrees.get(index) + " in-links" );
-				
-				for (int i=0; i<anet.getNodeAttributeCount(); i++) {
-					Attribute attribute = anet.getNodeAttribute(i);
-					System.out.println("- "+attribute.getID()+": "+attribute.get(index));
-				}
+				System.out.println("Node of maximum in-degree:");
+				printNode ( (AttributeNetwork) net, inDegrees.maxIndex());
 			}
 			
 			// Betweenness 
@@ -120,15 +115,8 @@ public class NetworkStats {
 			System.out.println(betweenness);
 
 			if (net instanceof AttributeNetwork) {
-				AttributeNetwork anet = (AttributeNetwork) net;
-				int index = betweenness.maxIndex();
-				
-				System.out.println("Node of maximum betweenness: " + betweenness.get(index) );
-				
-				for (int i=0; i<anet.getNodeAttributeCount(); i++) {
-					Attribute attribute = anet.getNodeAttribute(i);
-					System.out.println("- "+attribute.getID()+": "+attribute.get(index));
-				}
+				System.out.println("Node of maximum betweenness:");
+				printNode ( (AttributeNetwork) net, betweenness.maxIndex());				
 			}
 
 			crono.stop();
@@ -138,7 +126,19 @@ public class NetworkStats {
 		}
 
 	}
-	
+
+	public static void printNode (AttributeNetwork net, int index)
+	{
+		//System.out.println("- index: "+index);
+		System.out.println("- out-degree: "+net.outDegree(index)+" out-links");
+		System.out.println("- in-degree: "+net.inDegree(index)+" in-links");
+		
+		for (int i=0; i<net.getNodeAttributeCount(); i++) {
+			Attribute attribute = net.getNodeAttribute(i);
+			System.out.println("- "+attribute.getID()+": "+attribute.get(index));
+		}
+		
+	}
 	
 	public static void saveInt (String file, NodeMetrics metrics)
 		throws IOException

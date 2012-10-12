@@ -24,38 +24,50 @@ import noesis.Network;
 
 public class GraphMLNetworkReader extends AttributeNetworkReader
 {
+	// Input stream
+	
 	private InputStream input;
 	
+	// Network
+	
+	AttributeNetwork net; 
+    
+	// Current values
+	
+	int     source = 0;
+    int     target = 0;
+    int     nodes;
+
+    // Parser state
+    
+    boolean inNode = false;
+    boolean inEdge = false;
+    String  attribute = null;
+	
+    
+    // Constructor
+    
 	public GraphMLNetworkReader (InputStream stream)
 	{
 		this.input = new BufferedInputStream(stream);
 		this.setType(noesis.AttributeNetwork.class);
 	}
 
+	// Parser
 	
 	@Override
 	public Network read() throws IOException 
 	{
-		AttributeNetwork net; 
-        boolean inNode = false;
-        boolean inEdge = false;
-        boolean inData = false;
-        int     source = 0;
-        int     target = 0;
-        int     nodes;
-        String  key;
-        String  value;
-        String  attribute = null;
-        
         net = new AttributeNetwork();
         net.addNodeAttribute( new Attribute("id") );
         nodes = net.size();		
 		
 		try {
-			XMLInputFactory inputFactory=XMLInputFactory.newInstance();
-			XMLStreamReader  xmlStreamReader = inputFactory.createXMLStreamReader(input);
+			XMLInputFactory inputFactory = XMLInputFactory.newInstance();
+			XMLStreamReader xmlStreamReader = inputFactory.createXMLStreamReader(input);
 	
 			while(xmlStreamReader.hasNext()){
+
 				int event = xmlStreamReader.next();
 				
 				switch (event) {
@@ -68,21 +80,9 @@ public class GraphMLNetworkReader extends AttributeNetworkReader
 							
 							inNode = false;
 							inEdge = false;
-							attribute = null;
+							attribute = null;			
 							
-							for (int i=0; i<xmlStreamReader.getAttributeCount(); i++) {				
-	
-								key = xmlStreamReader.getAttributeLocalName(i);
-								value = xmlStreamReader.getAttributeValue(i);
-								
-								if (key.equals("edgedefault")) {
-									if (value.equals("undirected"))
-										net.setDirected(false);
-								} else if (key.equals("id")) {
-									net.setID(value);
-								}
-									
-							}
+							parseGraphElement(xmlStreamReader);
 							
 						} else if (element.equals("node")) {
 							
@@ -90,15 +90,7 @@ public class GraphMLNetworkReader extends AttributeNetworkReader
 							inEdge = false;
 							attribute = null;
 
-							nodes++;
-			            	net.add(nodes-1);
-
-			            	for (int i=0; i<xmlStreamReader.getAttributeCount(); i++) {
-			            		key = xmlStreamReader.getAttributeLocalName(i);
-								if (key.equals("id")) {
-									setNodeID(net, nodes-1, xmlStreamReader.getAttributeValue(i));
-								}
-							}
+							parseNodeElement(xmlStreamReader);
 							
 						} else if (element.equals("edge")) {
 							
@@ -106,74 +98,18 @@ public class GraphMLNetworkReader extends AttributeNetworkReader
 							inNode = false;
 							attribute = null;
 
-							for (int i=0; i<xmlStreamReader.getAttributeCount(); i++) {
-								key = xmlStreamReader.getAttributeLocalName(i); 
-								value = xmlStreamReader.getAttributeValue(i);
-								
-								if (key.equals("source")) {
-									source = getNodeIndex(value);
-								} else if (key.equals("target")) {
-									target = getNodeIndex(value);
-								}
-							}
-							
-							addLink(net,source,target);
+							parseEdgeElement(xmlStreamReader);
 							
 						} else if (element.equals("data")) {
 							
-							for (int i=0; i<xmlStreamReader.getAttributeCount(); i++) {
-								key = xmlStreamReader.getAttributeLocalName(i); 
-
-								if (key.equals("key")) {
-									attribute = xmlStreamReader.getAttributeValue(i);
-									inData = true;
-								}
-							}
+							parseDataElement(xmlStreamReader);
 						}
 
 						break;
 
-					case XMLStreamConstants.END_ELEMENT: 
-						break;
-					
-					case XMLStreamConstants.ATTRIBUTE:
-						break;
-						
 					case XMLStreamConstants.CHARACTERS:
-						
-						if (inData && (attribute!=null)) {
-							value = xmlStreamReader.getText();
-							
-							if (inNode) {
-								setNodeAttribute(net,nodes-1,attribute,value);
-							} else if (inEdge) {
-								setLinkAttribute(net,source,target,attribute,value);
-							}
-							
-							inData = false;
-						}
-						break;
-
-					case XMLStreamConstants.COMMENT:
-						break;
-						
-					case XMLStreamConstants.SPACE:
-						break;
-
-					case XMLStreamConstants.START_DOCUMENT:
-						// System.out.println("Document Encoding:"+xmlStreamReader.getEncoding());
-						// System.out.println("XML Version:"+xmlStreamReader.getVersion());
-						break;
-												
-					case XMLStreamConstants.END_DOCUMENT:
-						break;
-						
-					case XMLStreamConstants.NAMESPACE:
-						break;
-						
-					case XMLStreamConstants.PROCESSING_INSTRUCTION:
-						// System.out.println("PI Target:"+xmlStreamReader.getPITarget());
-						// System.out.println("PI Data:"+xmlStreamReader.getPIData());
+						parseAttributeValue(xmlStreamReader);
+						attribute = null;
 						break;
 				}
 			}
@@ -185,6 +121,93 @@ public class GraphMLNetworkReader extends AttributeNetworkReader
 		}
 		
 		return net;
+	}
+
+	private void parseAttributeValue(XMLStreamReader xmlStreamReader) 
+	{
+		String value;
+	
+		if (attribute!=null) {
+			value = xmlStreamReader.getText();
+			
+			if (inNode) {
+				setNodeAttribute(net,nodes-1,attribute,value);
+			} else if (inEdge) {
+				setLinkAttribute(net,source,target,attribute,value);
+			}
+		}
+	}
+
+
+	private void parseDataElement (XMLStreamReader xmlStreamReader) 
+	{
+		String key;
+	
+		for (int i=0; i<xmlStreamReader.getAttributeCount(); i++) {
+			key = xmlStreamReader.getAttributeLocalName(i); 
+
+			if (key.equals("key")) {
+				attribute = xmlStreamReader.getAttributeValue(i);
+			}
+		}
+	}
+
+
+
+	private void parseGraphElement (XMLStreamReader xmlStreamReader) 
+	{
+		String key;
+		String value;
+
+		for (int i=0; i<xmlStreamReader.getAttributeCount(); i++) {				
+
+			key = xmlStreamReader.getAttributeLocalName(i);
+			value = xmlStreamReader.getAttributeValue(i);
+			
+			if (key.equals("edgedefault")) {
+				if (value.equals("undirected"))
+					net.setDirected(false);
+			} else if (key.equals("id")) {
+				net.setID(value);
+			}
+				
+		}
+	}
+
+
+	private void parseNodeElement (XMLStreamReader xmlStreamReader) 
+	{
+		String key;
+	
+		nodes++;
+		net.add(nodes-1);
+
+		for (int i=0; i<xmlStreamReader.getAttributeCount(); i++) {
+			key = xmlStreamReader.getAttributeLocalName(i);
+			if (key.equals("id")) {
+				setNodeID(net, nodes-1, xmlStreamReader.getAttributeValue(i));
+			}
+		}
+	}
+
+
+	private void parseEdgeElement(XMLStreamReader xmlStreamReader) 
+	{
+		String key;
+		String value;
+	
+		for (int i=0; i<xmlStreamReader.getAttributeCount(); i++) {
+			key = xmlStreamReader.getAttributeLocalName(i); 
+			value = xmlStreamReader.getAttributeValue(i);
+			
+			if (key.equals("source")) {
+				source = getNodeIndex(value);
+			} else if (key.equals("target")) {
+				target = getNodeIndex(value);
+			}
+		}
+		
+		addLink(net,source,target);
 	}
 
 }

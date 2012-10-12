@@ -1,6 +1,7 @@
 package test.noesis.io;
 
-import java.io.StringReader;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.IOException;
 
 import noesis.AttributeNetwork;
@@ -8,84 +9,73 @@ import noesis.Attribute;
 import noesis.LinkAttribute;
 
 import noesis.io.AttributeNetworkReader;
-import noesis.io.GMLNetworkReader;
+import noesis.io.GraphMLNetworkReader;
 
 import static org.junit.Assert.*;
 
 
 import org.junit.Test;
 
-public class GMLNetworkReaderTest {
+public class GraphMLNetworkReaderTest {
 
-	// Sample GML networks 
+	// Sample GraphML networks 
 	
-	private String[] gml3cycle = new String[] {
-		"graph [",
-		" comment \"This is a sample graph\"",
-		" directed 1",
-		" isPlanar 1",
-		" node [",
-		"   id 1",
-		"   label \"Node 1\"",
-		" ]",
-		" node [",
-		"   id 2",
-		"   label \"Node 2\"",
-		" ]",
-		" node [",
-		"   id 3",
-		"   label \"Node 3\"",
-		" ]",
-		" edge [",
-		"   source 1",
-		"   target 2",
-		"   label \"Edge from node 1 to node 2\"",
-		" ]",
-		" edge [",
-		"   source 2",
-		"   target 3",
-		"   label \"Edge from node 2 to node 3\"",
-		" ]",
-		" edge [",
-		"   source 3",
-		"   target 1",
-		"   label \"Edge from node 3 to node 1\"",
-		" ]",
-		"]" 
+	private String[] graphml3cycle = new String[] {
+			"<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+			"<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\"",  
+			"    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"",
+			"    xsi:schemaLocation=\"http://graphml.graphdrawing.org/xmlns",
+			"    http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd\">",
+			"  <graph id=\"G\" edgedefault=\"directed\">",
+			"    <node id=\"n1\">",
+			"     <data key=\"label\">Node 1</data>",
+			"    </node>",
+			"    <node id=\"n2\">",
+			"     <data key=\"label\">Node 2</data>",
+			"    </node>",
+			"    <node id=\"n3\">",
+			"     <data key=\"label\">Node 3</data>",
+			"    </node>",
+			"    <edge id=\"e1\" source=\"n1\" target=\"n2\">",
+			"     <data key=\"label\">Edge from node 1 to node 2</data>",
+			"    </edge>",
+			"    <edge id=\"e1\" source=\"n2\" target=\"n3\">",
+			"     <data key=\"label\">Edge from node 2 to node 3</data>",
+			"    </edge>",
+			"    <edge id=\"e1\" source=\"n3\" target=\"n1\">",
+			"     <data key=\"label\">Edge from node 3 to node 1</data>",
+			"    </edge>",
+			"  </graph>",
+			"</graphml>"
 	};
-	
-	private String[] gml3undirected = new String[] {
-			"graph [",
-			" comment \"This is a sample graph\"",
-			" directed 0",
-			" node [",
-			"   id 1",
-			"   label \"Node 1\"",
-			" ]",
-			" node [",
-			"   id 2",
-			"   label \"Node 2\"",
-			" ]",
-			" node [",
-			"   id 3",
-			"   label \"Node 3\"",
-			" ]",
-			" edge [",
-			"   source 1",
-			"   target 2",
-			"   label \"Edge from node 1 to node 2\"",
-			" ]",
-			" edge [",
-			"   source 2",
-			"   target 3",
-			"   label \"Edge from node 2 to node 3\"",
-			" ]",
-			" edge [",
-			"   source 3",
-			"   target 1",
-			"   label \"Edge from node 3 to node 1\"",
-			" ]",
-			"]" 
+				
+	private String[] graphml3undirected = new String[] {
+			"<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+			"<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\"",  
+			"    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"",
+			"    xsi:schemaLocation=\"http://graphml.graphdrawing.org/xmlns",
+			"    http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd\">",
+			"  <graph id=\"G\" edgedefault=\"undirected\">",
+			"    <node id=\"n1\">",
+			"     <data key=\"label\">Node 1</data>",
+			"    </node>",
+			"    <node id=\"n2\">",
+			"     <data key=\"label\">Node 2</data>",
+			"    </node>",
+			"    <node id=\"n3\">",
+			"     <data key=\"label\">Node 3</data>",
+			"    </node>",
+			"    <edge id=\"e1\" source=\"n1\" target=\"n2\">",
+			"     <data key=\"label\">Edge from node 1 to node 2</data>",
+			"    </edge>",
+			"    <edge id=\"e1\" source=\"n2\" target=\"n3\">",
+			"     <data key=\"label\">Edge from node 2 to node 3</data>",
+			"    </edge>",
+			"    <edge id=\"e1\" source=\"n3\" target=\"n1\">",
+			"     <data key=\"label\">Edge from node 3 to node 1</data>",
+			"    </edge>",
+			"  </graph>",
+			"</graphml>"
 		};
 	
 	private String networkString (String[] lines)
@@ -119,9 +109,9 @@ public class GMLNetworkReaderTest {
 
 		assertEquals(3, net.size());
 		
-		assertEquals("1", id.get(0));
-		assertEquals("2", id.get(1));
-		assertEquals("3", id.get(2));
+		assertEquals("n1", id.get(0));
+		assertEquals("n2", id.get(1));
+		assertEquals("n3", id.get(2));
 	}
 
 	public void checkLinks (AttributeNetwork net)
@@ -199,10 +189,10 @@ public class GMLNetworkReaderTest {
 	}
 	
 	@Test
-	public void testGML3Cycle() throws IOException
+	public void testGraphML3Cycle() throws IOException
 	{
-		StringReader sr = new StringReader( networkString(gml3cycle));
-		AttributeNetworkReader reader = new GMLNetworkReader(sr);
+		InputStream is = new ByteArrayInputStream(networkString(graphml3cycle).getBytes());
+		AttributeNetworkReader reader = new GraphMLNetworkReader(is);
 	
 		AttributeNetwork net = (AttributeNetwork) reader.read();
 
@@ -218,10 +208,10 @@ public class GMLNetworkReaderTest {
 	}
 
 	@Test
-	public void testGML3Undirected() throws IOException
+	public void testGraphML3Undirected() throws IOException
 	{
-		StringReader sr = new StringReader( networkString(gml3undirected));
-		AttributeNetworkReader reader = new GMLNetworkReader(sr);
+		InputStream is = new ByteArrayInputStream(networkString(graphml3undirected).getBytes());
+		AttributeNetworkReader reader = new GraphMLNetworkReader(is);
 	
 		AttributeNetwork net = (AttributeNetwork) reader.read();
 		

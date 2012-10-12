@@ -6,7 +6,6 @@ package noesis.io;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
-import ikor.collection.DynamicDictionary;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,7 +19,7 @@ import noesis.*;
  * 
  * @author Fernando Berzal
  */
-public class GMLNetworkReader extends NetworkReader
+public class GMLNetworkReader extends AttributeNetworkReader
 {
 	private BufferedReader input;
 	private String line;
@@ -102,19 +101,19 @@ public class GMLNetworkReader extends NetworkReader
 
             } else if ( inEdge && key.startsWith("source") ) {
 
-            	source = ids.get(items[1]);
+            	source = getNodeIndex(items[1]);
 
             } else if ( inEdge && key.startsWith("target") ) {
 
-            	target = ids.get(items[1]);
+            	target = getNodeIndex(items[1]);
             	addLink (net, source,target);
 
             } else if ( Character.isAlphabetic(key.charAt(0)) ){ // Attribute value
 
             	if (inNode) {	
-            		setNodeAttribute(net, nodes-1, items[0], line);
+            		setNodeAttribute(net, nodes-1, items[0], parseAttribute(items[0],line));
             	} else if (inEdge) {
-            		setLinkAttribute(net, source, target, items[0], line);
+            		setLinkAttribute(net, source, target, items[0], parseAttribute(items[0],line));
             	} else {
             	
             		if (key.startsWith("directed")) {
@@ -132,30 +131,10 @@ public class GMLNetworkReader extends NetworkReader
         		
 		return net;		
 	}
-	
-	// Node IDs
-	
-	DynamicDictionary<String,Integer> ids = new DynamicDictionary<String,Integer>();
-	
-	private void setNodeID (AttributeNetwork net, int node, String id)
-	{
-		net.getNodeAttribute("id").set(node, id);
-		ids.set(id,node);
-	}
-	
-	// Links
-	
-	private void addLink (AttributeNetwork net, int source, int target)
-	{
-		net.add(source, target);	
 
-		if (!net.isDirected())
-			net.add(target,source);
-	}
-	
-	// Attributes
-	
-	private String parseAttribute (String id, String line)
+	// Attribute parsing
+
+	private String parseAttribute(String id, String line) 
 	{
 		Pattern pattern = Pattern.compile(id+"\\s+((\\w*)|\"([^\"]+)\")");
 	    Matcher m = pattern.matcher(line);
@@ -172,29 +151,4 @@ public class GMLNetworkReader extends NetworkReader
 		}
 	}
 	
-	// Node attributes
-	
-	private void setNodeAttribute (AttributeNetwork net, int node, String id, String line)
-	{
-		String    value = parseAttribute(id,line);
-		
-		if (value!=null) {
-			net.setNodeAttribute(id, node, value);
-		}
-	}
-
-	// Link attributes
-	
-	private void setLinkAttribute (AttributeNetwork net, int source, int target, String id, String line)
-	{
-		String value = parseAttribute(id,line);
-		
-		if (value!=null) {
-			net.setLinkAttribute(id, source, target, value);
-			
-			if (!net.isDirected())
-				net.setLinkAttribute(id, target, source, value);
-		}
-	}
-
 }

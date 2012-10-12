@@ -35,12 +35,60 @@ public class Sudoku9 extends Sudoku
 	
 	// Candidates
 	
-	private int[] ALL_CANDIDATES = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-	
+	private int[]     DOMAIN = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    private boolean[] valid  = new boolean[10];
+    
 	public int[] values (int i, int j)
 	{
-		return ALL_CANDIDATES;
+		boolean[] valid = checkCandidates(i,j);
+		int       count = 0;
+		
+		for (int v=0; v<DOMAIN.length; v++)
+			if (valid[DOMAIN[v]])
+				count++;
+		
+		int[] candidates = new int[count];
+		int   position = 0;
+		
+		for (int v=0; v<DOMAIN.length; v++) 
+			if (valid[DOMAIN[v]]) {
+				candidates[position] = DOMAIN[v];
+				position++;
+			}
+		
+		return candidates; // candidates vs. DOMAIN
 	}
+	
+	private boolean[] checkCandidates(int i, int j)
+	{
+		for (int v=0; v<valid.length; v++)
+			valid[v] = true;
+		
+		// Row
+		
+		for (int c=0; c<size(); c++)
+			if (!isEmpty(i,c))
+				valid[sudoku[i][c]] = false;
+
+		// Column
+		
+		for (int r=0; r<size(); r++)
+			if (!isEmpty(r,j))
+				valid[sudoku[r][j]] = false;
+
+		// Block
+
+		int row = 3*(i/3);
+		int column = 3*(j/3);
+		
+		for (int r=row; r<row+3; r++)
+			for (int c=column; c<column+3; c++)
+				if (!isEmpty(r,c))
+					valid[sudoku[r][c]] = false;		
+		
+		return valid;
+	}
+
 	
 	
 	// Comprobaciones

@@ -8,9 +8,9 @@
 import java.io.*;
 import java.util.ArrayList;
 
-public class TestSuite implements Runnable
+public class TestSuiteX implements Runnable
 {
-	public static final String FICHERO_POR_DEFECTO = "SudokuHex.txt";
+	public static final String FICHERO_POR_DEFECTO = "SudokuX.txt";
 	public static final long   TIME_LIMIT = 120000;	
 	
 	private String[] sudokus;
@@ -23,7 +23,7 @@ public class TestSuite implements Runnable
 	
 	
 	
-	public TestSuite(String[] sudokus, long plazo)
+	public TestSuiteX(String[] sudokus, long plazo)
 	{
 		this.sudokus = sudokus;
 		this.plazo = plazo;
@@ -33,9 +33,9 @@ public class TestSuite implements Runnable
 	@Override
 	public void run() 
 	{
-		SudokuHex solver;
-		sandbox.ai.SudokuHex sudoku;
-		sandbox.ai.SudokuHex solution;
+		SudokuSolver solver;
+		sandbox.ai.SudokuX sudoku;
+		sandbox.ai.SudokuX solution;
 		
 		long   deadline;
 		
@@ -55,13 +55,13 @@ public class TestSuite implements Runnable
 		for (int i=0; (i<sudokus.length) && (fin<deadline); i++) {
 			
 			System.err.println(i+"...");
-			solver = new SudokuHex (sudokus[i]);
+			solver = new SudokuSolver (sudokus[i]);
 			solver.solve();
 			
 			// check results: sudoku.toString()
 			
-			sudoku = new sandbox.ai.SudokuHex(sudokus[i]);
-			solution = new sandbox.ai.SudokuHex(solver.toString());
+			sudoku = new sandbox.ai.SudokuX(sudokus[i]);
+			solution = new sandbox.ai.SudokuX(solver.toString());
 			
 			System.err.println(solution);
 			
@@ -107,7 +107,7 @@ public class TestSuite implements Runnable
 		// Test suite
 		
 		String[]   sudokus = getSudokus(fichero);
-		TestSuite  testSuite = new TestSuite(sudokus,plazo);
+		TestSuiteX testSuite = new TestSuiteX(sudokus,plazo);
 	
 		// Independent thread
 		

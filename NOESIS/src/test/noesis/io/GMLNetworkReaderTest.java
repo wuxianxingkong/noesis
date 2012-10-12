@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import noesis.AttributeNetwork;
 import noesis.Attribute;
+import noesis.LinkAttribute;
 
 import noesis.io.GMLNetworkReader;
 
@@ -99,10 +100,26 @@ public class GMLNetworkReaderTest {
 		assertNull(net.get(0,2));
 		assertNull(net.get(1,0));
 		assertNull(net.get(2,1));
+		assertNull(net.get(0,0));
+		assertNull(net.get(1,1));
+		assertNull(net.get(2,2));
 	}
 	
 	public void checkLinkLabels (AttributeNetwork net)
 	{		
+		LinkAttribute label = net.getLinkAttribute("label");
+		
+		assertEquals(3, net.links());
+		
+		assertEquals("Edge from node 1 to node 2", label.get(0,1));
+		assertEquals("Edge from node 2 to node 3", label.get(1,2));
+		assertEquals("Edge from node 3 to node 1", label.get(2,0));
+		assertNull(label.get(0,2));
+		assertNull(label.get(1,0));
+		assertNull(label.get(2,1));
+		assertNull(label.get(0,0));
+		assertNull(label.get(1,1));
+		assertNull(label.get(2,2));
 	}
 	
 	public void checkAttributes (AttributeNetwork net)

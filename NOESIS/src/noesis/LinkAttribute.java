@@ -25,12 +25,22 @@ public class LinkAttribute<T> extends Attribute<T>
 	
 	public T get (int source, int target)
 	{
-	   return get(index(source,target));
+		int index = index(source,target);
+		
+		if (index!=-1)
+			return get(index);
+		else
+			return null;
 	}
 	
 	public T set (int source, int target, T value)
 	{
-		return set(index(source,target),value);
+		int index = index(source,target);
+		
+		if (index!=-1)
+			return set(index,value);
+		else
+			return null;
 	}
 	
 }

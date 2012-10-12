@@ -52,7 +52,13 @@ public class AttributeNetwork extends BasicNetwork
 	
 	public int index (int source, int destination)
 	{
-		return index.get(new Pair<Integer,Integer>(source,destination) );
+		Pair<Integer,Integer> key = new Pair<Integer,Integer>(source,destination);
+		Integer pos = index.get(key);
+		
+		if (pos!=null)
+			return pos;
+		else
+			return -1;
 	}
 	
 	// Node attributes

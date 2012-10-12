@@ -251,11 +251,14 @@ public class Vector extends Matrix
 
 	public String toStringSummary() 
 	{
-		return "[n=" + size()
-		     + " min=" + min()
-		     + " max=" + max()
-		     + " avg=" + average()
-		     + " dev=" + deviation() + "]";
+		if (size()>0)
+			return "[n=" + size()
+					+ " min=" + min()
+					+ " max=" + max()
+					+ " avg=" + average()
+					+ " dev=" + deviation() + "]";
+		else
+			return "[n=0]";
 	}
 	
 	

@@ -12,45 +12,45 @@ package sandbox.ai;
  * @author Fernando Berzal
  */
 
-public abstract class SudokuSolver 
+public abstract class Solver 
 {
-	protected Sudoku sudoku;
+	protected Problem problem;
 	
 	
 	/**
 	 * Constructor
-	 * @param template Cadena representando una plantilla de sudoku
+	 * @param problem CSP problem
 	 */
-	public SudokuSolver (Sudoku sudoku)
+	public Solver (Problem problem)
 	{
-		this.sudoku = sudoku;
+		this.problem = problem;
 	}
 	
 	
 	public boolean check ()
 	{
-		return sudoku.check();
+		return problem.check();
 	}
 
 	public boolean isSolved ()
 	{
-		return sudoku.isSolved();
+		return problem.isSolved();
 	}
 
 	
 	/**
-	 * Resolución de sudokus
+	 * Resolución de problemas de satisfacción de restricciones
 	 */
 	public abstract void solve();
 	
 	
 	/**
-     * Representación del sudoku como una cadena de caracteres
+     * Representación del problema como una cadena de caracteres
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString ()
 	{
-		return sudoku.toString();
+		return problem.toString();
 	}
 
 }

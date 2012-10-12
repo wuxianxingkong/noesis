@@ -23,7 +23,7 @@ public class TestX
 	{
 		String       plantilla;
 		Sudoku       sudoku;
-		SudokuSolver solver;
+		Solver solver;
 		
 		long   inicio;
 		long   fin;
@@ -53,7 +53,7 @@ public class TestX
 
 		sudoku = new SudokuX(plantilla);
 		
-		solver = new BacktrackingSudokuSolver (sudoku);	
+		solver = new BacktrackingSolver (sudoku);	
 		solver.solve();
 		
 		fin = (new Date()).getTime();

@@ -1,6 +1,6 @@
 package sandbox.ai;
 
-public abstract class Sudoku 
+public abstract class Sudoku extends Problem 
 {
 	protected int[][] sudoku;	
 
@@ -14,9 +14,24 @@ public abstract class Sudoku
 		sudoku[i][j] = v;
 	}
 	
+	public void set (int var, int value)
+	{
+		set( var/size(), var%size(), value);
+	}
+	
+	public void clear (int var)
+	{
+		set( var/size(), var%size(), emptyValue());
+	}
+	
 	// Dimensions
 	
 	public abstract int size();
+	
+	public final int variables ()
+	{
+		return size()*size();
+	}
 	
 	// Empty cells
 	
@@ -36,26 +51,24 @@ public abstract class Sudoku
 	public abstract boolean isEmpty(int i, int j);
 
 	public abstract int emptyValue ();
-
 	
-	// Check constraints
-	
-	public abstract boolean check ();
-
-	// Solved?
-
-	public boolean isSolved ()
+	public final boolean isUnasigned (int var)
 	{
-		return (emptyCells()==0) && check();
+		return isEmpty(var/size(), var%size());
 	}
 
 	// Candidates
 	
-	public abstract int[] candidates (int i, int j);
+	public abstract int[] values (int i, int j);
 
+	public final int[] values (int var)
+	{
+		return values(var/size(), var%size());
+	}
+	
 	// Compatibility
 
-	public boolean isCompatibleWith (SudokuX template)
+	public boolean isCompatibleWith (Sudoku template)
 	{
 		for (int i=0; i<sudoku.length; i++)
 			for (int j=0; j<sudoku[i].length; j++)

@@ -10,7 +10,7 @@
  * @author Fernando Berzal
  */
 
-public class SudokuSolver extends sandbox.ai.BacktrackingSudokuSolver 
+public class SudokuSolver extends sandbox.ai.BacktrackingSolver 
 {
 	
 	/**

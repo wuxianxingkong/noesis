@@ -52,13 +52,62 @@ public class SudokuHex extends Sudoku
 	}
 	
 	
-	// Candidates
+	// Candidate generation
+	// - DOMAIN: 7s
+	// - Valid values: 2.5s
+	// - MRV heuristic:
 	
-	private int[] ALL_CANDIDATES = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+	private int[] DOMAIN = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 	
-	public int[] candidates (int i, int j)
+	public int[] values (int i, int j)
 	{
-		return ALL_CANDIDATES;
+		boolean[] valid = checkCandidates(i,j);
+		int       count = 0;
+		
+		for (int v=0; v<valid.length; v++)
+			if (valid[DOMAIN[v]])
+				count++;
+		
+		int[] candidates = new int[count];
+		int   position = 0;
+		
+		for (int v=0; v<valid.length; v++) 
+			if (valid[DOMAIN[v]]) {
+				candidates[position] = DOMAIN[v];
+				position++;
+			}
+		
+		return candidates; // candidates vs. DOMAIN
+	}
+	
+	private boolean[] checkCandidates(int i, int j)
+	{
+		for (int v=0; v<SIZE; v++)
+			flag[v] = true;
+		
+		// Row
+		
+		for (int c=0; c<SIZE; c++)
+			if (sudoku[i][c]!=EMPTY)
+				flag[sudoku[i][c]] = false;
+
+		// Column
+		
+		for (int r=0; r<SIZE; r++)
+			if (sudoku[r][j]!=EMPTY)
+				flag[sudoku[r][j]] = false;
+
+		// Block
+
+		int row = 4*(i/4);
+		int column = 4*(j/4);
+		
+		for (int r=row; r<row+4; r++)
+			for (int c=column; c<column+4; c++)
+				if (sudoku[r][c]!=EMPTY)
+					flag[sudoku[r][c]] = false;		
+		
+		return flag;
 	}
 
 	

@@ -26,7 +26,7 @@ public class TestHex
 	{
 		String       plantilla;
 		SudokuHex    sudoku;
-		SudokuSolver solver;
+		Solver solver;
 		
 		long   inicio;
 		long   fin;
@@ -56,7 +56,7 @@ public class TestHex
 
 		sudoku = new SudokuHex (plantilla);
 
-		solver = new BacktrackingSudokuSolver (sudoku);
+		solver = new BacktrackingSolver (sudoku);
 		
 		solver.solve();
 	

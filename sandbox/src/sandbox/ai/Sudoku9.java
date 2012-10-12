@@ -37,7 +37,7 @@ public class Sudoku9 extends Sudoku
 	
 	private int[] ALL_CANDIDATES = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 	
-	public int[] candidates (int i, int j)
+	public int[] values (int i, int j)
 	{
 		return ALL_CANDIDATES;
 	}

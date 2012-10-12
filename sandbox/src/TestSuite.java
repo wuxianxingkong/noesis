@@ -7,7 +7,9 @@
 
 import java.io.*;
 import java.util.ArrayList;
+
 import sandbox.ai.Sudoku;
+import sandbox.ai.SudokuX;
 
 public class TestSuite implements Runnable
 {
@@ -35,8 +37,8 @@ public class TestSuite implements Runnable
 	public void run() 
 	{
 		SudokuSolver solver;
-		Sudoku       sudoku;
-		Sudoku       solution;
+		SudokuX       sudoku;
+		SudokuX       solution;
 		
 		long   deadline;
 		
@@ -61,12 +63,12 @@ public class TestSuite implements Runnable
 			
 			// check results: sudoku.toString()
 			
-			sudoku = new Sudoku(sudokus[i]);
-			solution = new Sudoku(solver.toString());
+			sudoku = new SudokuX(sudokus[i]);
+			solution = new SudokuX(solver.toString());
 			
 			System.err.println(solution);
 			
-			if (solution.isSolvedX() && solution.isCompatibleWith(sudoku))
+			if (solution.isSolved() && solution.isCompatibleWith(sudoku))
 				resueltos++;
 			else
 				errores++;

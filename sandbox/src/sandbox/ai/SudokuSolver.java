@@ -12,25 +12,36 @@ package sandbox.ai;
  * @author Fernando Berzal
  */
 
-public class AbstractSudokuSolver 
+public abstract class SudokuSolver 
 {
+	protected Sudoku sudoku;
+	
 	
 	/**
 	 * Constructor
 	 * @param template Cadena representando una plantilla de sudoku
 	 */
-	public AbstractSudokuSolver (String template)
+	public SudokuSolver (Sudoku sudoku)
 	{
-		
+		this.sudoku = sudoku;
 	}
 	
+	
+	public boolean check ()
+	{
+		return sudoku.check();
+	}
+
+	public boolean isSolved ()
+	{
+		return sudoku.isSolved();
+	}
+
 	
 	/**
 	 * Resolución de sudokus
 	 */
-	public void solve()
-	{
-	}
+	public abstract void solve();
 	
 	
 	/**
@@ -39,7 +50,7 @@ public class AbstractSudokuSolver
 	 */
 	public String toString ()
 	{
-		return "";
+		return sudoku.toString();
 	}
 
 }

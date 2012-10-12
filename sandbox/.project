@@ -3,6 +3,8 @@
 	<name>sandbox</name>
 	<comment></comment>
 	<projects>
+		<project>iKor</project>
+		<project>NOESIS</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

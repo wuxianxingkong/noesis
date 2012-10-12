@@ -19,7 +19,7 @@ public class SudokuSolver extends sandbox.ai.BacktrackingSudokuSolver
 	 */
 	public SudokuSolver (String template)
 	{
-		super(template);
+		super(new sandbox.ai.SudokuX(template));
 	}
 	
 	

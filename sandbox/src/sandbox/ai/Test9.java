@@ -14,7 +14,7 @@ import java.util.Date;
 * @author Fernando Berzal
 */
 
-public class Test 
+public class Test9 
 {
 	public static final String SUDOKU_POR_DEFECTO = "97.3.4.65"
 		                                          + ".2.5.6.8."
@@ -30,7 +30,8 @@ public class Test
 	public static void main (String args[])
 	{
 		String       plantilla;
-		AbstractSudokuSolver sudoku;
+		Sudoku       sudoku;
+		SudokuSolver solver;
 		
 		long   inicio;
 		long   fin;
@@ -58,9 +59,10 @@ public class Test
 
 		inicio = (new Date()).getTime();
 
-		sudoku = new BacktrackingSudokuSolver (plantilla);
+		sudoku = new Sudoku9(plantilla);
 		
-		sudoku.solve();
+		solver = new BacktrackingSudokuSolver (sudoku);	
+		solver.solve();
 		
 		fin = (new Date()).getTime();
 		
@@ -70,7 +72,13 @@ public class Test
 		// Resultado
 		
 		System.out.println("Solución:");
-		System.out.println(sudoku.toString());
+		System.out.println(solver.toString());
+		
+		if (!solver.isSolved())
+			System.out.println("ERROR: SUDOKU NO RESUELTO");
+		else
+			System.out.println("OK");
+				
 		System.out.println("Tiempo: "+tiempo+" milisegundos.");
 	}
 

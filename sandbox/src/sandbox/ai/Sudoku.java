@@ -72,7 +72,7 @@ public abstract class Sudoku extends Problem
 	{
 		for (int i=0; i<sudoku.length; i++)
 			for (int j=0; j<sudoku[i].length; j++)
-				if (!isEmpty(i,j) && (this.get(i,j)!=template.get(i,j)))
+				if (!template.isEmpty(i,j) && (this.get(i,j)!=template.get(i,j)))
 					return false;
 		
 		return true;

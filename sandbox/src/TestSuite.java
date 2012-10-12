@@ -8,12 +8,9 @@
 import java.io.*;
 import java.util.ArrayList;
 
-import sandbox.ai.Sudoku;
-import sandbox.ai.SudokuX;
-
 public class TestSuite implements Runnable
 {
-	public static final String FICHERO_POR_DEFECTO = "80Sudokus-X.dat";
+	public static final String FICHERO_POR_DEFECTO = "SudokuHex.txt";
 	public static final long   TIME_LIMIT = 120000;	
 	
 	private String[] sudokus;
@@ -36,9 +33,9 @@ public class TestSuite implements Runnable
 	@Override
 	public void run() 
 	{
-		SudokuSolver solver;
-		SudokuX       sudoku;
-		SudokuX       solution;
+		SudokuHex solver;
+		sandbox.ai.SudokuHex sudoku;
+		sandbox.ai.SudokuHex solution;
 		
 		long   deadline;
 		
@@ -58,13 +55,13 @@ public class TestSuite implements Runnable
 		for (int i=0; (i<sudokus.length) && (fin<deadline); i++) {
 			
 			System.err.println(i+"...");
-			solver = new SudokuSolver (sudokus[i]);
+			solver = new SudokuHex (sudokus[i]);
 			solver.solve();
 			
 			// check results: sudoku.toString()
 			
-			sudoku = new SudokuX(sudokus[i]);
-			solution = new SudokuX(solver.toString());
+			sudoku = new sandbox.ai.SudokuHex(sudokus[i]);
+			solution = new sandbox.ai.SudokuHex(solver.toString());
 			
 			System.err.println(solution);
 			
@@ -80,6 +77,7 @@ public class TestSuite implements Runnable
 			resueltos--;
 	}	
 
+	
 	
 	public static void main(String[] args) 
 		throws InterruptedException
@@ -118,16 +116,20 @@ public class TestSuite implements Runnable
 		long startTime = System.currentTimeMillis();
 		long endTime = startTime + plazo;
 
+		testSuite.run();
+		/*
+
 		// Workaround: Marks this thread as a daemon thread.
 		// The Java Virtual Machine exits when the only threads running are all daemon threads.
 		t.setDaemon(true); 
 		
 		t.start(); // Kick off calculations
 
-		while (System.currentTimeMillis() < endTime) {
+		while (  (System.currentTimeMillis() < endTime)
+			  && (testSuite.resueltos + testSuite.errores < testSuite.sudokus.length) ) {
 		    // Still within time theshold, wait a little longer
 		    try {
-		         Thread.sleep(plazo/10);  // Sleep T/10 seconds
+		         Thread.sleep(plazo/60);  // Sleep T/60 seconds
 		    } catch (InterruptedException e) {
 		         // Someone woke us up during sleep, that's OK
 		    }
@@ -136,12 +138,13 @@ public class TestSuite implements Runnable
 		// t.interrupt();  // Tell the thread to [voluntarily] stop 
 		// t.join();       // Wait for the thread to cleanup and finish
 			
-		
+		*/		
 		// Resultado
 		
 		long tiempo = testSuite.fin - testSuite.inicio;
 		
 		System.out.println(testSuite.resueltos+", "+testSuite.errores+", "+tiempo);
+
 	}
 	
 	
@@ -176,6 +179,7 @@ public class TestSuite implements Runnable
 	   
 	   return array;
 	}
+
 
 
 }

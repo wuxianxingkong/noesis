@@ -21,12 +21,7 @@ import noesis.analysis.structure.NodeMetrics;
 import noesis.analysis.structure.InDegree;
 import noesis.analysis.structure.OutDegree;
 
-import noesis.io.NetworkReader;
-import noesis.io.GMLNetworkReader;
-import noesis.io.GraphMLNetworkReader;
-import noesis.io.PajekNetworkReader;
-import noesis.io.SNAPNetworkReader;
-import noesis.io.SNAPGZNetworkReader;
+import noesis.io.*;
 
 /**
  * Network statistics.
@@ -69,6 +64,8 @@ public class NetworkStats {
 				reader = new GMLNetworkReader(new FileReader(args[0]));
 			else if (args[0].endsWith(".graphml"))
 				reader = new GraphMLNetworkReader(new FileInputStream(args[0]));
+			else if (args[0].endsWith(".gdf"))
+				reader = new GDFNetworkReader(new FileReader(args[0]));
 			else
 				throw new IOException("Unknown network file format.");
 			
@@ -85,6 +82,9 @@ public class NetworkStats {
 			
 			System.out.println("- Nodes: "+net.size());
 			System.out.println("- Links: "+net.links());
+
+			if (net instanceof AttributeNetwork)
+				printAttributes((AttributeNetwork)net);
 			
 			// Degree distributions
 			
@@ -128,6 +128,22 @@ public class NetworkStats {
 			System.out.println("Time: "+crono);
 		}
 
+	}
+
+	public static void printAttributes (AttributeNetwork net)
+	{
+		System.out.print("- "+ net.getNodeAttributeCount()+" node attributes:");
+		
+		for (int i=0; i<net.getNodeAttributeCount(); i++)
+			System.out.print(" "+net.getNodeAttribute(i).getID());
+		
+		System.out.println();
+		System.out.print("- "+ net.getLinkAttributeCount()+" link attributes:");
+
+		for (int i=0; i<net.getLinkAttributeCount(); i++)
+			System.out.print(" "+net.getLinkAttribute(i).getID());
+
+		System.out.println();		
 	}
 
 	public static void printNode (AttributeNetwork net, int index)

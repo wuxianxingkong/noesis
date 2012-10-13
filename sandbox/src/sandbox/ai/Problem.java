@@ -14,13 +14,13 @@ public abstract class Problem
 		int total = variables();
 		
 		for (i=0; i<total; i++)
-			if (isUnasigned(i))
+			if (isUnassigned(i))
 			   count++;
 		
 		return count;
 	}
 
-	public abstract boolean isUnasigned(int var);
+	public abstract boolean isUnassigned(int var);
 	
 	
 	// Set variable values

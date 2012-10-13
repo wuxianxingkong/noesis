@@ -52,7 +52,7 @@ public abstract class Sudoku extends Problem
 
 	public abstract int emptyValue ();
 	
-	public final boolean isUnasigned (int var)
+	public final boolean isUnassigned (int var)
 	{
 		return isEmpty(var/size(), var%size());
 	}

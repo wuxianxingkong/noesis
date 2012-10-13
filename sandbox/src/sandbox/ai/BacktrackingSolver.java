@@ -55,7 +55,7 @@ public class BacktrackingSolver extends Solver
 	private int firstVariable (Problem problem)
 	{		
 		for (int v=0; v<problem.variables(); v++) 		
-			if (problem.isUnasigned(v))
+			if (problem.isUnassigned(v))
 				return v;
 		
 		return -1;
@@ -68,7 +68,7 @@ public class BacktrackingSolver extends Solver
 		int candidates[];
 		
 		for (int var=0; var<problem.variables(); var++) 		
-			if (problem.isUnasigned(var)) {
+			if (problem.isUnassigned(var)) {
 				candidates = problem.values(var);
 				
 				if (candidates.length<values) {

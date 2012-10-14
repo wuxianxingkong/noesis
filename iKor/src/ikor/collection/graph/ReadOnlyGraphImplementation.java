@@ -6,7 +6,7 @@ package ikor.collection.graph;
 //Author:      Fernando Berzal
 //E-mail:      berzal@acm.org
 
-import ikor.collection.List;
+import ikor.collection.ReadOnlyList;
 
 /**
  * Explicit graph ancillary base class (with Nodes and Links).
@@ -14,7 +14,7 @@ import ikor.collection.List;
  * @author Fernando Berzal
  */
 
-public abstract class ExplicitGraphImplementation<V,E> implements ExplicitGraph<V,E> 
+public abstract class ReadOnlyGraphImplementation<V,E> implements ReadOnlyGraphInterface<V,E> 
 {
 	// Nodes
 	
@@ -40,17 +40,17 @@ public abstract class ExplicitGraphImplementation<V,E> implements ExplicitGraph<
 	}
 	
 	
-	public abstract List<GraphLink<E>> outLinkList (int node);
+	public abstract ReadOnlyList<GraphLink<E>> outLinkList (int node);
 
-	public final List<GraphLink<E>> outLinkList (V node)
+	public final ReadOnlyList<GraphLink<E>> outLinkList (V node)
 	{
 		return outLinkList(index(node));
 	}
 
 	
-	public abstract List<GraphLink<E>> inLinkList (int node);
+	public abstract ReadOnlyList<GraphLink<E>> inLinkList (int node);
 		
-	public final List<GraphLink<E>> inLinkList (V node)
+	public final ReadOnlyList<GraphLink<E>> inLinkList (V node)
 	{
 		return inLinkList(index(node));
 	}		
@@ -60,7 +60,7 @@ public abstract class ExplicitGraphImplementation<V,E> implements ExplicitGraph<
 	@Override
 	public final int[] outLinks(int node) 
 	{
-		List<GraphLink<E>> list = outLinkList(node);
+		ReadOnlyList<GraphLink<E>> list = outLinkList(node);
 		int[] array = new int[list.size()];
 		
 		if (isDirected()) {
@@ -93,7 +93,7 @@ public abstract class ExplicitGraphImplementation<V,E> implements ExplicitGraph<
 	@Override
 	public final int[] inLinks(int node) 
 	{
-		List<GraphLink<E>> list = inLinkList(node);
+		ReadOnlyList<GraphLink<E>> list = inLinkList(node);
 		int[] array = new int[list.size()];
 		
 		if (isDirected()) {

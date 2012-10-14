@@ -13,7 +13,7 @@ import java.util.Comparator;
  * 
  * @author Fernando Berzal
  */
-public interface PriorityQueue<T> extends MutableCollection<T> 
+public interface PriorityQueue<T> extends Collection<T> 
 {
 	/**
 	 * Retrieves, but does not remove, the head of this queue.

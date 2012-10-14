@@ -1,8 +1,8 @@
 package test.ikor.collection.graph;
 
 import test.ikor.collection.MockVisitor;
-import ikor.collection.graph.DynamicGraph;
-import ikor.collection.graph.ExplicitGraph;
+import ikor.collection.graph.GraphImplementation;
+import ikor.collection.graph.ReadOnlyGraphInterface;
 import ikor.collection.graph.GraphLink;
 import ikor.collection.graph.GraphNode;
 
@@ -10,9 +10,9 @@ public class MockObjects {
 	
 	// Undirected graph
 	
-	public static DynamicGraph<String,Integer> roadmap ()
+	public static GraphImplementation<String,Integer> roadmap ()
 	{
-		DynamicGraph<String,Integer> graph = new DynamicGraph<String,Integer>(false);
+		GraphImplementation<String,Integer> graph = new GraphImplementation<String,Integer>(false);
 
 		graph.add("Granada");
 		graph.add("Motril");
@@ -38,7 +38,7 @@ public class MockObjects {
 	}
 	
 	
-	public static MockVisitor<GraphNode<String>> roadmapBFSVisitor (ExplicitGraph<String,Integer> roadmap)
+	public static MockVisitor<GraphNode<String>> roadmapBFSVisitor (ReadOnlyGraphInterface<String,Integer> roadmap)
 	{
 		MockVisitor<GraphNode<String>> visitor = new MockVisitor<GraphNode<String>>();
 		
@@ -57,7 +57,7 @@ public class MockObjects {
 	}
 
 	
-	public static MockVisitor<GraphNode<String>> roadmapDFSVisitor (ExplicitGraph<String,Integer> roadmap)
+	public static MockVisitor<GraphNode<String>> roadmapDFSVisitor (ReadOnlyGraphInterface<String,Integer> roadmap)
 	{
 		MockVisitor<GraphNode<String>> visitor = new MockVisitor<GraphNode<String>>();
 		
@@ -75,7 +75,7 @@ public class MockObjects {
 	}	
 
 	
-	public static MockVisitor<GraphLink<Integer>> roadmapBFSLinkVisitor (ExplicitGraph<String,Integer> map)
+	public static MockVisitor<GraphLink<Integer>> roadmapBFSLinkVisitor (ReadOnlyGraphInterface<String,Integer> map)
 	{
 		MockVisitor<GraphLink<Integer>> visitor = new MockVisitor<GraphLink<Integer>>();
 		
@@ -111,7 +111,7 @@ public class MockObjects {
 	}
 
 	
-	public static MockVisitor<GraphLink<Integer>> roadmapDFSLinkVisitor (ExplicitGraph<String,Integer> map)
+	public static MockVisitor<GraphLink<Integer>> roadmapDFSLinkVisitor (ReadOnlyGraphInterface<String,Integer> map)
 	{
 		MockVisitor<GraphLink<Integer>> visitor = new MockVisitor<GraphLink<Integer>>();
 		
@@ -151,9 +151,9 @@ public class MockObjects {
 	
 	// Directed graph
 	
-	public static DynamicGraph<String,String> web ()
+	public static GraphImplementation<String,String> web ()
 	{
-		DynamicGraph<String,String> graph = new DynamicGraph<String,String>(true);
+		GraphImplementation<String,String> graph = new GraphImplementation<String,String>(true);
 
 		graph.add("home");
 		graph.add("C");
@@ -186,7 +186,7 @@ public class MockObjects {
 		return graph;		
 	}
 
-	public static MockVisitor<GraphNode<String>> webBFSVisitor (ExplicitGraph<String,String> web)
+	public static MockVisitor<GraphNode<String>> webBFSVisitor (ReadOnlyGraphInterface<String,String> web)
 	{
 		MockVisitor<GraphNode<String>> visitor = new MockVisitor<GraphNode<String>>();
 
@@ -204,7 +204,7 @@ public class MockObjects {
 		return visitor;
 	}
 	
-	public static MockVisitor<GraphNode<String>> webDFSVisitor (ExplicitGraph<String,String> web)
+	public static MockVisitor<GraphNode<String>> webDFSVisitor (ReadOnlyGraphInterface<String,String> web)
 	{
 		MockVisitor<GraphNode<String>> visitor = new MockVisitor<GraphNode<String>>();
 	
@@ -226,7 +226,7 @@ public class MockObjects {
 	}
 	
 	
-	public static MockVisitor<GraphLink<String>> webBFSLinkVisitor (ExplicitGraph<String,String> web)
+	public static MockVisitor<GraphLink<String>> webBFSLinkVisitor (ReadOnlyGraphInterface<String,String> web)
 	{
 		MockVisitor<GraphLink<String>> visitor = new MockVisitor<GraphLink<String>>();
 		
@@ -251,7 +251,7 @@ public class MockObjects {
 		return visitor;
 	}
 
-	public static MockVisitor<GraphLink<String>> webDFSLinkVisitor (ExplicitGraph<String,String> web)
+	public static MockVisitor<GraphLink<String>> webDFSLinkVisitor (ReadOnlyGraphInterface<String,String> web)
 	{
 		MockVisitor<GraphLink<String>> visitor = new MockVisitor<GraphLink<String>>();
 		

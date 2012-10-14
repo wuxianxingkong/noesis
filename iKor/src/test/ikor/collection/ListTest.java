@@ -174,8 +174,10 @@ public class ListTest {
 		assertEquals("three+", list.get(2));
 		
 		try {
+			// Automatic addition of new nodes
 			list.set(3, "out");
-			fail("list.set() should have thrown an exception!");
+			assertEquals("out",list.get(3));
+			// fail("list.set() should have thrown an exception!");
 		} catch (Exception error) {
 		}
 		

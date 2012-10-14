@@ -7,7 +7,7 @@ package ikor.collection.graph.search;
 // E-mail:      berzal@acm.org
 
 import ikor.collection.Visitor;
-import ikor.collection.graph.ExplicitGraph;
+import ikor.collection.graph.ReadOnlyGraphInterface;
 import ikor.collection.graph.GraphNode;
 import ikor.collection.graph.GraphLink;
 
@@ -22,7 +22,7 @@ public abstract class GraphSearch<V,E>
 {
 	public enum State { UNDISCOVERED, DISCOVERED, EXPLORED };
 
-	protected ExplicitGraph<V,E> graph;
+	protected ReadOnlyGraphInterface<V,E> graph;
 	protected State[]            state;
 
 	private   Visitor<GraphNode<V>> nodeVisitor;
@@ -31,12 +31,12 @@ public abstract class GraphSearch<V,E>
 
     // Constructor
 
-	public GraphSearch (ExplicitGraph<V,E> graph)
+	public GraphSearch (ReadOnlyGraphInterface<V,E> graph)
 	{
 		this(graph,null,null);
 	}
 
-	public GraphSearch (ExplicitGraph<V,E> graph, Visitor<GraphNode<V>> nodeVisitor, Visitor<GraphLink<E>> linkVisitor)
+	public GraphSearch (ReadOnlyGraphInterface<V,E> graph, Visitor<GraphNode<V>> nodeVisitor, Visitor<GraphLink<E>> linkVisitor)
 	{
 		this.graph       = graph;
 		this.state       = new State[graph.size()];

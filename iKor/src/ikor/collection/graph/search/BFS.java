@@ -6,11 +6,11 @@ package ikor.collection.graph.search;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
-import ikor.collection.List;
+import ikor.collection.ReadOnlyList;
 import ikor.collection.Queue;
 import ikor.collection.Visitor;
 
-import ikor.collection.graph.ExplicitGraph;
+import ikor.collection.graph.ReadOnlyGraphInterface;
 import ikor.collection.graph.GraphNode;
 import ikor.collection.graph.GraphLink;
 
@@ -25,12 +25,12 @@ public class BFS<V,E> extends GraphSearch<V,E>
 
     // Constructor
 
-	public BFS (ExplicitGraph<V,E> graph)
+	public BFS (ReadOnlyGraphInterface<V,E> graph)
 	{
 		super(graph);
 	}
 
-	public BFS (ExplicitGraph<V,E> graph, Visitor<GraphNode<V>> nodeVisitor, Visitor<GraphLink<E>> linkVisitor)
+	public BFS (ReadOnlyGraphInterface<V,E> graph, Visitor<GraphNode<V>> nodeVisitor, Visitor<GraphLink<E>> linkVisitor)
 	{
 		super(graph, nodeVisitor, linkVisitor);
 	}
@@ -42,7 +42,7 @@ public class BFS<V,E> extends GraphSearch<V,E>
 		Queue<GraphNode<V>> queue = new Queue<GraphNode<V>>();
 		int                 currentIndex, targetIndex;
 		GraphNode<V>        current, target;
-		List<GraphLink<E>>  links;
+		ReadOnlyList<GraphLink<E>>  links;
 		GraphLink<E>        link;
 
 		queue.enqueue ( start );

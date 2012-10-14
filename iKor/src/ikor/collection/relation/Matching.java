@@ -12,20 +12,20 @@ import ikor.collection.*;
 
 public abstract class Matching<X,Y> implements Relation<X,Y>
 {
-	private List<X> x;
-	private List<Y> y;
+	private ReadOnlyList<X> x;
+	private ReadOnlyList<Y> y;
 
 	private int matchX[];
 	private int matchY[];
 
 
 	@Override
-	public List<X> getX ()
+	public ReadOnlyList<X> getX ()
 	{
 		return x;
 	}
 
-	public void setX (List<X> collection)
+	public void setX (ReadOnlyList<X> collection)
 	{
 		this.x = collection;
 		matchX = new int[x.size()];
@@ -35,12 +35,12 @@ public abstract class Matching<X,Y> implements Relation<X,Y>
 	}
 
 	@Override
-	public List<Y> getY ()
+	public ReadOnlyList<Y> getY ()
 	{
 		return y;
 	}
 
-	public void setY (List<Y> collection)
+	public void setY (ReadOnlyList<Y> collection)
 	{
 		this.y = collection;
 		matchY = new int[y.size()];
@@ -130,7 +130,7 @@ public abstract class Matching<X,Y> implements Relation<X,Y>
 
 
 	@Override
-	public Collection<Y> getY(X key) {
+	public ReadOnlyCollection<Y> getY(X key) {
 		
 		int xIndex = x.index(key);
 
@@ -141,7 +141,7 @@ public abstract class Matching<X,Y> implements Relation<X,Y>
 	}
 	
 	@Override
-	public Collection<X> getX(Y key) {
+	public ReadOnlyCollection<X> getX(Y key) {
 		
 		int yIndex = y.index(key);
 
@@ -164,7 +164,7 @@ public abstract class Matching<X,Y> implements Relation<X,Y>
 
 
 	@Override
-	public Collection<Relation.Pair<X, Y>> pairs() {
+	public ReadOnlyCollection<Relation.Pair<X, Y>> pairs() {
 		
 		DynamicList<Pair<X,Y>> list = new DynamicList<Pair<X,Y>>();
 		

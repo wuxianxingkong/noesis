@@ -16,16 +16,16 @@ import java.util.Iterator;
 
 public class GraphNodeIterator<V> implements Iterator<V> 
 {
-	Graph<V,?> graph;
+	ReadOnlyGraph<V,?> graph;
 	int        index;
 	int        last;
 
-	public GraphNodeIterator (Graph<V,?> graph)
+	public GraphNodeIterator (ReadOnlyGraph<V,?> graph)
 	{
 		this(graph,0,graph.size()-1);
 	}
 
-	public GraphNodeIterator (Graph<V,?> graph, int start, int end)
+	public GraphNodeIterator (ReadOnlyGraph<V,?> graph, int start, int end)
 	{
 		this.graph = graph;
 		this.index = start;
@@ -48,6 +48,6 @@ public class GraphNodeIterator<V> implements Iterator<V>
 
 	@Override
 	public void remove() {
-		throw new UnsupportedOperationException("Node removal unavailable from graph iterator.");
+		throw new UnsupportedOperationException("Node removal unavailable from read-only graph iterator.");
 	}
 }

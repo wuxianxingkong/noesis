@@ -13,7 +13,7 @@ package ikor.collection.graph;
  * @author Fernando Berzal
  */
 
-public interface MutableExplicitGraph<V, E> extends MutableGraph<V,E>, ExplicitGraph<V, E> 
+public interface GraphInterface<V, E> extends Graph<V,E>, ReadOnlyGraphInterface<V, E> 
 {
 	// Nodes
 	

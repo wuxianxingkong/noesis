@@ -1,7 +1,7 @@
 package ikor.collection.sequence;
 
-import ikor.collection.List;
+import ikor.collection.ReadOnlyList;
 
-public interface Sequence<T> extends List<T>
+public interface Sequence<T> extends ReadOnlyList<T>
 {
 }

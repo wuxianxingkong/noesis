@@ -16,17 +16,17 @@ import java.util.Iterator;
 
 public class GraphLinkIterator<E> implements Iterator<E> 
 {
-	Graph<?,E> graph;
+	ReadOnlyGraph<?,E> graph;
 	int        nodeIndex, linkIndex;
 	int        lastNode, lastLink;
 	int[]      links;
 
-	public GraphLinkIterator (Graph<?,E> graph)
+	public GraphLinkIterator (ReadOnlyGraph<?,E> graph)
 	{
 		this(graph,0,graph.size()-1);
 	}
 
-	public GraphLinkIterator (Graph<?,E> graph, int start, int end)
+	public GraphLinkIterator (ReadOnlyGraph<?,E> graph, int start, int end)
 	{
 		this.graph     = graph;
 		this.nodeIndex = start;

@@ -53,7 +53,7 @@ public class DynamicPriorityQueue<T> implements PriorityQueue<T>
 	/**
 	 * Adds the specified element to the queue: O(log n).
 	 * 
-	 * @see ikor.collection.MutableCollection#add(java.lang.Object)
+	 * @see ikor.collection.Collection#add(java.lang.Object)
 	 */
 	@Override
 	public boolean add(T object) 
@@ -64,7 +64,7 @@ public class DynamicPriorityQueue<T> implements PriorityQueue<T>
 	/**
 	 * Removes a single instance of the specified element from this priority queue, if it is present: O(n).
 	 * 
-	 * @see ikor.collection.MutableCollection#remove(java.lang.Object)
+	 * @see ikor.collection.Collection#remove(java.lang.Object)
 	 */
 	@Override
 	public boolean remove(T object) 
@@ -75,7 +75,7 @@ public class DynamicPriorityQueue<T> implements PriorityQueue<T>
 	/**
 	 * Removes all elements from this priority queue.
 	 * 
-	 * @see ikor.collection.MutableCollection#clear()
+	 * @see ikor.collection.Collection#clear()
 	 */
 	@Override
 	public void clear() 
@@ -86,7 +86,7 @@ public class DynamicPriorityQueue<T> implements PriorityQueue<T>
 	/**
 	 * Number of elements in this priority queue: O(1).
 	 * 
-	 * @see ikor.collection.Collection#size()
+	 * @see ikor.collection.ReadOnlyCollection#size()
 	 */
 	@Override
 	public int size() 
@@ -97,7 +97,7 @@ public class DynamicPriorityQueue<T> implements PriorityQueue<T>
 	/**
 	 * Returns true if this collection contains the specified element: O(n).
 	 * 
-	 * @see ikor.collection.Collection#contains(java.lang.Object)
+	 * @see ikor.collection.ReadOnlyCollection#contains(java.lang.Object)
 	 */
 	@Override
 	public boolean contains(T object) 
@@ -109,7 +109,7 @@ public class DynamicPriorityQueue<T> implements PriorityQueue<T>
 	 * Returns an iterator over the elements in this priority queue 
 	 * (in the order defined by the priority queue).
 	 * 
-	 * @see ikor.collection.Collection#iterator()
+	 * @see ikor.collection.ReadOnlyCollection#iterator()
 	 */
 	@Override
 	public Iterator<T> iterator() 

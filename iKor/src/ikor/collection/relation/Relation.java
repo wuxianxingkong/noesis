@@ -6,7 +6,7 @@ package ikor.collection.relation;
 // Author:      Fernando Berzal Galiano
 // E-mail:      berzal@acm.org
 
-import ikor.collection.Collection;
+import ikor.collection.ReadOnlyCollection;
 
 /**
  * Generic relation interface.
@@ -30,21 +30,21 @@ import ikor.collection.Collection;
  * @author Fernando Berzal
  */
 
-public interface Relation<X,Y> extends Collection<Relation.Pair<X,Y>>
+public interface Relation<X,Y> extends ReadOnlyCollection<Relation.Pair<X,Y>>
 {
 	/**
 	 * Returns the collection of values to which the specified element is related to.
 	 * @param key the element whose associated value is to be returned.
 	 * @return the values to which the specified element is related to.
 	 */
-	public Collection<Y> getY (X key);
+	public ReadOnlyCollection<Y> getY (X key);
 
 	/**
 	 * Returns the collection of values to which the specified element is related to.
 	 * @param key the element whose associated value is to be returned.
 	 * @return the values to which the specified element is related to.
 	 */
-	public Collection<X> getX (Y key);
+	public ReadOnlyCollection<X> getX (Y key);
 	
 
 	// Collection views
@@ -52,17 +52,17 @@ public interface Relation<X,Y> extends Collection<Relation.Pair<X,Y>>
 	/**
 	 * Returns the CURRENT domain of the relation.
 	 */
-	public Collection<X> getX(); 
+	public ReadOnlyCollection<X> getX(); 
  
 	/**
 	 * Returns the CURRENT range of the relation.
 	 */
-	public Collection<Y> getY();
+	public ReadOnlyCollection<Y> getY();
  
 	/**
 	 * Returns the CURRENT relation as a collection of pairs.
 	 */
-	public Collection<Relation.Pair<X,Y>> pairs();
+	public ReadOnlyCollection<Relation.Pair<X,Y>> pairs();
  
 	/**
 	 * Generic interface for dictionary entries.

@@ -7,25 +7,30 @@ package ikor.collection;
 // E-mail:      berzal@acm.org
 
 /**
- * Generic list interface. 
- * 
- * Lists are ordered collections that allow indexed access to their contents.
- * 
- * @author Fernando Berzal
- */
-public interface List<T> extends Collection<T>
-{
-  /**
-   * Returns the element at the specified position in this list.
-   * @param index Element position
-   * @return Element in the collection
-   */
-  public T get (int index);
+* Generic list interface.
+* 
+* In contrast to the standard Java Collections Framework, mutable collections
+* are separated from the standard immutable collection interfaces (as in COCOA
+* for Mac OS X and iOS). 
+* 
+* @author Fernando Berzal
+*/
 
+public interface List<T> extends ReadOnlyList<T>, Collection<T> 
+{	  
   /**
-   * Returns the index of the specified element.
-   * @param index Element
-   * @return Index of the specified element within the list (-1 if it is not in the list)
+   * Replaces the element at the specified position in this list with the specified element.
+   * @param index index of the element to replace
+   * @param object element to be stored at the specified position
+   * @return the element previously at the specified position
    */
-  public int index (T object);
+  public T set (int index, T object);
+    
+  /**
+   * Removes an element from the collection.
+   * @param index Element position
+   * @return element removed from this list, if present
+   */
+  public T remove (int index);
+    
 }

@@ -17,8 +17,8 @@ import ikor.collection.graph.search.*;
 public class GraphTraversalTest
 {
 	
-	DynamicGraph<String,Integer> roadmap;
-	DynamicGraph<String,String>  web;
+	GraphImplementation<String,Integer> roadmap;
+	GraphImplementation<String,String>  web;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -143,8 +143,8 @@ public class GraphTraversalTest
 
 	public static void main (String args[])
 	{
-		DynamicGraph<String,Integer> map = MockObjects.roadmap();
-		DynamicGraph<String,String>  web = MockObjects.web();
+		GraphImplementation<String,Integer> map = MockObjects.roadmap();
+		GraphImplementation<String,String>  web = MockObjects.web();
 
 		GraphSearch<String,Integer>  mapSearch; 
 		GraphSearch<String,String>   webSearch;

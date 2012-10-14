@@ -21,7 +21,7 @@ import java.util.Iterator;
  *
  * @author Fernando Berzal
  */
-public class Stack<T> implements Collection<T>
+public class Stack<T> implements ReadOnlyCollection<T>
 {
     /**
      * Collection. ArrayList is roughly equivalent to Vector, except that it is unsynchronized

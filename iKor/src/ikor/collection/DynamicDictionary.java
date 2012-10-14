@@ -9,9 +9,9 @@ package ikor.collection;
 import java.util.Iterator;
 import java.util.HashMap;
 
-import ikor.collection.Collection;
+import ikor.collection.ReadOnlyCollection;
+import ikor.collection.ReadOnlyDictionary;
 import ikor.collection.Dictionary;
-import ikor.collection.MutableDictionary;
 
 // Dictionary
 // ----------
@@ -28,7 +28,7 @@ import ikor.collection.MutableDictionary;
  * @author Fernando Berzal
  */
 
-public class DynamicDictionary<K,V> implements MutableDictionary<K,V>
+public class DynamicDictionary<K,V> implements Dictionary<K,V>
 {
 	private HashMap<K,V> map = new HashMap<K,V>();
 	
@@ -42,7 +42,7 @@ public class DynamicDictionary<K,V> implements MutableDictionary<K,V>
 	// Views
 
 	@Override
-	public Collection<K> keys() 
+	public ReadOnlyCollection<K> keys() 
 	{
 		DynamicList<K> list = new DynamicList<K>();
 		
@@ -54,7 +54,7 @@ public class DynamicDictionary<K,V> implements MutableDictionary<K,V>
 	}
 
 	@Override
-	public Collection<V> values() 
+	public ReadOnlyCollection<V> values() 
 	{
 		DynamicList<V> list = new DynamicList<V>();
 		
@@ -66,9 +66,9 @@ public class DynamicDictionary<K,V> implements MutableDictionary<K,V>
 	}
 
 	@Override
-	public Collection<Dictionary.Entry<K, V>> entries() 
+	public ReadOnlyCollection<ReadOnlyDictionary.Entry<K, V>> entries() 
 	{
-		DynamicList<Dictionary.Entry<K, V>> list = new DynamicList<Dictionary.Entry<K, V>>();
+		DynamicList<ReadOnlyDictionary.Entry<K, V>> list = new DynamicList<ReadOnlyDictionary.Entry<K, V>>();
 		
 		for (java.util.Map.Entry<K,V> entry: map.entrySet()) {
 			list.add(new ImmutableEntry(entry.getKey(), entry.getValue()));
@@ -77,7 +77,7 @@ public class DynamicDictionary<K,V> implements MutableDictionary<K,V>
 		return list;
 	}
 	
-	public class ImmutableEntry implements Dictionary.Entry<K,V> 
+	public class ImmutableEntry implements ReadOnlyDictionary.Entry<K,V> 
 	{
 		private K key;
 		private V value;
@@ -148,9 +148,9 @@ public class DynamicDictionary<K,V> implements MutableDictionary<K,V>
     {
         String str = ""; // "[Dictionary]\n"; 
         
-        Collection<Dictionary.Entry<K,V>> entries = this.entries();
+        ReadOnlyCollection<ReadOnlyDictionary.Entry<K,V>> entries = this.entries();
         
-        for (Dictionary.Entry<K,V> entry: entries) {
+        for (ReadOnlyDictionary.Entry<K,V> entry: entries) {
         	str += "" + entry.getKey() + " = " + entry.getValue() + "\n";       	
         }
         

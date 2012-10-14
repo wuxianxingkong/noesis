@@ -6,15 +6,15 @@ package ikor.collection.graph;
 //Author:      Fernando Berzal
 //E-mail:      berzal@acm.org
 
-import ikor.collection.List;
+import ikor.collection.ReadOnlyList;
 
 /**
- * Explicit graph base class (with Nodes and Links).
+ * Read-only graph base class (with Nodes and Links).
  * 
  * @author Fernando Berzal
  */
 
-public interface ExplicitGraph<V,E> extends Graph<V, E> 
+public interface ReadOnlyGraphInterface<V,E> extends ReadOnlyGraph<V, E> 
 {
 	// Nodes
 	
@@ -30,9 +30,9 @@ public interface ExplicitGraph<V,E> extends Graph<V, E>
 	public GraphLink<E> getLink(V source, V destination);
 	
 	
-	public List<GraphLink<E>> outLinkList (int node);
-	public List<GraphLink<E>> outLinkList (V node);
+	public ReadOnlyList<GraphLink<E>> outLinkList (int node);
+	public ReadOnlyList<GraphLink<E>> outLinkList (V node);
 	
-	public List<GraphLink<E>> inLinkList (int node);
-	public List<GraphLink<E>> inLinkList (V node);
+	public ReadOnlyList<GraphLink<E>> inLinkList (int node);
+	public ReadOnlyList<GraphLink<E>> inLinkList (V node);
 }

@@ -17,16 +17,16 @@ import java.util.Iterator;
  */
 public class ListIterator<T> implements Iterator<T> 
 {
-	List<T> list;
+	ReadOnlyList<T> list;
 	int     index;
 	int     last;
 
-	public ListIterator (List<T> list)
+	public ListIterator (ReadOnlyList<T> list)
 	{
 		this(list,0,list.size()-1);
 	}
 
-	public ListIterator (List<T> list, int start, int end)
+	public ListIterator (ReadOnlyList<T> list, int start, int end)
 	{
 		this.list  = list;
 		this.index = start;

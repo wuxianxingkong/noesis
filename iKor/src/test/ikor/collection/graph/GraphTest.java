@@ -4,22 +4,22 @@ import static org.junit.Assert.*;
 
 import java.util.Iterator;
 
-import ikor.collection.List;
-import ikor.collection.graph.DynamicGraph;
+import ikor.collection.ReadOnlyList;
+import ikor.collection.graph.GraphImplementation;
 import ikor.collection.graph.GraphLink;
 
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * JUnit test for {@link ikor.collection.graph.DynamicGraph}.
+ * JUnit test for {@link ikor.collection.graph.GraphImplementation}.
  * @author Fernando Berzal
  *
  */
 public class GraphTest {
 
-	DynamicGraph<String,Integer> roadmap;
-	DynamicGraph<String,String>  web;
+	GraphImplementation<String,Integer> roadmap;
+	GraphImplementation<String,String>  web;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -33,7 +33,7 @@ public class GraphTest {
 
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#isDirected()}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#isDirected()}.
 	 */
 	@Test
 	public void testIsDirected() {
@@ -42,8 +42,8 @@ public class GraphTest {
 	}
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#get(int)}, 
-	 * which relies on {@link ikor.collection.graph.DynamicGraph#getNode(int)}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#get(int)}, 
+	 * which relies on {@link ikor.collection.graph.GraphImplementation#getNode(int)}.
 	 */
 	
 	@Test
@@ -70,7 +70,7 @@ public class GraphTest {
 	}
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#getLink(int, int)}, 
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#getLink(int, int)}, 
 	 */
 	@Test
 	public void testLinks() {
@@ -110,7 +110,7 @@ public class GraphTest {
 	
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#index(java.lang.Object)}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#index(java.lang.Object)}.
 	 */
 	@Test
 	public void testIndex() {
@@ -136,8 +136,8 @@ public class GraphTest {
 	}
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#index(ikor.collection.graph.Node)}
-	 * and {@link ikor.collection.graph.DynamicGraph#getNode(int)}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#index(ikor.collection.graph.Node)}
+	 * and {@link ikor.collection.graph.GraphImplementation#getNode(int)}.
 	 */
 	@Test
 	public void testIndexNode() {
@@ -150,7 +150,7 @@ public class GraphTest {
 	}
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#size()}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#size()}.
 	 */
 	@Test
 	public void testSize() {
@@ -159,7 +159,7 @@ public class GraphTest {
 	}
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#links()}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#links()}.
 	 */
 	@Test
 	public void testLinkCount() {
@@ -168,7 +168,7 @@ public class GraphTest {
 	}
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#degree(int)}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#degree(int)}.
 	 */
 	
 	@Test
@@ -199,7 +199,7 @@ public class GraphTest {
 	}
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#inDegree(int)}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#inDegree(int)}.
 	 */
 	@Test
 	public void testInDegree() {
@@ -229,7 +229,7 @@ public class GraphTest {
 	}
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#outDegree(int)}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#outDegree(int)}.
 	 */
 	@Test
 	public void testOutDegree() 
@@ -260,7 +260,7 @@ public class GraphTest {
 
 	
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#outLinks(int)}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#outLinks(int)}.
 	 */
 	@Test
 	public void testOutLinks() 
@@ -316,7 +316,7 @@ public class GraphTest {
 
 	
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#outLinkList(int)}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#outLinkList(int)}.
 	 */
 	@Test
 	public void testOutLinkList() 
@@ -332,7 +332,7 @@ public class GraphTest {
 		assertEquals(2, roadmap.outLinkList("Almería").size() );
 		assertEquals(2, roadmap.outLinkList("Guadix").size() );
 		
-		List<GraphLink<Integer>> list = roadmap.outLinkList("Granada");
+		ReadOnlyList<GraphLink<Integer>> list = roadmap.outLinkList("Granada");
 				
 		assertEquals ( "Granada", list.get(0).getSource().getContent() );
 		assertEquals ( "Motril", list.get(0).getDestination().getContent() );
@@ -367,7 +367,7 @@ public class GraphTest {
 		assertEquals(1, web.outLinkList("Internet").size() );
 		assertEquals(0, web.outLinkList("ASP.NET").size() );		
 
-		List<GraphLink<String>> links = web.outLinkList("Java");
+		ReadOnlyList<GraphLink<String>> links = web.outLinkList("Java");
 
 		assertEquals ( "Java", links.get(0).getSource().getContent() );
 		assertEquals ( "C", links.get(0).getDestination().getContent() );
@@ -380,7 +380,7 @@ public class GraphTest {
 	}
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#inLinks(int)}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#inLinks(int)}.
 	 */
 	@Test
 	public void testInLinks() 
@@ -435,7 +435,7 @@ public class GraphTest {
 	}
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#inLinkList(int)}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#inLinkList(int)}.
 	 */
 	@Test
 	public void testInLinkList() 
@@ -451,7 +451,7 @@ public class GraphTest {
 		assertEquals(2, roadmap.inLinkList("Almería").size() );
 		assertEquals(2, roadmap.inLinkList("Guadix").size() );
 		
-		List<GraphLink<Integer>> list = roadmap.inLinkList("Granada");
+		ReadOnlyList<GraphLink<Integer>> list = roadmap.inLinkList("Granada");
 				
 		assertEquals ( "Granada", list.get(0).getSource().getContent() );
 		assertEquals ( "Motril", list.get(0).getDestination().getContent() );
@@ -486,7 +486,7 @@ public class GraphTest {
 		assertEquals(1, web.inLinkList("Internet").size() );
 		assertEquals(2, web.inLinkList("ASP.NET").size() );		
 
-		List<GraphLink<String>> links = web.inLinkList("Java");
+		ReadOnlyList<GraphLink<String>> links = web.inLinkList("Java");
 
 		assertEquals ( "home", links.get(0).getSource().getContent() );
 		assertEquals ( "Java", links.get(0).getDestination().getContent() );
@@ -497,7 +497,7 @@ public class GraphTest {
 
 	
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#add(java.lang.Object)}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#add(java.lang.Object)}.
 	 */
 	@Test
 	public void testAddNode() {
@@ -513,8 +513,8 @@ public class GraphTest {
 	}
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#add(java.lang.Object, java.lang.Object, java.lang.Object)},
-	 * which relies on {@link ikor.collection.graph.DynamicGraph#add(int, int, java.lang.Object)}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#add(java.lang.Object, java.lang.Object, java.lang.Object)},
+	 * which relies on {@link ikor.collection.graph.GraphImplementation#add(int, int, java.lang.Object)}.
 	 */
 	@Test
 	public void testAddEdge() {
@@ -553,9 +553,9 @@ public class GraphTest {
 
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#remove(java.lang.Object)}
-	 * and {@link ikor.collection.graph.DynamicGraph#remove(ikor.collection.graph.Node)},
-	 * which rely on {@link ikor.collection.graph.DynamicGraph#remove(int)}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#remove(java.lang.Object)}
+	 * and {@link ikor.collection.graph.GraphImplementation#remove(ikor.collection.graph.Node)},
+	 * which rely on {@link ikor.collection.graph.GraphImplementation#remove(int)}.
 	 */
 	@Test
 	public void testRemoveNode() {
@@ -632,9 +632,9 @@ public class GraphTest {
 	}
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#remove(java.lang.Object, java.lang.Object, java.lang.Object)}
-	 * and {@link ikor.collection.graph.DynamicGraph#remove(ikor.collection.graph.GraphLink)},
-	 * which rely on {@link ikor.collection.graph.DynamicGraph#remove(int, int, java.lang.Object)}..
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#remove(java.lang.Object, java.lang.Object, java.lang.Object)}
+	 * and {@link ikor.collection.graph.GraphImplementation#remove(ikor.collection.graph.GraphLink)},
+	 * which rely on {@link ikor.collection.graph.GraphImplementation#remove(int, int, java.lang.Object)}..
 	 */
 	@Test
 	public void testRemoveEdge() {
@@ -750,7 +750,7 @@ public class GraphTest {
 
 	
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#contains(java.lang.Object)}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#contains(java.lang.Object)}.
 	 */
 	@Test
 	public void testContains() {
@@ -779,7 +779,7 @@ public class GraphTest {
 	}
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#iterator()}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#iterator()}.
 	 */
 	@Test
 	public void testIterator() {
@@ -814,7 +814,7 @@ public class GraphTest {
 	}
 
 	/**
-	 * Test method for {@link ikor.collection.graph.DynamicGraph#clear()}.
+	 * Test method for {@link ikor.collection.graph.GraphImplementation#clear()}.
 	 */
 	@Test
 	public void testClear() {

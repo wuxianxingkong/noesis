@@ -17,14 +17,14 @@ import ikor.collection.*;
  * @param <E> Graph link type
  */
 
-class DynamicNode<V> implements GraphNode<V> 
+class GraphNodeImplementation<V> implements GraphNode<V> 
 {
 	private V                      content;
 	private DynamicList<GraphLink> in;
 	private DynamicList<GraphLink> out;
 
 	
-	public DynamicNode (V content)
+	public GraphNodeImplementation (V content)
 	{ 
 		setContent(content);
 	}
@@ -40,7 +40,7 @@ class DynamicNode<V> implements GraphNode<V>
 
 	// Links
 
-	public List<GraphLink> outLinks ()
+	public ReadOnlyList<GraphLink> outLinks ()
 	{
 		if (out==null)
 			out = new DynamicList<GraphLink>();
@@ -48,7 +48,7 @@ class DynamicNode<V> implements GraphNode<V>
 		return out;
 	}
 
-	public List<GraphLink> inLinks ()
+	public ReadOnlyList<GraphLink> inLinks ()
 	{
 		if (in==null)
 			in = new DynamicList<GraphLink>();

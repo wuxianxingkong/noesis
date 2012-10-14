@@ -16,8 +16,8 @@ import ikor.collection.graph.*;
 public class GraphIteratorTest
 {
 	
-	DynamicGraph<String,Integer> roadmap;
-	DynamicGraph<String,String>  web;
+	GraphImplementation<String,Integer> roadmap;
+	GraphImplementation<String,String>  web;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -75,7 +75,7 @@ public class GraphIteratorTest
 	
 
 
-	private MockVisitor<String> createNodeVisitor (Graph<String,?> graph)
+	private MockVisitor<String> createNodeVisitor (ReadOnlyGraph<String,?> graph)
 	{
 		MockVisitor<String> visitor = new MockVisitor<String>();
 		
@@ -85,7 +85,7 @@ public class GraphIteratorTest
 		return visitor;
 	}
 	
-	private MockVisitor<Integer> createLinkVisitor (Graph<?,Integer> graph)
+	private MockVisitor<Integer> createLinkVisitor (ReadOnlyGraph<?,Integer> graph)
 	{
 		MockVisitor<Integer> visitor = new MockVisitor<Integer>();
 		

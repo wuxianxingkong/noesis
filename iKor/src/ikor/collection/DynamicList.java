@@ -9,7 +9,7 @@ package ikor.collection;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import ikor.collection.MutableList;
+import ikor.collection.List;
 
 /**
  * Standard dynamic list implementation, based on java.util.ArrayList 
@@ -18,7 +18,7 @@ import ikor.collection.MutableList;
  * @author Fernando Berzal
  */
 
-public class DynamicList<T> implements MutableList<T>
+public class DynamicList<T> implements List<T>
 {
 	private ArrayList<T> list = new ArrayList<T>();
 
@@ -45,7 +45,7 @@ public class DynamicList<T> implements MutableList<T>
 	 * @param list list to be copied
 	 */
 	
-	public DynamicList (Collection<T> list)
+	public DynamicList (ReadOnlyCollection<T> list)
 	{
     	for (T t: list) {
     		this.add(t);
@@ -114,11 +114,11 @@ public class DynamicList<T> implements MutableList<T>
      * @return The collection formed by the elements of the specified type
      */
     
-    public List<T> get (Class type)
+    public ReadOnlyList<T> get (Class type)
     {
     	int            i;
     	T              element;
-    	MutableList<T> result = new DynamicList<T>();
+    	List<T> result = new DynamicList<T>();
     	
     	for (i=0; i<size(); i++) {
     		element = get(i);

@@ -16,20 +16,20 @@ import ikor.collection.*;
  * @author Fernando Berzal
  */
 
-public class DynamicGraph<V,E> 
-	extends ExplicitGraphImplementation<V,E>
-	implements MutableExplicitGraph<V,E>
+public class GraphImplementation<V,E> 
+	extends ReadOnlyGraphImplementation<V,E>
+	implements GraphInterface<V,E>
 {
-    private MutableDictionary<V,Integer>  index;
-    private MutableList<DynamicNode<V>>   nodes;
-	private boolean                       directed;
+    private Dictionary<V,Integer>            index;
+    private List<GraphNodeImplementation<V>> nodes;
+	private boolean                          directed;
 
 	// Constructor
 
-	public DynamicGraph (boolean directed)
+	public GraphImplementation (boolean directed)
 	{
 		this.index    = new DynamicDictionary<V,Integer>();    // V -> index
-		this.nodes    = new DynamicList<DynamicNode<V>>();
+		this.nodes    = new DynamicList<GraphNodeImplementation<V>>();
 		this.directed = directed;
 	}
 
@@ -195,7 +195,7 @@ public class DynamicGraph<V,E>
 	}
 	
 
-	public List<GraphLink<E>> outLinkList (int node)
+	public ReadOnlyList<GraphLink<E>> outLinkList (int node)
 	{
 		DynamicList<GraphLink<E>> list = null;
 		
@@ -210,7 +210,7 @@ public class DynamicGraph<V,E>
 		return list;
 	}
 
-	public List<GraphLink<E>> inLinkList (int node)
+	public ReadOnlyList<GraphLink<E>> inLinkList (int node)
 	{
 		DynamicList<GraphLink<E>> list = null;
 
@@ -235,7 +235,7 @@ public class DynamicGraph<V,E>
 		int pos = size();
 
 		index.set ( node, pos );
-		nodes.add ( new DynamicNode<V>(node) );
+		nodes.add ( new GraphNodeImplementation<V>(node) );
 		
 		return true;
 	}
@@ -255,8 +255,8 @@ public class DynamicGraph<V,E>
 		if ( (sourceIndex>=0) && (sourceIndex<size())
 		   && (destinationIndex>=0) && (destinationIndex<size()) ) {
 		
-			DynamicNode<V> source = nodes.get(sourceIndex);
-			DynamicNode<V> destination = nodes.get(destinationIndex);
+			GraphNodeImplementation<V> source = nodes.get(sourceIndex);
+			GraphNodeImplementation<V> destination = nodes.get(destinationIndex);
 			GraphLink<E>   link = new GraphLink<E>( source, destination, content);
 
 			source.addOutLink (link);
@@ -293,7 +293,7 @@ public class DynamicGraph<V,E>
 	{
 		if ((nodeIndex>=0) && (nodeIndex<size())) {
 			
-			DynamicNode<V> node = nodes.get(nodeIndex);
+			GraphNodeImplementation<V> node = nodes.get(nodeIndex);
 
 			// Remove node & adjacent edges
 
@@ -336,8 +336,8 @@ public class DynamicGraph<V,E>
 		if ( (sourceIndex>=0) && (sourceIndex<size())
 		   && (destinationIndex>=0) && (destinationIndex<size()) ) {
 			
-			DynamicNode<V> source = nodes.get(sourceIndex);
-			DynamicNode<V> destination = nodes.get(destinationIndex);
+			GraphNodeImplementation<V> source = nodes.get(sourceIndex);
+			GraphNodeImplementation<V> destination = nodes.get(destinationIndex);
 			GraphLink<E>   link;
 			E              linkContent;
 
@@ -369,8 +369,8 @@ public class DynamicGraph<V,E>
 
     public boolean remove (GraphLink<E> link)
 	{
-		DynamicNode<V> source = (DynamicNode<V>) link.getSource();
-		DynamicNode<V> destination = (DynamicNode<V>) link.getDestination();
+		GraphNodeImplementation<V> source = (GraphNodeImplementation<V>) link.getSource();
+		GraphNodeImplementation<V> destination = (GraphNodeImplementation<V>) link.getDestination();
 
 		source.removeOutLink(link);
 		destination.removeInLink(link);
@@ -411,7 +411,7 @@ public class DynamicGraph<V,E>
 	}
 
 
-	private void toStringBuffer (StringBuffer buffer, String label, List<GraphLink> arcs)
+	private void toStringBuffer (StringBuffer buffer, String label, ReadOnlyList<GraphLink> arcs)
 	{
        int          j;
 	   GraphLink<E> arc; 

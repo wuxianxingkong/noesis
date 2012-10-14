@@ -2,48 +2,34 @@ package ikor.collection.graph;
 
 // Title:       Graph ADT
 // Version:     1.0
-// Copyright:   2006
+// Copyright:   2011
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
 import ikor.collection.*;
 
 /**
- * Graph interface.
+ * Mutable graph interface.
  * 
  * @author Fernando Berzal
  */
 
-public interface Graph<V, E> extends List<V>
+public interface Graph<V,E> extends ReadOnlyGraph<V,E>, Collection<V>
 {
-	public boolean isDirected ();
-
 	// Nodes
 
-	public int index (V node);
+	public boolean add (V node);
 
-	// Node degrees
+	public boolean remove (V node);
+	public boolean remove (int nodeIndex);
 
-	public int degree (int node);
-	public int degree (V node);
-	
-	public int inDegree (int node);
-	public int inDegree (V node);
-	
-	public int outDegree (int node);
-	public int outDegree (V node);	
 
-	// Edges
+	// Links
 
-	public int links ();
-	
-	public E get(int source, int destination);
-	public E get(V source, V destination);
-	
-	public int[] outLinks (int node);
-	public int[] outLinks (V node);
+	public boolean add (V source, V destination, E content);
+	public boolean add (int sourceIndex, int destinationIndex, E content);
 
-	public int[] inLinks (int node);
-	public int[] inLinks (V node);
+	public boolean remove (V source, V destination, E content);
+	public boolean remove (int sourceIndex, int destinationIndex, E content);
 }
 

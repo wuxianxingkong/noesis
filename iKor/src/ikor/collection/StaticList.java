@@ -8,7 +8,7 @@ package ikor.collection;
 
 import java.util.Iterator;
 
-import ikor.collection.List;
+import ikor.collection.ReadOnlyList;
 
 /**
  * Standard static list implementation, based on static arrays. 
@@ -18,7 +18,7 @@ import ikor.collection.List;
  * @author Fernando Berzal
  */
 
-public class StaticList<T> implements List<T>
+public class StaticList<T> implements ReadOnlyList<T>
 {
 	// T[] cannot be used since Java does not allow dynamic creation of generic arrays
 	private Object[] items;
@@ -40,7 +40,7 @@ public class StaticList<T> implements List<T>
 			items[i] = array[i];
 	}
 	
-	public StaticList (List<T> list)
+	public StaticList (ReadOnlyList<T> list)
 	{
 		items = new Object[list.size()];
 		

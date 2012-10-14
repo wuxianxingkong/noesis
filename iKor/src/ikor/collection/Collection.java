@@ -6,34 +6,34 @@ package ikor.collection;
 // Author:      Fernando Berzal Galiano
 // E-mail:      berzal@acm.org
 
-import java.util.Iterator;
-
-import java.lang.Iterable;
-import java.io.Serializable;
-
 /**
  * Generic collection interface.
  * 
+ * In contrast to the standard Java Collections Framework, mutable collections
+ * are separated from the standard immutable ReadOnlyCollection interface (as in COCOA
+ * for Mac OS X and iOS). 
+ * 
  * @author Fernando Berzal
  */
-public interface Collection<T> extends Iterable<T>, Serializable
+public interface Collection<T> extends ReadOnlyCollection<T> 
 {
   /**
-   * Collection size.
-   * @return Number of items in the collection
+   * Adds an element to the collection.	
+   * @param object Element to be added.
+   * @return true if the collection has changed
    */
-  public int size ();
+  public boolean add (T object);
+
   
   /**
-   * Returns true if this collection contains the specified element.
-   * @param object element whose presence in this collection is to be tested
-   * @return true if this collection contains the specified element
+   * Removes an element from the collection.
+   * @param object Object to be removed
+   * @return true if the object was removed
    */
-  public boolean contains (T object);
-  
-  
+  public boolean remove (T object);
+
   /**
-   * Creates an iterator over the elements of the collection.
+   * Removes all the elements from the collection.
    */
-  public Iterator<T> iterator ();
+  public void clear ();
 }

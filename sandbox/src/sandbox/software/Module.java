@@ -7,7 +7,7 @@ package sandbox.software;
 //E-mail:      berzal@acm.org
 
 import ikor.collection.DynamicList;
-import ikor.collection.List;
+import ikor.collection.ReadOnlyList;
 import ikor.util.xml.MemoryXmlWriter;
 import ikor.util.xml.XmlWriter;
 
@@ -43,7 +43,7 @@ public abstract class Module extends Element {
 	
 	// Submodules
 
-	protected List<Module> get (Class type) {
+	protected ReadOnlyList<Module> get (Class type) {
 		return submodules.get(type);
 	}
 

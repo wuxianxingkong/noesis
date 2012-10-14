@@ -49,7 +49,7 @@ class AsmMethodVisitor extends AsmVisitor implements MethodVisitor
 
 	Block block;
 	
-	MutableDictionary<Integer,Data>      locals;
+	Dictionary<Integer,Data>      locals;
 	
 	Label currentLabel;
 	int   maxLocals;

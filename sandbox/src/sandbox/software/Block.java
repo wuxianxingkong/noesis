@@ -1,6 +1,6 @@
 package sandbox.software;
 
-import ikor.collection.List;
+import ikor.collection.ReadOnlyList;
 import ikor.collection.DynamicList;
 import ikor.util.xml.XmlWriter;
 
@@ -54,7 +54,7 @@ public class Block extends Code
 
 	/* Instructions */
 
-	public List<Instruction> getInstructions() {
+	public ReadOnlyList<Instruction> getInstructions() {
 		return new DynamicList<Instruction>(instructions);
 	}
 	public Instruction getInstruction (int i)

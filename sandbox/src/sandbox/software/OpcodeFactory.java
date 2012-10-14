@@ -8,8 +8,8 @@ import ikor.collection.*;
 
 public class OpcodeFactory 
 {
-	MutableDictionary<Integer,Opcode>  codes;
-	MutableDictionary<String,Opcode>   opcodes;
+	Dictionary<Integer,Opcode>  codes;
+	Dictionary<String,Opcode>   opcodes;
 	
 	/**
 	 * Opcode factory for a given platform

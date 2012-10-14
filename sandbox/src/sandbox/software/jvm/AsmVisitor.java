@@ -47,7 +47,7 @@ class AsmVisitor
 	 * @return Collection of flags
 	 */
 
-	protected List<String> getFlags(int flags) {
+	protected ReadOnlyList<String> getFlags(int flags) {
 		DynamicList<String> set = new DynamicList<String>();
 
 		if ((flags & Opcodes.ACC_ABSTRACT) != 0)

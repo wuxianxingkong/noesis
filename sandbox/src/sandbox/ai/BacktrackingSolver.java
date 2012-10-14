@@ -26,7 +26,7 @@ public class BacktrackingSolver extends Solver
 		
 		if (!fin) {
 			
-			// Choose an unasigned variable
+			// Choose an unassigned variable
 			
 			//variable = firstVariable(problem);
 			variable = mrvVariable(problem);

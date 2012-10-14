@@ -139,7 +139,7 @@ class AsmClassVisitor extends AsmVisitor implements ClassVisitor {
 	 */
 	private void parseFlags(Module module, int access) {
 		
-		List<String> flags;
+		ReadOnlyList<String> flags;
 		
 		if (module!=null) {
 			
@@ -376,7 +376,7 @@ class AsmClassVisitor extends AsmVisitor implements ClassVisitor {
 
 	}
 
-	public static void output(String name, List collection) {
+	public static void output(String name, ReadOnlyList collection) {
 		System.out.println(name + ":");
 
 		for (int i = 0; i < collection.size(); i++)

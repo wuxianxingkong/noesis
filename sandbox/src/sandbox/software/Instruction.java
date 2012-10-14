@@ -1,7 +1,7 @@
 package sandbox.software;
 
 
-import ikor.collection.Collection;
+import ikor.collection.ReadOnlyCollection;
 import ikor.collection.DynamicDictionary;
 import ikor.util.xml.XmlWriter;
 
@@ -134,7 +134,7 @@ public class Instruction extends Code {
 		
 		if ((targets!=null) && (targets.size()>0))  {
 			
-			Collection<Integer> labels = targets.keys();
+			ReadOnlyCollection<Integer> labels = targets.keys();
 						
 			for (int key: labels) {
 				writer.start("target");

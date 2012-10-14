@@ -7,7 +7,7 @@ package sandbox.software;
 //E-mail:      berzal@acm.org
 
 import ikor.collection.DynamicList;
-import ikor.collection.List;
+import ikor.collection.ReadOnlyList;
 import ikor.util.xml.XmlWriter;
 
 
@@ -21,7 +21,7 @@ public class Code extends Module {
 	}
 
 
-	public List<Proxy> getExceptions() {
+	public ReadOnlyList<Proxy> getExceptions() {
 		return new DynamicList<Proxy>(exceptions);
 	}
 	

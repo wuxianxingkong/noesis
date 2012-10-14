@@ -1,6 +1,6 @@
 package sandbox.software;
 
-import ikor.collection.Collection;
+import ikor.collection.ReadOnlyCollection;
 import ikor.util.xml.XmlWriter;
 
 //Title:       Generic graph element
@@ -29,7 +29,7 @@ public abstract class Element {
 	
 	public abstract void output (XmlWriter writer);
 	
-	protected final void outputCollection (XmlWriter writer, Collection<? extends Element> collection)
+	protected final void outputCollection (XmlWriter writer, ReadOnlyCollection<? extends Element> collection)
 	{
 		for (Element e: collection) {
 			e.output(writer);

@@ -15,12 +15,12 @@ public class Type extends Module {
 	/**
 	 * Extended base class and implemented interfaces
 	 */
-	private MutableList<Proxy> superclasses;      // Collection<Proxy<Type>>
+	private List<Proxy> superclasses;      // Collection<Proxy<Type>>
 	
 	/**
 	 * Type parameters (e.g. generics & arrays)
 	 */
-	private MutableList<Proxy> parameters;
+	private List<Proxy> parameters;
 		
 	/**
 	 * Constructor
@@ -34,7 +34,7 @@ public class Type extends Module {
 	
 	// Extended classes
 	
-	public Collection<Proxy> getSuperclasses() {
+	public ReadOnlyCollection<Proxy> getSuperclasses() {
 		return new DynamicList<Proxy>(superclasses);
 	}
 	public Proxy getSuperclass (int i)
@@ -65,7 +65,7 @@ public class Type extends Module {
 	
 	// Parameters
 	
-	public Collection<Proxy> getParameters() {
+	public ReadOnlyCollection<Proxy> getParameters() {
 		return new DynamicList<Proxy>(parameters);
 	}
 	public Proxy getParameter (int i)

@@ -53,8 +53,12 @@ public class DynamicList<T> implements List<T>
 	}
 	
 	@Override
-	public T get(int index) {
-		return list.get(index);
+	public T get(int index) 
+	{	
+		if ((index>=0) && (index<list.size()))
+			return list.get(index);
+		else
+			return null;
 	}
 
 	@Override

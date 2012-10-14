@@ -6,7 +6,7 @@ package noesis;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
-import ikor.collection.List;
+import ikor.collection.ReadOnlyList;
 import ikor.collection.graph.*;
 
 /**
@@ -15,14 +15,14 @@ import ikor.collection.graph.*;
  * @author Fernando Berzal
  */
 
-public class GraphNetwork<V,E> extends Network<V,E> implements ExplicitGraph<V,E>
+public class GraphNetwork<V,E> extends Network<V,E> implements ReadOnlyGraphInterface<V,E>
 {
-	private DynamicGraph<V,E> net;
+	private GraphImplementation<V,E> net;
 	
 	
 	public GraphNetwork ()
 	{
-		this.net = new DynamicGraph<V,E>(true);
+		this.net = new GraphImplementation<V,E>(true);
 	}
 	
 	
@@ -211,28 +211,28 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ExplicitGraph<V,E
 
 
 	@Override
-	public List<GraphLink<E>> outLinkList(int node) 
+	public ReadOnlyList<GraphLink<E>> outLinkList(int node) 
 	{
 		return net.outLinkList(node);
 	}
 
 
 	@Override
-	public List<GraphLink<E>> outLinkList(V node) 
+	public ReadOnlyList<GraphLink<E>> outLinkList(V node) 
 	{
 		return net.outLinkList(node);
 	}
 
 
 	@Override
-	public List<GraphLink<E>> inLinkList(int node) 
+	public ReadOnlyList<GraphLink<E>> inLinkList(int node) 
 	{
 		return net.inLinkList(node);
 	}
 
 
 	@Override
-	public List<GraphLink<E>> inLinkList(V node) 
+	public ReadOnlyList<GraphLink<E>> inLinkList(V node) 
 	{
 		return net.inLinkList(node);
 	}

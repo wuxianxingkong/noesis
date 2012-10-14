@@ -6,6 +6,9 @@ package noesis;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
+import ikor.collection.List;
+import ikor.collection.Dictionary;
+
 import ikor.collection.DynamicList;
 import ikor.collection.DynamicDictionary;
 
@@ -18,10 +21,10 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 {
 	private BasicNetwork net;
 
-	private DynamicList<V>   nodes;
-	private DynamicList<E>[] content;
+	private List<V>   nodes;
+	private List<E>[] content;
 	
-	private DynamicDictionary<V,Integer> hash;
+	private Dictionary<V,Integer> hash;
 	
 	
 	public ArrayNetwork ()

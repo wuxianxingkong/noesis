@@ -8,7 +8,7 @@ package noesis;
 
 import java.util.Iterator;
 
-import ikor.collection.graph.Graph;
+import ikor.collection.graph.ReadOnlyGraph;
 import ikor.collection.graph.GraphNodeIterator;
 import ikor.collection.graph.GraphLinkIterator;
 
@@ -16,7 +16,7 @@ import ikor.collection.graph.GraphLinkIterator;
  * Network ADT.
  */
 
-public abstract class Network<V, E> implements Graph<V,E>
+public abstract class Network<V, E> implements ReadOnlyGraph<V,E>
 {
 	// Network ID
 	

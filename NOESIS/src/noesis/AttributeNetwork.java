@@ -16,13 +16,13 @@ import ikor.collection.util.Pair;
  */
 public class AttributeNetwork extends BasicNetwork 
 {
-	DynamicList<String> nodeAttributeNames;
-	DynamicDictionary<String, Attribute> nodeAttributes;
+	List<String> nodeAttributeNames;
+	Dictionary<String, Attribute> nodeAttributes;
 	
-	DynamicList<String> linkAttributeNames;
-	DynamicDictionary<String, LinkAttribute> linkAttributes;
+	List<String> linkAttributeNames;
+	Dictionary<String, LinkAttribute> linkAttributes;
 
-	DynamicDictionary<Pair<Integer,Integer>, Integer> index;
+	Dictionary<Pair<Integer,Integer>, Integer> index;
 
 	// Constructor
 	

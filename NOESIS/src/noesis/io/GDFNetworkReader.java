@@ -6,7 +6,6 @@ package noesis.io;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;

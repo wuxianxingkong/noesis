@@ -38,13 +38,13 @@ e.g.
 <text>
 EXAMPLE: karate club social network
 i.e. anthropologist Wayne Zachary (1977) carefully observed a karate club comprised of 34 members for more than two years
-[Zachary, Wayne W. 1977. An information flow model for conflict and fission in small group. Journal of Anthropological Research 33:452–473]
+<cite>Zachary 1977</cite>
 - 1,575 symmetric dyads in the network
 - 45 full triads (far more than expected by chance)
 
 
 K: Social networks can also capture the sources of conflict within a group...
-2 central [nodes] in the network of friendships, with many connections to other people. On the other hand, they are not
+2 central nodes in the network of friendships, with many connections to other people. On the other hand, they are not
 friends with each other, and in fact most people are only friends with one or the other
 of them. These two central people were, respectively, the instructor and the student
 founder of the club, and this pattern of noninteracting clusters was the most visible
@@ -85,37 +85,40 @@ Non-overlapping communities...
 
 <text>
 GRAPH PARTITIONING HEURISTICS
+</text>
 
+<text>
 - Local improvement heuristics for graph partitioning (.e.g sweep through the vertices, deciding
 whether the size of the cut would improve if we moved this vertex over to the other
 side) are due to Kernighan-Lin and Fiduccia-Mattheyses.
 
+
 http://en.wikipedia.org/wiki/Kernighan%E2%80%93Lin_algorithm
-[Kernighan, B. W.; Lin, Shen (1970). "An efficient heuristic procedure for partitioning graphs". Bell Systems Technical Journal 49: 291–307.]
+<cite>Kernighan and Lin 1970</cite>
 + One of the early fundamental works in the field. However, performance is O(n^2), so it is no longer commonly used.
 
+
+
 http://en.wikipedia.org/wiki/Fiduccia-Mattheyses_algorithm
-[CM Fiduccia, RM Mattheyses (1982). "A Linear-Time Heuristic for Improving Network Partitions". 19th Design Automation Conference]
-On page(s): 175
-Conference Location :  Las Vegas, NV, USA
-ISSN :  0146-7123
-Print ISBN: 0-89791-020-6
-Digital Object Identifier :  10.1109/DAC.1982.1585498
+<cite>Fiduccia and Mattheyses 1982</cite>
 + A later variant that is linear time, very commonly used, both by itself and as part of multilevel partitioning...
+</text>
 
 
+<text>
 - Multilevel partitioning
 
-[G Karypis, V Kumar (1999). "A Fast and High Quality Multilevel Scheme for Partitioning Irregular Graphs". Siam Journal on Scientific Computing. ] Multi-level partitioning is the current state of the art. This paper also has good explanations of many other methods, and comparisons of the various methods on a wide variety of problems.
+<cite>Karypis and Kumar 1998</cite> METIS:  Multi-level partitioning is the current state of the art. This paper also has good explanations of many other methods, and comparisons of the various methods on a wide variety of problems.
 
-[Karypis, G., Aggarwal, R., Kumar, V., and Shekhar, S. (March 1999). "Multilevel hypergraph partitioning: applications in VLSI domain". IEEE Transactions on Very Large Scale Integration (VLSI) Systems 7 (1): pp. 69–79. doi:10.1109/92.748202]
-Graph partitioning (and in particular, hypergraph partitioning) has many applications to IC design.
-
-[S. Kirkpatrick, C. D. Gelatt Jr., and M. P. Vecchi (13 May 1983). "Optimization by Simulated Annealing". Science 220 (4598): 671–680. doi:10.1126/science.220.4598.671. PMID 17813860] Simulated annealing can be used as well.
+<cite>Karypis et al. 1999</cite> Graph partitioning (and in particular, hypergraph partitioning) has many applications to IC design.
 
 
+Note: Simulated annealing can be used as well <cite>Kirkpatrick et al. 1983</cite>
+[S. Kirkpatrick, C. D. Gelatt Jr., and M. P. Vecchi (13 May 1983). "Optimization by Simulated Annealing". Science 220 (4598): 671–680. doi:10.1126/science.220.4598.671. PMID 17813860] 
+</text>
 
 
+<text>
 - Spectral partitioning methods use sophisticated linear algebra techniques to
 obtain a good partitioning. The spectral bisection method uses the second-lowest
 eigenvector of the Laplacian matrix of the graph to partition it into two pieces. 
@@ -126,20 +129,20 @@ eigenvector of the Laplacian matrix of the graph to partition it into two pieces
 
 Spectral methods for graph partition are discussed in 
 [Fan R.K. Chung. Spectral Graph Theory (CBMS Regional Conference Series in Mathematics, No. 92). American Mathematical Society, 1997.]
+http://www.math.ucsd.edu/~fan/research/revised.html
+
 and
 [A. Pothen, H. D. Simon, and K.-P. Liou. Partitioning sparse matrices with eigenvectors of graphs. SIAM J.  Matrix Analysis Appl., 11:430–452, 1990.]
-
-
-When more than two components are desired, the partitioning heuristic should be applied recursively.
-
-
-Empirical results on graph partitioning heuristics include 
-[J. Berry and M. Goldberg. Path optimization and near-greedy analysis for graph partitioning: An empirical study. In Proc. 6th ACM-SIAM Symposium on Discrete Algorithms, pages 223–232, 1995.]
-and
-[K. Lang and S. Rao. Finding near-optimal cuts: An empirical evaluation. In Proc. 4th Annual ACM-SIAM Symposium on Discrete Algorithms (SODA
-’93), pages 212–221, 1993.]
-
 </text>
+
+<text>
+When more than two components are desired, the partitioning heuristic should be applied recursively.
+</text>
+
+<text>
+Empirical results on graph partitioning heuristics include <cite>Berry and Goldberg 1995</cite> and <cite>Lang and Rao 1993</cite>
+</text>
+
 
 <document>
 <tag>community-detection-kernighan-lin</tag>
@@ -239,7 +242,7 @@ ideally, the dendrogram
 <title>The Newman-Girvan algorithm</title>
 
 
-Newman-Girvan algorithm <cite>Newman and Girvan 2004</cite>:
+Newman-Girvan algorithm <cite>Girvan and Newman 2002</cite> <cite>Newman and Girvan 2004</cite>:
 Uncover communities by removing the links that carry the highest numbers of shortest paths (using the link betweenness centrality)
 
 1) Compute the betweenness centrality for all the links in the network
@@ -274,7 +277,7 @@ Reasonable results, albeit the algorithm might fail (e.g. three equal cliques co
 A single individual might belong to different communities...
 </text>
 
-cf. <cite>Palla et al. 2005</cite>
+cf. <cite>Palla et al. 2005</cite>: Clique finder, http://www.cfinder.org (overlapping communities)
 
 A community = A connected k-clique component
 ++ A k-clique is a fully-connected subgraph with k nodes. (e.g. triangles are 3-cliques
@@ -286,11 +289,16 @@ Results depend on the value of k
 - k too small: too large communities (k=2 == connected components)
 
 
+cf. <cite>Gregory 2007</cite>
+
+cf. <cite>Li et al. 2006</cite>
+
+cf. <cite>Evans 2010</cite> <cite>Evans and Lambiotte 2009</cite> <cite>Evans and Lambiotte 2010</cite>
 
 ref.
 [David and Carley 2008] G.B. Davis, K.M Carley: "Clearing the FOG: Fuzzy, overlapping groups for social networks", Social Networks 30:201-212, 2008
-
 Fuzzy overlapping groups: Relative strength of membership to different groups
+
 
 </document>
 
@@ -301,16 +309,34 @@ Fuzzy overlapping groups: Relative strength of membership to different groups
 
 <text>
 ++ Textbook <cite>Newman 2010</cite>
+</text>
 
-++ Survey <cite>Newman 2012</cite>
+<text>
+++ Surveys 
+<cite>Fortunato 2010</cite> (Adamic: "a great reference of the developments over the past decade, but not necessarily a quick read").
+<cite>Newman 2012</cite>
+<cite>Hu et al. 2008</cite>
+<cite>Shen and Cheng 2010</cite>
+<cite>Serrano and Boguna 2006a</cite>
+<cite>Serrano and Boguna 2006b</cite>
+[Schaeffer, S.E.,  Graph clustering,   Computer Science Rev.  1  (2007) 27–64]
+</text>
+
+<text>
+<cite>Newman 2004a</cite>
+<cite>Newman 2004c</cite>
 </text>
 
 <text>
 Spectral properties <cite>Newman 2006</cite>
 </text>
 
+
+
 <text>
 Hierarchy of smaller modules within large modules <cite>Blondel et al. 2008</cite>
+
+<cite>Huang et al. 2010</cite>
 </text>
 
 <text>
@@ -318,7 +344,10 @@ Overlapping communities, where nodes can be central to more than one community <
 </text>
 
 <text>
-++ Survey <cite>Fortunato 2010</cite>
+More...
+<cite>Kalinka and Tomancak 2011</cite> linkcomm
+<cite>Lin et al. 2009</cite>: MetaFac
+<cite>Maiya and Berger-Wolf 2010c</cite>
 </text>
 
 <text>
@@ -341,7 +370,13 @@ Chayant Tantipathananandh, Tanya Berger-Wolf, David Kempe A Framework for Commun
 
 R. Kumar, P. Raghavan, S. Rajagopalan, A. Tomkins. Trawling the web for emerging cyber-communities. 8th International World Wide Web Conference, May 1999.
 
+
 A. Clauset. Finding local community structures in networks. Phys Rev E Stat Nonlin Soft Matter Phys. 2005 Aug;72(2 Pt 2):026132. 2005.
+
+<cite>Clauset et al. 2004</cite>
+
+<cite>Clauset et al. 2006</cite>
+
 
 Hopcroft, O. Khan, B. Kulis, and B. Selman. Natural communities in large linked networks. In Proceedings of the 9th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, pages 541--546,
 
@@ -353,10 +388,15 @@ E. A. Leicht, Petter Holme, and M. E. J. Newman, Vertex similarity in networks, 
 
 <cite>Newman 2004a</cite>
 
+
 C. Faloutsos, K. McCurley and A. Tomkins. Fast Discovery of Connection Subgraphs. In Tenth ACM SIGKDD Conference, Seattle, WA, 2004.
 
 Satu Elisa Schaeffer. Graph Clustering. Computer Science Review 1(1):27-64,2007.
 
+
+
+<cite>Leskovec et al. 2008</cite>
+i.e. Community detection algorithms cannot detect communities with more than ~100 nodes
 
 
 Jure Leskovec, Kevin J. Lang, Anirban Dasgupta, Michael W. Mahoney:
@@ -394,8 +434,7 @@ multirelational network.
 [D. Cai, Z. Shao, X. He, X. Yan, and J. Han. Community mining from multi-relational networks. In Proc. 2005 European Conf. Principles and Practice of Knowledge Discovery in Databases (PKDD’05), pages 445–452, Porto, Portugal, Oct. 2005.]
 
 
-SURVEY
-[Schaeffer, S.E.,  Graph clustering,   Computer Science Rev.  1  (2007) 27–64]
+<cite>Arenas et al. 2004</cite>
 
 
 The SimRank measure of similarity
@@ -411,11 +450,49 @@ Sparsest cuts and approximation algorithms.
 
 CLUSTERING
 [Newman, M.E.J.;  Girvan, M.,  Finding and evaluating community structure in networks,   Physical Rev. E  69  (2004) 113–128]
+[MEJ Newman, Modularity and community structure in networks, PNAS 103 (23), p. 8577-8582 (2006).]
 [Yin, X.;  Han, J.;  Yu, P.S.,  Cross-relational clustering with user's guidance,   In:  Proc. 2005 ACM SIGKDD Int. Conf. Knowledge Discovery in Databases (KDD’05)  Chicago, IL.  (Aug. 2005), pp.  344–353.]
 [Kulis, B.;  Basu, S.;  Dhillon, I.;  Mooney, R.,  Semi-supervised graph clustering: A kernel approach,   Machine Learning  74  (2009) 1–22.]
 [Sun, Y.;  Han, J.;  Zhao, P.;  Yin, Z.;  Cheng, H.;  Wu, T.,  RankClus: Integrating clustering with ranking for heterogeneous information network analysis,   In:  Proc. 2009 Int. Conf. Extending Data Base Technology (EDBT’09)  Saint Petersburg, Russia.  (Mar. 2009), pp.  565–576.]
 
 
+
+<cite>Adamcsek et al. 2006</cite>
+
+
+Information theoretic approach: Mapequation http://www.mapequation.org
+i.e. describing random walks on networks using Huffman codes... prefixes become communities
+
+Maps of random walks on complex networks reveal community structure
+Martin Rosvall and Carl T. Bergstrom
+PNAS January 29, 2008 vol. 105 no. 4 1118-1123
+http://www.pnas.org/content/105/4/1118
+DOI 10.1073/pnas.0706851105
+
+Computing Communities in Large Networks Using Random Walks
+Pascal Pons and Matthieu Latapy
+COMPUTER AND INFORMATION SCIENCES - ISCIS 2005
+Lecture Notes in Computer Science, 2005, Volume 3733/2005, 284-293, DOI: 10.1007/11569596_31
+
+
+
+More...
+<cite>Wu and Huberman 2004</cite>
+<cite>Karrer et al. 2008</cite>
+<cite>Karrer and Newman 2011</cite>
+<cite>Radicchi et al. 2004</cite>
+<cite>Sathik 2011</cite>
+<cite>Shi et al. 2010</cite>
+<cite>Subelj and Bajec 2011</cite>
+<cite>Wan et al. 2008</cite>
+<cite>Wan et al. 2009</cite>
+<cite>Wang et al. 2008</cite>
+<cite>Wang et al. 2010</cite>
+<cite>Zhu et al. 2009</cite>
+<cite>Ahn et al. 2010</cite>
+<cite>Castellano et al. 2004</cite>
+<cite>Clauset et al. 2008</cite>
+<cite>Sales-Pardo et al. 2007</cite>
 
 EVOLUTION of social and information networks has been studied by many researchers, 
 [Chakrabarti, D.;  Kumar, R.;  Tomkins, A.,  Evolutionary clustering,   In:  Proc. 2006 ACM SIGKDD Int. Conf. Knowledge Discovery in Databases (KDD’06)  Philadelphia, PA.  (Aug. 2006), pp.  554–560.]
@@ -425,6 +502,7 @@ EVOLUTION of social and information networks has been studied by many researcher
 [Kim, M.-S.;  Han, J.,  A particle-and-density based evolutionary clustering method for dynamic networks,   In:  Proc. 2009 Int. Conf. Very Large Data Bases (VLDB’09)  Lyon, France.  (Aug. 2009).]
 [Sun, Y.;  Tang, J.;  Han, J.;  Gupta, M.;  Zhao, B.,  Community evolution detection in dynamic heterogeneous information networks,   In:  Proc. 2010 KDD Workshop Mining and Learning with Graphs (MLG’10)  Washington, DC.  (July 2010).]
 
+<cite>Bockermann and Jungermann 2010</cite>
 
 </text>
 

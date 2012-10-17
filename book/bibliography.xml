@@ -790,6 +790,21 @@
 </reference>
 
 
+<reference id="Berry and Goldberg 1995">
+ <author>Jonathan Berry</author>
+ <author>Mark Goldberg</author>
+ <title>Path optimization and near-greedy analysis for graph partitioning: An empirical study</title>
+ <proceedings>6th Annual ACM-SIAM Symposium on Discrete Algorithms</proceedings>
+ <conference>SODA</conference>
+ <year>1995</year>
+ <isbn>0-89871-349-8</isbn>
+ <location>San Francisco, California</location>
+ <pages>223-232</pages>
+ <url>http://dl.acm.org/citation.cfm?id=313701</url>
+ <file>Networks/algorithms/clustering/1995 SODA Graph partitioning - An empirical study.pdf</file>
+</reference>
+
+
 <reference id="Bertsekas 1998">
  <author>Dimitri P. Bertsekas</author>
  <title>Network Optimization: Continuous and Discrete Models</title>
@@ -2677,6 +2692,23 @@
 </reference>
 
 
+
+<reference id="Fiduccia and Mattheyses 1982">
+ <author>C.M. Fiduccia</author>
+ <author>R.M. Mattheyses</author>
+ <title>A linear-time heuristic for improving network partitions</title>
+ <proceedings>19th Design Automation Conference</proceedings>
+ <conference>DAC</conference>
+ <year>1982</year>
+ <isbn>0-89791-020-6</isbn>
+ <location>Las Vegas, Nevada</location>
+ <pages>175-181</pages>
+ <doi>10.1109/DAC.1982.1585498</doi>
+ <file>Networks/algorithms/clustering/1982 DAC Linear-time heuristic for improving network partitions.pdf</file>
+</reference>
+
+
+
 <reference id="Filotti and Mayer 1980">
  <author>I.S. Filotti</author>
  <author>Jack N. Mayer</author>
@@ -3918,46 +3950,6 @@
 
 
 
-<reference id="Karger et al. 1995">
- <author>David R. Karger</author>
- <author>Philip N. Klein</author>
- <author>Robert E. Tarjan</author>
- <title>A randomized linear-time algorithm to find minimum spanning trees</title>
- <journal>Journal of the ACM</journal>
- <volume>42</volume>
- <number>2</number>
- <pages>321-328</pages>
- <year>1995</year>
- <doi>10.1145/201019.201022</doi>
- <file>Networks/algorithms/graphs/paths/1995 JACM [Karger] MST.pdf</file>
-</reference>
-
-
-<reference id="Karp 1972">
- <author>Richard M. Karp</author>
- <title>Reducibility among combinatorial problems</title>
- <booktitle>Complexity of Computer Computations</booktitle>
- <publisher>IBM Research Symposia Series, Plenum Press</publisher>
- <year>1972</year>
- <isbn>0306307073</isbn>
- <file>Networks/algorithms/1972 [Karp] Reducibility.pdf</file>
-</reference>
-
-
-<reference id="Karrer et al. 2008">
- <author>Brian Karrer</author>
- <author>Elizaveta Levina</author>
- <author>Mark E.J. Newman</author>
- <title>Robustness of community structure in networks</title>
- <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
- <volume>77</volume>
- <number>4</number>
- <pages>046119</pages>
- <year>2008</year>
- <doi>10.1103/PhysRevE.77.046119</doi>
- <file>Networks/algorithms/clustering/2008 Physical Review E [Newman] Robustness of community structure.pdf</file>
-</reference>
-
 
 <reference id="Kamada and Kawai 1989">
  <author>Tomihisa Kamada</author>
@@ -4020,6 +4012,51 @@
 </reference>
 
 
+
+<reference id="Karger et al. 1995">
+ <author>David R. Karger</author>
+ <author>Philip N. Klein</author>
+ <author>Robert E. Tarjan</author>
+ <title>A randomized linear-time algorithm to find minimum spanning trees</title>
+ <journal>Journal of the ACM</journal>
+ <volume>42</volume>
+ <number>2</number>
+ <pages>321-328</pages>
+ <year>1995</year>
+ <doi>10.1145/201019.201022</doi>
+ <file>Networks/algorithms/graphs/paths/1995 JACM [Karger] MST.pdf</file>
+</reference>
+
+
+
+<reference id="Karp 1972">
+ <author>Richard M. Karp</author>
+ <title>Reducibility among combinatorial problems</title>
+ <booktitle>Complexity of Computer Computations</booktitle>
+ <publisher>IBM Research Symposia Series, Plenum Press</publisher>
+ <year>1972</year>
+ <isbn>0306307073</isbn>
+ <file>Networks/algorithms/1972 [Karp] Reducibility.pdf</file>
+</reference>
+
+
+
+<reference id="Karrer et al. 2008">
+ <author>Brian Karrer</author>
+ <author>Elizaveta Levina</author>
+ <author>Mark E.J. Newman</author>
+ <title>Robustness of community structure in networks</title>
+ <journal>Physical Review E: Statistical, Nonlinear, and Soft Matter Physics</journal>
+ <volume>77</volume>
+ <number>4</number>
+ <pages>046119</pages>
+ <year>2008</year>
+ <doi>10.1103/PhysRevE.77.046119</doi>
+ <file>Networks/algorithms/clustering/2008 Physical Review E [Newman] Robustness of community structure.pdf</file>
+</reference>
+
+
+
 <reference id="Karrer and Newman 2011">
  <author>Brian Karrer</author>
  <author>Mark E.J. Newman</author>
@@ -4034,7 +4071,9 @@
 </reference>
 
 
-<reference id="Karypis and Kumar 1999">
+
+
+<reference id="Karypis and Kumar 1998">
  <author>George Karypis</author>
  <author>Vipin Kumar</author>
  <title>A fast and high quality multilevel scheme for partitioning irregular graphs</title>
@@ -4042,10 +4081,29 @@
  <volume>20</volume>
  <number>1</number>
  <pages>359-392</pages>
- <year>1999</year>
+ <year>1998</year>
  <doi>10.1137/S1064827595287997</doi>
+ <file>Networks/algorithms/clustering/1998 SJSC METIS.pdf</file>
  <file>Networks/algorithms/graphs/connectivity/1999 SIAMSC [Karypis &amp; Kumar] METIS.pdf</file>
 </reference>
+
+<reference id="Karypis et al. 1999">
+ <author>George Karypis</author>
+ <author>Rajat Aggarwal</author>
+ <author>Vipin Kumar</author>
+ <author>Shashi Shekhar</author>
+ <title>Multilevel hypergraph partitioning: Applications in VLSI domain</title>
+ <journal>IEEE Transactions on Systems Science and Cybernetics</journal>
+ <volume>7</volume>
+ <number>1</number>
+ <pages>69-79</pages>
+ <year>1999</year>
+ <doi>10.1109/92.748202</doi>
+ <file>Networks/algorithms/clustering/1999 TVLSI METIS.pdf</file>
+</reference>
+
+
+
 
 
 
@@ -4112,6 +4170,21 @@
  <year>1957</year>
  <url>http://projecteuclid.org/euclid.pjm/1103043674</url>
  <file>Networks/algorithms/graphs/isomorphism/1957 PJM [Kelly] Congruence theorem for trees.pdf</file>
+</reference>
+
+
+
+<reference id="Kernighan and Lin 1970">
+ <author>Brian W. Kernighan</author>
+ <author>Shen Lin</author>
+ <title>An efficient heuristic procedure for partitioning graphs</title>
+ <journal>Bell System Technical Journal</journal>
+ <volume>49</volume>
+ <pages>291-307</pages>
+ <year>1970</year>
+ <url>http://www.alcatel-lucent.com/bstj/vol49-1970/articles/bstj49-2-291.pdf</url>
+ <file>Networks/algorithms/clustering/1970 BSTJ [Kernighan &amp; Lin] Graph Partitioning.pdf</file>
+ <file>Networks/algorithms/clustering/1970 BSTJ [Kernighan &amp; Lin] Graph Partitioning.original.pdf</file>
 </reference>
 
 
@@ -4544,6 +4617,22 @@
  <!--<file>Networks/algorithms/graphs/...</file>-->
 </reference>
 
+
+
+
+<reference id="Lang and Rao 1993">
+ <author>Kevin Lang</author>
+ <author>Satish Rao</author>
+ <title>Finding near-optimal cuts: An empirical evaluation</title>
+ <proceedings>4th Annual ACM-SIAM Symposium on Discrete Algorithms</proceedings>
+ <conference>SODA</conference>
+ <year>1993</year>
+ <isbn>0-89871-313-7</isbn>
+ <location>Austin, Texas</location>
+ <pages>212-221</pages>
+ <url>http://dl.acm.org/citation.cfm?id=313755</url>
+ <file>Networks/algorithms/clustering/1993 SODA Finding near-optimal cuts - An empirical evaluation.pdf</file>
+</reference>
 
 
 <reference id="Langville and Meyer 2006">
@@ -6187,7 +6276,7 @@
 
 
 <reference id="Prim 1957">
- <author>Robert C. Prim:</author>
+ <author>Robert C. Prim</author>
  <title>Shortest connection networks and some generalizations</title>
  <journal>Bell System Technical Journal</journal>
  <volume>36</volume>

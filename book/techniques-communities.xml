@@ -102,6 +102,8 @@ http://en.wikipedia.org/wiki/Kernighan%E2%80%93Lin_algorithm
 http://en.wikipedia.org/wiki/Fiduccia-Mattheyses_algorithm
 <cite>Fiduccia and Mattheyses 1982</cite>
 + A later variant that is linear time, very commonly used, both by itself and as part of multilevel partitioning...
+<cite>Hagen and Kahng 1997</cite> <cite>Hagen et al. 1997</cite>
++ Improvements
 </text>
 
 
@@ -112,10 +114,10 @@ http://en.wikipedia.org/wiki/Fiduccia-Mattheyses_algorithm
 
 <cite>Karypis et al. 1999</cite> Graph partitioning (and in particular, hypergraph partitioning) has many applications to IC design.
 
-
 Note: Simulated annealing can be used as well <cite>Kirkpatrick et al. 1983</cite>
-[S. Kirkpatrick, C. D. Gelatt Jr., and M. P. Vecchi (13 May 1983). "Optimization by Simulated Annealing". Science 220 (4598): 671–680. doi:10.1126/science.220.4598.671. PMID 17813860] 
 </text>
+
+
 
 
 <text>
@@ -123,17 +125,13 @@ Note: Simulated annealing can be used as well <cite>Kirkpatrick et al. 1983</cit
 obtain a good partitioning. The spectral bisection method uses the second-lowest
 eigenvector of the Laplacian matrix of the graph to partition it into two pieces. 
 
++ <cite>Hagen and Kahng 1991</cite> <cite>Hagen and Kahng 1992</cite> <cite>Hagen et al. 1994</cite>a whole class of spectral partitioning methods, which use the Eigenvectors of the Laplacian of the connectivity graph. 
 
-[Hagen, L. and Kahng, A.B. (September 1992). "New spectral methods for ratio cut partitioning and clustering". IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems 11,  (9): 1074–1085. doi:10.1109/43.159993]
-+ a whole class of spectral partitioning methods, which use the Eigenvectors of the Laplacian of the connectivity graph. 
-
-Spectral methods for graph partition are discussed in 
-[Fan R.K. Chung. Spectral Graph Theory (CBMS Regional Conference Series in Mathematics, No. 92). American Mathematical Society, 1997.]
-http://www.math.ucsd.edu/~fan/research/revised.html
-
-and
-[A. Pothen, H. D. Simon, and K.-P. Liou. Partitioning sparse matrices with eigenvectors of graphs. SIAM J.  Matrix Analysis Appl., 11:430–452, 1990.]
+Spectral methods for graph partition are discussed in <cite>Chung 1997</cite> and <cite>Pothen et al. 1990</cite>
 </text>
+
+
+
 
 <text>
 When more than two components are desired, the partitioning heuristic should be applied recursively.
@@ -254,7 +252,7 @@ Repeat until no links remain:
 3) Recompute betweenness centrality for the remaining links
 
 
-NOTE: Recomputing betweenness in necessary (e.g. communities connected by two links, one with high initial betweenness, the other with low betweenness in the original network; after the first link removal, the second link betweenness will soar [and the link will be removed soon, hence uncovering the original communities]).
+NOTE: Recomputing betweenness in necessary (e.g. communities connected by two links, one with high initial betweenness, the other with low betweenness in the original network; after the first link removal, the second link betweenness will soar and the link will be removed soon, hence uncovering the original communities).
 
 Reasonable results, albeit the algorithm might fail (e.g. three equal cliques connected by three links)
 

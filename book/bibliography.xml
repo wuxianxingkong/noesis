@@ -1715,9 +1715,20 @@
 </reference>
 
 
+<reference id="Chung 1997">
+ <author>Fan R.K. Chung</author>
+ <title>Spectral Graph Theory</title>
+ <series>CBMS Regional Conference Series in Mathematics</series>
+ <volume>92</volume>
+ <publisher>American Mathematical Society</publisher>
+ <year>1997</year>
+ <isbn>0821803158</isbn>
+ <url>http://www.math.ucsd.edu/~fan/research/revised.html</url>
+</reference>
+
 
 <reference id="Chung and Lu 2002">
- <author>Fan Chung</author>
+ <author>Fan R.K. Chung</author>
  <author>Linyuan Lu</author>
  <title>Connected components in random graphs with given expected degree sequences</title>
  <journal>Annals of Combinatorics</journal>
@@ -3448,6 +3459,76 @@
 </reference>
 
 
+<reference id="Hagen and Kahng 1991">
+ <author>Lars W. Hagen</author>
+ <author>Andrew B. Kahng</author>
+ <title>Fast spectral methods for ratio cut partitioning and clustering</title>
+ <proceedings>ACM/IEEE International Conference on Computer-Aided Design</proceedings>
+ <conference>ICCAD</conference>
+ <year>1991</year>
+ <isbn>0-8186-2157-5</isbn>
+ <location>Santa Clara, California</location>
+ <pages>10-13</pages>
+ <doi>10.1109/ICCAD.1991.185177</doi>
+ <file>Networks/algorithms/clustering/1991 ICCAD Spectral methods for ratio cut partitioning.pdf</file>
+</reference>
+
+<reference id="Hagen and Kahng 1992">
+ <author>Lars W. Hagen</author>
+ <author>Andrew B. Kahng</author>
+ <title>New spectral methods for ratio cut partitioning and clustering</title>
+ <journal>IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems</journal>
+ <volume>11</volume>
+ <number>9</number>
+ <pages>1074-1085</pages>
+ <year>1992</year>
+ <doi>10.1109/43.159993</doi>
+ <file>Networks/algorithms/clustering/1992 TCAD Spectral methods for ratio cut partitioning.pdf</file>
+</reference>
+
+<reference id="Hagen et al. 1994">
+ <author>Lars W. Hagen</author>
+ <author>Andrew B. Kahng</author>
+ <author>Fadi J. Kurdahi</author>
+ <author>Champaka Ramachandran</author>
+ <title>On the intrinsic Rent parameter and spectra-based partitioning methodologies</title>
+ <journal>IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems</journal>
+ <volume>13</volume>
+ <number>1</number>
+ <pages>27-37</pages>
+ <year>1994</year>
+ <doi>10.1109/43.273752</doi>
+ <file>Networks/algorithms/clustering/1994 TCAD Intrinsic Rent parameter and spectra-based partitioning.pdf</file>
+</reference>
+
+<reference id="Hagen and Kahng 1997">
+ <author>Lars W. Hagen</author>
+ <author>Andrew B. Kahng</author>
+ <title>Combining problem reduction and adaptive multistart: a new technique for superior iterative partitioning</title>
+ <journal>IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems</journal>
+ <volume>16</volume>
+ <number>7</number>
+ <pages>709-717</pages>
+ <year>1997</year>
+ <doi>10.1109/43.644032</doi>
+ <file>Networks/algorithms/clustering/1997 TCAD Superior Iterative Partitioning.pdf</file>
+</reference>
+
+<reference id="Hagen et al. 1997">
+ <author>Lars W. Hagen</author>
+ <author>Dennis J.H. Huang</author>
+ <author>Andrew B. Kahng</author>
+ <title>On implementation choices for iterative improvement partitioning algorithms</title>
+ <journal>IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems</journal>
+ <volume>16</volume>
+ <number>10</number>
+ <pages>1199-1205</pages>
+ <year>1997</year>
+ <doi>10.1109/43.662682</doi>
+ <file>Networks/algorithms/clustering/1997 TCAD Implementation choices for partitioning algorithms.pdf</file>
+</reference>
+
+
 
 <reference id="Han and Kamber 2006">
  <author>Jiawei Han</author>
@@ -4093,7 +4174,7 @@
  <author>Vipin Kumar</author>
  <author>Shashi Shekhar</author>
  <title>Multilevel hypergraph partitioning: Applications in VLSI domain</title>
- <journal>IEEE Transactions on Systems Science and Cybernetics</journal>
+ <journal>IEEE Transactions on Very Large Scale Integration (VLSI) Systems</journal>
  <volume>7</volume>
  <number>1</number>
  <pages>69-79</pages>
@@ -4274,6 +4355,22 @@
  <pages>497-508</pages>
  <year>1847</year>
 </reference>
+
+
+<reference id="Kirkpatrick et al. 1983">
+ <author>Scott Kirkpatrick</author>
+ <author>C.D. Gelatt Jr.</author>
+ <author>Mario P. Vecchi</author>
+ <title>Optimization by Simulated Annealing</title>
+ <journal>Science</journal>
+ <volume>220</volume>
+ <number>4598</number>
+ <pages>671-680</pages>
+ <year>1983</year>
+ <doi>10.1126/science.220.4598.671</doi>
+ <file>Networks/algorithms/1983 Science - Simulated Annealing.pdf</file>
+</reference>
+
 
 
 
@@ -6235,6 +6332,23 @@
  <doi>10.1016/0378-8733(78)90011-4</doi>
  <file>Networks/models/small-world/1978 Social Networks [Pool &amp; Kochen] Contacts and influence.pdf</file>
 </reference>
+
+
+<reference id="Pothen et al. 1990">
+ <author>Alex Pothen</author>
+ <author>Horst D. Simon</author>
+ <author>Kan-Pu Liou</author>
+ <title>Partitioning sparse matrices with eigenvectors of graphs</title>
+ <journal>SIAM Journal on Matrix Analysis and Applications</journal>
+ <volume>11</volume>
+ <number>3</number>
+ <pages>430-452</pages>
+ <year>1990</year>
+ <doi>10.1137/0611030</doi>
+ <file>Networks/algorithms/clustering/1990 SJMAA Partitioning sparse matrices with eigenvectors.pdf</file>
+ <file>Networks/algorithms/clustering/1989 NASA Partitioning sparse matrices with eigenvectors.pdf</file>
+</reference>
+
 
 <reference id="Press et al. 1992">
  <author>William H. Press</author>

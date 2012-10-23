@@ -221,6 +221,10 @@ Beyond social networks, there is a branch of network theory that deals with the 
 
 In social networking, personal agency or motivation is a also key factor in establishing social connections. Even organizations vary in the extent to which they actively seek to relate to other organizations and their skilled in this endeavor <cite>Kadushin 2012</cite>.
 
+
+++ Animal networks
+D Lusseau, The emergent properties of a dolphin social network, Proc. Roy. Soc. B, 2003.
+
 </document>
 
 
@@ -346,6 +350,10 @@ Link analysis and Web search:
 </text>
 
 
++ Damon Centola,,'The spread of behavior in an online social network experiment', Science, 2010.
++ Sinan Aral and Dylan Walker,Creating social contagion through viral product design: A randomized trial of peer influence in networks",Management Science, 2011.
++ Bakshy, Rosenn, Marlow, and Adamic,The role of social networks in information diffusion,Proc. WWW, 2012
+
 
 <text>
 ++ Bibliographic citation networks:
@@ -364,6 +372,11 @@ ArNetMiner <cite>Tang et al. 2008</cite>
 <text>
 ++ Semantic associations between terms <cite>Steyvers and Tenenbaum 2005</cite>, based on the University of South Florida Word Association, Rhyme and Word Fragment Norms
 </text>
+
+
+++ Recipes and ingredient networks
+YY Ahn, SE Ahnert, JP Bagrow, AL Barabási,Flavor network and the principles of food pairing,Nature Scientific Reports, 2011.
+CY Teng, YR Lin, LA Adamic, Recipe recommendation using ingredient networks, Web Science 2012.
 
 
 </document>
@@ -458,6 +471,11 @@ Network effects [Kleinberg 17]
         Property rights [Kleinberg 24]
 
 e.g. L'2009: <cite>Bristor and Ryan 1989</cite>
+
+
+Economic development
+C. A. Hidalgo, B. Klinger, A.-L. Barabási, and R. Hausmann. The Product Space Conditions the Development of Nations, Science 27 July 2007: 317 (5837), 482-487.
+C.A. Hidalgo and R. Hausmann,The building block of economic complexity, PNAS, 106(26), 2009.
 
 
 </document>
@@ -555,6 +573,12 @@ Food webs
 - edges: predator-prey relationships
 - directed edges
 </text>
+
+
+++ Human disease network
+Goh et al. The human disease network,PNAS 104(21), 2007.
+AL Barabási, N Gulbahce, J Loscalzo,Network medicine: a network-based approach to human disease Nature Reviews Genetics, 2011.
+
 
 </document>
 

@@ -1,25 +1,31 @@
 package sandbox.adt;
 
 /**
- * Index implemented as a skip-list-like data structure...
+ * Dynamic array with logical deletion, implemented as a skip-list-like data structure...
+ * 
+ * - Insertion: Amortized O(1)
+ * - Deletion: O(log n)
+ * - Access by index: O(log n)
+ * - Access by content: O(n)
+ * - Space: O(n)
  * 
  * @author Fernando Berzal (berzal@acm.org)
  *
  */
 
-public class Index 
+public class SkipList 
 {
-	private int     capacity;    // maximum capacity
-    private int     totalSize;   // total number of elements in the index (including deleted entries)
-    private int     currentSize; // actual number of elements in the index
-    private int[][] skip;        // Skip lists
-    private int[]   values;      // values[i] 
+	protected int     capacity;    // maximum capacity
+    protected int     totalSize;   // total number of elements in the index (including deleted entries)
+    protected int     currentSize; // actual number of elements in the index
+    protected int[][] skip;        // Skip lists
+    protected int[]   values;      // values[i] 
 
     private final static int INITIAL_CAPACITY = 2;  // 16
 	
     // Constructor
     
-    public Index ()
+    public SkipList ()
     {
     	this.totalSize   = 0;
     	this.currentSize = 0;
@@ -70,7 +76,7 @@ public class Index
 
 	// O(log n) operations through skip lists
 	
-	private int skip (int position) 
+	protected int skip (int position) 
 	{
 		int target = position;
 		int index = 0;
@@ -84,7 +90,7 @@ public class Index
 	}
     
 	
-	private void removeSkip (int n)
+	protected void removeSkip (int n)
 	{
 		int target = n;
 		int pos;
@@ -183,10 +189,13 @@ public class Index
 		
 		for (int level=skip.length-1; level>=0; level--) {
 			for (int i=0; i<skip[level].length; i++) {
-				str += skip[level][i];
+				str += " "+ skip[level][i];
 			}
 			str += "\n";
 		}
+		
+		for (int i=0; i<totalSize; i++)
+			str += " "+values[i]; 
 		
 		return str;
 	}

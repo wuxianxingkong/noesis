@@ -4,15 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class IndexTest 
+public class SkipListTest 
 {
-	Index index = new Index();
+	SkipList index = new SkipList();
 
 	@Test
 	public void testConstructor() 
 	{	
-		Index index = new Index();
-		
 		assertEquals(0, index.size());
 	}
 	
@@ -103,7 +101,7 @@ public class IndexTest
 	
 	private void remove (int size, int n)
 	{
-		index = new Index();
+		index = new SkipList();
 		
 		add(size);
 		
@@ -174,12 +172,29 @@ public class IndexTest
 	@Test
 	public void testContains()
 	{
-		fail("TBD");
+		add(4);
+		
+		assertTrue( index.contains(1) );
+		assertTrue( index.contains(2) );
+		assertTrue( index.contains(3) );
+		assertTrue( index.contains(4) );
+		
+		assertFalse( index.contains(0) );
+		assertFalse( index.contains(5) );
 	}
 	
 	@Test
 	public void testSet()
 	{
-		fail("TBD");
+		add(4);
+		
+		index.set(2, 5);
+		
+		assertEquals(4, index.size());
+		
+		assertEquals(1, index.get(0));
+		assertEquals(2, index.get(1));
+		assertEquals(5, index.get(2));
+		assertEquals(4, index.get(3));
 	}
 }

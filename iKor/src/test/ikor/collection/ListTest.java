@@ -29,11 +29,12 @@ public class ListTest {
 		assertEquals("two", list.get(1));
 		assertEquals("three", list.get(2));
 		
-		try {
-			list.get(3);
-			fail("list.get() should have thrown an exception!");
-		} catch (Exception error) {
-		}		
+		assertEquals(null, list.get(3));
+		//try {
+		//	list.get(3);
+		//	fail("list.get() should have thrown an exception!");
+		//} catch (Exception error) {
+		//}		
 	}
 
 	@Test

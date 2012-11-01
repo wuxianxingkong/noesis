@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class SkipListTest 
+public class SkipArrayTest 
 {
-	SkipList index = new SkipList();
+	SkipArray index = new SkipArray();
 
 	@Test
 	public void testConstructor() 
@@ -30,19 +30,19 @@ public class SkipListTest
 	}
 	
 	@Test
-	public void testAddition4()
+	public void testAdd4()
 	{
 		add(4);
 	}
 
 	@Test
-	public void testAddition8()
+	public void testAdd8()
 	{
 		add(8);
 	}
 
 	@Test
-	public void testAddition255()
+	public void testAdd255()
 	{
 		add(255);
 	}
@@ -101,7 +101,7 @@ public class SkipListTest
 	
 	private void remove (int size, int n)
 	{
-		index = new SkipList();
+		index = new SkipArray();
 		
 		add(size);
 		
@@ -132,16 +132,96 @@ public class SkipListTest
 	}
 
 	@Test
-	public void testRemoveAt2()
+	public void testRemoveAt0()
 	{
 		add(4);
 		
 		index.removeAt(0);
+		
+		assertEquals(3, index.size());
+		
+		assertEquals(2, index.get(0));
+		assertEquals(3, index.get(1));
+		assertEquals(4, index.get(2));
+		
 		index.removeAt(0);
+		
 		assertEquals(2, index.size());
 		
 		assertEquals(3, index.get(0));
 		assertEquals(4, index.get(1));
+
+		index.removeAt(0);
+		
+		assertEquals(1, index.size());
+		
+		assertEquals(4, index.get(0));
+
+		index.removeAt(0);
+		
+		assertEquals(0, index.size());
+	}
+
+	@Test
+	public void testRemoveAt1()
+	{
+		add(4);
+		
+		index.removeAt(1);
+		
+		assertEquals(3, index.size());
+		
+		assertEquals(1, index.get(0));
+		assertEquals(3, index.get(1));
+		assertEquals(4, index.get(2));
+		
+		index.removeAt(1);
+		
+		assertEquals(2, index.size());
+		
+		assertEquals(1, index.get(0));
+		assertEquals(4, index.get(1));
+
+		index.removeAt(1);
+		
+		assertEquals(1, index.size());
+		
+		assertEquals(1, index.get(0));
+
+		index.removeAt(0);
+		
+		assertEquals(0, index.size());
+	}
+
+	@Test
+	public void testRemoveAt2()
+	{
+		add(4);
+		
+		index.removeAt(2);
+		
+		assertEquals(3, index.size());
+		
+		assertEquals(1, index.get(0));
+		assertEquals(2, index.get(1));
+		assertEquals(4, index.get(2));
+		
+		index.removeAt(2);
+		
+		assertEquals(2, index.size());
+		
+		assertEquals(1, index.get(0));
+		assertEquals(2, index.get(1));
+
+		index.removeAt(1);
+		
+		assertEquals(1, index.size());
+		
+		assertEquals(1, index.get(0));
+
+		index.removeAt(0);
+		
+		assertEquals(0, index.size());
 	}
 
 	@Test
@@ -149,23 +229,29 @@ public class SkipListTest
 	{
 		add(4);
 		
-		index.removeAt(0);
-		index.removeAt(0);
-		index.removeAt(0);
+		index.removeAt(3);
+		
+		assertEquals(3, index.size());
+		
+		assertEquals(1, index.get(0));
+		assertEquals(2, index.get(1));
+		assertEquals(3, index.get(2));
+		
+		index.removeAt(2);
+		
+		assertEquals(2, index.size());
+		
+		assertEquals(1, index.get(0));
+		assertEquals(2, index.get(1));
+
+		index.removeAt(1);
+		
 		assertEquals(1, index.size());
 		
-		assertEquals(4, index.get(0));
-	}
+		assertEquals(1, index.get(0));
 
-	@Test
-	public void testRemoveAt4()
-	{
-		add(4);
+		index.removeAt(0);
 		
-		index.removeAt(0);
-		index.removeAt(0);
-		index.removeAt(0);
-		index.removeAt(0);
 		assertEquals(0, index.size());
 	}
 
@@ -195,6 +281,24 @@ public class SkipListTest
 		assertEquals(1, index.get(0));
 		assertEquals(2, index.get(1));
 		assertEquals(5, index.get(2));
+		assertEquals(4, index.get(3));
+		
+		index.set(2, 3);
+
+		assertEquals(4, index.size());
+
+		assertEquals(1, index.get(0));
+		assertEquals(2, index.get(1));
+		assertEquals(3, index.get(2));
+		assertEquals(4, index.get(3));
+
+		index.set(2, 0);
+		
+		assertEquals(4, index.size());
+		
+		assertEquals(1, index.get(0));
+		assertEquals(2, index.get(1));
+		assertEquals(0, index.get(2));
 		assertEquals(4, index.get(3));
 	}
 }

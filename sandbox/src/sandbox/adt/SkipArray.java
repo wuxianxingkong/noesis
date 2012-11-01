@@ -13,7 +13,7 @@ package sandbox.adt;
  *
  */
 
-public class SkipList 
+public class SkipArray 
 {
 	protected int     capacity;    // maximum capacity
     protected int     totalSize;   // total number of elements in the index (including deleted entries)
@@ -25,7 +25,7 @@ public class SkipList
 	
     // Constructor
     
-    public SkipList ()
+    public SkipArray ()
     {
     	this.totalSize   = 0;
     	this.currentSize = 0;
@@ -193,9 +193,16 @@ public class SkipList
 			}
 			str += "\n";
 		}
-		
+
+		for (int i=0; i<currentSize; i++)
+			str += " "+skip(i); 
+
+		str += "\n";
+
 		for (int i=0; i<totalSize; i++)
 			str += " "+values[i]; 
+		
+		str += "\n";
 		
 		return str;
 	}

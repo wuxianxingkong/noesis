@@ -1,5 +1,7 @@
 package sandbox.adt;
 
+// TODO O(log n) removal & addition using skip lists for a sorted array... asumming it is not impossible !
+
 /**
  * Sorted dynamic array with logical deletion, implemented as a skip-list-like data structure...
  * 
@@ -13,11 +15,11 @@ package sandbox.adt;
  *
  */
 
-public class SortedSkipList extends SkipList 
+public class SortedSkipArray extends SkipArray 
 {	
     // Constructor
     
-    public SortedSkipList ()
+    public SortedSkipArray ()
     {
     	super();
     }
@@ -27,10 +29,11 @@ public class SortedSkipList extends SkipList
 	
 	private void addSkip (int position)
 	{
-		int diff = (totalSize-1)-position;
+		// TODO Generic update of skip indexes
 		
-		if (position!=currentSize-1)  // Update index if not at the current end
-		   skip[0][position] += diff; 
+		int diff = (totalSize-1)-skip(position);
+		
+		skip[0][position] += diff; 
 		
 		int target = position;
 		int bits = (capacity-1)-position;
@@ -49,6 +52,30 @@ public class SortedSkipList extends SkipList
 		}		
 	}
 
+	protected void removeSkip (int n)
+	{
+		// TODO Generic update of skip indexes
+
+		int target = n;
+		int pos;
+		
+		if (target==0) {
+			skip[0][0] = skip[0][1];
+			target=1;
+		}
+		
+		int bits = capacity - target; 
+		
+		for (int level=0; level<skip.length; level++) {
+			
+			if ( (bits & (1<<level)) != 0)  {  // level-th LSB
+				pos = target|1;
+				skip[level][pos]++;
+			}
+			
+			target>>=1;
+		}		
+	}
 	
 	// O(log n) implementation
 
@@ -85,18 +112,17 @@ public class SortedSkipList extends SkipList
 
 	public int set (int index, int value) 
 	{
-		System.out.println(this);
+		System.err.println(this);
 		removeAt(index);
-		
-		System.out.println(this);
+		System.err.println(this);
 		add(value);
+		System.err.println(this);
 		
-		System.out.println(this);
 		return totalSize-1;
 	}
 	
 
-	// Add at the end of the array...
+	// Add a new element to the sorted array...
 	
 	public boolean add (int value) 
 	{

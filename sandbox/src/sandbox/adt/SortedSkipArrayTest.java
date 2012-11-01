@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class SortedSkipListTest 
+public class SortedSkipArrayTest 
 {
-	SortedSkipList index = new SortedSkipList();
+	SortedSkipArray index = new SortedSkipArray();
 
 	@Test
 	public void testConstructor() 
@@ -261,7 +261,7 @@ public class SortedSkipListTest
 	
 	private void remove (int size, int n)
 	{
-		index = new SortedSkipList();
+		index = new SortedSkipArray();
 		
 		add(size);
 		
@@ -280,14 +280,14 @@ public class SortedSkipListTest
 	@Test
 	public void testRemove8 ()
 	{
-		for (int i=0; i<1; i++)
+		for (int i=0; i<8; i++)
 		    remove (8, i);
 	}
 
 	@Test
 	public void testRemove255 ()
 	{
-		for (int i=0; i<1; i++)
+		for (int i=0; i<255; i++)
 		    remove (255, i);
 	}
 
@@ -355,6 +355,24 @@ public class SortedSkipListTest
 		assertEquals(1, index.get(0));
 		assertEquals(2, index.get(1));
 		assertEquals(4, index.get(2));
+		assertEquals(5, index.get(3));
+
+		index.set(2, 3);
+
+		assertEquals(4, index.size());
+
+		assertEquals(1, index.get(0));
+		assertEquals(2, index.get(1));
+		assertEquals(3, index.get(2));
+		assertEquals(5, index.get(3));
+
+		index.set(2, 0);
+		
+		assertEquals(4, index.size());
+		
+		assertEquals(0, index.get(0));
+		assertEquals(1, index.get(1));
+		assertEquals(2, index.get(2));
 		assertEquals(5, index.get(3));
 	}
 }

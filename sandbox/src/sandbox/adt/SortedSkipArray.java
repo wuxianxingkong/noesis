@@ -1,5 +1,7 @@
 package sandbox.adt;
 
+import ikor.collection.array.SkipArray;
+
 // TODO O(log n) removal & addition using skip lists for a sorted array... asumming it is not impossible !
 
 /**
@@ -110,15 +112,13 @@ public class SortedSkipArray extends SkipArray
 	}
 
 
-	public int set (int index, int value) 
+	public void set (int index, int value) 
 	{
 		System.err.println(this);
-		removeAt(index);
+		remove(index);
 		System.err.println(this);
 		add(value);
 		System.err.println(this);
-		
-		return totalSize-1;
 	}
 	
 
@@ -138,14 +138,16 @@ public class SortedSkipArray extends SkipArray
 
 	// O(log n) implementation
 	
-	public boolean remove (int value) 
+	public boolean removeValue (int value) 
 	{
 		int position = search(value,0,currentSize-1);
 		
-		if ((position<currentSize) && (value==get(position)))
-			return removeAt(position);
-		else
+		if ((position<currentSize) && (value==get(position))) {
+			remove(position);
+			return true;
+		} else {
 			return false;
+		}
 	}
 
 }

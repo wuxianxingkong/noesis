@@ -7,7 +7,7 @@ public abstract class Problem
 
 	public abstract int variables();
 	
-	public final int unasignedVariables ()
+	public final int unassignedVariables ()
 	{
 		int i;
 		int count = 0;
@@ -38,8 +38,10 @@ public abstract class Problem
 	
 	public abstract boolean check();
 
+	public abstract boolean check(int var);
+
 	public boolean isSolved() {
-		return (unasignedVariables()==0) && check();
+		return (unassignedVariables()==0) && check();
 	}
 
 }

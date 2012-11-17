@@ -171,6 +171,21 @@ public class Sudoku9 extends Sudoku
 		return ok;
 	}
 
+	public boolean check (int i, int j)
+	{
+		boolean ok = true;
+
+		ok = checkRow(i);
+		
+		if (ok)
+			ok = checkColumn(j);
+		
+		if (ok)
+			ok = checkUnit(3*(i/3)+(j/3));
+		
+		return ok;
+	}
+	
 	// E/S
 	
 	public static int[][] parse (String template) 

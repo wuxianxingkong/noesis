@@ -56,6 +56,15 @@ public abstract class Sudoku extends Problem
 	{
 		return isEmpty(var/size(), var%size());
 	}
+	
+	// Check
+
+	public abstract boolean check (int i, int j);
+	
+	public final boolean check (int var)
+	{
+		return check(var/size(), var%size());
+	}
 
 	// Candidates
 	

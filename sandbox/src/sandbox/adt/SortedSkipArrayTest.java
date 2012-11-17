@@ -212,7 +212,7 @@ public class SortedSkipArrayTest
 	{
 		add(4);
 		
-		index.removeAt(3);
+		index.remove(3);
 		assertEquals(3, index.size());
 		
 		assertEquals(1, index.get(0));
@@ -225,7 +225,7 @@ public class SortedSkipArrayTest
 	{
 		add(4);
 				
-		index.removeAt(0);
+		index.remove(0);
 		assertEquals(3, index.size());
 		
 		assertEquals(2, index.get(0));
@@ -238,7 +238,7 @@ public class SortedSkipArrayTest
 	{
 		add(4);
 		
-		index.removeAt(1);
+		index.remove(1);
 		assertEquals(3, index.size());
 		
 		assertEquals(1, index.get(0));
@@ -251,7 +251,7 @@ public class SortedSkipArrayTest
 	{
 		add(4);
 		
-		index.removeAt(2);
+		index.remove(2);
 		assertEquals(3, index.size());
 		
 		assertEquals(1, index.get(0));
@@ -265,7 +265,7 @@ public class SortedSkipArrayTest
 		
 		add(size);
 		
-		index.removeAt(n);
+		index.remove(n);
 		assertEquals(size-1, index.size());
 		
 		// System.err.println(index);
@@ -296,8 +296,8 @@ public class SortedSkipArrayTest
 	{
 		add(4);
 		
-		index.removeAt(0);
-		index.removeAt(0);
+		index.remove(0);
+		index.remove(0);
 		assertEquals(2, index.size());
 		
 		assertEquals(3, index.get(0));
@@ -309,9 +309,9 @@ public class SortedSkipArrayTest
 	{
 		add(4);
 		
-		index.removeAt(0);
-		index.removeAt(0);
-		index.removeAt(0);
+		index.remove(0);
+		index.remove(0);
+		index.remove(0);
 		assertEquals(1, index.size());
 		
 		assertEquals(4, index.get(0));
@@ -322,10 +322,10 @@ public class SortedSkipArrayTest
 	{
 		add(4);
 		
-		index.removeAt(0);
-		index.removeAt(0);
-		index.removeAt(0);
-		index.removeAt(0);
+		index.remove(0);
+		index.remove(0);
+		index.remove(0);
+		index.remove(0);
 		assertEquals(0, index.size());
 	}
 

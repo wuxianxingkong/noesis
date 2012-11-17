@@ -195,6 +195,21 @@ public class SudokuHex extends Sudoku
 	}
 	
 	
+	public boolean check (int i, int j)
+	{
+		boolean ok = true;
+
+		ok = checkRow(i);
+		
+		if (ok)
+			ok = checkColumn(j);
+		
+		if (ok)
+			ok = checkBlock(4*(i/4)+(j/4));
+		
+		return ok;
+	}
+
 	
 	// E/S
 	

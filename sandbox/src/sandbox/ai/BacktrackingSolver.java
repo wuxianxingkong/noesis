@@ -16,13 +16,14 @@ public class BacktrackingSolver extends Solver
 	
 	public void solve()
 	{
-		backtrack(problem);
+		if (problem.check())
+			backtrack(problem);
 	}
 	
 	private boolean backtrack (Problem problem)
 	{
 		int     variable;
-		boolean fin = problem.isSolved();
+		boolean fin = (problem.unassignedVariables()==0); // problem.isSolved();
 		
 		if (!fin) {
 			
@@ -38,7 +39,7 @@ public class BacktrackingSolver extends Solver
 			for (int v=0; (v<candidates.length) && !fin; v++) {
 				problem.set(variable, candidates[v]);
 
-				if (problem.check())
+				if (problem.check(variable))
 					fin = backtrack(problem);
 			}
 						

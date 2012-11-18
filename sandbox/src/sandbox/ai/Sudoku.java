@@ -70,11 +70,18 @@ public abstract class Sudoku extends Problem
 	
 	public abstract int[] values (int i, int j);
 
+	public abstract int valueCount (int i, int j);
+
 	public final int[] values (int var)
 	{
 		return values(var/size(), var%size());
 	}
-	
+
+	public final int valueCount (int var)
+	{
+		return valueCount(var/size(), var%size());
+	}
+
 	// Compatibility
 
 	public boolean isCompatibleWith (Sudoku template)

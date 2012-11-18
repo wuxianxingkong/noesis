@@ -79,7 +79,19 @@ public class SudokuHex extends Sudoku
 		
 		return candidates; // candidates vs. DOMAIN
 	}
-	
+
+	public int valueCount (int i, int j)
+	{
+		boolean[] valid = checkCandidates(i,j);
+		int       count = 0;
+		
+		for (int v=0; v<valid.length; v++)
+			if (valid[DOMAIN[v]])
+				count++;
+		
+		return count;
+	}
+
 	private boolean[] checkCandidates(int i, int j)
 	{
 		for (int v=0; v<SIZE; v++)

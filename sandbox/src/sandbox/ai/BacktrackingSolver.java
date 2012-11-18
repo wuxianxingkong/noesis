@@ -23,7 +23,7 @@ public class BacktrackingSolver extends Solver
 	private boolean backtrack (Problem problem)
 	{
 		int     variable;
-		boolean fin = (problem.unassignedVariables()==0); // problem.isSolved();
+		boolean fin = problem.isComplete(); // problem.isSolved();
 		
 		if (!fin) {
 			
@@ -66,15 +66,15 @@ public class BacktrackingSolver extends Solver
 	{		
 		int best = -1;
 		int values = Integer.MAX_VALUE;
-		int candidates[];
+		int candidates;
 		
 		for (int var=0; var<problem.variables(); var++) 		
 			if (problem.isUnassigned(var)) {
-				candidates = problem.values(var);
+				candidates = problem.valueCount(var);
 				
-				if (candidates.length<values) {
+				if (candidates<values) {
 					best = var;
-					values = candidates.length;
+					values = candidates;
 				}
 			}
 		

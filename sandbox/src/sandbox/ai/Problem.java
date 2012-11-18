@@ -33,6 +33,10 @@ public abstract class Problem
 
 	public abstract int[] values (int var);
 	
+	public int valueCount (int var)
+	{
+		return values(var).length;
+	}
 	
 	// Constraint checking
 	
@@ -40,6 +44,10 @@ public abstract class Problem
 
 	public abstract boolean check(int var);
 
+	public boolean isComplete() {
+		return (unassignedVariables()==0);
+	}
+	
 	public boolean isSolved() {
 		return (unassignedVariables()==0) && check();
 	}

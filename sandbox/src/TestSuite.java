@@ -125,6 +125,7 @@ public class TestSuite implements Runnable
 		t.start(); // Kick off calculations
 
 		while (  (System.currentTimeMillis() < endTime)
+			  && t.isAlive() && !t.isInterrupted()
 			  && (testSuite.resueltos + testSuite.errores < testSuite.sudokus.length) ) {
 		    // Still within time theshold, wait a little longer
 		    try {

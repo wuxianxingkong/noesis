@@ -47,7 +47,19 @@ public class SudokuX extends Sudoku9
 		
 		return candidates; // candidates vs. DOMAIN
 	}
-	
+
+	public int valueCount (int i, int j)
+	{
+		boolean[] valid = checkCandidates(i,j);
+		int       count = 0;
+		
+		for (int v=0; v<DOMAIN.length; v++)
+			if (valid[DOMAIN[v]])
+				count++;
+		
+		return count;
+	}
+
 	private boolean[] checkCandidates(int i, int j)
 	{
 		for (int v=0; v<valid.length; v++)

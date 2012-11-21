@@ -508,6 +508,19 @@ http://www.rene-pickhardt.de/google-pregel-vs-signal-collect-for-distributed-gra
 
 
 + http://www.graph500.org/
+ACM TechNews: Lawrence Livermore National Laboratory's Sequoia supercomputer ranked first in the most recent Graph 500 list, which tracks how well supercomputers handle big data-related workloads. The Graph 500 list is important because many high-performance computing (HPC) machines are being put to work on data analysis, instead of traditional tasks such as modeling and simulation. "Everyone has recognized that data is a new workload for HPC," says Georgia Tech professor David Bader. When compared to the Top500 supercomputer list, which tracks how effectively HPC systems execute floating-point operations, the Graph 500 places greater emphasis on how well a computer can search through a large data set. "Big data has a lot of irregular and unstructured data sets, irregular accesses to memory, and much more reliance on memory bandwidth and memory transactions than on floating-point performance," Bader says. Nine out of the top 10 systems on the most recent Graph 500 list are IBM BlueGene/Q models. Bader notes the Graph 500 is not a replacement for the Top500 list, but rather a complementary benchmark. He says other projects, such as the Green500 and the HPC Challenge, measure more aspects of supercomputing performance.
+http://www.computerworld.com/s/article/9233750/World_s_most_powerful_big_data_machines_charted_on_Graph_500
+
++ The top machine on the new list, Sequoia, traversed 15,363 billion edges per second
+
+vs. Top 500: 
+
+The well-known Top500 list relies on the Linpack benchmark, which was created in 1974. Linpack measures how effectively a supercomputer executes floating point operations, which are used for mathematically intensive computations such as weather modeling or other three dimensional simulations.
+The Graph 500, in contrast, places greater emphasis on how well a computer can search through a large data set. "Big data has a lot of irregular and unstructured data sets, irregular accesses to memory, and much more reliance on memory bandwidth and memory transactions than on floating point performance," Bader said.
+
+For the Graph 500 benchmark, the supercomputer is given a large set of data, called a graph. A graph is an interconnected set of data, such as a group of connected friends on a social network like Facebook. A graph consists of a set of vertices and edges, and in the social media context a vertex would be a person and the edge that person's connection to another person. Some vertices have many connections while many others have fewer. The computer is given a single vertex and is timed on how quickly it discovers all the other vertices in a graph, namely by following the edges.
+
+The Graph500 list is compiled twice a year, and, like the Top500, the results are announced at the Supercomputing conference, usually held in November, or the International Supercomputing Conference, usually held in June. 
 
 </document>
 

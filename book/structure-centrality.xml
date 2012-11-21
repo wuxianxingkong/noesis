@@ -264,6 +264,15 @@ ISBN:0-7695-2636-5
 DOI 10.1109/ICPP.2006.57
 ]
 
+++ Incremental:
+
+Who’s the Most Influential in a Social Graph?
+Georgia Tech News (09/07/12) Jason Maderer 
+
+Georgia Tech researchers say they have developed an algorithm that quickly determines betweenness centrality for streaming graphs. They say the algorithm also can identify influencers as information changes within a network. "Our algorithm stores the graph’s prior centrality data and only does the bare minimal computations affected by the inserted edges," says Georgia Tech professor David Bader. In some situations, Bader says the software can compute betweenness centrality more than 100 times faster than conventional methods. He notes advertisers could use the software to identify which celebrities are most influential on social media during product launches. "Despite a fragmented social media landscape, data analysts would be able to use the algorithm to look at each social media network and mark inferences about a single influencer across these different platforms," Bader says.
+
+http://www.gatech.edu/newsroom/release.html?nid=152431
+
 
 ++
 Approximating betweenness centrality

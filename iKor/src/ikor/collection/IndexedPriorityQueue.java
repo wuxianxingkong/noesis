@@ -18,6 +18,8 @@ import java.util.NoSuchElementException;
  * get(), add(), and remove() methods; and constant time for the 
  * peek(), size(), and contains() retrieval methods.
  * 
+ * BUG corrected from original remove() implementation...
+ * 
  * @author Fernando Berzal
  */
 
@@ -68,15 +70,19 @@ public class IndexedPriorityQueue<T> implements PriorityQueue<T>
 	public boolean remove(T object) 
 	{
 		int ndx = indexer.index(object);
+		int pos;
 		
 		if (ndx>=0) {
 			
-			exchange(qp[ndx], size--); 
-			sink(qp[ndx]);
+			pos = qp[ndx];
 			
-			qp[ndx] = -1;               // delete
-			keys[pq[size+1]] = null;    // to help with garbage collection
-			pq[size+1] = -1;            // not needed
+			exchange(pos, size--);
+			swim(pos);
+			sink(pos);
+			
+			qp[ndx] = -1;        // delete
+			keys[ndx] = null;    // to help with garbage collection
+			pq[size+1] = -1;     // not really needed
 			return true;
 			
 		} else {
@@ -198,6 +204,7 @@ public class IndexedPriorityQueue<T> implements PriorityQueue<T>
             return copy.get();
         }
     }	
+       
 	
 	// Ancillary routines
 

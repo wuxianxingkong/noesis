@@ -70,7 +70,7 @@ public class PrimMinimumSpanningTree<V,E>
         			
         			if (!visited[links[j]]) {
         				
-        				linkValue = linkEvaluator.evaluate( network.get(vertex, links[j]) );
+            			linkValue = linkEvaluator.evaluate( network.get(vertex, links[j]) );
         				
         				if (linkValue<cost[links[j]]) {
         					parent[links[j]] = vertex;
@@ -85,17 +85,24 @@ public class PrimMinimumSpanningTree<V,E>
 		
 		this.weight = 0;	
 		
-		for (int i=0; i<network.size(); i++)
-			if (parent[i]!=-1) {
-				E link = network.get(parent[i],i);
-				weight += linkEvaluator.evaluate(link);
-			}
+		for (int i=0; i<network.size(); i++) {
+			this.weight += cost[i];
+
+			// Alternative (slower) implementation:
+			//
+			// if (parent[i]!=-1) {
+			//	  E link = network.get(parent[i],i);
+			//	  weight += linkEvaluator.evaluate(link);
+			//}
+		}
 	}
 	
 	private void updateCost (PriorityQueue queue, double cost[], int node, double newCost)
 	{
 		queue.remove(node);
+		
 		cost[node] = newCost;
+
 		queue.add(node);
 	}
 	

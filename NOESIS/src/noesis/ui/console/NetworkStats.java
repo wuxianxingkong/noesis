@@ -56,6 +56,8 @@ public class NetworkStats {
 			
 			if (args[0].endsWith(".net"))
 				reader = new PajekNetworkReader(new FileReader(args[0]));
+			else if (args[0].endsWith(".dat"))
+				reader = new ASCIINetworkReader(new FileReader(args[0]));
 			else if (args[0].endsWith(".txt"))
 				reader = new SNAPNetworkReader(new FileReader(args[0]));
 			else if (args[0].endsWith(".gz"))

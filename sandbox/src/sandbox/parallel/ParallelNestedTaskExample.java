@@ -4,7 +4,7 @@ import java.util.concurrent.ExecutionException;
 
 import ikor.util.Benchmark;
 
-public class NoesisNestedTaskExample extends FutureTask<Integer>
+public class ParallelNestedTaskExample extends FutureTask<Integer>
 {
 	public static final int WIDTH = 2;
 	public static final int DEPTH = 10;
@@ -12,7 +12,7 @@ public class NoesisNestedTaskExample extends FutureTask<Integer>
 	int width = WIDTH;
 	int depth = DEPTH;
 	
-	public NoesisNestedTaskExample (int width, int depth)
+	public ParallelNestedTaskExample (int width, int depth)
 	{
 		this.width = width;
 		this.depth = depth;
@@ -41,10 +41,10 @@ public class NoesisNestedTaskExample extends FutureTask<Integer>
 
 		System.out.println("+ Spawning tasks");
 
-		NoesisNestedTaskExample task[] = new NoesisNestedTaskExample[width];
+		ParallelNestedTaskExample task[] = new ParallelNestedTaskExample[width];
 		
 		for (int i=0; i<width; i++){
-			task[i] = new NoesisNestedTaskExample(width,depth-1);
+			task[i] = new ParallelNestedTaskExample(width,depth-1);
 			scheduler.schedule(task[i]);
 		}
 
@@ -115,7 +115,7 @@ public class NoesisNestedTaskExample extends FutureTask<Integer>
 		
 		Scheduler scheduler = Scheduler.get();
 		
-		NoesisNestedTaskExample task = new NoesisNestedTaskExample(WIDTH,DEPTH);
+		ParallelNestedTaskExample task = new ParallelNestedTaskExample(WIDTH,DEPTH);
 		scheduler.schedule(task);
 		
 		int result = task.getResult();

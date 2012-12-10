@@ -16,7 +16,7 @@ public abstract class FutureTask<T> extends Task<T>
 	@Override
 	protected void setResult (T result)
 	{
-		this.future = new DummyFuture(result);
+		this.future = new MockFuture(result);
 	}
 	
 	protected void setFuture (Future<T> future)

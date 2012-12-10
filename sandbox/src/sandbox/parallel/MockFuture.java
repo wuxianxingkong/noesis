@@ -3,11 +3,11 @@ package sandbox.parallel;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-class DummyFuture<V> implements Future<V>
+public class MockFuture<V> implements Future<V>
 {
 	private V value;
 
-	public DummyFuture (V value)
+	public MockFuture (V value)
 	{
 		this.value = value;
 	}

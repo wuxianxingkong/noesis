@@ -18,7 +18,7 @@ Dados dos tiempos:
 	                         => s = t(1) - p
 */
 
-public class NoesisTaskExample extends FutureTask<Integer>
+public class ParallelTaskExample extends FutureTask<Integer>
 {
 	public Integer call ()
 	{
@@ -53,7 +53,7 @@ public class NoesisTaskExample extends FutureTask<Integer>
 		int total = 0;
 
 		for (int i=0; i<SIZE; i++){
-			task[i] = new NoesisTaskExample();
+			task[i] = new ParallelTaskExample();
 			scheduler.schedule(task[i]);
 		}
 

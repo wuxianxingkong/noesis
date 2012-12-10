@@ -31,7 +31,7 @@ public class ThreadPoolScheduler<T extends FutureTask> extends Scheduler<T>
 		if (executor!=null)
 			future = executor.submit(task);
 		else
-			future = new DummyFuture(task.call());
+			future = new MockFuture(task.call());
 
 		task.setFuture(future);
 	}

@@ -3,7 +3,7 @@ package sandbox.parallel;
 
 public abstract class Scheduler<T extends Task> 
 {
-	private static Scheduler scheduler;
+	private static Scheduler scheduler = new ThreadPoolScheduler();
 	
 	// Current scheduler
 	

@@ -41,7 +41,8 @@ public class NoesisTaskExample extends FutureTask<Integer>
 
 		chrono.start();
 		
-		Scheduler.set ( new FutureScheduler(16) );	
+		Scheduler.set ( new ThreadPoolScheduler() );	
+		//Scheduler.set ( new FutureScheduler(16) );	
 		//Scheduler.set ( new SequentialScheduler() );
 		
 		Scheduler scheduler = Scheduler.get();

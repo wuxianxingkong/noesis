@@ -3,26 +3,20 @@ package sandbox.parallel;
 import java.util.concurrent.*;
 
 /**
- * Simple fixed-size thread pool scheduler.
- * WARNING: Does NOT support task composition, since all threads in the pool might eventually become blocked while waiting for Future's values.
- * NOT TO BE USED when the number of waiting threads might be larger than the thread pool size!!!
+ * Simple thread pool scheduler.
+ * WARNING: Might suffer from oversubscription (each use of parallelism might create new threads)
  * 
  * @author Fernando Berzal
  */
 
-public class FutureScheduler<T extends FutureTask> extends Scheduler<T> 
+public class ThreadPoolScheduler<T extends FutureTask> extends Scheduler<T> 
 {
-	private   ExecutorService        executor;
-	protected int                    nthreads;
+	private ExecutorService executor;
 
 
-	public FutureScheduler (int nthreads)
+	public ThreadPoolScheduler ()
 	{
-		this.nthreads = nthreads;
-
-		if (nthreads>0) {
-			this.executor = Executors.newFixedThreadPool(nthreads);
-		}
+		this.executor = Executors.newCachedThreadPool();
 	}
 
 

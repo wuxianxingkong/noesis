@@ -7,7 +7,7 @@ import ikor.util.Benchmark;
 public class NoesisNestedTaskExample extends FutureTask<Integer>
 {
 	public static final int WIDTH = 2;
-	public static final int DEPTH = 6;
+	public static final int DEPTH = 10;
 	
 	int width = WIDTH;
 	int depth = DEPTH;
@@ -109,7 +109,8 @@ public class NoesisNestedTaskExample extends FutureTask<Integer>
 
 		chrono.start();
 		
-		Scheduler.set ( new FutureScheduler(64) );	
+		Scheduler.set ( new ThreadPoolScheduler() );	
+		//Scheduler.set ( new FutureScheduler(64) );	
 		//Scheduler.set ( new SequentialScheduler() );
 		
 		Scheduler scheduler = Scheduler.get();

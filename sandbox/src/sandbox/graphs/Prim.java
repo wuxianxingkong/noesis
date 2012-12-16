@@ -79,20 +79,6 @@ public class Prim
 		System.out.println("- Links: "+ mst.links());
 		System.out.println("- Weight: "+ prim.weight());
 		
-		/*
-		KruskalMinimumSpanningTree kruskal = new KruskalMinimumSpanningTree(net,linkEvaluator);
-		
-		kruskal.run();
-		
-		Network<String,Decimal> mst2 = prim.MST(); 
-
-		System.out.println("MINIMUM SPANNING TREE (Kruskal)");
-		
-		System.out.println("- Nodes: "+ mst2.size());
-		System.out.println("- Links: "+ mst2.links());
-		System.out.println("- Weight: "+ kruskal.weight());
-		*/
-		
 		return mst;
 	}
 

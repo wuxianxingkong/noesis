@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
 
 import ikor.util.Benchmark;
 import ikor.collection.*;
+import ikor.collection.util.*;
 
 import noesis.Network;
 import noesis.algorithms.traversal.ConnectedComponents;
@@ -90,11 +91,55 @@ public class CompleteClustering
 		Benchmark chrono = new Benchmark();
 
 		chrono.start();
-		reducedNetworkComponents(net);
+		//reducedNetworkComponents(net); //   O(n^2)  algorithm  ==>  8-10 seconds
+		unionFindSolution(net);          //  O(n*b^S) algorithm  ==>    ~1 second
 		chrono.stop();
 		
 		System.out.println(chrono);
 	}
+
+	public static final int SPACING = 2;
+	public static final int BITS = 24;
+	
+	private static UnionFind uf;
+	private static Dictionary<Integer,Integer> dictionary;
+	
+	private static void check (int i, int value, int bits)
+	{
+		if (bits==0) {
+
+			Integer result = dictionary.get( value );
+			
+			if (result!=null)
+				uf.union(i,result);
+			
+		} else {
+
+			for (int bit=0; bit<BITS; bit++) {
+				check (i, value & ~(1<<bit), bits-1 );
+				check (i, value |  (1<<bit), bits-1 );
+			}
+			
+		}
+	}
+
+	public static void unionFindSolution(CompleteNetwork<Integer> net)
+	{
+		uf = new UnionFind(net.size());
+		dictionary = new DynamicDictionary<Integer,Integer>();
+		
+		for (int i=0; i<net.size(); i++)
+			dictionary.set(net.get(i),i);
+		
+		// SPACING == 2 ==> O(n*b^2) algorithm
+		// Just check every 00, 01, 10, 11 modification of the node value using a hash table
+		
+		for (int i=0; i<net.size(); i++)
+			check (i, net.get(i), SPACING);
+
+		System.out.println("- Sets: "+uf.size());		
+	}
+
 	
 	public static void reducedNetworkComponents(CompleteNetwork<Integer> net)
 	{
@@ -112,7 +157,6 @@ public class CompleteClustering
 		System.out.println("- Components: "+connected.components());		
 	}
 	
-	public static final int SPACING = 2;
 	
 	public static Network<Integer,Integer> naivelyReducedNetwork (CompleteNetwork<Integer> net)
 	{

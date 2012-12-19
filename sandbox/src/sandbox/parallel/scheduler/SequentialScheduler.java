@@ -1,7 +1,10 @@
-package sandbox.parallel;
+package sandbox.parallel.scheduler;
+
+import sandbox.parallel.Scheduler;
+import sandbox.parallel.Task;
 
 
-public class SequentialScheduler<T extends Task> extends Scheduler<T> 
+public class SequentialScheduler extends Scheduler 
 {
 	public SequentialScheduler ()
 	{
@@ -12,7 +15,7 @@ public class SequentialScheduler<T extends Task> extends Scheduler<T>
 	 * @see sandbox.parallel.Scheduler#schedule(sandbox.parallel.Task)
 	 */
 	@Override
-	public void schedule (T task)
+	public void schedule (Task task)
 	{
 		Object result = task.call();
 				

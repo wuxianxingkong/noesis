@@ -1,25 +1,37 @@
 package sandbox.parallel;
 
 import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
 
 
 public abstract class Task<T> implements Callable<T>
 {
-	T result;
+	private Future<T> future;
 	
 	// Callable interface
 	
 	public abstract T call();
 
 	// Getter & setter
-	
-	protected void setResult (T result)
+
+	public T getResult() 
 	{
-		this.result = result;
+		try {
+			return future.get(); // throws InterruptedException, ExecutionException
+		} catch (Exception error) {
+			error.printStackTrace();
+			return null;
+		}
 	}
 
-	protected T getResult () 
+	public void setResult(T result) 
 	{
-		return result;
+		this.future = new MockFuture(result);
 	}
+
+	public void setFuture(Future<T> future) 
+	{
+		this.future = future;
+	}
+
 }

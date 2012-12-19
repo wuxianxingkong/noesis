@@ -1,6 +1,9 @@
-package sandbox.parallel;
+package sandbox.parallel.example;
 
-import java.util.concurrent.ExecutionException;
+import sandbox.parallel.Scheduler;
+import sandbox.parallel.Task;
+
+import sandbox.parallel.scheduler.*;
 
 import ikor.util.Benchmark;
 
@@ -18,8 +21,10 @@ Dados dos tiempos:
 	                         => s = t(1) - p
 */
 
-public class ParallelTaskExample extends FutureTask<Integer>
+public class TaskExample extends Task<Integer>
 {
+	private static final int TASKS = 16; // 16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384, 32768, 65536 OK
+	
 	public Integer call ()
 	{
 		int value = (int)(1000*Math.random());
@@ -32,10 +37,8 @@ public class ParallelTaskExample extends FutureTask<Integer>
 		return 100+value;
 	}
 
-	private static int SIZE = 10;
 
 	public static void main (String[] args) 
-		throws InterruptedException, ExecutionException
 	{
 		Benchmark chrono = new Benchmark();
 
@@ -47,17 +50,17 @@ public class ParallelTaskExample extends FutureTask<Integer>
 		
 		Scheduler scheduler = Scheduler.get();
 		
-		FutureTask<Integer> task[] = new FutureTask[SIZE];
+		Task<Integer> task[] = new Task[TASKS];
 		
 		int result;
 		int total = 0;
 
-		for (int i=0; i<SIZE; i++){
-			task[i] = new ParallelTaskExample();
+		for (int i=0; i<TASKS; i++){
+			task[i] = new TaskExample();
 			scheduler.schedule(task[i]);
 		}
 
-		for (int i=0; i<SIZE; i++){
+		for (int i=0; i<TASKS; i++){
 			result = task[i].getResult();
 			total += result;
 			System.out.println("Task "+i+": "+result);

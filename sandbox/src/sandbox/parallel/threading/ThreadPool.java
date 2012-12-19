@@ -1,4 +1,4 @@
-package sandbox.parallel;
+package sandbox.parallel.threading;
 
 // Title:       Thread pool
 // Version:     1.0

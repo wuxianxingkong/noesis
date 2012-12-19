@@ -1,7 +1,9 @@
 package sandbox.parallel;
 
+import sandbox.parallel.scheduler.ThreadPoolScheduler;
 
-public abstract class Scheduler<T extends Task> 
+
+public abstract class Scheduler 
 {
 	private static Scheduler scheduler = new ThreadPoolScheduler();
 	
@@ -20,7 +22,7 @@ public abstract class Scheduler<T extends Task>
 	
 	// Abstract interface
 	
-	public abstract void schedule(T task);
+	public abstract void schedule(Task task);
 
 	public abstract void shutdown();
 }

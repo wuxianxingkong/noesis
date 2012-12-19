@@ -1,6 +1,10 @@
-package sandbox.parallel;
+package sandbox.parallel.scheduler;
 
 import java.util.concurrent.*;
+
+import sandbox.parallel.MockFuture;
+import sandbox.parallel.Scheduler;
+import sandbox.parallel.Task;
 
 /**
  * Simple fixed-size thread pool scheduler.
@@ -10,7 +14,7 @@ import java.util.concurrent.*;
  * @author Fernando Berzal
  */
 
-public class FutureScheduler<T extends FutureTask> extends Scheduler<T> 
+public class FutureScheduler extends Scheduler 
 {
 	private   ExecutorService        executor;
 	protected int                    nthreads;
@@ -30,7 +34,7 @@ public class FutureScheduler<T extends FutureTask> extends Scheduler<T>
 	 * @see sandbox.parallel.Scheduler#schedule(sandbox.parallel.Task)
 	 */
 	@Override
-	public void schedule (T task)
+	public void schedule (Task task)
 	{
 		Future future;
 

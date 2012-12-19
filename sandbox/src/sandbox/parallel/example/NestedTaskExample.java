@@ -1,18 +1,21 @@
-package sandbox.parallel;
+package sandbox.parallel.example;
 
-import java.util.concurrent.ExecutionException;
+import sandbox.parallel.Task;
+import sandbox.parallel.Scheduler;
+
+import sandbox.parallel.scheduler.*;
 
 import ikor.util.Benchmark;
 
-public class ParallelNestedTaskExample extends FutureTask<Integer>
+public class NestedTaskExample extends Task<Integer>
 {
 	public static final int WIDTH = 2;
-	public static final int DEPTH = 10;
+	public static final int DEPTH = 10;  // width^depth tasks
 	
 	int width = WIDTH;
 	int depth = DEPTH;
 	
-	public ParallelNestedTaskExample (int width, int depth)
+	public NestedTaskExample (int width, int depth)
 	{
 		this.width = width;
 		this.depth = depth;
@@ -35,16 +38,15 @@ public class ParallelNestedTaskExample extends FutureTask<Integer>
     }
 	
 	private int decomposeTask () 
-		throws InterruptedException, ExecutionException
 	{
 		Scheduler scheduler = Scheduler.get();
 
 		System.out.println("+ Spawning tasks");
 
-		ParallelNestedTaskExample task[] = new ParallelNestedTaskExample[width];
+		NestedTaskExample task[] = new NestedTaskExample[width];
 		
 		for (int i=0; i<width; i++){
-			task[i] = new ParallelNestedTaskExample(width,depth-1);
+			task[i] = new NestedTaskExample(width,depth-1);
 			scheduler.schedule(task[i]);
 		}
 
@@ -70,11 +72,11 @@ public class ParallelNestedTaskExample extends FutureTask<Integer>
 		return width;
 	}
 	
-	class JoinerTask extends FutureTask<Integer>
+	class JoinerTask extends Task<Integer>
 	{
-		FutureTask<Integer> tasks[];
+		Task<Integer> tasks[];
 		
-		public void setTasks (FutureTask<Integer> tasks[])
+		public void setTasks (Task<Integer> tasks[])
 		{
 			this.tasks = tasks;
 		}
@@ -103,7 +105,6 @@ public class ParallelNestedTaskExample extends FutureTask<Integer>
 
 	
 	public static void main (String[] args) 
-		throws InterruptedException, ExecutionException
 	{
 		Benchmark chrono = new Benchmark();
 
@@ -115,7 +116,7 @@ public class ParallelNestedTaskExample extends FutureTask<Integer>
 		
 		Scheduler scheduler = Scheduler.get();
 		
-		ParallelNestedTaskExample task = new ParallelNestedTaskExample(WIDTH,DEPTH);
+		NestedTaskExample task = new NestedTaskExample(WIDTH,DEPTH);
 		scheduler.schedule(task);
 		
 		int result = task.getResult();

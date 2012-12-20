@@ -34,6 +34,7 @@ public class ForkJoinExample extends Task<Integer>
 		
 		Scheduler.set ( new ThreadPoolScheduler() );	
 		//Scheduler.set ( new FutureScheduler(16) );	
+		//Scheduler.set ( new WorkStealingScheduler(16) );	// Not suitable for this example!!!
 		//Scheduler.set ( new SequentialScheduler() );
 		
 		Parallel.setDecompositionDepth(6); // 64k tasks @ i5: [linear] 8-13s [0-4] 8-13s [6] 5-15s [8] 4.6-17.3s [10] 5.2-86s !!!

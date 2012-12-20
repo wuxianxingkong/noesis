@@ -10,7 +10,7 @@ import ikor.util.Benchmark;
 public class NestedMapExample implements Kernel
 {
 	public static final int WIDTH = 16;
-	public static final int DEPTH = 4; // width^depth leaves 
+	public static final int DEPTH = 2; // width^depth leaves 
 	
 	// Tests @ i5
 	
@@ -86,6 +86,7 @@ public class NestedMapExample implements Kernel
 		
 		Scheduler.set ( new ThreadPoolScheduler() );	
 		//Scheduler.set ( new FutureScheduler(64) );	
+		//Scheduler.set ( new WorkStealingScheduler(16) );	// Not suitable for this example!!!
 		//Scheduler.set ( new SequentialScheduler() );
 		
 		Parallel.setTileWidth(1); // vs. 16

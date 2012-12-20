@@ -112,6 +112,7 @@ public class NestedTaskExample extends Task<Integer>
 		
 		Scheduler.set ( new ThreadPoolScheduler() );	
 		//Scheduler.set ( new FutureScheduler(64) );	
+		//Scheduler.set ( new WorkStealingScheduler(16) );	// Not suitable for this example!!!
 		//Scheduler.set ( new SequentialScheduler() );
 		
 		Scheduler scheduler = Scheduler.get();

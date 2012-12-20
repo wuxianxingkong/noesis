@@ -46,6 +46,7 @@ public class TaskExample extends Task<Integer>
 		
 		Scheduler.set ( new ThreadPoolScheduler() );	
 		//Scheduler.set ( new FutureScheduler(16) );	
+		//Scheduler.set ( new WorkStealingScheduler(16) );	// Not suitable for this example!!!
 		//Scheduler.set ( new SequentialScheduler() );
 		
 		Scheduler scheduler = Scheduler.get();

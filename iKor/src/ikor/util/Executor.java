@@ -1,4 +1,4 @@
-package ikor.util.concurrent;
+package ikor.util;
 
 // Title:       Class to run external processes
 // Version:     1.1

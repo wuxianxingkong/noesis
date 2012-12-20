@@ -1,10 +1,13 @@
 package sandbox.parallel;
 
+import java.io.Serializable;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 
+import sandbox.parallel.threading.MockFuture;
 
-public abstract class Task<T> implements Callable<T>
+
+public abstract class Task<T> implements Callable<T>, Serializable
 {
 	private Future<T> future;
 	

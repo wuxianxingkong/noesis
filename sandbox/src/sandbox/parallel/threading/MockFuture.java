@@ -1,4 +1,4 @@
-package sandbox.parallel;
+package sandbox.parallel.threading;
 
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;

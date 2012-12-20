@@ -2,9 +2,9 @@ package sandbox.parallel.scheduler;
 
 import java.util.concurrent.*;
 
-import sandbox.parallel.MockFuture;
 import sandbox.parallel.Scheduler;
 import sandbox.parallel.Task;
+import sandbox.parallel.threading.MockFuture;
 
 /**
  * Simple thread pool scheduler.

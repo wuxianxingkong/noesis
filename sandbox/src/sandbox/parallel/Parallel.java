@@ -161,9 +161,8 @@ public class Parallel
 	}
 
 	
-	// Map pattern
-	// -----------
-	// .NET-like parallel loop pattern (i.e. similar to Parallel.For)
+	// Reduce pattern
+	// --------------
 	
 	public static Object reduce (Kernel kernel, Combiner combiner, int start, int end)
 	{
@@ -216,6 +215,5 @@ public class Parallel
 				return result;
 			}
 		}
-	}
-	
+	}	
 }

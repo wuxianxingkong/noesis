@@ -9,7 +9,7 @@ package sandbox.parallel;
  */
 public interface Combiner<T> 
 {	
-	public abstract T identity ();
+	public T identity ();
 	
-	public abstract T combine (T first, T second);
+	public T combine (T first, T second);
 }

@@ -52,6 +52,8 @@ K. Faust, A.K. Romney: "Comment on 'A cautionary note'", Social Networks 8(2):21
 <tag>blocks-structural-concor</tag>
 <title>CONCOR algorithm</title>
 
+CONvergence of iterated CORrelations
+
 [White et al. 1976]
 H.C. White, S.A. Boorman, R.L. Breiger: "Social structure from multiple networks - I - Blockmodels of roles and positions", The American Journal of Sociology, 81:730-780, 1976
 
@@ -106,6 +108,83 @@ S.P. Borgatti, M.G. Everett: "Two algorithms for computing regular equivalence",
 
 
 <document>
+<tag>equivalence-stochastic</tag>
+<title>Stochastic equivalence</title>
+
+
+<document>
+<tag>blocks-stochastic-blocks</tag>
+<title>BLOCKS</title>
+
+[K. Nowicki and T. Snijders. (2001). Estimation and Prediction for Stochastic Blockstructures. Journal of the American Statistical Association.]
++ Fixed number of clusters
+
+</document>
+
+<document>
+<tag>blocks-stochastic-kliquefinder</tag>
+<title>KliqueFinder</title>
+
+[Frank 1995, 1996, 2009]
+
+</document>
+
+
+<document>
+<tag>blocks-stochastic-ultras</tag>
+<title>ULTRAS</title>
+
+[Schweinberger and Snijders, 2003]
+
+</document>
+
+<document>
+<tag>blocks-stochastic-latentnet</tag>
+<title>latentnet</title>
+
+[Handcock et al. 2007]
+
+</document>
+
+<document>
+<tag>blocks-stochastic-irm</tag>
+<title>IRM: Infinite relational model</title>
+
+- Infinite: number of clusters increases as we observe more data
+- Relational: it applies to relational data
+
+[Kemp, C., Tenenbaum, J. B., Griffiths, T. L., Yamada, T. &amp; Ueda, N. (2006): Learning systems of concepts with an infinite relational model. Proceedings of the 21st AAAI.]
+
+[Kemp, C., Griffiths, T. L. &amp; Tenenbaum, J. B. (2004). Discovering latent classes in relational data. MIT TR.]
+
+
+Related:
+
+[Zhao Xu, Volker Tresp, Kai Yu, and Hans-Peter Kriegel (2006): Infinite Hidden Relational Models. 22nd Conference on Uncertainty in Artificial Intelligence (UAI)]
++ Uses Dirichlet distribution.
+
+</document>
+
+<document>
+<tag>blocks-stochastic-immm</tag>
+<title>IMMM: Infinite mixed-membership model</title>
+
+..Extension of IRM, handles multiple memberships
+.. Each cluster is an identity
+.. A node can have more than one identity
+.. Each link represents two particular identities of the nodes it connects
+..Adopts a hierarchical prior - Chinese Restaurant Franchise
+
+[Airoldi, E.M., Blei, D.M., Fienberg, S.E., &amp; Xing, E.P.:
+Mixed-membership stochastic blockmodels. Journal of Machine Learning Research, 2008.
+http://jmlr.csail.mit.edu/papers/volume9/airoldi08a/airoldi08a.pdf]
+
+</document>
+
+</document>
+
+
+<document>
 <tag>blocks-notes</tag>
 <title>Bibliographic notes</title>
 
@@ -113,6 +192,8 @@ S.P. Borgatti, M.G. Everett: "Two algorithms for computing regular equivalence",
 SNA: 
 <cite>Prell 2012</cite> chapter on positions and roles analysis... 
 <cite>Wasserman and Faust 1994</cite>
+++ SAGE#29 
+++ SAGE#31
 
 </document>
 

@@ -72,6 +72,44 @@ usually represented using a graph.
 </text>
 
 
+<document>
+<tag>community-detection-blocks</tag>
+<title>Block models</title>
+
+<document>
+<tag>community-detection-blocks-structural</tag>
+<title>Structural block models</title>
+
+- Structural equivalence (SAGE#29)
+	++ CONCOR algorithm
+
+</document>
+
+<document>
+<tag>community-detection-blocks-regular</tag>
+<title>Regular block models</title>
+
+- Regular equivalence (SAGE#29)
+	++ REGE algorithm
+
+</document>
+
+<document>
+<tag>community-detection-blocks-stochastic</tag>
+<title>Stochastic block models</title>
+
+- Stochastic equivalence (SAGE#31)
+	++ BLOCKS
+	++ KliqueFinder
+	++ ULTRAS
+	++ latentnet
+    ++ IRM
+	++ IMMM
+
+</document>
+
+</document>
+
 
 <document>
 <tag>community-detection-partitioning</tag>

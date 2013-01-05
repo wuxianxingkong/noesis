@@ -64,6 +64,17 @@ Abstract: This paper develops a class of probability models for configurations o
 </text>
 
 <text>
+SNA:
+
+[Wasserman, Stanley, and Philippa Pattison. "Logit models and logistic regressions for social networks: I. An introduction to Markov graphs andp." Psychometrika 61.3 (1996): 401-425.]
+
+[Anderson, Carolyn J., Stanley Wasserman, and Bradley Crouch. "A p* primer: logit models for social networks." Social Networks 21, no. 1 (1999): 37-66.]
+
+[Robins, Garry, Pip Pattison, Yuval Kalish, and Dean Lusher. "An introduction to exponential random graph (p*) models for social networks." Social Networks 29, no. 2 (2007): 173-191.]
+
+</text>
+
+<text>
 A method for generating an ensemble of graphs with N nodes
 </text>
 
@@ -105,13 +116,15 @@ cf. Frank &amp; Strauss 1986
 </text>
 
 <text>
-++ SNA: <cite>Prell 2012</cite> chapter on statistical models for social networks: p* model (for cross-sectional data) and agent-based models (for longitudinal data)
-
-++ SNA: SAGE#31-32 Statistical models
+++ SNA: SAGE#31-32-33 Statistical models
 	++ QAP/MR-QAP
 	++ SRM
 	++ p1+p2
-	++ p* == ERGM
+	++ p* == ERGM (#32, excellent chapter by Garry Robins, from the University of Melbourne: very readable and crystal-clear, even for those without a solid statistics background).
+	++ dynamic networks (#33, Tom A.B. Snijders, University of Oxford)
+
+++ SNA: <cite>Prell 2012</cite> chapter on statistical models for social networks: p* model (for cross-sectional data) and agent-based models (for longitudinal data)
+
 </text>
 
 

@@ -630,6 +630,15 @@ Alternative heuristics might even get better results for particular instances of
 
 </document>
 
+++ [Esfahanian: "On the evolution of graph connectivity algorithms". In Selected Topics in Graph Theory (Wilson and Beteke, eds), Cambridge University Press, 2008] @ SAGE p.552
+
+k-core decomposition
+++ [Alvarez-Hamelin et al.: "k-core decomposition: A tool for the visualization of large networks", arXiv, 2005]
+Modular decomposition
+++ [Habib and Paul: "A survey of algorithmic aspects of modular decomposition", arXiv, 2009]
+++ [Papadopoulos and Voglis: "Drawing graphs using modular decomposition", GD'05, LNCS 3842:343-354, 2005]
+Split decomposition
+++ [Joeris et al: "O(m log n) split decomposition of strongly-connected graphs", LNCS 5420:158-171, 2009]
 
 </document>
 

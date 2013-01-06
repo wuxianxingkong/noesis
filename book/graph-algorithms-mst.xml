@@ -11,6 +11,12 @@
 <tag>graph-spanning-trees</tag>
 <title>Minimum spanning trees</title>
 
+
+
+SKELETONS: Algorithms for reducing a network to its skeleton
+1) MST
+2) Pathfinder algorithms
+
 <text>
 A spanning tree of a graph <eqn>G=(V,E)</eqn> is a subset of <eqn>n-1</eqn> edges from <eqn>E</eqn> that connect all the vertices in <eqn>V</eqn> and, therefore, form a tree. In weighted graphs, where edges have numerical values associated to them, known as weights, a minimum spanning tree is a spanning tree whose sum of edge values is as small as possible. A tree is always the smallest connected graph in terms of its number of edges (and also the most vulnerable to single failures), while a MST is the cheapest connected graph in term of edge costs.
 </text>
@@ -527,6 +533,8 @@ Parallel algorithms based on Sollin's sequential algorithm include:
 [Hua85] M. A. Huang. Solving some graph problems with optimal or near-optimal speedup on mesh-of-trees networks. In Proceedings of the 26th Annual IEEE Symposium on Foundations of Computer Science, 232–340, 1985.
 
 
+
+PATHFINDER ALGORITHMS [SAGE p. 552]
 
 </document>
 

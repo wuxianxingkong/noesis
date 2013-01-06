@@ -12,6 +12,8 @@
 <title>Software packages for network analysis</title>
 
 
+++ [SAGE #38: "A reader's guide to SNA software" by Mark Huisman and Marijtje A.J. van Duijn]
+
 También hay que mencionar existen productos software específicamente diseñados para analizar redes
 sociales. Estos productos utilizan grafos con atributos en vez de tablas como modelo subyacente de
 representación de los datos. Algunos ejemplos representativos de sistemas de este tipo son:

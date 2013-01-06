@@ -713,6 +713,14 @@ Motif composition => profile of local processing capacity <cite>Sporns and Kotte
 <cite>Milo et al. 2004b</cite>
 </text>
 
+++ Short semicycles: 3-rings and 4-rings
+[Bagatelj and Zaversnik: "Short cycle connectivity", Discrete Mathematics 307(3-5):310-318, 2007]
+[Latapy: "Main-memory triangle computations for very large sparse (power-law) graphs", Theoretical Computer Science, 407(1-3):458-473, 2008]
+
+++ Backtracking algorithms for finding alll appearances of a given pattern
+[Bagatelj and Mrvar: "A subquadratic triad census algorithm for large sparse networks with maximum degree", Social Networks 23:237-243, 2001]
+
+[Schank and Wagner: "Finding, counting, and listing all triangles in large graphs, an experimental study", WEA, LNCS 3503:606-609, 2005]
 </document>
 
 </document>

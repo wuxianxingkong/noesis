@@ -699,21 +699,6 @@ PROBLEM: For certain graphs, different initializations result in different autho
 </document>
 
 
-<document>
-<tag>centrality-multimodal</tag>
-<title>Centrality in two-mode networks</title>
-
-<cite>Prell 2012</cite>, pp.115-116
-
-+ Modifications to standard measures of centrality (e.g. normalization)
-
-refs.
-
-Katherine Faust: "Centrality in affiliation networks", Social Networks 19:157-191, 1997
-S.P. Borgatti, M.G. Everett: "Network analysis of 2-mode data", Social Networks 19:243-269
-
-
-</document>
 
 <document>
 <tag>metrics-notes</tag>
@@ -742,6 +727,16 @@ SNA: <cite>Prell 2012</cite> chapter "Actor Level in Complete Networks"...
 <text>
 Missing data: Robustness of centrality measures [Borgatti, Social Networks 28(2):124-136, 2006]
 </text>
+
+
+Acyclic networks, e.g. genealogies 
+e.g. number of different paths from some initial vertex
+[Hummon and Doreian, "Computational methods for social network analysis", Social Networks 12:273-288, 1990]
+
+MEASURES FOR LINKS [Melançon and Sallaberry, "Edge metrics for visual graph analytics: A comparative study", ICIV 2008, 610-615]
+- Jaccard's coefficient (relative overlap of neighborhoods)
+- Cosine similarity
+- Edge betweenness 
 
 </document>
 

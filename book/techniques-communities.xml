@@ -76,6 +76,10 @@ usually represented using a graph.
 <tag>community-detection-blocks</tag>
 <title>Block models</title>
 
+[SAGE Handbook]
+
+NP hard problem: [Roberts and Sheng: "How hard is to determine if a graph has a 2-role assignment?", Networks 37(2):67-73, 2001]
+
 <document>
 <tag>community-detection-blocks-structural</tag>
 <title>Structural block models</title>
@@ -116,6 +120,8 @@ usually represented using a graph.
 <title>Graph partitioning</title>
 
 ++ http://en.wikipedia.org/wiki/Graph_partition
+
+++ [Demmel: "Applications of parallel computers: Graph partitioning", parts I and II, UC Berkeley CS267, 1996]
 
 <text>
 Non-overlapping communities...
@@ -540,8 +546,26 @@ EVOLUTION of social and information networks has been studied by many researcher
 
 <cite>Bockermann and Jungermann 2010</cite>
 
-</text>
 
+
+Alternative approaches
+- CUTS AND ISLANDS [SAGE Handbook p.553]
+- Influence [Moody: "Peer influence groups: Identifying dense clusters in large networks", Social Networks 23:261-283, 2001]
+- Random walks [Harel and Koren: "On clustering using random walks", LNCS 2245:18-41, 2001]
+
+
+Graph Decomposition
+++ [Matula: "Graph theoretic techniques for cluster analysis algorithms", in J. Van Ryzin (ed.) "Classification and Clustering", pp. 95-127, Academic Press, 1977]
+++ [Esfahanian: "On the evolution of graph connectivity algorithms". In Selected Topics in Graph Theory (Wilson and Beteke, eds), Cambridge University Press, 2008] @ SAGE p.552
+k-core decomposition
+++ [Alvarez-Hamelin et al.: "k-core decomposition: A tool for the visualization of large networks", arXiv, 2005]
+Modular decomposition
+++ [Habib and Paul: "A survey of algorithmic aspects of modular decomposition", arXiv, 2009]
+++ [Papadopoulos and Voglis: "Drawing graphs using modular decomposition", GD'05, LNCS 3842:343-354, 2005]
+Split decomposition
+++ [Joeris et al: "O(m log n) split decomposition of strongly-connected graphs", LNCS 5420:158-171, 2009]
+
+</text>
 </document>
 
 

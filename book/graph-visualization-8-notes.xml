@@ -5,6 +5,9 @@
 <tag>graph-visualization-notes</tag>
 <title>Bibliographic notes</title>
 
+
+Useful for exploration and communication of results [Freeman: "Visualizing social networks", Journal of Social Structure, 1(1), 2000]
+
 <text>
 ALGORITHMS
 </text>
@@ -15,6 +18,9 @@ Primary sources: Chapters at
 - <cite>Didimo and Liotta 2007</cite> in <cite>Cook and Holder 2007</cite> (succinct survey)
 - <cite>Skiena 2008</cite> (sections for arbitrary graphs, trees, and planar graphs)
 </text>
+
+
+++ [SAGE #37: Network visualization, by Lothar Krempel]
 
 <text>
 Force-directed drawing: 
@@ -148,8 +154,9 @@ Drawing (Proc. GD '95), Vol. 1027 of Lecture Notes in Computer Science, pp. 76-8
 Springer, Berlin, 1996
 
 
+[Hu: "Efficient and high-quality force-directed graph drawing", Mathematica Journal, 10:37-71, 2005]
 
-<cite>Brandes and Pich 2008</cite>
+<cite>Brandes and Pich 2009</cite>
 Ulrik Brandes and Christian Pich
 An Experimental Study on Distance-Based Graph Drawing (Extended Abstract)
 GRAPH DRAWING'2008
@@ -313,8 +320,11 @@ H. C. Purchase, D. Carrington, and J-A. Allder. Graph layout aesthetics in UML d
 <cite>Purchase et al. 2004</cite>
 H. C. Purchase, D. Carrington, and J-A. Allder. Evaluating graph drawing aesthetics: Defining and exploring a new empirical research area. In J. Di Marco, ed. Computer Graphics and Multimedia: Applications, Problems and Solutions, pp. 145-178. Hershey, PA, USA, Idea Group Publishing, 2004.
 
-<!-- Planar graphs -->
 
+LARGE GRAPHS
+[Hachul and Junger: "Large-graph layout algorithms at work: An experimental study", JGAA 11(2):345-369, 2007]
+
+<!-- Planar graphs -->
 
 <cite>Hopcroft and Tarjan 1974</cite>
 J. Hopcroft and R. E. Tarjan. Efficient planarity testing. Journal of the ACM, 21(4):
@@ -473,6 +483,18 @@ Vol. 29 of CRPIT, pp. 13-20, ACS, Sydney, 2004.
 F. Schreiber, T. Dwyer, and H. Rolletschek. Representing experimental biological data
 in metabolic networks. In Second Asia-Pacific Bioinformatics Conference (APBC
 2004), pp. 13-20, Vol. 29 of CRPIT, ACS, Sydney, 2004.
+
+
+
+
+ALTERNATIVE: Matrix visualization
+[Bagatelj et al.: "Partitioning approach to visualization of large graphs", GD'1999, 90-97]
+[Henry and Feteke: "MatrixExplorer: A dual-representation system to explore social networks", IEEE Transactions on Visualization and Computer Graphics 12(5):677-684, 2006]
+
+
+++ Decomposition (for the visualization of large networks)
+[Papadopoulos and Voglis: "Drawing graphs using modular decomposition", GD'05, LNCS 3842:343-354, 2005]
+[Alvarez-Hamelin et al.: "k-core decomposition: A tool for the visualization of large networks", arXiv, 2005]
 
 
 </document>

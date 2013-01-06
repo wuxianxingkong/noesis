@@ -13,7 +13,7 @@ Affiliation networks (a.k.a. membership networks) are a special kind of two-mode
 </text>
 
 <text>
-e.g. Club membership, voluntary organizations, attendance to social events, sitting on a board of directors, countries belonging to treaty organiztions...
+e.g. Club membership, voluntary organizations, attendance to social events, sitting on a board of directors, countries belonging to treaty organiztions, IMDB database...
 </text>
 
 
@@ -79,5 +79,23 @@ Fortune 1000 board membership <cite>Newman et al. 2001</cite>
 
 
 ++ SAGE#28
+
+++ SAGE, p. 555: (p,q)-cores
+
+<document>
+<tag>centrality-multimodal</tag>
+<title>Centrality in two-mode networks</title>
+
+<cite>Prell 2012</cite>, pp.115-116
+
++ Modifications to standard measures of centrality (e.g. normalization)
+
+refs.
+
+Katherine Faust: "Centrality in affiliation networks", Social Networks 19:157-191, 1997
+S.P. Borgatti, M.G. Everett: "Network analysis of 2-mode data", Social Networks 19:243-269
+
+
+</document>
 
 </document>

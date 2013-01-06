@@ -43,6 +43,40 @@ Facebook <cite>Ugander at al. 2011</cite>: (1) global structure of the graph: th
 <!-- Degree distribution -->
 
 <document>
+<tag>connectivity-decomposition</tag>
+<title>Network decomposition</title>
+
+
++ Strongly-connected components O(m) [Cormen 2001 pp. 552-556]
++ Weakly-connected components O(m) [Cormen 2001 pp. 499-501]
++ Biconnected componens O(m) [Cormen 2001, pp. 558-559]
+
+In a directed graph, if we shrink every strong component into a single vertex, an acyclic graph results
++ Symmetric connectivity [Doreian et al.: "Symmetric acyclic decomposition of networks", Journal of Classification 17(1):3-28]
++ Short cycle connectivity [Batagelj and Zaversnik: 
+
+e.g. Bow-tie decomposition [Kleinberg
+
+Different kinds of connectivities
+++ [Matula: "Graph theoretic techniques for cluster analysis algorithms", in J. Van Ryzin (ed.) "Classification and Clustering", pp. 95-127, Academic Press, 1977]
+++ [Esfahanian: "On the evolution of graph connectivity algorithms". In Selected Topics in Graph Theory (Wilson and Beteke, eds), Cambridge University Press, 2008] @ SAGE p.552
+
+
+Decomposition
+
+k-core decomposition
+++ [Alvarez-Hamelin et al.: "k-core decomposition: A tool for the visualization of large networks", arXiv, 2005]
+Modular decomposition
+++ [Habib and Paul: "A survey of algorithmic aspects of modular decomposition", arXiv, 2009]
+++ [Papadopoulos and Voglis: "Drawing graphs using modular decomposition", GD'05, LNCS 3842:343-354, 2005]
+Split decomposition
+++ [Joeris et al: "O(m log n) split decomposition of strongly-connected graphs", LNCS 5420:158-171, 2009]
+
+</document>
+
+<!-- Degree distribution -->
+
+<document>
 <tag>connectivity-degree-distribution</tag>
 <title>Degree distribution</title>
 
@@ -93,6 +127,10 @@ USN'2012:
 
 Warning! Density depends on network size, so it cannot be used for comparing networks of different size (average node degree is the preferred choice)
 
+
+
+Density
+++ [Seidman: "Network structure and minimum degree", Social Networks 5:269-287, 1983]
 
 </document>
 
@@ -355,6 +393,7 @@ Effects
 </text>
 
 </document>
+
 
 
 </document>

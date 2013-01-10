@@ -8,10 +8,11 @@ import ikor.math.Matrix;
 
 public class MatrixTest 
 {
+	Matrix original;
 	Matrix identity;
 	Matrix matrix;
-	Matrix ones;
 	Matrix zeros;
+	Matrix ones;
 	
 	double[][] data = new double[][] { {3,2,1}, {4,5,6}, {8,7,9} };
 	
@@ -23,11 +24,8 @@ public class MatrixTest
 	@Before
 	public void setUp() throws Exception 
 	{
-		matrix   = new Matrix(3,3);
-		
-		for (int i=0; i<3; i++)
-			for (int j=0; j<3; j++)
-				matrix.set(i,j,data[i][j]);
+		original = new Matrix(data);
+		matrix   = new Matrix(data);
 
 		identity = new Matrix(3,3);
 
@@ -69,29 +67,45 @@ public class MatrixTest
 	@Test
 	public void testEqualities ()
 	{
-		assertEquals(matrix,   matrix);
+		assertEquals(matrix, matrix);
 		assertEquals(identity, identity);
 		assertEquals(zeros, zeros);
 		assertEquals(ones, ones);
-		
-		assertEquals(matrix, matrix.multiply(identity));		
-		assertEquals(matrix, identity.multiply(matrix));		
-
-		assertEquals(zeros, matrix.multiply(zeros));		
-		assertEquals(zeros, zeros.multiply(matrix));
-		
-		assertEquals(matrix, matrix.add(zeros));		
-		assertEquals(matrix, zeros.add(matrix));		
-
-		assertEquals(matrix, matrix.substract(zeros));
-		
-		assertEquals(matrix, matrix.add(0));		
-		assertEquals(matrix, matrix.multiply(1));		
-		assertEquals(matrix, matrix.divide(1));	
-		
-		assertEquals(ones, zeros.add(1));
-		assertEquals(zeros, ones.add(-1));
 	}
+	
+	@Test
+	public void testIdentities ()
+	{
+		assertEquals(original, matrix.multiply(identity));		
+		assertEquals(original, identity.multiply(matrix));		
+	}
+
+	@Test
+	public void testZeroMultiplication ()
+	{
+		assertEquals(zeros, zeros.multiply(matrix));
+		assertEquals(zeros, matrix.multiply(zeros));		
+	}
+		
+	@Test
+	public void testZeroAddition ()
+	{
+		assertEquals(original, matrix.add(zeros));		
+		assertEquals(original, zeros.add(matrix));		
+	
+		assertEquals(original, matrix.subtract(zeros));
+	}
+	
+	@Test
+	public void testScalarOperations ()
+	{
+		assertEquals(original, matrix.add(0));		
+		assertEquals(original, matrix.multiply(1));		
+		assertEquals(original, matrix.divide(1));
+
+		assertEquals(ones, zeros.add(1));
+	}
+
 
 	@Test
 	public void testSize ()

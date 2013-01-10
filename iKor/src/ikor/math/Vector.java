@@ -39,6 +39,26 @@ public class Vector extends Matrix
 	
 	// Arithmetic
 	
+	/**
+	 * In-place vector addition 
+	 * @param other Vector to be added
+	 * @return Updated vector
+	 */
+	
+	public Vector accumulate (Vector other) 
+	{
+		int dim = this.size();
+
+		if (this.size() == other.size()) {
+
+			for (int i=0; i<dim; i++)
+				this.set(i, this.get(i)+other.get(i) );
+		}
+
+		return this;
+	}
+	
+	
 	public double magnitude ()
 	{
 		return Math.sqrt(magnitude2());

@@ -176,53 +176,71 @@ public class Matrix implements java.io.Serializable
 	}
 
 	// Suma de matrices: A+B
-
-	public Matrix add(Matrix other) 
+	
+	public Matrix add (Matrix other) 
 	{
 		int i, j;
 		Matrix suma = null;
 
 		if (this.filas == other.filas && this.columnas == other.columnas) {
 
-			suma = new Matrix(filas, columnas);
+			suma = new Matrix(this.filas, this.columnas);
 
-			for (i = 0; i < filas; i++)
-				for (j = 0; j < columnas; j++)
+			for (i = 0; i < this.filas; i++)
+				for (j = 0; j < this.columnas; j++)
 					suma.datos[i][j] = this.datos[i][j] + other.datos[i][j];
 		}
 
 		return suma;
 	}
+	
+	// In-place addition
 
-	public Matrix add(double constant) 
+	public Matrix accumulate (Matrix other) 
 	{
-		int i, j;
-		Matrix suma = new Matrix(filas, columnas);
+		if (this.filas == other.filas && this.columnas == other.columnas) {
 
-		for (i = 0; i < filas; i++)
-			for (j = 0; j < columnas; j++)
+			for (int i=0; i<filas; i++)
+				for (int j=0; j<columnas; j++)
+					this.datos[i][j] += other.datos[i][j];
+		}
+
+		return this;
+	}
+
+
+	public Matrix add (double constant) 
+	{
+		Matrix suma = new Matrix(this.filas, this.columnas);
+		
+		for (int i=0; i<filas; i++)
+			for (int j=0; j<columnas; j++)
 				suma.datos[i][j] = this.datos[i][j] + constant;
 
 		return suma;
 	}
+	
+	public Matrix accumulate (double constant) 
+	{
+		for (int i=0; i<filas; i++)
+			for (int j=0; j<columnas; j++)
+				this.datos[i][j] += constant;
+
+		return this;
+	}
 
 	// Resta de matrices: A-B
 
-	public Matrix substract(Matrix other)
+	public Matrix subtract (Matrix other)
 	{
-		int i, j;
-		Matrix resta = null;
-
 		if (this.filas == other.filas && this.columnas == other.columnas) {
 
-			resta = new Matrix(filas, columnas);
-
-			for (i = 0; i < filas; i++)
-				for (j = 0; j < columnas; j++)
-					resta.datos[i][j] = this.datos[i][j] - other.datos[i][j];
+			for (int i=0; i < filas; i++)
+				for (int j=0; j < columnas; j++)
+					this.datos[i][j] -= other.datos[i][j];
 		}
 
-		return resta;
+		return this;
 	}
 
 	// Multiplicación de matrices: A*B

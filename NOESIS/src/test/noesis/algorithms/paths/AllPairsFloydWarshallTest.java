@@ -2,13 +2,13 @@ package test.noesis.algorithms.paths;
 
 import static org.junit.Assert.*;
 
-import ikor.collection.Evaluator;
-
 import org.junit.Test;
 
 import test.noesis.algorithms.TestNetworks;
+import test.noesis.algorithms.DirectLinkEvaluator;
 
 import noesis.Network;
+import noesis.LinkEvaluator;
 import noesis.algorithms.paths.*;
 
 public class AllPairsFloydWarshallTest extends AllPairsShortestPathFinderTest
@@ -16,7 +16,7 @@ public class AllPairsFloydWarshallTest extends AllPairsShortestPathFinderTest
 	// Path finder
 	
 	@Override
-	public AllPairsShortestPathFinder pathFinder (Network net, Evaluator linkEvaluator)
+	public AllPairsShortestPathFinder pathFinder (Network net, LinkEvaluator linkEvaluator)
 	{		
 		return new AllPairsFloydWarshall(net,linkEvaluator);
 	}
@@ -47,11 +47,10 @@ public class AllPairsFloydWarshallTest extends AllPairsShortestPathFinderTest
 
 	@Test
 	public void testNegativeWeights ()
-	{
-		Evaluator<Integer> linkEvaluator = new LinkEvaluator();
-		
+	{		
 		network = TestNetworks.negativeWeightsGraph();
-		finder  = new AllPairsFloydWarshall(network,linkEvaluator);
+		
+		finder  = new AllPairsFloydWarshall (network, new DirectLinkEvaluator(network));
 		
 		finder.run();
 		
@@ -65,10 +64,9 @@ public class AllPairsFloydWarshallTest extends AllPairsShortestPathFinderTest
 	@Test
 	public void testNegativeCycle ()
 	{
-		Evaluator<Integer> linkEvaluator = new LinkEvaluator();
 		Network<String,Integer> cycle = TestNetworks.negativeCycleGraph();
 		
-		finder = new AllPairsFloydWarshall(cycle,linkEvaluator);
+		finder = new AllPairsFloydWarshall (cycle, new DirectLinkEvaluator(cycle));
 		
 		finder.run();
 

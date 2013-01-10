@@ -1,17 +1,17 @@
 package noesis.algorithms.paths;
 
-import ikor.collection.Evaluator;
 import noesis.Network;
+import noesis.LinkEvaluator;
 
 public abstract class AllPairsShortestPathFinder<V, E> implements PathFinder<V, E> 
 {
-	protected Network<V,E> network;
-	protected Evaluator<E> linkEvaluator;
+	protected Network<V,E>  network;
+	protected LinkEvaluator linkEvaluator;
 	
 	protected double[][] distance;
 
 	
-	public AllPairsShortestPathFinder (Network<V,E> net, Evaluator<E> linkEvaluator) 
+	public AllPairsShortestPathFinder (Network<V,E> net, LinkEvaluator linkEvaluator) 
 	{
 		this.network = net;		
 		this.linkEvaluator = linkEvaluator;

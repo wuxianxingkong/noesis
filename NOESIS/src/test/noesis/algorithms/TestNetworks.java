@@ -1,6 +1,7 @@
 package test.noesis.algorithms;
 
 import test.noesis.MockVisitor;
+
 import noesis.Network;
 import noesis.ArrayNetwork;
 
@@ -481,5 +482,8 @@ public class TestNetworks
 				
 		return graph;
 	}		
+
+
 	
 }
+

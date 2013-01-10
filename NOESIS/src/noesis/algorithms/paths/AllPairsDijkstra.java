@@ -1,13 +1,14 @@
 package noesis.algorithms.paths;
 
 import noesis.Network;
-import ikor.collection.Evaluator;
+import noesis.LinkEvaluator;
+
 import ikor.parallel.*;
 
 public class AllPairsDijkstra<V,E> extends AllPairsShortestPathFinder<V, E> 
 {
 
-	public AllPairsDijkstra (Network<V, E> net, Evaluator<E> linkEvaluator) 
+	public AllPairsDijkstra (Network<V, E> net, LinkEvaluator linkEvaluator) 
 	{
 		super(net, linkEvaluator);
 	}

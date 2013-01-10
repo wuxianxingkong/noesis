@@ -1,8 +1,8 @@
 package noesis.algorithms.paths;
 
 import noesis.Network;
+import noesis.LinkEvaluator;
 
-import ikor.collection.Evaluator;
 import ikor.parallel.*;
 
 public class AllPairsBellmanFord<V,E> extends AllPairsShortestPathFinder<V, E> 
@@ -11,7 +11,7 @@ public class AllPairsBellmanFord<V,E> extends AllPairsShortestPathFinder<V, E>
 	private boolean negativeCycles;
 
 	
-	public AllPairsBellmanFord (Network<V, E> net, Evaluator<E> linkEvaluator) 
+	public AllPairsBellmanFord (Network<V, E> net, LinkEvaluator linkEvaluator) 
 	{
 		super(net, linkEvaluator);
 	}

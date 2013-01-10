@@ -1,12 +1,13 @@
 package test.noesis.algorithms.paths;
 
 import static org.junit.Assert.*;
-import ikor.collection.Evaluator;
 
 
 import test.noesis.algorithms.TestNetworks;
+import test.noesis.algorithms.DirectLinkEvaluator;
 
 import noesis.Network;
+import noesis.LinkEvaluator;
 import noesis.algorithms.paths.*;
 
 public abstract class SingleSourceShortestPathFinderTest extends SingleSourcePathFinderTest
@@ -15,14 +16,14 @@ public abstract class SingleSourceShortestPathFinderTest extends SingleSourcePat
 	
 	// Abstract factory method
 	
-	public abstract SingleSourceShortestPathFinder pathFinder (Network net, int source, Evaluator linkEvaluator);
+	public abstract SingleSourceShortestPathFinder pathFinder (Network net, int source, LinkEvaluator linkEvaluator);
 	
 	// Tests
 
 	public void checkConnected () 
 	{
-		Evaluator<Integer> linkEvaluator = new LinkEvaluator();
 		Network<String,Integer> graph = TestNetworks.weightedDirectedGraph();
+		LinkEvaluator linkEvaluator = new DirectLinkEvaluator(graph);
 		SingleSourceShortestPathFinder finder = pathFinder(graph,0,linkEvaluator);
 			
 		finder.run();
@@ -62,8 +63,8 @@ public abstract class SingleSourceShortestPathFinderTest extends SingleSourcePat
 	
 	public void checkUnreachable() 
 	{
-		Evaluator<Integer> linkEvaluator = new LinkEvaluator();
 		Network<String,Integer> graph = TestNetworks.weightedUnreachableGraph();;
+		LinkEvaluator linkEvaluator = new DirectLinkEvaluator(graph);
 		SingleSourceShortestPathFinder finder = pathFinder(graph,0,linkEvaluator);
 		
 		finder.run();
@@ -102,8 +103,8 @@ public abstract class SingleSourceShortestPathFinderTest extends SingleSourcePat
 	
 	public void checkDisconnected() 
 	{
-		Evaluator<Integer> linkEvaluator = new LinkEvaluator();
 		Network<String,Integer> graph = TestNetworks.weightedDisconnectedGraph();;
+		LinkEvaluator linkEvaluator = new DirectLinkEvaluator(graph);
 		SingleSourceShortestPathFinder finder = pathFinder(graph,0,linkEvaluator);
 		
 		finder.run();
@@ -137,17 +138,5 @@ public abstract class SingleSourceShortestPathFinderTest extends SingleSourcePat
 		assertNull( finder.pathTo(graph.index("5")));
 		assertNull( finder.pathTo(graph.index("t")));
 	}		
-
-	
-	// Ancillary class
-	
-	protected class LinkEvaluator implements Evaluator<Integer>
-	{
-		@Override
-		public double evaluate(Integer object) 
-		{
-			return object;
-		}
-	}	
 
 }

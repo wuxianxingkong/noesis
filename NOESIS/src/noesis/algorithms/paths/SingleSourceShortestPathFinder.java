@@ -1,16 +1,16 @@
 package noesis.algorithms.paths;
 
-import ikor.collection.Evaluator;
 import noesis.Network;
+import noesis.LinkEvaluator;
 
 public abstract class SingleSourceShortestPathFinder<V, E> extends SingleSourcePathFinder<V, E> 
 {
-	protected Evaluator<E> linkEvaluator;
-	
+	protected LinkEvaluator linkEvaluator;
+
 	protected double[] distance;
 
 	
-	public SingleSourceShortestPathFinder(Network net, int origin, Evaluator<E> linkEvaluator) 
+	public SingleSourceShortestPathFinder(Network net, int origin, LinkEvaluator linkEvaluator) 
 	{
 		super(net, origin);
 		

@@ -1,10 +1,9 @@
 package test.noesis.algorithms.paths;
 
-import ikor.collection.Evaluator;
-
 import org.junit.Test;
 
 import noesis.Network;
+import noesis.LinkEvaluator;
 import noesis.algorithms.paths.*;
 
 public class AllPairsDijkstraTest extends AllPairsShortestPathFinderTest
@@ -12,7 +11,7 @@ public class AllPairsDijkstraTest extends AllPairsShortestPathFinderTest
 	// Path finder
 	
 	@Override
-	public AllPairsShortestPathFinder pathFinder (Network net, Evaluator linkEvaluator)
+	public AllPairsShortestPathFinder pathFinder (Network net, LinkEvaluator linkEvaluator)
 	{		
 		return new AllPairsDijkstra(net,linkEvaluator);
 	}

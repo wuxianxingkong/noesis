@@ -1,10 +1,9 @@
 package test.noesis.algorithms.paths;
 
-import ikor.collection.Evaluator;
-
 import org.junit.Test;
 
 import noesis.Network;
+import noesis.LinkEvaluator;
 import noesis.algorithms.paths.*;
 
 public class DijkstraTest extends SingleSourceShortestPathFinderTest
@@ -12,7 +11,7 @@ public class DijkstraTest extends SingleSourceShortestPathFinderTest
 	// Path finder
 	
 	@Override
-	public SingleSourceShortestPathFinder pathFinder (Network net, int source, Evaluator linkEvaluator)
+	public SingleSourceShortestPathFinder pathFinder (Network net, int source, LinkEvaluator linkEvaluator)
 	{		
 		return new DijkstraShortestPathFinder(net,source,linkEvaluator);
 	}

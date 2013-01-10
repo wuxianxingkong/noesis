@@ -6,10 +6,11 @@ import ikor.collection.Indexer;
 import ikor.collection.PriorityQueue;
 
 import noesis.Network;
+import noesis.LinkEvaluator;
 
 public class DijkstraShortestPathFinder<V,E> extends SingleSourceShortestPathFinder<V, E> implements PathFinder<V, E>
 {
-	public DijkstraShortestPathFinder (Network<V,E> net, int origin, Evaluator<E> linkEvaluator)
+	public DijkstraShortestPathFinder (Network<V,E> net, int origin, LinkEvaluator linkEvaluator)
 	{
 		super(net,origin,linkEvaluator);
 	}
@@ -50,7 +51,7 @@ public class DijkstraShortestPathFinder<V,E> extends SingleSourceShortestPathFin
         	if (links!=null)
         		for (int j=0; j<links.length; j++) {
         				
-       				linkValue = linkEvaluator.evaluate( network.get(vertex, links[j]) );
+       				linkValue = linkEvaluator.evaluate(vertex, links[j]);
         				
        				if (distance[links[j]] > distance[vertex] + linkValue) {
        					predecessor[links[j]] = vertex;

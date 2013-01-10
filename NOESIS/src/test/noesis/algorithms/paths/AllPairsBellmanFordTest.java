@@ -2,12 +2,12 @@ package test.noesis.algorithms.paths;
 
 import static org.junit.Assert.*;
 
-import ikor.collection.Evaluator;
-
 import org.junit.Test;
 
 import test.noesis.algorithms.TestNetworks;
+import test.noesis.algorithms.DirectLinkEvaluator;
 
+import noesis.LinkEvaluator;
 import noesis.Network;
 import noesis.algorithms.paths.*;
 
@@ -16,7 +16,7 @@ public class AllPairsBellmanFordTest extends AllPairsShortestPathFinderTest
 	// Path finder
 	
 	@Override
-	public AllPairsShortestPathFinder pathFinder (Network net, Evaluator linkEvaluator)
+	public AllPairsShortestPathFinder pathFinder (Network net, LinkEvaluator linkEvaluator)
 	{		
 		return new AllPairsBellmanFord(net,linkEvaluator);
 	}
@@ -48,10 +48,9 @@ public class AllPairsBellmanFordTest extends AllPairsShortestPathFinderTest
 	@Test
 	public void testNegativeWeights ()
 	{
-		Evaluator<Integer> linkEvaluator = new LinkEvaluator();
-		
 		network = TestNetworks.negativeWeightsGraph();
-		finder  = new AllPairsBellmanFord(network,linkEvaluator);
+		
+		finder  = new AllPairsBellmanFord(network, new DirectLinkEvaluator(network));
 		
 		finder.run();
 		
@@ -65,10 +64,9 @@ public class AllPairsBellmanFordTest extends AllPairsShortestPathFinderTest
 	@Test
 	public void testNegativeCycle ()
 	{
-		Evaluator<Integer> linkEvaluator = new LinkEvaluator();
 		Network<String,Integer> cycle = TestNetworks.negativeCycleGraph();
 		
-		finder = new AllPairsBellmanFord(cycle,linkEvaluator);
+		finder = new AllPairsBellmanFord (cycle, new DirectLinkEvaluator(cycle));
 		
 		finder.run();
 

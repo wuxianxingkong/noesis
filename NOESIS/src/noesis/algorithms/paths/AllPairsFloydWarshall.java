@@ -1,14 +1,13 @@
 package noesis.algorithms.paths;
 
 import noesis.Network;
-
-import ikor.collection.Evaluator;
+import noesis.LinkEvaluator;
 
 
 public class AllPairsFloydWarshall<V,E> extends AllPairsShortestPathFinder<V, E> 
 {
 	
-	public AllPairsFloydWarshall (Network<V, E> net, Evaluator<E> linkEvaluator) 
+	public AllPairsFloydWarshall (Network<V, E> net, LinkEvaluator linkEvaluator) 
 	{
 		super(net, linkEvaluator);
 	}
@@ -49,7 +48,7 @@ public class AllPairsFloydWarshall<V,E> extends AllPairsShortestPathFinder<V, E>
 			
 			if (links!=null) {
 				for (int j=0; j<links.length; j++) {
-					distance[i][links[j]] = linkEvaluator.evaluate( network.get(i,links[j]) );
+					distance[i][links[j]] = linkEvaluator.evaluate(i,links[j]);
 				}
 			}			
 		}

@@ -1,14 +1,14 @@
 package noesis.algorithms.paths;
 
-import ikor.collection.Evaluator;
-
 import noesis.Network;
+import noesis.LinkEvaluator;
+
 
 public class BellmanFordShortestPathFinder<V,E> extends SingleSourceShortestPathFinder<V,E> implements PathFinder<V, E>
 {
 	private boolean negativeCycles;
 	
-	public BellmanFordShortestPathFinder (Network<V,E> net, int origin, Evaluator<E> linkEvaluator)
+	public BellmanFordShortestPathFinder (Network<V,E> net, int origin, LinkEvaluator linkEvaluator)
 	{
 		super(net,origin,linkEvaluator);
 	}
@@ -57,7 +57,7 @@ public class BellmanFordShortestPathFinder<V,E> extends SingleSourceShortestPath
 	        	if (links!=null)
 	        		for (int j=0; j<links.length; j++) {
 	        				
-	       				linkValue = linkEvaluator.evaluate( network.get(links[j], v) );
+	       				linkValue = linkEvaluator.evaluate(links[j], v);
 	        				
 	       				if (newDistance[v] > distance[links[j]] + linkValue) {
 	       					predecessor[v] = links[j];

@@ -1,13 +1,14 @@
 package test.noesis.algorithms.paths;
 
 import static org.junit.Assert.*;
-import ikor.collection.Evaluator;
 
 import org.junit.Test;
 
 import test.noesis.algorithms.TestNetworks;
+import test.noesis.algorithms.DirectLinkEvaluator;
 
 import noesis.Network;
+import noesis.LinkEvaluator;
 import noesis.algorithms.paths.*;
 
 
@@ -18,7 +19,7 @@ public class BellmanFordTest extends SingleSourceShortestPathFinderTest
 	// Path finder factory method
 	
 	@Override
-	public SingleSourceShortestPathFinder pathFinder (Network net, int source, Evaluator linkEvaluator)
+	public SingleSourceShortestPathFinder pathFinder (Network net, int source, LinkEvaluator linkEvaluator)
 	{		
 		finder = new BellmanFordShortestPathFinder(net,source,linkEvaluator);
 		
@@ -52,8 +53,8 @@ public class BellmanFordTest extends SingleSourceShortestPathFinderTest
 	@Test
 	public void testNegativeWeights ()
 	{
-		Evaluator<Integer> linkEvaluator = new LinkEvaluator();
 		Network<String,Integer> graph = TestNetworks.negativeWeightsGraph();
+		LinkEvaluator linkEvaluator = new DirectLinkEvaluator(graph);
 		
 		finder = new BellmanFordShortestPathFinder(graph,0,linkEvaluator);
 		
@@ -85,8 +86,8 @@ public class BellmanFordTest extends SingleSourceShortestPathFinderTest
 	@Test
 	public void testNegativeCycle ()
 	{
-		Evaluator<Integer> linkEvaluator = new LinkEvaluator();
 		Network<String,Integer> graph = TestNetworks.negativeCycleGraph();
+		LinkEvaluator linkEvaluator = new DirectLinkEvaluator(graph);
 		
 		finder = new BellmanFordShortestPathFinder(graph,0,linkEvaluator);
 		

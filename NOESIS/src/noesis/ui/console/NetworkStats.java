@@ -10,6 +10,9 @@ import java.io.*;
 
 import ikor.math.Decimal;
 
+import ikor.parallel.*;
+import ikor.parallel.scheduler.*;
+
 import ikor.util.Benchmark;
 
 import noesis.Network;
@@ -37,7 +40,11 @@ public class NetworkStats {
 	public static void main(String[] args)
 		throws IOException
 	{
-	
+		Scheduler.set ( new WorkStealingScheduler(8) );  // 4 (i5) vs. 8 (i7)
+		// Scheduler.set ( new FutureScheduler(16) );
+		// Scheduler.set ( new ThreadPoolScheduler() );
+		// Scheduler.set ( new SequentialScheduler() );
+		
 		if (args.length==0) {
 			
 			System.err.println("NOESIS Network Statistics:");

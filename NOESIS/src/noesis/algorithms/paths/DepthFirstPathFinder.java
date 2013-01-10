@@ -4,7 +4,7 @@ import noesis.Network;
 import noesis.algorithms.LinkVisitor;
 import noesis.algorithms.traversal.NetworkDFS;
 
-public class DepthFirstPathFinder<V, E> extends PredecessorPathFinder<V, E> implements PathFinder<V, E> 
+public class DepthFirstPathFinder<V, E> extends SingleSourcePathFinder<V, E> implements PathFinder<V, E> 
 {
 	public DepthFirstPathFinder (Network<V,E> net, int origin)
 	{

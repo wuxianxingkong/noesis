@@ -6,7 +6,7 @@ import ikor.collection.IndexedPriorityQueue;
 import ikor.collection.Indexer;
 import ikor.collection.PriorityQueue;
 
-public class AStarPathFinder<V, E> extends PredecessorPathFinder<V,E> implements PathFinder<V, E>
+public class AStarPathFinder<V, E> extends SingleSourcePathFinder<V,E> implements PathFinder<V, E>
 {
 	private Evaluator<E> linkEvaluator;
 	private Evaluator<V> heuristicEvaluator;

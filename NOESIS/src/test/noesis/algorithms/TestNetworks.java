@@ -282,6 +282,20 @@ public class TestNetworks
 	
 	// Weighted directed graph
 	
+	public static final double INF = Double.POSITIVE_INFINITY;
+	
+	public static final double[][] DIRECTED_DISTANCE = {
+	    // s   2   3   4   5   6   7   t
+		{  0,  9, 32, 45, 34, 14, 15, 50},
+		{INF,  0, 23, 36, 25,INF,INF, 41},
+		{INF,INF,  0, 13,  2,INF,INF, 18},
+		{INF,INF,  6,  0,  8,INF,INF,  6},
+		{INF,INF, 17, 11,  0,INF,INF, 16},
+		{INF,INF, 18, 31, 20,  0,  5, 36},
+		{INF,INF, 37, 31, 20,INF,  0, 36},
+		{INF,INF,INF,INF,INF,INF,INF,  0}
+	};
+	
 	public static Network<String,Integer> weightedDirectedGraph ()
 	{
 		Network<String,Integer> graph = new ArrayNetwork<String,Integer>();
@@ -320,6 +334,17 @@ public class TestNetworks
 		return graph;
 	}
 	
+	public static final double[][] UNREACHABLE_DISTANCE = {
+	    // s   2   3   4   5   6   7   t
+		{  0,  9, 32,INF,INF, 14, 15, 51},
+		{INF,  0, 23,INF,INF,INF,INF, 42},
+		{INF,INF,  0,INF,INF,INF,INF, 19},
+		{INF,INF,  6,  0,INF,INF,INF,  6},
+		{INF,INF, 17, 11,  0,INF,INF, 16},
+		{INF,INF, 18,INF,INF,  0,  5, 37},
+		{INF,INF,INF,INF,INF,INF,  0, 44},
+		{INF,INF,INF,INF,INF,INF,INF,  0}
+	};
 	
 	public static Network<String,Integer> weightedUnreachableGraph ()
 	{
@@ -358,6 +383,20 @@ public class TestNetworks
 				
 		return graph;
 	}	
+
+	public static final double[][] DISCONNECTED_DISTANCE = {
+	    // s   2   3   4   5   6   7   t
+		{  0,  9,INF,INF,INF, 14, 15,INF},
+		{INF,  0,INF,INF,INF,INF,INF,INF},
+		{INF,INF,  0, 13,  2,INF,INF, 18},
+		{INF,INF,  6,  0,  8,INF,INF,  6},
+		{INF,INF, 17, 11,  0,INF,INF, 16},
+		{INF,INF,INF,INF,INF,  0,  5,INF},
+		{INF,INF,INF,INF,INF,INF,  0,INF},
+		{INF,INF,INF,INF,INF,INF,INF,  0}
+	};
+	
+	// Two connected components: {s,2,6,7} {3,4,5,t}
 	
 	public static Network<String,Integer> weightedDisconnectedGraph ()
 	{
@@ -365,12 +404,11 @@ public class TestNetworks
 		
 		graph.add("s");
 		graph.add("2");
-		graph.add("6");
-		graph.add("7");
-		
-		graph.add("3"); // Second connected component
+		graph.add("3"); 		
 		graph.add("4"); 
 		graph.add("5"); 
+		graph.add("6");
+		graph.add("7");
 		graph.add("t");
 		
 		graph.add("s","2",9);
@@ -397,4 +435,51 @@ public class TestNetworks
 				
 		return graph;
 	}		
+
+	
+	public static final double[][] NEGATIVE_DISTANCE = {
+	    // s   a   b   t
+		{  0, -4, -1, -6},
+		{INF,  0,INF, -2},
+		{INF,INF,  0, -3},
+		{INF,INF,INF,  0}
+	};
+	
+	
+	public static Network<String,Integer> negativeWeightsGraph ()
+	{
+		Network<String,Integer> graph = new ArrayNetwork<String,Integer>();
+		
+		graph.add("s");
+		graph.add("a");
+		graph.add("b");
+		graph.add("t");
+		
+		graph.add("s","a",-4);
+		graph.add("s","b",-1);
+
+		graph.add("a","t",-2);
+		graph.add("b","t",-3);
+				
+		return graph;
+	}		
+
+	
+	public static Network<String,Integer> negativeCycleGraph ()
+	{
+		Network<String,Integer> graph = new ArrayNetwork<String,Integer>();
+		
+		graph.add("a");
+		graph.add("b");
+		graph.add("c");
+		graph.add("d");
+		
+		graph.add("a","b",-1);
+		graph.add("b","c",-2);
+		graph.add("c","d",-3);
+		graph.add("d","a",-4);
+				
+		return graph;
+	}		
+	
 }

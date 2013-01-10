@@ -3,13 +3,13 @@ package noesis.algorithms.paths;
 import noesis.ArrayNetwork;
 import noesis.Network;
 
-public abstract class PredecessorPathFinder<V, E> implements PathFinder<V, E>
+public abstract class SingleSourcePathFinder<V, E> implements PathFinder<V, E>
 {
 	protected Network<V,E> network;
 	protected int          origin;
 	protected int[]        predecessor;
 
-	public PredecessorPathFinder(Network<V,E> net, int origin)
+	public SingleSourcePathFinder(Network<V,E> net, int origin)
 	{
 		this.network     = net;
 		this.origin      = origin;
@@ -21,10 +21,9 @@ public abstract class PredecessorPathFinder<V, E> implements PathFinder<V, E>
 		return network;
 	}
 
-	/* (non-Javadoc)
-	 * @see noesis.algorithms.paths.PathFinder#paths()
+	/* Shortest path tree
 	 */	
-	@Override
+
 	public final Network<V, E> paths() 
 	{
 		Network<V,E> paths = new ArrayNetwork<V,E>();
@@ -41,15 +40,12 @@ public abstract class PredecessorPathFinder<V, E> implements PathFinder<V, E>
 		return paths;		
 	}
 
-	/* (non-Javadoc)
-	 * @see noesis.algorithms.paths.PathFinder#pathTo(int)
-	 */	
-	@Override
-	public final int[] pathTo(int destination) 
+	
+	public int[] pathTo (int destination)
 	{
 		int[] path = null;
 		int   position;
-		int   length = pathLengthTo(destination);
+		int   length = pathLengthTo(destination)+1;
 		
 		if (length>0) {
 		
@@ -69,8 +65,8 @@ public abstract class PredecessorPathFinder<V, E> implements PathFinder<V, E>
 
 	public final int pathLengthTo(int destination) 
 	{
-		int length = 1;
-		int node = destination;
+		int length = 0;
+		int node   = destination;
 		
 		while ((node!=origin) && (predecessor[node]!=-1)) {
 			length++;
@@ -80,7 +76,7 @@ public abstract class PredecessorPathFinder<V, E> implements PathFinder<V, E>
 		if (node==origin) 
 			return length;
 		else
-			return 0;
+			return -1;
 	}
 	
 	

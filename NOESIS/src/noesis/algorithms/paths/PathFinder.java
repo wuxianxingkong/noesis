@@ -8,7 +8,4 @@ public interface PathFinder<V, E>
 
 	public abstract void run();
 
-	public abstract Network<V, E> paths();
-
-	public abstract int[] pathTo(int destination);
 }

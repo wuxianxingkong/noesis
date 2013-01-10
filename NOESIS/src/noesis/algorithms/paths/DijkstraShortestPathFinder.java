@@ -7,17 +7,11 @@ import ikor.collection.PriorityQueue;
 
 import noesis.Network;
 
-public class DijkstraShortestPathFinder<V,E> extends PredecessorPathFinder<V,E> implements PathFinder<V, E>
+public class DijkstraShortestPathFinder<V,E> extends SingleSourceShortestPathFinder<V, E> implements PathFinder<V, E>
 {
-	private Evaluator<E> linkEvaluator;
-	
-	private double[]     distance;
-	
 	public DijkstraShortestPathFinder (Network<V,E> net, int origin, Evaluator<E> linkEvaluator)
 	{
-		super(net,origin);
-
-		this.linkEvaluator = linkEvaluator;
+		super(net,origin,linkEvaluator);
 	}
 
 	
@@ -86,22 +80,7 @@ public class DijkstraShortestPathFinder<V,E> extends PredecessorPathFinder<V,E> 
 		
 		return queue;
 	}
-	
-
-	// Distances
-	
-	public final double[] distance ()
-	{
-		return distance;
-	}
-	
-	public final double distance (int node)
-	{
-		return distance[node];
-	}
 		
-	
-	
 	// Ancillary classes
 	
 	private class DijkstraNodeEvaluator implements Evaluator<Integer>

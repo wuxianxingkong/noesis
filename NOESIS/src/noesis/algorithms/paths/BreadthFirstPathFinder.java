@@ -5,7 +5,7 @@ import noesis.algorithms.LinkVisitor;
 import noesis.algorithms.traversal.NetworkBFS;
 
 
-public class BreadthFirstPathFinder<V, E> extends PredecessorPathFinder<V, E> implements PathFinder<V, E> 
+public class BreadthFirstPathFinder<V, E> extends SingleSourcePathFinder<V, E> implements PathFinder<V, E> 
 {
 	public BreadthFirstPathFinder (Network<V,E> net, int origin)
 	{

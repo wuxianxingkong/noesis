@@ -40,9 +40,10 @@ public class Parallel
 	
 	public static void forkjoin (Task a, Task b)
 	{
-		Scheduler.get().schedule(a);
+		Scheduler scheduler = Scheduler.get();
 		
-		b.setResult(b.call());
+		scheduler.schedule(a);
+		scheduler.invoke(b);
 		
 		a.getResult();
 	}
@@ -59,9 +60,9 @@ public class Parallel
 		int n = tasks.length;
 		
 		for (int i=0; i<n-1; i++)
-			Scheduler.get().schedule(tasks[i]);
+			scheduler.schedule(tasks[i]);
 		
-		tasks[n-1].setResult(tasks[n-1].call());
+		scheduler.invoke(tasks[n-1]);
 		
 		for (int i=0; i<n-1; i++)
 			tasks[i].getResult();
@@ -101,7 +102,7 @@ public class Parallel
 				for (int i=start; i<end; i++)
 					scheduler.schedule(tasks[i]);
 
-				tasks[end].setResult(tasks[end].call());
+				scheduler.invoke(tasks[end]);
 
 				for (int i=start; i<end; i++)
 					tasks[i].getResult();				

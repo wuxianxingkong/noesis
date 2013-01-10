@@ -35,29 +35,29 @@ public class Matrix implements java.io.Serializable
 {
 	// Variables de instancia
 
-	private int filas;
-	private int columnas;
 	private double datos[][];
 
 	// Constructors
+	
+	protected Matrix ()
+	{
+		this.datos = null;
+	}
 
 	/** @pre rows>0 && columns>0 */
 	public Matrix(int rows, int columns) 
 	{
-		this(rows, columns, 0);
+		datos = new double[rows][columns];
+		// == this(rows, columns, 0);
 	}
 
 	/** @pre rows>0 && columns>0 */
 	public Matrix(int rows, int columns, double value) 
 	{
-		int i, j;
+		datos = new double[rows][columns];
 
-		filas = rows;
-		columnas = columns;
-		datos = new double[filas][columnas];
-
-		for (i = 0; i < filas; i++)
-			for (j = 0; j < columnas; j++)
+		for (int i=0; i<rows; i++)
+			for (int j=0; j<columns; j++)
 				datos[i][j] = value;
 	}
 
@@ -65,54 +65,49 @@ public class Matrix implements java.io.Serializable
 
 	public Matrix(Matrix origen) 
 	{
-		int i, j;
-
-		filas = origen.filas;
-		columnas = origen.columnas;
+		int filas = origen.rows();
+		int columnas = origen.columns();
+		
 		datos = new double[filas][columnas];
 
-		for (i = 0; i < filas; i++)
-			for (j = 0; j < columnas; j++)
+		for (int i=0; i<filas; i++)
+			for (int j=0; j<columnas; j++)
 				datos[i][j] = origen.datos[i][j];
 	}
 
 	
 	public Matrix (double[][] data)
 	{
-		this.filas    = data.length;
-		this.columnas = data[0].length;	
-		this.datos    = data;
+		this.datos = data;
 	}
 	
 
 	protected Matrix (double[] vector)
 	{
-		this.filas    = 1;
-		this.columnas = vector.length;
-		
-		this.datos = new double[filas][];
+		this.datos = new double[1][];
 		this.datos[0] = vector;
 	}
 	
-	// Acceso a las variables de instancia
+	// Matrix dimensions
 
-	public final int size() 
+	public int size() 
 	{
-		return filas * columnas;
+		return rows() * columns();
 	}
 	
-
-	public final int rows() 
+	public int rows() 
 	{
-		return filas;
+		return datos.length;
 	}
 
-	public final int columns() 
+	public int columns() 
 	{
-		return columnas;
+		return datos[0].length;
 	}
+	
+	// Accessors & mutators
 
-	public final double get(int i, int j) 
+	public double get(int i, int j) 
 	{
 		return datos[i][j];
 	}
@@ -142,6 +137,8 @@ public class Matrix implements java.io.Serializable
 	public Matrix transpose() 
 	{
 		int i, j;
+		int filas = rows();
+		int columnas = columns();
 		Matrix t = new Matrix(columnas, filas);
 
 		for (i = 0; i < columnas; i++)
@@ -160,6 +157,8 @@ public class Matrix implements java.io.Serializable
 	public Matrix submatrix(int i, int j) 
 	{
 		int x, y, xS, yS;
+		int filas = rows();
+		int columnas = columns();
 		Matrix S = new Matrix(filas - 1, columnas - 1);
 
 		for (x = xS = 0; x < filas; x++)
@@ -180,14 +179,16 @@ public class Matrix implements java.io.Serializable
 	public Matrix add (Matrix other) 
 	{
 		int i, j;
+		int filas = rows();
+		int columnas = columns();
 		Matrix suma = null;
 
-		if (this.filas == other.filas && this.columnas == other.columnas) {
+		if (this.rows() == other.rows() && this.columns() == other.columns()) {
 
-			suma = new Matrix(this.filas, this.columnas);
+			suma = new Matrix(filas, columnas);
 
-			for (i = 0; i < this.filas; i++)
-				for (j = 0; j < this.columnas; j++)
+			for (i = 0; i < filas; i++)
+				for (j = 0; j < columnas; j++)
 					suma.datos[i][j] = this.datos[i][j] + other.datos[i][j];
 		}
 
@@ -198,7 +199,10 @@ public class Matrix implements java.io.Serializable
 
 	public Matrix accumulate (Matrix other) 
 	{
-		if (this.filas == other.filas && this.columnas == other.columnas) {
+		int filas = rows();
+		int columnas = columns();
+		
+		if (this.rows() == other.rows() && this.columns() == other.columns()) {
 
 			for (int i=0; i<filas; i++)
 				for (int j=0; j<columnas; j++)
@@ -211,7 +215,10 @@ public class Matrix implements java.io.Serializable
 
 	public Matrix add (double constant) 
 	{
-		Matrix suma = new Matrix(this.filas, this.columnas);
+		int filas = rows();
+		int columnas = columns();
+		
+		Matrix suma = new Matrix(filas,columnas);
 		
 		for (int i=0; i<filas; i++)
 			for (int j=0; j<columnas; j++)
@@ -222,6 +229,9 @@ public class Matrix implements java.io.Serializable
 	
 	public Matrix accumulate (double constant) 
 	{
+		int filas = rows();
+		int columnas = columns();
+		
 		for (int i=0; i<filas; i++)
 			for (int j=0; j<columnas; j++)
 				this.datos[i][j] += constant;
@@ -233,7 +243,10 @@ public class Matrix implements java.io.Serializable
 
 	public Matrix subtract (Matrix other)
 	{
-		if (this.filas == other.filas && this.columnas == other.columnas) {
+		int filas = rows();
+		int columnas = columns();
+
+		if (this.rows() == other.rows() && this.columns() == other.columns()) {
 
 			for (int i=0; i < filas; i++)
 				for (int j=0; j < columnas; j++)
@@ -250,18 +263,17 @@ public class Matrix implements java.io.Serializable
 		int i, j, k;
 		Matrix result = null;
 
-		if (this.columnas == other.filas) {
+		if (this.columns() == other.rows()) {
 
-			result = new Matrix(this.filas, other.columnas);
+			result = new Matrix(this.rows(), other.columns());
 
-			for (i = 0; i < this.filas; i++)
-				for (j = 0; j < other.columnas; j++) {
+			for (i = 0; i < this.rows(); i++)
+				for (j = 0; j < other.columns(); j++) {
 
 					result.datos[i][j] = 0;
 
-					for (k = 0; k < this.columnas; k++)
-						result.datos[i][j] += this.datos[i][k]
-								* other.datos[k][j];
+					for (k = 0; k < this.columns(); k++)
+						result.datos[i][j] += this.get(i,k) * other.get(k,j);
 				}
 		}
 
@@ -271,10 +283,13 @@ public class Matrix implements java.io.Serializable
 	public Matrix multiply(double constant) 
 	{
 		int i, j;
-		Matrix result = new Matrix(this.filas, this.columnas);
+		int filas = rows();
+		int columnas = columns();
+		
+		Matrix result = new Matrix(filas, columnas);
 
-		for (i = 0; i < this.filas; i++)
-			for (j = 0; j < this.columnas; j++)
+		for (i = 0; i < filas; i++)
+			for (j = 0; j < columnas; j++)
 				result.datos[i][j] = constant * this.datos[i][j];
 
 		return result;
@@ -283,10 +298,13 @@ public class Matrix implements java.io.Serializable
 	public Matrix divide(double constant) 
 	{
 		int i, j;
-		Matrix result = new Matrix(this.filas, this.columnas);
+		int filas = rows();
+		int columnas = columns();
+		
+		Matrix result = new Matrix(filas, columnas);
 
-		for (i = 0; i < this.filas; i++)
-			for (j = 0; j < this.columnas; j++)
+		for (i = 0; i < filas; i++)
+			for (j = 0; j < columnas; j++)
 				result.datos[i][j] = this.datos[i][j] / constant;
 
 		return result;
@@ -297,6 +315,8 @@ public class Matrix implements java.io.Serializable
 	public double trace() 
 	{
 		int i;
+		int filas = rows();
+		int columnas = columns();
 		double result = 0;
 
 		if (filas == columnas)
@@ -311,6 +331,8 @@ public class Matrix implements java.io.Serializable
 	public double diagonalProduct()
 	{
 		int i;
+		int filas = rows();
+		int columnas = columns();
 		double result = 1;
 
 		if (filas == columnas)
@@ -335,7 +357,7 @@ public class Matrix implements java.io.Serializable
 		double c, c1;
 		int p;
 
-		n = A.columnas;
+		n = A.columns();
 
 		for (i = 0; i < n; i++)
 			P.datos[i][0] = i;
@@ -401,7 +423,7 @@ public class Matrix implements java.io.Serializable
 		int i, j, k, n;
 		double sum;
 
-		n = A.columnas;
+		n = A.columns();
 
 		for (k = 0; k < n; k++)
 			for (i = k + 1; i < n; i++)
@@ -431,8 +453,8 @@ public class Matrix implements java.io.Serializable
 	{
 		Matrix A = new Matrix(this);
 		Matrix B = new Matrix(c);
-		Matrix X = new Matrix(filas, 1);
-		Matrix P = new Matrix(filas, 1);
+		Matrix X = new Matrix(rows(), 1);
+		Matrix P = new Matrix(rows(), 1);
 
 		LU(A, P);
 		backwardsSubstitution(A, B, X, P, 0);
@@ -451,7 +473,7 @@ public class Matrix implements java.io.Serializable
 	public Matrix inverse()
 	{
 		int i;
-		int n = filas;
+		int n = rows();
 		int p;
 		Matrix A = new Matrix(this);
 		Matrix B = new Matrix(n, 1);
@@ -482,8 +504,11 @@ public class Matrix implements java.io.Serializable
 
 	// Anula todos los coeficientes de una matriz
 
-	private void zero() {
+	private void zero() 
+	{
 		int i, j;
+		int filas = rows();
+		int columnas = columns();
 
 		for (i = 0; i < filas; i++)
 			for (j = 0; j < columnas; j++)
@@ -502,7 +527,7 @@ public class Matrix implements java.io.Serializable
 		int i, j, n;
 		double result;
 
-		n = filas;
+		n = rows();
 		A = new Matrix(this);
 		P = new Matrix(n, 1);
 
@@ -560,11 +585,12 @@ public class Matrix implements java.io.Serializable
 	/* ----------------------------------------------------------------------- */
 	/* Matriz simétrica n x n de Toeplitz a partir de un vector n x 1 */
 
-	public Matrix toeplitz(Matrix R) {
+	public Matrix toeplitz(Matrix R) 
+	{
 		int i, j, n;
 		Matrix T;
 
-		n = R.filas;
+		n = R.rows();
 		T = new Matrix(n, n);
 
 		for (i = 0; i < n; i++)
@@ -595,7 +621,7 @@ public class Matrix implements java.io.Serializable
 		int i, i1, j, ji, p;
 		Matrix W, E, K, A, X;
 
-		p = R.filas - 1;
+		p = R.rows() - 1;
 		W = new Matrix(p + 2, 1);
 		E = new Matrix(p + 2, 1);
 		K = new Matrix(p + 2, 1);
@@ -654,7 +680,7 @@ public class Matrix implements java.io.Serializable
 		Matrix R, X;
 		int i, n;
 
-		n = A.filas;
+		n = A.rows();
 		R = new Matrix(n + 1, 1);
 
 		for (i = 0; i < n; i++)
@@ -724,12 +750,12 @@ public class Matrix implements java.io.Serializable
 		int i,j;
 		StringBuffer buffer = new StringBuffer();
 		
-		for (i = 0; i < filas; i++) {
+		for (i = 0; i < rows(); i++) {
 
 			buffer.append(rowPrefix);
 			buffer.append(datos[i][0]);
 
-			for (j = 1; j < columnas; j++) {
+			for (j = 1; j < columns(); j++) {
 				buffer.append(delimiter);
 				buffer.append(datos[i][j]);
 			}

@@ -2,21 +2,55 @@ package ikor.math;
 
 public class Vector extends Matrix 
 {
+	private double  data[];
+	private boolean transposed;
+	
 	// Constructors
 	
 	public Vector (int size)
 	{
-		super(1,size);
+		this.data = new double[size];
+		this.transposed = false;
 	}
 	
 	public Vector (Vector original)
 	{
-		super(original);
+		this(original.size());
+		
+		for (int i=0; i<data.length; i++)
+			this.data[i] = original.data[i];
+		
+		this.transposed = original.transposed;
 	}
 
 	public Vector (double[] data)
 	{
-		super(data);
+		this.data = data;
+		this.transposed = false;
+	}
+	
+	// Dimensions
+	
+	public int size() 
+	{
+		return data.length;
+	}
+	
+
+	public int rows() 
+	{
+		if (transposed)
+			return data.length;
+		else
+			return 1;
+	}
+
+	public int columns() 
+	{
+		if (transposed)
+			return 1;
+		else
+			return data.length;
 	}
 	
 	
@@ -24,36 +58,76 @@ public class Vector extends Matrix
 	
 	public double get (int i)
 	{
-		return super.get(0,i);
+		return data[i];
 	}
 	
 	public void set (int i, double value)
 	{
-		super.set(0,i,value);
+		data[i] = value;
 	}
 	
 	public void set (double[] values)
 	{
-		super.set(0,values);
+		data = values;
 	}
+
+	// Matrix interface
+
+	public double get(int i, int j) 
+	{
+		return data[Math.max(i,j)];
+	}
+
+	public void set(int i, int j, double v) 
+	{
+		data[Math.max(i,j)] = v;
+	}
+	
+	public void set(int i, double v[])
+	{
+		data = v;
+	}
+	
+	public void set(double v[][])
+	{
+		if (v.length==1) {
+			data = v[0];
+		} else {
+			data = new double[v.length];
+			
+			for (int i=0; i<v.length; i++)
+				data[i] = v[i][0];
+		}
+		
+	}
+	
+	// Transposed vector
+
+	public Vector transpose() 
+	{
+		Vector result = new Vector(this.data);
+		
+		result.transposed = !this.transposed;
+
+		return result;
+	}
+
 	
 	// Arithmetic
 	
 	/**
 	 * In-place vector addition 
-	 * @param other Vector to be added
+	 * @param other Vector to be added to the current vector
 	 * @return Updated vector
+	 * @pre (this.size() == other.size())
 	 */
 	
 	public Vector accumulate (Vector other) 
 	{
 		int dim = this.size();
 
-		if (this.size() == other.size()) {
-
-			for (int i=0; i<dim; i++)
-				this.set(i, this.get(i)+other.get(i) );
-		}
+		for (int i=0; i<dim; i++)
+			data[i] += other.data[i];
 
 		return this;
 	}

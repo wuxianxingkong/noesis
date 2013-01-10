@@ -3,11 +3,12 @@ package ikor.parallel.scheduler;
 import java.util.concurrent.*;
 
 import ikor.parallel.Scheduler;
-import ikor.parallel.Task;
+import ikor.parallel.ITask;
 import ikor.parallel.threading.MockFuture;
 
 /**
  * Simple fixed-size thread pool scheduler.
+ * 
  * WARNING: Does NOT support task composition, since all threads in the pool might eventually become blocked while waiting for Future's values.
  * NOT TO BE USED when the number of waiting threads might be larger than the thread pool size!!!
  * 
@@ -34,7 +35,7 @@ public class FutureScheduler extends Scheduler
 	 * @see sandbox.parallel.Scheduler#schedule(sandbox.parallel.Task)
 	 */
 	@Override
-	public void schedule (Task task)
+	public void schedule (ITask task)
 	{
 		Future future;
 

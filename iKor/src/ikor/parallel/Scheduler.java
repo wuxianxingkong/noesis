@@ -22,7 +22,14 @@ public abstract class Scheduler
 	
 	// Abstract interface
 	
-	public abstract void schedule(Task task);
+	public abstract void schedule(ITask task);
 
 	public abstract void shutdown();
+	
+	
+	public void invoke (ITask task)
+	{
+		task.setResult (task.call());
+	}
+	
 }

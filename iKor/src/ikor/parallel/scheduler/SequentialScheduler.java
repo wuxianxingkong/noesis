@@ -1,7 +1,7 @@
 package ikor.parallel.scheduler;
 
 import ikor.parallel.Scheduler;
-import ikor.parallel.Task;
+import ikor.parallel.ITask;
 
 
 public class SequentialScheduler extends Scheduler 
@@ -15,7 +15,7 @@ public class SequentialScheduler extends Scheduler
 	 * @see sandbox.parallel.Scheduler#schedule(sandbox.parallel.Task)
 	 */
 	@Override
-	public void schedule (Task task)
+	public void schedule (ITask task)
 	{
 		Object result = task.call();
 				

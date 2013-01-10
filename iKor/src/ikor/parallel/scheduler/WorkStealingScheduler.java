@@ -3,11 +3,12 @@ package ikor.parallel.scheduler;
 import java.util.concurrent.*;
 
 import ikor.parallel.Scheduler;
-import ikor.parallel.Task;
+import ikor.parallel.ITask;
 
 /**
- * Simple thread pool scheduler.
- * WARNING: Might suffer from oversubscription (each use of parallelism might create new threads)
+ * Work-stealing scheduler based on the Java Fork/Join framework.
+ * 
+ * Warning!!! http://coopsoft.com/ar/CalamityArticle.html
  * 
  * @author Fernando Berzal
  */
@@ -16,7 +17,7 @@ public class WorkStealingScheduler extends Scheduler
 {
 	private ForkJoinPool pool;
 
-
+	
 	public WorkStealingScheduler (int parallelism)
 	{
 		this.pool = new ForkJoinPool(parallelism);
@@ -27,11 +28,21 @@ public class WorkStealingScheduler extends Scheduler
 	 * @see sandbox.parallel.Scheduler#schedule(sandbox.parallel.Task)
 	 */
 	@Override
-	public void schedule (Task task)
+	public void schedule (ITask task)
 	{
-		Future future = pool.submit(task);
-		
-		task.setFuture(future);
+        Future future = pool.submit(task);
+        
+        task.setFuture(future);
+        
+        // TODO WorkStealingTask.fork() vs. ForkJoinPool.submit()
+        // 
+        // e.g.
+        //
+        // if (current task is a ForkJoinTask) 
+		//    WorkStealingTask.fork();
+        // else
+        // 	  ForkJoinTask wt = new WorkStealingTask(task);
+		//	  pool.submit(wt);
 	}
 
 
@@ -44,7 +55,18 @@ public class WorkStealingScheduler extends Scheduler
 		if (pool!=null)
 			pool.shutdown(); 
 	}
+		
+	// TODO Direct task invocation
+	// 
+	// @Override
+	// public void invoke (ITask task)
+	// {		
+    // 	  if (current task is a ForkJoinTask) 
+	//    	 WorkStealingTask.invoke();
+    //    else
+    // 	     ForkJoinTask wt = new WorkStealingTask(task);
+	//	     pool.invoke(wt);
+	// }
 
-	
 }
 

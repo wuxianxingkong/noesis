@@ -3,11 +3,12 @@ package ikor.parallel.scheduler;
 import java.util.concurrent.*;
 
 import ikor.parallel.Scheduler;
-import ikor.parallel.Task;
+import ikor.parallel.ITask;
 import ikor.parallel.threading.MockFuture;
 
 /**
  * Simple thread pool scheduler.
+ * 
  * WARNING: Might suffer from oversubscription (each use of parallelism might create new threads)
  * 
  * @author Fernando Berzal
@@ -28,7 +29,7 @@ public class ThreadPoolScheduler extends Scheduler
 	 * @see sandbox.parallel.Scheduler#schedule(sandbox.parallel.Task)
 	 */
 	@Override
-	public void schedule (Task task)
+	public void schedule (ITask task)
 	{
 		Future future;
 

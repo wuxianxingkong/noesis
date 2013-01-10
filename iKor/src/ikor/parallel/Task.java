@@ -1,13 +1,10 @@
 package ikor.parallel;
 
-import java.io.Serializable;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
-
 import ikor.parallel.threading.MockFuture;
 
+import java.util.concurrent.Future;
 
-public abstract class Task<T> implements Callable<T>, Serializable
+public abstract class Task<T> implements ITask<T>
 {
 	private Future<T> future;
 	
@@ -35,6 +32,11 @@ public abstract class Task<T> implements Callable<T>, Serializable
 	public void setFuture(Future<T> future) 
 	{
 		this.future = future;
+	}
+	
+	public Future<T> getFuture ()
+	{
+		return this.future;
 	}
 
 }

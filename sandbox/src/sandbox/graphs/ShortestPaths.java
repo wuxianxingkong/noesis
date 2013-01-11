@@ -16,8 +16,8 @@ import noesis.io.NetworkReader;
  * Results #V=1000, #E=47978
  * 
  * 				Bellman-Ford	Floyd-Warshall	Johnson
- * G1	cycle	182s			2.9s			1.2s
- * G2	cycle	185s			2.9s			1.2s
+ * G1	cycle	5.7s			2.9s			1.2s
+ * G2	cycle	5.9s			2.9s			1.2s
  * G3	 -19	5.1s			2.9s			0.5s
  *
  */

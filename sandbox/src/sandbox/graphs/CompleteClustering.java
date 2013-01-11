@@ -52,6 +52,7 @@ public class CompleteClustering
 			line = reader.readLine();
 		}
 		
+		reader.close();
 		
 		return network;
 	}

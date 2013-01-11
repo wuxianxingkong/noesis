@@ -49,6 +49,8 @@ public class Knapsack
 				current++;
 				line = reader.readLine();
 			}
+			
+			reader.close();
 		}
 	
 	// Simple dynamic programming algorithm

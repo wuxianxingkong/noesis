@@ -53,29 +53,26 @@ public class NetworkDFS<V,E> extends NetworkTraversal<V,E>
 
 	public void traverse (int current)
 	{
-		int   target;
-		int[] links;
+		int target;
+		int degree;
 
    	    state[current] = NetworkTraversal.State.DISCOVERED;
 
 		visitNode(current);
 
-		links = network.outLinks(current);
+		degree = network.outDegree(current);
 
-		if (links!=null) {
+		for (int i=0; i<degree; i++) {
 
-			for (int i=0; i<links.length; i++) {
+			target = network.outLink(current, i);
 
-				target = links[i];
+			visitLink (current, target);
 
-				visitLink (current, target);
-
-				if (state[target]==NetworkTraversal.State.UNDISCOVERED) {
-					traverse(target);
-				}
+			if (state[target]==NetworkTraversal.State.UNDISCOVERED) {
+				traverse(target);
 			}
 		}
-		
+				
 		postVisitNode(current);
 
    	    state[current] = NetworkTraversal.State.EXPLORED;

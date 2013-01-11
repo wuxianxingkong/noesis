@@ -24,8 +24,7 @@ public class NetworkBFS<V,E> extends NetworkTraversal<V,E>
 	public void traverse (int start)
 	{
 		Queue<Integer> queue = new Queue<Integer>();
-		int            current, target;
-		int[]          links;
+		int            current, target, degree;
 
 		queue.enqueue ( start );
 
@@ -36,21 +35,18 @@ public class NetworkBFS<V,E> extends NetworkTraversal<V,E>
 			  state[current] = NetworkTraversal.State.DISCOVERED;
 
 			  visitNode(current);
+			  
+			  degree = network.outDegree(current);
 
-			  links = network.outLinks(current);
+			  for (int i=0; i<degree; i++) {
 
-			  if (links!=null) {
+				  target = network.outLink(current,i); 
 
-				  for (int i=0; i<links.length; i++) {
-					  
-					  target = links[i];
+				  visitLink (current, target);
 
-					  visitLink (current, target);
-
-					  if (state[target] == NetworkTraversal.State.UNDISCOVERED) {
-						  queue.enqueue(target);
-						  state[target] = NetworkTraversal.State.DISCOVERED;
-					  }
+				  if (state[target] == NetworkTraversal.State.UNDISCOVERED) {
+					  queue.enqueue(target);
+					  state[target] = NetworkTraversal.State.DISCOVERED;
 				  }
 			  }
 

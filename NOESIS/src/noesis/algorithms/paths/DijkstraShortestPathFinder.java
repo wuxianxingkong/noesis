@@ -45,19 +45,20 @@ public class DijkstraShortestPathFinder<V,E> extends SingleSourceShortestPathFin
         while (queue.size()>0) {
             
         	int vertex = queue.get();
+        	int degree = network.outDegree(vertex);
+        	int target;
         	
-        	int[] links = network.outLinks(vertex);
-        	
-        	if (links!=null)
-        		for (int j=0; j<links.length; j++) {
-        				
-       				linkValue = linkEvaluator.evaluate(vertex, links[j]);
-        				
-       				if (distance[links[j]] > distance[vertex] + linkValue) {
-       					predecessor[links[j]] = vertex;
-       					updateDistance(queue, links[j], distance[vertex] + linkValue);
-       				}
+        	for (int j=0; j<degree; j++) {
+
+        		target = network.outLink(vertex,j);
+
+        		linkValue = linkEvaluator.evaluate(vertex,target);
+
+        		if (distance[target] > distance[vertex] + linkValue) {
+        			predecessor[target] = vertex;
+        			updateDistance(queue, target, distance[vertex] + linkValue);
         		}
+        	}
         }		
 	}
 	

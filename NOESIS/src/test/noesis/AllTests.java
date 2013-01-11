@@ -4,7 +4,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses( { test.noesis.algorithms.AllTests.class,
+@Suite.SuiteClasses( { test.noesis.AugmentedNetworkTest.class,
+					   test.noesis.algorithms.AllTests.class,
 					   test.noesis.analysis.AllTests.class,
 					   test.noesis.io.AllTests.class,
 					   test.noesis.model.AllTests.class})

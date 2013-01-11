@@ -74,16 +74,16 @@ public class StronglyConnectedComponents
 	private Network reverseNetwork (Network net)
 	{
 		Network reverse = new BasicNetwork();
-		int[]   links;
+		int     size = net.size();
+		int     degree;
 		
-		reverse.setSize(net.size());
+		reverse.setSize(size);
 		
-		for (int i=0; i<net.size(); i++) {
-			links = net.outLinks(i);
-			
-			if (links!=null)
-				for (int j=0; j<links.length; j++)
-			    	reverse.add( links[j], i);
+		for (int i=0; i<size; i++) {
+			degree = net.outDegree(i);
+
+			for (int j=0; j<degree; j++)
+		    	reverse.add( net.outLink(i,j), i);
 		}
 		
 		return reverse;

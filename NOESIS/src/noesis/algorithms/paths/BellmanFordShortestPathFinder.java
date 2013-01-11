@@ -43,6 +43,8 @@ public class BellmanFordShortestPathFinder<V,E> extends SingleSourceShortestPath
 		
 		boolean changes = true; // for early-stopping
 		int     iterations;
+		int     degree;
+		int     w;
 		
 		for (iterations=1; (iterations<=size) && changes; iterations++) {
 			
@@ -51,20 +53,20 @@ public class BellmanFordShortestPathFinder<V,E> extends SingleSourceShortestPath
 			for (int v=0; v<size; v++) {
 			
 				newDistance[v] = distance[v];
-				            
-		       	int[] links = network.inLinks(v);
+				
+				degree = network.inDegree(v);
 	        	
-	        	if (links!=null)
-	        		for (int j=0; j<links.length; j++) {
-	        				
-	       				linkValue = linkEvaluator.evaluate(links[j], v);
-	        				
-	       				if (newDistance[v] > distance[links[j]] + linkValue) {
-	       					predecessor[v] = links[j];
-	       					newDistance[v] = distance[links[j]] + linkValue;
-	       					changes = true;
-	       				}
-	        		}
+				for (int j=0; j<degree; j++) {
+
+					w = network.inLink(v, j);
+					linkValue = linkEvaluator.evaluate(w, v);
+
+					if (newDistance[v] > distance[w] + linkValue) {
+						predecessor[v] = w;
+						newDistance[v] = distance[w] + linkValue;
+						changes = true;
+					}
+				}
 			}
 			
 			tmp = distance;

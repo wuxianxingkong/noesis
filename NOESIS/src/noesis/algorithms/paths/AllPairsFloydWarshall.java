@@ -31,6 +31,9 @@ public class AllPairsFloydWarshall<V,E> extends AllPairsShortestPathFinder<V, E>
 		double tmp[][];
 
 		int n = network.size();
+		int degree;
+		int target;
+
 		this.distance = new double[n][n];
 		
 		newDistance = new double[n][n];
@@ -44,13 +47,12 @@ public class AllPairsFloydWarshall<V,E> extends AllPairsShortestPathFinder<V, E>
 		for (int i=0; i<n; i++) {
 			distance[i][i] = 0;
 			
-			int[] links = network.outLinks(i);
+			degree = network.outDegree(i);
 			
-			if (links!=null) {
-				for (int j=0; j<links.length; j++) {
-					distance[i][links[j]] = linkEvaluator.evaluate(i,links[j]);
-				}
-			}			
+			for (int j=0; j<degree; j++) {
+				target = network.outLink(i,j);
+				distance[i][target] = linkEvaluator.evaluate(i,target);
+			}
 		}
 	
 		// Dynamic programming algorithm

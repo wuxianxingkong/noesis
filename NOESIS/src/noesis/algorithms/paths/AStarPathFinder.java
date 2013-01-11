@@ -59,27 +59,28 @@ public class AStarPathFinder<V, E> extends SingleSourcePathFinder<V,E> implement
         while (open.size()>0) {
             
         	int vertex = open.get();
+        	int degree = network.outDegree(vertex);
+        	int target;
         	
         	closed[vertex] = true;
         	
-        	int[] links = network.outLinks(vertex);
-        	
-        	if (links!=null)
-        		for (int j=0; j<links.length; j++) {
-        			
-        			if (!closed[links[j]]) {
-        				
-        				linkValue = linkEvaluator.evaluate( network.get(vertex, links[j]) );
-        				nodeValue = g[vertex] + linkValue;
-        				
-        				if (nodeValue < g[links[j]]) {
-        					g[links[j]] = nodeValue;
-        					h[links[j]] = heuristicEvaluator.evaluate(network.get(links[j]));
-        					predecessor[links[j]] = vertex;
-        					open.add(links[j]);
-        				}        				
-        			}
+        	for (int j=0; j<degree; j++) {
+
+        		target = network.outLink(vertex,j);
+
+        		if (!closed[target]) {
+
+        			linkValue = linkEvaluator.evaluate( network.get(vertex,target) );
+        			nodeValue = g[vertex] + linkValue;
+
+        			if (nodeValue < g[target]) {
+        				g[target] = nodeValue;
+        				h[target] = heuristicEvaluator.evaluate(network.get(target));
+        				predecessor[target] = vertex;
+        				open.add(target);
+        			}        				
         		}
+        	}
         }		
 	}
 	

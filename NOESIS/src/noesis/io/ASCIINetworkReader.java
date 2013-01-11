@@ -21,15 +21,23 @@ import noesis.Network;
 public class ASCIINetworkReader extends NetworkReader<String,Decimal>
 {
 	private BufferedReader input;
+	private boolean        directed;
 
 	public ASCIINetworkReader ()
 	{
 		this.input = null;
+		this.directed = false;
 	}
 	
 	public ASCIINetworkReader (Reader reader)
 	{
 		setReader(reader);
+	}
+
+	public ASCIINetworkReader (Reader reader, boolean directed)
+	{
+		setReader(reader);
+		this.directed = directed;
 	}
 
 	public void setReader (Reader reader)
@@ -88,7 +96,9 @@ public class ASCIINetworkReader extends NetworkReader<String,Decimal>
 			value = new Decimal(tokenizer.nextToken());
 			
 			net.add(source,destination,value);
-			net.add(destination,source,value);
+			
+			if (!directed)
+				net.add(destination,source,value);
 
 			line = readLine();
 		}

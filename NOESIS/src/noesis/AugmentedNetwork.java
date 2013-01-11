@@ -10,23 +10,26 @@ public class AugmentedNetwork extends AttributeNetwork
 {
 	AttributeNetwork base;
 	
-	public AugmentedNetwork (AttributeNetwork base)
+	public AugmentedNetwork (Network original)
 	{
-		this.base = base;
+		if (base instanceof AttributeNetwork)
+			this.base = (AttributeNetwork) original;
+		else
+			this.base = new AttributeNetwork(original);
+		
 		this.setSize(base.size());
-		
+
 		// Node attributes
-		
+
 		for (int i=0; i<base.getNodeAttributeCount(); i++) {
 			this.addNodeAttribute( new AugmentedAttribute(base.getNodeAttribute(i)) );
 		}
-		
+
 		// Link attributes
 
 		for (int i=0; i<base.getLinkAttributeCount(); i++) {
 			this.addLinkAttribute( new AugmentedLinkAttribute(this,base.getLinkAttribute(i)) );
 		}
-		
 	}
 
 	// Links

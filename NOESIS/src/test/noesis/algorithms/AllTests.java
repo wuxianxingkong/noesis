@@ -13,6 +13,7 @@ import org.junit.runners.Suite;
 					   test.noesis.algorithms.paths.AllPairsDijkstraTest.class,
 					   test.noesis.algorithms.paths.AllPairsBellmanFordTest.class,
 					   test.noesis.algorithms.paths.AllPairsFloydWarshallTest.class,
+					   test.noesis.algorithms.paths.AllPairsJohnsonTest.class,
 					   test.noesis.algorithms.traversal.NetworkTraversalTest.class,
 					   test.noesis.algorithms.traversal.TopologicalSortTest.class,
 					   test.noesis.algorithms.traversal.ConnectedComponentsTest.class,

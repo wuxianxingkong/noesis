@@ -37,6 +37,22 @@ public class AttributeNetwork extends BasicNetwork
 		index = new DynamicDictionary<Pair<Integer,Integer>, Integer>();
 	}
 
+	
+	public AttributeNetwork (Network net)
+	{
+		this();
+		
+		this.setSize(net.size());
+		
+		for (int i=0; i<net.size(); i++) {
+			int degree = net.outDegree(i);
+			
+			for (int j=0; j<degree; j++) {
+				this.add(i, net.outLink(i,j));
+			}
+		}
+	}	
+
 	// Edge index
 	
 	@Override

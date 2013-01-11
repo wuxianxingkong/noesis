@@ -42,8 +42,12 @@ public interface ReadOnlyGraph<V, E> extends ReadOnlyList<V>
 	
 	public int[] outLinks (int node);
 	public int[] outLinks (V node);
+	
+	public int   outLink  (int node, int link);
 
 	public int[] inLinks (int node);
 	public int[] inLinks (V node);
+	
+	public int   inLink  (int node, int link);	
 }
 

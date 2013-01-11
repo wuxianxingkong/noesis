@@ -58,28 +58,34 @@ public abstract class ReadOnlyGraphImplementation<V,E> implements ReadOnlyGraphI
 	// Ancillary methods (Graph interface)
 
 	@Override
+	public final int outLink (int node, int index) 
+	{
+		ReadOnlyList<GraphLink<E>> list = outLinkList(node);
+		
+		if (isDirected()) {
+			
+			return index (list.get(index).getDestination());
+			
+		} else {
+			
+			GraphLink<E> link = list.get(index);
+				
+			if (node==index(link.getSource())) {
+				return index(link.getDestination());
+			} else {
+				return index(link.getSource());
+			}
+		}		
+	}
+	
+	@Override
 	public final int[] outLinks(int node) 
 	{
 		ReadOnlyList<GraphLink<E>> list = outLinkList(node);
 		int[] array = new int[list.size()];
 		
-		if (isDirected()) {
-			
-			for (int i=0; i<array.length; i++)
-				array[i] = index (list.get(i).getDestination());
-			
-		} else {
-			
-			for (int i=0; i<array.length; i++) {
-				GraphLink<E> link = list.get(i);
-				
-				if (node==index(link.getSource())) {
-					array[i] = index(link.getDestination());
-				} else {
-					array[i] = index(link.getSource());
-				}
-			}
-		}
+		for (int i=0; i<array.length; i++)
+			array[i] = outLink(node,i);
 
 		return array;
 	}
@@ -91,28 +97,34 @@ public abstract class ReadOnlyGraphImplementation<V,E> implements ReadOnlyGraphI
 	}
 
 	@Override
+	public final int inLink (int node, int index) 
+	{
+		ReadOnlyList<GraphLink<E>> list = inLinkList(node);
+
+		if (isDirected()) {
+		
+			return index (list.get(index).getSource());
+
+		} else {
+		
+			GraphLink<E> link = list.get(index);
+
+			if (node==index(link.getDestination())) {
+				return index(link.getSource());
+			} else {
+				return index(link.getDestination());
+			}
+		}
+	}
+	
+	@Override
 	public final int[] inLinks(int node) 
 	{
 		ReadOnlyList<GraphLink<E>> list = inLinkList(node);
 		int[] array = new int[list.size()];
-		
-		if (isDirected()) {
-		
-			for (int i=0; i<array.length; i++)
-				array[i] = index (list.get(i).getSource());
 
-		} else {
-		
-			for (int i=0; i<array.length; i++) {
-				GraphLink<E> link = list.get(i);
-
-				if (node==index(link.getDestination())) {
-					array[i] = index(link.getSource());
-				} else {
-					array[i] = index(link.getDestination());
-				}
-			}
-		}
+		for (int i=0; i<array.length; i++)
+			array[i] = inLink(node,i);
 		
 		return array;
 	}

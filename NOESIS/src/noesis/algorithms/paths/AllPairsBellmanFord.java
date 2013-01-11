@@ -43,14 +43,17 @@ public class AllPairsBellmanFord<V,E> extends AllPairsShortestPathFinder<V, E>
 		@Override
 		public Object call (int index) 
 		{
-			BellmanFordShortestPathFinder finder = new BellmanFordShortestPathFinder(network,index,linkEvaluator);
-			
-			finder.run();
-			
-			distance[index] = finder.distance();
-			
-			if (finder.negativeCycleDetected())
-				negativeCycles = true;
+			if (!negativeCycles) {
+				
+				BellmanFordShortestPathFinder finder = new BellmanFordShortestPathFinder(network,index,linkEvaluator);
+
+				finder.run();
+
+				distance[index] = finder.distance();
+
+				if (finder.negativeCycleDetected())
+					negativeCycles = true;
+			}
 
 			return null;
 		}

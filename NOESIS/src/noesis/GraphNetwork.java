@@ -237,7 +237,13 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ReadOnlyGraphInte
 		return net.inLinkList(node);
 	}
 
+	@Override
+	public int outLink (int node, int index) 
+	{
+		return net.outLink(node,index);
+	}
 
+	
 	@Override
 	public int[] outLinks(int node) 
 	{
@@ -252,6 +258,13 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ReadOnlyGraphInte
 	}
 
 
+	@Override
+	public int inLink (int node, int index) 
+	{
+		return net.inLink(node,index);
+	}
+
+	
 	@Override
 	public int[] inLinks(int node) 
 	{

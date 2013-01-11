@@ -40,7 +40,7 @@ public class NetworkStats {
 	public static void main(String[] args)
 		throws IOException
 	{
-		Scheduler.set ( new WorkStealingScheduler(8) );  // 4 (i5) vs. 8 (i7)
+		Scheduler.set ( new WorkStealingScheduler(16) );  // 8 (i5) vs. 16 (i7)
 		// Scheduler.set ( new FutureScheduler(16) );
 		// Scheduler.set ( new ThreadPoolScheduler() );
 		// Scheduler.set ( new SequentialScheduler() );

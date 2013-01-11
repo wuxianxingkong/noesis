@@ -165,6 +165,12 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 	}
 
 	@Override
+	public int outLink (int node, int index) 
+	{
+		return net.outLink(node, index);
+	}
+	
+	@Override
 	public int[] outLinks(int node) 
 	{
 		return net.outLinks(node);
@@ -177,6 +183,13 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 		return outLinks(index(node));
 	}
 
+
+	@Override
+	public int inLink (int node, int index) 
+	{
+		return net.inLink(node, index);
+	}
+	
 	@Override
 	public int[] inLinks(int node) 
 	{

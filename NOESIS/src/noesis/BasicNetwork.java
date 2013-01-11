@@ -48,7 +48,7 @@ public class BasicNetwork extends Network<Integer,Integer>
 	}
 
 	@Override
-	public final int links() 
+	public int links() 
 	{
 		return nlinks;
 	}
@@ -129,7 +129,7 @@ public class BasicNetwork extends Network<Integer,Integer>
 	@Override
 	public final boolean add(int sourceIndex, int destinationIndex, Integer value) 
 	{
-		throw new UnsupportedOperationException("Unsupported operation on simple networks");
+		throw new UnsupportedOperationException("Unsupported operation on basic networks");
 	}
 
 	@Override
@@ -139,7 +139,7 @@ public class BasicNetwork extends Network<Integer,Integer>
 	}
 	
 	
-	public final int getLinkIndex(int source, int destination)
+	public int getLinkIndex(int source, int destination)
 	{
 		if (outLinks[source]!=null)
 			for (int i=0; i<outLinks[source][0]; i++)
@@ -150,7 +150,7 @@ public class BasicNetwork extends Network<Integer,Integer>
 	}
 
 	@Override
-	public final Integer get(int source, int destination) 
+	public Integer get(int source, int destination) 
 	{
 		if (outLinks[source]!=null)
 			for (int i=0; i<outLinks[source][0]; i++)
@@ -180,7 +180,7 @@ public class BasicNetwork extends Network<Integer,Integer>
 
 
 	@Override
-	public final int inDegree(int node) 
+	public int inDegree(int node) 
 	{
 		if ((inLinks!=null) && (inLinks[node]!=null))
 			return inLinks[node][0];
@@ -189,7 +189,7 @@ public class BasicNetwork extends Network<Integer,Integer>
 	}
 
 	@Override
-	public final int outDegree(int node) 
+	public int outDegree(int node) 
 	{
 		if ((outLinks!=null) && (outLinks[node]!=null))
 			return outLinks[node][0];
@@ -197,8 +197,15 @@ public class BasicNetwork extends Network<Integer,Integer>
 			return 0;
 	}
 
+	
 	@Override
-	public int[] outLinks(int node) 
+	public int outLink (int node, int index)
+	{
+		return outLinks[node][START_INDEX+index];
+	}
+	
+	@Override
+	public final int[] outLinks(int node) 
 	{
 		int   outDegree = outDegree(node);
 		int[] links     = null;
@@ -208,7 +215,7 @@ public class BasicNetwork extends Network<Integer,Integer>
 			links = new int[outDegree];
 		
 			for (int i=0; i<outDegree; i++)
-				links[i] = outLinks[node][START_INDEX+i];
+				links[i] = outLink(node,i);
 		}
 
 		return links;
@@ -216,13 +223,19 @@ public class BasicNetwork extends Network<Integer,Integer>
 
 	
 	@Override
-	public int[] outLinks(Integer node) 
+	public final int[] outLinks(Integer node) 
 	{
 		return outLinks((int)node);
 	}
 
 	@Override
-	public int[] inLinks(int node) 
+	public int inLink (int node, int index)
+	{
+		return inLinks[node][START_INDEX+index];
+	}
+
+	@Override
+	public final int[] inLinks(int node) 
 	{
 		int   inDegree = inDegree(node);
 		int[] links    = null;
@@ -232,14 +245,14 @@ public class BasicNetwork extends Network<Integer,Integer>
 			links = new int[inDegree];
 		
 			for (int i=0; i<inDegree; i++)
-				links[i] = inLinks[node][START_INDEX+i];
+				links[i] = inLink(node,i);
 		}
 
 		return links;
 	}
 
 	@Override
-	public int[] inLinks(Integer node) 
+	public final int[] inLinks(Integer node) 
 	{
 		return inLinks((int)node);
 	}

@@ -18,7 +18,7 @@ public class LinkAttribute<T> extends Attribute<T>
 		this.net = net;
 	}
 	
-	private int index (int source, int target)
+	protected int index (int source, int target)
 	{
 		return net.index(source,target);
 	}

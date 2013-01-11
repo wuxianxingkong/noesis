@@ -22,6 +22,12 @@ public class AllPairsJohnson<V,E> extends AllPairsShortestPathFinder<V, E>
 		negativeCycles = false;
 	}
 
+	@Override
+	public boolean negativeCycleDetected ()
+	{
+		return negativeCycles;
+	}
+
 	
 	@Override
 	public void run() 

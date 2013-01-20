@@ -39,7 +39,7 @@ public class DynamicPriorityQueue<T> implements PriorityQueue<T>
 	 * Constructor: Creates a priority queue 
 	 * that orders its elements according to the specified comparator.
 	 * 
-	 * @param comparator The comparator used to order this priority queue. If null, then the order depends on the elements' natural ordering.
+	 * @param comparator The comparator used to sort this priority queue. If null, then the order depends on the elements' natural ordering.
 	 */
 	
 	public DynamicPriorityQueue (Comparator comparator)
@@ -47,6 +47,17 @@ public class DynamicPriorityQueue<T> implements PriorityQueue<T>
 		this.queue = new java.util.PriorityQueue<T>(INITIAL_CAPACITY, comparator);
 	}
 	
+	/**
+	 * Constructor: Creates a priority queue 
+	 * that orders its elements according to the specified comparator.
+	 * 
+	 * @param evaluator The evaluator used to sort this priority queue.
+	 */
+	
+	public DynamicPriorityQueue (Evaluator evaluator)
+	{
+		this.queue = new java.util.PriorityQueue<T>(INITIAL_CAPACITY, new EvaluatorComparator(evaluator));
+	}
 	
 	// PriorityQueue interface
 	

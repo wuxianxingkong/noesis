@@ -50,35 +50,5 @@ public class BacktrackingSolver extends Solver
 		return fin;
 	}
 	
-	
-	// Variable selection
-	
-	private int firstVariable (Problem problem)
-	{		
-		for (int v=0; v<problem.variables(); v++) 		
-			if (problem.isUnassigned(v))
-				return v;
-		
-		return -1;
-	}
-		
-	private int mrvVariable (Problem problem)
-	{		
-		int best = -1;
-		int values = Integer.MAX_VALUE;
-		int candidates;
-		
-		for (int var=0; var<problem.variables(); var++) 		
-			if (problem.isUnassigned(var)) {
-				candidates = problem.valueCount(var);
-				
-				if (candidates<values) {
-					best = var;
-					values = candidates;
-				}
-			}
-		
-		return best;
-	}
 
 }

@@ -13,23 +13,30 @@ public class TSPIncrementalEvaluator implements Evaluator<TSPIncrementalOptimiza
 		this.distance = distance;
 	}
 	
-	@Override
-	public double evaluate(TSPIncrementalOptimizationProblem problem) 
+	
+	public double recursiveValue (TSPIncrementalOptimizationProblem problem)
 	{
 		float cost = 0;
+		int   n = distance.length;
 		
 		if (problem.parent!=null)
-			cost += evaluate(problem.parent);
+			cost += recursiveValue(problem.parent);
 		
 		if (problem.k>0)
 			cost += distance[problem.parent.value][problem.value];
 
-		if (problem.k==problem.variables()-1)
+		if (problem.k==n-1)
 			cost += distance[problem.value][0];
 
+		return cost;		
+	}
+	
+	@Override
+	public double evaluate(TSPIncrementalOptimizationProblem problem) 
+	{
 		counter++;
 		// System.out.println(counter+" evals");
 
-		return cost;
+		return recursiveValue(problem);
 	}
 }

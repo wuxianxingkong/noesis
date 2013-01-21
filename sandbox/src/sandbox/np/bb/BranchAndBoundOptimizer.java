@@ -7,24 +7,31 @@ import ikor.collection.*;
 public class BranchAndBoundOptimizer extends Solver
 {
 	Evaluator<OptimizationProblem> evaluator;
-	PriorityQueue<OptimizationProblem> queue;
+	InOutCollection<OptimizationProblem> list;
 	
 	OptimizationProblem best;
 	float globalBound;
 	int   nodes;
 	
+	final static int BATCH_SIZE = 100000;
+
 	public BranchAndBoundOptimizer (OptimizationProblem problem, Evaluator<OptimizationProblem> evaluator)
+	{
+		this(problem, evaluator, new DynamicPriorityQueue( new BoundEvaluator() ) );
+	}
+
+	public BranchAndBoundOptimizer (OptimizationProblem problem, Evaluator<OptimizationProblem> evaluator, InOutCollection<OptimizationProblem> liveNodeCollection)
 	{
 		super(problem);
 		
 		this.evaluator = evaluator;
-		this.queue = new DynamicPriorityQueue( new BoundEvaluator() );		
+		this.list = liveNodeCollection;		
 		
 		
 		best = problem;
 		best.setBound( (float) evaluator.evaluate(best));
 		
-		queue.add(best); // Root node
+		list.add(best); // Root node
 		nodes = 0;
 	}
 	
@@ -40,10 +47,13 @@ public class BranchAndBoundOptimizer extends Solver
 		
 		globalBound = Float.MAX_VALUE;
 		
-		while (queue.size()>0) {
+		while (list.size()>0) {
 			
-			current = queue.get();
+			current = list.get();
 			nodes++;
+			
+			if (nodes%BATCH_SIZE==0)
+				System.out.println(nodes + " nodes explored...");
 			
 			//System.out.println("Current: "+current);
 			//System.out.println("Best: "+best);
@@ -63,7 +73,7 @@ public class BranchAndBoundOptimizer extends Solver
 						
 					} else if ( children[i].getBound() <= globalBound ) {
 						
-						queue.add(children[i]);
+						list.add(children[i]);
 						
 						// if (children[i].getUpperBound() < globalBound ) {
 						//    best = children[i].getUpperBoundSolution();
@@ -95,12 +105,4 @@ public class BranchAndBoundOptimizer extends Solver
 	}
 	
 	
-	public class BoundEvaluator implements Evaluator<OptimizationProblem>
-	{
-		@Override
-		public double evaluate(OptimizationProblem object) 
-		{
-			return object.getBound();
-		}		
-	}
 }

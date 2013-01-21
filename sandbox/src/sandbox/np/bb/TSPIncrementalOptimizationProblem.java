@@ -76,6 +76,7 @@ public class TSPIncrementalOptimizationProblem extends OptimizationProblem
 			used[i] = false;
 		
 	}
+	
 	private void fillUsed ()
 	{
 		if (parent!=null)
@@ -85,16 +86,23 @@ public class TSPIncrementalOptimizationProblem extends OptimizationProblem
 			used[value] = true;
 	}
 	
+	public boolean[] usedVariables ()
+	{
+		resetUsed();
+		fillUsed();
+		
+		return used;
+	}
+	
 
 	@Override
 	public int[] values (int var) 
 	{
 		int n = variables();
+		int current;		
 		int result[] = new int [n-k-1];
-		int current;
+		boolean used[] = usedVariables();
 		
-		resetUsed();
-		fillUsed();
 		current = 0;
 		
 		for (int i=0; i<n; i++) {

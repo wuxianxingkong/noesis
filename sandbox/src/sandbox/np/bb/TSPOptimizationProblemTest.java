@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-import ikor.collection.Evaluator;
+import ikor.collection.*;
 
 public class TSPOptimizationProblemTest 
 {
@@ -91,20 +91,23 @@ public class TSPOptimizationProblemTest
 	{
 		// return test4();
 		return test5();
-		// return read("C:/Users/usuario/Downloads/@courseware/Algorithms @ Stanford/26 NP/tsp.txt");
+		// return read("C:/Users/usuario/Downloads/@courseware/Algorithms @ Stanford/26 NP/tsp.txt"); // Only with LIFO strategies: 24!
 	}
 	
 	public static void main (String args[])
 		throws IOException
 	{
-		TSPOptimizationProblem problem = new TSPOptimizationProblem(getDistances());
-		//TSPIncrementalOptimizationProblem problem = new TSPIncrementalOptimizationProblem(getDistances());
+		//TSPOptimizationProblem problem = new TSPOptimizationProblem(getDistances());
+		TSPIncrementalOptimizationProblem problem = new TSPIncrementalOptimizationProblem(getDistances());
 		
 		//Evaluator evaluator = new TSPEvaluator();
-		Evaluator evaluator = new TSPMinEvaluator(problem);
+		//Evaluator evaluator = new TSPMinEvaluator(problem);
 		//Evaluator evaluator = new TSPIncrementalEvaluator(getDistances());
+		Evaluator evaluator = new TSPIncrementalMinEvaluator(getDistances());
 		
-		BranchAndBoundOptimizer optimizer = new BranchAndBoundOptimizer(problem,evaluator);
+		// BranchAndBoundOptimizer optimizer = new BranchAndBoundOptimizer(problem,evaluator);
+		// BranchAndBoundOptimizer optimizer = new BranchAndBoundOptimizer(problem,evaluator, new Queue());
+		BranchAndBoundOptimizer optimizer = new BranchAndBoundOptimizer(problem,evaluator, new Stack());
 		
 		optimizer.minimize();
 		

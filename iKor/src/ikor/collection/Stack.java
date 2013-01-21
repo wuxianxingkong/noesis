@@ -21,7 +21,7 @@ import java.util.Iterator;
  *
  * @author Fernando Berzal
  */
-public class Stack<T> implements ReadOnlyCollection<T>
+public class Stack<T> implements ReadOnlyCollection<T>, InOutCollection<T>
 {
     /**
      * Collection. ArrayList is roughly equivalent to Vector, except that it is unsynchronized
@@ -66,12 +66,33 @@ public class Stack<T> implements ReadOnlyCollection<T>
     {
         items.addFirst(object);
     }
+
+    /**
+     * Adds an object to the collection
+     * @param object Object to be added
+     */
+    
+	@Override
+	public boolean add(T object) 
+	{
+		items.addFirst(object);
+		return true;
+	}
     
     /**
      * Removes an element from the collection
      */
     
     public T pop ()
+    {
+        return items.removeFirst();
+    }
+
+    /**
+     * Retrieves and removes the element from the top of the stack
+     */
+    
+    public T get ()
     {
         return items.removeFirst();
     }
@@ -114,6 +135,24 @@ public class Stack<T> implements ReadOnlyCollection<T>
 	@Override
 	public Iterator<T> iterator() {
 		return items.iterator();
+	}
+
+
+	@Override
+	public boolean remove(T object) 
+	{
+		if (object.equals(peek())) {
+			pop();
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public void clear() 
+	{
+		items.clear();
 	}
     
 }

@@ -21,7 +21,7 @@ import java.util.Iterator;
  *
  * @author Fernando Berzal
  */
-public class Queue<T> implements ReadOnlyCollection<T>
+public class Queue<T> implements ReadOnlyCollection<T>, InOutCollection<T>
 {
     /**
      * Collection. ArrayList is roughly equivalent to Vector, except that it is unsynchronized
@@ -68,11 +68,33 @@ public class Queue<T> implements ReadOnlyCollection<T>
     }
     
     /**
+     * Adds an object to the collection
+     * @param object Object to be added
+     * @return 
+     */
+    
+    public boolean add (T object)
+    {
+        items.addLast(object);
+        
+        return true;
+    }    
+    
+    /**
      * Removes an element from the collection
      * @param object Object to be removed
      */
     
     public T dequeue ()
+    {
+        return items.removeFirst();
+    }
+
+    /**
+     * Retrieves and removes the element from the head of the queue
+     */
+    
+    public T get ()
     {
         return items.removeFirst();
     }
@@ -115,6 +137,23 @@ public class Queue<T> implements ReadOnlyCollection<T>
 	@Override
 	public Iterator<T> iterator() {
 		return items.iterator();
+	}
+
+	@Override
+	public boolean remove(T object) 
+	{
+		if (object.equals(peek())) {
+			dequeue();
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public void clear() 
+	{
+		items.clear();
 	}
     
 }

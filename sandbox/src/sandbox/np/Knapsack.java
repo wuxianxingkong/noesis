@@ -187,9 +187,7 @@ public class Knapsack
 		
 		while ((previous[xmax]<=C) && (xmax<vsum))
 			xmax++;
-		
-		System.out.println(xmax);
-		
+				
 		return m*(xmax-1);
 	}
 	

@@ -5,7 +5,7 @@ import java.io.*;
 import noesis.*;
 import noesis.algorithms.traversal.StronglyConnectedComponents;
 
-public class Kurasaju
+public class Korasaju
 {
 
 	// I/O

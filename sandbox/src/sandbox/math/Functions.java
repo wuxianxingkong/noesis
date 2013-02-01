@@ -2,9 +2,8 @@ package sandbox.math;
 
 public class Functions 
 {
-    private static final int MAX_ITERATIONS = 100;
     private static final double EPSILON = 1e-8;
-    private static final double FPMIN = 1e-100;
+    private static final double FPMIN = Double.MIN_VALUE / EPSILON;
     
     
 	/**
@@ -115,10 +114,10 @@ public class Functions
     {
     	if (x<=0) {
     		return 0;
-    	//} else if (x >= a+1) {
-    	//	return 1 - gammaQ(a,x); // Faster convergence, worse approximation (bug @ NR?)
-        } else {            
+    	} else if (x < a+1) {
             return gseries(a,x);
+        } else {            
+    		return 1 - gcf(a,x); // Faster convergence
         }
     }
     
@@ -127,16 +126,16 @@ public class Functions
      */
     public static double gammaQ (double a, double x)
     {
-    	return 1 - gammaP(a,x);
-    	/*
+    	// return 1 - gammaP(a,x);
+    	
         if (x<=0) {
         	return 1;
         } else if (x < a+1) {
-        	return 1 - gammaP(a,x); // Faster convergence
+        	return 1 - gseries(a,x); // Faster convergence
         } else {
             return gcf(a,x);
         }
-        */
+        
     }    
     
     // Incomplete gamma function P(a,x) evaluated by its series representation 
@@ -150,27 +149,21 @@ public class Functions
 		
     	if (x>0) {
     		
-    		for (int n=0;n<MAX_ITERATIONS;n++) {
+    		while (Math.abs(del) >= Math.abs(sum)*EPSILON) {
     			ap++;
     			del *= x/ap;
     			sum += del;
-    			if (Math.abs(del) < Math.abs(sum)*EPSILON) {
-    				return sum*Math.exp(-x+a*Math.log(x)-gln);
-    			}
     		}
-    		// nrerror();
     	}
 
-    	// WARNING "a too large, MAX_ITERATIONS too small in gseries"
     	return sum*Math.exp(-x+a*Math.log(x)-gln);
     }    
     
     // Incomplete gamma function Q(a,x) evaluated by its continued fraction representation 
-    // TODO Bug @ Numerical recipes, erf(x) when x>1.2 ???
     
     private static double gcf (double a, double x)
     {
-    	double gln = logGamma(a); // Gamma(a)
+    	double gln = logGamma(a); 
     	int i;
     	double an,b,c,d,del,h;
 
@@ -180,8 +173,10 @@ public class Functions
     	c=1.0/FPMIN;
     	d=1.0/b;
     	h=d;
+    	i=1;
+    	del=0;
     	
-    	for (i=0; i<MAX_ITERATIONS; i++) {
+    	while ( Math.abs(del-1.0)>=EPSILON ) {
     		an = -i*(i-a);
     		b += 2.0;
     		d=an*d+b;
@@ -191,12 +186,9 @@ public class Functions
     		d=1.0/d;
     		del=d*c;
     		h *= del;
-    		
-    		if (Math.abs(del-1.0) < EPSILON)
-    			return Math.exp(-x+a*Math.log(x)-gln)*h;
+    		i++;
     	}
     	
-    	// WARNING "a too large, MAX_ITERATIONS too small in gcf"
     	return Math.exp(-x+a*Math.log(x)-gln)*h;
     }
     
@@ -211,6 +203,136 @@ public class Functions
 		return Math.exp(logGamma(z)+logGamma(w)-logGamma(z+w));
 	}
 	
+	/**
+	 * Beta function B(a,b)
+	 * @param a > 0 
+	 * @param b > 0
+	 * @return log B(a,b)
+	 */
+    public static double logBeta(double a, double b) 
+    {
+    	return logGamma(a) + logGamma(b) - logGamma(a + b);
+    }
+	
+
+	/**
+	 * Incomplete beta function I<sub>x</sub>(a, b)
+	 * @param a > 0
+	 * @param b > 0
+	 * @param x evaluation point
+	 * @return betai(a,b,x)
+	 */
+	public static double betai (double a, double b, double x)
+	{
+		if ((x == 0.0) || (x == 1.0)) 
+			return x;
+
+		double bt = Math.exp( logGamma(a+b)-logGamma(a)-logGamma(b)+a*Math.log(x)+b*Math.log(1.0-x));
+		
+		if (x < (a+1.0)/(a+b+2.0)) 
+			return bt*betacf(a,b,x)/a;
+		else 
+			return 1.0-bt*betacf(b,a,1.0-x)/b;
+	}
+	
+	private static double betacf (double a, double b, double x) 
+	{
+		int    m,m2;
+		double aa,c,d,del,h,qab,qam,qap;
+		
+		qab=a+b;
+		qap=a+1.0;
+		qam=a-1.0;
+		del=0;
+		
+		c=1.0;
+		d=1.0-qab*x/qap;
+		if (Math.abs(d) < FPMIN) d=FPMIN;
+		d=1.0/d;
+		h=d;
+		
+		for (m=1; (Math.abs(del-1.0)> EPSILON) && (m<10000);m++) {
+			m2=2*m;
+			aa=m*(b-m)*x/((qam+m2)*(a+m2));
+			d=1.0+aa*d;
+			if (Math.abs(d) < FPMIN) d=FPMIN;
+			c=1.0+aa/c;
+			if (Math.abs(c) < FPMIN) c=FPMIN;
+			d=1.0/d;
+			h *= d*c;
+			aa = -(a+m)*(qab+m)*x/((a+m2)*(qap+m2));
+			d=1.0+aa*d;
+			if (Math.abs(d) < FPMIN) d=FPMIN;
+			c=1.0+aa/c;
+			if (Math.abs(c) < FPMIN) c=FPMIN;
+			d=1.0/d;
+			del=d*c;
+			h *= del;
+		}
+		
+		return h;
+	}
+	
+
+	/**
+	 * Inverse incomplete Beta function
+	 * @param p
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public static double invbetai (double p, double a, double b) 
+	{
+		double pp,t,u,err,x,al,h,w,afac,a1=a-1.,b1=b-1.;
+		
+		if (p <= 0.0) 
+			return 0.0;
+		else if (p >= 1.0) 
+			return 1.0;
+			
+		if ((a >= 1.0) && (b >= 1.0)) {
+			pp = (p < 0.5)? p : 1.0 - p;
+			t = Math.sqrt(-2.*Math.log(pp));
+			x = (2.30753+t*0.27061)/(1.+t*(0.99229+t*0.04481)) - t;
+			if (p < 0.5) x = -x;
+			al = (x*x-3.0)/6.0;
+			h = 2./(1./(2.*a-1.)+1./(2.*b-1.));
+			w = (x*Math.sqrt(al+h)/h)-(1./(2.*b-1)-1./(2.*a-1.))*(al+5./6.-2./(3.*h));
+			x = a/(a+b*Math.exp(2.*w));
+		} else {
+			double lna = Math.log(a/(a+b));
+			double lnb = Math.log(b/(a+b));
+			t = Math.exp(a*lna)/a;
+			u = Math.exp(b*lnb)/b;
+			w = t + u;
+			if (p < t/w) 
+				x = Math.pow(a*w*p,1./a);
+			else 
+				x = 1.0 - Math.pow(b*w*(1.-p),1./b);
+		}
+		
+		afac = -logGamma(a)-logGamma(b)+logGamma(a+b);
+		
+		for (int j=0;j<10;j++) {
+			
+			if ((x == 0.0) || (x == 1.0)) 
+				return x;
+			
+			err = betai(a,b,x) - p;
+			t = Math.exp(a1*Math.log(x)+b1*Math.log(1.0-x) + afac);
+			u = err/t;
+			x -= (t = u/(1.-0.5*Math.min(1.,u*(a1/x - b1/(1.-x)))));
+			if (x <= 0.0) 
+				x = 0.5*(x + t);
+			if (x >= 1.0) 
+				x = 0.5*(x + t + 1.);
+			
+			if ((Math.abs(t) < EPSILON*x) && (j > 0)) 
+				break;
+		}
+		return x;
+	}
+
 	
 	/**
 	 * Factorial: ln(n!)
@@ -267,6 +389,8 @@ public class Functions
         return (z>=0) ? ans: - ans;
         */
     }
+	
+	
 	/**
 	 * Complementary error function (erfc)
 	 * http://en.wikipedia.org/wiki/Error_function

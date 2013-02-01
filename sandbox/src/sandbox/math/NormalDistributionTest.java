@@ -145,6 +145,7 @@ public class NormalDistributionTest
 	
 	// Tolerance intervals
 	
+	@Test
 	public void testToleranceIntervals ()
 	{
 		NormalDistribution normal = new NormalDistribution(0,1);
@@ -160,26 +161,26 @@ public class NormalDistributionTest
 	// Quantile function: z_p
 	// a.k.a probit function for N(0,1)
 	
+	@Test
 	public void testQuantiles ()
 	{
 		NormalDistribution normal = new NormalDistribution(0,1);
 
-		assertEquals( 1.281551565545, normal.idf(0.80), ERROR);
-		assertEquals( 1.644853626951, normal.idf(0.90), ERROR);
-		assertEquals( 1.959963984540, normal.idf(0.95), ERROR);
-		assertEquals( 2.326347874041, normal.idf(0.98), ERROR);
-		assertEquals( 2.575829303549, normal.idf(0.99), ERROR);
-		assertEquals( 2.575829303549, normal.idf(0.99), ERROR);
+		assertEquals( 1.281551565545, normal.idf(0.90), ERROR);
+		assertEquals( 1.644853626951, normal.idf(0.95), ERROR);
+		assertEquals( 1.959963984540, normal.idf(0.975), ERROR);
+		assertEquals( 2.326347874041, normal.idf(0.99), ERROR);
+		assertEquals( 2.575829303549, normal.idf(0.995), ERROR);
 		
-		assertEquals( 2.807033768344, normal.idf(0.995), ERROR);
-		assertEquals( 3.090232306168, normal.idf(0.998), ERROR);
-		assertEquals( 3.290526731492, normal.idf(0.999), ERROR);
+		assertEquals( 2.807033768344, normal.idf(0.9975), ERROR);
+		assertEquals( 3.090232306168, normal.idf(0.999), ERROR);
 		
-		assertEquals( 3.890591886413, normal.idf(0.9999), ERROR);
-		assertEquals( 4.417173413469, normal.idf(0.99999), ERROR);
-		assertEquals( 4.891638475699, normal.idf(0.999999), ERROR);
-		assertEquals( 5.326723886384, normal.idf(0.9999999), ERROR);
-		assertEquals( 5.730728868236, normal.idf(0.99999999), ERROR);
-		assertEquals( 6.109410204869, normal.idf(0.999999999), ERROR);
+		assertEquals( 3.290526731492, normal.idf(0.9995), ERROR);
+		assertEquals( 3.890591886413, normal.idf(0.99995), ERROR);
+		assertEquals( 4.417173413469, normal.idf(0.999995), ERROR);
+		assertEquals( 4.891638475699, normal.idf(0.9999995), ERROR);
+		assertEquals( 5.326723886384, normal.idf(0.99999995), ERROR);
+		assertEquals( 5.730728868236, normal.idf(0.999999995), ERROR);
+		assertEquals( 6.109410204869, normal.idf(0.9999999995), ERROR);
 	}
 }

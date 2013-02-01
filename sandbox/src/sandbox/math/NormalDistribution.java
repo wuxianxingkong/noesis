@@ -1,5 +1,10 @@
 package sandbox.math;
 
+/**
+ * Normal distribution
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
 public class NormalDistribution implements Distribution 
 {
 	private double mu;

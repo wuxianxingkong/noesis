@@ -34,7 +34,12 @@ public class CauchyDistribution implements Distribution
 	@Override
 	public double idf (double p) 
 	{
-		return mu + sigma*Math.tan(Math.PI*(p-0.5));
+		if (p==0)
+			return Double.NEGATIVE_INFINITY;
+		else if (p==1)
+			return Double.POSITIVE_INFINITY;
+		else
+			return mu + sigma*Math.tan(Math.PI*(p-0.5));
 	}
 	
 	@Override

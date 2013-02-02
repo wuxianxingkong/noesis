@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class StudentTDistributionTest {
-
+public class StudentTDistributionTest 
+{
 	public static double ERROR = 1e-7;
 
 	@Before
@@ -41,9 +41,9 @@ public class StudentTDistributionTest {
 	{
 		StudentTDistribution standard = new StudentTDistribution(1,0,1);
 		
-		assertTrue( -1e16 > standard.idf(0.0) );
+		assertEquals( Double.NEGATIVE_INFINITY, standard.idf(0.0), ERROR );
 		assertEquals(  0.0, standard.idf(0.5), ERROR );
-		assertTrue( +1e16 < standard.idf(1.0) );
+		assertEquals( Double.POSITIVE_INFINITY, standard.idf(1.0), ERROR );
 	}	
 	
 	// C(1,1)
@@ -73,9 +73,9 @@ public class StudentTDistributionTest {
 	{
 		StudentTDistribution cauchy = new StudentTDistribution(1,1,1);
 		
-		assertTrue( -1e16 > cauchy.idf(0.0) );
-		assertEquals(  1.0, cauchy.idf(0.5), ERROR );
-		assertTrue( +1e16 < cauchy.idf(1.0) );
+		assertEquals( Double.NEGATIVE_INFINITY, cauchy.idf(0.0), ERROR );
+		assertEquals( 1.0, cauchy.idf(0.5), ERROR );
+		assertEquals( Double.POSITIVE_INFINITY, cauchy.idf(1.0), ERROR );
 	}
 
 	// C(0,2)
@@ -105,9 +105,9 @@ public class StudentTDistributionTest {
 	{
 		StudentTDistribution cauchy = new StudentTDistribution(1,0,2);
 		
-		assertTrue( -1e16 > cauchy.idf(0.0) );
-		assertEquals(  0.0, cauchy.idf(0.5), ERROR );
-		assertTrue( +1e16 < cauchy.idf(1.0) );
+		assertEquals( Double.NEGATIVE_INFINITY, cauchy.idf(0.0), ERROR );
+		assertEquals( 0.0, cauchy.idf(0.5), ERROR );
+		assertEquals( Double.POSITIVE_INFINITY, cauchy.idf(1.0), ERROR );
 	}
 	
 	// C(5,2)
@@ -138,9 +138,9 @@ public class StudentTDistributionTest {
 	{
 		StudentTDistribution cauchy = new StudentTDistribution(1,5,2);
 		
-		assertTrue( -1e16 > cauchy.idf(0.0) );
-		assertEquals(  5.0, cauchy.idf(0.5), ERROR );
-		assertTrue( +1e16 < cauchy.idf(1.0) );
+		assertEquals( Double.NEGATIVE_INFINITY, cauchy.idf(0.0), ERROR );
+		assertEquals( 5.0, cauchy.idf(0.5), ERROR );
+		assertEquals( Double.POSITIVE_INFINITY, cauchy.idf(1.0), ERROR );
 	}
 	
 	// Tolerance intervals

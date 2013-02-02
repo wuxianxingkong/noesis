@@ -41,9 +41,9 @@ public class Functions
 		
 		// Bisection algorithm
 		if (p <= 0.0) 
-			return -8.0;
+			return Double.NEGATIVE_INFINITY;
 		else if (p >= 1.0)
-			return 8.0;
+			return Double.POSITIVE_INFINITY;
 		else
 			return probit(p, -8.0, 8.0);
 	}	
@@ -190,6 +190,66 @@ public class Functions
     	} while ( Math.abs(del-1.0)>=EPSILON );
     	
     	return Math.exp(-x+a*Math.log(x)-gln)*h;
+    }
+    
+    /**
+     * Inverse of P(a,x)
+     * @param p
+     * @param a > 0
+     * @return P<sup>-1</sup>(a,x)
+     */
+    
+    public static double gammaPinv (double p, double a) 
+    {
+    	double x,err,t,u,pp;
+    	double lna1 = 0;
+    	double afac = 0;
+    	double a1 = a-1;
+    	double gln =logGamma(a);
+    	
+    	if (p>=1.0) 
+    		return Math.max(100.,a + 100.*Math.sqrt(a));
+    	
+    	if (p<=0.0) 
+    		return 0.0;
+    	
+    	if (a > 1.0) {
+    		lna1 = Math.log(a1);
+    		afac = Math.exp(a1*(lna1-1.)-gln);
+    		pp = (p < 0.5)? p : 1. - p;
+    		t = Math.sqrt(-2.*Math.log(pp));
+    		x = (2.30753+t*0.27061)/(1.+t*(0.99229+t*0.04481)) - t;
+    		if (p < 0.5) 
+    			x = -x;
+    		x = Math.max(1.e-3,a*Math.pow(1.-1./(9.*a)-x/(3.*Math.sqrt(a)),3));
+    	} else {
+    		t = 1.0 - a*(0.253+a*0.12);
+    		if (p < t) 
+    			x = Math.pow(p/t,1./a);
+    		else 
+    			x = 1.-Math.log(1.-(p-t)/(1.-t));
+    	}
+    	
+    	for (int j=0; (j<12) && (Math.abs(t)>=EPSILON*x); j++) {
+    		
+    		if (x <= 0.0) 
+    			return 0.0;
+    		
+    		err = gammaP(a,x) - p;
+    		
+    		if (a > 1.0) 
+    			t = afac*Math.exp(-(x-a1)+a1*(Math.log(x)-lna1));
+    		else 
+    			t = Math.exp(-x+a1*Math.log(x)-gln);
+    		
+    		u = err/t;
+    		x -= (t = u/(1-0.5*Math.min(1,u*((a-1)/x - 1))));
+    		
+    		if (x <= 0.0) 
+    			x = 0.5*(x + t);
+    	}
+    	
+    	return x;
     }
     
 	/**

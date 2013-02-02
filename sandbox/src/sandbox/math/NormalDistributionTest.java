@@ -41,9 +41,9 @@ public class NormalDistributionTest
 	{
 		NormalDistribution normal = new NormalDistribution(0,1);
 		
-		assertEquals( -8.0, normal.idf(0.0), ERROR );
-		assertEquals(  0.0, normal.idf(0.5), ERROR );
-		assertEquals( +8.0, normal.idf(1.0), ERROR );
+		assertEquals( Double.NEGATIVE_INFINITY, normal.idf(0.0), ERROR );
+		assertEquals( 0.0, normal.idf(0.5), ERROR );
+		assertEquals( Double.POSITIVE_INFINITY, normal.idf(1.0), ERROR );
 	}	
 	
 	// N(1,1)
@@ -73,9 +73,9 @@ public class NormalDistributionTest
 	{
 		NormalDistribution normal = new NormalDistribution(1,1);
 		
-		assertEquals( -7.0, normal.idf(0.0), ERROR );
-		assertEquals(  1.0, normal.idf(0.5), ERROR );
-		assertEquals( +9.0, normal.idf(1.0), ERROR );
+		assertEquals( Double.NEGATIVE_INFINITY, normal.idf(0.0), ERROR );
+		assertEquals( 1.0, normal.idf(0.5), ERROR );
+		assertEquals( Double.POSITIVE_INFINITY, normal.idf(1.0), ERROR );
 	}
 
 	// N(0,2)
@@ -105,9 +105,9 @@ public class NormalDistributionTest
 	{
 		NormalDistribution normal = new NormalDistribution(0,2);
 		
-		assertEquals( -16.0, normal.idf(0.0), ERROR );
-		assertEquals(   0.0, normal.idf(0.5), ERROR );
-		assertEquals( +16.0, normal.idf(1.0), ERROR );
+		assertEquals( Double.NEGATIVE_INFINITY, normal.idf(0.0), ERROR );
+		assertEquals( 0.0, normal.idf(0.5), ERROR );
+		assertEquals( Double.POSITIVE_INFINITY, normal.idf(1.0), ERROR );
 	}
 	
 	// N(5,2)
@@ -138,9 +138,9 @@ public class NormalDistributionTest
 	{
 		NormalDistribution normal = new NormalDistribution(5,2);
 		
-		assertEquals( -11.0, normal.idf(0.0), ERROR );
-		assertEquals(   5.0, normal.idf(0.5), ERROR );
-		assertEquals( +21.0, normal.idf(1.0), ERROR );
+		assertEquals( Double.NEGATIVE_INFINITY, normal.idf(0.0), ERROR );
+		assertEquals( 5.0, normal.idf(0.5), ERROR );
+		assertEquals( Double.POSITIVE_INFINITY, normal.idf(1.0), ERROR );
 	}
 	
 	// Tolerance intervals

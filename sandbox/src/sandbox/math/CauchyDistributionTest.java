@@ -41,9 +41,9 @@ public class CauchyDistributionTest
 	{
 		CauchyDistribution standard = new CauchyDistribution(0,1);
 		
-		assertTrue( -1e16 > standard.idf(0.0) );
+		assertEquals( Double.NEGATIVE_INFINITY, standard.idf(0.0), ERROR );
 		assertEquals(  0.0, standard.idf(0.5), ERROR );
-		assertTrue( +1e16 < standard.idf(1.0) );
+		assertEquals( Double.POSITIVE_INFINITY, standard.idf(1.0), ERROR );
 	}	
 	
 	// C(1,1)
@@ -73,9 +73,9 @@ public class CauchyDistributionTest
 	{
 		CauchyDistribution cauchy = new CauchyDistribution(1,1);
 		
-		assertTrue( -1e16 > cauchy.idf(0.0) );
-		assertEquals(  1.0, cauchy.idf(0.5), ERROR );
-		assertTrue( +1e16 < cauchy.idf(1.0) );
+		assertEquals( Double.NEGATIVE_INFINITY, cauchy.idf(0.0), ERROR );
+		assertEquals( 1.0, cauchy.idf(0.5), ERROR );
+		assertEquals( Double.POSITIVE_INFINITY, cauchy.idf(1.0), ERROR );
 	}
 
 	// C(0,2)
@@ -105,9 +105,9 @@ public class CauchyDistributionTest
 	{
 		CauchyDistribution cauchy = new CauchyDistribution(0,2);
 		
-		assertTrue( -1e16 > cauchy.idf(0.0) );
-		assertEquals(  0.0, cauchy.idf(0.5), ERROR );
-		assertTrue( +1e16 < cauchy.idf(1.0) );
+		assertEquals( Double.NEGATIVE_INFINITY, cauchy.idf(0.0), ERROR );
+		assertEquals( 0.0, cauchy.idf(0.5), ERROR );
+		assertEquals( Double.POSITIVE_INFINITY, cauchy.idf(1.0), ERROR );
 	}
 	
 	// C(5,2)
@@ -128,9 +128,9 @@ public class CauchyDistributionTest
 	{
 		CauchyDistribution cauchy = new CauchyDistribution(5,2);
 				
-		assertTrue( -1e16 > cauchy.idf(0.0) );
+		assertEquals( 0.0, cauchy.cdf(-1e16), ERROR );
 		assertEquals( 0.5, cauchy.cdf(  5.0), ERROR );
-		assertTrue( +1e16 < cauchy.idf(1.0) );
+		assertEquals( 1.0, cauchy.cdf(+1e16), ERROR );
 	}
 	
 	@Test
@@ -138,9 +138,9 @@ public class CauchyDistributionTest
 	{
 		CauchyDistribution cauchy = new CauchyDistribution(5,2);
 		
-		assertTrue( -1e16 > cauchy.idf(0.0) );
-		assertEquals(  5.0, cauchy.idf(0.5), ERROR );
-		assertTrue( +1e16 < cauchy.idf(1.0) );
+		assertEquals( Double.NEGATIVE_INFINITY, cauchy.idf(0.0), ERROR );
+		assertEquals( 5.0, cauchy.idf(0.5), ERROR );
+		assertEquals( Double.POSITIVE_INFINITY, cauchy.idf(1.0), ERROR );
 	}
 	
 	// Tolerance intervals

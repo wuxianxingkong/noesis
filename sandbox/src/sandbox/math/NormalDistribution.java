@@ -1,7 +1,8 @@
 package sandbox.math;
 
 /**
- * Normal distribution
+ * Normal distribution (a.k.a. Gaussian distribution)
+ * http://en.wikipedia.org/wiki/Normal_distribution
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */

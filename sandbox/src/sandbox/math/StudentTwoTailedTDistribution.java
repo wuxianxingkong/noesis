@@ -16,13 +16,13 @@ public class StudentTwoTailedTDistribution extends StudentTDistribution
 	@Override
 	public double cdf (double t) 
 	{
-		return 1.0 - Functions.betai (0.5*nu, 0.5, nu/(nu+t*t));
+		return 1.0 - Functions.betaI (0.5*nu, 0.5, nu/(nu+t*t));
 	}
 
 	@Override
 	public double idf (double p) 
 	{
-		double x = Functions.invbetai(1.0-p, 0.5*nu, 0.5);
+		double x = Functions.betaIinv(1.0-p, 0.5*nu, 0.5);
 		
 		return Math.sqrt(nu*(1.0-x)/x);
 	}

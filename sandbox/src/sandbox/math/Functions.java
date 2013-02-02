@@ -4,6 +4,7 @@ public class Functions
 {
     private static final double EPSILON = 1e-8;
     private static final double FPMIN = Double.MIN_VALUE / EPSILON;
+    private static final int    MAX_ITERATIONS = 10000;
     
     
 	/**
@@ -115,9 +116,9 @@ public class Functions
     	if (x<=0) {
     		return 0;
     	} else if (x < a+1) {
-            return gseries(a,x);
+            return gammaseries(a,x);
         } else {            
-    		return 1 - gcf(a,x); // Faster convergence
+    		return 1 - gammacf(a,x); // Faster convergence
         }
     }
     
@@ -131,16 +132,16 @@ public class Functions
         if (x<=0) {
         	return 1;
         } else if (x < a+1) {
-        	return 1 - gseries(a,x); // Faster convergence
+        	return 1 - gammaseries(a,x); // Faster convergence
         } else {
-            return gcf(a,x);
+            return gammacf(a,x);
         }
         
     }    
     
     // Incomplete gamma function P(a,x) evaluated by its series representation 
     
-    private static double gseries (double a, double x)
+    private static double gammaseries (double a, double x)
     {
     	double gln = logGamma(a); // Gamma(a)
     	double ap  = a;
@@ -149,11 +150,11 @@ public class Functions
 		
     	if (x>0) {
     		
-    		while (Math.abs(del) >= Math.abs(sum)*EPSILON) {
+    		do {
     			ap++;
     			del *= x/ap;
     			sum += del;
-    		}
+    		} while (Math.abs(del) >= Math.abs(sum)*EPSILON);
     	}
 
     	return sum*Math.exp(-x+a*Math.log(x)-gln);
@@ -161,7 +162,7 @@ public class Functions
     
     // Incomplete gamma function Q(a,x) evaluated by its continued fraction representation 
     
-    private static double gcf (double a, double x)
+    private static double gammacf (double a, double x)
     {
     	double gln = logGamma(a); 
     	int i;
@@ -174,9 +175,8 @@ public class Functions
     	d=1.0/b;
     	h=d;
     	i=1;
-    	del=0;
     	
-    	while ( Math.abs(del-1.0)>=EPSILON ) {
+    	do {
     		an = -i*(i-a);
     		b += 2.0;
     		d=an*d+b;
@@ -187,7 +187,7 @@ public class Functions
     		del=d*c;
     		h *= del;
     		i++;
-    	}
+    	} while ( Math.abs(del-1.0)>=EPSILON );
     	
     	return Math.exp(-x+a*Math.log(x)-gln)*h;
     }
@@ -222,7 +222,7 @@ public class Functions
 	 * @param x evaluation point
 	 * @return betai(a,b,x)
 	 */
-	public static double betai (double a, double b, double x)
+	public static double betaI (double a, double b, double x)
 	{
 		if ((x == 0.0) || (x == 1.0)) 
 			return x;
@@ -251,7 +251,7 @@ public class Functions
 		d=1.0/d;
 		h=d;
 		
-		for (m=1; (Math.abs(del-1.0)> EPSILON) && (m<10000);m++) {
+		for (m=1; (Math.abs(del-1.0)> EPSILON) && (m<MAX_ITERATIONS);m++) {
 			m2=2*m;
 			aa=m*(b-m)*x/((qam+m2)*(a+m2));
 			d=1.0+aa*d;
@@ -277,11 +277,11 @@ public class Functions
 	/**
 	 * Inverse incomplete Beta function
 	 * @param p
-	 * @param a
-	 * @param b
+	 * @param a > 0
+	 * @param b > 0
 	 * @return
 	 */
-	public static double invbetai (double p, double a, double b) 
+	public static double betaIinv (double p, double a, double b) 
 	{
 		double pp,t,u,err,x,al,h,w,afac,a1=a-1.,b1=b-1.;
 		
@@ -318,7 +318,7 @@ public class Functions
 			if ((x == 0.0) || (x == 1.0)) 
 				return x;
 			
-			err = betai(a,b,x) - p;
+			err = betaI(a,b,x) - p;
 			t = Math.exp(a1*Math.log(x)+b1*Math.log(1.0-x) + afac);
 			u = err/t;
 			x -= (t = u/(1.-0.5*Math.min(1.,u*(a1/x - b1/(1.-x)))));
@@ -442,7 +442,7 @@ public class Functions
         	return erfinv(y, -100.0, 0.0); // (-Double.NEGATIVE_INFINITY, 0]
         }		
 	}	
-	
+
 	// Bisection algorithm: erf(x) - y
 
 	private static double erfinv (double y, double low, double high) 
@@ -455,5 +455,14 @@ public class Functions
 			return erfinv(y, low, x);
 		else              
 			return erfinv(y, x, high);
-	}		
+	}
+	
+	/**
+	 * Inverse complementary error function (erfcinv)
+	 */
+	public static double erfcinv (double y)
+	{
+		return erfinv(1-y);
+	}	
+	
 }

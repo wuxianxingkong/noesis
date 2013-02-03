@@ -7,7 +7,6 @@ import org.junit.Test;
 
 public class ExponentialDistributionTest 
 {
-
 	public static double ERROR = 1e-7;
 
 	@Before

@@ -417,6 +417,14 @@ public class Functions
 		return Math.floor( 0.5 + Math.exp(logFactorial(n)-logFactorial(k)-logFactorial(n-k)));
 	}
 	
+	/**
+	 * Logarithm of the binomial coefficient
+	 */
+	
+	public static double logBinomial (int n, int k)
+	{
+		return Functions.logGamma(n+1) - Functions.logGamma(k+1) - Functions.logGamma(n-k+1);
+	}
 	
 	/**
 	 * Error function (erf)

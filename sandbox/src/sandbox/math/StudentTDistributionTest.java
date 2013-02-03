@@ -8,7 +8,7 @@ import org.junit.Test;
 public class StudentTDistributionTest 
 {
 	public static double ERROR = 1e-7;
-
+	
 	@Before
 	public void setUp() throws Exception 
 	{
@@ -154,6 +154,57 @@ public class StudentTDistributionTest
 		assertEquals( 0.5,     cauchy.cdf(1) - cauchy.cdf(-1), ERROR);
 		assertEquals( 2.0/3.0, cauchy.cdf(Math.sqrt(3)) - cauchy.cdf(-Math.sqrt(3)), ERROR); 
 		assertEquals( 1.0,     cauchy.cdf(1e10) - cauchy.cdf(-1e10), ERROR);
+	}
+	
+	// degrees of freedom -> infinity  ==>  t disitribution == normal distribution
+
+	public static double NORMAL_ERROR = 1e-5;
+	
+	@Test
+	public void testNormal ()
+	{
+		StudentTDistribution t = new StudentTDistribution(1000000000,0,1);
+		NormalDistribution   normal = new NormalDistribution(0,1);
+		
+		assertEquals ( normal.pdf(0), t.pdf(0), NORMAL_ERROR );
+		assertEquals ( normal.pdf(1), t.pdf(1), NORMAL_ERROR );
+		assertEquals ( normal.pdf(2), t.pdf(2), NORMAL_ERROR );
+		assertEquals ( normal.pdf(3), t.pdf(3), NORMAL_ERROR );
+		assertEquals ( normal.pdf(4), t.pdf(4), NORMAL_ERROR );
+		assertEquals ( normal.pdf(5), t.pdf(5), NORMAL_ERROR );
+		assertEquals ( normal.pdf(6), t.pdf(6), NORMAL_ERROR );
+		assertEquals ( normal.pdf(-1), t.pdf(-1), NORMAL_ERROR );
+		assertEquals ( normal.pdf(-2), t.pdf(-2), NORMAL_ERROR );
+		assertEquals ( normal.pdf(-3), t.pdf(-3), NORMAL_ERROR );
+		assertEquals ( normal.pdf(-4), t.pdf(-4), NORMAL_ERROR );
+		assertEquals ( normal.pdf(-5), t.pdf(-5), NORMAL_ERROR );
+		assertEquals ( normal.pdf(-6), t.pdf(-6), NORMAL_ERROR );
+		
+		assertEquals ( normal.cdf(0), t.cdf(0), NORMAL_ERROR );
+		assertEquals ( normal.cdf(1), t.cdf(1), NORMAL_ERROR );
+		assertEquals ( normal.cdf(2), t.cdf(2), NORMAL_ERROR );
+		assertEquals ( normal.cdf(3), t.cdf(3), NORMAL_ERROR );
+		assertEquals ( normal.cdf(4), t.cdf(4), NORMAL_ERROR );
+		assertEquals ( normal.cdf(5), t.cdf(5), NORMAL_ERROR );
+		assertEquals ( normal.cdf(6), t.cdf(6), NORMAL_ERROR );
+		assertEquals ( normal.cdf(-1), t.cdf(-1), NORMAL_ERROR );
+		assertEquals ( normal.cdf(-2), t.cdf(-2), NORMAL_ERROR );
+		assertEquals ( normal.cdf(-3), t.cdf(-3), NORMAL_ERROR );
+		assertEquals ( normal.cdf(-4), t.cdf(-4), NORMAL_ERROR );
+		assertEquals ( normal.cdf(-5), t.cdf(-5), NORMAL_ERROR );
+		assertEquals ( normal.cdf(-6), t.cdf(-6), NORMAL_ERROR );
+
+		assertEquals ( normal.idf(0.0), t.idf(0.0), NORMAL_ERROR );
+		assertEquals ( normal.idf(0.1), t.idf(0.1), NORMAL_ERROR );
+		assertEquals ( normal.idf(0.2), t.idf(0.2), NORMAL_ERROR );
+		assertEquals ( normal.idf(0.3), t.idf(0.3), NORMAL_ERROR );
+		assertEquals ( normal.idf(0.4), t.idf(0.4), NORMAL_ERROR );
+		assertEquals ( normal.idf(0.5), t.idf(0.5), NORMAL_ERROR );
+		assertEquals ( normal.idf(0.6), t.idf(0.6), NORMAL_ERROR );
+		assertEquals ( normal.idf(0.7), t.idf(0.7), NORMAL_ERROR );
+		assertEquals ( normal.idf(0.8), t.idf(0.8), NORMAL_ERROR );
+		assertEquals ( normal.idf(0.9), t.idf(0.9), NORMAL_ERROR );
+		assertEquals ( normal.idf(1.0), t.idf(1.0), NORMAL_ERROR );
 	}
 	
 	// Quantile function: z_p

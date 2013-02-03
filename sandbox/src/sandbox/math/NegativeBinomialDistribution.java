@@ -4,7 +4,7 @@ package sandbox.math;
  * Negative binomial distribution: NB(r,p)
  * 
  * Discrete probability distribution of the number of successes in a sequence of Bernoulli trials 
- * before a specified (non-random) number of failures (denoted r) occur.
+ * before a specified (non-random) number of failures (denoted r) occur, with success probability p.
  *  
  * http://en.wikipedia.org/wiki/Negative_binomial_distribution
  * 

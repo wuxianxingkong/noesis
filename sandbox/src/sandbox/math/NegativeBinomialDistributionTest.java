@@ -48,6 +48,7 @@ public class NegativeBinomialDistributionTest
 
 		assertEquals(  0, distribution.idf(0.0), ERROR );
 		assertEquals(  0, distribution.idf(0.5), ERROR ); 
+		assertEquals(  0, distribution.idf(0.9), ERROR ); 
 		assertEquals(  0, distribution.idf(0.99), ERROR ); 
 		assertEquals(  1, distribution.idf(0.991), ERROR ); 
 		assertEquals( Double.POSITIVE_INFINITY, distribution.idf(1.0), ERROR );
@@ -86,9 +87,10 @@ public class NegativeBinomialDistributionTest
 		Distribution distribution = new NegativeBinomialDistribution(1,0.2);
 
 		assertEquals(  0, distribution.idf(0.0), ERROR );
+		assertEquals(  0, distribution.idf(0.2), ERROR ); 
 		assertEquals(  0, distribution.idf(0.5), ERROR ); 
 		assertEquals(  0, distribution.idf(0.96), ERROR ); 
-		assertEquals(  1, distribution.idf(0.97), ERROR ); 
+		assertEquals(  1, distribution.idf(0.961), ERROR ); 
 		assertEquals( Double.POSITIVE_INFINITY, distribution.idf(1.0), ERROR );
 	}
 
@@ -144,7 +146,7 @@ public class NegativeBinomialDistributionTest
 		assertEquals( 0.1*0.9, distribution.pdf(1), ERROR );
 		assertEquals( 0.1*0.9*0.9, distribution.pdf(2), ERROR );
 		assertEquals( 0.1*Math.pow(0.9,10), distribution.pdf(10), ERROR );
-		assertEquals( 0.0, distribution.pdf(1e6), ERROR );
+		assertEquals( 0.0, distribution.pdf(1e6), ERROR );		
 	}
 
 	@Test
@@ -165,7 +167,9 @@ public class NegativeBinomialDistributionTest
 		Distribution distribution = new NegativeBinomialDistribution(1,0.9);
 
 		assertEquals(  0, distribution.idf(0.0), ERROR );
+		assertEquals(  0, distribution.idf(0.1), ERROR ); 
 		assertEquals(  5, distribution.idf(0.5), ERROR ); 
+		assertEquals( 20, distribution.idf(0.9), ERROR ); 
 		assertEquals( Double.POSITIVE_INFINITY, distribution.idf(1.0), ERROR );
 	}
 

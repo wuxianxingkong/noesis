@@ -137,7 +137,11 @@ public class RayleighDistributionTest
 		assertEquals( Math.sqrt(-Math.log(0.25*0.25)), distribution.idf(0.75), ERROR);
 		assertEquals( Math.sqrt(-Math.log(0.10*0.10)), distribution.idf(0.90), ERROR);
 		assertEquals( Math.sqrt(-Math.log(0.05*0.05)), distribution.idf(0.95), ERROR);
-		assertEquals( Math.sqrt(-Math.log(0.01*0.01)), distribution.idf(0.99), ERROR);	
+		
+		assertEquals( 0.50, distribution.cdf(Math.sqrt(-Math.log(0.50*0.50))), ERROR);
+		assertEquals( 0.75, distribution.cdf(Math.sqrt(-Math.log(0.25*0.25))), ERROR);
+		assertEquals( 0.90, distribution.cdf(Math.sqrt(-Math.log(0.10*0.10))), ERROR);
+		assertEquals( 0.99, distribution.cdf(Math.sqrt(-Math.log(0.01*0.01))), ERROR);	
 	}
 
 }

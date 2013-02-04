@@ -138,6 +138,12 @@ public class ExponentialDistributionTest
 		assertEquals( -Math.log(0.10), distribution.idf(0.90), ERROR);
 		assertEquals( -Math.log(0.05), distribution.idf(0.95), ERROR);
 		assertEquals( -Math.log(0.01), distribution.idf(0.99), ERROR);	
+
+		assertEquals( 0.50, distribution.cdf(-Math.log(0.50)), ERROR);
+		assertEquals( 0.75, distribution.cdf(-Math.log(0.25)), ERROR);
+		assertEquals( 0.90, distribution.cdf(-Math.log(0.10)), ERROR);
+		assertEquals( 0.95, distribution.cdf(-Math.log(0.05)), ERROR);
+		assertEquals( 0.99, distribution.cdf(-Math.log(0.01)), ERROR);	
 	}
 
 }

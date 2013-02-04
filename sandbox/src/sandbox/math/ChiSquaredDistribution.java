@@ -1,5 +1,7 @@
 package sandbox.math;
 
+import ikor.math.Functions;
+
 /**
  * Chi-Squared distribution (special case of the Gamma distribution)
  * http://en.wikipedia.org/wiki/Cauchy_distribution

@@ -1,5 +1,8 @@
 package sandbox.math;
 
+import ikor.math.Constants;
+import ikor.math.Functions;
+
 /**
  * Normal distribution (a.k.a. Gaussian distribution)
  * http://en.wikipedia.org/wiki/Normal_distribution

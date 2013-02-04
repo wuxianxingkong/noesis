@@ -1,5 +1,7 @@
 package sandbox.math;
 
+import ikor.math.Functions;
+
 /**
  * F-distribution (a.k.a. Snedecor's F distribution or the Fisher-Snedecor distribution)
  * http://en.wikipedia.org/wiki/F_distribution

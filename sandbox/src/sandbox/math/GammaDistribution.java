@@ -1,5 +1,7 @@
 package sandbox.math;
 
+import ikor.math.Functions;
+
 /**
  * Gamma distribution
  * http://en.wikipedia.org/wiki/Gamma_distribution

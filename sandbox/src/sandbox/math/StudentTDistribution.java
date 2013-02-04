@@ -1,5 +1,7 @@
 package sandbox.math;
 
+import ikor.math.Functions;
+
 /**
  * Student-t distribution (generalization of Cauchy distribution)
  * http://en.wikipedia.org/wiki/Student's_t-distribution
@@ -8,9 +10,9 @@ package sandbox.math;
  */
 public class StudentTDistribution  implements Distribution 
 {
-	protected double nu;    // Degrees of freedom
-	protected double mu;    // Center
-	protected double sigma; // Width
+	private double nu;    // Degrees of freedom
+	private double mu;    // Center
+	private double sigma; // Width
 	
 	private double np;
 	private double fac;
@@ -23,6 +25,11 @@ public class StudentTDistribution  implements Distribution
 		
 		np = 0.5*(nu + 1.0);
 		fac = Functions.logGamma(np) - Functions.logGamma(0.5*nu);
+	}
+
+	public StudentTDistribution (double degrees)
+	{
+		this(degrees,0,1);
 	}
 	
 	@Override
@@ -44,6 +51,16 @@ public class StudentTDistribution  implements Distribution
 		else 
 			return p;
 	}
+	
+	/**
+	 * Two-sided version of CDF 
+	 */
+	
+	public double cdf2 (double t) 
+	{
+		return 1.0 - Functions.betaI (0.5*nu, 0.5, nu/(nu+t*t));
+	}
+	
 
 	@Override
 	public double idf (double p) 
@@ -54,6 +71,17 @@ public class StudentTDistribution  implements Distribution
 		x = sigma*Math.sqrt(nu*(1.-x)/x);
 		
 		return ((p>=0.5)? mu+x : mu-x);
+	}
+	
+	
+	/**
+	 * Two-sided version of IDF
+	 */
+	public double idf2 (double p) 
+	{
+		double x = Functions.betaIinv(1.0-p, 0.5*nu, 0.5);
+		
+		return Math.sqrt(nu*(1.0-x)/x);
 	}
 	
 	@Override

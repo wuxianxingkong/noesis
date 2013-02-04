@@ -1,5 +1,7 @@
 package sandbox.math;
 
+import ikor.math.Functions;
+
 /**
  * Binomial distribution: B(n,p)
  * 

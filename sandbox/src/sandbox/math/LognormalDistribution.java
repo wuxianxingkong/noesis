@@ -1,5 +1,8 @@
 package sandbox.math;
 
+import ikor.math.Constants;
+import ikor.math.Functions;
+
 /**
  * Lognormal distribution (a.k.a. Galton distribution)
  * http://en.wikipedia.org/wiki/Log-normal_distribution

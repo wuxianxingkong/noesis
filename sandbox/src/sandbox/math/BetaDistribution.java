@@ -1,5 +1,7 @@
 package sandbox.math;
 
+import ikor.math.Functions;
+
 /**
  * Beta distribution
  * http://en.wikipedia.org/wiki/Beta_distribution

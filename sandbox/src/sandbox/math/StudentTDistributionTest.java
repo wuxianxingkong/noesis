@@ -276,15 +276,15 @@ public class StudentTDistributionTest
 	@Test
 	public void testTwoSided ()
 	{
-		StudentTDistribution t[] = new StudentTwoTailedTDistribution[degrees.length];
+		StudentTDistribution t[] = new StudentTDistribution[degrees.length];
 		
 		for (int j=0; j<t.length; j++)
-			t[j] =  new StudentTwoTailedTDistribution(degrees[j]);
+			t[j] =  new StudentTDistribution(degrees[j]);
 		
 		for (int i=0; i<tvalues.length; i++) {
 			for (int j=0; j<t.length; j++) {
 			    assertEquals ( "CDF error @ ("+twoSided[i]+","+tvalues[i][j]+") with "+degrees[j]+" degrees of freedom",
-			    		       twoSided[i], t[j].cdf(tvalues[i][j]), twoSided[i]*TERROR );	
+			    		       twoSided[i], t[j].cdf2(tvalues[i][j]), twoSided[i]*TERROR );	
 			}
 		}
 	}
@@ -292,15 +292,15 @@ public class StudentTDistributionTest
 	@Test
 	public void testTwoSidedInverse ()
 	{
-		StudentTDistribution t[] = new StudentTwoTailedTDistribution[degrees.length];
+		StudentTDistribution t[] = new StudentTDistribution[degrees.length];
 		
 		for (int j=0; j<t.length; j++)
-			t[j] =  new StudentTwoTailedTDistribution(degrees[j]);
+			t[j] =  new StudentTDistribution(degrees[j]);
 		
 		for (int i=0; i<tvalues.length; i++) {
 			for (int j=0; j<t.length; j++) {
 			    assertEquals ( "IDF error @ ("+twoSided[i]+","+tvalues[i][j]+") with "+degrees[j]+" degrees of freedom",
-			    		       tvalues[i][j], t[j].idf(twoSided[i]), tvalues[i][j]*TERROR );	
+			    		       tvalues[i][j], t[j].idf2(twoSided[i]), tvalues[i][j]*TERROR );	
 			}
 		}
 	}

@@ -53,4 +53,28 @@ public class HalfNormalDistribution implements Distribution
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		return sigma * Math.sqrt(2/Math.PI);
+	}
+
+	@Override
+	public double variance() 
+	{
+		return sigma * sigma * ( 1 - 2/Math.PI );
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return Double.NaN;
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return Double.NaN;
+	}
+
 }

@@ -45,4 +45,28 @@ public class NormalDistribution implements Distribution
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		return mu;
+	}
+
+	@Override
+	public double variance() 
+	{
+		return sigma*sigma;
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return 0;
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return 0;
+	}
+
 }

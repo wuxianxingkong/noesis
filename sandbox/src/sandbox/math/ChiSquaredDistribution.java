@@ -72,4 +72,28 @@ public class ChiSquaredDistribution implements Distribution
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		return k;
+	}
+
+	@Override
+	public double variance() 
+	{
+		return 2*k;
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return Math.sqrt(8/k);
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return 12/k;
+	}
+
 }

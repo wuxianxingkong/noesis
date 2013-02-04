@@ -67,4 +67,28 @@ public class GammaDistribution implements Distribution
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		return alpha/beta;
+	}
+
+	@Override
+	public double variance() 
+	{
+		return alpha/(beta*beta);
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return 2/Math.sqrt(alpha);
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return 6/alpha;
+	}
+
 }

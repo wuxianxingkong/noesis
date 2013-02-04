@@ -49,4 +49,28 @@ public class CauchyDistribution implements Distribution
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		return Double.NaN;
+	}
+
+	@Override
+	public double variance() 
+	{
+		return Double.NaN;
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return Double.NaN;
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return Double.NaN;
+	}
+
 }

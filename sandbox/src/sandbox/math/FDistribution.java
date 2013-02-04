@@ -66,4 +66,40 @@ public class FDistribution implements Distribution
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		if (d2>2)
+			return d2/(d2-2);
+		else
+			return Double.NaN;
+	}
+
+	@Override
+	public double variance() 
+	{
+		if (d2>4)
+			return 2*d2*d2*(d1+d2-2) / ( d1*(d2-2)*(d2-2)*(d2-4) );
+		else
+			return Double.NaN;
+	}
+
+	@Override
+	public double skewness() 
+	{
+		if (d2>6)
+			return (2*d1+d2-2) * Math.sqrt(8*(d2-4)) / ( (d2-6)*Math.sqrt(d1*(d1+d2-2)) );
+		else
+			return Double.NaN;
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		if (d2>8)
+			return 12 * ( d1 * (5*d2-22) * (d1+d2-2) + (d2-4)*(d2-2)*(d2-2) ) / ( d1 * (d2-6) * (d2-8) * (d1+d2-2) );
+		else
+			return Double.NaN;
+	}
+
 }

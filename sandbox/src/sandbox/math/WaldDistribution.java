@@ -61,7 +61,7 @@ public class WaldDistribution implements Distribution
 	// Bisection method:
 	// value k in [min,max] such that cdf(<k) <= p < cdf(<=k)
 
-	protected double idfsearch (double p, double min, double max)
+	private double idfsearch (double p, double min, double max)
 	{		
 		double v = min;
 		
@@ -81,6 +81,30 @@ public class WaldDistribution implements Distribution
 	{
 		// TODO Random number generator
 		return 0;
+	}
+
+	@Override
+	public double mean() 
+	{
+		return mu;
+	}
+
+	@Override
+	public double variance() 
+	{
+		return mu*mu*mu/lambda;
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return 3*Math.sqrt(mu/lambda);
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return 15*mu/lambda;
 	}
 
 }

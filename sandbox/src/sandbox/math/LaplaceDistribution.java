@@ -60,4 +60,28 @@ public class LaplaceDistribution implements Distribution
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		return mu;
+	}
+
+	@Override
+	public double variance() 
+	{
+		return 2*b*b;
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return 0;
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return 3;
+	}
+
 }

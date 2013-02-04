@@ -45,6 +45,17 @@ public class StudentTDistributionTest
 		assertEquals(  0.0, standard.idf(0.5), ERROR );
 		assertEquals( Double.POSITIVE_INFINITY, standard.idf(1.0), ERROR );
 	}	
+
+	@Test
+	public void testStandardStatistics() 
+	{
+		StudentTDistribution standard = new StudentTDistribution(1,0,1);
+		
+		assertEquals( Double.NaN, standard.mean(), ERROR );
+		assertEquals( Double.NaN, standard.variance(), ERROR );
+		assertEquals( Double.NaN, standard.skewness(), ERROR );
+		assertEquals( Double.NaN, standard.kurtosis(), ERROR );
+	}
 	
 	// C(1,1)
 
@@ -78,6 +89,17 @@ public class StudentTDistributionTest
 		assertEquals( Double.POSITIVE_INFINITY, cauchy.idf(1.0), ERROR );
 	}
 
+	@Test
+	public void test11CauchyStatistics() 
+	{
+		StudentTDistribution cauchy = new StudentTDistribution(1,1,1);
+		
+		assertEquals( Double.NaN, cauchy.mean(), ERROR );
+		assertEquals( Double.NaN, cauchy.variance(), ERROR );
+		assertEquals( Double.NaN, cauchy.skewness(), ERROR );
+		assertEquals( Double.NaN, cauchy.kurtosis(), ERROR );
+	}
+	
 	// C(0,2)
 
 	@Test
@@ -108,6 +130,17 @@ public class StudentTDistributionTest
 		assertEquals( Double.NEGATIVE_INFINITY, cauchy.idf(0.0), ERROR );
 		assertEquals( 0.0, cauchy.idf(0.5), ERROR );
 		assertEquals( Double.POSITIVE_INFINITY, cauchy.idf(1.0), ERROR );
+	}
+
+	@Test
+	public void test02CauchyStatistics() 
+	{
+		StudentTDistribution cauchy = new StudentTDistribution(1,0,2);
+		
+		assertEquals( Double.NaN, cauchy.mean(), ERROR );
+		assertEquals( Double.NaN, cauchy.variance(), ERROR );
+		assertEquals( Double.NaN, cauchy.skewness(), ERROR );
+		assertEquals( Double.NaN, cauchy.kurtosis(), ERROR );
 	}
 	
 	// C(5,2)
@@ -142,6 +175,19 @@ public class StudentTDistributionTest
 		assertEquals( 5.0, cauchy.idf(0.5), ERROR );
 		assertEquals( Double.POSITIVE_INFINITY, cauchy.idf(1.0), ERROR );
 	}
+	
+	@Test
+	public void test52CauchyStatistics() 
+	{
+		StudentTDistribution cauchy = new StudentTDistribution(1,5,2);
+		
+		assertEquals( Double.NaN, cauchy.mean(), ERROR );
+		assertEquals( Double.NaN, cauchy.variance(), ERROR );
+		assertEquals( Double.NaN, cauchy.skewness(), ERROR );
+		assertEquals( Double.NaN, cauchy.kurtosis(), ERROR );
+	}
+	
+	// Degrees of freedom
 	
 	// Tolerance intervals
 	

@@ -72,4 +72,40 @@ public class ParetoDistribution implements Distribution
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		if (kappa<=1)
+			return Double.POSITIVE_INFINITY;
+		else
+			return kappa*lambda/(kappa-1);
+	}
+
+	@Override
+	public double variance() 
+	{
+		if (kappa<=2)
+			return Double.POSITIVE_INFINITY;
+		else
+			return (kappa*lambda*lambda)/((kappa-1)*(kappa-1)*(kappa-2));
+	}
+
+	@Override
+	public double skewness() 
+	{
+		if (kappa<=3)
+			return Double.NaN;
+		else
+			return ( 2*(1+kappa)/(kappa-3) ) * Math.sqrt ( (kappa-2)/kappa );
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		if (kappa<=4)
+			return Double.NaN;
+		else
+			return 6 * ( kappa*kappa*kappa + kappa*kappa - 6*kappa - 2 ) / ( kappa*(kappa-3)*(kappa-4) );
+	}
+
 }

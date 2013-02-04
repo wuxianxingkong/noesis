@@ -67,4 +67,29 @@ public class BetaDistribution implements Distribution
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		return alpha/(alpha+beta);
+	}
+
+	@Override
+	public double variance() 
+	{
+		return alpha*beta / ( (alpha+beta)*(alpha+beta)*(alpha+beta+1) );
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return 2*(beta-alpha)*Math.sqrt(alpha+beta+1) / ( (alpha+beta+2)*Math.sqrt(alpha*beta) );
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return 6 * ( (alpha-beta)*(alpha-beta)*(alpha+beta+1) - alpha*beta*(alpha+beta+2) )
+				   / ( alpha*beta*(alpha+beta+2)*(alpha+beta+3) );
+	}
+
 }

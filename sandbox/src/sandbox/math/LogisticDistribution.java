@@ -14,10 +14,10 @@ public class LogisticDistribution implements Distribution
 	private static final double FACTOR = Math.PI / (2.0*Math.sqrt(3));
 	private static final double IFACTOR = Math.sqrt(3) / Math.PI;
 	
-	public LogisticDistribution (double mean, double deviation)
+	public LogisticDistribution (double location, double scale)
 	{
-		this.mu = mean;
-		this.sigma = deviation;
+		this.mu = location;
+		this.sigma = scale;
 	}
 	
 	@Override
@@ -50,6 +50,30 @@ public class LogisticDistribution implements Distribution
 	{
 		// TODO Random number generator
 		return 0;
+	}
+
+	@Override
+	public double mean() 
+	{
+		return mu;
+	}
+
+	@Override
+	public double variance() 
+	{
+		return sigma*sigma*Math.PI*Math.PI / 3;
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return 0;
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return 6.0/5.0;
 	}
 
 }

@@ -90,4 +90,44 @@ public class StudentTDistribution  implements Distribution
 		// TODO Random number generator
 		return 0;
 	}
+
+	@Override
+	public double mean() 
+	{
+		if (nu>1)
+			return 0;
+		else
+			return Double.NaN;
+	}
+
+	@Override
+	public double variance() 
+	{
+		if (nu<=1)
+			return Double.NaN;
+		else if (nu<=2)
+			return Double.POSITIVE_INFINITY;
+		else
+			return nu/(nu-2);
+	}
+
+	@Override
+	public double skewness() 
+	{
+		if (nu>3)
+			return 0;
+		else
+			return Double.NaN;
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		if (nu<=2)
+			return Double.NaN;
+		else if (nu<=4)
+			return Double.POSITIVE_INFINITY;
+		else
+			return 6/(nu-4);
+	}
 }

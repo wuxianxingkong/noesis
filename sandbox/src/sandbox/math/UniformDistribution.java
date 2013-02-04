@@ -50,4 +50,28 @@ public class UniformDistribution implements Distribution
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		return (min+max)/2;
+	}
+
+	@Override
+	public double variance() 
+	{
+		return (max-min)*(max-min)/12;
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return 0;
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return -6.0/5.0;
+	}
+
 }

@@ -53,4 +53,28 @@ public class RayleighDistribution implements Distribution
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		return sigma*Math.sqrt(Math.PI/2);
+	}
+
+	@Override
+	public double variance() 
+	{
+		return (4-Math.PI)*sigma*sigma/2;
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return 2*Math.sqrt(Math.PI)*(Math.PI-3)/Math.pow(4-Math.PI,1.5);
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return -(6*Math.PI*Math.PI-24*Math.PI+16) / ( (4-Math.PI)*(4-Math.PI) );
+	}
+
 }

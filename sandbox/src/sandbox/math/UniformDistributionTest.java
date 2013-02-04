@@ -47,6 +47,17 @@ public class UniformDistributionTest
 		assertEquals( 0.5, uniform.idf(0.5), ERROR );
 		assertEquals( 1.0, uniform.idf(1.0), ERROR );
 	}	
+
+	@Test
+	public void testStandardStatistics() 
+	{
+		UniformDistribution uniform = new UniformDistribution(0,1);
+		
+		assertEquals( 0.5, uniform.mean(), ERROR );
+		assertEquals( 1.0/12.0, uniform.variance(), ERROR );
+		assertEquals( 0.0, uniform.skewness(), ERROR );
+		assertEquals(-1.2, uniform.kurtosis(), ERROR );
+	}
 	
 	// U(1,1)
 
@@ -78,6 +89,17 @@ public class UniformDistributionTest
 		assertEquals( 1.0, uniform.idf(0.0), ERROR );
 		assertEquals( 1.0, uniform.idf(0.5), ERROR );
 		assertEquals( 1.0, uniform.idf(1.0), ERROR );
+	}
+
+	@Test
+	public void test11Statistics() 
+	{
+		UniformDistribution uniform = new UniformDistribution(1,1);
+		
+		assertEquals( 1.0, uniform.mean(), ERROR );
+		assertEquals( 0.0, uniform.variance(), ERROR );
+		assertEquals( 0.0, uniform.skewness(), ERROR );
+		assertEquals(-1.2, uniform.kurtosis(), ERROR );
 	}
 
 	// U(0,2)
@@ -112,6 +134,17 @@ public class UniformDistributionTest
 		assertEquals( 0.0, uniform.idf(0.0), ERROR );
 		assertEquals( 1.0, uniform.idf(0.5), ERROR );
 		assertEquals( 2.0, uniform.idf(1.0), ERROR );
+	}
+
+	@Test
+	public void test02Statistics() 
+	{
+		UniformDistribution uniform = new UniformDistribution(0,2);
+		
+		assertEquals( 1.0, uniform.mean(), ERROR );
+		assertEquals( 4.0/12.00, uniform.variance(), ERROR );
+		assertEquals( 0.0, uniform.skewness(), ERROR );
+		assertEquals(-1.2, uniform.kurtosis(), ERROR );
 	}
 	
 	// U(2,5)
@@ -148,6 +181,17 @@ public class UniformDistributionTest
 		assertEquals( 2.0, uniform.idf(0.0), ERROR );
 		assertEquals( 3.5, uniform.idf(0.5), ERROR );
 		assertEquals( 5.0, uniform.idf(1.0), ERROR );
+	}
+
+	@Test
+	public void test25Statistics() 
+	{
+		UniformDistribution uniform = new UniformDistribution(2,5);
+		
+		assertEquals( 3.5, uniform.mean(), ERROR );
+		assertEquals( 9.0/12.00, uniform.variance(), ERROR );
+		assertEquals( 0.0, uniform.skewness(), ERROR );
+		assertEquals(-1.2, uniform.kurtosis(), ERROR );
 	}
 	
 	// Tolerance intervals

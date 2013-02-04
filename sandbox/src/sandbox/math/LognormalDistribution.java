@@ -66,4 +66,28 @@ public class LognormalDistribution implements Distribution
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		return Math.exp ( mu + sigma*sigma/2 );
+	}
+
+	@Override
+	public double variance() 
+	{
+		return ( Math.exp(sigma*sigma) - 1 ) * Math.exp ( 2*mu + sigma*sigma );
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return ( Math.exp(sigma*sigma) + 2 ) * Math.sqrt( Math.exp (sigma*sigma ) - 1 );
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return Math.exp(4*sigma*sigma) + 2*Math.exp(3*sigma*sigma) + 3*Math.exp(2*sigma*sigma) - 6;
+	}
+
 }

@@ -45,6 +45,17 @@ public class WaldDistributionTest
 		assertEquals( 0.0, distribution.idf(0.0), ERROR );
 		assertEquals( Double.POSITIVE_INFINITY, distribution.idf(1.0), ERROR );
 	}	
+
+	@Test
+	public void test11Statistics() 
+	{
+		WaldDistribution distribution = new WaldDistribution(1,1);
+		
+		assertEquals(  1.0, distribution.mean(), ERROR );
+		assertEquals(  1.0, distribution.variance(), ERROR );
+		assertEquals(  3.0, distribution.skewness(), ERROR );
+		assertEquals( 15.0, distribution.kurtosis(), ERROR );
+	}
 	
 	// IG(1,2)
 
@@ -76,6 +87,17 @@ public class WaldDistributionTest
 		assertEquals( Double.POSITIVE_INFINITY, distribution.idf(1.0), ERROR );
 	}
 
+	@Test
+	public void test12Statistics() 
+	{
+		WaldDistribution distribution = new WaldDistribution(1,2);
+		
+		assertEquals(  1.0, distribution.mean(), ERROR );
+		assertEquals(  0.5, distribution.variance(), ERROR );
+		assertEquals(  3.0*Math.sqrt(0.5), distribution.skewness(), ERROR );
+		assertEquals( 15.0*0.5, distribution.kurtosis(), ERROR );
+	}
+	
 	// IG(2,1)
 
 	@Test
@@ -104,6 +126,17 @@ public class WaldDistributionTest
 		
 		assertEquals( 0.0, distribution.idf(0.0), ERROR );
 		assertEquals( Double.POSITIVE_INFINITY, distribution.idf(1.0), ERROR );
+	}
+
+	@Test
+	public void test21Statistics() 
+	{
+		WaldDistribution distribution = new WaldDistribution(2,1);
+		
+		assertEquals(  2, distribution.mean(), ERROR );
+		assertEquals(  8, distribution.variance(), ERROR );
+		assertEquals(  3*Math.sqrt(2), distribution.skewness(), ERROR );
+		assertEquals( 15*2, distribution.kurtosis(), ERROR );
 	}
 	
 	// IG(5,2)
@@ -136,7 +169,18 @@ public class WaldDistributionTest
 		assertEquals( 0.0, distribution.idf(0.0), ERROR );
 		assertEquals( Double.POSITIVE_INFINITY, distribution.idf(1.0), ERROR );
 	}
-	
+
+	@Test
+	public void test52Statistics() 
+	{
+		WaldDistribution distribution = new WaldDistribution(5,2);
+		
+		assertEquals( 5, distribution.mean(), ERROR );
+		assertEquals( 125.0/2.0, distribution.variance(), ERROR );
+		assertEquals( 3*Math.sqrt(2.5), distribution.skewness(), ERROR );
+		assertEquals( 15*2.5, distribution.kurtosis(), ERROR );
+	}
+
 	// Intervals
 	
 	@Test

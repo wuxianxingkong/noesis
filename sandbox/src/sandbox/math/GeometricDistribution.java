@@ -3,7 +3,7 @@ package sandbox.math;
 /**
  * Geometric distribution: G(p)
  * 
- * Discrete probability distribution of the number of the number Y = X − 1 of failures 
+ * Discrete probability distribution of the number Y = X - 1 of failures 
  * before the first success in X Bernoulli trials, supported on the set { 0, 1, 2, 3, ... }
  * 
  * http://en.wikipedia.org/wiki/Geometric_distribution

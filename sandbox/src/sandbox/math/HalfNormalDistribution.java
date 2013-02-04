@@ -4,7 +4,7 @@ import ikor.math.Constants;
 import ikor.math.Functions;
 
 /**
- * Half-mormal distribution (a.k.a. Gaussian distribution)
+ * Half-normal distribution (i.e. a folded  normal distribution where the fold occurs at a cumulative probability of p = 0.5)
  * http://en.wikipedia.org/wiki/Half-normal_distribution
  * 
  * If X has a normal(μ,σ) distribution, then |X−μ| has a half-normal(μ,σ) distribution.

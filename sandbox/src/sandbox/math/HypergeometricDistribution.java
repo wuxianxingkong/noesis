@@ -85,4 +85,29 @@ public class HypergeometricDistribution extends DiscreteDistribution implements 
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		return ((double)(n*K)) / (double)N;
+	}
+
+	@Override
+	public double variance() 
+	{
+		return mean()*(N-K)*(N-n)/(N*(N-1));
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return (N-2*K)*Math.sqrt(N-1)*(N-2*n) / ( (N-2)*Math.sqrt(n*K*(N-K)*(N-n)) );
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return ( (N-1.0)*N*N*( N*(N+1.0)-6.0*K*(N-K)-6.0*n*(N-n) ) + 6.0*n*K*(N-K)*(N-n)*(5.0*N-6.0) )
+			 / ( n*K*(N-K)*(N-n)*(N-2.0)*(N-3.0));
+	}
+
 }

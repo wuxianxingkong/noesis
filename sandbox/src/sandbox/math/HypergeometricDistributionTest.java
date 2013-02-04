@@ -87,6 +87,17 @@ public class HypergeometricDistributionTest
 		assertEquals( 2, distribution.idf(1.0), ERROR );
 	}	
 
+	@Test
+	public void test1Statistics() 
+	{
+		DiscreteDistribution distribution = new HypergeometricDistribution(10,1,1);
+
+		assertEquals( 0.1, distribution.mean(), ERROR );
+		assertEquals( 0.09, distribution.variance(), ERROR );
+		assertEquals(  8.0/3.0, distribution.skewness(), ERROR );
+		assertEquals( 46.0/9.0, distribution.kurtosis(), ERROR );
+	}	
+	
 	// HG(10,2,2)
 
 	@Test
@@ -122,5 +133,15 @@ public class HypergeometricDistributionTest
 		assertEquals( 2, distribution.idf((8./10.)*(7./9.) + (8./10.)*(2./9.) + (2./10.)*(8./9.)), ERROR );
 		assertEquals( 3, distribution.idf(1.0), ERROR );
 	}
+	
+	@Test
+	public void test2Statistics() 
+	{
+		DiscreteDistribution distribution = new HypergeometricDistribution(10,2,2);
 
+		assertEquals( 0.4, distribution.mean(), ERROR );
+		assertEquals( 0.4*0.8*(0.8/0.9), distribution.variance(), ERROR );
+		assertEquals( 27.0/32.0, distribution.skewness(), ERROR );
+		assertEquals( -111.0/256.0, distribution.kurtosis(), ERROR );
+	}	
 }

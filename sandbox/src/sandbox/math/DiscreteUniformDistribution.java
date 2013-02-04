@@ -63,4 +63,32 @@ public class DiscreteUniformDistribution extends DiscreteDistribution implements
 		// TODO Random number generator
 		return 0;
 	}
+
+	@Override
+	public double mean() 
+	{
+		return (a+b)/2.0;
+	}
+
+	@Override
+	public double variance() 
+	{
+		double n = b-a+1;
+		
+		return (n*n-1.0)/12.0;
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return 0;
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		double n = b-a+1;
+		
+		return -(6.0/5.0)*(n*n+1)/(n*n-1);
+	}
 }

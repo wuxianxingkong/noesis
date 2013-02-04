@@ -54,6 +54,17 @@ public class NegativeBinomialDistributionTest
 		assertEquals( Double.POSITIVE_INFINITY, distribution.idf(1.0), ERROR );
 	}	
 
+	@Test
+	public void test1Statistics() 
+	{
+		DiscreteDistribution distribution = new NegativeBinomialDistribution(1,0.1);
+
+		assertEquals( 0.1/0.9, distribution.mean(), ERROR );
+		assertEquals( 0.1/0.81, distribution.variance(), ERROR );
+		assertEquals( 1.1/Math.sqrt(0.1), distribution.skewness(), ERROR );
+		assertEquals( 6+0.81/0.1, distribution.kurtosis(), ERROR );
+	}	
+	
 	// NB(1,0.2)
 
 	@Test
@@ -94,6 +105,17 @@ public class NegativeBinomialDistributionTest
 		assertEquals( Double.POSITIVE_INFINITY, distribution.idf(1.0), ERROR );
 	}
 
+	@Test
+	public void test2Statistics() 
+	{
+		DiscreteDistribution distribution = new NegativeBinomialDistribution(1,0.2);
+
+		assertEquals( 0.2/0.8, distribution.mean(), ERROR );
+		assertEquals( 0.2/0.64, distribution.variance(), ERROR );
+		assertEquals( 1.2/Math.sqrt(0.2), distribution.skewness(), ERROR );
+		assertEquals( 6+0.64/0.2, distribution.kurtosis(), ERROR );
+	}	
+	
 	// NB(1,0.5)
 
 	@Test
@@ -133,7 +155,17 @@ public class NegativeBinomialDistributionTest
 		assertEquals( Double.POSITIVE_INFINITY, distribution.idf(1.0), ERROR );
 	}
 
+	@Test
+	public void test5Statistics() 
+	{
+		DiscreteDistribution distribution = new NegativeBinomialDistribution(1,0.5);
 
+		assertEquals( 1, distribution.mean(), ERROR );
+		assertEquals( 2, distribution.variance(), ERROR );
+		assertEquals( 1.5/Math.sqrt(0.5), distribution.skewness(), ERROR );
+		assertEquals( 6+0.25/0.5, distribution.kurtosis(), ERROR );
+	}	
+	
 	// NB(1,0.9)
 
 	@Test
@@ -173,6 +205,16 @@ public class NegativeBinomialDistributionTest
 		assertEquals( Double.POSITIVE_INFINITY, distribution.idf(1.0), ERROR );
 	}
 
+	@Test
+	public void test9Statistics() 
+	{
+		DiscreteDistribution distribution = new NegativeBinomialDistribution(1,0.9);
+
+		assertEquals( 9, distribution.mean(), ERROR );
+		assertEquals( 90, distribution.variance(), ERROR );
+		assertEquals( 1.9/Math.sqrt(0.9), distribution.skewness(), ERROR );
+		assertEquals( 6+0.01/0.9, distribution.kurtosis(), ERROR );
+	}	
 	
 	// Intervals
 

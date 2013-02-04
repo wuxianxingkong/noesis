@@ -64,4 +64,16 @@ public class DiscreteUniformDistributionTest
 		assertEquals( 5, distribution.idf(0.99), ERROR);	
 		assertEquals( 6, distribution.idf(1.00), ERROR);	
 	}
+	
+	@Test
+	public void testStatistics() 
+	{
+		DiscreteDistribution distribution = new DiscreteUniformDistribution(1,6);
+
+		assertEquals( 3.5, distribution.mean(), ERROR);
+		assertEquals( (6*6-1)/12.0, distribution.variance(), ERROR);
+		assertEquals( 0, distribution.skewness(), ERROR);
+		assertEquals( -(6.0/5.0)*(6*6+1.0)/(6*6-1.0), distribution.kurtosis(), ERROR);
+	}
+	
 }

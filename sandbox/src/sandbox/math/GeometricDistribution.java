@@ -63,4 +63,28 @@ public class GeometricDistribution extends DiscreteDistribution implements Distr
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		return (1-p)/p;
+	}
+
+	@Override
+	public double variance() 
+	{
+		return (1-p)/(p*p);
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return (2-p)/Math.sqrt(1-p);
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return 6 + p*p/(1-p);
+	}
+
 }

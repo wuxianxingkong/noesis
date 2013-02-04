@@ -71,5 +71,29 @@ public class PoissonDistribution extends DiscreteDistribution implements Distrib
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		return lambda;
+	}
+
+	@Override
+	public double variance() 
+	{
+		return lambda;
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return 1.0/Math.sqrt(lambda);
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return 1.0/lambda;
+	}
+
 }
 

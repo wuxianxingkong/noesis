@@ -70,4 +70,28 @@ public class NegativeBinomialDistribution extends DiscreteDistribution implement
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		return p*r/(1-p);
+	}
+
+	@Override
+	public double variance() 
+	{
+		return p*r/((1-p)*(1-p));
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return (1+p)/Math.sqrt(p*r);
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return 6.0/r + (1-p)*(1-p)/(p*r);
+	}
+
 }

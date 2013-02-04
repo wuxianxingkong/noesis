@@ -49,6 +49,17 @@ public class BinomialDistributionTest
 		assertEquals( 10, distribution.idf(1.0), ERROR );
 	}	
 
+	@Test
+	public void test1Statistics() 
+	{
+		DiscreteDistribution distribution = new BinomialDistribution(10,0.1);
+
+		assertEquals( 1, distribution.mean(), ERROR );
+		assertEquals( 0.9, distribution.variance(), ERROR );
+		assertEquals( 0.8/Math.sqrt(0.9), distribution.skewness(), ERROR );
+		assertEquals( (1-6*0.1*0.9)/0.9, distribution.kurtosis(), ERROR );
+	}	
+	
 	// binomial(10,0.2)
 
 	@Test
@@ -84,6 +95,17 @@ public class BinomialDistributionTest
 		assertEquals( 10, distribution.idf(1.0), ERROR );
 	}
 
+	@Test
+	public void test2Statistics() 
+	{
+		DiscreteDistribution distribution = new BinomialDistribution(10,0.2);
+
+		assertEquals( 2, distribution.mean(), ERROR );
+		assertEquals( 1.6, distribution.variance(), ERROR );
+		assertEquals( 0.6/Math.sqrt(1.6), distribution.skewness(), ERROR );
+		assertEquals( (1-6*0.2*0.8)/1.6, distribution.kurtosis(), ERROR );
+	}	
+	
 	// binomial(10,0.5)
 
 	@Test
@@ -119,7 +141,16 @@ public class BinomialDistributionTest
 		assertEquals( 10, distribution.idf(1.0), ERROR );
 	}
 
+	@Test
+	public void test5Statistics() 
+	{
+		DiscreteDistribution distribution = new BinomialDistribution(10,0.5);
 
+		assertEquals( 5, distribution.mean(), ERROR );
+		assertEquals( 2.5, distribution.variance(), ERROR );
+		assertEquals( 0.0, distribution.skewness(), ERROR );
+		assertEquals( (1-6*0.5*0.5)/2.5, distribution.kurtosis(), ERROR );
+	}	
 
 	// Tolerance intervals
 

@@ -71,4 +71,28 @@ public class BinomialDistribution extends DiscreteDistribution implements Distri
 		return 0;
 	}
 
+	@Override
+	public double mean() 
+	{
+		return n*p;
+	}
+
+	@Override
+	public double variance() 
+	{
+		return n*p*(1-p);
+	}
+
+	@Override
+	public double skewness() 
+	{
+		return (1-2*p)/Math.sqrt(n*p*(1-p));
+	}
+
+	@Override
+	public double kurtosis() 
+	{
+		return (1-6*p*(1-p))/(n*p*(1-p));
+	}
+
 }

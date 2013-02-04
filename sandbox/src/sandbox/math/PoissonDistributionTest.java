@@ -47,6 +47,17 @@ public class PoissonDistributionTest
 		assertEquals( Double.POSITIVE_INFINITY, distribution.idf(1.0), ERROR );
 	}	
 
+	@Test
+	public void test1Statistics() 
+	{
+		DiscreteDistribution distribution = new PoissonDistribution(1);
+
+		assertEquals( 1, distribution.mean(), ERROR );
+		assertEquals( 1, distribution.variance(), ERROR );
+		assertEquals( 1, distribution.skewness(), ERROR );
+		assertEquals( 1, distribution.kurtosis(), ERROR );
+	}	
+	
 	// poisson(2)
 
 	@Test
@@ -80,6 +91,17 @@ public class PoissonDistributionTest
 		assertEquals( Double.POSITIVE_INFINITY, distribution.idf(1.0), ERROR );
 	}
 
+	@Test
+	public void test2Statistics() 
+	{
+		DiscreteDistribution distribution = new PoissonDistribution(2);
+
+		assertEquals( 2, distribution.mean(), ERROR );
+		assertEquals( 2, distribution.variance(), ERROR );
+		assertEquals( 1.0/Math.sqrt(2), distribution.skewness(), ERROR );
+		assertEquals( 1.0/2.0, distribution.kurtosis(), ERROR );
+	}		
+	
 	// poisson(5)
 
 	@Test
@@ -113,6 +135,16 @@ public class PoissonDistributionTest
 		assertEquals( Double.POSITIVE_INFINITY, distribution.idf(1.0), ERROR );
 	}
 
+	@Test
+	public void test5Statistics() 
+	{
+		DiscreteDistribution distribution = new PoissonDistribution(5);
+
+		assertEquals( 5, distribution.mean(), ERROR );
+		assertEquals( 5, distribution.variance(), ERROR );
+		assertEquals( 1.0/Math.sqrt(5), distribution.skewness(), ERROR );
+		assertEquals( 1.0/5.0, distribution.kurtosis(), ERROR );
+	}		
 
 
 	// Tolerance intervals

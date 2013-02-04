@@ -10,7 +10,8 @@ import org.junit.runners.Suite;
 					   Vector2DTest.class,
 	                   Vector3DTest.class,
 	                   test.ikor.math.optimization.AllTests.class,
-	                   test.ikor.math.regression.AllTests.class })
+	                   test.ikor.math.regression.AllTests.class,
+	                   test.ikor.math.statistics.AllTests.class })
 public class AllTests {
 
 }

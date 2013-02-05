@@ -25,7 +25,7 @@ public class Random
 	// Public interface
 
 	/**
-	 * Uniform(0,1) random number
+	 * Uniform(0,1) pseudorandom number
 	 */
 	
 	public static double random ()
@@ -34,9 +34,28 @@ public class Random
 	}
 
 
+	/**
+	 * Uniform pseudorandom integer between 0 and k-1
+	 */
+
+	public static int random (int k)
+	{
+		return (int) (k*random());
+	}
+	
 	
 	/**
-	 * Normal(0,1) random number:
+	 * Uniform pseudorandom 64-bit integer
+	 */
+	
+	public static long integer ()
+	{
+		return rng.integer();
+	}
+	
+	
+	/**
+	 * Normal(0,1) pseudorandom number:
 	 * 
 	 * Gaussian ("normally") distributed double value 
 	 * with mean 0.0 and standard deviation 1.0 using the current random number generator.

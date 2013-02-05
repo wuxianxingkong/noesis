@@ -13,4 +13,13 @@ public interface RNG
 	 * @return A random number in the interval [0,1) 
 	 */
 	public double random();
+	
+	
+	/**
+	 * Returns a pseudorandom uniform integer value.
+	 * 
+	 * @return A pseudorandom integer
+	 */
+	public long integer ();
+	
 }

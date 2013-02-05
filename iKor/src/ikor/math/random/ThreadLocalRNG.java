@@ -1,7 +1,9 @@
 package ikor.math.random;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
- * Standard Java pseudorandom number generator.
+ * Standard Java pseudorandom number generator isolated to the current thread.
  * 
  * @JDK7: 48-bit seed modified using a linear congruential formula. 
  * (See Donald Knuth, The Art of Computer Programming, Volume 2, Section 3.2.1.)
@@ -9,30 +11,24 @@ package ikor.math.random;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-public class JavaRNG implements RNG 
+public class ThreadLocalRNG implements RNG
 {
-	java.util.Random rng;
-	
-	public JavaRNG (long seed)
+	public ThreadLocalRNG (long seed)
 	{
-		this.rng = new java.util.Random(seed);
-	}
-
-	public JavaRNG ()
-	{
-		this.rng = new java.util.Random();
+		ThreadLocalRandom.current().setSeed(seed);
 	}
 
 
 	@Override
 	public double random() 
 	{		
-		return rng.nextDouble();
+		return ThreadLocalRandom.current().nextDouble();
 	}
 
 	@Override
 	public long integer() 
 	{
-		return rng.nextLong();
+		return ThreadLocalRandom.current().nextLong();
 	}
+
 }

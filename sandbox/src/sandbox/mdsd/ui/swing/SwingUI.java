@@ -7,19 +7,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.net.URL;
 
 import sandbox.mdsd.ui.Action;
 import sandbox.mdsd.ui.Component;
 import sandbox.mdsd.ui.Log;
 import sandbox.mdsd.ui.Menu;
 import sandbox.mdsd.ui.Option;
+import sandbox.mdsd.ui.Image;
+import sandbox.mdsd.ui.Separator;
 import sandbox.mdsd.ui.UIModel;
 import sandbox.mdsd.ui.UI;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
 
 public class SwingUI extends JFrame implements UI 
 {
@@ -48,6 +53,11 @@ public class SwingUI extends JFrame implements UI
 			initMenu( (Menu) component);
 		} else if (component instanceof Option) {
 			initOption ( (Option) component );
+		} else if (component instanceof Image) {
+			
+			if (component.getId()=="$icon") {
+				this.setIconImage( loadIcon(((Image)component).getUrl()).getImage() );
+			}
 		}
 		
 	}
@@ -59,40 +69,45 @@ public class SwingUI extends JFrame implements UI
 		for (Option item: menu.getItems()) {
 			if (item instanceof Menu)
 				menubar.add( createMenu((Menu)item) );
-			else
-				Log.warning( "Attempt to add a non-menu item to menu bar " + item );
+			else 
+				menubar.add ( createMenuItem(item) ); 
 		}
-		/*
-		JMenu file = new JMenu("File");
-		file.setMnemonic(KeyEvent.VK_F);
-
-		JMenuItem eMenuItem = new JMenuItem("Exit", icon);
-		eMenuItem.setMnemonic(KeyEvent.VK_C);
-		eMenuItem.setToolTipText("Exit application");
-		eMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				System.exit(0);
-			}
-
-		});
-
-		file.add(eMenuItem);
-		menubar.add(file);
-*/
 
 		setJMenuBar(menubar);		
+	}
+	
+	private ImageIcon loadIcon (String location)
+	{
+		java.awt.Image image = null;
+		
+		try {
+			URL url = ClassLoader.getSystemClassLoader().getResource(location);
+			image = new ImageIcon(url).getImage().getScaledInstance(32,32,java.awt.Image.SCALE_SMOOTH);
+		} catch (Exception error) {
+			Log.error("Loading icon "+location);
+		}
+		
+		return new ImageIcon(image);
 	}
 	
 	private JMenu createMenu (Menu menu)
 	{
 		JMenu jmenu = new JMenu( menu.getLabel().getText() );
-		// jmenu.setMnemonic(KeyEvent.VK_C);
-		// jmenu.setToolTipText("Exit application");
-		// menuItem.setIcon(defaultIcon)
+
+		jmenu.setToolTipText( menu.getLabel().getDescription() );
+	    jmenu.setEnabled( menu.isEnabled() );
+
+		if (menu.getIcon()!=null)
+			jmenu.setIcon( loadIcon(menu.getIcon()) );
+
+		if (menu.getShortcut()!=0)
+			jmenu.setMnemonic( menu.getShortcut() );
 			
 		for (Option item: menu.getItems()) {
 			if (item instanceof Menu)
 				jmenu.add( createMenu((Menu)item) );
+			else if (item instanceof Separator)
+				jmenu.addSeparator();
 			else
 				jmenu.add( createMenuItem(item) );
 		}
@@ -103,13 +118,21 @@ public class SwingUI extends JFrame implements UI
 	private JMenuItem createMenuItem (Option option)
 	{
 		JMenuItem menuItem = new JMenuItem( option.getLabel().getText() );
-		// menuItem.setMnemonic(KeyEvent.VK_C);
-		// menuItem.setToolTipText("Exit application");
-		// menuItem.setIcon(defaultIcon)
+		
+		menuItem.setToolTipText( option.getLabel().getDescription() );
+	    menuItem.setEnabled( option.isEnabled() );
 		menuItem.addActionListener(new ActionHandler(option.getAction()));
+		
+		if (option.getIcon()!=null)
+			menuItem.setIcon( loadIcon(option.getIcon()) );
+
+		if (option.getShortcut()!=0)
+			menuItem.setAccelerator( KeyStroke.getKeyStroke( option.getShortcut(), 0 ) );
 		
 		return menuItem;
 	}
+	
+	
 	
 	private void initOption (Option option)
 	{
@@ -175,7 +198,10 @@ public class SwingUI extends JFrame implements UI
 		@Override
 		public void actionPerformed (ActionEvent e)
 		{ 
-			action.run();
+			if (action!=null)
+				action.run();
+			else
+				Log.warning( "Attempt to execute null action - " + e );
 		}
 	}
 	

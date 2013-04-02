@@ -4,12 +4,18 @@ package sandbox.mdsd.ui;
 
 public class Option extends Component 
 {
-	private Label label;
-	private Action action;
+	private Label   label;
+	private int     shortcut;  // Keyboard shortcut (java.awt.event.KeyEvent)
+	private String  icon;
+	private boolean enabled;
+	
+	private Action  action;
+
 
 	public Option(String id) 
 	{
 		super(id);
+		this.setEnabled(true);
 		this.setLabel( new Label(id) );
 	}
 	
@@ -19,6 +25,14 @@ public class Option extends Component
 		this.setAction(action);
 	}
 
+	public Option (String id, int shortcut, Action action) 
+	{
+		this(id);
+		this.setShortcut(shortcut);
+		this.setAction(action);
+	}
+	
+	
 	public Action getAction() 
 	{
 		return action;
@@ -39,6 +53,47 @@ public class Option extends Component
 	public void setLabel (Label label)
 	{
 		this.label = label;
+	}
+
+	public int getShortcut() 
+	{
+		return shortcut;
+	}
+
+	public void setShortcut (int shortcut) 
+	{
+		this.shortcut = shortcut;
+	}
+
+
+	public boolean isEnabled() 
+	{
+		return enabled;
+	}
+	
+	public void enable ()
+	{
+		this.enabled = true;
+	}
+	
+	public void disable ()
+	{
+		this.enabled = false;
+	}
+
+	public void setEnabled (boolean enabled) 
+	{
+		this.enabled = enabled;
+	}
+
+	public String getIcon() 
+	{
+		return icon;
+	}
+
+	public void setIcon (String icon) 
+	{
+		this.icon = icon;
 	}
 		
 }

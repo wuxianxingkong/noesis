@@ -9,7 +9,12 @@ public class Menu extends Option
 {
 	private List<Option> items;
 
-	public Menu(String id) 
+	public Menu() 
+	{
+		items = new DynamicList<Option>();
+	}
+	
+	public Menu(String id)
 	{
 		super(id);
 		

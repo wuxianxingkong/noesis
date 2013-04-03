@@ -4,12 +4,17 @@ public class Label extends Component
 {
 	private String text;
 	private String description;
-	
-	public Label(String id) 
-	{
-		super(id);
-	}
+	private String icon;
 
+	public Label ()
+	{
+	}
+	
+	public Label (String text)
+	{
+		this.setId(text);
+		this.setText(text);
+	}
 	
 	public String getText ()
 	{
@@ -27,10 +32,7 @@ public class Label extends Component
 
 	public String getDescription() 
 	{
-		if (description!=null)
-			return description;
-		else
-			return getText();
+		return description;
 	}
 
 
@@ -39,4 +41,14 @@ public class Label extends Component
 		this.description = description;
 	}
 
+	public String getIcon() 
+	{
+		return icon;
+	}
+
+	public void setIcon (String icon) 
+	{
+		this.icon = icon;
+	}
+	
 }

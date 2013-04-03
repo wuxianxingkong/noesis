@@ -20,6 +20,11 @@ public class ConsoleUI implements UI
 		
 	}
 	
+	@Override
+	public void exit()
+	{
+		System.exit(0);
+	}
 	
 
 }

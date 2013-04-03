@@ -1,35 +1,43 @@
 package sandbox.mdsd.ui;
 
+import sandbox.mdsd.task.Action;
+
 // e.g. Selector option (without action) or menu item (with action)
 
 public class Option extends Component 
 {
 	private Label   label;
 	private int     shortcut;  // Keyboard shortcut (java.awt.event.KeyEvent)
-	private String  icon;
 	private boolean enabled;
 	
 	private Action  action;
 
-
-	public Option(String id) 
+	/** 
+	 * Default constructor
+	 */
+	public Option() 
 	{
-		super(id);
 		this.setEnabled(true);
-		this.setLabel( new Label(id) );
+		this.setLabel( new Label() );
+	}
+	
+	public Option (String id)
+	{
+		this (id, null);
 	}
 	
 	public Option (String id, Action action) 
 	{
-		this(id);
-		this.setAction(action);
+		this(id, action, 0);
 	}
 
-	public Option (String id, int shortcut, Action action) 
+	public Option (String id, Action action, int shortcut) 
 	{
-		this(id);
+		this.setId(id);
 		this.setShortcut(shortcut);
 		this.setAction(action);
+		this.setEnabled(true);
+		this.setLabel( new Label(id) );
 	}
 	
 	
@@ -53,6 +61,11 @@ public class Option extends Component
 	public void setLabel (Label label)
 	{
 		this.label = label;
+	}
+	
+	public void setIcon (String icon)
+	{
+		label.setIcon(icon);
 	}
 
 	public int getShortcut() 
@@ -86,14 +99,5 @@ public class Option extends Component
 		this.enabled = enabled;
 	}
 
-	public String getIcon() 
-	{
-		return icon;
-	}
-
-	public void setIcon (String icon) 
-	{
-		this.icon = icon;
-	}
 		
 }

@@ -1,9 +1,9 @@
 package sandbox.mdsd.test;
 
-import sandbox.mdsd.ui.Action;
-import sandbox.mdsd.ui.Log;
+import sandbox.mdsd.log.Log;
+import sandbox.mdsd.task.Action;
 
-public class FileSaveAction implements Action 
+public class FileSaveAction extends Action 
 {
 	@Override
 	public void run() 

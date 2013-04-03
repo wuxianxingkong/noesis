@@ -3,82 +3,172 @@ package sandbox.mdsd.ui.swing;
 import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.net.URL;
 
-import sandbox.mdsd.ui.Action;
+import ikor.collection.Dictionary;
+import ikor.collection.DynamicDictionary;
+
+import sandbox.mdsd.log.Log;
 import sandbox.mdsd.ui.Component;
-import sandbox.mdsd.ui.Log;
 import sandbox.mdsd.ui.Menu;
-import sandbox.mdsd.ui.Option;
 import sandbox.mdsd.ui.Image;
+import sandbox.mdsd.ui.Label;
+import sandbox.mdsd.ui.Option;
+import sandbox.mdsd.ui.Selector;
 import sandbox.mdsd.ui.Separator;
+import sandbox.mdsd.ui.Viewer;
+import sandbox.mdsd.ui.Editor;
 import sandbox.mdsd.ui.UIModel;
 import sandbox.mdsd.ui.UI;
+import sandbox.mdsd.ui.UIFactory;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.KeyStroke;
+
+import javax.swing.GroupLayout;
 
 public class SwingUI extends JFrame implements UI 
 {
-	UIModel context;
+	UIModel     context;
+	
+	Dictionary<Class,UIFactory>  builders;
+	Dictionary<String,UIFactory> options;
+	
+	/**
+	 * UI Constructor.
+	 * 
+	 * @param context UI model
+	 */
 	
 	public SwingUI (UIModel context)
 	{
 		this.context = context;
 		
-		initUI();
+		builders = new DynamicDictionary<Class,UIFactory>();
+		
+		builders.set ( Menu.class, new SwingMenuFactory() );
+		builders.set ( Image.class, new SwingImageFactory() );
+		builders.set ( Label.class, new SwingLabelFactory() );
+		builders.set ( Option.class, new SwingOptionFactory() );
+		builders.set ( Selector.class, new SwingSelectorFactory() );
+		builders.set ( Separator.class, new SwingSeparatorFactory() );
+		builders.set ( Viewer.class, new SwingViewerFactory() );
+		builders.set ( Editor.class, new SwingEditorFactory() );
+		
+		options = new DynamicDictionary<String,UIFactory>();
+		
+		options.set ( "$icon", new SwingIconFactory() );
+		options.set ( "$exit", new SwingExitFactory() );
+		options.set ( "$background", new SwingBackgroundFactory() );
+		
+		buildUI();
 	}
 	
-	private void initUI ()
+	private void buildUI ()
 	{
 		this.setTitle (context.getId());
+				
+		initLayout();
+
+		// Components
 		
-		for (Component component: context.getItems())
-			init(component);
+		for (Component component: context.getComponents())
+			build(component);
+		
 		
 		initDisplay();
 	}
 	
-	private void init (Component component)
+	
+	/**
+	 * Build UI for a given UI component.
+	 * 
+	 * @param component UI component
+	 */
+	
+	private void build (Component component)
 	{
-		if (component instanceof Menu) {
-			initMenu( (Menu) component);
-		} else if (component instanceof Option) {
-			initOption ( (Option) component );
-		} else if (component instanceof Image) {
-			
-			if (component.getId()=="$icon") {
-				this.setIconImage( loadIcon(((Image)component).getUrl()).getImage() );
-			}
+		UIFactory factory = null;
+		
+		if (component.getId().startsWith("$")) {
+			factory = options.get(component.getId());
+		} else {
+			factory = getFactory(component.getClass());	
 		}
 		
+		if (factory!=null)
+			factory.build(this, component);
+		else
+			Log.warning("Unable to create UI widget for "+component);
 	}
 	
-	private void initMenu (Menu menu)
+	
+	/**
+	 * Get UI factory for a given component class. 
+	 * If no specific factory for this specific class is defined, 
+	 * then the class hierarchy is explored to find a suitable factory.
+	 * 
+	 * @param type UI component class
+	 * @return UI component factory
+	 */
+	
+	public UIFactory getFactory (Class type)
 	{
-		JMenuBar menubar = new JMenuBar();
+		UIFactory factory = builders.get(type);
 		
-		for (Option item: menu.getItems()) {
-			if (item instanceof Menu)
-				menubar.add( createMenu((Menu)item) );
-			else 
-				menubar.add ( createMenuItem(item) ); 
-		}
+		if (factory!=null)
+			return factory;
+		else if (type.getSuperclass()!=null)
+			return getFactory(type.getSuperclass());
+		else
+			return null;	
+	}
+	
+	/**
+	 * Layout manager
+	 */
+	
+	GroupLayout layout;
+	GroupLayout.Group vertical;
+	GroupLayout.Group horizontal;
+	
+	public GroupLayout initLayout ()
+	{
+		layout = new GroupLayout(getContentPane());
+		layout.setAutoCreateGaps(true);
+		layout.setAutoCreateContainerGaps(true);
+		getContentPane().setLayout(layout);
+		
+		vertical = layout.createSequentialGroup();
+		horizontal = layout.createParallelGroup(GroupLayout.Alignment.CENTER);
 
-		setJMenuBar(menubar);		
+		layout.setHorizontalGroup(horizontal);
+		layout.setVerticalGroup(vertical);
+		
+		return layout;
+	}
+
+	public GroupLayout getLayout ()
+	{
+		return layout;
 	}
 	
-	private ImageIcon loadIcon (String location)
+	public void addComponent (java.awt.Component component)
 	{
-		java.awt.Image image = null;
+		horizontal.addComponent(component);
+		vertical.addComponent(component);
+	}
+
+	/**
+	 * Load icon.
+	 * 
+	 * @param location Icon URL
+	 * @return java.awt.ImageIcon
+	 */
+	
+	public ImageIcon loadIcon (String location)
+	{
+		java.awt.Image image = loadImage(location);
 		
 		try {
 			URL url = ClassLoader.getSystemClassLoader().getResource(location);
@@ -87,65 +177,43 @@ public class SwingUI extends JFrame implements UI
 			Log.error("Loading icon "+location);
 		}
 		
-		return new ImageIcon(image);
+		if (image!=null)
+			return new ImageIcon(image);
+		else 
+			return null;
 	}
 	
-	private JMenu createMenu (Menu menu)
+	
+	/**
+	 * Load image
+	 * 
+	 * @param location Image URL
+	 * @return java.awt.Image
+	 */
+	
+	public java.awt.Image loadImage (String location)
 	{
-		JMenu jmenu = new JMenu( menu.getLabel().getText() );
-
-		jmenu.setToolTipText( menu.getLabel().getDescription() );
-	    jmenu.setEnabled( menu.isEnabled() );
-
-		if (menu.getIcon()!=null)
-			jmenu.setIcon( loadIcon(menu.getIcon()) );
-
-		if (menu.getShortcut()!=0)
-			jmenu.setMnemonic( menu.getShortcut() );
-			
-		for (Option item: menu.getItems()) {
-			if (item instanceof Menu)
-				jmenu.add( createMenu((Menu)item) );
-			else if (item instanceof Separator)
-				jmenu.addSeparator();
-			else
-				jmenu.add( createMenuItem(item) );
+		java.awt.Image image = null;
+		
+		try {
+			URL url = ClassLoader.getSystemClassLoader().getResource(location);
+			image = new ImageIcon(url).getImage();
+		} catch (Exception error) {
+			Log.error("Loading image "+location);
 		}
-
-		return jmenu;
-	}
-	
-	private JMenuItem createMenuItem (Option option)
-	{
-		JMenuItem menuItem = new JMenuItem( option.getLabel().getText() );
 		
-		menuItem.setToolTipText( option.getLabel().getDescription() );
-	    menuItem.setEnabled( option.isEnabled() );
-		menuItem.addActionListener(new ActionHandler(option.getAction()));
-		
-		if (option.getIcon()!=null)
-			menuItem.setIcon( loadIcon(option.getIcon()) );
-
-		if (option.getShortcut()!=0)
-			menuItem.setAccelerator( KeyStroke.getKeyStroke( option.getShortcut(), 0 ) );
-		
-		return menuItem;
+		return image;
 	}
 	
 	
-	
-	private void initOption (Option option)
-	{
-		switch (option.getId()) {
-
-		case "$exit":
-			addWindowListener(new WindowHandler(option.getAction()));
-
-		}
-	}
-	
+	/**
+	 * Display initialization.
+	 */
+		
 	private void initDisplay ()
-	{
+	{		
+		// Device properties
+		
 		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 		
 		int width = gd.getDisplayMode().getWidth();
@@ -161,6 +229,10 @@ public class SwingUI extends JFrame implements UI
 		this.setLocation((int) ( width/2 - size.getWidth()/2 ), (int) ( height/2 - size.getHeight()/2) );   		
 	}
 	
+	
+	/**
+	 * UI execution
+	 */
 
 	@Override
 	public void run() 
@@ -168,41 +240,13 @@ public class SwingUI extends JFrame implements UI
 		this.setVisible(true);		
 	}
 
-	
-	// Event handling
-	
-	class WindowHandler extends WindowAdapter
+	@Override
+	public void exit() 
 	{
-		Action action;
+		this.setVisible(false);
 		
-		public WindowHandler (Action action)
-		{
-			this.action = action;
-		}
-
-		public void windowClosing (WindowEvent e)
-		{ 
-			action.run();
-		}
+		if (context==context.getApplication().getStartup())
+			System.exit(0);
 	}
 
-	class ActionHandler implements ActionListener
-	{
-		Action action;
-		
-		public ActionHandler (Action action)
-		{
-			this.action = action;
-		}
-
-		@Override
-		public void actionPerformed (ActionEvent e)
-		{ 
-			if (action!=null)
-				action.run();
-			else
-				Log.warning( "Attempt to execute null action - " + e );
-		}
-	}
-	
 }

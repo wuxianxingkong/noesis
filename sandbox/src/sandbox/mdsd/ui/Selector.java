@@ -3,18 +3,19 @@ package sandbox.mdsd.ui;
 import ikor.collection.DynamicList;
 import ikor.collection.List;
 
-// Menu
+// Option selection
 
 public class Selector extends Option
 {
+	private boolean multipleSelection;
 	private List<Option> options;
-	private Option selected;
+	private List<Option> selected;
 
-	public Selector(String id) 
+	public Selector() 
 	{
-		super(id);
-		
 		options = new DynamicList<Option>();
+		selected = new DynamicList<Option>();
+		multipleSelection = false;
 	}
 	
 	public List<Option> getOptions() 
@@ -32,14 +33,78 @@ public class Selector extends Option
 		options.add(option);
 	}
 
-	public Option getSelected() 
+	public List<Option> getSelected() 
 	{
 		return selected;
 	}
 
-	public void setSelected(Option selected) 
+	public Option getSelectedOption() 
 	{
-		this.selected = selected;
+		if (selected.size()>0)
+			return selected.get(0);
+		else
+			return null;
+	}
+	
+	public int getSelectedCount()
+	{
+		return selected.size();
+	}
+	
+	public void clearSelected ()
+	{
+		selected.clear();
+	}
+
+	public void setSelected(Option selectedOption) 
+	{
+		selected.clear();
+		selected.add(selectedOption);
+	}
+
+	public void addSelectedOption (Option selectedOption) 
+	{
+		selected.add(selectedOption);
+	}
+
+	public void removeSelectedOption (Option selectedOption) 
+	{
+		selected.remove(selectedOption);
+	}
+
+	/**
+	 * Is multiple selection allowed?
+	 * 
+	 * @return true if multiple selection is allowed
+	 */
+	public boolean isMultipleSelection() 
+	{
+		return multipleSelection;
+	}
+
+	/**
+	 * Set multiple selection.
+	 * 
+	 * @param multipleSelection true to allow multiple selection
+	 */
+	public void setMultipleSelection(boolean multipleSelection) 
+	{
+		this.multipleSelection = multipleSelection;
 	}	
+	
+	/**
+	 * Standard output
+	 */
+	
+	public String toString ()
+	{
+		String result = "[ ";
+				
+		for (Option selectedOption: selected) {
+			result += "["+selectedOption.toString() + "] ";
+		}
+				
+		return result + "]";
+	}
 
 }

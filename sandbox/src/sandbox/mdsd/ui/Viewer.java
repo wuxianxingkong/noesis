@@ -1,22 +1,9 @@
 package sandbox.mdsd.ui;
 
-public class Viewer<T> extends Component 
+public class Viewer<T> extends DataComponent<T> 
 {
-	private T data;
-	
-	public Viewer(String id) 
+	public Viewer (String id)
 	{
 		super(id);
 	}
-
-	public T getData() 
-	{
-		return data;
-	}
-
-	public void setData(T data) 
-	{
-		this.data = data;
-	}
-
 }

@@ -3,7 +3,6 @@ package sandbox.mdsd.test;
 import java.util.Date;
 
 import sandbox.mdsd.ui.Application;
-import sandbox.mdsd.ui.Option;
 import sandbox.mdsd.ui.Viewer;
 import sandbox.mdsd.ui.UIModel;
 
@@ -13,35 +12,32 @@ public class ViewerModel  extends UIModel
 	{
 		super(app, "Viewers...");
 		
-		Viewer<String> stringViewer = new Viewer<String>("string");
+		setAlignment ( UIModel.Alignment.LEADING );
+		
+		Viewer<String> stringViewer = new Viewer<String>("string", String.class);
 		stringViewer.setData("Test");
 		stringViewer.setIcon( TestApplication.url("write.png") );
 		add(stringViewer);
 
-		Viewer<String> multilineViewer = new Viewer<String>("multiline");
-		multilineViewer.setData("Test line 1\nTest line 2");
+		Viewer<String> multilineViewer = new Viewer<String>("multiline", String.class);
+		multilineViewer.setData("This is the first line of a multiline field...\nTest line 2");
 		multilineViewer.setIcon( TestApplication.url("write.png") );
 		add(multilineViewer);
 		
-		Viewer<Integer> integerViewer = new Viewer<Integer>("int");
+		Viewer<Integer> integerViewer = new Viewer<Integer>("int", Integer.class);
 		integerViewer.setData(123);
 		integerViewer.setIcon( TestApplication.url("calculator.png") );
 		add(integerViewer);
 		
-		Viewer<Double> doubleViewer = new Viewer<Double>("real");
+		Viewer<Double> doubleViewer = new Viewer<Double>("real", Double.class);
 		doubleViewer.setData(123.45);		
 		doubleViewer.setIcon( TestApplication.url("calculator.png") );
 		add(doubleViewer);
 		
-		Viewer<Date> dateViewer = new Viewer<Date>("date");
+		Viewer<Date> dateViewer = new Viewer<Date>("date", Date.class);
 		dateViewer.setData( new Date() );
 		dateViewer.setIcon( TestApplication.url("calendar.png") );
 		add(dateViewer);
-
-		Option ok = new Option("");
-		ok.setIcon( TestApplication.url("icon.gif") );
-		ok.setAction( new ExitAction(this) );
-		add( ok );		
 	}
 	
 	

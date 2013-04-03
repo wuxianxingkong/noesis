@@ -19,8 +19,9 @@ public class AboutModel extends UIModel
 
 		add( new Separator () );
 		
-		add( new Label("NOESIS") );
+		add( new Label("<html><center><b>NOESIS</b></center></html>") );
 		add( new Label("Network-Oriented Exploration, Simulation, and Induction System") );
+		add( new Label("<html><center>&copy; Fernando Berzal (berzal@acm.org)</center></html>") );
 		
 		add ( new Separator() );
 		

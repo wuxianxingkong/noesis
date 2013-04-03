@@ -3,7 +3,6 @@ package sandbox.mdsd.test;
 import java.util.Date;
 
 import sandbox.mdsd.ui.Application;
-import sandbox.mdsd.ui.Option;
 import sandbox.mdsd.ui.Editor;
 import sandbox.mdsd.ui.UIModel;
 
@@ -19,7 +18,7 @@ public class EditorModel  extends UIModel
 		
 		Editor<String> multilineEditor = new Editor<String>("multiline", String.class);
 		multilineEditor.setMultiline(true);
-		multilineEditor.setData("Test line 1\nTest line 2");
+		multilineEditor.setData("This is the first line of a multiline field...\nTest line 2");
 		add(multilineEditor);
 
 		Editor<String> passwordEditor = new Editor<String>("password", String.class);
@@ -38,11 +37,6 @@ public class EditorModel  extends UIModel
 		Editor<Date> dateViewer = new Editor<Date>("date", Date.class);
 		dateViewer.setData( new Date() );
 		add(dateViewer);
-
-		Option ok = new Option("");
-		ok.setIcon( TestApplication.url("icon.gif") );
-		ok.setAction( new ExitAction(this) );
-		add( ok );		
 	}
 	
 	

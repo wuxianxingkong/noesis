@@ -10,8 +10,35 @@ import ikor.collection.List;
  */
 public class UIModel extends Component
 {
+	/**
+	 * User interface alignment alternatives
+	 */
+	public enum Alignment {
+		
+		/**
+		 * Leading position (left | top)
+		 */
+		LEADING,
+		
+		/**
+		 * Central position (center | middle)
+		 */
+		CENTER,
+		
+		/**
+		 * Trailing position (right | bottom)
+		 */
+		TRAILING,
+		
+		/**
+		 * Adjust component sizes so that they match each other
+		 */
+		ADJUST
+	}
+	
 	private Application application;
 	private List<Component> components;
+	private Alignment alignment;
 
 
 	public UIModel (Application application)
@@ -25,6 +52,7 @@ public class UIModel extends Component
 
 		this.application = application;
 		this.components = new DynamicList<Component>();
+		this.alignment = Alignment.CENTER;
 	}
 	
 	/**
@@ -76,6 +104,26 @@ public class UIModel extends Component
 	public void setApplication(Application application) 
 	{
 		this.application = application;
+	}
+
+	/**
+	 * Get current alignment.
+	 * 
+	 * @return UI alignment
+	 */
+	public Alignment getAlignment() 
+	{
+		return alignment;
+	}
+
+	/**
+	 * Set model alignment.
+	 * 
+	 * @param alignment UI alignment to set
+	 */
+	public void setAlignment(Alignment alignment) 
+	{
+		this.alignment = alignment;
 	}
 
 }

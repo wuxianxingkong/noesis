@@ -29,7 +29,7 @@ public class SwingViewerFactory implements UIFactory<SwingUI,Viewer>
 		
 		JLabel data = new JLabel();
 		
-		data.setText( "<html>"+viewer.getData().toString().replace("\n","<br>")+"</html>" );
+		data.setText( "<html>"+viewer.getValue().replace("\n","<br>")+"</html>" );
 		data.setBorder( BorderFactory.createEtchedBorder() );
 		data.setBackground( javax.swing.UIManager.getDefaults().getColor("info"));
 		data.setOpaque(true);

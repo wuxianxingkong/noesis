@@ -1,5 +1,7 @@
 package sandbox.mdsd.ui.swing;
 
+import java.awt.Dimension;
+
 import sandbox.mdsd.ui.Image;
 import sandbox.mdsd.ui.UIFactory;
 
@@ -19,6 +21,8 @@ public class SwingBackgroundFactory implements UIFactory<SwingUI,Image>
 	    public ImagePanel (java.awt.Image image) 
 	    {
 	        this.image = image;
+	        
+	        setPreferredSize( new Dimension(2*image.getWidth(null), 2*image.getHeight(null)) );
 	    }
 	    
 	    @Override

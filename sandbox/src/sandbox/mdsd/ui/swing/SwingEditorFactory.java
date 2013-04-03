@@ -49,6 +49,7 @@ public class SwingEditorFactory implements UIFactory<SwingUI,Editor>
 	    }
 		
 		control.setText( editor.getValue() );
+		control.setFont( title.getFont() );
 		control.setBackground( javax.swing.UIManager.getDefaults().getColor("TextField.background"));
 		control.setEditable(true);
 		

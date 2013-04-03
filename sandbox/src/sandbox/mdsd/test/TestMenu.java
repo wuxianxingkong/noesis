@@ -104,11 +104,11 @@ public class TestMenu extends Menu
 		
 		// Help
 		
-		Option search = new Option("Tutorial", new ForwardAction( new ViewerModel(app) ), KeyEvent.VK_F1 );
+		Option search = new Option("Tutorial", new ForwardAction( new NestedModel(app) ) );
 		search.setIcon( TestApplication.url("tutor.png") );
 		help.add(search);
 
-		Option docs = new Option("Documentation", new ForwardAction( new ViewerModel(app) ), KeyEvent.VK_F1 );
+		Option docs = new Option("Documentation", new ForwardAction( new NestedModel2(app) ), KeyEvent.VK_F1 );
 		docs.setIcon( TestApplication.url("docs.png") );
 		help.add(docs);
 		

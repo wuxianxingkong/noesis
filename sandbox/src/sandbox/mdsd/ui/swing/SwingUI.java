@@ -7,6 +7,7 @@ import java.net.URL;
 
 import ikor.collection.Dictionary;
 import ikor.collection.DynamicDictionary;
+import ikor.collection.Stack;
 
 import sandbox.mdsd.log.Log;
 import sandbox.mdsd.ui.Component;
@@ -54,6 +55,7 @@ public class SwingUI extends JFrame implements UI
 		builders.set ( Separator.class, new SwingSeparatorFactory() );
 		builders.set ( Viewer.class, new SwingViewerFactory() );
 		builders.set ( Editor.class, new SwingEditorFactory() );
+		builders.set ( UIModel.class, new SwingUIModelFactory() );
 		
 		options = new DynamicDictionary<String,UIFactory>();
 		
@@ -68,7 +70,7 @@ public class SwingUI extends JFrame implements UI
 	{
 		this.setTitle (context.getId());
 				
-		initLayout();
+		initLayout(context);
 
 		// Components
 		
@@ -86,7 +88,7 @@ public class SwingUI extends JFrame implements UI
 	 * @param component UI component
 	 */
 	
-	private void build (Component component)
+	public void build (Component component)
 	{
 		UIFactory factory = null;
 		
@@ -129,21 +131,33 @@ public class SwingUI extends JFrame implements UI
 	 */
 	
 	GroupLayout layout;
-	GroupLayout.Group vertical;
-	GroupLayout.Group horizontal;
 	
-	public GroupLayout initLayout ()
+	Stack<GroupLayout.Group> vertical;
+	Stack<GroupLayout.Group> horizontal;
+	Stack<UIModel> models;
+	Stack<java.awt.Component> controls;
+	
+	static java.awt.Component dummy = new javax.swing.JSeparator();
+	
+	public GroupLayout initLayout (UIModel model)
 	{
 		layout = new GroupLayout(getContentPane());
 		layout.setAutoCreateGaps(true);
 		layout.setAutoCreateContainerGaps(true);
 		getContentPane().setLayout(layout);
 		
-		vertical = layout.createSequentialGroup();
-		horizontal = layout.createParallelGroup(GroupLayout.Alignment.CENTER);
-
-		layout.setHorizontalGroup(horizontal);
-		layout.setVerticalGroup(vertical);
+		vertical = new Stack<GroupLayout.Group>();
+		horizontal = new Stack<GroupLayout.Group>();
+		controls = new Stack<java.awt.Component>();
+		models = new Stack<UIModel>();
+		
+		vertical.push( layout.createSequentialGroup() );
+		horizontal.push(layout.createParallelGroup( getGroupAlignment(model) ) );
+		models.push(model);
+		controls.push(dummy);
+		
+		layout.setHorizontalGroup(horizontal.peek());
+		layout.setVerticalGroup(vertical.peek());
 		
 		return layout;
 	}
@@ -153,10 +167,68 @@ public class SwingUI extends JFrame implements UI
 		return layout;
 	}
 	
-	public void addComponent (java.awt.Component component)
+	public void addComponent (java.awt.Component control)
 	{
-		horizontal.addComponent(component);
-		vertical.addComponent(component);
+		horizontal.peek().addComponent(control);
+		vertical.peek().addComponent(control);
+		
+		java.awt.Component last = controls.pop();
+		
+		if ((last!=dummy) && (models.peek().getAlignment() == UIModel.Alignment.ADJUST))
+			layout.linkSize(last, control);
+		
+		controls.push(control);
+	}
+	
+	private GroupLayout.Alignment getGroupAlignment (UIModel model)
+	{
+		GroupLayout.Alignment groupAlignment;
+
+		switch (model.getAlignment()) {
+		case LEADING:
+			groupAlignment = GroupLayout.Alignment.LEADING;
+			break;
+		case CENTER:
+			groupAlignment = GroupLayout.Alignment.CENTER;
+			break;
+		case TRAILING:
+			groupAlignment = GroupLayout.Alignment.TRAILING;
+			break;
+		default:
+			groupAlignment = GroupLayout.Alignment.CENTER;
+		}
+		
+		return groupAlignment;
+	}
+	
+	public void startGroup (UIModel model)	
+	{
+		GroupLayout.Group     newHorizontal;
+		GroupLayout.Group     newVertical;
+		
+		if (horizontal.size()%2 == 0) {
+			newVertical =  layout.createSequentialGroup();
+			newHorizontal = layout.createParallelGroup(getGroupAlignment(model));
+		} else {
+			newVertical = layout.createParallelGroup(getGroupAlignment(model));
+			newHorizontal = layout.createSequentialGroup();
+		}
+		
+		horizontal.peek().addGroup(newHorizontal);
+		vertical.peek().addGroup(newVertical);
+		
+		horizontal.push(newHorizontal);
+		vertical.push(newVertical);
+		controls.push(dummy);
+		models.push(model);
+	}
+	
+	public void endGroup ()
+	{
+		vertical.pop();
+		horizontal.pop();
+		controls.pop();
+		models.pop();
 	}
 
 	/**

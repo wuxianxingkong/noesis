@@ -10,6 +10,8 @@ public class ListModel  extends UIModel
 	public ListModel (Application app)
 	{
 		super(app, "Lists...");
+
+		setAlignment( UIModel.Alignment.LEADING );
 		
 		Selector selector = new Selector();
 		
@@ -22,11 +24,6 @@ public class ListModel  extends UIModel
 		//selector.add( new Separator() );
 
 		add (selector);
-		
-		Option ok = new Option("");
-		ok.setIcon( TestApplication.url("icon.gif") );
-		ok.setAction( new ExitAction(this) );
-		add( ok );		
 	}
 	
 	private Option createOption (Selector selector, String text, String icon)

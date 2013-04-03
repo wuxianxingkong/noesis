@@ -2,8 +2,8 @@ package sandbox.mdsd.ui;
 
 public class Viewer<T> extends DataComponent<T> 
 {
-	public Viewer (String id)
+	public Viewer (String id, Class type)
 	{
-		super(id);
+		super(id, type);
 	}
 }

@@ -7,6 +7,7 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListDataListener;
@@ -33,10 +34,14 @@ public class SwingSelectorFactory implements UIFactory<SwingUI,Selector>
 			jlist.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		else
 			jlist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
+
+		//jlist.setBorder( BorderFactory.createEtchedBorder() );
 		jlist.setCellRenderer(renderer);
 		jlist.addListSelectionListener( new ListHandler(selector) );
-		ui.addComponent ( jlist );	
+		
+		JScrollPane scroll = new JScrollPane(jlist); 
+		
+		ui.addComponent ( scroll );	
 	}
 
 	// Event handler

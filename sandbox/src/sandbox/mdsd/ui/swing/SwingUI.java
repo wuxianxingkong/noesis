@@ -293,12 +293,38 @@ public class SwingUI extends JFrame implements UI
 				
 		// Pack UI elements...  
 		  
-		this.pack();  // vs. this.setSize(width, height);
+		this.pack();
 
-		// Center on screen 
+		// Screen location 
 		   
-		Dimension size = this.getPreferredSize();  
-		this.setLocation((int) ( width/2 - size.getWidth()/2 ), (int) ( height/2 - size.getHeight()/2) );   		
+		Dimension size = this.getPreferredSize();
+		int       x,y;
+		
+		switch (context.getAlignment()) {
+		
+		case LEADING: // Top left
+			x = 0;
+			y = 0;
+			break;
+
+		case TRAILING: // Bottom right
+			x = (int) (width - size.getWidth());
+			y = (int) (height - size.getHeight());
+			break;
+			
+		case ADJUST: // Full screen
+			x = 0;
+			y = 0;
+			this.setSize(width,height);
+			break;
+
+		case CENTER: // Center on screen
+		default:
+			x = (int) (width - size.getWidth())/2;
+			y = (int) (height - size.getHeight())/2;
+		}
+		
+		this.setLocation(x,y);   		
 	}
 	
 	

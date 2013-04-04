@@ -17,10 +17,8 @@ public class ListModel  extends UIModel
 		
 		selector.setMultipleSelection(true);
 		
-		selector.add( createOption(selector, "GDF network", "kiviat.png") );
-		selector.add( createOption(selector, "GML network", "kiviat.png") );
-		selector.add( createOption(selector, "GraphML network", "kiviat.png") );
-		selector.add( createOption(selector, "Pajek network", "kiviat.png") );
+		for (int i=1; i<=6; i++)
+			selector.add( createOption(selector, "Network #"+i, "kiviat.png") );
 		//selector.add( new Separator() );
 
 		add (selector);

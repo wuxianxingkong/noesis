@@ -10,8 +10,6 @@ public class NestedModel extends UIModel
 	{
 		super(app, "Nested controls...");
 		
-		setAlignment( UIModel.Alignment.TRAILING );
-		
 		// Nested panels
 		
 		UIModel panel = new UIModel(app, "Panels...");

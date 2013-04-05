@@ -1,6 +1,6 @@
 package sandbox.mdsd.ui;
 
-import sandbox.mdsd.Context;
+import sandbox.mdsd.Subject;
 
 import ikor.collection.Dictionary;
 
@@ -9,7 +9,7 @@ import ikor.collection.Dictionary;
  * 
  * @author Fernando Berzal
  */
-public abstract class Application implements Context, Runnable
+public abstract class Application extends Subject implements Runnable
 {
 	private String    name;
 	private UIModel   startup;

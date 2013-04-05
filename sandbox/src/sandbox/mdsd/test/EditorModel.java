@@ -2,11 +2,17 @@ package sandbox.mdsd.test;
 
 import java.util.Date;
 
+import ikor.math.Decimal;
+
+import sandbox.mdsd.data.IntegerModel;
+import sandbox.mdsd.data.TextModel;
+import sandbox.mdsd.data.PasswordModel;
+
 import sandbox.mdsd.ui.Application;
 import sandbox.mdsd.ui.Editor;
 import sandbox.mdsd.ui.UIModel;
 
-public class EditorModel  extends UIModel
+public class EditorModel extends UIModel
 {
 	public EditorModel (Application app)
 	{
@@ -16,27 +22,38 @@ public class EditorModel  extends UIModel
 		stringViewer.setData("Test");
 		add(stringViewer);
 		
-		Editor<String> multilineEditor = new Editor<String>("multiline", String.class);
-		multilineEditor.setMultiline(true);
+		TextModel textModel = new TextModel();
+		textModel.setMultiline(true);
+		Editor<String> multilineEditor = new Editor<String>("multiline", textModel);
 		multilineEditor.setData("This is the first line of a multiline field...\nTest line 2");
 		add(multilineEditor);
 
-		Editor<String> passwordEditor = new Editor<String>("password", String.class);
-		passwordEditor.setPassword(true);
+		Editor<String> passwordEditor = new Editor<String>("password", new PasswordModel());
 		passwordEditor.setData("hidden");
 		add(passwordEditor);
 
-		Editor<Integer> integerViewer = new Editor<Integer>("int", Integer.class);
-		integerViewer.setData(123);
-		add(integerViewer);
+		Editor<Integer> integerEditor = new Editor<Integer>("int", Integer.class);
+		integerEditor.setData(123);
+		add(integerEditor);
+
+		IntegerModel integerModel = new IntegerModel();
+		integerModel.setMinimumValue(0);
+		integerModel.setMaximumValue(100);
+		Editor<Integer> integerMinMaxEditor = new Editor<Integer>("int [0-100]", integerModel);
+		integerMinMaxEditor.setData(69);
+		add(integerMinMaxEditor);
+
+		Editor<Double> doubleEditor = new Editor<Double>("real", Double.class);
+		doubleEditor.setData(123.45);		
+		add(doubleEditor);
+
+		Editor<Decimal> decimalEditor = new Editor<Decimal>("decimal", Decimal.class);
+		decimalEditor.setData( new Decimal("0.123456789") );
+		add(decimalEditor);
 		
-		Editor<Double> doubleViewer = new Editor<Double>("real", Double.class);
-		doubleViewer.setData(123.45);		
-		add(doubleViewer);
-		
-		Editor<Date> dateViewer = new Editor<Date>("date", Date.class);
-		dateViewer.setData( new Date() );
-		add(dateViewer);
+		Editor<Date> dateEditor = new Editor<Date>("date", Date.class);
+		dateEditor.setData( new Date() );
+		add(dateEditor);
 	}
 	
 	

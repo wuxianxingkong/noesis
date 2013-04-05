@@ -1,7 +1,16 @@
 package sandbox.mdsd.ui.swing;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+
+import sandbox.mdsd.data.DataModel;
+import sandbox.mdsd.data.NumberModel;
+import sandbox.mdsd.data.DateModel;
 
 import sandbox.mdsd.ui.Label;
 import sandbox.mdsd.ui.Viewer;
@@ -27,14 +36,48 @@ public class SwingViewerFactory implements UIFactory<SwingUI,Viewer>
 		ui.addComponent ( title );	
 
 		
-		JLabel data = new JLabel();
+		JLabel    control = new JLabel();
+		DataModel model = viewer.getModel();
 		
-		data.setText( "<html>"+viewer.getValue().replace("\n","<br>")+"</html>" );
-		data.setBorder( BorderFactory.createEtchedBorder() );
-		data.setBackground( javax.swing.UIManager.getDefaults().getColor("info"));
-		data.setOpaque(true);
+		if ((model instanceof NumberModel) || (model instanceof DateModel)) {
+			control.setHorizontalAlignment(SwingConstants.RIGHT);
+		}
 		
-		ui.addComponent( data );
+		control.setText( "<html>"+viewer.getValue().replace("\n","<br>")+"</html>" );
+		control.setBorder( BorderFactory.createEtchedBorder() );
+		control.setBackground( javax.swing.UIManager.getDefaults().getColor("info"));
+		control.setOpaque(true);
 		
+		viewer.addObserver(new LabelObserver(viewer, control));	
+		
+		ui.addComponent( control );
+		
+	}	
+	
+	
+	// Observer design pattern
+	
+	public class LabelObserver implements Observer
+	{
+		private JLabel control;
+		private Viewer viewer;
+		
+		public LabelObserver (Viewer viewer, JLabel control)
+		{
+			this.viewer = viewer;
+			this.control = control;
+		}
+
+		@Override
+		public void update(Observable o, Object arg) 
+		{
+		    SwingUtilities.invokeLater(new Runnable() 
+		    {
+		      public void run()
+		      {
+		    	  control.setText( "<html>"+viewer.getValue().replace("\n","<br>")+"</html>" );
+		      }
+		    });			
+		}
 	}	
 }

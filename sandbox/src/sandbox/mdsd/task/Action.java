@@ -1,6 +1,6 @@
 package sandbox.mdsd.task;
 
-import sandbox.mdsd.Context;
+import sandbox.mdsd.Subject;
 
 /**
  * Command design pattern: Base class for actions/commands.
@@ -9,14 +9,14 @@ import sandbox.mdsd.Context;
  */
 public abstract class Action implements Runnable 
 {
-	private Context context;
+	private Subject context;
 
 	/**
 	 * Get action context.
 	 * 
 	 * @return the context
 	 */
-	public Context getContext() 
+	public Subject getContext() 
 	{
 		return context;
 	}
@@ -26,7 +26,7 @@ public abstract class Action implements Runnable
 	 * 
 	 * @param context the context to set
 	 */
-	public void setContext(Context context) 
+	public void setContext(Subject context) 
 	{
 		this.context = context;
 	}

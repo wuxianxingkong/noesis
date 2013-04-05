@@ -2,14 +2,14 @@ package sandbox.mdsd.ui;
 
 import java.util.UUID;
 
-import sandbox.mdsd.Context;
+import sandbox.mdsd.Subject;
 
 /**
  * Base class for user interface components.
  * 
  * @author Fernando Berzal
  */
-public class Component implements Context
+public class Component extends Subject
 {
 	private String id;
 	

@@ -1,19 +1,22 @@
 package sandbox.mdsd.ui;
 
-import java.text.DateFormat;
-import java.util.Date;
+import java.util.Observable;
+import java.util.Observer;
 
-public class DataComponent<T> extends Component
+import sandbox.mdsd.data.DataModel;
+import sandbox.mdsd.log.Log;
+
+public class DataComponent<T> extends Component implements Observer
 {	
-	private T data;
-	private Class type;
-	private Label label;
+	private T            data;
+	private DataModel<T> model;
+	private Label        label;
 	
-	public DataComponent (String id, Class type)
+	public DataComponent (String id, DataModel<T> model)
 	{
 		super(id);
 		
-		this.type = type;
+		this.model = model;
 		this.label = new Label(id);
 	}
 	
@@ -22,63 +25,52 @@ public class DataComponent<T> extends Component
 	{
 		return data;
 	}
+	
+	boolean updating = false;
 
 	public void setData(T data) 
 	{
-		this.data = data;
+		if (!updating) {
+			
+			updating = true;
+			
+			if (  ((data!=null) && !data.equals(this.data)) 
+					|| ((data==null) && (this.data!=null) ) ) {
+				this.data = data;
+				notifyObservers(data);
+			}
+
+			updating = false;
+		}
 	}
 
 	
 	public String getValue ()
 	{
-		String value;
-		
-		if (type.isAssignableFrom(Date.class))
-			value = DateFormat.getDateInstance().format( (Date) getData() );
+		if (data!=null)
+			return model.toString(data);
 		else
-			value = getData().toString();
-		
-		return value;
+			return "";
 	}
 
 	public boolean setValue (String value)
 	{
-		boolean ok = true;
+		Object obj = model.fromString(value);
 		
-		try {
-			
-			if (type.isAssignableFrom(String.class))
-				setData((T)value);
-			else if (type.isAssignableFrom(Integer.class))
-				setData( (T) new Integer(value) );
-			else if (type.isAssignableFrom(Long.class))
-				setData( (T) new Long(value) );
-			else if (type.isAssignableFrom(Float.class))
-				setData( (T) new Float(value) );
-			else if (type.isAssignableFrom(Double.class))
-				setData( (T) new Double(value) );
-			else if (type.isAssignableFrom(Boolean.class)) 
-				setData( (T) new Boolean(value) );
-			else if (type.isAssignableFrom(Date.class)) {
-				
-				Date date = DateFormat.getDateInstance().parse(value);
-				
-				if (date!= null)	
-					setData( (T) date );
-				else
-					ok = false;
+		if (obj!=null)
+			setData((T)obj);
+		
+		return (obj!=null);	
+	}
 
-			} else {
-				setData((T)value);
-			}
-			
-		} catch (Exception error) {
-			
-			// Log.info("Unable to assign value '"+value+"' to "+type.toString());
-			ok = false;
-		}
-		
-		return ok;
+	public DataModel<T> getModel() 
+	{
+		return model;
+	}
+
+	public void setModel(DataModel<T> model) 
+	{
+		this.model = model;
 	}
 
 
@@ -96,6 +88,13 @@ public class DataComponent<T> extends Component
 	public void setIcon (String icon) 
 	{
 		label.setIcon(icon);
+	}
+
+
+	@Override
+	public void update(Observable o, Object arg) 
+	{
+		this.setData ( (T) arg );
 	}	
 
 }

@@ -1,12 +1,14 @@
 package sandbox.mdsd.test;
 
+import ikor.math.Decimal;
+
 import java.util.Date;
 
 import sandbox.mdsd.ui.Application;
 import sandbox.mdsd.ui.Viewer;
 import sandbox.mdsd.ui.UIModel;
 
-public class ViewerModel  extends UIModel
+public class ViewerModel extends UIModel
 {
 	public ViewerModel (Application app)
 	{
@@ -33,6 +35,10 @@ public class ViewerModel  extends UIModel
 		doubleViewer.setData(123.45);		
 		doubleViewer.setIcon( TestApplication.url("calculator.png") );
 		add(doubleViewer);
+		
+		Viewer<Decimal> decimalViewer = new Viewer<Decimal>("decimal", Decimal.class);
+		decimalViewer.setData( new Decimal("0.123456789") );
+		add(decimalViewer);		
 		
 		Viewer<Date> dateViewer = new Viewer<Date>("date", Date.class);
 		dateViewer.setData( new Date() );

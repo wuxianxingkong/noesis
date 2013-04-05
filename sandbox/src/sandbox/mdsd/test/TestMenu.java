@@ -101,6 +101,10 @@ public class TestMenu extends Menu
 		Option editData = new Option("Edit", new ForwardAction( new EditorModel(app) ) );
 		editData.setIcon( TestApplication.url("microscope.png") );
 		data.add(editData);
+
+		Option mvcData = new Option("MVC", new ForwardAction( new MVCModel(app) ) );
+		mvcData.setIcon( TestApplication.url("microscope.png") );
+		data.add(mvcData);
 		
 		// Help
 		

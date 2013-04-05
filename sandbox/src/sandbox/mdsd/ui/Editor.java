@@ -1,37 +1,19 @@
 package sandbox.mdsd.ui;
 
+import sandbox.mdsd.data.DataModel;
+import sandbox.mdsd.data.DataModelFactory;
 
-public class Editor<T> extends DataComponent<T>
+
+public class Editor<T> extends DataComponent<T> 
 {
-	private boolean multiline;
-	private boolean password;
+	public Editor (String id, DataModel<T> model)
+	{
+		super(id,model);
+	}
 	
 	public Editor (String id, Class type)
 	{
-		super(id,type);
+		this(id, DataModelFactory.create(type));
 	}
-	
-	
-
-	
-	public boolean isMultiline() 
-	{
-		return multiline;
-	}
-
-	public void setMultiline(boolean multiline) 
-	{
-		this.multiline = multiline;
-	}
-
-	public boolean isPassword() 
-	{
-		return password;
-	}
-
-	public void setPassword(boolean password) 
-	{
-		this.password = password;
-	}
-		
+			
 }

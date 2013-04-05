@@ -1,12 +1,12 @@
 package sandbox.mdsd.ui.swing;
 
-import java.util.Observable;
-import java.util.Observer;
-
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+
+import sandbox.mdsd.Subject;
+import sandbox.mdsd.Observer;
 
 import sandbox.mdsd.data.DataModel;
 import sandbox.mdsd.data.NumberModel;
@@ -69,7 +69,7 @@ public class SwingViewerFactory implements UIFactory<SwingUI,Viewer>
 		}
 
 		@Override
-		public void update(Observable o, Object arg) 
+		public void update(Subject o, Object arg) 
 		{
 		    SwingUtilities.invokeLater(new Runnable() 
 		    {

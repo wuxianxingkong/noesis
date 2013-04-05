@@ -3,8 +3,6 @@ package sandbox.mdsd.ui.swing;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
@@ -15,6 +13,9 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.JTextComponent;
+
+import sandbox.mdsd.Observer;
+import sandbox.mdsd.Subject;
 
 import sandbox.mdsd.data.DataModel;
 import sandbox.mdsd.data.TextModel;
@@ -191,7 +192,7 @@ public class SwingEditorFactory implements UIFactory<SwingUI,Editor>
 		
 
 		@Override
-		public void update(Observable o, Object arg) 
+		public void update (Subject o, Object arg) 
 		{
 			if (SwingUtilities.isEventDispatchThread()) {
 				mutator.updateControl();

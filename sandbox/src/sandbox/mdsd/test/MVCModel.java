@@ -1,7 +1,5 @@
 package sandbox.mdsd.test;
 
-import java.util.Observable;
-
 import ikor.math.Decimal;
 
 import sandbox.mdsd.Subject;
@@ -16,7 +14,7 @@ import sandbox.mdsd.ui.UIModel;
 
 public class MVCModel extends UIModel
 {
-	class MVCData extends Subject implements java.util.Observer
+	class MVCData extends Subject<Decimal>
 	{
 		Decimal number;
 		
@@ -33,10 +31,10 @@ public class MVCModel extends UIModel
 		}
 		
 		@Override
-		public void update(Observable o, Object arg) 
+		public void update (Subject subject, Decimal object) 
 		{
-			Log.info("MVC - "+arg+" @ "+o);
-			setNumber( (Decimal) arg );		
+			Log.info("MVC - "+object+" @ "+subject);
+			setNumber( object );		
 		}
 
 		
@@ -51,32 +49,22 @@ public class MVCModel extends UIModel
 		DecimalModel decimalModel = new DecimalModel();
 		decimalModel.setDecimalDigits(2);
 		
-		Viewer<Decimal> firstViewer = new Viewer<Decimal>("Decimal viewer 1", Decimal.class);
-		data.addObserver(firstViewer);
+		Viewer<Decimal> firstViewer = new Viewer<Decimal>("Decimal viewer 1", data, Decimal.class);
 		add(firstViewer);
 
-		Viewer<Decimal> secondViewer = new Viewer<Decimal>("Decimal viewer 2", Decimal.class);
-		data.addObserver(secondViewer);
+		Viewer<Decimal> secondViewer = new Viewer<Decimal>("Decimal viewer 2", data, Decimal.class);
 		add(secondViewer);
 
-		Viewer<Decimal> thirdViewer = new Viewer<Decimal>("Decimal viewer 3 [X.XX]", decimalModel);
-		data.addObserver(thirdViewer);
+		Viewer<Decimal> thirdViewer = new Viewer<Decimal>("Decimal viewer 3 [X.XX]", data, decimalModel);
 		add(thirdViewer);
 
-		Editor<Decimal> firstEditor = new Editor<Decimal>("Decimal editor 1", Decimal.class);
-		data.addObserver(firstEditor);
-		firstEditor.addObserver(data);
+		Editor<Decimal> firstEditor = new Editor<Decimal>("Decimal editor 1", data, Decimal.class);
 		add(firstEditor);
 
-		Editor<Decimal> secondEditor = new Editor<Decimal>("Decimal editor 2", Decimal.class);
-		data.addObserver(secondEditor);
-		secondEditor.addObserver(data);
+		Editor<Decimal> secondEditor = new Editor<Decimal>("Decimal editor 2", data, Decimal.class);
 		add(secondEditor);
 
-
-		Editor<Decimal> thirdEditor = new Editor<Decimal>("Decimal editor 3 [X.XX]", decimalModel);
-		data.addObserver(thirdEditor);
-		thirdEditor.addObserver(data);
+		Editor<Decimal> thirdEditor = new Editor<Decimal>("Decimal editor 3 [X.XX]", data, decimalModel);
 		add(thirdEditor);		
 		
 		data.setNumber(new Decimal("123.45"));

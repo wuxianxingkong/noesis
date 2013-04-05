@@ -9,7 +9,7 @@ import sandbox.mdsd.Subject;
  * 
  * @author Fernando Berzal
  */
-public class Component extends Subject
+public class Component<T> extends Subject<T>
 {
 	private String id;
 	

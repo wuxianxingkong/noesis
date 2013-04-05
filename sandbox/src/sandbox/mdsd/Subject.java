@@ -1,27 +1,56 @@
 package sandbox.mdsd;
 
-import java.util.Observable;
+import ikor.collection.List;
+
 
 /**
- * Observer design pattern (http://en.wikipedia.org/wiki/Observer_pattern), to be used with the java.util.Observer interface.
+ * Observer design pattern (http://en.wikipedia.org/wiki/Observer_pattern), to be used with the Observer interface.
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public abstract class Subject extends Observable
+public abstract class Subject<T> implements Observer<T>
 {
-
-	@Override
-	public void notifyObservers() 
+	private List<Observer<T>> observers = new ikor.collection.DynamicList<Observer<T>>();
+	
+	
+	public final void notifyObservers() 
 	{
-		this.setChanged();
-		super.notifyObservers();
+		notifyObservers(null);
 	}
 	
-	@Override
-	public void notifyObservers(Object arg) 
+	public final void notifyObservers(T object) 
 	{
-		this.setChanged();
-		super.notifyObservers(arg);
+		for (Observer<T> observer: observers)
+			observer.update(this, object);
+	}
+
+	public final List<Observer<T>> getObservers() 
+	{
+		return observers;
+	}
+
+	public final void clearObservers()
+	{
+		observers.clear();
+	}
+
+	public final void addObserver(Observer<T> observer)
+	{
+		observers.add(observer);
+	}
+
+	public final boolean removeObserver(Observer<T> observer)
+	{
+		return observers.remove(observer);
+	}
+	
+	
+	/**
+	 * Observer interface (override when necessary).
+	 */
+	
+	public void update (Subject<T> subject, T object)
+	{
 	}
 	
 }

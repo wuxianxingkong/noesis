@@ -1,12 +1,11 @@
 package sandbox.mdsd.ui;
 
-import java.util.Observable;
-import java.util.Observer;
-
+import sandbox.mdsd.Observer;
+import sandbox.mdsd.Subject;
 import sandbox.mdsd.data.DataModel;
-import sandbox.mdsd.log.Log;
 
-public class DataComponent<T> extends Component implements Observer
+
+public class DataComponent<T> extends Component<T> implements Observer<T>
 {	
 	private T            data;
 	private DataModel<T> model;
@@ -91,10 +90,9 @@ public class DataComponent<T> extends Component implements Observer
 	}
 
 
-	@Override
-	public void update(Observable o, Object arg) 
+	public void update(Subject<T> subject, T object) 
 	{
-		this.setData ( (T) arg );
+		this.setData ( object );
 	}	
 
 }

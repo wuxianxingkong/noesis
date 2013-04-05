@@ -8,7 +8,7 @@ public class FileCloseAction extends Action
 	@Override
 	public void run() 
 	{
-		Log.info("Close");
+		Log.info("File close...");
 
 	}
 

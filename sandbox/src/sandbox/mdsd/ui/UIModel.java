@@ -38,6 +38,7 @@ public class UIModel extends Component
 	
 	private Application application;
 	private List<Component> components;
+	private Label title;
 	private Alignment alignment;
 
 
@@ -52,8 +53,30 @@ public class UIModel extends Component
 
 		this.application = application;
 		this.components = new DynamicList<Component>();
+		this.title = new Label(title);
 		this.alignment = Alignment.CENTER;
 	}
+
+
+	public Label getTitle ()
+	{
+		return title;
+	}
+
+	public void setTitle (String title)
+	{
+		this.title = new Label(title);
+	}
+	
+	public void setTitle (Label label)
+	{
+		this.title = label;
+	}
+
+	public void setIcon (String icon) 
+	{
+		title.setIcon(icon);
+	}	
 	
 	/**
 	 * Get model components.

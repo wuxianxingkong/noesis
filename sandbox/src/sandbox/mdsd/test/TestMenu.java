@@ -36,15 +36,15 @@ public class TestMenu extends Menu
 		
 		edit.disable();
 
-		Option newX = new Option("New...", new FileNewAction() );
+		Option newX = new Option("New...", new FileNewAction(app) );
 		newX.setIcon( TestApplication.url("new.png") );
 		file.add( newX );
 		
-		Option save =new Option("Save", new FileSaveAction(), KeyEvent.VK_F2 );
+		Option save =new Option("Save", new FileSaveAction(app), KeyEvent.VK_F2 );
 		save.setIcon( TestApplication.url("save.png") );
 		file.add( save );
 
-		Option open = new Option("Open", new FileOpenAction(), KeyEvent.VK_F3 );
+		Option open = new Option("Open", new FileOpenAction(app), KeyEvent.VK_F3 );
 		open.setIcon( TestApplication.url("open.png") );
 		file.add( open );
 		
@@ -75,7 +75,7 @@ public class TestMenu extends Menu
 		email.disable();
 		file.add( email );
 
-		Option print = new Option("Print", new FilePrintAction(), KeyEvent.VK_F6 );
+		Option print = new Option("Print", new LogAction("Print..."), KeyEvent.VK_F6 );
 		print.setIcon( TestApplication.url("print.png") );
 		print.disable();
 		file.add( print );

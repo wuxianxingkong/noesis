@@ -11,20 +11,10 @@ public class SwingDatasetEditorFactory  implements UIFactory<SwingUI,DatasetEdit
 	@Override
 	public void build(SwingUI ui, DatasetEditor editor) 
 	{	
-		SwingDatasetModel model;
-		JTable table;
-		
-		model = new SwingDatasetModel(editor,true);
-		table = new JTable(model);
-				
-		table.setFillsViewportHeight(true);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);  // AUTO_RESIZE_OFF enables horizontal scrolling when needed
-		table.setAutoCreateRowSorter(true);
-		
-		model.setRenderers(table);
-		model.setEditors(table);
-
+		SwingDatasetModel model = new SwingDatasetModel(editor,true);
+		JTable table = model.createTable();
 		JScrollPane scroll = new JScrollPane(table);
+		
 		ui.addComponent ( scroll );	
 	}
 

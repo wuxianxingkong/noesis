@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.util.Date;
 
 import javax.swing.AbstractCellEditor;
@@ -24,6 +25,7 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
 
 import sandbox.mdsd.data.ColorModel;
 import sandbox.mdsd.data.DateModel;
@@ -99,10 +101,51 @@ public class SwingDatasetModel extends AbstractTableModel
 		return editable;
 	}
 
+
+	// Component listener
+
+	public static final int MINIMUM_WIDTH_PER_COLUMN = 50;
+	public static final int PREFERRED_WIDTH_PER_COLUMN = 100;
+	
+	public JTable createTable ()
+	{
+		JTable table = new CustomJTable(this);
+		
+		table.setFillsViewportHeight(true);
+		table.setAutoCreateRowSorter(true);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);  
+			// JTable.AUTO_RESIZE_OFF forces horizontal scrolling
+			// JTable.AUTO_RESIZE_LAST_COLUMN only affects the last column
+			// JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS does not modify columns at the left
+		
+		for (int i=0; i<getColumnCount(); i++) {
+			table.getColumnModel().getColumn(i).setMinWidth(MINIMUM_WIDTH_PER_COLUMN);
+			table.getColumnModel().getColumn(i).setPreferredWidth(PREFERRED_WIDTH_PER_COLUMN);
+		}
+		
+		setupRenderers(table);
+		setupEditors(table);
+		
+		return table;
+	}
+	
+	public class CustomJTable extends JTable 
+	{
+		public CustomJTable (TableModel model)
+		{
+			super(model);
+		}
+		
+		public boolean getScrollableTracksViewportWidth() 
+		{  
+			return getMinimumSize().width < getParent().getWidth();
+		}  		
+	}
+	
 	
 	// Custom cell renderers
 	
-	public void setRenderers (JTable table)
+	public void setupRenderers (JTable table)
 	{
 		table.setDefaultRenderer(Float.class, new RealRenderer() );
 		table.setDefaultRenderer(Double.class, new RealRenderer() );
@@ -192,7 +235,7 @@ public class SwingDatasetModel extends AbstractTableModel
 	
 	// Custom cell editors
 	
-	public void setEditors (JTable table)
+	public void setupEditors (JTable table)
 	{
 		table.setDefaultEditor(Date.class, new DateEditor() );
 		table.setDefaultEditor(Color.class, new ColorEditor() );

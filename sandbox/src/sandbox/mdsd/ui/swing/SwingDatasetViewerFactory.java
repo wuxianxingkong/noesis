@@ -12,21 +12,13 @@ public class SwingDatasetViewerFactory implements UIFactory<SwingUI,DatasetViewe
 	@Override
 	public void build(SwingUI ui, DatasetViewer viewer) 
 	{	
-		SwingDatasetModel model;
-		JTable table;
-		
-		model = new SwingDatasetModel(viewer,false);
-		table = new JTable(model);
-		
-		table.setFillsViewportHeight(true);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);  // AUTO_RESIZE_OFF enables horizontal scrolling when needed
-		table.setAutoCreateRowSorter(true);
-		
-		model.setRenderers(table);
-
+		SwingDatasetModel model = new SwingDatasetModel(viewer,false);
+		JTable table = model.createTable();
 		JScrollPane scroll = new JScrollPane(table);
 		
 		ui.addComponent ( scroll );	
 	}
-
+	
+	
+	
 }

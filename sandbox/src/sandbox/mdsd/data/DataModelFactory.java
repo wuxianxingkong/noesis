@@ -5,6 +5,7 @@ import ikor.collection.DynamicDictionary;
 
 import ikor.math.Decimal;
 
+import java.awt.Color;
 import java.util.Date;
 
 public class DataModelFactory 
@@ -29,6 +30,7 @@ public class DataModelFactory
 		models.set(Date.class, DateModel.class);
 		models.set(Quantity.class, QuantityModel.class);
 		models.set(Dataset.class, DatasetModel.class);
+		models.set(Color.class, ColorModel.class);
 	}
 	
 	public DataModel createDataModel (Class type)

@@ -36,19 +36,19 @@ public class TestMenu extends Menu
 		
 		edit.disable();
 
-		Option newX = new Option("New...", new FileNewAction(app) );
+		Option newX = new Option("New...", new FileAction(app,"New") );
 		newX.setIcon( TestApplication.url("new.png") );
 		file.add( newX );
 		
-		Option save =new Option("Save", new FileSaveAction(app), KeyEvent.VK_F2 );
+		Option save =new Option("Save", new FileAction(app,"Save"), KeyEvent.VK_F2 );
 		save.setIcon( TestApplication.url("save.png") );
 		file.add( save );
 
-		Option open = new Option("Open", new FileOpenAction(app), KeyEvent.VK_F3 );
+		Option open = new Option("Open", new FileAction(app,"Open"), KeyEvent.VK_F3 );
 		open.setIcon( TestApplication.url("open.png") );
 		file.add( open );
 		
-		Option close = new Option("Close", new FileCloseAction(), KeyEvent.VK_F4 );
+		Option close = new Option("Close", new LogAction("Close file..."), KeyEvent.VK_F4 );
 		close.setIcon( TestApplication.url("close.png") );
 		file.add( close );
 		
@@ -105,6 +105,18 @@ public class TestMenu extends Menu
 		Option mvcData = new Option("MVC", new ForwardAction( new MVCModel(app) ) );
 		mvcData.setIcon( TestApplication.url("microscope.png") );
 		data.add(mvcData);
+
+		Option colorData = new Option("Color", new ForwardAction( new ColorUIModel(app) ) );
+		colorData.setIcon( TestApplication.url("palette.png") );
+		data.add(colorData);
+
+		Option dataViewer = new Option("Dataset viewer", new ForwardAction( new DatasetTestModel(app, false) ) );
+		dataViewer.setIcon( TestApplication.url("microscope.png") );
+		data.add(dataViewer);
+
+		Option dataEditor = new Option("Dataset editor", new ForwardAction( new DatasetTestModel(app, true) ) );
+		dataEditor.setIcon( TestApplication.url("microscope.png") );
+		data.add(dataEditor);
 		
 		// Help
 		

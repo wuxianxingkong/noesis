@@ -13,7 +13,7 @@ public class AboutModel extends UIModel
 	{
 		super(app, "About NOESIS...");
 		
-		add( new Image("$icon", TestApplication.url("icon.gif") ) );
+		setIcon( TestApplication.url("icon.gif") );
 		
 		add( new Image("logo", TestApplication.url("logo.gif") ) );
 

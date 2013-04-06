@@ -1,6 +1,7 @@
 package sandbox.mdsd.ui.swing;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -17,6 +18,7 @@ import javax.swing.text.JTextComponent;
 import sandbox.mdsd.Observer;
 import sandbox.mdsd.Subject;
 
+import sandbox.mdsd.data.ColorModel;
 import sandbox.mdsd.data.DataModel;
 import sandbox.mdsd.data.TextModel;
 import sandbox.mdsd.data.PasswordModel;
@@ -55,6 +57,8 @@ public class SwingEditorFactory implements UIFactory<SwingUI,Editor>
 			scrollPane = new JScrollPane(control);
 		} else if (model instanceof PasswordModel) {
 			control = new JPasswordField();
+	    } else if (model instanceof ColorModel) {
+	    	control = new JColorTextField();
 	    } else {
 			control = new JTextField();
 	    }
@@ -202,5 +206,36 @@ public class SwingEditorFactory implements UIFactory<SwingUI,Editor>
 		}
 	}
 	
+	
+	/**
+	 * Custom color editor
+	 */
+	
+	public class JColorTextField extends JTextField
+	{
+		ColorModel model = new ColorModel();
+		
+		public Color getColor ()
+		{
+			Color color = model.fromString(getText());
+			
+			if (color==null)
+				color = Color.black;
+			
+			return color;
+		}
+		
+		@Override
+		protected void paintComponent(Graphics g) 
+		{
+			super.paintComponent(g);
+			
+			g.setColor(getColor());
+			g.fillRect(getWidth()-24,3,20, getHeight()-7);
+			g.setColor(Color.black);
+			g.drawRect(getWidth()-24,3,20, getHeight()-7);
+		}
+		
+	}
 	
 }

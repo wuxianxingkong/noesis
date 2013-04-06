@@ -1,14 +1,18 @@
 package sandbox.mdsd.ui;
 
+import sandbox.mdsd.task.Action;
+
 public class File extends UIModel 
 {
 	private String url;
 	private String command;
+	private Action action;	
 	
-	public File (Application app, String title, String method)
+	public File (Application app, String title, String method, Action action)
 	{
 		super(app,title);
 		this.setCommand(method);
+		this.setAction(action);
 	}
 
 	
@@ -30,6 +34,17 @@ public class File extends UIModel
 	public void setCommand(String method) 
 	{
 		this.command = method;
+	}
+
+
+	public Action getAction() 
+	{
+		return action;
+	}
+
+	public void setAction(Action action) 
+	{
+		this.action = action;
 	}
 
 }

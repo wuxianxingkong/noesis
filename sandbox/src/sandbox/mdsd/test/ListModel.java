@@ -11,6 +11,7 @@ public class ListModel  extends UIModel
 	{
 		super(app, "Lists...");
 
+		setIcon( TestApplication.url("icon.gif") );		
 		setAlignment( UIModel.Alignment.LEADING );
 		
 		Selector selector = new Selector();

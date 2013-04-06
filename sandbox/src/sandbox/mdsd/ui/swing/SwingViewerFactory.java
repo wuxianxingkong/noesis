@@ -1,5 +1,7 @@
 package sandbox.mdsd.ui.swing;
 
+import java.awt.Color;
+
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -11,6 +13,7 @@ import sandbox.mdsd.Observer;
 import sandbox.mdsd.data.DataModel;
 import sandbox.mdsd.data.NumberModel;
 import sandbox.mdsd.data.DateModel;
+import sandbox.mdsd.data.ColorModel;
 
 import sandbox.mdsd.ui.Label;
 import sandbox.mdsd.ui.Viewer;
@@ -41,18 +44,38 @@ public class SwingViewerFactory implements UIFactory<SwingUI,Viewer>
 		
 		if ((model instanceof NumberModel) || (model instanceof DateModel)) {
 			control.setHorizontalAlignment(SwingConstants.RIGHT);
+		} else if (model instanceof ColorModel) {
+			control.setHorizontalAlignment(SwingConstants.CENTER);
 		}
 		
-		control.setText( "<html>"+viewer.getValue().replace("\n","<br>")+"</html>" );
-		control.setBorder( BorderFactory.createEtchedBorder() );
 		control.setBackground( javax.swing.UIManager.getDefaults().getColor("info"));
 		control.setOpaque(true);
+		
+		if (viewer.getData() instanceof Color) {
+			control.setBorder( BorderFactory.createMatteBorder(2,5,2,5,ui.getBackground()) );
+		} else {
+			control.setBorder( BorderFactory.createEtchedBorder() );
+		}
+
+		updateLabel(viewer,control);
 		
 		viewer.addObserver(new LabelObserver(viewer, control));	
 		
 		ui.addComponent( control );
 		
 	}	
+	
+	public static void updateLabel (Viewer viewer, JLabel control)
+	{
+		if (viewer.getData() instanceof Color) {
+			Color color = (Color) viewer.getData();
+			control.setBackground(color);
+			// YIQ color space to enhance contrast...
+			control.setForeground( (((color.getRed()*299)+(color.getGreen()*587)+(color.getBlue()*114))/1000>=128) ? Color.black: Color.white );
+		}
+		
+		control.setText( "<html>"+viewer.getValue().replace("\n","<br>")+"</html>" );		
+	}
 	
 	
 	// Observer design pattern
@@ -75,7 +98,7 @@ public class SwingViewerFactory implements UIFactory<SwingUI,Viewer>
 		    {
 		      public void run()
 		      {
-		    	  control.setText( "<html>"+viewer.getValue().replace("\n","<br>")+"</html>" );
+		    	  updateLabel(viewer,control);
 		      }
 		    });			
 		}

@@ -10,6 +10,7 @@ import ikor.collection.DynamicDictionary;
 import ikor.collection.Stack;
 
 import sandbox.mdsd.log.Log;
+
 import sandbox.mdsd.ui.Component;
 import sandbox.mdsd.ui.Menu;
 import sandbox.mdsd.ui.Image;
@@ -19,6 +20,8 @@ import sandbox.mdsd.ui.Selector;
 import sandbox.mdsd.ui.Separator;
 import sandbox.mdsd.ui.Viewer;
 import sandbox.mdsd.ui.Editor;
+import sandbox.mdsd.ui.DatasetViewer;
+import sandbox.mdsd.ui.DatasetEditor;
 import sandbox.mdsd.ui.UIModel;
 import sandbox.mdsd.ui.UI;
 import sandbox.mdsd.ui.UIFactory;
@@ -55,6 +58,8 @@ public class SwingUI extends JFrame implements UI
 		builders.set ( Separator.class, new SwingSeparatorFactory() );
 		builders.set ( Viewer.class, new SwingViewerFactory() );
 		builders.set ( Editor.class, new SwingEditorFactory() );
+		builders.set ( DatasetViewer.class, new SwingDatasetViewerFactory() );
+		builders.set ( DatasetEditor.class, new SwingDatasetEditorFactory() );
 		builders.set ( UIModel.class, new SwingUIModelFactory() );
 		
 		options = new DynamicDictionary<String,UIFactory>();
@@ -68,7 +73,18 @@ public class SwingUI extends JFrame implements UI
 	
 	private void buildUI ()
 	{
-		this.setTitle (context.getId());
+		if (context.getTitle()!=null) {
+			
+			Label label = context.getTitle();
+			
+			this.setTitle (label.getText());
+			
+			if (label.getIcon()!=null)
+				setIconImage( loadIcon(label.getIcon()).getImage() );
+			
+		} else {
+			this.setTitle (context.getId());
+		}
 				
 		initLayout(context);
 

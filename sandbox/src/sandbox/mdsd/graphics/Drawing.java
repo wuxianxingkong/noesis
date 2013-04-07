@@ -9,10 +9,14 @@ import ikor.collection.ReadOnlyCollection;
 
 public class Drawing 
 {
+	private int width;
+	private int height;
 	private List<DrawingElement> elements;
 	
-	public Drawing ()
+	public Drawing (int width, int height)
 	{
+		this.width = width;
+		this.height = height;
 		this.elements = new DynamicList<DrawingElement>();
 	}
 
@@ -32,6 +36,40 @@ public class Drawing
 	public ReadOnlyCollection<DrawingElement> getElements() 
 	{
 		return elements;
+	}
+	
+	
+	public DrawingElement getDrawingElement (String id)
+	{
+		for (DrawingElement element: elements)
+			if (element.getId().equals(id))
+				return element;
+		
+		return null;
+	}
+	
+	public DrawingElement getDrawingElement (int x, int y)
+	{
+		DrawingElement element;
+		
+		for (int i=elements.size()-1; i>=0; i--) {
+			element = elements.get(i);
+			
+			if (element.containsPoint(x,y))
+				return element;
+		}
+		
+		return null;
+	}
+
+	public String getElement (int x, int y)
+	{
+		DrawingElement element = getDrawingElement(x,y);
+		
+		if (element!=null)
+			return element.getId();
+		else
+			return null;
 	}
 	
 	// Drawing styles
@@ -57,6 +95,29 @@ public class Drawing
 		}
 		
 		return styles.values();
+	}
+
+	// Dimensions
+	// ----------
+	
+	public int getWidth() 
+	{
+		return width;
+	}
+
+	public void setWidth(int width) 
+	{
+		this.width = width;
+	}
+
+	public int getHeight() 
+	{
+		return height;
+	}
+
+	public void setHeight(int height) 
+	{
+		this.height = height;
 	}
 
 	

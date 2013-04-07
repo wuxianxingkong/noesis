@@ -1,6 +1,6 @@
 package sandbox.mdsd.graphics;
 
-public class Circle extends DrawingElement 
+public class Circle extends Shape 
 {
 	private int centerX;
 	private int centerY;
@@ -72,5 +72,11 @@ public class Circle extends DrawingElement
 	public int getY() 
 	{
 		return centerY-radius;
+	}
+
+	@Override
+	public boolean containsPoint(int x, int y) 
+	{
+		return ( (x-centerX)*(x-centerX) + (y-centerY)*(y-centerY) <= radius*radius );
 	}
 }

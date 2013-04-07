@@ -1,89 +1,77 @@
 package sandbox.mdsd.graphics;
 
-public class Rectangle extends DrawingElement 
+public class Rectangle extends Shape 
 {
-	private int startX;
-	private int startY;
-	private int endX;
-	private int endY;
+	private int x;
+	private int y;
+	private int width;
+	private int height;
 	
-	public Rectangle (String id, Style style, Style border, int startX, int startY, int endX, int endY)
+	public Rectangle (String id, Style style, Style border, int x, int y, int width, int height)
 	{
 		super(id,style,border);
 		
-		this.startX = startX;
-		this.startY = startY;
-		this.endX = endX;
-		this.endY = endY;
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
 	}
 	
-	public int getStartX() 
+	public int getX() 
 	{
-		return startX;
+		return x;
 	}
 	
-	public void setStartX(int startX) 
+	public void setX(int x) 
 	{
-		this.startX = startX;
+		this.x = x;
 	}
 	
-	public int getStartY() 
+	public int getY() 
 	{
-		return startY;
+		return y;
 	}
 	
-	public void setStartY(int startY) 
+	public void setY(int y) 
 	{
-		this.startY = startY;
+		this.y = y;
 	}
-	
-	public int getEndX() 
-	{
-		return endX;
-	}
-	
-	public void setEndX(int endX) 
-	{
-		this.endX = endX;
-	}
-	
-	public int getEndY() 
-	{
-		return endY;
-	}
-	
-	public void setEndY(int endY) 
-	{
-		this.endY = endY;
-	}
-	
-	public String toString ()
-	{
-		return String.format("r(%d,%d)(%d,%d)", startX, startY, endX, endY);
-	}
+
 	
 	@Override
 	public int getWidth() 
 	{
-		return Math.abs(endX-startX);
+		return width;
+	}
+	
+	public void setWidth (int width)
+	{
+		this.width = width;
 	}
 
 	@Override
 	public int getHeight() 
 	{
-		return Math.abs(endY-startY);
+		return height;
+	}
+	
+	public void setHeight (int height)
+	{
+		this.height = height;
+	}
+	
+	public String toString ()
+	{
+		return String.format("r(%d,%d)[%dx%d]", x, y, width, height);
 	}
 
 	@Override
-	public int getX() 
+	public boolean containsPoint(int rx, int ry) 
 	{
-		return Math.min(startX, endX);
-	}
-	
-	@Override
-	public int getY() 
-	{
-		return Math.min(startY, endY);
+		double px = getUnrotatedX(x,y, rx,ry);
+		double py = getUnrotatedY(x,y, rx,ry);
+		
+		return (px>=x) && (px<x+width) && (py>=y) && (py<y+height);
 	}
 
 }

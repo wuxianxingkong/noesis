@@ -66,5 +66,12 @@ public class Text extends DrawingElement
 	{
 		return 0;
 	}
+
+
+	@Override
+	public boolean containsPoint (int x, int y) 
+	{
+		return false;
+	}
 	
 }

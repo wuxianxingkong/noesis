@@ -1,6 +1,6 @@
 package sandbox.mdsd.graphics;
 
-public class Polygon extends DrawingElement 
+public class Polygon extends Shape 
 {
 	private int x[];
 	private int y[];
@@ -106,5 +106,87 @@ public class Polygon extends DrawingElement
 		
 		return max;
 	}
+
+	// Area of the polygon
+    public double area() 
+    { 
+    	return Math.abs(signedArea()); 
+    }
+
+    // Signed area of polygon
+    public double signedArea() 
+    {
+        double sum = 0.0;
+        int N = getSides();
+        
+        for (int i=0; i<N; i++)
+            sum = sum + x[i]*y[(i+1)%N] - y[i]*x[(i+1)%N];
+        
+        return 0.5 * sum;
+    }
+
+    // Are vertices in counterclockwise order? (asuming polygon does not intersect itself)
+    public boolean isCCW() 
+    {
+        return signedArea() > 0;
+    }
+
+    // Polygon centroid
+    
+    public double getCentroidX()
+    {
+        double cx = 0.0;
+        int N = getSides();
+        
+        for (int i=0; i<N; i++) 
+            cx = cx + (x[i] + x[(i+1)%N]) * (y[i]*x[(i+1)%N] - x[i]*y[(i+1)%N]);
+
+        return cx / (6 * area());
+    }
+    
+    public double getCentroidY()
+    {
+        double cy = 0.0;
+        int N = getSides();
+        
+        for (int i=0; i<N; i++) 
+            cy = cy + (y[i] + y[(i+1)%N]) * (y[i]*x[(i+1)%N] - x[i]*y[(i+1)%N]);
+
+        return cy / (6 * area());
+    }
+    
+	// PIP problem (point in polygon)
+	// Reference: http://exaflop.org/docs/cgafaq/cga2.html (@ Sedgewick's "Programming in Java")
+	
+	@Override
+	public boolean containsPoint (int rx, int ry) 
+	{
+		double cx = getX(); // x[0], centroidX...
+		double cy = getY(); // y[0], centroidY...
+		double px = getUnrotatedX(cx, cy, rx, ry);
+		double py = getUnrotatedY(cx, cy, rx, ry);
+		
+		if ((px>=getX()) && (px<=getMaxX()) && (py>=getY()) && (py<=getMaxY())) {
+	
+			int crossings = 0;
+			int n = x.length;
+		
+	        for (int i=0; i<n; i++) {
+	        	double dy = y[(i+1)%n] - y[i];
+	            double slope = (dy!=0) ? (x[(i+1)%n] - x[i])  / dy: Double.MAX_VALUE;
+	            boolean cond1 = (y[i] <= py) && (py < y[(i+1)%n]);
+	            boolean cond2 = (y[(i+1)%n] <= py) && (py < y[i]);
+	            boolean cond3 = px <  slope * (py - y[i]) + x[i];
+	            if ((cond1 || cond2) && cond3) 
+	            	crossings++;
+	        }
+
+	        return (crossings % 2 != 0);
+			
+		} else {
+			return false;
+		}
+	}
+	
 	
 }

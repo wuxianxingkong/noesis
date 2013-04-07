@@ -4,9 +4,9 @@ import java.util.UUID;
 
 public abstract class DrawingElement 
 {
-	private String       id;
-	private Style style;
-	private Style border;
+	private String id;
+	private Style  style;
+	private Style  border;
 
 	public DrawingElement ()
 	{
@@ -69,4 +69,6 @@ public abstract class DrawingElement
 	public abstract int getWidth ();
 	
 	public abstract int getHeight();
+	
+	public abstract boolean containsPoint(int x, int y);
 }

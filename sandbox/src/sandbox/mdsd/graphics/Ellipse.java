@@ -1,6 +1,6 @@
 package sandbox.mdsd.graphics;
 
-public class Ellipse extends DrawingElement 
+public class Ellipse extends Shape 
 {
 	private int centerX;
 	private int centerY;
@@ -85,6 +85,17 @@ public class Ellipse extends DrawingElement
 	public int getY() 
 	{
 		return centerY-radiusY;
+	}
+
+	@Override
+	public boolean containsPoint(int rx, int ry) 
+	{
+		double px = getUnrotatedX(centerX, centerY, rx, ry);
+		double py = getUnrotatedY(centerX, centerY, rx, ry);
+		double rx2 = radiusX*radiusX;
+		double ry2 = radiusY*radiusY;
+		
+		return ( (px-centerX)*(px-centerX)*ry2 + (py-centerY)*(py-centerY)*rx2 <= rx2*ry2 );
 	}
 
 }

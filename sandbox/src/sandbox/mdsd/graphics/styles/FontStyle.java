@@ -8,8 +8,8 @@ import sandbox.mdsd.graphics.Style;
 
 public class FontStyle extends Style
 {
-	private Font font;
-	private int  angle;
+	private Font   font;
+	private double angle;
 	
 	public FontStyle (Color color, Font font)
 	{
@@ -19,7 +19,7 @@ public class FontStyle extends Style
 		this.angle = 0;
 	}
 
-	public FontStyle (Color color, Font font, int angle)
+	public FontStyle (Color color, Font font, double angle)
 	{
 		super(color);
 		
@@ -38,12 +38,12 @@ public class FontStyle extends Style
 	}
 	
 	
-	public int getAngle() 
+	public double getAngle() 
 	{
 		return angle;
 	}
 
-	public void setAngle(int angle) 
+	public void setAngle(double angle) 
 	{
 		this.angle = angle;
 	}
@@ -51,7 +51,7 @@ public class FontStyle extends Style
 
 	public String toString ()
 	{
-		return String.format("f<%s>c%08xr%d", getFont().toString(), getColor().getRGB(), angle );
+		return String.format("f<%s>c%08xr%d", getFont().toString(), getColor().getRGB(), (int)(180*angle/Math.PI) );
 	}
 	
 	

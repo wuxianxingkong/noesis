@@ -1,6 +1,6 @@
 package sandbox.mdsd.graphics;
 
-public class Bitmap extends DrawingElement 
+public class Bitmap extends Shape 
 {
 	private String url;
 	private int x;
@@ -10,6 +10,8 @@ public class Bitmap extends DrawingElement
 
 	public Bitmap (String url, int x, int y, int width, int height)
 	{
+		super(url,null,null);
+		
 		this.url = url;
 		this.x = x;
 		this.y = y;
@@ -72,6 +74,16 @@ public class Bitmap extends DrawingElement
 	public String toString ()
 	{
 		return String.format("i(%d,%d)[%dx%d]@<%s>", x, y, width, height, url);
+	}
+
+
+	@Override
+	public boolean containsPoint(int rx, int ry) 
+	{
+		double px = getUnrotatedX(x,y, rx,ry);
+		double py = getUnrotatedY(x,y, rx,ry);
+		
+		return (px>=x) && (px<x+width) && (py>=y) && (py<y+height);
 	}
 	
 }

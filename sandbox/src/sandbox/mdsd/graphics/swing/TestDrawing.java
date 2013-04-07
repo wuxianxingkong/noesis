@@ -1,9 +1,15 @@
 package sandbox.mdsd.graphics.swing;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import sandbox.mdsd.graphics.*;
 import sandbox.mdsd.graphics.styles.*;
@@ -186,18 +192,53 @@ public class TestDrawing
 	
 	public void display ()
 	{
-		JFrame jframe = new JFrame("Drawing...");
-		
+		JFrame  jframe = new JFrame("Drawing...");
+		JPanel  panel = new JPanel();
+		JPanel  buttons = new JPanel();
+		JButton buttonJPG = new JButton("JPG");
+		JButton buttonPNG = new JButton("PNG");
 		
 		control = new JDrawingComponent(drawing);
 		control.setTooltipProvider( new TooltipProvider() );
 		control.setSelectionListener ( new SelectionListener() );
 		control.setDraggingListener( new DragListener() );
 		
+		buttonJPG.addActionListener( new SaveActionListener(control,"jpg") );
+		buttonPNG.addActionListener( new SaveActionListener(control,"png") );
+		
+		buttons.add(buttonJPG);
+		buttons.add(buttonPNG);
+
+		panel.setLayout( new BorderLayout() );
+		panel.add(buttons, BorderLayout.SOUTH);
+		panel.add(control, BorderLayout.CENTER);
+
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jframe.add (control);
+		jframe.add(panel);
 		jframe.pack();
 		jframe.setVisible(true);
+		
+	}
+	
+	public class SaveActionListener implements ActionListener
+	{
+		private JDrawingComponent component;
+		private String format;
+		
+		public SaveActionListener (JDrawingComponent component, String format)
+		{
+			this.component = component;
+			this.format = format;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) 
+		{
+			JFileChooser fileChooser = new JFileChooser();
+			
+			if (fileChooser.showSaveDialog(control) == JFileChooser.APPROVE_OPTION)
+				component.save(fileChooser.getSelectedFile().getPath(), format);
+		}
 		
 	}
 	

@@ -12,7 +12,6 @@ import java.awt.LinearGradientPaint;
 import java.awt.RadialGradientPaint;
 import java.awt.RenderingHints;
 import java.awt.Shape;
-import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Point2D;
@@ -24,13 +23,15 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
-import javax.swing.event.MouseInputListener;
 
 import sandbox.mdsd.graphics.Arc;
 import sandbox.mdsd.graphics.Bitmap;
 import sandbox.mdsd.graphics.Circle;
 import sandbox.mdsd.graphics.Drawing;
 import sandbox.mdsd.graphics.DrawingElement;
+import sandbox.mdsd.graphics.DrawingSelectionListener;
+import sandbox.mdsd.graphics.DrawingTooltipProvider;
+import sandbox.mdsd.graphics.DrawingUpdateListener;
 import sandbox.mdsd.graphics.Ellipse;
 import sandbox.mdsd.graphics.Line;
 import sandbox.mdsd.graphics.Polygon;
@@ -46,11 +47,11 @@ public class JDrawingComponent extends JComponent
 	private Drawing drawing;
 	
 	// Event handling
-
-	private JDrawingTooltipProvider tooltipProvider;
-	private JDrawingSelectionListener selectionListener;
-	private JDrawingListener actionListener;
-	private JDrawingListener draggingListener;
+	
+	private DrawingTooltipProvider tooltipProvider;
+	private DrawingSelectionListener selectionListener;
+	private DrawingUpdateListener actionListener;
+	private DrawingUpdateListener draggingListener;
 	
 	// Cache for images
 	
@@ -355,143 +356,46 @@ public class JDrawingComponent extends JComponent
 	// Event handling
 	// --------------
 	
-	public JDrawingTooltipProvider getTooltipProvider() 
+	public DrawingTooltipProvider getTooltipProvider() 
 	{
 		return tooltipProvider;
 	}
 
-	public void setTooltipProvider(JDrawingTooltipProvider tooltipProvider) 
+	public void setTooltipProvider(DrawingTooltipProvider tooltipProvider) 
 	{
 		this.tooltipProvider = tooltipProvider;
 	}
-
-
-	public JDrawingSelectionListener getSelectionListener() 
+	
+	
+	public DrawingSelectionListener getSelectionListener() 
 	{
 		return selectionListener;
 	}
 
-	public void setSelectionListener(JDrawingSelectionListener selectionListener) 
+	public void setSelectionListener(DrawingSelectionListener selectionListener) 
 	{
 		this.selectionListener = selectionListener;
 	}
 
 
-	public JDrawingListener getActionListener() 
+	public DrawingUpdateListener getActionListener() 
 	{
 		return actionListener;
 	}
 
-	public void setActionListener(JDrawingListener actionListener) 
+	public void setActionListener(DrawingUpdateListener actionListener) 
 	{
 		this.actionListener = actionListener;
 	}
 
 
-	public JDrawingListener getDraggingListener() 
+	public DrawingUpdateListener getDraggingListener() 
 	{
 		return draggingListener;
 	}
 
-	public void setDraggingListener(JDrawingListener draggingListener) {
-		this.draggingListener = draggingListener;
-	}
-
-	// Mouse events
-
-	public class JDrawingMouseListener implements MouseInputListener
+	public void setDraggingListener(DrawingUpdateListener draggingListener) 
 	{
-		private JDrawingComponent control;
-		
-		private DrawingElement draggedElement;
-		
-		public JDrawingMouseListener (JDrawingComponent control)
-		{
-			this.control = control;
-		}
-
-		@Override
-		public void mouseClicked(MouseEvent e) 
-		{
-			int x = e.getX();
-			int y = e.getY();
-			
-			if (control.getSelectionListener()!=null) {
-				
-				String id = control.getDrawing().getElement(x,y);
-				
-				if (e.isControlDown())
-					control.getSelectionListener().addSelection(id);
-				else
-					control.getSelectionListener().setSelection(id);
-				
-			} else if (control.getActionListener()!=null) {
-				
-				String id = drawing.getElement(x,y);
-				
-				if (id!=null)
-					control.getActionListener().update(id,x,y);
-			}
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e)
-		{			
-			if (control.getDraggingListener()!=null) {
-				draggedElement = control.getDrawing().getDrawingElement( e.getX(), e.getY() );
-			}
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) 
-		{
-			draggedElement = null;
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) 
-		{
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) 
-		{
-		}
-
-		@Override
-		public void mouseDragged(MouseEvent e) 
-		{
-			mouseMoved(e);
-		}
-
-		@Override
-		public void mouseMoved(MouseEvent e) 
-		{
-			if ((control.getDraggingListener()!=null) && (draggedElement!=null)) {
-				
-				if (draggedElement.getId()!=null)
-					control.getDraggingListener().update( draggedElement.getId(), e.getX(), e.getY());
-				
-			} else {  // Update tooltip
-				
-				String id;
-				String tooltip;			
-
-				if (control.getTooltipProvider()!=null) {
-
-					control.setToolTipText("");
-
-					id = control.getDrawing().getElement( e.getX(), e.getY());
-
-					if (id!=null) {
-						tooltip = control.getTooltipProvider().getTooltip(id);
-
-						if (tooltip!=null)
-							control.setToolTipText(tooltip);
-					}
-				}
-			}
-		}
-	}
-	
+		this.draggingListener = draggingListener;
+	}	
 }

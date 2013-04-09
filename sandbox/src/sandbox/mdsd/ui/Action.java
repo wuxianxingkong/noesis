@@ -1,4 +1,4 @@
-package sandbox.mdsd.task;
+package sandbox.mdsd.ui;
 
 import sandbox.mdsd.Subject;
 

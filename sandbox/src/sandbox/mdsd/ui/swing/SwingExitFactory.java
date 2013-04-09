@@ -3,7 +3,7 @@ package sandbox.mdsd.ui.swing;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import sandbox.mdsd.task.Action;
+import sandbox.mdsd.ui.Action;
 import sandbox.mdsd.ui.Option;
 import sandbox.mdsd.ui.UIFactory;
 

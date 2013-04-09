@@ -1,6 +1,5 @@
 package sandbox.mdsd.ui;
 
-import sandbox.mdsd.task.Action;
 
 // e.g. Selector option (without action) or menu item (with action)
 

@@ -7,7 +7,7 @@ import ikor.collection.DynamicDictionary;
 import ikor.collection.ReadOnlyCollection;
 
 
-public class Drawing 
+public class Drawing
 {
 	private int width;
 	private int height;
@@ -118,7 +118,5 @@ public class Drawing
 	public void setHeight(int height) 
 	{
 		this.height = height;
-	}
-
-	
+	}	
 }

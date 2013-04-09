@@ -1,4 +1,4 @@
-package sandbox.mdsd.graphics.swing;
+package sandbox.mdsd.graphics.test;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 
 import sandbox.mdsd.graphics.*;
 import sandbox.mdsd.graphics.styles.*;
+import sandbox.mdsd.graphics.swing.JDrawingComponent;
+
 
 public class TestDrawing 
 {
@@ -199,12 +201,12 @@ public class TestDrawing
 		JButton buttonPNG = new JButton("PNG");
 		
 		control = new JDrawingComponent(drawing);
-		control.setTooltipProvider( new TooltipProvider() );
-		control.setSelectionListener ( new SelectionListener() );
-		control.setDraggingListener( new DragListener() );
+		control.setTooltipProvider( new TestTooltipProvider() );
+		control.setSelectionListener ( new TestSelectionListener(drawing) );
+		control.setDraggingListener( new TestDraggingListener(drawing) );
 		
-		buttonJPG.addActionListener( new SaveActionListener(control,"jpg") );
-		buttonPNG.addActionListener( new SaveActionListener(control,"png") );
+		buttonJPG.addActionListener( new SaveFileActionListener(control,"jpg") );
+		buttonPNG.addActionListener( new SaveFileActionListener(control,"png") );
 		
 		buttons.add(buttonJPG);
 		buttons.add(buttonPNG);
@@ -220,12 +222,12 @@ public class TestDrawing
 		
 	}
 	
-	public class SaveActionListener implements ActionListener
+	public class SaveFileActionListener implements ActionListener
 	{
 		private JDrawingComponent component;
 		private String format;
 		
-		public SaveActionListener (JDrawingComponent component, String format)
+		public SaveFileActionListener (JDrawingComponent component, String format)
 		{
 			this.component = component;
 			this.format = format;
@@ -242,86 +244,7 @@ public class TestDrawing
 		
 	}
 	
-	public class TooltipProvider implements JDrawingTooltipProvider
-	{
-		@Override
-		public String getTooltip(String id) 
-		{
-			return id;
-		}
-	}
+
 	
-	public class DragListener implements JDrawingListener
-	{
-		@Override
-		public void update(String id, int x, int y) 
-		{
-			DrawingElement current = drawing.getDrawingElement(id);
-			
-			if (current.getId().startsWith("node")) {
-				((Circle)current).setCenterX(x);
-				((Circle)current).setCenterY(y);
-				
-				// Update links
-				
-				String name;
-				
-				for (DrawingElement element: drawing.getElements()) {
-				
-					name = element.getId();
-					
-					if ( (element instanceof Line) && (name!=null) ) {
-						
-						if (name.endsWith(id)) {
-							((Line)element).setEndX(x);
-							((Line)element).setEndY(y);
-						} else if (name.contains(id)) {
-							((Line)element).setStartX(x);
-							((Line)element).setStartY(y);
-						}
-					}
-				}
-			}
-				
-			control.repaint();
-		}
-		
-	}
-	
-	public class SelectionListener implements JDrawingSelectionListener
-	{
-		Style currentStyle;
-
-		@Override
-		public void setSelection (String id) 
-		{
-			clearSelection();
-			
-			currentStyle = new Style ( new Color(0xff, 0x00, 0x00, 0x80), 3);
-			drawing.getDrawingElement(id).setBorder(currentStyle);
-			control.repaint();
-		}
-
-		@Override
-		public void addSelection(String id) 
-		{
-			if (currentStyle==null)
-				currentStyle = new Style ( new Color(0xff, 0x00, 0x00, 0x80), 3);
-
-			drawing.getDrawingElement(id).setBorder(currentStyle);
-			control.repaint();
-		}
-
-		@Override
-		public void clearSelection() 
-		{
-			if (currentStyle!=null) {
-				currentStyle.setWidth(0);
-				currentStyle = null;
-				control.repaint();
-			}
-		}
-		
-	}
 
 }

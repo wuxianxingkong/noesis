@@ -1,6 +1,5 @@
 package sandbox.mdsd.ui;
 
-import sandbox.mdsd.task.Action;
 
 public class File extends UIModel 
 {

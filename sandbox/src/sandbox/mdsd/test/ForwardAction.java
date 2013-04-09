@@ -1,8 +1,8 @@
 package sandbox.mdsd.test;
 
 import sandbox.mdsd.log.Log;
-import sandbox.mdsd.task.Action;
 
+import sandbox.mdsd.ui.Action;
 import sandbox.mdsd.ui.UIModel;
 
 public class ForwardAction extends Action 

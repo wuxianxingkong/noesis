@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import sandbox.mdsd.log.Log;
-import sandbox.mdsd.task.Action;
+import sandbox.mdsd.ui.Action;
 
 class SwingActionHandler implements ActionListener
 {

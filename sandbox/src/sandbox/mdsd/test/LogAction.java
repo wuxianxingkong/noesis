@@ -1,7 +1,7 @@
 package sandbox.mdsd.test;
 
 import sandbox.mdsd.log.Log;
-import sandbox.mdsd.task.Action;
+import sandbox.mdsd.ui.Action;
 
 public class LogAction extends Action 
 {

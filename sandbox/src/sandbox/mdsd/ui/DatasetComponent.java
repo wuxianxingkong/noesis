@@ -17,5 +17,6 @@ public interface DatasetComponent
 	public void addHeader (Label header);
 	
 	public void addHeader (String text);	
-
+	
+	public void notifyObservers (Dataset data);
 }

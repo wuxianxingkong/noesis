@@ -33,10 +33,12 @@ import sandbox.mdsd.data.DecimalModel;
 import sandbox.mdsd.data.RealModel;
 
 import sandbox.mdsd.ui.DatasetComponent;
+import sandbox.mdsd.ui.DatasetEditor;
+import sandbox.mdsd.ui.DatasetViewer;
 
 public class SwingDatasetModel extends AbstractTableModel 
 {
-	private DatasetComponent viewer;
+	private DatasetComponent component;
 	private boolean editable;
 
 	/**
@@ -44,25 +46,35 @@ public class SwingDatasetModel extends AbstractTableModel
 	 * @param viewer   Dataset viewer component
 	 * @param editable true if dataset is editable
 	 */
-	public SwingDatasetModel (DatasetComponent viewer, boolean editable) 
+	public SwingDatasetModel (DatasetViewer viewer, boolean editable) 
 	{
-		this.viewer = viewer;
+		this.component = viewer;
 		this.editable = editable;
 	}
 
+	/**
+	 * Constructor
+	 * @param editor   Dataset editor component
+	 * @param editable true if dataset is editable
+	 */
+	public SwingDatasetModel (DatasetEditor editor, boolean editable) 
+	{
+		this.component = editor;
+		this.editable = editable;
+	}
 
 	// Dataset size
 
 	@Override
 	public int getRowCount() 
 	{
-		return viewer.getData().getRowCount();
+		return component.getData().getRowCount();
 	}
 
 	@Override
 	public int getColumnCount() 
 	{
-		return viewer.getData().getColumnCount();
+		return component.getData().getColumnCount();
 	}
 
 	// Column information
@@ -70,13 +82,13 @@ public class SwingDatasetModel extends AbstractTableModel
 	@Override
 	public String getColumnName (int columnIndex)
 	{
-		return viewer.getHeader(columnIndex).getText();
+		return component.getHeader(columnIndex).getText();
 	}
 	
 	@Override
 	public Class getColumnClass (int columnIndex)
 	{
-		return viewer.getData().get(0,columnIndex).getClass();
+		return component.getData().get(0,columnIndex).getClass();
 	}
 	
 	// Data
@@ -84,14 +96,15 @@ public class SwingDatasetModel extends AbstractTableModel
 	@Override
 	public Object getValueAt (int rowIndex, int columnIndex) 
 	{
-		return viewer.getData().get(rowIndex, columnIndex);
+		return component.getData().get(rowIndex, columnIndex);
 	}
 	
 	@Override
     public void setValueAt(Object value, int rowIndex, int columnIndex) 
 	{
-        viewer.getData().set(rowIndex, columnIndex, value);
+        component.getData().set(rowIndex, columnIndex, value);
         fireTableCellUpdated(rowIndex, columnIndex);
+        component.notifyObservers( component.getData() );
     }	
 	
 	// Editable cell?
@@ -111,6 +124,8 @@ public class SwingDatasetModel extends AbstractTableModel
 	{
 		JTable table = new CustomJTable(this);
 		
+		// Layout
+		
 		table.setFillsViewportHeight(true);
 		table.setAutoCreateRowSorter(true);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);  
@@ -122,6 +137,8 @@ public class SwingDatasetModel extends AbstractTableModel
 			table.getColumnModel().getColumn(i).setMinWidth(MINIMUM_WIDTH_PER_COLUMN);
 			table.getColumnModel().getColumn(i).setPreferredWidth(PREFERRED_WIDTH_PER_COLUMN);
 		}
+	
+		// Renderers & editors
 		
 		setupRenderers(table);
 		setupEditors(table);

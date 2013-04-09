@@ -15,6 +15,8 @@ public class SwingDatasetEditorFactory  implements UIFactory<SwingUI,DatasetEdit
 		JTable table = model.createTable();
 		JScrollPane scroll = new JScrollPane(table);
 		
+		editor.addObserver(new SwingDatasetObserver(model));
+		
 		ui.addComponent ( scroll );	
 	}
 

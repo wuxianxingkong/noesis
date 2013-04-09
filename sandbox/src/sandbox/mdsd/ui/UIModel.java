@@ -49,8 +49,6 @@ public class UIModel extends Component
 
 	public UIModel (Application application, String title)
 	{
-		super(title);
-
 		this.application = application;
 		this.components = new DynamicList<Component>();
 		this.title = new Label(title);

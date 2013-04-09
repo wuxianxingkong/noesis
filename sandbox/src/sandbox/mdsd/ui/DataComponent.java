@@ -31,15 +31,16 @@ public class DataComponent<T> extends Component<T> implements Observer<T>
 	{
 		if (!updating) {
 			
-			updating = true;
-			
-			if (  ((data!=null) && !data.equals(this.data)) 
-					|| ((data==null) && (this.data!=null) ) ) {
+			try {
+				
+				updating = true;
+
 				this.data = data;
 				notifyObservers(data);
-			}
 
-			updating = false;
+			} finally {
+				updating = false;
+			}
 		}
 	}
 
@@ -92,6 +93,7 @@ public class DataComponent<T> extends Component<T> implements Observer<T>
 
 	public void update(Subject<T> subject, T object) 
 	{
+		System.err.println(subject+"->"+object);
 		this.setData ( object );
 	}	
 

@@ -36,9 +36,8 @@ public class MVCModel extends UIModel
 			Log.info("MVC - "+object+" @ "+subject);
 			setNumber( object );		
 		}
-
-		
 	}
+	
 	
 	public MVCModel (Application app)
 	{

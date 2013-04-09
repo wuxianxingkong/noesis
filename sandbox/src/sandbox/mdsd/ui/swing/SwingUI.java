@@ -14,6 +14,7 @@ import sandbox.mdsd.log.Log;
 import sandbox.mdsd.ui.Component;
 import sandbox.mdsd.ui.Menu;
 import sandbox.mdsd.ui.Image;
+import sandbox.mdsd.ui.Figure;
 import sandbox.mdsd.ui.Label;
 import sandbox.mdsd.ui.Option;
 import sandbox.mdsd.ui.Selector;
@@ -52,6 +53,7 @@ public class SwingUI extends JFrame implements UI
 		
 		builders.set ( Menu.class, new SwingMenuFactory() );
 		builders.set ( Image.class, new SwingImageFactory() );
+		builders.set ( Figure.class, new SwingFigureFactory() );
 		builders.set ( Label.class, new SwingLabelFactory() );
 		builders.set ( Option.class, new SwingOptionFactory() );
 		builders.set ( Selector.class, new SwingSelectorFactory() );

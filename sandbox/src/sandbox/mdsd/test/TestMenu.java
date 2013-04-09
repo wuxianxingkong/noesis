@@ -117,6 +117,10 @@ public class TestMenu extends Menu
 		Option dataEditor = new Option("Dataset editor", new ForwardAction( new DatasetTestModel(app, true) ) );
 		dataEditor.setIcon( TestApplication.url("microscope.png") );
 		data.add(dataEditor);
+
+		Option figureEditor = new Option("Dataset MVC", new ForwardAction( new FigureTestModel(app) ) );
+		figureEditor.setIcon( TestApplication.url("microscope.png") );
+		data.add(figureEditor);
 		
 		// Help
 		

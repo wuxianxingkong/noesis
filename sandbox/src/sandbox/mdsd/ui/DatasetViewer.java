@@ -2,6 +2,7 @@ package sandbox.mdsd.ui;
 
 import ikor.collection.List;
 
+import sandbox.mdsd.Subject;
 import sandbox.mdsd.data.Dataset;
 import sandbox.mdsd.data.DatasetModel;
 
@@ -14,6 +15,13 @@ public class DatasetViewer extends Viewer<Dataset> implements DatasetComponent
 		super(id,model);
 		headers = new ikor.collection.DynamicList<Label>();
 	}
+	
+	public DatasetViewer (String id, Subject<Dataset> subject, DatasetModel model)
+	{
+		super(id, subject, model);
+		headers = new ikor.collection.DynamicList<Label>();
+	}
+	
 	
 	public void clearHeaders ()
 	{

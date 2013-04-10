@@ -1,13 +1,12 @@
 package sandbox.mdsd.test;
 
+import ikor.model.ui.Application;
+import ikor.model.ui.UIBuilder;
+import ikor.model.ui.swing.SwingUIBuilder;
+
 import javax.swing.UIManager;
 
-import sandbox.mdsd.ui.Application;
 
-import sandbox.mdsd.ui.UIBuilder;
-
-import sandbox.mdsd.ui.console.ConsoleUIBuilder;
-import sandbox.mdsd.ui.swing.SwingUIBuilder;
 
 public class TestApplication extends Application
 {

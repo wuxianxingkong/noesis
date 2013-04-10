@@ -1,9 +1,9 @@
 package sandbox.mdsd.test;
 
-import sandbox.mdsd.log.Log;
+import ikor.model.ui.Action;
+import ikor.model.ui.UIModel;
+import ikor.util.log.Log;
 
-import sandbox.mdsd.ui.Action;
-import sandbox.mdsd.ui.UIModel;
 
 public class ForwardAction extends Action 
 {

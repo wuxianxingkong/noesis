@@ -1,8 +1,8 @@
 package sandbox.mdsd.test;
 
-import sandbox.mdsd.log.Log;
-import sandbox.mdsd.ui.Action;
-import sandbox.mdsd.ui.Component;
+import ikor.model.ui.Action;
+import ikor.model.ui.Component;
+import ikor.util.log.Log;
 
 public class LogStateAction extends Action 
 {

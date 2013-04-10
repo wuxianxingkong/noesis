@@ -1,16 +1,16 @@
 package sandbox.mdsd.test;
 
 import ikor.math.Decimal;
+import ikor.model.Subject;
+import ikor.model.data.DecimalModel;
+import ikor.model.ui.Application;
+import ikor.model.ui.Editor;
+import ikor.model.ui.UIModel;
+import ikor.model.ui.Viewer;
+import ikor.util.log.Log;
 
-import sandbox.mdsd.Subject;
 
-import sandbox.mdsd.data.DecimalModel;
-import sandbox.mdsd.log.Log;
 
-import sandbox.mdsd.ui.Application;
-import sandbox.mdsd.ui.Editor;
-import sandbox.mdsd.ui.Viewer;
-import sandbox.mdsd.ui.UIModel;
 
 public class MVCModel extends UIModel
 {

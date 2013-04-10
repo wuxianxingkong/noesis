@@ -1,15 +1,16 @@
 package sandbox.mdsd.test;
 
+import ikor.model.Subject;
+import ikor.model.ui.Application;
+import ikor.model.ui.Editor;
+import ikor.model.ui.UIModel;
+import ikor.model.ui.Viewer;
+import ikor.util.log.Log;
+
 import java.awt.Color;
 
-import sandbox.mdsd.Subject;
 
-import sandbox.mdsd.log.Log;
 
-import sandbox.mdsd.ui.Application;
-import sandbox.mdsd.ui.Editor;
-import sandbox.mdsd.ui.Viewer;
-import sandbox.mdsd.ui.UIModel;
 
 public class ColorUIModel extends UIModel
 {

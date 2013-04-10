@@ -1,9 +1,9 @@
 package sandbox.mdsd.test;
 
-import sandbox.mdsd.log.Log;
-import sandbox.mdsd.ui.Action;
-import sandbox.mdsd.ui.Application;
-import sandbox.mdsd.ui.UIModel;
+import ikor.model.ui.Action;
+import ikor.model.ui.Application;
+import ikor.model.ui.UIModel;
+import ikor.util.log.Log;
 
 public class ExitAction extends Action 
 {

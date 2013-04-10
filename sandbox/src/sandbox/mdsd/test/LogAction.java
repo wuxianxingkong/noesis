@@ -1,7 +1,7 @@
 package sandbox.mdsd.test;
 
-import sandbox.mdsd.log.Log;
-import sandbox.mdsd.ui.Action;
+import ikor.model.ui.Action;
+import ikor.util.log.Log;
 
 public class LogAction extends Action 
 {

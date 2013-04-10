@@ -1,9 +1,10 @@
 package sandbox.mdsd.test;
 
-import sandbox.mdsd.ui.Application;
-import sandbox.mdsd.ui.Menu;
-import sandbox.mdsd.ui.Option;
-import sandbox.mdsd.ui.Separator;
+
+import ikor.model.ui.Application;
+import ikor.model.ui.Menu;
+import ikor.model.ui.Option;
+import ikor.model.ui.Separator;
 
 import java.awt.event.KeyEvent;
 

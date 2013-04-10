@@ -1,12 +1,12 @@
 package sandbox.mdsd.test;
 
 import ikor.math.Decimal;
+import ikor.model.ui.Application;
+import ikor.model.ui.UIModel;
+import ikor.model.ui.Viewer;
 
 import java.util.Date;
 
-import sandbox.mdsd.ui.Application;
-import sandbox.mdsd.ui.Viewer;
-import sandbox.mdsd.ui.UIModel;
 
 public class ViewerModel extends UIModel
 {

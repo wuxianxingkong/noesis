@@ -1,11 +1,11 @@
 package sandbox.mdsd.test;
 
-import sandbox.mdsd.ui.Application;
-import sandbox.mdsd.ui.Image;
-import sandbox.mdsd.ui.Label;
-import sandbox.mdsd.ui.Option;
-import sandbox.mdsd.ui.Separator;
-import sandbox.mdsd.ui.UIModel;
+import ikor.model.ui.Application;
+import ikor.model.ui.Image;
+import ikor.model.ui.Label;
+import ikor.model.ui.Option;
+import ikor.model.ui.Separator;
+import ikor.model.ui.UIModel;
 
 public class AboutModel extends UIModel
 {

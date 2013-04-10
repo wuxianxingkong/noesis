@@ -1,28 +1,31 @@
 package sandbox.mdsd.test;
 
+import ikor.model.Subject;
+import ikor.model.data.DataModel;
+import ikor.model.data.Dataset;
+import ikor.model.data.IntegerModel;
+import ikor.model.graphics.Circle;
+import ikor.model.graphics.Drawing;
+import ikor.model.graphics.DrawingElement;
+import ikor.model.graphics.DrawingSelectionListener;
+import ikor.model.graphics.DrawingTooltipProvider;
+import ikor.model.graphics.DrawingUpdateListener;
+import ikor.model.graphics.Line;
+import ikor.model.graphics.Style;
+import ikor.model.graphics.styles.Gradient;
+import ikor.model.graphics.styles.GradientKeyframe;
+import ikor.model.graphics.styles.LinearGradient;
+import ikor.model.graphics.styles.RadialGradient;
+import ikor.model.ui.Application;
+import ikor.model.ui.DatasetComponent;
+import ikor.model.ui.DatasetEditor;
+import ikor.model.ui.Figure;
+import ikor.model.ui.UIModel;
+import ikor.util.log.Log;
+
 import java.awt.Color;
 
-import sandbox.mdsd.Subject;
-import sandbox.mdsd.data.*;
-import sandbox.mdsd.graphics.Circle;
-import sandbox.mdsd.graphics.Drawing;
-import sandbox.mdsd.graphics.DrawingElement;
-import sandbox.mdsd.graphics.DrawingSelectionListener;
-import sandbox.mdsd.graphics.DrawingTooltipProvider;
-import sandbox.mdsd.graphics.DrawingUpdateListener;
-import sandbox.mdsd.graphics.Line;
-import sandbox.mdsd.graphics.Style;
-import sandbox.mdsd.graphics.styles.Gradient;
-import sandbox.mdsd.graphics.styles.GradientKeyframe;
-import sandbox.mdsd.graphics.styles.LinearGradient;
-import sandbox.mdsd.graphics.styles.RadialGradient;
-import sandbox.mdsd.log.Log;
 
-import sandbox.mdsd.ui.Application;
-import sandbox.mdsd.ui.DatasetComponent;
-import sandbox.mdsd.ui.DatasetEditor;
-import sandbox.mdsd.ui.Figure;
-import sandbox.mdsd.ui.UIModel;
 
 public class FigureTestModel extends UIModel
 {

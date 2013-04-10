@@ -3,14 +3,14 @@ package sandbox.mdsd.test;
 import java.util.Date;
 
 import ikor.math.Decimal;
+import ikor.model.data.IntegerModel;
+import ikor.model.data.PasswordModel;
+import ikor.model.data.TextModel;
+import ikor.model.ui.Application;
+import ikor.model.ui.Editor;
+import ikor.model.ui.UIModel;
 
-import sandbox.mdsd.data.IntegerModel;
-import sandbox.mdsd.data.TextModel;
-import sandbox.mdsd.data.PasswordModel;
 
-import sandbox.mdsd.ui.Application;
-import sandbox.mdsd.ui.Editor;
-import sandbox.mdsd.ui.UIModel;
 
 public class EditorModel extends UIModel
 {

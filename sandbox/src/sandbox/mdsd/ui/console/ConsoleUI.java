@@ -1,7 +1,7 @@
 package sandbox.mdsd.ui.console;
 
-import sandbox.mdsd.ui.UIModel;
-import sandbox.mdsd.ui.UI;
+import ikor.model.ui.UI;
+import ikor.model.ui.UIModel;
 
 public class ConsoleUI implements UI 
 {

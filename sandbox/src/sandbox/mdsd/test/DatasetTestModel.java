@@ -1,16 +1,23 @@
 package sandbox.mdsd.test;
 
 import ikor.math.Decimal;
+import ikor.model.data.ColorModel;
+import ikor.model.data.DataModel;
+import ikor.model.data.Dataset;
+import ikor.model.data.DateModel;
+import ikor.model.data.DecimalModel;
+import ikor.model.data.IntegerModel;
+import ikor.model.data.RealModel;
+import ikor.model.data.TextModel;
+import ikor.model.ui.Application;
+import ikor.model.ui.DatasetComponent;
+import ikor.model.ui.DatasetEditor;
+import ikor.model.ui.DatasetViewer;
+import ikor.model.ui.UIModel;
+
 import java.awt.Color;
 import java.util.Date;
 
-import sandbox.mdsd.data.*;
-
-import sandbox.mdsd.ui.Application;
-import sandbox.mdsd.ui.DatasetComponent;
-import sandbox.mdsd.ui.DatasetViewer;
-import sandbox.mdsd.ui.DatasetEditor;
-import sandbox.mdsd.ui.UIModel;
 
 public class DatasetTestModel extends UIModel
 {

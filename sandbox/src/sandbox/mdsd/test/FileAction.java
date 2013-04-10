@@ -1,9 +1,9 @@
 package sandbox.mdsd.test;
 
-import sandbox.mdsd.log.Log;
-import sandbox.mdsd.ui.Action;
-import sandbox.mdsd.ui.Application;
-import sandbox.mdsd.ui.File;
+import ikor.model.ui.Action;
+import ikor.model.ui.Application;
+import ikor.model.ui.File;
+import ikor.util.log.Log;
 
 public class FileAction extends Action 
 {

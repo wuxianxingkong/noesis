@@ -1,8 +1,8 @@
 package sandbox.mdsd.ui.console;
 
-import sandbox.mdsd.ui.UIModel;
-import sandbox.mdsd.ui.UI;
-import sandbox.mdsd.ui.UIBuilder;
+import ikor.model.ui.UI;
+import ikor.model.ui.UIBuilder;
+import ikor.model.ui.UIModel;
 
 public class ConsoleUIBuilder extends UIBuilder 
 {

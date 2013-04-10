@@ -1,4 +1,4 @@
-package ikor.model.description;
+package ikor.model.data.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

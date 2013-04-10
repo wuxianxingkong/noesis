@@ -1,4 +1,4 @@
-package ikor.model;
+package ikor.model.data.annotations;
 
 // Title:       Persistent
 // Version:     1.0

@@ -1,4 +1,4 @@
-package test.ikor.model.mock;
+package test.ikor.model.data.annotations;
 
 // Title:       DocumentFormat
 // Version:     1.0
@@ -6,7 +6,9 @@ package test.ikor.model.mock;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
-import ikor.model.*;
+import ikor.model.data.annotations.DataType;
+import ikor.model.data.annotations.Key;
+import ikor.model.data.annotations.Persistent;
 
 // DocumentFormat
 // --------------------------------

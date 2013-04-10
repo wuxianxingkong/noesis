@@ -1,6 +1,6 @@
-package ikor.model;
+package ikor.model.data.annotations;
 
-// Title:       Derived
+// Title:       Description
 // Version:     1.0
 // Copyright:   2006
 // Author:      Fernando Berzal
@@ -8,21 +8,20 @@ package ikor.model;
 
 import java.lang.annotation.*;
 
-
-// Derived
+// Description
 // --------------------------------
 
 // v1.0 - 16/08/2006
 
 /**
- * Derived
+ * Description
  *
  * @author Fernando Berzal
  */
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-public @interface Derived {
+@Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+public @interface Description {
     
     String value();
 

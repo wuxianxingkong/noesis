@@ -1,4 +1,4 @@
-package ikor.model;
+package ikor.model.data.annotations;
 
 // Title:       Key
 // Version:     1.0

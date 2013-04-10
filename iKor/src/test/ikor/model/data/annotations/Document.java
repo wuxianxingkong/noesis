@@ -1,4 +1,4 @@
-package test.ikor.model.mock;
+package test.ikor.model.data.annotations;
 
 // Title:       Document
 // Version:     1.0
@@ -7,8 +7,12 @@ package test.ikor.model.mock;
 // E-mail:      berzal@acm.org
 
 
-import ikor.model.*;
-import ikor.model.description.*;
+import ikor.model.data.annotations.DataType;
+import ikor.model.data.annotations.Derived;
+import ikor.model.data.annotations.Description;
+import ikor.model.data.annotations.Key;
+import ikor.model.data.annotations.Label;
+import ikor.model.data.annotations.Persistent;
 
 // Document
 // --------------------------------

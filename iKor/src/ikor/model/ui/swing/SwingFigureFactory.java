@@ -1,5 +1,8 @@
 package ikor.model.ui.swing;
 
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+
 import ikor.model.Observer;
 import ikor.model.Subject;
 import ikor.model.graphics.swing.JDrawingComponent;
@@ -26,6 +29,8 @@ public class SwingFigureFactory implements UIFactory<SwingUI,Figure>
 		if (figure.getSelectionListener()!=null)
 			control.setSelectionListener( figure.getSelectionListener() );
 		
+		control.addComponentListener( new JDrawingComponentListener(figure, control) );
+		
 		figure.addObserver( new FigureObserver(figure,control) );
 		
 		ui.addComponent ( control );	
@@ -33,6 +38,7 @@ public class SwingFigureFactory implements UIFactory<SwingUI,Figure>
 		control.setVisible( figure.isVisible() );
 	}
 	
+	// Figure observer
 	
 	public class FigureObserver implements Observer
 	{
@@ -57,6 +63,51 @@ public class SwingFigureFactory implements UIFactory<SwingUI,Figure>
 		      }
 		    });			
 		}
-	}	
+	}
+	
+	// Component listener
+	
+	public class JDrawingComponentListener implements ComponentListener
+	{
+		private Figure figure;
+		private JDrawingComponent control;
+
+		public JDrawingComponentListener (Figure figure, JDrawingComponent control)
+		{
+			this.figure = figure;
+			this.control = control;
+		}
+		
+		@Override
+		public void componentResized(ComponentEvent e) 
+		{
+			figure.setSize(control.getWidth(), control.getHeight());
+			figure.update();
+			
+		    SwingUtilities.invokeLater(new Runnable() 
+		    {
+		      public void run()
+		      {
+		    	  control.setVisible(figure.isVisible());
+		    	  control.repaint();
+		      }
+		    });						
+		}
+
+		@Override
+		public void componentMoved(ComponentEvent e) 
+		{
+		}
+
+		@Override
+		public void componentShown(ComponentEvent e) 
+		{
+		}
+
+		@Override
+		public void componentHidden(ComponentEvent e) 
+		{
+		}
+	}
 	
 }

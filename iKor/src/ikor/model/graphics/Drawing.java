@@ -131,4 +131,11 @@ public class Drawing
 	{
 		this.height = height;
 	}	
+	
+	// Update
+	// ------
+	
+	public void update ()
+	{
+	}
 }

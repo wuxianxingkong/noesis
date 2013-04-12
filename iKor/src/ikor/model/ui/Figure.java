@@ -10,7 +10,7 @@ import ikor.model.graphics.DrawingUpdateListener;
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public class Figure extends Component 
+public class Figure<F> extends Component<F> 
 {
 	private Drawing drawing;
 	
@@ -38,6 +38,21 @@ public class Figure extends Component
 		this.drawing = drawing;
 	}
 
+	public void setSize (int width, int height)
+	{
+		drawing.setWidth(width);
+		drawing.setHeight(height);
+	}
+
+	// Observer
+	
+	public void update ()
+	{
+		drawing.update();
+		super.update(null, null);
+	}
+	
+	// Event handling
 	
 	public DrawingTooltipProvider getTooltipProvider() 
 	{

@@ -17,11 +17,13 @@ import ikor.model.graphics.Style;
 import ikor.model.ui.Figure;
 
 
-public class NetworkFigure extends Figure
+public class NetworkFigure extends Figure<AttributeNetwork>
 {	
 	private NetworkModel data;
 	private NetworkRenderer renderer;
 	
+
+
 	public NetworkFigure (NetworkModel data) 
 	{
 		this.data = data;
@@ -60,9 +62,18 @@ public class NetworkFigure extends Figure
 	public void setData(NetworkModel data) 
 	{
 		this.data = data;
-		
-		if (data!=null)
-			notifyObservers(data.getNetwork());
+	}
+	
+	// Network renderer
+	
+	public NetworkRenderer getRenderer() 
+	{
+		return renderer;
+	}
+
+	public void setRenderer(NetworkRenderer renderer) 
+	{
+		this.renderer = renderer;
 	}
 
 	// Subject/observer interface
@@ -70,13 +81,14 @@ public class NetworkFigure extends Figure
 	boolean updating = false;
 	
 	@Override
-	public void update (Subject subject, Object object)
+	public void update (Subject subject, AttributeNetwork object)
 	{
 		if (!updating) {			
 			updating = true;
 			
 			if (object!=null) {
-				setData( (NetworkModel) object );
+				data.setNetwork(object);
+				notifyObservers(object);
 			} else {
 				notifyObservers ();
 			}
@@ -165,7 +177,7 @@ public class NetworkFigure extends Figure
 				Attribute<Double> yAttribute = net.getNodeAttribute("y");
 				
 				xAttribute.set(node, ((double)x)/figure.getDrawing().getWidth() );
-				yAttribute.set(node, ((double)y)/figure.getDrawing().getWidth() );
+				yAttribute.set(node, ((double)y)/figure.getDrawing().getHeight() );
 				
 				figure.renderer.update(node);
 						

@@ -143,6 +143,9 @@ public class NetworkRenderer extends Drawing
 	
 	public void update ()
 	{
+		if (backgroundRenderer!=null)
+			backgroundRenderer.update(this);
+
 		for (int node=0; node<network.size(); node++) {
 			for (int index=0; index<network.outDegree(node); index++) {
 				linkRenderer.update(this, node, network.outLink(node,index));

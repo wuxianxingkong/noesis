@@ -1,7 +1,8 @@
 package ikor.model.ui;
 
-
 import ikor.collection.Dictionary;
+import ikor.collection.DynamicDictionary;
+
 import ikor.model.Subject;
 
 /**
@@ -9,13 +10,16 @@ import ikor.model.Subject;
  * 
  * @author Fernando Berzal
  */
-public abstract class Application extends Subject implements Runnable
+public abstract class Application extends Subject<String> implements Runnable
 {
 	private String    name;
+
 	private UIModel   startup;
 	private UIBuilder builder;
-	
 
+	private Dictionary<String,Object> data = new DynamicDictionary<String,Object>();
+
+	
 	/**
 	 * Get application name.
 	 * 
@@ -36,6 +40,24 @@ public abstract class Application extends Subject implements Runnable
 		this.name = name;
 	}
 
+	
+	// Data storage
+	// ------------
+	
+	public void set (String key, Object value)
+	{
+		data.set(key, value);
+		notifyObservers(key);
+	}
+	
+	public Object get (String key)
+	{
+		return data.get(key);
+	}
+	
+	// User interface
+	// --------------
+	
 	/**
 	 * Get application point of entry.
 	 * 
@@ -79,7 +101,7 @@ public abstract class Application extends Subject implements Runnable
 	
 	
 	
-	Dictionary<String,UI> userInterface = new ikor.collection.DynamicDictionary<String,UI>();
+	Dictionary<String,UI> userInterface = new DynamicDictionary<String,UI>();
 	
 	/**
 	 * Execute application

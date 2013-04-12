@@ -8,7 +8,7 @@ import ikor.collection.List;
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public class UIModel extends Component
+public class UIModel extends Component<String>
 {
 	/**
 	 * User interface alignment alternatives

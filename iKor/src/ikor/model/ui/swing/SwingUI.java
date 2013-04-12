@@ -88,12 +88,19 @@ public class SwingUI extends JFrame implements UI
 			this.setTitle (context.getId());
 		}
 				
-		initLayout(context);
-
-		// Components
+		// Options
 		
 		for (Component component: context.getComponents())
-			build(component);
+			if (component.getId().startsWith("$"))
+				build(component);
+
+		// Components
+
+		initLayout(context);
+		
+		for (Component component: context.getComponents())
+			if (!component.getId().startsWith("$"))
+				build(component);
 		
 		
 		initDisplay();
@@ -162,7 +169,8 @@ public class SwingUI extends JFrame implements UI
 		layout = new GroupLayout(getContentPane());
 		layout.setAutoCreateGaps(true);
 		layout.setAutoCreateContainerGaps(true);
-		getContentPane().setLayout(layout);
+	
+		this.getContentPane().setLayout(layout);
 		
 		vertical = new Stack<GroupLayout.Group>();
 		horizontal = new Stack<GroupLayout.Group>();
@@ -308,7 +316,7 @@ public class SwingUI extends JFrame implements UI
 		
 		int width = gd.getDisplayMode().getWidth();
 		int height = gd.getDisplayMode().getHeight();
-				
+
 		// Pack UI elements...  
 		  
 		this.pack();

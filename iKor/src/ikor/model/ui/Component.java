@@ -13,6 +13,7 @@ import java.util.UUID;
 public class Component<T> extends Subject<T>
 {
 	private String id;
+	private boolean visible = true;
 	
 	/**
 	 * Default constructor
@@ -52,6 +53,45 @@ public class Component<T> extends Subject<T>
 		this.id = id;
 	}
 
+
+	/**
+	 * Is the component visible?
+	 * 
+	 * @return true when the component is visible.
+	 */
+	public boolean isVisible() 
+	{
+		return visible;
+	}
+
+	/**
+	 * Set component visibility.
+	 * 
+	 * @param visible true to show, false to hide.
+	 */
+	public void setVisible(boolean visible) 
+	{
+		this.visible = visible;
+		notifyObservers();
+	}
+	
+	/** 
+	 * Show component
+	 */
+	public void show ()
+	{
+		setVisible(true);
+	}
+
+	/**
+	 * Hide component
+	 */
+	
+	public void hide ()
+	{
+		setVisible(false);
+	}
+	
 	/**
 	 * Standard output
 	 */

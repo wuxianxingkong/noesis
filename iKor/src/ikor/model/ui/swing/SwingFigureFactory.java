@@ -26,18 +26,22 @@ public class SwingFigureFactory implements UIFactory<SwingUI,Figure>
 		if (figure.getSelectionListener()!=null)
 			control.setSelectionListener( figure.getSelectionListener() );
 		
-		figure.addObserver( new FigureObserver(control) );
+		figure.addObserver( new FigureObserver(figure,control) );
 		
 		ui.addComponent ( control );	
+		
+		control.setVisible( figure.isVisible() );
 	}
 	
 	
 	public class FigureObserver implements Observer
 	{
+		private Figure figure;
 		private JDrawingComponent control;
 		
-		public FigureObserver (JDrawingComponent control)
+		public FigureObserver (Figure figure, JDrawingComponent control)
 		{
+			this.figure = figure;
 			this.control = control;
 		}
 
@@ -48,6 +52,7 @@ public class SwingFigureFactory implements UIFactory<SwingUI,Figure>
 		    {
 		      public void run()
 		      {
+		    	  control.setVisible(figure.isVisible());
 		    	  control.repaint();
 		      }
 		    });			

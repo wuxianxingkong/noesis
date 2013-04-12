@@ -3,7 +3,6 @@ package ikor.model.ui.swing;
 import ikor.model.ui.Image;
 import ikor.model.ui.UIFactory;
 
-import java.awt.Dimension;
 
 
 public class SwingBackgroundFactory implements UIFactory<SwingUI,Image>
@@ -23,9 +22,9 @@ public class SwingBackgroundFactory implements UIFactory<SwingUI,Image>
 	    {
 	        this.image = image;
 	        
-	        setPreferredSize( new Dimension(2*image.getWidth(null), 2*image.getHeight(null)) );
+	        // setPreferredSize( new Dimension(3*image.getWidth(null), 3*image.getHeight(null)) );
 	    }
-	    
+	    	    
 	    @Override
 	    protected void paintComponent (java.awt.Graphics g) 
 	    {

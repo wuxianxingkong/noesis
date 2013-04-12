@@ -107,6 +107,8 @@ public abstract class Application extends Subject implements Runnable
 				userInterface.set(model.getId(), ui);
 			}
 			
+			model.start();
+			
 			ui.run();
 		}
 	}
@@ -118,4 +120,11 @@ public abstract class Application extends Subject implements Runnable
 		ui = userInterface.get(model.getId());
 		ui.exit();
 	}
+	
+	
+	/**
+	 * Obtain resource URL
+	 */
+	
+	public abstract String url (String resource);	
 }

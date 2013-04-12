@@ -55,7 +55,14 @@ public class UIModel extends Component
 		this.alignment = Alignment.CENTER;
 	}
 
+	/**
+	 * Runtime initialization
+	 */
+	public void start ()
+	{
+	}
 
+	
 	public Label getTitle ()
 	{
 		return title;

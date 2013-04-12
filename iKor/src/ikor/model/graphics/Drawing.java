@@ -11,27 +11,43 @@ public class Drawing
 {
 	private int width;
 	private int height;
+	
 	private List<DrawingElement> elements;
+	private Dictionary<String,DrawingElement> index;
 	
 	public Drawing (int width, int height)
 	{
 		this.width = width;
 		this.height = height;
 		this.elements = new DynamicList<DrawingElement>();
+		this.index = new DynamicDictionary<String,DrawingElement>();
 	}
 
 	// Drawing elements
 	// ----------------
+	
+	public void clear ()
+	{
+		elements.clear();
+		index.clear();
+	}
 
 	public void add (DrawingElement element)
 	{
 		elements.add(element);
+		
+		if (element.getId()!=null)
+			index.set( element.getId(), element);
 	}
 	
 	public void remove (DrawingElement element)
 	{
 		elements.remove(element);
+		
+		if (element.getId()!=null)
+			index.remove(element.getId());
 	}
+	
 	
 	public ReadOnlyCollection<DrawingElement> getElements() 
 	{
@@ -41,11 +57,7 @@ public class Drawing
 	
 	public DrawingElement getDrawingElement (String id)
 	{
-		for (DrawingElement element: elements)
-			if (element.getId().equals(id))
-				return element;
-		
-		return null;
+		return index.get(id);
 	}
 	
 	public DrawingElement getDrawingElement (int x, int y)

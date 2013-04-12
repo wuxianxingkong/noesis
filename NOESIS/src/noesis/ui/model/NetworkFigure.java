@@ -22,23 +22,21 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 	private NetworkModel data;
 	private NetworkRenderer renderer;
 	
-
+	public static final int DEFAULT_SIZE = 500;
 
 	public NetworkFigure (NetworkModel data) 
 	{
 		this.data = data;
+
+		// Network renderer
 		
-		// Network drawing
-				
-		renderer = new NetworkRenderer(data.getNetwork(), 600, 600);
+		renderer = new NetworkRenderer( getNetwork(), DEFAULT_SIZE, DEFAULT_SIZE);
 		
 		renderer.setLinkRenderer(  new DefaultLinkRenderer () );
 		renderer.setNodeRenderer( new GradientNodeRenderer() );
-		
-		renderer.render();
-		
-		super.setDrawing(renderer);
-		
+
+		render();
+				
 		// Event handling
 
 		this.setTooltipProvider( new NetworkTooltipProvider() );
@@ -64,6 +62,20 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 		this.data = data;
 	}
 	
+	public AttributeNetwork getNetwork ()
+	{
+		if (data!=null)
+			return data.getNetwork();
+		else
+			return null;
+	}
+	
+	public void setNetwork (AttributeNetwork network)
+	{
+		data.setNetwork(network);
+		renderer.setNetwork(network);
+	}
+	
 	// Network renderer
 	
 	public NetworkRenderer getRenderer() 
@@ -74,6 +86,15 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 	public void setRenderer(NetworkRenderer renderer) 
 	{
 		this.renderer = renderer;
+	}
+	
+	public void render ()
+	{
+		renderer.render();
+		
+		super.setDrawing(renderer);		
+
+		show();
 	}
 
 	// Subject/observer interface
@@ -87,7 +108,7 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 			updating = true;
 			
 			if (object!=null) {
-				data.setNetwork(object);
+				setNetwork(object);
 				notifyObservers(object);
 			} else {
 				notifyObservers ();
@@ -124,16 +145,19 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 			clearSelection();
 			
 			currentStyle = new Style ( new Color(0xff, 0x00, 0x00, 0x80), 3);
-			drawing.getDrawingElement(id).setBorder(currentStyle);
+			
+			if (drawing!=null)
+				drawing.getDrawingElement(id).setBorder(currentStyle);
 		}
 
 		@Override
-		public void addSelection(String id) 
+		public void addSelection (String id) 
 		{
 			if (currentStyle==null)
 				currentStyle = new Style ( new Color(0xff, 0x00, 0x00, 0x80), 3);
 
-			drawing.getDrawingElement(id).setBorder(currentStyle);
+			if (drawing!=null)
+				drawing.getDrawingElement(id).setBorder(currentStyle);
 		}
 
 		@Override

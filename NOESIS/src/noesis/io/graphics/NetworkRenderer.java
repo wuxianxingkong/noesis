@@ -57,8 +57,13 @@ public class NetworkRenderer extends Drawing
 	{
 		this.network = network;
 		
-		this.x = network.getNodeAttribute("x");
-		this.y = network.getNodeAttribute("y");
+		if (network!=null) {
+			this.x = network.getNodeAttribute("x");
+			this.y = network.getNodeAttribute("y");
+		} else {
+			this.x = null;
+			this.y = null;
+		}
 	}
 	
 	/**
@@ -125,15 +130,18 @@ public class NetworkRenderer extends Drawing
 		
 		if (backgroundRenderer!=null)
 			backgroundRenderer.render(this);
-		
-		for (int node=0; node<network.size(); node++) {
-			for (int index=0; index<network.outDegree(node); index++) {
-				linkRenderer.render(this, node, network.outLink(node,index));
+
+		if (network!=null) {
+			
+			for (int node=0; node<network.size(); node++) {
+				for (int index=0; index<network.outDegree(node); index++) {
+					linkRenderer.render(this, node, network.outLink(node,index));
+				}
 			}
-		}
-		
-		for (int node=0; node<network.size(); node++) {
-			nodeRenderer.render(this, node);
+
+			for (int node=0; node<network.size(); node++) {
+				nodeRenderer.render(this, node);
+			}
 		}
 	}
 	
@@ -145,15 +153,18 @@ public class NetworkRenderer extends Drawing
 	{
 		if (backgroundRenderer!=null)
 			backgroundRenderer.update(this);
-
-		for (int node=0; node<network.size(); node++) {
-			for (int index=0; index<network.outDegree(node); index++) {
-				linkRenderer.update(this, node, network.outLink(node,index));
-			}
-		}
 		
-		for (int node=0; node<network.size(); node++) {
-			nodeRenderer.update(this, node);
+		if (network!=null) {
+
+			for (int node=0; node<network.size(); node++) {
+				for (int index=0; index<network.outDegree(node); index++) {
+					linkRenderer.update(this, node, network.outLink(node,index));
+				}
+			}
+
+			for (int node=0; node<network.size(); node++) {
+				nodeRenderer.update(this, node);
+			}
 		}
 	}
 
@@ -162,16 +173,19 @@ public class NetworkRenderer extends Drawing
 	 */
 	
 	public void update (int node)
-	{		
-		for (int index=0; index<network.outDegree(node); index++) {
-			linkRenderer.update(this, node, network.outLink(node,index));
+	{
+		if (network!=null) {
+			
+			for (int index=0; index<network.outDegree(node); index++) {
+				linkRenderer.update(this, node, network.outLink(node,index));
+			}
+
+			for (int index=0; index<network.inDegree(node); index++) {
+				linkRenderer.update(this, network.inLink(node,index), node);
+			}		
+
+			nodeRenderer.update(this, node);
 		}
-	
-		for (int index=0; index<network.inDegree(node); index++) {
-			linkRenderer.update(this, network.inLink(node,index), node);
-		}		
-	
-		nodeRenderer.update(this, node);
 	}
 	
 	
@@ -201,22 +215,18 @@ public class NetworkRenderer extends Drawing
 	
 	public int getX (int node)
 	{
-		return (int) ( getWidth() * (Double) x.get(node) );
+		if (x!=null)
+			return (int) ( getWidth() * (Double) x.get(node) );
+		else
+			return 0;
 	}
 	
 	public int getY (int node)
 	{
-		return (int) ( getHeight() * (Double) y.get(node) );
+		if (y!=null)
+			return (int) ( getHeight() * (Double) y.get(node) );
+		else
+			return 0;
 	}
-	
-	
-	
-	public void createCompleteNetwork (AttributeNetwork network)
-	{
-	
-	}
-
-
-
 
 }

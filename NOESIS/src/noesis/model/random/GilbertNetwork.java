@@ -14,7 +14,7 @@ public class GilbertNetwork extends RandomNetwork
 		// For each possible link in the complete (undirected) graph
 		
 		for (int i=0; i<nodes; i++) {
-			for (int j=i+1; j<nodes; i++) {
+			for (int j=i+1; j<nodes; j++) {
 				if (Math.random()<probability) {
 					add(i,j);
 					add(j,i);

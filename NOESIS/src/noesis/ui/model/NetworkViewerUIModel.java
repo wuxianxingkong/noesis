@@ -1,10 +1,12 @@
 package noesis.ui.model;
 
+import ikor.model.Subject;
 import ikor.model.ui.Application;
 import ikor.model.ui.Image;
 import ikor.model.ui.Option;
 import ikor.model.ui.UIModel;
 
+import noesis.AttributeNetwork;
 import noesis.ui.model.actions.ExitAction;
 
 public class NetworkViewerUIModel  extends UIModel
@@ -17,6 +19,8 @@ public class NetworkViewerUIModel  extends UIModel
 	public NetworkViewerUIModel (Application app)
 	{
 		super(app,"NOESIS Network Viewer");
+
+		app.addObserver(this);
 		
 		// setAlignment( UIModel.Alignment.ADJUST );
 		// setAlignment( UIModel.Alignment.LEADING );
@@ -28,9 +32,9 @@ public class NetworkViewerUIModel  extends UIModel
 		
 		add( new Image("$background", app.url("logo.gif") ) );
 		
-		model = new NetworkModel(15);
-		figure = new NetworkFigure(model);
+		model = new NetworkModel( (AttributeNetwork) app.get("network") );
 		
+		figure = new NetworkFigure(model);
 		
 	    add( figure );
 		
@@ -39,9 +43,28 @@ public class NetworkViewerUIModel  extends UIModel
 	
 	// Startup
 	
+	@Override
 	public void start ()
 	{
 		figure.hide();
+	}
+	
+	// Updates
+	
+	@Override
+	public void update (Subject subject, String key)
+	{
+		if ((key!=null) && key.equals("network")) {
+			
+			AttributeNetwork network = (AttributeNetwork) getApplication().get("network");
+			
+			if (network!=null) {
+				model.setNetwork(network);
+				figure.render();
+				figure.show();
+			}
+		}
+		
 	}
 	
 	

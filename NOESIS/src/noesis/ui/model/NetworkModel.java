@@ -1,9 +1,7 @@
 package noesis.ui.model;
 
 import ikor.model.Subject;
-import ikor.util.log.Log;
 
-import noesis.Attribute;
 import noesis.AttributeNetwork;
 
 // Network model in MVC
@@ -13,27 +11,9 @@ class NetworkModel extends Subject<AttributeNetwork>
 	AttributeNetwork network;
 	
 	
-	public NetworkModel (int K)
+	public NetworkModel (AttributeNetwork network)
 	{
-		network = new AttributeNetwork();
-		
-		Attribute<Double> x = new Attribute<Double>("x");
-		Attribute<Double> y = new Attribute<Double>("y");
-		
-		network.addNodeAttribute( x );
-		network.addNodeAttribute( y );
-		
-		for (int i=0; i<K; i++) {
-			network.add(i);
-			x.set(i, 0.5 + 0.4*Math.cos(i*2*Math.PI/K));
-			y.set(i, 0.5 + 0.4*Math.sin(i*2*Math.PI/K));
-		}
-		
-		for (int i=0; i<K; i++) {
-			for (int j=i+1; j<K; j++) {
-				network.add(i,j);
-			}
-		}
+		this.network = network;
 	}
 	
 	public AttributeNetwork getNetwork() 
@@ -50,8 +30,6 @@ class NetworkModel extends Subject<AttributeNetwork>
 	@Override
 	public void update (Subject subject, AttributeNetwork object) 
 	{
-		Log.info("MVC network - "+object+" @ "+subject);
-		
 		if (object!=null)
 			setNetwork( object );
 		else

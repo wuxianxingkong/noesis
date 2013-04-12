@@ -9,11 +9,24 @@ import ikor.model.ui.Separator;
 import java.awt.event.KeyEvent;
 
 import noesis.ui.model.actions.ExitAction;
-import noesis.ui.model.actions.FileAction;
 import noesis.ui.model.actions.ForwardAction;
 import noesis.ui.model.actions.URLAction;
-import noesis.ui.model.actions.ViewerCloseAction;
 import noesis.ui.model.actions.ViewerOpenAction;
+import noesis.ui.model.actions.ViewerSaveAction;
+import noesis.ui.model.actions.ViewerCloseAction;
+import noesis.ui.model.networks.AnchoredRandomNetworkUI;
+import noesis.ui.model.networks.BinaryTreeNetworkUI;
+import noesis.ui.model.networks.CompleteNetworkUI;
+import noesis.ui.model.networks.ConnectedRandomNetworkUI;
+import noesis.ui.model.networks.ErdosRenyiNetworkUI;
+import noesis.ui.model.networks.GilbertNetworkUI;
+import noesis.ui.model.networks.HypercubeNetworkUI;
+import noesis.ui.model.networks.IsolateNetworkUI;
+import noesis.ui.model.networks.MeshNetworkUI;
+import noesis.ui.model.networks.RingNetworkUI;
+import noesis.ui.model.networks.StarNetworkUI;
+import noesis.ui.model.networks.TandemNetworkUI;
+import noesis.ui.model.networks.ToroidalNetworkUI;
 
 public class NetworkViewerMenu extends Menu 
 {
@@ -23,75 +36,140 @@ public class NetworkViewerMenu extends Menu
 		
 		Application app = ui.getApplication();
 		
-		Menu file = new Menu("File");
-		//Menu edit = new Menu("Edit");
-		//Menu data = new Menu("Data");
-		//Menu net  = new Menu("Network");
+		Menu net = new Menu("Network");
+		Menu view = new Menu("View");
+		Menu data = new Menu("Data");
+		Menu analysis = new Menu("Analysis");
 		Menu help = new Menu("Help");
-
-		//Menu importMenu = new Menu("Import");
-		Menu exportMenu = new Menu("Export");
 		
-		this.add(file);
-		//this.add(edit);
-		//this.add(data);
-		//this.add(net);
+		this.add(net);
+		this.add(view);
+		this.add(data);
+		this.add(analysis);
 		this.add(help);
 		
-		file.setIcon( app.url("icons/download.png") );
-		//edit.setIcon( app.url("clipboard.png") );
-		//data.setIcon( app.url("microscope.png") );
-		//net.setIcon( app.url("kiviat.png") );
+		net.setIcon( app.url("icons/download.png") );
+		view.setIcon( app.url("icons/kiviat.png") );
+		data.setIcon( app.url("icons/chart.png") );
+		analysis.setIcon( app.url("icons/microscope.png") );
 		help.setIcon( app.url("icons/search.png") );
 		
-		//edit.disable();
+		// New network...
 
-		//Option newX = new Option("New...", new FileAction(app,"New") );
-		//newX.setIcon( app.url("new.png") );
-		//file.add( newX );
+		Menu newNetwork = new Menu("New...");
+		newNetwork.setIcon( app.url("icons/new.png") );
+		net.add( newNetwork );
+
+		// Random networks
+		
+		Menu newRandomNetwork = new Menu("Random network");
+		newRandomNetwork.setIcon( app.url("icons/new.png") );
+		newNetwork.add (newRandomNetwork);
+		
+		Option newER = new Option("Erdös-Renyi network", new ForwardAction( new ErdosRenyiNetworkUI(app) ) );
+		newER.setIcon( app.url("icons/kiviat.png") );
+		newRandomNetwork.add(newER);
+
+		Option newGilbert = new Option("Gilbert network", new ForwardAction( new GilbertNetworkUI(app) ) );
+		newGilbert.setIcon( app.url("icons/kiviat.png") );
+		newRandomNetwork.add(newGilbert);
+
+		Option newAnchored = new Option("Anchored random network", new ForwardAction( new AnchoredRandomNetworkUI(app) ) );
+		newAnchored.setIcon( app.url("icons/kiviat.png") );
+		newRandomNetwork.add(newAnchored);
+
+		Option newConnected = new Option("Connected random network", new ForwardAction( new ConnectedRandomNetworkUI(app) ) );
+		newConnected.setIcon( app.url("icons/kiviat.png") );
+		newRandomNetwork.add(newConnected);
+		
+		// Regular networks
+		
+		Menu newRegularNetwork = new Menu("Regular network");
+		newRegularNetwork.setIcon( app.url("icons/new.png") );
+		newNetwork.add (newRegularNetwork);
+		
+		Option newComplete = new Option("Complete network", new ForwardAction( new CompleteNetworkUI(app) ) );
+		newComplete.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newComplete);
+
+		Option newStar = new Option("Star network", new ForwardAction( new StarNetworkUI(app) ) );
+		newStar.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newStar);
+
+		newRegularNetwork.add( new Separator() );
+		
+		Option newRing = new Option("Ring network", new ForwardAction( new RingNetworkUI(app) ) );
+		newRing.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newRing);
+		
+		Option newTandem = new Option("Tandem network", new ForwardAction( new TandemNetworkUI(app) ) );
+		newTandem.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newTandem);
+
+		newRegularNetwork.add( new Separator() );
+
+		Option newMesh = new Option("Mesh network", new ForwardAction( new MeshNetworkUI(app) ) );
+		newMesh.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newMesh);
+
+		Option newToroidal = new Option("Toroidal network", new ForwardAction( new ToroidalNetworkUI(app) ) );
+		newToroidal.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newToroidal);
+
+		Option newHypercube = new Option("Hypercube network", new ForwardAction( new HypercubeNetworkUI(app) ) );
+		newHypercube.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newHypercube);
+
+		Option newBinaryTree = new Option("Binary tree network", new ForwardAction( new BinaryTreeNetworkUI(app) ) );
+		newBinaryTree.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newBinaryTree);
+		
+		newRegularNetwork.add( new Separator() );
+		
+		Option newIsolate = new Option("Isolate network", new ForwardAction( new IsolateNetworkUI(app) ) );
+		newIsolate.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newIsolate);
+		
+		// File operations
 		
 		Option open = new Option("Open", new ViewerOpenAction(ui), KeyEvent.VK_F3 );
 		open.setIcon( app.url("icons/open.png") );
-		file.add( open );
+		net.add( open );
 
-		Option save =new Option("Save", new FileAction(app,"Save"), KeyEvent.VK_F2 );
+		Option save = new Option("Save", new ViewerSaveAction(ui), KeyEvent.VK_F2 );
 		save.setIcon( app.url("icons/save.png") );
-		file.add( save );
-
+		net.add( save );
 
 		Option close = new Option("Close", new ViewerCloseAction(ui), KeyEvent.VK_F4 );
 		close.setIcon( app.url("icons/close.png") );
-		file.add( close );
-/*		
+		net.add( close );
+	
+		net.add( new Separator() );
+
+		//Menu importMenu = new Menu("Import");
+		//importMenu.setIcon ( app.url("icons/arrow-left.png") );
+		//net.add( importMenu );
 		
-		importMenu.setIcon ( app.url("arrow-left.png") );
-		file.add( importMenu );
-		importMenu.add( createOption(app, "Import GDF network", "kiviat.png") );
-		importMenu.add( createOption(app, "Import GML network", "kiviat.png") );
-		importMenu.add( createOption(app, "Import GraphML network", "kiviat.png") );
-		importMenu.add( createOption(app, "Import Pajek network", "kiviat.png") );
-*/		
-		file.add( new Separator() );
-		
+		Menu exportMenu = new Menu("Export");
 		exportMenu.setIcon ( app.url("icons/arrow-right.png") );
-		file.add( exportMenu );
+		net.add( exportMenu );
 		
-		Option saveSVG =new Option("SVG image", new FileAction(app,"Save") );
+		Option saveSVG =new Option("SVG image", new ViewerSaveAction(ui) );
 		saveSVG.setIcon( app.url("icons/kiviat.png") );
 		exportMenu.add(saveSVG);
 	    saveSVG.disable();
 
-		Option savePNG=new Option("PNG image", new FileAction(app,"Save") );
+		Option savePNG=new Option("PNG image", new ViewerSaveAction(ui) );
 		savePNG.setIcon( app.url("icons/kiviat.png") );
 		exportMenu.add(savePNG);
 	    savePNG.disable();
 	    
-		Option saveJPG=new Option("JPG image", new FileAction(app,"Save") );
+		Option saveJPG=new Option("JPG image", new ViewerSaveAction(ui) );
 		saveJPG.setIcon( app.url("icons/kiviat.png") );
 		exportMenu.add(saveJPG);
 	    saveJPG.disable();
 
-		file.add( new Separator() );
+		net.add( new Separator() );
 /*
 		Option email = new Option("E-mail", new LogAction("Email..."), KeyEvent.VK_F5 );
 		email.setIcon( app.url("email.png") );
@@ -102,64 +180,45 @@ public class NetworkViewerMenu extends Menu
 		print.setIcon( app.url("print.png") );
 		print.disable();
 		file.add( print );
-
-		file.add( new Separator() );
-		
-		Option config = new Option("Configuration...", new ForwardAction( new ListModel(app)), KeyEvent.VK_F9 );
-		config.setIcon( app.url("config.png") );
-		file.add( config );
 		
 		file.add( new Separator() );
 */
 		Option exit = new Option("Exit", new ExitAction(app) );
 		exit.setIcon( app.url("icons/exit.png") );
-		file.add(exit);
-/*		
-		// Data
+		net.add(exit);
+
+		// View
 		
-		Option viewData = new Option("View", new ForwardAction( new ViewerModel(app) ) );
-		viewData.setIcon( app.url("microscope.png") );
-		data.add(viewData);
+		view.disable();
+
+		// Data menu
 		
-		Option editData = new Option("Edit", new ForwardAction( new EditorModel(app) ) );
-		editData.setIcon( app.url("microscope.png") );
-		data.add(editData);
-
-		Option mvcData = new Option("MVC", new ForwardAction( new MVCModel(app) ) );
-		mvcData.setIcon( app.url("microscope.png") );
-		data.add(mvcData);
-
-		Option colorData = new Option("Color", new ForwardAction( new ColorUIModel(app) ) );
-		colorData.setIcon( app.url("palette.png") );
-		data.add(colorData);
-
-		Option dataViewer = new Option("Dataset viewer", new ForwardAction( new DatasetTestModel(app, false) ) );
-		dataViewer.setIcon( app.url("microscope.png") );
-		data.add(dataViewer);
-
-		Option dataEditor = new Option("Dataset editor", new ForwardAction( new DatasetTestModel(app, true) ) );
-		dataEditor.setIcon( app.url("microscope.png") );
-		data.add(dataEditor);
-
-		Option figureEditor = new Option("Dataset MVC", new ForwardAction( new FigureTestModel(app) ) );
-		figureEditor.setIcon( app.url("microscope.png") );
-		data.add(figureEditor);
+		data.disable();
+		
+		// Analysis menu
+		
+		analysis.disable();
+				
 		
 		// Help
+		// ----
 		
-		Option search = new Option("Tutorial", new ForwardAction( new NestedModel(app) ) );
-		search.setIcon( app.url("tutor.png") );
-		help.add(search);
-*/		
+		//Option tutorial = new Option("Tutorial", new URLAction("http://noesis.ikor.org/") );
+		//tutorial.setIcon( app.url("icons/tutor.png") );
+		//help.add(tutorial);
 
-		Option docs = new Option("Project web page", new URLAction("http://noesis.ikor.org/"), KeyEvent.VK_F1 );
-		docs.setIcon( app.url("icons/docs.png") );
-		help.add(docs);
+		Option web = new Option("Project web page", new URLAction("http://noesis.ikor.org/"), KeyEvent.VK_F1 );
+		web.setIcon( app.url("icons/docs.png") );
+		help.add(web);
+		
+		//Option config = new Option("Configuration...", new ForwardAction(null), KeyEvent.VK_F9 );
+		//config.setIcon( app.url("icons/config.png") );
+		//help.add( config );
+		
 
 		Option about = new Option("About...", new ForwardAction( new AboutUIModel(app) ) );
 		about.setIcon( app.url("icons/info.png") );
 		help.add(about);
-
 	}
 	
 

@@ -12,7 +12,7 @@ public class TestApplication extends Application
 {
 	private static final String IMAGE_PATH = "sandbox/mdsd/test/image/";
 	
-	public static String url (String image)
+	public String url (String image)
 	{
 		return IMAGE_PATH+image;
 	}

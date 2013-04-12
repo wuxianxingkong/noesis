@@ -18,22 +18,22 @@ public class ViewerModel extends UIModel
 		
 		Viewer<String> stringViewer = new Viewer<String>("string", String.class);
 		stringViewer.setData("Test");
-		stringViewer.setIcon( TestApplication.url("write.png") );
+		stringViewer.setIcon( app.url("write.png") );
 		add(stringViewer);
 
 		Viewer<String> multilineViewer = new Viewer<String>("multiline", String.class);
 		multilineViewer.setData("This is the first line of a multiline field...\nTest line 2");
-		multilineViewer.setIcon( TestApplication.url("write.png") );
+		multilineViewer.setIcon( app.url("write.png") );
 		add(multilineViewer);
 		
 		Viewer<Integer> integerViewer = new Viewer<Integer>("int", Integer.class);
 		integerViewer.setData(123);
-		integerViewer.setIcon( TestApplication.url("calculator.png") );
+		integerViewer.setIcon( app.url("calculator.png") );
 		add(integerViewer);
 		
 		Viewer<Double> doubleViewer = new Viewer<Double>("real", Double.class);
 		doubleViewer.setData(123.45);		
-		doubleViewer.setIcon( TestApplication.url("calculator.png") );
+		doubleViewer.setIcon( app.url("calculator.png") );
 		add(doubleViewer);
 		
 		Viewer<Decimal> decimalViewer = new Viewer<Decimal>("decimal", Decimal.class);
@@ -42,7 +42,7 @@ public class ViewerModel extends UIModel
 		
 		Viewer<Date> dateViewer = new Viewer<Date>("date", Date.class);
 		dateViewer.setData( new Date() );
-		dateViewer.setIcon( TestApplication.url("calendar.png") );
+		dateViewer.setIcon( app.url("calendar.png") );
 		add(dateViewer);
 	}
 	

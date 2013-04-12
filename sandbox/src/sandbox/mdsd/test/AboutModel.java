@@ -13,9 +13,9 @@ public class AboutModel extends UIModel
 	{
 		super(app, "About NOESIS...");
 		
-		setIcon( TestApplication.url("icon.gif") );
+		setIcon( app.url("icon.gif") );
 		
-		add( new Image("logo", TestApplication.url("logo.gif") ) );
+		add( new Image("logo", app.url("logo.gif") ) );
 
 		add( new Separator () );
 		
@@ -26,7 +26,7 @@ public class AboutModel extends UIModel
 		add ( new Separator() );
 		
 		Option ok = new Option("");
-		ok.setIcon( TestApplication.url("icon.gif") );
+		ok.setIcon( app.url("icon.gif") );
 		ok.setAction( new ExitAction(this) );
 		add( ok );
 		

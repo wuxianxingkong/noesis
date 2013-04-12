@@ -33,7 +33,7 @@ public class FigureTestModel extends UIModel
 	{
 		super(app, "Network viewer..." );
 
-		setIcon( TestApplication.url("chart.png") );
+		setIcon( app.url("chart.png") );
 
 		
 		NetworkMVCData mvc = new NetworkMVCData();

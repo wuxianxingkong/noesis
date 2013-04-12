@@ -27,18 +27,18 @@ public class NestedModel extends UIModel
 		
 		buttons.setAlignment( UIModel.Alignment.ADJUST );
 		
-		buttons.add ( createButton ("OK") );
-		buttons.add ( createButton ("Cancel") );
-		buttons.add ( createButton ("Help") );
+		buttons.add ( createButton (app, "OK") );
+		buttons.add ( createButton (app, "Cancel") );
+		buttons.add ( createButton (app, "Help") );
 		
 		add(buttons);
 		
 	}
 	
-	public Option createButton (String id)
+	public Option createButton (Application app, String id)
 	{
 		Option ok = new Option(id);
-		ok.setIcon( TestApplication.url("icon.gif") );
+		ok.setIcon( app.url("icon.gif") );
 		ok.setAction( new LogAction("Button pressed - "+id) );
 		return ok;
 	}

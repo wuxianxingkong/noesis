@@ -11,7 +11,7 @@ public class ListModel  extends UIModel
 	{
 		super(app, "Lists...");
 
-		setIcon( TestApplication.url("icon.gif") );		
+		setIcon( app.url("icon.gif") );		
 		setAlignment( UIModel.Alignment.LEADING );
 		
 		Selector selector = new Selector();
@@ -19,16 +19,16 @@ public class ListModel  extends UIModel
 		selector.setMultipleSelection(true);
 		
 		for (int i=1; i<=6; i++)
-			selector.add( createOption(selector, "Network #"+i, "kiviat.png") );
+			selector.add( createOption(app, selector, "Network #"+i, "kiviat.png") );
 		//selector.add( new Separator() );
 
 		add (selector);
 	}
 	
-	private Option createOption (Selector selector, String text, String icon)
+	private Option createOption (Application app, Selector selector, String text, String icon)
 	{
 		Option option = new Option(text, new LogAction(text) );
-		option.setIcon( TestApplication.url(icon) );
+		option.setIcon( app.url(icon) );
 		option.setAction( new LogStateAction(selector) );
 		return option;
 	}

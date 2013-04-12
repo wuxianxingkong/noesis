@@ -17,9 +17,9 @@ public class TestUIModel extends UIModel
 		
 		add( new Option("$exit", new ExitAction(app) ) );
 		
-		add( new Image("$icon", TestApplication.url("icon.gif") ) );
+		add( new Image("$icon", app.url("icon.gif") ) );
 		
-		add( new Image("$background", TestApplication.url("logo.gif") ) );
+		add( new Image("$background", app.url("logo.gif") ) );
 		
 		add( new TestMenu(app));
 	}

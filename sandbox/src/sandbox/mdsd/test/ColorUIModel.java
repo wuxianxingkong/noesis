@@ -44,7 +44,7 @@ public class ColorUIModel extends UIModel
 	{
 		super(app, "Sinchronized colors...");
 		
-		setIcon( TestApplication.url("palette.png") );		
+		setIcon( app.url("palette.png") );		
 		
 		ColorData color1 = new ColorData();
 		ColorData color2 = new ColorData();

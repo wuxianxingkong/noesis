@@ -27,7 +27,7 @@ public class DatasetTestModel extends UIModel
 	
 		SampleDataset dataset = new SampleDataset();
 
-		setIcon( TestApplication.url("chart.png") );
+		setIcon( app.url("chart.png") );
 
 		if (editable) { // Data editor
 			

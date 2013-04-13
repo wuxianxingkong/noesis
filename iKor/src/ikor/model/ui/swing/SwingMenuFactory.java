@@ -1,5 +1,7 @@
 package ikor.model.ui.swing;
 
+import ikor.model.Observer;
+import ikor.model.Subject;
 import ikor.model.ui.Menu;
 import ikor.model.ui.Option;
 import ikor.model.ui.Separator;
@@ -25,7 +27,9 @@ public class SwingMenuFactory implements UIFactory<SwingUI,Menu>
 				menubar.add ( buildMenuItem(ui, item) ); 
 		}
 
-		ui.setJMenuBar(menubar);				
+		ui.setJMenuBar(menubar);
+		
+		menu.addObserver( new MenuObserver(ui,menu) );
 	}
 
 	private JMenu buildMenu (SwingUI ui, Menu menu)
@@ -34,6 +38,7 @@ public class SwingMenuFactory implements UIFactory<SwingUI,Menu>
 
 		jmenu.setToolTipText( menu.getLabel().getDescription() );
 	    jmenu.setEnabled( menu.isEnabled() );
+	    jmenu.setVisible( menu.isVisible() );
 
 		if (menu.getLabel().getIcon()!=null)
 			jmenu.setIcon( ui.loadIcon(menu.getLabel().getIcon()) );
@@ -59,6 +64,7 @@ public class SwingMenuFactory implements UIFactory<SwingUI,Menu>
 		
 		menuItem.setToolTipText( option.getLabel().getDescription() );
 	    menuItem.setEnabled( option.isEnabled() );
+	    menuItem.setVisible( option.isVisible() );
 		menuItem.addActionListener(new SwingActionHandler(option.getAction()));
 		
 		if (option.getLabel().getIcon()!=null)
@@ -70,5 +76,25 @@ public class SwingMenuFactory implements UIFactory<SwingUI,Menu>
 		return menuItem;
 	}
 
+
+	// Menu observer
+	
+	public class MenuObserver implements Observer
+	{
+		private SwingUI ui;
+		private Menu menu;
+		
+		public MenuObserver (SwingUI ui, Menu menu)
+		{
+			this.ui = ui;
+			this.menu = menu;
+		}
+
+		@Override
+		public void update(Subject o, Object arg) 
+		{
+			build(ui,menu);
+		}
+	}
 	
 }

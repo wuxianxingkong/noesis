@@ -4,6 +4,7 @@ import ikor.model.ui.File;
 import ikor.model.ui.UI;
 import ikor.model.ui.UIBuilder;
 import ikor.model.ui.UIModel;
+import ikor.util.log.Log;
 
 
 public class SwingUIBuilder extends UIBuilder 
@@ -16,6 +17,17 @@ public class SwingUIBuilder extends UIBuilder
 			return new SwingFileDialog((File)model);
 		else
 			return new SwingUI(model);
+	}
+
+	@Override
+	public void open(String url) 
+	{
+		try {
+			java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+		} catch (java.io.IOException e) {
+			Log.error("Error while trying to open URL ("+url+") - "+e.getMessage());
+		}
+		
 	}
 	
 

@@ -44,12 +44,22 @@ public abstract class Application extends Subject<String> implements Runnable
 	// Data storage
 	// ------------
 	
+	/**
+	 * Application data storage: Store data
+	 * @param key Key value
+	 * @param value Data
+	 */
 	public void set (String key, Object value)
 	{
 		data.set(key, value);
 		notifyObservers(key);
 	}
 	
+	/**
+	 * Application data storage: Retrieve data
+	 * @param key Key value
+	 * @return Data associated to the specified key
+	 */
 	public Object get (String key)
 	{
 		return data.get(key);
@@ -135,6 +145,10 @@ public abstract class Application extends Subject<String> implements Runnable
 		}
 	}
 	
+	/**
+	 * Exit 
+	 * @param model UI model to be closed
+	 */
 	public void exit (UIModel model)
 	{
 		UI ui;
@@ -148,5 +162,14 @@ public abstract class Application extends Subject<String> implements Runnable
 	 * Obtain resource URL
 	 */
 	
-	public abstract String url (String resource);	
+	public abstract String url (String resource);
+	
+	/**
+	 * Open URL
+	 * @param url URL to be opened
+	 */
+	public void open (String url)
+	{
+		builder.open(url);
+	}
 }

@@ -41,12 +41,21 @@ public class UIModel extends Component<String>
 	private Label title;
 	private Alignment alignment;
 
+	/**
+	 * Constructor
+	 * @param application Application
+	 */
 
 	public UIModel (Application application)
 	{
 		this(application, application.getName());
 	}
 
+	/**
+	 * Constructor
+	 * @param application Application
+	 * @param title Title
+	 */
 	public UIModel (Application application, String title)
 	{
 		this.application = application;
@@ -62,22 +71,60 @@ public class UIModel extends Component<String>
 	{
 	}
 
+	/**
+	 * Exit UI
+	 */
+	public void exit ()
+	{
+		application.exit(this);
+	}
+
+	/**
+	 * Application data storage: Retrieve data
+	 */
+	public Object get (String key)
+	{
+		return application.get(key);
+	}
 	
+	/**
+	 * Application data storage: Store data
+	 */
+	public void set (String key, Object value)
+	{
+		application.set(key, value);
+	}
+	
+	/**
+	 * Get UI title
+	 */
 	public Label getTitle ()
 	{
 		return title;
 	}
 
+	/**
+	 * Set UI title
+	 * @param title Title string
+	 */
 	public void setTitle (String title)
 	{
 		this.title = new Label(title);
 	}
 	
+	/**
+	 * Set UI title
+	 * @param label Title label
+	 */
 	public void setTitle (Label label)
 	{
 		this.title = label;
 	}
 
+	/**
+	 * Set UI icon
+	 * @param icon Icon location
+	 */
 	public void setIcon (String icon) 
 	{
 		title.setIcon(icon);

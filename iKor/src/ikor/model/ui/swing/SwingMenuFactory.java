@@ -18,6 +18,13 @@ public class SwingMenuFactory implements UIFactory<SwingUI,Menu>
 	@Override
 	public void build(SwingUI ui, Menu menu) 
 	{	
+		buildMenuBar(ui,menu);
+		
+		menu.addObserver( new MenuObserver(ui,menu) );
+	}
+	
+	private JMenuBar buildMenuBar (SwingUI ui, Menu menu)
+	{
 		JMenuBar menubar = new JMenuBar();
 		
 		for (Option item: menu.getItems()) {
@@ -29,7 +36,9 @@ public class SwingMenuFactory implements UIFactory<SwingUI,Menu>
 
 		ui.setJMenuBar(menubar);
 		
-		menu.addObserver( new MenuObserver(ui,menu) );
+		menubar.updateUI();
+		
+		return menubar;
 	}
 
 	private JMenu buildMenu (SwingUI ui, Menu menu)
@@ -93,7 +102,7 @@ public class SwingMenuFactory implements UIFactory<SwingUI,Menu>
 		@Override
 		public void update(Subject o, Object arg) 
 		{
-			build(ui,menu);
+			buildMenuBar(ui,menu);
 		}
 	}
 	

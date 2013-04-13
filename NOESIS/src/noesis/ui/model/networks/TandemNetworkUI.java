@@ -10,6 +10,10 @@ import ikor.model.ui.UIModel;
 
 import noesis.Attribute;
 import noesis.AttributeNetwork;
+
+import noesis.algorithms.visualization.LinearLayout;
+import noesis.algorithms.visualization.NetworkLayout;
+
 import noesis.model.regular.RegularNetwork;
 import noesis.model.regular.TandemNetwork;
 
@@ -58,22 +62,16 @@ public class TandemNetworkUI extends UIModel
 			RegularNetwork regular = new TandemNetwork(nodes);
 			
 			AttributeNetwork network = new AttributeNetwork(regular);
-			
-			// Initial layout
 
-			Attribute<Double> x = new Attribute<Double>("x");
-			Attribute<Double> y = new Attribute<Double>("y");
+			network.addNodeAttribute( new Attribute<Double>("x") );
+			network.addNodeAttribute( new Attribute<Double>("y") );
 			
-			network.addNodeAttribute( x );
-			network.addNodeAttribute( y );
+			NetworkLayout display = new LinearLayout();
+			
+			display.layout(network);
 						
-			for (int i=0; i<network.size(); i++) {
-				x.set(i, 0.1 + (0.8*i)/(nodes-1) );
-				y.set(i, 0.5 );
-			}
-						
-			ui.getApplication().set("network", network);
-			ui.getApplication().exit(ui);
+			ui.set("network", network);
+			ui.exit();
 		}	
 	}	
 

@@ -8,8 +8,17 @@ import ikor.model.ui.Separator;
 
 import java.awt.event.KeyEvent;
 
+import noesis.algorithms.visualization.BinaryTreeLayout;
+import noesis.algorithms.visualization.CircularLayout;
+import noesis.algorithms.visualization.HypercubeLayout;
+import noesis.algorithms.visualization.LinearLayout;
+import noesis.algorithms.visualization.MeshLayout;
+import noesis.algorithms.visualization.RandomLayout;
+import noesis.algorithms.visualization.StarLayout;
+import noesis.algorithms.visualization.ToroidalLayout;
 import noesis.ui.model.actions.ExitAction;
 import noesis.ui.model.actions.ForwardAction;
+import noesis.ui.model.actions.LayoutAction;
 import noesis.ui.model.actions.URLAction;
 import noesis.ui.model.actions.ViewerOpenAction;
 import noesis.ui.model.actions.ViewerSaveAction;
@@ -30,17 +39,28 @@ import noesis.ui.model.networks.ToroidalNetworkUI;
 
 public class NetworkViewerMenu extends Menu 
 {
+	private Menu net;
+	private Menu view;
+	private Menu data;
+	private Menu analysis;
+	private Menu help;
+	
+	private Option open;
+	private Option save;
+	private Option close;
+	private Menu   export;
+
 	public NetworkViewerMenu (NetworkViewerUIModel ui)
 	{
 		super("NOESIS Network Viewer Menu");
 		
 		Application app = ui.getApplication();
 		
-		Menu net = new Menu("Network");
-		Menu view = new Menu("View");
-		Menu data = new Menu("Data");
-		Menu analysis = new Menu("Analysis");
-		Menu help = new Menu("Help");
+		net = new Menu("Network");
+		view = new Menu("View");
+		data = new Menu("Data");
+		analysis = new Menu("Analysis");
+		help = new Menu("Help");
 		
 		this.add(net);
 		this.add(view);
@@ -132,15 +152,15 @@ public class NetworkViewerMenu extends Menu
 		
 		// File operations
 		
-		Option open = new Option("Open", new ViewerOpenAction(ui), KeyEvent.VK_F3 );
+		open = new Option("Open", new ViewerOpenAction(ui), KeyEvent.VK_F3 );
 		open.setIcon( app.url("icons/open.png") );
 		net.add( open );
 
-		Option save = new Option("Save", new ViewerSaveAction(ui), KeyEvent.VK_F2 );
+		save = new Option("Save", new ViewerSaveAction(ui), KeyEvent.VK_F2 );
 		save.setIcon( app.url("icons/save.png") );
 		net.add( save );
 
-		Option close = new Option("Close", new ViewerCloseAction(ui), KeyEvent.VK_F4 );
+		close = new Option("Close", new ViewerCloseAction(ui), KeyEvent.VK_F4 );
 		close.setIcon( app.url("icons/close.png") );
 		net.add( close );
 	
@@ -150,23 +170,23 @@ public class NetworkViewerMenu extends Menu
 		//importMenu.setIcon ( app.url("icons/arrow-left.png") );
 		//net.add( importMenu );
 		
-		Menu exportMenu = new Menu("Export");
-		exportMenu.setIcon ( app.url("icons/arrow-right.png") );
-		net.add( exportMenu );
+		export = new Menu("Export");
+		export.setIcon ( app.url("icons/arrow-right.png") );
+		net.add( export );
 		
 		Option saveSVG =new Option("SVG image", new ViewerSaveAction(ui) );
 		saveSVG.setIcon( app.url("icons/kiviat.png") );
-		exportMenu.add(saveSVG);
+		export.add(saveSVG);
 	    saveSVG.disable();
 
 		Option savePNG=new Option("PNG image", new ViewerSaveAction(ui) );
 		savePNG.setIcon( app.url("icons/kiviat.png") );
-		exportMenu.add(savePNG);
+		export.add(savePNG);
 	    savePNG.disable();
 	    
 		Option saveJPG=new Option("JPG image", new ViewerSaveAction(ui) );
 		saveJPG.setIcon( app.url("icons/kiviat.png") );
-		exportMenu.add(saveJPG);
+		export.add(saveJPG);
 	    saveJPG.disable();
 
 		net.add( new Separator() );
@@ -188,9 +208,39 @@ public class NetworkViewerMenu extends Menu
 		net.add(exit);
 
 		// View
-		
-		view.disable();
 
+		Option layoutRandom = new Option("Random layout", new LayoutAction( ui, new RandomLayout() ) );
+		layoutRandom.setIcon( app.url("icons/kiviat.png") );
+		view.add(layoutRandom);
+
+		Option layoutCircular = new Option("Circular layout", new LayoutAction( ui, new CircularLayout() ) );
+		layoutCircular.setIcon( app.url("icons/kiviat.png") );
+		view.add(layoutCircular);
+
+		Option layoutStar = new Option("Star layout", new LayoutAction( ui, new StarLayout() ) );
+		layoutStar.setIcon( app.url("icons/kiviat.png") );
+		view.add(layoutStar);
+
+		Option layoutMesh = new Option("Mesh layout", new LayoutAction( ui, new MeshLayout() ) );
+		layoutMesh.setIcon( app.url("icons/kiviat.png") );
+		view.add(layoutMesh);
+
+		Option layoutHypercube = new Option("Hypercube layout", new LayoutAction( ui, new HypercubeLayout() ) );
+		layoutHypercube.setIcon( app.url("icons/kiviat.png") );
+		view.add(layoutHypercube);
+
+		Option layoutTree = new Option("Binary tree layout", new LayoutAction( ui, new BinaryTreeLayout() ) );
+		layoutTree.setIcon( app.url("icons/kiviat.png") );
+		view.add(layoutTree);
+		
+		Option layoutToroidal = new Option("Toroidal layout", new LayoutAction( ui, new ToroidalLayout() ) );
+		layoutToroidal.setIcon( app.url("icons/kiviat.png") );
+		view.add(layoutToroidal);
+
+		Option layoutLinear = new Option("Linear layout", new LayoutAction( ui, new LinearLayout() ) );
+		layoutLinear.setIcon( app.url("icons/kiviat.png") );
+		view.add(layoutLinear);
+		
 		// Data menu
 		
 		data.disable();
@@ -203,11 +253,11 @@ public class NetworkViewerMenu extends Menu
 		// Help
 		// ----
 		
-		//Option tutorial = new Option("Tutorial", new URLAction("http://noesis.ikor.org/") );
+		//Option tutorial = new Option("Tutorial", new URLAction(app,"http://noesis.ikor.org/") );
 		//tutorial.setIcon( app.url("icons/tutor.png") );
 		//help.add(tutorial);
 
-		Option web = new Option("Project web page", new URLAction("http://noesis.ikor.org/"), KeyEvent.VK_F1 );
+		Option web = new Option("Project web page", new URLAction(app,"http://noesis.ikor.org/"), KeyEvent.VK_F1 );
 		web.setIcon( app.url("icons/docs.png") );
 		help.add(web);
 		
@@ -221,5 +271,38 @@ public class NetworkViewerMenu extends Menu
 		help.add(about);
 	}
 	
+	
+	// Menu update
 
+	public void reset ()
+	{
+		view.hide();
+		data.hide();
+		analysis.hide();
+
+		save.disable();
+		close.disable();
+		export.disable();
+		
+		notifyObservers();
+	}
+	
+	public void activate ()
+	{
+		save.enable();
+		close.enable();
+		export.enable();
+		
+		view.show();
+		view.enable();
+		
+		data.show();
+		data.disable();
+		
+		analysis.show();
+		analysis.disable();
+		
+		notifyObservers();
+	}
+	
 }

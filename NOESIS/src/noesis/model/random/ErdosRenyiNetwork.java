@@ -1,5 +1,7 @@
 package noesis.model.random;
 
+import ikor.math.random.Random;
+
 public class ErdosRenyiNetwork extends RandomNetwork 
 {
 	public ErdosRenyiNetwork (int nodes, int links)
@@ -11,12 +13,12 @@ public class ErdosRenyiNetwork extends RandomNetwork
 		setSize(nodes);
 					
 		while (links()<links) {
-			tail = (int) (nodes*Math.random());
-			head = (int) (nodes*Math.random());
+			tail = (int) (nodes*Random.random());
+			head = (int) (nodes*Random.random());
 			
 			// Avoid loops
 			while (tail==head)
-				head = (int) (nodes*Math.random());
+				head = (int) (nodes*Random.random());
 			
 			// Avoid duplicates
 			if (get(tail,head)==null) {

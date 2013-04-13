@@ -1,5 +1,7 @@
 package noesis.model.random;
 
+import ikor.math.random.Random;
+
 //Connected "random" network (a variation of Erdos-Renyi model)
 
 public class ConnectedRandomNetwork extends RandomNetwork 
@@ -19,7 +21,7 @@ public class ConnectedRandomNetwork extends RandomNetwork
 		
 		for (int i=1; i<nodes; i++) {
 			tail = i;
-			head = (int) ((i-1)*Math.random());
+			head = (int) ((i-1)*Random.random());
 			add(tail,head);
 			add(head,tail);
 		}
@@ -27,12 +29,12 @@ public class ConnectedRandomNetwork extends RandomNetwork
 		while (links()<links) {
 			
 			// "Random" link
-			tail = (int) (nodes*Math.random());
-			head = (int) (nodes*Math.random());
+			tail = (int) (nodes*Random.random());
+			head = (int) (nodes*Random.random());
 			
 			// Avoid loops
 			while (tail==head)
-				head = (int) (nodes*Math.random());
+				head = (int) (nodes*Random.random());
 			
 			// Avoid duplicates 
 			if (get(tail,head)==null) {

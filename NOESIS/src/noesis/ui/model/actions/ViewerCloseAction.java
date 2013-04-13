@@ -15,6 +15,6 @@ public class ViewerCloseAction extends Action
 	@Override
 	public void run() 
 	{
-		ui.getFigure().hide();
+		ui.reset();
 	}	
 }

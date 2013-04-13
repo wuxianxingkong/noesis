@@ -13,6 +13,7 @@ public class NetworkViewerUIModel  extends UIModel
 {
 	private NetworkModel  model;
 	private NetworkFigure figure;
+	private NetworkViewerMenu menu;
 	
 	// Constructor
 
@@ -36,9 +37,11 @@ public class NetworkViewerUIModel  extends UIModel
 		
 		figure = new NetworkFigure(model);
 		
-	    add( figure );
+	    add(figure);
+	    
+	    menu = new NetworkViewerMenu(this); 
 		
-		add( new NetworkViewerMenu(this));
+		add(menu);
 	}	
 	
 	// Startup
@@ -47,6 +50,7 @@ public class NetworkViewerUIModel  extends UIModel
 	public void start ()
 	{
 		figure.hide();
+		menu.reset();
 	}
 	
 	// Updates
@@ -56,17 +60,26 @@ public class NetworkViewerUIModel  extends UIModel
 	{
 		if ((key!=null) && key.equals("network")) {
 			
-			AttributeNetwork network = (AttributeNetwork) getApplication().get("network");
+			AttributeNetwork network = (AttributeNetwork) get("network");
 			
 			if (network!=null) {
 				model.setNetwork(network);
+				menu.activate();
 				figure.render();
 				figure.show();
+			} else {
+				menu.reset();
 			}
 		}
 		
 	}
 	
+	
+	public void reset ()
+	{
+		figure.hide();
+		menu.reset();
+	}
 	
 	// Getters & setters
 	

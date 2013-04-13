@@ -1,5 +1,7 @@
 package noesis.model.random;
 
+import ikor.math.random.Random;
+
 //Lewis' anchored random network (a variation of Erdos-Renyi model)
 
 public class AnchoredRandomNetwork extends RandomNetwork 
@@ -20,16 +22,16 @@ public class AnchoredRandomNetwork extends RandomNetwork
 			// "Random" link
 			
 			if (degree(current)>0)
-				tail = (int) (nodes*Math.random());
+				tail = (int) (nodes*Random.random());
 			else
 				tail = current;
 			
-			head = (int) (nodes*Math.random());
+			head = (int) (nodes*Random.random());
 			
 			// Avoid loops
 			
 			while (tail==head)
-				head = (int) (nodes*Math.random());
+				head = (int) (nodes*Random.random());
 			
 			// Avoid duplicates
 			

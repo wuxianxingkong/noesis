@@ -10,6 +10,10 @@ import ikor.model.ui.UIModel;
 
 import noesis.Attribute;
 import noesis.AttributeNetwork;
+
+import noesis.algorithms.visualization.NetworkLayout;
+import noesis.algorithms.visualization.StarLayout;
+
 import noesis.model.regular.RegularNetwork;
 import noesis.model.regular.StarNetwork;
 
@@ -58,25 +62,16 @@ public class StarNetworkUI extends UIModel
 			RegularNetwork regular = new StarNetwork(nodes);
 			
 			AttributeNetwork network = new AttributeNetwork(regular);
-			
-			// Initial layout
 
-			Attribute<Double> x = new Attribute<Double>("x");
-			Attribute<Double> y = new Attribute<Double>("y");
+			network.addNodeAttribute( new Attribute<Double>("x") );
+			network.addNodeAttribute( new Attribute<Double>("y") );
 			
-			network.addNodeAttribute( x );
-			network.addNodeAttribute( y );
+			NetworkLayout display = new StarLayout();
 			
-			x.set(0, 0.5);
-			y.set(0, 0.5);
-			
-			for (int i=1; i<network.size(); i++) {
-				x.set(i, 0.5 + 0.45*Math.cos(i*2*Math.PI/(nodes-1)));
-				y.set(i, 0.5 + 0.45*Math.sin(i*2*Math.PI/(nodes-1)));
-			}
+			display.layout(network);
 						
-			ui.getApplication().set("network", network);
-			ui.getApplication().exit(ui);
+			ui.set("network", network);
+			ui.exit();
 		}	
 	}	
 

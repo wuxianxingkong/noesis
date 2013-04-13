@@ -10,6 +10,8 @@ import ikor.model.ui.UIModel;
 
 import noesis.Attribute;
 import noesis.AttributeNetwork;
+import noesis.algorithms.visualization.CircularLayout;
+import noesis.algorithms.visualization.NetworkLayout;
 import noesis.model.regular.IsolateNetwork;
 
 
@@ -58,21 +60,15 @@ public class IsolateNetworkUI extends UIModel
 			
 			AttributeNetwork network = new AttributeNetwork(regular);
 			
-			// Initial layout
-
-			Attribute<Double> x = new Attribute<Double>("x");
-			Attribute<Double> y = new Attribute<Double>("y");
+			network.addNodeAttribute( new Attribute<Double>("x") );
+			network.addNodeAttribute( new Attribute<Double>("y") );
 			
-			network.addNodeAttribute( x );
-			network.addNodeAttribute( y );
+			NetworkLayout display = new CircularLayout ();
+			
+			display.layout(network);
 						
-			for (int i=0; i<network.size(); i++) {
-				x.set(i, 0.5 + 0.45*Math.cos(i*2*Math.PI/nodes));
-				y.set(i, 0.5 + 0.45*Math.sin(i*2*Math.PI/nodes));
-			}
-						
-			ui.getApplication().set("network", network);
-			ui.getApplication().exit(ui);
+			ui.set("network", network);
+			ui.exit();
 		}	
 	}	
 

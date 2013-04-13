@@ -1,5 +1,7 @@
 package noesis.model.random;
 
+import ikor.math.random.Random;
+
 public class GilbertNetwork extends RandomNetwork 
 {
 	private double probability;
@@ -15,7 +17,7 @@ public class GilbertNetwork extends RandomNetwork
 		
 		for (int i=0; i<nodes; i++) {
 			for (int j=i+1; j<nodes; j++) {
-				if (Math.random()<probability) {
+				if (Random.random()<probability) {
 					add(i,j);
 					add(j,i);
 				}

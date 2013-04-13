@@ -41,7 +41,7 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 
 		this.setTooltipProvider( new NetworkTooltipProvider() );
 		this.setDraggingListener( new NetworkDraggingListener(this) );
-		this.setSelectionListener( new NetworkSelectionListener(this) );
+		//this.setSelectionListener( new NetworkSelectionListener(this) );
 
 		// Observer design pattern
 		

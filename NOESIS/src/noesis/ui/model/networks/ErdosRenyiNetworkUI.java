@@ -1,7 +1,5 @@
 package noesis.ui.model.networks;
 
-import ikor.math.random.Random;
-
 import ikor.model.data.IntegerModel;
 import ikor.model.data.RealModel;
 
@@ -13,6 +11,10 @@ import ikor.model.ui.UIModel;
 
 import noesis.Attribute;
 import noesis.AttributeNetwork;
+
+import noesis.algorithms.visualization.NetworkLayout;
+import noesis.algorithms.visualization.RandomLayout;
+
 import noesis.model.random.ErdosRenyiNetwork;
 
 
@@ -72,21 +74,15 @@ public class ErdosRenyiNetworkUI extends UIModel
 			
 			AttributeNetwork network = new AttributeNetwork(random);
 			
-			// Initial layout
-
-			Attribute<Double> x = new Attribute<Double>("x");
-			Attribute<Double> y = new Attribute<Double>("y");
+			network.addNodeAttribute( new Attribute<Double>("x") );
+			network.addNodeAttribute( new Attribute<Double>("y") );
 			
-			network.addNodeAttribute( x );
-			network.addNodeAttribute( y );
+			NetworkLayout display = new RandomLayout ();
 			
-			for (int i=0; i<network.size(); i++) {
-				x.set(i, 0.1 + 0.8*Random.random());
-				y.set(i, 0.1 + 0.8*Random.random());
-			}
-						
-			ui.getApplication().set("network", network);
-			ui.getApplication().exit(ui);
+			display.layout(network);
+									
+			ui.set("network", network);
+			ui.exit();
 		}	
 	}	
 

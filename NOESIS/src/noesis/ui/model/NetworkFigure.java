@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import noesis.Attribute;
 import noesis.AttributeNetwork;
+import noesis.LinkAttribute;
 import noesis.io.graphics.DefaultLinkRenderer;
 import noesis.io.graphics.GradientNodeRenderer;
 import noesis.io.graphics.NetworkRenderer;
@@ -125,7 +126,79 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 		@Override
 		public String get(String id) 
 		{
-			return id;
+			String tooltip = null;			
+			int    node = renderer.getNodeIndex(id);
+			
+			if (node!=-1) {
+				tooltip = nodeTooltip(node);
+			} else {
+				
+				int source = renderer.getLinkSourceIndex(id);
+				int target = renderer.getLinkTargetIndex(id);
+				
+				if ((source!=-1) && (target!=-1))
+					tooltip = linkTooltip(source,target);
+					
+			}
+			return tooltip;
+		}
+		
+		private String nodeTooltip (int node)
+		{
+			String tooltip = null;
+			AttributeNetwork network = getNetwork();
+			
+			if (network!=null) {
+
+				tooltip = "<html>Node #"+node+"<br/>";
+
+				for (int i=0; i<network.getNodeAttributeCount(); i++) {
+					Attribute attribute = network.getNodeAttribute(i);
+					Object value = attribute.get(node);
+					
+					if (value!=null)
+						tooltip += "- "+attribute.getID()+": <b>"+value+"</b><br/>";
+				}
+				
+				tooltip += "- "+network.outDegree(node)+" out-links<br/>";
+				tooltip += "- "+network.inDegree(node)+" in-links";
+				tooltip += "</html>";
+			}
+			
+			return tooltip;
+		}
+		
+		private String linkTooltip (int source, int target)
+		{
+			String tooltip = null;
+			AttributeNetwork network = getNetwork();
+			
+			if (network!=null) {
+				
+				tooltip = "<html>Link "+source+"->"+target+"<br/>";
+				
+				Attribute id = network.getNodeAttribute("id");
+				
+				if (id!=null) {
+					tooltip += "from <b>"+id.get(source)+"</b><br/>";
+					tooltip += "to <b>"+id.get(target)+"</b><br/>";
+				}
+				
+
+				for (int i=0; i<network.getLinkAttributeCount(); i++) {
+					LinkAttribute attribute = network.getLinkAttribute(i);
+					Object value = attribute.get(source,target);
+					
+					if (value!=null)
+						tooltip += "- "+attribute.getID()+": <b>"+value+"</b><br/>";
+				}
+				
+				tooltip += "</html>";
+				
+				
+			}
+			
+			return tooltip;
 		}
 	}
 	

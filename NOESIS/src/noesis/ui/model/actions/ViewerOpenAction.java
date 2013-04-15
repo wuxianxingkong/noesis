@@ -1,8 +1,28 @@
 package noesis.ui.model.actions;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import noesis.Attribute;
+import noesis.AttributeNetwork;
+import noesis.Network;
+import noesis.algorithms.visualization.NetworkLayout;
+import noesis.algorithms.visualization.RandomLayout;
+import noesis.io.ASCIINetworkReader;
+import noesis.io.GDFNetworkReader;
+import noesis.io.GMLNetworkReader;
+import noesis.io.GraphMLNetworkReader;
+import noesis.io.NetworkReader;
+import noesis.io.PajekNetworkReader;
+import noesis.io.SNAPGZNetworkReader;
+import noesis.io.SNAPNetworkReader;
 import noesis.ui.model.NetworkViewerUIModel;
+import ikor.math.Decimal;
 import ikor.model.ui.Action;
 import ikor.model.ui.File;
+import ikor.util.log.Log;
 
 public class ViewerOpenAction extends Action 
 {
@@ -29,8 +49,84 @@ public class ViewerOpenAction extends Action
 		{
 			String filename = file.getUrl();
 			
-			if (filename!=null)
-				ui.getFigure().show();
+			if (filename!=null) {
+				
+				AttributeNetwork net = read(filename);
+				
+				Attribute x = net.getNodeAttribute("x");
+				Attribute y = net.getNodeAttribute("y");
+				
+				if ((x==null) || (y==null)){
+					x = new Attribute<Double>("x");
+					y = new Attribute<Double>("y");
+					
+					net.addNodeAttribute(x);
+					net.addNodeAttribute(y);
+					
+					NetworkLayout display = new RandomLayout ();
+					
+					display.layout(net);					
+				}
+				
+				ui.set("network", net);
+			}
+		}
+		
+		
+		private AttributeNetwork read (String url)
+		{
+			NetworkReader<String,Decimal> reader; 
+			Network net = null;
+			
+			try {
+			
+				if (url.endsWith(".net"))
+					reader = new PajekNetworkReader(new FileReader(url));
+				else if (url.endsWith(".dat"))
+					reader = new ASCIINetworkReader(new FileReader(url));
+				else if (url.endsWith(".txt"))
+					reader = new SNAPNetworkReader(new FileReader(url));
+				else if (url.endsWith(".gz"))
+					reader = new SNAPGZNetworkReader(new FileInputStream(url));
+				else if (url.endsWith(".gml"))
+					reader = new GMLNetworkReader(new FileReader(url));
+				else if (url.endsWith(".graphml"))
+					reader = new GraphMLNetworkReader(new FileInputStream(url));
+				else if (url.endsWith(".gdf"))
+					reader = new GDFNetworkReader(new FileReader(url));
+				else
+					throw new IOException("Unknown network file format.");
+
+				reader.setType(noesis.ArrayNetwork.class);     // NDwww.net 5.2s @ i5
+				// reader.setType(noesis.GraphNetwork.class);  // NDwww.net 9.6s @ i5
+
+				net = reader.read();
+			
+			} catch (FileNotFoundException fnfe) {
+				
+				Log.error("File not found - "+url);
+				
+			} catch (IOException ioe) {
+				
+				Log.error("IO error - "+ ioe);
+			}
+			
+			if (net!=null) {
+			
+				if (net.getID()!=null)
+					ui.message("Network '"+net.getID()+"' loaded with "+net.size()+" nodes and "+net.links()+" links.");
+				else
+					ui.message("Network loaded with "+net.size()+" nodes and "+net.links()+" links.");
+
+				if (!(net instanceof AttributeNetwork))
+					net = new AttributeNetwork(net);
+				
+			} else {
+				
+				ui.message("Unable to read network, sorry :-(");
+			}
+			
+			return (AttributeNetwork) net;
 		}
 		
 	}

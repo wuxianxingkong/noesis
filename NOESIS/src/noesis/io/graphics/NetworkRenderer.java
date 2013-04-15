@@ -195,9 +195,24 @@ public class NetworkRenderer extends Drawing
 	 * @return node ID
 	 */
 	
-	protected String getNodeId (int node)
+	public String getNodeId (int node)
 	{
 		return "node"+node;
+	}
+	
+	/**
+	 * Node index given figure ID
+	 * @param id Figure ID
+	 * @return Node index (-1 if figure ID is not a node ID)
+	 */
+	
+	public int getNodeIndex (String id)
+	{
+		if (id.startsWith("node")) {
+			return Integer.parseInt(id.substring(4));
+		} else {
+			return -1;
+		}
 	}
 	
 	/**
@@ -207,11 +222,47 @@ public class NetworkRenderer extends Drawing
 	 * @return link ID
 	 */
 	
-	protected String getLinkId (int source, int target)
+	public String getLinkId (int source, int target)
 	{
-		return "link-"+getNodeId(source)+"-"+getNodeId(target);
+		return "link-s"+getNodeId(source)+"-t"+getNodeId(target);
 	}
 	
+	/**
+	 * Link source index given figure ID
+	 * @param id Figure ID
+	 * @return Link source index (-1 if figure ID is not a link ID)
+	 */
+	
+	public int getLinkSourceIndex (String id)
+	{
+		if (id.startsWith("link")) {
+			return getNodeIndex(id.substring(6,id.indexOf("-t")));
+		} else {
+			return -1;
+		}
+	}
+	
+	/**
+	 * Link target index given figure ID
+	 * @param id Figure ID
+	 * @return Link target index (-1 if figure ID is not a link ID)
+	 */
+	
+	public int getLinkTargetIndex (String id)
+	{
+		if (id.startsWith("link")) {
+			return getNodeIndex(id.substring( id.indexOf("-t")+2));
+		} else {
+			return -1;
+		}
+	}	
+	
+	
+	/**
+	 * Node coordinates
+	 * @param node Node index
+	 * @return Node X coordinate
+	 */
 	
 	public int getX (int node)
 	{
@@ -220,6 +271,12 @@ public class NetworkRenderer extends Drawing
 		else
 			return 0;
 	}
+	
+	/**
+	 * Node coordinates
+	 * @param node Node index
+	 * @return Node Y coordinate
+	 */
 	
 	public int getY (int node)
 	{

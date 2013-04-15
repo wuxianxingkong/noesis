@@ -161,9 +161,21 @@ public abstract class Application extends Subject<String> implements Runnable
 	/**
 	 * Output message
 	 */
+	
 	public void message (String msg)
 	{
 		builder.message(name, msg);
+	}
+	
+	/**
+	 * User confirmation
+	 * @param question User query
+	 * @return true if the user confirms action
+	 */
+	
+	public boolean confirm (String question)
+	{
+		return builder.confirm(name, question);
 	}
 	
 	/**

@@ -20,6 +20,9 @@ public class SwingFileDialog implements UI
 	@Override
 	public void run() 
 	{
+		if (file.getUrl()!=null)
+			fileChooser.setSelectedFile( new java.io.File(file.getUrl()) );
+		
 		if (fileChooser.showDialog(null,file.getCommand()) == JFileChooser.APPROVE_OPTION) {
 			file.setUrl(fileChooser.getSelectedFile().getPath());
 			

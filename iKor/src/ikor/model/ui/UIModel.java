@@ -82,14 +82,27 @@ public class UIModel extends Component<String>
 	/**
 	 * Output message
 	 */
+	
 	public void message (String msg)
 	{
 		application.message(msg);
+	}
+	
+	/**
+	 * User confirmation
+	 * @param question User query
+	 * @return true if the user confirms action
+	 */
+	
+	public boolean confirm (String question)
+	{
+		return application.confirm(question);
 	}
 
 	/**
 	 * Application data storage: Retrieve data
 	 */
+	
 	public Object get (String key)
 	{
 		return application.get(key);
@@ -98,6 +111,7 @@ public class UIModel extends Component<String>
 	/**
 	 * Application data storage: Store data
 	 */
+	
 	public void set (String key, Object value)
 	{
 		application.set(key, value);
@@ -106,6 +120,7 @@ public class UIModel extends Component<String>
 	/**
 	 * Get UI title
 	 */
+	
 	public Label getTitle ()
 	{
 		return title;

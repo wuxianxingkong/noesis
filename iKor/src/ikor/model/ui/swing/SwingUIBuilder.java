@@ -40,7 +40,16 @@ public class SwingUIBuilder extends UIBuilder
 	public void message (String title, String msg) 
 	{
 		JOptionPane.showMessageDialog(null, msg, title, JOptionPane.INFORMATION_MESSAGE);
+	}
+
+
+
+	@Override
+	public boolean confirm (String title, String query) 
+	{
+		int reply = JOptionPane.showConfirmDialog(null, query, title, JOptionPane.YES_NO_OPTION);
 		
+        return (reply == JOptionPane.YES_OPTION);
 	}
 	
 

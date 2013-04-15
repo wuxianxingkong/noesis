@@ -11,6 +11,10 @@ public abstract class UIBuilder
 	
 	public abstract UI build (UIModel context);
 	
+	
+	public abstract void message (String title, String msg);
+	
+	
 	public abstract void open (String url);
 	
 }

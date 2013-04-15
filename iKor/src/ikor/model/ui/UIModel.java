@@ -78,6 +78,14 @@ public class UIModel extends Component<String>
 	{
 		application.exit(this);
 	}
+	
+	/**
+	 * Output message
+	 */
+	public void message (String msg)
+	{
+		application.message(msg);
+	}
 
 	/**
 	 * Application data storage: Retrieve data

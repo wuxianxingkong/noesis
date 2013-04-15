@@ -159,6 +159,14 @@ public abstract class Application extends Subject<String> implements Runnable
 	
 	
 	/**
+	 * Output message
+	 */
+	public void message (String msg)
+	{
+		builder.message(name, msg);
+	}
+	
+	/**
 	 * Obtain resource URL
 	 */
 	

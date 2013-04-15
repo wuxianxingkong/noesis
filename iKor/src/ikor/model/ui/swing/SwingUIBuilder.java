@@ -1,5 +1,7 @@
 package ikor.model.ui.swing;
 
+import javax.swing.JOptionPane;
+
 import ikor.model.ui.File;
 import ikor.model.ui.UI;
 import ikor.model.ui.UIBuilder;
@@ -18,6 +20,8 @@ public class SwingUIBuilder extends UIBuilder
 		else
 			return new SwingUI(model);
 	}
+	
+
 
 	@Override
 	public void open(String url) 
@@ -27,6 +31,15 @@ public class SwingUIBuilder extends UIBuilder
 		} catch (java.io.IOException e) {
 			Log.error("Error while trying to open URL ("+url+") - "+e.getMessage());
 		}
+		
+	}
+
+
+
+	@Override
+	public void message (String title, String msg) 
+	{
+		JOptionPane.showMessageDialog(null, msg, title, JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 	

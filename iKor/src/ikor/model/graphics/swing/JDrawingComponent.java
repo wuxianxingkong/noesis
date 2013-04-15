@@ -36,6 +36,7 @@ import java.awt.image.BufferedImage;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
@@ -95,7 +96,7 @@ public class JDrawingComponent extends JComponent
 	}
 
 	// Save
-	
+
 	public void save (String fileName, String format)
 	{
         java.awt.Rectangle r = getBounds();
@@ -105,6 +106,20 @@ public class JDrawingComponent extends JComponent
             Graphics g = img.getGraphics();
             paint(g);
             ImageIO.write(img,format, new File(fileName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }		
+	}
+
+	public void save (OutputStream writer, String format)
+	{
+        java.awt.Rectangle r = getBounds();
+
+        try {
+            BufferedImage img = new BufferedImage(r.width, r.height, BufferedImage.TYPE_INT_RGB);
+            Graphics g = img.getGraphics();
+            paint(g);
+            ImageIO.write(img,format,writer);
         } catch (IOException e) {
             e.printStackTrace();
         }		

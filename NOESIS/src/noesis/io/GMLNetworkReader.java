@@ -97,15 +97,15 @@ public class GMLNetworkReader extends AttributeNetworkReader
 
             } else if ( inNode && key.startsWith("id") ) {
 
-            	setNodeID(net, nodes-1, items[1]);
+            	setNodeID(net, nodes-1, parseAttribute(items[0],line));
 
             } else if ( inEdge && key.startsWith("source") ) {
 
-            	source = getNodeIndex(items[1]);
+            	source = getNodeIndex(parseAttribute(items[0],line));
 
             } else if ( inEdge && key.startsWith("target") ) {
 
-            	target = getNodeIndex(items[1]);
+            	target = getNodeIndex(parseAttribute(items[0],line));
             	addLink (net, source,target);
 
             } else if ( Character.isAlphabetic(key.charAt(0)) ){ // Attribute value
@@ -136,7 +136,7 @@ public class GMLNetworkReader extends AttributeNetworkReader
 
 	private String parseAttribute(String id, String line) 
 	{
-		Pattern pattern = Pattern.compile(id+"\\s+((\\w*)|\"([^\"]+)\")");
+		Pattern pattern = Pattern.compile(id+"\\s+((.*)|\"([^\"]+)\")");
 	    Matcher m = pattern.matcher(line);
 	    
 		if (m.matches()) {

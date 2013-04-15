@@ -7,18 +7,15 @@ import ikor.model.ui.Action;
 import ikor.model.ui.Application;
 import ikor.model.ui.Editor;
 import ikor.model.ui.Option;
-import ikor.model.ui.UIModel;
 
-import noesis.Attribute;
 import noesis.AttributeNetwork;
 
-import noesis.algorithms.visualization.NetworkLayout;
 import noesis.algorithms.visualization.RandomLayout;
 
 import noesis.model.random.ConnectedRandomNetwork;
 
 
-public class ConnectedRandomNetworkUI extends UIModel 
+public class ConnectedRandomNetworkUI extends NewNetworkUI 
 {
 	Editor<Integer> nodeCountEditor;
 	Editor<Double>  probabilityEditor;
@@ -71,15 +68,7 @@ public class ConnectedRandomNetworkUI extends UIModel
 			int links = Math.max( nodes-1, (int) ( ui.probabilityEditor.getData() * nodes * (nodes-1))/2 );
 			
 			ConnectedRandomNetwork random = new ConnectedRandomNetwork(nodes,links);
-			
-			AttributeNetwork network = new AttributeNetwork(random);
-			
-			network.addNodeAttribute( new Attribute<Double>("x") );
-			network.addNodeAttribute( new Attribute<Double>("y") );
-			
-			NetworkLayout display = new RandomLayout ();
-			
-			display.layout(network);
+			AttributeNetwork network = createAttributeNetwork(random, "Connected random network", new RandomLayout ());
 									
 			ui.set("network", network);
 			ui.exit();

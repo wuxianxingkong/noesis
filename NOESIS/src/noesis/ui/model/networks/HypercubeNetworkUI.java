@@ -6,19 +6,16 @@ import ikor.model.ui.Action;
 import ikor.model.ui.Application;
 import ikor.model.ui.Editor;
 import ikor.model.ui.Option;
-import ikor.model.ui.UIModel;
 
-import noesis.Attribute;
 import noesis.AttributeNetwork;
 
 import noesis.algorithms.visualization.HypercubeLayout;
-import noesis.algorithms.visualization.NetworkLayout;
 
 import noesis.model.regular.HypercubeNetwork;
 import noesis.model.regular.RegularNetwork;
 
 
-public class HypercubeNetworkUI extends UIModel 
+public class HypercubeNetworkUI extends NewNetworkUI 
 {
 	Editor<Integer> dimensionEditor;
 	Editor<Integer> columnEditor;
@@ -61,15 +58,7 @@ public class HypercubeNetworkUI extends UIModel
 			int dimension = ui.dimensionEditor.getData();
 			
 			RegularNetwork regular = new HypercubeNetwork(dimension);
-			
-			AttributeNetwork network = new AttributeNetwork(regular);
-
-			network.addNodeAttribute( new Attribute<Double>("x") );
-			network.addNodeAttribute( new Attribute<Double>("y") );
-			
-			NetworkLayout display = new HypercubeLayout();
-			
-			display.layout(network);
+			AttributeNetwork network = createAttributeNetwork(regular, "Hypercube network", new HypercubeLayout ());			
 			
 			ui.set("network", network);
 			ui.exit();

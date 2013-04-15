@@ -46,8 +46,8 @@ public class NetworkViewerMenu extends Menu
 	private Menu help;
 	
 	private Option open;
-	private Option save;
 	private Option close;
+	private Menu   save;
 	private Menu   export;
 
 	public NetworkViewerMenu (NetworkViewerUIModel ui)
@@ -156,16 +156,32 @@ public class NetworkViewerMenu extends Menu
 		open.setIcon( app.url("icons/open.png") );
 		net.add( open );
 
-		save = new Option("Save", new ViewerSaveAction(ui), KeyEvent.VK_F2 );
-		save.setIcon( app.url("icons/save.png") );
-		net.add( save );
-
 		close = new Option("Close", new ViewerCloseAction(ui), KeyEvent.VK_F4 );
 		close.setIcon( app.url("icons/close.png") );
 		net.add( close );
 	
 		net.add( new Separator() );
 
+		save = new Menu("Save");
+		save.setIcon( app.url("icons/save.png") );
+		net.add( save );
+
+		Option saveGraphML =new Option("GraphML network", new ViewerSaveAction(ui, "graphml") );
+		saveGraphML.setIcon( app.url("icons/save.png") );
+		save.add(saveGraphML);
+
+		Option saveGML =new Option("GML network", new ViewerSaveAction(ui, "gml") );
+		saveGML.setIcon( app.url("icons/save.png") );
+		save.add(saveGML);
+
+		Option saveGDF =new Option("GDF network", new ViewerSaveAction(ui, "gdf") );
+		saveGDF.setIcon( app.url("icons/save.png") );
+		save.add(saveGDF);
+
+		//Option savePajek =new Option("Pajek network", new ViewerSaveAction(ui, "pajek") );
+		//savePajek.setIcon( app.url("icons/save.png") );
+		//save.add(savePajek);
+		
 		//Menu importMenu = new Menu("Import");
 		//importMenu.setIcon ( app.url("icons/arrow-left.png") );
 		//net.add( importMenu );
@@ -174,17 +190,17 @@ public class NetworkViewerMenu extends Menu
 		export.setIcon ( app.url("icons/arrow-right.png") );
 		net.add( export );
 		
-		Option saveSVG =new Option("SVG image", new ViewerSaveAction(ui) );
+		Option saveSVG =new Option("SVG image", new ViewerSaveAction(ui, "svg") );
 		saveSVG.setIcon( app.url("icons/kiviat.png") );
 		export.add(saveSVG);
 	    saveSVG.disable();
 
-		Option savePNG=new Option("PNG image", new ViewerSaveAction(ui) );
+		Option savePNG=new Option("PNG image", new ViewerSaveAction(ui, "png") );
 		savePNG.setIcon( app.url("icons/kiviat.png") );
 		export.add(savePNG);
 	    savePNG.disable();
 	    
-		Option saveJPG=new Option("JPG image", new ViewerSaveAction(ui) );
+		Option saveJPG=new Option("JPG image", new ViewerSaveAction(ui, "jpg") );
 		saveJPG.setIcon( app.url("icons/kiviat.png") );
 		export.add(saveJPG);
 	    saveJPG.disable();

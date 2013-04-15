@@ -8,6 +8,7 @@ package noesis;
 
 import ikor.collection.*;
 import ikor.collection.util.Pair;
+import ikor.model.data.RealModel;
 
 /**
  * Attribute network ADT
@@ -114,7 +115,12 @@ public class AttributeNetwork extends BasicNetwork
 			attribute = this.getNodeAttribute(id);
 
 			if (attribute==null) {
-				attribute = new Attribute(id);
+				
+				if (id.equals("x") || id.equals("y"))
+    				attribute = new Attribute(id, new RealModel());
+				else
+    				attribute = new Attribute(id);
+				
 				addNodeAttribute(attribute);
 			}
 			

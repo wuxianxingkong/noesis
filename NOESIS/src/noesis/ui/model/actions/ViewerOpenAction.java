@@ -57,6 +57,7 @@ public class ViewerOpenAction extends Action
 				Attribute y = net.getNodeAttribute("y");
 				
 				if ((x==null) || (y==null)){
+					
 					x = new Attribute<Double>("x");
 					y = new Attribute<Double>("y");
 					

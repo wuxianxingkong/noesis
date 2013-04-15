@@ -7,6 +7,7 @@ package noesis;
 // E-mail:      berzal@acm.org
 
 import ikor.collection.DynamicList;
+import ikor.model.data.DataModel;
 
 /**
  * Network node attribute
@@ -18,12 +19,19 @@ import ikor.collection.DynamicList;
 public class Attribute<T> extends DynamicList<T> 
 {
 	private String id;
+	private DataModel type;
 	
 	public Attribute (String id)
 	{
 		this.id = id;
 	}
-	
+
+	public Attribute (String id, DataModel type)
+	{
+		this.id = id;
+		this.type = type;
+	}
+
 	public final String getID()
 	{
 		return id;
@@ -33,5 +41,14 @@ public class Attribute<T> extends DynamicList<T>
 	{
 		this.id = id;
 	}	
+	
+	
+	public final void set (int index, String value)
+	{
+		if (type!=null)
+			super.set( index, (T) type.fromString(value) );
+		else
+			super.set( index, (T) value );
+	}
 
 }

@@ -6,19 +6,16 @@ import ikor.model.ui.Action;
 import ikor.model.ui.Application;
 import ikor.model.ui.Editor;
 import ikor.model.ui.Option;
-import ikor.model.ui.UIModel;
 
-import noesis.Attribute;
 import noesis.AttributeNetwork;
 
-import noesis.algorithms.visualization.NetworkLayout;
 import noesis.algorithms.visualization.ToroidalLayout;
 
 import noesis.model.regular.RegularNetwork;
 import noesis.model.regular.ToroidalNetwork;
 
 
-public class ToroidalNetworkUI extends UIModel 
+public class ToroidalNetworkUI extends NewNetworkUI 
 {
 	Editor<Integer> rowEditor;
 	Editor<Integer> columnEditor;
@@ -67,15 +64,7 @@ public class ToroidalNetworkUI extends UIModel
 			int columns = ui.columnEditor.getData();
 			
 			RegularNetwork regular = new ToroidalNetwork(rows, columns);
-			
-			AttributeNetwork network = new AttributeNetwork(regular);
-
-			network.addNodeAttribute( new Attribute<Double>("x") );
-			network.addNodeAttribute( new Attribute<Double>("y") );
-			
-			NetworkLayout display = new ToroidalLayout(rows,columns);
-			
-			display.layout(network);
+			AttributeNetwork network = createAttributeNetwork(regular, "Complete network", new ToroidalLayout(rows,columns));			
 																	
 			ui.set("network", network);
 			ui.exit();

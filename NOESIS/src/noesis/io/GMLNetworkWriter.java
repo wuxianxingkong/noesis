@@ -73,7 +73,7 @@ public class GMLNetworkWriter extends AttributeNetworkWriter
 
 			AttributeNetwork attrnet = (AttributeNetwork)net; 
 
-			writer.write("\t\tid "+attrnet.getNodeAttribute("id").get(index).toString());
+			writer.write("\t\tid "+valueString(attrnet.getNodeAttribute("id").get(index).toString()));
 			writer.newLine();
 			
 			int attributes = attrnet.getNodeAttributeCount();
@@ -160,9 +160,9 @@ public class GMLNetworkWriter extends AttributeNetworkWriter
 			AttributeNetwork attrnet = (AttributeNetwork)net;
 			Attribute nodeID = attrnet.getNodeAttribute("id");
 
-			writer.write("\t\tsource "+nodeID.get(source).toString());
+			writer.write("\t\tsource "+valueString(nodeID.get(source).toString()));
 			writer.newLine();
-			writer.write("\t\ttarget "+nodeID.get(target).toString());
+			writer.write("\t\ttarget "+valueString(nodeID.get(target).toString()));
 			writer.newLine();
 			
 			int attributes = attrnet.getLinkAttributeCount();

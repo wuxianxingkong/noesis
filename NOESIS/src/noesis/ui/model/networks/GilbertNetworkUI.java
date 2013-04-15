@@ -7,18 +7,15 @@ import ikor.model.ui.Action;
 import ikor.model.ui.Application;
 import ikor.model.ui.Editor;
 import ikor.model.ui.Option;
-import ikor.model.ui.UIModel;
 
-import noesis.Attribute;
 import noesis.AttributeNetwork;
 
-import noesis.algorithms.visualization.NetworkLayout;
 import noesis.algorithms.visualization.RandomLayout;
 
 import noesis.model.random.GilbertNetwork;
 
 
-public class GilbertNetworkUI extends UIModel 
+public class GilbertNetworkUI extends NewNetworkUI 
 {
 	Editor<Integer> nodeCountEditor;
 	Editor<Double>  probabilityEditor;
@@ -71,15 +68,7 @@ public class GilbertNetworkUI extends UIModel
 			double probability = ui.probabilityEditor.getData();
 			
 			GilbertNetwork random = new GilbertNetwork(nodes,probability);
-			
-			AttributeNetwork network = new AttributeNetwork(random);
-			
-			network.addNodeAttribute( new Attribute<Double>("x") );
-			network.addNodeAttribute( new Attribute<Double>("y") );
-			
-			NetworkLayout display = new RandomLayout ();
-			
-			display.layout(network);
+			AttributeNetwork network = createAttributeNetwork(random, "Gilbert random network", new RandomLayout ());			
 			
 			ui.set("network", network);
 			ui.exit();

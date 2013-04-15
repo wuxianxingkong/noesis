@@ -1,23 +1,36 @@
 package noesis.ui.model.actions;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
+import noesis.AttributeNetwork;
+import noesis.io.GDFNetworkWriter;
+import noesis.io.GMLNetworkWriter;
+import noesis.io.GraphMLNetworkWriter;
+import noesis.io.NetworkWriter;
+import noesis.io.PajekNetworkWriter;
 import noesis.ui.model.NetworkViewerUIModel;
 import ikor.model.ui.Action;
 import ikor.model.ui.File;
+import ikor.util.log.Log;
 
 public class ViewerSaveAction extends Action 
 {
 	private NetworkViewerUIModel ui;
+	private String format;
 	private File file;
 	
-	public ViewerSaveAction (NetworkViewerUIModel ui)
+	public ViewerSaveAction (NetworkViewerUIModel ui, String format)
 	{
 		this.ui = ui;
-		this.file = new File(ui.getApplication(), "Save network...", "Open", new FileCommandAction() );
+		this.format = format;
+		this.file = new File(ui.getApplication(), "Save network...", "Save", new FileCommandAction() );
 	}
 		
 	@Override
 	public void run() 
 	{
+		file.setUrl("network."+format);
 		file.getApplication().run(file);
 	}
 	
@@ -29,8 +42,51 @@ public class ViewerSaveAction extends Action
 		{
 			String filename = file.getUrl();
 			
-			if (filename!=null)
-				ui.getFigure().show();
+			if (!checkFilename(filename))
+				filename = null;
+			
+			if (filename!=null) {
+				
+				AttributeNetwork net = (AttributeNetwork) ui.get("network");
+				NetworkWriter writer;
+				
+				try {
+
+					if (format.equals("gdf"))
+						writer = new GDFNetworkWriter(new FileWriter(filename));
+					else if (format.equals("gml"))
+						writer = new GMLNetworkWriter(new FileWriter(filename));
+					else if (format.equals("graphml"))
+						writer = new GraphMLNetworkWriter(new FileWriter(filename));
+					else if (format.equals("pajek"))
+						writer = new PajekNetworkWriter(new FileWriter(filename));
+					else
+						throw new IOException("Unknown output network file format.");
+
+					if (writer!=null)
+						writer.write(net);
+
+				} catch (IOException ioe) {
+					Log.error("IO error - "+ioe);
+				}
+				
+			}
+		}
+		
+		private boolean checkFilename (String filename) 
+		{
+			if (filename!=null) {
+				
+				java.io.File file = new java.io.File(filename);
+				
+				if (file.exists())
+					return ui.confirm("Overwrite existing file?");
+				else
+					return true;
+				
+			} else {
+				return false;
+			}
 		}
 		
 	}

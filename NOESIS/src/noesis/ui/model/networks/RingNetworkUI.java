@@ -6,19 +6,16 @@ import ikor.model.ui.Action;
 import ikor.model.ui.Application;
 import ikor.model.ui.Editor;
 import ikor.model.ui.Option;
-import ikor.model.ui.UIModel;
 
-import noesis.Attribute;
 import noesis.AttributeNetwork;
 
 import noesis.algorithms.visualization.CircularLayout;
-import noesis.algorithms.visualization.NetworkLayout;
 
 import noesis.model.regular.RegularNetwork;
 import noesis.model.regular.RingNetwork;
 
 
-public class RingNetworkUI extends UIModel 
+public class RingNetworkUI extends NewNetworkUI 
 {
 	Editor<Integer> nodeCountEditor;
 	
@@ -60,15 +57,7 @@ public class RingNetworkUI extends UIModel
 			int nodes = ui.nodeCountEditor.getData();
 			
 			RegularNetwork regular = new RingNetwork(nodes);
-
-			AttributeNetwork network = new AttributeNetwork(regular);
-
-			network.addNodeAttribute( new Attribute<Double>("x") );
-			network.addNodeAttribute( new Attribute<Double>("y") );
-			
-			NetworkLayout display = new CircularLayout();
-			
-			display.layout(network);
+			AttributeNetwork network = createAttributeNetwork(regular, "Ring network", new CircularLayout ());			
 						
 			ui.set("network", network);
 			ui.exit();

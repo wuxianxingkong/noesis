@@ -6,18 +6,15 @@ import ikor.model.ui.Action;
 import ikor.model.ui.Application;
 import ikor.model.ui.Editor;
 import ikor.model.ui.Option;
-import ikor.model.ui.UIModel;
 
-import noesis.Attribute;
 import noesis.AttributeNetwork;
 
 import noesis.algorithms.visualization.BinaryTreeLayout;
-import noesis.algorithms.visualization.NetworkLayout;
 
 import noesis.model.regular.BinaryTreeNetwork;
 
 
-public class BinaryTreeNetworkUI extends UIModel 
+public class BinaryTreeNetworkUI extends NewNetworkUI 
 {
 	Editor<Integer> sizeEditor;
 	
@@ -59,16 +56,8 @@ public class BinaryTreeNetworkUI extends UIModel
 			int size = ui.sizeEditor.getData();
 			
 			BinaryTreeNetwork tree = new BinaryTreeNetwork(size);
-			
-			AttributeNetwork network = new AttributeNetwork(tree);
-			
-			network.addNodeAttribute( new Attribute<Double>("x") );
-			network.addNodeAttribute( new Attribute<Double>("y") );
-			
-			NetworkLayout display = new BinaryTreeLayout();
-			
-			display.layout(network);
-									
+			AttributeNetwork network = createAttributeNetwork(tree, "Binary tree network", new BinaryTreeLayout ());			
+												
 			ui.set("network", network);
 			ui.exit();
 		}			

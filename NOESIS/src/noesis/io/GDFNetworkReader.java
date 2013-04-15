@@ -12,6 +12,7 @@ import java.io.Reader;
 import java.util.regex.*;
 
 import ikor.collection.*;
+import ikor.model.data.RealModel;
 
 import noesis.*;
 
@@ -117,6 +118,8 @@ public class GDFNetworkReader extends AttributeNetworkReader
     			
     			if (name.equalsIgnoreCase("name"))
 					nodeIDColumn = i;
+    			else if (name.equals("x") || name.equals("y"))
+    				net.addNodeAttribute(new Attribute(name, new RealModel()));
     			else
         			net.addNodeAttribute(new Attribute(name));
 

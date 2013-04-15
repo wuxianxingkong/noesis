@@ -6,19 +6,16 @@ import ikor.model.ui.Action;
 import ikor.model.ui.Application;
 import ikor.model.ui.Editor;
 import ikor.model.ui.Option;
-import ikor.model.ui.UIModel;
 
-import noesis.Attribute;
 import noesis.AttributeNetwork;
 
 import noesis.algorithms.visualization.MeshLayout;
-import noesis.algorithms.visualization.NetworkLayout;
 
 import noesis.model.regular.MeshNetwork;
 import noesis.model.regular.RegularNetwork;
 
 
-public class MeshNetworkUI extends UIModel 
+public class MeshNetworkUI extends NewNetworkUI 
 {
 	Editor<Integer> rowEditor;
 	Editor<Integer> columnEditor;
@@ -67,16 +64,8 @@ public class MeshNetworkUI extends UIModel
 			int columns = ui.columnEditor.getData();
 			
 			RegularNetwork regular = new MeshNetwork(rows, columns);
+			AttributeNetwork network = createAttributeNetwork(regular, "Complete network", new MeshLayout(rows,columns));			
 			
-			AttributeNetwork network = new AttributeNetwork(regular);
-
-			network.addNodeAttribute( new Attribute<Double>("x") );
-			network.addNodeAttribute( new Attribute<Double>("y") );
-			
-			NetworkLayout display = new MeshLayout(rows,columns);
-			
-			display.layout(network);
-											
 			ui.set("network", network);
 			ui.exit();
 		}	

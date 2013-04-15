@@ -150,14 +150,18 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 			
 			if (network!=null) {
 
-				tooltip = "<html>Node #"+node+"<br/>";
+				tooltip = "<html><b>"+network.getNodeAttribute("id").get(node)+"</b><br/>";
 
 				for (int i=0; i<network.getNodeAttributeCount(); i++) {
 					Attribute attribute = network.getNodeAttribute(i);
-					Object value = attribute.get(node);
+					String    name = attribute.getID();
 					
-					if (value!=null)
-						tooltip += "- "+attribute.getID()+": <b>"+value+"</b><br/>";
+					if (!name.equals("id") && !name.equals("x") && !name.equals("y")) {
+						Object value = attribute.get(node);
+					
+						if (value!=null)
+							tooltip += "- "+attribute.getID()+": <b>"+value+"</b><br/>";
+					}
 				}
 				
 				tooltip += "- "+network.outDegree(node)+" out-links<br/>";
@@ -175,13 +179,13 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 			
 			if (network!=null) {
 				
-				tooltip = "<html>Link "+source+"->"+target+"<br/>";
+				tooltip = "<html>Link";
 				
 				Attribute id = network.getNodeAttribute("id");
 				
 				if (id!=null) {
-					tooltip += "from <b>"+id.get(source)+"</b><br/>";
-					tooltip += "to <b>"+id.get(target)+"</b><br/>";
+					tooltip += " from <b>"+id.get(source)+"</b>";
+					tooltip += " to <b>"+id.get(target)+"</b><br/>";
 				}
 				
 

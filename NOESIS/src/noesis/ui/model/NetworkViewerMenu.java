@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 
 import noesis.algorithms.visualization.BinaryTreeLayout;
 import noesis.algorithms.visualization.CircularLayout;
+import noesis.algorithms.visualization.FruchtermanReingoldLayout;
 import noesis.algorithms.visualization.HypercubeLayout;
 import noesis.algorithms.visualization.LinearLayout;
 import noesis.algorithms.visualization.MeshLayout;
@@ -227,6 +228,10 @@ public class NetworkViewerMenu extends Menu
 		layoutRandom.setIcon( app.url("icons/kiviat.png") );
 		view.add(layoutRandom);
 
+		Option layoutFR = new Option("Fruchterman-Reingold layout", new LayoutAction( ui, new FruchtermanReingoldLayout() ) );
+		layoutFR.setIcon( app.url("icons/kiviat.png") );
+		view.add(layoutFR);
+		
 		Option layoutCircular = new Option("Circular layout", new LayoutAction( ui, new CircularLayout() ) );
 		layoutCircular.setIcon( app.url("icons/kiviat.png") );
 		view.add(layoutCircular);

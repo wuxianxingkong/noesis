@@ -341,4 +341,10 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 		return net;
 	}
 
+	@Override
+	public void close() throws IOException 
+	{
+		input.close();
+	}
+
 }

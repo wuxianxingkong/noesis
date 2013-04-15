@@ -198,12 +198,10 @@ public class NetworkViewerMenu extends Menu
 		Option savePNG=new Option("PNG image", new ViewerSaveAction(ui, "png") );
 		savePNG.setIcon( app.url("icons/kiviat.png") );
 		export.add(savePNG);
-	    savePNG.disable();
 	    
 		Option saveJPG=new Option("JPG image", new ViewerSaveAction(ui, "jpg") );
 		saveJPG.setIcon( app.url("icons/kiviat.png") );
 		export.add(saveJPG);
-	    saveJPG.disable();
 
 		net.add( new Separator() );
 /*

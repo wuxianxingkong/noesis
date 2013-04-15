@@ -37,7 +37,9 @@ public abstract class NetworkReader<V,E>
 		return net;
 	}
 	
-	// Abstract method
+	// Abstract methods
 	
 	public abstract Network<V, E> read () throws IOException;
+	
+	public abstract void close () throws IOException;
 }

@@ -215,4 +215,10 @@ public class GraphMLNetworkWriter extends AttributeNetworkWriter
 		writer.writeEndElement();
 	}
 
+	@Override
+	public void close() throws IOException 
+	{
+		output.close();
+	}
+
 }

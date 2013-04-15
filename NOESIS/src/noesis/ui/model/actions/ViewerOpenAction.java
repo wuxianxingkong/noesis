@@ -102,6 +102,8 @@ public class ViewerOpenAction extends Action
 				// reader.setType(noesis.GraphNetwork.class);  // NDwww.net 9.6s @ i5
 
 				net = reader.read();
+				
+				reader.close();
 			
 			} catch (FileNotFoundException fnfe) {
 				

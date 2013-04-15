@@ -98,5 +98,11 @@ public class PajekNetworkWriter implements NetworkWriter<String, Decimal>
 		
 		writer.newLine();		
 	}
+
+	@Override
+	public void close() throws IOException 
+	{
+		writer.close();
+	}
 	
 }

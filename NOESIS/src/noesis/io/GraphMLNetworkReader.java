@@ -210,4 +210,10 @@ public class GraphMLNetworkReader extends AttributeNetworkReader
 		addLink(net,source,target);
 	}
 
+	@Override
+	public void close() throws IOException 
+	{
+		input.close();
+	}
+
 }

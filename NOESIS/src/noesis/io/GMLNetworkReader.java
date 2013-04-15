@@ -150,5 +150,12 @@ public class GMLNetworkReader extends AttributeNetworkReader
 			return null;
 		}
 	}
+
+
+	@Override
+	public void close() throws IOException 
+	{
+		input.close();
+	}
 	
 }

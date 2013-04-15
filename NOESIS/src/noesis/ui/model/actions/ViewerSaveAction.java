@@ -1,18 +1,25 @@
 package noesis.ui.model.actions;
 
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 
 import noesis.AttributeNetwork;
+
 import noesis.io.GDFNetworkWriter;
 import noesis.io.GMLNetworkWriter;
 import noesis.io.GraphMLNetworkWriter;
 import noesis.io.NetworkWriter;
 import noesis.io.PajekNetworkWriter;
+import noesis.io.graphics.ImageNetworkWriter;
+
 import noesis.ui.model.NetworkViewerUIModel;
+
 import ikor.model.ui.Action;
 import ikor.model.ui.File;
+
 import ikor.util.log.Log;
+
 
 public class ViewerSaveAction extends Action 
 {
@@ -51,7 +58,7 @@ public class ViewerSaveAction extends Action
 				NetworkWriter writer;
 				
 				try {
-
+					
 					if (format.equals("gdf"))
 						writer = new GDFNetworkWriter(new FileWriter(filename));
 					else if (format.equals("gml"))
@@ -60,11 +67,17 @@ public class ViewerSaveAction extends Action
 						writer = new GraphMLNetworkWriter(new FileWriter(filename));
 					else if (format.equals("pajek"))
 						writer = new PajekNetworkWriter(new FileWriter(filename));
+					else if (format.equals("png"))
+						writer = new ImageNetworkWriter(new FileOutputStream(filename), ui.getFigure().getRenderer(), "png");
+					else if (format.equals("jpg"))
+						writer = new ImageNetworkWriter(new FileOutputStream(filename), ui.getFigure().getRenderer(), "jpg");						
 					else
 						throw new IOException("Unknown output network file format.");
 
-					if (writer!=null)
+					if (writer!=null) {
 						writer.write(net);
+						writer.close();
+					}
 
 				} catch (IOException ioe) {
 					Log.error("IO error - "+ioe);

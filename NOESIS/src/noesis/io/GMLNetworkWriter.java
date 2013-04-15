@@ -184,4 +184,10 @@ public class GMLNetworkWriter extends AttributeNetworkWriter
 		writer.newLine();
 	}
 
+	@Override
+	public void close() throws IOException 
+	{
+		writer.close();
+	}
+
 }

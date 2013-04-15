@@ -6,5 +6,7 @@ import noesis.Network;
 
 public interface NetworkWriter<V,E>
 {
-  public void write (Network<V,E> net) throws IOException;
+	public void write (Network<V,E> net) throws IOException;
+	
+	public void close () throws IOException;
 }

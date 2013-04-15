@@ -193,6 +193,7 @@ public class GDFNetworkReader extends AttributeNetworkReader
 
 
     	net = new AttributeNetwork();
+    	net.setID("");
     	net.addNodeAttribute( new Attribute("id") );
     	
     	while ((line = readLine()) != null) {
@@ -221,4 +222,11 @@ public class GDFNetworkReader extends AttributeNetworkReader
     	
     	return net;
     }
+
+
+	@Override
+	public void close() throws IOException 
+	{
+		input.close();
+	}
 }

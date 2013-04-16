@@ -50,5 +50,21 @@ public class Attribute<T> extends DynamicList<T>
 		else
 			super.set( index, (T) value );
 	}
+	
+	
+	private final static DataModel DEFAULT_MODEL = new ikor.model.data.TextModel();
+	
+	public final DataModel getModel ()
+	{
+		if (type!=null)
+			return type;
+		else
+			return DEFAULT_MODEL;
+	}
+	
+	public final void setModel (DataModel model)
+	{
+		this.type = model;
+	}
 
 }

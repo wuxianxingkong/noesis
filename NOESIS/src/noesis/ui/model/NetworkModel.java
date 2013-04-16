@@ -33,6 +33,6 @@ class NetworkModel extends Subject<AttributeNetwork>
 		if (object!=null)
 			setNetwork( object );
 		else
-			notifyObservers();
+			notifyObservers(network);
 	}
 }

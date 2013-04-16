@@ -262,7 +262,9 @@ public class NetworkViewerMenu extends Menu
 		
 		// Data menu
 		
-		data.disable();
+		Option dataNodes = new Option("Nodes", new ForwardAction( new NodeDatasetUIModel(app, ui.getModel()) ) );
+		dataNodes.setIcon( app.url("icons/chart.png") );
+		data.add(dataNodes);
 		
 		// Analysis menu
 		
@@ -316,7 +318,7 @@ public class NetworkViewerMenu extends Menu
 		view.enable();
 		
 		data.show();
-		data.disable();
+		data.enable();
 		
 		analysis.show();
 		analysis.disable();

@@ -1,5 +1,6 @@
 package ikor.model.data;
 
+
 public abstract class NumberModel<T extends Number> implements DataModel<T> 
 {
 	private T minimumValue;
@@ -8,7 +9,7 @@ public abstract class NumberModel<T extends Number> implements DataModel<T>
 	@Override
 	public String toString (Number object) 
 	{
-		return object.toString();
+		return String.format("%f",object); // vs. NumberFormat.getNumberInstance(Locale.US).format(object);
 	}
 
 	public T getMinimumValue() 

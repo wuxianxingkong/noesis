@@ -39,6 +39,17 @@ public class SwingDatasetJTable extends JTable
 	{
 		super(model);
 		
+		// JTable options
+		
+		setFillsViewportHeight(true);
+		setAutoCreateRowSorter(true);
+		setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);  
+			// JTable.AUTO_RESIZE_OFF forces horizontal scrolling
+			// JTable.AUTO_RESIZE_LAST_COLUMN only affects the last column
+			// JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS does not modify columns at the left
+
+		// Layout
+		
 		setupLayout();
 		
 		// Renderers & editors
@@ -51,13 +62,6 @@ public class SwingDatasetJTable extends JTable
 	
 	public void setupLayout ()
 	{
-		setFillsViewportHeight(true);
-		setAutoCreateRowSorter(true);
-		setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);  
-			// JTable.AUTO_RESIZE_OFF forces horizontal scrolling
-			// JTable.AUTO_RESIZE_LAST_COLUMN only affects the last column
-			// JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS does not modify columns at the left
-		
 		for (int i=0; i<getColumnCount(); i++) {
 			getColumnModel().getColumn(i).setMinWidth(MINIMUM_WIDTH_PER_COLUMN);
 			getColumnModel().getColumn(i).setPreferredWidth(PREFERRED_WIDTH_PER_COLUMN);

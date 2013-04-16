@@ -70,7 +70,10 @@ public class SwingDatasetModel extends AbstractTableModel
 				type = data.getClass();
 		}
 			
-		return type;
+		if (type!=null)
+			return type;
+		else
+			return String.class;
 	}
 	
 	// Data

@@ -9,6 +9,7 @@ import noesis.Attribute;
 import noesis.AttributeNetwork;
 import noesis.Network;
 import noesis.algorithms.visualization.NetworkLayout;
+import noesis.algorithms.visualization.NormalizedLayout;
 import noesis.algorithms.visualization.RandomLayout;
 import noesis.io.ASCIINetworkReader;
 import noesis.io.GDFNetworkReader;
@@ -53,8 +54,8 @@ public class ViewerOpenAction extends Action
 				
 				AttributeNetwork net = read(filename);
 				
-				Attribute x = net.getNodeAttribute("x");
-				Attribute y = net.getNodeAttribute("y");
+				Attribute<Double> x = net.getNodeAttribute("x");
+				Attribute<Double> y = net.getNodeAttribute("y");
 				
 				if ((x==null) || (y==null)){
 					
@@ -66,7 +67,13 @@ public class ViewerOpenAction extends Action
 					
 					NetworkLayout display = new RandomLayout ();
 					
-					display.layout(net);					
+					display.layout(net);
+					
+				} else {
+					
+					NetworkLayout normalize = new NormalizedLayout ();
+					
+					normalize.layout(net);		
 				}
 				
 				ui.set("network", net);

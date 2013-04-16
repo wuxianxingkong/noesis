@@ -1,32 +1,36 @@
 package noesis.ui.model.actions;
 
 import ikor.model.ui.Action;
+import ikor.model.ui.Application;
 
 import noesis.AttributeNetwork;
 
 import noesis.algorithms.visualization.NetworkLayout;
-import noesis.ui.model.NetworkViewerUIModel;
+
+import noesis.ui.model.NetworkFigure;
 
 
 public class LayoutAction extends Action 
 {
-	private NetworkViewerUIModel ui;
+	private Application   application;
+	private NetworkFigure figure;
 	private NetworkLayout algorithm;
 
-	public LayoutAction (NetworkViewerUIModel ui, NetworkLayout algorithm)
+	public LayoutAction (Application application, NetworkFigure figure, NetworkLayout algorithm)
 	{
-		this.ui = ui;
+		this.application = application;
+		this.figure = figure;
 		this.algorithm = algorithm;
 	}
 
 	@Override
 	public void run() 
 	{
-		AttributeNetwork network = (AttributeNetwork) ui.get("network");
+		AttributeNetwork network = (AttributeNetwork) application.get("network");
 		
 		if (network!=null) {
 			algorithm.layout(network);
-			ui.getFigure().render();
+			figure.render();
 		}
 	}			
 	

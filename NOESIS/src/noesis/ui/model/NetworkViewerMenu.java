@@ -58,10 +58,10 @@ public class NetworkViewerMenu extends Menu
 		Application app = ui.getApplication();
 		
 		net = new Menu("Network");
-		view = new Menu("View");
-		data = new Menu("Data");
-		analysis = new Menu("Analysis");
-		help = new Menu("Help");
+		view = createViewMenu(app, ui.getFigure());
+		data = createDataMenu(app, ui.getModel());
+		analysis = createAnalysisMenu(app);
+		help = createHelpMenu(app);
 		
 		this.add(net);
 		this.add(view);
@@ -77,80 +77,10 @@ public class NetworkViewerMenu extends Menu
 		
 		// New network...
 
-		Menu newNetwork = new Menu("New...");
+		Menu newNetwork = createNewMenu(app);
 		newNetwork.setIcon( app.url("icons/new.png") );
 		net.add( newNetwork );
 
-		// Random networks
-		
-		Menu newRandomNetwork = new Menu("Random network");
-		newRandomNetwork.setIcon( app.url("icons/new.png") );
-		newNetwork.add (newRandomNetwork);
-		
-		Option newER = new Option("Erdös-Renyi network", new ForwardAction( new ErdosRenyiNetworkUI(app) ) );
-		newER.setIcon( app.url("icons/kiviat.png") );
-		newRandomNetwork.add(newER);
-
-		Option newGilbert = new Option("Gilbert network", new ForwardAction( new GilbertNetworkUI(app) ) );
-		newGilbert.setIcon( app.url("icons/kiviat.png") );
-		newRandomNetwork.add(newGilbert);
-
-		Option newAnchored = new Option("Anchored random network", new ForwardAction( new AnchoredRandomNetworkUI(app) ) );
-		newAnchored.setIcon( app.url("icons/kiviat.png") );
-		newRandomNetwork.add(newAnchored);
-
-		Option newConnected = new Option("Connected random network", new ForwardAction( new ConnectedRandomNetworkUI(app) ) );
-		newConnected.setIcon( app.url("icons/kiviat.png") );
-		newRandomNetwork.add(newConnected);
-		
-		// Regular networks
-		
-		Menu newRegularNetwork = new Menu("Regular network");
-		newRegularNetwork.setIcon( app.url("icons/new.png") );
-		newNetwork.add (newRegularNetwork);
-		
-		Option newComplete = new Option("Complete network", new ForwardAction( new CompleteNetworkUI(app) ) );
-		newComplete.setIcon( app.url("icons/kiviat.png") );
-		newRegularNetwork.add(newComplete);
-
-		Option newStar = new Option("Star network", new ForwardAction( new StarNetworkUI(app) ) );
-		newStar.setIcon( app.url("icons/kiviat.png") );
-		newRegularNetwork.add(newStar);
-
-		newRegularNetwork.add( new Separator() );
-		
-		Option newRing = new Option("Ring network", new ForwardAction( new RingNetworkUI(app) ) );
-		newRing.setIcon( app.url("icons/kiviat.png") );
-		newRegularNetwork.add(newRing);
-		
-		Option newTandem = new Option("Tandem network", new ForwardAction( new TandemNetworkUI(app) ) );
-		newTandem.setIcon( app.url("icons/kiviat.png") );
-		newRegularNetwork.add(newTandem);
-
-		newRegularNetwork.add( new Separator() );
-
-		Option newMesh = new Option("Mesh network", new ForwardAction( new MeshNetworkUI(app) ) );
-		newMesh.setIcon( app.url("icons/kiviat.png") );
-		newRegularNetwork.add(newMesh);
-
-		Option newToroidal = new Option("Toroidal network", new ForwardAction( new ToroidalNetworkUI(app) ) );
-		newToroidal.setIcon( app.url("icons/kiviat.png") );
-		newRegularNetwork.add(newToroidal);
-
-		Option newHypercube = new Option("Hypercube network", new ForwardAction( new HypercubeNetworkUI(app) ) );
-		newHypercube.setIcon( app.url("icons/kiviat.png") );
-		newRegularNetwork.add(newHypercube);
-
-		Option newBinaryTree = new Option("Binary tree network", new ForwardAction( new BinaryTreeNetworkUI(app) ) );
-		newBinaryTree.setIcon( app.url("icons/kiviat.png") );
-		newRegularNetwork.add(newBinaryTree);
-		
-		newRegularNetwork.add( new Separator() );
-		
-		Option newIsolate = new Option("Isolate network", new ForwardAction( new IsolateNetworkUI(app) ) );
-		newIsolate.setIcon( app.url("icons/kiviat.png") );
-		newRegularNetwork.add(newIsolate);
-		
 		// File operations
 		
 		open = new Option("Open", new ViewerOpenAction(ui), KeyEvent.VK_F3 );
@@ -221,58 +151,172 @@ public class NetworkViewerMenu extends Menu
 		Option exit = new Option("Exit", new ExitAction(app) );
 		exit.setIcon( app.url("icons/exit.png") );
 		net.add(exit);
+	}
 
-		// View
 
-		Option layoutRandom = new Option("Random layout", new LayoutAction( ui, new RandomLayout() ) );
+	
+	// New menu
+	// --------
+	
+	public Menu createNewMenu (Application app)
+	{
+		Menu newNetwork = new Menu("New...");
+		
+		// Random networks
+		
+		Menu newRandomNetwork = new Menu("Random network");
+		newRandomNetwork.setIcon( app.url("icons/new.png") );
+		newNetwork.add (newRandomNetwork);
+		
+		Option newER = new Option("Erdös-Renyi network", new ForwardAction( new ErdosRenyiNetworkUI(app) ) );
+		newER.setIcon( app.url("icons/kiviat.png") );
+		newRandomNetwork.add(newER);
+
+		Option newGilbert = new Option("Gilbert network", new ForwardAction( new GilbertNetworkUI(app) ) );
+		newGilbert.setIcon( app.url("icons/kiviat.png") );
+		newRandomNetwork.add(newGilbert);
+
+		Option newAnchored = new Option("Anchored random network", new ForwardAction( new AnchoredRandomNetworkUI(app) ) );
+		newAnchored.setIcon( app.url("icons/kiviat.png") );
+		newRandomNetwork.add(newAnchored);
+
+		Option newConnected = new Option("Connected random network", new ForwardAction( new ConnectedRandomNetworkUI(app) ) );
+		newConnected.setIcon( app.url("icons/kiviat.png") );
+		newRandomNetwork.add(newConnected);
+		
+		// Regular networks
+		
+		Menu newRegularNetwork = new Menu("Regular network");
+		newRegularNetwork.setIcon( app.url("icons/new.png") );
+		newNetwork.add (newRegularNetwork);
+		
+		Option newComplete = new Option("Complete network", new ForwardAction( new CompleteNetworkUI(app) ) );
+		newComplete.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newComplete);
+
+		Option newStar = new Option("Star network", new ForwardAction( new StarNetworkUI(app) ) );
+		newStar.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newStar);
+
+		newRegularNetwork.add( new Separator() );
+		
+		Option newRing = new Option("Ring network", new ForwardAction( new RingNetworkUI(app) ) );
+		newRing.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newRing);
+		
+		Option newTandem = new Option("Tandem network", new ForwardAction( new TandemNetworkUI(app) ) );
+		newTandem.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newTandem);
+
+		newRegularNetwork.add( new Separator() );
+
+		Option newMesh = new Option("Mesh network", new ForwardAction( new MeshNetworkUI(app) ) );
+		newMesh.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newMesh);
+
+		Option newToroidal = new Option("Toroidal network", new ForwardAction( new ToroidalNetworkUI(app) ) );
+		newToroidal.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newToroidal);
+
+		Option newHypercube = new Option("Hypercube network", new ForwardAction( new HypercubeNetworkUI(app) ) );
+		newHypercube.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newHypercube);
+
+		Option newBinaryTree = new Option("Binary tree network", new ForwardAction( new BinaryTreeNetworkUI(app) ) );
+		newBinaryTree.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newBinaryTree);
+		
+		newRegularNetwork.add( new Separator() );
+		
+		Option newIsolate = new Option("Isolate network", new ForwardAction( new IsolateNetworkUI(app) ) );
+		newIsolate.setIcon( app.url("icons/kiviat.png") );
+		newRegularNetwork.add(newIsolate);
+		
+		return newNetwork;
+	}
+	
+	// View menu
+	// ---------
+
+	public Menu createViewMenu (Application app, NetworkFigure figure)
+	{
+		Menu view = new Menu("View");
+
+		Option layoutRandom = new Option("Random layout", new LayoutAction( app, figure, new RandomLayout() ) );
 		layoutRandom.setIcon( app.url("icons/kiviat.png") );
 		view.add(layoutRandom);
 
-		Option layoutFR = new Option("Fruchterman-Reingold layout", new LayoutAction( ui, new FruchtermanReingoldLayout() ) );
+		Option layoutFR = new Option("Fruchterman-Reingold layout", new LayoutAction( app, figure, new FruchtermanReingoldLayout() ) );
 		layoutFR.setIcon( app.url("icons/kiviat.png") );
 		view.add(layoutFR);
 		
-		Option layoutCircular = new Option("Circular layout", new LayoutAction( ui, new CircularLayout() ) );
+		Option layoutCircular = new Option("Circular layout", new LayoutAction( app, figure, new CircularLayout() ) );
 		layoutCircular.setIcon( app.url("icons/kiviat.png") );
 		view.add(layoutCircular);
 
-		Option layoutStar = new Option("Star layout", new LayoutAction( ui, new StarLayout() ) );
+		Option layoutStar = new Option("Star layout", new LayoutAction( app, figure, new StarLayout() ) );
 		layoutStar.setIcon( app.url("icons/kiviat.png") );
 		view.add(layoutStar);
 
-		Option layoutMesh = new Option("Mesh layout", new LayoutAction( ui, new MeshLayout() ) );
+		Option layoutMesh = new Option("Mesh layout", new LayoutAction( app, figure, new MeshLayout() ) );
 		layoutMesh.setIcon( app.url("icons/kiviat.png") );
 		view.add(layoutMesh);
 
-		Option layoutHypercube = new Option("Hypercube layout", new LayoutAction( ui, new HypercubeLayout() ) );
+		Option layoutHypercube = new Option("Hypercube layout", new LayoutAction( app, figure, new HypercubeLayout() ) );
 		layoutHypercube.setIcon( app.url("icons/kiviat.png") );
 		view.add(layoutHypercube);
 
-		Option layoutTree = new Option("Binary tree layout", new LayoutAction( ui, new BinaryTreeLayout() ) );
+		Option layoutTree = new Option("Binary tree layout", new LayoutAction( app, figure, new BinaryTreeLayout() ) );
 		layoutTree.setIcon( app.url("icons/kiviat.png") );
 		view.add(layoutTree);
 		
-		Option layoutToroidal = new Option("Toroidal layout", new LayoutAction( ui, new ToroidalLayout() ) );
+		Option layoutToroidal = new Option("Toroidal layout", new LayoutAction( app, figure, new ToroidalLayout() ) );
 		layoutToroidal.setIcon( app.url("icons/kiviat.png") );
 		view.add(layoutToroidal);
 
-		Option layoutLinear = new Option("Linear layout", new LayoutAction( ui, new LinearLayout() ) );
+		Option layoutLinear = new Option("Linear layout", new LayoutAction( app, figure, new LinearLayout() ) );
 		layoutLinear.setIcon( app.url("icons/kiviat.png") );
 		view.add(layoutLinear);
 		
-		// Data menu
+		return view;
+	}
+	
+	// Data menu
+	// ---------
+	
+	public Menu createDataMenu (Application app, NetworkModel model)
+	{
+		Menu data = new Menu("Data");
 		
-		Option dataNodes = new Option("Nodes", new ForwardAction( new NodeDatasetUIModel(app, ui.getModel()) ) );
+		Option dataNodes = new Option("Nodes", new ForwardAction( new NodesetUIModel(app, model) ) );
 		dataNodes.setIcon( app.url("icons/chart.png") );
 		data.add(dataNodes);
-		
-		// Analysis menu
+
+		Option dataLinks = new Option("Links", new ForwardAction( new LinksetUIModel(app, model) ) );
+		dataLinks.setIcon( app.url("icons/chart.png") );
+		data.add(dataLinks);
+
+		return data;
+	}
+
+	// Analysis menu
+	// -------------
+	
+	public Menu createAnalysisMenu (Application app)
+	{
+		Menu analysis = new Menu("Analysis");
 		
 		analysis.disable();
-				
 		
-		// Help
-		// ----
+		return analysis;
+	}
+	
+	// Help menu
+	// ---------
+	
+	public Menu createHelpMenu (Application app)
+	{
+		Menu help = new Menu("Help");
 		
 		//Option tutorial = new Option("Tutorial", new URLAction(app,"http://noesis.ikor.org/") );
 		//tutorial.setIcon( app.url("icons/tutor.png") );
@@ -290,6 +334,8 @@ public class NetworkViewerMenu extends Menu
 		Option about = new Option("About...", new ForwardAction( new AboutUIModel(app) ) );
 		about.setIcon( app.url("icons/info.png") );
 		help.add(about);
+		
+		return help;
 	}
 	
 	

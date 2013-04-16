@@ -6,6 +6,9 @@ package noesis.io;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
+import ikor.model.data.IntegerModel;
+import ikor.model.data.RealModel;
+
 import java.io.Writer;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -88,7 +91,14 @@ public class GraphMLNetworkWriter extends AttributeNetworkWriter
 				writer.writeAttribute("id", id);
 				writer.writeAttribute("for", "node");
 				writer.writeAttribute("attr.name", id);
-				writer.writeAttribute("attr.type", "string");  // TODO Attribute types
+				
+				if (attribute.getModel() instanceof RealModel)
+					writer.writeAttribute("attr.type", "double");
+				else if (attribute.getModel() instanceof IntegerModel)
+					writer.writeAttribute("attr.type", "int");
+				else 
+					writer.writeAttribute("attr.type", "string");
+
 				writer.writeEndElement();
 			}
 		}

@@ -10,17 +10,17 @@ import ikor.model.ui.Application;
 import ikor.model.ui.DatasetViewer;
 import ikor.model.ui.UIModel;
 
-public class NodeDatasetUIModel extends UIModel 
+public class NodesetUIModel extends UIModel 
 {
 
-	public NodeDatasetUIModel (Application app, NetworkModel data) 
+	public NodesetUIModel (Application app, NetworkModel data) 
 	{
 		super(app, "Network nodes");
 		setIcon( app.url("icons/chart.png") );
 		
 		NodeDataset dataset = new NodeDataset();
 		
-		DatasetViewer control = new DatasetViewer("Data viewer", dataset.getModel());
+		DatasetViewer control = new DatasetViewer("Node data viewer", dataset.getModel());
 		add(control);
 		
 		data.addObserver( new NodesetObserver(dataset,control) );		
@@ -84,7 +84,7 @@ public class NodeDatasetUIModel extends UIModel
 			if (network!=null)
 				return network.getNodeAttribute(column).getID();
 			else
-				return "";
+				return null;
 		}
 		
 		@Override
@@ -96,10 +96,7 @@ public class NodeDatasetUIModel extends UIModel
 			if ((network!=null) && (column<network.getNodeAttributeCount()) && (row<network.size()))
 				data = network.getNodeAttribute(column).get(row);
 			
-			if (data!=null)
-				return data;
-			else
-				return "";
+			return data;
 		}
 
 		@Override

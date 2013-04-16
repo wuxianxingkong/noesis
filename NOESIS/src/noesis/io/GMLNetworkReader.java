@@ -136,7 +136,7 @@ public class GMLNetworkReader extends AttributeNetworkReader
 
 	private String parseAttribute(String id, String line) 
 	{
-		Pattern pattern = Pattern.compile(id+"\\s+((.*)|\"([^\"]+)\")");
+		Pattern pattern = Pattern.compile(id+"\\s+(([^\"]*)|\"([^\"]+)\")");
 	    Matcher m = pattern.matcher(line);
 	    
 		if (m.matches()) {

@@ -6,6 +6,11 @@ package noesis.io;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
+import ikor.model.data.DataModel;
+import ikor.model.data.IntegerModel;
+import ikor.model.data.RealModel;
+import ikor.model.data.TextModel;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,6 +19,7 @@ import javax.xml.stream.*;
 
 import noesis.Attribute;
 import noesis.AttributeNetwork;
+import noesis.LinkAttribute;
 import noesis.Network;
 
 /**
@@ -103,6 +109,10 @@ public class GraphMLNetworkReader extends AttributeNetworkReader
 						} else if (element.equals("data")) {
 							
 							parseDataElement(xmlStreamReader);
+				
+						} else if (element.equals("key")) {
+							
+							parseAttribute(xmlStreamReader);
 						}
 
 						break;
@@ -122,6 +132,66 @@ public class GraphMLNetworkReader extends AttributeNetworkReader
 		
 		return net;
 	}
+
+	private void parseAttribute (XMLStreamReader xmlStreamReader) 
+	{
+		String key;
+		String value;
+		
+		String id = null;
+		String scope = null;
+		String type = null;
+
+		for (int i=0; i<xmlStreamReader.getAttributeCount(); i++) {				
+
+			key = xmlStreamReader.getAttributeLocalName(i);
+			value = xmlStreamReader.getAttributeValue(i);
+		
+			if (key.equals("for")) {
+				scope = value;
+			} else if (key.equals("id")) {
+				id = value;
+			} else if (key.equals("attr.name")) {
+				id = value;
+			} else if (key.equals("attr.type")) {
+				type = value;
+			}
+			
+			// TODO Default values
+		}
+		
+		if (scope!=null) {
+			
+			DataModel model = dataModel(type);
+			
+			if (scope.equals("node")) {
+				
+				net.addNodeAttribute( new Attribute(id,model) );
+			
+			} else if (scope.equals("edge")) {
+				
+				net.addLinkAttribute( new LinkAttribute(net,id,model) );
+				
+			}
+		}
+	}
+	
+    // Data types
+    
+    private DataModel dataModel (String dataType)
+    {
+    	String   type = dataType.toLowerCase();
+    	DataModel model;
+
+    	if (type.equals("double") || type.equals("float"))
+    		model = new RealModel();
+    	else if (type.equals("long") || type.equals("int"))
+    		model = new IntegerModel();
+    	else // string, boolean
+    		model = new TextModel();
+
+    	return model;
+    }
 
 	private void parseAttributeValue(XMLStreamReader xmlStreamReader) 
 	{

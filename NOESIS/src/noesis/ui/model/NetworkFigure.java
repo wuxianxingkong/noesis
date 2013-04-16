@@ -112,6 +112,7 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 				setNetwork(object);
 				notifyObservers(object);
 			} else {
+				setNetwork(null);
 				notifyObservers ();
 			}
 

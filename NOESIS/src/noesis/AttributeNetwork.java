@@ -24,6 +24,7 @@ public class AttributeNetwork extends BasicNetwork
 	private Dictionary<String, LinkAttribute> linkAttributes;
 
 	private Dictionary<Pair<Integer,Integer>, Integer> index;
+	private Dictionary<Integer, Pair<Integer,Integer>> reverse;
 
 	// Constructor
 		
@@ -36,6 +37,7 @@ public class AttributeNetwork extends BasicNetwork
 		linkAttributeNames = new DynamicList<String>();
 		
 		index = new DynamicDictionary<Pair<Integer,Integer>, Integer>();
+		reverse = new DynamicDictionary<Integer,Pair<Integer,Integer>>();
 	}
 
 	
@@ -60,8 +62,10 @@ public class AttributeNetwork extends BasicNetwork
 	public boolean add(int source, int destination) 
 	{
 		int position = links();
+		Pair<Integer,Integer> edge = new Pair<Integer,Integer>(source,destination);
 		
-		index.set( new Pair<Integer,Integer>(source,destination), position);
+		index.set( edge, position);
+		reverse.set (position, edge);
 		
 		return super.add(source,destination);
 	}
@@ -74,6 +78,26 @@ public class AttributeNetwork extends BasicNetwork
 		if (pos!=null)
 			return pos;
 		else
+			return -1;
+	}
+	
+	public int getLinkSource (int index)
+	{
+		Pair<Integer,Integer> value = reverse.get(index);
+
+		if (value!=null)
+			return value.first();
+		else 
+			return -1;
+	}
+	
+	public int getLinkDestination (int index)
+	{
+		Pair<Integer,Integer> value = reverse.get(index);
+
+		if (value!=null)
+			return value.second();
+		else 
 			return -1;
 	}
 	

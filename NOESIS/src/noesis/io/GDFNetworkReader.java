@@ -12,7 +12,10 @@ import java.io.Reader;
 import java.util.regex.*;
 
 import ikor.collection.*;
+import ikor.model.data.DataModel;
+import ikor.model.data.IntegerModel;
 import ikor.model.data.RealModel;
+import ikor.model.data.TextModel;
 
 import noesis.*;
 
@@ -27,11 +30,14 @@ public class GDFNetworkReader extends AttributeNetworkReader
 	private String line;
 	private Pattern pattern;
 	
+	private static final String REGEX = "(^|,) *(\"[^\"]*\"|'[^']*'|[^,]*) *";
+			// TODO Buggy JDK7 implementation, OK in JDK6: "(^|,) *(\"[^\"]*\"|'[^']*'|[^,]*) *"
+			
 	public GDFNetworkReader (Reader reader)
 	{
 		this.input = new BufferedReader(reader);
 		this.line = null;
-		this.pattern = Pattern.compile("(^|,)(\"[^\"]*\"|'[^']*'|[^,]*)");
+		this.pattern = Pattern.compile(REGEX);
 		
 		this.setType(noesis.AttributeNetwork.class);
 	}
@@ -66,6 +72,7 @@ public class GDFNetworkReader extends AttributeNetworkReader
 		Matcher matcher = pattern.matcher(line);
 		
 		while (matcher.find()) {
+			
 			field = matcher.group(2);
 			
 			// Remove quotes
@@ -82,6 +89,9 @@ public class GDFNetworkReader extends AttributeNetworkReader
 
 
     // Network schema
+	// TODO Default values
+	// TODO directed
+	// TODO __edgeid
     
 	int nodeIDColumn = -1;
 	int linkSourceColumn = -1;
@@ -111,34 +121,57 @@ public class GDFNetworkReader extends AttributeNetworkReader
     		String   name = elements[0];
 
     		items[i] = name;
-    		
-    		// TODO Attribute types & default values
 
     		if (node) {
     			
-    			if (name.equalsIgnoreCase("name"))
+    			if (name.equalsIgnoreCase("name")) {
 					nodeIDColumn = i;
-    			else if (name.equals("x") || name.equals("y"))
-    				net.addNodeAttribute(new Attribute(name, new RealModel()));
-    			else
-        			net.addNodeAttribute(new Attribute(name));
+    			} else if (elements.length==1) {
+    				// Default attribute 
+    				net.addNodeAttribute(new Attribute(name));
+    			} else {    				
+    				// Attribute types
+    				net.addNodeAttribute(new Attribute(name, dataModel(elements[1]) ));
+    			}
 
     		} else { 
     			
-    			if (name.equalsIgnoreCase("node1")) {
+    			if (name.equalsIgnoreCase("node1") || name.equalsIgnoreCase("n1")) {
     				linkSourceColumn = i;
-    			} else if (name.equalsIgnoreCase("node2")) {
+    			} else if (name.equalsIgnoreCase("node2") || name.equalsIgnoreCase("n2")) {
     				linkTargetColumn = i;
     			} else {
-        			net.addLinkAttribute(new LinkAttribute(net,name));    				
+
+    				if (elements.length==1) {
+            			// Default attribute 
+    					net.addLinkAttribute(new LinkAttribute(net,name));    				
+        			} else {
+        				// Attribute types
+    					net.addLinkAttribute(new LinkAttribute(net,name, dataModel(elements[1])));    				
+        			}    				
     			}
-    			
-    			// TODO directed
-    			// TODO __edgeid
     		}
     	}
     	
     	return items;
+    }
+    
+    
+    // Data types
+    
+    private DataModel dataModel (String dataType)
+    {
+    	String   type = dataType.toLowerCase();
+    	DataModel model;
+
+    	if (type.equals("double") || type.equals("float"))
+    		model = new RealModel();
+    	else if (type.equals("integer") || type.equals("tinyint"))
+    		model = new IntegerModel();
+    	else // string, varchar, boolean
+    		model = new TextModel();
+
+    	return model;
     }
    
     // Node

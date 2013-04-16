@@ -79,6 +79,8 @@ public class NetworkViewerUIModel  extends UIModel
 	{
 		figure.hide();
 		menu.reset();
+		
+		model.setNetwork(null);
 	}
 	
 	// Getters & setters

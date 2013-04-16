@@ -6,6 +6,9 @@ package noesis.io;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
+import ikor.model.data.IntegerModel;
+import ikor.model.data.RealModel;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -57,7 +60,12 @@ public class GDFNetworkWriter extends AttributeNetworkWriter
 				String    id = attribute.getID();
 				
 				if (!id.equals("id"))
-					writer.write(","+attribute.getID()); // TODO Attribute types
+					writer.write(","+attribute.getID());
+				
+					if (attribute.getModel() instanceof IntegerModel)
+						writer.write(" INTEGER");
+					else if (attribute.getModel() instanceof RealModel)
+						writer.write(" DOUBLE");
 			}
 		}
 
@@ -142,7 +150,12 @@ public class GDFNetworkWriter extends AttributeNetworkWriter
 				
 				for (int i=0; i<attributes; i++) {
 					LinkAttribute attribute = attrnet.getLinkAttribute(i);
-					writer.write(","+attribute.getID()); // TODO Attribute types
+					writer.write(","+attribute.getID());
+
+					if (attribute.getModel() instanceof IntegerModel)
+						writer.write(" INTEGER");
+					else if (attribute.getModel() instanceof RealModel)
+						writer.write(" DOUBLE");
 				}
 			}
 

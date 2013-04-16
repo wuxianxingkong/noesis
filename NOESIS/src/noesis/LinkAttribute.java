@@ -1,5 +1,7 @@
 package noesis;
 
+import ikor.model.data.DataModel;
+
 /**
  * Network link attribute
  * 
@@ -15,6 +17,12 @@ public class LinkAttribute<T> extends Attribute<T>
 	public LinkAttribute (AttributeNetwork net, String id)
 	{
 		super(id);
+		this.net = net;
+	}
+
+	public LinkAttribute (AttributeNetwork net, String id, DataModel type)
+	{
+		super(id,type);
 		this.net = net;
 	}
 	
@@ -42,5 +50,15 @@ public class LinkAttribute<T> extends Attribute<T>
 		else
 			return null;
 	}
-	
+
+	public T set (int source, int target, String value)
+	{		
+		int index = index(source,target);
+		
+		if (index!=-1)
+			return set(index, (T) getModel().fromString(value) );
+		else
+			return null;
+	}
+
 }

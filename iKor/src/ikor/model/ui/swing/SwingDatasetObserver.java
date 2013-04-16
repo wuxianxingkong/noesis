@@ -25,6 +25,7 @@ public class SwingDatasetObserver implements Observer<Dataset>
 	    {
 	      public void run()
 	      {
+	    	  tableModel.fireTableStructureChanged();
 	    	  tableModel.fireTableDataChanged();
 	      }
 	    });			

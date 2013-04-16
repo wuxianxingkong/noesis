@@ -12,10 +12,12 @@ import javax.swing.SwingUtilities;
 public class SwingDatasetObserver implements Observer<Dataset>
 {
 	private SwingDatasetModel tableModel;
+	private SwingDatasetJTable table;
 	
-	public SwingDatasetObserver (SwingDatasetModel tableModel)
+	public SwingDatasetObserver (SwingDatasetModel tableModel, SwingDatasetJTable table)
 	{
 		this.tableModel = tableModel;
+		this.table = table;
 	}
 
 	@Override
@@ -27,6 +29,8 @@ public class SwingDatasetObserver implements Observer<Dataset>
 	      {
 	    	  tableModel.fireTableStructureChanged();
 	    	  tableModel.fireTableDataChanged();
+	    	  table.setupLayout();
+	    	  table.updateUI();
 	      }
 	    });			
 	}

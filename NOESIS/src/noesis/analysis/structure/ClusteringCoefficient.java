@@ -9,6 +9,18 @@ public class ClusteringCoefficient extends NodeMetrics
 		super(network);
 	}
 	
+	@Override
+	public String getName() 
+	{
+		return "cc";
+	}	
+	
+	@Override
+	public String getDescription() 
+	{
+		return "Clustering coefficient";
+	}	
+	
 	public double compute (int node) 
 	{
 		Network net = getNetwork();

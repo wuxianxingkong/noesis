@@ -12,6 +12,19 @@ public class AveragePathLength extends NodeMetrics
 		diameter = 0;
 	}	
 
+	@Override
+	public String getName() 
+	{
+		return "avg-path-length";
+	}	
+	
+
+	@Override
+	public String getDescription() 
+	{
+		return "Average path length";
+	}	
+	
 	
 	public double compute(int node) 
 	{

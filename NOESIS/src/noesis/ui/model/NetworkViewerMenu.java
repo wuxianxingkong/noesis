@@ -17,6 +17,16 @@ import noesis.algorithms.visualization.MeshLayout;
 import noesis.algorithms.visualization.RandomLayout;
 import noesis.algorithms.visualization.StarLayout;
 import noesis.algorithms.visualization.ToroidalLayout;
+import noesis.analysis.structure.AveragePathLength;
+import noesis.analysis.structure.Betweenness;
+import noesis.analysis.structure.Closeness;
+import noesis.analysis.structure.ClusteringCoefficient;
+import noesis.analysis.structure.InDegree;
+import noesis.analysis.structure.NormalizedInDegree;
+import noesis.analysis.structure.NormalizedOutDegree;
+import noesis.analysis.structure.OutDegree;
+import noesis.analysis.structure.PageRank;
+import noesis.analysis.structure.Radius;
 import noesis.io.graphics.ColorNodeRenderer;
 import noesis.io.graphics.DefaultNodeRenderer;
 import noesis.io.graphics.GradientNodeRenderer;
@@ -25,6 +35,7 @@ import noesis.ui.model.actions.FlipAction;
 import noesis.ui.model.actions.ForwardAction;
 import noesis.ui.model.actions.LayoutAction;
 import noesis.ui.model.actions.LinkWidthAction;
+import noesis.ui.model.actions.NodeMetricsAction;
 import noesis.ui.model.actions.NodeSizeAction;
 import noesis.ui.model.actions.NodeStyleAction;
 import noesis.ui.model.actions.URLAction;
@@ -67,7 +78,7 @@ public class NetworkViewerMenu extends Menu
 		net = new Menu("Network");
 		view = createViewMenu(app, ui.getFigure());
 		data = createDataMenu(app, ui.getModel());
-		analysis = createAnalysisMenu(app);
+		analysis = createAnalysisMenu(app, ui.getModel());
 		help = createHelpMenu(app);
 		
 		this.add(net);
@@ -376,11 +387,54 @@ public class NetworkViewerMenu extends Menu
 	// Analysis menu
 	// -------------
 	
-	public Menu createAnalysisMenu (Application app)
+	public Menu createAnalysisMenu (Application app, NetworkModel model)
 	{
 		Menu analysis = new Menu("Analysis");
 		
-		analysis.disable();
+		
+		Menu degree = new Menu("Degree");
+		degree.setIcon( app.url("icons/microscope.png") );
+		analysis.add(degree);
+		
+		Option inDegree = new Option("In-degree", new NodeMetricsAction(app, model, InDegree.class) );
+		inDegree.setIcon( app.url("icons/microscope.png") );
+		degree.add(inDegree);
+
+		Option outDegree = new Option("Out-degree", new NodeMetricsAction(app, model, OutDegree.class) );
+		outDegree.setIcon( app.url("icons/microscope.png") );
+		degree.add(outDegree);
+
+		Option inDegreeNormalized = new Option("Normalized in-degree", new NodeMetricsAction(app, model, NormalizedInDegree.class) );
+		inDegreeNormalized.setIcon( app.url("icons/microscope.png") );
+		degree.add(inDegreeNormalized);
+
+		Option outDegreeNormalized = new Option("Normalized out-degree", new NodeMetricsAction(app, model, NormalizedOutDegree.class) );
+		outDegreeNormalized.setIcon( app.url("icons/microscope.png") );
+		degree.add(outDegreeNormalized);
+		
+		Option radius = new Option("Radius", new NodeMetricsAction(app, model, Radius.class) );
+		radius.setIcon( app.url("icons/microscope.png") );
+		analysis.add(radius);
+		
+		Option avl = new Option("Average path length", new NodeMetricsAction(app, model, AveragePathLength.class) );
+		avl.setIcon( app.url("icons/microscope.png") );
+		analysis.add(avl);
+
+		Option closeness = new Option("Closeness", new NodeMetricsAction(app, model, Closeness.class) );
+		closeness.setIcon( app.url("icons/microscope.png") );
+		analysis.add(closeness);		
+		
+		Option betweenness = new Option("Betweenness", new NodeMetricsAction(app, model, Betweenness.class) );
+		betweenness.setIcon( app.url("icons/microscope.png") );
+		analysis.add(betweenness);		
+
+		Option pagerank = new Option("PageRank", new NodeMetricsAction(app, model, PageRank.class) );
+		pagerank.setIcon( app.url("icons/microscope.png") );
+		analysis.add(pagerank);		
+
+		Option cc = new Option("Clustering coefficient", new NodeMetricsAction(app, model, ClusteringCoefficient.class) );
+		cc.setIcon( app.url("icons/microscope.png") );
+		analysis.add(cc);		
 		
 		return analysis;
 	}
@@ -441,7 +495,7 @@ public class NetworkViewerMenu extends Menu
 		data.enable();
 		
 		analysis.show();
-		analysis.disable();
+		analysis.enable();
 		
 		notifyObservers();
 	}

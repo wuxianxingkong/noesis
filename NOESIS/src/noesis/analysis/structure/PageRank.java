@@ -22,6 +22,19 @@ public class PageRank  extends NodeMetrics
 		this.theta = theta;
 	}	
 
+	
+	@Override
+	public String getName() 
+	{
+		return "page-rank";
+	}	
+
+	@Override
+	public String getDescription() 
+	{
+		return "PageRank";
+	}	
+	
 	double  pagerank[];
 	double  weight[];
 	

@@ -9,6 +9,11 @@ public class Radius extends NodeMetrics
 		super(network);
 	}	
 
+	@Override
+	public String getName() 
+	{
+		return "radius";
+	}	
 	
 	public double compute(int node) 
 	{

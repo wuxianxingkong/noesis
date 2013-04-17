@@ -9,6 +9,14 @@ public class Closeness extends NodeMetrics
 		super(network);
 	}	
 
+	
+	@Override
+	public String getName() 
+	{
+		return "closeness";
+	}	
+
+	@Override
 	public double compute(int node) 
 	{
 		double     averagePathLength;

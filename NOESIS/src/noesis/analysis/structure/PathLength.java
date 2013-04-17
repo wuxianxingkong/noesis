@@ -23,6 +23,11 @@ public class PathLength extends NodeMetrics
 		return node;
 	}
 	
+	@Override
+	public String getName() 
+	{
+		return "path-length";
+	}	
 
 	
 	@Override

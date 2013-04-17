@@ -6,7 +6,7 @@ import noesis.AttributeNetwork;
 
 // Network model in MVC
 
-class NetworkModel extends Subject<AttributeNetwork>
+public class NetworkModel extends Subject<AttributeNetwork>
 {
 	AttributeNetwork network;
 	

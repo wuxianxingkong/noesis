@@ -1,12 +1,11 @@
 package noesis.analysis.structure;
 
-import ikor.model.data.DataModel;
 import noesis.Network;
 
-public class InDegree extends NodeMetrics 
+public class NormalizedInDegree extends NodeMetrics 
 {
 		
-	public InDegree (Network network)
+	public NormalizedInDegree (Network network)
 	{
 		super(network);
 	}
@@ -14,23 +13,21 @@ public class InDegree extends NodeMetrics
 	@Override
 	public String getName() 
 	{
-		return "in-degree";
+		return "in-degree-norm";
 	}	
 	
 	@Override
-	public DataModel getModel()
+	public String getDescription() 
 	{
-		return INTEGER_MODEL;
-	}
+		return "Normalized in-degree";
+	}		
 	
 	@Override
 	public double compute (int node) 
 	{
 		Network net = getNetwork();
 		
-		return net.inDegree(node);
+		return ((double)net.inDegree(node))/(net.size()-1);
 	}
-
-
 
 }

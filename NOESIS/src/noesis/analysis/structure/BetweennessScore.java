@@ -24,6 +24,12 @@ public class BetweennessScore extends NodeMetrics
 		this.node      = node;
 	}
 	
+	@Override
+	public String getName() 
+	{
+		return "betweenness score";
+	}	
+
 	
 	public int node()
 	{

@@ -1,6 +1,7 @@
 package noesis.analysis.structure;
 
 import ikor.math.Vector;
+import ikor.model.data.DataModel;
 
 import ikor.parallel.*;
 import ikor.parallel.combiner.VectorAccumulator;
@@ -16,6 +17,19 @@ public class Betweenness extends NodeMetrics
 		super(network);
 	}	
 
+	@Override
+	public String getName() 
+	{
+		return "betweenness";
+	}	
+
+	@Override
+	public DataModel getModel()
+	{
+		return INTEGER_MODEL;
+	}
+	
+	
 	public double compute(int node) 
 	{
 		checkDone();		

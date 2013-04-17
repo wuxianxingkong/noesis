@@ -165,8 +165,8 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 					}
 				}
 				
-				tooltip += "- "+network.outDegree(node)+" out-links<br/>";
-				tooltip += "- "+network.inDegree(node)+" in-links";
+				//tooltip += "- "+network.outDegree(node)+" out-links<br/>";
+				//tooltip += "- "+network.inDegree(node)+" in-links";
 				tooltip += "</html>";
 			}
 			

@@ -1,21 +1,24 @@
 package noesis.ui.model.actions;
 
-import ikor.model.ui.Action;
 import ikor.model.ui.Application;
-import ikor.model.ui.Option;
 import ikor.model.ui.Selector;
 
+import noesis.Attribute;
 import noesis.AttributeNetwork;
+import noesis.io.graphics.Indexer;
 import noesis.ui.model.NetworkFigure;
+import noesis.algorithms.visualization.NetworkLayout;
 
-public class NodeAttributePositionAction extends Action 
+public class NodeAttributePositionAction extends NodeAttributeAction 
 {
 	private Application   application;
+	private Selector      attributes;	
 	private NetworkFigure figure;
-	private Selector      attributes;
 	private Axis          axis;
 
 	public enum Axis { X, Y };
+	public static final int DEFAULT_INDEX_SIZE = 2048;
+	
 	
 	public NodeAttributePositionAction (Application application, NetworkFigure figure, Selector attributes, Axis axis)
 	{
@@ -25,17 +28,6 @@ public class NodeAttributePositionAction extends Action
 		this.axis = axis;
 	}
 	
-	public String getSelectedAttributeID ()
-	{
-		Option option = attributes.getSelectedOption();
-		
-		if (option!=null)
-			return option.getId();
-		else
-			return null;
-	}
-	
-
 	@Override
 	public void run() 
 	{
@@ -43,18 +35,38 @@ public class NodeAttributePositionAction extends Action
 		
 		if (network!=null) {
 		
-			// TODO Adjust node position according to selected attribute
+			String id = getSelectedAttributeID(attributes);
+			
+			if (id==null) {
+				application.message("Please, choose an attribute to adjust node positions.");
+			} else {
+				
+				Attribute attribute = network.getNodeAttribute(id);
+				Attribute<Double> coordinate;
+				
+				Indexer<Integer> indexer = createIndexer(attribute, DEFAULT_INDEX_SIZE);
+			
+				if (axis==Axis.X) {
+					coordinate = network.getNodeAttribute("x");
+				} else { // Axis.Y
+					coordinate = network.getNodeAttribute("y");
+				}
+				
+				double factor;
+				
+				if (indexer.range()>0)
+					factor = (1.0-2*NetworkLayout.MARGIN)/indexer.range();
+				else
+					factor = 0;
+				
+				for (int i=0; i<network.size(); i++)
+					coordinate.set(i, NetworkLayout.MARGIN + indexer.index(i)*factor );
 
-			application.message("Adjust node position according to "+getSelectedAttributeID());
-			
-			if (axis==Axis.X) {
-				
-			} else { // Axis.Y
-				
+				figure.render();
 			}
-			
-			figure.render();
 		}
 	}			
+	
+	
 	
 }	

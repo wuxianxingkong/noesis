@@ -5,28 +5,16 @@ import ikor.model.graphics.Style;
 
 import java.awt.Color;
 
-public class DefaultNodeRenderer implements NodeRenderer 
-{
-	public static final int DEFAULT_SIZE = 16;
-	public static final int DEFAULT_WIDTH = 2;
-	
+public class DefaultNodeRenderer extends NodeRenderer 
+{	
 	public static final Style DEFAULT_NODE_STYLE = new Style ( new Color(0xC0, 0xC0, 0xC0, 0xFF), DEFAULT_WIDTH);
 	public static final Style DEFAULT_BORDER_STYLE = new Style ( new Color(0x00, 0x00, 0x00, 0xFF), DEFAULT_WIDTH);
-
-	private int size = DEFAULT_SIZE;
-
 	
-	public int getSize()
+	@Override
+	public Style getStyle (int node) 
 	{
-		return size;
+		return DEFAULT_NODE_STYLE;
 	}
-	
-	public void setSize (int size)
-	{
-		if (size>=0)
-			this.size = size;
-	}
-	
 	
 	@Override
 	public void render(NetworkRenderer drawing, int node) 
@@ -34,7 +22,7 @@ public class DefaultNodeRenderer implements NodeRenderer
 		int x = drawing.getX(node);
 		int y = drawing.getY(node);
 				
-		drawing.add ( new Circle ( drawing.getNodeId(node), DEFAULT_NODE_STYLE, DEFAULT_BORDER_STYLE, x, y, size));
+		drawing.add ( new Circle ( drawing.getNodeId(node), getStyle(node), DEFAULT_BORDER_STYLE, x, y, getSize(node) ));
 
 	}
 
@@ -49,8 +37,11 @@ public class DefaultNodeRenderer implements NodeRenderer
 		if (circle!=null) {
 			circle.setCenterX(x);
 			circle.setCenterY(y);
+			circle.setRadius( getSize(node) );
+			circle.setStyle( getStyle(node) );
 		}		
 	}
+
 
 
 }

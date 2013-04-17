@@ -11,7 +11,7 @@ import noesis.AttributeNetwork;
 
 public abstract class NetworkLayout 
 {	
-	protected static final double MARGIN = 0.05;
+	public static final double MARGIN = 0.05;
 	
 	public void layout (AttributeNetwork network)
 	{

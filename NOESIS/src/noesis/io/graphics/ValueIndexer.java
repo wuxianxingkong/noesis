@@ -16,10 +16,21 @@ public class ValueIndexer extends Indexer<Double>
 	@Override
 	public int index (Double value) 
 	{
-		if (max>min)
+		if ((value!=null) && (max>min))
 			return (int) (n * (value-min)/(max-min));
 		else
 			return 0;
 	}
 
+	@Override
+	public int min() 
+	{
+		return 0;
+	}
+
+	@Override
+	public int max() 
+	{
+		return n;
+	}
 }

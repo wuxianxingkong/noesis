@@ -307,7 +307,7 @@ public class NetworkViewerMenu extends Menu
 		Option nodeAttributes = new Option("Node attributes...", new ForwardAction (new NodeAttributesUIModel(app, figure) ));
 		nodeAttributes.setIcon( app.url("icons/palette.png") );
 		view.add(nodeAttributes);
-		nodeAttributes.disable(); // TODO ...
+		//nodeAttributes.disable(); // TODO ...
 
 		Menu nodeSize = new Menu("Node size");
 		nodeSize.setIcon( app.url("icons/size.png") );

@@ -1,18 +1,21 @@
 package noesis.ui.model.actions;
 
-import ikor.model.ui.Action;
 import ikor.model.ui.Application;
-import ikor.model.ui.Option;
 import ikor.model.ui.Selector;
 
+import noesis.Attribute;
 import noesis.AttributeNetwork;
+import noesis.io.graphics.Indexer;
 import noesis.ui.model.NetworkFigure;
 
-public class NodeAttributeSizeAction extends Action 
+
+public class NodeAttributeSizeAction extends NodeAttributeAction 
 {
 	private Application   application;
 	private NetworkFigure figure;
 	private Selector      attributes;
+	
+	public static final int DEFAULT_INDEX_SIZE = 16;
 
 	public NodeAttributeSizeAction (Application application, NetworkFigure figure, Selector attributes)
 	{
@@ -20,16 +23,7 @@ public class NodeAttributeSizeAction extends Action
 		this.figure = figure;
 		this.attributes = attributes;
 	}
-
-	public String getSelectedAttributeID ()
-	{
-		Option option = attributes.getSelectedOption();
 		
-		if (option!=null)
-			return option.getLabel().getId();
-		else
-			return null;
-	}
 	
 	@Override
 	public void run() 
@@ -38,11 +32,22 @@ public class NodeAttributeSizeAction extends Action
 		
 		if (network!=null) {
 			
-			// TODO Adjust node size according to selected attribute
-		
-			application.message("Adjust node size according to "+ getSelectedAttributeID() );
+			String id = getSelectedAttributeID(attributes);
 			
-			figure.render();
+			if (id==null) {
+				
+				application.message("Please, choose an attribute to adjust node sizes.");
+				
+			} else {
+				
+				Attribute attribute = network.getNodeAttribute(id);
+				
+				Indexer<Integer> indexer = createIndexer(attribute, DEFAULT_INDEX_SIZE);
+
+				figure.getRenderer().getNodeRenderer().setSizeIndexer(indexer);
+
+				figure.render();
+			}
 		}
 	}			
 	

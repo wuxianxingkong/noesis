@@ -15,4 +15,17 @@ public class CyclicIndexer extends Indexer<Integer>
 		return value%size;
 	}
 
+	
+	@Override
+	public int min() 
+	{
+		return 0;
+	}
+
+	@Override
+	public int max() 
+	{
+		return size-1;
+	}
+
 }

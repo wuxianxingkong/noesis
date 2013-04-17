@@ -2,6 +2,8 @@ package noesis.ui.model;
 
 import noesis.AttributeNetwork;
 
+import noesis.io.graphics.GrayscaleColorMap;
+import noesis.io.graphics.JetColorMap;
 import noesis.ui.model.actions.NodeAttributeColorAction;
 import noesis.ui.model.actions.NodeAttributePositionAction;
 import noesis.ui.model.actions.NodeAttributeSizeAction;
@@ -44,22 +46,27 @@ public class NodeAttributesUIModel extends UIModel
 		
 		buttons.setAlignment( UIModel.Alignment.ADJUST );
 	
-		Option color = new Option("Set node colors");
+		Option color = new Option("Adjust node colors");
 		color.setIcon( app.url("icon.gif") );
-		color.setAction( new NodeAttributeColorAction(app,figure,attributes) );
+		color.setAction( new NodeAttributeColorAction(app,figure,attributes, new JetColorMap(256) ) );
 		buttons.add(color);
+
+		Option gray = new Option("Adjust node gray levels");
+		gray.setIcon( app.url("icon.gif") );
+		gray.setAction( new NodeAttributeColorAction(app,figure,attributes, new GrayscaleColorMap(256) ) );
+		buttons.add(gray);
 		
-		Option size = new Option("Set node sizes");
+		Option size = new Option("Adjust node sizes");
 		size.setIcon( app.url("icon.gif") );
 		size.setAction( new NodeAttributeSizeAction(app,figure,attributes) );
 		buttons.add(size);
 
-		Option x = new Option("Set node X coordinates");
+		Option x = new Option("Adjust X coordinates");
 		x.setIcon( app.url("icon.gif") );
 		x.setAction( new NodeAttributePositionAction(app,figure,attributes,NodeAttributePositionAction.Axis.X) );
 		buttons.add(x);
 
-		Option y = new Option("Set node Y coordinates");
+		Option y = new Option("Adjust Y coordinates");
 		y.setIcon( app.url("icon.gif") );
 		y.setAction( new NodeAttributePositionAction(app,figure,attributes,NodeAttributePositionAction.Axis.Y) );
 		buttons.add(y);

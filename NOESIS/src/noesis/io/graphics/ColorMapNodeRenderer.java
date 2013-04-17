@@ -5,61 +5,36 @@ import ikor.model.graphics.Style;
 
 import java.awt.Color;
 
-public class ColorMapNodeRenderer implements NodeRenderer 
+public class ColorMapNodeRenderer extends NodeRenderer 
 {
-	public static final int DEFAULT_SIZE = 16;
-	public static final int DEFAULT_WIDTH = 2;
 	public static final int DEFAULT_COLORS = 16;
 	
-	public static final Colorer<Integer> DEFAULT_COLORER = new Colorer( new JetColorMap(DEFAULT_COLORS), new CyclicIndexer(DEFAULT_COLORS) );
+	public static final ColorMap DEFAULT_COLOR_MAP = new JetColorMap(DEFAULT_COLORS);
+	public static final Indexer<Integer> DEFAULT_COLOR_INDEXER =  new CyclicIndexer(DEFAULT_COLORS);
 	public static final Style DEFAULT_BORDER = new Style ( new Color(0x00,0x00,0x00,0xFF), DEFAULT_WIDTH);
-	
-	private int size;
-	private Colorer<Integer> colorer;
 	
 	
 	public ColorMapNodeRenderer ()
 	{
-		this.colorer = DEFAULT_COLORER;
-		this.size = DEFAULT_SIZE;
+		setColorMap(DEFAULT_COLOR_MAP);
+		setColorIndexer(DEFAULT_COLOR_INDEXER);
 	}
 
 	public ColorMapNodeRenderer (ColorMap colors)
 	{
-		this.colorer = new Colorer( colors, new CyclicIndexer(colors.size()) );
-		this.size = DEFAULT_SIZE;
-	}
-	
-	public ColorMapNodeRenderer (Colorer colorer)
-	{
-		this.colorer = colorer;
-		this.size = DEFAULT_SIZE;
+		setColorMap(colors);
+		setColorIndexer(DEFAULT_COLOR_INDEXER);
 	}
 	
 	
-	public Colorer<Integer> getColorer ()
-	{
-		return colorer;
-	}
-	
-	public void setColorer (Colorer<Integer> colorer)
-	{
-		this.colorer = colorer;
-	}
 	
 	
 	@Override
-	public int getSize()
+	public Style getStyle(int node) 
 	{
-		return size;
+		return new Style ( getColor(node), DEFAULT_WIDTH);
 	}
 	
-	@Override
-	public void setSize (int size)
-	{
-		if (size>=0)
-			this.size = size;
-	}
 		
 	
 	@Override
@@ -67,10 +42,8 @@ public class ColorMapNodeRenderer implements NodeRenderer
 	{
 		int x = drawing.getX(node);
 		int y = drawing.getY(node);
-		
-		Style color = new Style ( colorer.getColor(node), DEFAULT_WIDTH);
-				
-		drawing.add ( new Circle ( drawing.getNodeId(node), color, DEFAULT_BORDER, x, y, size));
+			
+		drawing.add ( new Circle ( drawing.getNodeId(node), getStyle(node), DEFAULT_BORDER, x, y, getSize(node)));
 	}
 
 	@Override
@@ -84,7 +57,10 @@ public class ColorMapNodeRenderer implements NodeRenderer
 		if (circle!=null) {
 			circle.setCenterX(x);
 			circle.setCenterY(y);
+			circle.setRadius( getSize(node) );
+			circle.setStyle( getStyle(node) );
 		}		
 	}
+
 
 }

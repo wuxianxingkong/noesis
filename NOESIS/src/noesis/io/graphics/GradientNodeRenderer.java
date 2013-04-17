@@ -9,53 +9,65 @@ import ikor.model.graphics.styles.RadialGradient;
 
 import java.awt.Color;
 
-public class GradientNodeRenderer implements NodeRenderer 
+public class GradientNodeRenderer extends NodeRenderer 
 {
-	public static final int DEFAULT_SIZE = 16;
-	public static final int DEFAULT_WIDTH = 0;
+	public static final int DEFAULT_BORDER = 0;
 
+	private boolean radial;
 	private Gradient gradient;
 	private Style border;
-	private int size;
 
+	
 	public GradientNodeRenderer ()
 	{
 		this(true);
 	}
 
 	public GradientNodeRenderer (boolean radial)
-	{	
-		if (radial)
-			gradient = new RadialGradient(0.3f, 0.3f, 0.5f);
-		else
-			gradient = new LinearGradient(0.4f, 0.4f, 0.8f, 0.8f);
-		
-		gradient.addKeyframe( new GradientKeyframe(0.0f, new Color(0xC0, 0xC0, 0xF0, 0xFF) ) );
-		gradient.addKeyframe( new GradientKeyframe(1.0f, new Color(0x00, 0x00, 0xB0, 0xFF) ) );
-		gradient.setWidth(10);
-		
-		border = new Style ( new Color(0x00, 0x00, 0x00, 0xFF), DEFAULT_WIDTH);
-		size = DEFAULT_SIZE;
+	{
+		this.radial = radial;
+	
+		this.gradient = createGradient ( new Color(0x00, 0x00, 0xB0, 0xFF) );
+		this.border = new Style ( new Color(0x00, 0x00, 0x00, 0xFF), DEFAULT_BORDER);
 	}
 
 	public GradientNodeRenderer (Gradient gradient, Style border)
 	{
 		this.gradient = gradient;
 		this.border = border;
-		this.size = DEFAULT_SIZE;
 	}
 
 	
-	public int getSize()
+	private Gradient createGradient (Color color)
 	{
-		return size;
+		Gradient gradient;
+		
+		if (radial)
+			gradient = new RadialGradient(0.3f, 0.3f, 0.5f);
+		else
+			gradient = new LinearGradient(0.4f, 0.4f, 0.8f, 0.8f);
+		
+		gradient.addKeyframe( new GradientKeyframe(0.0f, new Color(0xF0, 0xF0, 0xF0, 0xFF) ) );
+		gradient.addKeyframe( new GradientKeyframe(1.0f, color ) );
+		gradient.setWidth(10);
+		
+		return gradient;
 	}
 	
-	public void setSize (int size)
+	@Override
+	public Style getStyle(int node)
 	{
-		if (size>=0)
-			this.size = size;
+		if (getColorIndexer()!=null) {
+			
+			return createGradient( getColor(node) );
+			
+		} else {
+
+			return gradient;
+		}
 	}
+	
+	
 	
 	@Override
 	public void render(NetworkRenderer drawing, int node) 
@@ -63,8 +75,8 @@ public class GradientNodeRenderer implements NodeRenderer
 		int x = drawing.getX(node);
 		int y = drawing.getY(node);
 				
-		if (size>0)
-			drawing.add ( new Circle ( drawing.getNodeId(node), gradient, border, x, y, size));
+		if (getSize(node)>0)
+			drawing.add ( new Circle ( drawing.getNodeId(node), getStyle(node), border, x, y, getSize(node)));
 	}
 
 	@Override
@@ -78,6 +90,10 @@ public class GradientNodeRenderer implements NodeRenderer
 		if (circle!=null) {
 			circle.setCenterX(x);
 			circle.setCenterY(y);
+			circle.setRadius( getSize(node) );
+			circle.setStyle( getStyle(node) );
 		}		
 	}
+
+
 }

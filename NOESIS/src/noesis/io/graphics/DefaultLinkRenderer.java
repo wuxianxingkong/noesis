@@ -8,18 +8,36 @@ import ikor.model.graphics.Style;
 public class DefaultLinkRenderer implements LinkRenderer 
 {
 	public static final int DEFAULT_WIDTH = 2;
-	public static final Style DEFAULT_LINK_STYLE = new Style ( new Color(0x70, 0x70, 0x70, 0xFF), DEFAULT_WIDTH);
+	public static final Color DEFAULT_COLOR = new Color(0x70, 0x70, 0x70, 0xFF);
 	
 	private Style style;
+	private int   width;
 	
 	public DefaultLinkRenderer ()
 	{
-		style = DEFAULT_LINK_STYLE;
+		style = new Style ( DEFAULT_COLOR, DEFAULT_WIDTH);
+		width = DEFAULT_WIDTH;
 	}
 	
 	public DefaultLinkRenderer (Style style)
 	{
 		this.style = style;
+		this.width = style.getWidth();
+	}
+
+	@Override
+	public int getWidth() 
+	{
+		return width;
+	}
+
+	@Override
+	public void setWidth (int width) 
+	{
+		if (width>=0) {
+			this.width = width;
+			style.setWidth(width);
+		}
 	}
 	
 	@Override
@@ -47,5 +65,6 @@ public class DefaultLinkRenderer implements LinkRenderer
 		}
 
 	}
+
 
 }

@@ -16,6 +16,7 @@ public class GradientNodeRenderer implements NodeRenderer
 
 	private Gradient gradient;
 	private Style border;
+	private int size;
 
 	public GradientNodeRenderer ()
 	{
@@ -33,13 +34,27 @@ public class GradientNodeRenderer implements NodeRenderer
 		gradient.addKeyframe( new GradientKeyframe(1.0f, new Color(0x00, 0x00, 0xB0, 0xFF) ) );
 		gradient.setWidth(10);
 		
-		border = new Style ( new Color(0x00, 0x00, 0x00, 0xFF), DEFAULT_WIDTH);	
+		border = new Style ( new Color(0x00, 0x00, 0x00, 0xFF), DEFAULT_WIDTH);
+		size = DEFAULT_SIZE;
 	}
 
 	public GradientNodeRenderer (Gradient gradient, Style border)
 	{
 		this.gradient = gradient;
 		this.border = border;
+		this.size = DEFAULT_SIZE;
+	}
+
+	
+	public int getSize()
+	{
+		return size;
+	}
+	
+	public void setSize (int size)
+	{
+		if (size>=0)
+			this.size = size;
 	}
 	
 	@Override
@@ -48,7 +63,8 @@ public class GradientNodeRenderer implements NodeRenderer
 		int x = drawing.getX(node);
 		int y = drawing.getY(node);
 				
-		drawing.add ( new Circle ( drawing.getNodeId(node), gradient, border, x, y, DEFAULT_SIZE));
+		if (size>0)
+			drawing.add ( new Circle ( drawing.getNodeId(node), gradient, border, x, y, size));
 	}
 
 	@Override

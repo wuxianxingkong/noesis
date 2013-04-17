@@ -17,9 +17,15 @@ import noesis.algorithms.visualization.MeshLayout;
 import noesis.algorithms.visualization.RandomLayout;
 import noesis.algorithms.visualization.StarLayout;
 import noesis.algorithms.visualization.ToroidalLayout;
+import noesis.io.graphics.ColorNodeRenderer;
+import noesis.io.graphics.DefaultNodeRenderer;
+import noesis.io.graphics.GradientNodeRenderer;
 import noesis.ui.model.actions.ExitAction;
 import noesis.ui.model.actions.ForwardAction;
 import noesis.ui.model.actions.LayoutAction;
+import noesis.ui.model.actions.LinkWidthAction;
+import noesis.ui.model.actions.NodeSizeAction;
+import noesis.ui.model.actions.NodeStyleAction;
 import noesis.ui.model.actions.URLAction;
 import noesis.ui.model.actions.ViewerOpenAction;
 import noesis.ui.model.actions.ViewerSaveAction;
@@ -242,41 +248,99 @@ public class NetworkViewerMenu extends Menu
 	{
 		Menu view = new Menu("View");
 
+		Option layoutFR = new Option("Fruchterman-Reingold layout", new LayoutAction( app, figure, new FruchtermanReingoldLayout() ) );
+		layoutFR.setIcon( app.url("icons/kiviat.png") );
+		view.add(layoutFR);
+
 		Option layoutRandom = new Option("Random layout", new LayoutAction( app, figure, new RandomLayout() ) );
 		layoutRandom.setIcon( app.url("icons/kiviat.png") );
 		view.add(layoutRandom);
 
-		Option layoutFR = new Option("Fruchterman-Reingold layout", new LayoutAction( app, figure, new FruchtermanReingoldLayout() ) );
-		layoutFR.setIcon( app.url("icons/kiviat.png") );
-		view.add(layoutFR);
+		Menu layoutRegular = new Menu("Regular layout");
+		layoutRegular.setIcon( app.url("icons/kiviat.png") );
+		view.add(layoutRegular);
 		
 		Option layoutCircular = new Option("Circular layout", new LayoutAction( app, figure, new CircularLayout() ) );
 		layoutCircular.setIcon( app.url("icons/kiviat.png") );
-		view.add(layoutCircular);
+		layoutRegular.add(layoutCircular);
 
 		Option layoutStar = new Option("Star layout", new LayoutAction( app, figure, new StarLayout() ) );
 		layoutStar.setIcon( app.url("icons/kiviat.png") );
-		view.add(layoutStar);
+		layoutRegular.add(layoutStar);
 
 		Option layoutMesh = new Option("Mesh layout", new LayoutAction( app, figure, new MeshLayout() ) );
 		layoutMesh.setIcon( app.url("icons/kiviat.png") );
-		view.add(layoutMesh);
+		layoutRegular.add(layoutMesh);
 
 		Option layoutHypercube = new Option("Hypercube layout", new LayoutAction( app, figure, new HypercubeLayout() ) );
 		layoutHypercube.setIcon( app.url("icons/kiviat.png") );
-		view.add(layoutHypercube);
+		layoutRegular.add(layoutHypercube);
 
 		Option layoutTree = new Option("Binary tree layout", new LayoutAction( app, figure, new BinaryTreeLayout() ) );
 		layoutTree.setIcon( app.url("icons/kiviat.png") );
-		view.add(layoutTree);
+		layoutRegular.add(layoutTree);
 		
 		Option layoutToroidal = new Option("Toroidal layout", new LayoutAction( app, figure, new ToroidalLayout() ) );
 		layoutToroidal.setIcon( app.url("icons/kiviat.png") );
-		view.add(layoutToroidal);
+		layoutRegular.add(layoutToroidal);
 
 		Option layoutLinear = new Option("Linear layout", new LayoutAction( app, figure, new LinearLayout() ) );
 		layoutLinear.setIcon( app.url("icons/kiviat.png") );
-		view.add(layoutLinear);
+		layoutRegular.add(layoutLinear);
+		
+		view.add ( new Separator() );
+		
+		Menu nodeSize = new Menu("Node size");
+		nodeSize.setIcon( app.url("icons/size.png") );
+		view.add(nodeSize);
+		
+		Option nodeSizeIncrease = new Option ("Increase node size", new NodeSizeAction(app,figure,+1), KeyEvent.VK_F7 );
+		nodeSizeIncrease.setIcon( app.url("icons/size.png") );
+		nodeSize.add(nodeSizeIncrease);
+
+		Option nodeSizeDecrease = new Option ("Decrease node size", new NodeSizeAction(app,figure,-1), KeyEvent.VK_F6 );
+		nodeSizeDecrease.setIcon( app.url("icons/size-flip.png") );
+		nodeSize.add(nodeSizeDecrease);
+
+		Menu nodeStyle = new Menu("Node style");
+		nodeStyle.setIcon( app.url("icons/paint.png") );
+		view.add(nodeStyle);
+
+		Option nodeStyle3D = new Option ("3D", new NodeStyleAction(app,figure,new GradientNodeRenderer(true)) );
+		nodeStyle3D.setIcon( app.url("icons/paint.png") );
+		nodeStyle.add(nodeStyle3D);
+
+		Option nodeStyleFlat = new Option ("Flat", new NodeStyleAction(app,figure,new GradientNodeRenderer(false)) );
+		nodeStyleFlat.setIcon( app.url("icons/paint.png") );
+		nodeStyle.add(nodeStyleFlat);
+
+		Option nodeStyleColor = new Option ("Color", new NodeStyleAction(app,figure,new ColorNodeRenderer() ) );
+		nodeStyleColor.setIcon( app.url("icons/paint.png") );
+		nodeStyle.add(nodeStyleColor);
+
+		Option nodeStyleDefault = new Option ("Default", new NodeStyleAction(app,figure,new DefaultNodeRenderer() ) );
+		nodeStyleDefault.setIcon( app.url("icons/paint.png") );
+		nodeStyle.add(nodeStyleDefault);
+		
+		view.add ( new Separator() );
+		
+		Menu linkWidth = new Menu("Link width");
+		linkWidth.setIcon( app.url("icons/size.png") );
+		view.add(linkWidth);
+
+		Option linkWidthIncrease = new Option ("Increase link width", new LinkWidthAction(app,figure,+1), KeyEvent.VK_F9 );
+		linkWidthIncrease.setIcon( app.url("icons/size.png") );
+		linkWidth.add(linkWidthIncrease);
+
+		Option linkWidthDecrease = new Option ("Decrease link width", new LinkWidthAction(app,figure,-1), KeyEvent.VK_F8 );
+		linkWidthDecrease.setIcon( app.url("icons/size-flip.png") );
+		linkWidth.add(linkWidthDecrease);
+		
+		// Menu linkStyle = new Menu("Link style");
+		// linkStyle.setIcon( app.url("icons/paint.png") );
+		// view.add(linkStyle);
+		
+		
 		
 		return view;
 	}

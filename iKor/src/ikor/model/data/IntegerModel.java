@@ -2,7 +2,12 @@ package ikor.model.data;
 
 public class IntegerModel extends NumberModel<Integer> 
 {
-
+	@Override
+	public String toString (Integer object) 
+	{
+		return object.toString();
+	}
+	
 	@Override
 	public Integer fromString(String string)
 	{

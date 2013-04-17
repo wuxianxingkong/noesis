@@ -21,6 +21,7 @@ import noesis.io.graphics.ColorNodeRenderer;
 import noesis.io.graphics.DefaultNodeRenderer;
 import noesis.io.graphics.GradientNodeRenderer;
 import noesis.ui.model.actions.ExitAction;
+import noesis.ui.model.actions.FlipAction;
 import noesis.ui.model.actions.ForwardAction;
 import noesis.ui.model.actions.LayoutAction;
 import noesis.ui.model.actions.LinkWidthAction;
@@ -249,43 +250,43 @@ public class NetworkViewerMenu extends Menu
 		Menu view = new Menu("View");
 
 		Option layoutFR = new Option("Fruchterman-Reingold layout", new LayoutAction( app, figure, new FruchtermanReingoldLayout() ) );
-		layoutFR.setIcon( app.url("icons/kiviat.png") );
+		layoutFR.setIcon( app.url("icons/spiral.png") );
 		view.add(layoutFR);
 
 		Option layoutRandom = new Option("Random layout", new LayoutAction( app, figure, new RandomLayout() ) );
-		layoutRandom.setIcon( app.url("icons/kiviat.png") );
+		layoutRandom.setIcon( app.url("icons/spiral.png") );
 		view.add(layoutRandom);
 
 		Menu layoutRegular = new Menu("Regular layout");
-		layoutRegular.setIcon( app.url("icons/kiviat.png") );
+		layoutRegular.setIcon( app.url("icons/spiral.png") );
 		view.add(layoutRegular);
 		
 		Option layoutCircular = new Option("Circular layout", new LayoutAction( app, figure, new CircularLayout() ) );
-		layoutCircular.setIcon( app.url("icons/kiviat.png") );
+		layoutCircular.setIcon( app.url("icons/spiral.png") );
 		layoutRegular.add(layoutCircular);
 
 		Option layoutStar = new Option("Star layout", new LayoutAction( app, figure, new StarLayout() ) );
-		layoutStar.setIcon( app.url("icons/kiviat.png") );
+		layoutStar.setIcon( app.url("icons/spiral.png") );
 		layoutRegular.add(layoutStar);
 
 		Option layoutMesh = new Option("Mesh layout", new LayoutAction( app, figure, new MeshLayout() ) );
-		layoutMesh.setIcon( app.url("icons/kiviat.png") );
+		layoutMesh.setIcon( app.url("icons/spiral.png") );
 		layoutRegular.add(layoutMesh);
 
 		Option layoutHypercube = new Option("Hypercube layout", new LayoutAction( app, figure, new HypercubeLayout() ) );
-		layoutHypercube.setIcon( app.url("icons/kiviat.png") );
+		layoutHypercube.setIcon( app.url("icons/spiral.png") );
 		layoutRegular.add(layoutHypercube);
 
 		Option layoutTree = new Option("Binary tree layout", new LayoutAction( app, figure, new BinaryTreeLayout() ) );
-		layoutTree.setIcon( app.url("icons/kiviat.png") );
+		layoutTree.setIcon( app.url("icons/spiral.png") );
 		layoutRegular.add(layoutTree);
 		
 		Option layoutToroidal = new Option("Toroidal layout", new LayoutAction( app, figure, new ToroidalLayout() ) );
-		layoutToroidal.setIcon( app.url("icons/kiviat.png") );
+		layoutToroidal.setIcon( app.url("icons/spiral.png") );
 		layoutRegular.add(layoutToroidal);
 
 		Option layoutLinear = new Option("Linear layout", new LayoutAction( app, figure, new LinearLayout() ) );
-		layoutLinear.setIcon( app.url("icons/kiviat.png") );
+		layoutLinear.setIcon( app.url("icons/spiral.png") );
 		layoutRegular.add(layoutLinear);
 		
 		view.add ( new Separator() );
@@ -340,7 +341,16 @@ public class NetworkViewerMenu extends Menu
 		// linkStyle.setIcon( app.url("icons/paint.png") );
 		// view.add(linkStyle);
 		
+		view.add ( new Separator() );
 		
+		Option flipHorizontal = new Option ("Mirror", new FlipAction(app,figure,FlipAction.Mode.HORIZONTAL) );
+		flipHorizontal.setIcon( app.url("icons/flip-horizontal.png") );
+		view.add(flipHorizontal);
+
+		Option flipVertical = new Option ("Flip", new FlipAction(app,figure,FlipAction.Mode.VERTICAL) );
+		flipVertical.setIcon( app.url("icons/flip-vertical.png") );
+		view.add(flipVertical);
+
 		
 		return view;
 	}

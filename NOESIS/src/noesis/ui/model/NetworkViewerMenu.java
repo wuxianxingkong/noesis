@@ -27,9 +27,11 @@ import noesis.analysis.structure.NormalizedOutDegree;
 import noesis.analysis.structure.OutDegree;
 import noesis.analysis.structure.PageRank;
 import noesis.analysis.structure.Radius;
+import noesis.io.graphics.ColorMapNodeRenderer;
 import noesis.io.graphics.ColorNodeRenderer;
 import noesis.io.graphics.DefaultNodeRenderer;
 import noesis.io.graphics.GradientNodeRenderer;
+import noesis.io.graphics.GrayscaleColorMap;
 import noesis.ui.model.actions.ExitAction;
 import noesis.ui.model.actions.FlipAction;
 import noesis.ui.model.actions.ForwardAction;
@@ -301,7 +303,12 @@ public class NetworkViewerMenu extends Menu
 		layoutRegular.add(layoutLinear);
 		
 		view.add ( new Separator() );
-		
+
+		Option nodeAttributes = new Option("Node attributes...", new ForwardAction (new NodeAttributesUIModel(app, figure) ));
+		nodeAttributes.setIcon( app.url("icons/palette.png") );
+		view.add(nodeAttributes);
+		nodeAttributes.disable(); // TODO ...
+
 		Menu nodeSize = new Menu("Node size");
 		nodeSize.setIcon( app.url("icons/size.png") );
 		view.add(nodeSize);
@@ -326,10 +333,19 @@ public class NetworkViewerMenu extends Menu
 		nodeStyleFlat.setIcon( app.url("icons/paint.png") );
 		nodeStyle.add(nodeStyleFlat);
 
-		Option nodeStyleColor = new Option ("Color", new NodeStyleAction(app,figure,new ColorNodeRenderer() ) );
+		Option nodeStyleJet = new Option ("Jet", new NodeStyleAction(app,figure,new ColorMapNodeRenderer() ) );
+		nodeStyleJet.setIcon( app.url("icons/paint.png") );
+		nodeStyle.add(nodeStyleJet);
+
+		Option nodeStyleGrayscale = new Option ("Grayscale", new NodeStyleAction(app,figure,new ColorMapNodeRenderer( new GrayscaleColorMap(16)) ) );
+		nodeStyleGrayscale.setIcon( app.url("icons/paint.png") );
+		nodeStyle.add(nodeStyleGrayscale);
+
+		Option nodeStyleColor = new Option ("Red-green-blue", new NodeStyleAction(app,figure,new ColorNodeRenderer() ) );
 		nodeStyleColor.setIcon( app.url("icons/paint.png") );
 		nodeStyle.add(nodeStyleColor);
 
+		
 		Option nodeStyleDefault = new Option ("Default", new NodeStyleAction(app,figure,new DefaultNodeRenderer() ) );
 		nodeStyleDefault.setIcon( app.url("icons/paint.png") );
 		nodeStyle.add(nodeStyleDefault);

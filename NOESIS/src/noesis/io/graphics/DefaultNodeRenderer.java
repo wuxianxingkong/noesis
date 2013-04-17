@@ -13,8 +13,8 @@ public class DefaultNodeRenderer implements NodeRenderer
 	public static final Style DEFAULT_NODE_STYLE = new Style ( new Color(0xC0, 0xC0, 0xC0, 0xFF), DEFAULT_WIDTH);
 	public static final Style DEFAULT_BORDER_STYLE = new Style ( new Color(0x00, 0x00, 0x00, 0xFF), DEFAULT_WIDTH);
 
-	
 	private int size = DEFAULT_SIZE;
+
 	
 	public int getSize()
 	{
@@ -51,7 +51,6 @@ public class DefaultNodeRenderer implements NodeRenderer
 			circle.setCenterY(y);
 		}		
 	}
-	
 
 
 }

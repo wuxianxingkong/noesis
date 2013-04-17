@@ -15,8 +15,8 @@ public class NetworkRenderer extends Drawing
 	// Network
 	
 	private AttributeNetwork network;
-	private Attribute x;
-	private Attribute y;
+	private Attribute<Double> x;
+	private Attribute<Double> y;
 	
 	// Renderers
 	
@@ -267,13 +267,15 @@ public class NetworkRenderer extends Drawing
 	public int getX (int node)
 	{
 		if (x!=null)
-			return (int) ( getWidth() * (Double) x.get(node) );
+			return (int) ( getWidth() * x.get(node) );
 		else
 			return 0;
 	}
 	
 	/**
-	 * Node coordinates
+	 * Node coordinates.
+	 * (0,0) at bottom left corner.
+	 * 
 	 * @param node Node index
 	 * @return Node Y coordinate
 	 */
@@ -281,7 +283,7 @@ public class NetworkRenderer extends Drawing
 	public int getY (int node)
 	{
 		if (y!=null)
-			return (int) ( getHeight() * (Double) y.get(node) );
+			return (int) ( getHeight() * ( 1.0 - y.get(node) ) );
 		else
 			return 0;
 	}

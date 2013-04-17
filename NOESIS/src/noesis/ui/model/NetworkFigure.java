@@ -266,12 +266,10 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 			
 			if (current.getId().startsWith("node")) {
 				
-				// Update node
+				// Update node coordinates
+				// w.r.t. (0,0) at bottom left corner
 					
 				int node = Integer.parseInt(id.substring(4));
-				
-				System.err.println(figure.getData());
-				System.err.println(figure.getData().getNetwork());
 				
 				AttributeNetwork net = figure.getData().getNetwork();
 				
@@ -279,7 +277,7 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 				Attribute<Double> yAttribute = net.getNodeAttribute("y");
 				
 				xAttribute.set(node, ((double)x)/figure.getDrawing().getWidth() );
-				yAttribute.set(node, ((double)y)/figure.getDrawing().getHeight() );
+				yAttribute.set(node, 1.0 - ((double)y)/figure.getDrawing().getHeight() ); 
 				
 				figure.renderer.update(node);
 						

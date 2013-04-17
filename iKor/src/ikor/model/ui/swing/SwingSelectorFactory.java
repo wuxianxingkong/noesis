@@ -10,11 +10,14 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListDataListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import ikor.collection.Dictionary;
+import ikor.model.Observer;
+import ikor.model.Subject;
 import ikor.model.ui.Option;
 import ikor.model.ui.Selector;
 import ikor.model.ui.Separator;
@@ -26,24 +29,68 @@ public class SwingSelectorFactory implements UIFactory<SwingUI,Selector>
 	@Override
 	public void build(SwingUI ui, Selector selector) 
 	{	
-		JListModel    listModel = new JListModel(ui, selector);
-		JListRenderer renderer = new JListRenderer(listModel); 
-		JList         jlist = new JList(listModel); 
-		 
+		JList       jlist = new JList();
+		ListHandler handler = new ListHandler(selector);
+		
+		jlist.addListSelectionListener( new ListHandler(selector) );
+
+		updateList (ui,selector,jlist,handler);
+		
+		selector.addObserver( new ListObserver(ui,selector,jlist,handler) );
+		
+		JScrollPane scroll = new JScrollPane(jlist); 
+		
+		ui.addComponent ( scroll );	
+	}
+	
+	public void updateList (SwingUI ui, Selector selector, JList jlist, ListHandler handler)
+	{
+		JListModel    model = new JListModel(ui, selector);
+		JListRenderer renderer = new JListRenderer(model); 
+		
 		if (selector.isMultipleSelection())
 			jlist.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		else
 			jlist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		//jlist.setBorder( BorderFactory.createEtchedBorder() );
+		jlist.setModel(model); 
 		jlist.setCellRenderer(renderer);
-		jlist.addListSelectionListener( new ListHandler(selector) );
 		
-		JScrollPane scroll = new JScrollPane(jlist); 
-		
-		ui.addComponent ( scroll );	
+		handler.setSelector(selector);
 	}
 
+	// Observer design pattern
+	
+	public class ListObserver implements Observer
+	{
+		private SwingUI ui;
+		private JList control;
+		private Selector selector;
+		private ListHandler handler;
+		
+		public ListObserver (SwingUI ui, Selector selector, JList control, ListHandler handler)
+		{
+			this.ui = ui;
+			this.selector = selector;
+			this.control = control;
+			this.handler = handler;
+		}
+
+		@Override
+		public void update(Subject o, Object arg) 
+		{
+		    SwingUtilities.invokeLater(new Runnable() 
+		    {
+		      public void run()
+		      {
+		    	  updateList(ui,selector,control,handler);
+		    	  control.updateUI();
+		      }
+		    });			
+		}
+	}	
+	
 	// Event handler
 	
 	class ListHandler implements ListSelectionListener
@@ -51,6 +98,11 @@ public class SwingSelectorFactory implements UIFactory<SwingUI,Selector>
 		private Selector selector;
 		
 		public ListHandler (Selector selector)
+		{
+			this.selector = selector;
+		}
+		
+		public void setSelector (Selector selector)
 		{
 			this.selector = selector;
 		}

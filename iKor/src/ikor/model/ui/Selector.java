@@ -28,9 +28,17 @@ public class Selector extends Option
 		this.options = options;
 	}
 	
+	public void clear ()
+	{
+		selected.clear();
+		options.clear();
+		notifyObservers();
+	}
+	
 	public void add (Option option)
 	{
 		options.add(option);
+		notifyObservers();
 	}
 
 	public List<Option> getSelected() 

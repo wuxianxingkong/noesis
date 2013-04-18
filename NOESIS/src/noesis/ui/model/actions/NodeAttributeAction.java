@@ -67,12 +67,12 @@ public abstract class NodeAttributeAction extends Action
 			
 			double min = Double.MAX_VALUE;
 			double max = -Double.MIN_VALUE;
-			Double object;
+			Number object;
 			double value;
 			
 			for (int i=0; i<attribute.size(); i++) {
 				
-				object = ((Number) attribute.get(i)).doubleValue();
+				object = (Number) attribute.get(i);
 				
 				if (object!=null) {
 					

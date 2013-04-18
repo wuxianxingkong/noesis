@@ -19,6 +19,6 @@ public abstract class ColorMap
 	
 	public final Color getColor (int index)
 	{
-		return new Color( red(index), green(index), blue(index) );
+		return new Color( ((red(index)&0xFF)<<16) | ((green(index)&0xFF)<<8) | (blue(index)&0xFF) );
 	}
 }

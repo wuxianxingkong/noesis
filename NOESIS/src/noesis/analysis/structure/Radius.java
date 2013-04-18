@@ -1,5 +1,6 @@
 package noesis.analysis.structure;
 
+import ikor.model.data.DataModel;
 import noesis.Network;
 
 public class Radius extends NodeMetrics 
@@ -14,6 +15,12 @@ public class Radius extends NodeMetrics
 	{
 		return "radius";
 	}	
+	
+	@Override
+	public DataModel getModel()
+	{
+		return INTEGER_MODEL;
+	}
 	
 	public double compute(int node) 
 	{

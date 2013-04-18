@@ -56,8 +56,9 @@ public class NodesetUIModel extends UIModel
 			
 			control.notifyObservers(dataset);
 		}
-		
 	}
+	
+	
 	public class NodeDataset extends Dataset	
 	{
 		AttributeNetwork network;

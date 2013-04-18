@@ -5,6 +5,7 @@ import noesis.AttributeNetwork;
 import noesis.Attribute;
 import noesis.algorithms.visualization.NetworkLayout;
 
+import ikor.model.data.RealModel;
 import ikor.model.ui.Application;
 import ikor.model.ui.UIModel;
 
@@ -42,8 +43,12 @@ public abstract class NewNetworkUI extends UIModel
 		
 		// Initial network layout
 		
-		network.addNodeAttribute( new Attribute<Double>("x") );
-		network.addNodeAttribute( new Attribute<Double>("y") );
+		RealModel coordinateModel = new RealModel();
+		coordinateModel.setMinimumValue(0.0);
+		coordinateModel.setMaximumValue(1.0);
+		
+		network.addNodeAttribute( new Attribute<Double>("x", coordinateModel) );
+		network.addNodeAttribute( new Attribute<Double>("y", coordinateModel) );
 		
 		display.layout(network);
 		

@@ -8,6 +8,8 @@ import noesis.ui.model.actions.NodeAttributeColorAction;
 import noesis.ui.model.actions.NodeAttributePositionAction;
 import noesis.ui.model.actions.NodeAttributeSizeAction;
 
+import ikor.model.Observer;
+import ikor.model.Subject;
 import ikor.model.ui.Application;
 import ikor.model.ui.Option;
 import ikor.model.ui.Selector;
@@ -70,24 +72,48 @@ public class NodeAttributesUIModel extends UIModel
 		y.setIcon( app.url("icon.gif") );
 		y.setAction( new NodeAttributePositionAction(app,figure,attributes,NodeAttributePositionAction.Axis.Y) );
 		buttons.add(y);
+		
+		// Observer
+		
+		figure.addObserver( new AttributeObserver(figure,attributes) );
 	}
 
 
-	public void start ()
+	// Observer design patern
+	
+	public class AttributeObserver implements Observer<AttributeNetwork>
 	{
-		Application app = getApplication();
-		AttributeNetwork network = figure.getNetwork();
+		private NetworkFigure figure;
+		private Selector attributes;
 		
-		attributes.clear();
-		attributes.setMultipleSelection(false);
-		
-		for (int i=0; i<network.getNodeAttributeCount(); i++) {
-			Option option = new Option(network.getNodeAttribute(i).getID());  // ID vs. Description
-			option.setIcon(app.url("icons/kiviat.png"));
-			attributes.add(option);
+		public AttributeObserver (NetworkFigure figure, Selector control)
+		{
+			this.figure = figure;
+			this.attributes = control;
 		}
-		
-		
-	}
+
+		@Override
+		public void update (Subject subject, AttributeNetwork object) 
+		{
+			Application app = getApplication();
+			AttributeNetwork network = figure.getNetwork();
+			
+			if (network==null) {
+				
+				attributes.clear();
+				
+			} else if (network.getNodeAttributeCount()!=attributes.getOptions().size()) {
+				
+				attributes.clear();
+				attributes.setMultipleSelection(false);
+				
+				for (int i=0; i<network.getNodeAttributeCount(); i++) {
+					Option option = new Option(network.getNodeAttribute(i).getID());  // ID vs. Description
+					option.setIcon(app.url("icons/kiviat.png"));
+					attributes.add(option);
+				}
+			}
+		}
+	}	
 	
 }

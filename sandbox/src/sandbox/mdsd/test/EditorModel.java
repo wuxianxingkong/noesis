@@ -54,6 +54,10 @@ public class EditorModel extends UIModel
 		Editor<Date> dateEditor = new Editor<Date>("date", Date.class);
 		dateEditor.setData( new Date() );
 		add(dateEditor);
+		
+		Editor<Boolean> booleanEditor = new Editor<Boolean>("boolean", Boolean.class);
+		booleanEditor.setData( false );
+		add(booleanEditor);		
 	}
 	
 	

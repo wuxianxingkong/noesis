@@ -112,8 +112,7 @@ public class FruchtermanReingoldLayout extends IterativeNetworkLayout
 		
 		// Displacement limit: O(n)
 		
-		double r2 = (0.5-MARGIN)*(0.5-MARGIN);
-		double x2, y2, m2, rescale;
+		double max = 0;
 		
 		for (int v=0; v<network.size(); v++) {
 			magnitude = Math.sqrt(dx[v]*dx[v] + dy[v]*dy[v]);
@@ -123,16 +122,22 @@ public class FruchtermanReingoldLayout extends IterativeNetworkLayout
 				px[v] += (dx[v]/magnitude) * Math.min( Math.abs(dx[v]), temperature);
 				py[v] += (dy[v]/magnitude) * Math.min( Math.abs(dy[v]), temperature);
 				
-				// Clip within "unit" circle
-				x2 = px[v]*px[v];
-				y2 = py[v]*py[v];
-				m2 = x2 + y2;
-				
-				if ( (x2>r2) || (y2>r2) || (m2>r2) ) {
-					rescale = Math.max(m2, Math.max(x2,y2));
-					px[v] *= r2 / rescale;
-					py[v] *= r2 / rescale;
-				}
+				// Max
+				if (px[v]*px[v] + py[v]*py[v] > max)
+					max = px[v]*px[v] + py[v]*py[v];
+			}
+		}
+		
+		// Rescale
+
+		double r2 = (0.5-MARGIN)*(0.5-MARGIN);
+		double rescale;
+		
+		if (max>r2) {
+			rescale = Math.sqrt(r2/max); 
+			for (int v=0; v<network.size(); v++) {
+				px[v] *= rescale;
+				py[v] *= rescale;
 			}
 		}
 		

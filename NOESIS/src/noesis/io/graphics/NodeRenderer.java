@@ -74,10 +74,18 @@ public abstract class NodeRenderer
 	
 	public final int getColorIndex (int node)
 	{
-		if (colorIndex!=null)
-			return colorIndex.index(node); 
-		else
-			return 0;
+		int index = 0;
+		
+		if (colorIndex!=null) {
+			index = colorIndex.index(node);
+			
+			if (index<0)
+				index = 0;
+			else if (index>=colorMap.size())
+				index = colorMap.size()-1;
+		}
+		
+		return index;
 	}
 	
 	public final Color getColor (int node)

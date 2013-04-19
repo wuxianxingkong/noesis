@@ -2,6 +2,7 @@ package noesis.io.graphics;
 
 import ikor.model.graphics.Circle;
 import ikor.model.graphics.Style;
+import ikor.model.graphics.colors.ColorMap;
 import ikor.model.graphics.styles.Gradient;
 import ikor.model.graphics.styles.GradientKeyframe;
 import ikor.model.graphics.styles.LinearGradient;
@@ -38,6 +39,20 @@ public class GradientNodeRenderer extends NodeRenderer
 	}
 
 	
+	// Style cache
+	
+	Style[] cache;	
+	
+	@Override
+	public void setColorMap (ColorMap colorMap)
+	{
+		super.setColorMap(colorMap);
+		
+		// Invalidate cache
+		
+		cache = null;
+	}	
+	
 	private Gradient createGradient (Color color)
 	{
 		Gradient gradient;
@@ -55,19 +70,28 @@ public class GradientNodeRenderer extends NodeRenderer
 	}
 	
 	@Override
-	public Style getStyle(int node)
+	public Style getStyle(int node) 
 	{
 		if (getColorIndexer()!=null) {
 			
-			return createGradient( getColor(node) );
+			int index = getColorIndex(node);
+			
+			if (cache==null)
+				cache = new Style[ getColorMap().size() ];
+			
+			if (cache[index]==null)
+				cache[index] = createGradient( getColor(node) );;
+			
+			return cache[index];
 			
 		} else {
 
 			return gradient;
-		}
-	}
+		}		
+	}	
+
 	
-	
+	// Node rendering
 	
 	@Override
 	public void render(NetworkRenderer drawing, int node) 

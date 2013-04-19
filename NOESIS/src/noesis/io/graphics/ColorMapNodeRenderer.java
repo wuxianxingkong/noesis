@@ -57,7 +57,7 @@ public class ColorMapNodeRenderer extends NodeRenderer
 		if (cache[index]==null)
 			cache[index] = new Style ( getColorMap().getColor(index), DEFAULT_WIDTH);
 		
-		return null;
+		return cache[index];
 	}
 	
 	// Node rendering	

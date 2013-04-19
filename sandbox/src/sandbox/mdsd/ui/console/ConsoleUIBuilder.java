@@ -14,22 +14,22 @@ public class ConsoleUIBuilder extends UIBuilder
 	}
 
 	@Override
-	public void message(String title, String msg) {
-		// TODO Auto-generated method stub
-		
+	public void message(String title, String msg) 
+	{
+		System.out.println(title+": "+msg);		
 	}
 
 	@Override
-	public boolean confirm(String title, String query) {
+	public boolean confirm(String title, String query) 
+	{
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public void open(String url) {
-		// TODO Auto-generated method stub
-		
+	public void open(String url) 
+	{
+		// TODO Auto-generated method stub	
 	}
-	
 
 }

@@ -21,6 +21,7 @@ import noesis.io.SNAPGZNetworkReader;
 import noesis.io.SNAPNetworkReader;
 import noesis.ui.model.NetworkViewerUIModel;
 import ikor.math.Decimal;
+import ikor.model.data.RealModel;
 import ikor.model.ui.Action;
 import ikor.model.ui.File;
 import ikor.util.log.Log;
@@ -59,8 +60,12 @@ public class ViewerOpenAction extends Action
 				
 				if ((x==null) || (y==null)){
 					
-					x = new Attribute<Double>("x");
-					y = new Attribute<Double>("y");
+					RealModel coordinateModel = new RealModel();
+					coordinateModel.setMinimumValue(0.0);
+					coordinateModel.setMaximumValue(1.0);										
+					
+					x = new Attribute<Double>("x", coordinateModel);
+					y = new Attribute<Double>("y", coordinateModel);
 					
 					net.addNodeAttribute(x);
 					net.addNodeAttribute(y);

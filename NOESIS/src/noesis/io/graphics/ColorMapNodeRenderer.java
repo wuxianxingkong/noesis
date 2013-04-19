@@ -2,6 +2,10 @@ package noesis.io.graphics;
 
 import ikor.model.graphics.Circle;
 import ikor.model.graphics.Style;
+import ikor.model.graphics.colors.ColorMap;
+import ikor.model.graphics.colors.JetColorMap;
+import ikor.util.indexer.CyclicIndexer;
+import ikor.util.indexer.Indexer;
 
 import java.awt.Color;
 

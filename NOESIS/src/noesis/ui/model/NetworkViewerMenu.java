@@ -1,6 +1,7 @@
 package noesis.ui.model;
 
 
+import ikor.model.graphics.colors.GrayscaleColorMap;
 import ikor.model.ui.Application;
 import ikor.model.ui.Menu;
 import ikor.model.ui.Option;
@@ -34,7 +35,6 @@ import noesis.io.graphics.ColorMapNodeRenderer;
 import noesis.io.graphics.ColorNodeRenderer;
 import noesis.io.graphics.DefaultNodeRenderer;
 import noesis.io.graphics.GradientNodeRenderer;
-import noesis.io.graphics.GrayscaleColorMap;
 import noesis.ui.model.actions.ExitAction;
 import noesis.ui.model.actions.FlipAction;
 import noesis.ui.model.actions.ForwardAction;

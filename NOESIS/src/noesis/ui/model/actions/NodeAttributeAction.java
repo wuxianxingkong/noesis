@@ -1,15 +1,17 @@
 package noesis.ui.model.actions;
 
 import noesis.Attribute;
-import noesis.io.graphics.DictionaryIndexer;
-import noesis.io.graphics.Indexer;
-import noesis.io.graphics.ValueIndexer;
 
 import ikor.model.data.DataModel;
 import ikor.model.data.NumberModel;
 import ikor.model.ui.Action;
+import ikor.model.ui.Editor;
 import ikor.model.ui.Option;
 import ikor.model.ui.Selector;
+import ikor.util.indexer.DictionaryIndexer;
+import ikor.util.indexer.Indexer;
+import ikor.util.indexer.LogValueIndexer;
+import ikor.util.indexer.ValueIndexer;
 
 
 /**
@@ -31,16 +33,26 @@ public abstract class NodeAttributeAction extends Action
 		else
 			return null;
 	}
+	
+	public boolean isLogarithmicScale (Editor<Boolean> logScale)
+	{
+		Boolean value = logScale.getData();
+		 		
+		if (value!=null)
+			return value;
+		else
+			return false;
+	}
 
 
-	public Indexer<Integer> createIndexer(Attribute attribute, int size) 
+	public Indexer<Integer> createIndexer(Attribute attribute, int size, boolean logScale) 
 	{
 		Indexer<Integer> indexer;
 		DataModel type = attribute.getModel();
 		
 		if (type instanceof NumberModel) {  // int, double, decimal...
 			
-			indexer = new NumericAttributeIndexer(attribute, size);
+			indexer = new NumericAttributeIndexer(attribute, size, logScale);
 			
 		} else { // string, date...
 			
@@ -60,7 +72,7 @@ public abstract class NodeAttributeAction extends Action
 		private int             size;
 		private Indexer<Double> valueIndex;
 		
-		public NumericAttributeIndexer (Attribute attribute, int size)
+		public NumericAttributeIndexer (Attribute attribute, int size, boolean logScale)
 		{
 			this.attribute = attribute;
 			this.size = size;
@@ -86,7 +98,10 @@ public abstract class NodeAttributeAction extends Action
 				}
 			}
 			
-			valueIndex = new ValueIndexer(min, max, size-1);
+			if (logScale)
+				valueIndex = new LogValueIndexer(min, max, size-1);
+			else
+				valueIndex = new ValueIndexer(min, max, size-1);
 		}
 
 		@Override

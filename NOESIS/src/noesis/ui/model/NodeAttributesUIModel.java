@@ -2,15 +2,16 @@ package noesis.ui.model;
 
 import noesis.AttributeNetwork;
 
-import noesis.io.graphics.InverseGrayscaleColorMap;
-import noesis.io.graphics.JetColorMap;
 import noesis.ui.model.actions.NodeAttributeColorAction;
 import noesis.ui.model.actions.NodeAttributePositionAction;
 import noesis.ui.model.actions.NodeAttributeSizeAction;
 
 import ikor.model.Observer;
 import ikor.model.Subject;
+import ikor.model.graphics.colors.InverseGrayscaleColorMap;
+import ikor.model.graphics.colors.JetColorMap;
 import ikor.model.ui.Application;
+import ikor.model.ui.Editor;
 import ikor.model.ui.Option;
 import ikor.model.ui.Selector;
 import ikor.model.ui.UIModel;
@@ -48,29 +49,32 @@ public class NodeAttributesUIModel extends UIModel
 		
 		buttons.setAlignment( UIModel.Alignment.ADJUST );
 	
+		Editor<Boolean> logScale = new Editor<Boolean>("Logarithmic scale", Boolean.class);
+		buttons.add(logScale);
+		
 		Option color = new Option("Adjust node colors");
 		color.setIcon( app.url("icon.gif") );
-		color.setAction( new NodeAttributeColorAction(app,figure,attributes, new JetColorMap(256) ) );
+		color.setAction( new NodeAttributeColorAction(app, figure, attributes, logScale, new JetColorMap(256) ) );
 		buttons.add(color);
 
 		Option gray = new Option("Adjust node gray levels");
 		gray.setIcon( app.url("icon.gif") );
-		gray.setAction( new NodeAttributeColorAction(app,figure,attributes, new InverseGrayscaleColorMap(256) ) );
+		gray.setAction( new NodeAttributeColorAction(app, figure, attributes, logScale, new InverseGrayscaleColorMap(256) ) );
 		buttons.add(gray);
 		
 		Option size = new Option("Adjust node sizes");
 		size.setIcon( app.url("icon.gif") );
-		size.setAction( new NodeAttributeSizeAction(app,figure,attributes) );
+		size.setAction( new NodeAttributeSizeAction(app, figure, attributes, logScale) );
 		buttons.add(size);
 
 		Option x = new Option("Adjust X coordinates");
 		x.setIcon( app.url("icon.gif") );
-		x.setAction( new NodeAttributePositionAction(app,figure,attributes,NodeAttributePositionAction.Axis.X) );
+		x.setAction( new NodeAttributePositionAction(app, figure, attributes, logScale, NodeAttributePositionAction.Axis.X) );
 		buttons.add(x);
 
 		Option y = new Option("Adjust Y coordinates");
 		y.setIcon( app.url("icon.gif") );
-		y.setAction( new NodeAttributePositionAction(app,figure,attributes,NodeAttributePositionAction.Axis.Y) );
+		y.setAction( new NodeAttributePositionAction(app, figure, attributes, logScale, NodeAttributePositionAction.Axis.Y) );
 		buttons.add(y);
 		
 		// Observer

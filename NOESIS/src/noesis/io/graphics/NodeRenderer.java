@@ -1,6 +1,8 @@
 package noesis.io.graphics;
 
 import ikor.model.graphics.Style;
+import ikor.model.graphics.colors.ColorMap;
+import ikor.util.indexer.Indexer;
 
 import java.awt.Color;
 

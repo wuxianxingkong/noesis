@@ -12,9 +12,9 @@ package noesis.algorithms.visualization;
 public class FruchtermanReingoldLayout extends IterativeNetworkLayout 
 {
 	public static final int    MAX_ITERATIONS = 100;
-	public static final double MIN_TEMPERATURE = 0.01;
+	public static final double MIN_TEMPERATURE = 0.005;
 	public static final double INITIAL_TEMPERATURE = 0.10;
-	public static final double COOLING_FACTOR = 0.999;
+	public static final double COOLING_FACTOR = 0.95;
 	
 	double area;
 	double k;
@@ -42,8 +42,8 @@ public class FruchtermanReingoldLayout extends IterativeNetworkLayout
 		py = new double[network.size()];
 		
 		for (int i=0; i<network.size(); i++) {
-			px[i] = x.get(i);
-			py[i] = y.get(i);
+			px[i] = x.get(i) - 0.5;
+			py[i] = y.get(i) - 0.5;
 		}
 		
 	}
@@ -112,6 +112,9 @@ public class FruchtermanReingoldLayout extends IterativeNetworkLayout
 		
 		// Displacement limit: O(n)
 		
+		double r2 = (0.5-MARGIN)*(0.5-MARGIN);
+		double x2, y2, m2, rescale;
+		
 		for (int v=0; v<network.size(); v++) {
 			magnitude = Math.sqrt(dx[v]*dx[v] + dy[v]*dy[v]);
 						
@@ -119,9 +122,17 @@ public class FruchtermanReingoldLayout extends IterativeNetworkLayout
 				// Limit displacement by temperature
 				px[v] += (dx[v]/magnitude) * Math.min( Math.abs(dx[v]), temperature);
 				py[v] += (dy[v]/magnitude) * Math.min( Math.abs(dy[v]), temperature);
-				// Clip within frame
-				px[v] = Math.min ( 1-MARGIN, Math.max(MARGIN, px[v]));
-				py[v] = Math.min ( 1-MARGIN, Math.max(MARGIN, py[v]));
+				
+				// Clip within "unit" circle
+				x2 = px[v]*px[v];
+				y2 = py[v]*py[v];
+				m2 = x2 + y2;
+				
+				if ( (x2>r2) || (y2>r2) || (m2>r2) ) {
+					rescale = Math.max(m2, Math.max(x2,y2));
+					px[v] *= r2 / rescale;
+					py[v] *= r2 / rescale;
+				}
 			}
 		}
 		
@@ -139,8 +150,8 @@ public class FruchtermanReingoldLayout extends IterativeNetworkLayout
 		dy = null;
 
 		for (int i=0; i<network.size(); i++) {
-			x.set(i, px[i]);
-			y.set(i, py[i]);
+			x.set(i, 0.5 + px[i] );
+			y.set(i, 0.5 + py[i] );
 		}
 		
 		px = null;

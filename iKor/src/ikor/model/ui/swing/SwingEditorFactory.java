@@ -13,6 +13,8 @@ import ikor.model.ui.UIFactory;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -68,8 +70,10 @@ public class SwingEditorFactory implements UIFactory<SwingUI,Editor>
 		
 		CheckBoxMutator  mutator  = new CheckBoxMutator(editor, control);
 		CheckBoxObserver observer = new CheckBoxObserver(mutator);
+		CheckBoxListener listener = new CheckBoxListener(mutator);
 		
-		editor.addObserver(observer);		
+		editor.addObserver(observer);	
+		control.addItemListener(listener);
 		
 		return control;
 	}
@@ -114,6 +118,23 @@ public class SwingEditorFactory implements UIFactory<SwingUI,Editor>
 		}		
 	}
 	
+	// CheckBox event listener
+	
+	class CheckBoxListener implements ItemListener
+	{
+		CheckBoxMutator mutator;
+		
+		public CheckBoxListener (CheckBoxMutator mutator)
+		{
+			this.mutator = mutator;
+		}
+		
+		@Override
+		public void itemStateChanged(ItemEvent e) 
+		{
+			mutator.updateEditor();
+		}			
+	}		
 	
 	// Observer design pattern
 	

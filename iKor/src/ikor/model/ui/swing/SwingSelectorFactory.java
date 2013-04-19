@@ -33,12 +33,15 @@ public class SwingSelectorFactory implements UIFactory<SwingUI,Selector>
 		ListHandler handler = new ListHandler(selector);
 		
 		jlist.addListSelectionListener( new ListHandler(selector) );
+		
 
 		updateList (ui,selector,jlist,handler);
 		
 		selector.addObserver( new ListObserver(ui,selector,jlist,handler) );
 		
-		JScrollPane scroll = new JScrollPane(jlist); 
+		JScrollPane scroll = new JScrollPane(jlist);
+		
+		scroll.setMinimumSize( new Dimension(125,25) );
 		
 		ui.addComponent ( scroll );	
 	}

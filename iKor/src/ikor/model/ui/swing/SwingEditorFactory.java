@@ -2,6 +2,7 @@ package ikor.model.ui.swing;
 
 import ikor.model.Observer;
 import ikor.model.Subject;
+import ikor.model.data.BooleanModel;
 import ikor.model.data.ColorModel;
 import ikor.model.data.DataModel;
 import ikor.model.data.PasswordModel;
@@ -15,6 +16,8 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
@@ -34,6 +37,112 @@ public class SwingEditorFactory implements UIFactory<SwingUI,Editor>
 	@Override
 	public void build (SwingUI ui, Editor editor) 
 	{
+		DataModel model = editor.getModel();
+		JComponent control;
+		
+		if (model instanceof BooleanModel)
+			control = createCheckBox(ui,editor);
+		else
+			control = createTextControl(ui,editor);
+		
+		ui.addComponent( control );
+		
+	}	
+	
+	// CheckBox
+	// --------
+	
+	public JCheckBox createCheckBox (SwingUI ui, Editor editor)
+	{
+		Label label = editor.getLabel();
+		JCheckBox control = new JCheckBox();
+		
+		control.setText( label.getText() );
+		
+		if (label.getDescription()!=null)
+			control.setToolTipText( label.getDescription() );
+		
+		if (label.getIcon()!=null)
+			control.setIcon( ui.loadIcon(label.getIcon()) );		
+		
+		
+		CheckBoxMutator  mutator  = new CheckBoxMutator(editor, control);
+		CheckBoxObserver observer = new CheckBoxObserver(mutator);
+		
+		editor.addObserver(observer);		
+		
+		return control;
+	}
+	
+	// CheckBox update
+	
+	class CheckBoxMutator implements Runnable
+	{
+		Editor<Boolean> editor;
+		JCheckBox       control;
+		boolean         updating = false;		
+		
+		public CheckBoxMutator (Editor editor, JCheckBox control)
+		{
+			this.editor = editor;
+			this.control = control;
+		}
+
+		public void updateEditor ()
+		{
+			if (!updating) {				
+				updating = true;
+				editor.setValue(Boolean.valueOf(control.isSelected()).toString());				
+				updating = false;
+			}
+		}		
+		
+		public void updateControl ()
+		{
+			if (!updating) {
+				updating = true;
+				control.setSelected(Boolean.valueOf(editor.getValue()));
+				updating = false;
+			}
+		}
+		
+		// for SwingUtilities.invokeLater... 
+		
+		public void run()
+		{
+			updateControl();
+		}		
+	}
+	
+	
+	// Observer design pattern
+	
+	public class CheckBoxObserver implements Observer
+	{
+		private CheckBoxMutator mutator;
+		
+		public CheckBoxObserver (CheckBoxMutator mutator)
+		{
+			this.mutator = mutator;
+		}
+		
+		@Override
+		public void update (Subject o, Object arg) 
+		{
+			if (SwingUtilities.isEventDispatchThread()) {
+				mutator.updateControl();
+			} else {
+				SwingUtilities.invokeLater(mutator);
+			}
+		}
+	}
+	
+	
+	// Text control
+	// ------------
+	
+	public JComponent createTextControl (SwingUI ui, Editor editor)
+	{
 		Label  label = editor.getLabel();
 		JLabel title = new JLabel();
 		
@@ -51,7 +160,6 @@ public class SwingEditorFactory implements UIFactory<SwingUI,Editor>
 		JScrollPane    scrollPane = null; 
 		
 		DataModel model = editor.getModel();
-		
 		
 		if ( (model instanceof TextModel) && ((TextModel)model).isMultiline()) {
 			control = new JTextArea();
@@ -77,15 +185,14 @@ public class SwingEditorFactory implements UIFactory<SwingUI,Editor>
 		
 		if (control instanceof JTextField) {
 			control.getDocument().addDocumentListener(listener);
-			ui.addComponent( control );
+			return control;
 		} else { // JTextArea
 			control.addKeyListener( listener );
-			ui.addComponent( scrollPane );
-		}
-		
-		
-	}	
+			return scrollPane;
+		}		
+	}
 	
+	// Text control update
 	
 	class TextFieldMutator implements Runnable
 	{
@@ -135,7 +242,7 @@ public class SwingEditorFactory implements UIFactory<SwingUI,Editor>
 		}		
 	}
 	
-	// Event handling
+	// Text field event handling
 	
 	class TextFieldListener implements DocumentListener, KeyListener
 	{

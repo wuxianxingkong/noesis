@@ -31,7 +31,7 @@ public class DataModelFactory
 		models.set(Float.class, RealModel.class);
 		models.set(Double.class, RealModel.class);
 		models.set(Decimal.class, DecimalModel.class);
-		models.set(Boolean.class, TextModel.class);
+		models.set(Boolean.class, BooleanModel.class);
 		models.set(Date.class, DateModel.class);
 		//models.set(Quantity.class, QuantityModel.class);
 		models.set(Dataset.class, DatasetModel.class);

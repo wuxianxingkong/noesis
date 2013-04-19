@@ -2,10 +2,10 @@ package noesis.analysis.structure;
 
 import noesis.Network;
 
-public class NormalizedOutDegree extends NodeMetrics 
+public class NormalizedDegree extends NodeMetrics 
 {
 		
-	public NormalizedOutDegree (Network network)
+	public NormalizedDegree (Network network)
 	{
 		super(network);
 	}
@@ -13,14 +13,14 @@ public class NormalizedOutDegree extends NodeMetrics
 	@Override
 	public String getName() 
 	{
-		return "out-degree-norm";
+		return "degree-norm";
 	}	
 	
 	@Override
 	public String getDescription() 
 	{
-		return "Normalized out-degree";
-	}			
+		return "Normalized total degree";
+	}		
 	
 	@Override
 	public double compute (int node) 
@@ -28,7 +28,7 @@ public class NormalizedOutDegree extends NodeMetrics
 		Network net = getNetwork();
 		
 		if (net.size()>1)
-			return ((double)net.outDegree(node))/(net.size()-1);
+			return ((double) net.inDegree(node) + net.outDegree(node))/(2.0*(net.size()-1));
 		else
 			return 0;
 	}

@@ -62,7 +62,7 @@ public class NodeAttributePositionAction extends NodeAttributeAction
 				for (int i=0; i<network.size(); i++)
 					coordinate.set(i, NetworkLayout.MARGIN + indexer.index(i)*factor );
 
-				figure.render();
+				figure.refresh();
 			}
 		}
 	}			

@@ -27,15 +27,36 @@ public class ColorMapNodeRenderer extends NodeRenderer
 	}
 	
 	
+	// Style cache
 	
+	Style[] cache;	
+	
+	@Override
+	public void setColorMap (ColorMap colorMap)
+	{
+		super.setColorMap(colorMap);
+		
+		// Invalidate cache
+		
+		cache = null;
+	}
+
 	
 	@Override
 	public Style getStyle(int node) 
 	{
-		return new Style ( getColor(node), DEFAULT_WIDTH);
+		int index = getColorIndex(node);
+		
+		if (cache==null)
+			cache = new Style[ getColorMap().size() ];
+		
+		if (cache[index]==null)
+			cache[index] = new Style ( getColorMap().getColor(index), DEFAULT_WIDTH);
+		
+		return null;
 	}
 	
-		
+	// Node rendering	
 	
 	@Override
 	public void render(NetworkRenderer drawing, int node) 

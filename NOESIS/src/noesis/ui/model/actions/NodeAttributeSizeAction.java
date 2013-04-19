@@ -46,7 +46,7 @@ public class NodeAttributeSizeAction extends NodeAttributeAction
 
 				figure.getRenderer().getNodeRenderer().setSizeIndexer(indexer);
 
-				figure.render();
+				figure.refresh();
 			}
 		}
 	}			

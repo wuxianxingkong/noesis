@@ -27,7 +27,10 @@ public class NormalizedInDegree extends NodeMetrics
 	{
 		Network net = getNetwork();
 		
-		return ((double)net.inDegree(node))/(net.size()-1);
+		if (net.size()>1)
+			return ((double)net.inDegree(node))/(net.size()-1);
+		else
+			return 0;
 	}
 
 }

@@ -21,7 +21,9 @@ import noesis.analysis.structure.AveragePathLength;
 import noesis.analysis.structure.Betweenness;
 import noesis.analysis.structure.Closeness;
 import noesis.analysis.structure.ClusteringCoefficient;
+import noesis.analysis.structure.Degree;
 import noesis.analysis.structure.InDegree;
+import noesis.analysis.structure.NormalizedDegree;
 import noesis.analysis.structure.NormalizedInDegree;
 import noesis.analysis.structure.NormalizedOutDegree;
 import noesis.analysis.structure.OutDegree;
@@ -156,12 +158,12 @@ public class NetworkViewerMenu extends Menu
 
 		net.add( new Separator() );
 /*
-		Option email = new Option("E-mail", new LogAction("Email..."), KeyEvent.VK_F5 );
+		Option email = new Option("E-mail", new LogAction("Email..."), KeyEvent.VK_F12 );
 		email.setIcon( app.url("email.png") );
 		email.disable();
 		file.add( email );
 
-		Option print = new Option("Print", new LogAction("Print..."), KeyEvent.VK_F6 );
+		Option print = new Option("Print", new LogAction("Print..."), KeyEvent.VK_F11 );
 		print.setIcon( app.url("print.png") );
 		print.disable();
 		file.add( print );
@@ -313,11 +315,11 @@ public class NetworkViewerMenu extends Menu
 		nodeSize.setIcon( app.url("icons/size.png") );
 		view.add(nodeSize);
 		
-		Option nodeSizeIncrease = new Option ("Increase node size", new NodeSizeAction(app,figure,+1), KeyEvent.VK_F7 );
+		Option nodeSizeIncrease = new Option ("Increase node size", new NodeSizeAction(app,figure,+1), KeyEvent.VK_F6 );
 		nodeSizeIncrease.setIcon( app.url("icons/size.png") );
 		nodeSize.add(nodeSizeIncrease);
 
-		Option nodeSizeDecrease = new Option ("Decrease node size", new NodeSizeAction(app,figure,-1), KeyEvent.VK_F6 );
+		Option nodeSizeDecrease = new Option ("Decrease node size", new NodeSizeAction(app,figure,-1), KeyEvent.VK_F5 );
 		nodeSizeDecrease.setIcon( app.url("icons/size-flip.png") );
 		nodeSize.add(nodeSizeDecrease);
 
@@ -356,11 +358,11 @@ public class NetworkViewerMenu extends Menu
 		linkWidth.setIcon( app.url("icons/size.png") );
 		view.add(linkWidth);
 
-		Option linkWidthIncrease = new Option ("Increase link width", new LinkWidthAction(app,figure,+1), KeyEvent.VK_F9 );
+		Option linkWidthIncrease = new Option ("Increase link width", new LinkWidthAction(app,figure,+1), KeyEvent.VK_F8 );
 		linkWidthIncrease.setIcon( app.url("icons/size.png") );
 		linkWidth.add(linkWidthIncrease);
 
-		Option linkWidthDecrease = new Option ("Decrease link width", new LinkWidthAction(app,figure,-1), KeyEvent.VK_F8 );
+		Option linkWidthDecrease = new Option ("Decrease link width", new LinkWidthAction(app,figure,-1), KeyEvent.VK_F7 );
 		linkWidthDecrease.setIcon( app.url("icons/size-flip.png") );
 		linkWidth.add(linkWidthDecrease);
 		
@@ -420,6 +422,10 @@ public class NetworkViewerMenu extends Menu
 		outDegree.setIcon( app.url("icons/microscope.png") );
 		degree.add(outDegree);
 
+		Option totalDegree = new Option("Total degree (in+out)", new NodeMetricsAction(app, model, Degree.class) );
+		totalDegree.setIcon( app.url("icons/microscope.png") );
+		degree.add(totalDegree);
+
 		Option inDegreeNormalized = new Option("Normalized in-degree", new NodeMetricsAction(app, model, NormalizedInDegree.class) );
 		inDegreeNormalized.setIcon( app.url("icons/microscope.png") );
 		degree.add(inDegreeNormalized);
@@ -427,6 +433,10 @@ public class NetworkViewerMenu extends Menu
 		Option outDegreeNormalized = new Option("Normalized out-degree", new NodeMetricsAction(app, model, NormalizedOutDegree.class) );
 		outDegreeNormalized.setIcon( app.url("icons/microscope.png") );
 		degree.add(outDegreeNormalized);
+		
+		Option normalizedDegree = new Option("Normalized total degree", new NodeMetricsAction(app, model, NormalizedDegree.class) );
+		normalizedDegree.setIcon( app.url("icons/microscope.png") );
+		degree.add(normalizedDegree);
 		
 		Option radius = new Option("Radius", new NodeMetricsAction(app, model, Radius.class) );
 		radius.setIcon( app.url("icons/microscope.png") );

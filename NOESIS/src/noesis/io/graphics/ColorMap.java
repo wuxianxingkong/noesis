@@ -17,8 +17,23 @@ public abstract class ColorMap
 	
 	public abstract int blue (int index);
 	
+	public final int rgb (int index)
+	{
+		return ((red(index)&0xFF)<<16) | ((green(index)&0xFF)<<8) | (blue(index)&0xFF);
+	}
+	
+	// Color cache
+	
+	private Color cache[];
+	
 	public final Color getColor (int index)
 	{
-		return new Color( ((red(index)&0xFF)<<16) | ((green(index)&0xFF)<<8) | (blue(index)&0xFF) );
+		if (cache==null)
+			cache = new Color[size()];
+		
+		if (cache[index]==null)
+			cache[index] = new Color (rgb(index));
+		
+		return cache[index];
 	}
 }

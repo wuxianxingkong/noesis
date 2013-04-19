@@ -65,7 +65,7 @@ public abstract class NodeRenderer
 		return colorMap;
 	}
 	
-	public final void setColorMap (ColorMap colorMap)
+	public void setColorMap (ColorMap colorMap)
 	{
 		this.colorMap = colorMap;
 	}

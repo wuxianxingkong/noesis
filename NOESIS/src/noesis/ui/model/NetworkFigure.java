@@ -89,6 +89,15 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 		this.renderer = renderer;
 	}
 	
+	public void refresh ()
+	{
+		super.setDrawing(renderer);
+		
+		renderer.update();
+
+		show();
+	}
+	
 	public void render ()
 	{
 		renderer.render();

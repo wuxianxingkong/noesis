@@ -2,7 +2,7 @@ package noesis.ui.model;
 
 import noesis.AttributeNetwork;
 
-import noesis.io.graphics.GrayscaleColorMap;
+import noesis.io.graphics.InverseGrayscaleColorMap;
 import noesis.io.graphics.JetColorMap;
 import noesis.ui.model.actions.NodeAttributeColorAction;
 import noesis.ui.model.actions.NodeAttributePositionAction;
@@ -55,7 +55,7 @@ public class NodeAttributesUIModel extends UIModel
 
 		Option gray = new Option("Adjust node gray levels");
 		gray.setIcon( app.url("icon.gif") );
-		gray.setAction( new NodeAttributeColorAction(app,figure,attributes, new GrayscaleColorMap(256) ) );
+		gray.setAction( new NodeAttributeColorAction(app,figure,attributes, new InverseGrayscaleColorMap(256) ) );
 		buttons.add(gray);
 		
 		Option size = new Option("Adjust node sizes");

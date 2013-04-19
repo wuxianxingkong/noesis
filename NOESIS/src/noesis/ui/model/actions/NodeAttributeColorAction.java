@@ -48,7 +48,7 @@ public class NodeAttributeColorAction extends NodeAttributeAction
 				figure.getRenderer().getNodeRenderer().setColorMap(map);
 				figure.getRenderer().getNodeRenderer().setColorIndexer(indexer);
 
-				figure.render();
+				figure.refresh();
 			}
 		}
 	}

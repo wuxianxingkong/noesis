@@ -27,7 +27,7 @@ public class Closeness extends NodeMetrics
 		averagePathLength = paths.averagePathLength();
 		
 		if (averagePathLength>0)
-			return 1.0/averagePathLength;
+			return 1.0/averagePathLength * paths.reachable(); // Normalized according to number of reachable nodes
 		else
 			return 0.0;
 	}	

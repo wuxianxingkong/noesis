@@ -51,8 +51,30 @@ public class PathLength extends NodeMetrics
 	
 	public double averagePathLength ()
 	{
-		checkDone();		
-		return sum() / (size()-1);
+		checkDone();
+		
+		int reachable = nonzero();
+		
+		if (reachable>0)
+			return sum() / reachable;
+		else
+			return 0.0;
+	}
+	
+	public double reachable ()
+	{
+		return ((double)nonzero())/(size()-1); 
+	}
+	
+	private int nonzero ()
+	{
+		int total = 0;
+		
+		for (int i=0; i<size(); i++)
+			if (get(i)>0)
+				total++;
+		
+		return total;
 	}
 	
 	

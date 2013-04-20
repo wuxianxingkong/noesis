@@ -14,7 +14,7 @@ public class FruchtermanReingoldLayout extends IterativeNetworkLayout
 	public static final int    MAX_ITERATIONS = 100;
 	public static final double MIN_TEMPERATURE = 0.005;
 	public static final double INITIAL_TEMPERATURE = 0.10;
-	public static final double COOLING_FACTOR = 0.95;
+	public static final double COOLING_FACTOR = 0.95; // 0.95^100 ~ 0.005
 	
 	double area;
 	double k;
@@ -153,10 +153,47 @@ public class FruchtermanReingoldLayout extends IterativeNetworkLayout
 	{
 		dx = null;
 		dy = null;
+		
+		// Final scale
+
+		double minX = 1;
+		double maxX = -1;
+		double minY = 1;
+		double maxY = -1;
+		
+		for (int i=0; i<network.size(); i++) {
+			
+			if (px[i]<minX)
+				minX = px[i];
+			
+			if (px[i]>maxX)
+				maxX = px[i];
+			
+			if (py[i]<minY)
+				minY = py[i];
+			
+			if (py[i]>maxY)
+				maxY = py[i];
+		}
+		
+		double scaleX;
+		double scaleY;
+		
+		if (maxX>minX)
+			scaleX = (1-2*MARGIN)/(maxX-minX);
+		else
+			scaleX = 1.0;
+		
+		if (maxY>minY)
+			scaleY = (1-2*MARGIN)/(maxY-minY);
+		else
+			scaleY = 1.0;
+		
+		// Final (x,y) coordinates
 
 		for (int i=0; i<network.size(); i++) {
-			x.set(i, 0.5 + px[i] );
-			y.set(i, 0.5 + py[i] );
+			x.set(i, MARGIN + scaleX*(px[i]-minX) );
+			y.set(i, MARGIN + scaleY*(py[i]-minY) );
 		}
 		
 		px = null;

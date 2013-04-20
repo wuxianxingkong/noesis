@@ -1,7 +1,6 @@
 package noesis.ui.model;
 
 
-import ikor.model.graphics.colors.GrayscaleColorMap;
 import ikor.model.ui.Application;
 import ikor.model.ui.Menu;
 import ikor.model.ui.Option;
@@ -32,9 +31,9 @@ import noesis.analysis.structure.OutDegree;
 import noesis.analysis.structure.PageRank;
 import noesis.analysis.structure.Radius;
 import noesis.io.graphics.ColorMapNodeRenderer;
-import noesis.io.graphics.ColorNodeRenderer;
-import noesis.io.graphics.DefaultNodeRenderer;
-import noesis.io.graphics.GradientNodeRenderer;
+import noesis.io.graphics.GrayscaleNodeRenderer;
+import noesis.io.graphics.LinearGradientNodeRenderer;
+import noesis.io.graphics.RadialGradientNodeRenderer;
 import noesis.ui.model.actions.ExitAction;
 import noesis.ui.model.actions.FlipAction;
 import noesis.ui.model.actions.ForwardAction;
@@ -328,30 +327,29 @@ public class NetworkViewerMenu extends Menu
 		nodeStyle.setIcon( app.url("icons/paint.png") );
 		view.add(nodeStyle);
 
-		Option nodeStyle3D = new Option ("3D", new NodeStyleAction(app,figure,new GradientNodeRenderer(true)) );
+		Option nodeStyle3D = new Option ("3D", new NodeStyleAction(app,figure, RadialGradientNodeRenderer.class) );
 		nodeStyle3D.setIcon( app.url("icons/paint.png") );
 		nodeStyle.add(nodeStyle3D);
 
-		Option nodeStyleFlat = new Option ("Flat", new NodeStyleAction(app,figure,new GradientNodeRenderer(false)) );
+		Option nodeStyleFlat = new Option ("Flat", new NodeStyleAction(app,figure, LinearGradientNodeRenderer.class) );
 		nodeStyleFlat.setIcon( app.url("icons/paint.png") );
 		nodeStyle.add(nodeStyleFlat);
 
-		Option nodeStyleJet = new Option ("Jet", new NodeStyleAction(app,figure,new ColorMapNodeRenderer() ) );
+		Option nodeStyleJet = new Option ("Jet", new NodeStyleAction(app,figure, ColorMapNodeRenderer.class) );
 		nodeStyleJet.setIcon( app.url("icons/paint.png") );
 		nodeStyle.add(nodeStyleJet);
 
-		Option nodeStyleGrayscale = new Option ("Grayscale", new NodeStyleAction(app,figure,new ColorMapNodeRenderer( new GrayscaleColorMap(16)) ) );
+		Option nodeStyleGrayscale = new Option ("Grayscale", new NodeStyleAction(app,figure, GrayscaleNodeRenderer.class) );
 		nodeStyleGrayscale.setIcon( app.url("icons/paint.png") );
 		nodeStyle.add(nodeStyleGrayscale);
 
-		Option nodeStyleColor = new Option ("Red-green-blue", new NodeStyleAction(app,figure,new ColorNodeRenderer() ) );
-		nodeStyleColor.setIcon( app.url("icons/paint.png") );
-		nodeStyle.add(nodeStyleColor);
-
+		//Option nodeStyleColor = new Option ("RGB", new NodeStyleAction(app,figure, ColorNodeRenderer.class) );
+		//nodeStyleColor.setIcon( app.url("icons/paint.png") );
+		//nodeStyle.add(nodeStyleColor);
 		
-		Option nodeStyleDefault = new Option ("Default", new NodeStyleAction(app,figure,new DefaultNodeRenderer() ) );
-		nodeStyleDefault.setIcon( app.url("icons/paint.png") );
-		nodeStyle.add(nodeStyleDefault);
+		//Option nodeStyleDefault = new Option ("Default", new NodeStyleAction(app,figure, DefaultNodeRenderer.class) );
+		//nodeStyleDefault.setIcon( app.url("icons/paint.png") );
+		//nodeStyle.add(nodeStyleDefault);
 		
 		view.add ( new Separator() );
 		

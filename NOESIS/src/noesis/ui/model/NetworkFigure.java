@@ -6,8 +6,8 @@ import noesis.Attribute;
 import noesis.AttributeNetwork;
 import noesis.LinkAttribute;
 import noesis.io.graphics.DefaultLinkRenderer;
-import noesis.io.graphics.GradientNodeRenderer;
 import noesis.io.graphics.NetworkRenderer;
+import noesis.io.graphics.RadialGradientNodeRenderer;
 import ikor.model.Subject;
 import ikor.model.graphics.Drawing;
 import ikor.model.graphics.DrawingElement;
@@ -17,6 +17,11 @@ import ikor.model.graphics.DrawingUpdateListener;
 import ikor.model.graphics.Style;
 import ikor.model.ui.Figure;
 
+/**
+ * Network figure UI component
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
 
 public class NetworkFigure extends Figure<AttributeNetwork>
 {	
@@ -34,7 +39,7 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 		renderer = new NetworkRenderer( getNetwork(), DEFAULT_SIZE, DEFAULT_SIZE);
 		
 		renderer.setLinkRenderer(  new DefaultLinkRenderer () );
-		renderer.setNodeRenderer( new GradientNodeRenderer() );
+		renderer.setNodeRenderer( new RadialGradientNodeRenderer() );
 
 		render();
 				

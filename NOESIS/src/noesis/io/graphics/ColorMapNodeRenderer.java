@@ -9,6 +9,12 @@ import ikor.util.indexer.Indexer;
 
 import java.awt.Color;
 
+/**
+ * Color map node renderer
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ *
+ */
 public class ColorMapNodeRenderer extends NodeRenderer 
 {
 	public static final int DEFAULT_COLORS = 16;

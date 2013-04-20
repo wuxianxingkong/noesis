@@ -10,6 +10,11 @@ import ikor.model.graphics.styles.RadialGradient;
 
 import java.awt.Color;
 
+/**
+ * Gradient node renderer
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
 public class GradientNodeRenderer extends NodeRenderer 
 {
 	public static final int DEFAULT_BORDER = 0;
@@ -19,11 +24,6 @@ public class GradientNodeRenderer extends NodeRenderer
 	private Style border;
 
 	
-	public GradientNodeRenderer ()
-	{
-		this(true);
-	}
-
 	public GradientNodeRenderer (boolean radial)
 	{
 		this.radial = radial;

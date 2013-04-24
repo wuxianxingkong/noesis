@@ -193,7 +193,7 @@ public class ClosenessTest
 	// Betweenness centrality
 	
 	private static final double betweenness[] = new double[] { 13.0, 13.0, 29.0, 31.0, 29.0, 13.00, 13.00 };
-	private static final double freeman[] = new double[] { 13.0/43, 13.0/43, 29.0/43, 31.0/43, 29.0/43, 13.00/43, 13.00/43 };
+	private static final double freeman[] = new double[] { (13.0-13)/43, (13.0-13)/43, (29.0-13)/43, (31.0-13)/43, (29.0-13)/43, (13.0-13)/43, (13.0-13)/43 };
 	
 	@Test
 	public void testBetweennessFreeman ()

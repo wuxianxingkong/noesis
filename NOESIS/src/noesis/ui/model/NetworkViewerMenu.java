@@ -17,6 +17,7 @@ import noesis.algorithms.visualization.MeshLayout;
 import noesis.algorithms.visualization.RandomLayout;
 import noesis.algorithms.visualization.StarLayout;
 import noesis.algorithms.visualization.ToroidalLayout;
+import noesis.analysis.structure.AdjustedCloseness;
 import noesis.analysis.structure.AveragePathLength;
 import noesis.analysis.structure.Betweenness;
 import noesis.analysis.structure.Closeness;
@@ -436,18 +437,37 @@ public class NetworkViewerMenu extends Menu
 		Option normalizedDegree = new Option("Normalized total degree", new NodeMetricsAction(app, model, NormalizedDegree.class) );
 		normalizedDegree.setIcon( app.url("icons/microscope.png") );
 		degree.add(normalizedDegree);
+
+		Menu reachability = new Menu("Reachability");
+		reachability.setIcon( app.url("icons/microscope.png") );
+		analysis.add(reachability);
 		
 		Option radius = new Option("Radius", new NodeMetricsAction(app, model, Radius.class) );
 		radius.setIcon( app.url("icons/microscope.png") );
-		analysis.add(radius);
-		
+		reachability.add(radius);
+
 		Option avl = new Option("Average path length", new NodeMetricsAction(app, model, AveragePathLength.class) );
 		avl.setIcon( app.url("icons/microscope.png") );
-		analysis.add(avl);
+		reachability.add(avl);
 
 		Option closeness = new Option("Closeness", new NodeMetricsAction(app, model, Closeness.class) );
 		closeness.setIcon( app.url("icons/microscope.png") );
-		analysis.add(closeness);		
+		reachability.add(closeness);		
+
+		Option adjustedCloseness = new Option("Adjusted closeness", new NodeMetricsAction(app, model, AdjustedCloseness.class) );
+		adjustedCloseness.setIcon( app.url("icons/microscope.png") );
+		reachability.add(adjustedCloseness);		
+		
+		Option decay = new Option("Decay", null ); // new NodeDecayAction(app, model) );
+		decay.setIcon( app.url("icons/microscope.png") );
+		reachability.add(decay);
+		decay.disable(); // TODO delta parameter...
+		
+		Option normalizedDecay = new Option("Normalized decay", null ); // new NodeDecayAction(app, model) );
+		normalizedDecay.setIcon( app.url("icons/microscope.png") );
+		reachability.add(normalizedDecay);
+		normalizedDecay.disable(); // TODO delta parameter...
+
 		
 		Menu betweenness = new Menu("Betweenness" );
 		betweenness.setIcon( app.url("icons/microscope.png") );

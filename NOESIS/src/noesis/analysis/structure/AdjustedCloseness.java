@@ -3,15 +3,15 @@ package noesis.analysis.structure;
 import noesis.Network;
 
 /**
- * Closeness centrality (suitable for connected graphs).
+ * Adjusted closeness centrality (for disconnected graphs), normalized within [0,1]
  * 
- * closeness = (component size - 1) / (sum of path lengths)
+ * adjusted closeness = ( (component size - 1) / (sum of path lengths) ) * ( (component size - 1) / (network size - 1) )
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public class Closeness extends NodeMetrics 
+public class AdjustedCloseness extends NodeMetrics 
 {
-	public Closeness (Network network)
+	public AdjustedCloseness (Network network)
 	{
 		super(network);
 	}	
@@ -20,7 +20,7 @@ public class Closeness extends NodeMetrics
 	@Override
 	public String getName() 
 	{
-		return "closeness";
+		return "adj-closeness";
 	}	
 
 	@Override
@@ -31,6 +31,6 @@ public class Closeness extends NodeMetrics
 		
 		paths.compute();
 		
-		return paths.closeness();
+		return paths.closeness()*paths.reachable();
 	}	
 }

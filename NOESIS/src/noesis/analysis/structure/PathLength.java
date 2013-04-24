@@ -61,9 +61,39 @@ public class PathLength extends NodeMetrics
 			return 0.0;
 	}
 	
+	public double closeness ()
+	{
+		checkDone();
+		
+		int    reachable = nonzero();
+		double sumPathLengths = sum();
+		
+		if (sumPathLengths>0)
+			return reachable / sumPathLengths;
+		else		
+			return 0.0;
+	}
+	
 	public double reachable ()
 	{
+		checkDone();
+		
 		return ((double)nonzero())/(size()-1); 
+	}
+	
+	public double decay (double delta)
+	{
+		checkDone();
+		
+		double sum = 0;
+		
+		for (int i=0; i<size(); i++) {
+			
+			if (get(i)>0)
+				sum += Math.pow(delta, get(i));
+		}
+		
+		return sum;
 	}
 	
 	private int nonzero ()

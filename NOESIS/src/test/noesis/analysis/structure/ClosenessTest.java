@@ -10,8 +10,10 @@ import static org.junit.Assert.*;
 import noesis.BasicNetwork;
 import noesis.Network;
 
+import noesis.analysis.structure.Betweenness;
 import noesis.analysis.structure.Closeness;
 import noesis.analysis.structure.Decay;
+import noesis.analysis.structure.NormalizedBetweenness;
 import noesis.analysis.structure.NormalizedDecay;
 import noesis.analysis.structure.NormalizedInDegree;
 import noesis.analysis.structure.NormalizedOutDegree;
@@ -187,5 +189,30 @@ public class ClosenessTest
 
 		checkMeasure(measure, ndecay75);
 	}
+
+	// Betweenness centrality
 	
+	private static final double betweenness[] = new double[] { 13.0, 13.0, 29.0, 31.0, 29.0, 13.00, 13.00 };
+	private static final double freeman[] = new double[] { 13.0/43, 13.0/43, 29.0/43, 31.0/43, 29.0/43, 13.00/43, 13.00/43 };
+	
+	@Test
+	public void testBetweennessFreeman ()
+	{
+		NormalizedBetweenness measure = new NormalizedBetweenness(netBowtie);
+		
+		measure.compute();
+
+		checkMeasure(measure, freeman);
+	}
+	
+
+	@Test
+	public void testBetweenness ()
+	{
+		Betweenness measure = new Betweenness(netBowtie);
+		
+		measure.compute();
+
+		checkMeasure(measure, betweenness);
+	}	
 }

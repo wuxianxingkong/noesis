@@ -14,11 +14,13 @@ import noesis.analysis.structure.AdjustedBetweenness;
 import noesis.analysis.structure.Betweenness;
 import noesis.analysis.structure.Closeness;
 import noesis.analysis.structure.Decay;
+import noesis.analysis.structure.EigenvectorCentrality;
 import noesis.analysis.structure.FreemanBetweenness;
 import noesis.analysis.structure.NormalizedBetweenness;
 import noesis.analysis.structure.NormalizedDecay;
 import noesis.analysis.structure.NormalizedInDegree;
 import noesis.analysis.structure.NormalizedOutDegree;
+import noesis.analysis.structure.PageRank;
 
 
 public class BowtieTest 
@@ -240,4 +242,39 @@ public class BowtieTest
 		checkMeasure(measure, normalized);
 	}	
 
+	// Eigenvector centrality
+	
+	private static final double EV_CORNER = 0.33480516002936894; // 0.745 or 0.47
+	private static final double EV_GATEWAY = 0.4496180482622337; // 1.000 or 0.63
+	private static final double EV_BRIDGE = 0.38380885949200544; // 0.853 or 0.54
+	
+	private static final double eigenvector[] = new double[] { EV_CORNER, EV_CORNER, EV_GATEWAY, EV_BRIDGE, EV_GATEWAY, EV_CORNER, EV_CORNER };
+	
+	@Test
+	public void testEigenvector ()
+	{
+		EigenvectorCentrality measure = new EigenvectorCentrality(netBowtie);
+		
+		measure.compute();
+
+		checkMeasure(measure, eigenvector);
+	}
+
+	// PageRank centrality
+
+	private static final double PR_CORNER = 0.12733686137367323;
+	private static final double PR_GATEWAY = 0.18282987837819772;
+	private static final double PR_BRIDGE = 0.12499279774891152;
+	private static final double pagerank[] = new double[] { PR_CORNER, PR_CORNER, PR_GATEWAY, PR_BRIDGE, PR_GATEWAY, PR_CORNER, PR_CORNER };
+
+	@Test
+	public void testPageRank ()
+	{
+		PageRank measure = new PageRank(netBowtie);
+		
+		measure.compute();
+
+		checkMeasure(measure, pagerank);
+	}
+	
 }

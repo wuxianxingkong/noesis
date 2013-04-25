@@ -24,6 +24,7 @@ import noesis.analysis.structure.Betweenness;
 import noesis.analysis.structure.Closeness;
 import noesis.analysis.structure.ClusteringCoefficient;
 import noesis.analysis.structure.Degree;
+import noesis.analysis.structure.EigenvectorCentrality;
 import noesis.analysis.structure.InDegree;
 import noesis.analysis.structure.NormalizedBetweenness;
 import noesis.analysis.structure.NormalizedDegree;
@@ -482,15 +483,23 @@ public class NetworkViewerMenu extends Menu
 		totalBetweenness.setIcon( app.url("icons/microscope.png") );
 		betweenness.add(totalBetweenness);		
 
-
 		Option normalizedBetweenness = new Option("Normalized betweenness", new NodeMetricsAction(app, model, NormalizedBetweenness.class) );
 		normalizedBetweenness.setIcon( app.url("icons/microscope.png") );
 		betweenness.add(normalizedBetweenness);		
 
+		
+		Menu influence = new Menu("Influence" );
+		influence.setIcon( app.url("icons/microscope.png") );
+		analysis.add(influence);
+		
 		Option pagerank = new Option("PageRank", new NodeMetricsAction(app, model, PageRank.class) );
 		pagerank.setIcon( app.url("icons/microscope.png") );
-		analysis.add(pagerank);		
+		influence.add(pagerank);		
 
+		Option eigenvector = new Option("Eigenvector centrality", new NodeMetricsAction(app, model, EigenvectorCentrality.class) );
+		eigenvector.setIcon( app.url("icons/microscope.png") );
+		influence.add(eigenvector);		
+		
 		Option cc = new Option("Clustering coefficient", new NodeMetricsAction(app, model, ClusteringCoefficient.class) );
 		cc.setIcon( app.url("icons/microscope.png") );
 		analysis.add(cc);		

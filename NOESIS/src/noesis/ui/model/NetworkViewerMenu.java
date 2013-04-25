@@ -26,6 +26,7 @@ import noesis.analysis.structure.ClusteringCoefficient;
 import noesis.analysis.structure.Degree;
 import noesis.analysis.structure.EigenvectorCentrality;
 import noesis.analysis.structure.InDegree;
+import noesis.analysis.structure.KatzCentrality;
 import noesis.analysis.structure.NormalizedBetweenness;
 import noesis.analysis.structure.NormalizedDegree;
 import noesis.analysis.structure.NormalizedInDegree;
@@ -499,6 +500,11 @@ public class NetworkViewerMenu extends Menu
 		Option eigenvector = new Option("Eigenvector centrality", new NodeMetricsAction(app, model, EigenvectorCentrality.class) );
 		eigenvector.setIcon( app.url("icons/microscope.png") );
 		influence.add(eigenvector);		
+
+		Option katz = new Option("Katz centrality", new NodeMetricsAction(app, model, KatzCentrality.class) );
+		katz.setIcon( app.url("icons/microscope.png") );
+		influence.add(katz);		
+		// TODO Katz centrality: alpha & beta parameters
 		
 		Option cc = new Option("Clustering coefficient", new NodeMetricsAction(app, model, ClusteringCoefficient.class) );
 		cc.setIcon( app.url("icons/microscope.png") );

@@ -16,6 +16,7 @@ import noesis.analysis.structure.Closeness;
 import noesis.analysis.structure.Decay;
 import noesis.analysis.structure.EigenvectorCentrality;
 import noesis.analysis.structure.FreemanBetweenness;
+import noesis.analysis.structure.KatzCentrality;
 import noesis.analysis.structure.NormalizedBetweenness;
 import noesis.analysis.structure.NormalizedDecay;
 import noesis.analysis.structure.NormalizedInDegree;
@@ -275,6 +276,47 @@ public class BowtieTest
 		measure.compute();
 
 		checkMeasure(measure, pagerank);
+	}
+	
+	// Katz centrality
+	
+	private static final double KATZ_CORNER = 0.35749948403327714; // vs. 0.33480516002936894 (eigenvector centrality)
+	private static final double KATZ_GATEWAY = 0.4194649586900775; // vs. 0.4496180482622337 (eigenvector centrality)
+	private static final double KATZ_BRIDGE = 0.3699659072482565;  // vs. 0.38380885949200544 (eigenvector centrality)
+	private static final double KATZ_BETA = 1.0/Math.sqrt(7.0);
+	
+	private static final double katz[] = new double[] { KATZ_CORNER, KATZ_CORNER, KATZ_GATEWAY, KATZ_BRIDGE, KATZ_GATEWAY, KATZ_CORNER, KATZ_CORNER };
+	
+	private static final double katz_beta[] = new double[] { KATZ_BETA, KATZ_BETA, KATZ_BETA, KATZ_BETA, KATZ_BETA, KATZ_BETA, KATZ_BETA };
+	
+	@Test
+	public void testKatz10 ()
+	{
+		KatzCentrality measure = new KatzCentrality(netBowtie,1,0);
+		
+		measure.compute();
+
+		checkMeasure(measure, eigenvector);
+	}
+	
+	@Test
+	public void testKatz01 ()
+	{
+		KatzCentrality measure = new KatzCentrality(netBowtie,0,1);
+		
+		measure.compute();
+
+		checkMeasure(measure, katz_beta);
+	}
+
+	@Test
+	public void testKatz11 ()
+	{
+		KatzCentrality measure = new KatzCentrality(netBowtie,1,1);
+		
+		measure.compute();
+
+		checkMeasure(measure, katz);
 	}
 	
 }

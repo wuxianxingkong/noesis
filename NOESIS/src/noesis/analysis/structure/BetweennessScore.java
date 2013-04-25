@@ -46,6 +46,10 @@ public class BetweennessScore extends NodeMetrics
 		return geodesics[node];
 	}
 	
+	public int visited ()
+	{
+		return visited;
+	}
 	
 	@Override
 	public void compute() 
@@ -68,7 +72,7 @@ public class BetweennessScore extends NodeMetrics
 		// Betweenness from shortest paths (reverse order)
 		
 		for (int i=visited-1; i>=0; i--) {
-			set (visits[i], computeScore(visits[i]));
+			set (visits[i], computeScore(visits[i]) );
 		}
 
 		done = true;

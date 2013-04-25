@@ -9,6 +9,7 @@ public class ConnectedComponents
 {
 	private Network network;
 	private int index[];
+	private int sizes[];	
 	private int components; 
 	
 	public ConnectedComponents (Network network)
@@ -35,6 +36,30 @@ public class ConnectedComponents
 	
 	/**
 	 * Component index.
+	 * @return An integer indicating the strongly connected component for the specified node.
+	 */
+	
+	public final int component (int node)
+	{
+		return index[node];
+	}
+	
+	/**
+	 * Component size.
+	 * @return An integer representing the size of the strongly connected component the specified node belongs to.
+	 */
+	
+	public final int componentSize (int node)
+	{
+		if (sizes==null)
+			sizes = componentSizes();
+		
+		return sizes[component(node)-1];
+	}	
+	
+	
+	/**
+	 * Component index.
 	 * @return An array indicating the connected component for each node.
 	 */
 	
@@ -50,7 +75,7 @@ public class ConnectedComponents
 	
 	public final int[] componentSizes ()
 	{
-		int[] sizes = new int[components];
+		sizes = new int[components];
 		
 		for (int i=0; i<network.size(); i++)
 			sizes[ index[i]-1 ]++;

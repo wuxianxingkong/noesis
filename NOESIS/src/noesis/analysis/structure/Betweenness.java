@@ -7,6 +7,7 @@ import ikor.parallel.combiner.VectorAccumulator;
 
 import noesis.Network;
 
+
 // Betweenness centrality, between (2n-1) and n^2-(n-1)
 
 public class Betweenness extends NodeMetrics 
@@ -19,14 +20,19 @@ public class Betweenness extends NodeMetrics
 	@Override
 	public String getName() 
 	{
-		return "betweenness";
+		return "betweenness-score";
 	}	
 
-	
+	@Override
+	public String getDescription() 
+	{
+		return "Betweenness score";
+	}			
 	
 	public double compute(int node) 
 	{
-		checkDone();		
+		checkDone();	
+		
 		return get(node);
 	}	
 
@@ -81,26 +87,5 @@ public class Betweenness extends NodeMetrics
 			return score;
 		}
 	}		
-
-	// Conventional normalization (n^2)
 	
-	public double standardBetweenness (int node)
-	{
-		int size = getNetwork().size();
-		
-		checkDone();
-		
-		return get(node)/(size*size); 
-	}
-	
-	// Original normalization: Freeman'1977
-	
-	public double normalizedBetweenness (int node)
-	{
-		int size = getNetwork().size();
-		
-		checkDone();
-		
-		return get(node)/(size*size-size+1); 
-	}
 }

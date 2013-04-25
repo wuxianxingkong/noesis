@@ -66,18 +66,18 @@ public class GDFNetworkReaderTest {
 	{		
 		Attribute id = net.getNodeAttribute("x");
 
-		assertEquals("100", id.get(0));
-		assertEquals("100", id.get(1));
-		assertEquals("200", id.get(2));
+		assertEquals(100, id.get(0));
+		assertEquals(100, id.get(1));
+		assertEquals(200, id.get(2));
 	}
 
 	public void checkNodeYs (AttributeNetwork net)
 	{		
 		Attribute id = net.getNodeAttribute("y");
 
-		assertEquals("100", id.get(0));
-		assertEquals("200", id.get(1));
-		assertEquals("200", id.get(2));
+		assertEquals(100, id.get(0));
+		assertEquals(200, id.get(1));
+		assertEquals(200, id.get(2));
 	}
 
 	public void checkLinks (AttributeNetwork net)
@@ -114,9 +114,9 @@ public class GDFNetworkReaderTest {
 	{		
 		LinkAttribute label = net.getLinkAttribute("weight");
 		
-		assertEquals("0.1", label.get(0,1));
-		assertEquals("0.2", label.get(1,2));
-		assertEquals("", label.get(2,0));
+		assertEquals(0.1, label.get(0,1));
+		assertEquals(0.2, label.get(1,2));
+		assertEquals(null, label.get(2,0));
 		assertNull(label.get(0,2));
 		assertNull(label.get(1,0));
 		assertNull(label.get(2,1));

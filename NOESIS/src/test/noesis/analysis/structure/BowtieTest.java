@@ -10,18 +10,20 @@ import static org.junit.Assert.*;
 import noesis.BasicNetwork;
 import noesis.Network;
 
+import noesis.analysis.structure.AdjustedBetweenness;
 import noesis.analysis.structure.Betweenness;
 import noesis.analysis.structure.Closeness;
 import noesis.analysis.structure.Decay;
+import noesis.analysis.structure.FreemanBetweenness;
 import noesis.analysis.structure.NormalizedBetweenness;
 import noesis.analysis.structure.NormalizedDecay;
 import noesis.analysis.structure.NormalizedInDegree;
 import noesis.analysis.structure.NormalizedOutDegree;
 
 
-public class ClosenessTest 
+public class BowtieTest 
 {
-	public final double EPSILON = 1e-4;
+	public final double EPSILON = 1e-8;
 
 	Network  netBowtie;
 
@@ -193,19 +195,10 @@ public class ClosenessTest
 	// Betweenness centrality
 	
 	private static final double betweenness[] = new double[] { 13.0, 13.0, 29.0, 31.0, 29.0, 13.00, 13.00 };
-	private static final double freeman[] = new double[] { (13.0-13)/43, (13.0-13)/43, (29.0-13)/43, (31.0-13)/43, (29.0-13)/43, (13.0-13)/43, (13.0-13)/43 };
-	
-	@Test
-	public void testBetweennessFreeman ()
-	{
-		NormalizedBetweenness measure = new NormalizedBetweenness(netBowtie);
+	private static final double adjusted[] = new double[] { 13.0-13, 13.0-13, 29.0-13, 31.0-13, 29.0-13, 13.00-13, 13.00-13 };
+	private static final double freeman[] = new double[] { 13.0/43, 13.0/43, 29.0/43, 31.0/43, 29.0/43, 13.0/43, 13.0/43 };
+	private static final double normalized[] = new double[] { (13.0-13)/43, (13.0-13)/43, (29.0-13)/43, (31.0-13)/43, (29.0-13)/43, (13.0-13)/43, (13.0-13)/43 };
 		
-		measure.compute();
-
-		checkMeasure(measure, freeman);
-	}
-	
-
 	@Test
 	public void testBetweenness ()
 	{
@@ -215,4 +208,36 @@ public class ClosenessTest
 
 		checkMeasure(measure, betweenness);
 	}	
+
+	@Test
+	public void testBetweennessAdjust ()
+	{
+		AdjustedBetweenness measure = new AdjustedBetweenness(netBowtie);
+		
+		measure.compute();
+
+		checkMeasure(measure, adjusted);
+	}	
+	
+	@Test
+	public void testBetweennessFreeman ()
+	{
+		FreemanBetweenness measure = new FreemanBetweenness(netBowtie);
+		
+		measure.compute();
+
+		checkMeasure(measure, freeman);
+	}
+	
+	
+	@Test
+	public void testBetweennessNormalized ()
+	{
+		NormalizedBetweenness measure = new NormalizedBetweenness(netBowtie);
+		
+		measure.compute();
+
+		checkMeasure(measure, normalized);
+	}	
+
 }

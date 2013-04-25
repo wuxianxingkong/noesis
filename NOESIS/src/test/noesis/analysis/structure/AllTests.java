@@ -5,7 +5,8 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses( { test.noesis.analysis.structure.BetweennessTest.class,
-	                   test.noesis.analysis.structure.PageRankTest.class})
+	                   test.noesis.analysis.structure.PageRankTest.class,
+	                   test.noesis.analysis.structure.BowtieTest.class})
 public class AllTests {
 
 }

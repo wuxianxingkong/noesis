@@ -3,13 +3,13 @@ package noesis.analysis.structure;
 import noesis.Network;
 import noesis.algorithms.traversal.StronglyConnectedComponents;
 
-// Normalized betweenness centrality, between 0 and 1.
+// Betweenness centrality adjusted to component sizes
 // - Freeman's betweenness between (2n-1) and (n^2-(n-1)) in strongly-connected networks
-// - Normalization:  ( score - (2n-1) ) / ( n^2 - (n-1) - (2n-1) ) where n is the size of the strongly-connected component
+// - Adjustment:  ( score - (2n-1) ) where n is the size of the strongly-connected component
 
-public class NormalizedBetweenness extends Betweenness
+public class AdjustedBetweenness extends Betweenness
 {
-	public NormalizedBetweenness (Network network)
+	public AdjustedBetweenness (Network network)
 	{
 		super(network);
 	}	
@@ -17,26 +17,26 @@ public class NormalizedBetweenness extends Betweenness
 	@Override
 	public String getName() 
 	{
-		return "betweenness-norm";
+		return "betweenness";
 	}	
 
 	@Override
 	public String getDescription() 
 	{
-		return "Normalized betweenness";
+		return "Betweenness";
 	}		
 	
 	@Override
 	public double get(int node)
 	{
-		return normalizedBetweenness(node); // vs. standardBetweenness(node);
+		return adjustedBetweenness(node); 
 	}
 
 	// Normalized to the [0,1] interval taking into account component sizes
 	
 	private StronglyConnectedComponents scc;
 	
-	public double normalizedBetweenness (int node)
+	public double adjustedBetweenness (int node)
 	{
 		int size;
 		
@@ -49,7 +49,7 @@ public class NormalizedBetweenness extends Betweenness
 		
 		size = scc.componentSize(node);
 				
-		return ( super.get(node) - (2*size-1) ) /(size*size-size+1); 
+		return ( super.get(node) - (2*size-1) ); 
 	}	
 
 }

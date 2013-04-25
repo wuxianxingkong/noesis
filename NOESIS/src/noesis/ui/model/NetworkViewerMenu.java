@@ -17,6 +17,7 @@ import noesis.algorithms.visualization.MeshLayout;
 import noesis.algorithms.visualization.RandomLayout;
 import noesis.algorithms.visualization.StarLayout;
 import noesis.algorithms.visualization.ToroidalLayout;
+import noesis.analysis.structure.AdjustedBetweenness;
 import noesis.analysis.structure.AdjustedCloseness;
 import noesis.analysis.structure.AveragePathLength;
 import noesis.analysis.structure.Betweenness;
@@ -473,9 +474,14 @@ public class NetworkViewerMenu extends Menu
 		betweenness.setIcon( app.url("icons/microscope.png") );
 		analysis.add(betweenness);
 		
+		Option adjustedBetweenness = new Option("Betweenness", new NodeMetricsAction(app, model, AdjustedBetweenness.class) );
+		adjustedBetweenness.setIcon( app.url("icons/microscope.png") );
+		betweenness.add(adjustedBetweenness);		
+
 		Option totalBetweenness = new Option("Betweenness score", new NodeMetricsAction(app, model, Betweenness.class) );
 		totalBetweenness.setIcon( app.url("icons/microscope.png") );
 		betweenness.add(totalBetweenness);		
+
 
 		Option normalizedBetweenness = new Option("Normalized betweenness", new NodeMetricsAction(app, model, NormalizedBetweenness.class) );
 		normalizedBetweenness.setIcon( app.url("icons/microscope.png") );

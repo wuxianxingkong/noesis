@@ -31,7 +31,7 @@ import noesis.analysis.structure.NormalizedInDegree;
 import noesis.analysis.structure.NormalizedOutDegree;
 import noesis.analysis.structure.OutDegree;
 import noesis.analysis.structure.PageRank;
-import noesis.analysis.structure.Radius;
+import noesis.analysis.structure.Eccentricity;
 import noesis.io.graphics.ColorMapNodeRenderer;
 import noesis.io.graphics.GrayscaleNodeRenderer;
 import noesis.io.graphics.LinearGradientNodeRenderer;
@@ -443,9 +443,9 @@ public class NetworkViewerMenu extends Menu
 		reachability.setIcon( app.url("icons/microscope.png") );
 		analysis.add(reachability);
 		
-		Option radius = new Option("Radius", new NodeMetricsAction(app, model, Radius.class) );
-		radius.setIcon( app.url("icons/microscope.png") );
-		reachability.add(radius);
+		Option eccentricity = new Option("Eccentricity", new NodeMetricsAction(app, model, Eccentricity.class) );
+		eccentricity.setIcon( app.url("icons/microscope.png") );
+		reachability.add(eccentricity);
 
 		Option avl = new Option("Average path length", new NodeMetricsAction(app, model, AveragePathLength.class) );
 		avl.setIcon( app.url("icons/microscope.png") );

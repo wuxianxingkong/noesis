@@ -75,7 +75,7 @@ public abstract class RegularNetworkBasicTest
 	public final void testRadius()
 	{
 		RegularNetwork network = network();
-		Radius radius = new Radius(network);
+		Eccentricity radius = new Eccentricity(network);
 		
 		radius.compute();
 		

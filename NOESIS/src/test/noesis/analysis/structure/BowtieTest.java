@@ -279,16 +279,7 @@ public class BowtieTest
 	}
 	
 	// Katz centrality
-	
-	private static final double KATZ_CORNER = 0.35749948403327714; // vs. 0.33480516002936894 (eigenvector centrality)
-	private static final double KATZ_GATEWAY = 0.4194649586900775; // vs. 0.4496180482622337 (eigenvector centrality)
-	private static final double KATZ_BRIDGE = 0.3699659072482565;  // vs. 0.38380885949200544 (eigenvector centrality)
-	private static final double KATZ_BETA = 1.0/Math.sqrt(7.0);
-	
-	private static final double katz[] = new double[] { KATZ_CORNER, KATZ_CORNER, KATZ_GATEWAY, KATZ_BRIDGE, KATZ_GATEWAY, KATZ_CORNER, KATZ_CORNER };
-	
-	private static final double katz_beta[] = new double[] { KATZ_BETA, KATZ_BETA, KATZ_BETA, KATZ_BETA, KATZ_BETA, KATZ_BETA, KATZ_BETA };
-	
+		
 	@Test
 	public void testKatz10 ()
 	{
@@ -298,6 +289,11 @@ public class BowtieTest
 
 		checkMeasure(measure, eigenvector);
 	}
+	
+	
+	private static final double KATZ_BETA = 1.0/Math.sqrt(7.0);
+
+	private static final double katz_beta[] = new double[] { KATZ_BETA, KATZ_BETA, KATZ_BETA, KATZ_BETA, KATZ_BETA, KATZ_BETA, KATZ_BETA };
 	
 	@Test
 	public void testKatz01 ()
@@ -309,6 +305,13 @@ public class BowtieTest
 		checkMeasure(measure, katz_beta);
 	}
 
+	
+	private static final double KATZ_CORNER = 0.34091397385459526; // vs. 0.33480516002936894 (eigenvector centrality)
+	private static final double KATZ_GATEWAY = 0.4426907246585851; // vs. 0.4496180482622337 (eigenvector centrality)
+	private static final double KATZ_BRIDGE = 0.37836555647308434;  // vs. 0.38380885949200544 (eigenvector centrality)
+	
+	private static final double katz[] = new double[] { KATZ_CORNER, KATZ_CORNER, KATZ_GATEWAY, KATZ_BRIDGE, KATZ_GATEWAY, KATZ_CORNER, KATZ_CORNER };
+	
 	@Test
 	public void testKatz11 ()
 	{
@@ -317,6 +320,22 @@ public class BowtieTest
 		measure.compute();
 
 		checkMeasure(measure, katz);
+	}
+
+	private static final double KATZ_NEG_CORNER = 0.350084668836001;   // vs. 0.34091397385459526 Katz(1)
+	private static final double KATZ_NEG_GATEWAY = 0.4098875068562221; // vs. 0.4426907246585851  Katz(1)
+	private static final double KATZ_NEG_BRIDGE = 0.4168301357031794;  // vs. 0.37836555647308434 Katz(1)
+	
+	private static final double katzNegative[] = new double[] { KATZ_NEG_CORNER, KATZ_NEG_CORNER, KATZ_NEG_GATEWAY, KATZ_NEG_BRIDGE, KATZ_NEG_GATEWAY, KATZ_NEG_CORNER, KATZ_NEG_CORNER };
+	
+	@Test
+	public void testKatzNegative ()
+	{
+		KatzCentrality measure = new KatzCentrality(netBowtie,-1,1);
+		
+		measure.compute();
+
+		checkMeasure(measure, katzNegative);
 	}
 	
 }

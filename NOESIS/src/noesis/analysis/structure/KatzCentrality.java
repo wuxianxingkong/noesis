@@ -8,6 +8,8 @@ import noesis.Network;
  * - Equal to eigenvector centrality when beta = 0.
  * - Constant when alpha = 0.
  * 
+ * NOTE: Beta is adjusted by the number of nodes since the centrality vector is normalized to be a unit vector.
+ * 
  * @author Fernando Berzal (berzal@acm.org)
  */
 
@@ -101,7 +103,7 @@ public class KatzCentrality  extends NodeMetrics
 				
 				// Katz centrality
 
-				centrality[v] = alpha*centrality[v] + beta;
+				centrality[v] = alpha*centrality[v] + beta/size;
 				
 				sum2 += centrality[v]*centrality[v];
 			}

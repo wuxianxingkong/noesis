@@ -9,7 +9,7 @@ import noesis.Network;
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public class AdjustedCloseness extends NodeMetrics 
+public class AdjustedCloseness extends NodeMeasure 
 {
 	public AdjustedCloseness (Network network)
 	{

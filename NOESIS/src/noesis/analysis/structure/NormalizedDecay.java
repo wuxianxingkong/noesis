@@ -9,6 +9,11 @@ import noesis.Network;
  */
 public class NormalizedDecay extends Decay 
 {
+	public NormalizedDecay (Network network)
+	{
+		super(network);
+	}
+	
 	public NormalizedDecay (Network network, double delta)
 	{
 		super(network,delta);

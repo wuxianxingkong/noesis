@@ -4,7 +4,7 @@ import noesis.Network;
 
 // PageRank
 
-public class PageRank  extends NodeMetrics 
+public class PageRank  extends NodeMeasure 
 {
 	public static double DEFAULT_THETA = 0.85;
 	public static double EPSILON = 1e-4;

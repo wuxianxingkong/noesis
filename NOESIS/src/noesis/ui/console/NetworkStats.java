@@ -20,7 +20,7 @@ import noesis.Attribute;
 import noesis.AttributeNetwork;
 
 import noesis.analysis.structure.Betweenness;
-import noesis.analysis.structure.NodeMetrics;
+import noesis.analysis.structure.NodeMeasure;
 import noesis.analysis.structure.InDegree;
 import noesis.analysis.structure.OutDegree;
 
@@ -169,7 +169,7 @@ public class NetworkStats {
 		}		
 	}
 	
-	public static void saveInt (String file, NodeMetrics metrics)
+	public static void saveInt (String file, NodeMeasure metrics)
 		throws IOException
 	{
 		FileWriter writer = new FileWriter(file);

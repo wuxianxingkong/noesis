@@ -10,7 +10,7 @@ import noesis.Network;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-public class EigenvectorCentrality  extends NodeMetrics 
+public class EigenvectorCentrality  extends NodeMeasure 
 {
 	public static int MAX_ITERATIONS = 100;
 	public static double EPSILON = 1e-6;

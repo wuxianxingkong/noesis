@@ -14,7 +14,7 @@ import noesis.Network;
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public class Eccentricity extends NodeMetrics 
+public class Eccentricity extends NodeMeasure 
 {
 	public Eccentricity (Network network)
 	{

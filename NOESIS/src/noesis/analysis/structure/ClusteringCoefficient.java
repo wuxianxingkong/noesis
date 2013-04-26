@@ -2,7 +2,7 @@ package noesis.analysis.structure;
 
 import noesis.Network;
 
-public class ClusteringCoefficient extends NodeMetrics 
+public class ClusteringCoefficient extends NodeMeasure 
 {
 	public ClusteringCoefficient (Network network)
 	{

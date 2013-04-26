@@ -2,7 +2,7 @@ package noesis.analysis.structure;
 
 import noesis.Network;
 
-public class NormalizedInDegree extends NodeMetrics 
+public class NormalizedInDegree extends NodeMeasure 
 {
 		
 	public NormalizedInDegree (Network network)

@@ -16,6 +16,7 @@ import noesis.analysis.structure.Closeness;
 import noesis.analysis.structure.Decay;
 import noesis.analysis.structure.EigenvectorCentrality;
 import noesis.analysis.structure.FreemanBetweenness;
+import noesis.analysis.structure.HITS;
 import noesis.analysis.structure.KatzCentrality;
 import noesis.analysis.structure.NormalizedBetweenness;
 import noesis.analysis.structure.NormalizedDecay;
@@ -276,6 +277,24 @@ public class BowtieTest
 		measure.compute();
 
 		checkMeasure(measure, pagerank);
+	}
+
+	// HITS
+
+	private static final double HITS_CORNER = 0.125;
+	private static final double HITS_GATEWAY = 0.1875;
+	private static final double HITS_BRIDGE = 0.125;
+	private static final double hits[] = new double[] { HITS_CORNER, HITS_CORNER, HITS_GATEWAY, HITS_BRIDGE, HITS_GATEWAY, HITS_CORNER, HITS_CORNER };
+
+	@Test
+	public void testHITS ()
+	{
+		HITS measure = new HITS(netBowtie);
+		
+		measure.compute();
+
+		checkMeasure( new Vector(measure,HITS.HUB), hits);
+		checkMeasure( new Vector(measure,HITS.AUTHORITY), hits);
 	}
 	
 	// Katz centrality

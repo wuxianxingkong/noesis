@@ -10,36 +10,36 @@ import ikor.util.log.Log;
 import noesis.Attribute;
 import noesis.AttributeNetwork;
 import noesis.Network;
-import noesis.analysis.structure.NodeMetrics;
+import noesis.analysis.structure.NodeMeasure;
 import noesis.ui.model.NetworkModel;
 import noesis.ui.model.VectorUIModel;
 
 
-public class NodeMetricsAction extends Action 
+public class NodeMeasureAction extends Action 
 {
 	private Application  application;
 	private NetworkModel model;
-	private Class        metricClass;
+	private Class        measureClass;
 
-	public NodeMetricsAction (Application application, NetworkModel model, Class metric)
+	public NodeMeasureAction (Application application, NetworkModel model, Class metric)
 	{
 		this.application = application;
 		this.model = model;
-		this.metricClass = metric;
+		this.measureClass = metric;
 	}
 	
-	public NodeMetrics instantiateMetric (Network network)
+	public NodeMeasure instantiateMetric (Network network)
 	{
-		NodeMetrics metrics = null;
+		NodeMeasure metrics = null;
 		
 		try {
 		
-			Constructor constructor = metricClass.getConstructor(Network.class);
-			metrics = (NodeMetrics) constructor.newInstance(network);
+			Constructor constructor = measureClass.getConstructor(Network.class);
+			metrics = (NodeMeasure) constructor.newInstance(network);
 		
 		} catch (Exception error) {
 			
-			Log.error ("NodeMetrics: Unable to instantiate "+metricClass);
+			Log.error ("NodeMeasure: Unable to instantiate "+measureClass);
 		}
 		
 		return metrics;
@@ -49,7 +49,7 @@ public class NodeMetricsAction extends Action
 	public void run() 
 	{
 		AttributeNetwork network = model.getNetwork();
-		NodeMetrics      metrics;
+		NodeMeasure      metrics;
 		Attribute        attribute;
 		String           id;
 		

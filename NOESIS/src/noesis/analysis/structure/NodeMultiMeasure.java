@@ -3,29 +3,37 @@ package noesis.analysis.structure;
 
 import noesis.Network;
 
+import ikor.math.Matrix;
 import ikor.math.Vector;
 import ikor.model.data.DataModel;
 import ikor.model.data.IntegerModel;
 import ikor.model.data.RealModel;
 
-public abstract class NodeMetrics extends Vector
+public abstract class NodeMultiMeasure extends Matrix
 {
 	private Network network;
+	private int measures;
 	
-	protected NodeMetrics (Network network)
+	protected NodeMultiMeasure (Network network, int measures)
 	{
-		super(network.size());
+		super(measures, network.size());
 		
 		this.network = network;
+		this.measures = measures;
 	}
 	
 	public final Network getNetwork ()
 	{
-		return this.network;
+		return network;
+	}
+	
+	public final int getMeasureCount ()
+	{
+		return measures;
 	}
 	
 
-	// Computation
+	// Computation template method
 	
 	protected boolean done = false;
 	
@@ -48,22 +56,22 @@ public abstract class NodeMetrics extends Vector
 		return done;
 	}
 	
-	public abstract double compute (int node);
+	public abstract double[] compute (int node);
 
 
-	// Information
+	// Measure metadata
 	
-	public abstract String getName ();
+	public abstract String getName (int measure);
 	
-	public String getDescription ()
+	public String getDescription (int measure)
 	{
-		return getName();
+		return getName(measure);
 	}
 	
 	protected static final DataModel INTEGER_MODEL = new IntegerModel();
 	protected static final DataModel REAL_MODEL = new RealModel();
 	
-	public DataModel getModel ()
+	public DataModel getModel (int measure)
 	{
 		return REAL_MODEL; 
 	}
@@ -72,6 +80,14 @@ public abstract class NodeMetrics extends Vector
 	
 	public String toString ()
 	{
-		return getName() + ": " + toStringSummary();
+		String result = "";
+		Vector measure;
+		
+		for (int i=0; i<measures; i++) {
+			measure = new Vector(this,i);
+			result += "[" + getName(i) + ": " + measure.toStringSummary() + "]";
+		}
+		
+		return result;
 	}
 }

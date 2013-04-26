@@ -10,7 +10,7 @@ import noesis.Network;
 
 // Betweenness centrality, between (2n-1) and n^2-(n-1)
 
-public class Betweenness extends NodeMetrics 
+public class Betweenness extends NodeMeasure 
 {
 	public Betweenness (Network network)
 	{

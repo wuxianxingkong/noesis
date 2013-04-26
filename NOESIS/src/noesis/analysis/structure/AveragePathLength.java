@@ -2,7 +2,7 @@ package noesis.analysis.structure;
 
 import noesis.Network;
 
-public class AveragePathLength extends NodeMetrics 
+public class AveragePathLength extends NodeMeasure 
 {
 	int diameter;
 	

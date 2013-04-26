@@ -5,7 +5,7 @@ import noesis.Network;
 import noesis.algorithms.LinkVisitor;
 import noesis.algorithms.traversal.NetworkBFS;
 
-public class BetweennessScore extends NodeMetrics 
+public class BetweennessScore extends NodeMeasure 
 {
 	private int distance[];
 	private int geodesics[];

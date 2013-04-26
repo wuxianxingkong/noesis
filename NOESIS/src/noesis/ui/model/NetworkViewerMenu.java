@@ -23,11 +23,14 @@ import noesis.analysis.structure.AveragePathLength;
 import noesis.analysis.structure.Betweenness;
 import noesis.analysis.structure.Closeness;
 import noesis.analysis.structure.ClusteringCoefficient;
+import noesis.analysis.structure.Decay;
 import noesis.analysis.structure.Degree;
 import noesis.analysis.structure.EigenvectorCentrality;
+import noesis.analysis.structure.HITS;
 import noesis.analysis.structure.InDegree;
 import noesis.analysis.structure.KatzCentrality;
 import noesis.analysis.structure.NormalizedBetweenness;
+import noesis.analysis.structure.NormalizedDecay;
 import noesis.analysis.structure.NormalizedDegree;
 import noesis.analysis.structure.NormalizedInDegree;
 import noesis.analysis.structure.NormalizedOutDegree;
@@ -43,7 +46,8 @@ import noesis.ui.model.actions.FlipAction;
 import noesis.ui.model.actions.ForwardAction;
 import noesis.ui.model.actions.LayoutAction;
 import noesis.ui.model.actions.LinkWidthAction;
-import noesis.ui.model.actions.NodeMetricsAction;
+import noesis.ui.model.actions.NodeMeasureAction;
+import noesis.ui.model.actions.NodeMultiMeasureAction;
 import noesis.ui.model.actions.NodeSizeAction;
 import noesis.ui.model.actions.NodeStyleAction;
 import noesis.ui.model.actions.URLAction;
@@ -417,27 +421,27 @@ public class NetworkViewerMenu extends Menu
 		degree.setIcon( app.url("icons/microscope.png") );
 		analysis.add(degree);
 		
-		Option inDegree = new Option("In-degree", new NodeMetricsAction(app, model, InDegree.class) );
+		Option inDegree = new Option("In-degree", new NodeMeasureAction(app, model, InDegree.class) );
 		inDegree.setIcon( app.url("icons/microscope.png") );
 		degree.add(inDegree);
 
-		Option outDegree = new Option("Out-degree", new NodeMetricsAction(app, model, OutDegree.class) );
+		Option outDegree = new Option("Out-degree", new NodeMeasureAction(app, model, OutDegree.class) );
 		outDegree.setIcon( app.url("icons/microscope.png") );
 		degree.add(outDegree);
 
-		Option totalDegree = new Option("Total degree (in+out)", new NodeMetricsAction(app, model, Degree.class) );
+		Option totalDegree = new Option("Total degree (in+out)", new NodeMeasureAction(app, model, Degree.class) );
 		totalDegree.setIcon( app.url("icons/microscope.png") );
 		degree.add(totalDegree);
 
-		Option inDegreeNormalized = new Option("Normalized in-degree", new NodeMetricsAction(app, model, NormalizedInDegree.class) );
+		Option inDegreeNormalized = new Option("Normalized in-degree", new NodeMeasureAction(app, model, NormalizedInDegree.class) );
 		inDegreeNormalized.setIcon( app.url("icons/microscope.png") );
 		degree.add(inDegreeNormalized);
 
-		Option outDegreeNormalized = new Option("Normalized out-degree", new NodeMetricsAction(app, model, NormalizedOutDegree.class) );
+		Option outDegreeNormalized = new Option("Normalized out-degree", new NodeMeasureAction(app, model, NormalizedOutDegree.class) );
 		outDegreeNormalized.setIcon( app.url("icons/microscope.png") );
 		degree.add(outDegreeNormalized);
 		
-		Option normalizedDegree = new Option("Normalized total degree", new NodeMetricsAction(app, model, NormalizedDegree.class) );
+		Option normalizedDegree = new Option("Normalized total degree", new NodeMeasureAction(app, model, NormalizedDegree.class) );
 		normalizedDegree.setIcon( app.url("icons/microscope.png") );
 		degree.add(normalizedDegree);
 
@@ -445,46 +449,46 @@ public class NetworkViewerMenu extends Menu
 		reachability.setIcon( app.url("icons/microscope.png") );
 		analysis.add(reachability);
 		
-		Option eccentricity = new Option("Eccentricity", new NodeMetricsAction(app, model, Eccentricity.class) );
+		Option eccentricity = new Option("Eccentricity", new NodeMeasureAction(app, model, Eccentricity.class) );
 		eccentricity.setIcon( app.url("icons/microscope.png") );
 		reachability.add(eccentricity);
 
-		Option avl = new Option("Average path length", new NodeMetricsAction(app, model, AveragePathLength.class) );
+		Option avl = new Option("Average path length", new NodeMeasureAction(app, model, AveragePathLength.class) );
 		avl.setIcon( app.url("icons/microscope.png") );
 		reachability.add(avl);
 
-		Option closeness = new Option("Closeness", new NodeMetricsAction(app, model, Closeness.class) );
+		Option closeness = new Option("Closeness", new NodeMeasureAction(app, model, Closeness.class) );
 		closeness.setIcon( app.url("icons/microscope.png") );
 		reachability.add(closeness);		
 
-		Option adjustedCloseness = new Option("Adjusted closeness", new NodeMetricsAction(app, model, AdjustedCloseness.class) );
+		Option adjustedCloseness = new Option("Adjusted closeness", new NodeMeasureAction(app, model, AdjustedCloseness.class) );
 		adjustedCloseness.setIcon( app.url("icons/microscope.png") );
 		reachability.add(adjustedCloseness);		
 		
-		Option decay = new Option("Decay", null ); // new NodeDecayAction(app, model) );
+		Option decay = new Option("Decay", new NodeMeasureAction(app, model, Decay.class) ); 
 		decay.setIcon( app.url("icons/microscope.png") );
 		reachability.add(decay);
-		decay.disable(); // TODO delta parameter...
+		// TODO Decay: delta parameter...
 		
-		Option normalizedDecay = new Option("Normalized decay", null ); // new NodeDecayAction(app, model) );
+		Option normalizedDecay = new Option("Normalized decay", new NodeMeasureAction(app, model, NormalizedDecay.class) );
 		normalizedDecay.setIcon( app.url("icons/microscope.png") );
 		reachability.add(normalizedDecay);
-		normalizedDecay.disable(); // TODO delta parameter...
+		// TODO Decay: delta parameter...
 
 		
 		Menu betweenness = new Menu("Betweenness" );
 		betweenness.setIcon( app.url("icons/microscope.png") );
 		analysis.add(betweenness);
 		
-		Option adjustedBetweenness = new Option("Betweenness", new NodeMetricsAction(app, model, AdjustedBetweenness.class) );
+		Option adjustedBetweenness = new Option("Betweenness", new NodeMeasureAction(app, model, AdjustedBetweenness.class) );
 		adjustedBetweenness.setIcon( app.url("icons/microscope.png") );
 		betweenness.add(adjustedBetweenness);		
 
-		Option totalBetweenness = new Option("Betweenness score", new NodeMetricsAction(app, model, Betweenness.class) );
+		Option totalBetweenness = new Option("Betweenness score", new NodeMeasureAction(app, model, Betweenness.class) );
 		totalBetweenness.setIcon( app.url("icons/microscope.png") );
 		betweenness.add(totalBetweenness);		
 
-		Option normalizedBetweenness = new Option("Normalized betweenness", new NodeMetricsAction(app, model, NormalizedBetweenness.class) );
+		Option normalizedBetweenness = new Option("Normalized betweenness", new NodeMeasureAction(app, model, NormalizedBetweenness.class) );
 		normalizedBetweenness.setIcon( app.url("icons/microscope.png") );
 		betweenness.add(normalizedBetweenness);		
 
@@ -493,20 +497,24 @@ public class NetworkViewerMenu extends Menu
 		influence.setIcon( app.url("icons/microscope.png") );
 		analysis.add(influence);
 		
-		Option pagerank = new Option("PageRank", new NodeMetricsAction(app, model, PageRank.class) );
+		Option pagerank = new Option("PageRank", new NodeMeasureAction(app, model, PageRank.class) );
 		pagerank.setIcon( app.url("icons/microscope.png") );
 		influence.add(pagerank);		
 
-		Option eigenvector = new Option("Eigenvector centrality", new NodeMetricsAction(app, model, EigenvectorCentrality.class) );
+		Option hits = new Option("HITS: Hubs & Authorities", new NodeMultiMeasureAction(app, model, HITS.class) );
+		hits.setIcon( app.url("icons/microscope.png") );
+		influence.add(hits);		
+
+		Option eigenvector = new Option("Eigenvector centrality", new NodeMeasureAction(app, model, EigenvectorCentrality.class) );
 		eigenvector.setIcon( app.url("icons/microscope.png") );
 		influence.add(eigenvector);		
 
-		Option katz = new Option("Katz centrality", new NodeMetricsAction(app, model, KatzCentrality.class) );
+		Option katz = new Option("Katz centrality", new NodeMeasureAction(app, model, KatzCentrality.class) );
 		katz.setIcon( app.url("icons/microscope.png") );
 		influence.add(katz);		
 		// TODO Katz centrality: alpha & beta parameters
 		
-		Option cc = new Option("Clustering coefficient", new NodeMetricsAction(app, model, ClusteringCoefficient.class) );
+		Option cc = new Option("Clustering coefficient", new NodeMeasureAction(app, model, ClusteringCoefficient.class) );
 		cc.setIcon( app.url("icons/microscope.png") );
 		analysis.add(cc);		
 		

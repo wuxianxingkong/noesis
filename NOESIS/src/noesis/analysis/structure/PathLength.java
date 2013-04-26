@@ -6,7 +6,7 @@ import noesis.algorithms.LinkVisitor;
 import noesis.algorithms.traversal.NetworkBFS;
 import noesis.algorithms.traversal.NetworkTraversal;
 
-public class PathLength extends NodeMetrics 
+public class PathLength extends NodeMeasure 
 {
 	private int node;
 	

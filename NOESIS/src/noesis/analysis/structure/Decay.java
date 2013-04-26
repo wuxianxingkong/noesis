@@ -11,9 +11,17 @@ import noesis.Network;
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public class Decay extends NodeMetrics 
+public class Decay extends NodeMeasure 
 {
+	public static final double DEFAULT_DECAY = 0.5;
+	
 	private double delta;
+	
+	
+	public Decay (Network network)
+	{
+		this(network, DEFAULT_DECAY);
+	}
 	
 	public Decay (Network network, double delta)
 	{

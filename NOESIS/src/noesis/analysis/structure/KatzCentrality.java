@@ -13,7 +13,7 @@ import noesis.Network;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-public class KatzCentrality  extends NodeMetrics 
+public class KatzCentrality  extends NodeMeasure 
 {
 	public static int MAX_ITERATIONS = 100;
 	public static double EPSILON = 1e-6;
@@ -37,6 +37,16 @@ public class KatzCentrality  extends NodeMetrics
 		this.alpha = alpha;
 		this.beta = beta;
 	}	
+	
+	public double getAlpha ()
+	{
+		return alpha;
+	}
+	
+	public double getBeta ()
+	{
+		return beta;
+	}
 
 	
 	@Override

@@ -3,7 +3,7 @@ package noesis.analysis.structure;
 import ikor.model.data.DataModel;
 import noesis.Network;
 
-public class InDegree extends NodeMetrics 
+public class InDegree extends NodeMeasure 
 {
 		
 	public InDegree (Network network)

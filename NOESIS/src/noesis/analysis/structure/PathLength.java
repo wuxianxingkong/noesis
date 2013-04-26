@@ -53,7 +53,7 @@ public class PathLength extends NodeMeasure
 	{
 		checkDone();
 		
-		int reachable = nonzero();
+		int reachable = reachableNodes();
 		
 		if (reachable>0)
 			return sum() / reachable;
@@ -65,7 +65,7 @@ public class PathLength extends NodeMeasure
 	{
 		checkDone();
 		
-		int    reachable = nonzero();
+		int    reachable = reachableNodes();
 		double sumPathLengths = sum();
 		
 		if (sumPathLengths>0)
@@ -78,7 +78,7 @@ public class PathLength extends NodeMeasure
 	{
 		checkDone();
 		
-		return ((double)nonzero())/(size()-1); 
+		return ((double)reachableNodes())/(size()-1); 
 	}
 	
 	public double decay (double delta)
@@ -96,7 +96,7 @@ public class PathLength extends NodeMeasure
 		return sum;
 	}
 	
-	private int nonzero ()
+	public int reachableNodes ()
 	{
 		int total = 0;
 		

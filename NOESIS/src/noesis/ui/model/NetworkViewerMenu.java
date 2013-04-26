@@ -23,6 +23,7 @@ import noesis.analysis.structure.AveragePathLength;
 import noesis.analysis.structure.Betweenness;
 import noesis.analysis.structure.Closeness;
 import noesis.analysis.structure.ClusteringCoefficient;
+import noesis.analysis.structure.ConnectedComponents;
 import noesis.analysis.structure.Decay;
 import noesis.analysis.structure.Degree;
 import noesis.analysis.structure.EigenvectorCentrality;
@@ -513,6 +514,10 @@ public class NetworkViewerMenu extends Menu
 		katz.setIcon( app.url("icons/microscope.png") );
 		influence.add(katz);		
 		// TODO Katz centrality: alpha & beta parameters
+
+		Option scc = new Option("Connected components", new NodeMultiMeasureAction(app, model, ConnectedComponents.class) );
+		scc.setIcon( app.url("icons/microscope.png") );
+		analysis.add(scc);		
 		
 		Option cc = new Option("Clustering coefficient", new NodeMeasureAction(app, model, ClusteringCoefficient.class) );
 		cc.setIcon( app.url("icons/microscope.png") );

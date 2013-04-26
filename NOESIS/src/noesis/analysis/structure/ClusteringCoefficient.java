@@ -12,7 +12,7 @@ public class ClusteringCoefficient extends NodeMeasure
 	@Override
 	public String getName() 
 	{
-		return "cc";
+		return "clustering";
 	}	
 	
 	@Override

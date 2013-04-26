@@ -29,6 +29,14 @@ public class Vector extends Matrix
 		this.transposed = false;
 	}
 	
+	public Vector (Matrix data, int row)
+	{
+		this(data.columns());
+		
+		for (int j=0; j<data.columns(); j++)
+			this.data[j] = data.get(row, j);
+	}
+	
 	// Dimensions
 	
 	public int size() 

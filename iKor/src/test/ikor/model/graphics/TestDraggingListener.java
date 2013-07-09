@@ -35,10 +35,10 @@ public class TestDraggingListener implements DrawingUpdateListener
 				
 				if ( (element instanceof Line) && (name!=null) ) {
 					
-					if (name.endsWith(id)) {
+					if (name.endsWith("-"+id)) {
 						((Line)element).setEndX(x);
 						((Line)element).setEndY(y);
-					} else if (name.contains(id)) {
+					} else if (name.contains(id+"-")) {
 						((Line)element).setStartX(x);
 						((Line)element).setStartY(y);
 					}

@@ -48,10 +48,6 @@ public class TestDrawing
 			drawing.add ( new Rectangle("background", back, null, 0, 0, 600, 600));
 		}
 		
-		// External image 
-		// Bitmap bitmap = new Bitmap("http://elvex.ugr.es/image/logo/decsai.png", 100, 100, 187, 219);
-		// bitmap.setAngle(Math.PI/3);
-		// drawing.add( bitmap );
 
 		// Geometrical shapes
 		
@@ -116,6 +112,11 @@ public class TestDrawing
 		shape.setRotation(Math.PI/4);
 		drawing.add(shape);
 		
+		// External image 
+		// Bitmap bitmap = new Bitmap("http://elvex.ugr.es/image/logo/decsai.png", 100, 100, 187, 219);
+		// bitmap.setAngle(Math.PI/3);
+		// drawing.add( bitmap );
+
 		// A network
 		
 		int K = 15;

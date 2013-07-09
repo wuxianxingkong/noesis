@@ -269,7 +269,10 @@ public class SVGDrawingWriter extends DrawingWriter
 			Line line = (Line) element;
 			
 			writer.writeStartElement("line");
-			writer.writeAttribute("id", line.getId());
+			
+			if (line.getId()!=null)
+				writer.writeAttribute("id", line.getId());
+			
 			writer.writeAttribute("x1", ""+line.getStartX());
 			writer.writeAttribute("y1", ""+line.getStartY());
 			writer.writeAttribute("x2", ""+line.getEndX());
@@ -289,7 +292,10 @@ public class SVGDrawingWriter extends DrawingWriter
 			Bitmap image = (Bitmap) element;
 			
 			writer.writeStartElement("image");
-			writer.writeAttribute("id", image.getId());
+			
+			if (image.getId()!=null)
+				writer.writeAttribute("id", image.getId());
+			
 			writer.writeAttribute("x", ""+image.getX() );
 			writer.writeAttribute("y", ""+image.getY() );
 			writer.writeAttribute("height", ""+image.getHeight() );
@@ -309,7 +315,10 @@ public class SVGDrawingWriter extends DrawingWriter
 			Rectangle rectangle = (Rectangle) element;
 			
 			writer.writeStartElement("rect");
-			writer.writeAttribute("id", rectangle.getId());
+			
+			if (rectangle.getId()!=null)
+				writer.writeAttribute("id", rectangle.getId());
+			
 			writer.writeAttribute("x", ""+rectangle.getX() );
 			writer.writeAttribute("y", ""+rectangle.getY() );
 			writer.writeAttribute("width", ""+rectangle.getWidth() );
@@ -336,7 +345,9 @@ public class SVGDrawingWriter extends DrawingWriter
 			Polygon polygon = (Polygon) element;
 			
 			writer.writeStartElement("polygon");
-			writer.writeAttribute("id", polygon.getId());
+			
+			if (polygon.getId()!=null)
+				writer.writeAttribute("id", polygon.getId());
 			
 			// points
 			
@@ -370,7 +381,10 @@ public class SVGDrawingWriter extends DrawingWriter
 			Circle circle = (Circle) element;
 			
 			writer.writeStartElement("circle");
-			writer.writeAttribute("id", circle.getId());
+			
+			if (circle.getId()!=null)
+				writer.writeAttribute("id", circle.getId());
+			
 			writer.writeAttribute("cx", ""+circle.getCenterX() );
 			writer.writeAttribute("cy", ""+circle.getCenterY() );
 			writer.writeAttribute("r", ""+circle.getRadius() );
@@ -396,7 +410,10 @@ public class SVGDrawingWriter extends DrawingWriter
 			Ellipse ellipse = (Ellipse) element;
 			
 			writer.writeStartElement("ellipse");
-			writer.writeAttribute("id", ellipse.getId());
+			
+			if (ellipse.getId()!=null)
+				writer.writeAttribute("id", ellipse.getId());
+			
 			writer.writeAttribute("cx", ""+ellipse.getCenterX() );
 			writer.writeAttribute("cy", ""+ellipse.getCenterY() );
 			writer.writeAttribute("rx", ""+ellipse.getRadiusX() );
@@ -427,7 +444,12 @@ public class SVGDrawingWriter extends DrawingWriter
 			int dy = (int) ( arc.getCenterY() - Math.sin(arc.getEndAngle())*arc.getRadiusY() );
 			
 			writer.writeStartElement("path");
-			writer.writeAttribute("id", arc.getId());
+			
+			if (arc.getId()!=null)
+				writer.writeAttribute("id", arc.getId());
+			
+			// ref. http://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
+			
 			writer.writeAttribute("d", "M " + arc.getCenterX() + " " + arc.getCenterY() + " "
 					                 + "L " + sx + " " + sy + " "
 					                 + "A " + arc.getRadiusX() + " " + arc.getRadiusY() + " "

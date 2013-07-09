@@ -17,13 +17,18 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
-// TODO Shape rotations
-// TODO Text / fonts
-
+/**
+ * SVG Writer: Scalable Vector Graphics.
+ * - W3C standard: http://www.w3.org/TR/SVG
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
 public class SVGDrawingWriter extends DrawingWriter 
 {
 	Dictionary<Class,SVGStyleWriter> styleWriters;
 	Dictionary<Class,SVGElementWriter> elementWriters;
+	
+	// Constructor
 	
 	public SVGDrawingWriter (Drawing drawing) 
 	{
@@ -45,9 +50,12 @@ public class SVGDrawingWriter extends DrawingWriter
 		elementWriters.set(Ellipse.class, new SVGEllipseWriter() );
 		elementWriters.set(Arc.class, new SVGArcWriter() );
 		elementWriters.set(Bitmap.class, new SVGBitmapWriter() );
-		elementWriters.set(Text.class, null);
+		elementWriters.set(Text.class, new SVGTextWriter() );
 	}
 
+	
+	// Writer interface
+	
 	@Override
 	public void write(OutputStream writer) 
 		throws IOException
@@ -84,6 +92,9 @@ public class SVGDrawingWriter extends DrawingWriter
 		
 	}
 	
+	
+	// Styles
+	
 	private void writeStyles (XMLStreamWriter xmlWriter)
 		throws XMLStreamException
 	{		
@@ -117,6 +128,8 @@ public class SVGDrawingWriter extends DrawingWriter
 	}
 	
 	
+	// Elements
+	
 	private void writeElements (XMLStreamWriter xmlWriter)
 		throws XMLStreamException
 	{
@@ -146,6 +159,8 @@ public class SVGDrawingWriter extends DrawingWriter
 	}
 
 	
+	// Utilities
+	
 	public String rgbColor (Color color)
 	{
 		return String.format("#%06x",color.getRGB() & 0x00ffffff);
@@ -156,7 +171,9 @@ public class SVGDrawingWriter extends DrawingWriter
 		return String.format(Locale.ENGLISH, "%.3f", (color.getRGB() >>> 24) / 255.0);
 	}
 	
-	// Styles
+	
+	// Style writers
+	// -------------
 	
 	private abstract class SVGStyleWriter 
 	{
@@ -164,6 +181,9 @@ public class SVGDrawingWriter extends DrawingWriter
 
 	}
 
+	
+	// Radial gradient
+	
 	private class SVGRadialGradientWriter extends SVGStyleWriter
 	{
 		@Override
@@ -192,6 +212,9 @@ public class SVGDrawingWriter extends DrawingWriter
 		}
 	}
 	
+	
+	// Linear gradient 
+	
 	private class SVGLinearGradientWriter extends SVGStyleWriter
 	{
 		@Override
@@ -218,8 +241,10 @@ public class SVGDrawingWriter extends DrawingWriter
 			writer.writeEndElement();			
 		}
 	}
-		
-	// Elements
+	
+	
+	// Element writers
+	// ---------------
 	
 	private abstract class SVGElementWriter
 	{
@@ -260,6 +285,9 @@ public class SVGDrawingWriter extends DrawingWriter
 		}
 	}
 	
+	
+	// Line
+	
 	private class SVGLineWriter extends SVGElementWriter
 	{
 		@Override
@@ -283,6 +311,9 @@ public class SVGDrawingWriter extends DrawingWriter
 		}
 	}
 
+	
+	// Bitmap
+	
 	private class SVGBitmapWriter extends SVGElementWriter
 	{
 		@Override
@@ -306,6 +337,9 @@ public class SVGDrawingWriter extends DrawingWriter
 		}
 	}
 
+	
+	// Rectangle
+	
 	private class SVGRectangleWriter extends SVGElementWriter
 	{
 		@Override
@@ -324,6 +358,9 @@ public class SVGDrawingWriter extends DrawingWriter
 			writer.writeAttribute("width", ""+rectangle.getWidth() );
 			writer.writeAttribute("height", ""+rectangle.getHeight() );
 			
+			if (rectangle.getRotation()!=0.0)
+				writer.writeAttribute("transform", "rotate("+(int)(180*rectangle.getRotation()/Math.PI)+" "+rectangle.getX()+","+rectangle.getY()+")");
+			
 			if (styleReference(rectangle.getStyle())!=null)
 				writer.writeAttribute("fill", styleReference(rectangle.getStyle()) );
 
@@ -336,6 +373,9 @@ public class SVGDrawingWriter extends DrawingWriter
 		}
 	}
 
+	
+	// Polygon
+	
 	private class SVGPolygonWriter extends SVGElementWriter
 	{
 		@Override
@@ -358,6 +398,11 @@ public class SVGDrawingWriter extends DrawingWriter
 			
 			writer.writeAttribute("points", coordinates );
 			
+			// rotation
+			
+			if (polygon.getRotation()!=0.0)
+				writer.writeAttribute("transform", "rotate("+(int)(180*polygon.getRotation()/Math.PI)+" "+polygon.getX()+","+polygon.getY()+")");
+			
 			// style
 			
 			if (styleReference(polygon.getStyle())!=null)
@@ -371,6 +416,9 @@ public class SVGDrawingWriter extends DrawingWriter
 			writer.writeEndElement();			
 		}
 	}
+	
+	
+	// Circle
 	
 	private class SVGCircleWriter extends SVGElementWriter
 	{
@@ -401,6 +449,9 @@ public class SVGDrawingWriter extends DrawingWriter
 		}
 	}
 
+	
+	// Ellipse
+	
 	private class SVGEllipseWriter extends SVGElementWriter
 	{
 		@Override
@@ -419,6 +470,9 @@ public class SVGDrawingWriter extends DrawingWriter
 			writer.writeAttribute("rx", ""+ellipse.getRadiusX() );
 			writer.writeAttribute("ry", ""+ellipse.getRadiusY() );
 			
+			if (ellipse.getRotation()!=0.0)
+				writer.writeAttribute("transform", "rotate("+(int)(180*ellipse.getRotation()/Math.PI)+" "+ellipse.getCenterX()+","+ellipse.getCenterY()+")");
+
 			if (styleReference(ellipse.getStyle())!=null)
 				writer.writeAttribute("fill", styleReference(ellipse.getStyle()) );
 
@@ -431,6 +485,9 @@ public class SVGDrawingWriter extends DrawingWriter
 		}
 	}
 
+	
+	// Arc
+	
 	private class SVGArcWriter extends SVGElementWriter
 	{
 		@Override
@@ -458,6 +515,8 @@ public class SVGDrawingWriter extends DrawingWriter
 					                        + (arc.getStartAngle()<arc.getEndAngle()?"0 ":"1 ")  // sweep flag (positive angle direction)
 					                        + dx + " " + dy);
 					          
+			if (arc.getRotation()!=0.0)
+				writer.writeAttribute("transform", "rotate("+(int)(180*arc.getRotation()/Math.PI)+" "+arc.getCenterX()+","+arc.getCenterY()+")");
 			
 			if (styleReference(arc.getStyle())!=null)
 				writer.writeAttribute("fill", styleReference(arc.getStyle()) );
@@ -467,6 +526,49 @@ public class SVGDrawingWriter extends DrawingWriter
 
 			writer.writeAttribute("style", styleString(arc.getStyle(),arc.getBorder()) );
 
+			writer.writeEndElement();			
+		}
+	}
+
+	
+	// Text
+	
+	private class SVGTextWriter extends SVGElementWriter
+	{
+		@Override
+		public void write(DrawingElement element, XMLStreamWriter writer)
+			throws XMLStreamException 
+		{
+			Text text = (Text) element;
+			
+			writer.writeStartElement("text");
+			
+			if (text.getId()!=null)
+				writer.writeAttribute("id", text.getId());
+			
+			writer.writeAttribute("x", ""+text.getX() );
+			writer.writeAttribute("y", ""+text.getY() );
+			
+			if (styleReference(text.getStyle())!=null)
+				writer.writeAttribute("fill", styleReference(text.getStyle()) );
+
+			if (styleReference(text.getBorder())!=null)
+				writer.writeAttribute("stroke", styleReference(text.getBorder()) );
+			
+			if (text.getStyle() instanceof FontStyle) {
+				FontStyle font = (FontStyle) text.getStyle();
+				writer.writeAttribute("font-family", font.getFont().getFamily() );
+				writer.writeAttribute("font-size", ""+font.getFont().getSize() );
+				
+				if (font.getAngle()!=0.0) {
+					writer.writeAttribute("transform", "rotate("+(int)(180*font.getAngle()/Math.PI)+" "+text.getX()+","+text.getY()+")");
+				}
+			}
+
+			writer.writeAttribute("style", styleString(text.getStyle(),text.getBorder()) );
+
+			writer.writeCharacters(text.getText());
+			
 			writer.writeEndElement();			
 		}
 	}

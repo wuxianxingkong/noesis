@@ -1,6 +1,5 @@
 package ikor.model;
 
-
 /**
  * Observer design pattern (http://en.wikipedia.org/wiki/Observer_pattern), to be used with the Subject class.
  * 

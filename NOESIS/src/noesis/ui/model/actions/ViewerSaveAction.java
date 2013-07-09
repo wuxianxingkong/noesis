@@ -11,7 +11,7 @@ import noesis.io.GMLNetworkWriter;
 import noesis.io.GraphMLNetworkWriter;
 import noesis.io.NetworkWriter;
 import noesis.io.PajekNetworkWriter;
-import noesis.io.graphics.ImageNetworkWriter;
+import noesis.io.graphics.NetworkImageWriter;
 
 import noesis.ui.model.NetworkViewerUIModel;
 
@@ -68,9 +68,11 @@ public class ViewerSaveAction extends Action
 					else if (format.equals("pajek"))
 						writer = new PajekNetworkWriter(new FileWriter(filename));
 					else if (format.equals("png"))
-						writer = new ImageNetworkWriter(new FileOutputStream(filename), ui.getFigure().getRenderer(), "png");
+						writer = new NetworkImageWriter(new FileOutputStream(filename), ui.getFigure().getRenderer(), "png");
 					else if (format.equals("jpg"))
-						writer = new ImageNetworkWriter(new FileOutputStream(filename), ui.getFigure().getRenderer(), "jpg");						
+						writer = new NetworkImageWriter(new FileOutputStream(filename), ui.getFigure().getRenderer(), "jpg");						
+					else if (format.equals("svg"))
+						writer = new NetworkImageWriter(new FileOutputStream(filename), ui.getFigure().getRenderer(), "svg");						
 					else
 						throw new IOException("Unknown output network file format.");
 

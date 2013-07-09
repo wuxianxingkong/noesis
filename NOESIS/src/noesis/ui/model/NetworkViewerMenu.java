@@ -155,7 +155,6 @@ public class NetworkViewerMenu extends Menu
 		Option saveSVG =new Option("SVG image", new ViewerSaveAction(ui, "svg") );
 		saveSVG.setIcon( app.url("icons/kiviat.png") );
 		export.add(saveSVG);
-	    saveSVG.disable();
 
 		Option savePNG=new Option("PNG image", new ViewerSaveAction(ui, "png") );
 		savePNG.setIcon( app.url("icons/kiviat.png") );

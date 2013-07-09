@@ -1,6 +1,10 @@
 package test.ikor.model.graphics;
 
 import ikor.model.graphics.*;
+import ikor.model.graphics.io.DrawingWriter;
+import ikor.model.graphics.io.JPGDrawingWriter;
+import ikor.model.graphics.io.PNGDrawingWriter;
+import ikor.model.graphics.io.SVGDrawingWriter;
 import ikor.model.graphics.styles.*;
 import ikor.model.graphics.swing.JDrawingComponent;
 
@@ -9,6 +13,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -200,17 +205,20 @@ public class TestDrawing
 		JPanel  buttons = new JPanel();
 		JButton buttonJPG = new JButton("JPG");
 		JButton buttonPNG = new JButton("PNG");
+		JButton buttonSVG = new JButton("SVG");
 		
 		control = new JDrawingComponent(drawing);
 		control.setTooltipProvider( new TestTooltipProvider() );
 		control.setSelectionListener ( new TestSelectionListener(drawing) );
 		control.setDraggingListener( new TestDraggingListener(drawing) );
 		
-		buttonJPG.addActionListener( new SaveFileActionListener(control,"jpg") );
-		buttonPNG.addActionListener( new SaveFileActionListener(control,"png") );
+		buttonJPG.addActionListener( new SaveFileActionListener( new JPGDrawingWriter(drawing) ) );
+		buttonPNG.addActionListener( new SaveFileActionListener( new PNGDrawingWriter(drawing) ) );
+		buttonSVG.addActionListener( new SaveFileActionListener( new SVGDrawingWriter(drawing) ) );
 		
 		buttons.add(buttonJPG);
 		buttons.add(buttonPNG);
+		buttons.add(buttonSVG);
 
 		panel.setLayout( new BorderLayout() );
 		panel.add(buttons, BorderLayout.SOUTH);
@@ -225,13 +233,11 @@ public class TestDrawing
 	
 	public class SaveFileActionListener implements ActionListener
 	{
-		private JDrawingComponent component;
-		private String format;
+		private DrawingWriter writer;
 		
-		public SaveFileActionListener (JDrawingComponent component, String format)
+		public SaveFileActionListener ( DrawingWriter writer)
 		{
-			this.component = component;
-			this.format = format;
+			this.writer = writer;
 		}
 
 		@Override
@@ -240,7 +246,11 @@ public class TestDrawing
 			JFileChooser fileChooser = new JFileChooser();
 			
 			if (fileChooser.showSaveDialog(control) == JFileChooser.APPROVE_OPTION)
-				component.save(fileChooser.getSelectedFile().getPath(), format);
+				try {
+					writer.write(fileChooser.getSelectedFile());
+				} catch (IOException error) {
+					System.err.println(error);
+				}
 		}
 		
 	}

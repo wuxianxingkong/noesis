@@ -513,7 +513,8 @@ public class SVGDrawingWriter extends DrawingWriter
 					                        + "0 "  // x-axis rotation
 					                        + (arc.getExtent()>=Math.PI?"1 ":"0 ")  // large arc flag 
 					                        + (arc.getStartAngle()<arc.getEndAngle()?"0 ":"1 ")  // sweep flag (positive angle direction)
-					                        + dx + " " + dy);
+					                        + dx + " " + dy + " "
+					                 + "L " + arc.getCenterX() + " " + arc.getCenterY());
 					          
 			if (arc.getRotation()!=0.0)
 				writer.writeAttribute("transform", "rotate("+(int)(180*arc.getRotation()/Math.PI)+" "+arc.getCenterX()+","+arc.getCenterY()+")");

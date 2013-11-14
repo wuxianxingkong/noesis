@@ -7,10 +7,11 @@ public class Procedure implements IModel
 {
 	private Identifier id;
 	
-	//@Optional
-	//@Prefix("(")
-	//@Suffix(")")
-	//Parameter[] parameters;
+	@Optional
+	@Prefix("\\(")
+	@Separator(";")	
+	@Suffix("\\)")
+	private Variable[] parameters;
 	
 	@Prefix(";")
 	private Block block;
@@ -24,6 +25,16 @@ public class Procedure implements IModel
 	public Block getBlock ()
 	{
 		return block;
+	}
+	
+	public Variable[] getParameters ()
+	{
+		return parameters;
+	}
+	
+	public Variable getParameter (int n)
+	{
+		return parameters[n];
 	}
 
 }

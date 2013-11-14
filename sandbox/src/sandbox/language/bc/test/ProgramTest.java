@@ -56,6 +56,7 @@ public class ProgramTest
 		assertEquals( "simple", program.getEntryPoint().getId().toString() );
 		assertNotNull ( program.getEntryPoint().getBlock() );
 		assertEquals( 1, program.getEntryPoint().getBlock().getVariables().length );
+		assertEquals( "x", program.getEntryPoint().getBlock().getVariable(0).getId().toString() );
 		assertEquals( 2, program.getEntryPoint().getBlock().getStatements().length );
 	}
 
@@ -68,6 +69,8 @@ public class ProgramTest
 		assertEquals( "simple", program.getEntryPoint().getId().toString() );
 		assertNotNull ( program.getEntryPoint().getBlock() );
 		assertEquals( 2, program.getEntryPoint().getBlock().getVariables().length );
+		assertEquals( "x", program.getEntryPoint().getBlock().getVariable(0).getId().toString() );
+		assertEquals( "y", program.getEntryPoint().getBlock().getVariable(1).getId().toString() );
 		assertEquals( 2, program.getEntryPoint().getBlock().getStatements().length );
 	}
 
@@ -87,14 +90,41 @@ public class ProgramTest
 		assertNotNull ( program.getEntryPoint().getBlock() );
 		assertEquals( 2, program.getEntryPoint().getBlock().getVariables().length );
 		assertEquals( 2, program.getEntryPoint().getBlock().getStatements().length );
-		assertEquals( "entrada x", program.getEntryPoint().getBlock().getStatements()[0].toString() );
-		assertEquals( "salida x", program.getEntryPoint().getBlock().getStatements()[1].toString() );
+		assertEquals( "entrada x", program.getEntryPoint().getBlock().getStatement(0).toString() );
+		assertEquals( "salida x", program.getEntryPoint().getBlock().getStatement(1).toString() );
 		assertEquals( 1, program.getEntryPoint().getBlock().getProcedures().length );
-		assertEquals( "simple", program.getEntryPoint().getBlock().getProcedures()[0].getId().toString() );
+		assertEquals( "simple", program.getEntryPoint().getBlock().getProcedure(0).getId().toString() );
 	}
 
-	
 	@Test
+	public void testParameters()
+		throws Exception
+	{
+		Program program = parse ( "procedimiento compuesto; "
+	                            + "inicio "
+				                + "  var x: tipo; y: tipo;"
+				                + "  procedimiento simple (a: tipo; b:tipo); inicio fin; "
+	                            + "  entrada x;"
+				                + "  salida x;"
+				                + "fin.");
+		
+		assertEquals( "compuesto", program.getEntryPoint().getId().toString() );
+		assertNotNull ( program.getEntryPoint().getBlock() );
+		assertEquals( 2, program.getEntryPoint().getBlock().getVariables().length );
+		assertEquals( 2, program.getEntryPoint().getBlock().getStatements().length );
+		assertEquals( "entrada x", program.getEntryPoint().getBlock().getStatement(0).toString() );
+		assertEquals( "salida x", program.getEntryPoint().getBlock().getStatement(1).toString() );
+		assertEquals( 1, program.getEntryPoint().getBlock().getProcedures().length );
+		
+		Procedure procedure = program.getEntryPoint().getBlock().getProcedure(0);
+		
+		assertEquals( "simple", procedure.getId().toString() );
+		assertEquals( 2, procedure.getParameters().length );
+		assertEquals( "a", procedure.getParameter(0).getId().toString() );
+		assertEquals( "b", procedure.getParameter(1).getId().toString() );
+	}
+	
+	@Test(expected=org.modelcc.parser.ParserException.class)
 	public void testEmptyVarProgram()
 		throws Exception
 	{

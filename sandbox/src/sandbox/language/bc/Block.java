@@ -8,14 +8,13 @@ public class Block extends Statement implements IModel
 {
 	@Optional
 	@Prefix("(V|v)(A|a)(R|r)")
-	//@Suffix("(F|f)(I|i)(N|n);")
-	@Minimum(0) // TODO Workaround
+	@Separator(";")
+	@Suffix(";")
 	private Variable[] variables;
 	
 	@Optional
 	@Separator(";")
 	@Suffix(";")
-	@Minimum(0) // TODO Workaround
 	Procedure[] procedures;
 	
 	@Optional
@@ -29,14 +28,29 @@ public class Block extends Statement implements IModel
 		return variables;
 	}
 	
+	public Variable getVariable (int n)
+	{
+		return variables[n];
+	}
+	
 	public Procedure[] getProcedures ()
 	{
 		return procedures;
 	}
 	
+	public Procedure getProcedure (int n)
+	{
+		return procedures[n];
+	}
+	
 	public Statement[] getStatements ()
 	{
 		return statements;
+	}
+	
+	public Statement getStatement (int n)
+	{
+		return statements[n];
 	}
 	
 }

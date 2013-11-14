@@ -4,9 +4,19 @@ import org.modelcc.*;
 
 public class Variable implements IModel
 {
-	Identifier id;
+	private Identifier id;
 	
 	@Prefix(":")
-	@Suffix(";")
-	Type type;
+	private Type type;
+	
+	
+	public Identifier getId ()
+	{
+		return id;
+	}
+	
+	public Type getType ()
+	{
+		return type;
+	}
 }

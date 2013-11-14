@@ -17,7 +17,7 @@ import sandbox.language.awk.AWKProgram;
 public class VerySimpleTest 
 {
 	@Test
-	public void testverySimpleProgram()
+	public void testVerySimpleProgram()
 		throws Exception
 	{
 		AWKProgram program = parse("/foo/ { print $0 }");
@@ -42,7 +42,7 @@ public class VerySimpleTest
 	}
 
 	@Test
-	public void testOptionalSentence()
+	public void testOptionalAction()
 		throws Exception
 	{
 		AWKProgram program = parse("/foo/");

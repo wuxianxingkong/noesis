@@ -71,16 +71,39 @@ public class ProgramTest
 		assertEquals( 2, program.getEntryPoint().getBlock().getStatements().length );
 	}
 
+	@Test
+	public void testEmptyVarProgram()
+		throws Exception
+	{
+		Program program = parse("procedimiento simple; inicio var fin; entrada x; salida x; fin.");
+		
+		assertEquals( "simple", program.getEntryPoint().getId().toString() );
+		assertNotNull ( program.getEntryPoint().getBlock() );
+		assertNull (program.getEntryPoint().getBlock().getVariables() );
+		assertEquals( 2, program.getEntryPoint().getBlock().getStatements().length );
+	}
+
 	@Test(expected=org.modelcc.parser.ParserException.class)
-	public void testInvalidProgram()
+	public void testInvalidProgram1()
 		throws Exception
 	{
 		Program program = parse("procedimiento simple; inicio fin;");
 		
 		assertEquals( "simple", program.getEntryPoint().getId().toString() );
-		assertNull ( program.getEntryPoint().getBlock() );
+		assertNotNull ( program.getEntryPoint().getBlock() );
+		assertNull ( program.getEntryPoint().getBlock().getVariables() );
+		assertNull ( program.getEntryPoint().getBlock().getStatements() );
 	}
 
+	@Test(expected=org.modelcc.parser.ParserException.class)
+	public void testInvalidProgram2()
+		throws Exception
+	{
+		Program program = parse("procedimiento simple;");
+		
+		assertEquals( "simple", program.getEntryPoint().getId().toString() );
+		assertNull ( program.getEntryPoint().getBlock() );
+	}
 	
 	public Program parse (String awk)
 		throws Exception

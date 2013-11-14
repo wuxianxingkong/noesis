@@ -17,9 +17,9 @@ public class Block extends Statement implements IModel
 	//@Minimum(0) // TODO Workaround
 	//Procedure[] procedures;
 	
+	@Optional
 	@Separator(";")
 	@Suffix(";")
-	@Minimum(0) // TODO Workaround
 	private Statement[] statements;
 	
 	

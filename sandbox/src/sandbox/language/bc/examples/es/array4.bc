@@ -1,0 +1,41 @@
+procedimiento arrays;
+
+inicio
+
+  var
+    a: array[1..2,1..2];
+    b: array[1..2,1..3];
+  fin;
+
+  procedimiento print (i: array[1..3]);
+  inicio
+    Salida '\n[';
+    Salida i[1];
+    Salida ':';
+    Salida i[2];
+    Salida ':';
+    Salida i[3];
+    Salida ']';
+  fin;
+
+  a[1,1] := 1;	(* A = Matriz identidad *)
+  a[1,2] := 0;
+  a[2,1] := 0;
+  a[2,2] := 1;
+
+  b[1,1] := 1;
+  b[1,2] := 2;
+  b[1,3] := 3;
+
+  b[2] := b[1];
+
+  Salida '\nMultiplicaci¢n de matrices';
+
+  b := a*b;
+
+  Salida '\nResultado de I*[[1 2 3][1 2 3]]';
+
+  print(b[1]);
+  print(b[2]);
+
+fin.

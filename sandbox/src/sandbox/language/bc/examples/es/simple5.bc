@@ -1,0 +1,42 @@
+(* Programa de ejemplo en BC: N£meros pares e impares *)
+
+procedimiento Ejemplo;
+
+inicio
+
+  (* --- *)
+
+  var
+     indice:      entero;
+     iteraciones: entero;
+     num:         entero;
+     b:           booleano;
+  fin;
+
+  salida  '\n\n';
+
+  entrada iteraciones;
+
+  salida '\nIteraciones (desde el bloque principal) = ';
+  salida iteraciones;
+
+  indice := (-11+10)*(-2)/2;
+
+  Mientras indice<=iteraciones hacer
+    inicio
+
+      salida '\nIteraci¢n ';
+      salida indice;
+      salida '\n';
+
+      entrada num;
+
+      Si 2*(num/2)=num
+	 entonces salida ' N£mero par\n'
+	 si_no    salida ' Numero impar\n';
+
+      indice := indice + 1;
+
+    fin;
+
+fin.

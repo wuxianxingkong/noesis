@@ -1,0 +1,60 @@
+(* Programa de ejemplo en BC *)
+
+procedimiento Ejemplo;
+
+inicio
+
+  (* --- *)
+
+  var
+     indice:      entero;
+     iteraciones: entero;
+     r,s:         entero;
+     t,u:         booleano;
+  fin;
+
+  (* --- *)
+
+  procedimiento Foo (i, j: entero; a,b: booleano);
+  inicio
+
+    var
+       matriz: array[137..145,543..2123];
+    fin;
+                      
+    repetir
+      i := j;
+    hasta falso;        { Bucle infinito }
+  
+  fin;
+  
+  (* --- *)
+  
+  Foo (r,s,t,u);
+  
+  entrada iteraciones;
+
+  salida 'N£mero de iteraciones = ';
+  salida iteraciones;
+
+  indice := 1;
+
+  Mientras indice<=iteraciones hacer
+    inicio
+
+      var 
+         numero: entero;
+      fin;
+
+      entrada numero;
+
+      Si 2*(numero/2)=numero
+         entonces salida 'N£mero par'
+         si_no    salida 'Numero impar';
+
+      numero := 3 + 45;
+      indice := indice + 1; 
+
+    fin;
+  
+fin.

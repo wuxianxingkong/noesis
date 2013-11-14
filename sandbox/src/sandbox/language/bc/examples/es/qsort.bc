@@ -1,0 +1,76 @@
+procedimiento QuickSort;
+
+inicio
+
+  var
+     datos: array[1..10];
+
+     indice: entero;
+  fin;
+
+  procedimiento QSort (izq, der: entero);
+  inicio
+
+    var
+       v,i,j,t: entero;
+    fin;
+
+    si (izq<der)
+       entonces inicio
+
+                  v := datos[der];
+                  i := izq-1;
+                  j := der;
+
+                  repetir
+
+                    repetir
+                      i := i+1;
+                    hasta (datos[i]>=v);
+
+                    repetir
+                      j := j-1;
+                    hasta (datos[j]<=v);
+
+                    si (i<j)
+                       entonces inicio
+                                  t := datos[i];
+                                  datos[i] := datos[j];
+                                  datos[j] := t;
+                                fin;
+
+                  hasta (i>=j);
+
+                  t := datos[i];
+                  datos[i] := datos[der];
+                  datos[der] := t;
+
+                  { Llamadas recursivas }
+
+                  QSort (izq, i-1);
+                  QSort (i+1, der);
+
+                fin;
+  fin;
+
+
+  indice := 1;
+
+  repetir
+    datos[indice] := 11-indice;
+    indice := indice + 1;
+  hasta (indice=11);
+
+  Salida '\nQuickSort\n';
+
+  QSort (1,10);
+
+  indice := 1;
+
+  repetir
+   Salida '\n';
+   Salida datos[indice];
+   indice := indice + 1;
+  hasta (indice=11);
+
+fin.

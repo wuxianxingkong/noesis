@@ -1,0 +1,25 @@
+procedimiento arrays;
+
+inicio
+
+  var
+    a: array[1..2,1..2,1..2];
+  fin;
+
+  procedimiento print (i: array[1..2]);
+  inicio
+    Salida '\n[';
+    Salida i[1];
+    Salida ':';
+    Salida i[2];
+    Salida ']';
+  fin;
+
+  a[1,1,1] := 1;
+  a[1,1,2] := 2;
+
+  a[1,2] := ((4*a[1,1])/2)*3;
+
+  print(a[1,2]);
+
+fin.

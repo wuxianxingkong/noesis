@@ -1,0 +1,27 @@
+(* Programa de ejemplo en BC *)
+
+procedimiento Ejemplo;
+
+inicio
+
+  (* --- *)
+
+  var
+     indice:      entero;
+     iteraciones: entero;
+     num:         entero;
+     b:           booleano;
+  fin;
+
+  b := verdadero;
+
+  si (b)
+     entonces salida 'SI';
+
+  b := falso;
+
+  si (b)
+     entonces salida 'SI'
+     si_no    salida 'NO';
+
+fin.

@@ -1,0 +1,28 @@
+(* Programa de ejemplo en BC: Procedimientos *)
+
+procedimiento P1;
+
+inicio
+
+  procedimiento P2 (var x: entero);
+  inicio
+    salida 'x = ';
+    salida x;
+    salida ' en P2\n';
+  fin;
+
+  procedimiento P3;
+  inicio
+    salida 'Entrando en P3\n';
+    P2(3);
+    salida 'Saliendo de P3\n';
+  fin;
+
+  salida '\nComenzando P1\n';
+
+  P2(1);
+  P3;
+
+  salida 'Finalizando P1\n';
+
+fin.

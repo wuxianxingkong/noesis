@@ -1,0 +1,25 @@
+procedimiento arrays;
+
+inicio
+
+  var
+    a: array[1..2,1..2,1..2];
+  fin;
+
+  Salida 'ARRAY = ARRAY';
+
+  a := a;
+
+  Salida 'ARRAY[1] = ARRAY[1]';
+
+  a[1] := a[1];
+
+  Salida 'ARRAY[1,1] = ARRAY[1,1]';
+
+  a[1,1] := a[1,1];
+
+  Salida 'ARRAY[1,1,1] = ARRAY[1,1,1]';
+
+  a[1,1,1] := a[1,1,1];
+
+fin.

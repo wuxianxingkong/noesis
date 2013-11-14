@@ -1,0 +1,24 @@
+(* Programa de ejemplo en BC: REPEAT *)
+
+procedimiento Ejemplo;
+
+inicio
+
+  (* --- *)
+
+  var
+     indice:      entero;
+     iteraciones: entero;
+     num:         entero;
+     b:           booleano;
+  fin;
+
+  indice := 0;
+
+  repetir
+    salida '\n';
+    salida indice;
+    indice := indice + 1;
+  hasta indice = 10;
+
+fin.

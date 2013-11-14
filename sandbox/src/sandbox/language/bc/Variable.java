@@ -7,5 +7,6 @@ public class Variable implements IModel
 	Identifier id;
 	
 	@Prefix(":")
+	@Suffix(";")
 	Type type;
 }

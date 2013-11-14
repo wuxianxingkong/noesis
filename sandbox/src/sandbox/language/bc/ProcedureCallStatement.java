@@ -9,6 +9,7 @@ public class ProcedureCallStatement extends Statement
 	@Prefix("\\(")
 	@Suffix("\\)")
 	@Separator(",")
+	@Minimum(0) // TODO Workaround
 	private Expression[] arguments;
 	
 	

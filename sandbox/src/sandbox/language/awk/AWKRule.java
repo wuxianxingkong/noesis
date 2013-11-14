@@ -6,9 +6,19 @@ import org.modelcc.Optional;
 public class AWKRule implements IModel 
 {
 	@Optional
-	AWKPattern pattern;
+	private AWKPattern pattern;
 	
 	@Optional
-	AWKAction action;
+	private AWKAction action;
 
+	
+	public AWKPattern getPattern ()
+	{
+		return pattern;
+	}
+	
+	public AWKAction getAction ()
+	{
+		return action;
+	}
 }

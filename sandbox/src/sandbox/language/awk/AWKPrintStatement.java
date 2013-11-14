@@ -3,10 +3,14 @@ package sandbox.language.awk;
 import org.modelcc.Prefix;
 
 @Prefix("print")
-public class AWKPrintSentence extends AWKSentence 
+public class AWKPrintStatement extends AWKStatement 
 {
-	AWKExpression argument;
+	private AWKExpression argument;
 	
+	public AWKExpression getArgument ()
+	{
+		return argument;
+	}
 	
 	public String toString ()
 	{

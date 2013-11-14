@@ -10,5 +10,15 @@ import org.modelcc.Optional;
 public class AWKAction implements IModel
 {
 	@Optional
-	AWKSentence sentence;
+	AWKStatement statement;
+	
+	public AWKStatement getStatement ()
+	{
+		return statement;
+	}
+	
+	public String toString () 
+	{
+		return "{ " + statement + " }";
+	}
 }

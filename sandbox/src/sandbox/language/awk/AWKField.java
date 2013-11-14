@@ -3,12 +3,17 @@ package sandbox.language.awk;
 import org.modelcc.Prefix;
 import org.modelcc.Value;
 
-@Prefix("$")
+@Prefix("\\$")
 public class AWKField extends AWKExpression
 {
 	@Value
-	int number;  // better than... IntegerLiteral number;
+	private int number;  // better than... IntegerLiteral number;
 
+	public int getNumber ()
+	{
+		return number;
+	}
+	
 	public String toString ()
 	{
 		return "$"+number;

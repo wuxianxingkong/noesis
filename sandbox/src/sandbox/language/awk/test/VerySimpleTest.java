@@ -1,4 +1,4 @@
-package sandbox.language.awk;
+package sandbox.language.awk.test;
 
 import static org.junit.Assert.*;
 
@@ -10,6 +10,8 @@ import org.modelcc.metamodel.Model;
 import org.modelcc.parser.Parser;
 import org.modelcc.parser.ParserFactory;
 
+import sandbox.language.awk.AWKProgram;
+
 // http://www.staff.science.uu.nl/~oostr102/docs/nawk/nawk_7.html#SEC10
 
 public class VerySimpleTest 
@@ -20,11 +22,11 @@ public class VerySimpleTest
 	{
 		AWKProgram program = parse("/foo/ { print $0 }");
 		
-		assertEquals( 1, program.rules.length );
-		assertNotNull( program.rules[0].pattern );
-		assertNotNull( program.rules[0].action );
-		assertEquals("print $0", program.rules[0].action.sentence.toString());
-		assertEquals("/foo/", ((AWKRegularExpressionPattern)program.rules[0].pattern).regexp);
+		assertEquals( 1, program.getRules().length );
+		assertNotNull( program.getRule(0).getPattern() );
+		assertNotNull( program.getRule(0).getAction() );
+		assertEquals("print $0", program.getRule(0).getAction().toString());
+		assertEquals("/foo/", program.getRule(0).getPattern().toString());
 	}
 	
 
@@ -34,9 +36,9 @@ public class VerySimpleTest
 	{
 		AWKProgram program = parse("{}");
 		
-		assertEquals( 1, program.rules.length );
-		assertNull( program.rules[0].pattern );
-		assertNotNull( program.rules[0].action );
+		assertEquals( 1, program.getRules().length );
+		assertNull( program.getRule(0).getPattern() );
+		assertNotNull( program.getRule(0).getAction() );
 	}
 
 	@Test
@@ -45,10 +47,10 @@ public class VerySimpleTest
 	{
 		AWKProgram program = parse("/foo/");
 		
-		assertEquals( 1, program.rules.length );
-		assertNotNull( program.rules[0].pattern );
-		assertNull( program.rules[0].action );
-		assertEquals("/foo/", ((AWKRegularExpressionPattern)program.rules[0].pattern).regexp);
+		assertEquals( 1, program.getRules().length );
+		assertNotNull( program.getRule(0).getPattern() );
+		assertNull( program.getRule(0).getAction() );
+		assertEquals("/foo/", program.getRule(0).getPattern().toString() );
 	}
 	
 	public AWKProgram parse (String awk)

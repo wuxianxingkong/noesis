@@ -2,10 +2,21 @@ package sandbox.language.awk;
 
 import org.modelcc.Pattern;
 import org.modelcc.Value;
+import org.modelcc.Prefix;
+import org.modelcc.Suffix;
 
-@Pattern(regExp="/[^/]*/")
+@Prefix("/")
+@Suffix("/")
+@Pattern(regExp="[^/]*")
 public class AWKRegularExpressionPattern extends AWKPattern 
 {
 	@Value
-	String regexp;
+	private String regexp;
+
+	
+	public String toString ()
+	{
+		return "/"+regexp+"/";
+	}
+	
 }

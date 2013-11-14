@@ -2,7 +2,7 @@ package sandbox.language.bc;
 
 import org.modelcc.*;
 
-@Suffix(".")
+@Suffix("\\.")
 public class Program implements IModel
 {
 	private Procedure main;

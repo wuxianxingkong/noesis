@@ -12,7 +12,6 @@ public class Procedure implements IModel
 	//@Suffix(")")
 	//Parameter[] parameters;
 	
-	@Optional
 	@Prefix(";")
 	private Block block;
 	

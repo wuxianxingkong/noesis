@@ -15,7 +15,7 @@ import sandbox.language.bc.*;
 
 public class ProgramTest 
 {
-	@Test
+	@Test(expected=org.modelcc.parser.ParserException.class)
 	public void testNullProgram()
 		throws Exception
 	{
@@ -51,7 +51,7 @@ public class ProgramTest
 	public void testVarProgram()
 		throws Exception
 	{
-		Program program = parse("procedimiento simple; inicio var x: tipo; fin; entrada x; salida x; fin.");
+		Program program = parse("procedimiento simple; inicio var x: tipo; entrada x; salida x; fin.");
 		
 		assertEquals( "simple", program.getEntryPoint().getId().toString() );
 		assertNotNull ( program.getEntryPoint().getBlock() );
@@ -63,7 +63,7 @@ public class ProgramTest
 	public void testVarsProgram()
 		throws Exception
 	{
-		Program program = parse("procedimiento simple; inicio var x: tipo; y: tipo; fin; entrada x; salida x; fin.");
+		Program program = parse("procedimiento simple; inicio var x: tipo; y: tipo; entrada x; salida x; fin.");
 		
 		assertEquals( "simple", program.getEntryPoint().getId().toString() );
 		assertNotNull ( program.getEntryPoint().getBlock() );
@@ -72,10 +72,33 @@ public class ProgramTest
 	}
 
 	@Test
+	public void testNestedProgram()
+		throws Exception
+	{
+		Program program = parse ( "procedimiento compuesto; "
+	                            + "inicio "
+				                + "  var x: tipo; y: tipo;"
+				                + "  procedimiento simple; inicio fin; "
+	                            + "  entrada x;"
+				                + "  salida x;"
+				                + "fin.");
+		
+		assertEquals( "compuesto", program.getEntryPoint().getId().toString() );
+		assertNotNull ( program.getEntryPoint().getBlock() );
+		assertEquals( 2, program.getEntryPoint().getBlock().getVariables().length );
+		assertEquals( 2, program.getEntryPoint().getBlock().getStatements().length );
+		assertEquals( "entrada x", program.getEntryPoint().getBlock().getStatements()[0].toString() );
+		assertEquals( "salida x", program.getEntryPoint().getBlock().getStatements()[1].toString() );
+		assertEquals( 1, program.getEntryPoint().getBlock().getProcedures().length );
+		assertEquals( "simple", program.getEntryPoint().getBlock().getProcedures()[0].getId().toString() );
+	}
+
+	
+	@Test
 	public void testEmptyVarProgram()
 		throws Exception
 	{
-		Program program = parse("procedimiento simple; inicio var fin; entrada x; salida x; fin.");
+		Program program = parse("procedimiento simple; inicio var entrada x; salida x; fin.");
 		
 		assertEquals( "simple", program.getEntryPoint().getId().toString() );
 		assertNotNull ( program.getEntryPoint().getBlock() );

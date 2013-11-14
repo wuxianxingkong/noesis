@@ -25,7 +25,7 @@ public class VerySimpleTest
 		assertEquals( 1, program.getRules().length );
 		assertNotNull( program.getRule(0).getPattern() );
 		assertNotNull( program.getRule(0).getAction() );
-		assertEquals("print $0", program.getRule(0).getAction().toString());
+		assertEquals("{ print $0 }", program.getRule(0).getAction().toString());
 		assertEquals("/foo/", program.getRule(0).getPattern().toString());
 	}
 	

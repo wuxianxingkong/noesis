@@ -8,7 +8,8 @@ import org.junit.runners.Suite;
 					   AWKFieldTest.class,
 					   AWKPatternTest.class,
 					   AWKActionTest.class,
-					   VerySimpleTest.class })
+					   VerySimpleTest.class,
+					   AmbiguousAWKProgramTest.class})
 public class AllTests {
 
 }

@@ -1,12 +1,11 @@
-package sandbox.language.awk;
+package sandbox.language.awk.variations;
 
 import org.modelcc.IModel;
 import org.modelcc.Optional;
-import org.modelcc.Composition;
-import org.modelcc.CompositionType;
 
-@Composition(CompositionType.EAGER)
-public class AWKRule implements IModel 
+import sandbox.language.awk.*;
+
+public class AmbiguousAWKRule implements IModel 
 {
 	@Optional
 	private AWKPattern pattern;

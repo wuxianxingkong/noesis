@@ -4,15 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import org.modelcc.io.ModelReader;
-import org.modelcc.io.java.JavaModelReader;
-import org.modelcc.metamodel.Model;
-import org.modelcc.parser.Parser;
-import org.modelcc.parser.ParserFactory;
-
+import sandbox.language.ModelCCTest;
 import sandbox.language.awk.*;
 
-public class AWKActionTest 
+public class AWKActionTest extends ModelCCTest<AWKAction>
 {
 	@Test
 	public void testPrintAction()
@@ -30,44 +25,11 @@ public class AWKActionTest
 	}
 
 	@Test(expected=org.modelcc.parser.ParserException.class)
-	public void testInvalidRegularExpression()
+	public void testInvalidAction()
 		throws Exception
 	{
 		parse("{ abc");
 	}
 	
-	public AWKAction parse (String awk)
-			throws Exception
-	{
-		Parser<AWKAction> parser;
-		AWKAction action;
-
-		try {
-			parser = createParser();
-		} catch (Exception error) {
-			System.err.println("Parser creation error: "+error);
-			throw error;
-		}
-
-		try {
-			action = parser.parse(awk);
-		} catch (Exception error) {
-			System.err.println("Parser error: "+error);
-			throw error;
-		}
-
-		return action;
-	}
-
-	public Parser<AWKAction> createParser ()
-		throws Exception
-	{
-		ModelReader modelReader = new JavaModelReader(AWKAction.class);
-		Model model = modelReader.read();
-		Parser<AWKAction> parser = ParserFactory.create(model,ParserFactory.WHITESPACE);
-
-		return parser;
-	}
-
 }
 

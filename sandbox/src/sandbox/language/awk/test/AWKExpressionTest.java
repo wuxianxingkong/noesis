@@ -3,19 +3,15 @@ package sandbox.language.awk.test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.modelcc.io.ModelReader;
-import org.modelcc.io.java.JavaModelReader;
-import org.modelcc.metamodel.Model;
-import org.modelcc.parser.Parser;
-import org.modelcc.parser.ParserFactory;
 
+import sandbox.language.ModelCCTest;
 import sandbox.language.awk.AWKExpression;
 import sandbox.language.awk.AWKField;
 
-public class AWKExpressionTest 
+public class AWKExpressionTest extends ModelCCTest<AWKExpression>
 {
 	@Test
-	public void testFieldExpression()
+	public void testValidFieldExpression()
 		throws Exception
 	{
 		AWKExpression expression = parse("$1");
@@ -30,38 +26,4 @@ public class AWKExpressionTest
 	{
 		parse("/abc");
 	}
-	
-	public AWKExpression parse (String awk)
-			throws Exception
-	{
-		Parser<AWKExpression> parser;
-		AWKExpression expression;
-
-		try {
-			parser = createParser();
-		} catch (Exception error) {
-			System.err.println("Parser creation error: "+error);
-			throw error;
-		}
-
-		try {
-			expression = parser.parse(awk);
-		} catch (Exception error) {
-			System.err.println("Parser error: "+error);
-			throw error;
-		}
-
-		return expression;
-	}
-
-	public Parser<AWKExpression> createParser ()
-		throws Exception
-	{
-		ModelReader modelReader = new JavaModelReader(AWKExpression.class);
-		Model model = modelReader.read();
-		Parser<AWKExpression> parser = ParserFactory.create(model,ParserFactory.WHITESPACE);
-
-		return parser;
-	}
-
 }

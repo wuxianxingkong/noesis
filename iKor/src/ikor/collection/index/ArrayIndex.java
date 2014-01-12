@@ -1,4 +1,4 @@
-package ikor.collection.array;
+package ikor.collection.index;
 
 // Title:       iKor Collection Framework
 // Version:     1.0
@@ -20,7 +20,7 @@ package ikor.collection.array;
  *
  */
 
-public class DynamicArray implements Array
+public class ArrayIndex implements Index
 {
     private int     currentSize; // actual number of elements in the array
     private int[]   values;      // element values 
@@ -29,7 +29,7 @@ public class DynamicArray implements Array
 	
     // Constructor
     
-    public DynamicArray ()
+    public ArrayIndex ()
     {
     	this.currentSize = 0;
     	

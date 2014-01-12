@@ -1,16 +1,16 @@
-package test.ikor.collection.array;
+package test.ikor.collection.index;
 
 import static org.junit.Assert.*;
-import ikor.collection.array.Array;
+import ikor.collection.index.Index;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public abstract class ArrayTest 
+public abstract class IndexTest 
 {
-	Array array;
+	Index array;
 
-	public abstract Array createArray();
+	public abstract Index createArray();
 
 	@Before
 	public void setUp()

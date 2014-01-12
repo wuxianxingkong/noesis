@@ -1,4 +1,4 @@
-package ikor.collection.array;
+package ikor.collection.index;
 
 // Title:       iKor Collection Framework
 // Version:     1.0
@@ -7,12 +7,12 @@ package ikor.collection.array;
 // E-mail:      berzal@acm.org
 
 /**
-* Generic [integer] array interface.
+* Generic [integer] index interface.
 * 
 * @author Fernando Berzal
 */
 
-public interface Array 
+public interface Index 
 {	  
 	/**
 	 * Array size.

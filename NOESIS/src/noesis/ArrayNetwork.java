@@ -52,9 +52,10 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 		return net.links();
 	}
 
+	// Nodes
 
 	@Override
-	public final int add(V node) 
+	public int add(V node) 
 	{
 		int pos = nodes.size();
 		
@@ -67,7 +68,14 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 		return pos;
 	}
 	
+	@Override
+	public boolean remove(int nodeIndex) 
+	{
+		throw new UnsupportedOperationException("Node removal is not allowed.");
+	}
 
+	// Links
+	
 	@Override
 	public final boolean add(int source, int destination) 
 	{
@@ -92,6 +100,20 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 
 		return ok;
 	}
+
+	@Override
+	public boolean remove(int sourceIndex, int destinationIndex) 
+	{
+		throw new UnsupportedOperationException("Link removal is not allowed.");
+	}
+
+	@Override
+	public boolean remove(int sourceIndex, int destinationIndex, E content) 
+	{
+		throw new UnsupportedOperationException("Link removal is not allowed.");
+	}
+
+	// Accessors
 
 	@Override
 	public final V get(int index) 
@@ -176,13 +198,6 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 		return net.outLinks(node);
 	}
 
-	
-	@Override
-	public int[] outLinks(V node) 
-	{
-		return outLinks(index(node));
-	}
-
 
 	@Override
 	public int inLink (int node, int index) 
@@ -196,17 +211,12 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 		return net.inLinks(node);
 	}
 
-	@Override
-	public int[] inLinks(V node) 
-	{
-		return inLinks(index(node));
-	}
-
 	
 	@Override
 	public String toString ()
 	{
 		return "["+super.toString()+"] ("+size()+" nodes, "+links()+" links)";
 	}
+
 
 }

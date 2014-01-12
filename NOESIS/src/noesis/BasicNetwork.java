@@ -222,12 +222,6 @@ public class BasicNetwork extends Network<Integer,Integer>
 		return links;
 	}
 
-	
-	@Override
-	public final int[] outLinks(Integer node) 
-	{
-		return outLinks((int)node);
-	}
 
 	@Override
 	public int inLink (int node, int index)
@@ -250,12 +244,6 @@ public class BasicNetwork extends Network<Integer,Integer>
 		}
 
 		return links;
-	}
-
-	@Override
-	public final int[] inLinks(Integer node) 
-	{
-		return inLinks((int)node);
 	}
 
 	

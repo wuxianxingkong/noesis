@@ -8,7 +8,7 @@ package noesis;
 
 import java.util.Iterator;
 
-import ikor.collection.graph.ReadOnlyGraph;
+import ikor.collection.graph.Graph;
 import ikor.collection.graph.GraphNodeIterator;
 import ikor.collection.graph.GraphLinkIterator;
 
@@ -16,7 +16,7 @@ import ikor.collection.graph.GraphLinkIterator;
  * Network ADT.
  */
 
-public abstract class Network<V, E> implements ReadOnlyGraph<V,E>
+public abstract class Network<V, E> implements Graph<V,E>
 {
 	// Network ID
 	
@@ -56,37 +56,59 @@ public abstract class Network<V, E> implements ReadOnlyGraph<V,E>
 
 	public abstract int links();
 	
+	// Accessors
+	
+	public abstract V get(int index);
+
+	public abstract E get(int source, int destination);
+
+	public abstract E get(V source, V destination);
+
+	public abstract boolean contains(V object);
+	
+	public abstract int index(V node);
+	
+
+	// Iterators
+	
+	public final Iterator<V> iterator ()
+	{
+		return new GraphNodeIterator<V>(this);
+	}
+	
+	public final Iterator<E> linkIterator ()
+	{
+		return new GraphLinkIterator<E>(this);
+	}
+	
 
 	// Network dynamics
 	// ----------------
 	
 	// Nodes
 	
+	@Override
 	public abstract int add(V node);
+
+	@Override
+	public final boolean remove(V node) 
+	{
+		return remove(index(node));
+	}
+
+	@Override
+	public boolean remove(int nodeIndex) 
+	{	
+		throw new UnsupportedOperationException("Node removal is not allowed.");
+    }
 
 	// Links
 	
 	public abstract boolean add(int sourceIndex, int destinationIndex);
 
+	@Override
 	public abstract boolean add(int sourceIndex, int destinationIndex, E content);
 
-	/*
-	public final boolean add (XLink<E> link)
-	{
-		return add (link.getSource(), link.getDestination(), link.getContent());
-	}
-	*/
-	
-	public final boolean add (V source, V destination, E link)
-	{
-		int sourceIndex = index(source);
-		int destinationIndex = index(destination);
-		
-		if ( (sourceIndex!=-1) && (destinationIndex!=-1) )
-			return add(sourceIndex, destinationIndex, link);
-		else
-			return false;
-	}
 	
 	public final boolean add (V source, V destination)
 	{
@@ -98,7 +120,55 @@ public abstract class Network<V, E> implements ReadOnlyGraph<V,E>
 		else
 			return false;
 	}	
+
+	@Override
+	public final boolean add (V source, V destination, E link)
+	{
+		int sourceIndex = index(source);
+		int destinationIndex = index(destination);
+		
+		if ( (sourceIndex!=-1) && (destinationIndex!=-1) )
+			return add(sourceIndex, destinationIndex, link);
+		else
+			return false;
+	}
 	
+
+	public boolean remove(int sourceIndex, int destinationIndex)
+	{
+		throw new UnsupportedOperationException("Link removal is not allowed.");
+	}
+
+	@Override
+	public boolean remove(int sourceIndex, int destinationIndex, E content)
+	{
+		throw new UnsupportedOperationException("Link removal is not allowed.");
+	}
+
+	
+	public final boolean remove(V source, V destination) 
+	{
+		int sourceIndex = index(source);
+		int destinationIndex = index(destination);
+		
+		if ( (sourceIndex!=-1) && (destinationIndex!=-1) )
+			return remove(sourceIndex, destinationIndex);
+		else
+			return false;
+	}
+
+	@Override
+	public final boolean remove(V source, V destination, E content) 
+	{
+		int sourceIndex = index(source);
+		int destinationIndex = index(destination);
+		
+		if ( (sourceIndex!=-1) && (destinationIndex!=-1) )
+			return remove(sourceIndex, destinationIndex, content);
+		else
+			return false;
+	}
+
 
 	// Biderectional links
 	
@@ -125,32 +195,38 @@ public abstract class Network<V, E> implements ReadOnlyGraph<V,E>
 		
 		return ok;
 	}
-	
-	// Accessors
-	
-	public abstract V get(int index);
 
-	public abstract E get(int source, int destination);
-
-	public abstract E get(V source, V destination);
-
-	public abstract boolean contains(V object);
-	
-	public abstract int index(V node);
-	
-	
-	
-	public final Iterator<V> iterator ()
+	public final boolean remove2 (V source, V destination)
 	{
-		return new GraphNodeIterator<V>(this);
+		boolean ok;
+		
+		ok = remove(source,destination);
+		
+		if (ok)
+			ok = remove(destination,source);
+		
+		return ok;
 	}
 	
-	public final Iterator<E> linkIterator ()
+	public final boolean remove2 (V source, V destination, E link)
 	{
-		return new GraphLinkIterator<E>(this);
+		boolean ok;
+		
+		ok = remove(source,destination,link);
+		
+		if (ok)
+			ok = remove(destination,source,link);
+		
+		return ok;
 	}
-	
 
+	@Override
+	public void clear() 
+	{
+		while (size()>0) {
+			remove(size()-1);
+		}
+	}
 	
 	// Node degrees
 	
@@ -178,11 +254,43 @@ public abstract class Network<V, E> implements ReadOnlyGraph<V,E>
 		return outDegree ( index(node) );
 	}	
 	
+	// Links
+	
+	@Override
+	public final int[] outLinks(V node) 
+	{
+		return outLinks(index(node));
+	}
+
+	@Override
+	public abstract int[] outLinks(int node);
+	
+	@Override
+	public abstract int outLink(int node, int link);
+
+
+	@Override
+	public final int[] inLinks(V node) 
+	{
+		return inLinks(index(node));
+	}
+
+	@Override
+	public abstract int[] inLinks(int node);
+
+	@Override
+	public abstract int inLink(int node, int link);
+	
+	
+	
+	// toString
 	
 	@Override
 	public String toString ()
 	{
 		return ((id!=null)? id: "Network") + " ("+size()+" nodes, "+links()+" links)";
 	}
+
+
 
 }

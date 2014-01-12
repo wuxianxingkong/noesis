@@ -46,13 +46,19 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ReadOnlyGraphInte
 	@Override
 	public int add (V node)
 	{
-		if (net.add(node))
-			return net.size()-1;
-		else
-			return -1;
+		return net.add(node);
 	}
 
-	// Edges
+	/* (non-Javadoc)
+	 * @see noesis.Network#remove(int)
+	 */
+	@Override
+	public boolean remove(int nodeIndex) 
+	{
+		return net.remove(nodeIndex);
+	}
+
+	// Links
 
 	/* (non-Javadoc)
 	 * @see noesis.Network#add(int, int)
@@ -72,7 +78,25 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ReadOnlyGraphInte
 		return net.add(sourceIndex, destinationIndex, content);
 	}
 	
-	
+	/* (non-Javadoc)
+	 * @see noesis.Network#remove(int, int)
+	 */
+	@Override
+	public boolean remove(int sourceIndex, int destinationIndex) 
+	{
+		return net.remove(sourceIndex,destinationIndex,null);
+	}
+
+	/* (non-Javadoc)
+	 * @see noesis.Network#remove(int, int, E)
+	 */
+	@Override
+	public boolean remove(int sourceIndex, int destinationIndex, E content) 
+	{
+		return net.remove(sourceIndex,destinationIndex,content);
+	}
+
+
 	
 	/* (non-Javadoc)
 	 * @see noesis.Network#get(int)
@@ -120,15 +144,7 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ReadOnlyGraphInte
 		return net.contains(object);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see noesis.Network#isDirected()
-	 */
-	@Override
-	public boolean isDirected() 
-	{
-		return true;
-	}
+	
 
 	/* (non-Javadoc)
 	 * @see noesis.Network#index(V)
@@ -252,13 +268,6 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ReadOnlyGraphInte
 
 
 	@Override
-	public int[] outLinks(V node) 
-	{
-		return net.outLinks(node);
-	}
-
-
-	@Override
 	public int inLink (int node, int index) 
 	{
 		return net.inLink(node,index);
@@ -272,9 +281,4 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ReadOnlyGraphInte
 	}
 
 
-	@Override
-	public int[] inLinks(V node) 
-	{
-		return net.inLinks(node);
-	}
 }

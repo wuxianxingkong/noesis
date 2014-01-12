@@ -149,12 +149,6 @@ public class CompleteNetwork<V> extends Network<V, Object>
 	}
 
 	@Override
-	public int[] outLinks(V node) 
-	{
-		return outLinks(index(node));
-	}
-
-	@Override
 	public int inLink (int node, int index) 
 	{
 		return link(node,index);
@@ -166,11 +160,6 @@ public class CompleteNetwork<V> extends Network<V, Object>
 		return links(node);
 	}
 
-	@Override
-	public int[] inLinks(V node) 
-	{
-		return inLinks(index(node));
-	}
 
 	@Override
 	public String toString ()

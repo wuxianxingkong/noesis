@@ -73,10 +73,11 @@ public class Stack<T> implements ReadOnlyCollection<T>, InOutCollection<T>
      */
     
 	@Override
-	public boolean add(T object) 
+	public int add(T object) 
 	{
 		items.addFirst(object);
-		return true;
+		
+		return 0;
 	}
     
     /**

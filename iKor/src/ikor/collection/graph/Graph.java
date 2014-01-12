@@ -18,7 +18,7 @@ public interface Graph<V,E> extends ReadOnlyGraph<V,E>, Collection<V>
 {
 	// Nodes
 
-	public boolean add (V node);
+	public int add (V node);
 
 	public boolean remove (V node);
 	public boolean remove (int nodeIndex);

@@ -67,9 +67,12 @@ public class DynamicPriorityQueue<T> implements PriorityQueue<T>
 	 * @see ikor.collection.Collection#add(java.lang.Object)
 	 */
 	@Override
-	public boolean add(T object) 
+	public int add(T object) 
 	{
-		return queue.add(object);
+		if (queue.add(object))
+			return size()-1;
+		else
+			return -1;
 	}
 
 	/**

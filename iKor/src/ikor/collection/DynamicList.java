@@ -72,8 +72,11 @@ public class DynamicList<T> implements List<T>
 	}
 
 	@Override
-	public boolean add(T object) {
-		return list.add(object);
+	public int add(T object) {
+		if (list.add(object))
+			return size()-1;
+		else
+			return -1;
 	}
 
 	@Override

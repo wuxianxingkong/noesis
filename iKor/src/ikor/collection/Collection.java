@@ -20,9 +20,9 @@ public interface Collection<T> extends ReadOnlyCollection<T>
   /**
    * Adds an element to the collection.	
    * @param object Element to be added.
-   * @return true if the collection has changed
+   * @return position of the object in the collection.
    */
-  public boolean add (T object);
+  public int add (T object);
 
   
   /**

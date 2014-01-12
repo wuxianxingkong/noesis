@@ -49,7 +49,7 @@ public class IndexedPriorityQueue<T> implements PriorityQueue<T>
     }
     
 	@Override
-	public boolean add(T object) 
+	public int add(T object) 
 	{
 		int ndx;
 		
@@ -60,9 +60,9 @@ public class IndexedPriorityQueue<T> implements PriorityQueue<T>
         	pq[size]  = ndx;
         	keys[ndx] = object;
         	swim(size);	
-        	return true;
+        	return size-1;
 		} else {
-			return false;
+			return -1;
 		}
 	}
 

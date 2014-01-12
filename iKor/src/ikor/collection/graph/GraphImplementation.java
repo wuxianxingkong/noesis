@@ -230,14 +230,14 @@ public class GraphImplementation<V,E>
 	// Add node
 
 	@Override
-	public boolean add (V node)
+	public int add (V node)
 	{
 		int pos = size();
 
 		index.set ( node, pos );
 		nodes.add ( new GraphNodeImplementation<V>(node) );
 		
-		return true;
+		return pos;
 	}
 
 

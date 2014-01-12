@@ -73,11 +73,11 @@ public class Queue<T> implements ReadOnlyCollection<T>, InOutCollection<T>
      * @return 
      */
     
-    public boolean add (T object)
+    public int add (T object)
     {
         items.addLast(object);
         
-        return true;
+        return size()-1;
     }    
     
     /**

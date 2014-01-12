@@ -119,9 +119,9 @@ public class DynamicDictionary<K,V> implements Dictionary<K,V>
 	// Modification
 
 	@Override
-	public boolean add(K key) {
+	public int add(K key) {
 		map.put(key,null);
-		return true;
+		return size()-1;
 	}
 
 	@Override

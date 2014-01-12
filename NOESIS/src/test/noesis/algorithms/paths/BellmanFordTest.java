@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import test.noesis.algorithms.TestNetworks;
+import test.noesis.SampleNetworks;
 import test.noesis.algorithms.DirectLinkEvaluator;
 
 import noesis.Network;
@@ -53,7 +53,7 @@ public class BellmanFordTest extends SingleSourceShortestPathFinderTest
 	@Test
 	public void testNegativeWeights ()
 	{
-		Network<String,Integer> graph = TestNetworks.negativeWeightsGraph();
+		Network<String,Integer> graph = SampleNetworks.negativeWeightsGraph();
 		LinkEvaluator linkEvaluator = new DirectLinkEvaluator(graph);
 		
 		finder = new BellmanFordShortestPathFinder(graph,0,linkEvaluator);
@@ -86,7 +86,7 @@ public class BellmanFordTest extends SingleSourceShortestPathFinderTest
 	@Test
 	public void testNegativeCycle ()
 	{
-		Network<String,Integer> graph = TestNetworks.negativeCycleGraph();
+		Network<String,Integer> graph = SampleNetworks.negativeCycleGraph();
 		LinkEvaluator linkEvaluator = new DirectLinkEvaluator(graph);
 		
 		finder = new BellmanFordShortestPathFinder(graph,0,linkEvaluator);

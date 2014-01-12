@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.Before;
 
 import test.noesis.MockVisitor;
-import test.noesis.algorithms.TestNetworks;
+import test.noesis.SampleNetworks;
 
 import noesis.Network;
 import noesis.algorithms.traversal.*;
@@ -21,8 +21,8 @@ public class NetworkTraversalTest
 	@Before
 	public void setUp() throws Exception 
 	{
-		roadmap = TestNetworks.roadmap();
-		web     = TestNetworks.web();		
+		roadmap = SampleNetworks.roadmap();
+		web     = SampleNetworks.web();		
 	}
 	
 	// Undirected graph
@@ -33,7 +33,7 @@ public class NetworkTraversalTest
 		NetworkTraversal<String,Integer>   mapSearch; 
 		MockVisitor<String>                cityVisitor;
 		
-		cityVisitor = TestNetworks.roadmapBFSVisitor(roadmap);
+		cityVisitor = SampleNetworks.roadmapBFSVisitor(roadmap);
 		mapSearch = new NetworkBFS<String,Integer>(roadmap, cityVisitor, null);
 		
 		mapSearch.traverse();
@@ -46,7 +46,7 @@ public class NetworkTraversalTest
 		NetworkTraversal<String,Integer>   mapSearch; 
 		MockVisitor<String>                cityVisitor;
 		
-		cityVisitor = TestNetworks.roadmapDFSVisitor(roadmap);
+		cityVisitor = SampleNetworks.roadmapDFSVisitor(roadmap);
 		mapSearch = new NetworkDFS<String,Integer>(roadmap, cityVisitor, null);
 		
 		mapSearch.traverse();
@@ -59,7 +59,7 @@ public class NetworkTraversalTest
 		NetworkTraversal<String,Integer>   mapSearch; 
 		MockVisitor<Integer>               roadVisitor;
 		
-		roadVisitor = TestNetworks.roadmapBFSLinkVisitor(roadmap);
+		roadVisitor = SampleNetworks.roadmapBFSLinkVisitor(roadmap);
 		mapSearch = new NetworkBFS<String,Integer>(roadmap, null, roadVisitor);
 		
 		mapSearch.traverse();
@@ -72,7 +72,7 @@ public class NetworkTraversalTest
 		NetworkTraversal<String,Integer>   mapSearch; 
 		MockVisitor<Integer>               roadVisitor;
 		
-		roadVisitor = TestNetworks.roadmapDFSLinkVisitor(roadmap);
+		roadVisitor = SampleNetworks.roadmapDFSLinkVisitor(roadmap);
 		mapSearch = new NetworkDFS<String,Integer>(roadmap, null, roadVisitor);
 		
 		mapSearch.traverse();
@@ -87,7 +87,7 @@ public class NetworkTraversalTest
 		NetworkTraversal<String,String> webSearch; 
 		MockVisitor<String>             pageVisitor;
 		
-		pageVisitor = TestNetworks.webBFSVisitor(web);
+		pageVisitor = SampleNetworks.webBFSVisitor(web);
 		webSearch = new NetworkBFS<String,String>(web, pageVisitor, null);
 		
 		webSearch.traverse();	
@@ -101,7 +101,7 @@ public class NetworkTraversalTest
 		NetworkTraversal<String,String>   webSearch; 
 		MockVisitor<String>               pageVisitor;
 		
-		pageVisitor = TestNetworks.webDFSVisitor(web);
+		pageVisitor = SampleNetworks.webDFSVisitor(web);
 		webSearch = new NetworkDFS<String,String>(web, pageVisitor, null);
 		
 		webSearch.traverse();
@@ -114,7 +114,7 @@ public class NetworkTraversalTest
 		NetworkTraversal<String,String>   webSearch; 
 		MockVisitor<String>               linkVisitor;
 		
-		linkVisitor = TestNetworks.webBFSLinkVisitor(web);
+		linkVisitor = SampleNetworks.webBFSLinkVisitor(web);
 		webSearch = new NetworkBFS<String,String>(web, null, linkVisitor);
 		
 		webSearch.traverse();
@@ -127,7 +127,7 @@ public class NetworkTraversalTest
 		NetworkTraversal<String,String>   webSearch; 
 		MockVisitor<String>               linkVisitor;
 		
-		linkVisitor = TestNetworks.webDFSLinkVisitor(web);
+		linkVisitor = SampleNetworks.webDFSLinkVisitor(web);
 		webSearch = new NetworkDFS<String,String>(web, null, linkVisitor);
 		
 		webSearch.traverse();

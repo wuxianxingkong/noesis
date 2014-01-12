@@ -1,18 +1,35 @@
-package test.noesis.algorithms;
+package test.noesis;
 
-import test.noesis.MockVisitor;
 
 import noesis.Network;
 import noesis.ArrayNetwork;
 
-public class TestNetworks 
+public class SampleNetworks 
 {
+	// Reflective object creation
+	
+	public static Network createNetwork (Class kind)
+	{
+		Network result = null;
+		
+		try {
+			result = (Network) kind.newInstance();
+		} catch (Exception error) {
+		}
+		
+		return result;
+	}
 
 	// Undirected graph
-	
+
 	public static Network<String,Integer> roadmap ()
 	{
-		Network<String,Integer> net = new ArrayNetwork<String,Integer>();
+		return roadmap(ArrayNetwork.class);
+	}
+	
+	public static Network<String,Integer> roadmap (Class kind)
+	{
+		Network<String,Integer> net = createNetwork(kind);
 
 		net.add("Granada");
 		net.add("Motril");
@@ -153,37 +170,42 @@ public class TestNetworks
 	
 	public static Network<String,String> web ()
 	{
-		Network<String,String> graph = new ArrayNetwork<String,String>();
+		return web (ArrayNetwork.class);
+	}
+	
+	public static Network<String,String> web (Class kind)
+	{
+		Network<String,String> webgraph = createNetwork(kind);
 
-		graph.add("home");
-		graph.add("C");
-		graph.add("C#");
-		graph.add("C++Builder");
-		graph.add("Java");
-		graph.add("DB");
-		graph.add("Data Mining");
-		graph.add("Internet");
-		graph.add("ASP.NET");
+		webgraph.add("home");
+		webgraph.add("C");
+		webgraph.add("C#");
+		webgraph.add("C++Builder");
+		webgraph.add("Java");
+		webgraph.add("DB");
+		webgraph.add("Data Mining");
+		webgraph.add("Internet");
+		webgraph.add("ASP.NET");
 
-		graph.add("home", "C");
-		graph.add("home", "C#");
-		graph.add("home", "C++Builder");
-		graph.add("home", "Java");
-		graph.add("home", "Internet");
-		graph.add("home", "ASP.NET");
-		graph.add("home", "DB");
-		graph.add("home", "Data Mining");
-		graph.add("C", "C#");
-		graph.add("C", "C++Builder");
-		graph.add("C", "Java");
-		graph.add("C#", "ASP.NET");
-		graph.add("Java", "C");
-		graph.add("Java", "C#");
-		graph.add("Java", "C++Builder");
-		graph.add("DB", "Data Mining");
-		graph.add("Internet", "DB");
+		webgraph.add("home", "C", "Programming course");
+		webgraph.add("home", "C#", "Programming course");
+		webgraph.add("home", "C++Builder", "Programming course");
+		webgraph.add("home", "Java", "Programming course");
+		webgraph.add("home", "Internet", "Undergraduate course");
+		webgraph.add("home", "ASP.NET", "Programming course");
+		webgraph.add("home", "DB", "Undergraduate course");
+		webgraph.add("home", "Data Mining", "Graduate course");
+		webgraph.add("C", "C#", "C -> C#");
+		webgraph.add("C", "C++Builder", "C -> C++Builder");
+		webgraph.add("C", "Java", "C -> Java");
+		webgraph.add("C#", "ASP.NET", "C# -> ASP.NET");
+		webgraph.add("Java", "C", "Java -> C");
+		webgraph.add("Java", "C#", "Java -> C#");
+		webgraph.add("Java", "C++Builder", "Java -> C++Builder");
+		webgraph.add("DB", "Data Mining", "Additional information");
+		webgraph.add("Internet", "DB", "Additional information");
 
-		return graph;		
+		return webgraph;		
 	}
 
 	public static MockVisitor<String> webBFSVisitor (Network<String,String> web)

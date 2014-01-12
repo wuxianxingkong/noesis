@@ -2,7 +2,7 @@ package test.noesis.algorithms.paths;
 
 import static org.junit.Assert.*;
 
-import test.noesis.algorithms.TestNetworks;
+import test.noesis.SampleNetworks;
 import test.noesis.algorithms.DirectLinkEvaluator;
 
 import noesis.Network;
@@ -39,7 +39,7 @@ public abstract class AllPairsShortestPathFinderTest
 
 	public void checkConnected () 
 	{
-		network = TestNetworks.weightedDirectedGraph();
+		network = SampleNetworks.weightedDirectedGraph();
 		
 		LinkEvaluator linkEvaluator = new DirectLinkEvaluator(network);
 		
@@ -49,13 +49,13 @@ public abstract class AllPairsShortestPathFinderTest
 		
 		for (int i=0; i<network.size(); i++)
 			for (int j=0; j<network.size(); j++)
-				checkDistance(i,j, TestNetworks.DIRECTED_DISTANCE[i][j]);
+				checkDistance(i,j, SampleNetworks.DIRECTED_DISTANCE[i][j]);
 	}	
 
 	
 	public void checkUnreachable() 
 	{
-		network = TestNetworks.weightedUnreachableGraph();
+		network = SampleNetworks.weightedUnreachableGraph();
 		
 		LinkEvaluator linkEvaluator = new DirectLinkEvaluator(network);
 
@@ -65,13 +65,13 @@ public abstract class AllPairsShortestPathFinderTest
 		
 		for (int i=0; i<network.size(); i++)
 			for (int j=0; j<network.size(); j++)
-				checkDistance(i,j, TestNetworks.UNREACHABLE_DISTANCE[i][j]);
+				checkDistance(i,j, SampleNetworks.UNREACHABLE_DISTANCE[i][j]);
 	}	
 	
 	
 	public void checkDisconnected() 
 	{
-		network = TestNetworks.weightedDisconnectedGraph();;
+		network = SampleNetworks.weightedDisconnectedGraph();;
 
 		LinkEvaluator linkEvaluator = new DirectLinkEvaluator(network);
 				
@@ -81,7 +81,7 @@ public abstract class AllPairsShortestPathFinderTest
 		
 		for (int i=0; i<network.size(); i++)
 			for (int j=0; j<network.size(); j++)
-				checkDistance(i,j, TestNetworks.DISCONNECTED_DISTANCE[i][j]);
+				checkDistance(i,j, SampleNetworks.DISCONNECTED_DISTANCE[i][j]);
 	}	
 
 }

@@ -3,7 +3,7 @@ package test.noesis.algorithms.paths;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import test.noesis.algorithms.TestNetworks;
+import test.noesis.SampleNetworks;
 
 import noesis.Network;
 import noesis.algorithms.paths.BreadthFirstPathFinder;
@@ -17,7 +17,7 @@ public class BFSPathFinderTest extends SingleSourcePathFinderTest
 	@Test
 	public void testConnected() 
 	{
-		Network<String,Integer> graph = TestNetworks.weightedDirectedGraph();
+		Network<String,Integer> graph = SampleNetworks.weightedDirectedGraph();
 		BreadthFirstPathFinder pathFinder = new BreadthFirstPathFinder(graph,0);
 		
 		pathFinder.run();
@@ -48,7 +48,7 @@ public class BFSPathFinderTest extends SingleSourcePathFinderTest
 	@Test
 	public void testUnreachable() 
 	{
-		Network<String,Integer> graph = TestNetworks.weightedUnreachableGraph();;
+		Network<String,Integer> graph = SampleNetworks.weightedUnreachableGraph();;
 		BreadthFirstPathFinder pathFinder = new BreadthFirstPathFinder(graph,0);
 		
 		pathFinder.run();
@@ -79,7 +79,7 @@ public class BFSPathFinderTest extends SingleSourcePathFinderTest
 	@Test
 	public void testDisconnected() 
 	{
-		Network<String,Integer> graph = TestNetworks.weightedDisconnectedGraph();;
+		Network<String,Integer> graph = SampleNetworks.weightedDisconnectedGraph();;
 		BreadthFirstPathFinder pathFinder = new BreadthFirstPathFinder(graph,0);
 		
 		pathFinder.run();

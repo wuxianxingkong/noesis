@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import test.noesis.algorithms.TestNetworks;
+import test.noesis.SampleNetworks;
 import test.noesis.algorithms.DirectLinkEvaluator;
 
 import noesis.LinkEvaluator;
@@ -48,7 +48,7 @@ public class AllPairsJohnsonTest extends AllPairsShortestPathFinderTest
 	@Test
 	public void testNegativeWeights ()
 	{
-		network = TestNetworks.negativeWeightsGraph();
+		network = SampleNetworks.negativeWeightsGraph();
 		
 		finder  = new AllPairsBellmanFord(network, new DirectLinkEvaluator(network));
 		
@@ -56,7 +56,7 @@ public class AllPairsJohnsonTest extends AllPairsShortestPathFinderTest
 		
 		for (int i=0; i<network.size(); i++)
 			for (int j=0; j<network.size(); j++)
-				checkDistance(i,j, TestNetworks.NEGATIVE_DISTANCE[i][j]);
+				checkDistance(i,j, SampleNetworks.NEGATIVE_DISTANCE[i][j]);
 
 		assertFalse( finder.negativeCycleDetected() );
 	}
@@ -64,7 +64,7 @@ public class AllPairsJohnsonTest extends AllPairsShortestPathFinderTest
 	@Test
 	public void testNegativeCycle ()
 	{
-		Network<String,Integer> cycle = TestNetworks.negativeCycleGraph();
+		Network<String,Integer> cycle = SampleNetworks.negativeCycleGraph();
 		
 		finder = new AllPairsBellmanFord (cycle, new DirectLinkEvaluator(cycle));
 		

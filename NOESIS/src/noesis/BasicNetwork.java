@@ -161,16 +161,11 @@ public class BasicNetwork extends Network<Integer,Integer>
 		return null;
 	}
 
-	@Override
-	public final Integer get(Integer source, Integer destination) 
-	{
-		return get((int)source, (int)destination);
-	}
 
 	@Override
 	public final boolean contains(Integer node) 
 	{
-		return (node<size);
+		return (node>=0) && (node<size);
 	}
 
 	@Override
@@ -205,22 +200,6 @@ public class BasicNetwork extends Network<Integer,Integer>
 		return outLinks[node][START_INDEX+index];
 	}
 	
-	@Override
-	public final int[] outLinks(int node) 
-	{
-		int   outDegree = outDegree(node);
-		int[] links     = null;
-		
-		if (outDegree>0) {
-			
-			links = new int[outDegree];
-		
-			for (int i=0; i<outDegree; i++)
-				links[i] = outLink(node,i);
-		}
-
-		return links;
-	}
 
 
 	@Override
@@ -229,22 +208,6 @@ public class BasicNetwork extends Network<Integer,Integer>
 		return inLinks[node][START_INDEX+index];
 	}
 
-	@Override
-	public final int[] inLinks(int node) 
-	{
-		int   inDegree = inDegree(node);
-		int[] links    = null;
-		
-		if (inDegree>0) {
-			
-			links = new int[inDegree];
-		
-			for (int i=0; i<inDegree; i++)
-				links[i] = inLink(node,i);
-		}
-
-		return links;
-	}
 
 	
 	@Override

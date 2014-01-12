@@ -144,17 +144,6 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 		}
 	}
 
-	@Override
-	public final E get(V source, V destination) 
-	{
-		int sourceIndex = index(source);
-		int destinationIndex = index(destination);
-		
-		if ((sourceIndex!=-1) && (destinationIndex!=-1))
-			return get(sourceIndex,destinationIndex);
-		else
-			return null;
-	}
 
 	@Override
 	public final boolean contains(V node) 
@@ -191,24 +180,13 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 	{
 		return net.outLink(node, index);
 	}
-	
-	@Override
-	public int[] outLinks(int node) 
-	{
-		return net.outLinks(node);
-	}
+
 
 
 	@Override
 	public int inLink (int node, int index) 
 	{
 		return net.inLink(node, index);
-	}
-	
-	@Override
-	public int[] inLinks(int node) 
-	{
-		return net.inLinks(node);
 	}
 
 	

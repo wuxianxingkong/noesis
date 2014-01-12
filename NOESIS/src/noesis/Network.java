@@ -58,15 +58,28 @@ public abstract class Network<V, E> implements Graph<V,E>
 	
 	// Accessors
 	
+	public abstract int index(V node);
+
 	public abstract V get(int index);
 
 	public abstract E get(int source, int destination);
 
-	public abstract E get(V source, V destination);
+	public final E get(V source, V destination)
+	{
+		int sourceIndex = index(source);
+		int destinationIndex = index(destination);
+		
+		if ((sourceIndex!=-1) && (destinationIndex!=-1))
+			return get(sourceIndex,destinationIndex);
+		else
+			return null;		
+	}
 
-	public abstract boolean contains(V object);
+	public boolean contains(V object)
+	{		
+		return (index(object)!=-1);
+	}
 	
-	public abstract int index(V node);
 	
 
 	// Iterators
@@ -257,16 +270,34 @@ public abstract class Network<V, E> implements Graph<V,E>
 	// Links
 	
 	@Override
-	public final int[] outLinks(V node) 
+	public abstract int outLink(int node, int link);
+
+	@Override
+	public abstract int inLink(int node, int link);
+	
+	
+	@Override
+	public final int[] outLinks (V node) 
 	{
 		return outLinks(index(node));
 	}
 
 	@Override
-	public abstract int[] outLinks(int node);
-	
-	@Override
-	public abstract int outLink(int node, int link);
+	public final int[] outLinks (int node)
+	{
+		int   outDegree = outDegree(node);
+		int[] links     = null;
+		
+		if (outDegree>0) {
+			
+			links = new int[outDegree];
+		
+			for (int i=0; i<outDegree; i++)
+				links[i] = outLink(node,i);
+		}
+
+		return links;
+	}
 
 
 	@Override
@@ -276,10 +307,22 @@ public abstract class Network<V, E> implements Graph<V,E>
 	}
 
 	@Override
-	public abstract int[] inLinks(int node);
+	public final int[] inLinks(int node) 
+	{
+		int   inDegree = inDegree(node);
+		int[] links    = null;
+		
+		if (inDegree>0) {
+			
+			links = new int[inDegree];
+		
+			for (int i=0; i<inDegree; i++)
+				links[i] = inLink(node,i);
+		}
 
-	@Override
-	public abstract int inLink(int node, int link);
+		return links;
+	}
+
 	
 	
 	

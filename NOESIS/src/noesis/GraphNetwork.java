@@ -115,15 +115,6 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ReadOnlyGraphInte
 	{
 		return net.get(source,destination);
 	}
-
-	/* (non-Javadoc)
-	 * @see noesis.Network#get(V, V)
-	 */
-	@Override
-	public E get(V source, V destination)
-	{
-		return net.get(source,destination);
-	}
 	
 	
 	/* (non-Javadoc)
@@ -253,17 +244,11 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ReadOnlyGraphInte
 		return net.inLinkList(node);
 	}
 
+	
 	@Override
 	public int outLink (int node, int index) 
 	{
 		return net.outLink(node,index);
-	}
-
-	
-	@Override
-	public int[] outLinks(int node) 
-	{
-		return net.outLinks(node);
 	}
 
 
@@ -272,13 +257,5 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ReadOnlyGraphInte
 	{
 		return net.inLink(node,index);
 	}
-
-	
-	@Override
-	public int[] inLinks(int node) 
-	{
-		return net.inLinks(node);
-	}
-
 
 }

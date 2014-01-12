@@ -3,7 +3,7 @@ package test.noesis.algorithms.paths;
 import static org.junit.Assert.*;
 
 
-import test.noesis.algorithms.TestNetworks;
+import test.noesis.SampleNetworks;
 import test.noesis.algorithms.DirectLinkEvaluator;
 
 import noesis.Network;
@@ -22,7 +22,7 @@ public abstract class SingleSourceShortestPathFinderTest extends SingleSourcePat
 
 	public void checkConnected () 
 	{
-		Network<String,Integer> graph = TestNetworks.weightedDirectedGraph();
+		Network<String,Integer> graph = SampleNetworks.weightedDirectedGraph();
 		LinkEvaluator linkEvaluator = new DirectLinkEvaluator(graph);
 		SingleSourceShortestPathFinder finder = pathFinder(graph,0,linkEvaluator);
 			
@@ -63,7 +63,7 @@ public abstract class SingleSourceShortestPathFinderTest extends SingleSourcePat
 	
 	public void checkUnreachable() 
 	{
-		Network<String,Integer> graph = TestNetworks.weightedUnreachableGraph();;
+		Network<String,Integer> graph = SampleNetworks.weightedUnreachableGraph();;
 		LinkEvaluator linkEvaluator = new DirectLinkEvaluator(graph);
 		SingleSourceShortestPathFinder finder = pathFinder(graph,0,linkEvaluator);
 		
@@ -103,7 +103,7 @@ public abstract class SingleSourceShortestPathFinderTest extends SingleSourcePat
 	
 	public void checkDisconnected() 
 	{
-		Network<String,Integer> graph = TestNetworks.weightedDisconnectedGraph();;
+		Network<String,Integer> graph = SampleNetworks.weightedDisconnectedGraph();;
 		LinkEvaluator linkEvaluator = new DirectLinkEvaluator(graph);
 		SingleSourceShortestPathFinder finder = pathFinder(graph,0,linkEvaluator);
 		

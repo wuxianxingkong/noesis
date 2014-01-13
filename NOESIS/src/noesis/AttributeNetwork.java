@@ -6,7 +6,8 @@ package noesis;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
-import ikor.collection.*;
+import ikor.collection.List;
+import ikor.collection.Dictionary;
 import ikor.collection.util.Pair;
 import ikor.model.data.RealModel;
 
@@ -30,14 +31,14 @@ public class AttributeNetwork extends BasicNetwork
 		
 	public AttributeNetwork ()
 	{
-		nodeAttributes = new DynamicDictionary<String, Attribute>();
-		nodeAttributeNames = new DynamicList<String>();
+		nodeAttributes = CollectionFactory.createDictionary();
+		nodeAttributeNames = CollectionFactory.createList();
 
-		linkAttributes = new DynamicDictionary<String, LinkAttribute>();
-		linkAttributeNames = new DynamicList<String>();
+		linkAttributes = CollectionFactory.createDictionary();
+		linkAttributeNames = CollectionFactory.createList();
 		
-		index = new DynamicDictionary<Pair<Integer,Integer>, Integer>();
-		reverse = new DynamicDictionary<Integer,Pair<Integer,Integer>>();
+		index = CollectionFactory.createDictionary();
+		reverse = CollectionFactory.createDictionary();
 	}
 
 	

@@ -6,8 +6,7 @@ package noesis;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
-import ikor.collection.ReadOnlyList;
-import ikor.collection.graph.*;
+import ikor.collection.graph.Graph;
 
 /**
  * Network ADT implementation using graphs 
@@ -15,14 +14,14 @@ import ikor.collection.graph.*;
  * @author Fernando Berzal
  */
 
-public class GraphNetwork<V,E> extends Network<V,E> implements ReadOnlyGraphInterface<V,E>
+public class GraphNetwork<V,E> extends Network<V,E> 
 {
-	private GraphImplementation<V,E> net;
+	private Graph<V,E> net;
 	
 	
 	public GraphNetwork ()
 	{
-		this.net = new GraphImplementation<V,E>(true);
+		this.net = CollectionFactory.createGraph();
 	}
 	
 	
@@ -96,7 +95,6 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ReadOnlyGraphInte
 		return net.remove(sourceIndex,destinationIndex,content);
 	}
 
-
 	
 	/* (non-Javadoc)
 	 * @see noesis.Network#get(int)
@@ -146,24 +144,6 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ReadOnlyGraphInte
 		return net.index(node);
 	}
 
-	@Override
-	public int index(GraphNode<V> node) 
-	{
-		return net.index(node);
-	}
-
-	@Override
-	public GraphNode getNode(int index) 
-	{
-		return net.getNode(index);
-	}
-
-	@Override
-	public GraphNode<V> getNode(V node) 
-	{
-		return net.getNode(node);
-	}
-
 
 
 	/* (non-Javadoc)
@@ -196,54 +176,6 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ReadOnlyGraphInte
 	}
 
 
-	@Override
-	public GraphLink<E> getLink(int source, int destination) 
-	{
-		return net.getLink(source,destination);
-	}
-
-
-	@Override
-	public GraphLink<E> getLink(V source, V destination) 
-	{
-		return net.getLink(source,destination);
-	}
-
-
-	@Override
-	public GraphLink<E> getLink(GraphNode<V> source, GraphNode<V> destination) 
-	{
-		return net.getLink(source,destination);
-	}
-
-
-	@Override
-	public ReadOnlyList<GraphLink<E>> outLinkList(int node) 
-	{
-		return net.outLinkList(node);
-	}
-
-
-	@Override
-	public ReadOnlyList<GraphLink<E>> outLinkList(V node) 
-	{
-		return net.outLinkList(node);
-	}
-
-
-	@Override
-	public ReadOnlyList<GraphLink<E>> inLinkList(int node) 
-	{
-		return net.inLinkList(node);
-	}
-
-
-	@Override
-	public ReadOnlyList<GraphLink<E>> inLinkList(V node) 
-	{
-		return net.inLinkList(node);
-	}
-
 	
 	@Override
 	public int outLink (int node, int index) 
@@ -257,5 +189,6 @@ public class GraphNetwork<V,E> extends Network<V,E> implements ReadOnlyGraphInte
 	{
 		return net.inLink(node,index);
 	}
+
 
 }

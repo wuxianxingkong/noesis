@@ -9,9 +9,6 @@ package noesis;
 import ikor.collection.List;
 import ikor.collection.Dictionary;
 
-import ikor.collection.DynamicList;
-import ikor.collection.DynamicDictionary;
-
 /**
  * Network ADT implementation using arrays.
  * 
@@ -30,8 +27,8 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 	public ArrayNetwork ()
 	{
 		this.net = new BasicNetwork();
-		this.nodes = new DynamicList();
-		this.hash = new DynamicDictionary();
+		this.nodes = CollectionFactory.createList();
+		this.hash = CollectionFactory.createDictionary();
 	}
 	
 	@Override
@@ -90,10 +87,10 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 		if (ok) {
 			
 			if (content==null)
-				content = new DynamicList[size()];
+				content = new List[size()];
 			
 			if (content[sourceIndex]==null)
-				content[sourceIndex] = new DynamicList<E>();
+				content[sourceIndex] = CollectionFactory.createList();
 			
 			content[sourceIndex].add(value);			
 		}

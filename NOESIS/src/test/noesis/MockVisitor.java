@@ -6,8 +6,10 @@ package test.noesis;
 //Author:      Fernando Berzal
 //E-mail:      berzal@acm.org
 
-import ikor.collection.DynamicList;
+import ikor.collection.List;
 import ikor.collection.Visitor;
+
+import noesis.CollectionFactory;
 
 import static org.junit.Assert.*;
 
@@ -17,12 +19,12 @@ import static org.junit.Assert.*;
 
 public class MockVisitor<T> implements Visitor<T> 
 {
-	private DynamicList<T> expected;
+	private List<T> expected;
 	private int next;
 	
 	public MockVisitor()
 	{
-		expected = new DynamicList<T>();
+		expected = CollectionFactory.createList();
 		next = 0;
 	}
 	

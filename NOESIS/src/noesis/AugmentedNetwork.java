@@ -1,9 +1,9 @@
 package noesis;
 
 /**
- * Attribute network ADT
+ * Augmented attribute network ADT
  * 
- * @author Fernando Berzal
+ * @author Fernando Berzal (berzal@acm.org)
  */
 
 public class AugmentedNetwork extends AttributeNetwork 

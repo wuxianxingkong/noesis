@@ -2,10 +2,8 @@ package noesis;
 
 import noesis.Network;
 import ikor.collection.Dictionary;
-import ikor.collection.DynamicDictionary;
 import ikor.collection.List;
-import ikor.collection.DynamicList;
-import ikor.collection.index.*;
+import ikor.collection.index.Index;
 
 public class DynamicNetwork<V,E> extends Network<V,E> 
 {
@@ -25,13 +23,13 @@ public class DynamicNetwork<V,E> extends Network<V,E>
 
 	public DynamicNetwork ()
 	{
-		nodes = new DynamicList();
-		index = new DynamicDictionary();
+		nodes = CollectionFactory.createList();
+		index = CollectionFactory.createDictionary();;
 		currentNode = 0;
 		
-		skip = new ArrayIndex();
-		in = new DynamicList();
-		out = new DynamicList();
+		skip = CollectionFactory.createIndex();
+		in = CollectionFactory.createList();
+		out = CollectionFactory.createList();
 
 		links = 0;
 	}
@@ -173,8 +171,8 @@ public class DynamicNetwork<V,E> extends Network<V,E>
 		nodes.add(node);
 		index.set(node, currentNode);
 		skip.add(currentNode);
-		in.add(new ArrayIndex());
-		out.add(new ArrayIndex());
+		in.add(CollectionFactory.createIndex());
+		out.add(CollectionFactory.createIndex());
 		currentNode++;
 		
 		return size()-1;
@@ -255,10 +253,10 @@ public class DynamicNetwork<V,E> extends Network<V,E>
 		if (ok) {
 			
 			if (content==null)
-				content = new DynamicList<List<E>>();
+				content = CollectionFactory.createList();
 			
 			if (content.get(sourceNode)==null)
-				content.set(sourceNode, new DynamicList<E>());
+				content.set(sourceNode, CollectionFactory.createList() );
 			
 			content.get(sourceNode).add(value);			
 		}

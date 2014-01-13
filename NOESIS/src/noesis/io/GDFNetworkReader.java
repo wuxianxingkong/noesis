@@ -64,10 +64,10 @@ public class GDFNetworkReader extends AttributeNetworkReader
 	
 	// CSV reader with quote support ' "
 	
-	public DynamicList<String> parseString(String line) 
+	public List<String> parseString(String line) 
 	{
-		String              field;
-		DynamicList<String> fields = new DynamicList<String>();
+		String       field;
+		List<String> fields = CollectionFactory.createList();
 		
 		Matcher matcher = pattern.matcher(line);
 		
@@ -178,8 +178,8 @@ public class GDFNetworkReader extends AttributeNetworkReader
     
     private void processNode (AttributeNetwork net, String line)
     {
-		DynamicList<String> vals = parseString(line);
-		int                 node = net.size();
+		List<String> vals = parseString(line);
+		int          node = net.size();
 
 		net.add(node);
 
@@ -199,7 +199,7 @@ public class GDFNetworkReader extends AttributeNetworkReader
     
     private void processLink (AttributeNetwork net, String line)
     {
-		DynamicList<String> vals = parseString(line);
+		List<String> vals = parseString(line);
 
 		int source = getNodeIndex(vals.get(linkSourceColumn));
 		int target = getNodeIndex(vals.get(linkTargetColumn));

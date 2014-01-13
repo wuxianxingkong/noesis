@@ -1,6 +1,10 @@
 package noesis;
 
-
+/**
+ * Augmented attribute network ADT
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
 
 public class AugmentedAttribute<T> extends Attribute<T> 
 {

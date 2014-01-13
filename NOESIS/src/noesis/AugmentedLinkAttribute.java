@@ -1,5 +1,11 @@
 package noesis;
 
+/**
+ * Augmented attribute network ADT
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
+
 public class AugmentedLinkAttribute<T> extends LinkAttribute<T> 
 {
 	LinkAttribute<T> base;

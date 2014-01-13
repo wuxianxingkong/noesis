@@ -21,15 +21,14 @@ public interface Index
 	public int size ();
 
 	/**
-	 * Returns the element at the specified position in this array.
+	 * Returns the element at the specified position in this index.
 	 * @param index Element position
 	 * @return Element in the collection
 	 */
 	public int get (int index);
 
-
 	/**
-	 * Replaces the element at the specified position in this array with the specified element.
+	 * Replaces the element at the specified position in this index with the specified element.
 	 * @param index Index of the element to replace
 	 * @param value Element to be stored at the specified position
 	 * @return The element previously at the specified position
@@ -38,26 +37,25 @@ public interface Index
 
 
 	/**
-	 * Adds an element to the array.	
+	 * Adds an element to the index.	
 	 * @param value Element to be added.
 	 * @return true if the collection has changed
 	 */
 	public boolean add (int value);
 
 	/**
-	 * Removes an element from the array.
+	 * Removes an element from the index.
 	 * @param index Element index
 	 * @return element removed from this array, if present
 	 */
 	public int remove (int index);
 
 	/**
-	 * Removes an element from the collection.
+	 * Removes an element from the index.
 	 * @param value Value to be removed
 	 * @return true if the object was actually removed
 	 */
 	public boolean removeValue (int value);
-
 
 	/**
 	 * Returns the index of the specified element.
@@ -67,10 +65,16 @@ public interface Index
 	public int index (int value);
 
 	/**
-	 * Returns whether the specified element is within the array.
+	 * Returns whether the specified element is indexed.
 	 * @param value Element value
-	 * @return true if the element is in the array, false otherwise
+	 * @return true if the element is in the array, false otherwise.
 	 */
 	public boolean contains (int value);
+	
+	/**
+	 * Returns a copy of the values in the index.
+	 * @return Array with the index values.
+	 */
+	public int[] values ();
 
 }

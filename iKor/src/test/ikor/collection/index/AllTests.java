@@ -4,7 +4,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses( { ArrayIndexTest.class })
+@Suite.SuiteClasses( { ArrayIndexTest.class,
+	                   HeapIndexTest.class})
 public class AllTests {
 
 }

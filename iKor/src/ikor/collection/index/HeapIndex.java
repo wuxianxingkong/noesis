@@ -2,17 +2,18 @@ package ikor.collection.index;
 
 // Title:       iKor Collection Framework
 // Version:     1.0
-// Copyright:   2012
+// Copyright:   2014
 // Author:      Fernando Berzal Galiano
 // E-mail:      berzal@acm.org
 
 
 /**
- * Dynamic index using arrays.
+ * Dynamic index using heaps.
  * 
  * CPU requirements:
- * - Insertion: Amortized O(1)
- * - Deletion: O(n)
+ * - Insertion: Amortized O(log n)
+ * - Deletion by index: O(log n)
+ * - Deletion by content: O(n)
  * - Access by index: O(1)
  * - Access by content: O(n)
  * 
@@ -24,7 +25,7 @@ package ikor.collection.index;
  *
  */
 
-public class ArrayIndex implements Index
+public class HeapIndex implements Index
 {
     private int     currentSize; // actual number of elements in the array
     private int[]   values;      // element values 
@@ -33,7 +34,7 @@ public class ArrayIndex implements Index
 	
     // Constructor
     
-    public ArrayIndex ()
+    public HeapIndex ()
     {
     	this.currentSize = 0;
     	
@@ -84,24 +85,91 @@ public class ArrayIndex implements Index
 		return index(value)!=-1;
 	}
 
+	
+	// Set = remove + add
 
 	public void set(int index, int value) 
 	{
-		if ((index>=0) && (index<values.length))
-			values[index] = value;
+		if ((index>=0) && (index<values.length)) {
+			remove(index);
+			add(value);
+		}
 	}
 	
+	// Heap
+	//
+	// index  0 1 2 3 4 5 6 7 8...
+	// parent - 0 0 1 1 2 2 3 3...
+	
+	protected int parent (int k)
+	{
+		return (k-1)/2; 
+	}
+	
+	protected int leftChild (int k)
+	{
+		return 2*k+1;
+	}
+	
+	protected int rightChild (int k)
+	{
+		return 2*k+2;
+	}
+	
+	// Bottom-up heapify
+	
+	private void swim(int k) 
+	{
+		int tmp;
+		int parent = parent(k);
+		
+		while ( (k>1) && values[parent]>values[k]) {
+			tmp = values[k];
+			values[k] = values[parent];
+			values[parent] = tmp;
+			k = parent;
+			parent = parent(k);
+		}
+	}	
+	
+	// Up-down
+	
+	private void sink(int k) 
+	{
+		int tmp;
+		boolean finished = false;
+	
+		while ( leftChild(k)<currentSize && !finished)  {
+			int j = leftChild(k);
+			
+			if ( (j<currentSize-1) && (values[j]>values[j+1])) 
+				j++;
+			
+			if (values[k]>values[j]) {
+				tmp = values[k];
+				values[k] = values[j];
+				values[j] = tmp;
+			} else {
+				finished = true;
+			}
 
+			k = j;
+		}
+	}
+	
 	// Add at the end of the array...
 	
 	public boolean add (int value) 
 	{
+		int last = currentSize;
+		
 		if (values.length<=currentSize)
 			resizeArray (2*values.length);
 		
-		values[currentSize] = value;
-				
+		values[last] = value;
 		currentSize++;
+		
+		swim(last);
 
 		return true;
 	}
@@ -112,9 +180,11 @@ public class ArrayIndex implements Index
 		int value = 0;
 		
 		if ((index>=0) && (index<currentSize)) {
-			value = get(index);
-			System.arraycopy(values,index+1,values,index,currentSize-1-index);
+			value = values[index];
+			values[index] = values[currentSize-1];
 			currentSize--;
+			
+			sink(index);
 		}
 		
 		return value;
@@ -133,17 +203,7 @@ public class ArrayIndex implements Index
 			return false;
 		}
 	}
-
-	public String toString ()
-	{
-		String str = "";
-		
-		for (int i=0; i<currentSize; i++)
-			str += " "+values[i]; 
-		
-		return str;
-	}
-
+	
 	@Override
 	public int[] values() 
 	{
@@ -153,5 +213,15 @@ public class ArrayIndex implements Index
 			v[i] = values[i];
 		
 		return v;
+	}	
+
+	public String toString ()
+	{
+		String str = "";
+		
+		for (int i=0; i<currentSize; i++)
+			str += " "+values[i]; 
+		
+		return str;
 	}
 }

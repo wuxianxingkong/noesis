@@ -87,6 +87,19 @@ public class Matrix implements java.io.Serializable
 		this.datos = new double[1][];
 		this.datos[0] = vector;
 	}
+
+	// Factory methods
+	
+	public static Matrix createIdentity (int n)
+	{
+		Matrix identity = new Matrix(n,n);
+
+		for (int i=0; i<n; i++)
+			identity.set(i,i,1);
+
+		return identity;
+	}
+	
 	
 	// Matrix dimensions
 
@@ -194,24 +207,6 @@ public class Matrix implements java.io.Serializable
 
 		return suma;
 	}
-	
-	// In-place addition
-
-	public Matrix accumulate (Matrix other) 
-	{
-		int filas = rows();
-		int columnas = columns();
-		
-		if (this.rows() == other.rows() && this.columns() == other.columns()) {
-
-			for (int i=0; i<filas; i++)
-				for (int j=0; j<columnas; j++)
-					this.datos[i][j] += other.datos[i][j];
-		}
-
-		return this;
-	}
-
 
 	public Matrix add (double constant) 
 	{
@@ -226,18 +221,6 @@ public class Matrix implements java.io.Serializable
 
 		return suma;
 	}
-	
-	public Matrix accumulate (double constant) 
-	{
-		int filas = rows();
-		int columnas = columns();
-		
-		for (int i=0; i<filas; i++)
-			for (int j=0; j<columnas; j++)
-				this.datos[i][j] += constant;
-
-		return this;
-	}
 
 	// Resta de matrices: A-B
 
@@ -245,12 +228,15 @@ public class Matrix implements java.io.Serializable
 	{
 		int filas = rows();
 		int columnas = columns();
+		Matrix result = null;
 
 		if (this.rows() == other.rows() && this.columns() == other.columns()) {
 
+			result = new Matrix(filas, columnas);
+			
 			for (int i=0; i < filas; i++)
 				for (int j=0; j < columnas; j++)
-					this.datos[i][j] -= other.datos[i][j];
+					result.datos[i][j] = this.datos[i][j] - other.datos[i][j];
 		}
 
 		return this;
@@ -307,6 +293,36 @@ public class Matrix implements java.io.Serializable
 			for (j = 0; j < columnas; j++)
 				result.datos[i][j] = this.datos[i][j] / constant;
 
+		return result;
+	}
+	
+	// Exponenciación
+	
+	public Matrix power (int n)
+	{
+		Matrix result = null;
+		
+		if (rows()==columns()) {
+			
+			if (n>1) {
+				
+				Matrix half = this.power(n/2);
+				
+				if (n%2==1)
+					result = half.multiply(half).multiply(this);
+				else
+					result = half.multiply(half);
+				
+			} else if (n==1) {
+				result = this;
+			} else if (n==0) {
+				result = createIdentity(rows());
+			} else if (n<0) {
+				result = this.power(-n).inverse();
+			}
+		}
+		
+		
 		return result;
 	}
 

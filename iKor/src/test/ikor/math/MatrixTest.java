@@ -196,4 +196,31 @@ public class MatrixTest
 		assertEquals( 0, ones.cofactor(0,0), EPSILON);
 	}	
 	
+	@Test
+	public void testPower ()
+	{
+		Matrix A  = new Matrix ( new double[][] { {0,1,1,0}, {1,0,1,0}, {1,1,0,1}, {0,0,1,0} } );
+		Matrix A0 = new Matrix ( new double[][] { {1,0,0,0}, {0,1,0,0}, {0,0,1,0}, {0,0,0,1} } );
+		Matrix A2 = new Matrix ( new double[][] { {2,1,1,1}, {1,2,1,1}, {1,1,3,0}, {1,1,0,1} } );
+		Matrix A3 = new Matrix ( new double[][] { {2,3,4,1}, {3,2,4,1}, {4,4,2,3}, {1,1,3,0} } );
+		Matrix A4 = new Matrix ( new double[][] { { 7, 6, 6, 4}, { 6, 7, 6, 4}, { 6, 6,11, 2}, { 4, 4, 2, 3} } );
+		Matrix A5 = new Matrix ( new double[][] { {12,13,17, 6}, {13,12,17, 6}, {17,17,14,11}, { 6, 6,11, 2} } );
+		Matrix A6 = new Matrix ( new double[][] { {30,29,31,17}, {29,30,31,17}, {31,31,45,14}, {17,17,14,11} } );
+		Matrix A7 = new Matrix ( new double[][] { {60,61,76,31}, {61,60,76,31}, {76,76,76,45}, {31,31,45,14} } );
+		
+		assertEquals ( A,  A.power(1) );
+		assertEquals ( A2, A.power(2) );
+		assertEquals ( A3, A.power(3) );
+		assertEquals ( A4, A.power(4) );
+		assertEquals ( A5, A.power(5) );
+		assertEquals ( A6, A.power(6) );
+		assertEquals ( A7, A.power(7) );
+
+		assertEquals ( A0, A.power(0) );
+		
+		assertEquals ( A.inverse(),  A.power(-1) );
+		assertEquals ( A2.inverse(), A.power(-2) );
+		assertEquals ( A3.inverse(), A.power(-3) );
+		
+	}
 }

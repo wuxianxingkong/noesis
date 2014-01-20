@@ -66,6 +66,6 @@ public abstract class LinkMeasure extends Measure
 		if (offset<degree)
 			return get(index[source]+offset);
 		else
-			return 0;
+			return Double.NaN;
 	}
 }

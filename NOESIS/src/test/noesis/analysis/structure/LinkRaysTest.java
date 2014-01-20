@@ -58,6 +58,18 @@ public class LinkRaysTest
 		assertEquals(0, rays.get(4,6), EPSILON);
 		assertEquals(0, rays.get(5,6), EPSILON);
 		
+		assertTrue( Double.isNaN(rays.get(6,5)) );
+		assertTrue( Double.isNaN(rays.get(6,4)) );
+		assertTrue( Double.isNaN(rays.get(5,4)) );
+		assertTrue( Double.isNaN(rays.get(4,3)) );
+		assertTrue( Double.isNaN(rays.get(3,2)) );
+
+		assertTrue( Double.isNaN(rays.get(0,0)) );
+		assertTrue( Double.isNaN(rays.get(0,3)) );
+		assertTrue( Double.isNaN(rays.get(0,4)) );
+		assertTrue( Double.isNaN(rays.get(0,5)) );
+		assertTrue( Double.isNaN(rays.get(0,6)) );
+		
 	}
 
 }

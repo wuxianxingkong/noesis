@@ -355,6 +355,5 @@ public class BowtieTest
 		measure.compute();
 
 		checkMeasure(measure, katzNegative);
-	}
-	
+	}	
 }

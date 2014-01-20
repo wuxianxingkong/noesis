@@ -1,14 +1,8 @@
 package noesis.analysis.structure;
 
-
 import noesis.Network;
 
-import ikor.math.Vector;
-import ikor.model.data.DataModel;
-import ikor.model.data.IntegerModel;
-import ikor.model.data.RealModel;
-
-public abstract class NodeMeasure extends Vector
+public abstract class NodeMeasure extends Measure
 {
 	private Network network;
 	
@@ -40,7 +34,7 @@ public abstract class NodeMeasure extends Vector
 		done = true;
 	}
 	
-	public final boolean checkDone ()
+	protected final boolean checkDone ()
 	{
 		if (!done)
 			compute();
@@ -49,29 +43,4 @@ public abstract class NodeMeasure extends Vector
 	}
 	
 	public abstract double compute (int node);
-
-
-	// Measure metadata
-	
-	public abstract String getName ();
-	
-	public String getDescription ()
-	{
-		return getName();
-	}
-	
-	protected static final DataModel INTEGER_MODEL = new IntegerModel();
-	protected static final DataModel REAL_MODEL = new RealModel();
-	
-	public DataModel getModel ()
-	{
-		return REAL_MODEL; 
-	}
-	
-	// Standard output
-	
-	public String toString ()
-	{
-		return getName() + ": " + toStringSummary();
-	}
 }

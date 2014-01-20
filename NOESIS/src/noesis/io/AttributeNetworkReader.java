@@ -7,16 +7,16 @@ package noesis.io;
 // E-mail:      berzal@acm.org
 
 import ikor.collection.Dictionary;
-import ikor.collection.DynamicDictionary;
 
 import noesis.AttributeNetwork;
+import noesis.CollectionFactory;
 
 public abstract class AttributeNetworkReader extends NetworkReader 
 {
 	
 	// Node IDs
 
-	private Dictionary<String,Integer> ids = new DynamicDictionary<String,Integer>();
+	private Dictionary<String,Integer> ids = CollectionFactory.createDictionary();
 
 	protected int getNodeIndex (String id)
 	{

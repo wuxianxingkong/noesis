@@ -1,4 +1,6 @@
-package noesis;
+package noesis.network;
+
+import noesis.Attribute;
 
 /**
  * Augmented attribute network ADT

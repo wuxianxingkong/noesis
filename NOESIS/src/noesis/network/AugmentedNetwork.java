@@ -1,4 +1,7 @@
-package noesis;
+package noesis.network;
+
+import noesis.AttributeNetwork;
+import noesis.Network;
 
 /**
  * Augmented attribute network ADT
@@ -12,7 +15,7 @@ public class AugmentedNetwork extends AttributeNetwork
 	
 	public AugmentedNetwork (Network original)
 	{
-		if (base instanceof AttributeNetwork)
+		if (original instanceof AttributeNetwork)
 			this.base = (AttributeNetwork) original;
 		else
 			this.base = new AttributeNetwork(original);

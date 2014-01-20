@@ -1,9 +1,9 @@
-package test.noesis;
+package test.noesis.network;
 
 import static org.junit.Assert.*;
 
 import noesis.AttributeNetwork;
-import noesis.AugmentedNetwork;
+import noesis.network.AugmentedNetwork;
 
 import org.junit.Before;
 import org.junit.Test;

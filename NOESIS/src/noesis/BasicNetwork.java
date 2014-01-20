@@ -22,7 +22,7 @@ public class BasicNetwork extends Network<Integer,Integer>
 
 	
 	@Override
-	public final int size() 
+	public int size() 
 	{
 		return size;
 	}
@@ -133,7 +133,7 @@ public class BasicNetwork extends Network<Integer,Integer>
 	}
 
 	@Override
-	public final Integer get(int index) 
+	public Integer get(int index) 
 	{
 		return index;
 	}
@@ -163,13 +163,13 @@ public class BasicNetwork extends Network<Integer,Integer>
 
 
 	@Override
-	public final boolean contains(Integer node) 
+	public boolean contains(Integer node) 
 	{
 		return (node>=0) && (node<size);
 	}
 
 	@Override
-	public final int index(Integer node) 
+	public int index(Integer node) 
 	{	
 		return node;
 	}

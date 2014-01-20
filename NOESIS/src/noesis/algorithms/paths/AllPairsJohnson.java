@@ -1,8 +1,8 @@
 package noesis.algorithms.paths;
 
 import noesis.Network;
-import noesis.AugmentedNetwork;
 import noesis.LinkEvaluator;
+import noesis.network.AugmentedNetwork;
 
 import ikor.parallel.*;
 

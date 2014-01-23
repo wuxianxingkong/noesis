@@ -69,7 +69,7 @@ public class FilteredNetwork extends AttributeNetwork
 	 * Number of nodes in the filtered network, O(1)
 	 */
 	@Override
-	public int size ()
+	public int nodes ()
 	{
 		return nodes;
 	}

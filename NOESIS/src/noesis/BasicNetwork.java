@@ -22,7 +22,7 @@ public class BasicNetwork extends Network<Integer,Integer>
 
 	
 	@Override
-	public int size() 
+	public int nodes() 
 	{
 		return size;
 	}

@@ -32,9 +32,9 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 	}
 	
 	@Override
-	public final int size() 
+	public final int nodes() 
 	{
-		return net.size();
+		return net.nodes();
 	}
 
 	@Override

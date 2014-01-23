@@ -2,13 +2,14 @@ package noesis.analysis.structure;
 
 import noesis.Network;
 import noesis.network.LinkIndex;
+import noesis.network.LinkIndexer;
 
 public abstract class LinkMeasure extends Measure
 {
 	private Network network;
-	private LinkIndex index;
+	private LinkIndexer index;
 
-	protected LinkMeasure (Network network, LinkIndex index)
+	protected LinkMeasure (Network network, LinkIndexer index)
 	{
 		super(network.links());
 		

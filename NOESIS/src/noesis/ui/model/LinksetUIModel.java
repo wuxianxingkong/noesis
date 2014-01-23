@@ -103,10 +103,10 @@ public class LinksetUIModel extends UIModel
 				
 				if (column==0) {
 					// Source
-					data = network.getNodeAttribute("id").get( network.getLinkSource(row) );
+					data = network.getNodeAttribute("id").get( network.source(row) );
 				} else if (column==1) {
 					// Destination
-					data = network.getNodeAttribute("id").get( network.getLinkDestination(row) );
+					data = network.getNodeAttribute("id").get( network.destination(row) );
 				} else if (column-2<network.getLinkAttributeCount()) {
 					// Link attribute
 					data = network.getLinkAttribute(column-2).get(row);

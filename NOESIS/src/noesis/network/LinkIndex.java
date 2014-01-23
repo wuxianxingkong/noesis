@@ -1,12 +1,12 @@
 package noesis.network;
 
-import noesis.Network;
-
 // Title:       Link index for networks
 // Version:     1.0
 // Copyright:   2014
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
+
+import noesis.Network;
 
 /**
  * Link index. Given a network, map its links to integers.
@@ -14,7 +14,7 @@ import noesis.Network;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-public class LinkIndex 
+public class LinkIndex implements LinkIndexer 
 {
 	private Network net;
 	private int nodes;
@@ -44,7 +44,9 @@ public class LinkIndex
 	/**
 	 * Nodes in the underlying network, O(1).
 	 * @return Number of nodes in the network when the index was built. 
+	 * @see noesis.network.LinkIndexer#nodes()
 	 */
+	@Override
 	public int nodes ()
 	{
 		return nodes;
@@ -53,7 +55,9 @@ public class LinkIndex
 	/**
 	 * Links in the underlying network, O(1).
 	 * @return Number of links in the network when the index was built.
+	 * @see noesis.network.LinkIndexer#links()
 	 */
+	@Override
 	public int links ()
 	{
 		return links;
@@ -78,11 +82,13 @@ public class LinkIndex
 	
 	
 	/**
-	 * Index of a given link, O(d)
+	 * Index of a given link, O(d).
 	 * @param source Source node index.
 	 * @param destination Destination node index.
-	 * @return Link index (0..m), -1 if link does not exist.
+	 * @return Link index (0..m-1), -1 if link does not exist.
+	 * @see noesis.network.LinkIndexer#index(int, int)
 	 */
+	@Override
 	public int index (int source, int destination)
 	{
 		int base = index[source];
@@ -100,10 +106,12 @@ public class LinkIndex
 	
 	
 	/**
-	 * Source node of a given link, O(log n)
+	 * Source node of a given link, O(log n).
 	 * @param link Link index
-	 * @return Source node of the corresponding link
+	 * @return Source node index of the corresponding link
+	 * @see noesis.network.LinkIndexer#source(int)
 	 */
+	@Override
 	public int source (int link)
 	{
 		if (link>=links)
@@ -134,11 +142,14 @@ public class LinkIndex
 			return middle;
 	}
 	
+	
 	/**
-	 * Destination node of a given link, O(log n)
+	 * Destination node of a given link, O(log n).
 	 * @param link Link index
-	 * @return Destination node
+	 * @return Destination node index
+	 * @see noesis.network.LinkIndexer#destination(int)
 	 */
+	@Override
 	public int destination (int link)
 	{
 		int sourceNode = source(link);

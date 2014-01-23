@@ -6,6 +6,7 @@ package noesis;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
+import noesis.network.LinkIndexer;
 import ikor.collection.List;
 import ikor.collection.Dictionary;
 import ikor.collection.util.Pair;
@@ -16,7 +17,7 @@ import ikor.model.data.RealModel;
  * 
  * @author Fernando Berzal
  */
-public class AttributeNetwork extends BasicNetwork 
+public class AttributeNetwork extends BasicNetwork implements LinkIndexer
 {
 	private List<String> nodeAttributeNames;
 	private Dictionary<String, Attribute> nodeAttributes;
@@ -57,7 +58,7 @@ public class AttributeNetwork extends BasicNetwork
 		}
 	}	
 
-	// Edge index
+	// Link index
 	
 	@Override
 	public boolean add(int source, int destination) 
@@ -71,6 +72,13 @@ public class AttributeNetwork extends BasicNetwork
 		return super.add(source,destination);
 	}
 	
+	/**
+	 * Index of a given link, O(1).
+	 * @param source Source node index.
+	 * @param destination Destination node index.
+	 * @return Link index (0..m-1), -1 if link does not exist.
+	 * @see noesis.network.LinkIndexer#index(int, int)
+	 */	
 	public int index (int source, int destination)
 	{
 		Pair<Integer,Integer> key = new Pair<Integer,Integer>(source,destination);
@@ -82,7 +90,13 @@ public class AttributeNetwork extends BasicNetwork
 			return -1;
 	}
 	
-	public int getLinkSource (int index)
+	/**
+	 * Source node of a given link, O(1).
+	 * @param link Link index
+	 * @return Source node index of the corresponding link
+	 * @see noesis.network.LinkIndexer#source(int)
+	 */	
+	public int source (int index)
 	{
 		Pair<Integer,Integer> value = reverse.get(index);
 
@@ -92,7 +106,13 @@ public class AttributeNetwork extends BasicNetwork
 			return -1;
 	}
 	
-	public int getLinkDestination (int index)
+	/**
+	 * Destination node of a given link, O(1).
+	 * @param link Link index
+	 * @return Destination node index
+	 * @see noesis.network.LinkIndexer#destination(int)
+	 */	
+	public int destination (int index)
 	{
 		Pair<Integer,Integer> value = reverse.get(index);
 

@@ -51,7 +51,7 @@ public class DynamicNetwork<V,E> extends Network<V,E>
 	// Network size
 	
 	@Override
-	public int size() 
+	public int nodes() 
 	{
 		return skip.size();
 	}

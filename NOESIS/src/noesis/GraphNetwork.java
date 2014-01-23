@@ -119,7 +119,7 @@ public class GraphNetwork<V,E> extends Network<V,E>
 	 * @see noesis.Network#size()
 	 */
 	@Override
-	public int size() 
+	public int nodes() 
 	{
 		return net.size();
 	}

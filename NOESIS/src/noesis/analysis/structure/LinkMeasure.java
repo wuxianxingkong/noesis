@@ -1,19 +1,26 @@
 package noesis.analysis.structure;
 
 import noesis.Network;
+import noesis.network.LinkIndex;
 
 public abstract class LinkMeasure extends Measure
 {
 	private Network network;
-	private int[] index;
-	
-	protected LinkMeasure (Network network)
+	private LinkIndex index;
+
+	protected LinkMeasure (Network network, LinkIndex index)
 	{
 		super(network.links());
 		
 		this.network = network;
-		this.index = new int[network.size()];
+		this.index = index;
 	}
+
+	protected LinkMeasure (Network network)
+	{
+		this (network, new LinkIndex(network));
+	}
+	
 	
 	public final Network getNetwork ()
 	{
@@ -32,7 +39,6 @@ public abstract class LinkMeasure extends Measure
 		int     pos = 0;
 	
 		for (int node=0; node<size; node++) {
-			index[node] = pos;
 			for (int link=0; link<net.outDegree(node); link++) {
 				set (pos, compute(node, net.outLink(node,link)));
 				pos++;
@@ -56,15 +62,10 @@ public abstract class LinkMeasure extends Measure
 	
 	public double get (int source, int destination)
 	{
-		Network net = getNetwork();
-		int degree = net.outDegree(source);
-		int offset = 0;
+		int link = index.index(source, destination);
 		
-		while ((offset<degree) && (destination!=net.outLink(source,offset)))
-			offset++;
-		
-		if (offset<degree)
-			return get(index[source]+offset);
+		if (link!=-1)
+			return get(link);
 		else
 			return Double.NaN;
 	}

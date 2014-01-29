@@ -6,21 +6,30 @@ import noesis.Network;
 import ikor.math.Matrix;
 import ikor.math.Vector;
 import ikor.model.data.DataModel;
-import ikor.model.data.IntegerModel;
-import ikor.model.data.RealModel;
 
-public abstract class NodeMultiMeasure extends Matrix
+public class NodeMultiMeasure extends Matrix
 {
 	private Network network;
 	private int measures;
+	private String id[];
+	private String description[];
+	private DataModel model[];
 	
-	protected NodeMultiMeasure (Network network, int measures)
+	// Constructors
+	
+	protected NodeMultiMeasure (NodeMultiMeasureTask creator, Network network, int measures)
 	{
 		super(measures, network.size());
 		
 		this.network = network;
 		this.measures = measures;
+		this.id = creator.getNames();
+		this.description = creator.getDescriptions();
+		this.model = creator.getModels();
 	}
+	
+
+	// Getters
 	
 	public final Network getNetwork ()
 	{
@@ -31,49 +40,23 @@ public abstract class NodeMultiMeasure extends Matrix
 	{
 		return measures;
 	}
-	
 
-	// Computation template method
 	
-	protected boolean done = false;
-	
-	public void compute ()
-	{
-		Network net = getNetwork();
-		int     size = net.size();
-	
-		for (int node=0; node<size; node++)
-			set (node, compute(node));
-		
-		done = true;
-	}
-	
-	public final boolean checkDone ()
-	{
-		if (!done)
-			compute();
-		
-		return done;
-	}
-	
-	public abstract double[] compute (int node);
-
-
 	// Measure metadata
 	
-	public abstract String getName (int measure);
+	public String getName (int measure)
+	{
+		return id[measure];
+	}
 	
 	public String getDescription (int measure)
 	{
-		return getName(measure);
+		return description[measure];
 	}
-	
-	protected static final DataModel INTEGER_MODEL = new IntegerModel();
-	protected static final DataModel REAL_MODEL = new RealModel();
 	
 	public DataModel getModel (int measure)
 	{
-		return REAL_MODEL; 
+		return model[measure]; 
 	}
 	
 	// Standard output

@@ -1,25 +1,17 @@
 package noesis.analysis.structure;
 
+import ikor.model.data.annotations.Description;
+import ikor.model.data.annotations.Label;
 import noesis.Network;
 
-public class ClusteringCoefficient extends NodeMeasure 
+@Label("cc")
+@Description("Clustering coefficient")
+public class ClusteringCoefficient extends NodeMeasureTask
 {
 	public ClusteringCoefficient (Network network)
 	{
 		super(network);
 	}
-	
-	@Override
-	public String getName() 
-	{
-		return "clustering";
-	}	
-	
-	@Override
-	public String getDescription() 
-	{
-		return "Clustering coefficient";
-	}	
 	
 	public double compute (int node) 
 	{

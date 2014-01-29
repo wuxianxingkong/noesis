@@ -1,8 +1,11 @@
 package noesis.analysis.structure;
 
+import ikor.model.data.annotations.Label;
+
 import noesis.Network;
 
-public class LinkRays extends LinkMeasure 
+@Label("Link rays")
+public class LinkRays extends LinkMeasureTask
 {
 	public LinkRays(Network network) 
 	{
@@ -15,12 +18,6 @@ public class LinkRays extends LinkMeasure
 		Network net = getNetwork();
 		
 		return net.inDegree(source)*net.outDegree(destination);
-	}
-
-	@Override
-	public String getName() 
-	{
-		return "Link rays";
 	}
 
 }

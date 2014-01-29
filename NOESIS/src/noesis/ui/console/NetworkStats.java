@@ -113,10 +113,10 @@ public class NetworkStats {
 			if (net instanceof AttributeNetwork) {
 								
 				System.out.println("Node of maximum out-degree:");
-				printNode ( (AttributeNetwork) net, outDegrees.maxIndex());				
+				printNode ( (AttributeNetwork) net, outDegrees.getResult().maxIndex());				
 
 				System.out.println("Node of maximum in-degree:");
-				printNode ( (AttributeNetwork) net, inDegrees.maxIndex());
+				printNode ( (AttributeNetwork) net, inDegrees.getResult().maxIndex());
 			}
 			
 			// Betweenness 
@@ -128,7 +128,7 @@ public class NetworkStats {
 
 			if (net instanceof AttributeNetwork) {
 				System.out.println("Node of maximum betweenness:");
-				printNode ( (AttributeNetwork) net, betweenness.maxIndex());				
+				printNode ( (AttributeNetwork) net, betweenness.getResult().maxIndex());				
 			}
 
 			crono.stop();

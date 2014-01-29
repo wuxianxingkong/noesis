@@ -11,6 +11,7 @@ import ikor.util.log.Log;
 import noesis.Attribute;
 import noesis.AttributeNetwork;
 import noesis.Network;
+import noesis.analysis.structure.NodeMultiMeasureTask;
 import noesis.analysis.structure.NodeMultiMeasure;
 import noesis.ui.model.NetworkModel;
 import noesis.ui.model.VectorUIModel;
@@ -29,38 +30,39 @@ public class NodeMultiMeasureAction extends Action
 		this.measureClass = metric;
 	}
 	
-	public NodeMultiMeasure instantiateMetric (Network network)
+	public NodeMultiMeasureTask instantiateTask (Network network)
 	{
-		NodeMultiMeasure metrics = null;
+		NodeMultiMeasureTask task = null;
 		
 		try {
 		
 			Constructor constructor = measureClass.getConstructor(Network.class);
-			metrics = (NodeMultiMeasure) constructor.newInstance(network);
+			task = (NodeMultiMeasureTask) constructor.newInstance(network);
 		
 		} catch (Exception error) {
 			
 			Log.error ("NodeMeasure: Unable to instantiate "+measureClass);
 		}
 		
-		return metrics;
+		return task;
 	}
 
 	@Override
 	public void run() 
 	{
 		AttributeNetwork network = model.getNetwork();
+		NodeMultiMeasureTask task;
 		NodeMultiMeasure metrics;
 		Attribute        attribute;
 		String           id;
 		
 		if (network!=null) {
 			
-			metrics = instantiateMetric(network);
+			task = instantiateTask(network);
 			
-			if (metrics!=null) {
+			if (task!=null) {
 				
-				metrics.compute();
+				metrics = task.getResult();
 				
 				for (int m=0; m<metrics.getMeasureCount(); m++) {
 				

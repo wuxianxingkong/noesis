@@ -18,6 +18,7 @@ import noesis.analysis.structure.EigenvectorCentrality;
 import noesis.analysis.structure.FreemanBetweenness;
 import noesis.analysis.structure.HITS;
 import noesis.analysis.structure.KatzCentrality;
+import noesis.analysis.structure.NodeMeasureTask;
 import noesis.analysis.structure.NormalizedBetweenness;
 import noesis.analysis.structure.NormalizedDecay;
 import noesis.analysis.structure.NormalizedInDegree;
@@ -57,12 +58,19 @@ public class BowtieTest
 		connect(netBowtie, 5, 6);
 	}
 	
+	private void checkMeasure (NodeMeasureTask task, double[] expected)
+	{
+		Vector observed = task.getResult();
+		
+		for (int i=0; i<observed.size(); i++)
+			assertEquals ( expected[i], observed.get(i), EPSILON); 
+	}
+	
 	private void checkMeasure (Vector observed, double[] expected)
 	{
 		for (int i=0; i<observed.size(); i++)
 			assertEquals ( expected[i], observed.get(i), EPSILON); 
 	}
-	
 
 	// Degree centrality
 	
@@ -73,8 +81,6 @@ public class BowtieTest
 	{
 		NormalizedInDegree inDegree = new NormalizedInDegree(netBowtie);
 		
-		inDegree.compute();
-		
 		checkMeasure(inDegree, degree);
 	}
 
@@ -82,8 +88,6 @@ public class BowtieTest
 	public void testOutDegree ()
 	{
 		NormalizedOutDegree outDegree = new NormalizedOutDegree(netBowtie);
-		
-		outDegree.compute();
 
 		checkMeasure(outDegree, degree);
 	}
@@ -97,8 +101,6 @@ public class BowtieTest
 	{
 		Closeness measure = new Closeness(netBowtie);
 		
-		measure.compute();
-
 		checkMeasure(measure, closeness);
 	}
 	
@@ -121,8 +123,6 @@ public class BowtieTest
 	{
 		Decay measure = new Decay(netBowtie,0.00);
 		
-		measure.compute();
-
 		checkMeasure(measure, decay0);
 	}
 
@@ -131,8 +131,6 @@ public class BowtieTest
 	{
 		Decay measure = new Decay(netBowtie,1.00);
 		
-		measure.compute();
-
 		checkMeasure(measure, decay1);
 	}
 
@@ -141,8 +139,6 @@ public class BowtieTest
 	{
 		Decay measure = new Decay(netBowtie,0.25);
 		
-		measure.compute();
-
 		checkMeasure(measure, decay25);
 	}
 	
@@ -151,8 +147,6 @@ public class BowtieTest
 	{
 		Decay measure = new Decay(netBowtie,0.50);
 		
-		measure.compute();
-
 		checkMeasure(measure, decay50);
 	}
 	
@@ -161,8 +155,6 @@ public class BowtieTest
 	{
 		Decay measure = new Decay(netBowtie,0.75);
 		
-		measure.compute();
-
 		checkMeasure(measure, decay75);
 	}
 
@@ -171,8 +163,6 @@ public class BowtieTest
 	{
 		NormalizedDecay measure = new NormalizedDecay(netBowtie,0.25);
 		
-		measure.compute();
-
 		checkMeasure(measure, ndecay25);
 	}
 	
@@ -181,8 +171,6 @@ public class BowtieTest
 	{
 		NormalizedDecay measure = new NormalizedDecay(netBowtie,0.50);
 		
-		measure.compute();
-
 		checkMeasure(measure, ndecay50);
 	}
 	
@@ -191,8 +179,6 @@ public class BowtieTest
 	{
 		NormalizedDecay measure = new NormalizedDecay(netBowtie,0.75);
 		
-		measure.compute();
-
 		checkMeasure(measure, ndecay75);
 	}
 
@@ -208,8 +194,6 @@ public class BowtieTest
 	{
 		Betweenness measure = new Betweenness(netBowtie);
 		
-		measure.compute();
-
 		checkMeasure(measure, betweenness);
 	}	
 
@@ -218,8 +202,6 @@ public class BowtieTest
 	{
 		AdjustedBetweenness measure = new AdjustedBetweenness(netBowtie);
 		
-		measure.compute();
-
 		checkMeasure(measure, adjusted);
 	}	
 	
@@ -228,8 +210,6 @@ public class BowtieTest
 	{
 		FreemanBetweenness measure = new FreemanBetweenness(netBowtie);
 		
-		measure.compute();
-
 		checkMeasure(measure, freeman);
 	}
 	
@@ -239,8 +219,6 @@ public class BowtieTest
 	{
 		NormalizedBetweenness measure = new NormalizedBetweenness(netBowtie);
 		
-		measure.compute();
-
 		checkMeasure(measure, normalized);
 	}	
 
@@ -257,8 +235,6 @@ public class BowtieTest
 	{
 		EigenvectorCentrality measure = new EigenvectorCentrality(netBowtie);
 		
-		measure.compute();
-
 		checkMeasure(measure, eigenvector);
 	}
 
@@ -274,8 +250,6 @@ public class BowtieTest
 	{
 		PageRank measure = new PageRank(netBowtie);
 		
-		measure.compute();
-
 		checkMeasure(measure, pagerank);
 	}
 
@@ -291,10 +265,8 @@ public class BowtieTest
 	{
 		HITS measure = new HITS(netBowtie);
 		
-		measure.compute();
-
-		checkMeasure( new Vector(measure,HITS.HUB), hits);
-		checkMeasure( new Vector(measure,HITS.AUTHORITY), hits);
+		checkMeasure( new Vector(measure.getResult(),HITS.HUB), hits);
+		checkMeasure( new Vector(measure.getResult(),HITS.AUTHORITY), hits);
 	}
 	
 	// Katz centrality
@@ -304,8 +276,6 @@ public class BowtieTest
 	{
 		KatzCentrality measure = new KatzCentrality(netBowtie,1,0);
 		
-		measure.compute();
-
 		checkMeasure(measure, eigenvector);
 	}
 	
@@ -319,8 +289,6 @@ public class BowtieTest
 	{
 		KatzCentrality measure = new KatzCentrality(netBowtie,0,1);
 		
-		measure.compute();
-
 		checkMeasure(measure, katz_beta);
 	}
 
@@ -336,8 +304,6 @@ public class BowtieTest
 	{
 		KatzCentrality measure = new KatzCentrality(netBowtie,1,1);
 		
-		measure.compute();
-
 		checkMeasure(measure, katz);
 	}
 
@@ -352,8 +318,6 @@ public class BowtieTest
 	{
 		KatzCentrality measure = new KatzCentrality(netBowtie,-1,1);
 		
-		measure.compute();
-
 		checkMeasure(measure, katzNegative);
 	}	
 }

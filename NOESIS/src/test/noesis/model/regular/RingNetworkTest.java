@@ -68,7 +68,7 @@ public class RingNetworkTest extends RegularNetworkTest
 		assertEquals( oddRing.averagePathLength(), apl.averagePathLength(), EPSILON );
 		
 		for (int i=0; i<oddRing.size(); i++) {
-			assertEquals ( oddRing.averagePathLength(), apl.get(i), EPSILON);
+			assertEquals ( oddRing.averagePathLength(), apl.getResult().get(i), EPSILON);
 		}
 	}	
 }

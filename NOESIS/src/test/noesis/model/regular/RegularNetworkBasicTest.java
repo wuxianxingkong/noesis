@@ -38,18 +38,15 @@ public abstract class RegularNetworkBasicTest
 		RegularNetwork network = network();
 		OutDegree outDegrees = new OutDegree(network);
 		InDegree  inDegrees  = new InDegree(network);
-		
-		outDegrees.compute();
-		inDegrees.compute();
 
-		assertEquals(network.minDegree(), (int) outDegrees.min());
-		assertEquals(network.maxDegree(), (int) outDegrees.max());
+		assertEquals(network.minDegree(), (int) outDegrees.getResult().min());
+		assertEquals(network.maxDegree(), (int) outDegrees.getResult().max());
 
-		assertEquals(network.minDegree(), (int) inDegrees.min());
-		assertEquals(network.maxDegree(), (int) inDegrees.max());
+		assertEquals(network.minDegree(), (int) inDegrees.getResult().min());
+		assertEquals(network.maxDegree(), (int) inDegrees.getResult().max());
 		
-		assertEquals(network.averageDegree(), outDegrees.average(), EPSILON);
-		assertEquals(network.averageDegree(), inDegrees.average(), EPSILON);
+		assertEquals(network.averageDegree(), outDegrees.getResult().average(), EPSILON);
+		assertEquals(network.averageDegree(), inDegrees.getResult().average(), EPSILON);
 	}
 	
 	@Test
@@ -63,10 +60,9 @@ public abstract class RegularNetworkBasicTest
 		for (source=0; source<network.size(); source++) {
 			
 			paths = new PathLength(network,source);
-			paths.compute();
 		
 			for (int i=0; i<network.size(); i++) {
-				assertEquals ( network.distance(source,i), (int) paths.get(i));
+				assertEquals ( network.distance(source,i), (int) paths.getResult().get(i));
 			}
 		}
 	}
@@ -77,12 +73,10 @@ public abstract class RegularNetworkBasicTest
 		RegularNetwork network = network();
 		Eccentricity radius = new Eccentricity(network);
 		
-		radius.compute();
-		
 		assertEquals( network.diameter(), radius.diameter() );
 			
 		for (int i=0; i<network.size(); i++) {
-			assertEquals ( network.radius(i), radius.get(i), EPSILON);
+			assertEquals ( network.radius(i), radius.getResult().get(i), EPSILON);
 		}
 	}
 		
@@ -91,11 +85,9 @@ public abstract class RegularNetworkBasicTest
 	{
 		RegularNetwork        network = network();		
 		ClusteringCoefficient clustering = new ClusteringCoefficient(network);
-		
-		clustering.compute();
 			
 		for (int i=0; i<network.size(); i++) {
-			assertEquals ( network.clusteringCoefficient(i), clustering.get(i), EPSILON);
+			assertEquals ( network.clusteringCoefficient(i), clustering.getResult().get(i), EPSILON);
 		}
 	}		
 }

@@ -1,66 +1,47 @@
 package noesis.analysis.structure;
 
+import ikor.parallel.Task;
+
 import noesis.Network;
 import noesis.network.LinkIndex;
 import noesis.network.LinkIndexer;
 
-public abstract class LinkMeasure extends Measure
+public class LinkMeasure extends Measure
 {
 	private Network network;
 	private LinkIndexer index;
 
-	protected LinkMeasure (Network network, LinkIndexer index)
+	
+	// Constructors
+	
+	public LinkMeasure (Task creator, Network network, LinkIndexer index)
 	{
 		super(network.links());
 		
 		this.network = network;
 		this.index = index;
+		
+		setMetadata(creator);
 	}
 
-	protected LinkMeasure (Network network)
+	public LinkMeasure (Task creator, Network network)
 	{
-		this (network, new LinkIndex(network));
+		this (creator, network, new LinkIndex(network));
 	}
 	
+	
+	// Getters
 	
 	public final Network getNetwork ()
 	{
 		return network;
 	}
 	
-
-	// Computation template method
-	
-	protected boolean done = false;
-	
-	public void compute ()
+	public final LinkIndexer getIndex ()
 	{
-		Network net = getNetwork();
-		int     size = net.size();
-		int     pos = 0;
-	
-		for (int node=0; node<size; node++) {
-			for (int link=0; link<net.outDegree(node); link++) {
-				set (pos, compute(node, net.outLink(node,link)));
-				pos++;
-			}
-		}
-		
-		done = true;
+		return index;
 	}
-	
-	protected final boolean checkDone ()
-	{
-		if (!done)
-			compute();
 		
-		return done;
-	}
-	
-	public abstract double compute (int source, int destination);
-	
-	// Getter method
-	
 	public double get (int source, int destination)
 	{
 		int link = index.index(source, destination);

@@ -1,6 +1,8 @@
 package noesis.analysis.structure;
 
-import ikor.model.data.DataModel;
+import ikor.model.data.annotations.Description;
+import ikor.model.data.annotations.Label;
+
 import noesis.Network;
 
 /**
@@ -14,24 +16,17 @@ import noesis.Network;
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public class Eccentricity extends NodeMeasure 
+
+@Label("eccentricity")
+@Description("Node eccentricity")
+public class Eccentricity extends NodeMeasureTask 
 {
 	public Eccentricity (Network network)
 	{
-		super(network);
+		super(NodeMeasure.INTEGER_MODEL,network);
 	}	
 
-	@Override
-	public String getName() 
-	{
-		return "radius";
-	}	
 	
-	@Override
-	public DataModel getModel()
-	{
-		return INTEGER_MODEL;
-	}
 	
 	public double compute(int node) 
 	{
@@ -39,14 +34,14 @@ public class Eccentricity extends NodeMeasure
 		
 		paths.compute();
 		
-		return paths.max();
+		return paths.measure.max();
 	}	
 	
 	public int diameter ()
 	{
 		checkDone();
 		
-		return (int) max();
+		return (int) measure.max();
 	}
 
 }

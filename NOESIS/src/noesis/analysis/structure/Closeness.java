@@ -1,5 +1,7 @@
 package noesis.analysis.structure;
 
+import ikor.model.data.annotations.Description;
+import ikor.model.data.annotations.Label;
 import noesis.Network;
 
 /**
@@ -9,7 +11,10 @@ import noesis.Network;
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public class Closeness extends NodeMeasure 
+
+@Label("closeness")
+@Description("Closeness")
+public class Closeness extends NodeMeasureTask 
 {
 	public Closeness (Network network)
 	{
@@ -17,12 +22,6 @@ public class Closeness extends NodeMeasure
 	}	
 
 	
-	@Override
-	public String getName() 
-	{
-		return "closeness";
-	}	
-
 	@Override
 	public double compute(int node) 
 	{

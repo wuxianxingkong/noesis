@@ -1,10 +1,14 @@
 package noesis.analysis.structure;
 
+import ikor.model.data.annotations.Description;
+import ikor.model.data.annotations.Label;
 import noesis.Network;
 
 // PageRank
 
-public class PageRank  extends NodeMeasure 
+@Label("page-rank")
+@Description("PageRank")
+public class PageRank  extends NodeMeasureTask
 {
 	public static double DEFAULT_THETA = 0.85;
 	public static double EPSILON = 1e-4;
@@ -23,18 +27,6 @@ public class PageRank  extends NodeMeasure
 	}	
 
 	
-	@Override
-	public String getName() 
-	{
-		return "page-rank";
-	}	
-
-	@Override
-	public String getDescription() 
-	{
-		return "PageRank";
-	}	
-	
 	double  pagerank[];
 	double  weight[];
 	
@@ -49,6 +41,8 @@ public class PageRank  extends NodeMeasure
 		double  randomRank;
 		
 		// Initialization: 1/N
+		
+		measure = new NodeMeasure(this,net);
 		
 		pagerank = new double[size];
 		
@@ -83,7 +77,7 @@ public class PageRank  extends NodeMeasure
 			
 			for (int i=0; i<size; i++)
 				if (dangling[i])
-					danglingRank += get(i);
+					danglingRank += measure.get(i);
 			
 			danglingRank /= size;
 			
@@ -95,7 +89,7 @@ public class PageRank  extends NodeMeasure
 			
 		    for (int node=0; node<size; node++) {
 		    	
-		    	old = get(node);
+		    	old = measure.get(node);
 		    	pagerank[node] = pagerank (net, node, danglingRank, randomRank);
 		    	
 		    	if (!changes && (Math.abs(pagerank[node]-old)>EPSILON) ) {
@@ -107,7 +101,6 @@ public class PageRank  extends NodeMeasure
 		    
 	    } while (changes);
 		
-		done = true;
 		weight = null;
 		dangling = null;
 	}	
@@ -115,7 +108,7 @@ public class PageRank  extends NodeMeasure
 	
 	private void updateRank (double[] rank)
 	{
-	    set(rank);
+	    measure.set(rank);
 	    // Normalization
 	    // this.multiply(1.0/ this.sum());
 	}
@@ -133,7 +126,7 @@ public class PageRank  extends NodeMeasure
 		
 		if (links!=null) {			
 			for (int i=0; i<degree; i++) {
-				rank += get(links[i])*weight[links[i]];
+				rank += measure.get(links[i])*weight[links[i]];
 			}
 		}
 		
@@ -146,7 +139,7 @@ public class PageRank  extends NodeMeasure
 	public double compute(int node) 
 	{
 		checkDone();		
-		return get(node);
+		return measure.get(node);
 	}	
 	
 }

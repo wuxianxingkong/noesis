@@ -112,24 +112,21 @@ public class BetweennessTest
 		BetweennessScore treeBetweenness = new BetweennessScore(tree,0);
 		BetweennessScore graphBetweenness = new BetweennessScore(graph,0);
 		
-		treeBetweenness.compute();
-		graphBetweenness.compute();
-		
-		assertEquals ( 7, treeBetweenness.get(0), EPSILON);
-		assertEquals ( 2, treeBetweenness.get(1), EPSILON);
-		assertEquals ( 4, treeBetweenness.get(2), EPSILON);
-		assertEquals ( 1, treeBetweenness.get(3), EPSILON);
-		assertEquals ( 1, treeBetweenness.get(4), EPSILON);
-		assertEquals ( 2, treeBetweenness.get(5), EPSILON);
-		assertEquals ( 1, treeBetweenness.get(6), EPSILON);
+		assertEquals ( 7, treeBetweenness.getResult().get(0), EPSILON);
+		assertEquals ( 2, treeBetweenness.getResult().get(1), EPSILON);
+		assertEquals ( 4, treeBetweenness.getResult().get(2), EPSILON);
+		assertEquals ( 1, treeBetweenness.getResult().get(3), EPSILON);
+		assertEquals ( 1, treeBetweenness.getResult().get(4), EPSILON);
+		assertEquals ( 2, treeBetweenness.getResult().get(5), EPSILON);
+		assertEquals ( 1, treeBetweenness.getResult().get(6), EPSILON);
 
-		assertEquals (  7.0,     graphBetweenness.get(0), EPSILON);
-		assertEquals ( 11.0/6.0, graphBetweenness.get(1), EPSILON);
-		assertEquals ( 25.0/6.0, graphBetweenness.get(2), EPSILON);
-		assertEquals (  5.0/3.0, graphBetweenness.get(3), EPSILON);
-		assertEquals (  7.0/3.0, graphBetweenness.get(4), EPSILON);
-		assertEquals (  1.0,     graphBetweenness.get(5), EPSILON);
-		assertEquals (  1.0,     graphBetweenness.get(6), EPSILON);	
+		assertEquals (  7.0,     graphBetweenness.getResult().get(0), EPSILON);
+		assertEquals ( 11.0/6.0, graphBetweenness.getResult().get(1), EPSILON);
+		assertEquals ( 25.0/6.0, graphBetweenness.getResult().get(2), EPSILON);
+		assertEquals (  5.0/3.0, graphBetweenness.getResult().get(3), EPSILON);
+		assertEquals (  7.0/3.0, graphBetweenness.getResult().get(4), EPSILON);
+		assertEquals (  1.0,     graphBetweenness.getResult().get(5), EPSILON);
+		assertEquals (  1.0,     graphBetweenness.getResult().get(6), EPSILON);	
 	}	
 	
 	
@@ -139,23 +136,20 @@ public class BetweennessTest
 		Betweenness treeBetweenness = new Betweenness(tree);
 		Betweenness graphBetweenness = new Betweenness(graph);
 		
-		treeBetweenness.compute();
-		graphBetweenness.compute();
-		
-		assertEquals ( 7+5+3+5+3+3+3, treeBetweenness.get(0), EPSILON);
-		assertEquals ( 2+7+2+6+2+2+2, treeBetweenness.get(1), EPSILON);
-		assertEquals ( 4+4+7+4+6+5+5, treeBetweenness.get(2), EPSILON);
-		assertEquals ( 1+1+1+7+1+1+1, treeBetweenness.get(3), EPSILON);
-		assertEquals ( 1+1+1+1+7+1+1, treeBetweenness.get(4), EPSILON);
-		assertEquals ( 2+2+2+2+2+7+6, treeBetweenness.get(5), EPSILON);
-		assertEquals ( 1+1+1+1+1+1+7, treeBetweenness.get(6), EPSILON);
+		assertEquals ( 7+5+3+5+3+3+3, treeBetweenness.getResult().get(0), EPSILON);
+		assertEquals ( 2+7+2+6+2+2+2, treeBetweenness.getResult().get(1), EPSILON);
+		assertEquals ( 4+4+7+4+6+5+5, treeBetweenness.getResult().get(2), EPSILON);
+		assertEquals ( 1+1+1+7+1+1+1, treeBetweenness.getResult().get(3), EPSILON);
+		assertEquals ( 1+1+1+1+7+1+1, treeBetweenness.getResult().get(4), EPSILON);
+		assertEquals ( 2+2+2+2+2+7+6, treeBetweenness.getResult().get(5), EPSILON);
+		assertEquals ( 1+1+1+1+1+1+7, treeBetweenness.getResult().get(6), EPSILON);
 
-		assertEquals ( 46.0/3.0, graphBetweenness.get(0), EPSILON);
-		assertEquals ( 44.0/3.0, graphBetweenness.get(1), EPSILON);
-		assertEquals ( 72.0/3.0, graphBetweenness.get(2), EPSILON);
-		assertEquals ( 63.0/3.0, graphBetweenness.get(3), EPSILON);
-		assertEquals ( 74.0/3.0, graphBetweenness.get(4), EPSILON);
-		assertEquals ( 49.0/3.0, graphBetweenness.get(5), EPSILON);
-		assertEquals ( 39.0/3.0, graphBetweenness.get(6), EPSILON);	
+		assertEquals ( 46.0/3.0, graphBetweenness.getResult().get(0), EPSILON);
+		assertEquals ( 44.0/3.0, graphBetweenness.getResult().get(1), EPSILON);
+		assertEquals ( 72.0/3.0, graphBetweenness.getResult().get(2), EPSILON);
+		assertEquals ( 63.0/3.0, graphBetweenness.getResult().get(3), EPSILON);
+		assertEquals ( 74.0/3.0, graphBetweenness.getResult().get(4), EPSILON);
+		assertEquals ( 49.0/3.0, graphBetweenness.getResult().get(5), EPSILON);
+		assertEquals ( 39.0/3.0, graphBetweenness.getResult().get(6), EPSILON);	
 	}		
 }

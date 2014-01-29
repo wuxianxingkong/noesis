@@ -13,7 +13,7 @@ import noesis.Network;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-public class KatzCentrality  extends NodeMeasure 
+public class KatzCentrality  extends NodeMeasureTask 
 {
 	public static int MAX_ITERATIONS = 100;
 	public static double EPSILON = 1e-6;
@@ -76,7 +76,10 @@ public class KatzCentrality  extends NodeMeasure
 		double  norm;
 		int     iteration;
 		
+		
 		// Initialization: 1/N
+		
+		measure = new NodeMeasure(this,net);
 		
 		centrality = new double[size];
 		old = new double[size];
@@ -131,7 +134,7 @@ public class KatzCentrality  extends NodeMeasure
 			}
 		}
 
-		set(centrality);	    
+		measure.set(centrality);	    
 	}	
 	
 	
@@ -139,7 +142,7 @@ public class KatzCentrality  extends NodeMeasure
 	public double compute(int node) 
 	{
 		checkDone();		
-		return get(node);
+		return measure.get(node);
 	}	
 	
 }

@@ -106,10 +106,8 @@ public class PageRankTest
 	{
 		PageRank pagerank = new PageRank(net, theta);
 		
-		pagerank.compute();
-		
 		for (int i=0; i<net.size(); i++)
-			assertEquals ( rank[i], pagerank.get(i), EPSILON); 
+			assertEquals ( rank[i], pagerank.getResult().get(i), EPSILON); 
 	}
 	
 	

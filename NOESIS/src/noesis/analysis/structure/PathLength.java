@@ -1,12 +1,17 @@
 package noesis.analysis.structure;
 
+import ikor.model.data.annotations.Description;
+import ikor.model.data.annotations.Label;
+
 import noesis.Network;
 
 import noesis.algorithms.LinkVisitor;
 import noesis.algorithms.traversal.NetworkBFS;
 import noesis.algorithms.traversal.NetworkTraversal;
 
-public class PathLength extends NodeMeasure 
+@Label("path-length")
+@Description("Path length")
+public class PathLength extends NodeMeasureTask
 {
 	private int node;
 	
@@ -23,29 +28,26 @@ public class PathLength extends NodeMeasure
 		return node;
 	}
 	
-	@Override
-	public String getName() 
-	{
-		return "path-length";
-	}	
 
 	
 	@Override
 	public void compute() 
 	{
-		NetworkTraversal bfs = new NetworkBFS(getNetwork());
+		Network network = getNetwork();
+		
+		measure = new NodeMeasure(this,network);
+
+		NetworkTraversal bfs = new NetworkBFS(network);
 		
 		bfs.setLinkVisitor(new BFSVisitor(this));
 		
 		bfs.traverse(node);
-
-		done = true;
 	}
 
 	public double compute(int node) 
 	{
 		checkDone();		
-		return get(node);
+		return measure.get(node);
 	}
 	
 	
@@ -56,7 +58,7 @@ public class PathLength extends NodeMeasure
 		int reachable = reachableNodes();
 		
 		if (reachable>0)
-			return sum() / reachable;
+			return measure.sum() / reachable;
 		else
 			return 0.0;
 	}
@@ -66,7 +68,7 @@ public class PathLength extends NodeMeasure
 		checkDone();
 		
 		int    reachable = reachableNodes();
-		double sumPathLengths = sum();
+		double sumPathLengths = measure.sum();
 		
 		if (sumPathLengths>0)
 			return reachable / sumPathLengths;
@@ -78,7 +80,7 @@ public class PathLength extends NodeMeasure
 	{
 		checkDone();
 		
-		return ((double)reachableNodes())/(size()-1); 
+		return ((double)reachableNodes())/(measure.size()-1); 
 	}
 	
 	public double decay (double delta)
@@ -87,10 +89,10 @@ public class PathLength extends NodeMeasure
 		
 		double sum = 0;
 		
-		for (int i=0; i<size(); i++) {
+		for (int i=0; i<measure.size(); i++) {
 			
-			if (get(i)>0)
-				sum += Math.pow(delta, get(i));
+			if (measure.get(i)>0)
+				sum += Math.pow(delta, measure.get(i));
 		}
 		
 		return sum;
@@ -100,8 +102,8 @@ public class PathLength extends NodeMeasure
 	{
 		int total = 0;
 		
-		for (int i=0; i<size(); i++)
-			if (get(i)>0)
+		for (int i=0; i<measure.size(); i++)
+			if (measure.get(i)>0)
 				total++;
 		
 		return total;
@@ -123,8 +125,8 @@ public class PathLength extends NodeMeasure
 		public void visit(int source, int destination) 
 		{
 			if (  (destination!=metrics.node()) 
-			   && (metrics.get(destination)==0) )
-				metrics.set ( destination, metrics.get(source) + 1);		
+			   && (metrics.measure.get(destination)==0) )
+				metrics.measure.set ( destination, metrics.measure.get(source) + 1);		
 		}
 		
 	}

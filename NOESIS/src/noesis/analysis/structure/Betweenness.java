@@ -1,6 +1,8 @@
 package noesis.analysis.structure;
 
 import ikor.math.Vector;
+import ikor.model.data.annotations.Description;
+import ikor.model.data.annotations.Label;
 
 import ikor.parallel.*;
 import ikor.parallel.combiner.VectorAccumulator;
@@ -10,39 +12,34 @@ import noesis.Network;
 
 // Betweenness centrality, between (2n-1) and n^2-(n-1)
 
-public class Betweenness extends NodeMeasure 
+@Label("betweenness")
+@Description("Node betweenness")
+public class Betweenness extends NodeMeasureTask 
 {
 	public Betweenness (Network network)
 	{
 		super(network);
 	}	
 
-	@Override
-	public String getName() 
-	{
-		return "betweenness-score";
-	}	
-
-	@Override
-	public String getDescription() 
-	{
-		return "Betweenness score";
-	}			
 	
+	@Override
 	public double compute(int node) 
 	{
 		checkDone();	
 		
-		return get(node);
+		return measure.get(node);
 	}	
 
+	@Override
 	public void compute ()
 	{
 		Network net = getNetwork();
 		int     size = net.size();
+		
+		measure = new NodeMeasure(this,net);
 	
 		// Iterative algorithm
-		/*
+        /*
 		BetweennessScore score;
 		
 		for (int node=0; node<size; node++) {
@@ -51,7 +48,7 @@ public class Betweenness extends NodeMeasure
 			score.compute();
 			
 			for (int i=0; i<size; i++) {
-			    set (i, get(i) + score.get(i) );
+			    measure.set (i, measure.get(i) + score.get(i) );
 			}
 		}
 		*/
@@ -61,10 +58,8 @@ public class Betweenness extends NodeMeasure
 		Vector score = (Vector) Parallel.reduce( new BetweennessKernel(net), new VectorAccumulator(size), 0, size-1);
 
 		for (int i=0; i<size; i++) {
-		    set (i, score.get(i) );
+		    measure.set (i, score.get(i) );
 		}
-		
-		done = true;
 	}	
 	
 	
@@ -84,7 +79,7 @@ public class Betweenness extends NodeMeasure
 			
 			score.compute();
 			
-			return score;
+			return score.measure;
 		}
 	}		
 	

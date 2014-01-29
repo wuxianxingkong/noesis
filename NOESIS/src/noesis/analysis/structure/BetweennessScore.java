@@ -1,11 +1,16 @@
 package noesis.analysis.structure;
 
+import ikor.model.data.annotations.Description;
+import ikor.model.data.annotations.Label;
+
 import noesis.Network;
 
 import noesis.algorithms.LinkVisitor;
 import noesis.algorithms.traversal.NetworkBFS;
 
-public class BetweennessScore extends NodeMeasure 
+@Label("betweenness-score")
+@Description("Betweenness score")
+public class BetweennessScore extends NodeMeasureTask
 {
 	private int distance[];
 	private int geodesics[];
@@ -24,13 +29,7 @@ public class BetweennessScore extends NodeMeasure
 		this.node      = node;
 	}
 	
-	@Override
-	public String getName() 
-	{
-		return "betweenness score";
-	}	
 
-	
 	public int node()
 	{
 		return node;
@@ -57,6 +56,8 @@ public class BetweennessScore extends NodeMeasure
 		Network    net = getNetwork();
 		NetworkBFS bfs = new NetworkBFS(net);
 	
+		measure = new NodeMeasure(this,net);
+		
 		// 1 path to source node (at distance 0)
 		
 		geodesics[node] = 1;	
@@ -72,16 +73,14 @@ public class BetweennessScore extends NodeMeasure
 		// Betweenness from shortest paths (reverse order)
 		
 		for (int i=visited-1; i>=0; i--) {
-			set (visits[i], computeScore(visits[i]) );
+			measure.set (visits[i], computeScore(visits[i]) );
 		}
-
-		done = true;
 	}
 
 	public double compute (int node) 
 	{
 		checkDone();		
-		return get(node);
+		return measure.get(node);
 	}
 	
 	private double computeScore (int node)
@@ -99,7 +98,7 @@ public class BetweennessScore extends NodeMeasure
 				
 				if (distance(links[j])==distance+1) {
 					// score[node] += score[j]*geodesics[node]/geodesics[j]  
-					score += get(links[j]) * geodesics / geodesics(links[j]);
+					score += measure.get(links[j]) * geodesics / geodesics(links[j]);
 				}
 			}
 		}	

@@ -1,8 +1,13 @@
 package noesis.analysis.structure;
 
+import ikor.model.data.annotations.Description;
+import ikor.model.data.annotations.Label;
+
 import noesis.Network;
 
-public class AveragePathLength extends NodeMeasure 
+@Label("avg-path-length")
+@Description("Average path length")
+public class AveragePathLength extends NodeMeasureTask 
 {
 	int diameter;
 	
@@ -10,19 +15,6 @@ public class AveragePathLength extends NodeMeasure
 	{
 		super(network);
 		diameter = 0;
-	}	
-
-	@Override
-	public String getName() 
-	{
-		return "avg-path-length";
-	}	
-	
-
-	@Override
-	public String getDescription() 
-	{
-		return "Average path length";
 	}	
 	
 	
@@ -34,7 +26,7 @@ public class AveragePathLength extends NodeMeasure
 		
 		paths.compute();
 		
-		radius = (int) paths.max();
+		radius = (int) paths.measure.max();
 		
 		if (radius>diameter)
 			diameter = radius;
@@ -46,7 +38,7 @@ public class AveragePathLength extends NodeMeasure
 	{
 		checkDone();
 		
-		return average();
+		return measure.average();
 	}
 	
 	public int diameter ()

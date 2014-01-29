@@ -1,26 +1,20 @@
 package noesis.analysis.structure;
 
+import ikor.model.data.annotations.Description;
+import ikor.model.data.annotations.Label;
+
 import noesis.Network;
 
-public class NormalizedDegree extends NodeMeasure 
+@Label("in-degree-norm")
+@Description("Normalized in-degree")
+public class NormalizedDegree extends NodeMeasureTask 
 {
 		
 	public NormalizedDegree (Network network)
 	{
 		super(network);
 	}
-	
-	@Override
-	public String getName() 
-	{
-		return "degree-norm";
-	}	
-	
-	@Override
-	public String getDescription() 
-	{
-		return "Normalized total degree";
-	}		
+
 	
 	@Override
 	public double compute (int node) 

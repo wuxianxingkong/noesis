@@ -1,5 +1,7 @@
 package noesis.analysis.structure;
 
+import ikor.model.data.annotations.Description;
+import ikor.model.data.annotations.Label;
 import noesis.Network;
 import noesis.algorithms.traversal.StronglyConnectedComponents;
 
@@ -7,6 +9,8 @@ import noesis.algorithms.traversal.StronglyConnectedComponents;
 // - Freeman's betweenness between (2n-1) and (n^2-(n-1)) in strongly-connected networks
 // - Adjustment:  ( score - (2n-1) ) where n is the size of the strongly-connected component
 
+@Label("adj-betweenness")
+@Description("Adjusted betweenness")
 public class AdjustedBetweenness extends Betweenness
 {
 	public AdjustedBetweenness (Network network)
@@ -25,31 +29,23 @@ public class AdjustedBetweenness extends Betweenness
 	{
 		return "Betweenness";
 	}		
-	
-	@Override
-	public double get(int node)
-	{
-		return adjustedBetweenness(node); 
-	}
 
-	// Normalized to the [0,1] interval taking into account component sizes
-	
-	private StronglyConnectedComponents scc;
-	
-	public double adjustedBetweenness (int node)
+	@Override
+	public void compute ()
 	{
-		int size;
+		super.compute();
+
+		// Adjusted taking into account component sizes
 		
-		checkDone();
+		StronglyConnectedComponents scc;
 		
-		if (scc==null) {
-			scc = new StronglyConnectedComponents( getNetwork() );
-			scc.compute();
+		scc = new StronglyConnectedComponents( getNetwork() );
+		scc.compute();
+
+		for (int node=0; node<getNetwork().size(); node++) {
+			int size = scc.componentSize(node);
+			measure.set ( node, measure.get(node) - (2*size-1) );
 		}
-		
-		size = scc.componentSize(node);
-				
-		return ( super.get(node) - (2*size-1) ); 
-	}	
+	}
 
 }

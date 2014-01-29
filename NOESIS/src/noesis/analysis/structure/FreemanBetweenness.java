@@ -1,9 +1,14 @@
 package noesis.analysis.structure;
 
+import ikor.model.data.annotations.Description;
+import ikor.model.data.annotations.Label;
+
 import noesis.Network;
 
 // Normalized betweenness centrality, between (2n-1)/(n^2-(n-1)) and 1 in strongly-connected networks
 
+@Label("f-betweenness")
+@Description("Freeman's betweenness")
 public class FreemanBetweenness extends Betweenness
 {
 	public FreemanBetweenness (Network network)
@@ -11,44 +16,35 @@ public class FreemanBetweenness extends Betweenness
 		super(network);
 	}	
 
-	@Override
-	public String getName() 
-	{
-		return "f-betweenness";
-	}	
-
-	@Override
-	public String getDescription() 
-	{
-		return "Freeman's betweenness";
-	}		
 	
 	@Override
-	public double get(int node)
+	public void compute ()
 	{
-		return freemanBetweenness(node); // vs. standardBetweenness(node);
-	}
+		super.compute();
+
+		// Normalization
+
+		for (int node=0; node<getNetwork().size(); node++) {
+			measure.set ( node, freemanBetweenness(node) );    // vs. standardBetweenness(node);
+		}
+	}	
 	
 	// Conventional normalization (n^2)
 	
-	public double standardBetweenness (int node)
+	protected double standardBetweenness (int node)
 	{
 		int size = getNetwork().size();
 		
-		checkDone();
-		
-		return super.get(node)/(size*size); 
+		return measure.get(node)/(size*size); 
 	}
 	
 	// Original version (Freeman'1977)
 	
-	public double freemanBetweenness (int node)
+	protected double freemanBetweenness (int node)
 	{
 		int size = getNetwork().size();
 		
-		checkDone();
-		
-		return super.get(node)/(size*size-size+1); 
+		return measure.get(node)/(size*size-size+1); 
 	}	
 
 }

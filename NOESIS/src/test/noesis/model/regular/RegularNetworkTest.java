@@ -34,7 +34,7 @@ public abstract class RegularNetworkTest extends RegularNetworkBasicTest
 		assertEquals( network.diameter(), apl.diameter() );
 			
 		for (int i=0; i<network.size(); i++) {
-			assertEquals ( network.averagePathLength(i), apl.get(i), EPSILON);
+			assertEquals ( network.averagePathLength(i), apl.getResult().get(i), EPSILON);
 		}
 	}
 	
@@ -43,11 +43,9 @@ public abstract class RegularNetworkTest extends RegularNetworkBasicTest
 	{
 		RegularNetwork network   = network();	
 		Closeness      closeness = new Closeness(network);
-		
-		closeness.compute();
 			
 		for (int i=0; i<network.size(); i++) {
-			assertEquals ( network.closeness(i), closeness.get(i), EPSILON);
+			assertEquals ( network.closeness(i), closeness.getResult().get(i), EPSILON);
 		}
 	}	
 	
@@ -56,11 +54,9 @@ public abstract class RegularNetworkTest extends RegularNetworkBasicTest
 	{
 		RegularNetwork  network = network();		
 		Betweenness     betweenness = new Betweenness(network);
-		
-		betweenness.compute();
 			
 		for (int i=0; i<network.size(); i++) {
-			assertEquals ( network.betweenness(i), betweenness.get(i), EPSILON);
+			assertEquals ( network.betweenness(i), betweenness.getResult().get(i), EPSILON);
 		}
 	}		
 }

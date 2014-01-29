@@ -1,5 +1,8 @@
 package noesis.analysis.structure;
 
+import ikor.model.data.annotations.Description;
+import ikor.model.data.annotations.Label;
+
 import noesis.Network;
 import noesis.algorithms.traversal.StronglyConnectedComponents;
 
@@ -7,6 +10,8 @@ import noesis.algorithms.traversal.StronglyConnectedComponents;
 // - Freeman's betweenness between (2n-1) and (n^2-(n-1)) in strongly-connected networks
 // - Normalization:  ( score - (2n-1) ) / ( n^2 - (n-1) - (2n-1) ) where n is the size of the strongly-connected component
 
+@Label("norm-betweenness")
+@Description("Normalized betweenness")
 public class NormalizedBetweenness extends Betweenness
 {
 	public NormalizedBetweenness (Network network)
@@ -14,42 +19,24 @@ public class NormalizedBetweenness extends Betweenness
 		super(network);
 	}	
 
-	@Override
-	public String getName() 
-	{
-		return "betweenness-norm";
-	}	
-
-	@Override
-	public String getDescription() 
-	{
-		return "Normalized betweenness";
-	}		
 	
 	@Override
-	public double get(int node)
+	public void compute ()
 	{
-		return normalizedBetweenness(node); // vs. standardBetweenness(node);
+		super.compute();
+
+		// Normalization into the [0,1] interval taking into account component sizes
+		
+		StronglyConnectedComponents scc;
+		
+		scc = new StronglyConnectedComponents( getNetwork() );
+		scc.compute();
+
+		for (int node=0; node<getNetwork().size(); node++) {
+			int size = scc.componentSize(node);
+			measure.set ( node, ( measure.get(node) - (2*size-1) ) /(size*size-size+1) );
+		}
 	}
 
-	// Normalized to the [0,1] interval taking into account component sizes
-	
-	private StronglyConnectedComponents scc;
-	
-	public double normalizedBetweenness (int node)
-	{
-		int size;
-		
-		checkDone();
-		
-		if (scc==null) {
-			scc = new StronglyConnectedComponents( getNetwork() );
-			scc.compute();
-		}
-		
-		size = scc.componentSize(node);
-				
-		return ( super.get(node) - (2*size-1) ) /(size*size-size+1); 
-	}	
 
 }

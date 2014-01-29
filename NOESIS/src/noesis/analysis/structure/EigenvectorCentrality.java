@@ -1,5 +1,7 @@
 package noesis.analysis.structure;
 
+import ikor.model.data.annotations.Description;
+import ikor.model.data.annotations.Label;
 import noesis.Network;
 
 /**
@@ -10,7 +12,9 @@ import noesis.Network;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-public class EigenvectorCentrality  extends NodeMeasure 
+@Label("eigenvector")
+@Description("Eigenvector centrality")
+public class EigenvectorCentrality  extends NodeMeasureTask
 {
 	public static int MAX_ITERATIONS = 100;
 	public static double EPSILON = 1e-6;
@@ -18,19 +22,6 @@ public class EigenvectorCentrality  extends NodeMeasure
 	public EigenvectorCentrality (Network network)
 	{
 		super(network);
-	}	
-
-	
-	@Override
-	public String getName() 
-	{
-		return "eigenvector";
-	}	
-
-	@Override
-	public String getDescription() 
-	{
-		return "Eigenvector centrality";
 	}	
 
 	
@@ -49,7 +40,9 @@ public class EigenvectorCentrality  extends NodeMeasure
 		int     iteration;
 		
 		// Initialization: 1/N
-		
+
+		measure = new NodeMeasure(this,net);
+				
 		centrality = new double[size];
 		old = new double[size];
 		
@@ -105,7 +98,7 @@ public class EigenvectorCentrality  extends NodeMeasure
 			}
 		}
 
-		set(centrality);	    
+		measure.set(centrality);	    
 	}	
 	
 	
@@ -113,7 +106,7 @@ public class EigenvectorCentrality  extends NodeMeasure
 	public double compute(int node) 
 	{
 		checkDone();		
-		return get(node);
+		return measure.get(node);
 	}	
 	
 }

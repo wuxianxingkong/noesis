@@ -1,27 +1,20 @@
 package noesis.analysis.structure;
 
-import ikor.model.data.DataModel;
+import ikor.model.data.annotations.Description;
+import ikor.model.data.annotations.Label;
+
 import noesis.Network;
 
-public class InDegree extends NodeMeasure 
+@Label("in-degree")
+@Description("Out-degree")
+public class InDegree extends NodeMeasureTask
 {
 		
 	public InDegree (Network network)
 	{
-		super(network);
+		super(NodeMeasure.INTEGER_MODEL, network);
 	}
-	
-	@Override
-	public String getName() 
-	{
-		return "in-degree";
-	}	
-	
-	@Override
-	public DataModel getModel()
-	{
-		return INTEGER_MODEL;
-	}
+
 	
 	@Override
 	public double compute (int node) 
@@ -30,7 +23,4 @@ public class InDegree extends NodeMeasure
 		
 		return net.inDegree(node);
 	}
-
-
-
 }

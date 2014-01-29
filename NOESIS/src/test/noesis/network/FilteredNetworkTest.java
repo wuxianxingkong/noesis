@@ -2,7 +2,9 @@ package test.noesis.network;
 
 import static org.junit.Assert.*;
 
+import noesis.Attribute;
 import noesis.AttributeNetwork;
+import noesis.LinkAttribute;
 import noesis.network.FilteredNetwork;
 import noesis.network.filter.DefaultFilter;
 import noesis.network.filter.LinkFilter;
@@ -33,6 +35,20 @@ public class FilteredNetworkTest
 		base.add(1,2);
 		base.add(1,3);
 		base.add(2,3);
+		
+		base.addNodeAttribute( new Attribute<String>("id") );
+		base.setNodeAttribute("id", 0, "node 0");
+		base.setNodeAttribute("id", 1, "node 1");
+		base.setNodeAttribute("id", 2, "node 2");
+		base.setNodeAttribute("id", 3, "node 3");
+
+		base.addLinkAttribute( new LinkAttribute<String>(base,"link") );
+		base.setLinkAttribute("link", 0, 1, "0->1");
+		base.setLinkAttribute("link", 0, 2, "0->2");
+		base.setLinkAttribute("link", 0, 3, "0->3");
+		base.setLinkAttribute("link", 1, 2, "1->2");
+		base.setLinkAttribute("link", 1, 3, "1->3");
+		base.setLinkAttribute("link", 2, 3, "2->3");
 	}
 
 	@Test
@@ -78,6 +94,20 @@ public class FilteredNetworkTest
 		assertEquals(0, filtered.inLink(3,0));
 		assertEquals(1, filtered.inLink(3,1));
 		assertEquals(2, filtered.inLink(3,2));		
+		
+		// Attributes
+		
+		assertEquals ("node 0", filtered.getNodeAttribute("id").get(0));
+		assertEquals ("node 1", filtered.getNodeAttribute("id").get(1));
+		assertEquals ("node 2", filtered.getNodeAttribute("id").get(2));
+		assertEquals ("node 3", filtered.getNodeAttribute("id").get(3));
+
+		assertEquals ("0->1", filtered.getLinkAttribute("link").get(0,1));
+		assertEquals ("0->2", filtered.getLinkAttribute("link").get(0,2));
+		assertEquals ("0->3", filtered.getLinkAttribute("link").get(0,3));
+		assertEquals ("1->2", filtered.getLinkAttribute("link").get(1,2));
+		assertEquals ("1->3", filtered.getLinkAttribute("link").get(1,3));
+		assertEquals ("2->3", filtered.getLinkAttribute("link").get(2,3));
 	}
 	
 	
@@ -125,6 +155,16 @@ public class FilteredNetworkTest
 		assertEquals(0, filtered.inLink(2,0));
 		assertEquals(1, filtered.inLink(2,1));
 		
+		
+		// Attributes
+		
+		assertEquals ("node 0", filtered.getNodeAttribute("id").get(0));
+		assertEquals ("node 2", filtered.getNodeAttribute("id").get(1));
+		assertEquals ("node 3", filtered.getNodeAttribute("id").get(2));
+
+		assertEquals ("0->2", filtered.getLinkAttribute("link").get(0,1));
+		assertEquals ("0->3", filtered.getLinkAttribute("link").get(0,2));
+		assertEquals ("2->3", filtered.getLinkAttribute("link").get(1,2));
 	}
 	
 	@Test
@@ -174,6 +214,16 @@ public class FilteredNetworkTest
 		assertEquals(0, filtered.inLink(1,0));
 		assertEquals(0, filtered.inLink(2,0));
 		assertEquals(1, filtered.inLink(2,1));
+
+		// Attributes
+		
+		assertEquals ("node 0", filtered.getNodeAttribute("id").get(0));
+		assertEquals ("node 1", filtered.getNodeAttribute("id").get(1));
+		assertEquals ("node 2", filtered.getNodeAttribute("id").get(2));
+
+		assertEquals ("0->1", filtered.getLinkAttribute("link").get(0,1));
+		assertEquals ("0->2", filtered.getLinkAttribute("link").get(0,2));
+		assertEquals ("1->2", filtered.getLinkAttribute("link").get(1,2));
 	}
 	
 	@Test
@@ -216,6 +266,19 @@ public class FilteredNetworkTest
 		assertEquals(0, filtered.inLink(3,0));
 		assertEquals(1, filtered.inLink(3,1));
 		assertEquals(2, filtered.inLink(3,2));
+		
+		// Attributes
+		
+		assertEquals ("node 0", filtered.getNodeAttribute("id").get(0));
+		assertEquals ("node 1", filtered.getNodeAttribute("id").get(1));
+		assertEquals ("node 2", filtered.getNodeAttribute("id").get(2));
+		assertEquals ("node 3", filtered.getNodeAttribute("id").get(3));
+
+		assertEquals ("0->1", filtered.getLinkAttribute("link").get(0,1));
+		assertEquals ("0->2", filtered.getLinkAttribute("link").get(0,2));
+		assertEquals ("0->3", filtered.getLinkAttribute("link").get(0,3));
+		assertEquals ("1->3", filtered.getLinkAttribute("link").get(1,3));
+		assertEquals ("2->3", filtered.getLinkAttribute("link").get(2,3));		
 	}
 	
 	@Test
@@ -256,6 +319,16 @@ public class FilteredNetworkTest
 		assertEquals(0, filtered.inLink(1,0));
 		assertEquals(0, filtered.inLink(2,0));
 		assertEquals(1, filtered.inLink(2,1));
+
+		// Attributes
+		
+		assertEquals ("node 0", filtered.getNodeAttribute("id").get(0));
+		assertEquals ("node 1", filtered.getNodeAttribute("id").get(1));
+		assertEquals ("node 2", filtered.getNodeAttribute("id").get(2));
+
+		assertEquals ("0->1", filtered.getLinkAttribute("link").get(0,1));
+		assertEquals ("0->2", filtered.getLinkAttribute("link").get(0,2));
+		assertEquals ("1->2", filtered.getLinkAttribute("link").get(1,2));
 	}
 	
 	
@@ -294,6 +367,13 @@ public class FilteredNetworkTest
 		
 		assertEquals(1, filtered.outLink(0,0));
 		assertEquals(0, filtered.inLink(1,0));
+
+		// Attributes
+		
+		assertEquals ("node 1", filtered.getNodeAttribute("id").get(0));
+		assertEquals ("node 2", filtered.getNodeAttribute("id").get(1));
+
+		assertEquals ("1->2", filtered.getLinkAttribute("link").get(0,1));
 	}	
 }
 

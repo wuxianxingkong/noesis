@@ -18,10 +18,18 @@ public class FilteredNetwork extends AttributeNetwork
 	
 	public FilteredNetwork (Network original, NetworkFilter filter)
 	{
-		if (original instanceof AttributeNetwork)
+		if (original instanceof AttributeNetwork) {
 			this.net = (AttributeNetwork) original;
-		else
+			
+			for (int i=0; i<net.getNodeAttributeCount(); i++)
+				this.addNodeAttribute( new FilteredAttribute(this,net.getNodeAttribute(i)) );
+			
+			for (int j=0; j<net.getLinkAttributeCount(); j++)
+				this.addLinkAttribute( new FilteredLinkAttribute(this, net.getLinkAttribute(j)) );
+			
+		} else {
 			this.net = new AttributeNetwork(original);
+		}
 		
 		setFilter(filter);
 	}
@@ -206,5 +214,8 @@ public class FilteredNetwork extends AttributeNetwork
 		
 		return reverse[net.inLink(original,current)];
 	}
+
+	// Attributes
+	
 	
 }

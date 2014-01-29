@@ -17,7 +17,7 @@ public abstract class Task<T> implements ITask<T>
 	public T getResult() 
 	{
 		try {
-			return future.get(); // throws InterruptedException, ExecutionException
+			return getFuture().get(); // throws InterruptedException, ExecutionException
 		} catch (Exception error) {
 			error.printStackTrace();
 			return null;
@@ -36,7 +36,10 @@ public abstract class Task<T> implements ITask<T>
 	
 	public Future<T> getFuture ()
 	{
-		return this.future;
+		if (future==null)
+			Scheduler.get().schedule(this);
+		
+		return future;
 	}
 
 }

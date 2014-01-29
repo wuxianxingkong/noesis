@@ -1,39 +1,46 @@
 package noesis.network;
 
-// Title:       Link index for networks
+// Title:       Dictionary-based link index for networks
 // Version:     1.0
 // Copyright:   2014
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
+import ikor.collection.Dictionary;
+import ikor.collection.util.Pair;
+
+import noesis.CollectionFactory;
 import noesis.Network;
 
 /**
- * Link index. Given a network, map its links to integers. 
+ * Link index. Given a network, map its links to integers.
  * 
- * Basic implementation using arrays:
- * - Access to link index: O(d).
- * - Access to link information given its index: O(log n).
+ * Implementation using dictionaries:
+ * - Access to link index: O(1).
+ * - Access to link information given its index: O(1).
+ * 
+ * Allows link and node addition, but not their removal.
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-public class LinkIndex implements LinkIndexer 
+public class LinkDictionaryIndex implements LinkIndexer 
 {
-	private Network net;
-	private int nodes;
-	private int links;
-	private int index[];
+	private Network net;	
+	
+	private Dictionary<Pair<Integer,Integer>, Integer> index;
+	private Dictionary<Integer, Pair<Integer,Integer>> reverse;
+	
 
 	/**
 	 * Constructor, O(n).
 	 * @param net Underlying network.
 	 */
-	public LinkIndex (Network net)
+	public LinkDictionaryIndex (Network net)
 	{
 		this.net = net;
-		
-		rebuild();
+		this.index = CollectionFactory.createDictionary();
+		this.reverse = CollectionFactory.createDictionary();
 	}
 
 	/**
@@ -53,7 +60,7 @@ public class LinkIndex implements LinkIndexer
 	@Override
 	public int nodes ()
 	{
-		return nodes;
+		return net.nodes();
 	}
 	
 	/**
@@ -64,29 +71,25 @@ public class LinkIndex implements LinkIndexer
 	@Override
 	public int links ()
 	{
-		return links;
+		return net.links();
 	}
 	
+	
 	/**
-	 * Rebuild link index after changes to the underlying network, O(n).
+	 * Add a new entry to the index, O(1).
 	 */
-	public void rebuild ()
+	
+	public void add (int source, int destination)
 	{
-		this.nodes = net.size();
-		this.links = net.links();
-		this.index = new int[net.size()];
+		int position = links();
+		Pair<Integer,Integer> edge = new Pair<Integer,Integer>(source,destination);
 		
-		int currentLink = 0;
-		
-		for (int node=0; node<net.size(); node++) {
-			index[node] = currentLink;
-			currentLink += net.outDegree(node);
-		}				
+		index.set( edge, position);
+		reverse.set (position, edge);
 	}
 	
-	
 	/**
-	 * Index of a given link, O(d).
+	 * Index of a given link, O(1).
 	 * @param source Source node index.
 	 * @param destination Destination node index.
 	 * @return Link index (0..m-1), -1 if link does not exist.
@@ -95,22 +98,18 @@ public class LinkIndex implements LinkIndexer
 	@Override
 	public int index (int source, int destination)
 	{
-		int base = index[source];
-		int link = 0;
-		int degree = net.outDegree(source); 
+		Pair<Integer,Integer> key = new Pair<Integer,Integer>(source,destination);
+		Integer pos = index.get(key);
 		
-		while ((link<degree) && (net.outLink(source, link)!=destination) )
-			link++;
-		
-		if (link<degree)
-			return base + link;
+		if (pos!=null)
+			return pos;
 		else
 			return -1;
 	}
 	
 	
 	/**
-	 * Source node of a given link, O(log n).
+	 * Source node of a given link, O(1).
 	 * @param link Link index
 	 * @return Source node index of the corresponding link
 	 * @see noesis.network.LinkIndexer#source(int)
@@ -118,37 +117,17 @@ public class LinkIndex implements LinkIndexer
 	@Override
 	public int source (int link)
 	{
-		if (link>=links)
+		Pair<Integer,Integer> value = reverse.get(link);
+
+		if (value!=null)
+			return value.first();
+		else 
 			return -1;
-		
-		// Pseudo-binary search
-		
-		int left = 0;
-		int right = index.length-1;
-		int middle = (left+right)/2;
-		
-		
-		while ((left<=right) && (index[middle]!=link)) {
-			
-			if (link<index[middle]) {
-				right = middle-1;
-			} else {
-				left = middle+1;
-			}
-			
-			middle = (left+right)/2;
-			
-		}
-		
-		if (left>right)
-			return left-1;
-		else
-			return middle;
 	}
 	
 	
 	/**
-	 * Destination node of a given link, O(log n).
+	 * Destination node of a given link, O(1).
 	 * @param link Link index
 	 * @return Destination node index
 	 * @see noesis.network.LinkIndexer#destination(int)
@@ -156,11 +135,11 @@ public class LinkIndex implements LinkIndexer
 	@Override
 	public int destination (int link)
 	{
-		int sourceNode = source(link);
-		
-		if (sourceNode!=-1)
-			return net.outLink(sourceNode, link-index[sourceNode]);
-		else
+		Pair<Integer,Integer> value = reverse.get(link);
+
+		if (value!=null)
+			return value.second();
+		else 
 			return -1;
 	}
 	

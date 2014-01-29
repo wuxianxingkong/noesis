@@ -1,45 +1,36 @@
 package noesis;
 
-// Title:       Network ADT
-// Version:     1.0
-// Copyright:   2012
+// Title:       Attribute Network ADT
+// Version:     1.1
+// Copyright:   2014
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
+import noesis.network.LinkDictionaryIndex;
 import noesis.network.LinkIndexer;
-import ikor.collection.List;
-import ikor.collection.Dictionary;
-import ikor.collection.util.Pair;
+
 import ikor.model.data.RealModel;
 
 /**
- * Attribute network ADT
+ * Attribute network ADT.
  * 
  * @author Fernando Berzal
  */
 public class AttributeNetwork extends BasicNetwork implements LinkIndexer
 {
-	private List<String> nodeAttributeNames;
-	private Dictionary<String, Attribute> nodeAttributes;
-	
-	private List<String> linkAttributeNames;
-	private Dictionary<String, LinkAttribute> linkAttributes;
+	private AttributeSet<Attribute>     nodeAttributes;
+	private AttributeSet<LinkAttribute> linkAttributes;
 
-	private Dictionary<Pair<Integer,Integer>, Integer> index;
-	private Dictionary<Integer, Pair<Integer,Integer>> reverse;
+	private LinkDictionaryIndex linkIndex;
 
 	// Constructor
 		
 	public AttributeNetwork ()
 	{
-		nodeAttributes = CollectionFactory.createDictionary();
-		nodeAttributeNames = CollectionFactory.createList();
-
-		linkAttributes = CollectionFactory.createDictionary();
-		linkAttributeNames = CollectionFactory.createList();
+		nodeAttributes = new AttributeSet();
+		linkAttributes = new AttributeSet();
 		
-		index = CollectionFactory.createDictionary();
-		reverse = CollectionFactory.createDictionary();
+		linkIndex = new LinkDictionaryIndex(this);
 	}
 
 	
@@ -63,11 +54,7 @@ public class AttributeNetwork extends BasicNetwork implements LinkIndexer
 	@Override
 	public boolean add(int source, int destination) 
 	{
-		int position = links();
-		Pair<Integer,Integer> edge = new Pair<Integer,Integer>(source,destination);
-		
-		index.set( edge, position);
-		reverse.set (position, edge);
+		linkIndex.add(source, destination);
 		
 		return super.add(source,destination);
 	}
@@ -81,13 +68,7 @@ public class AttributeNetwork extends BasicNetwork implements LinkIndexer
 	 */	
 	public int index (int source, int destination)
 	{
-		Pair<Integer,Integer> key = new Pair<Integer,Integer>(source,destination);
-		Integer pos = index.get(key);
-		
-		if (pos!=null)
-			return pos;
-		else
-			return -1;
+		return linkIndex.index(source, destination);
 	}
 	
 	/**
@@ -98,12 +79,7 @@ public class AttributeNetwork extends BasicNetwork implements LinkIndexer
 	 */	
 	public int source (int index)
 	{
-		Pair<Integer,Integer> value = reverse.get(index);
-
-		if (value!=null)
-			return value.first();
-		else 
-			return -1;
+		return linkIndex.source(index);
 	}
 	
 	/**
@@ -114,24 +90,24 @@ public class AttributeNetwork extends BasicNetwork implements LinkIndexer
 	 */	
 	public int destination (int index)
 	{
-		Pair<Integer,Integer> value = reverse.get(index);
-
-		if (value!=null)
-			return value.second();
-		else 
-			return -1;
+		return linkIndex.destination(index);
 	}
 	
 	// Node attributes
 	
-	public int getNodeAttributeCount()
+	public AttributeSet<Attribute> getNodeAttributes()
+	{
+		return nodeAttributes;
+	}
+	
+	public int getNodeAttributeCount ()
 	{
 		return nodeAttributes.size();
 	}
 	
 	public Attribute getNodeAttribute (int index)
 	{
-		return nodeAttributes.get( nodeAttributeNames.get(index) );
+		return nodeAttributes.get(index);
 	}
 	
 	public Attribute getNodeAttribute (String id)
@@ -141,15 +117,14 @@ public class AttributeNetwork extends BasicNetwork implements LinkIndexer
 	
 	public void addNodeAttribute (Attribute attribute)
 	{
-		nodeAttributes.set(attribute.getID(), attribute);
-		nodeAttributeNames.add(attribute.getID());
+		nodeAttributes.add(attribute);
 	}
 	
 	public void removeNodeAttribute (String id)
 	{
-		nodeAttributeNames.remove(id);
 		nodeAttributes.remove(id);
 	}
+	
 	
 	public void setNodeAttribute (String id, int node, String value)
 	{
@@ -175,7 +150,12 @@ public class AttributeNetwork extends BasicNetwork implements LinkIndexer
 
 	
 	// Link attributes
-	
+
+	public AttributeSet<LinkAttribute> getLinkAttributes()
+	{
+		return linkAttributes;
+	}
+
 	public int getLinkAttributeCount()
 	{
 		return linkAttributes.size();
@@ -183,7 +163,7 @@ public class AttributeNetwork extends BasicNetwork implements LinkIndexer
 	
 	public LinkAttribute getLinkAttribute (int index)
 	{
-		return linkAttributes.get( linkAttributeNames.get(index) );
+		return linkAttributes.get(index);
 	}
 	
 	public LinkAttribute getLinkAttribute (String id)
@@ -193,13 +173,11 @@ public class AttributeNetwork extends BasicNetwork implements LinkIndexer
 	
 	public void addLinkAttribute (LinkAttribute attribute)
 	{
-		linkAttributes.set(attribute.getID(), attribute);
-		linkAttributeNames.add(attribute.getID());
+		linkAttributes.add(attribute);
 	}
 	
 	public void removeLinkAttribute (String id)
 	{
-		linkAttributeNames.remove(id);
 		linkAttributes.remove(id);
 	}
 
@@ -217,8 +195,7 @@ public class AttributeNetwork extends BasicNetwork implements LinkIndexer
 			}
 			
 			attribute.set(source, target, value);
-		}
-		
+		}		
 	}
 	
 }

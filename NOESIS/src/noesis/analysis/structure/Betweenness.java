@@ -1,5 +1,11 @@
 package noesis.analysis.structure;
 
+// Title:       Network base class
+// Version:     1.0
+// Copyright:   2013
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
+
 import ikor.math.Vector;
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
@@ -9,8 +15,11 @@ import ikor.parallel.combiner.VectorAccumulator;
 
 import noesis.Network;
 
-
-// Betweenness centrality, between (2n-1) and n^2-(n-1)
+/**
+ * Betweenness centrality, between (2n-1) and n^2-(n-1)
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
 
 @Label("betweenness")
 @Description("Node betweenness")
@@ -77,9 +86,7 @@ public class Betweenness extends NodeMeasureTask
 		{
 			BetweennessScore score = new BetweennessScore(net, index);
 			
-			score.compute();
-			
-			return score.measure;
+			return score.call();
 		}
 	}		
 	

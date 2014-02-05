@@ -39,14 +39,22 @@ public abstract class LinkMeasureTask extends Task<LinkMeasure>
 	}
 
 	
-	// Task methods
+	// Computation template method
 	
-	@Override
-	public LinkMeasure call() 
+	protected LinkMeasure measure = null;
+	
+	public void checkDone ()
 	{
-		int         size = network.size();
-		int         pos = 0;
-		LinkMeasure measure = new LinkMeasure(this,network,index);
+		if (measure==null)
+			compute();
+	}
+	
+	public void compute ()
+	{
+		int size = network.size();
+		int pos = 0;
+		
+		measure = new LinkMeasure(this,network,index);
 	
 		for (int node=0; node<size; node++) {
 			for (int link=0; link<network.outDegree(node); link++) {
@@ -54,11 +62,17 @@ public abstract class LinkMeasureTask extends Task<LinkMeasure>
 				pos++;
 			}
 		}
+	}
+
+	
+	@Override
+	public LinkMeasure call() 
+	{
+		compute();
 		
 		return measure;
 	}
 	
 	public abstract double compute (int source, int destination);
 	
-
 }

@@ -51,4 +51,12 @@ public class LinkMeasure extends Measure
 		else
 			return Double.NaN;
 	}
+	
+	public void set (int source, int destination, double value)
+	{
+		int link = index.index(source, destination);
+		
+		if (link!=-1)
+			set(link, value);
+	}
 }

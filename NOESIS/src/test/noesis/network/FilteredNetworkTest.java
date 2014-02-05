@@ -225,6 +225,58 @@ public class FilteredNetworkTest
 		assertEquals ("0->2", filtered.getLinkAttribute("link").get(0,2));
 		assertEquals ("1->2", filtered.getLinkAttribute("link").get(1,2));
 	}
+
+	@Test
+	public void testMultipleNodeFilter() 
+	{
+		NodeFilter filter = new NodeFilter();
+		
+		filter.deleteNode(1);
+		filter.deleteNode(3);
+		
+		filtered = new FilteredNetwork(base, filter);
+		
+		// Size
+		
+		assertEquals(2, filtered.size());
+		assertEquals(1, filtered.links());
+		
+		// Nodes
+		
+		assertTrue (filtered.contains(0));
+		assertFalse(filtered.contains(1));
+		assertTrue (filtered.contains(2));
+		assertFalse (filtered.contains(3));
+		
+		assertEquals (0, filtered.index(0));
+		assertEquals (-1, filtered.index(1));
+		assertEquals (1, filtered.index(2));
+		assertEquals (-1, filtered.index(3));
+		
+		assertEquals (0, (int)filtered.get(0));
+		assertEquals (2, (int)filtered.get(1));
+		
+		// Degrees
+		
+		assertEquals(1, filtered.outDegree(0));
+		assertEquals(0, filtered.outDegree(1));
+
+		assertEquals(0, filtered.inDegree(0));
+		assertEquals(1, filtered.inDegree(1));
+		
+		// Links
+		
+		assertEquals(1, filtered.outLink(0,0));
+		assertEquals(0, filtered.inLink(1,0));
+		
+		// Attributes
+		
+		assertEquals ("node 0", filtered.getNodeAttribute("id").get(0));
+		assertEquals ("node 2", filtered.getNodeAttribute("id").get(1));
+
+		assertEquals ("0->2", filtered.getLinkAttribute("link").get(0,1));
+	}
+	
 	
 	@Test
 	public void testLinkFilter()
@@ -280,6 +332,67 @@ public class FilteredNetworkTest
 		assertEquals ("1->3", filtered.getLinkAttribute("link").get(1,3));
 		assertEquals ("2->3", filtered.getLinkAttribute("link").get(2,3));		
 	}
+	
+	
+	@Test
+	public void testMultipleLinkFilter() 
+	{
+		LinkFilter multipleLinkFilter = new LinkFilter();
+		
+		multipleLinkFilter.deleteLink(0, 1);
+		multipleLinkFilter.deleteLink(1, 2);
+		
+		filtered = new FilteredNetwork(base, multipleLinkFilter);
+		
+		// Size
+		
+		assertEquals(4, filtered.size());
+		assertEquals(4, filtered.links());
+				
+		// Nodes
+		
+		assertTrue (filtered.contains(0));
+		assertTrue (filtered.contains(1));
+		assertTrue (filtered.contains(2));
+		assertTrue (filtered.contains(3));
+		
+		// Degrees
+		
+		assertEquals(3-1, filtered.outDegree(0));
+		assertEquals(2-1, filtered.outDegree(1));
+		assertEquals(1, filtered.outDegree(2));
+		assertEquals(0, filtered.outDegree(3));
+
+		assertEquals(0, filtered.inDegree(0));
+		assertEquals(1-1, filtered.inDegree(1));
+		assertEquals(2-1, filtered.inDegree(2));
+		assertEquals(3, filtered.inDegree(3));		
+		
+		// Links
+		
+		assertEquals(2, filtered.outLink(0,0));
+		assertEquals(3, filtered.outLink(0,1));
+		assertEquals(3, filtered.outLink(1,0));
+		assertEquals(3, filtered.outLink(2,0));
+		
+		assertEquals(0, filtered.inLink(2,0));
+		assertEquals(0, filtered.inLink(3,0));
+		assertEquals(1, filtered.inLink(3,1));
+		assertEquals(2, filtered.inLink(3,2));
+		
+		// Attributes
+		
+		assertEquals ("node 0", filtered.getNodeAttribute("id").get(0));
+		assertEquals ("node 1", filtered.getNodeAttribute("id").get(1));
+		assertEquals ("node 2", filtered.getNodeAttribute("id").get(2));
+		assertEquals ("node 3", filtered.getNodeAttribute("id").get(3));
+
+		assertEquals ("0->2", filtered.getLinkAttribute("link").get(0,2));
+		assertEquals ("0->3", filtered.getLinkAttribute("link").get(0,3));
+		assertEquals ("1->3", filtered.getLinkAttribute("link").get(1,3));
+		assertEquals ("2->3", filtered.getLinkAttribute("link").get(2,3));	
+	}
+	
 	
 	@Test
 	public void testMaskFilter()

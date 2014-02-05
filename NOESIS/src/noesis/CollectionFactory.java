@@ -9,9 +9,11 @@ package noesis;
 import java.util.Comparator;
 
 import ikor.collection.Dictionary;
+import ikor.collection.DynamicSet;
 import ikor.collection.List;
 import ikor.collection.PriorityQueue;
 import ikor.collection.Queue;
+import ikor.collection.Set;
 import ikor.collection.Stack;
 import ikor.collection.graph.Graph;
 import ikor.collection.index.Index;
@@ -42,6 +44,11 @@ public class CollectionFactory
 	public static Queue createQueue ()
 	{
 		return new Queue();
+	}
+	
+	public static Set createSet ()
+	{
+		return new DynamicSet();
 	}
 	
 	public static Dictionary createDictionary ()

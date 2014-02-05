@@ -1,14 +1,31 @@
 package noesis.network.filter;
 
+import ikor.collection.Set;
+import noesis.CollectionFactory;
+
 public class LinkFilter implements NetworkFilter 
 {
-	private int sourceIndex;
-	private int destinationIndex;
+	private Set<Long> linkset;
+	
+	public LinkFilter ()
+	{
+		linkset = CollectionFactory.createSet();
+	}
 	
 	public LinkFilter (int sourceIndex, int destinationIndex)
 	{
-		this.sourceIndex = sourceIndex;
-		this.destinationIndex = destinationIndex;
+		this();
+		deleteLink (sourceIndex, destinationIndex);
+	}
+	
+	public void deleteLink (int sourceIndex, int destinationIndex)
+	{
+		linkset.add ( key(sourceIndex,destinationIndex));
+	}
+	
+	private long key (int source, int destination)
+	{
+		return ((long)source<<32) | destination;
 	}
 	
 	@Override
@@ -20,7 +37,7 @@ public class LinkFilter implements NetworkFilter
 	@Override
 	public boolean link(int source, int destination) 
 	{
-		return (source!=sourceIndex) || (destination!=destinationIndex);
+		return !linkset.contains( key(source,destination) );
 	}
 
 }

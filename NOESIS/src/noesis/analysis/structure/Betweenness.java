@@ -1,6 +1,6 @@
 package noesis.analysis.structure;
 
-// Title:       Network base class
+// Title:       Betweenness centrality
 // Version:     1.0
 // Copyright:   2013
 // Author:      Fernando Berzal

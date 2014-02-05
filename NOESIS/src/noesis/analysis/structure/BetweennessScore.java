@@ -1,5 +1,11 @@
 package noesis.analysis.structure;
 
+// Title:       Betweenness centrality
+// Version:     1.0
+// Copyright:   2013
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
+
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
 
@@ -7,6 +13,12 @@ import noesis.Network;
 
 import noesis.algorithms.LinkVisitor;
 import noesis.algorithms.traversal.NetworkBFS;
+
+/**
+ * Betweenness score 
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
 
 @Label("betweenness-score")
 @Description("Betweenness score")
@@ -29,6 +41,7 @@ public class BetweennessScore extends NodeMeasureTask
 		this.node      = node;
 	}
 	
+	// Getters
 
 	public int node()
 	{
@@ -45,10 +58,25 @@ public class BetweennessScore extends NodeMeasureTask
 		return geodesics[node];
 	}
 	
+	public int visit (int pos)
+	{
+		return visits[pos];
+	}
+	
 	public int visited ()
 	{
 		return visited;
 	}
+	
+	public double betweenness (int node)
+	{
+		if (measure!=null)
+			return measure.get(node);
+		else
+			return 0.0;
+	}
+	
+	// Betweenness score computation
 	
 	@Override
 	public void compute() 
@@ -73,17 +101,22 @@ public class BetweennessScore extends NodeMeasureTask
 		// Betweenness from shortest paths (reverse order)
 		
 		for (int i=visited-1; i>=0; i--) {
-			measure.set (visits[i], computeScore(visits[i]) );
+			measure.set (visits[i], nodeScore(visits[i]) );
 		}
 	}
 
+	
 	public double compute (int node) 
 	{
 		checkDone();		
+		
 		return measure.get(node);
 	}
 	
-	private double computeScore (int node)
+	
+	// Node betweenness score
+	
+	private double nodeScore (int node)
 	{
 		Network network = getNetwork();
 		int degree  = network.outDegree(node);
@@ -106,7 +139,8 @@ public class BetweennessScore extends NodeMeasureTask
 		return score;
 	}
 		
-	// Visitor
+	
+	// Link visitor for network traversal
 	
 	private class GeodesicVisitor extends LinkVisitor
 	{

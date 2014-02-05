@@ -7,6 +7,7 @@ import noesis.Network;
 
 import noesis.analysis.structure.Betweenness;
 import noesis.analysis.structure.BetweennessScore;
+import noesis.analysis.structure.NodeMeasure;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,13 +19,12 @@ public class BetweennessTest
 	Network tree;
 	Network graph;
 	
-	BetweennessScore treeBetweenness;
-	BetweennessScore graphBetweenness;
-	
 	@Before
 	public void setUp() throws Exception 
 	{
-		// From Newman's "Introduction to Networks," 10.3.6 Betweenness centrality,  page 326
+		// From Newman's "Introduction to Networks," 10.3.6 Betweenness centrality, page 326, OUP 2010
+		//    & Newman and Girvan's "Finding and evaluating community structure in networks", Figure 4, arXiv 2003
+
 		tree = new BasicNetwork(); 
 		tree.setSize(7);
 		
@@ -57,99 +57,105 @@ public class BetweennessTest
 	@Test
 	public void testDistance ()
 	{
-		BetweennessScore treeBetweenness = new BetweennessScore(tree,0);
-		BetweennessScore graphBetweenness = new BetweennessScore(graph,0);
+		BetweennessScore treeScore = new BetweennessScore(tree,0);
+		BetweennessScore graphScore = new BetweennessScore(graph,0);
 		
-		treeBetweenness.compute();
-		graphBetweenness.compute();
+		treeScore.compute();
+		graphScore.compute();
 		
-		assertEquals ( 0, treeBetweenness.distance(0));
-		assertEquals ( 1, treeBetweenness.distance(1));
-		assertEquals ( 1, treeBetweenness.distance(2));
-		assertEquals ( 2, treeBetweenness.distance(3));
-		assertEquals ( 2, treeBetweenness.distance(4));
-		assertEquals ( 2, treeBetweenness.distance(5));
-		assertEquals ( 3, treeBetweenness.distance(6));
+		assertEquals ( 0, treeScore.distance(0));
+		assertEquals ( 1, treeScore.distance(1));
+		assertEquals ( 1, treeScore.distance(2));
+		assertEquals ( 2, treeScore.distance(3));
+		assertEquals ( 2, treeScore.distance(4));
+		assertEquals ( 2, treeScore.distance(5));
+		assertEquals ( 3, treeScore.distance(6));
 
-		assertEquals ( 0, graphBetweenness.distance(0));
-		assertEquals ( 1, graphBetweenness.distance(1));
-		assertEquals ( 1, graphBetweenness.distance(2));
-		assertEquals ( 2, graphBetweenness.distance(3));
-		assertEquals ( 2, graphBetweenness.distance(4));
-		assertEquals ( 3, graphBetweenness.distance(5));
-		assertEquals ( 3, graphBetweenness.distance(6));	
+		assertEquals ( 0, graphScore.distance(0));
+		assertEquals ( 1, graphScore.distance(1));
+		assertEquals ( 1, graphScore.distance(2));
+		assertEquals ( 2, graphScore.distance(3));
+		assertEquals ( 2, graphScore.distance(4));
+		assertEquals ( 3, graphScore.distance(5));
+		assertEquals ( 3, graphScore.distance(6));	
 	}
 	
 	@Test
 	public void testGeodesics ()
 	{	
-		BetweennessScore treeBetweenness = new BetweennessScore(tree,0);
-		BetweennessScore graphBetweenness = new BetweennessScore(graph,0);
+		BetweennessScore treeScore = new BetweennessScore(tree,0);
+		BetweennessScore graphScore = new BetweennessScore(graph,0);
 		
-		treeBetweenness.compute();
-		graphBetweenness.compute();
+		treeScore.compute();
+		graphScore.compute();
 		
-		assertEquals ( 1, treeBetweenness.geodesics(0));
-		assertEquals ( 1, treeBetweenness.geodesics(1));
-		assertEquals ( 1, treeBetweenness.geodesics(2));
-		assertEquals ( 1, treeBetweenness.geodesics(3));
-		assertEquals ( 1, treeBetweenness.geodesics(4));
-		assertEquals ( 1, treeBetweenness.geodesics(5));
-		assertEquals ( 1, treeBetweenness.geodesics(6));
+		assertEquals ( 1, treeScore.geodesics(0));
+		assertEquals ( 1, treeScore.geodesics(1));
+		assertEquals ( 1, treeScore.geodesics(2));
+		assertEquals ( 1, treeScore.geodesics(3));
+		assertEquals ( 1, treeScore.geodesics(4));
+		assertEquals ( 1, treeScore.geodesics(5));
+		assertEquals ( 1, treeScore.geodesics(6));
 
-		assertEquals ( 1, graphBetweenness.geodesics(0));
-		assertEquals ( 1, graphBetweenness.geodesics(1));
-		assertEquals ( 1, graphBetweenness.geodesics(2));
-		assertEquals ( 2, graphBetweenness.geodesics(3));
-		assertEquals ( 1, graphBetweenness.geodesics(4));
-		assertEquals ( 3, graphBetweenness.geodesics(5));
-		assertEquals ( 1, graphBetweenness.geodesics(6));	
+		assertEquals ( 1, graphScore.geodesics(0));
+		assertEquals ( 1, graphScore.geodesics(1));
+		assertEquals ( 1, graphScore.geodesics(2));
+		assertEquals ( 2, graphScore.geodesics(3));
+		assertEquals ( 1, graphScore.geodesics(4));
+		assertEquals ( 3, graphScore.geodesics(5));
+		assertEquals ( 1, graphScore.geodesics(6));	
 	}
 	
 	@Test
 	public void testScores ()
 	{	
-		BetweennessScore treeBetweenness = new BetweennessScore(tree,0);
-		BetweennessScore graphBetweenness = new BetweennessScore(graph,0);
+		BetweennessScore treeBetweennessScore = new BetweennessScore(tree,0);
+		BetweennessScore graphBetweennessScore = new BetweennessScore(graph,0);
 		
-		assertEquals ( 7, treeBetweenness.getResult().get(0), EPSILON);
-		assertEquals ( 2, treeBetweenness.getResult().get(1), EPSILON);
-		assertEquals ( 4, treeBetweenness.getResult().get(2), EPSILON);
-		assertEquals ( 1, treeBetweenness.getResult().get(3), EPSILON);
-		assertEquals ( 1, treeBetweenness.getResult().get(4), EPSILON);
-		assertEquals ( 2, treeBetweenness.getResult().get(5), EPSILON);
-		assertEquals ( 1, treeBetweenness.getResult().get(6), EPSILON);
+		NodeMeasure treeScore = treeBetweennessScore.getResult();
+		NodeMeasure graphScore = graphBetweennessScore.getResult();
+		
+		assertEquals ( 7, treeScore.get(0), EPSILON);
+		assertEquals ( 2, treeScore.get(1), EPSILON);
+		assertEquals ( 4, treeScore.get(2), EPSILON);
+		assertEquals ( 1, treeScore.get(3), EPSILON);
+		assertEquals ( 1, treeScore.get(4), EPSILON);
+		assertEquals ( 2, treeScore.get(5), EPSILON);
+		assertEquals ( 1, treeScore.get(6), EPSILON);
 
-		assertEquals (  7.0,     graphBetweenness.getResult().get(0), EPSILON);
-		assertEquals ( 11.0/6.0, graphBetweenness.getResult().get(1), EPSILON);
-		assertEquals ( 25.0/6.0, graphBetweenness.getResult().get(2), EPSILON);
-		assertEquals (  5.0/3.0, graphBetweenness.getResult().get(3), EPSILON);
-		assertEquals (  7.0/3.0, graphBetweenness.getResult().get(4), EPSILON);
-		assertEquals (  1.0,     graphBetweenness.getResult().get(5), EPSILON);
-		assertEquals (  1.0,     graphBetweenness.getResult().get(6), EPSILON);	
+		assertEquals (  7.0,     graphScore.get(0), EPSILON);
+		assertEquals ( 11.0/6.0, graphScore.get(1), EPSILON);
+		assertEquals ( 25.0/6.0, graphScore.get(2), EPSILON);
+		assertEquals (  5.0/3.0, graphScore.get(3), EPSILON);
+		assertEquals (  7.0/3.0, graphScore.get(4), EPSILON);
+		assertEquals (  1.0,     graphScore.get(5), EPSILON);
+		assertEquals (  1.0,     graphScore.get(6), EPSILON);	
 	}	
 	
 	
 	@Test
 	public void testBetweenness ()
 	{	
-		Betweenness treeBetweenness = new Betweenness(tree);
-		Betweenness graphBetweenness = new Betweenness(graph);
+		Betweenness treeTask = new Betweenness(tree);
+		Betweenness graphTask = new Betweenness(graph);
 		
-		assertEquals ( 7+5+3+5+3+3+3, treeBetweenness.getResult().get(0), EPSILON);
-		assertEquals ( 2+7+2+6+2+2+2, treeBetweenness.getResult().get(1), EPSILON);
-		assertEquals ( 4+4+7+4+6+5+5, treeBetweenness.getResult().get(2), EPSILON);
-		assertEquals ( 1+1+1+7+1+1+1, treeBetweenness.getResult().get(3), EPSILON);
-		assertEquals ( 1+1+1+1+7+1+1, treeBetweenness.getResult().get(4), EPSILON);
-		assertEquals ( 2+2+2+2+2+7+6, treeBetweenness.getResult().get(5), EPSILON);
-		assertEquals ( 1+1+1+1+1+1+7, treeBetweenness.getResult().get(6), EPSILON);
+		NodeMeasure treeBetweenness = treeTask.getResult();
+		NodeMeasure graphBetweenness = graphTask.getResult();
+		
+		assertEquals ( 7+5+3+5+3+3+3, treeBetweenness.get(0), EPSILON);
+		assertEquals ( 2+7+2+6+2+2+2, treeBetweenness.get(1), EPSILON);
+		assertEquals ( 4+4+7+4+6+5+5, treeBetweenness.get(2), EPSILON);
+		assertEquals ( 1+1+1+7+1+1+1, treeBetweenness.get(3), EPSILON);
+		assertEquals ( 1+1+1+1+7+1+1, treeBetweenness.get(4), EPSILON);
+		assertEquals ( 2+2+2+2+2+7+6, treeBetweenness.get(5), EPSILON);
+		assertEquals ( 1+1+1+1+1+1+7, treeBetweenness.get(6), EPSILON);
 
-		assertEquals ( 46.0/3.0, graphBetweenness.getResult().get(0), EPSILON);
-		assertEquals ( 44.0/3.0, graphBetweenness.getResult().get(1), EPSILON);
-		assertEquals ( 72.0/3.0, graphBetweenness.getResult().get(2), EPSILON);
-		assertEquals ( 63.0/3.0, graphBetweenness.getResult().get(3), EPSILON);
-		assertEquals ( 74.0/3.0, graphBetweenness.getResult().get(4), EPSILON);
-		assertEquals ( 49.0/3.0, graphBetweenness.getResult().get(5), EPSILON);
-		assertEquals ( 39.0/3.0, graphBetweenness.getResult().get(6), EPSILON);	
+		assertEquals ( 46.0/3.0, graphBetweenness.get(0), EPSILON);
+		assertEquals ( 44.0/3.0, graphBetweenness.get(1), EPSILON);
+		assertEquals ( 72.0/3.0, graphBetweenness.get(2), EPSILON);
+		assertEquals ( 63.0/3.0, graphBetweenness.get(3), EPSILON);
+		assertEquals ( 74.0/3.0, graphBetweenness.get(4), EPSILON);
+		assertEquals ( 49.0/3.0, graphBetweenness.get(5), EPSILON);
+		assertEquals ( 39.0/3.0, graphBetweenness.get(6), EPSILON);	
 	}		
 }

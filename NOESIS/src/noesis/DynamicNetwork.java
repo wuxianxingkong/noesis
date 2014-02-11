@@ -43,8 +43,10 @@ public class DynamicNetwork<V,E> extends Network<V,E>
 		}
 
 		for (int i=0; i<net.size(); i++) {
-			for (int j=0; j<net.outDegree(i); j++)
-			    add(i, net.outLink(i, j));
+			for (int j=0; j<net.outDegree(i); j++) {
+				int target = net.outLink(i,j);
+			    add(i, target, net.get(i,target));
+			}
 		}		
 	}
 

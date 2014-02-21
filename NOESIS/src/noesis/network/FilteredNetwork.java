@@ -60,7 +60,7 @@ public class FilteredNetwork extends AttributeNetwork
 				int degree = net.outDegree(i);
 				
 				for (int j=0; j<degree; j++) {
-					if (filter.link(i, net.outLink(i,j))) {
+					if (filter.link(i,j)) {
 						links++;
 					}
 				}
@@ -118,12 +118,14 @@ public class FilteredNetwork extends AttributeNetwork
 	// Node degrees
 	
 	/**
-	 * In-degree, O(d)
+	 * In-degree, O(d^2)
 	 */
 	@Override
 	public int inDegree(int node) 
 	{
 		int degree = 0;
+		int source;
+		int link;
 		
 		if ((node>=0) && (node<nodes)) {
 			int original = index[node];
@@ -131,7 +133,9 @@ public class FilteredNetwork extends AttributeNetwork
 
 			if ((node<nodes) && (originalDegree>0)) {
 				for (int j=0; j<originalDegree; j++) {
-					if (filter.link(net.inLink(original,j), original)) {
+					source = net.inLink(original,j);
+					link = net.getLinkIndex(source, original); // O(d)
+					if (filter.link(source,link)) {
 						degree++;
 					}
 				}			
@@ -155,7 +159,7 @@ public class FilteredNetwork extends AttributeNetwork
 
 			if (originalDegree>0) {
 				for (int j=0; j<originalDegree; j++) {
-					if (filter.link(original,net.outLink(original,j))) {
+					if (filter.link(original,j)) {
 						degree++;
 					}
 				}			
@@ -182,7 +186,7 @@ public class FilteredNetwork extends AttributeNetwork
 			
 			current++;
 
-			if (filter.link(original,net.outLink(original,current))) {
+			if (filter.link(original,current)) {
 				position++;;
 			}			
 			
@@ -193,29 +197,31 @@ public class FilteredNetwork extends AttributeNetwork
 	
 
 	/**
-	 * Access to individual in-links, O(d)
+	 * Access to individual in-links, O(d^2)
 	 */
 	@Override
 	public int inLink (int node, int link)
 	{
-		int original = index[node];
 		int current = -1;
 		int position = -1;
+		int originalNode = index[node];
+		int originalSource;
+		int originalLink;
 		
 		do {
 			
 			current++;
+			
+			originalSource = net.inLink(originalNode,current);
+			originalLink = net.getLinkIndex(originalSource, originalNode); // O(d)
 
-			if (filter.link(net.inLink(original,current),original)) {
+			if (filter.link(originalSource,originalLink)) {
 				position++;;
 			}			
 			
 		} while (position<link);
 		
-		return reverse[net.inLink(original,current)];
+		return reverse[net.inLink(originalNode,current)];
 	}
-
-	// Attributes
-	
 	
 }

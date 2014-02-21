@@ -114,7 +114,7 @@ public class FilteredNetworkTest
 	@Test
 	public void testNodeFilter1() 
 	{
-		filtered = new FilteredNetwork(base, new NodeFilter(1));
+		filtered = new FilteredNetwork(base, new NodeFilter(base,1));
 		
 		assertEquals(3, filtered.size());
 		assertEquals(3, filtered.links());
@@ -170,7 +170,7 @@ public class FilteredNetworkTest
 	@Test
 	public void testNodeFilter3()
 	{
-		filtered = new FilteredNetwork(base, new NodeFilter(3));
+		filtered = new FilteredNetwork(base, new NodeFilter(base,3));
 		
 		assertEquals(3, filtered.size());
 		assertEquals(3, filtered.links());
@@ -229,10 +229,10 @@ public class FilteredNetworkTest
 	@Test
 	public void testMultipleNodeFilter() 
 	{
-		NodeFilter filter = new NodeFilter();
+		NodeFilter filter = new NodeFilter(base);
 		
-		filter.deleteNode(1);
-		filter.deleteNode(3);
+		filter.removeNode(1);
+		filter.removeNode(3);
 		
 		filtered = new FilteredNetwork(base, filter);
 		
@@ -281,7 +281,7 @@ public class FilteredNetworkTest
 	@Test
 	public void testLinkFilter()
 	{
-		filtered = new FilteredNetwork(base, new LinkFilter(1,2));
+		filtered = new FilteredNetwork(base, new LinkFilter(base,1,2));
 		
 		assertEquals(4, filtered.size());
 		assertEquals(5, filtered.links());
@@ -337,10 +337,10 @@ public class FilteredNetworkTest
 	@Test
 	public void testMultipleLinkFilter() 
 	{
-		LinkFilter multipleLinkFilter = new LinkFilter();
+		LinkFilter multipleLinkFilter = new LinkFilter(base);
 		
-		multipleLinkFilter.deleteLink(0, 1);
-		multipleLinkFilter.deleteLink(1, 2);
+		multipleLinkFilter.removeLink(0, 1);
+		multipleLinkFilter.removeLink(1, 2);
 		
 		filtered = new FilteredNetwork(base, multipleLinkFilter);
 		
@@ -393,11 +393,72 @@ public class FilteredNetworkTest
 		assertEquals ("2->3", filtered.getLinkAttribute("link").get(2,3));	
 	}
 	
+
+	@Test
+	public void testMultipleLinkFilterByIndex() 
+	{
+		LinkFilter multipleLinkFilter = new LinkFilter(base);
+		
+		multipleLinkFilter.removeLinkByIndex(0,0); // == removeLink(0, 1);
+		multipleLinkFilter.removeLinkByIndex(1,0); // == removeLink(1, 2);
+		
+		filtered = new FilteredNetwork(base, multipleLinkFilter);
+		
+		// Size
+		
+		assertEquals(4, filtered.size());
+		assertEquals(4, filtered.links());
+				
+		// Nodes
+		
+		assertTrue (filtered.contains(0));
+		assertTrue (filtered.contains(1));
+		assertTrue (filtered.contains(2));
+		assertTrue (filtered.contains(3));
+		
+		// Degrees
+		
+		assertEquals(3-1, filtered.outDegree(0));
+		assertEquals(2-1, filtered.outDegree(1));
+		assertEquals(1, filtered.outDegree(2));
+		assertEquals(0, filtered.outDegree(3));
+
+		assertEquals(0, filtered.inDegree(0));
+		assertEquals(1-1, filtered.inDegree(1));
+		assertEquals(2-1, filtered.inDegree(2));
+		assertEquals(3, filtered.inDegree(3));		
+		
+		// Links
+		
+		assertEquals(2, filtered.outLink(0,0));
+		assertEquals(3, filtered.outLink(0,1));
+		assertEquals(3, filtered.outLink(1,0));
+		assertEquals(3, filtered.outLink(2,0));
+		
+		assertEquals(0, filtered.inLink(2,0));
+		assertEquals(0, filtered.inLink(3,0));
+		assertEquals(1, filtered.inLink(3,1));
+		assertEquals(2, filtered.inLink(3,2));
+		
+		// Attributes
+		
+		assertEquals ("node 0", filtered.getNodeAttribute("id").get(0));
+		assertEquals ("node 1", filtered.getNodeAttribute("id").get(1));
+		assertEquals ("node 2", filtered.getNodeAttribute("id").get(2));
+		assertEquals ("node 3", filtered.getNodeAttribute("id").get(3));
+
+		assertEquals ("0->2", filtered.getLinkAttribute("link").get(0,2));
+		assertEquals ("0->3", filtered.getLinkAttribute("link").get(0,3));
+		assertEquals ("1->3", filtered.getLinkAttribute("link").get(1,3));
+		assertEquals ("2->3", filtered.getLinkAttribute("link").get(2,3));	
+	}
+	
+
 	
 	@Test
 	public void testMaskFilter()
 	{
-		filtered = new FilteredNetwork(base, new MaskFilter( new boolean[]{true, true, true, false}));
+		filtered = new FilteredNetwork(base, new MaskFilter( base, new boolean[]{true, true, true, false}));
 		
 		assertEquals(3, filtered.size());
 		assertEquals(3, filtered.links());
@@ -448,7 +509,7 @@ public class FilteredNetworkTest
 	@Test
 	public void testMaskFilter2()
 	{
-		filtered = new FilteredNetwork(base, new MaskFilter( new boolean[]{false, true, true, false}));
+		filtered = new FilteredNetwork(base, new MaskFilter( base, new boolean[]{false, true, true, false}));
 		
 		assertEquals(2, filtered.size());
 		assertEquals(1, filtered.links());

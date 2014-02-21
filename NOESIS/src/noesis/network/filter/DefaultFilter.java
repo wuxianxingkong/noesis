@@ -9,7 +9,7 @@ public class DefaultFilter implements NetworkFilter {
 	}
 
 	@Override
-	public boolean link(int source, int destination) 
+	public boolean link(int node, int link) 
 	{
 		return true;
 	}

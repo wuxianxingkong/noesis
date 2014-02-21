@@ -1,24 +1,27 @@
 package noesis.network.filter;
 
 import noesis.CollectionFactory;
+import noesis.Network;
 import ikor.collection.Set;
 
 public class NodeFilter implements NetworkFilter 
 {
+	private Network      net;
 	private Set<Integer> nodeset;
 
-	public NodeFilter ()
+	public NodeFilter (Network net)
 	{
-		nodeset = CollectionFactory.createSet();
+		this.net = net;
+		this.nodeset = CollectionFactory.createSet();
 	}
 	
-	public NodeFilter (int index)
+	public NodeFilter (Network net, int index)
 	{
-		this();
-		deleteNode(index);
+		this(net);
+		removeNode(index);
 	}
 
-	public void deleteNode (int index)
+	public void removeNode (int index)
 	{
 		nodeset.add(index);
 	}
@@ -30,9 +33,11 @@ public class NodeFilter implements NetworkFilter
 	}
 
 	@Override
-	public boolean link(int source, int destination) 
+	public boolean link(int node, int link) 
 	{
-		return !nodeset.contains(source) && !nodeset.contains(destination);
+		int target = net.outLink(node, link);
+		
+		return !nodeset.contains(node) && !nodeset.contains(target);
 	}
 
 }

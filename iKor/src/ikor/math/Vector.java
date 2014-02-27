@@ -1,123 +1,97 @@
 package ikor.math;
 
-public class Vector extends Matrix 
+public abstract class Vector extends Matrix 
 {
-	private double  data[];
 	private boolean transposed;
 	
-	// Constructors
-	
-	public Vector (int size)
+	public Vector ()
 	{
-		this.data = new double[size];
 		this.transposed = false;
 	}
 	
-	public Vector (Vector original)
+	public Vector (boolean transposed)
 	{
-		this(original.size());
-		
-		for (int i=0; i<data.length; i++)
-			this.data[i] = original.data[i];
-		
-		this.transposed = original.transposed;
-	}
-
-	public Vector (double[] data)
-	{
-		this.data = data;
-		this.transposed = false;
+		this.transposed = transposed;
 	}
 	
-	public Vector (Matrix data, int row)
+	// Transposed
+	
+	public boolean isTransposed ()
 	{
-		this(data.columns());
-		
-		for (int j=0; j<data.columns(); j++)
-			this.data[j] = data.get(row, j);
+		return transposed;
 	}
 	
 	// Dimensions
 
-
+	@Override
 	public int rows() 
 	{
 		if (transposed)
-			return data.length;
+			return size();
 		else
 			return 1;
 	}
 
+	@Override
 	public int columns() 
 	{
 		if (transposed)
 			return 1;
 		else
-			return data.length;
+			return size();
 	}
-	
+
+	public abstract int size();
 	
 	// Accessors & mutators
 	
-	public double get (int i)
+	public abstract double get (int i);
+
+	public abstract void set (int i, double value);
+	
+	public final void set (double[] values)
 	{
-		return data[i];
+		for (int i=0; i<values.length; i++)
+			set(i, values[i]);
 	}
 	
-	public void set (int i, double value)
+	public final void set (double value)
 	{
-		data[i] = value;
-	}
-	
-	public void set (double[] values)
-	{
-		data = values;
+		for (int i=0; i<size(); i++)
+			set(i, value);
 	}
 
 	// Matrix interface
 
+	@Override
 	public double get(int i, int j) 
 	{
-		return data[Math.max(i,j)];
+		return get(Math.max(i,j));
 	}
 
+	@Override
 	public void set(int i, int j, double v) 
 	{
-		data[Math.max(i,j)] = v;
+		set( Math.max(i,j), v);
 	}
-	
-	public void set(int i, double v[])
-	{
-		data = v;
-	}
-	
-	public void set(double v[][])
-	{
-		if (v.length==1) {
-			data = v[0];
-		} else {
-			data = new double[v.length];
-			
-			for (int i=0; i<v.length; i++)
-				data[i] = v[i][0];
-		}
-		
-	}
+
 	
 	public void swap (int i, int j)
 	{
 		double tmp;
 		
-		tmp = data[i];
-		data[i] = data[j];
-		data[j] = tmp;
+		tmp = get(i);
+		set(i, get(j));
+		set(j, tmp);
 	}
+	
 	
 	// Transposed vector
 
+	@Override
 	public Vector transpose() 
 	{
-		Vector result = new Vector(this.data);
+		Vector result = MatrixFactory.createVector(this);
 		
 		result.transposed = !this.transposed;
 
@@ -139,7 +113,7 @@ public class Vector extends Matrix
 		int dim = this.size();
 
 		for (int i=0; i<dim; i++)
-			data[i] += other.data[i];
+			set(i, get(i)+other.get(i));
 
 		return this;
 	}

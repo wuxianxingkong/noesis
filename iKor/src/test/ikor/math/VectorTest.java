@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import ikor.math.MatrixFactory;
 import ikor.math.Vector;
 
 public class VectorTest 
@@ -17,7 +18,7 @@ public class VectorTest
 	@Before
 	public void setUp() throws Exception 
 	{
-		die = new Vector(d.length);
+		die = MatrixFactory.createVector(d.length);
 		
 		for (int i=0; i<d.length; i++)
 			die.set(i, d[i]);

@@ -1,5 +1,6 @@
 package ikor.math.regression;
 
+import ikor.math.MatrixFactory;
 import ikor.math.Vector;
 import ikor.math.Matrix;
 
@@ -24,9 +25,9 @@ public class LinearRegression
 		this.x = new Vector[x.length];
 		
 		for (int i=0; i<x.length; i++)
-			this.x[i] = new Vector(x[i]);
+			this.x[i] = MatrixFactory.createVector(x[i]);
 		
-		this.y = new Vector(y);
+		this.y = MatrixFactory.createVector(y);
 		
 		theta = new double[x.length+1];
 	}
@@ -161,7 +162,7 @@ public class LinearRegression
 	public void normalEquation ()
 	{
 		int    m = this.y.size();
-		Matrix X = Matrix.createMatrix(m, theta.length);	// m x p
+		Matrix X = MatrixFactory.create(m, theta.length);	// m x p
 		Matrix Y = this.y;				 					// 1 x m
 		Matrix Xt;
 		Matrix Yt;

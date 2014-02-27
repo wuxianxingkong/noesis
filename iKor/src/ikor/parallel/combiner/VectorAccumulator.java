@@ -1,5 +1,6 @@
 package ikor.parallel.combiner;
 
+import ikor.math.MatrixFactory;
 import ikor.math.Vector;
 import ikor.parallel.Combiner;
 
@@ -15,7 +16,7 @@ public class VectorAccumulator implements Combiner<Vector>
 	@Override
 	public Vector identity() 
 	{
-		return new Vector(size);
+		return MatrixFactory.createVector(size);
 	}
 
 	@Override

@@ -2,7 +2,7 @@ package noesis.ui.model.actions;
 
 import java.lang.reflect.Constructor;
 
-import ikor.math.Vector;
+import ikor.collection.List;
 import ikor.model.data.IntegerModel;
 import ikor.model.ui.Action;
 import ikor.model.ui.Application;
@@ -11,8 +11,8 @@ import ikor.util.log.Log;
 import noesis.Attribute;
 import noesis.AttributeNetwork;
 import noesis.Network;
-import noesis.analysis.structure.NodeMultiMeasureTask;
-import noesis.analysis.structure.NodeMultiMeasure;
+import noesis.analysis.structure.NodeMeasure;
+import noesis.analysis.structure.NodeMeasureMultiTask;
 import noesis.ui.model.NetworkModel;
 import noesis.ui.model.VectorUIModel;
 
@@ -30,14 +30,14 @@ public class NodeMultiMeasureAction extends Action
 		this.measureClass = metric;
 	}
 	
-	public NodeMultiMeasureTask instantiateTask (Network network)
+	public NodeMeasureMultiTask instantiateTask (Network network)
 	{
-		NodeMultiMeasureTask task = null;
+		NodeMeasureMultiTask task = null;
 		
 		try {
 		
 			Constructor constructor = measureClass.getConstructor(Network.class);
-			task = (NodeMultiMeasureTask) constructor.newInstance(network);
+			task = (NodeMeasureMultiTask) constructor.newInstance(network);
 		
 		} catch (Exception error) {
 			
@@ -51,10 +51,11 @@ public class NodeMultiMeasureAction extends Action
 	public void run() 
 	{
 		AttributeNetwork network = model.getNetwork();
-		NodeMultiMeasureTask task;
-		NodeMultiMeasure metrics;
-		Attribute        attribute;
-		String           id;
+		NodeMeasureMultiTask task;
+		List<NodeMeasure> metrics;
+		NodeMeasure       measure;
+		Attribute         attribute;
+		String            id;
 		
 		if (network!=null) {
 			
@@ -64,26 +65,28 @@ public class NodeMultiMeasureAction extends Action
 				
 				metrics = task.getResult();
 				
-				for (int m=0; m<metrics.getMeasureCount(); m++) {
+				for (int m=0; m<metrics.size(); m++) {
+					
+					measure = metrics.get(m);
 				
-					id = metrics.getName(m);
+					id = measure.getName();
 
 					attribute = network.getNodeAttribute(id);
 
 					if (attribute==null) {
-						attribute = new Attribute( metrics.getName(m), metrics.getModel(m) );
+						attribute = new Attribute( measure.getName(), measure.getModel() );
 						network.addNodeAttribute(attribute);
 					}
 
 					for (int i=0; i<network.size(); i++)
-						if (metrics.getModel(m) instanceof IntegerModel)
-							attribute.set (i, (int) metrics.get(m,i) );
+						if (measure.getModel() instanceof IntegerModel)
+							attribute.set (i, (int) measure.get(i) );
 						else // RealModel
-							attribute.set(i, metrics.get(m,i) );
+							attribute.set(i, measure.get(i) );
 
 					model.setNetwork(network);
 
-					VectorUIModel resultsUI = new VectorUIModel(application, metrics.getDescription(m), new Vector(metrics,m) );
+					VectorUIModel resultsUI = new VectorUIModel(application, measure.getDescription(), measure );
 					Action forward = new ForwardAction(resultsUI);
 
 					forward.run();

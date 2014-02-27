@@ -265,8 +265,8 @@ public class BowtieTest
 	{
 		HITS measure = new HITS(netBowtie);
 		
-		checkMeasure( new Vector(measure.getResult(),HITS.HUB), hits);
-		checkMeasure( new Vector(measure.getResult(),HITS.AUTHORITY), hits);
+		checkMeasure( measure.getResult().get(HITS.HUB), hits);
+		checkMeasure( measure.getResult().get(HITS.AUTHORITY), hits);
 	}
 	
 	// Katz centrality

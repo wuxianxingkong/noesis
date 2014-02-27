@@ -1,6 +1,7 @@
 package noesis.analysis.structure;
 
 import ikor.model.data.DataModel;
+
 import noesis.Network;
 
 /**
@@ -14,7 +15,7 @@ import noesis.Network;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-public class HITS extends NodeMultiMeasureTask 
+public class HITS extends NodeMeasureMultiTask 
 {
 	public static final int HUB = 0;
 	public static final int AUTHORITY = 1;
@@ -47,7 +48,8 @@ public class HITS extends NodeMultiMeasureTask
 	{
 		return beta;
 	}	
-	
+
+	// Metadata
 	
 	private static final String[] names = { "hub", "authority" };
 	private static final String[] descriptions = { "Hub centrality", "Authority centrality" };
@@ -71,7 +73,7 @@ public class HITS extends NodeMultiMeasureTask
 		return models;
 	}	
 	
-	
+	// Computation
 
 	@Override
 	public void compute ()
@@ -86,7 +88,7 @@ public class HITS extends NodeMultiMeasureTask
 		double  normHub, normAuthority;
 		int     iteration;
 		
-		measure = new NodeMultiMeasure(this,net,2);
+		measures = createMeasures(net);
 		
 		// Initialization: 1/sqrt(N)
 		
@@ -163,8 +165,8 @@ public class HITS extends NodeMultiMeasureTask
 			}
 		}
 
-		measure.set(HUB, hub);
-		measure.set(AUTHORITY, authority);
+		measures.get(HUB).set(hub);
+		measures.get(AUTHORITY).set(authority);
 	}	
 	
 	
@@ -172,7 +174,8 @@ public class HITS extends NodeMultiMeasureTask
 	public double[] compute(int node) 
 	{
 		checkDone();		
-		return new double[] { measure.get(HUB,node), measure.get(AUTHORITY,node) };
+		return new double[] { measures.get(HUB).get(node), 
+				              measures.get(AUTHORITY).get(node) };
 	}	
 	
 }

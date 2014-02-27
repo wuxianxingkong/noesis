@@ -8,7 +8,7 @@ public class NodeMeasure extends Measure
 	
 	// Constructor
 	
-	protected NodeMeasure (NodeMeasureTask creator, Network network)
+	public NodeMeasure (NodeMeasureTask creator, Network network)
 	{
 		super(network.size());
 		
@@ -18,7 +18,7 @@ public class NodeMeasure extends Measure
 		setDescription (creator.getDescription() );
 	}
 	
-	protected NodeMeasure (String id, Network network)
+	public NodeMeasure (String id, Network network)
 	{
 		super(network.size());
 		

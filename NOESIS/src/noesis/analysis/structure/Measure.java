@@ -1,6 +1,7 @@
 package noesis.analysis.structure;
 
-import ikor.math.Vector;
+import ikor.math.DenseVector;
+
 import ikor.model.data.DataModel;
 import ikor.model.data.IntegerModel;
 import ikor.model.data.RealModel;
@@ -8,7 +9,7 @@ import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
 import ikor.parallel.Task;
 
-public abstract class Measure extends Vector
+public abstract class Measure extends DenseVector
 {	
 	protected static final DataModel INTEGER_MODEL = new IntegerModel();
 	protected static final DataModel REAL_MODEL = new RealModel();

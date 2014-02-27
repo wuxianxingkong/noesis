@@ -38,12 +38,7 @@ public class Vector extends Matrix
 	}
 	
 	// Dimensions
-	
-	public int size() 
-	{
-		return data.length;
-	}
-	
+
 
 	public int rows() 
 	{
@@ -107,6 +102,15 @@ public class Vector extends Matrix
 				data[i] = v[i][0];
 		}
 		
+	}
+	
+	public void swap (int i, int j)
+	{
+		double tmp;
+		
+		tmp = data[i];
+		data[i] = data[j];
+		data[j] = tmp;
 	}
 	
 	// Transposed vector

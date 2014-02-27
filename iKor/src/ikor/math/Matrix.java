@@ -1,98 +1,75 @@
 package ikor.math;
 
-/* ----------------------------------------------------------------------- */
-/*      Fernando Berzal Galiano            ETS Ingeniería Informática      */
-/* ----------------------------------------------------------------------- */
-/*                               Matrices                                  */
-/* ----------------------------------------------------------------------- */
-/*                                                                         */
-/*      [1] Mary L.Boas, "Mathematical Methods in the Physical Science,"   */
-/*      John Wiley & Sons, 2nd Ed., 1983. Chap 3.                          */
-/*                                                                         */
-/*      [2] Kendall E.Atkinson, "An Introduction to Numerical Analysis,"   */
-/*      John Wiley & Sons, 1978.                                           */
-/*                                                                         */
-/*      [3] Alfred V.Aho, John E.Hopcroft, Jeffrey D.Ullman, "The Design   */
-/*      and Analysis of Computer Algorithms," 1974.                        */
-/*                                                                         */
-/*      [4] "Fundementals of Speech Signal Processing," Shuzo Saito,       */
-/*      Kazuo Nakata, Academic Press, New York, 1985.                      */
-/*                                                                         */
-/* ----------------------------------------------------------------------- */
-/*                                                                         */
-/*                        Columna                                          */
-/*               Fila     0       1       2           n-1                  */
-/*               0    [   a0,0    a0,1    a0,2   ...  a0,n-1   ]           */
-/*               1    [   a1,0    a1,1    a1,2   ...  a1,n-1   ]           */
-/*   A   =       2    [   a2,0    a2,1    a2,2   ...  a2,n-1   ]           */
-/*                    [   ...     ...     ...    ...  ...      ]           */
-/*               m-1  [   am-1,0  am-1,1  am-1,2 ...  am-1,n-1 ]           */
-/*                                                                         */
-/* ----------------------------------------------------------------------- */
+// Title:       Matrix ADT
+// Version:     2.0
+// Copyright:   1998-2014
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
 
 
-public class Matrix implements java.io.Serializable
-{
-	// Variables de instancia
+/**
+ * Matrix ADT
+ *
+ * References:
+ * - Mary L.Boas: "Mathematical Methods in the Physical Science," John Wiley & Sons, 2nd edition, Chapter 3, 1983.
+ * - Kendall E.Atkinson: "An Introduction to Numerical Analysis," John Wiley & Sons, 1978.
+ * - Alfred V.Aho, John E.Hopcroft & Jeffrey D.Ullman: "The Design and Analysis of Computer Algorithms," 1974.
+ * - Shuzo Saito & Kazuo Nakata: "Fundamentals of Speech Signal Processing," Academic Press, New York, 1985.
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
 
-	private double datos[][];
-
-	// Constructors
+public abstract class Matrix implements java.io.Serializable
+{	
+	// Factory methods
 	
-	protected Matrix ()
+	public static final Matrix createMatrix (int rows, int columns)
 	{
-		this.datos = null;
+		return new DenseMatrix(rows, columns);
 	}
 
-	/** @pre rows>0 && columns>0 */
-	public Matrix(int rows, int columns) 
+	public static final Matrix createMatrix (int rows, int columns, double value)
 	{
-		datos = new double[rows][columns];
-		// == this(rows, columns, 0);
-	}
-
-	/** @pre rows>0 && columns>0 */
-	public Matrix(int rows, int columns, double value) 
-	{
-		datos = new double[rows][columns];
+		Matrix matrix = new DenseMatrix(rows, columns);
 
 		for (int i=0; i<rows; i++)
 			for (int j=0; j<columns; j++)
-				datos[i][j] = value;
-	}
-
-	// Constructor de copia
-
-	public Matrix(Matrix origen) 
+				matrix.set(i,j, value);
+		
+		return matrix;
+	}	
+	
+	public static final Matrix createMatrix (Matrix origen) 
 	{
 		int filas = origen.rows();
 		int columnas = origen.columns();
 		
-		datos = new double[filas][columnas];
+		Matrix datos = new DenseMatrix(filas, columnas);
 
 		for (int i=0; i<filas; i++)
 			for (int j=0; j<columnas; j++)
-				datos[i][j] = origen.datos[i][j];
-	}
+				datos.set(i,j, origen.get(i,j));
+		
+		return datos;
+	}	
 
-	
-	public Matrix (double[][] data)
+	public static final Matrix createMatrix (double data[][]) 
 	{
-		this.datos = data;
-	}
-	
+		int rows = data.length;
+		int columns = data[0].length;
+		
+		Matrix matrix = new DenseMatrix(rows, columns);
 
-	protected Matrix (double[] vector)
-	{
-		this.datos = new double[1][];
-		this.datos[0] = vector;
-	}
-
-	// Factory methods
+		for (int i=0; i<rows; i++)
+			for (int j=0; j<columns; j++)
+				matrix.set(i,j, data[i][j]);
+		
+		return matrix;
+	}	
 	
-	public static Matrix createIdentity (int n)
+	public static final Matrix createIdentity (int n)
 	{
-		Matrix identity = new Matrix(n,n);
+		Matrix identity = createMatrix(n,n);
 
 		for (int i=0; i<n; i++)
 			identity.set(i,i,1);
@@ -100,50 +77,75 @@ public class Matrix implements java.io.Serializable
 		return identity;
 	}
 	
-	
+		
 	// Matrix dimensions
 
-	public int size() 
+	public final int size() 
 	{
 		return rows() * columns();
 	}
 	
-	public int rows() 
-	{
-		return datos.length;
-	}
+	public abstract int rows(); 
 
-	public int columns() 
-	{
-		return datos[0].length;
-	}
+	public abstract int columns(); 
 	
 	// Accessors & mutators
 
-	public double get(int i, int j) 
+	public abstract double get(int i, int j); 
+
+	public abstract void set(int i, int j, double v);
+	
+	public void set (int i, double v[])
 	{
-		return datos[i][j];
+		setRow(i,v);
 	}
 
-	public void set(int i, int j, double v) 
+	
+	public final void setRow (int i, double v[])
 	{
-		datos[i][j] = v;
+		if (v.length==columns()) {
+			for (int j=0; j<v.length; j++) {
+				set (i, j, v[j]);
+			}
+		}
+	}
+
+	public final void setRow (int i, double v)
+	{
+		for (int j=0; j<columns(); j++) {
+			set (i, j, v);
+		}
+	}
+
+	public final void setColumn (int j, double v[])
+	{
+		if (v.length==rows()) {
+			for (int i=0; i<v.length; i++) {
+				set (i, j, v[i]);
+			}
+		}		
+	}
+
+	public final void setColumn (int j, double v)
+	{
+		for (int i=0; i<rows(); i++) {
+			set (i, j, v);
+		}
+	}
+
+	public void set (double v[][])
+	{
+		if (v.length==rows()) {
+			for (int i=0; i<v.length; i++) {
+				setRow(i, v[i]);
+			}
+		}		
 	}
 	
-	public void set(int i, double v[])
-	{
-		datos[i] = v;
-	}
 	
-	public void set(double v[][])
-	{
-		datos = v;
-	}
-	
-	
-	/* ------------------------ */
-	/* OPERACIONES CON MATRICES */
-	/* ------------------------ */
+	/* ----------------- */
+	/* MATRIX OPERATIONS */
+	/* ----------------- */
 
 	// Traspuesta de una matriz
 
@@ -152,11 +154,11 @@ public class Matrix implements java.io.Serializable
 		int i, j;
 		int filas = rows();
 		int columnas = columns();
-		Matrix t = new Matrix(columnas, filas);
+		Matrix t = createMatrix(columnas, filas);
 
 		for (i = 0; i < columnas; i++)
 			for (j = 0; j < filas; j++)
-				t.datos[i][j] = this.datos[j][i];
+				t.set(i,j, this.get(j,i));
 
 		return t;
 	}
@@ -172,13 +174,13 @@ public class Matrix implements java.io.Serializable
 		int x, y, xS, yS;
 		int filas = rows();
 		int columnas = columns();
-		Matrix S = new Matrix(filas - 1, columnas - 1);
+		Matrix S = createMatrix(filas - 1, columnas - 1);
 
 		for (x = xS = 0; x < filas; x++)
 			if (x != i) {
 				for (y = yS = 0; y < columnas; y++)
 					if (y != j) {
-						S.datos[xS][yS] = this.datos[x][y];
+						S.set(xS,yS, this.get(x,y));
 						yS++;
 					}
 				xS++;
@@ -198,11 +200,11 @@ public class Matrix implements java.io.Serializable
 
 		if (this.rows() == other.rows() && this.columns() == other.columns()) {
 
-			suma = new Matrix(filas, columnas);
+			suma = createMatrix(filas, columnas);
 
 			for (i = 0; i < filas; i++)
 				for (j = 0; j < columnas; j++)
-					suma.datos[i][j] = this.datos[i][j] + other.datos[i][j];
+					suma.set(i,j, this.get(i,j)+other.get(i,j));
 		}
 
 		return suma;
@@ -213,11 +215,11 @@ public class Matrix implements java.io.Serializable
 		int filas = rows();
 		int columnas = columns();
 		
-		Matrix suma = new Matrix(filas,columnas);
+		Matrix suma = createMatrix(filas,columnas);
 		
 		for (int i=0; i<filas; i++)
 			for (int j=0; j<columnas; j++)
-				suma.datos[i][j] = this.datos[i][j] + constant;
+				suma.set(i,j, this.get(i,j)+constant);
 
 		return suma;
 	}
@@ -232,11 +234,11 @@ public class Matrix implements java.io.Serializable
 
 		if (this.rows() == other.rows() && this.columns() == other.columns()) {
 
-			result = new Matrix(filas, columnas);
+			result = createMatrix(filas, columnas);
 			
 			for (int i=0; i < filas; i++)
 				for (int j=0; j < columnas; j++)
-					result.datos[i][j] = this.datos[i][j] - other.datos[i][j];
+					result.set(i,j, this.get(i,j)-other.get(i,j));
 		}
 
 		return this;
@@ -247,19 +249,22 @@ public class Matrix implements java.io.Serializable
 	public Matrix multiply(Matrix other) 
 	{
 		int i, j, k;
+		double sum;
 		Matrix result = null;
 
 		if (this.columns() == other.rows()) {
 
-			result = new Matrix(this.rows(), other.columns());
+			result = createMatrix(this.rows(), other.columns());
 
 			for (i = 0; i < this.rows(); i++)
 				for (j = 0; j < other.columns(); j++) {
 
-					result.datos[i][j] = 0;
+					sum = 0;
 
 					for (k = 0; k < this.columns(); k++)
-						result.datos[i][j] += this.get(i,k) * other.get(k,j);
+						sum += this.get(i,k) * other.get(k,j);
+					
+					result.set(i,j,sum);
 				}
 		}
 
@@ -272,11 +277,11 @@ public class Matrix implements java.io.Serializable
 		int filas = rows();
 		int columnas = columns();
 		
-		Matrix result = new Matrix(filas, columnas);
+		Matrix result = createMatrix(filas, columnas);
 
 		for (i = 0; i < filas; i++)
 			for (j = 0; j < columnas; j++)
-				result.datos[i][j] = constant * this.datos[i][j];
+				result.set(i,j, constant * this.get(i,j));
 
 		return result;
 	}
@@ -287,11 +292,11 @@ public class Matrix implements java.io.Serializable
 		int filas = rows();
 		int columnas = columns();
 		
-		Matrix result = new Matrix(filas, columnas);
+		Matrix result = createMatrix(filas, columnas);
 
 		for (i = 0; i < filas; i++)
 			for (j = 0; j < columnas; j++)
-				result.datos[i][j] = this.datos[i][j] / constant;
+				result.set(i,j, this.get(i,j)/constant );
 
 		return result;
 	}
@@ -337,7 +342,7 @@ public class Matrix implements java.io.Serializable
 
 		if (filas == columnas)
 			for (i = 0; i < filas; i++)
-				result += datos[i][i];
+				result += this.get(i,i);
 
 		return result;
 	}
@@ -353,40 +358,40 @@ public class Matrix implements java.io.Serializable
 
 		if (filas == columnas)
 			for (i = 0; i < filas; i++)
-				result *= datos[i][i];
+				result *= this.get(i,i);
 
 		return result;
 	}
 
 	
-	// Descomposición LU con pivoteo parcial 
-	// Entradas: A = Matriz cuadrada (n x n)
-	// P = Vector de permutación (n x 1) */
-	// Salida: Número de permutaciones realizadas ( -1 ---> Matriz singular ) 
-	//  A ---> Matriz LU 
-
-	private int LU(Matrix A, Matrix P) 
+	/**
+	 * LU decomposition
+	 * @param A Square matrix (n x n)
+	 * @param P Permutation vector (n x 1)
+	 * @return Number of row exchanges (-1 when the matrix is singular) + A is now an LU matrix
+	 */
+	private int LU (Matrix A, Vector P) 
 	{
 		int i, j, k, n;
-		int maxi;
-		double tmp;
+		int maxi, pi, pk;
 		double c, c1;
 		int p;
 
 		n = A.columns();
 
 		for (i = 0; i < n; i++)
-			P.datos[i][0] = i;
+			P.set(i,i);
 
 		p = 0;
 
 		for (k = 0; k < n; k++) {
 
-			// Pivoteo parcial
+			// Pivoting
 
 			for (i = k, maxi = k, c = 0; i < n; i++) {
 
-				c1 = Math.abs(A.datos[(int) P.datos[i][0]][k]);
+				pi = (int) P.get(i);
+				c1 = Math.abs(A.get(pi,k));
 
 				if (c1 > c) {
 					c = c1;
@@ -394,31 +399,32 @@ public class Matrix implements java.io.Serializable
 				}
 			}
 
-			// Intercambio de filas y actualización del vector P
+			// Row exchange
 
 			if (k != maxi) {
+				P.swap(k,maxi);
 				p++;
-				tmp = P.datos[k][0];
-				P.datos[k][0] = P.datos[maxi][0];
-				P.datos[maxi][0] = tmp;
 			}
 
-			// Matriz singular
+			pk = (int) P.get(k);
 
-			if (A.datos[(int) P.datos[k][0]][k] == 0.0)
+			if (A.get(pk,k) == 0.0)  // Singular matrix ?
 				return -1;
 
 			for (i = k + 1; i < n; i++) {
+				
+				pi = (int) P.get(i);
 
-				// Calcula m(i,j)
+				// A[P[i],k] /= A[P[k],k]
+				
+				A.set(pi,k, A.get(pi,k) / A.get(pk,k) );
 
-				A.datos[(int) P.datos[i][0]][k] /= A.datos[(int) P.datos[k][0]][k];
+				// Elimination
 
-				// Eliminación
-
-				for (j = k + 1; j < n; j++)
-					A.datos[(int) P.datos[i][0]][j] -= A.datos[(int) P.datos[i][0]][k]
-							* A.datos[(int) P.datos[k][0]][j];
+				for (j = k + 1; j < n; j++) {
+					// A[P[i],j] -= A[P[i],k]*A[P[k],j]
+					A.set(pi,j, A.get(pi,j) - A.get(pi,k)*A.get(pk,j) );
+				}
 			}
 		}
 
@@ -431,33 +437,43 @@ public class Matrix implements java.io.Serializable
 	/* B = Matriz n x 1 ( se sobreescribe) */
 	/* X = Resultado de AX=B */
 	/* P = Permutación (tras llamar a Descomposicion LU) */
-	/* x = Columna de x en la que poner el resultado */
 
-	private void backwardsSubstitution
-		(Matrix A, Matrix B, Matrix X, Matrix P,int xcol) 
+	private void backwardsSubstitution (Matrix A, Vector B, Matrix X, Vector P, int xcol) 
 	{
 		int i, j, k, n;
 		double sum;
 
 		n = A.columns();
 
-		for (k = 0; k < n; k++)
-			for (i = k + 1; i < n; i++)
-				B.datos[(int) P.datos[i][0]][0] -= A.datos[(int) P.datos[i][0]][k]
-						* B.datos[(int) P.datos[k][0]][0];
+		for (k = 0; k < n; k++) {
+			int pk = (int) P.get(k);
+			for (i = k + 1; i < n; i++) {
+				// B[P[i]] = B[P[i]] - A[P[i],k]*B[P[k]]
+				int pi = (int) P.get(i);
+				B.set ( pi, B.get(pi) - A.get(pi,k)*B.get(pk) );
+			}
+		}
 
-		X.datos[n - 1][xcol] = B.datos[(int) P.datos[n - 1][0]][0]
-				/ A.datos[(int) P.datos[n - 1][0]][n - 1];
-
+		// X[n-1] = B[P[n-1]]/A[P[n-1],n-1]
+		int plast = (int) P.get(n-1);		
+		X.set(n-1, xcol, B.get(plast) / A.get(plast, n-1) );
+	
+		
 		for (k = n - 2; k >= 0; k--) {
 
+			int pk = (int) P.get(k);
+
+			// sum ( A[P[k],j]*X[j] )
+			
 			sum = 0;
-
+			
 			for (j = k + 1; j < n; j++)
-				sum += A.datos[(int) P.datos[k][0]][j] * X.datos[j][xcol];
+				sum += A.get(pk,j) * X.get(j,xcol);
+				
+			// X[k] = ( B[P[k]] -sum ) / A[P[k],k]
+				
+			X.set (k, xcol, ( B.get(pk) - sum ) / A.get(pk,k) );
 
-			X.datos[k][xcol] = (B.datos[(int) P.datos[k][0]][0] - sum)
-					/ A.datos[(int) P.datos[k][0]][k];
 		}
 	}
 
@@ -465,12 +481,12 @@ public class Matrix implements java.io.Serializable
 	/* Sistema de ecuaciones lineales AX = c                                   */
 	/* ----------------------------------------------------------------------- */
 
-	public Matrix system(Matrix c)
+	public Vector system (Vector c)
 	{
-		Matrix A = new Matrix(this);
-		Matrix B = new Matrix(c);
-		Matrix X = new Matrix(rows(), 1);
-		Matrix P = new Matrix(rows(), 1);
+		Matrix A = createMatrix(this);
+		Vector B = new Vector(c);
+		Vector X = (new Vector(rows())).transpose();
+		Vector P = new Vector(rows());
 
 		LU(A, P);
 		backwardsSubstitution(A, B, X, P, 0);
@@ -491,22 +507,20 @@ public class Matrix implements java.io.Serializable
 		int i;
 		int n = rows();
 		int p;
-		Matrix A = new Matrix(this);
-		Matrix B = new Matrix(n, 1);
-		Matrix P = new Matrix(n, 1);
+		Matrix A = createMatrix(this);
+		Vector B = new Vector(n);
+		Vector P = new Vector(n);
 		Matrix C = null;
 
-		// Descomposición LU
-
-		p = LU(A, P);
+		p = LU(A, P); // LU decomposition
 
 		if (p != -1) {
 
-			C = new Matrix(n, n);
+			C = createMatrix(n, n);
 
 			for (i = 0; i < n; i++) {
 				B.zero();
-				B.datos[i][0] = 1;
+				B.set(i,1);
 				backwardsSubstitution(A, B, C, P, i);
 			}
 		}
@@ -520,7 +534,7 @@ public class Matrix implements java.io.Serializable
 
 	// Anula todos los coeficientes de una matriz
 
-	private void zero() 
+	public void zero() 
 	{
 		int i, j;
 		int filas = rows();
@@ -528,7 +542,7 @@ public class Matrix implements java.io.Serializable
 
 		for (i = 0; i < filas; i++)
 			for (j = 0; j < columnas; j++)
-				datos[i][j] = 0;
+				set(i,j,0);
 	}
 
 	/* ----------------------------------------------------------------------- */
@@ -539,39 +553,30 @@ public class Matrix implements java.io.Serializable
 
 	public double determinant() 
 	{
-		Matrix A, P;
+		Matrix A;
+		Vector P;
 		int i, j, n;
-		double result;
+		double result = 0.0;
 
 		n = rows();
-		A = new Matrix(this);
-		P = new Matrix(n, 1);
+		A = createMatrix(this);
+		P = new Vector(n);
 
-		// Descomposición LU
+		i = LU(A, P); // LU decomposition
 
-		i = LU(A, P);
-
-		switch (i) {
-
-			// Matriz singular
-
-			case -1:
-				result = 0.0;
-				break;
-
+		if (i!=-1) {  // non-singular matrix
+			
 			// |A| = |L||U||P|
 			// |L| = 1,
 			// |U| = multiplication of the diagonal
 			// |P| = +-1
 
-			default:
-				result = 1.0;
+			result = 1.0;
 
-				for (j = 0; j < n; j++)
-					result *= A.datos[(int) P.datos[j][0]][j];
+			for (j = 0; j < n; j++)
+				result *= A.get( (int)P.get(j), j);
 
-				result *= sign[i % 2];
-				break;
+			result *= sign[i % 2];
 		}
 
 		A = null;
@@ -595,7 +600,7 @@ public class Matrix implements java.io.Serializable
 
 	public double cofactor(int i, int j) 
 	{
-		return sign[(i + j) % 2] * datos[i][j] * minor(i, j);
+		return sign[(i + j) % 2] * get(i,j) * minor(i, j);
 	}
 
 	/* ----------------------------------------------------------------------- */
@@ -607,11 +612,11 @@ public class Matrix implements java.io.Serializable
 		Matrix T;
 
 		n = R.rows();
-		T = new Matrix(n, n);
+		T = createMatrix(n, n);
 
 		for (i = 0; i < n; i++)
 			for (j = 0; j < n; j++)
-				T.datos[i][j] = R.datos[Math.abs(i - j)][0];
+				T.set (i,j, R.get(Math.abs(i - j),0));
 
 		return T;
 	}
@@ -627,49 +632,51 @@ public class Matrix implements java.io.Serializable
 	/* |        ...       | | .. |   | .. |                                    */
 	/* | vn-1 vn-2 ..  v0 | | an |   | vn |                                    */
 	/*                                                                         */
-	/* - A es una matriz sim‚trica de Toeplitz                                 */
+	/* - A es una matriz simétrica de Toeplitz                                 */
 	/* - R = Matriz (v0, v1, ... vn) (dim (n+1) x 1)                           */
 	/* - Devuelve x (de Ax = B)                                                */
 	/* ----------------------------------------------------------------------- */
 
-	public Matrix LevinsonDurbin(Matrix R) 
+	public Vector LevinsonDurbin (double v[]) 
 	{
 		int i, i1, j, ji, p;
-		Matrix W, E, K, A, X;
+		double A[][];
+		double W[], E[], K[];
+		Vector X;
 
-		p = R.rows() - 1;
-		W = new Matrix(p + 2, 1);
-		E = new Matrix(p + 2, 1);
-		K = new Matrix(p + 2, 1);
-		A = new Matrix(p + 2, p + 2);
+		p = v.length - 1;
+		W = new double[p+2];
+		E = new double[p+2];
+		K = new double[p+2];
+		A = new double[p+2][p+2];
 
-		W.datos[0][0] = R.datos[1][0];
-		E.datos[0][0] = R.datos[0][0];
+		W[0] = v[1];
+		E[0] = v[0];
 
 		for (i = 1; i <= p; i++) {
-			K.datos[i][0] = W.datos[i - 1][0] / E.datos[i - 1][0];
-			E.datos[i][0] = E.datos[i - 1][0] * (1.0 - K.datos[i][0] * K.datos[i][0]);
-			A.datos[i][i] = -K.datos[i][0];
+			K[i] = W[i-1] / E[i - 1];
+			E[i] = E[i-1] * (1.0 - K[i] * K[i]);
+			A[i][i] = -K[i];
 
 			i1 = i - 1;
 
 			if (i1 >= 1)
 				for (j = 1; j <= i1; j++) {
 					ji = i - j;
-					A.datos[j][i] = A.datos[j][i1] - K.datos[i][0] * A.datos[ji][i1];
+					A[j][i] = A[j][i1] - K[i] * A[ji][i1];
 				}
 
 			if (i != p) {
-				W.datos[i][0] = R.datos[i + 1][0];
+				W[i] = v[i+1];
 				for (j = 1; j <= i; j++)
-					W.datos[i][0] += A.datos[j][i] * R.datos[i - j + 1][0];
+					W[i] += A[j][i] * v[i - j + 1];
 			}
 		}
 
-		X = new Matrix(p, 1);
+		X = new Vector(p);
 
 		for (i = 0; i < p; i++)
-			X.datos[i][0] = -A.datos[i + 1][p];
+			X.set(i, -A[i+1][p]);
 
 		A = null;
 		W = null;
@@ -683,30 +690,31 @@ public class Matrix implements java.io.Serializable
 	/* Algoritmo de Levinson-Durbin:                                           */
 	/* Resuelve el sistema de ecuaciones Ax=B de la forma                      */
 	/*                                                                         */
-	/* | v0 v1 v2 .. vn-1 | | a1 |   | v1 |                                    */
-	/* | v1 v0 v1 .. vn-2 | | a2 |   | v2 |                                    */
-	/* | v2 v1 v0 .. vn-3 | | a3 | = | .. |                                    */
+	/* | v0 v1 v2 .. vn-1 | | x1 |   | v1 |                                    */
+	/* | v1 v0 v1 .. vn-2 | | x2 |   | v2 |                                    */
+	/* | v2 v1 v0 .. vn-3 | | x3 | = | .. |                                    */
 	/* |        ...       | | .. |   | .. |                                    */
-	/* | vn-1 vn-2 ..  v0 | | an |   | vn |                                    */
+	/* | vn-1 vn-2 ..  v0 | | xn |   | vn |                                    */
 	/*                                                                         */
 	/* ----------------------------------------------------------------------- */
 
-	public Matrix LevinsonDurbinSystem(Matrix A, Matrix B) 
+	public Matrix LevinsonDurbinSystem (Matrix A, Vector B) 
 	{
-		Matrix R, X;
+		double v[];
+		Vector X;
 		int i, n;
 
 		n = A.rows();
-		R = new Matrix(n + 1, 1);
+		v = new double[n+1];
 
 		for (i = 0; i < n; i++)
-			R.datos[i][0] = A.datos[i][0];
+			v[i] = A.get(i,0);
 
-		R.datos[n][0] = B.datos[n - 1][0];
+		v[n] = B.get(n-1,0);
+		
+		X = LevinsonDurbin(v);
 
-		X = LevinsonDurbin(R);
-
-		R = null;
+		v = null;
 
 		return X;
 	}
@@ -769,11 +777,11 @@ public class Matrix implements java.io.Serializable
 		for (i = 0; i < rows(); i++) {
 
 			buffer.append(rowPrefix);
-			buffer.append(datos[i][0]);
+			buffer.append(get(i,0));
 
 			for (j = 1; j < columns(); j++) {
 				buffer.append(delimiter);
-				buffer.append(datos[i][j]);
+				buffer.append(get(i,j));
 			}
 
 			buffer.append(rowSuffix);

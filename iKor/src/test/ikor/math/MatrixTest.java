@@ -24,16 +24,12 @@ public class MatrixTest
 	@Before
 	public void setUp() throws Exception 
 	{
-		original = new Matrix(data);
-		matrix   = new Matrix(data);
-
-		identity = new Matrix(3,3);
-
-		for (int i=0; i<identity.rows(); i++)
-			identity.set(i,i,1);
+		original = Matrix.createMatrix(data);
+		matrix   = Matrix.createMatrix(data);
+		identity = Matrix.createIdentity(3);
 		
-		ones  = new Matrix(3,3,1);
-		zeros = new Matrix(3,3,0);
+		ones  = Matrix.createMatrix(3,3,1);
+		zeros = Matrix.createMatrix(3,3,0);
 	}
 	
 	@Test
@@ -199,14 +195,14 @@ public class MatrixTest
 	@Test
 	public void testPower ()
 	{
-		Matrix A  = new Matrix ( new double[][] { {0,1,1,0}, {1,0,1,0}, {1,1,0,1}, {0,0,1,0} } );
-		Matrix A0 = new Matrix ( new double[][] { {1,0,0,0}, {0,1,0,0}, {0,0,1,0}, {0,0,0,1} } );
-		Matrix A2 = new Matrix ( new double[][] { {2,1,1,1}, {1,2,1,1}, {1,1,3,0}, {1,1,0,1} } );
-		Matrix A3 = new Matrix ( new double[][] { {2,3,4,1}, {3,2,4,1}, {4,4,2,3}, {1,1,3,0} } );
-		Matrix A4 = new Matrix ( new double[][] { { 7, 6, 6, 4}, { 6, 7, 6, 4}, { 6, 6,11, 2}, { 4, 4, 2, 3} } );
-		Matrix A5 = new Matrix ( new double[][] { {12,13,17, 6}, {13,12,17, 6}, {17,17,14,11}, { 6, 6,11, 2} } );
-		Matrix A6 = new Matrix ( new double[][] { {30,29,31,17}, {29,30,31,17}, {31,31,45,14}, {17,17,14,11} } );
-		Matrix A7 = new Matrix ( new double[][] { {60,61,76,31}, {61,60,76,31}, {76,76,76,45}, {31,31,45,14} } );
+		Matrix A  = Matrix.createMatrix ( new double[][] { {0,1,1,0}, {1,0,1,0}, {1,1,0,1}, {0,0,1,0} } );
+		Matrix A0 = Matrix.createMatrix ( new double[][] { {1,0,0,0}, {0,1,0,0}, {0,0,1,0}, {0,0,0,1} } );
+		Matrix A2 = Matrix.createMatrix ( new double[][] { {2,1,1,1}, {1,2,1,1}, {1,1,3,0}, {1,1,0,1} } );
+		Matrix A3 = Matrix.createMatrix ( new double[][] { {2,3,4,1}, {3,2,4,1}, {4,4,2,3}, {1,1,3,0} } );
+		Matrix A4 = Matrix.createMatrix ( new double[][] { { 7, 6, 6, 4}, { 6, 7, 6, 4}, { 6, 6,11, 2}, { 4, 4, 2, 3} } );
+		Matrix A5 = Matrix.createMatrix ( new double[][] { {12,13,17, 6}, {13,12,17, 6}, {17,17,14,11}, { 6, 6,11, 2} } );
+		Matrix A6 = Matrix.createMatrix ( new double[][] { {30,29,31,17}, {29,30,31,17}, {31,31,45,14}, {17,17,14,11} } );
+		Matrix A7 = Matrix.createMatrix ( new double[][] { {60,61,76,31}, {61,60,76,31}, {76,76,76,45}, {31,31,45,14} } );
 		
 		assertEquals ( A,  A.power(1) );
 		assertEquals ( A2, A.power(2) );

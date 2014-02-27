@@ -161,8 +161,8 @@ public class LinearRegression
 	public void normalEquation ()
 	{
 		int    m = this.y.size();
-		Matrix X = new Matrix( m, theta.length);	// m x p
-		Matrix Y = this.y;							// 1 x m
+		Matrix X = Matrix.createMatrix(m, theta.length);	// m x p
+		Matrix Y = this.y;				 					// 1 x m
 		Matrix Xt;
 		Matrix Yt;
 		Matrix result;

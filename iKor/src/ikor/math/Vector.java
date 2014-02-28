@@ -1,5 +1,18 @@
 package ikor.math;
 
+// Title:       Matrix ADT
+// Version:     2.0
+// Copyright:   1998-2014
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
+
+
+/**
+ * Vector ADT. Abstract base class for vectors.
+ *
+ * @author Fernando Berzal (berzal@acm.org)
+ */
+
 public abstract class Vector extends Matrix 
 {
 	private boolean transposed;

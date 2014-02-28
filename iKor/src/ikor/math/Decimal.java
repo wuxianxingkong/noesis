@@ -1,14 +1,20 @@
 package ikor.math;
 
-/*
- *  java.math.Decimal -> ikor.math.Decimal
- */
+// Title:       Alternative implementation for java.math.Decimal
+// Version:     1.2
+// Copyright:   1999-2002
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
 
 import java.math.BigInteger;
 
 // v1.0 27/05/99 Format (+|-)n*[.n*][(e|E)[+|-]n+]
 // v1.1 28/05/99 extends Decimal -> stand-alone
 // v1.2 01/03/02 BUG in comparator, calling to constructor (BigInteger,scale)
+
+/**
+ *  java.math.Decimal -> ikor.math.Decimal
+ */
 
 public class Decimal extends Number implements Comparable
 {

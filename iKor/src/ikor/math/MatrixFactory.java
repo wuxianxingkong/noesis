@@ -31,7 +31,13 @@ public class MatrixFactory
 		int filas = original.rows();
 		int columnas = original.columns();
 		
-		Matrix matrix = new DenseMatrix(filas, columnas);
+		Matrix matrix;
+		
+		if (original instanceof DenseMatrix)
+			matrix = new DenseMatrix(filas, columnas);
+		else // original instanceof SparseMatrix
+			matrix = new SparseMatrix(filas,columnas);
+			
 
 		for (int i=0; i<filas; i++)
 			for (int j=0; j<columnas; j++)
@@ -85,7 +91,7 @@ public class MatrixFactory
 	 */
 	public static final Matrix createIdentity (int n)
 	{
-		Matrix identity = MatrixFactory.create(n,n);
+		Matrix identity = new SparseMatrix(n,n);
 
 		for (int i=0; i<n; i++)
 			identity.set(i,i,1);
@@ -98,7 +104,7 @@ public class MatrixFactory
 	 * @param v Vector
 	 * @return Toeplitz matrix
 	 */
-	public Matrix toeplitz (Vector v) 
+	public Matrix createToeplitz (Vector v) 
 	{
 		int i, j, n;
 		Matrix T;

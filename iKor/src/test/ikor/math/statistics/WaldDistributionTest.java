@@ -2,7 +2,6 @@ package test.ikor.math.statistics;
 
 import static org.junit.Assert.*;
 
-import ikor.math.Configuration;
 import ikor.math.statistics.WaldDistribution;
 
 import org.junit.Before;
@@ -10,7 +9,7 @@ import org.junit.Test;
 
 public class WaldDistributionTest 
 {
-	public static double ERROR = Configuration.EPSILON;
+	public static double ERROR = 1e-7;
 
 	@Before
 	public void setUp() throws Exception 

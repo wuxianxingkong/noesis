@@ -1,5 +1,18 @@
 package ikor.math;
 
+// Title:       Dense vector ADT
+// Version:     2.0
+// Copyright:   1998-2014
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
+
+
+/**
+ * Dense vector implementation.
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
+
 public class DenseVector extends Vector 
 {
 	private double  data[];

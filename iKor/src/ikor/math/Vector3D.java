@@ -1,5 +1,18 @@
 package ikor.math;
 
+// Title:       3D Vector
+// Version:     1.0
+// Copyright:   1998-2014
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
+
+
+/**
+ * Immutable 3D vector.
+ * 
+ * @author Fernando Berzal
+ */
+
 public class Vector3D implements java.io.Serializable
 {
 	double x,y,z;

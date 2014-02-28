@@ -1,12 +1,21 @@
 package ikor.math;
 
+// Title:       Mathematical functions
+// Version:     1.0
+// Copyright:   2013
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
+
+import static ikor.math.Configuration.*;
+
+/**
+ * Mathematical functions
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ *
+ */
 public class Functions 
-{
-    private static final double EPSILON = 1e-8;
-    private static final double FPMIN = Double.MIN_VALUE / EPSILON;
-    private static final int    MAX_ITERATIONS = 10000;
-    
-    
+{    
 	/**
 	 * Phi: CDF of the standard normal distribution.
 	 * 

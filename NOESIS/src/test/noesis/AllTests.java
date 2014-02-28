@@ -4,7 +4,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses( { test.noesis.DynamicNetworkTest.class,
+@Suite.SuiteClasses( { test.noesis.AdjacencyMatrixTest.class,
+	                   test.noesis.DynamicNetworkTest.class,
 	                   test.noesis.SampleNetworkTests.class,
 	                   test.noesis.algorithms.AllTests.class,
 					   test.noesis.analysis.AllTests.class,

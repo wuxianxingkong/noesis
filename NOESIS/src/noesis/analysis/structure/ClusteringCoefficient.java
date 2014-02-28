@@ -24,7 +24,7 @@ public class ClusteringCoefficient extends NodeMeasureTask
 			for (int i=0; i<degree; i++) {
 				for (int j=0; j<degree; j++) {				
 				
-					if (net.get(links[i],links[j])!=null)
+					if (net.contains(links[i],links[j]))
 						triangles++;
 				}
 			}

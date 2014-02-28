@@ -151,7 +151,7 @@ public class BasicNetwork extends Network<Integer,Integer>
 	
 
 	@Override
-	public Integer get(int source, int destination) 
+	public Integer get (int source, int destination) 
 	{
 		if (outLinks[source]!=null)
 			for (int i=0; i<outLinks[source][0]; i++)
@@ -161,6 +161,17 @@ public class BasicNetwork extends Network<Integer,Integer>
 		return null;
 	}
 
+	@Override
+	public boolean contains (int source, int destination) 
+	{
+		if (outLinks[source]!=null)
+			for (int i=0; i<outLinks[source][0]; i++)
+				if (outLinks[source][START_INDEX+i] == destination)
+					return true;
+		
+		return false;
+	}
+	
 
 	@Override
 	public boolean contains(Integer node) 

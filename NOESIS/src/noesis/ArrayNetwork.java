@@ -141,6 +141,23 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 		}
 	}
 
+	@Override
+	public final boolean contains (int source, int destination) 
+	{
+		int index;
+		
+		if ((content!=null) && (content[source]!=null)) {
+			
+			index = net.getLinkIndex(source,destination);
+			
+			return (index!=-1);
+
+		} else {
+			
+			return false;
+		}
+	}
+	
 
 	@Override
 	public final boolean contains(V node) 

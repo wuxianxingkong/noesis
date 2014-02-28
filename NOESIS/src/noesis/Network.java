@@ -131,6 +131,13 @@ public abstract class Network<V, E> implements Graph<V,E>
 		return (index(object)!=-1);
 	}
 	
+	/**
+	 * Check whether the network contains a link between two nodes.
+	 */
+	public boolean contains (int source, int destination)
+	{
+		return get(source,destination)!=null;
+	}
 
 
 	// Iterators

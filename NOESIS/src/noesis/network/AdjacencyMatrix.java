@@ -1,4 +1,4 @@
-package noesis;
+package noesis.network;
 
 // Title:       Adjacency matrix
 // Version:     1.1
@@ -6,6 +6,7 @@ package noesis;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
+import noesis.Network;
 import ikor.math.Matrix;
 
 /**

@@ -1,12 +1,12 @@
-package test.noesis;
+package test.noesis.network;
 
 import static org.junit.Assert.*;
 import ikor.math.Matrix;
 import ikor.math.MatrixFactory;
 
-import noesis.AdjacencyMatrix;
 import noesis.BasicNetwork;
 import noesis.Network;
+import noesis.network.AdjacencyMatrix;
 
 import org.junit.Before;
 import org.junit.Test;

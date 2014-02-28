@@ -7,6 +7,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses( { FunctionsTest.class,
 					   MatrixTest.class,
 					   VectorTest.class,
+					   VectorCovarianceTest.class,
 					   SparseVectorTest.class,
 					   Vector2DTest.class,
 	                   Vector3DTest.class,

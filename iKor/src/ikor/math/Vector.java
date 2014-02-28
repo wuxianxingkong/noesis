@@ -303,6 +303,32 @@ public abstract class Vector extends Matrix
 	}	
 	
 	
+	public double covariance (Vector other)
+	{
+		double mu1 = this.average();
+		double mu2 = other.average();
+		double cov = 0;
+		
+		for (int i=0; i<size(); i++)
+			cov += (this.get(i)-mu1)*(other.get(i)-mu2);
+		
+		return cov/size();
+	}
+	
+	
+	public double correlation (Vector other)
+	{
+		double sigma1 = this.deviation();
+		double sigma2 = other.deviation();
+		double cov = this.covariance(other);
+		
+		if (cov==0.0)
+			return 0.0;
+		else 
+			return this.covariance(other) / (sigma1*sigma2);
+	}
+	
+	
 	// Overriden Object methods
 	
 	@Override

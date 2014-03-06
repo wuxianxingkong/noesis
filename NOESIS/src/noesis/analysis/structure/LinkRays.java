@@ -1,10 +1,24 @@
 package noesis.analysis.structure;
 
+// Title:       Link rays
+// Version:     1.0
+// Copyright:   2014
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
+
 import ikor.model.data.annotations.Label;
+import ikor.model.data.annotations.Description;
 
 import noesis.Network;
 
+/**
+ * Link rays, i.e. number of different paths (x,i,j,y) through the (i,j) link.
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
+
 @Label("Link rays")
+@Description("Link rays")
 public class LinkRays extends LinkMeasureTask
 {
 	public LinkRays(Network network) 

@@ -53,4 +53,46 @@ public class DynamicSet<T> implements Set<T>
 		return set.iterator();
 	}
 
+	// Set operations
+	
+	@Override
+	public Set<T> union(Set<T> other) 
+	{
+		Set<T> result = new DynamicSet();
+		
+		for (T element: this) 
+			result.add(element);
+		
+		for (T element: other)
+			result.add(element);
+		
+		return result;
+	}
+
+	@Override
+	public Set<T> intersection(Set<T> other) 
+	{
+		Set<T> result = new DynamicSet();
+		
+		for (T element: this) {
+			if (other.contains(element))
+				result.add(element);
+		}
+		
+		return result;
+	}
+
+	@Override
+	public Set<T> difference(Set<T> other) 
+	{
+		Set<T> result = new DynamicSet();
+		
+		for (T element: this) {
+			if (!other.contains(element))
+				result.add(element);
+		}
+		
+		return result;
+	}
+
 }

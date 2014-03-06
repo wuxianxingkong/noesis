@@ -13,5 +13,9 @@ package ikor.collection;
  */
 public interface Set<T> extends Collection<T> 
 {
-
+	public Set<T> union (Set<T> other);
+	
+	public Set<T> intersection (Set<T> other);
+	
+	public Set<T> difference (Set<T> other);
 }

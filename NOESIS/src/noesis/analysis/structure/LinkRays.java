@@ -17,7 +17,7 @@ import noesis.Network;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-@Label("Link rays")
+@Label("link-rays")
 @Description("Link rays")
 public class LinkRays extends LinkMeasureTask
 {

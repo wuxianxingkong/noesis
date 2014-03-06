@@ -1,8 +1,20 @@
 package noesis.analysis.structure;
 
+// Title:       Clustering coefficient
+// Version:     1.0
+// Copyright:   2013
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
+
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
 import noesis.Network;
+
+/**
+ * Clustering coefficient, between 0 and 1.
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
 
 @Label("cc")
 @Description("Clustering coefficient")

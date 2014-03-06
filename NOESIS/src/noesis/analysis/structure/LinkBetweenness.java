@@ -22,7 +22,7 @@ import noesis.network.LinkIndexer;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-@Label("Link betweenness")
+@Label("link-betweenness")
 @Description("Link betweenness")
 public class LinkBetweenness extends LinkMeasureTask 
 {

@@ -20,7 +20,7 @@ import noesis.network.LinkIndexer;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-@Label("Link betweenness score")
+@Label("link-betweenness-score")
 @Description("Link betweenness score")
 public class LinkBetweennessScore extends LinkMeasureTask
 {

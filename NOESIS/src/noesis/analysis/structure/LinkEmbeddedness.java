@@ -20,8 +20,8 @@ import noesis.CollectionFactory;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-@Label("Rmbeddedness")
-@Description("Link embeddedness, i.e. number of shared neighbors")
+@Label("embeddedness")
+@Description("Link embeddedness, a.k.a. shared neighbors")
 public class LinkEmbeddedness extends LinkMeasureTask
 {
 	public LinkEmbeddedness(Network network) 

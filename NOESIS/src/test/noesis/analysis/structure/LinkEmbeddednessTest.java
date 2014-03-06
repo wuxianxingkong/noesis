@@ -9,6 +9,7 @@ import noesis.Network;
 import noesis.analysis.structure.LinkMeasure;
 import noesis.analysis.structure.LinkEmbeddedness;
 import noesis.analysis.structure.LinkNeighborhoodOverlap;
+import noesis.analysis.structure.LinkNeighborhoodSize;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -88,6 +89,28 @@ public class LinkEmbeddednessTest
 		assertEquals(0,     neighborhood.get(4,5), EPSILON);
 		assertEquals(1/3.0, neighborhood.get(3,6), EPSILON);
 		assertEquals(1/2.0, neighborhood.get(5,6), EPSILON);
+	}
+
+	@Test
+	public void testLinkNeighborhoodSize() 
+		throws Exception
+	{
+		Task<LinkMeasure> task = new LinkNeighborhoodSize(net);
+		LinkMeasure neighborhood = task.call();
+		//LinkMeasure neighborhood = task.getResult();
+		//LinkMeasure neighborhood = task.getFuture().get();
+		
+		assertEquals(3, neighborhood.get(0,1), EPSILON);
+		assertEquals(3, neighborhood.get(0,2), EPSILON);
+		assertEquals(4, neighborhood.get(0,3), EPSILON);
+		assertEquals(3, neighborhood.get(1,2), EPSILON);
+		assertEquals(5, neighborhood.get(2,3), EPSILON);
+		assertEquals(3, neighborhood.get(1,4), EPSILON);
+		assertEquals(4, neighborhood.get(2,4), EPSILON);
+		assertEquals(4, neighborhood.get(3,5), EPSILON);
+		assertEquals(4, neighborhood.get(4,5), EPSILON);
+		assertEquals(3, neighborhood.get(3,6), EPSILON);
+		assertEquals(2, neighborhood.get(5,6), EPSILON);
 	}
 	
 }

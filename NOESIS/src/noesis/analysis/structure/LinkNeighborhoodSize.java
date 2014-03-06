@@ -1,6 +1,6 @@
 package noesis.analysis.structure;
 
-// Title:       Link neighborhood overlap
+// Title:       Link neighborhood size
 // Version:     1.0
 // Copyright:   2014
 // Author:      Fernando Berzal
@@ -14,16 +14,16 @@ import ikor.model.data.annotations.Label;
 import noesis.Network;
 
 /**
-* Link neighborhood overlap, i.e. number of shared neighbors / total number of neighbors.
+* Link neighborhood size, i.e. total number of neighbors.
 * 
 * @author Fernando Berzal (berzal@acm.org)
 */
 
-@Label("neighborhood-overlap")
-@Description("Link neighborhood overlap")
-public class LinkNeighborhoodOverlap extends LinkEmbeddedness
+@Label("neighborhood-size")
+@Description("Link neighborhood size")
+public class LinkNeighborhoodSize extends LinkEmbeddedness
 {
-	public LinkNeighborhoodOverlap(Network network) 
+	public LinkNeighborhoodSize(Network network) 
 	{
 		super(network);
 	}
@@ -33,13 +33,12 @@ public class LinkNeighborhoodOverlap extends LinkEmbeddedness
 	{
 		Set<Integer> sourceNeighborhood = neighborhood(source);
 		Set<Integer> destinationNeighborhood = neighborhood(destination);
-		Set<Integer> sharedNeighborhood = sourceNeighborhood.intersection(destinationNeighborhood);
 		Set<Integer> linkNeighborhood = sourceNeighborhood.union(destinationNeighborhood);
 		
 		linkNeighborhood.remove(source);
 		linkNeighborhood.remove(destination);
 		
-		return sharedNeighborhood.size() / (double) linkNeighborhood.size();
+		return linkNeighborhood.size();
 	}
 
 }

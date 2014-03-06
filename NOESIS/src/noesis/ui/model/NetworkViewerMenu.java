@@ -17,36 +17,20 @@ import noesis.algorithms.visualization.MeshLayout;
 import noesis.algorithms.visualization.RandomLayout;
 import noesis.algorithms.visualization.StarLayout;
 import noesis.algorithms.visualization.ToroidalLayout;
-import noesis.analysis.structure.AdjustedBetweenness;
-import noesis.analysis.structure.AdjustedCloseness;
-import noesis.analysis.structure.AveragePathLength;
-import noesis.analysis.structure.Betweenness;
-import noesis.analysis.structure.Closeness;
-import noesis.analysis.structure.ClusteringCoefficient;
-import noesis.analysis.structure.ConnectedComponents;
-import noesis.analysis.structure.Decay;
-import noesis.analysis.structure.Degree;
-import noesis.analysis.structure.EigenvectorCentrality;
-import noesis.analysis.structure.HITS;
-import noesis.analysis.structure.InDegree;
-import noesis.analysis.structure.KatzCentrality;
-import noesis.analysis.structure.NormalizedBetweenness;
-import noesis.analysis.structure.NormalizedDecay;
-import noesis.analysis.structure.NormalizedDegree;
-import noesis.analysis.structure.NormalizedInDegree;
-import noesis.analysis.structure.NormalizedOutDegree;
-import noesis.analysis.structure.OutDegree;
-import noesis.analysis.structure.PageRank;
-import noesis.analysis.structure.Eccentricity;
+
+import noesis.analysis.structure.*;
+
 import noesis.io.graphics.ColorMapNodeRenderer;
 import noesis.io.graphics.GrayscaleNodeRenderer;
 import noesis.io.graphics.LinearGradientNodeRenderer;
 import noesis.io.graphics.RadialGradientNodeRenderer;
+
 import noesis.ui.model.actions.ExitAction;
 import noesis.ui.model.actions.FlipAction;
 import noesis.ui.model.actions.ForwardAction;
 import noesis.ui.model.actions.LayoutAction;
 import noesis.ui.model.actions.LinkWidthAction;
+import noesis.ui.model.actions.LinkMeasureAction;
 import noesis.ui.model.actions.NodeMeasureAction;
 import noesis.ui.model.actions.NodeMultiMeasureAction;
 import noesis.ui.model.actions.NodeSizeAction;
@@ -55,6 +39,7 @@ import noesis.ui.model.actions.URLAction;
 import noesis.ui.model.actions.ViewerOpenAction;
 import noesis.ui.model.actions.ViewerSaveAction;
 import noesis.ui.model.actions.ViewerCloseAction;
+
 import noesis.ui.model.networks.AnchoredRandomNetworkUI;
 import noesis.ui.model.networks.BinaryTreeNetworkUI;
 import noesis.ui.model.networks.CompleteNetworkUI;
@@ -416,6 +401,7 @@ public class NetworkViewerMenu extends Menu
 	{
 		Menu analysis = new Menu("Analysis");
 		
+		// Node degree
 		
 		Menu degree = new Menu("Degree");
 		degree.setIcon( app.url("icons/microscope.png") );
@@ -445,6 +431,8 @@ public class NetworkViewerMenu extends Menu
 		normalizedDegree.setIcon( app.url("icons/microscope.png") );
 		degree.add(normalizedDegree);
 
+		// Node reachability
+		
 		Menu reachability = new Menu("Reachability");
 		reachability.setIcon( app.url("icons/microscope.png") );
 		analysis.add(reachability);
@@ -476,6 +464,8 @@ public class NetworkViewerMenu extends Menu
 		// TODO Decay: delta parameter...
 
 		
+		// Node betweenness
+		
 		Menu betweenness = new Menu("Betweenness" );
 		betweenness.setIcon( app.url("icons/microscope.png") );
 		analysis.add(betweenness);
@@ -492,6 +482,7 @@ public class NetworkViewerMenu extends Menu
 		normalizedBetweenness.setIcon( app.url("icons/microscope.png") );
 		betweenness.add(normalizedBetweenness);		
 
+		// Node influence
 		
 		Menu influence = new Menu("Influence" );
 		influence.setIcon( app.url("icons/microscope.png") );
@@ -514,13 +505,44 @@ public class NetworkViewerMenu extends Menu
 		influence.add(katz);		
 		// TODO Katz centrality: alpha & beta parameters
 
+		// Links
+		
+		Menu links = new Menu("Links");
+		links.setIcon( app.url("icons/microscope.png") );
+		analysis.add(links);
+		
+		Option linkBetweenness = new Option("Link betweenness", new LinkMeasureAction(app, model, LinkBetweenness.class) );
+		linkBetweenness.setIcon( app.url("icons/microscope.png") );
+		links.add(linkBetweenness);		
+
+		Option linkEmbeddedness = new Option("Link embeddedness", new LinkMeasureAction(app, model, LinkEmbeddedness.class) );
+		linkEmbeddedness.setIcon( app.url("icons/microscope.png") );
+		links.add(linkEmbeddedness);		
+		
+		Option linkNeighborhoodOverlap = new Option("Link neighborhood overlap", new LinkMeasureAction(app, model, LinkNeighborhoodOverlap.class) );
+		linkNeighborhoodOverlap.setIcon( app.url("icons/microscope.png") );
+		links.add(linkNeighborhoodOverlap);		
+	
+		Option linkNeighborhoodSize = new Option("Link neighborhood size", new LinkMeasureAction(app, model, LinkNeighborhoodSize.class) );
+		linkNeighborhoodSize.setIcon( app.url("icons/microscope.png") );
+		links.add(linkNeighborhoodSize);		
+
+		Option linkRays = new Option("Link rays", new LinkMeasureAction(app, model, LinkRays.class) );
+		linkRays.setIcon( app.url("icons/microscope.png") );
+		links.add(linkRays);		
+		
+		// Connected components
+		
 		Option scc = new Option("Connected components", new NodeMultiMeasureAction(app, model, ConnectedComponents.class) );
 		scc.setIcon( app.url("icons/microscope.png") );
 		analysis.add(scc);		
 		
+		// Clustering coefficients
+		
 		Option cc = new Option("Clustering coefficient", new NodeMeasureAction(app, model, ClusteringCoefficient.class) );
 		cc.setIcon( app.url("icons/microscope.png") );
 		analysis.add(cc);		
+		
 		
 		return analysis;
 	}

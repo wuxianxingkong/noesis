@@ -81,7 +81,7 @@ public abstract class NodeMeasureTask extends Task<NodeMeasure>
 	{
 		int size = network.size();
 		
-		measure = new NodeMeasure(this.toString(),network);
+		measure = new NodeMeasure(this,network);
 	
 		for (int node=0; node<size; node++)
 			measure.set (node, compute(node));

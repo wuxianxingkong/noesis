@@ -1,4 +1,4 @@
-package ikor.model.graphics.charts;
+package ikor.math.util;
 
 public class LinearScale extends Scale
 {
@@ -17,6 +17,12 @@ public class LinearScale extends Scale
 		return (value-min)/(max-min);
 	}
 
+	@Override
+	public double inverse (double value)
+	{
+		return min+value*(max-min);
+	}
+	
 	@Override
 	public double min() 
 	{

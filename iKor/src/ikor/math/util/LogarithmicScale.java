@@ -1,4 +1,4 @@
-package ikor.model.graphics.charts;
+package ikor.math.util;
 
 public class LogarithmicScale extends Scale
 {
@@ -16,6 +16,13 @@ public class LogarithmicScale extends Scale
 	{
 		return Math.log(value-min+1)/Math.log(max-min+1);
 	}
+	
+	@Override
+	public double inverse (double value)
+	{
+		return min + Math.pow(max-min+1, value) - 1; // == min + Math.exp(value*Math.log(max-min+1)) - 1
+	}
+	
 
 	@Override
 	public double min() 

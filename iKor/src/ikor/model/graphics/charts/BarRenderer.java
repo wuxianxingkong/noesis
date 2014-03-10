@@ -1,5 +1,6 @@
 package ikor.model.graphics.charts;
 
+import ikor.math.Vector;
 import ikor.model.graphics.Rectangle;
 import ikor.model.graphics.Style;
 import ikor.model.graphics.styles.Gradient;
@@ -15,33 +16,63 @@ public class BarRenderer extends SeriesRenderer
 	private Chart    chart;
 	private Series   series;
 	
-	private Gradient grad;
-	private Style    border;
-	private double   column = DEFAULT_COLUMN_WIDTH;
+	private Style  bar;
+	private Style  border;
+	private double columnWidth = DEFAULT_COLUMN_WIDTH;
+	private double columnOffset = 1 - DEFAULT_COLUMN_WIDTH;
 	
 	public BarRenderer (Chart chart, Series series)
 	{
+		super(series);
+		
 		this.chart = chart;
 		this.series = series;
 		
-		grad = new LinearGradient(0.4f, 0.4f, 0.8f, 0.8f);
+		Gradient gradient = new LinearGradient(0.4f, 0.4f, 0.8f, 0.8f);
 		
-		grad.addKeyframe( new GradientKeyframe(0.0f, new Color(0xC0, 0xC0, 0xF0, 0xFF) ) );
-		grad.addKeyframe( new GradientKeyframe(1.0f, new Color(0x00, 0x00, 0xB0, 0xFF) ) );
-		grad.setWidth(10);
+		gradient.addKeyframe( new GradientKeyframe(0.0f, new Color(0xC0, 0xC0, 0xF0, 0xFF) ) );
+		gradient.addKeyframe( new GradientKeyframe(1.0f, new Color(0x00, 0x00, 0xB0, 0xFF) ) );
+		gradient.setWidth(10);
 		
-		border = new Style ( new Color(0x33, 0x00, 0x00, 0xFF), 1);
+		this.bar = gradient;
+		this.border = new Style ( new Color(0x33, 0x00, 0x00, 0xFF), 1);
 	}
+	
+	public BarRenderer (Chart chart, Vector data)
+	{
+		this(chart, new Series(data));
+	}
+	
+	public void setBorder (Style border)
+	{
+		this.border = border;
+	}
+	
+	public void setStyle (Style bar)
+	{
+		this.bar = bar;
+	}
+	
+	public void setColumnWidth (double width)
+	{
+		this.columnWidth = width;
+	}
+	
+	public void setColumnOffset (double offset)
+	{
+		this.columnOffset = offset;
+	}
+
 	
 	public void render (int i)
 	{
 		int xspan = chart.chartWidth()/series.size();
-		int x = chart.originX(i) + (int)(xspan*(1-column));
+		int x = chart.originX(i) + (int)(xspan*columnOffset);
 		int y = (int) (chart.marginY()+chart.chartHeight()*(1-chart.yscale(series.getY(i))));
-		int width =  (int) ( column*xspan );
+		int width =  (int) ( columnWidth*xspan );
 		int height = (int) ( chart.chartHeight()*chart.yscale(series.getY(i))); 
 		
-		chart.add( new Rectangle (chart.label(i), grad, border, x, y, width, height) );
+		chart.add( new Rectangle (chart.label(i), bar, border, x, y, width, height) );
 	}
 	
 }

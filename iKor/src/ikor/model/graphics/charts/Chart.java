@@ -5,6 +5,8 @@ import java.lang.reflect.Constructor;
 import ikor.collection.DynamicList;
 import ikor.collection.List;
 import ikor.math.Vector;
+import ikor.math.util.LinearScale;
+import ikor.math.util.Scale;
 
 import ikor.model.graphics.Drawing;
 
@@ -17,8 +19,8 @@ public class Chart extends Drawing
 	Scale xscale;
 	Scale yscale;
 	
-	Renderer background;
-	Renderer axis;
+	BackgroundRenderer background;
+	AxisRenderer axis;
 	
 	// Constructors
 	
@@ -53,7 +55,7 @@ public class Chart extends Drawing
 		return renderer;
 	}
 
-	public void addSeries (Series series, Class type)
+	public void addSeries (Series series, SeriesRenderer renderer)
 	{
 		if (xscale==null)
 			xscale = new LinearScale(0, series.size()-1);
@@ -62,15 +64,25 @@ public class Chart extends Drawing
 			yscale = new LinearScale(0, series.getY().max());
 		
 		data.add(series);
-		renderers.add ( createRenderer(series,type) );
+		renderers.add ( renderer );
+	}
+
+	public void addSeries (Series series, Class type)
+	{
+		addSeries(series, createRenderer(series,type) );
 	}
 	
 	public void addSeries (Vector data, Class type)
 	{
 		addSeries ( new Series(data), type);
 	}
-	
 
+	public void addSeries (Vector data, SeriesRenderer renderer)
+	{
+		addSeries ( new Series(data), renderer);
+	}
+
+	
 	
 	// Chart dimensions
 	
@@ -120,6 +132,11 @@ public class Chart extends Drawing
 	
 	
 	// Data
+	
+	public int series ()
+	{
+		return data.size();
+	}
 	
 	public int size ()
 	{
@@ -179,6 +196,49 @@ public class Chart extends Drawing
 		return ""+data.get(0).getY(i);
 	}
 	
+	
+	// Chart renderers
+	
+	public BackgroundRenderer getBackgroundRenderer ()
+	{
+		return background;
+	}
+	
+	public void setBackgroundRenderer (BackgroundRenderer renderer)
+	{
+		this.background = renderer;
+	}
+	
+	public AxisRenderer getAxisRenderer ()
+	{
+		return axis;
+	}
+	
+	public void setAxisRenderer (AxisRenderer renderer)
+	{
+		this.axis = renderer;
+	}
+	
+	public SeriesRenderer getRenderer (int i)
+	{
+		return renderers.get(i);
+	}
+	
+	public void setRenderer (int i, SeriesRenderer renderer)
+	{
+		renderers.set(i, renderer);
+	}
+	
+	public Series getSeries (int i)
+	{
+		return data.get(i);
+	}
+	
+	public void setSeries (int i, Series series)
+	{
+		data.set(i, series);
+	}
+
 	// Render chart
 	
 	public void render ()

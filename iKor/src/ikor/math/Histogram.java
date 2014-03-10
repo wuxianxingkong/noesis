@@ -6,6 +6,8 @@ package ikor.math;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
+import ikor.math.util.Scale;
+import ikor.math.util.LinearScale;
 
 /**
  * Histogram
@@ -15,23 +17,16 @@ package ikor.math;
 
 public class Histogram extends DenseVector 
 {
-	public enum Scale { Linear, Logarithmic };
-
-	private double min;
-	private double max;
-	private Scale  scale;
-	
+	private Scale scale;
 	
 	public Histogram (int bins, Vector data) 
 	{
-		this(bins, data, Scale.Linear);
+		this(bins, data, new LinearScale(data.min(), data.max()) );
 	}
 
 	public Histogram (int bins, Vector data, Scale scale) 
 	{
 		super(bins);
-		this.min = data.min();
-		this.max = data.max();
 		this.scale = scale;
 		
 		count(data);
@@ -39,20 +34,12 @@ public class Histogram extends DenseVector
 	
 	public double threshold (int n)
 	{
-		if (scale==Scale.Linear)
-			return min + n*(max-min)/size();
-		else // Scale.Logarithmic
-			return min + Math.pow(max-min+1, n/(double)size()) - 1; // == min + Math.exp(n*Math.log(max-min+1)/size()) - 1;					
+		return (double) scale.inverse((double)n/(double)size());
 	}
 	
 	public int bin (double value)
 	{
-		int p;
-		
-		if (scale==Scale.Linear)
-			p = (int) (size()*(value-min)/(max-min));
-		else // Scale.Logarithmic
-			p = (int) (size()*Math.log(value-min+1)/Math.log(max-min+1));
+		int p = (int) (scale.scale(value)*size());
 		
 		if (p==size())
 			p--;

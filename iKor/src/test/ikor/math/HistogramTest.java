@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import ikor.math.Histogram;
 import ikor.math.MatrixFactory;
 import ikor.math.Vector;
+import ikor.math.util.LogarithmicScale;
 
 import org.junit.Test;
 
@@ -25,7 +26,7 @@ public class HistogramTest
 	}
 
 	@Test
-	public void testUniform1() 
+	public void testUniform() 
 	{
 		Vector v = uniformVector();
 		Histogram h = new Histogram(SIZE,v);
@@ -59,21 +60,7 @@ public class HistogramTest
 			assertEquals(100*i*(SIZE-1)/(double)SIZE, h.threshold(i), EPSILON);
 		}
 	}	
-	
-	@Test
-	public void testUniform1Minus1() 
-	{
-		Vector v = uniformVector();
-		Histogram h = new Histogram(SIZE-1,v);
-		
-		for (int i=0; i<SIZE-2; i++) {
-			assertEquals(1, h.get(i), EPSILON);
-			assertEquals(i, h.threshold(i), EPSILON);
-		}
 
-		assertEquals(2, h.get(SIZE-2), EPSILON);
-		assertEquals(SIZE-2, h.threshold(SIZE-2), EPSILON);
-	}
 	
 	@Test
 	public void testUniformSquare() 
@@ -83,7 +70,7 @@ public class HistogramTest
 		Histogram h = new Histogram(bins,v);
 		
 		for (int i=0; i<bins; i++) {
-			assertEquals(bins, h.get(i), EPSILON);
+			assertEquals("Bin "+i, bins, h.get(i), EPSILON);
 			assertEquals(i*(SIZE-1)/(double)bins, h.threshold(i), EPSILON);
 		}
 	}
@@ -95,7 +82,7 @@ public class HistogramTest
 	{
 		int bins = 2;
 		Vector v = uniformVector();
-		Histogram h = new Histogram(bins, v, Histogram.Scale.Logarithmic);
+		Histogram h = new Histogram(bins, v, new LogarithmicScale(v.min(),v.max()));
 		double scale = Math.log(SIZE)/bins;
 		
 		assertEquals("First bin", (int)h.threshold(1), h.get(0), EPSILON);
@@ -110,7 +97,7 @@ public class HistogramTest
 	{
 		int bins = 10;
 		Vector v = uniformVector();
-		Histogram h = new Histogram(bins, v, Histogram.Scale.Logarithmic);
+		Histogram h = new Histogram(bins, v, new LogarithmicScale(v.min(),v.max()));
 		double scale = Math.log(SIZE)/bins;
 		
 		assertEquals(0, h.threshold(0), EPSILON);
@@ -188,7 +175,7 @@ public class HistogramTest
 	{
 		int bins = 2;
 		Vector v = squareVector();
-		Histogram h = new Histogram(bins, v, Histogram.Scale.Logarithmic);
+		Histogram h = new Histogram(bins, v, new LogarithmicScale(v.min(),v.max()));
 		double scale = Math.log((SIZE-1)*(SIZE-1)+1)/bins;
 		
 		assertEquals("First bin", sq(h.threshold(1)), h.get(0), EPSILON);
@@ -203,7 +190,7 @@ public class HistogramTest
 	{
 		int bins = 10;
 		Vector v = squareVector();
-		Histogram h = new Histogram(bins, v, Histogram.Scale.Logarithmic);
+		Histogram h = new Histogram(bins, v, new LogarithmicScale(v.min(),v.max()));
 		double scale = Math.log((SIZE-1)*(SIZE-1)+1)/bins;
 		
 		assertEquals(0, h.threshold(0), EPSILON);

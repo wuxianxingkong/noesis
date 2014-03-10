@@ -193,7 +193,7 @@ public class Chart extends Drawing
 	
 	public String label (int i)
 	{
-		return ""+data.get(0).getY(i);
+		return "data["+i+"]";
 	}
 	
 	

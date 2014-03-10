@@ -11,6 +11,7 @@ import org.junit.runners.Suite;
 					   SparseVectorTest.class,
 					   Vector2DTest.class,
 	                   Vector3DTest.class,
+	                   HistogramTest.class,
 	                   test.ikor.math.optimization.AllTests.class,
 	                   test.ikor.math.regression.AllTests.class,
 	                   test.ikor.math.statistics.AllTests.class })

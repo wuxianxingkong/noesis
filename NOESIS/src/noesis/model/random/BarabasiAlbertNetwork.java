@@ -31,10 +31,10 @@ public class BarabasiAlbertNetwork extends RandomNetwork
 		int    target[] = new int[2*nodes*links];
 		int    link = 0;
 		
-		// Initialization
+		// Initialization: (1,0) (2,0) (3,0) (3,1) (4,0) (4,1) (4,2) (5,0) ...
 		
 		for (int i=1; i<=links; i++) {
-			for (int j=0; j<i; j++) {
+			for (int j=0; (j==0) || (j<i-1); j++) {
 				add2(i,j);
 				target[link] = i;
 				link++;
@@ -43,7 +43,7 @@ public class BarabasiAlbertNetwork extends RandomNetwork
 			}
 		}
 		
-		// Network formation
+		// Network formation: Preferential attachment
 		
 		for (int i=links+1; i<nodes; i++) {
 			for (int n=0; n<links; n++) {

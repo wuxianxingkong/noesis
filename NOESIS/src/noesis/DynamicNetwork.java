@@ -123,7 +123,7 @@ public class DynamicNetwork<V,E> extends Network<V,E>
 		int sourceIndex = skip.get(source);
 		int destinationIndex = skip.get(destination);
 		
-		if ((content!=null) && (sourceIndex>=0) && (sourceIndex<content.size())) {
+		if ((sourceIndex>=0) && (sourceIndex<size())) {
 			
 			index = out.get(sourceIndex).index(destinationIndex);
 			

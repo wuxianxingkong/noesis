@@ -41,6 +41,7 @@ import noesis.ui.model.actions.ViewerSaveAction;
 import noesis.ui.model.actions.ViewerCloseAction;
 
 import noesis.ui.model.networks.AnchoredRandomNetworkUI;
+import noesis.ui.model.networks.BarabasiAlbertNetworkUI;
 import noesis.ui.model.networks.BinaryTreeNetworkUI;
 import noesis.ui.model.networks.CompleteNetworkUI;
 import noesis.ui.model.networks.ConnectedRandomNetworkUI;
@@ -201,9 +202,17 @@ public class NetworkViewerMenu extends Menu
 		newConnected.setIcon( app.url("icons/kiviat.png") );
 		newRandomNetwork.add(newConnected);
 
+		newRandomNetwork.add( new Separator() );
+
 		Option newWS = new Option("Watts-Strogatz small world network", new ForwardAction( new WattsStrogatzNetworkUI(app) ) );
 		newWS.setIcon( app.url("icons/kiviat.png") );
 		newRandomNetwork.add(newWS);
+		
+		newRandomNetwork.add( new Separator() );
+		
+		Option newBA = new Option("Barabasi-Albert preferential attachment network", new ForwardAction( new BarabasiAlbertNetworkUI(app) ) );
+		newBA.setIcon( app.url("icons/kiviat.png") );
+		newRandomNetwork.add(newBA);
 
 		Option newPrice = new Option("Price's citation network", new ForwardAction( new PriceCitationNetworkUI(app) ) );
 		newPrice.setIcon( app.url("icons/kiviat.png") );

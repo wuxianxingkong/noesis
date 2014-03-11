@@ -9,16 +9,16 @@ import ikor.model.ui.Option;
 
 import noesis.AttributeNetwork;
 
-import noesis.algorithms.visualization.CircularLayout;
+import noesis.algorithms.visualization.FruchtermanReingoldLayout;
 
 import noesis.model.random.PriceCitationNetwork;
 
 
 public class PriceCitationNetworkUI extends NewNetworkUI 
 {
-	Editor<Integer> nodeCountEditor;
+	Editor<Integer> nodeEditor;
 	Editor<Integer> degreeEditor;
-	Editor<Integer>  freeEditor;
+	Editor<Integer> freeEditor;
 	
 	public PriceCitationNetworkUI (Application app) 
 	{
@@ -30,10 +30,10 @@ public class PriceCitationNetworkUI extends NewNetworkUI
 		nodeCountModel.setMinimumValue(0);
 		nodeCountModel.setMaximumValue(1000);
 		
-		nodeCountEditor = new Editor<Integer>("Number of network nodes", nodeCountModel);
-		nodeCountEditor.setIcon( app.url("icons/calculator.png") );
-		nodeCountEditor.setData(50);
-		add(nodeCountEditor);
+		nodeEditor = new Editor<Integer>("Number of network nodes", nodeCountModel);
+		nodeEditor.setIcon( app.url("icons/calculator.png") );
+		nodeEditor.setData(50);
+		add(nodeEditor);
 		
 		IntegerModel degreeModel = new IntegerModel();
 		nodeCountModel.setMinimumValue(0);
@@ -69,12 +69,12 @@ public class PriceCitationNetworkUI extends NewNetworkUI
 		@Override
 		public void run() 
 		{
-			int nodes = ui.nodeCountEditor.getData();
+			int nodes = ui.nodeEditor.getData();
 			int citations = ui.degreeEditor.getData();
 			int free = ui.freeEditor.getData();
 			
 			PriceCitationNetwork random = new PriceCitationNetwork(nodes, citations, free);
-			AttributeNetwork network = createAttributeNetwork(random, "Price's citation network", new CircularLayout ());			
+			AttributeNetwork network = createAttributeNetwork(random, "Price's citation network", new FruchtermanReingoldLayout() );			
 			
 			ui.set("network", network);
 			ui.exit();

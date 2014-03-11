@@ -17,7 +17,7 @@ import noesis.model.random.WattsStrogatzNetwork;
 
 public class WattsStrogatzNetworkUI extends NewNetworkUI 
 {
-	Editor<Integer> nodeCountEditor;
+	Editor<Integer> nodeEditor;
 	Editor<Integer> degreeEditor;
 	Editor<Double>  probabilityEditor;
 	
@@ -31,10 +31,10 @@ public class WattsStrogatzNetworkUI extends NewNetworkUI
 		nodeCountModel.setMinimumValue(0);
 		nodeCountModel.setMaximumValue(1000);
 		
-		nodeCountEditor = new Editor<Integer>("Number of network nodes", nodeCountModel);
-		nodeCountEditor.setIcon( app.url("icons/calculator.png") );
-		nodeCountEditor.setData(50);
-		add(nodeCountEditor);
+		nodeEditor = new Editor<Integer>("Number of network nodes", nodeCountModel);
+		nodeEditor.setIcon( app.url("icons/calculator.png") );
+		nodeEditor.setData(50);
+		add(nodeEditor);
 		
 		IntegerModel degreeModel = new IntegerModel();
 		nodeCountModel.setMinimumValue(0);
@@ -74,7 +74,7 @@ public class WattsStrogatzNetworkUI extends NewNetworkUI
 		@Override
 		public void run() 
 		{
-			int nodes = ui.nodeCountEditor.getData();
+			int nodes = ui.nodeEditor.getData();
 			int neighbors = ui.degreeEditor.getData();
 			double rewiringProbability = ui.probabilityEditor.getData();
 			

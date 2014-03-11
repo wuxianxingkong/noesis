@@ -23,7 +23,7 @@ public class WattsStrogatzNetwork extends RandomNetwork
 	{
 		this.probability = rewiringProbability;
 		
-		setID("W-S NETWORK (n="+nodes+", k="+neighbors+", beta="+probability+")");
+		setID("WATTS-STROGATZ NETWORK (n="+nodes+", k="+neighbors+", beta="+probability+")");
 		
 		setSize(nodes);
 

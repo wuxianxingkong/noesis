@@ -6,7 +6,7 @@ import ikor.model.data.annotations.Label;
 import noesis.Network;
 
 @Label("in-degree")
-@Description("Out-degree")
+@Description("In-degree")
 public class InDegree extends NodeMeasureTask
 {
 		

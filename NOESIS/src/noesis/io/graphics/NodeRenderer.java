@@ -9,7 +9,7 @@ import java.awt.Color;
 
 public abstract class NodeRenderer 
 {
-	public static final int DEFAULT_SIZE = 16;
+	public static final int DEFAULT_SIZE = 10;
 	public static final int DEFAULT_WIDTH = 2;
 	
 	private int size = DEFAULT_SIZE;

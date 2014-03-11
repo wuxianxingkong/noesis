@@ -7,7 +7,7 @@ import ikor.model.graphics.Style;
 
 public class DefaultLinkRenderer implements LinkRenderer 
 {
-	public static final int DEFAULT_WIDTH = 2;
+	public static final int DEFAULT_WIDTH = 1;
 	public static final Color DEFAULT_COLOR = new Color(0x70, 0x70, 0x70, 0xFF);
 	
 	private Style style;

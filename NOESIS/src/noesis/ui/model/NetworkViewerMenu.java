@@ -53,6 +53,7 @@ import noesis.ui.model.networks.RingNetworkUI;
 import noesis.ui.model.networks.StarNetworkUI;
 import noesis.ui.model.networks.TandemNetworkUI;
 import noesis.ui.model.networks.ToroidalNetworkUI;
+import noesis.ui.model.networks.WattsStrogatzNetworkUI;
 
 public class NetworkViewerMenu extends Menu 
 {
@@ -198,6 +199,10 @@ public class NetworkViewerMenu extends Menu
 		Option newConnected = new Option("Connected random network", new ForwardAction( new ConnectedRandomNetworkUI(app) ) );
 		newConnected.setIcon( app.url("icons/kiviat.png") );
 		newRandomNetwork.add(newConnected);
+
+		Option newWS = new Option("Watts-Strogatz small world network", new ForwardAction( new WattsStrogatzNetworkUI(app) ) );
+		newWS.setIcon( app.url("icons/kiviat.png") );
+		newRandomNetwork.add(newWS);
 		
 		// Regular networks
 		

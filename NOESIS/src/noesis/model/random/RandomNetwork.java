@@ -1,7 +1,7 @@
 package noesis.model.random;
 
-import noesis.BasicNetwork;
+import noesis.DynamicNetwork;
 
-public abstract class RandomNetwork extends BasicNetwork 
+public abstract class RandomNetwork extends DynamicNetwork 
 {
 }

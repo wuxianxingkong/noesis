@@ -1,7 +1,6 @@
 package noesis.ui.model.networks;
 
 import ikor.model.data.IntegerModel;
-import ikor.model.data.RealModel;
 
 import ikor.model.ui.Action;
 import ikor.model.ui.Application;
@@ -12,18 +11,18 @@ import noesis.AttributeNetwork;
 
 import noesis.algorithms.visualization.CircularLayout;
 
-import noesis.model.random.WattsStrogatzNetwork;
+import noesis.model.random.PriceCitationNetwork;
 
 
-public class WattsStrogatzNetworkUI extends NewNetworkUI 
+public class PriceCitationNetworkUI extends NewNetworkUI 
 {
 	Editor<Integer> nodeCountEditor;
 	Editor<Integer> degreeEditor;
-	Editor<Double>  probabilityEditor;
+	Editor<Integer>  freeEditor;
 	
-	public WattsStrogatzNetworkUI (Application app) 
+	public PriceCitationNetworkUI (Application app) 
 	{
-		super(app, "New Watts-Strogatz small world network...");
+		super(app, "New Price's citation network...");
 		
 		setIcon( app.url("icon.gif") );
 		
@@ -40,33 +39,29 @@ public class WattsStrogatzNetworkUI extends NewNetworkUI
 		nodeCountModel.setMinimumValue(0);
 		nodeCountModel.setMaximumValue(1000);
 		
-		degreeEditor = new Editor<Integer>("Mean degree", degreeModel);
+		degreeEditor = new Editor<Integer>("Citations per paper (mean out-degree)", degreeModel);
 		degreeEditor.setIcon( app.url("icons/calculator.png") );
 		degreeEditor.setData(4);
 		add(degreeEditor);
 		
-		RealModel probabilityModel = new RealModel();
-		probabilityModel.setMinimumValue( 0.0 );
-		probabilityModel.setMaximumValue( 1.0 );
-		
-		probabilityEditor = new Editor<Double>("Link rewiring probability", probabilityModel);
-		probabilityEditor.setIcon( app.url("icons/calculator.png") );
-		probabilityEditor.setData( 0.1 );
-		add(probabilityEditor);
+		freeEditor = new Editor<Integer>("Random citations ('free' citations)", degreeModel);
+		freeEditor.setIcon( app.url("icons/calculator.png") );
+		freeEditor.setData(1);
+		add(freeEditor);
 		
 		Option ok = new Option("Create");
 		ok.setIcon( app.url("icon.gif") );
-		ok.setAction( new WattsStrogatzNetworkAction(this) );
+		ok.setAction( new PriceCitationNetworkAction(this) );
 		add(ok);		
 	}
 	
 	// Action
 	
-	public class WattsStrogatzNetworkAction extends Action 
+	public class PriceCitationNetworkAction extends Action 
 	{
-		private WattsStrogatzNetworkUI ui;
+		private PriceCitationNetworkUI ui;
 
-		public WattsStrogatzNetworkAction (WattsStrogatzNetworkUI ui)
+		public PriceCitationNetworkAction (PriceCitationNetworkUI ui)
 		{
 			this.ui = ui;
 		}
@@ -75,11 +70,11 @@ public class WattsStrogatzNetworkUI extends NewNetworkUI
 		public void run() 
 		{
 			int nodes = ui.nodeCountEditor.getData();
-			int neighbors = ui.degreeEditor.getData();
-			double rewiringProbability = ui.probabilityEditor.getData();
+			int citations = ui.degreeEditor.getData();
+			int free = ui.freeEditor.getData();
 			
-			WattsStrogatzNetwork random = new WattsStrogatzNetwork(nodes, neighbors, rewiringProbability);
-			AttributeNetwork network = createAttributeNetwork(random, "Watts-Strogatz's small world network", new CircularLayout ());			
+			PriceCitationNetwork random = new PriceCitationNetwork(nodes, citations, free);
+			AttributeNetwork network = createAttributeNetwork(random, "Price's citation network", new CircularLayout ());			
 			
 			ui.set("network", network);
 			ui.exit();

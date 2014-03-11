@@ -49,6 +49,7 @@ import noesis.ui.model.networks.GilbertNetworkUI;
 import noesis.ui.model.networks.HypercubeNetworkUI;
 import noesis.ui.model.networks.IsolateNetworkUI;
 import noesis.ui.model.networks.MeshNetworkUI;
+import noesis.ui.model.networks.PriceCitationNetworkUI;
 import noesis.ui.model.networks.RingNetworkUI;
 import noesis.ui.model.networks.StarNetworkUI;
 import noesis.ui.model.networks.TandemNetworkUI;
@@ -203,6 +204,10 @@ public class NetworkViewerMenu extends Menu
 		Option newWS = new Option("Watts-Strogatz small world network", new ForwardAction( new WattsStrogatzNetworkUI(app) ) );
 		newWS.setIcon( app.url("icons/kiviat.png") );
 		newRandomNetwork.add(newWS);
+
+		Option newPrice = new Option("Price's citation network", new ForwardAction( new PriceCitationNetworkUI(app) ) );
+		newPrice.setIcon( app.url("icons/kiviat.png") );
+		newRandomNetwork.add(newPrice);
 		
 		// Regular networks
 		

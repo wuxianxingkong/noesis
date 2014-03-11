@@ -1,5 +1,11 @@
 package noesis.model.random;
 
+// Title:       Watts-Strogatz small world network model
+// Version:     1.0
+// Copyright:   2014
+// Author:      Fernando Berzal
+// E-mail:      berzal@acm.org
+
 import ikor.math.random.Random;
 
 /**
@@ -9,11 +15,11 @@ import ikor.math.random.Random;
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public class WattsStrogatzSmallWorldNetwork extends RandomNetwork 
+public class WattsStrogatzNetwork extends RandomNetwork 
 {
 	private double probability;
 	
-	public WattsStrogatzSmallWorldNetwork (int nodes, int neighbors, double rewiringProbability)
+	public WattsStrogatzNetwork (int nodes, int neighbors, double rewiringProbability)
 	{
 		this.probability = rewiringProbability;
 		

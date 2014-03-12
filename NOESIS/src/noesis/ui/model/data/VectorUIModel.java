@@ -77,8 +77,7 @@ public class VectorUIModel extends UIModel
 		
 		
 		// Button panel
-		
-		add(buttons(app));
+		// add(buttons(app));
 		
 		// Menu
 		
@@ -102,7 +101,7 @@ public class VectorUIModel extends UIModel
 		return viewer;
 	}
 	
-	private UIModel buttons (Application app)
+	public UIModel buttons (Application app)
 	{
 		UIModel buttons = new UIModel(app, "Button bar");
 		buttons.setAlignment( UIModel.Alignment.ADJUST );

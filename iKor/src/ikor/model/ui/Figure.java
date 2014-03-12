@@ -1,5 +1,7 @@
 package ikor.model.ui;
 
+import ikor.model.Subject;
+
 import ikor.model.graphics.Drawing;
 import ikor.model.graphics.DrawingSelectionListener;
 import ikor.model.graphics.DrawingTooltipProvider;
@@ -10,9 +12,10 @@ import ikor.model.graphics.DrawingUpdateListener;
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public class Figure<F> extends Component<F> 
+public class Figure<M> extends Component<M> 
 {
 	private Drawing drawing;
+	private M       model;
 	
 	private DrawingTooltipProvider tooltipProvider;
 	private DrawingUpdateListener draggingListener;
@@ -28,6 +31,17 @@ public class Figure<F> extends Component<F>
 	}
 	
 	
+	public M getModel ()
+	{
+		return model;
+	}
+	
+	public void setModel (M model)
+	{
+		this.model = model;
+	}
+	
+	
 	public Drawing getDrawing() 
 	{
 		return drawing;
@@ -38,19 +52,42 @@ public class Figure<F> extends Component<F>
 		this.drawing = drawing;
 	}
 
+	
 	public void setSize (int width, int height)
 	{
 		drawing.setWidth(width);
 		drawing.setHeight(height);
 	}
 
-	// Observer
+	
+	// Subject/observer interface
+	
+	boolean updating = false;
 	
 	public void update ()
 	{
 		drawing.update();
-		super.update(null, null);
+		update(null, null);		
 	}
+		
+	@Override
+	public void update (Subject subject, M object)
+	{
+		if (!updating) {			
+			updating = true;
+			
+			if (object!=null) {
+				setModel(object);
+				notifyObservers(object);
+			} else {
+				setModel(null);
+				notifyObservers ();
+			}
+
+			updating = false;
+		}
+	}
+	
 	
 	// Event handling
 	

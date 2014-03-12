@@ -58,6 +58,7 @@ public class SwingFigureFactory implements UIFactory<SwingUI,Figure>
 		    {
 		      public void run()
 		      {
+		    	  control.setDrawing(figure.getDrawing());
 		    	  control.setVisible(figure.isVisible());
 		    	  control.repaint();
 		      }

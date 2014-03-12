@@ -11,9 +11,17 @@ import java.awt.Color;
 
 public class BackgroundRenderer implements Renderer 
 {
+	public static final Color DEFAULT_COLOR =  Color.WHITE;
+	
 	private Chart chart;
 	private	Style style;
 
+	public BackgroundRenderer (Chart chart, Color color)
+	{
+		this.chart = chart;
+		this.style = new Style(color);
+	}
+	
 	public BackgroundRenderer (Chart chart, Style style)
 	{
 		this.chart = chart;

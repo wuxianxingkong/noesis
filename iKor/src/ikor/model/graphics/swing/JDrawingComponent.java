@@ -136,6 +136,11 @@ public class JDrawingComponent extends JComponent
 		
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
+		if (!isOpaque()) {
+			g2.setColor( getBackground() );
+			g2.fillRect( getBounds().x, getBounds().y, getBounds().width, getBounds().height);
+		}		
+		
 		for (DrawingElement element: drawing.getElements())
 			draw(g2, element);
     }	

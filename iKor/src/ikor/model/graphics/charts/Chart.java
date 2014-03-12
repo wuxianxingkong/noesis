@@ -243,29 +243,23 @@ public class Chart extends Drawing
 	
 	public void render ()
 	{	
+		super.clear();
+		
 		// Background
 		
 		if (background!=null)		
 			background.render();
-		
+
 		// Axes
 		
 		if (axis!=null)
 			axis.render();
 		
 		// Data
-		
-		Series series;
-		SeriesRenderer renderer;
 				
-		for (int i=0; i<renderers.size(); i++) {
-			
-			series = data.get(i);
-			renderer = renderers.get(i);
-			
-			for (int j=0; j<series.size(); j++)
-				renderer.render(j);
-		}
+		for (int i=0; i<renderers.size(); i++) 
+			renderers.get(i).render();
+	
 	}
 
 

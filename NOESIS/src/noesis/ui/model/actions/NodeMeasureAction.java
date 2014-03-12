@@ -13,7 +13,7 @@ import noesis.Network;
 import noesis.analysis.structure.NodeMeasureTask;
 import noesis.analysis.structure.NodeMeasure;
 import noesis.ui.model.NetworkModel;
-import noesis.ui.model.VectorUIModel;
+import noesis.ui.model.data.VectorUIModel;
 
 
 public class NodeMeasureAction extends Action 

@@ -13,7 +13,7 @@ import noesis.LinkAttribute;
 import noesis.analysis.structure.LinkMeasureTask;
 import noesis.analysis.structure.LinkMeasure;
 import noesis.ui.model.NetworkModel;
-import noesis.ui.model.VectorUIModel;
+import noesis.ui.model.data.VectorUIModel;
 
 
 public class LinkMeasureAction extends Action 

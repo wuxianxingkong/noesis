@@ -1,8 +1,10 @@
-package noesis.ui.model;
+package noesis.ui.model.data;
 
 import java.text.DecimalFormat;
 
 import ikor.math.Histogram;
+import ikor.math.util.LogarithmicScale;
+
 import ikor.model.graphics.DrawingTooltipProvider;
 import ikor.model.graphics.charts.AxisRenderer;
 import ikor.model.graphics.charts.BarRenderer;
@@ -11,21 +13,46 @@ import ikor.model.ui.Figure;
 
 public class HistogramFigure extends Figure<Histogram> 
 {
+	private Chart chart;
 	
 	public HistogramFigure (Histogram histogram)
 	{
-		Chart  chart = new Chart(500,300);
-		
-		chart.addSeries(histogram, BarRenderer.class);
-		chart.setBackgroundRenderer(null);
-		chart.getAxisRenderer().grid( AxisRenderer.GridStyle.None, AxisRenderer.GridStyle.None);
-		chart.render();
-		
-		setDrawing( chart );
 		setTooltipProvider( new HistogramTooltipProvider(histogram) );
+
+		setModel(histogram);
+	}
+	
+	public void setModel (Histogram histogram)
+	{
+		super.setModel(histogram);
 		
-		update();
-		show();
+		if (histogram!=null) {
+			
+			// Update chart
+
+			chart = new Chart(500,300);
+
+			chart.addSeries(histogram, BarRenderer.class);
+			chart.setBackgroundRenderer(null);
+			chart.getAxisRenderer().grid( AxisRenderer.GridStyle.None, AxisRenderer.GridStyle.None);
+			
+			if (histogram.getScale() instanceof LogarithmicScale) {
+				chart.setYScale( new LogarithmicScale(0, histogram.max()) );
+				chart.getAxisRenderer().grid( AxisRenderer.GridStyle.None, AxisRenderer.GridStyle.Logarithmic);
+			} else { // Linear scale, no grid
+				chart.getAxisRenderer().grid( AxisRenderer.GridStyle.None, AxisRenderer.GridStyle.None);
+			}
+
+			chart.render();
+
+			super.setDrawing(chart);
+
+			update();
+
+			// Update tooltip provider 
+
+			((HistogramTooltipProvider)getTooltipProvider()).setHistogram(histogram);
+		}
 	}
 	
 	
@@ -37,6 +64,11 @@ public class HistogramFigure extends Figure<Histogram>
 		private Histogram histogram;
 		
 		public HistogramTooltipProvider (Histogram histogram)
+		{
+			this.histogram = histogram;
+		}
+		
+		public void setHistogram (Histogram histogram)
 		{
 			this.histogram = histogram;
 		}

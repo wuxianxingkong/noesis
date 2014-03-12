@@ -35,7 +35,6 @@ import noesis.ui.model.actions.NodeMeasureAction;
 import noesis.ui.model.actions.NodeMultiMeasureAction;
 import noesis.ui.model.actions.NodeSizeAction;
 import noesis.ui.model.actions.NodeStyleAction;
-import noesis.ui.model.actions.URLAction;
 import noesis.ui.model.actions.ViewerOpenAction;
 import noesis.ui.model.actions.ViewerSaveAction;
 import noesis.ui.model.actions.ViewerCloseAction;
@@ -76,23 +75,27 @@ public class NetworkViewerMenu extends Menu
 		
 		Application app = ui.getApplication();
 		
-		net = new Menu("Network");
+		net = createNetMenu(app,ui); 
 		view = createViewMenu(app, ui.getFigure());
 		data = createDataMenu(app, ui.getModel());
 		analysis = createAnalysisMenu(app, ui.getModel());
-		help = createHelpMenu(app);
+		help = new HelpMenu(app);
 		
 		this.add(net);
 		this.add(view);
 		this.add(data);
 		this.add(analysis);
 		this.add(help);
-		
+	}
+
+	// Net menu
+	// --------
+
+	public Menu createNetMenu (Application app, NetworkViewerUIModel ui)
+	{
+		Menu net = new Menu("Network");
+
 		net.setIcon( app.url("icons/download.png") );
-		view.setIcon( app.url("icons/kiviat.png") );
-		data.setIcon( app.url("icons/chart.png") );
-		analysis.setIcon( app.url("icons/microscope.png") );
-		help.setIcon( app.url("icons/search.png") );
 		
 		// New network...
 
@@ -169,9 +172,9 @@ public class NetworkViewerMenu extends Menu
 		Option exit = new Option("Exit", new ExitAction(app) );
 		exit.setIcon( app.url("icons/exit.png") );
 		net.add(exit);
+
+		return net;
 	}
-
-
 	
 	// New menu
 	// --------
@@ -275,6 +278,8 @@ public class NetworkViewerMenu extends Menu
 	public Menu createViewMenu (Application app, NetworkFigure figure)
 	{
 		Menu view = new Menu("View");
+
+		view.setIcon( app.url("icons/kiviat.png") );
 
 		Option layoutFR = new Option("Fruchterman-Reingold layout", new LayoutAction( app, figure, new FruchtermanReingoldLayout() ) );
 		layoutFR.setIcon( app.url("icons/spiral.png") );
@@ -401,6 +406,8 @@ public class NetworkViewerMenu extends Menu
 	public Menu createDataMenu (Application app, NetworkModel model)
 	{
 		Menu data = new Menu("Data");
+
+		data.setIcon( app.url("icons/chart.png") );
 		
 		Option dataNodes = new Option("Nodes", new ForwardAction( new NodesetUIModel(app, model) ) );
 		dataNodes.setIcon( app.url("icons/chart.png") );
@@ -419,6 +426,8 @@ public class NetworkViewerMenu extends Menu
 	public Menu createAnalysisMenu (Application app, NetworkModel model)
 	{
 		Menu analysis = new Menu("Analysis");
+
+		analysis.setIcon( app.url("icons/microscope.png") );
 		
 		// Node degree
 		
@@ -564,34 +573,7 @@ public class NetworkViewerMenu extends Menu
 		
 		
 		return analysis;
-	}
-	
-	// Help menu
-	// ---------
-	
-	public Menu createHelpMenu (Application app)
-	{
-		Menu help = new Menu("Help");
-		
-		//Option tutorial = new Option("Tutorial", new URLAction(app,"http://noesis.ikor.org/") );
-		//tutorial.setIcon( app.url("icons/tutor.png") );
-		//help.add(tutorial);
-
-		Option web = new Option("Project web page", new URLAction(app,"http://noesis.ikor.org/"), KeyEvent.VK_F1 );
-		web.setIcon( app.url("icons/docs.png") );
-		help.add(web);
-		
-		//Option config = new Option("Configuration...", new ForwardAction(null), KeyEvent.VK_F9 );
-		//config.setIcon( app.url("icons/config.png") );
-		//help.add( config );
-		
-
-		Option about = new Option("About...", new ForwardAction( new AboutUIModel(app) ) );
-		about.setIcon( app.url("icons/info.png") );
-		help.add(about);
-		
-		return help;
-	}
+	}	
 	
 	
 	// Menu update

@@ -5,16 +5,18 @@ import java.awt.Color;
 import noesis.Attribute;
 import noesis.AttributeNetwork;
 import noesis.LinkAttribute;
+
 import noesis.io.graphics.DefaultLinkRenderer;
 import noesis.io.graphics.NetworkRenderer;
 import noesis.io.graphics.RadialGradientNodeRenderer;
-import ikor.model.Subject;
+
 import ikor.model.graphics.Drawing;
 import ikor.model.graphics.DrawingElement;
 import ikor.model.graphics.DrawingSelectionListener;
 import ikor.model.graphics.DrawingTooltipProvider;
 import ikor.model.graphics.DrawingUpdateListener;
 import ikor.model.graphics.Style;
+
 import ikor.model.ui.Figure;
 
 /**
@@ -66,9 +68,17 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 	public void setData(NetworkModel data) 
 	{
 		this.data = data;
+		super.setModel(data.getNetwork());
 	}
 	
+	
 	public AttributeNetwork getNetwork ()
+	{
+		return getModel();
+	}
+	
+	@Override
+	public AttributeNetwork getModel ()
 	{
 		if (data!=null)
 			return data.getNetwork();
@@ -78,8 +88,18 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 	
 	public void setNetwork (AttributeNetwork network)
 	{
-		data.setNetwork(network);
-		renderer.setNetwork(network);
+		setModel(network);
+	}
+	
+	@Override
+	public void setModel (AttributeNetwork network)
+	{
+		if (network!=null) {
+			super.setModel(network);
+
+			data.setNetwork(network);
+			renderer.setNetwork(network);
+		}
 	}
 	
 	// Network renderer
@@ -112,27 +132,6 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 		show();
 	}
 
-	// Subject/observer interface
-	
-	boolean updating = false;
-	
-	@Override
-	public void update (Subject subject, AttributeNetwork object)
-	{
-		if (!updating) {			
-			updating = true;
-			
-			if (object!=null) {
-				setNetwork(object);
-				notifyObservers(object);
-			} else {
-				setNetwork(null);
-				notifyObservers ();
-			}
-
-			updating = false;
-		}
-	}
 	
 	// Event handling
 

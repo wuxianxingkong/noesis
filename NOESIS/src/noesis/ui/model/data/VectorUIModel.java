@@ -1,4 +1,4 @@
-package noesis.ui.model;
+package noesis.ui.model.data;
 
 import noesis.ui.model.actions.ExitAction;
 
@@ -6,11 +6,13 @@ import ikor.math.Decimal;
 import ikor.math.Histogram;
 import ikor.math.Vector;
 import ikor.math.util.LinearScale;
+import ikor.math.util.Scale;
 
 import ikor.model.data.DecimalModel;
 import ikor.model.ui.Application;
 import ikor.model.ui.Figure;
 import ikor.model.ui.Label;
+import ikor.model.ui.Menu;
 import ikor.model.ui.Option;
 import ikor.model.ui.Separator;
 import ikor.model.ui.UIModel;
@@ -19,12 +21,26 @@ import ikor.model.ui.Viewer;
 
 public class VectorUIModel extends UIModel
 {
+	Vector          data;
+	int             bins;
+	Histogram       histogram;
+	HistogramFigure figure;
+	private Scale scale;
+	
 	public VectorUIModel (Application app, String title, Vector data)
 	{
-		super(app, title);
+		super(app, title);		
+		
+		this.data = data;
+		
+		// Icon
 		
 		setIcon( app.url("icon.gif") );
 				
+		// Actions
+		
+		add( new Option("$exit", new ExitAction(this) ) );
+		
 		// Content panel
 		
 		add( new Label("<html><b><center>"+title+"</center></b></html>") );
@@ -36,7 +52,13 @@ public class VectorUIModel extends UIModel
 		
 		// Histogram
 		
-		content.add(histogram(data));
+		bins = (int) Math.sqrt(data.size());
+		
+		histogram = createHistogram(bins);
+		
+		figure = new HistogramFigure(histogram);
+		
+		content.add(figure);
 
 		// Statistics
 		
@@ -57,14 +79,17 @@ public class VectorUIModel extends UIModel
 		// Button panel
 		
 		add(buttons(app));
+		
+		// Menu
+		
+	    Menu menu = new VectorUIMenu(this); 
+		
+		add(menu);
+		
 	}
 	
-	private Figure histogram (Vector data)
-	{
-		Histogram histogram = new Histogram( (int)Math.sqrt(data.size()), data, new LinearScale( Math.min(data.min(),0),data.max()));
-
-		return new HistogramFigure(histogram);
-	}
+	
+	
 	
 	private Viewer<Decimal> viewer (String title, double value)
 	{
@@ -89,4 +114,45 @@ public class VectorUIModel extends UIModel
 
 		return buttons;
 	}
+	
+	
+	public Vector getData ()
+	{
+		return data;
+	}
+	
+	public Histogram getHistogram ()
+	{
+		return histogram;
+	}
+	
+	public Figure getFigure ()
+	{
+		return figure;
+	}
+	
+	
+	public void setHistogram (Histogram histogram)
+	{
+		this.histogram = histogram;
+		
+		figure.setModel(histogram);
+	}
+	
+	
+	public Histogram createHistogram (int bins, Scale scale)
+	{
+		this.scale = scale;
+		
+		return new Histogram (bins, data, scale);
+	}	
+	
+	public Histogram createHistogram (int bins)
+	{
+		if (scale==null)
+			scale =  new LinearScale( Math.min(data.min(),0),data.max());
+		
+		return createHistogram(bins, scale);
+	}
+
 }

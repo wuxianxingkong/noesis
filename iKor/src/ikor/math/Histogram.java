@@ -32,6 +32,11 @@ public class Histogram extends DenseVector
 		count(data);
 	}
 	
+	public Scale getScale ()
+	{
+		return scale;
+	}
+	
 	public double threshold (int n)
 	{
 		return (double) scale.inverse((double)n/(double)size());

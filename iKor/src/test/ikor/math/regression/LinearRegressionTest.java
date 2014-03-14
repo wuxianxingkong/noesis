@@ -4,15 +4,12 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import ikor.math.regression.LinearRegression;
+import ikor.math.regression.BaselineRegression;
+import ikor.math.regression.LinearRegressionModel;
 
-public class LinearRegressionTest 
+public abstract class LinearRegressionTest 
 {
-	private static final double GRADIENT_DESCENT_EPSILON = 1e-4;
-	private static final double NORMAL_EQUATION_EPSILON  = 1e-14;
-
-	LinearRegression univariate;
-	LinearRegression multivariate;
+	// DATA
 	
 	// y1 = -1 + x1
 	
@@ -21,125 +18,100 @@ public class LinearRegressionTest
 
 	// y2 = 2 + 0.5*x1 + 0.5*x2;
 	
-	double x2[][] = new double[][] { {0, 1, 3, 5, 7, 9, 1, 3, 5, 7, 9 },
-			                         {0, 9, 7, 5, 3, 1, 1, 3, 5, 7, 9 } };
-	double y2[]   = new double[]     {2, 7, 7, 7, 7, 7, 3, 5, 7, 9, 11};
+	double x2[][] = new double[][] { {0, 1, 1, 3, 5, 7, 9, 1, 3, 5, 7, 9 },
+			                         {0, 1, 9, 7, 5, 3, 1, 1, 3, 5, 7, 9 } };
+	double y2[]   = new double[]     {2, 3, 7, 7, 7, 7, 7, 3, 5, 7, 9, 11};
 	
+	
+	
+	// GENERIC INTERFACE FOR ESTIMATION METHODS 
+	
+	public abstract LinearRegressionModel createLinearRegressionModel (double x[][], double y[]);
+	
+	public abstract double EPSILON ();
+
+	
+	// TEST CASES
 	
 	@Before
 	public void setUp() throws Exception 
 	{	
-		univariate   = new LinearRegression(x1, y1);
-		multivariate = new LinearRegression(x2, y2);
+
 	}
 	
+	
 	@Test
-	public void testUnivariateGradientDescent ()
+	public void testUnivariateBaselineRegression ()
 	{
-		double[] theta;
-
-		theta = univariate.getParameters();
+		LinearRegressionModel model = (new BaselineRegression(x1, y1)).call();
 		
-		assertEquals ( 2, theta.length);
-		assertEquals ( 0, theta[0], GRADIENT_DESCENT_EPSILON);
-		assertEquals ( 0, theta[1], GRADIENT_DESCENT_EPSILON);
-		assertEquals ( 204.0/(2*9), univariate.getCost(), GRADIENT_DESCENT_EPSILON);
-		assertEquals ( 0, univariate.predict(new double[]{10}), GRADIENT_DESCENT_EPSILON);
+		assertEquals ( 2, model.parameters());
+		assertEquals ( 4, model.getParameter(0), EPSILON());
+		assertEquals ( 0, model.getParameter(1), EPSILON());
 		
-		univariate.setLearningRate(0.05);
-		univariate.setIterations(1000);
-		univariate.gradientDescent();
+		assertEquals ( 2*(4*4+3*3+2*2+1*1), model.getSSE(), EPSILON());
 		
-		theta = univariate.getParameters();
+		assertEquals ( 4.0, model.predict(new double[]{0}), EPSILON());
+		assertEquals ( 4.0, model.predict(new double[]{5}), EPSILON());
+		assertEquals ( 4.0, model.predict(new double[]{10}), EPSILON());
+	}	
+	
+	@Test
+	public void testUnivariateLinearRegression ()
+	{
+		LinearRegressionModel model = createLinearRegressionModel(x1, y1);
 		
-		assertEquals ( -1, theta[0], GRADIENT_DESCENT_EPSILON);
-		assertEquals ( +1, theta[1], GRADIENT_DESCENT_EPSILON);
+		assertEquals ( 2, model.parameters());
+		assertEquals ( -1, model.getParameter(0), EPSILON());
+		assertEquals ( +1, model.getParameter(1), EPSILON());
 		
-		assertEquals ( 0, univariate.getCost(), GRADIENT_DESCENT_EPSILON);
-		assertEquals ( 9, univariate.predict(new double[]{10}), GRADIENT_DESCENT_EPSILON);
+		assertEquals ( 0.0, model.getSSE(), EPSILON());
+		
+		assertEquals ( -1, model.predict(new double[]{0}), EPSILON());
+		assertEquals (  4, model.predict(new double[]{5}), EPSILON());
+		assertEquals (  9, model.predict(new double[]{10}), EPSILON());
 	}
 
 
+	
+	@Test
+	public void testMultivariateBaselineRegression ()
+	{
+		LinearRegressionModel model = (new BaselineRegression(x2, y2)).call();
+		
+		assertEquals ( 3, model.parameters());
+		assertEquals ( 6.25, model.getParameter(0), EPSILON());
+		assertEquals ( 0, model.getParameter(1), EPSILON());
+		assertEquals ( 0, model.getParameter(2), EPSILON());
+		
+		assertEquals ( 74.25, model.getSSE(), EPSILON());
+		
+		assertEquals ( 6.25, model.predict(new double[]{0,0}), EPSILON());
+		assertEquals ( 6.25, model.predict(new double[]{5,0}), EPSILON());
+		assertEquals ( 6.25, model.predict(new double[]{0,5}), EPSILON());
+		assertEquals ( 6.25, model.predict(new double[]{5,5}), EPSILON());
+		assertEquals ( 6.25, model.predict(new double[]{10,10}), EPSILON());
+	}	
+	
 	@Test
 	public void testMultivariateGradientDescent ()
 	{
-		double[] theta;
-
-		theta = multivariate.getParameters();
+		LinearRegressionModel model = createLinearRegressionModel(x2, y2);
 		
-		assertEquals ( 3, theta.length);
-		assertEquals ( 0, theta[0], GRADIENT_DESCENT_EPSILON);
-		assertEquals ( 0, theta[1], GRADIENT_DESCENT_EPSILON);
-		assertEquals ( 0, theta[2], GRADIENT_DESCENT_EPSILON);
-		assertEquals ( 0, multivariate.predict(new double[]{10,10}), GRADIENT_DESCENT_EPSILON);
+		assertEquals ( 3, model.parameters());
+		assertEquals ( 2.0, model.getParameter(0), EPSILON());
+		assertEquals ( 0.5, model.getParameter(1), EPSILON());
+		assertEquals ( 0.5, model.getParameter(2), EPSILON());
 		
-		multivariate.setLearningRate(0.03);
-		multivariate.setIterations(2000);
-		multivariate.gradientDescent();
-		
-		theta = multivariate.getParameters();
-		
-		assertEquals ( 2, theta[0], GRADIENT_DESCENT_EPSILON);
-		assertEquals ( 0.5, theta[1], GRADIENT_DESCENT_EPSILON);
-		assertEquals ( 0.5, theta[2], GRADIENT_DESCENT_EPSILON);
-		
-		assertEquals ( 0, multivariate.getCost(), GRADIENT_DESCENT_EPSILON);
-		assertEquals ( 12, multivariate.predict(new double[]{10,10}), GRADIENT_DESCENT_EPSILON);
-		assertEquals ( 17, multivariate.predict(new double[]{10,20}), GRADIENT_DESCENT_EPSILON);
-		assertEquals ( 17, multivariate.predict(new double[]{20,10}), GRADIENT_DESCENT_EPSILON);
+		assertEquals ( 0.0, model.getSSE(), EPSILON());
+				
+		assertEquals ( 2, model.predict(new double[]{0,0}), EPSILON());
+		assertEquals ( 7, model.predict(new double[]{10,0}), EPSILON());
+		assertEquals ( 7, model.predict(new double[]{0,10}), EPSILON());
+		assertEquals ( 12, model.predict(new double[]{10,10}), EPSILON());
+		assertEquals ( 17, model.predict(new double[]{10,20}), EPSILON());
+		assertEquals ( 17, model.predict(new double[]{20,10}), EPSILON());
 	}
 
-	
-	@Test
-	public void testUnivariateNormalEquation ()
-	{
-		double[] theta;
-
-		theta = univariate.getParameters();
-		
-		assertEquals ( 2, theta.length);
-		assertEquals ( 0, theta[0], NORMAL_EQUATION_EPSILON);
-		assertEquals ( 0, theta[1], NORMAL_EQUATION_EPSILON);
-		assertEquals ( 204.0/(2*9), univariate.getCost(), NORMAL_EQUATION_EPSILON);
-		assertEquals ( 0, univariate.predict(new double[]{10}), NORMAL_EQUATION_EPSILON);
-		
-		univariate.normalEquation();
-	
-		theta = univariate.getParameters();
-		
-		assertEquals ( -1, theta[0], NORMAL_EQUATION_EPSILON);
-		assertEquals ( +1, theta[1], NORMAL_EQUATION_EPSILON);
-		
-		assertEquals ( 0, univariate.getCost(), NORMAL_EQUATION_EPSILON);
-		assertEquals ( 9, univariate.predict(new double[]{10}), NORMAL_EQUATION_EPSILON);
-	}
-
-
-	@Test
-	public void testMultivariateNormalEquation ()
-	{
-		double[] theta;
-
-		theta = multivariate.getParameters();
-		
-		assertEquals ( 3, theta.length);
-		assertEquals ( 0, theta[0], NORMAL_EQUATION_EPSILON);
-		assertEquals ( 0, theta[1], NORMAL_EQUATION_EPSILON);
-		assertEquals ( 0, theta[2], NORMAL_EQUATION_EPSILON);
-		assertEquals ( 0, multivariate.predict(new double[]{10,10}), NORMAL_EQUATION_EPSILON);
-		
-		multivariate.normalEquation();
-		
-		theta = multivariate.getParameters();
-		
-		assertEquals ( 2, theta[0], NORMAL_EQUATION_EPSILON);
-		assertEquals ( 0.5, theta[1], NORMAL_EQUATION_EPSILON);
-		assertEquals ( 0.5, theta[2], NORMAL_EQUATION_EPSILON);
-		
-		assertEquals ( 0, multivariate.getCost(), NORMAL_EQUATION_EPSILON);
-		assertEquals ( 12, multivariate.predict(new double[]{10,10}), NORMAL_EQUATION_EPSILON);
-		assertEquals ( 17, multivariate.predict(new double[]{10,20}), NORMAL_EQUATION_EPSILON);
-		assertEquals ( 17, multivariate.predict(new double[]{20,10}), NORMAL_EQUATION_EPSILON);
-	}
 	
 }

@@ -91,8 +91,8 @@ public class LeastSquaresLinearRegressionTest extends LinearRegressionTest
 		assertEquals ( 2.1013, model.DurbinWatsonStatistic(), 0.0001 );
 		
 		assertEquals ( 1.0890, model.logLikelihood(), 0.0001 );
-		// TODO assertEquals ( 0.2548, model.AIC(), 0.0001 );
-		// TODO assertEquals ( 0.3964, model.BIC(), 0.0001 );
+		assertEquals ( 0.2548, model.AIC(), 0.0001 );
+		assertEquals ( 0.3964, model.BIC(), 0.0001 );
 	}
 	
 

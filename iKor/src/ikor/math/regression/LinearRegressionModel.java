@@ -258,7 +258,7 @@ public class LinearRegressionModel
 	{
 		int k = parameters();
 		
-		return 2*k - 2*logLikelihood();
+		return (2*k - 2*logLikelihood())/n;
 	}
 
 	/**
@@ -284,7 +284,7 @@ public class LinearRegressionModel
 	{
 		int k = parameters();
 		
-		return k * (Math.log(n) + Math.log(2*Math.PI)) - 2*logLikelihood();
+		return ( k * Math.log(n) - 2*logLikelihood() ) / n;
 	}
 	
 	// Prediction

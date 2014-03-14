@@ -99,6 +99,7 @@ public abstract class LinearRegression extends Task<LinearRegressionModel>
 		model.setN ( instances() );
 		model.setSSE( getSSE(model) ); 
 		model.setSST( getSST(model) );
+		model.setDW ( getDW(model) );
 	}
 	
 	// Total sum of squares = explained sum of squares + residual sum of squares
@@ -150,12 +151,32 @@ public abstract class LinearRegression extends Task<LinearRegressionModel>
 		
 		return sse;		
 	}
+	
+	// Durbin-Watson statistic
+	
+	public double getDW (LinearRegressionModel model)
+	{
+		int    m = y.size();
+		double sum = 0;
+		double d;
+		
+		for (int i=1; i<m; i++) {
+			d = getResidual(model,i)-getResidual(model,i-1);
+			sum += d*d; 
+		}
+		
+		return sum / getSSE(model);		
+	}
 
+	// Residual
+	
 	public double getResidual (LinearRegressionModel model, int i)
 	{
 		return getPrediction(model,i) - getY(i);
 	}
 
+	// Prediction
+	
 	public double getPrediction (LinearRegressionModel model, int i)
 	{
 		double h = 0;

@@ -483,6 +483,26 @@ public abstract class Matrix implements java.io.Serializable
 		return result;
 	}
 
+	/**
+	 * Matrix diagonal
+	 * 
+	 * @return Vector corresponding to the diagonal
+	 */
+	public Vector getDiagonal ()
+	{
+		int n;
+		Vector diagonal=null;
+		
+		if (rows()==columns()) {
+			n = rows();
+			diagonal = MatrixFactory.createVector(n);
+			
+			for (int i=0; i<n; i++)
+				diagonal.set(i, get(i,i));
+		}
+		
+		return diagonal;
+	}
 	
 	/**
 	 * Matrix trace, i.e. the sum of the elements on the main diagonal.

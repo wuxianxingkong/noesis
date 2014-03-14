@@ -11,20 +11,20 @@ import ikor.math.MatrixFactory;
 import ikor.math.Vector;
 
 /**
- * Ordinary least squares linear regression: Parameter estimation using the normal equation.
+ * Ordinary least squares linear regression: Parameter estimation using the normal equation, i.e. (Xt*X)^(-1)*Xt*Yt.
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public class OLSLinearRegression extends LinearRegression
+public class LeastSquaresLinearRegression extends LinearRegression
 {
 	// Constructors
 	
-	public OLSLinearRegression (Vector[] x, Vector y)
+	public LeastSquaresLinearRegression (Vector[] x, Vector y)
 	{
 		super(x,y);
 	}
 
-	public OLSLinearRegression (double[][] x, double[] y)
+	public LeastSquaresLinearRegression (double[][] x, double[] y)
 	{
 		super(x,y);
 	}
@@ -40,6 +40,7 @@ public class OLSLinearRegression extends LinearRegression
 		Matrix Y = getY();				 		// 1 x m
 		Matrix Xt;
 		Matrix Yt;
+		Matrix XtXi;
 		Matrix result;
 		
 		// Design matrix
@@ -53,7 +54,8 @@ public class OLSLinearRegression extends LinearRegression
 		
 		// Normal equation
 		
-		result = Xt.multiply(X).inverse().multiply(Xt).multiply(Yt);
+		XtXi = Xt.multiply(X).inverse();
+		result = XtXi.multiply(Xt).multiply(Yt);
 		
 		// Linear regression model
 		
@@ -63,6 +65,16 @@ public class OLSLinearRegression extends LinearRegression
 			model.setParameter(i, result.get(i,0));
 		
 		fit(model);
+		
+		// Standard errors
+		
+		double sigma2 = getSSE(model)/(m-p);
+		Vector parameterErrors = XtXi.getDiagonal();
+		
+		for (int i=0; i<p; i++)
+			parameterErrors.set(i, Math.sqrt(sigma2*parameterErrors.get(i)) );
+
+		model.setStandardErrors(parameterErrors);
 		
 		return model;
 	}

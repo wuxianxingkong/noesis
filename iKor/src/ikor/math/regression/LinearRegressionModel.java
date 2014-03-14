@@ -17,7 +17,10 @@ import ikor.math.Vector;
 public class LinearRegressionModel 
 {
 	private Vector parameters;
+	
+	private int    n;
 	private double sse;
+	private double sst;
 	
 	public LinearRegressionModel (int variables)
 	{
@@ -55,9 +58,23 @@ public class LinearRegressionModel
 			setParameter(i, values[i]);
 	}
 	
-	// Error measures
+
 	
-	public double getSSE ()
+	// Measures
+	
+	public int n ()
+	{
+		return n;
+	}
+	
+	public void setN (int n)
+	{
+		this.n = n;
+	}
+	
+	// Residual sum of squares (RSS), a.k.a. sum of squared residuals (SSR) or sum of squared errors of prediction (SSE).
+	
+	public double sse ()
 	{
 		return sse;
 	}
@@ -66,6 +83,44 @@ public class LinearRegressionModel
 	{
 		this.sse = sse;
 	}
+
+	// Total sum of squares = explained sum of squares + residual sum of squares
+	
+	public double sst ()
+	{
+		return sst;
+	}
+	
+	public void setSST (double sst)
+	{
+		this.sst = sst;
+	}
+	
+	// Explained sum of squares (ESS), a.k.a. model sum of squares or sum of squares due to regression (SSR)
+
+	public double ssr ()
+	{
+		return sst-sse;
+	}
+	
+	public double r2 ()
+	{
+		return 1 - sse/sst;
+	}
+	
+	public double adjustedR2 ()
+	{
+		return 1 - (n-1)*(1-r2())/(n-parameters());
+	}
+	
+	// Standard error of regression
+	
+	public double stdError ()
+	{
+		return Math.sqrt(sse/(n-parameters()));
+	}
+	
+	
 	
 	// Prediction
 	

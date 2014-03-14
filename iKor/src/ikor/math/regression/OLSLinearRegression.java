@@ -62,6 +62,8 @@ public class OLSLinearRegression extends LinearRegression
 		for (int i=0; i<p; i++)
 			model.setParameter(i, result.get(i,0));
 		
+		fit(model);
+		
 		return model;
 	}
 }

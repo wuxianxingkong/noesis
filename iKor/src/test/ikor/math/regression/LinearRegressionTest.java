@@ -23,7 +23,6 @@ public abstract class LinearRegressionTest
 	double y2[]   = new double[]     {2, 3, 7, 7, 7, 7, 7, 3, 5, 7, 9, 11};
 	
 	
-	
 	// GENERIC INTERFACE FOR ESTIMATION METHODS 
 	
 	public abstract LinearRegressionModel createLinearRegressionModel (double x[][], double y[]);
@@ -49,7 +48,11 @@ public abstract class LinearRegressionTest
 		assertEquals ( 4, model.getParameter(0), EPSILON());
 		assertEquals ( 0, model.getParameter(1), EPSILON());
 		
-		assertEquals ( 2*(4*4+3*3+2*2+1*1), model.getSSE(), EPSILON());
+		assertEquals ( 60.0, model.sse(), EPSILON());
+		assertEquals ( 60.0, model.sst(), EPSILON());
+		assertEquals (  0.0, model.ssr(), EPSILON());
+
+		assertEquals (  0.0, model.r2(), EPSILON());
 		
 		assertEquals ( 4.0, model.predict(new double[]{0}), EPSILON());
 		assertEquals ( 4.0, model.predict(new double[]{5}), EPSILON());
@@ -65,7 +68,12 @@ public abstract class LinearRegressionTest
 		assertEquals ( -1, model.getParameter(0), EPSILON());
 		assertEquals ( +1, model.getParameter(1), EPSILON());
 		
-		assertEquals ( 0.0, model.getSSE(), EPSILON());
+		assertEquals (  0.0, model.sse(), EPSILON());
+		assertEquals ( 60.0, model.sst(), EPSILON());
+		assertEquals ( 60.0, model.ssr(), EPSILON());
+
+		assertEquals (  1.0, model.r2(), EPSILON());
+		assertEquals (  1.0, model.adjustedR2(), EPSILON());
 		
 		assertEquals ( -1, model.predict(new double[]{0}), EPSILON());
 		assertEquals (  4, model.predict(new double[]{5}), EPSILON());
@@ -84,7 +92,11 @@ public abstract class LinearRegressionTest
 		assertEquals ( 0, model.getParameter(1), EPSILON());
 		assertEquals ( 0, model.getParameter(2), EPSILON());
 		
-		assertEquals ( 74.25, model.getSSE(), EPSILON());
+		assertEquals ( 74.25, model.sse(), EPSILON());
+		assertEquals ( 74.25, model.sst(), EPSILON());
+		assertEquals (  0.00, model.ssr(), EPSILON());
+
+		assertEquals (  0.0, model.r2(), EPSILON());
 		
 		assertEquals ( 6.25, model.predict(new double[]{0,0}), EPSILON());
 		assertEquals ( 6.25, model.predict(new double[]{5,0}), EPSILON());
@@ -94,7 +106,7 @@ public abstract class LinearRegressionTest
 	}	
 	
 	@Test
-	public void testMultivariateGradientDescent ()
+	public void testMultivariateLinearRegression ()
 	{
 		LinearRegressionModel model = createLinearRegressionModel(x2, y2);
 		
@@ -103,8 +115,13 @@ public abstract class LinearRegressionTest
 		assertEquals ( 0.5, model.getParameter(1), EPSILON());
 		assertEquals ( 0.5, model.getParameter(2), EPSILON());
 		
-		assertEquals ( 0.0, model.getSSE(), EPSILON());
+		assertEquals ( 0.00, model.sse(), EPSILON());
+		assertEquals ( 74.25, model.sst(), EPSILON());
+		assertEquals ( 74.25, model.ssr(), EPSILON());
 				
+		assertEquals ( 1.0, model.r2(), EPSILON());
+		assertEquals ( 1.0, model.adjustedR2(), EPSILON());
+
 		assertEquals ( 2, model.predict(new double[]{0,0}), EPSILON());
 		assertEquals ( 7, model.predict(new double[]{10,0}), EPSILON());
 		assertEquals ( 7, model.predict(new double[]{0,10}), EPSILON());
@@ -113,5 +130,5 @@ public abstract class LinearRegressionTest
 		assertEquals ( 17, model.predict(new double[]{20,10}), EPSILON());
 	}
 
-	
+
 }

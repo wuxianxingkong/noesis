@@ -33,23 +33,7 @@ public class BaselineRegression extends LinearRegression
 	{
 		return getY().average();
 	}
-	
-	// SST
-	
-	public double getSST ()
-	{
-		int    m = y.size();
-		double base = getBaseline();
-		double sse = 0;
-		double d;
 
-		for (int i=0; i<m; i++) {
-			d = base - getY(i);
-			sse += d*d; 
-		}
-
-		return sse;
-	}
 	
 	// Task interface
 	
@@ -59,7 +43,8 @@ public class BaselineRegression extends LinearRegression
 		LinearRegressionModel model = new LinearRegressionModel(variables());
 		
 		model.setParameter(0, getBaseline());
-		model.setSSE( getSST() );
+		
+		fit(model);
 		
 		return model;
 	}

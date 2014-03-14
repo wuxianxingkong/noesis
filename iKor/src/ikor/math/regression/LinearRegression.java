@@ -63,6 +63,15 @@ public abstract class LinearRegression extends Task<LinearRegressionModel>
 		return y.size();
 	}
 	
+	public Vector[] getX ()
+	{
+		return x;
+	}
+
+	public Vector getX (int j)
+	{
+		return x[j-1];
+	}
 		
 	public double getX (int j, int i)
 	{
@@ -82,6 +91,81 @@ public abstract class LinearRegression extends Task<LinearRegressionModel>
 		return y.get(i);
 	}
 	
+	
+	// Model fit
+	
+	public void fit (LinearRegressionModel model)
+	{
+		model.setN ( instances() );
+		model.setSSE( getSSE(model) ); 
+		model.setSST( getSST(model) );
+	}
+	
+	// Total sum of squares = explained sum of squares + residual sum of squares
+	
+	public double getSST(LinearRegressionModel model)
+	{
+		int    m = y.size();
+		double mean = y.average();
+		double sst = 0;
+		double d;
+		
+		for (int i=0; i<m; i++) {
+			d = getY(i) - mean;
+			sst += d*d; 
+		}
+		
+		return sst;		
+	}	
+	
+	// Explained sum of squares (ESS), a.k.a. model sum of squares or sum of squares due to regression ("SSR")
+	
+	public double getSSR (LinearRegressionModel model)
+	{
+		int    m = y.size();
+		double mean = y.average();
+		double ssr = 0;
+		double d;
+		
+		for (int i=0; i<m; i++) {
+			d = getPrediction(model,i) - mean;
+			ssr += d*d; 
+		}
+		
+		return ssr;		
+	}
+	
+	// Residual sum of squares (RSS), a.k.a. sum of squared residuals (SSR) or sum of squared errors of prediction (SSE).
+	
+	public double getSSE (LinearRegressionModel model)
+	{
+		int    m = y.size();
+		double sse = 0;
+		double d;
+		
+		for (int i=0; i<m; i++) {
+			d = getResidual(model,i);
+			sse += d*d; 
+		}
+		
+		return sse;		
+	}
+
+	public double getResidual (LinearRegressionModel model, int i)
+	{
+		return getPrediction(model,i) - getY(i);
+	}
+
+	public double getPrediction (LinearRegressionModel model, int i)
+	{
+		double h = 0;
+
+		for (int j=0; j<model.parameters(); j++) {
+			h += getX(j,i)*model.getParameter(j);
+		}
+
+		return h;
+	}
 
 	// Task interface
 	

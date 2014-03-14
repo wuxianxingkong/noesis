@@ -64,36 +64,13 @@ public class GradientDescentLinearRegression extends LinearRegression
 	{
 		return J;
 	}
-	
-	private double getH (int i)
-	{
-		double h = 0;
-		
-		for (int j=0; j<model.parameters(); j++) {
-			h += getX(j,i)*model.getParameter(j);
-		}
-		
-		return h;
-	}
-	
+
 	public double getCost()
 	{
-		return getSSE()/ (2*instances());
+		return getSSE(model)/ (2*instances());
 	}
 
-	public double getSSE()
-	{
-		int    m = y.size();
-		double sse = 0;
-		double d;
-		
-		for (int i=0; i<m; i++) {
-			d = getH(i) - getY(i);
-			sse += d*d; 
-		}
-		
-		return sse;
-	}
+	// Gradient descent iteration
 	
 	private void updateParameters()
 	{
@@ -108,7 +85,7 @@ public class GradientDescentLinearRegression extends LinearRegression
 			s = 0;
 			
 			for (i=0; i<m; i++) {
-				s += ( getH(i) - getY(i) ) * getX(j,i);
+				s += ( getPrediction(model,i) - getY(i) ) * getX(j,i);
 			}
 			
 			t[j] = model.getParameter(j) - (alpha / m) * s;
@@ -132,7 +109,7 @@ public class GradientDescentLinearRegression extends LinearRegression
 			J[i] = getCost();
 		}
 		
-		model.setSSE( getSSE() ); 
+		fit(model);
 				
 		return model;
 	}	

@@ -5,10 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import ikor.math.regression.GradientDescentLogisticRegression;
 import ikor.math.regression.LogisticRegressionModel;
 
-public class LogisticRegressionTest 
+public abstract class LogisticRegressionTest 
 {
 
 	// DATA
@@ -72,15 +71,7 @@ public class LogisticRegressionTest
 	
 	// Logistic regression model
 	
-	public LogisticRegressionModel createLogisticRegressionModel ( double x[][], double y[])
-	{
-		GradientDescentLogisticRegression reg = new GradientDescentLogisticRegression (x,y);
-
-		reg.setLearningRate(0.5);   // GradientDescentRegression.DEFAULT_LEARNING_RATE);
-		reg.setIterations(10000);   // GradientDescentRegression.DEFAULT_MAX_ITERATIONS);
-			
-		return (LogisticRegressionModel) reg.getResult();		
-	}
+	public abstract LogisticRegressionModel createLogisticRegressionModel ( double x[][], double y[]);
 	
 	
 	// TEST CASES
@@ -301,5 +292,33 @@ public class LogisticRegressionTest
 		assertEquals ( 0.8176, model.predict(new double[]{1.0,0.5}), 0.01);
 		assertEquals ( 0.8808, model.predict(new double[]{1.0,1.0}), 0.01);
 	}		
+
+	@Test
+	public void test123LogisticRegression ()
+	{
+		double beta[] = new double[]{1,2,3};
+		double x[][] = createIndependentVariables();
+		double y[] = createDependentVariable(beta,x);
+		LogisticRegressionModel model = createLogisticRegressionModel(x,y);
+		
+		assertEquals ( 3, model.parameters());
+		assertEquals ( 1, model.getParameter(0), 0.01);
+		assertEquals ( 2, model.getParameter(1), 0.01);
+		assertEquals ( 3, model.getParameter(2), 0.01);
+	}
+	
+	@Test
+	public void testm1m2m3LogisticRegression ()
+	{
+		double beta[] = new double[]{-1,-2,-3};
+		double x[][] = createIndependentVariables();
+		double y[] = createDependentVariable(beta,x);
+		LogisticRegressionModel model = createLogisticRegressionModel(x,y);
+		
+		assertEquals ( 3, model.parameters());
+		assertEquals ( -1, model.getParameter(0), 0.01);
+		assertEquals ( -2, model.getParameter(1), 0.01);
+		assertEquals ( -3, model.getParameter(2), 0.01);
+	}	
 	
 }

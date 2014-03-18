@@ -43,4 +43,28 @@ public class GradientDescentLinearRegression extends GradientDescentRegression
 		return getSSE(model)/ (2*instances());
 	}
 
+	public double[] gradient ()
+	{
+		RegressionModel model = getModel();
+		int      m = instances();
+		int      p = model.parameters();
+		double[] s = new double[p];
+		double   r;
+		int      i,j;
+		
+		for (i=0; i<m; i++) {
+			
+			r = getPrediction(model,i) - getY(i);
+		
+			for (j=0; j<p; j++) {
+				s[j] += r * getX(j,i);
+			}
+		}
+
+		for (j=0; j<s.length; j++) {
+			s[j] /= m;
+		}
+		
+		return s;
+	}	
 }

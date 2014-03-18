@@ -98,25 +98,18 @@ public abstract class GradientDescentRegression extends Regression
 	
 	public abstract double cost();
 	
+	public abstract double[] gradient();
+	
 	// Gradient descent iteration
 	
 	public void updateParameters()
 	{
 		RegressionModel model = getModel();
 		double[] t = new double[model.parameters()];
-		int      m = instances();
-		double   s;
-		int      i,j;
+		double[] gradient = gradient();
 		
-		for (j=0; j<t.length; j++) {
-			
-			s = 0.0;
-			
-			for (i=0; i<m; i++) {
-				s += ( getPrediction(model,i) - getY(i) ) * getX(j,i);
-			}
-			
-			t[j] = model.getParameter(j) - getLearningRate() * s / m;
+		for (int j=0; j<t.length; j++) {
+			t[j] = model.getParameter(j) - getLearningRate() * gradient[j];
 		}
 		
 		model.setParameters(t);
@@ -136,7 +129,6 @@ public abstract class GradientDescentRegression extends Regression
 			updateParameters();
 			J[i] = cost();
 		}
-		
 		
 		fit(model);
 				

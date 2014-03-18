@@ -60,6 +60,61 @@ public class GradientDescentLogisticRegression extends GradientDescentRegression
 	}
 	
 	
+	public double[] gradient ()
+	{
+		RegressionModel model = getModel();
+		int      m = instances();
+		int      p = model.parameters();
+		double[] s = new double[p];
+		double   r;
+		int      i,j;
+		
+		for (i=0; i<m; i++) {
+			
+			r = getPrediction(model,i) - getY(i);
+		
+			for (j=0; j<p; j++) {
+				s[j] += r * getX(j,i);
+			}
+		}
+
+		for (j=0; j<s.length; j++) {
+			s[j] /= m;
+		}
+		
+		return s;
+	}
+	
+	
+	public double[][] hessian ()
+	{
+		RegressionModel model = getModel();
+		int        m = instances();
+		int        p = model.parameters();
+		double[][] s = new double[p][p];
+		double     h,f;
+		int        i,j,k;
+		
+		for (i=0; i<m; i++) {
+			
+			h = getPrediction(model,i);
+		    f = h*(1-h);
+		    
+			for (j=0; j<p; j++) {
+				for (k=0; k<p; k++) {
+					s[j][k] += f * getX(j,i) * getX(k,i);
+				}
+			}
+		}
+
+		for (j=0; j<p; j++) {
+			for (k=0; k<p; k++) {
+				s[j][k] /= m;
+			}
+		}
+		
+		return s;
+	}
 
 
 }

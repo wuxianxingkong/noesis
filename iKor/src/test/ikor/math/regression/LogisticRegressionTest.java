@@ -69,10 +69,11 @@ public abstract class LogisticRegressionTest
 	}
 	
 	
-	// Logistic regression model
+	// Generic interface for logistic regression models
 	
 	public abstract LogisticRegressionModel createLogisticRegressionModel ( double x[][], double y[]);
-	
+		
+	public abstract double EPSILON ();
 	
 	// TEST CASES
 	
@@ -92,12 +93,12 @@ public abstract class LogisticRegressionTest
 		LogisticRegressionModel model = createLogisticRegressionModel(x,y);
 		
 		assertEquals ( 2, model.parameters());
-		assertEquals ( 0, model.getParameter(0), 0.0001);
-		assertEquals ( 0, model.getParameter(1), 0.0001);
+		assertEquals ( 0, model.getParameter(0), EPSILON());
+		assertEquals ( 0, model.getParameter(1), EPSILON());
 		
-		assertEquals ( 0.500, model.predict(new double[]{0.0}), 0.0001);
-		assertEquals ( 0.500, model.predict(new double[]{0.5}), 0.0001);
-		assertEquals ( 0.500, model.predict(new double[]{1.0}), 0.0001);
+		assertEquals ( 0.500, model.predict(new double[]{0.0}), EPSILON());
+		assertEquals ( 0.500, model.predict(new double[]{0.5}), EPSILON());
+		assertEquals ( 0.500, model.predict(new double[]{1.0}), EPSILON());
 	}	
 
 	@Test
@@ -109,12 +110,12 @@ public abstract class LogisticRegressionTest
 		LogisticRegressionModel model = createLogisticRegressionModel(x,y);
 		
 		assertEquals ( 2, model.parameters());
-		assertEquals ( 0, model.getParameter(0), 0.01);
-		assertEquals ( 1, model.getParameter(1), 0.01);
+		assertEquals ( 0, model.getParameter(0), EPSILON());
+		assertEquals ( 1, model.getParameter(1), EPSILON());
 		
-		assertEquals ( 0.5000, model.predict(new double[]{0.0}), 0.01);
-		assertEquals ( 0.6225, model.predict(new double[]{0.5}), 0.01);
-		assertEquals ( 0.7311, model.predict(new double[]{1.0}), 0.01);
+		assertEquals ( 0.5000, model.predict(new double[]{0.0}), EPSILON());
+		assertEquals ( 0.6225, model.predict(new double[]{0.5}), EPSILON());
+		assertEquals ( 0.7311, model.predict(new double[]{1.0}), EPSILON());
 	}	
 
 	@Test
@@ -126,12 +127,12 @@ public abstract class LogisticRegressionTest
 		LogisticRegressionModel model = createLogisticRegressionModel(x,y);
 		
 		assertEquals ( 2, model.parameters());
-		assertEquals ( 1, model.getParameter(0), 0.01);
-		assertEquals ( 0, model.getParameter(1), 0.01);
+		assertEquals ( 1, model.getParameter(0), EPSILON());
+		assertEquals ( 0, model.getParameter(1), EPSILON());
 		
-		assertEquals ( 0.7311, model.predict(new double[]{0}), 0.01);
-		assertEquals ( 0.7311, model.predict(new double[]{0.5}), 0.01);
-		assertEquals ( 0.7311, model.predict(new double[]{1}), 0.01);
+		assertEquals ( 0.7311, model.predict(new double[]{0}), EPSILON());
+		assertEquals ( 0.7311, model.predict(new double[]{0.5}), EPSILON());
+		assertEquals ( 0.7311, model.predict(new double[]{1}), EPSILON());
 	}	
 
 	@Test
@@ -143,12 +144,12 @@ public abstract class LogisticRegressionTest
 		LogisticRegressionModel model = createLogisticRegressionModel(x,y);
 		
 		assertEquals ( 2, model.parameters());
-		assertEquals ( 1, model.getParameter(0), 0.01);
-		assertEquals ( 1, model.getParameter(1), 0.01);
+		assertEquals ( 1, model.getParameter(0), EPSILON());
+		assertEquals ( 1, model.getParameter(1), EPSILON());
 		
-		assertEquals ( 0.7311, model.predict(new double[]{0.0}), 0.01);
-		assertEquals ( 0.8176, model.predict(new double[]{0.5}), 0.01);
-		assertEquals ( 0.8808, model.predict(new double[]{1.0}), 0.01);
+		assertEquals ( 0.7311, model.predict(new double[]{0.0}), EPSILON());
+		assertEquals ( 0.8176, model.predict(new double[]{0.5}), EPSILON());
+		assertEquals ( 0.8808, model.predict(new double[]{1.0}), EPSILON());
 	}	
 	
 	@Test
@@ -160,12 +161,12 @@ public abstract class LogisticRegressionTest
 		LogisticRegressionModel model = createLogisticRegressionModel(x,y);
 		
 		assertEquals ( 2, model.parameters());
-		assertEquals ( 0.5, model.getParameter(0), 0.01);
-		assertEquals ( 0.5, model.getParameter(1), 0.01);
+		assertEquals ( 0.5, model.getParameter(0), EPSILON());
+		assertEquals ( 0.5, model.getParameter(1), EPSILON());
 		
-		assertEquals ( 0.6225, model.predict(new double[]{0.0}), 0.01);
-		assertEquals ( 0.6792, model.predict(new double[]{0.5}), 0.01);
-		assertEquals ( 0.7311, model.predict(new double[]{1.0}), 0.01);
+		assertEquals ( 0.6225, model.predict(new double[]{0.0}), EPSILON());
+		assertEquals ( 0.6792, model.predict(new double[]{0.5}), EPSILON());
+		assertEquals ( 0.7311, model.predict(new double[]{1.0}), EPSILON());
 	}
 	
 	@Test
@@ -177,12 +178,12 @@ public abstract class LogisticRegressionTest
 		LogisticRegressionModel model = createLogisticRegressionModel(x,y);
 		
 		assertEquals ( 2, model.parameters());
-		assertEquals ( 1.0, model.getParameter(0), 0.01);
-		assertEquals (-1.0, model.getParameter(1), 0.01);
+		assertEquals ( 1.0, model.getParameter(0), EPSILON());
+		assertEquals (-1.0, model.getParameter(1), EPSILON());
 		
-		assertEquals ( 0.7311, model.predict(new double[]{0.0}), 0.01);
-		assertEquals ( 0.6225, model.predict(new double[]{0.5}), 0.01);
-		assertEquals ( 0.5000, model.predict(new double[]{1.0}), 0.01);
+		assertEquals ( 0.7311, model.predict(new double[]{0.0}), EPSILON());
+		assertEquals ( 0.6225, model.predict(new double[]{0.5}), EPSILON());
+		assertEquals ( 0.5000, model.predict(new double[]{1.0}), EPSILON());
 	}	
 	
 	@Test
@@ -194,12 +195,12 @@ public abstract class LogisticRegressionTest
 		LogisticRegressionModel model = createLogisticRegressionModel(x,y);
 		
 		assertEquals ( 2, model.parameters());
-		assertEquals ( 0.0, model.getParameter(0), 0.01);
-		assertEquals ( 2.0, model.getParameter(1), 0.01);
+		assertEquals ( 0.0, model.getParameter(0), EPSILON());
+		assertEquals ( 2.0, model.getParameter(1), EPSILON());
 		
-		assertEquals ( 0.5000, model.predict(new double[]{0.0}), 0.01);
-		assertEquals ( 0.7311, model.predict(new double[]{0.5}), 0.01);
-		assertEquals ( 0.8808, model.predict(new double[]{1.0}), 0.01);
+		assertEquals ( 0.5000, model.predict(new double[]{0.0}), EPSILON());
+		assertEquals ( 0.7311, model.predict(new double[]{0.5}), EPSILON());
+		assertEquals ( 0.8808, model.predict(new double[]{1.0}), EPSILON());
 	}
 	
 	@Test
@@ -211,12 +212,12 @@ public abstract class LogisticRegressionTest
 		LogisticRegressionModel model = createLogisticRegressionModel(x,y);
 		
 		assertEquals ( 2, model.parameters());
-		assertEquals ( 0.0, model.getParameter(0), 0.01);
-		assertEquals (-2.0, model.getParameter(1), 0.01);
+		assertEquals ( 0.0, model.getParameter(0), EPSILON());
+		assertEquals (-2.0, model.getParameter(1), EPSILON());
 		
-		assertEquals ( 0.5000, model.predict(new double[]{0.0}), 0.01);
-		assertEquals ( 0.2689, model.predict(new double[]{0.5}), 0.01);
-		assertEquals ( 0.1192, model.predict(new double[]{1.0}), 0.01);
+		assertEquals ( 0.5000, model.predict(new double[]{0.0}), EPSILON());
+		assertEquals ( 0.2689, model.predict(new double[]{0.5}), EPSILON());
+		assertEquals ( 0.1192, model.predict(new double[]{1.0}), EPSILON());
 	}	
 	
 	// Two variables
@@ -230,19 +231,19 @@ public abstract class LogisticRegressionTest
 		LogisticRegressionModel model = createLogisticRegressionModel(x,y);
 		
 		assertEquals ( 3, model.parameters());
-		assertEquals ( 0, model.getParameter(0), 0.01);
-		assertEquals ( 0, model.getParameter(1), 0.01);
-		assertEquals ( 0, model.getParameter(2), 0.01);
+		assertEquals ( 0, model.getParameter(0), EPSILON());
+		assertEquals ( 0, model.getParameter(1), EPSILON());
+		assertEquals ( 0, model.getParameter(2), EPSILON());
 		
-		assertEquals ( 0.5000, model.predict(new double[]{0.0,0.0}), 0.01);
-		assertEquals ( 0.5000, model.predict(new double[]{0.0,0.5}), 0.01);
-		assertEquals ( 0.5000, model.predict(new double[]{0.0,1.0}), 0.01);
-		assertEquals ( 0.5000, model.predict(new double[]{0.5,0.0}), 0.01);
-		assertEquals ( 0.5000, model.predict(new double[]{0.5,0.5}), 0.01);
-		assertEquals ( 0.5000, model.predict(new double[]{0.5,1.0}), 0.01);
-		assertEquals ( 0.5000, model.predict(new double[]{1.0,0.0}), 0.01);
-		assertEquals ( 0.5000, model.predict(new double[]{1.0,0.5}), 0.01);
-		assertEquals ( 0.5000, model.predict(new double[]{1.0,1.0}), 0.01);
+		assertEquals ( 0.5000, model.predict(new double[]{0.0,0.0}), EPSILON());
+		assertEquals ( 0.5000, model.predict(new double[]{0.0,0.5}), EPSILON());
+		assertEquals ( 0.5000, model.predict(new double[]{0.0,1.0}), EPSILON());
+		assertEquals ( 0.5000, model.predict(new double[]{0.5,0.0}), EPSILON());
+		assertEquals ( 0.5000, model.predict(new double[]{0.5,0.5}), EPSILON());
+		assertEquals ( 0.5000, model.predict(new double[]{0.5,1.0}), EPSILON());
+		assertEquals ( 0.5000, model.predict(new double[]{1.0,0.0}), EPSILON());
+		assertEquals ( 0.5000, model.predict(new double[]{1.0,0.5}), EPSILON());
+		assertEquals ( 0.5000, model.predict(new double[]{1.0,1.0}), EPSILON());
 	}	
 	
 	@Test
@@ -254,19 +255,19 @@ public abstract class LogisticRegressionTest
 		LogisticRegressionModel model = createLogisticRegressionModel(x,y);
 		
 		assertEquals ( 3, model.parameters());
-		assertEquals ( 0, model.getParameter(0), 0.01);
-		assertEquals ( 1, model.getParameter(1), 0.01);
-		assertEquals ( 0, model.getParameter(2), 0.01);
+		assertEquals ( 0, model.getParameter(0), EPSILON());
+		assertEquals ( 1, model.getParameter(1), EPSILON());
+		assertEquals ( 0, model.getParameter(2), EPSILON());
 		
-		assertEquals ( 0.5000, model.predict(new double[]{0.0,0.0}), 0.01);
-		assertEquals ( 0.5000, model.predict(new double[]{0.0,0.5}), 0.01);
-		assertEquals ( 0.5000, model.predict(new double[]{0.0,1.0}), 0.01);
-		assertEquals ( 0.6225, model.predict(new double[]{0.5,0.0}), 0.01);
-		assertEquals ( 0.6225, model.predict(new double[]{0.5,0.5}), 0.01);
-		assertEquals ( 0.6225, model.predict(new double[]{0.5,1.0}), 0.01);
-		assertEquals ( 0.7311, model.predict(new double[]{1.0,0.0}), 0.01);
-		assertEquals ( 0.7311, model.predict(new double[]{1.0,0.5}), 0.01);
-		assertEquals ( 0.7311, model.predict(new double[]{1.0,1.0}), 0.01);
+		assertEquals ( 0.5000, model.predict(new double[]{0.0,0.0}), EPSILON());
+		assertEquals ( 0.5000, model.predict(new double[]{0.0,0.5}), EPSILON());
+		assertEquals ( 0.5000, model.predict(new double[]{0.0,1.0}), EPSILON());
+		assertEquals ( 0.6225, model.predict(new double[]{0.5,0.0}), EPSILON());
+		assertEquals ( 0.6225, model.predict(new double[]{0.5,0.5}), EPSILON());
+		assertEquals ( 0.6225, model.predict(new double[]{0.5,1.0}), EPSILON());
+		assertEquals ( 0.7311, model.predict(new double[]{1.0,0.0}), EPSILON());
+		assertEquals ( 0.7311, model.predict(new double[]{1.0,0.5}), EPSILON());
+		assertEquals ( 0.7311, model.predict(new double[]{1.0,1.0}), EPSILON());
 	}		
 
 	@Test
@@ -278,19 +279,19 @@ public abstract class LogisticRegressionTest
 		LogisticRegressionModel model = createLogisticRegressionModel(x,y);
 		
 		assertEquals ( 3, model.parameters());
-		assertEquals ( 0, model.getParameter(0), 0.01);
-		assertEquals ( 1, model.getParameter(1), 0.01);
-		assertEquals ( 1, model.getParameter(2), 0.01);
+		assertEquals ( 0, model.getParameter(0), EPSILON());
+		assertEquals ( 1, model.getParameter(1), EPSILON());
+		assertEquals ( 1, model.getParameter(2), EPSILON());
 		
-		assertEquals ( 0.5000, model.predict(new double[]{0.0,0.0}), 0.01);
-		assertEquals ( 0.6225, model.predict(new double[]{0.0,0.5}), 0.01);
-		assertEquals ( 0.7311, model.predict(new double[]{0.0,1.0}), 0.01);
-		assertEquals ( 0.6225, model.predict(new double[]{0.5,0.0}), 0.01);
-		assertEquals ( 0.7311, model.predict(new double[]{0.5,0.5}), 0.01);
-		assertEquals ( 0.8176, model.predict(new double[]{0.5,1.0}), 0.01);
-		assertEquals ( 0.7311, model.predict(new double[]{1.0,0.0}), 0.01);
-		assertEquals ( 0.8176, model.predict(new double[]{1.0,0.5}), 0.01);
-		assertEquals ( 0.8808, model.predict(new double[]{1.0,1.0}), 0.01);
+		assertEquals ( 0.5000, model.predict(new double[]{0.0,0.0}), EPSILON());
+		assertEquals ( 0.6225, model.predict(new double[]{0.0,0.5}), EPSILON());
+		assertEquals ( 0.7311, model.predict(new double[]{0.0,1.0}), EPSILON());
+		assertEquals ( 0.6225, model.predict(new double[]{0.5,0.0}), EPSILON());
+		assertEquals ( 0.7311, model.predict(new double[]{0.5,0.5}), EPSILON());
+		assertEquals ( 0.8176, model.predict(new double[]{0.5,1.0}), EPSILON());
+		assertEquals ( 0.7311, model.predict(new double[]{1.0,0.0}), EPSILON());
+		assertEquals ( 0.8176, model.predict(new double[]{1.0,0.5}), EPSILON());
+		assertEquals ( 0.8808, model.predict(new double[]{1.0,1.0}), EPSILON());
 	}		
 
 	@Test
@@ -302,9 +303,9 @@ public abstract class LogisticRegressionTest
 		LogisticRegressionModel model = createLogisticRegressionModel(x,y);
 		
 		assertEquals ( 3, model.parameters());
-		assertEquals ( 1, model.getParameter(0), 0.01);
-		assertEquals ( 2, model.getParameter(1), 0.01);
-		assertEquals ( 3, model.getParameter(2), 0.01);
+		assertEquals ( 1, model.getParameter(0), EPSILON());
+		assertEquals ( 2, model.getParameter(1), EPSILON());
+		assertEquals ( 3, model.getParameter(2), EPSILON());
 	}
 	
 	@Test
@@ -316,9 +317,9 @@ public abstract class LogisticRegressionTest
 		LogisticRegressionModel model = createLogisticRegressionModel(x,y);
 		
 		assertEquals ( 3, model.parameters());
-		assertEquals ( -1, model.getParameter(0), 0.01);
-		assertEquals ( -2, model.getParameter(1), 0.01);
-		assertEquals ( -3, model.getParameter(2), 0.01);
+		assertEquals ( -1, model.getParameter(0), EPSILON());
+		assertEquals ( -2, model.getParameter(1), EPSILON());
+		assertEquals ( -3, model.getParameter(2), EPSILON());
 	}	
 	
 }

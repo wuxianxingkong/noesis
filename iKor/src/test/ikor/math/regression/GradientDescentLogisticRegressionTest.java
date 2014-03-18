@@ -6,6 +6,13 @@ import ikor.math.regression.LogisticRegressionModel;
 
 public class GradientDescentLogisticRegressionTest extends LogisticRegressionTest
 {
+	// Epsilon
+	
+	public double EPSILON ()
+	{
+		return 0.001;
+	}
+	
 	
 	// Logistic regression model
 	
@@ -14,7 +21,7 @@ public class GradientDescentLogisticRegressionTest extends LogisticRegressionTes
 	{
 		GradientDescentLogisticRegression reg = new GradientDescentLogisticRegression (x,y);
 
-		reg.setErrorMargin(1e-10);  
+		reg.setErrorMargin(1e-12);  
 		reg.setLearningRate(0.5);   
 		reg.setIterations(10000);   
 			

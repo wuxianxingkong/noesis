@@ -6,6 +6,12 @@ import ikor.math.regression.NewtonMethodLogisticRegression;
 
 public class NewtonMethodLogisticRegressionTest extends LogisticRegressionTest
 {
+	// Epsilon
+	
+	public double EPSILON ()
+	{
+		return 0.0001;
+	}
 	
 	// Logistic regression model
 	
@@ -14,8 +20,9 @@ public class NewtonMethodLogisticRegressionTest extends LogisticRegressionTest
 	{
 		NewtonMethodLogisticRegression reg = new NewtonMethodLogisticRegression (x,y);
 
-		reg.setLearningRate(0.5);   // GradientDescentRegression.DEFAULT_LEARNING_RATE);
-		reg.setIterations(100);     // GradientDescentRegression.DEFAULT_MAX_ITERATIONS);
+		reg.setErrorMargin(1e-10);  
+		reg.setLearningRate(1.0);
+		reg.setIterations(100);
 			
 		return (LogisticRegressionModel) reg.getResult();		
 	}	

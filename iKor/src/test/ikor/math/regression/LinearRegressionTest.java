@@ -1,6 +1,7 @@
 package test.ikor.math.regression;
 
 import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -128,7 +129,5 @@ public abstract class LinearRegressionTest
 		assertEquals ( 12, model.predict(new double[]{10,10}), EPSILON());
 		assertEquals ( 17, model.predict(new double[]{10,20}), EPSILON());
 		assertEquals ( 17, model.predict(new double[]{20,10}), EPSILON());
-	}
-
-
+	}	
 }

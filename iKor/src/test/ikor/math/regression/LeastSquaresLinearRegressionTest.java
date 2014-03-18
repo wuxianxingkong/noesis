@@ -16,7 +16,7 @@ public class LeastSquaresLinearRegressionTest extends LinearRegressionTest
 	{
 		LeastSquaresLinearRegression reg = new LeastSquaresLinearRegression (x,y);
 		
-		return reg.call();
+		return (LinearRegressionModel) reg.call();
 		
 	}
 

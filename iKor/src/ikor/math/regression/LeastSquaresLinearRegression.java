@@ -15,7 +15,7 @@ import ikor.math.Vector;
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public class LeastSquaresLinearRegression extends LinearRegression
+public class LeastSquaresLinearRegression extends Regression
 {
 	// Constructors
 	

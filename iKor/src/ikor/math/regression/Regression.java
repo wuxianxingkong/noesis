@@ -17,21 +17,21 @@ import ikor.parallel.Task;
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public abstract class LinearRegression extends Task<LinearRegressionModel> 
+public abstract class Regression extends Task<RegressionModel> 
 {
 	Vector[] x;
 	Vector   y;
 	
 	// Constructors
 	
-	public LinearRegression (Vector[] x, Vector y)
+	public Regression (Vector[] x, Vector y)
 	{
 		this.x = x;
 		this.y = y;
 
 	}
 
-	public LinearRegression (Matrix x, Vector y)
+	public Regression (Matrix x, Vector y)
 	{
 		this.y = y;
 		this.x = new Vector[x.columns()];
@@ -40,7 +40,7 @@ public abstract class LinearRegression extends Task<LinearRegressionModel>
 			this.x[i] = x.getColumn(i);
 	}
 	
-	public LinearRegression (double[][] x, double[] y)
+	public Regression (double[][] x, double[] y)
 	{
 		this.x = new Vector[x.length];
 		
@@ -94,7 +94,7 @@ public abstract class LinearRegression extends Task<LinearRegressionModel>
 	
 	// Model fit
 	
-	public void fit (LinearRegressionModel model)
+	public void fit (RegressionModel model)
 	{
 		model.setN ( instances() );
 		model.setSSE( getSSE(model) ); 
@@ -104,7 +104,7 @@ public abstract class LinearRegression extends Task<LinearRegressionModel>
 	
 	// Total sum of squares = explained sum of squares + residual sum of squares
 	
-	public double getSST(LinearRegressionModel model)
+	public double getSST(RegressionModel model)
 	{
 		int    m = y.size();
 		double mean = y.average();
@@ -121,7 +121,7 @@ public abstract class LinearRegression extends Task<LinearRegressionModel>
 	
 	// Explained sum of squares (ESS), a.k.a. model sum of squares or sum of squares due to regression ("SSR")
 	
-	public double getSSR (LinearRegressionModel model)
+	public double getSSR (RegressionModel model)
 	{
 		int    m = y.size();
 		double mean = y.average();
@@ -138,7 +138,7 @@ public abstract class LinearRegression extends Task<LinearRegressionModel>
 	
 	// Residual sum of squares (RSS), a.k.a. sum of squared residuals (SSR) or sum of squared errors of prediction (SSE).
 	
-	public double getSSE (LinearRegressionModel model)
+	public double getSSE (RegressionModel model)
 	{
 		int    m = y.size();
 		double sse = 0;
@@ -154,7 +154,7 @@ public abstract class LinearRegression extends Task<LinearRegressionModel>
 	
 	// Durbin-Watson statistic
 	
-	public double getDW (LinearRegressionModel model)
+	public double getDW (RegressionModel model)
 	{
 		int    m = y.size();
 		double sum = 0;
@@ -170,27 +170,27 @@ public abstract class LinearRegression extends Task<LinearRegressionModel>
 
 	// Residual
 	
-	public double getResidual (LinearRegressionModel model, int i)
+	public double getResidual (RegressionModel model, int i)
 	{
 		return getPrediction(model,i) - getY(i);
 	}
 
 	// Prediction
 	
-	public double getPrediction (LinearRegressionModel model, int i)
+	public double getPrediction (RegressionModel model, int i)
 	{
-		double h = 0;
+		double d[] = new double[variables()];
 
-		for (int j=0; j<model.parameters(); j++) {
-			h += getX(j,i)*model.getParameter(j);
+		for (int j=0; j<variables(); j++) {
+			d[j] = x[j].get(i);
 		}
 
-		return h;
+		return model.predict(d);
 	}
 
 	// Task interface
 	
 	@Override
-	public abstract LinearRegressionModel call(); 
+	public abstract RegressionModel call(); 
 
 }

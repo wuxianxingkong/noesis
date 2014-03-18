@@ -14,10 +14,11 @@ public class GradientDescentLinearRegressionTest extends LinearRegressionTest
 	{
 		GradientDescentLinearRegression reg = new GradientDescentLinearRegression (x,y);
 
-		reg.setLearningRate(0.03); // GradientDescentLinearRegression.DEFAULT_LEARNING_RATE);
-		reg.setIterations(2000);   // GradientDescentLinearRegression.DEFAULT_MAX_ITERATIONS);
+		reg.setErrorMargin(0.0);   // i.e. perform the specified number of iterations
+		reg.setLearningRate(0.03); // GradientDescentRegression.DEFAULT_LEARNING_RATE);
+		reg.setIterations(2000);   // GradientDescentRegression.DEFAULT_MAX_ITERATIONS);
 		
-		return reg.call();
+		return (LinearRegressionModel) reg.getResult();
 	}
 
 	@Override

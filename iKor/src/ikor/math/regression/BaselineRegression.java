@@ -13,7 +13,7 @@ import ikor.math.Vector;
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public class BaselineRegression extends LinearRegression 
+public class BaselineRegression extends Regression 
 {
 	// Constructors
 	

@@ -6,8 +6,6 @@ package ikor.math.regression;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
-import ikor.math.MatrixFactory;
-import ikor.math.Vector;
 import ikor.math.statistics.FDistribution;
 import ikor.math.statistics.StudentTDistribution;
 
@@ -16,138 +14,18 @@ import ikor.math.statistics.StudentTDistribution;
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public class LinearRegressionModel 
+public class LinearRegressionModel extends RegressionModel
 {
-	private Vector parameters;
-	
-	private int    n;
-	private double sse;
-	private double sst;
-	
 	public LinearRegressionModel (int variables)
 	{
-		parameters = MatrixFactory.createVector(variables+1);
+		super(variables);
 	}
 	
 	public LinearRegressionModel (double[] coefficients)
 	{
-		parameters =  MatrixFactory.createVector(coefficients.length);
-		
-		for (int i=0; i<coefficients.length; i++)
-			setParameter(i, coefficients[i]);
+		super(coefficients);
 	}
 	
-	// Model parameters
-	
-	public int parameters ()
-	{
-		return parameters.size();
-	}
-	
-	public double getParameter (int i)
-	{
-		return parameters.get(i);
-	}
-	
-	public void setParameter (int i, double value)
-	{
-		parameters.set(i,value);
-	}
-
-	public void setParameters (Vector parameters)
-	{
-		this.parameters = parameters;
-	}
-	
-	public void setParameters (double values[])
-	{
-		for (int i=0; i<values.length; i++)
-			setParameter(i, values[i]);
-	}
-	
-
-	
-	// Measures
-	
-	public int n ()
-	{
-		return n;
-	}
-	
-	public void setN (int n)
-	{
-		this.n = n;
-	}
-	
-	// Residual sum of squares (RSS), a.k.a. sum of squared residuals (SSR) or sum of squared errors of prediction (SSE).
-	
-	public double sse ()
-	{
-		return sse;
-	}
-	
-	public void setSSE (double sse)
-	{
-		this.sse = sse;
-	}
-	
-
-	// Total sum of squares = explained sum of squares + residual sum of squares
-	
-	public double sst ()
-	{
-		return sst;
-	}
-	
-	public void setSST (double sst)
-	{
-		this.sst = sst;
-	}
-	
-	// Explained sum of squares (ESS), a.k.a. model sum of squares or sum of squares due to regression (SSR)
-
-	public double ssr ()
-	{
-		return sst-sse;
-	}
-	
-	public double R2 ()
-	{
-		return 1 - sse/sst;
-	}
-	
-	public double adjustedR2 ()
-	{
-		return 1 - (n-1)*(1-R2())/(n-parameters());
-	}
-	
-	// Standard error of regression
-	// == root-mean-square-error (RMSE)
-	
-	public double rmse ()
-	{
-		return Math.sqrt(sse/(n-parameters()));
-	}
-	
-	public double explainedVariance ()
-	{
-		return ssr()/sst();
-	}
-	
-	private Vector standardErrors;
-	
-	public void setStandardErrors (Vector errors)
-	{
-		this.standardErrors = errors;
-	}
-	
-	public double standardError (int p)
-	{
-		if (standardErrors!=null)
-			return standardErrors.get(p);
-		else
-			return Double.NaN;
-	}
 	
 	// Statistics
 	
@@ -161,7 +39,7 @@ public class LinearRegressionModel
 	 */
 	public double FStatistic ()
 	{
-		return (ssr()/(parameters()-1)) / ((sst()-ssr())/(n-parameters()));
+		return (ssr()/(parameters()-1)) / ((sst()-ssr())/(n()-parameters()));
 	}
 	
 	/**
@@ -175,7 +53,7 @@ public class LinearRegressionModel
 	
 	public double pValueF ()
 	{
-		FDistribution fdist = new FDistribution( parameters()-1, n-parameters() );
+		FDistribution fdist = new FDistribution( parameters()-1, n()-parameters() );
 		
 		return 1.0 - fdist.cdf( FStatistic() );
 	}
@@ -205,34 +83,12 @@ public class LinearRegressionModel
 	public double pValue (int p)
 	{
 		double t = tStatistic(p);
-		StudentTDistribution tdist = new StudentTDistribution(n-parameters());
+		StudentTDistribution tdist = new StudentTDistribution(n()-parameters());
 		
 		return 2*Math.min( tdist.cdf(t), 1.0-tdist.cdf(t) );
 	}
 	
 	 
-	// Durbin–Watson statistic
-	
-	private double dw;
-	
-	protected void setDW (double dw)
-	{
-		this.dw = dw;
-	}
-	
-	/**
-	 * The Durbin–Watson statistic is a test statistic used to detect the presence of autocorrelation
-	 * (a relationship between values separated from each other by a given time lag) in the residuals 
-	 * (prediction errors) from a regression analysis.
-	 * 
-	 * @return Durbin-Watson statistic
-	 */
-	
-	public double DurbinWatsonStatistic ()
-	{
-		return dw;
-	}
-	
 	// Model likelihood
 	
 	/**
@@ -244,7 +100,7 @@ public class LinearRegressionModel
 	 */
 	public double logLikelihood ()
 	{
-		return - n/2.0 * ( Math.log(2*Math.PI/n) + Math.log(sse) + 1); 
+		return - n()/2.0 * ( Math.log(2*Math.PI/n()) + Math.log(sse()) + 1); 
 	}
 
 	
@@ -258,7 +114,7 @@ public class LinearRegressionModel
 	{
 		int k = parameters();
 		
-		return (2*k - 2*logLikelihood())/n;
+		return (2*k - 2*logLikelihood())/n();
 	}
 
 	/**
@@ -271,7 +127,7 @@ public class LinearRegressionModel
 	{
 		double k = parameters();
 		
-		return AIC() + 2*k*(k+1)/(n-k-1);
+		return AIC() + 2*k*(k+1)/(n()-k-1);
 	}
 
 	/**
@@ -284,7 +140,7 @@ public class LinearRegressionModel
 	{
 		int k = parameters();
 		
-		return ( k * Math.log(n) - 2*logLikelihood() ) / n;
+		return ( k * Math.log(n()) - 2*logLikelihood() ) / n();
 	}
 	
 	// Prediction

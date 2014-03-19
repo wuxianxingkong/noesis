@@ -7,7 +7,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses( { GradientDescentLinearRegressionTest.class,
 	                   LeastSquaresLinearRegressionTest.class,
 	                   GradientDescentLogisticRegressionTest.class,
-	                   NewtonMethodLogisticRegressionTest.class})
+	                   NewtonMethodLogisticRegressionTest.class,
+	                   RegularizedLinearRegressionTest.class})
 public class AllTests {
 
 }

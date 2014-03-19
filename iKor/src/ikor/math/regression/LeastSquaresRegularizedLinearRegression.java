@@ -1,8 +1,8 @@
 package ikor.math.regression;
 
-// Title:       Ordinary least squares linear regression
+// Title:       Regularized linear regression
 // Version:     2.0
-// Copyright:   1998-2014
+// Copyright:   2012-2014
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
@@ -11,22 +11,36 @@ import ikor.math.MatrixFactory;
 import ikor.math.Vector;
 
 /**
- * Ordinary least squares linear regression. Parameter estimation using the normal equation, i.e. (Xt*X)^(-1)*Xt*Yt.
+ * Regularized linear regression.
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public class LeastSquaresLinearRegression extends Regression
+public class LeastSquaresRegularizedLinearRegression extends Regression
 {
+	private double lambda;
+	
 	// Constructors
 	
-	public LeastSquaresLinearRegression (Vector[] x, Vector y)
+	public LeastSquaresRegularizedLinearRegression (Vector[] x, Vector y)
 	{
 		super(x,y);
 	}
 
-	public LeastSquaresLinearRegression (double[][] x, double[] y)
+	public LeastSquaresRegularizedLinearRegression (double[][] x, double[] y)
 	{
 		super(x,y);
+	}
+	
+	// Regularization factor
+	
+	public double getRegularizationFactor ()
+	{
+		return lambda;
+	}
+	
+	public void setRegularizationFactor (double lambda)
+	{
+		this.lambda = lambda;
 	}
 	
 	// Task interface
@@ -40,8 +54,9 @@ public class LeastSquaresLinearRegression extends Regression
 		Matrix Y = getY();				 		// 1 x m
 		Matrix Xt;
 		Matrix Yt;
-		Matrix XtXi;
+		Matrix XtXri;
 		Matrix result;
+		Matrix regularization = MatrixFactory.create(p,p);
 		
 		// Design matrix
 		
@@ -49,13 +64,16 @@ public class LeastSquaresLinearRegression extends Regression
 			for (int j=0; j<p; j++)
 				X.set(i, j, getX(j,i));
 		
+		for (int i=1; i<p;i++)
+			regularization.set(i,i, lambda);
+		
 		Xt = X.transpose(); // p x m
 		Yt = Y.transpose(); // m x 1
 		
 		// Normal equation
 		
-		XtXi = Xt.multiply(X).inverse();
-		result = XtXi.multiply(Xt).multiply(Yt);
+		XtXri = Xt.multiply(X).add(regularization).inverse();
+		result = XtXri.multiply(Xt).multiply(Yt);
 		
 		// Linear regression model
 		
@@ -66,24 +84,6 @@ public class LeastSquaresLinearRegression extends Regression
 		
 		fit(model);
 		
-		estimateStandardErrors(model, XtXi);
-		
 		return model;
-	}
-
-	// Standard errors
-	
-	private void estimateStandardErrors (LinearRegressionModel model, Matrix XtXi)
-	{
-		int    p = variables() + 1;
-		int    m = instances();
-		
-		double sigma2 = getSSE(model)/(m-p);
-		Vector parameterErrors = XtXi.getDiagonal();
-		
-		for (int i=0; i<p; i++)
-			parameterErrors.set(i, Math.sqrt(sigma2*parameterErrors.get(i)) );
-
-		model.setStandardErrors(parameterErrors);
 	}
 }

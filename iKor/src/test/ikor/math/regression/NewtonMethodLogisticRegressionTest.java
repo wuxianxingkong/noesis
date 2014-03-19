@@ -20,9 +20,9 @@ public class NewtonMethodLogisticRegressionTest extends LogisticRegressionTest
 	{
 		NewtonMethodLogisticRegression reg = new NewtonMethodLogisticRegression (x,y);
 
-		reg.setErrorMargin(1e-10);  
 		reg.setLearningRate(1.0);
-		reg.setIterations(100);
+		reg.setMaxIterations(100);
+		reg.setMinCostImprovement(1e-10);  
 			
 		return (LogisticRegressionModel) reg.getResult();		
 	}	

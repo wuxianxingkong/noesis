@@ -17,11 +17,11 @@ public abstract class GradientDescentRegression extends Regression
 {
 	public static final double DEFAULT_LEARNING_RATE = 0.05;
 	public static final int DEFAULT_MAX_ITERATIONS = 1000;
-	public static final double DEFAULT_ERROR_MARGIN = 1e-9;
+	public static final double DEFAULT_MIN_COST_IMPROVEMENT = 1e-9;
 	
 	private double   alpha = DEFAULT_LEARNING_RATE;
-	private int      iterations = DEFAULT_MAX_ITERATIONS;
-	private double   errorMargin = DEFAULT_ERROR_MARGIN;
+	private int      maxIterations = DEFAULT_MAX_ITERATIONS;
+	private double   minCostImprovement = DEFAULT_MIN_COST_IMPROVEMENT;
 	
 	private RegressionModel model;
 	
@@ -62,24 +62,24 @@ public abstract class GradientDescentRegression extends Regression
 		return alpha;
 	}
 	
-	public void setIterations (int iterations)
+	public void setMaxIterations (int iterations)
 	{
-		this.iterations = iterations;
+		this.maxIterations = iterations;
 	}
 
-	public double getIterations ()
+	public double getMaxIterations ()
 	{
-		return iterations;
+		return maxIterations;
 	}
 
-	public void setErrorMargin (double error)
+	public void setMinCostImprovement (double error)
 	{
-		this.errorMargin = error;
+		this.minCostImprovement = error;
 	}
 
-	public double getErrorMargin ()
+	public double getMinCostImprovement ()
 	{
-		return errorMargin;
+		return minCostImprovement;
 	}
 	
 	public double[] getJ ()
@@ -91,7 +91,7 @@ public abstract class GradientDescentRegression extends Regression
 	
 	public boolean hasConverged (int iteration)
 	{
-		return (iteration>1) && (Math.abs(J[iteration-1]-J[iteration-2])<errorMargin);
+		return (iteration>1) && (Math.abs(J[iteration-1]-J[iteration-2])<minCostImprovement);
 	}
 	
 	// Cost function
@@ -123,9 +123,9 @@ public abstract class GradientDescentRegression extends Regression
 	{
 		model = createModel();
 		
-		J = new double[iterations];
+		J = new double[maxIterations];
 		
-		for (int i=0; (i<iterations) && !hasConverged(i); i++) {
+		for (int i=0; (i<maxIterations) && !hasConverged(i); i++) {
 			updateParameters();
 			J[i] = cost();
 		}

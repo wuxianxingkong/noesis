@@ -20,11 +20,24 @@ import ikor.math.Vector;
 
 public class NewtonMethodLogisticRegression extends GradientDescentLogisticRegression
 {
+	public final static double DEFAULT_STEP_SIZE = 1.0;
+	
+	// Constructors
 
 	public NewtonMethodLogisticRegression (double[][] x, double[] y) 
 	{
 		super(x, y);
+		
+		setLearningRate(DEFAULT_STEP_SIZE);
 	}
+	
+
+	public NewtonMethodLogisticRegression (Vector[] x, Vector y)
+	{
+		super(x,y);
+		
+		setLearningRate(DEFAULT_STEP_SIZE);		
+	}	
 	
 	// Newton's method iteration: x(n+1) = x(n) - gamma * inv(H(f(x))) * grad(f(x))
 	

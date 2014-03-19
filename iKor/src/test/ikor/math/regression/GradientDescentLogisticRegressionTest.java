@@ -21,9 +21,9 @@ public class GradientDescentLogisticRegressionTest extends LogisticRegressionTes
 	{
 		GradientDescentLogisticRegression reg = new GradientDescentLogisticRegression (x,y);
 
-		reg.setErrorMargin(1e-12);  
 		reg.setLearningRate(0.5);   
-		reg.setIterations(10000);   
+		reg.setMaxIterations(10000);   
+		reg.setMinCostImprovement(1e-12);  
 			
 		return (LogisticRegressionModel) reg.getResult();		
 	}	

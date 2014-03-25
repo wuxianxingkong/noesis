@@ -18,7 +18,7 @@ public class CompleteNetwork<V> extends Network<V, Object>
 	}
 
 	@Override
-	public int size() 
+	public int nodes() 
 	{
 		return nodes.size();
 	}
@@ -78,12 +78,7 @@ public class CompleteNetwork<V> extends Network<V, Object>
 		return null;
 	}
 
-	@Override
-	public Object get(V source, V destination) 
-	{
-		// Nothing to return...
-		return null;
-	}
+
 
 	@Override
 	public boolean contains(V object) 
@@ -114,19 +109,6 @@ public class CompleteNetwork<V> extends Network<V, Object>
 		return size()-1;
 	}
 
-	private int[] links(int node) 
-	{
-		int n = size();
-		int links[] = new int[n-1];
-		
-		for (int i=0; i<node; i++)
-			links[i] = i;
-		
-		for (int i=node+1; i<n; i++)
-			links[i-1] = i;
-		
-		return links;
-	}
 
 	public int link (int node, int index) 
 	{
@@ -141,12 +123,7 @@ public class CompleteNetwork<V> extends Network<V, Object>
 	{
 		return link(node,index);
 	}
-	
-	@Override
-	public int[] outLinks(int node) 
-	{
-		return links(node);
-	}
+
 
 	@Override
 	public int inLink (int node, int index) 
@@ -154,11 +131,6 @@ public class CompleteNetwork<V> extends Network<V, Object>
 		return link(node,index);
 	}
 
-	@Override
-	public int[] inLinks(int node) 
-	{
-		return links(node);
-	}
 
 
 	@Override

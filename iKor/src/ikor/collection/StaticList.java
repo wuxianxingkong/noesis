@@ -64,7 +64,7 @@ public class StaticList<T> implements ReadOnlyList<T>
 		return new ArrayIterator<T>();
 	}
 
-	public class ArrayIterator<X> implements Iterator<X> {
+	public class ArrayIterator<X> extends CollectionIterator<X> {
 
 		private int current = 0;
 		
@@ -76,11 +76,6 @@ public class StaticList<T> implements ReadOnlyList<T>
 		@Override
 		public X next() {
 			return (X) items[current++];
-		}
-
-		@Override
-		public void remove() {
-			throw new UnsupportedOperationException("An array cannot have elements removed");
 		}
 	}
 

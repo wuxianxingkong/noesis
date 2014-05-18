@@ -171,7 +171,7 @@ public class IndexedPriorityQueue<T> implements PriorityQueue<T>
 		return new HeapIterator(); 
 	}
 
-    private class HeapIterator implements Iterator<T> 
+    private class HeapIterator extends CollectionIterator<T> 
     {
         // create a new pq
         private IndexedPriorityQueue<T> copy;
@@ -189,11 +189,6 @@ public class IndexedPriorityQueue<T> implements PriorityQueue<T>
         public boolean hasNext()  
         {
         	return (copy.size()>0);                     
-        }
-        
-        public void remove()      
-        {
-        	throw new UnsupportedOperationException();  
         }
 
         public T next() 

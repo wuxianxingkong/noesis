@@ -6,7 +6,6 @@ package ikor.collection;
 // Author:      Fernando Berzal Galiano
 // E-mail:      berzal@acm.org
 
-import java.util.Iterator;
 
 /**
  * List iterator
@@ -15,7 +14,7 @@ import java.util.Iterator;
  *
  * @param <T> List item type
  */
-public class ListIterator<T> implements Iterator<T> 
+public class ListIterator<T> extends CollectionIterator<T> 
 {
 	ReadOnlyList<T> list;
 	int     index;
@@ -34,21 +33,17 @@ public class ListIterator<T> implements Iterator<T>
 	}
 
 	@Override
-	public boolean hasNext() {
+	public boolean hasNext() 
+	{
 		return (index<=last);
 	}
 
 	@Override
-	public T next() {
-		
+	public T next() 
+	{	
 		if (index<=last)
 			return (T) list.get(index++);
 		else
 			return null;
-	}
-
-	@Override
-	public void remove() {
-		throw new UnsupportedOperationException("An subsequence cannot have elements removed");
 	}
 }

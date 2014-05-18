@@ -6,7 +6,7 @@ package ikor.collection.graph;
 //Author:      Fernando Berzal
 //E-mail:      berzal@acm.org
 
-import java.util.Iterator;
+import ikor.collection.CollectionIterator;
 
 /**
  * Graph node iterator.
@@ -14,7 +14,7 @@ import java.util.Iterator;
  * @author Fernando Berzal
  */
 
-public class GraphLinkIterator<E> implements Iterator<E> 
+public class GraphLinkIterator<E> extends CollectionIterator<E> 
 {
 	ReadOnlyGraph<?,E> graph;
 	int        nodeIndex, linkIndex;
@@ -71,8 +71,4 @@ public class GraphLinkIterator<E> implements Iterator<E>
 		return result;
 	}
 
-	@Override
-	public void remove() {
-		throw new UnsupportedOperationException("Node removal unavailable from graph iterator.");
-	}
 }

@@ -131,7 +131,7 @@ public class DynamicPriorityQueue<T> implements PriorityQueue<T>
 		return new PriorityQueueIterator(); 
 	}
 
-    private class PriorityQueueIterator implements Iterator<T> 
+    private class PriorityQueueIterator extends CollectionIterator<T> 
     {
         private java.util.PriorityQueue<T> copy;
 
@@ -146,11 +146,6 @@ public class DynamicPriorityQueue<T> implements PriorityQueue<T>
         public boolean hasNext()  
         {
         	return (copy.size()>0);                     
-        }
-        
-        public void remove()      
-        {
-        	throw new UnsupportedOperationException();  
         }
 
         public T next() 

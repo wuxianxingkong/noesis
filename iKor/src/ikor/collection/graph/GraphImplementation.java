@@ -58,6 +58,14 @@ public class GraphImplementation<V,E>
     {
 		return nodes.get(nodeIndex).getContent();
 	}
+	
+	@Override 
+	public void set (int nodeIndex, V nodeValue)
+	{
+		index.remove(get(nodeIndex));
+		index.set(nodeValue, nodeIndex);
+		nodes.get(nodeIndex).setContent(nodeValue);
+	}
 
 	@Override
 	public int index (V node)
@@ -240,6 +248,7 @@ public class GraphImplementation<V,E>
 		return pos;
 	}
 
+	
 
 	// Add edge/arc
 
@@ -255,16 +264,30 @@ public class GraphImplementation<V,E>
 		if ( (sourceIndex>=0) && (sourceIndex<size())
 		   && (destinationIndex>=0) && (destinationIndex<size()) ) {
 		
-			GraphNodeImplementation<V> source = nodes.get(sourceIndex);
-			GraphNodeImplementation<V> destination = nodes.get(destinationIndex);
-			GraphLink<E>   link = new GraphLink<E>( source, destination, content);
+			GraphLink<E> link = getLink ( getNode(sourceIndex), getNode(destinationIndex) );
+			
+			if (link==null) {
+			
+				// Add new link
+				
+				GraphNodeImplementation<V> source = nodes.get(sourceIndex);
+				GraphNodeImplementation<V> destination = nodes.get(destinationIndex);
+				
+				link = new GraphLink<E>( source, destination, content);
 
-			source.addOutLink (link);
-			destination.addInLink (link);
+				source.addOutLink (link);
+				destination.addInLink (link);
 
-			if (!isDirected()) {
-				source.addInLink (link);
-				destination.addOutLink (link);
+				if (!isDirected()) {
+					source.addInLink (link);
+					destination.addOutLink (link);
+				}
+				
+			} else {
+				
+				// Update existing link
+				
+				link.setContent(content);
 			}
 		
 			return true;

@@ -20,6 +20,8 @@ public interface Graph<V,E> extends ReadOnlyGraph<V,E>, Collection<V>
 
 	public int add (V node);
 
+	public void set(int node, V value);
+
 	public boolean remove (V node);
 	public boolean remove (int nodeIndex);
 

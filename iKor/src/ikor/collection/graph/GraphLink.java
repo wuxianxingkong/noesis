@@ -54,7 +54,7 @@ public class GraphLink<E> implements GraphElement<E>
 		return content;
 	}
 	
-	private void setContent (E content) 
+	public void setContent (E content) 
 	{
 		this.content = content;
 	}

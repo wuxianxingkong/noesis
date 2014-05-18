@@ -70,6 +70,11 @@ public class CompleteNetwork<V> extends Network<V, Object>
 	{
 		return nodes.get(index);
 	}
+	
+	public void set (int index, V value)
+	{
+		throw new UnsupportedOperationException("Unsupported operation.");		
+	}
 
 	@Override
 	public Object get (int source, int destination) 

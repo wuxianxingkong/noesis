@@ -7,7 +7,6 @@ package ikor.collection;
 // E-mail:      berzal@acm.org
 
 import java.util.Iterator;
-import java.util.function.Consumer;
 
 /**
  * Base iterator for collections
@@ -26,15 +25,6 @@ public abstract class CollectionIterator<T> implements Iterator<T>
 	public void remove() 
 	{
 		throw new UnsupportedOperationException("Unsupported operation in read-only iterators.");
-	}
-
-	// JDK8 support
-	
-	@Override
-	public void forEachRemaining (Consumer<? super T> action) 
-	{
-	     while (hasNext())
-	         action.accept(next());
 	}
 
 }

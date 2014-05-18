@@ -79,7 +79,7 @@ public class NetworkStats {
 				throw new IOException("Unknown network file format.");
 			
 			reader.setType(noesis.ArrayNetwork.class);     // NDwww.net 5.2s
-			// reader.setType(noesis.GraphNetwork.class);  // NDwww.net 9.6s
+			//reader.setType(noesis.GraphNetwork.class);  // NDwww.net 9.6s
 			
 			Network net = reader.read();
 			
@@ -107,8 +107,8 @@ public class NetworkStats {
 			//saveInt("out/inDegrees.txt",  inDegrees);
 			
 			System.out.println("Degree distributions");
-			System.out.println("- Out-degrees: "+outDegrees);
-			System.out.println("- In-degrees:  "+inDegrees);
+			System.out.println("- Out-degrees: "+outDegrees.getResult());
+			System.out.println("- In-degrees:  "+inDegrees.getResult());
 			
 			if (net instanceof AttributeNetwork) {
 								
@@ -118,13 +118,13 @@ public class NetworkStats {
 				System.out.println("Node of maximum in-degree:");
 				printNode ( (AttributeNetwork) net, inDegrees.getResult().maxIndex());
 			}
-			
+						
 			// Betweenness 
 
 			Betweenness betweenness = new Betweenness(net);
 			betweenness.compute();
 			System.out.println("Betweenness");
-			System.out.println(betweenness);
+			System.out.println(betweenness.getResult());
 
 			if (net instanceof AttributeNetwork) {
 				System.out.println("Node of maximum betweenness:");

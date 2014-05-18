@@ -85,6 +85,17 @@ public class PajekNetworkReaderTest {
 			"1 5"		
 		};	
 
+
+	private String[] pajekNoVertices = new String[] {
+			"*Vertices 5",
+			"*Arcslist",
+			"1 2 4",
+			"2 3",
+			"3 1 4",
+			"4 5",
+			"*Edgeslist",
+			"1 5"		
+		};		
 	
 	private String networkString (String[] lines)
 	{
@@ -115,13 +126,14 @@ public class PajekNetworkReaderTest {
 	{
 		assertEquals(5, net.size());
 		
-		assertEquals(null, net.get(0));
-		assertEquals(null, net.get(1));
-		assertEquals(null, net.get(2));
-		assertEquals(null, net.get(3));
-		assertEquals(null, net.get(4));
+		assertEquals("1", net.get(0));
+		assertEquals("2", net.get(1));
+		assertEquals("3", net.get(2));
+		assertEquals("4", net.get(3));
+		assertEquals("5", net.get(4));
 	}
-		
+
+	
 	public void checkPajekLinks (Network<String,Decimal> net)
 	{		
 		assertEquals(8, net.links());
@@ -344,4 +356,33 @@ public class PajekNetworkReaderTest {
 	}
 	
 
+	@Test
+	public void testGraphNoVerticesPajek() throws IOException
+	{
+		StringReader sr = new StringReader( networkString(pajekNoVertices));
+		PajekNetworkReader reader = new PajekNetworkReader(sr);
+		
+		reader.setType(noesis.GraphNetwork.class);
+		
+		Network<String,Decimal> net = reader.read();
+		
+		checkPajekUnlabeledNodes(net);
+		checkPajekUnlabeledLinks(net);
+	}
+
+	
+	@Test
+	public void testArrayNoVerticesPajek() throws IOException
+	{
+		StringReader sr = new StringReader( networkString(pajekNoVertices));
+		PajekNetworkReader reader = new PajekNetworkReader(sr);
+		
+		reader.setType(noesis.ArrayNetwork.class);
+		
+		Network<String,Decimal> net = reader.read();
+		
+		checkPajekUnlabeledNodes(net);
+		checkPajekUnlabeledLinks(net);
+	}
+	
 }

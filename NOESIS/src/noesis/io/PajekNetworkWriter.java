@@ -37,7 +37,7 @@ public class PajekNetworkWriter implements NetworkWriter<String, Decimal>
 		for (int i=0; i<net.size(); i++) {
 			writer.write(""+(i+1));
 			
-			if (net.get(i)!=null) 
+			if ((net.get(i)!=null) &&!net.get(i).equals(""+(i+1))) 
 				writer.write(" \""+net.get(i)+"\"");
 			
 			writer.newLine();

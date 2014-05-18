@@ -74,7 +74,8 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 		throws IOException
 	{
 		int    vertices;
-		int    start,end;
+		int    start,end, node;
+		String label;
 		String line = currentLine();
 		
 		// *vertices <n> [<bimode>]
@@ -89,6 +90,11 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 			bimode = Integer.parseInt(tokenizer.nextToken());
 				
 		
+		// Create nodes
+		
+		for (int i=1; i<=vertices; i++)
+			net.add(""+i);
+		
 		// <n> ["<label>"]
 
 		line = readLine();
@@ -99,15 +105,14 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 			
 			if (start!=-1) {
 				end = line.indexOf('"', start+1);
-				net.add( line.substring(start+1, end) );
-			} else {
-				net.add( null ); // Unlabeled vertex
-			}
+				label = line.substring(start+1, end);
+				node = Integer.parseInt(line.substring(0,start-1))-startIndex;
+				
+				net.set(node,label);
+			} 
 			
 			line = readLine();
 		}
-		
-		net.setSize(vertices);
 	}
 	
 	/**

@@ -120,7 +120,14 @@ public class ArrayNetwork<V,E> extends Network<V, E>
 		else
 			return null;
 	}
-
+	
+	@Override
+	public final void set (int index, V value)
+	{
+		nodes.set(index,value);
+		hash.set(value,index);
+	}
+	
 	@Override
 	public final E get(int source, int destination) 
 	{

@@ -55,8 +55,25 @@ public class ViewerOpenAction extends Action
 				
 				AttributeNetwork net = read(filename);
 				
+				// Node id attribute
+				
+				Attribute<String> id = net.getNodeAttribute("id");
+				
+				if (id==null) {
+					
+					id = new Attribute<String>("id");
+					
+					net.addNodeAttribute(id);
+					
+					for (int i=0; i<net.size(); i++)
+						id.set(i, ""+(i+1));
+				}
+				
+				// (x,y) coordinates
+				
 				Attribute<Double> x = net.getNodeAttribute("x");
 				Attribute<Double> y = net.getNodeAttribute("y");
+				
 				
 				if ((x==null) || (y==null)){
 					

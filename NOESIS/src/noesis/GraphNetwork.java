@@ -106,6 +106,15 @@ public class GraphNetwork<V,E> extends Network<V,E>
 	}
 	
 	/* (non-Javadoc)
+	 * @see noesis.Network#set(int,V)
+	 */
+	@Override
+	public void set (int index, V value)
+	{
+		net.set(index,value);
+	}
+	
+	/* (non-Javadoc)
 	 * @see noesis.Network#get(int, int)
 	 */
 	@Override

@@ -171,6 +171,15 @@ public abstract class Network<V, E> implements Graph<V,E>
 	public abstract int add(V node);
 
 	/**
+	 * Set a given node
+	 * @param node Node index
+	 * @param value Node value
+	 */
+
+	@Override
+	public abstract void set (int node, V value);
+
+	/**
 	 * Remove a node from the network.
 	 * @throws UnsupportedOperationException when node removal is not allowed
 	 */

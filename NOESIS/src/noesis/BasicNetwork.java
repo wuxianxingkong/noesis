@@ -113,7 +113,8 @@ public class BasicNetwork extends Network<Integer,Integer>
 		if (  (source>=0) 
 		   && (source<size())
 		   && (destination>=0)
-		   && (destination<size()) ) {
+		   && (destination<size())
+		   && !contains(source,destination) ) {
 			
 			nlinks++;
 			outLinks[source] = extend(outLinks[source], destination);
@@ -136,6 +137,12 @@ public class BasicNetwork extends Network<Integer,Integer>
 	public Integer get(int index) 
 	{
 		return index;
+	}
+	
+	@Override
+	public void set (int index, Integer value)
+	{
+		throw new UnsupportedOperationException("Unsupported operation on basic networks");		
 	}
 	
 	

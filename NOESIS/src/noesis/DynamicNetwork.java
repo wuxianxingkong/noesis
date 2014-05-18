@@ -79,6 +79,12 @@ public class DynamicNetwork<V,E> extends Network<V,E>
 	{
 		return nodes.get( skip.get(index) );
 	}
+	
+	@Override
+	public void set(int index, V value)
+	{
+		nodes.set( skip.get(index), value);
+	}
 
 	@Override
 	public int index (V node) 

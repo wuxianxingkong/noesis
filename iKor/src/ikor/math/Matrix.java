@@ -140,13 +140,13 @@ public abstract class Matrix implements java.io.Serializable
 		@Override
 		public double get(int i) 
 		{
-			return get(row,i);
+			return Matrix.this.get(row,i);
 		}
 
 		@Override
 		public void set(int i, double value) 
 		{
-			set(row,i,value);
+			Matrix.this.set(row,i,value);
 		}		
 	}
 	
@@ -160,7 +160,7 @@ public abstract class Matrix implements java.io.Serializable
 	{
 		if (v.length==columns()) {
 			for (int j=0; j<v.length; j++) {
-				set (i, j, v[j]);
+				Matrix.this.set (i, j, v[j]);
 			}
 		}
 	}
@@ -174,7 +174,7 @@ public abstract class Matrix implements java.io.Serializable
 	public final void setRow (int i, double v)
 	{
 		for (int j=0; j<columns(); j++) {
-			set (i, j, v);
+			Matrix.this.set (i, j, v);
 		}
 	}
 
@@ -209,13 +209,13 @@ public abstract class Matrix implements java.io.Serializable
 		@Override
 		public double get(int i) 
 		{
-			return get(i,column);
+			return Matrix.this.get(i,column);
 		}
 
 		@Override
 		public void set(int i, double value) 
 		{
-			set(i,column,value);
+			Matrix.this.set(i,column,value);
 		}		
 	}
 
@@ -229,7 +229,7 @@ public abstract class Matrix implements java.io.Serializable
 	{
 		if (v.length==rows()) {
 			for (int i=0; i<v.length; i++) {
-				set (i, j, v[i]);
+				Matrix.this.set (i, j, v[i]);
 			}
 		}		
 	}
@@ -243,7 +243,7 @@ public abstract class Matrix implements java.io.Serializable
 	public final void setColumn (int j, double v)
 	{
 		for (int i=0; i<rows(); i++) {
-			set (i, j, v);
+			Matrix.this.set (i, j, v);
 		}
 	}
 
@@ -368,7 +368,7 @@ public abstract class Matrix implements java.io.Serializable
 					result.set(i,j, this.get(i,j)-other.get(i,j));
 		}
 
-		return this;
+		return result;
 	}
 
 

@@ -7,6 +7,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses( { FunctionsTest.class,
 					   MatrixTest.class,
 					   EigenvectorDecompositionTest.class,
+					   SingularValueDecompositionTest.class,
 					   VectorTest.class,
 					   VectorCovarianceTest.class,
 					   SparseVectorTest.class,

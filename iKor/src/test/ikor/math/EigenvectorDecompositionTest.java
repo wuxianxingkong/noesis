@@ -83,9 +83,9 @@ public class EigenvectorDecompositionTest
 		//   -0.5870    0.2281   -0.5816
 		//   -0.7663   -0.0198    0.7912
 		
-		checkEigenvector ( new double[]{  0.2634,  0.5925,  0.7735}, eig.getEigenvector(1) ); // vs. 0.2610 0.5870 0.7663 (x -1.009) !!!
+		checkEigenvector ( new double[]{  0.2610,  0.5870,  0.7663}, eig.getEigenvector(1) ); // x -1
 		checkEigenvector ( new double[]{ -0.9734,  0.2281, -0.0198}, eig.getEigenvector(0) ); 
-		checkEigenvector ( new double[]{  0.2093, -0.6440,  0.8761}, eig.getEigenvector(2) ); // vs. 0.1891 -0.5816 0.7912 (x 1.107) !!!	
+		checkEigenvector ( new double[]{  0.1891, -0.5816,  0.7912}, eig.getEigenvector(2) );
 	}	
 	
 	@Test
@@ -111,7 +111,7 @@ public class EigenvectorDecompositionTest
         //      0         0    1.0000
 		
 		checkEigenvector ( new double[]{ 1.0000, 0.0000, 0.0000}, eig.getEigenvector(0) );
-		checkEigenvector ( new double[]{ 2.0000, 1.0000, 0.0000}, eig.getEigenvector(1) ); // vs.  0.8944 0.4472 0 (x 2.2361) !!!
+		checkEigenvector ( new double[]{ 0.8944, 0.4472, 0.0000}, eig.getEigenvector(1) ); // (2,1,0)
 		checkEigenvector ( new double[]{ 0.0000, 0.0000, 1.0000}, eig.getEigenvector(2) );		
 	}
 	

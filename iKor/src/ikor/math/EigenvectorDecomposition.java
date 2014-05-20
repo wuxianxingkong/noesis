@@ -15,10 +15,11 @@ package ikor.math;
  *     columns of V represent the eigenvectors in the sense that A*V = V*D,
  *     i.e. A.multiply(V) equals V.multiply(D).  The matrix V may be badly
  *     conditioned, or even singular, so the validity of the equation
- *     A = V*D*inverse(V) depends upon the ratio of largest to smallest singular value.
+ *     A = V*D*inverse(V) depends upon the ratio of largest to smallest singular value
+ *     @see SingularValueDecomposition#cond()
  */
 
-public class EigenvectorDecomposition 
+public class EigenvectorDecomposition extends MatrixDecomposition
 {
 	/**
 	 * Eigenvector square matrix
@@ -73,34 +74,31 @@ public class EigenvectorDecomposition
 
 		if (symmetric) {
 			
-			for (int i = 0; i < n; i++) {
-				for (int j = 0; j < n; j++) {
-					V[i][j] = matrix.get(i,j);
-				}
-			}
+			V = matrix.getArray();
 
-			// Tridiagonalize.
+			// Tridiagonalize
 			tred2();
 
-			// Diagonalize.
+			// Diagonalize
 			tql2();
+
+			// Sort eigenvalues/eigenvectors
+			sort();
 
 		} else {
 			
-			H = new double[n][n];
-			ort = new double[n];
+			H = matrix.getArray();
 
-			for (int j = 0; j < n; j++) {
-				for (int i = 0; i < n; i++) {
-					H[i][j] = matrix.get(i,j);
-				}
-			}
+			ort = new double[n];
 
 			// Reduce to Hessenberg form.
 			orthes();
 
 			// Reduce Hessenberg to real Schur form.
 			hqr2();
+			
+			// Normalize eigenvectors
+			normalize();
 		}
 		
 		// Eigenvector matrix
@@ -412,9 +410,12 @@ public class EigenvectorDecomposition
 			d[l] = d[l] + f;
 			e[l] = 0.0;
 		}
+	}
+	
+	// Sort eigenvalues and corresponding vectors.
 
-		// Sort eigenvalues and corresponding vectors.
-
+	private void sort ()
+	{
 		for (int i = 0; i < n-1; i++) {
 			int k = i;
 			double p = d[i];
@@ -432,6 +433,29 @@ public class EigenvectorDecomposition
 					V[j][i] = V[j][k];
 					V[j][k] = p;
 				}
+			}
+		}
+	}
+	
+	// Normalize eigenvectors
+	
+	private void normalize ()
+	{
+		double magnitude;
+		
+		for (int i=0; i<n; i++) {
+			
+			magnitude = 0;
+			
+			for (int j=0; j<n; j++)
+				magnitude += V[j][i]*V[j][i];
+			
+			magnitude = Math.sqrt(magnitude);
+			
+			if (magnitude>0) {
+				
+				for (int j=0; j<n; j++)
+					V[j][i] /= magnitude;
 			}
 		}
 	}
@@ -979,22 +1003,6 @@ public class EigenvectorDecomposition
 	// Utilities
 	// ---------
 
-	// sqrt(a^2 + b^2) without under/overflow.
-
-	private double hypot(double a, double b) {
-		double r;
-		if (Math.abs(a) > Math.abs(b)) {
-			r = b/a;
-			r = Math.abs(a)*Math.sqrt(1+r*r);
-		} else if (b != 0) {
-			r = a/b;
-			r = Math.abs(b)*Math.sqrt(1+r*r);
-		} else {
-			r = 0.0;
-		}
-		return r;
-	}
-	
 	// Complex scalar division.
 
 	private transient double cdivr, cdivi;

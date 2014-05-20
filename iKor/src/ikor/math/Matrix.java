@@ -68,11 +68,30 @@ public abstract class Matrix implements java.io.Serializable
 	 */
 	public abstract void set(int i, int j, double v);
 	
+	
+	/**
+	 * Get matrix coefficient array
+	 * 
+	 * @return Bidimensional array containing the matrix coefficients.
+	 */
+	
+	public double[][] getArray ()
+	{
+		int m = rows();
+		int n = columns();
+		double[][] array = new double[m][n];
+		
+		for (int i=0; i<m; i++)
+			for (int j=0; j<n; j++)
+				array[i][j] = get(i, j);
+		
+		return array;
+	}
 
 	/**
 	 * Set matrix coefficients
 	 * 
-	 * @param v Values
+	 * @param v Coefficient values
 	 */
 	public void set (double v[][])
 	{

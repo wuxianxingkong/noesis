@@ -18,7 +18,7 @@ package ikor.math;
  *    The LU decomposition with pivoting always exists, even if the matrix is singular.
  * <p>   
  *    The primary use of the LU decomposition is in the solution of square
- *    systems of simultaneous linear equations, @see {@link ikor.math.equation.SystemSolver}
+ *    systems of simultaneous linear equations, {@link ikor.math.equation.SystemSolver}
  *
  * ref. http://en.wikipedia.org/wiki/LU_decomposition
  *
@@ -165,8 +165,8 @@ public class LUDecomposition extends MatrixDecomposition
 	}
 
 	/**
-	 * Unit lower triangular matrix L
-	 * @return L
+	 * Upper triangular matrix U
+	 * @return U
 	 */
 	public Matrix getU ()
 	{
@@ -200,7 +200,6 @@ public class LUDecomposition extends MatrixDecomposition
 	{
 		return (p==-1);
 	}
-	
 	
 	
 	/**

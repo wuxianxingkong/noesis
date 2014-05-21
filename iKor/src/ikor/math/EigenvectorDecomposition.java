@@ -54,7 +54,7 @@ public class EigenvectorDecomposition extends MatrixDecomposition
 
 	public EigenvectorDecomposition (Matrix matrix) 
 	{
-		if (matrix.rows()!=matrix.columns())
+		if (!matrix.isSquare())
 			throw new UnsupportedOperationException("Eigenvector/eigenvalue decomposition only valid for square matrices.");
 				
 		n = matrix.rows();
@@ -64,15 +64,7 @@ public class EigenvectorDecomposition extends MatrixDecomposition
 		
 		// Check for symmetry, then construct the eigenvalue decomposition
 
-		boolean symmetric = true;
-		
-		for (int j=0; (j<n) & symmetric; j++) {
-			for (int i=j+1; (i<n) & symmetric; i++) {
-				symmetric = (matrix.get(i,j) == matrix.get(j,i) );
-			}
-		}
-
-		if (symmetric) {
+		if (matrix.isSymmetric()) {
 			
 			V = matrix.getArray();
 

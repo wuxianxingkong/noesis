@@ -11,7 +11,7 @@ import org.junit.Test;
 
 /**
  * Eigenvector decomposition tests 
- * (numerical results from MATLAB, http://www.mathworks.es/es/help/matlab/ref/eig.html)
+ * (numerical results from MATLAB, http://www.mathworks.es/es/help/matlab/ref/svd.html)
  * 
  * @author Fernando Berzal (berzal@acm.org) *
  */

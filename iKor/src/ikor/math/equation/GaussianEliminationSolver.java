@@ -6,8 +6,8 @@ package ikor.math.equation;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
+import ikor.math.LUDecomposition;
 import ikor.math.Matrix;
-import ikor.math.MatrixUtilities;
 import ikor.math.MatrixFactory;
 import ikor.math.Vector;
 
@@ -32,22 +32,17 @@ public class GaussianEliminationSolver implements SystemSolver
 	@Override
 	public Vector solve (Matrix A, Vector B) 
 	{
-		Matrix A2 = MatrixFactory.create(A);       // Copy original matrix into A2
-		Vector B2 = MatrixFactory.createVector(B); // Copy original vector into B2
-		Vector X = MatrixFactory.createVector(A.rows()).transpose();
-		Vector P = MatrixFactory.createVector(A.rows());
+		LUDecomposition lu;
+		Vector Bcopy = MatrixFactory.createVector(B); // Copy original vector into B2
+		Vector X  = MatrixFactory.createVector(A.rows()).transpose();
 
 		// 1. LU factorization
 		
-		MatrixUtilities.LU(A2, P);
+		lu = new LUDecomposition(A);
 		
 		// 2. Back substitution
 		
-		MatrixUtilities.backwardsSubstitution(A2, B2, X, P, 0);
-
-		A2 = null;
-		B2 = null;
-		P  = null;
+		lu.backwardsSubstitution(Bcopy, X, 0);
 
 		return X;
 	}

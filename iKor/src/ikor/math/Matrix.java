@@ -576,28 +576,23 @@ public abstract class Matrix implements java.io.Serializable
 	{
 		int i;
 		int n = rows();
-		int p;
-		Matrix A = MatrixFactory.create(this);
-		Vector B = MatrixFactory.createVector(n);
-		Vector P = MatrixFactory.createVector(n);
+
+		LUDecomposition lu = new LUDecomposition(this);
+
+		Vector B = null;
 		Matrix C = null;
+				
+		if (!lu.isSingular()) {
 
-		p = MatrixUtilities.LU(A, P);  // LU decomposition
-
-		if (p != -1) {
-
+			B = MatrixFactory.createVector(n);
 			C = MatrixFactory.create(n, n);
 
 			for (i = 0; i < n; i++) {
 				B.zero();
 				B.set(i,1);
-				MatrixUtilities.backwardsSubstitution(A, B, C, P, i);
+				lu.backwardsSubstitution(B, C, i);
 			}
 		}
-
-		A = null;
-		B = null;
-		P = null;
 
 		return C;
 	}
@@ -623,13 +618,14 @@ public abstract class Matrix implements java.io.Serializable
 		int i, j, n;
 		double result = 0.0;
 
+		LUDecomposition lu = new LUDecomposition(this);
+		
 		n = rows();
-		A = MatrixFactory.create(this);
-		P = MatrixFactory.createVector(n);
-
-		i = MatrixUtilities.LU(A, P); // LU decomposition
-
-		if (i!=-1) {  // non-singular matrix
+		A = lu.getLU();
+		P = lu.getPermutation();
+		i = lu.getRowExchangeCount();
+		
+		if ( !lu.isSingular() ) {  // non-singular matrix
 			
 			// |A| = |L||U||P|
 			// |L| = 1,
@@ -687,6 +683,37 @@ public abstract class Matrix implements java.io.Serializable
 		return sign[(i + j) % 2] * minor(i, j);
 	}
 
+
+	// Matrix properties
+	
+	/**
+	 * Square matrix?
+	 * 
+	 * @return true when the matrix is square, false otherwise.
+	 */
+	public boolean isSquare ()
+	{
+		return (rows() == columns());
+	}
+	
+	/**
+	 * Symmetric matrix?
+	 * 
+	 * @return true when the matrix is symmetric, false otherwise.
+	 */
+	public boolean isSymmetric ()
+	{
+		boolean symmetric = isSquare();
+		int     n = rows(); // == columns() for square matrices
+		
+		for (int j=0; (j<n) & symmetric; j++) {
+			for (int i=j+1; (i<n) & symmetric; i++) {
+				symmetric = (get(i,j) == get(j,i) );
+			}
+		}
+
+		return symmetric;
+	}
 	
 	// Matrix equality
 	

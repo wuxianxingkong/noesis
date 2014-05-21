@@ -6,6 +6,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses( { FunctionsTest.class,
 					   MatrixTest.class,
+					   LUDecompositionTest.class,
 					   EigenvectorDecompositionTest.class,
 					   SingularValueDecompositionTest.class,
 					   VectorTest.class,

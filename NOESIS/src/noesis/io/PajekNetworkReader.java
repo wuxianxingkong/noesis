@@ -33,7 +33,11 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 		
 		do {
 			line = input.readLine();
-		} while ((line!=null) && ((line.trim().length()==0) || line.startsWith("%")));
+			
+			if (line!=null)
+				line = line.trim();
+			
+		} while ((line!=null) && ((line.length()==0) || line.startsWith("%")));
 		
 		currentLine = line;
 		

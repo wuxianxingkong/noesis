@@ -62,12 +62,12 @@ public class MatrixTest
 	@Test
 	public void testRowVectors ()
 	{
-		for (int j=0; j<original.rows(); j++) {
+		for (int i=0; i<original.rows(); i++) {
 			
-			assertEquals ( original.columns(), original.getRow(j).size() );
+			assertEquals ( original.columns(), original.getRow(i).size() );
 		
-			for (int i=0; i<original.columns(); i++)
-				assertEquals ( data[j][i], original.getRow(j).get(i), EPSILON); 
+			for (int j=0; j<original.columns(); j++)
+				assertEquals ( original.get(i,j), original.getRow(i).get(j), EPSILON); 
 		}
 		
 	}
@@ -77,10 +77,10 @@ public class MatrixTest
 	{		
 		for (int j=0; j<original.columns(); j++) {
 			
-			assertEquals ( original.columns(), original.getColumn(j).size() );
+			assertEquals ( original.rows(), original.getColumn(j).size() );
 		
 			for (int i=0; i<original.rows(); i++)
-				assertEquals ( data[i][j], original.getColumn(j).get(i), EPSILON); 
+				assertEquals ( original.get(i,j), original.getColumn(j).get(i), EPSILON); 
 		}
 		
 	}

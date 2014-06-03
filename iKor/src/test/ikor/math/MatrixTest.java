@@ -60,6 +60,32 @@ public class MatrixTest
 	}
 	
 	@Test
+	public void testRowVectors ()
+	{
+		for (int j=0; j<original.rows(); j++) {
+			
+			assertEquals ( original.columns(), original.getRow(j).size() );
+		
+			for (int i=0; i<original.columns(); i++)
+				assertEquals ( data[j][i], original.getRow(j).get(i), EPSILON); 
+		}
+		
+	}
+
+	@Test
+	public void testColumnVectors ()
+	{		
+		for (int j=0; j<original.columns(); j++) {
+			
+			assertEquals ( original.columns(), original.getColumn(j).size() );
+		
+			for (int i=0; i<original.rows(); i++)
+				assertEquals ( data[i][j], original.getColumn(j).get(i), EPSILON); 
+		}
+		
+	}
+	
+	@Test
 	public void testEqualities ()
 	{
 		assertEquals(matrix, matrix);

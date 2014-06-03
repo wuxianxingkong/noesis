@@ -153,7 +153,7 @@ public abstract class Matrix implements java.io.Serializable
 		@Override
 		public int size() 
 		{
-			return columns();
+			return Matrix.this.columns();
 		}
 
 		@Override
@@ -222,7 +222,7 @@ public abstract class Matrix implements java.io.Serializable
 		@Override
 		public int size() 
 		{
-			return rows();
+			return Matrix.this.rows();
 		}
 
 		@Override

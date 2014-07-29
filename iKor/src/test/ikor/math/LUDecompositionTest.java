@@ -81,11 +81,6 @@ public class LUDecompositionTest
 		checkVector( new double[]{ 2, 0, 1}, lu.getPermutation());
 
 		checkMatrix( new double[][]{ 
-				{ 0.2000,  2.6000, 1.6000},
-				{ 0.4000,  0.0769, 9.0769},
-				{ 5.0000, 22.0000, 7.0000}}, lu.getLU());
-
-		checkMatrix( new double[][]{ 
 				{ 1.0000,  0.0000, 0.0000},
 				{ 0.2000,  1.0000, 0.0000},
 				{ 0.4000,  0.0769, 1.0000}}, lu.getL());
@@ -94,6 +89,11 @@ public class LUDecompositionTest
 				{ 5.0000, 22.0000, 7.0000},
 				{ 0.0000,  2.6000, 1.6000},
 				{ 0.0000,  0.0000, 9.0769}}, lu.getU());
+
+		checkMatrix( new double[][]{ 
+				{ 5.0000, 22.0000, 7.0000},
+				{ 0.2000,  2.6000, 1.6000},
+				{ 0.4000,  0.0769, 9.0769}}, lu.getLU());
 	}	
 	
 	@Test
@@ -178,11 +178,6 @@ public class LUDecompositionTest
 		checkVector( new double[]{ 1, 2, 0}, lu.getPermutation());
 
 		checkMatrix( new double[][]{ 
-				{ 0.3333, 0.7143, 2.5714},
-				{ 3.0000, 1.0000, 2.0000},
-				{ 0.6667, 2.3333,-0.3333}}, lu.getLU());
-
-		checkMatrix( new double[][]{ 
 				{ 1.0000, 0.0000, 0.0000},
 				{ 0.6667, 1.0000, 0.0000},
 				{ 0.3333, 0.7143, 1.0000}}, lu.getL());
@@ -191,5 +186,11 @@ public class LUDecompositionTest
 				{ 3.0000, 1.0000, 2.0000},
 				{ 0.0000, 2.3333,-0.3333},
 				{ 0.0000, 0.0000, 2.5714}}, lu.getU());
+
+		checkMatrix( new double[][]{ 
+				{ 3.0000, 1.0000, 2.0000},
+				{ 0.6667, 2.3333,-0.3333},
+				{ 0.3333, 0.7143, 2.5714}}, lu.getLU());
+
 	}	
 }

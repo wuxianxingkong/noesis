@@ -620,30 +620,15 @@ public abstract class Matrix implements java.io.Serializable
 	
 	public Matrix inverse()
 	{
-		int i;
-		int n = rows();
-
 		LUDecomposition lu = new LUDecomposition(this);
 
-		Vector B = null;
-		Matrix C = null;
-				
 		if (!lu.isSingular()) {
-
-			B = MatrixFactory.createVector(n);
-			C = MatrixFactory.create(n, n);
-
-			for (i = 0; i < n; i++) {
-				B.zero();
-				B.set(i,1);
-				lu.backwardsSubstitution(B, C, i);
-			}
+			return lu.inverse();
+		} else {
+			return null;
 		}
-
-		return C;
 	}
 
-	
 	
 	// Matrix determinant
 
@@ -659,37 +644,9 @@ public abstract class Matrix implements java.io.Serializable
 	
 	public double determinant() 
 	{
-		Matrix A;
-		Vector P;
-		int i, j, n;
-		double result = 0.0;
-
 		LUDecomposition lu = new LUDecomposition(this);
 		
-		n = rows();
-		A = lu.getLU();
-		P = lu.getPermutation();
-		i = lu.getRowExchangeCount();
-		
-		if ( !lu.isSingular() ) {  // non-singular matrix
-			
-			// |A| = |L||U||P|
-			// |L| = 1,
-			// |U| = multiplication of the diagonal
-			// |P| = +-1
-
-			result = 1.0;
-
-			for (j = 0; j < n; j++)
-				result *= A.get( (int)P.get(j), j);
-
-			result *= sign[i % 2];
-		}
-
-		A = null;
-		P = null;
-
-		return result;
+		return lu.determinant();
 	}
 
 	

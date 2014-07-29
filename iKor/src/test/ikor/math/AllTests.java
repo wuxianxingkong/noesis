@@ -15,6 +15,7 @@ import org.junit.runners.Suite;
 					   Vector2DTest.class,
 	                   Vector3DTest.class,
 	                   HistogramTest.class,
+	                   test.ikor.math.equation.AllTests.class,
 	                   test.ikor.math.optimization.AllTests.class,
 	                   test.ikor.math.regression.AllTests.class,
 	                   test.ikor.math.statistics.AllTests.class })

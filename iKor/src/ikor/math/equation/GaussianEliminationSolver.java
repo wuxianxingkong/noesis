@@ -8,7 +8,6 @@ package ikor.math.equation;
 
 import ikor.math.LUDecomposition;
 import ikor.math.Matrix;
-import ikor.math.MatrixFactory;
 import ikor.math.Vector;
 
 /**
@@ -33,18 +32,34 @@ public class GaussianEliminationSolver implements SystemSolver
 	public Vector solve (Matrix A, Vector B) 
 	{
 		LUDecomposition lu;
-		Vector Bcopy = MatrixFactory.createVector(B); // Copy original vector into B2
-		Vector X  = MatrixFactory.createVector(A.rows()).transpose();
 
 		// 1. LU factorization
 		
 		lu = new LUDecomposition(A);
 		
-		// 2. Back substitution
-		
-		lu.backwardsSubstitution(Bcopy, X, 0);
+		// 2. Backwards substitution
 
-		return X;
+		return lu.solve(B).getColumn(0);
 	}
 
+	/**
+	 * Solves a linear system AX=B in O(n^3).
+	 * 
+	 * @param A Square matrix (nxn)
+	 * @param B Matrix with as many rows as A and any number of columns (nxm).
+	 * @return Solution Matrix (nxm) satisfying AX=B
+	 */
+	public Matrix solve (Matrix A, Matrix B) 
+	{
+		LUDecomposition lu;
+
+		// 1. LU factorization
+		
+		lu = new LUDecomposition(A);
+		
+		// 2. Backwards substitution
+
+		return lu.solve(B);
+	}
+	
 }

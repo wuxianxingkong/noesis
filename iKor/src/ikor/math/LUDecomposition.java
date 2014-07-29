@@ -28,102 +28,117 @@ package ikor.math;
 public class LUDecomposition extends MatrixDecomposition 
 {
 	// Instance variables
+			
+	/** 
+	 * Array for internal storage of the LU decomposition. 
+	 */
+	private double[][] LU;
 	
 	/**
-	 * Matrix dimension
+	 * Row dimension
 	 */
 	private int n;
 	
 	/**
-	 * LU matrix (n x n)
+	 * Column dimension
 	 */
-	private Matrix LU;
+	private int m;
 	
 	/**
-	 * Permutation vector (n x 1)
+	 * Pivot sign
 	 */
-	private Vector P;
+	private int pivsign; 
+
+	/** 
+	 * Pivot vector
+	 */
+	private int[] piv;
 
 	/**
-	 * Number of row exchanges (-1 when the matrix is singular)
+	 * Row exchange count
 	 */
-	private int p;
-	
-	// Constructor
-	
+	private int exchanges;
+		
     /**
      * Constructor
      * 
-     * @param matrix Square matrix (n x n)
+     * @param matrix Matrix to be decomposed
      */
 	public LUDecomposition (Matrix matrix)
 	{
-		if (!matrix.isSquare())
-			throw new UnsupportedOperationException("LU decomposition only available for square matrices.");
-
-		n = matrix.rows(); // == matrix.columns();
+		LU = matrix.getArray();
+		n = matrix.rows();
+		m = matrix.columns();
 		
-		LU = MatrixFactory.create(matrix);
-		P = MatrixFactory.createVector(n);
-	
-		int i, j, k;
-		int maxi, pi, pk;
-		double c, c1;
+		// Use a "left-looking", dot-product, Crout/Doolittle algorithm.
 
-		for (i = 0; i < n; i++)
-			P.set(i,i);
+		piv = new int[m];
 
-		p = 0;
+		for (int i = 0; i < m; i++) {
+			piv[i] = i;
+		}
+		pivsign = 1;
 
-		for (k = 0; (k < n) && (p != -1); k++) {
+		double[] LUrowi;
+		double[] LUcolj = new double[m];
 
-			// Pivoting
+		// Outer loop.
 
-			for (i = k, maxi = k, c = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
 
-				pi = (int) P.get(i);
-				c1 = Math.abs(LU.get(pi,k));
+			// Make a copy of the j-th column to localize references.
 
-				if (c1 > c) {
-					c = c1;
-					maxi = i;
+			for (int i = 0; i < m; i++) {
+				LUcolj[i] = LU[i][j];
+			}
+
+			// Apply previous transformations.
+
+			for (int i = 0; i < m; i++) {
+				LUrowi = LU[i];
+
+				// Most of the time is spent in the following dot product.
+
+				int kmax = Math.min(i,j);
+				double s = 0.0;
+				for (int k = 0; k < kmax; k++) {
+					s += LUrowi[k]*LUcolj[k];
+				}
+
+				LUrowi[j] = LUcolj[i] -= s;
+			}
+
+			// Find pivot and exchange if necessary.
+
+			int p = j;
+			for (int i = j+1; i < m; i++) {
+				if (Math.abs(LUcolj[i]) > Math.abs(LUcolj[p])) {
+					p = i;
 				}
 			}
-
-			// Row exchange
-
-			if (k != maxi) {
-				P.swap(k,maxi);
-				p++;
+			if (p != j) {
+				for (int k = 0; k < n; k++) {
+					double t = LU[p][k]; 
+					LU[p][k] = LU[j][k]; 
+					LU[j][k] = t;
+				}
+				int k = piv[p]; 
+				piv[p] = piv[j]; 
+				piv[j] = k;
+				pivsign = -pivsign;
+				exchanges++;
 			}
 
-			pk = (int) P.get(k);
+			// Compute multipliers.
 
-			if (LU.get(pk,k) == 0.0) { // Singular matrix ?
-				
-				p = -1;
-
-			} else {
-				
-				for (i = k + 1; i < n; i++) {
-
-					pi = (int) P.get(i);
-
-					// A[P[i],k] /= A[P[k],k]
-
-					LU.set(pi,k, LU.get(pi,k) / LU.get(pk,k) );
-
-					// Elimination
-
-					for (j = k + 1; j < n; j++) {
-						// A[P[i],j] -= A[P[i],k]*A[P[k],j]
-						LU.set(pi,j, LU.get(pi,j) - LU.get(pi,k)*LU.get(pk,j) );
-					}
+			if (j < m & LU[j][j] != 0.0) {
+				for (int i = j+1; i < m; i++) {
+					LU[i][j] /= LU[j][j];
 				}
 			}
 		}
 	}
-
+		
 	// Accessors
 	
 	/**
@@ -133,17 +148,22 @@ public class LUDecomposition extends MatrixDecomposition
 	 */
 	public Matrix getLU ()
 	{
-		return LU;
+		return new DenseMatrix(LU);
 	}
 	
 	/**
-	 * Row permutation vector
+	 * Column permutation vector
 	 * 
-	 * @return Permutation vector (n x 1)
+	 * @return Permutation vector (m x 1)
 	 */
 	public Vector getPermutation ()
 	{
-		return P;
+		Vector permutation = new DenseVector(m);
+		
+		for (int i=0; i<m; i++)
+			permutation.set(i, piv[i]);
+		
+		return permutation;
 	}
 
 	/**
@@ -157,7 +177,7 @@ public class LUDecomposition extends MatrixDecomposition
 		for (int i=0; i<n; i++) {
 			L.set(i,i, 1.0);
 			for (int j=0; j<i; j++) {
-				L.set(i,j, LU.get((int)P.get(i), j));
+				L.set(i,j, LU[i][j]);
 			}
 		}
 		
@@ -174,7 +194,7 @@ public class LUDecomposition extends MatrixDecomposition
 		
 		for (int i=0; i<n; i++) {
 			for (int j=i; j<n; j++) {
-				U.set(i,j, LU.get((int)P.get(i), j));
+				U.set(i,j, LU[i][j]);
 			}
 		}
 		
@@ -188,7 +208,7 @@ public class LUDecomposition extends MatrixDecomposition
 	 */
 	public int getRowExchangeCount ()
 	{
-		return p;
+		return exchanges;
 	}
 	
 	/**
@@ -198,55 +218,111 @@ public class LUDecomposition extends MatrixDecomposition
 	 */
 	public boolean isSingular ()
 	{
-		return (p==-1);
+		for (int j = 0; j < n; j++) {
+			if (LU[j][j] == 0)
+				return true;
+		}
+
+		return false;
+	}
+	
+	/**
+	 * Determinant
+	 */
+	public double determinant () 
+	{
+		if (m != n)
+			throw new UnsupportedOperationException("Matrix must be square.");
+		
+		// |A| = |L||U||P|
+		// |L| = 1,
+		// |U| = multiplication of the diagonal
+		// |P| = +-1
+
+		double d = (double) pivsign;
+		
+		for (int j = 0; j < n; j++) {
+			d *= LU[j][j];
+		}
+		
+		return d;
 	}
 	
 	
 	/**
-	 * Backwards substitution.
+	 * Solve A*X=B by backwards substitution.
 	 * 
 	 * ref. http://en.wikipedia.org/wiki/Triangular_matrix#Forward_and_back_substitution
 	 * 
-	 * @param B Column vector (n x 1)
-	 * @param X Solution to AX=B, where A is the LU matrix
-	 * @param xcol Column index in the X matrix
+	 * @param B A Matrix with as many rows as A and any number of columns.
+	 * @return X so that L*U*X = B(piv,:)
+	 * @exception  IllegalArgumentException Matrix row dimensions must agree.
+	 * @exception  RuntimeException  Matrix is singular.
 	 */
 
-	public void backwardsSubstitution (Vector B, Matrix X, int xcol) 
+	public Matrix solve (Matrix B) 
 	{
-		int i, j, k;
-		double sum;
+		if (B.rows() != m) 
+			throw new IllegalArgumentException("Matrix row dimensions must agree.");
+		
+		if (this.isSingular()) 
+			throw new RuntimeException("Matrix is singular.");
 
-		for (k = 0; k < n; k++) {
-			int pk = (int) P.get(k);
-			for (i = k + 1; i < n; i++) {
-				// B[P[i]] = B[P[i]] - A[P[i],k]*B[P[k]]
-				int pi = (int) P.get(i);
-				B.set ( pi, B.get(pi) - LU.get(pi,k)*B.get(pk) );
+		// Copy right hand side with pivoting
+		int nx = B.columns();
+		double[][] X = getDataArray(B);
+
+		// Solve L*Y = B(piv,:)
+		for (int k = 0; k < n; k++) {
+			for (int i = k+1; i < n; i++) {
+				for (int j = 0; j < nx; j++) {
+					X[i][j] -= X[k][j]*LU[i][k];
+				}
 			}
 		}
-
-		// X[n-1] = B[P[n-1]]/A[P[n-1],n-1]
-		int plast = (int) P.get(n-1);		
-		X.set(n-1, xcol, B.get(plast) / LU.get(plast, n-1) );
-	
-		
-		for (k = n - 2; k >= 0; k--) {
-
-			int pk = (int) P.get(k);
-
-			// sum ( A[P[k],j]*X[j] )
-			
-			sum = 0;
-			
-			for (j = k + 1; j < n; j++)
-				sum += LU.get(pk,j) * X.get(j,xcol);
-				
-			// X[k] = ( B[P[k]] -sum ) / A[P[k],k]
-				
-			X.set (k, xcol, ( B.get(pk) - sum ) / LU.get(pk,k) );
-
+		// Solve U*X = Y;
+		for (int k = n-1; k >= 0; k--) {
+			for (int j = 0; j < nx; j++) {
+				X[k][j] /= LU[k][k];
+			}
+			for (int i = 0; i < k; i++) {
+				for (int j = 0; j < nx; j++) {
+					X[i][j] -= X[k][j]*LU[i][k];
+				}
+			}
 		}
+		
+		return new DenseMatrix(X);
 	}
 	
+	private double[][] getDataArray(Matrix B)
+	{
+		double data[][] = new double[B.rows()][B.columns()];
+		
+		for (int i=0; i<B.rows(); i++)
+			for (int j=0; j<B.columns(); j++)
+				data[i][j] = B.get(piv[i], j);
+		
+		return data;
+	}
+	
+	/**
+	 * Matrix inverse, by solving A* A^{-1} = I
+	 * 
+	 * @return Matrix inverse: A^{-1} 
+	 */
+	public Matrix inverse ()
+	{
+		return solve ( MatrixFactory.createIdentity(n) );
+		
+		// B = MatrixFactory.createVector(n);
+		// C = MatrixFactory.create(n, n);
+
+		// for (i = 0; i < n; i++) {
+		//	 B.zero();
+		//	 B.set(i,1);
+		//	 lu.backwardsSubstitution(B, C, i);
+		// }
+	}
+	   
 }

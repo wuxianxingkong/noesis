@@ -133,12 +133,14 @@ public class SparseVector extends Vector
 	// Sparse vector operations
 	// ------------------------
 	
+	// Dot product
+	
 	@Override
 	public double dotProduct (Vector other)
 	{
 		double result = 0;
 		
-		for (int i=0; i<nonzero(); i++)
+		for (int i=0; i<used; i++)
 			result += value[i] * other.get(index[i]);
 		
 		return result;
@@ -165,5 +167,82 @@ public class SparseVector extends Vector
 		
 		return result;
 	}
+	
+
+	@Override
+	public double magnitude2 ()
+	{
+		double result = 0;
+		
+		for (int i=0; i<used; i++)
+			result += value[i]*value[i];
+		
+		return result;
+	}
+	
+	@Override
+	public double distance2 (Vector other)
+	{
+		double diff;
+		double result = 0;
+		
+		for (int i=0; i<used; i++) {
+			diff = value[i] - other.get(index[i]);
+			result += diff*diff;
+		}
+		
+		return result;		
+	}	
+	
+	
+	// Statistics
+	
+	@Override
+	public double min ()
+	{
+		double min = (nonzero()<size())? 0: Double.MAX_VALUE;
+		
+		for (int i=0; i<used; i++)
+			if (value[i]<min)
+				min = value[i];
+		
+		return min;
+	}
+
+
+	@Override
+	public double max ()
+	{
+		double max = (nonzero()<size())? 0: -Double.MAX_VALUE;
+		
+		for (int i=0; i<used; i++)
+			if (value[i]>max)
+				max = value[i];
+		
+		return max;
+	}
+
+
+	@Override
+	public double sum ()
+	{
+		double sum = 0;
+		
+		for (int i=0; i<used; i++)
+			sum += value[i];
+		
+		return sum;
+	}	
+
+	@Override
+	public double sum2 ()
+	{
+		double sum2 = 0;
+		
+		for (int i=0; i<used; i++)
+			sum2 += value[i]*value[i];
+		
+		return sum2;
+	}	
 	
 }

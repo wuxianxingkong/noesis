@@ -311,17 +311,28 @@ public class SparseVectorTest
 	// Vector operations
 	// -----------------
 	
-	@Test
-	public void testSparseDotProduct() 
+	// Dot product
+	
+	private SparseVector createSparseVector(int n)
 	{
+		SparseVector vector = new SparseVector(n);
+		
 		vector.set( 2, 1);
 		vector.set( 4, 2);
 		vector.set( 8, 3);
 		vector.set(16, 4);
 		vector.set(32, 5);
 		vector.set(64, 6);
+
+		return vector;
+	}
+	
+	@Test
+	public void testSparseDotProduct() 
+	{
+		SparseVector vector = createSparseVector(256);
 		
-		assertEquals( 65, vector.size());
+		assertEquals(256, vector.size());
 		assertEquals(  6, vector.nonzero());
 		
 		// 1*1 + 2*2 + 3*3 + 4*4 + 5*5 + 6*6 = 91
@@ -331,16 +342,10 @@ public class SparseVectorTest
 	@Test
 	public void testDenseDotProduct() 
 	{
-		vector.set( 2, 1);
-		vector.set( 4, 2);
-		vector.set( 8, 3);
-		vector.set(16, 4);
-		vector.set(32, 5);
-		vector.set(64, 6);
+		SparseVector vector = createSparseVector(256);
+		DenseVector  vector2 = new DenseVector(vector);
 		
-		DenseVector vector2 = new DenseVector(vector);
-		
-		assertEquals( 65, vector.size());
+		assertEquals(256, vector.size());
 		assertEquals(  6, vector.nonzero());
 		
 		// 1*1 + 2*2 + 3*3 + 4*4 + 5*5 + 6*6 = 91
@@ -351,18 +356,12 @@ public class SparseVectorTest
 	@Test
 	public void testSparseDotProduct2 () 
 	{
-		vector.set( 2, 1);
-		vector.set( 4, 2);
-		vector.set( 8, 3);
-		vector.set(16, 4);
-		vector.set(32, 5);
-		vector.set(64, 6);
-		
+		SparseVector vector = createSparseVector(256);		
 		SparseVector vector2 = new SparseVector(128);
 		
 		vector2.set(64,1);
 		
-		assertEquals( 65, vector.size());
+		assertEquals(256, vector.size());
 		assertEquals(  6, vector.nonzero());
 		assertEquals(128, vector2.size());
 		assertEquals(  1, vector2.nonzero());
@@ -370,5 +369,107 @@ public class SparseVectorTest
 		assertEquals( 6, vector.dotProduct(vector2), EPSILON);
 		assertEquals( 6, vector2.dotProduct(vector), EPSILON);
 	}
+
+	
+	
+	@Test
+	public void testSparseMagnitude() 
+	{
+		SparseVector vector = createSparseVector(256);		
+
+		// 1*1+2*2+3*3+4*4+5*5+6*6 = 91
+		assertEquals( 91, vector.magnitude2(), EPSILON);
+		assertEquals( Math.sqrt(91), vector.magnitude(), EPSILON);
+	}
+
+	@Test
+	public void testSparseProjection() 
+	{
+		SparseVector vector = createSparseVector(256);		
+		
+		assertEquals( vector.magnitude(), vector.projection(vector), EPSILON);
+	}
+
+	@Test
+	public void testSparseDistance() 
+	{
+		SparseVector vector = createSparseVector(256);		
+		
+		assertEquals( 0, vector.distance(vector), EPSILON);
+		assertEquals( 0, vector.distance2(vector), EPSILON);		
+	}
+
+	@Test
+	public void testSparseAngle() 
+	{
+		SparseVector vector = createSparseVector(256);		
+				
+		assertEquals( 0, vector.angle(vector), EPSILON);
+	}
+
+	@Test
+	public void testSparseMin() 
+	{
+		SparseVector vector = createSparseVector(256);		
+		
+		assertEquals( 0, vector.min(), EPSILON);
+	}
+
+	@Test
+	public void testSparseMax() 
+	{
+		SparseVector vector = createSparseVector(256);		
+		
+		assertEquals( 6, vector.max(), EPSILON);
+	}
+
+	@Test
+	public void testSparseSum() 
+	{
+		SparseVector vector = createSparseVector(256);		
+		
+		// 1+2+3+4+5+6 = 21
+		assertEquals( 21, vector.sum(), EPSILON);
+		// 1*1+2*2+3*3+4*4+5*5+6*6 = 91
+		assertEquals( 91, vector.sum2(), EPSILON);
+	}
+
+	@Test
+	public void testSparseAverage() 
+	{
+		SparseVector vector = createSparseVector(100);		
+
+		assertEquals( 0.21, vector.average(), EPSILON);
+	}
+
+	@Test
+	public void testVariance() 
+	{
+		SparseVector vector = createSparseVector(100);		
+
+		assertEquals( ( 94*0.21*.21 
+				      + (1-0.21)*(1-0.21)
+				      + (2-0.21)*(2-0.21)
+				      + (3-0.21)*(3-0.21)
+				      + (4-0.21)*(4-0.21)
+				      + (5-0.21)*(5-0.21)
+				      + (6-0.21)*(6-0.21) )/100, vector.variance(), EPSILON);
+	}
+
+	@Test
+	public void testDeviation() 
+	{
+		SparseVector vector = createSparseVector(100);		
+
+		assertEquals( Math.sqrt(vector.variance()), vector.deviation(), EPSILON);
+	}
+	
+	@Test
+	public void testAbsoluteDeviation() 
+	{
+		SparseVector vector = createSparseVector(100);		
+
+		assertEquals( ( 94*0.21 + (1-0.21) + (2-0.21) + (3-0.21) + (4-0.21) + (5-0.21) + (6-0.21) )/100, vector.absoluteDeviation(), EPSILON);
+	}	
 	
 }

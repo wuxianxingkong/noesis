@@ -1,6 +1,7 @@
 package test.ikor.math;
 
 import static org.junit.Assert.*;
+import ikor.math.DenseVector;
 import ikor.math.SparseVector;
 
 import org.junit.Test;
@@ -17,8 +18,8 @@ public class SparseVectorTest
 	public void setUp ()
 	{
 		vector = new SparseVector(32);
-		
 	}
+	
 	@Test
 	public void testConstructor() 
 	{
@@ -306,4 +307,68 @@ public class SparseVectorTest
 			assertEquals(2*i, vector.get(i), EPSILON);
 		}
 	}		
+	
+	// Vector operations
+	// -----------------
+	
+	@Test
+	public void testSparseDotProduct() 
+	{
+		vector.set( 2, 1);
+		vector.set( 4, 2);
+		vector.set( 8, 3);
+		vector.set(16, 4);
+		vector.set(32, 5);
+		vector.set(64, 6);
+		
+		assertEquals( 65, vector.size());
+		assertEquals(  6, vector.nonzero());
+		
+		// 1*1 + 2*2 + 3*3 + 4*4 + 5*5 + 6*6 = 91
+		assertEquals( 91, vector.dotProduct(vector), EPSILON);
+	}
+
+	@Test
+	public void testDenseDotProduct() 
+	{
+		vector.set( 2, 1);
+		vector.set( 4, 2);
+		vector.set( 8, 3);
+		vector.set(16, 4);
+		vector.set(32, 5);
+		vector.set(64, 6);
+		
+		DenseVector vector2 = new DenseVector(vector);
+		
+		assertEquals( 65, vector.size());
+		assertEquals(  6, vector.nonzero());
+		
+		// 1*1 + 2*2 + 3*3 + 4*4 + 5*5 + 6*6 = 91
+		assertEquals( 91, vector.dotProduct(vector2), EPSILON);
+		assertEquals( 91, vector2.dotProduct(vector), EPSILON);
+	}
+
+	@Test
+	public void testSparseDotProduct2 () 
+	{
+		vector.set( 2, 1);
+		vector.set( 4, 2);
+		vector.set( 8, 3);
+		vector.set(16, 4);
+		vector.set(32, 5);
+		vector.set(64, 6);
+		
+		SparseVector vector2 = new SparseVector(128);
+		
+		vector2.set(64,1);
+		
+		assertEquals( 65, vector.size());
+		assertEquals(  6, vector.nonzero());
+		assertEquals(128, vector2.size());
+		assertEquals(  1, vector2.nonzero());
+		
+		assertEquals( 6, vector.dotProduct(vector2), EPSILON);
+		assertEquals( 6, vector2.dotProduct(vector), EPSILON);
+	}
+	
 }

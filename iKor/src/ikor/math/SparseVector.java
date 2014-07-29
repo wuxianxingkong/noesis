@@ -130,4 +130,40 @@ public class SparseVector extends Vector
 		}
 	}
 
+	// Sparse vector operations
+	// ------------------------
+	
+	@Override
+	public double dotProduct (Vector other)
+	{
+		double result = 0;
+		
+		for (int i=0; i<nonzero(); i++)
+			result += value[i] * other.get(index[i]);
+		
+		return result;
+	}
+
+	public double dotProduct (SparseVector other)
+	{
+		double result = 0;
+		int    i = 0;
+		int    j = 0;
+				
+		while ((i<this.used) && (j<other.used)) {
+			
+			if (this.index[i]==other.index[j]) {
+				result += this.value[i]*other.value[j];
+				i++;
+				j++;
+			} else if (this.index[i]<other.index[j]) {
+				i++;
+			} else { // this.index[i]>other.index[j]
+				j++;
+			}
+		}
+		
+		return result;
+	}
+	
 }

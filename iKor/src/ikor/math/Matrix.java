@@ -138,7 +138,7 @@ public abstract class Matrix implements java.io.Serializable
 	 * @param i Row index
 	 * @return Row vector
 	 */
-	public final Vector getRow (int i)
+	public Vector getRow (int i)
 	{
 		if (rowVector==null)
 			rowVector = new RowVector[rows()];
@@ -413,26 +413,20 @@ public abstract class Matrix implements java.io.Serializable
 	 * @param other Matrix to be multiplied with
 	 * @return Multiplication result (this*other)
 	 */
-	public Matrix multiply(Matrix other) 
+	public Matrix multiply (Matrix other) 
 	{
-		int i, j, k;
-		double sum;
+		int i, j;
 		Matrix result = null;
 
 		if (this.columns() == other.rows()) {
 
 			result = MatrixFactory.create(this.rows(), other.columns());
 
-			for (i = 0; i < this.rows(); i++)
+			for (i = 0; i < this.rows(); i++) {
 				for (j = 0; j < other.columns(); j++) {
-
-					sum = 0;
-
-					for (k = 0; k < this.columns(); k++)
-						sum += this.get(i,k) * other.get(k,j);
-					
-					result.set(i,j,sum);
+					result.set(i,j, this.getRow(i).dotProduct(other.getColumn(j)));
 				}
+			}
 		}
 
 		return result;

@@ -56,4 +56,30 @@ public class SparseMatrix extends Matrix
 		vectors[i].set(j, v);
 	}
 
+	// Row vector
+
+	private SparseVector emptyRow;
+	
+	/**
+	 * Get a complete row in the matrix
+	 * 
+	 * @param i Row index
+	 * @return Row vector
+	 */
+	@Override
+	public Vector getRow (int i)
+	{
+		if (vectors[i]!=null) {
+		
+			return vectors[i];
+
+		} else {
+
+			if (emptyRow==null)
+				emptyRow = new SparseVector(columns);
+
+			return emptyRow;
+		}
+	}
+	
 }

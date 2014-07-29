@@ -118,6 +118,8 @@ public abstract class Matrix implements java.io.Serializable
 
 	
 	// Matrix rows
+
+	private RowVector rowVector[];
 	
 	/**
 	 * Set a complete row in the matrix
@@ -138,7 +140,13 @@ public abstract class Matrix implements java.io.Serializable
 	 */
 	public final Vector getRow (int i)
 	{
-		return new RowVector(i);
+		if (rowVector==null)
+			rowVector = new RowVector[rows()];
+		
+		if (rowVector[i]==null)
+			rowVector[i] = new RowVector(i);
+		
+		return rowVector[i];
 	}
 	
 	public class RowVector extends Vector
@@ -199,6 +207,8 @@ public abstract class Matrix implements java.io.Serializable
 
 	// Matrix columns
 	
+	private ColumnVector columnVector[];
+	
 	/**
 	 * Get a complete column in the matrix
 	 * 
@@ -207,7 +217,13 @@ public abstract class Matrix implements java.io.Serializable
 	 */
 	public final Vector getColumn (int j)
 	{
-		return new ColumnVector(j);
+		if (columnVector==null)
+			columnVector = new ColumnVector[columns()];
+		
+		if (columnVector[j]==null)
+			columnVector[j] = new ColumnVector(j);
+		
+		return columnVector[j];
 	}
 	
 	public class ColumnVector extends Vector

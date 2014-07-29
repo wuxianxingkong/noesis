@@ -44,10 +44,27 @@ public class MatrixTest {
 	// - SD multiplication		 1069 ms	 200 ms
 	// - DS multiplication		 1127 ms	 372 ms	
 	// - DD multiplication		  497 ms	 690 ms		
+
+	// Dot product matrix multiplication (r567)
+	//							NOESIS		UJMP
+	// - Inverse				 3091 ms	 355 ms
+	// - SS multiplication		   41 ms	 145 ms
+	// - SD multiplication		   32 ms	 230 ms
+	// - DS multiplication		 1045 ms	 333 ms	
+	// - DD multiplication		  233 ms	 724 ms		
+
+	// Sparse matrix multiplication (r568)
+	//							NOESIS		UJMP
+	// - Inverse				 3626 ms	 362 ms
+	// - SS multiplication		   34 ms	 156 ms
+	// - SD multiplication		   21 ms	 240 ms
+	// - DS multiplication		   14 ms	 317 ms	
+	// - DD multiplication		  143 ms	 716 ms		
 	
 	public static void main(String[] args) throws IOException 
 	{
-		long startTime;
+		long startTime, ujmp, noesis;
+		
 		InputStream file = new FileInputStream ("data/network/infectious.net");
 		Reader myReader = new InputStreamReader(file, "UTF-8");
 		PajekNetworkReader reader = new PajekNetworkReader(myReader);
@@ -57,43 +74,62 @@ public class MatrixTest {
 		
 		startTime = System.currentTimeMillis();
 		inverse(adjacencyMatrix);
-		System.out.println("UJMP Matrix Inverse: " + (System.currentTimeMillis() - startTime) + " milliseconds");
+		ujmp = System.currentTimeMillis() - startTime;
 		
 		startTime = System.currentTimeMillis();
 		adjacencyMatrix.inverse();
-		System.out.println("NOESIS Matrix Inverse: " + (System.currentTimeMillis() - startTime) + " milliseconds");
+		noesis = System.currentTimeMillis() - startTime;
+
+		System.out.println("- Matrix inverse: " + noesis + " ms NOESIS vs. " + ujmp + " ms UJMP");
 		
 		startTime = System.currentTimeMillis();
 		result = multiply(adjacencyMatrix,adjacencyMatrix);
-		System.out.println("UJMP Matrix Multiplication S-S: " + (System.currentTimeMillis() - startTime) + " milliseconds");
+		ujmp = System.currentTimeMillis() - startTime;
 		
 		startTime = System.currentTimeMillis();
 		result = adjacencyMatrix.multiply(adjacencyMatrix);
-		System.out.println("NOESIS Matrix Multiplication S-S: " + (System.currentTimeMillis() - startTime) + " milliseconds");
+		noesis = System.currentTimeMillis() - startTime;
 
+		System.out.println("- SS matrix multiplication: " + noesis + " ms NOESIS vs. " + ujmp + " ms UJMP");
+
+		
+		result = adjacencyMatrix.multiply(adjacencyMatrix);		
 		startTime = System.currentTimeMillis();
 		multiply(adjacencyMatrix,result);
-		System.out.println("UJMP Matrix Multiplication S-D: " + (System.currentTimeMillis() - startTime) + " milliseconds");
+		ujmp = System.currentTimeMillis() - startTime;
 		
-		startTime = System.currentTimeMillis();
-		result.multiply(adjacencyMatrix);
-		System.out.println("NOESIS Matrix Multiplication S-D: " + (System.currentTimeMillis() - startTime) + " milliseconds");
-
-		startTime = System.currentTimeMillis();
-		multiply(result,adjacencyMatrix);
-		System.out.println("UJMP Matrix Multiplication D-S: " + (System.currentTimeMillis() - startTime) + " milliseconds");
-		
+		result = adjacencyMatrix.multiply(adjacencyMatrix);		
 		startTime = System.currentTimeMillis();
 		adjacencyMatrix.multiply(result);
-		System.out.println("NOESIS Matrix Multiplication D-S: " + (System.currentTimeMillis() - startTime) + " milliseconds");
+		noesis = System.currentTimeMillis() - startTime;
 
+		System.out.println("- SD matrix multiplication: " + noesis + " ms NOESIS vs. " + ujmp + " ms UJMP");
+
+		
+		result = adjacencyMatrix.multiply(adjacencyMatrix);		
+		startTime = System.currentTimeMillis();
+		multiply(result,adjacencyMatrix);
+		ujmp = System.currentTimeMillis() - startTime;
+		
+		result = adjacencyMatrix.multiply(adjacencyMatrix);		
+		startTime = System.currentTimeMillis();
+		result.multiply(adjacencyMatrix);
+		noesis = System.currentTimeMillis() - startTime;
+
+		System.out.println("- DS matrix multiplication: " + noesis + " ms NOESIS vs. " + ujmp + " ms UJMP");
+		
+		
+		result = adjacencyMatrix.multiply(adjacencyMatrix);
 		startTime = System.currentTimeMillis();
 		multiply(result,result);
-		System.out.println("UJMP Matrix Multiplication D-D: " + (System.currentTimeMillis() - startTime) + " milliseconds");
-		
+		ujmp = System.currentTimeMillis() - startTime;
+
+		result = adjacencyMatrix.multiply(adjacencyMatrix);		
 		startTime = System.currentTimeMillis();
 		result.multiply(result);
-		System.out.println("NOESIS Matrix Multiplication D-D: " + (System.currentTimeMillis() - startTime) + " milliseconds");
+		noesis = System.currentTimeMillis() - startTime;
+
+		System.out.println("- DD matrix multiplication: " + noesis + " ms NOESIS vs. " + ujmp + " ms UJMP");
 		
 	}
 	

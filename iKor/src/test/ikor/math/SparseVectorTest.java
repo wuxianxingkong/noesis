@@ -31,6 +31,8 @@ public class SparseVectorTest
 	{
 		vector.set(2,4);
 		
+		assertEquals(1, vector.nonzero());
+		
 		for (int i=0; i<vector.size(); i++)
 			if (i==2)
 				assertEquals( 4.0, vector.get(i), EPSILON);
@@ -43,6 +45,8 @@ public class SparseVectorTest
 	
 	public void check2 (SparseVector vector)
 	{
+		assertEquals(2, vector.nonzero());
+		
 		for (int i=0; i<vector.size(); i++)
 			if (i==2)
 				assertEquals( 4.0, vector.get(i), EPSILON);
@@ -75,6 +79,8 @@ public class SparseVectorTest
 	
 	public void check3 (SparseVector vector)
 	{
+		assertEquals(3, vector.nonzero());
+		
 		for (int i=0; i<vector.size(); i++)
 			if (i==2)
 				assertEquals( 4.0, vector.get(i), EPSILON);
@@ -155,7 +161,8 @@ public class SparseVectorTest
 			vector.set(i,2*i);
 		}
 		
-		assertEquals(32,vector.size());
+		assertEquals(32, vector.size());
+		assertEquals( 8, vector.nonzero());
 		
 		for (int i=1; i<=8; i++) {
 			assertEquals(2*i, vector.get(i), EPSILON);
@@ -169,7 +176,8 @@ public class SparseVectorTest
 			vector.set(i,2*i);
 		}
 
-		assertEquals(32,vector.size());
+		assertEquals(32, vector.size());
+		assertEquals( 8, vector.nonzero());
 		
 		for (int i=1; i<=8; i++) {
 			assertEquals(2*i, vector.get(i), EPSILON);
@@ -183,7 +191,8 @@ public class SparseVectorTest
 			vector.set(2*i,3*i);
 		}
 		
-		assertEquals(32,vector.size());
+		assertEquals(32, vector.size());
+		assertEquals( 8, vector.nonzero());
 		
 		for (int i=1; i<=8; i++) {
 			assertEquals(3*i, vector.get(2*i), EPSILON);
@@ -197,7 +206,8 @@ public class SparseVectorTest
 			vector.set(2*i,3*i);
 		}
 
-		assertEquals(32,vector.size());
+		assertEquals(32, vector.size());
+		assertEquals( 8, vector.nonzero());
 		
 		for (int i=1; i<=8; i++) {
 			assertEquals(3*i, vector.get(2*i), EPSILON);
@@ -211,7 +221,8 @@ public class SparseVectorTest
 			vector.set(2*i-1,3*i);
 		}
 		
-		assertEquals(32,vector.size());
+		assertEquals(32, vector.size());
+		assertEquals( 8, vector.nonzero());
 		
 		for (int i=1; i<=8; i++) {
 			assertEquals(3*i, vector.get(2*i-1), EPSILON);
@@ -225,7 +236,8 @@ public class SparseVectorTest
 			vector.set(2*i-1,3*i);
 		}
 
-		assertEquals(32,vector.size());
+		assertEquals(32, vector.size());
+		assertEquals( 8, vector.nonzero());
 		
 		for (int i=1; i<=8; i++) {
 			assertEquals(3*i, vector.get(2*i-1), EPSILON);
@@ -241,7 +253,8 @@ public class SparseVectorTest
 			vector.set(i,2*i);
 		}
 
-		assertEquals(33,vector.size());
+		assertEquals(33, vector.size());
+		assertEquals(32, vector.nonzero());
 		
 		for (int i=1; i<=32; i++) {
 			assertEquals(2*i, vector.get(i), EPSILON);
@@ -255,7 +268,8 @@ public class SparseVectorTest
 			vector.set(i,2*i);
 		}
 		
-		assertEquals(33,vector.size());
+		assertEquals(33, vector.size());
+		assertEquals(32, vector.nonzero());
 		
 		for (int i=1; i<=32; i++) {
 			assertEquals(2*i, vector.get(i), EPSILON);
@@ -270,7 +284,8 @@ public class SparseVectorTest
 			vector.set(i,2*i);
 		}
 
-		assertEquals(257,vector.size());
+		assertEquals(257, vector.size());
+		assertEquals(256, vector.nonzero());
 		
 		for (int i=1; i<=256; i++) {
 			assertEquals(2*i, vector.get(i), EPSILON);
@@ -284,7 +299,8 @@ public class SparseVectorTest
 			vector.set(i,2*i);
 		}
 		
-		assertEquals(257,vector.size());
+		assertEquals(257, vector.size());
+		assertEquals(256, vector.nonzero());
 		
 		for (int i=1; i<=256; i++) {
 			assertEquals(2*i, vector.get(i), EPSILON);

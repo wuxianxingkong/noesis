@@ -69,6 +69,15 @@ public class SparseVector extends Vector
 	}
 	
 	/**
+	 * Number of nonzero elements in the sparse vector
+	 * @return Number of nonzero vector elements
+	 */
+	public int nonzero()
+	{
+		return used;
+	}
+	
+	/**
 	 * Binary search, O(log n)
 	 * 
 	 * @param x Index value

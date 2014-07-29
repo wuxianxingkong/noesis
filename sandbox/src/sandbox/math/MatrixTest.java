@@ -61,7 +61,7 @@ public class MatrixTest {
 	// - DS multiplication		   14 ms	 317 ms	
 	// - DD multiplication		  143 ms	 716 ms		
 
-	// Sparse matrix multiplication (r571)
+	// Matrix inversion (r571)
 	//							NOESIS		UJMP
 	// - Inverse				  116 ms	 366 ms
 	// - SS multiplication		   35 ms	 150 ms

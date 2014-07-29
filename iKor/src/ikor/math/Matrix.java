@@ -215,7 +215,7 @@ public abstract class Matrix implements java.io.Serializable
 	 * @param i Column index
 	 * @return Column vector
 	 */
-	public final Vector getColumn (int j)
+	public Vector getColumn (int j)
 	{
 		if (columnVector==null)
 			columnVector = new ColumnVector[columns()];
@@ -421,7 +421,7 @@ public abstract class Matrix implements java.io.Serializable
 		if (this.columns() == other.rows()) {
 
 			result = MatrixFactory.create(this.rows(), other.columns());
-
+			
 			for (i = 0; i < this.rows(); i++) {
 				for (j = 0; j < other.columns(); j++) {
 					result.set(i,j, this.getRow(i).dotProduct(other.getColumn(j)));
@@ -432,6 +432,42 @@ public abstract class Matrix implements java.io.Serializable
 		return result;
 	}
 
+	/**
+	 * Matrix multiplication
+	 * 
+	 * @param other Sparse matrix to be multiplied with
+	 * @return Multiplication result (this*other)
+	 */	
+	public Matrix multiply (SparseMatrix other) 
+	{
+		int i, j;
+		Matrix result = null;
+
+		if (this.columns() == other.rows()) {
+
+			result = MatrixFactory.create(this.rows(), other.columns());
+			
+			if ( this instanceof SparseMatrix ) {
+				
+				for (i = 0; i < this.rows(); i++) {
+					for (j = 0; j < other.columns(); j++) {
+						result.set(i,j, this.getRow(i).dotProduct(other.getColumn(j)));
+					}
+				}
+
+			} else { // other is a sparse matrix (i.e. use sparse dot product)
+				
+				for (i = 0; i < this.rows(); i++) {
+					for (j = 0; j < other.columns(); j++) {
+						result.set(i,j, other.getColumn(j).dotProduct(this.getRow(i)));
+					}
+				}
+			}
+		}
+
+		return result;
+	}
+	
 	/**
 	 * Multiply a matrix A by a constant
 	 * 

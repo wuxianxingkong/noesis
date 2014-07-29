@@ -7,15 +7,15 @@ package noesis.network;
 // E-mail:      berzal@acm.org
 
 import noesis.Network;
-import ikor.math.Matrix;
+import ikor.math.SparseMatrix;
 
 /**
- * Adjacency matrix, implemented as a Network decorator.
+ * Adjacency matrix, implemented as a sparse matrix.
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-public class AdjacencyMatrix extends Matrix 
+public class AdjacencyMatrix extends SparseMatrix 
 {
 	private Network net;
 	
@@ -23,36 +23,22 @@ public class AdjacencyMatrix extends Matrix
 	
 	public AdjacencyMatrix (Network net)
 	{
+		super(net.size(), net.size());
+		
 		this.net = net;
+		
+		for (int i=0; i<net.size(); i++) {
+			for (int k=0; k<net.outDegree(i); k++) {
+				set(i, net.outLink(i,k), 1.0);
+			}
+		}
 	}
 
-	// Matrix interface
+	// Network
 	
-	@Override
-	public int rows() 
+	public Network getNetwork ()
 	{
-		return net.size();
-	}
-
-	@Override
-	public int columns() 
-	{
-		return net.size();
-	}
-
-	@Override
-	public double get(int i, int j) 
-	{
-		if (net.contains(i,j))
-			return 1;
-		else
-			return 0;
-	}
-
-	@Override
-	public void set(int i, int j, double v) 
-	{
-		throw new UnsupportedOperationException("Networks cannot be modified through their adjacency matrix.");
+		return net;
 	}
 
 }

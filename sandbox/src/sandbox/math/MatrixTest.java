@@ -60,6 +60,14 @@ public class MatrixTest {
 	// - SD multiplication		   21 ms	 240 ms
 	// - DS multiplication		   14 ms	 317 ms	
 	// - DD multiplication		  143 ms	 716 ms		
+
+	// Sparse matrix multiplication (r571)
+	//							NOESIS		UJMP
+	// - Inverse				  116 ms	 366 ms
+	// - SS multiplication		   35 ms	 150 ms
+	// - SD multiplication		   26 ms	 269 ms
+	// - DS multiplication		   14 ms	 349 ms	
+	// - DD multiplication		  146 ms	 752 ms		
 	
 	public static void main(String[] args) throws IOException 
 	{

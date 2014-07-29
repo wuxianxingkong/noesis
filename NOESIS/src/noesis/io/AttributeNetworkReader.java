@@ -11,7 +11,7 @@ import ikor.collection.Dictionary;
 import noesis.AttributeNetwork;
 import noesis.CollectionFactory;
 
-public abstract class AttributeNetworkReader extends NetworkReader 
+public abstract class AttributeNetworkReader extends NetworkReader
 {
 	
 	// Node IDs

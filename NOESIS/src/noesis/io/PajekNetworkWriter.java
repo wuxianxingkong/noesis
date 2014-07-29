@@ -1,15 +1,18 @@
 package noesis.io;
 
+import ikor.math.Decimal;
+
 import java.io.IOException;
 import java.io.Writer;
 import java.io.BufferedWriter;
 
-import ikor.math.Decimal;
-
+import noesis.Attribute;
+import noesis.AttributeNetwork;
+import noesis.LinkAttribute;
 import noesis.Network;
 
 
-public class PajekNetworkWriter implements NetworkWriter<String, Decimal> 
+public class PajekNetworkWriter extends AttributeNetworkWriter 
 {
 	
 	private BufferedWriter writer;
@@ -20,31 +23,33 @@ public class PajekNetworkWriter implements NetworkWriter<String, Decimal>
 	}	
 
 	@Override
-	public void write(Network<String, Decimal> net) 
+	public void write(Network net) 
 		throws IOException 
 	{
-		writeNodes(net);
-		writeLinks(net);
+		writeNodes((AttributeNetwork)net);
+		writeLinks((AttributeNetwork)net);
 		writer.flush();
 	}
 
-	public void writeNodes(Network<String, Decimal> net) 
+	public void writeNodes(AttributeNetwork net) 
 		throws IOException 
 	{
+		Attribute id = net.getNodeAttribute("id");
+		
 		writer.write("*vertices "+net.size());
 		writer.newLine();
 		
 		for (int i=0; i<net.size(); i++) {
 			writer.write(""+(i+1));
 			
-			if ((net.get(i)!=null) &&!net.get(i).equals(""+(i+1))) 
-				writer.write(" \""+net.get(i)+"\"");
+			if ((id.get(i)!=null) &&!id.get(i).equals(""+(i+1))) 
+				writer.write(" \""+id.get(i)+"\"");
 			
 			writer.newLine();
 		}
 	}
 
-	public void writeLinks(Network<String, Decimal> net) 
+	public void writeLinks(AttributeNetwork net) 
 		throws IOException 
 	{
 		Decimal value;
@@ -56,14 +61,17 @@ public class PajekNetworkWriter implements NetworkWriter<String, Decimal>
 		for (int i=0; i<net.size(); i++) {
 			for (int j=0; j<net.size(); j++) {
 		
-				value = net.get(i,j);
-				
-				if (value!=null) {
+				if (net.get(i,j)!=null) {					
+					value = getValue(net,i,j);
 					
-					symmetric = net.get(j,i);
-					
-					if (!value.equals(symmetric))
-						writeArc(i,j,value);
+					if (net.get(j,i)==null) { 
+						writeArc(i,j,value);					
+					} else {
+						symmetric = getValue(net,j,i);
+
+						if (!value.equals(symmetric))
+							writeArc(i,j,value);
+					}
 				}
 			}
 		}
@@ -74,14 +82,15 @@ public class PajekNetworkWriter implements NetworkWriter<String, Decimal>
 		for (int i=0; i<net.size(); i++) {
 			for (int j=i+1; j<net.size(); j++) {
 		
-				value = net.get(i,j);
-				
-				if (value!=null) {
+				if (net.get(i,j)!=null) {					
+					value = getValue(net,i,j);
 					
-					symmetric = net.get(j,i);
-					
-					if (value.equals(symmetric))
-						writeArc(i,j,value);
+					if (net.get(j,i)!=null) {
+						symmetric = getValue(net,j,i);
+
+						if (value.equals(symmetric))
+							writeArc(i,j,value);
+					}
 				}
 			}
 		}		
@@ -97,6 +106,20 @@ public class PajekNetworkWriter implements NetworkWriter<String, Decimal>
 			writer.write(" " + value.toString());
 		
 		writer.newLine();		
+	}
+	
+	
+	private final static Decimal one = new Decimal(1);
+	
+	private Decimal getValue (AttributeNetwork net, int i, int j)
+	{
+		LinkAttribute<Decimal> attribute = (LinkAttribute<Decimal>) net.getLinkAttribute("value");
+		Decimal value = attribute.get(i,j);
+		
+		if (value!=null)
+			return value;
+		else
+			return one;
 	}
 
 	@Override

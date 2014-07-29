@@ -4,10 +4,12 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 import ikor.math.Decimal;
-
+import noesis.Attribute;
+import noesis.AttributeNetwork;
+import noesis.LinkAttribute;
 import noesis.Network;
 
-public class PajekNetworkReader extends NetworkReader<String,Decimal> 
+public class PajekNetworkReader extends AttributeNetworkReader // NetworkReader<String,Decimal> 
 {
 	private BufferedReader input;
 	private String currentLine;
@@ -19,6 +21,8 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 	{
 		this.input = new BufferedReader(reader);
 		this.currentLine = null;
+		
+		this.setType(noesis.AttributeNetwork.class);
 	}
 
 	/**
@@ -59,7 +63,7 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 	 * @param net Network
 	 * @throws IOException
 	 */
-	private void readNetwork (Network<String, Decimal> net)
+	private void readNetwork (AttributeNetwork net)
 		throws IOException
 	{
 		// *network <ID>
@@ -74,7 +78,7 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 	 * @param net Network
 	 * @throws IOException
 	 */
-	private void readVertices (Network<String, Decimal> net)
+	private void readVertices (AttributeNetwork net)
 		throws IOException
 	{
 		int    vertices;
@@ -96,8 +100,10 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 		
 		// Create nodes
 		
+		net.setSize(vertices);
+		
 		for (int i=1; i<=vertices; i++)
-			net.add(""+i);
+			setNodeID(net,i-1,""+i); 
 		
 		// <n> ["<label>"]
 
@@ -112,7 +118,7 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 				label = line.substring(start+1, end);
 				node = Integer.parseInt(line.substring(0,start-1))-startIndex;
 				
-				net.set(node,label);
+				setNodeID(net,node,label);
 			} 
 			
 			line = readLine();
@@ -124,13 +130,12 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 	 * @param net Network
 	 * @throws IOException
 	 */
-	private void readArcList (Network<String, Decimal> net)
+	private void readArcList (AttributeNetwork net)
 		throws IOException
 	{
 		String line;
 		int    source, destination;
 		StringTokenizer tokenizer;
-		Decimal value = new Decimal(1);
 		
 		line = readLine();
 		
@@ -144,7 +149,7 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 				
 				destination = Integer.parseInt(tokenizer.nextToken());
 				
-				net.add(source-startIndex, destination-startIndex, value);
+				net.add(source-startIndex, destination-startIndex);
 			}
 			
 			line = readLine();
@@ -156,13 +161,12 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 	 * @param net Network
 	 * @throws IOException
 	 */		
-	private void readEdgeList (Network<String, Decimal> net)
+	private void readEdgeList (AttributeNetwork net)
 		throws IOException
 	{
 		String line;
 		int    source, destination;
 		StringTokenizer tokenizer;
-		Decimal value = new Decimal(1);
 		
 		line = readLine();
 		
@@ -176,8 +180,8 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 				
 				destination = Integer.parseInt(tokenizer.nextToken());
 				
-				net.add(source-startIndex, destination-startIndex, value);
-				net.add(destination-startIndex, source-startIndex, value);
+				net.add(source-startIndex, destination-startIndex);
+				net.add(destination-startIndex, source-startIndex);
 			}
 			
 			line = readLine();
@@ -190,7 +194,7 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 	 * @param net Network
 	 * @throws IOException 
 	 */
-	private void readArcPairs (Network<String, Decimal> net)
+	private void readArcPairs (AttributeNetwork net)
 		throws IOException
 	{
 		String line;
@@ -213,7 +217,8 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 			else
 				value = one;
 			
-			net.add(source-startIndex, destination-startIndex, value);
+			net.add(source-startIndex, destination-startIndex); 			
+			net.getLinkAttribute("value").set(source-startIndex, destination-startIndex, value);
 			
 			line = readLine();
 		}
@@ -225,7 +230,7 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 	 * @param net Network
 	 * @throws IOException 
 	 */
-	private void readEdgePairs (Network<String, Decimal> net)
+	private void readEdgePairs (AttributeNetwork net)
 		throws IOException
 	{	
 		String line;
@@ -248,8 +253,11 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 			else
 				value = one;
 			
-			net.add(source-startIndex, destination-startIndex, value);	
-			net.add(destination-startIndex, source-startIndex, value);	
+			net.add(source-startIndex, destination-startIndex); // , value);	
+			net.add(destination-startIndex, source-startIndex); // , value);	
+
+			net.getLinkAttribute("value").set(source-startIndex, destination-startIndex, value);
+			net.getLinkAttribute("value").set(destination-startIndex, source-startIndex, value);
 			
 			line = readLine();			
 		}			
@@ -262,7 +270,7 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 	 * @param net Network
 	 * @throws IOException
 	 */
-	private void readMatrix (Network<String,Decimal> net)
+	private void readMatrix (AttributeNetwork net)
 		throws IOException
 	{
 		String line;
@@ -281,7 +289,7 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 					value = new Decimal(tokenizer.nextToken());
 
 					if (value.intValue()>0)
-						net.add(i,j,value);
+						net.add(i,j);
 				}
 			}
 		
@@ -297,7 +305,7 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 					value = new Decimal(tokenizer.nextToken());
 
 					if (value.intValue()>0)
-						net.add(i,bimode+j,value);
+						net.add(i,bimode+j);
 				}
 			}
 		}
@@ -312,10 +320,12 @@ public class PajekNetworkReader extends NetworkReader<String,Decimal>
 	 * Read Pajek file (*vertices, *arcslist/*edgeslist, *arcs/*edges, *matrix). 
 	 */
 	@Override
-	public Network<String,Decimal> read()
+	public Network read()
 		throws IOException
 	{
-		Network<String,Decimal> net = createNetwork();
+		AttributeNetwork net = new AttributeNetwork();
+        net.addNodeAttribute( new Attribute("id") );	
+        net.addLinkAttribute( new LinkAttribute<Decimal>(net, "value"));
 		
 		readLine();
 		

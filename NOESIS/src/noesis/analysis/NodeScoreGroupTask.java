@@ -1,18 +1,22 @@
-package noesis.analysis.structure;
+package noesis.analysis;
 
 import ikor.collection.List;
 import ikor.model.data.DataModel;
-
 import ikor.parallel.Task;
-
 import noesis.CollectionFactory;
 import noesis.Network;
 
-public abstract class NodeMeasureMultiTask extends Task<List<NodeMeasure>>
+/**
+ * Task for computing a set of node scores.
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
+
+public abstract class NodeScoreGroupTask extends Task<List<NodeScore>>
 {
 	private Network     network;
 	
-	public NodeMeasureMultiTask (Network network)
+	public NodeScoreGroupTask (Network network)
 	{
 		this.network = network;
 	}
@@ -25,16 +29,16 @@ public abstract class NodeMeasureMultiTask extends Task<List<NodeMeasure>>
 	
 	
 	
-	protected final List<NodeMeasure> createMeasures (Network network)
+	protected final List<NodeScore> createMeasures (Network network)
 	{
 		String[]    names = getNames();
 		String[]    descriptions = getDescriptions();
 		DataModel[] models = getModels();
 		
-		List<NodeMeasure> measures = CollectionFactory.createList();
+		List<NodeScore> measures = CollectionFactory.createList();
 		
 		for (int i=0; i<names.length; i++) {
-			NodeMeasure measure = new NodeMeasure(names[i], network);
+			NodeScore measure = new NodeScore(names[i], network);
 			measure.setMetadata(this);
 			measure.setName(names[i]);
 			measure.setDescription(descriptions[i]);
@@ -54,10 +58,10 @@ public abstract class NodeMeasureMultiTask extends Task<List<NodeMeasure>>
 	
 	// Computation template method
 	
-	protected List<NodeMeasure> measures = null;
+	protected List<NodeScore> measures = null;
 
 	@Override
-	public List<NodeMeasure> call() 
+	public List<NodeScore> call() 
 	{
 		compute();
 		

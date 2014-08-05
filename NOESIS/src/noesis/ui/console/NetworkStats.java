@@ -9,21 +9,16 @@ package noesis.ui.console;
 import java.io.*;
 
 import ikor.math.Decimal;
-
 import ikor.parallel.*;
 import ikor.parallel.scheduler.*;
-
 import ikor.util.Benchmark;
-
 import noesis.Network;
 import noesis.Attribute;
 import noesis.AttributeNetwork;
-
+import noesis.analysis.NodeScore;
 import noesis.analysis.structure.Betweenness;
-import noesis.analysis.structure.NodeMeasure;
 import noesis.analysis.structure.InDegree;
 import noesis.analysis.structure.OutDegree;
-
 import noesis.io.*;
 
 /**
@@ -169,7 +164,7 @@ public class NetworkStats {
 		}		
 	}
 	
-	public static void saveInt (String file, NodeMeasure metrics)
+	public static void saveInt (String file, NodeScore metrics)
 		throws IOException
 	{
 		FileWriter writer = new FileWriter(file);

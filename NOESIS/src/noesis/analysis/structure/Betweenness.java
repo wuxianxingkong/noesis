@@ -9,11 +9,11 @@ package noesis.analysis.structure;
 import ikor.math.Vector;
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
-
 import ikor.parallel.*;
 import ikor.parallel.combiner.VectorAccumulator;
-
 import noesis.Network;
+import noesis.analysis.NodeScoreTask;
+import noesis.analysis.NodeScore;
 
 /**
  * Betweenness centrality, between (2n-1) and n^2-(n-1)
@@ -23,20 +23,20 @@ import noesis.Network;
 
 @Label("betweenness")
 @Description("Node betweenness")
-public class Betweenness extends NodeMeasureTask 
+public class Betweenness extends NodeScoreTask 
 {
 	public Betweenness (Network network)
 	{
 		super(network);
 	}	
-
+	
 	
 	@Override
 	public double compute(int node) 
 	{
 		checkDone();	
 		
-		return measure.get(node);
+		return getResult(node);
 	}	
 
 	@Override
@@ -45,7 +45,7 @@ public class Betweenness extends NodeMeasureTask
 		Network net = getNetwork();
 		int     size = net.size();
 		
-		measure = new NodeMeasure(this,net);
+		NodeScore measure = new NodeScore(this,net);
 	
 		// Iterative algorithm
         /*
@@ -69,6 +69,8 @@ public class Betweenness extends NodeMeasureTask
 		for (int i=0; i<size; i++) {
 		    measure.set (i, score.get(i) );
 		}
+		
+		setResult(measure);
 	}	
 	
 	

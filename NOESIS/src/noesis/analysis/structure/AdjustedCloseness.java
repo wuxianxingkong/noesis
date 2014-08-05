@@ -2,8 +2,8 @@ package noesis.analysis.structure;
 
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
-
 import noesis.Network;
+import noesis.analysis.NodeScoreTask;
 
 /**
  * Adjusted closeness centrality (for disconnected graphs), normalized within [0,1]
@@ -15,7 +15,7 @@ import noesis.Network;
 
 @Label("adj-closeness")
 @Description("Adjusted closeness")
-public class AdjustedCloseness extends NodeMeasureTask
+public class AdjustedCloseness extends NodeScoreTask
 {
 	public AdjustedCloseness (Network network)
 	{

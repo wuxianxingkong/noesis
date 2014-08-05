@@ -6,10 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-
 import noesis.BasicNetwork;
 import noesis.Network;
-
+import noesis.analysis.NodeScoreTask;
 import noesis.analysis.structure.AdjustedBetweenness;
 import noesis.analysis.structure.Betweenness;
 import noesis.analysis.structure.Closeness;
@@ -18,7 +17,6 @@ import noesis.analysis.structure.EigenvectorCentrality;
 import noesis.analysis.structure.FreemanBetweenness;
 import noesis.analysis.structure.HITS;
 import noesis.analysis.structure.KatzCentrality;
-import noesis.analysis.structure.NodeMeasureTask;
 import noesis.analysis.structure.NormalizedBetweenness;
 import noesis.analysis.structure.NormalizedDecay;
 import noesis.analysis.structure.NormalizedInDegree;
@@ -58,7 +56,7 @@ public class BowtieTest
 		connect(netBowtie, 5, 6);
 	}
 	
-	private void checkMeasure (NodeMeasureTask task, double[] expected)
+	private void checkMeasure (NodeScoreTask task, double[] expected)
 	{
 		Vector observed = task.getResult();
 		

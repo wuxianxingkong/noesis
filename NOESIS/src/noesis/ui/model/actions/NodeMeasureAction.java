@@ -6,12 +6,11 @@ import ikor.model.data.IntegerModel;
 import ikor.model.ui.Action;
 import ikor.model.ui.Application;
 import ikor.util.log.Log;
-
 import noesis.Attribute;
 import noesis.AttributeNetwork;
 import noesis.Network;
-import noesis.analysis.structure.NodeMeasureTask;
-import noesis.analysis.structure.NodeMeasure;
+import noesis.analysis.NodeScoreTask;
+import noesis.analysis.NodeScore;
 import noesis.ui.model.NetworkModel;
 import noesis.ui.model.data.VectorUIModel;
 
@@ -29,14 +28,14 @@ public class NodeMeasureAction extends Action
 		this.measureClass = metric;
 	}
 	
-	public NodeMeasureTask instantiateTask (Network network)
+	public NodeScoreTask instantiateTask (Network network)
 	{
-		NodeMeasureTask metrics = null;
+		NodeScoreTask metrics = null;
 		
 		try {
 		
 			Constructor constructor = measureClass.getConstructor(Network.class);
-			metrics = (NodeMeasureTask) constructor.newInstance(network);
+			metrics = (NodeScoreTask) constructor.newInstance(network);
 		
 		} catch (Exception error) {
 			
@@ -50,8 +49,8 @@ public class NodeMeasureAction extends Action
 	public void run() 
 	{
 		AttributeNetwork network = model.getNetwork();
-		NodeMeasureTask  task;
-		NodeMeasure      metrics;
+		NodeScoreTask  task;
+		NodeScore      metrics;
 		Attribute        attribute;
 		String           id;
 		

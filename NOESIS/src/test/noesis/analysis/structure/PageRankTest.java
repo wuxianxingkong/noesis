@@ -4,11 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-
 import noesis.BasicNetwork;
 import noesis.Network;
-
-import noesis.analysis.structure.NodeMeasure;
+import noesis.analysis.NodeScore;
 import noesis.analysis.structure.PageRank;
 
 
@@ -106,7 +104,7 @@ public class PageRankTest
 	private void checkPageRank (Network net, double theta, double[] rank)
 	{
 		PageRank task = new PageRank(net, theta);
-		NodeMeasure pagerank = task.getResult();
+		NodeScore pagerank = task.getResult();
 		
 		for (int i=0; i<net.size(); i++)
 			assertEquals ( rank[i], pagerank.get(i), EPSILON); 

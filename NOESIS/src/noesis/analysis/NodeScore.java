@@ -1,14 +1,20 @@
-package noesis.analysis.structure;
+package noesis.analysis;
 
 import noesis.Network;
 
-public class NodeMeasure extends Measure
+/**
+ * Node score.
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
+
+public class NodeScore extends Score
 {
 	private Network network;
 	
 	// Constructor
 	
-	public NodeMeasure (NodeMeasureTask creator, Network network)
+	public NodeScore (NodeScoreTask creator, Network network)
 	{
 		super(network.size());
 		
@@ -18,7 +24,7 @@ public class NodeMeasure extends Measure
 		setDescription (creator.getDescription() );
 	}
 	
-	public NodeMeasure (String id, Network network)
+	public NodeScore (String id, Network network)
 	{
 		super(network.size());
 		

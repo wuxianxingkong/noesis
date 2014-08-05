@@ -1,6 +1,7 @@
 package noesis.analysis.structure;
 
 import noesis.Network;
+import noesis.analysis.NodeScoreTask;
 
 /**
  * Decay centrality (weighs distance exponentially).
@@ -13,7 +14,7 @@ import noesis.Network;
  */
 
 
-public class Decay extends NodeMeasureTask 
+public class Decay extends NodeScoreTask 
 {
 	public static final double DEFAULT_DECAY = 0.5;
 	

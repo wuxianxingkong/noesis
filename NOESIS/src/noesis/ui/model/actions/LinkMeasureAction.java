@@ -6,12 +6,11 @@ import ikor.model.data.IntegerModel;
 import ikor.model.ui.Action;
 import ikor.model.ui.Application;
 import ikor.util.log.Log;
-
 import noesis.Network;
 import noesis.AttributeNetwork;
 import noesis.LinkAttribute;
-import noesis.analysis.structure.LinkMeasureTask;
-import noesis.analysis.structure.LinkMeasure;
+import noesis.analysis.LinkScoreTask;
+import noesis.analysis.LinkScore;
 import noesis.ui.model.NetworkModel;
 import noesis.ui.model.data.VectorUIModel;
 
@@ -29,14 +28,14 @@ public class LinkMeasureAction extends Action
 		this.measureClass = metric;
 	}
 	
-	public LinkMeasureTask instantiateTask (Network network)
+	public LinkScoreTask instantiateTask (Network network)
 	{
-		LinkMeasureTask task = null;
+		LinkScoreTask task = null;
 		
 		try {
 		
 			Constructor constructor = measureClass.getConstructor(Network.class);
-			task = (LinkMeasureTask) constructor.newInstance(network);
+			task = (LinkScoreTask) constructor.newInstance(network);
 		
 		} catch (Exception error) {
 			
@@ -50,8 +49,8 @@ public class LinkMeasureAction extends Action
 	public void run() 
 	{
 		AttributeNetwork network = model.getNetwork();
-		LinkMeasureTask  task;
-		LinkMeasure      metrics;
+		LinkScoreTask  task;
+		LinkScore      metrics;
 		LinkAttribute    attribute;
 		String           id;
 		

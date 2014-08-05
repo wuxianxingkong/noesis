@@ -9,11 +9,11 @@ package noesis.analysis.structure;
 import ikor.math.Vector;
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
-
 import ikor.parallel.*;
 import ikor.parallel.combiner.VectorAccumulator;
-
 import noesis.Network;
+import noesis.analysis.LinkScoreTask;
+import noesis.analysis.LinkScore;
 import noesis.network.LinkIndexer;
 
 /**
@@ -24,7 +24,7 @@ import noesis.network.LinkIndexer;
 
 @Label("link-betweenness")
 @Description("Link betweenness")
-public class LinkBetweenness extends LinkMeasureTask 
+public class LinkBetweenness extends LinkScoreTask 
 {
      /**
      * Constructor
@@ -56,7 +56,7 @@ public class LinkBetweenness extends LinkMeasureTask
     {
     	checkDone();
     	    	
-    	return measure.get(source,destination); 
+    	return getResult().get(source,destination); 
     }
 
     /**
@@ -72,14 +72,16 @@ public class LinkBetweenness extends LinkMeasureTask
         int size = net.size();
         int links = net.links();
     
-        measure = new LinkMeasure(this, net, index);
+        LinkScore result = new LinkScore(this, net, index);
 
         // Parallel algorithm 
         
         Vector score = (Vector) Parallel.reduce(new LinkBetweennessKernel(), new VectorAccumulator(links), 0, size - 1);
 
         for (int i = 0; i < score.size(); i++) 
-            measure.set(i, score.get(i));
+            result.set(i, score.get(i));
+        
+        setResult(result);
     }
 
 

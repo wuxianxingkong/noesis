@@ -1,12 +1,10 @@
 package test.noesis.analysis.structure;
 
 import static org.junit.Assert.*;
-
 import ikor.parallel.Task;
-
 import noesis.BasicNetwork;
 import noesis.Network;
-import noesis.analysis.structure.LinkMeasure;
+import noesis.analysis.LinkScore;
 import noesis.analysis.structure.LinkEmbeddedness;
 import noesis.analysis.structure.LinkNeighborhoodOverlap;
 import noesis.analysis.structure.LinkNeighborhoodSize;
@@ -51,8 +49,8 @@ public class LinkEmbeddednessTest
 	public void testEmbeddedness() 
 		throws Exception
 	{
-		Task<LinkMeasure> task = new LinkEmbeddedness(net);
-		LinkMeasure embeddedness = task.call();
+		Task<LinkScore> task = new LinkEmbeddedness(net);
+		LinkScore embeddedness = task.call();
 		//LinkMeasure embeddedness = task.getResult();
 		//LinkMeasure embeddedness = task.getFuture().get();
 		
@@ -73,8 +71,8 @@ public class LinkEmbeddednessTest
 	public void testLinkNeighborhoodOverlap() 
 		throws Exception
 	{
-		Task<LinkMeasure> task = new LinkNeighborhoodOverlap(net);
-		LinkMeasure neighborhood = task.call();
+		Task<LinkScore> task = new LinkNeighborhoodOverlap(net);
+		LinkScore neighborhood = task.call();
 		//LinkMeasure neighborhood = task.getResult();
 		//LinkMeasure neighborhood = task.getFuture().get();
 		
@@ -95,8 +93,8 @@ public class LinkEmbeddednessTest
 	public void testLinkNeighborhoodSize() 
 		throws Exception
 	{
-		Task<LinkMeasure> task = new LinkNeighborhoodSize(net);
-		LinkMeasure neighborhood = task.call();
+		Task<LinkScore> task = new LinkNeighborhoodSize(net);
+		LinkScore neighborhood = task.call();
 		//LinkMeasure neighborhood = task.getResult();
 		//LinkMeasure neighborhood = task.getFuture().get();
 		

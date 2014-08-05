@@ -1,13 +1,11 @@
 package test.noesis.analysis.structure;
 
 import static org.junit.Assert.*;
-
 import noesis.BasicNetwork;
 import noesis.Network;
-
+import noesis.analysis.LinkScore;
 import noesis.analysis.structure.LinkBetweenness;
 import noesis.analysis.structure.LinkBetweennessScore;
-import noesis.analysis.structure.LinkMeasure;
 import noesis.network.LinkIndex;
 
 import org.junit.Before;
@@ -147,8 +145,8 @@ public class LinkBetweennessTest
 		LinkBetweennessScore treeTask = new LinkBetweennessScore(tree,treeLinkIndex,0);
 		LinkBetweennessScore graphTask = new LinkBetweennessScore(graph,graphLinkIndex,0);
 				
-		LinkMeasure treeScore = treeTask.getResult();
-		LinkMeasure graphScore = graphTask.getResult();
+		LinkScore treeScore = treeTask.getResult();
+		LinkScore graphScore = graphTask.getResult();
 		
 		assertEquals ( 2, treeScore.get(0,1), EPSILON);
 		assertEquals ( 4, treeScore.get(0,2), EPSILON);
@@ -191,8 +189,8 @@ public class LinkBetweennessTest
 		LinkBetweenness treeTask = new LinkBetweenness(tree);
 		LinkBetweenness graphTask = new LinkBetweenness(graph);
 	
-		LinkMeasure treeBetweenness = treeTask.getResult();
-		LinkMeasure graphBetweenness = graphTask.getResult();
+		LinkScore treeBetweenness = treeTask.getResult();
+		LinkScore graphBetweenness = graphTask.getResult();
 		
 		assertEquals ( 2+0+2+0+2+2+2, treeBetweenness.get(0,1), EPSILON);
 		assertEquals ( 0+5+0+5+0+0+0, treeBetweenness.get(1,0), EPSILON);

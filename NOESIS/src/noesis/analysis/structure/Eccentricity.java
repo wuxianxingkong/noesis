@@ -2,8 +2,9 @@ package noesis.analysis.structure;
 
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
-
 import noesis.Network;
+import noesis.analysis.NodeScoreTask;
+import noesis.analysis.NodeScore;
 
 /**
  * Node eccentricity.
@@ -19,11 +20,11 @@ import noesis.Network;
 
 @Label("eccentricity")
 @Description("Node eccentricity")
-public class Eccentricity extends NodeMeasureTask 
+public class Eccentricity extends NodeScoreTask 
 {
 	public Eccentricity (Network network)
 	{
-		super(NodeMeasure.INTEGER_MODEL,network);
+		super(NodeScore.INTEGER_MODEL,network);
 	}	
 
 	
@@ -34,14 +35,14 @@ public class Eccentricity extends NodeMeasureTask
 		
 		paths.compute();
 		
-		return paths.measure.max();
+		return paths.getResult().max();
 	}	
 	
 	public int diameter ()
 	{
 		checkDone();
 		
-		return (int) measure.max();
+		return (int) getResult().max();
 	}
 
 }

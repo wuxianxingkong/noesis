@@ -8,8 +8,8 @@ package noesis.analysis.structure;
 
 import ikor.model.data.annotations.Label;
 import ikor.model.data.annotations.Description;
-
 import noesis.Network;
+import noesis.analysis.LinkScoreTask;
 
 /**
  * Link rays, i.e. number of different paths (x,i,j,y) through the (i,j) link.
@@ -19,7 +19,7 @@ import noesis.Network;
 
 @Label("link-rays")
 @Description("Link rays")
-public class LinkRays extends LinkMeasureTask
+public class LinkRays extends LinkScoreTask
 {
 	public LinkRays(Network network) 
 	{

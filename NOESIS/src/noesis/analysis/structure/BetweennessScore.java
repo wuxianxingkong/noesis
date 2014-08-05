@@ -8,11 +8,11 @@ package noesis.analysis.structure;
 
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
-
 import noesis.Network;
-
 import noesis.algorithms.LinkVisitor;
 import noesis.algorithms.traversal.NetworkBFS;
+import noesis.analysis.NodeScoreTask;
+import noesis.analysis.NodeScore;
 
 /**
  * Betweenness score 
@@ -22,7 +22,7 @@ import noesis.algorithms.traversal.NetworkBFS;
 
 @Label("betweenness-score")
 @Description("Betweenness score")
-public class BetweennessScore extends NodeMeasureTask
+public class BetweennessScore extends NodeScoreTask
 {
 	private int distance[];
 	private int geodesics[];
@@ -70,13 +70,15 @@ public class BetweennessScore extends NodeMeasureTask
 	
 	public double betweenness (int node)
 	{
-		if (measure!=null)
-			return measure.get(node);
+		if (getResult()!=null)
+			return getResult().get(node);
 		else
 			return 0.0;
 	}
 	
 	// Betweenness score computation
+	
+	private NodeScore score;
 	
 	@Override
 	public void compute() 
@@ -84,7 +86,7 @@ public class BetweennessScore extends NodeMeasureTask
 		Network    net = getNetwork();
 		NetworkBFS bfs = new NetworkBFS(net);
 	
-		measure = new NodeMeasure(this,net);
+		score = new NodeScore(this,net);
 		
 		// 1 path to source node (at distance 0)
 		
@@ -101,8 +103,10 @@ public class BetweennessScore extends NodeMeasureTask
 		// Betweenness from shortest paths (reverse order)
 		
 		for (int i=visited-1; i>=0; i--) {
-			measure.set (visits[i], nodeScore(visits[i]) );
+			score.set (visits[i], nodeScore(visits[i]) );
 		}
+		
+		setResult(score);
 	}
 
 	
@@ -110,7 +114,7 @@ public class BetweennessScore extends NodeMeasureTask
 	{
 		checkDone();		
 		
-		return measure.get(node);
+		return getResult(node);
 	}
 	
 	
@@ -124,19 +128,19 @@ public class BetweennessScore extends NodeMeasureTask
 		
 		double distance  = distance(node);
 		double geodesics = geodesics(node);
-		double score     = 1;
+		double result    = 1;
 
 		if (links!=null) {			
 			for (int j=0; j<degree; j++) {
 				
 				if (distance(links[j])==distance+1) {
 					// score[node] += score[j]*geodesics[node]/geodesics[j]  
-					score += measure.get(links[j]) * geodesics / geodesics(links[j]);
+					result += score.get(links[j]) * geodesics / geodesics(links[j]);
 				}
 			}
 		}	
 		
-		return score;
+		return result;
 	}
 		
 	

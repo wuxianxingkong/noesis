@@ -3,12 +3,13 @@ package noesis.analysis.structure;
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
 import noesis.Network;
+import noesis.analysis.NodeScoreTask;
 
 // PageRank
 
 @Label("page-rank")
 @Description("PageRank")
-public class PageRank  extends NodeMeasureTask
+public class PageRank  extends NodeScoreTask
 {
 	public static double DEFAULT_THETA = 0.85;
 	public static double EPSILON = 1e-4;
@@ -39,17 +40,14 @@ public class PageRank  extends NodeMeasureTask
 		boolean dangling[];
 		double  danglingRank;
 		double  randomRank;
+		double  rank[];
 		
 		// Initialization: 1/N
-		
-		measure = new NodeMeasure(this,net);
 		
 		pagerank = new double[size];
 		
 		for (int i=0; i<size; i++)
 			pagerank[i] = 1.0/size;
-		
-		updateRank(pagerank);
 		
 		// Weights: 1/outdegree(i)
 		
@@ -69,7 +67,7 @@ public class PageRank  extends NodeMeasureTask
 	    do {	
 	    	
 	    	changes = false;
-			pagerank = new double[size];
+			rank = new double[size];
 	    	
 			// Dangling nodes (common calculation): O(n) 
 			
@@ -77,7 +75,7 @@ public class PageRank  extends NodeMeasureTask
 			
 			for (int i=0; i<size; i++)
 				if (dangling[i])
-					danglingRank += measure.get(i);
+					danglingRank += pagerank[i];
 			
 			danglingRank /= size;
 			
@@ -89,26 +87,28 @@ public class PageRank  extends NodeMeasureTask
 			
 		    for (int node=0; node<size; node++) {
 		    	
-		    	old = measure.get(node);
-		    	pagerank[node] = pagerank (net, node, danglingRank, randomRank);
+		    	old = pagerank[node];
+		    	rank[node] = pagerank (net, node, danglingRank, randomRank);
 		    	
-		    	if (!changes && (Math.abs(pagerank[node]-old)>EPSILON) ) {
+		    	if (!changes && (Math.abs(rank[node]-old)>EPSILON) ) {
 		    		changes = true;
 		    	}
 		    }
 		    
-		    updateRank(pagerank);
+		    updateRank(rank);
 		    
 	    } while (changes);
 		
 		weight = null;
 		dangling = null;
+		
+		setResult(pagerank);
 	}	
 	
 	
 	private void updateRank (double[] rank)
 	{
-	    measure.set(rank);
+		pagerank = rank;
 	    // Normalization
 	    // this.multiply(1.0/ this.sum());
 	}
@@ -126,7 +126,7 @@ public class PageRank  extends NodeMeasureTask
 		
 		if (links!=null) {			
 			for (int i=0; i<degree; i++) {
-				rank += measure.get(links[i])*weight[links[i]];
+				rank += pagerank[links[i]]*weight[links[i]];
 			}
 		}
 		
@@ -138,8 +138,9 @@ public class PageRank  extends NodeMeasureTask
 	
 	public double compute(int node) 
 	{
-		checkDone();		
-		return measure.get(node);
+		checkDone();	
+		
+		return getResult(node);
 	}	
 	
 }

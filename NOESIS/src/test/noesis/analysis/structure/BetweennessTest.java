@@ -1,13 +1,11 @@
 package test.noesis.analysis.structure;
 
 import static org.junit.Assert.*;
-
 import noesis.BasicNetwork;
 import noesis.Network;
-
+import noesis.analysis.NodeScore;
 import noesis.analysis.structure.Betweenness;
 import noesis.analysis.structure.BetweennessScore;
-import noesis.analysis.structure.NodeMeasure;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -112,8 +110,8 @@ public class BetweennessTest
 		BetweennessScore treeBetweennessScore = new BetweennessScore(tree,0);
 		BetweennessScore graphBetweennessScore = new BetweennessScore(graph,0);
 		
-		NodeMeasure treeScore = treeBetweennessScore.getResult();
-		NodeMeasure graphScore = graphBetweennessScore.getResult();
+		NodeScore treeScore = treeBetweennessScore.getResult();
+		NodeScore graphScore = graphBetweennessScore.getResult();
 		
 		assertEquals ( 7, treeScore.get(0), EPSILON);
 		assertEquals ( 2, treeScore.get(1), EPSILON);
@@ -139,8 +137,8 @@ public class BetweennessTest
 		Betweenness treeTask = new Betweenness(tree);
 		Betweenness graphTask = new Betweenness(graph);
 		
-		NodeMeasure treeBetweenness = treeTask.getResult();
-		NodeMeasure graphBetweenness = graphTask.getResult();
+		NodeScore treeBetweenness = treeTask.getResult();
+		NodeScore graphBetweenness = graphTask.getResult();
 		
 		assertEquals ( 7+5+3+5+3+3+3, treeBetweenness.get(0), EPSILON);
 		assertEquals ( 2+7+2+6+2+2+2, treeBetweenness.get(1), EPSILON);

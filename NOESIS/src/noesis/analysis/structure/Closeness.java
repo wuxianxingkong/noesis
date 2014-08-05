@@ -3,6 +3,7 @@ package noesis.analysis.structure;
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
 import noesis.Network;
+import noesis.analysis.NodeScoreTask;
 
 /**
  * Closeness centrality (suitable for connected graphs).
@@ -14,7 +15,7 @@ import noesis.Network;
 
 @Label("closeness")
 @Description("Closeness")
-public class Closeness extends NodeMeasureTask 
+public class Closeness extends NodeScoreTask 
 {
 	public Closeness (Network network)
 	{

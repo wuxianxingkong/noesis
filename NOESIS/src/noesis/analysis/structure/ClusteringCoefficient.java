@@ -9,6 +9,7 @@ package noesis.analysis.structure;
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
 import noesis.Network;
+import noesis.analysis.NodeScoreTask;
 
 /**
  * Clustering coefficient, between 0 and 1.
@@ -18,7 +19,7 @@ import noesis.Network;
 
 @Label("cc")
 @Description("Clustering coefficient")
-public class ClusteringCoefficient extends NodeMeasureTask
+public class ClusteringCoefficient extends NodeScoreTask
 {
 	public ClusteringCoefficient (Network network)
 	{

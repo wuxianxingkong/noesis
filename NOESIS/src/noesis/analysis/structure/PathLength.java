@@ -2,18 +2,19 @@ package noesis.analysis.structure;
 
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
-
 import noesis.Network;
-
 import noesis.algorithms.LinkVisitor;
 import noesis.algorithms.traversal.NetworkBFS;
 import noesis.algorithms.traversal.NetworkTraversal;
+import noesis.analysis.NodeScoreTask;
+import noesis.analysis.NodeScore;
 
 @Label("path-length")
 @Description("Path length")
-public class PathLength extends NodeMeasureTask
+public class PathLength extends NodeScoreTask
 {
 	private int node;
+	private NodeScore score;
 	
 	public PathLength (Network network, int node)
 	{
@@ -35,19 +36,22 @@ public class PathLength extends NodeMeasureTask
 	{
 		Network network = getNetwork();
 		
-		measure = new NodeMeasure(this,network);
+		score = new NodeScore(this,network);
 
 		NetworkTraversal bfs = new NetworkBFS(network);
 		
 		bfs.setLinkVisitor(new BFSVisitor(this));
 		
 		bfs.traverse(node);
+		
+		setResult(score);
 	}
 
 	public double compute(int node) 
 	{
 		checkDone();		
-		return measure.get(node);
+		
+		return getResult(node);
 	}
 	
 	
@@ -58,7 +62,7 @@ public class PathLength extends NodeMeasureTask
 		int reachable = reachableNodes();
 		
 		if (reachable>0)
-			return measure.sum() / reachable;
+			return getResult().sum() / reachable;
 		else
 			return 0.0;
 	}
@@ -68,7 +72,7 @@ public class PathLength extends NodeMeasureTask
 		checkDone();
 		
 		int    reachable = reachableNodes();
-		double sumPathLengths = measure.sum();
+		double sumPathLengths = getResult().sum();
 		
 		if (sumPathLengths>0)
 			return reachable / sumPathLengths;
@@ -80,19 +84,20 @@ public class PathLength extends NodeMeasureTask
 	{
 		checkDone();
 		
-		return ((double)reachableNodes())/(measure.size()-1); 
+		return ((double)reachableNodes())/(getResult().size()-1); 
 	}
 	
 	public double decay (double delta)
 	{
 		checkDone();
 		
+		int    nodes = getNetwork().size();
 		double sum = 0;
 		
-		for (int i=0; i<measure.size(); i++) {
+		for (int i=0; i<nodes; i++) {
 			
-			if (measure.get(i)>0)
-				sum += Math.pow(delta, measure.get(i));
+			if (getResult(i)>0)
+				sum += Math.pow(delta, getResult(i));
 		}
 		
 		return sum;
@@ -100,10 +105,11 @@ public class PathLength extends NodeMeasureTask
 	
 	public int reachableNodes ()
 	{
+		int nodes = getNetwork().size();
 		int total = 0;
 		
-		for (int i=0; i<measure.size(); i++)
-			if (measure.get(i)>0)
+		for (int i=0; i<nodes; i++)
+			if (getResult(i)>0)
 				total++;
 		
 		return total;
@@ -125,8 +131,8 @@ public class PathLength extends NodeMeasureTask
 		public void visit(int source, int destination) 
 		{
 			if (  (destination!=metrics.node()) 
-			   && (metrics.measure.get(destination)==0) )
-				metrics.measure.set ( destination, metrics.measure.get(source) + 1);		
+			   && (metrics.score.get(destination)==0) )
+				metrics.score.set ( destination, metrics.score.get(source) + 1);		
 		}
 		
 	}

@@ -1,12 +1,17 @@
-package noesis.analysis.structure;
+package noesis.analysis;
 
 import ikor.parallel.Task;
-
 import noesis.Network;
 import noesis.network.LinkIndex;
 import noesis.network.LinkIndexer;
 
-public class LinkMeasure extends Measure
+/**
+ * Link score.
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
+
+public class LinkScore extends Score
 {
 	private Network network;
 	private LinkIndexer index;
@@ -14,7 +19,7 @@ public class LinkMeasure extends Measure
 	
 	// Constructors
 	
-	public LinkMeasure (Task creator, Network network, LinkIndexer index)
+	public LinkScore (Task creator, Network network, LinkIndexer index)
 	{
 		super(network.links());
 		
@@ -24,7 +29,7 @@ public class LinkMeasure extends Measure
 		setMetadata(creator);
 	}
 
-	public LinkMeasure (Task creator, Network network)
+	public LinkScore (Task creator, Network network)
 	{
 		this (creator, network, new LinkIndex(network));
 	}

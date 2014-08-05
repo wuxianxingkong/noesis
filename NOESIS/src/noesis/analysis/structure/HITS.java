@@ -1,8 +1,9 @@
 package noesis.analysis.structure;
 
 import ikor.model.data.DataModel;
-
 import noesis.Network;
+import noesis.analysis.NodeScoreGroupTask;
+import noesis.analysis.NodeScore;
 
 /**
  * HITS: Hubs & Authorities.
@@ -15,7 +16,7 @@ import noesis.Network;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-public class HITS extends NodeMeasureMultiTask 
+public class HITS extends NodeScoreGroupTask 
 {
 	public static final int HUB = 0;
 	public static final int AUTHORITY = 1;
@@ -53,7 +54,7 @@ public class HITS extends NodeMeasureMultiTask
 	
 	private static final String[] names = { "hub", "authority" };
 	private static final String[] descriptions = { "Hub centrality", "Authority centrality" };
-	private static final DataModel[] models = new DataModel[]{NodeMeasure.REAL_MODEL, NodeMeasure.REAL_MODEL};
+	private static final DataModel[] models = new DataModel[]{NodeScore.REAL_MODEL, NodeScore.REAL_MODEL};
 	
 	@Override
 	public String[] getNames () 

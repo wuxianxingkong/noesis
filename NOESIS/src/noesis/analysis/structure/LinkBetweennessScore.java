@@ -8,10 +8,9 @@ package noesis.analysis.structure;
 
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
-
 import noesis.Network;
-
-import noesis.analysis.structure.LinkMeasure;
+import noesis.analysis.LinkScoreTask;
+import noesis.analysis.LinkScore;
 import noesis.network.LinkIndexer;
 
 /**
@@ -22,7 +21,7 @@ import noesis.network.LinkIndexer;
 
 @Label("link-betweenness-score")
 @Description("Link betweenness score")
-public class LinkBetweennessScore extends LinkMeasureTask
+public class LinkBetweennessScore extends LinkScoreTask
 {
 	private BetweennessScore score;
     
@@ -83,7 +82,7 @@ public class LinkBetweennessScore extends LinkMeasureTask
     {
     	checkDone();
     	
-    	return measure.get(source,destination);
+    	return getResult().get(source,destination);
     }
 	
     @Override
@@ -97,7 +96,7 @@ public class LinkBetweennessScore extends LinkMeasureTask
     			
 		// Betweenness scores from shortest paths (reverse order)
 
-		measure = new LinkMeasure(this,net,getLinkIndex());
+		LinkScore result = new LinkScore(this,net,getLinkIndex());
 			
 		for (int i=visited()-1; i>=0; i--) {
 			
@@ -116,8 +115,10 @@ public class LinkBetweennessScore extends LinkMeasureTask
 
 			for (int j=0; j<indegree; j++) {
 				if ( distance(inlinks[j])==currentDistance-1 )
-					measure.set(inlinks[j],currentNode, measure.get(inlinks[j],currentNode) + geodesics(inlinks[j])*currentScore/currentGeodesics);
+					result.set(inlinks[j],currentNode, result.get(inlinks[j],currentNode) + geodesics(inlinks[j])*currentScore/currentGeodesics);
 			}
 		}
+		
+		setResult(result);
     }
 }

@@ -4,6 +4,7 @@ import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
 import noesis.Network;
 import noesis.algorithms.traversal.StronglyConnectedComponents;
+import noesis.analysis.NodeScore;
 
 // Betweenness centrality adjusted to component sizes
 // - Freeman's betweenness between (2n-1) and (n^2-(n-1)) in strongly-connected networks
@@ -35,7 +36,9 @@ public class AdjustedBetweenness extends Betweenness
 	{
 		super.compute();
 
-		// Adjusted taking into account component sizes
+		NodeScore score = getResult();
+		
+		// Adjust taking into account component sizes
 		
 		StronglyConnectedComponents scc;
 		
@@ -44,8 +47,9 @@ public class AdjustedBetweenness extends Betweenness
 
 		for (int node=0; node<getNetwork().size(); node++) {
 			int size = scc.componentSize(node);
-			measure.set ( node, measure.get(node) - (2*size-1) );
+			score.set ( node, score.get(node) - (2*size-1) );
 		}
+		
+		setResult(score);
 	}
-
 }

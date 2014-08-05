@@ -1,9 +1,10 @@
 package noesis.analysis.structure;
 
 import ikor.model.data.DataModel;
-
 import noesis.Network;
 import noesis.algorithms.traversal.StronglyConnectedComponents;
+import noesis.analysis.NodeScoreGroupTask;
+import noesis.analysis.NodeScore;
 
 /**
  * Strongly-connected components in a directed network
@@ -11,7 +12,7 @@ import noesis.algorithms.traversal.StronglyConnectedComponents;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-public class ConnectedComponents extends NodeMeasureMultiTask
+public class ConnectedComponents extends NodeScoreGroupTask
 {
 	public static final int COMPONENT = 0;
 	public static final int COMPONENT_SIZE = 1;
@@ -32,7 +33,7 @@ public class ConnectedComponents extends NodeMeasureMultiTask
 	
 	private static final String[] names = { "component", "scc-size", "reaches" };
 	private static final String[] descriptions = { "Strongly connected component", "Connected component size", "Reachable nodes" };
-	private static final DataModel[] models = new DataModel[] { NodeMeasure.INTEGER_MODEL, NodeMeasure.INTEGER_MODEL, NodeMeasure.INTEGER_MODEL };
+	private static final DataModel[] models = new DataModel[] { NodeScore.INTEGER_MODEL, NodeScore.INTEGER_MODEL, NodeScore.INTEGER_MODEL };
 	
 	@Override
 	public String[] getNames () 

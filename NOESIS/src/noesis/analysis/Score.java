@@ -1,4 +1,4 @@
-package noesis.analysis.structure;
+package noesis.analysis;
 
 import ikor.math.DenseVector;
 
@@ -9,10 +9,18 @@ import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
 import ikor.parallel.Task;
 
-public abstract class Measure extends DenseVector
+/**
+ * Score.
+ * 
+ * Base class for node and link scores.
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
+
+public abstract class Score extends DenseVector
 {	
-	protected static final DataModel INTEGER_MODEL = new IntegerModel();
-	protected static final DataModel REAL_MODEL = new RealModel();
+	public static final DataModel INTEGER_MODEL = new IntegerModel();
+	public static final DataModel REAL_MODEL = new RealModel();
 
 	private String id;
 	private String description;
@@ -20,7 +28,7 @@ public abstract class Measure extends DenseVector
 	
 	// Constructor
 	
-	protected Measure (int size)
+	protected Score (int size)
 	{
 		super(size);
 	}	

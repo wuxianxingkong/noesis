@@ -2,12 +2,12 @@ package noesis.analysis.structure;
 
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
-
 import noesis.Network;
+import noesis.analysis.NodeScoreTask;
 
 @Label("in-degree-norm")
 @Description("Normalized in-degree")
-public class NormalizedDegree extends NodeMeasureTask 
+public class NormalizedDegree extends NodeScoreTask 
 {
 		
 	public NormalizedDegree (Network network)

@@ -2,8 +2,8 @@ package noesis.analysis.structure;
 
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
-
 import noesis.Network;
+import noesis.analysis.NodeScore;
 
 // Normalized betweenness centrality, between (2n-1)/(n^2-(n-1)) and 1 in strongly-connected networks
 
@@ -23,10 +23,14 @@ public class FreemanBetweenness extends Betweenness
 		super.compute();
 
 		// Normalization
+		
+		NodeScore score = getResult();
 
 		for (int node=0; node<getNetwork().size(); node++) {
-			measure.set ( node, freemanBetweenness(node) );    // vs. standardBetweenness(node);
+			score.set ( node, freemanBetweenness(node) );    // vs. standardBetweenness(node);
 		}
+		
+		setResult(score);
 	}	
 	
 	// Conventional normalization (n^2)
@@ -35,7 +39,7 @@ public class FreemanBetweenness extends Betweenness
 	{
 		int size = getNetwork().size();
 		
-		return measure.get(node)/(size*size); 
+		return getResult(node)/(size*size); 
 	}
 	
 	// Original version (Freeman'1977)
@@ -44,7 +48,7 @@ public class FreemanBetweenness extends Betweenness
 	{
 		int size = getNetwork().size();
 		
-		return measure.get(node)/(size*size-size+1); 
+		return getResult(node)/(size*size-size+1); 
 	}	
 
 }

@@ -1,27 +1,32 @@
-package noesis.analysis.structure;
+package noesis.analysis;
 
 import ikor.model.data.DataModel;
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
 import ikor.parallel.Task;
-
 import noesis.Network;
 
-public abstract class NodeMeasureTask extends Task<NodeMeasure>
+/**
+ * Task for computing node scores.
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
+
+public abstract class NodeScoreTask extends Task<NodeScore>
 {
 	private DataModel   model;
 	private Network     network;
 
 	
-	public NodeMeasureTask (DataModel model, Network network)
+	public NodeScoreTask (DataModel model, Network network)
 	{
 		this.model = model;
 		this.network = network;
 	}
 
-	public NodeMeasureTask (Network network)
+	public NodeScoreTask (Network network)
 	{
-		this(NodeMeasure.REAL_MODEL, network);
+		this(NodeScore.REAL_MODEL, network);
 	}
 
 		
@@ -57,23 +62,39 @@ public abstract class NodeMeasureTask extends Task<NodeMeasure>
 			return null;
 	}
 	
-
+	
+	public final double getResult (int node)
+	{
+		return getResult().get(node);
+	}
+	
+	public final void setResult (int node, double value)
+	{
+		getResult().set(node,value);
+	}
+	
+	public final void setResult (double values[])
+	{
+		NodeScore score = new NodeScore(this,getNetwork());
+		
+		score.set(values);
+		
+		setResult(score);
+	}
 
 	// Computation template method
 	
-	protected NodeMeasure measure = null;
-	
 	@Override
-	public NodeMeasure call() 
+	public NodeScore call() 
 	{
 		compute();
 		
-		return measure;
+		return getResult();
 	}
 
 	public void checkDone ()
 	{
-		if (measure==null)
+		if (getResult()==null)
 			compute();
 	}
 	
@@ -81,13 +102,14 @@ public abstract class NodeMeasureTask extends Task<NodeMeasure>
 	{
 		int size = network.size();
 		
-		measure = new NodeMeasure(this,network);
+		NodeScore score = new NodeScore(this,network);
 	
 		for (int node=0; node<size; node++)
-			measure.set (node, compute(node));
+			score.set (node, compute(node));
+		
+		setResult(score);
 	}
 	
 	public abstract double compute (int node);
 	
-
 }

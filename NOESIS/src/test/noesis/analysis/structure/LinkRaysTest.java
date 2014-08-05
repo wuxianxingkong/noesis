@@ -1,12 +1,10 @@
 package test.noesis.analysis.structure;
 
 import static org.junit.Assert.*;
-
 import ikor.parallel.Task;
-
 import noesis.BasicNetwork;
 import noesis.Network;
-import noesis.analysis.structure.LinkMeasure;
+import noesis.analysis.LinkScore;
 import noesis.analysis.structure.LinkRays;
 
 import org.junit.Before;
@@ -45,8 +43,8 @@ public class LinkRaysTest
 	public void test() 
 		throws Exception
 	{
-		Task<LinkMeasure> task = new LinkRays(net);
-		LinkMeasure rays = task.call();
+		Task<LinkScore> task = new LinkRays(net);
+		LinkScore rays = task.call();
 		//LinkMeasure rays = task.getResult();
 		//LinkMeasure rays = task.getFuture().get();
 		

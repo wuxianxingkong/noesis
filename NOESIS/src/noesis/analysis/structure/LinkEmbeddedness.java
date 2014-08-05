@@ -7,12 +7,11 @@ package noesis.analysis.structure;
 // E-mail:      berzal@acm.org
 
 import ikor.collection.Set;
-
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
-
 import noesis.Network;
 import noesis.CollectionFactory;
+import noesis.analysis.LinkScoreTask;
 
 /**
  * Link embeddedness, i.e. number of shared neighbors.
@@ -22,7 +21,7 @@ import noesis.CollectionFactory;
 
 @Label("embeddedness")
 @Description("Link embeddedness, a.k.a. shared neighbors")
-public class LinkEmbeddedness extends LinkMeasureTask
+public class LinkEmbeddedness extends LinkScoreTask
 {
 	public LinkEmbeddedness(Network network) 
 	{

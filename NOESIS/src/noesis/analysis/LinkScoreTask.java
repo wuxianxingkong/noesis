@@ -1,12 +1,17 @@
-package noesis.analysis.structure;
+package noesis.analysis;
 
 import ikor.parallel.Task;
-
 import noesis.Network;
 import noesis.network.LinkIndex;
 import noesis.network.LinkIndexer;
 
-public abstract class LinkMeasureTask extends Task<LinkMeasure>
+/**
+ * Task for computing link scores.
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
+
+public abstract class LinkScoreTask extends Task<LinkScore>
 {
 	private Network     network;
 	private LinkIndexer index;
@@ -14,13 +19,13 @@ public abstract class LinkMeasureTask extends Task<LinkMeasure>
 	
 	// Constructors
 	
-	public LinkMeasureTask (Network network, LinkIndexer index)
+	public LinkScoreTask (Network network, LinkIndexer index)
 	{
 		this.network = network;
 		this.index = index;
 	}
 
-	public LinkMeasureTask (Network network)
+	public LinkScoreTask (Network network)
 	{
 		this (network, new LinkIndex(network));
 	}
@@ -41,11 +46,9 @@ public abstract class LinkMeasureTask extends Task<LinkMeasure>
 	
 	// Computation template method
 	
-	protected LinkMeasure measure = null;
-	
 	public void checkDone ()
 	{
-		if (measure==null)
+		if (getResult()==null)
 			compute();
 	}
 	
@@ -54,23 +57,25 @@ public abstract class LinkMeasureTask extends Task<LinkMeasure>
 		int size = network.size();
 		int pos = 0;
 		
-		measure = new LinkMeasure(this,network,index);
+		LinkScore result = new LinkScore(this,network,index);
 	
 		for (int node=0; node<size; node++) {
 			for (int link=0; link<network.outDegree(node); link++) {
-				measure.set (pos, compute(node, network.outLink(node,link)));
+				result.set (pos, compute(node, network.outLink(node,link)));
 				pos++;
 			}
 		}
+		
+		setResult(result);
 	}
 
 	
 	@Override
-	public LinkMeasure call() 
+	public LinkScore call() 
 	{
 		compute();
 		
-		return measure;
+		return getResult();
 	}
 	
 	public abstract double compute (int source, int destination);

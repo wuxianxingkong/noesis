@@ -1,6 +1,7 @@
 package noesis.analysis.structure;
 
 import noesis.Network;
+import noesis.analysis.NodeScoreTask;
 
 /**
  * Katz centrality: x_i = alpha * sum_j ( A_ij * x_j ) + beta
@@ -13,7 +14,7 @@ import noesis.Network;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-public class KatzCentrality  extends NodeMeasureTask 
+public class KatzCentrality  extends NodeScoreTask 
 {
 	public static int MAX_ITERATIONS = 100;
 	public static double EPSILON = 1e-6;
@@ -76,10 +77,7 @@ public class KatzCentrality  extends NodeMeasureTask
 		double  norm;
 		int     iteration;
 		
-		
 		// Initialization: 1/N
-		
-		measure = new NodeMeasure(this,net);
 		
 		centrality = new double[size];
 		old = new double[size];
@@ -134,15 +132,19 @@ public class KatzCentrality  extends NodeMeasureTask
 			}
 		}
 
-		measure.set(centrality);	    
+
+		// Result
+
+		setResult(centrality);
 	}	
 	
 	
 	
 	public double compute(int node) 
 	{
-		checkDone();		
-		return measure.get(node);
+		checkDone();
+		
+		return getResult(node);
 	}	
 	
 }

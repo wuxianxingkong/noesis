@@ -3,6 +3,7 @@ package noesis.analysis.structure;
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
 import noesis.Network;
+import noesis.analysis.NodeScoreTask;
 
 /**
  * Eigenvector centrality.
@@ -14,7 +15,7 @@ import noesis.Network;
 
 @Label("eigenvector")
 @Description("Eigenvector centrality")
-public class EigenvectorCentrality  extends NodeMeasureTask
+public class EigenvectorCentrality  extends NodeScoreTask
 {
 	public static int MAX_ITERATIONS = 100;
 	public static double EPSILON = 1e-6;
@@ -41,8 +42,6 @@ public class EigenvectorCentrality  extends NodeMeasureTask
 		
 		// Initialization: 1/N
 
-		measure = new NodeMeasure(this,net);
-				
 		centrality = new double[size];
 		old = new double[size];
 		
@@ -98,15 +97,18 @@ public class EigenvectorCentrality  extends NodeMeasureTask
 			}
 		}
 
-		measure.set(centrality);	    
+		// Result
+		
+		setResult(centrality);
 	}	
 	
 	
 	
 	public double compute(int node) 
 	{
-		checkDone();		
-		return measure.get(node);
+		checkDone();
+		
+		return getResult().get(node);
 	}	
 	
 }

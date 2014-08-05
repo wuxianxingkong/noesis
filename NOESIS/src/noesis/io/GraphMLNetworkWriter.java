@@ -51,7 +51,9 @@ public class GraphMLNetworkWriter extends AttributeNetworkWriter
 				writeAttributes((AttributeNetwork)net);
 
 			writer.writeStartElement("graph");
-			writer.writeAttribute("id", net.getID());
+			
+			if (net.getID()!=null)
+				writer.writeAttribute("id", net.getID());
 			
 			if (net.isDirected()) {
 				writer.writeAttribute("edgedefault", "directed");

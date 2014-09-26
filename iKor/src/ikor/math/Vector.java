@@ -73,6 +73,12 @@ public abstract class Vector extends Matrix
 		for (int i=0; i<size(); i++)
 			set(i, value);
 	}
+	
+	public final void set (Vector vector)
+	{
+		for (int i=0; i<size(); i++)
+			set(i, vector.get(i));
+	}
 
 	// Matrix interface
 

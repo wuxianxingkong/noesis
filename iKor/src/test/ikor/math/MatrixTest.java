@@ -153,6 +153,33 @@ public class MatrixTest
 		assertEquals( 0, zeros.trace(), EPSILON);
 		assertEquals( 3, ones.trace(), EPSILON);
 	}
+	
+	@Test
+	public void testSum ()
+	{
+		assertEquals( 1+2+3+4+5+6+7+8+9, matrix.sum(), EPSILON);
+		assertEquals( 3, identity.sum(), EPSILON);
+		assertEquals( 0, zeros.sum(), EPSILON);
+		assertEquals( 9, ones.sum(), EPSILON);
+	}
+	
+	@Test
+	public void testMin ()
+	{
+		assertEquals( 1, matrix.min(), EPSILON);
+		assertEquals( 0, identity.min(), EPSILON);
+		assertEquals( 0, zeros.min(), EPSILON);
+		assertEquals( 1, ones.min(), EPSILON);
+	}
+
+	@Test
+	public void testMax ()
+	{
+		assertEquals( 9, matrix.max(), EPSILON);
+		assertEquals( 1, identity.max(), EPSILON);
+		assertEquals( 0, zeros.max(), EPSILON);
+		assertEquals( 1, ones.max(), EPSILON);
+	}
 
 	@Test
 	public void testDiagonalProduct ()

@@ -608,7 +608,54 @@ public abstract class Matrix implements java.io.Serializable
 
 		return result;
 	}
+	
+	
+	/**
+	 * Sum the elements of the matrix
+	 * @return sum of the elements of the matrix
+	 */
+	public double sum ()
+	{
+		double sum = 0;
+		
+		for (int i=0; i<rows(); i++)
+			for (int j=0; j<columns(); j++)
+				sum += this.get(i,j);
+		
+		return sum;
+	}
 
+	/**
+	 * Maximum of the elements of the matrix
+	 * @return maximum of the elements of the matrix
+	 */
+	public double max ()
+	{
+		double max = Double.NEGATIVE_INFINITY;
+		
+		for (int i=0; i<rows(); i++)
+			for (int j=0; j<columns(); j++)
+				if (this.get(i,j)>max)
+					max = this.get(i,j);
+		
+		return max;
+	}
+	
+	/**
+	 * Minimum of the elements of the matrix
+	 * @return minimum of the elements of the matrix
+	 */
+	public double min ()
+	{
+		double min = Double.POSITIVE_INFINITY;
+		
+		for (int i=0; i<rows(); i++)
+			for (int j=0; j<columns(); j++)
+				if (this.get(i,j)<min)
+					min = this.get(i,j);
+		
+		return min;
+	}
 	
 	/**
 	 * Inverse matrix.

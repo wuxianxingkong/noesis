@@ -23,7 +23,7 @@ import noesis.algorithms.communities.CommunityDetector;
  * @author Aaron Rosas (aarr90@gmail.com) & Fco. Javier Gijon (fcojaviergijon@gmail.com)
  */
 @Label("KernighanLin")
-@Description("Kernighan-Lin Partitioning Algorithm")
+@Description("Kernighan-Lin graph partitioning algorithm")
 public class KernighanLinCommunityDetector extends CommunityDetector 
 {
     /**

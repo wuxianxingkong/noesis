@@ -17,8 +17,8 @@ import noesis.analysis.NodeScore;
  *
  * @author Aaron Rosas (aarr90@gmail.com) & Fco. Javier Gijon (fcojaviergijon@gmail.com)
  */
-@Label("ALINK Algorithm")
-@Description("ALINK Algorithm")
+@Label("ALink")
+@Description("Average-link hierarchical clustering")
 public class AverageLinkCommunityDetector extends AgglomerativeCommunityDetector 
 {
     public AverageLinkCommunityDetector(AttributeNetwork network) 

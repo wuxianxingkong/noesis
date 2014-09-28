@@ -1,6 +1,6 @@
 package noesis.algorithms.communities.spectral;
 
-// Title:       Spectral + KMeans algorithm
+// Title:       Spectral K-Means algorithm
 // Version:     1.0
 // Copyright:   2014
 // Author:      Fco. Javier Gijon & Aaron Rosas
@@ -13,16 +13,21 @@ import ikor.model.data.annotations.Label;
 import noesis.AttributeNetwork;
 
 /**
- * Spectral + KMeans algorithm
+ * Spectral K-Means algorithm
  *
  * @author Aaron Rosas (aarr90@gmail.com) & Fco. Javier Gijon (fcojaviergijon@gmail.com)
  */
 @Label("UKMeans")
-@Description("UKMeans")
+@Description("Spectral k-means community detection algorithm")
 public class UKMeansCommunityDetector extends SpectralCommunityDetector 
 {
     private int K;
 
+    public UKMeansCommunityDetector(AttributeNetwork network) 
+    {
+    	this(network, (int) Math.sqrt(network.size()));
+    }
+    
     public UKMeansCommunityDetector(AttributeNetwork network, int clusters) 
     {
         super(network);

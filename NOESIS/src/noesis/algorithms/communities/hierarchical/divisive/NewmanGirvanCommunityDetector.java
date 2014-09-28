@@ -13,12 +13,12 @@ import noesis.analysis.structure.LinkBetweenness;
 import noesis.analysis.LinkScore;
 
 /**
- * Newman & Girman's Community Detection Algorithm
+ * Newman & Girvan's Community Detection Algorithm
  *
  * @author Aaron Rosas (aarr90@gmail.com) & Fco. Javier Gijon (fcojaviergijon@gmail.com)
  */
-@Label("NewmanGirman")
-@Description("NewmanGirman")
+@Label("Newman-Girvan")
+@Description("Newman & Girvan's community detection algorithm")
 public class NewmanGirvanCommunityDetector extends DivisiveCommunityDetector 
 {
     public NewmanGirvanCommunityDetector(AttributeNetwork network) 

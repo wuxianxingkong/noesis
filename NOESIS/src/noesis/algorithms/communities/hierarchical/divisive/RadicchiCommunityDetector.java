@@ -24,7 +24,7 @@ import noesis.analysis.structure.communities.LinkClusteringCoefficient;
  * @author Aaron Rosas (aarr90@gmail.com) & Fco. Javier Gijon (fcojaviergijon@gmail.com)
  */
 @Label("Radicchi")
-@Description("Radicchi")
+@Description("Radicchi's community detection algorithm")
 public class RadicchiCommunityDetector extends DivisiveCommunityDetector 
 {
     private Queue queue = null;

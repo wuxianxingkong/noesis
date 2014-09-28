@@ -19,8 +19,8 @@ import noesis.Link;
  *
  * @author Aaron Rosas (aarr90@gmail.com) & Fco. Javier Gijon (fcojaviergijon@gmail.com)
  */
-@Label("MSG Community Detector")
-@Description("Multi Step Greedy Community Detector")
+@Label("MultiStepGreedy")
+@Description("Multi-step greedy community detection algorithm")
 public class MultiStepGreedyCommunityDetector extends ModularityCommunityDetector 
 {
     private QMatrix qm;

@@ -25,12 +25,17 @@ import noesis.AttributeNetwork;
  *
  * @author Aaron Rosas (aarr90@gmail.com) & Fco. Javier Gijon (fcojaviergijon@gmail.com)
  */
-@Label("NJW")
-@Description("NJW")
+@Label("KNSC1")
+@Description("KNSC1 spectral community detection algorithm")
 public class NJWCommunityDetector extends SpectralCommunityDetector 
 {
     private int K;
 
+    public NJWCommunityDetector(AttributeNetwork network) 
+    {
+    	this(network, (int) Math.sqrt(network.size()));
+    }
+    
     public NJWCommunityDetector(AttributeNetwork network, int clusters) 
     {
         super(network);

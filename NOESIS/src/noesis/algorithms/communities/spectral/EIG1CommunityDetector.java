@@ -24,7 +24,7 @@ import noesis.AttributeNetwork;
  * @author Aaron Rosas (aarr90@gmail.com) & Fco. Javier Gijon (fcojaviergijon@gmail.com)
  */
 @Label("EIG1")
-@Description("EIG1 Community Detection Algorithm")
+@Description("EIG1 spectral community detection algorithm")
 public class EIG1CommunityDetector extends SpectralCommunityDetector 
 {
     public enum ThresholdType {

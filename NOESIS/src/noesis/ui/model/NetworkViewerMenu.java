@@ -8,6 +8,17 @@ import ikor.model.ui.Separator;
 
 import java.awt.event.KeyEvent;
 
+import noesis.algorithms.communities.hierarchical.divisive.NewmanGirvanCommunityDetector;
+import noesis.algorithms.communities.hierarchical.divisive.RadicchiCommunityDetector;
+import noesis.algorithms.communities.hierarchical.agglomerative.AverageLinkCommunityDetector;
+import noesis.algorithms.communities.hierarchical.agglomerative.CompleteLinkCommunityDetector;
+import noesis.algorithms.communities.hierarchical.agglomerative.SingleLinkCommunityDetector;
+import noesis.algorithms.communities.modularity.FastGreedyCommunityDetector;
+import noesis.algorithms.communities.modularity.MultiStepGreedyCommunityDetector;
+import noesis.algorithms.communities.partitioning.KernighanLinCommunityDetector;
+import noesis.algorithms.communities.spectral.EIG1CommunityDetector;
+import noesis.algorithms.communities.spectral.NJWCommunityDetector;
+import noesis.algorithms.communities.spectral.UKMeansCommunityDetector;
 import noesis.algorithms.visualization.BinaryTreeLayout;
 import noesis.algorithms.visualization.CircularLayout;
 import noesis.algorithms.visualization.FruchtermanReingoldLayout;
@@ -17,28 +28,25 @@ import noesis.algorithms.visualization.MeshLayout;
 import noesis.algorithms.visualization.RandomLayout;
 import noesis.algorithms.visualization.StarLayout;
 import noesis.algorithms.visualization.ToroidalLayout;
-
 import noesis.analysis.structure.*;
-
 import noesis.io.graphics.ColorMapNodeRenderer;
 import noesis.io.graphics.GrayscaleNodeRenderer;
 import noesis.io.graphics.LinearGradientNodeRenderer;
 import noesis.io.graphics.RadialGradientNodeRenderer;
-
+import noesis.ui.model.actions.CommunityDetectionAction;
 import noesis.ui.model.actions.ExitAction;
 import noesis.ui.model.actions.FlipAction;
 import noesis.ui.model.actions.ForwardAction;
 import noesis.ui.model.actions.LayoutAction;
 import noesis.ui.model.actions.LinkWidthAction;
-import noesis.ui.model.actions.LinkMeasureAction;
-import noesis.ui.model.actions.NodeMeasureAction;
-import noesis.ui.model.actions.NodeMultiMeasureAction;
+import noesis.ui.model.actions.LinkScoreAction;
+import noesis.ui.model.actions.NodeScoreAction;
+import noesis.ui.model.actions.NodeMultiScoreAction;
 import noesis.ui.model.actions.NodeSizeAction;
 import noesis.ui.model.actions.NodeStyleAction;
 import noesis.ui.model.actions.ViewerOpenAction;
 import noesis.ui.model.actions.ViewerSaveAction;
 import noesis.ui.model.actions.ViewerCloseAction;
-
 import noesis.ui.model.networks.AnchoredRandomNetworkUI;
 import noesis.ui.model.networks.BarabasiAlbertNetworkUI;
 import noesis.ui.model.networks.BinaryTreeNetworkUI;
@@ -78,7 +86,7 @@ public class NetworkViewerMenu extends Menu
 		net = createNetMenu(app,ui); 
 		view = createViewMenu(app, ui.getFigure());
 		data = createDataMenu(app, ui.getModel());
-		analysis = createAnalysisMenu(app, ui.getModel());
+		analysis = createAnalysisMenu(app, ui.getModel(), ui.getFigure());
 		help = new HelpMenu(app);
 		
 		this.add(net);
@@ -423,7 +431,7 @@ public class NetworkViewerMenu extends Menu
 	// Analysis menu
 	// -------------
 	
-	public Menu createAnalysisMenu (Application app, NetworkModel model)
+	public Menu createAnalysisMenu (Application app, NetworkModel model, NetworkFigure figure)
 	{
 		Menu analysis = new Menu("Analysis");
 
@@ -435,27 +443,27 @@ public class NetworkViewerMenu extends Menu
 		degree.setIcon( app.url("icons/microscope.png") );
 		analysis.add(degree);
 		
-		Option inDegree = new Option("In-degree", new NodeMeasureAction(app, model, InDegree.class) );
+		Option inDegree = new Option("In-degree", new NodeScoreAction(app, model, InDegree.class) );
 		inDegree.setIcon( app.url("icons/microscope.png") );
 		degree.add(inDegree);
 
-		Option outDegree = new Option("Out-degree", new NodeMeasureAction(app, model, OutDegree.class) );
+		Option outDegree = new Option("Out-degree", new NodeScoreAction(app, model, OutDegree.class) );
 		outDegree.setIcon( app.url("icons/microscope.png") );
 		degree.add(outDegree);
 
-		Option totalDegree = new Option("Total degree (in+out)", new NodeMeasureAction(app, model, Degree.class) );
+		Option totalDegree = new Option("Total degree (in+out)", new NodeScoreAction(app, model, Degree.class) );
 		totalDegree.setIcon( app.url("icons/microscope.png") );
 		degree.add(totalDegree);
 
-		Option inDegreeNormalized = new Option("Normalized in-degree", new NodeMeasureAction(app, model, NormalizedInDegree.class) );
+		Option inDegreeNormalized = new Option("Normalized in-degree", new NodeScoreAction(app, model, NormalizedInDegree.class) );
 		inDegreeNormalized.setIcon( app.url("icons/microscope.png") );
 		degree.add(inDegreeNormalized);
 
-		Option outDegreeNormalized = new Option("Normalized out-degree", new NodeMeasureAction(app, model, NormalizedOutDegree.class) );
+		Option outDegreeNormalized = new Option("Normalized out-degree", new NodeScoreAction(app, model, NormalizedOutDegree.class) );
 		outDegreeNormalized.setIcon( app.url("icons/microscope.png") );
 		degree.add(outDegreeNormalized);
 		
-		Option normalizedDegree = new Option("Normalized total degree", new NodeMeasureAction(app, model, NormalizedDegree.class) );
+		Option normalizedDegree = new Option("Normalized total degree", new NodeScoreAction(app, model, NormalizedDegree.class) );
 		normalizedDegree.setIcon( app.url("icons/microscope.png") );
 		degree.add(normalizedDegree);
 
@@ -465,28 +473,28 @@ public class NetworkViewerMenu extends Menu
 		reachability.setIcon( app.url("icons/microscope.png") );
 		analysis.add(reachability);
 		
-		Option eccentricity = new Option("Eccentricity", new NodeMeasureAction(app, model, Eccentricity.class) );
+		Option eccentricity = new Option("Eccentricity", new NodeScoreAction(app, model, Eccentricity.class) );
 		eccentricity.setIcon( app.url("icons/microscope.png") );
 		reachability.add(eccentricity);
 
-		Option avl = new Option("Average path length", new NodeMeasureAction(app, model, AveragePathLength.class) );
+		Option avl = new Option("Average path length", new NodeScoreAction(app, model, AveragePathLength.class) );
 		avl.setIcon( app.url("icons/microscope.png") );
 		reachability.add(avl);
 
-		Option closeness = new Option("Closeness", new NodeMeasureAction(app, model, Closeness.class) );
+		Option closeness = new Option("Closeness", new NodeScoreAction(app, model, Closeness.class) );
 		closeness.setIcon( app.url("icons/microscope.png") );
 		reachability.add(closeness);		
 
-		Option adjustedCloseness = new Option("Adjusted closeness", new NodeMeasureAction(app, model, AdjustedCloseness.class) );
+		Option adjustedCloseness = new Option("Adjusted closeness", new NodeScoreAction(app, model, AdjustedCloseness.class) );
 		adjustedCloseness.setIcon( app.url("icons/microscope.png") );
 		reachability.add(adjustedCloseness);		
 		
-		Option decay = new Option("Decay", new NodeMeasureAction(app, model, Decay.class) ); 
+		Option decay = new Option("Decay", new NodeScoreAction(app, model, Decay.class) ); 
 		decay.setIcon( app.url("icons/microscope.png") );
 		reachability.add(decay);
 		// TODO Decay: delta parameter...
 		
-		Option normalizedDecay = new Option("Normalized decay", new NodeMeasureAction(app, model, NormalizedDecay.class) );
+		Option normalizedDecay = new Option("Normalized decay", new NodeScoreAction(app, model, NormalizedDecay.class) );
 		normalizedDecay.setIcon( app.url("icons/microscope.png") );
 		reachability.add(normalizedDecay);
 		// TODO Decay: delta parameter...
@@ -498,15 +506,15 @@ public class NetworkViewerMenu extends Menu
 		betweenness.setIcon( app.url("icons/microscope.png") );
 		analysis.add(betweenness);
 		
-		Option adjustedBetweenness = new Option("Betweenness", new NodeMeasureAction(app, model, AdjustedBetweenness.class) );
+		Option adjustedBetweenness = new Option("Betweenness", new NodeScoreAction(app, model, AdjustedBetweenness.class) );
 		adjustedBetweenness.setIcon( app.url("icons/microscope.png") );
 		betweenness.add(adjustedBetweenness);		
 
-		Option totalBetweenness = new Option("Betweenness score", new NodeMeasureAction(app, model, Betweenness.class) );
+		Option totalBetweenness = new Option("Betweenness score", new NodeScoreAction(app, model, Betweenness.class) );
 		totalBetweenness.setIcon( app.url("icons/microscope.png") );
 		betweenness.add(totalBetweenness);		
 
-		Option normalizedBetweenness = new Option("Normalized betweenness", new NodeMeasureAction(app, model, NormalizedBetweenness.class) );
+		Option normalizedBetweenness = new Option("Normalized betweenness", new NodeScoreAction(app, model, NormalizedBetweenness.class) );
 		normalizedBetweenness.setIcon( app.url("icons/microscope.png") );
 		betweenness.add(normalizedBetweenness);		
 
@@ -516,19 +524,19 @@ public class NetworkViewerMenu extends Menu
 		influence.setIcon( app.url("icons/microscope.png") );
 		analysis.add(influence);
 		
-		Option pagerank = new Option("PageRank", new NodeMeasureAction(app, model, PageRank.class) );
+		Option pagerank = new Option("PageRank", new NodeScoreAction(app, model, PageRank.class) );
 		pagerank.setIcon( app.url("icons/microscope.png") );
 		influence.add(pagerank);		
 
-		Option hits = new Option("HITS: Hubs & Authorities", new NodeMultiMeasureAction(app, model, HITS.class) );
+		Option hits = new Option("HITS: Hubs & Authorities", new NodeMultiScoreAction(app, model, HITS.class) );
 		hits.setIcon( app.url("icons/microscope.png") );
 		influence.add(hits);		
 
-		Option eigenvector = new Option("Eigenvector centrality", new NodeMeasureAction(app, model, EigenvectorCentrality.class) );
+		Option eigenvector = new Option("Eigenvector centrality", new NodeScoreAction(app, model, EigenvectorCentrality.class) );
 		eigenvector.setIcon( app.url("icons/microscope.png") );
 		influence.add(eigenvector);		
 
-		Option katz = new Option("Katz centrality", new NodeMeasureAction(app, model, KatzCentrality.class) );
+		Option katz = new Option("Katz centrality", new NodeScoreAction(app, model, KatzCentrality.class) );
 		katz.setIcon( app.url("icons/microscope.png") );
 		influence.add(katz);		
 		// TODO Katz centrality: alpha & beta parameters
@@ -539,38 +547,94 @@ public class NetworkViewerMenu extends Menu
 		links.setIcon( app.url("icons/microscope.png") );
 		analysis.add(links);
 		
-		Option linkBetweenness = new Option("Link betweenness", new LinkMeasureAction(app, model, LinkBetweenness.class) );
+		Option linkBetweenness = new Option("Link betweenness", new LinkScoreAction(app, model, LinkBetweenness.class) );
 		linkBetweenness.setIcon( app.url("icons/microscope.png") );
 		links.add(linkBetweenness);		
 
-		Option linkEmbeddedness = new Option("Link embeddedness", new LinkMeasureAction(app, model, LinkEmbeddedness.class) );
+		Option linkEmbeddedness = new Option("Link embeddedness", new LinkScoreAction(app, model, LinkEmbeddedness.class) );
 		linkEmbeddedness.setIcon( app.url("icons/microscope.png") );
 		links.add(linkEmbeddedness);		
 		
-		Option linkNeighborhoodOverlap = new Option("Link neighborhood overlap", new LinkMeasureAction(app, model, LinkNeighborhoodOverlap.class) );
+		Option linkNeighborhoodOverlap = new Option("Link neighborhood overlap", new LinkScoreAction(app, model, LinkNeighborhoodOverlap.class) );
 		linkNeighborhoodOverlap.setIcon( app.url("icons/microscope.png") );
 		links.add(linkNeighborhoodOverlap);		
 	
-		Option linkNeighborhoodSize = new Option("Link neighborhood size", new LinkMeasureAction(app, model, LinkNeighborhoodSize.class) );
+		Option linkNeighborhoodSize = new Option("Link neighborhood size", new LinkScoreAction(app, model, LinkNeighborhoodSize.class) );
 		linkNeighborhoodSize.setIcon( app.url("icons/microscope.png") );
 		links.add(linkNeighborhoodSize);		
 
-		Option linkRays = new Option("Link rays", new LinkMeasureAction(app, model, LinkRays.class) );
+		Option linkRays = new Option("Link rays", new LinkScoreAction(app, model, LinkRays.class) );
 		linkRays.setIcon( app.url("icons/microscope.png") );
 		links.add(linkRays);		
 		
-		// Connected components
 		
-		Option scc = new Option("Connected components", new NodeMultiMeasureAction(app, model, ConnectedComponents.class) );
-		scc.setIcon( app.url("icons/microscope.png") );
-		analysis.add(scc);		
+		// Communities
+		
+		Menu communities = new Menu("Communities");
+		communities.setIcon( app.url("icons/microscope.png") );
+		analysis.add(communities);
+
+		Option scc = new Option("Connected components", new NodeMultiScoreAction(app, model, ConnectedComponents.class) );
+		scc.setIcon( app.url("icons/spiral.png") );
+		communities.add(scc);		
+
+		communities.add( new Separator() );
+
+		Option cdKL = new Option("Kernighan-Lin partitioning", new CommunityDetectionAction(app, figure, model, KernighanLinCommunityDetector.class) );
+		cdKL.setIcon( app.url("icons/spiral.png") );
+		communities.add(cdKL);		
+
+		Option cdNewmanGirvan = new Option("Newman-Girvan's community detection", new CommunityDetectionAction(app, figure, model, NewmanGirvanCommunityDetector.class) );
+		cdNewmanGirvan.setIcon( app.url("icons/spiral.png") );
+		communities.add(cdNewmanGirvan);		
+
+		Option cdRadicchi = new Option("Radicchi's community detection", new CommunityDetectionAction(app, figure, model, RadicchiCommunityDetector.class) );
+		cdRadicchi.setIcon( app.url("icons/spiral.png") );
+		communities.add(cdRadicchi);		
+		
+		communities.add( new Separator() );
+
+		Option cdSLink = new Option("Single-link hierarchical community detection", new CommunityDetectionAction(app, figure, model, SingleLinkCommunityDetector.class) );
+		cdSLink.setIcon( app.url("icons/spiral.png") );
+		communities.add(cdSLink);		
+
+		Option cdALink = new Option("Average-link hierarchical community detection", new CommunityDetectionAction(app, figure, model, AverageLinkCommunityDetector.class) );
+		cdALink.setIcon( app.url("icons/spiral.png") );
+		communities.add(cdALink);		
+
+		Option cdCLink = new Option("Complete-link hierarchical community detection", new CommunityDetectionAction(app, figure, model, CompleteLinkCommunityDetector.class) );
+		cdCLink.setIcon( app.url("icons/spiral.png") );
+		communities.add(cdCLink);		
+		
+		communities.add( new Separator() );
+
+		Option cdFastGreedy = new Option("Fast greedy community detection", new CommunityDetectionAction(app, figure, model, FastGreedyCommunityDetector.class) );
+		cdFastGreedy.setIcon( app.url("icons/spiral.png") );
+		communities.add(cdFastGreedy);		
+
+		Option cdMultiStepGreedy = new Option("Multi-step greedy community detection", new CommunityDetectionAction(app, figure, model, MultiStepGreedyCommunityDetector.class) );
+		cdMultiStepGreedy.setIcon( app.url("icons/spiral.png") );
+		communities.add(cdMultiStepGreedy);		
+		
+		communities.add( new Separator() );
+
+		Option cdEIG1 = new Option("EIG1 spectral community detection", new CommunityDetectionAction(app, figure, model, EIG1CommunityDetector.class) );
+		cdEIG1.setIcon( app.url("icons/spiral.png") );
+		communities.add(cdEIG1);		
+
+		Option cdKNSC1 = new Option("KNSC1 spectral community detection", new CommunityDetectionAction(app, figure, model, NJWCommunityDetector.class) );
+		cdKNSC1.setIcon( app.url("icons/spiral.png") );
+		communities.add(cdKNSC1);		
+
+		Option cdUKMeans = new Option("UKMeans spectral community detection", new CommunityDetectionAction(app, figure, model, UKMeansCommunityDetector.class) );
+		cdUKMeans.setIcon( app.url("icons/spiral.png") );
+		communities.add(cdUKMeans);		
 		
 		// Clustering coefficients
 		
-		Option cc = new Option("Clustering coefficient", new NodeMeasureAction(app, model, ClusteringCoefficient.class) );
+		Option cc = new Option("Clustering coefficient", new NodeScoreAction(app, model, ClusteringCoefficient.class) );
 		cc.setIcon( app.url("icons/microscope.png") );
 		analysis.add(cc);		
-		
 		
 		return analysis;
 	}	

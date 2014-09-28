@@ -451,7 +451,7 @@ public abstract class Network<V, E> implements Graph<V,E>
 		
 		ok = remove(sourceIndex,destinationIndex);
 		
-		if (ok)
+		if (ok && contains(destinationIndex, sourceIndex))
 			ok = remove(destinationIndex,sourceIndex);
 		
 		return ok;

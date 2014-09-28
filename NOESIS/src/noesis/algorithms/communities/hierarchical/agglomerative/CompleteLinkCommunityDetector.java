@@ -17,8 +17,8 @@ import noesis.analysis.NodeScore;
  *
  * @author Aaron Rosas (aarr90@gmail.com) & Fco. Javier Gijon (fcojaviergijon@gmail.com)
  */
-@Label("CLINK Algorithm")
-@Description("CLINK Algorithm")
+@Label("CLink")
+@Description("Complete-link hierarchical clustering")
 public class CompleteLinkCommunityDetector extends AgglomerativeCommunityDetector 
 {
 

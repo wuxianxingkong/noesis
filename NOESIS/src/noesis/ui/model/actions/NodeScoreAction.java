@@ -15,17 +15,22 @@ import noesis.ui.model.NetworkModel;
 import noesis.ui.model.data.VectorUIModel;
 
 
-public class NodeMeasureAction extends Action 
+public class NodeScoreAction extends Action 
 {
 	private Application  application;
 	private NetworkModel model;
 	private Class        measureClass;
 
-	public NodeMeasureAction (Application application, NetworkModel model, Class metric)
+	public NodeScoreAction (Application application, NetworkModel model, Class metric)
 	{
 		this.application = application;
 		this.model = model;
 		this.measureClass = metric;
+	}
+	
+	public Network getNetwork ()
+	{
+		return model.getNetwork();
 	}
 	
 	public NodeScoreTask instantiateTask (Network network)

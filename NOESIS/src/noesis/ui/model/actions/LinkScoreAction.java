@@ -15,13 +15,13 @@ import noesis.ui.model.NetworkModel;
 import noesis.ui.model.data.VectorUIModel;
 
 
-public class LinkMeasureAction extends Action 
+public class LinkScoreAction extends Action 
 {
 	private Application  application;
 	private NetworkModel model;
 	private Class        measureClass;
 
-	public LinkMeasureAction (Application application, NetworkModel model, Class metric)
+	public LinkScoreAction (Application application, NetworkModel model, Class metric)
 	{
 		this.application = application;
 		this.model = model;

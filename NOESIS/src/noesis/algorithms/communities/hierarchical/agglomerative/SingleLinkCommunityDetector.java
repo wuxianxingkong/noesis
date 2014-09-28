@@ -13,16 +13,16 @@ import noesis.AttributeNetwork;
 import noesis.analysis.NodeScore;
 
 /**
- * Simple Link Community Detection Algorithm (SLINK)
+ * Single Link Community Detection Algorithm (SLINK)
  *
  * @author Aaron Rosas (aarr90@gmail.com) & Fco. Javier Gijon (fcojaviergijon@gmail.com)
  */
-@Label("SLINKAlgorithm")
-@Description("SLINKAlgorithm")
-public class SimpleLinkCommunityDetector extends AgglomerativeCommunityDetector 
+@Label("SLink")
+@Description("Single-link hierarchical clustering")
+public class SingleLinkCommunityDetector extends AgglomerativeCommunityDetector 
 {
 
-    public SimpleLinkCommunityDetector(AttributeNetwork network) 
+    public SingleLinkCommunityDetector(AttributeNetwork network) 
     {
         super(network);
     }

@@ -22,8 +22,8 @@ import noesis.algorithms.communities.partitioning.KMeansCommunityDetector;
  *
  * @author Aaron Rosas (aarr90@gmail.com) & Fco. Javier Gijon (fcojaviergijon@gmail.com)
  */
-@Label("FastGreedy Community Detector")
-@Description("Fast Greedy Community Detector")
+@Label("FastGreedy")
+@Description("Fast greedy community detection algorithm")
 public class FastGreedyCommunityDetector extends ModularityCommunityDetector 
 {
     double actualModularity;

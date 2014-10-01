@@ -25,7 +25,7 @@ public class NumericAttributeIndexer extends Indexer<Integer>
 		this.size = size;
 		
 		double min = Double.MAX_VALUE;
-		double max = -Double.MIN_VALUE;
+		double max = -Double.MAX_VALUE;
 		Number object;
 		double value;
 		

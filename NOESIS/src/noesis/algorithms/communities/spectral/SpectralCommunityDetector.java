@@ -128,6 +128,10 @@ public abstract class SpectralCommunityDetector extends CommunityDetector
                     L = (DenseMatrix) ID12.multiply(L).multiply(ID12);
                 }
                 break;
+            // No normalization
+            case NO:
+            	break;
+              
         }
 
         return L;

@@ -6,7 +6,8 @@ package noesis.algorithms.communities.spectral;
 // Author:      Fco. Javier Gijon & Aaron Rosas
 // E-mail:      fcojaviergijon@gmail.com & aarr90@gmail.com
 
-import ikor.math.DenseMatrix;
+import ikor.math.Matrix;
+import ikor.math.Vector;
 import ikor.math.DenseVector;
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
@@ -34,7 +35,7 @@ public class EIG1CommunityDetector extends SpectralCommunityDetector
         AVG, 
         // Fiedler Eigenvector median
         MEDIAN,
-        // Max distance of elements in Fiedler Eigenvector
+        // Max distance of elements in the Fiedler Eigenvector
         GAP
     };
  
@@ -59,19 +60,15 @@ public class EIG1CommunityDetector extends SpectralCommunityDetector
     @Override
     public void compute() 
     {
-        // Adjacency matrix
-        DenseMatrix W = AdjacencyMatrix(an);
-        // Diagonal degree matrix (Dii -> degree of node i)
-        DenseMatrix D = DegreeMatrix(an);
         // Laplacian matrix no normalized
-        DenseMatrix L = LaplacianMatrix(W, D, Normalized.NO);
+        Matrix L = laplacian(network, Normalization.NONE);
         // Get Fiedler eigenvector
-        DenseVector E = FiedlerEigenvector(L);
+        Vector E = FiedlerEigenvector(L);
         // Partitioning of the net using 2nd eigenvector (Fiedler vector) with threshold th
         int c1 = 0, c2 = 1;
         // Compute real threshold value
         double th = threshold(E, threshold);
-        DenseVector CL = partitioning(E, c1, c2, th);
+        Vector CL = partitioning(E, c1, c2, th);
 
         // Save results
         for (int i = 0; i < results.columns(); ++i) {
@@ -92,7 +89,7 @@ public class EIG1CommunityDetector extends SpectralCommunityDetector
      * cluster1, else asign -> cluster2
      * @return Vector where position i correspond to cluster of element i
      */
-    private static DenseVector partitioning (DenseVector E, int cluster1, int cluster2, double th) 
+    private static Vector partitioning (Vector E, int cluster1, int cluster2, double th) 
     {
         int size = E.size();
         DenseVector CL = new DenseVector(size);
@@ -115,7 +112,7 @@ public class EIG1CommunityDetector extends SpectralCommunityDetector
      * @param th Type of threshold
      * @return Threshold value
      */
-    private double threshold (DenseVector E, ThresholdType th) 
+    private double threshold (Vector E, ThresholdType th) 
     {
         double value = 0.0;
 
@@ -127,13 +124,13 @@ public class EIG1CommunityDetector extends SpectralCommunityDetector
                 break;
             // Median value
             case MEDIAN:
-                DenseVector M = new DenseVector(E);
+                Vector M = new DenseVector(E);
                 QuickSort(M);
                 value = M.get(Math.round(M.size() / 2));
                 break;
             // Max gap value
             case GAP:
-                DenseVector G = new DenseVector(E);
+                Vector G = new DenseVector(E);
                 QuickSort(G);
                 // Find max gap
                 int pos = -1;

@@ -36,7 +36,7 @@ public abstract class AgglomerativeCommunityDetector extends CommunityDetector
     {
         super(network);
         dn = new DynamicNetwork();
-        results = new DenseMatrix(an.nodes(), an.nodes(), -1);
+        results = new DenseMatrix(network.nodes(), network.nodes(), -1);
     }
 
     @Override
@@ -44,9 +44,9 @@ public abstract class AgglomerativeCommunityDetector extends CommunityDetector
     {
         List<NodeScore> lengths = CollectionFactory.createList();
         // Calculates all path lengths for all nodes
-        for (int node = 0; node < an.nodes(); ++node) {
+        for (int node = 0; node < network.nodes(); ++node) {
             // Path length from node "node"
-            PathLength task = new PathLength(an, node);
+            PathLength task = new PathLength(network, node);
             // Compute and add
             lengths.add(task.call());
         }
@@ -62,8 +62,8 @@ public abstract class AgglomerativeCommunityDetector extends CommunityDetector
         // Inicializate
         // Add only nodes
         dn = new DynamicNetwork();
-        for (int node = 0; node < an.nodes(); ++node) {
-            dn.add(an.get(node));
+        for (int node = 0; node < network.nodes(); ++node) {
+            dn.add(network.get(node));
             // First assign
             results.set(0, node, node);
         }
@@ -84,7 +84,7 @@ public abstract class AgglomerativeCommunityDetector extends CommunityDetector
                 clusters.add(CollectionFactory.createList());
             }
             // Add each node to corresponding cluster
-            for (int node = 0; node < an.nodes(); ++node) {
+            for (int node = 0; node < network.nodes(); ++node) {
                 clusters.get(cc.component(node) - 1).add(node);
                 // System.out.println("Cluster ["+cc.component(node)+"] <- "+node);
             }
@@ -117,7 +117,7 @@ public abstract class AgglomerativeCommunityDetector extends CommunityDetector
             for (int i = 0; i < C1.size(); ++i) {
                 for (int j = 0; j < C2.size(); ++j) {
                     // Link node-i to node-j exists
-                    if (an.index(C1.get(i), C2.get(j)) != -1) {
+                    if (network.index(C1.get(i), C2.get(j)) != -1) {
                         // Add link
                         dn.add2(C1.get(i), C2.get(j));
                         exit = false;
@@ -141,7 +141,7 @@ public abstract class AgglomerativeCommunityDetector extends CommunityDetector
         }
 
         // Clean results matrix (remove excess memory)
-        DenseMatrix aux = new DenseMatrix(iter, an.nodes());
+        DenseMatrix aux = new DenseMatrix(iter, network.nodes());
         for (int i = 0; i < aux.rows(); ++i) {
             for (int j = 0; j < aux.columns(); ++j) {
                 aux.set(i, j, results.get(i, j));

@@ -86,12 +86,12 @@ public class FastGreedyCommunityDetector extends ModularityCommunityDetector
     }
 
     @Override
-    protected void preProcess() 
+    protected void preprocess() 
     {
         //remove links and detect cliques
-        int cliques = (int) (an.nodes() * 0.5);//TODO ¿cuantos cliques iniciales?
+        int cliques = (int) (network.nodes() * 0.5);//TODO ¿cuantos cliques iniciales?
         // Apply kmeans algorithm
-        KMeansCommunityDetector k = new KMeansCommunityDetector(an, cliques);
+        KMeansCommunityDetector k = new KMeansCommunityDetector(network, cliques);
         k.compute();
         DenseVector cl = new DenseVector(k.getResults().getRow(0));
 

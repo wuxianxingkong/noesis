@@ -8,6 +8,8 @@ package noesis.algorithms.communities;
 
 import ikor.math.DenseMatrix;
 import ikor.math.DenseVector;
+import ikor.math.Matrix;
+import ikor.math.Vector;
 
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
@@ -25,8 +27,8 @@ import noesis.analysis.structure.communities.ModularityCoefficient;
 @Description("Community detection algorithm")
 public abstract class CommunityDetector 
 {
-    protected AttributeNetwork an;
-    protected DenseMatrix results;
+    protected AttributeNetwork network;
+    protected Matrix results;
 
     /**
      * Constructor.
@@ -35,8 +37,8 @@ public abstract class CommunityDetector
      */
     public CommunityDetector (AttributeNetwork network) 
     {
-        an = network;
-        results = new DenseMatrix(1, network.nodes(), -1);
+        this.network = network;
+        this.results = new DenseMatrix(1, network.nodes(), -1);
     }
 
     /**
@@ -49,7 +51,7 @@ public abstract class CommunityDetector
      *
      * @return results (all results are -1 unless compute method is called)
      */
-    public DenseMatrix getResults() 
+    public Matrix getResults() 
     {
         return results;
     }
@@ -59,17 +61,17 @@ public abstract class CommunityDetector
      *
      * @return Vector with best assignement
      */
-    public DenseVector getBest() 
+    public Vector getBest() 
     {
         double bm = Double.NEGATIVE_INFINITY;
-        DenseVector dv = new DenseVector(an.nodes());
+        DenseVector dv = new DenseVector(network.nodes());
 
         // Compute best assignment
         for (int k = 0; k < results.rows(); ++k) {
-            NodeScore cl = new NodeScore("cluster assignment",an);
+            NodeScore cl = new NodeScore("cluster assignment",network);
             cl.set(results.getRow(k));
             // Compute modularity
-            ModularityCoefficient mod = new ModularityCoefficient(an, cl);
+            ModularityCoefficient mod = new ModularityCoefficient(network, cl);
             double m = mod.overallValue();
             if (m > bm) {
                 bm = m;

@@ -43,7 +43,7 @@ public class RadicchiCommunityDetector extends DivisiveCommunityDetector
     {
         super(network);
 
-        //create a queue for recalculate measures faster
+        //create a queue for recomputing measures faster
         queue = new Queue(dn.links());
 
         //init the queue
@@ -57,7 +57,7 @@ public class RadicchiCommunityDetector extends DivisiveCommunityDetector
         }
     }
 
-    private void recalculate(Link<Double> linkRemoved) 
+    private void recompute(Link<Double> linkRemoved) 
     {
         //foreach link in the queue, update (if necessary) 
         LinkScoreTask task = new LinkClusteringCoefficient(dn);
@@ -68,7 +68,7 @@ public class RadicchiCommunityDetector extends DivisiveCommunityDetector
             delete.add(l);
             return l;
         }).filter((l) -> (l.getDestination() != linkRemoved.getSource() || l.getSource() != linkRemoved.getDestination())).forEach((l) -> {
-            Double newScore = task.compute(l.getSource(), l.getDestination());
+            double newScore = task.compute(l.getSource(), l.getDestination());
             add.add(new Link(l.getSource(), l.getDestination(), newScore));
         });
 
@@ -84,6 +84,6 @@ public class RadicchiCommunityDetector extends DivisiveCommunityDetector
         //remove the link (in both directions)
         dn.remove2(l.getSource(), l.getDestination());
         //recalculate LinkClusteringCoefficient
-        this.recalculate(l);
+        recompute(l);
     }
 }

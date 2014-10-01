@@ -32,7 +32,7 @@ public abstract class DivisiveCommunityDetector extends CommunityDetector
     {
         super(network);
         dn = new DynamicNetwork(network);
-        results = new DenseMatrix(an.nodes(), an.nodes(), -1);
+        results = new DenseMatrix(network.nodes(), network.nodes(), -1);
     }
 
     /**
@@ -42,7 +42,7 @@ public abstract class DivisiveCommunityDetector extends CommunityDetector
     public void compute() 
     {
         //initialization
-        results = new DenseMatrix(an.nodes(), an.nodes(), 1);
+        results = new DenseMatrix(network.nodes(), network.nodes(), 1);
         ConnectedComponents cc = new ConnectedComponents(dn);
         cc.compute();
         int n = cc.components();

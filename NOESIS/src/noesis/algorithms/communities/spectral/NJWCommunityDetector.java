@@ -6,8 +6,8 @@ package noesis.algorithms.communities.spectral;
 // Author:      Fco. Javier Gijon & Aaron Rosas
 // E-mail:      fcojaviergijon@gmail.com & aarr90@gmail.com
 
-import ikor.math.DenseMatrix;
-import ikor.math.DenseVector;
+import ikor.math.Matrix;
+import ikor.math.Vector;
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
 import noesis.AttributeNetwork;
@@ -45,14 +45,10 @@ public class NJWCommunityDetector extends SpectralCommunityDetector
     @Override
     public void compute() 
     {
-        // Adjacency matrix
-        DenseMatrix W = AdjacencyMatrix(an);
-        // Diagonal degree matrix (Dii -> degree of node i)
-        DenseMatrix D = DegreeMatrix(an);
-        // Laplacian matrix symetric normalization
-        DenseMatrix L = LaplacianMatrix(W, D, Normalized.SYMETRIC);
-        // Create matrix with k first Eigenvectors of Laplacian matrix
-        DenseMatrix E = EigenvectorsMatrix(L, K);
+        // Laplacian matrix (symetric normalization)
+        Matrix L = laplacian(network, Normalization.SYMMETRIC);
+        // Create matrix with the first k Eigenvectors of the Laplacian matrix
+        Matrix E = eigenvectors(L, K);
 
         // Normalize each row of E
         for (int i = 0; i < E.rows(); ++i) {
@@ -69,7 +65,7 @@ public class NJWCommunityDetector extends SpectralCommunityDetector
         }
 
         // K-means algorithm
-        DenseVector CL = KMeans(E, K, 1e10);
+        Vector CL = kMeans(E, K, 1e10);
 
         // Save results
         for (int i = 0; i < results.columns(); ++i) {

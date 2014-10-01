@@ -8,10 +8,8 @@ package noesis.algorithms.communities.spectral;
 
 import ikor.math.*;
 import ikor.math.random.Random;
-
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
-
 import noesis.AttributeNetwork;
 import noesis.Network;
 import noesis.algorithms.communities.CommunityDetector;
@@ -25,13 +23,13 @@ import noesis.algorithms.communities.CommunityDetector;
 @Description("Generic Spectral Community Detection Algorithm")
 public abstract class SpectralCommunityDetector extends CommunityDetector 
 {
-    public enum Normalized {
-        // No normalized
-        NO, 
-        // Symetric normalization
-        SYMETRIC,
-        // Asymetric normalization
-        ASYMETRIC
+    public enum Normalization {
+        // No normalization
+        NONE, 
+        // Symmetric normalization
+        SYMMETRIC,
+        // Asymmetric normalization
+        ASYMMETRIC
     };
 
     /**
@@ -44,50 +42,48 @@ public abstract class SpectralCommunityDetector extends CommunityDetector
     }
 
     /**
-     * Return the adjacency matrix of our net.
+     * Return the adjacency matrix of the given network.
      *
-     * @param net Network to represent
+     * @param net Network
      * @return Adjacency matrix
      */
-    public static DenseMatrix AdjacencyMatrix(Network net) 
+    public static Matrix adjacencyMatrix (Network net) 
     {
         double value = 1;
-
         int size = net.nodes();
-        // Adjacency matrix
         DenseMatrix W = new DenseMatrix(size, size, 0);
+
         for (int i = 0; i < size; ++i) {
-            for (int j = 0; j < size; ++j) // If link exists
-            {
-                if (net.contains(i, j)) {
+            for (int j = 0; j < size; ++j) {
+                if (net.contains(i, j)) {// If link exists
                     W.set(i, j, value);
                 }
             }
         }
+        
         return W;
     }
     
 
     /**
-     * Return the degree matrix of our net.
+     * Return the diagonal degree matrix for the given network.
      *
      * @param net Network to represent
-     * @return Diagonal degree matrix (Adjacency matrix)
+     * @return Diagonal degree matrix (Dii -> degree of node i)
      */
-    public static DenseMatrix DegreeMatrix(Network net) 
+    public static Matrix degreeMatrix(Network net) 
     {
         int size = net.nodes();
-        // Diagonal degree matrix (Dii -> degree of node i)
-        DenseMatrix D = new DenseMatrix(size, size, 0);
-        for (int i = 0; i < size; ++i) {
+        Matrix D = new SparseMatrix(size, size);
+        
+        for (int i = 0; i < size; ++i)
             D.set(i, i, net.degree(i));
-        }
 
         return D;
     }
 
     /**
-     * Return the Laplacian matrix (normalized or not).
+     * Return the Laplacian matrix (normalized or not) of the given network.
      *
      * @param W Similarity matrix of our graph
      * @param D Diagonal degree matrix of our graph
@@ -95,16 +91,22 @@ public abstract class SpectralCommunityDetector extends CommunityDetector
      *
      * @return Laplacian matrix (Normalized or no)
      */
-    public static DenseMatrix LaplacianMatrix(DenseMatrix W, DenseMatrix D, Normalized norm) 
+    public static Matrix laplacian (Network net, Normalization norm) 
     {
+        // Adjacency matrix
+        Matrix W = adjacencyMatrix(net);
+        // Diagonal degree matrix (Dii -> degree of node i)
+        Matrix D = degreeMatrix(net);
+        
         int size = W.rows();
+        
         // Laplacian matrix
         DenseMatrix L = (DenseMatrix) D.subtract(W);
 
         // Normalization
         switch (norm) {
             // Asymetric normalization
-            case ASYMETRIC:
+            case ASYMMETRIC:
                 L = (DenseMatrix) D.inverse().multiply(L);
                 // If determinant = 0, L = null
                 if (L == null) {
@@ -112,7 +114,7 @@ public abstract class SpectralCommunityDetector extends CommunityDetector
                 }
                 break;
             // Symetric normalization
-            case SYMETRIC:
+            case SYMMETRIC:
                 // Inverse square-root degree matrix
                 DenseMatrix ID12 = new DenseMatrix(size, size, 0);
                 // Square root elements, its a diagonal matrix
@@ -129,7 +131,7 @@ public abstract class SpectralCommunityDetector extends CommunityDetector
                 }
                 break;
             // No normalization
-            case NO:
+            case NONE:
             	break;
               
         }
@@ -138,21 +140,21 @@ public abstract class SpectralCommunityDetector extends CommunityDetector
     }
 
     /**
-     * Apply eigenvectors descomposition to laplacian matrix and return the k
-     * first eigenvectors in a matrix.
+     * Apply eigenvector decomposition to the Laplacian matrix 
+     * and return the k first eigenvectors in a matrix.
      *
      * @pre k > 0 && k < Columns(L) 
      * @param L Laplacian Matrix
      * @param k Number of eigenvectors
      * @return Eigenvector matrix
      */
-    public static DenseMatrix EigenvectorsMatrix(DenseMatrix L, int k) 
+    public static Matrix eigenvectors (Matrix L, int k) 
     {
-        // Eigenvectors descomposition
         EigenvectorDecomposition ED = new EigenvectorDecomposition(L);
-        // Copy k first
-        DenseMatrix E = (DenseMatrix) ED.getEigenvectorMatrix();
-        DenseMatrix V = new DenseMatrix(L.rows(), k);
+
+        // Copy k first eigenvectors
+        Matrix E = ED.getEigenvectorMatrix();
+        Matrix V = new DenseMatrix(L.rows(), k);
         for (int i = 0; i < V.rows() && i < E.rows(); ++i) {
             for (int j = 0; j < V.columns() && j < E.columns(); ++j) {
                 V.set(i, j, E.get(i, j));
@@ -163,29 +165,28 @@ public abstract class SpectralCommunityDetector extends CommunityDetector
     }
 
     /**
-     * Apply eigenvectors descomposition to laplacian matrix and return all the
-     * eigenvalues.
+     * Apply eigenvector decomposition to the Laplacian matrix 
+     * and return all the eigenvalues.
      *
      * @param L Laplacian Matrix
      * @return Eigenvalues vector
      */
-    public static DenseVector EigenvaluesVector(DenseMatrix L) 
+    public static DenseVector eigenvalues (Matrix L) 
     {
-        // Eigenvectors descomposition
         EigenvectorDecomposition ED = new EigenvectorDecomposition(L);
         return (DenseVector) ED.getRealEigenvalues();
     }
 
     /**
-     * Apply eigenvectors descomposition to laplacian matrix and return second
-     * eigenvector associated to second smallest eigenvalue (Fiedler vector).
+     * Apply eigenvector decomposition to Laplacian matrix and return
+     * the eigenvector associated to second smallest eigenvalue (Fiedler vector).
      *
      * @param L Laplacian Matrix
      * @return Fiedler eigenvector
      */
-    public static DenseVector FiedlerEigenvector(DenseMatrix L) 
+    public static Vector FiedlerEigenvector(Matrix L) 
     {
-        // Eigenvectors descomposition
+        // Eigenvector decomposition
         EigenvectorDecomposition ED = new EigenvectorDecomposition(L);
         // Eigenvector matrix
         DenseMatrix E = (DenseMatrix) ED.getEigenvectorMatrix();
@@ -204,29 +205,26 @@ public abstract class SpectralCommunityDetector extends CommunityDetector
      * @param net Network
      * @return Estimated number of clusters
      */
-    public static long EstimateClusters(Network net) 
+    public static long estimateClusters(Network net) 
     {
-        // Adjacency matrix
-        DenseMatrix W = AdjacencyMatrix(net);
-        // Diagonal degree matrix (Dii -> degree of node i)
-        DenseMatrix D = DegreeMatrix(net);
-        // Laplacian matrix no normalized
-        DenseMatrix L = LaplacianMatrix(W, D, Normalized.NO);
-        return EstimateClusters(L);
+        // Laplacian matrix without normalization
+        Matrix L = laplacian(net, Normalization.NONE);
+
+        return estimateClusters(L);
     }
 
     /**
-     * Estimate the number of clusters in our net using eigenvalues of laplacian
-     * matrix.
+     * Estimate the number of clusters
+     * using the eigenvalues of the Laplacian matrix.
      *
-     * @param L Laplacian matrix of our Network
+     * @param L Laplacian matrix
      * @return Estimated number of clusters
      */
-    public static long EstimateClusters(DenseMatrix L) 
+    public static long estimateClusters (Matrix L) 
     {
         long k = 0;
         // Compute eigenvalues of laplacian matrix
-        DenseVector E = EigenvaluesVector(L);
+        Vector E = eigenvalues(L);
 
         // compute the gap between each pair of eigenvalues
         double gap = Double.MIN_VALUE;
@@ -250,7 +248,7 @@ public abstract class SpectralCommunityDetector extends CommunityDetector
      * @param centroid centroid j
      * @return Distance
      */
-    public static double Distance(DenseMatrix NA, int element, DenseMatrix CA, int centroid) 
+    public static double distance(Matrix NA, int element, Matrix CA, int centroid) 
     {
         double dist = 0;
         for (int value = 0; value < NA.columns() && value < CA.columns(); ++value) {
@@ -269,7 +267,7 @@ public abstract class SpectralCommunityDetector extends CommunityDetector
      * criteria
      * @return Vector where position i correspond to cluster of element i
      */
-    public static DenseVector KMeans(DenseMatrix E, int K, double msse) 
+    public static DenseVector kMeans(Matrix E, int K, double msse) 
     {
         int elements = E.rows();
         int attrs = E.columns();
@@ -310,7 +308,7 @@ public abstract class SpectralCommunityDetector extends CommunityDetector
                 Double distMin = Double.MAX_VALUE;
                 for (int centroid = 0; centroid < CE.rows(); ++centroid) {
                     // Distance between element and centroid c
-                    double dist = Distance(E, element, CE, centroid);
+                    double dist = distance(E, element, CE, centroid);
                     if (dist < distMin) {
                         // Keep minimun distance and asign the element to cluster
                         distMin = dist;
@@ -360,7 +358,7 @@ public abstract class SpectralCommunityDetector extends CommunityDetector
      * @pre array is full, all elements are non-null
      * @param array Elements to sort
      */
-    public static void QuickSort(DenseVector array) 
+    public static void QuickSort(Vector array) 
     {
         QuickSort(array, 0, array.size() - 1);
     }
@@ -375,7 +373,7 @@ public abstract class SpectralCommunityDetector extends CommunityDetector
      * @param end index of last element to sort
      * @return Sorted array
      */
-    public static void QuickSort(DenseVector array, int start, int end) 
+    public static void QuickSort(Vector array, int start, int end) 
     {
         // index of left-to-right scan
         int i = start;

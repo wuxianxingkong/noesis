@@ -50,12 +50,12 @@ public abstract class ModularityCommunityDetector extends CommunityDetector
         cc.compute();
 
         // Get assignment
-        NodeScore dv = new NodeScore("cluster assignment",an);
+        NodeScore dv = new NodeScore("cluster assignment",network);
         for (int i = 0; i < results.columns(); ++i) {
             dv.set(i, cc.component(i));
         }
 
-        ModularityCoefficient md = new ModularityCoefficient(an, dv);
+        ModularityCoefficient md = new ModularityCoefficient(network, dv);
 
         return md.overallValue();
     }
@@ -66,7 +66,7 @@ public abstract class ModularityCommunityDetector extends CommunityDetector
     @Override
     public void compute() 
     {
-        preProcess();
+        preprocess();
                 
         while (improveModularity()) {
         }
@@ -91,5 +91,5 @@ public abstract class ModularityCommunityDetector extends CommunityDetector
     /**
      * Preprocces the net to apply the algorithm
      */
-    protected abstract void preProcess();
+    protected abstract void preprocess();
 }

@@ -26,7 +26,7 @@ public class MultiStepGreedyCommunityDetector extends ModularityCommunityDetecto
     private QMatrix qm;
 
     @Override
-    protected void preProcess() 
+    protected void preprocess() 
     {    
         //remove all links and save in an array 
         links = new ArrayList<>();

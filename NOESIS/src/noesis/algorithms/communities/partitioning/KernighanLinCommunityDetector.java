@@ -6,11 +6,12 @@ package noesis.algorithms.communities.partitioning;
 // Author:      Fco. Javier Gijon & Aaron Rosas
 // E-mail:      fcojaviergijon@gmail.com & aarr90@gmail.com
 
-import static noesis.algorithms.communities.spectral.SpectralCommunityDetector.AdjacencyMatrix;
+import static noesis.algorithms.communities.spectral.SpectralCommunityDetector.adjacencyMatrix;
 import ikor.collection.List;
 import ikor.collection.util.Pair;
-import ikor.math.DenseMatrix;
 import ikor.math.DenseVector;
+import ikor.math.Matrix;
+import ikor.math.Vector;
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
 import noesis.AttributeNetwork;
@@ -45,7 +46,7 @@ public class KernighanLinCommunityDetector extends CommunityDetector
         List<Integer> AA = CollectionFactory.createList();
         List<Integer> BB = CollectionFactory.createList();
         // Create Subgraphs
-        for (int node = 0; node < an.nodes(); ++node) {
+        for (int node = 0; node < network.nodes(); ++node) {
             if (node % 2 == 0) {
                 A.add(node);
                 AA.add(node);
@@ -56,27 +57,26 @@ public class KernighanLinCommunityDetector extends CommunityDetector
         }
 
         // Cost reduction for moving node i
-        DenseVector D = new DenseVector(an.nodes());
+        DenseVector D = new DenseVector(network.nodes());
         // Node i is locked
         List<Boolean> L = CollectionFactory.createList();
         // Reset other parameter
-        for (int node = 0; node < an.nodes(); ++node) {
+        for (int node = 0; node < network.nodes(); ++node) {
             D.set(node,0.0);
             L.add(false);
         }
 
-        // Costs matrix (adjacency matrix)
-        DenseMatrix C = AdjacencyMatrix(an);
+        // Cost matrix (adjacency matrix)
+        Matrix C = adjacencyMatrix(network);
 
-        // Max Gains list
-        List<Pair<Pair<Integer, Integer>, Double>> G = CollectionFactory
-                .createList();
+        // Max Gain list
+        List<Pair<Pair<Integer, Integer>, Double>> G = CollectionFactory.createList();
         double gmax;
 
         // --- Algorithm ---
         do {
 
-            // --- Calculates D for all nodes ---
+            // --- Calculate D for all nodes ---
             // A nodes
             computeD(A, B, L, C, D);
             // B nodes
@@ -86,9 +86,6 @@ public class KernighanLinCommunityDetector extends CommunityDetector
             int locks = 0;
             do {
 
-            	// for (int i = 0; i< D.size(); ++i)
-            	// System.out.println("Node "+i+": "+D.get(i));
-            	
                 // --- Find maximum gain ---
                 int namg = -1, nbmg = -1;
                 double mg = Double.NEGATIVE_INFINITY;
@@ -111,14 +108,13 @@ public class KernighanLinCommunityDetector extends CommunityDetector
                                     mg = g;
                                     namg = i;
                                     nbmg = j;
-                                    //System.out.println("Gain [" + na + "," + nb + "] = " + g);
                                 }
                             }
                         }
                     }
                 }
 
-                // --- Exchange nodes with maximun gain ---
+                // --- Exchange nodes with maximum gain ---
                 int temp = A.get(namg);
                 A.set(namg, B.get(nbmg));
                 B.set(nbmg, temp);
@@ -130,14 +126,13 @@ public class KernighanLinCommunityDetector extends CommunityDetector
                 Pair<Integer, Integer> p = new Pair(B.get(nbmg), A.get(namg));
                 G.add(new Pair(p, mg));
 
-                // System.out.println("Lock [" + B.get(nbmg) + "," + A.get(namg) + "], Gain = " + mg);
                 // --- Update D values ---
                 // A nodes
                 updateD(A, B.get(nbmg), A.get(namg), L, C, D);
                 // B nodes
                 updateD(B, A.get(namg), B.get(nbmg), L, C, D);
 
-            } while (locks < an.nodes() - 1);
+            } while (locks < network.nodes() - 1);
 
             // --- Select k pair with gain g1+...+gk is maximized ---
             int k = 0;
@@ -148,7 +143,6 @@ public class KernighanLinCommunityDetector extends CommunityDetector
                 if (g > gmax) {
                     k = i + 1;
                     gmax = g;
-                    // System.out.println(k + " pairs [" + G.get(i).first().first() + "," + G.get(i).first().second()+ "], Gain = " + g);
                 }
             }
 
@@ -191,22 +185,19 @@ public class KernighanLinCommunityDetector extends CommunityDetector
 
         // A nodes
         for (int i = 0; i < AA.size(); ++i) {
-            // Node orig
             int no = AA.get(i);
             results.set(0, no, 1);
         }
         // B nodes
         for (int i = 0; i < BB.size(); ++i) {
-            // Node orig
             int no = BB.get(i);
             results.set(0, no, 2);
         }
-
     }
 
     /**
-     * Computing cost reduction (minimal cut) for moving each node of IG to EG 
-     * if isn't lock
+     * Compute cost reduction (minimal cut) for moving each node of IG to EG 
+     * if isn't locked
      * 
      * @pre IG union EG = V, IG intersec EG = 0
      * @param IG Group of nodes 
@@ -216,7 +207,7 @@ public class KernighanLinCommunityDetector extends CommunityDetector
      * @param D Cost to compute
      *
      */
-    private void computeD(List<Integer> IG, List<Integer> EG, List<Boolean> L, DenseMatrix C, DenseVector D) 
+    private void computeD(List<Integer> IG, List<Integer> EG, List<Boolean> L, Matrix C, Vector D) 
     {
         for (int i = 0; i < IG.size(); ++i) {
             double ic = 0.0, ec = 0.0;
@@ -241,8 +232,8 @@ public class KernighanLinCommunityDetector extends CommunityDetector
 
 
     /**
-     * Updating cost reduction (minimal cut) for removing node 'in' from G and
-     *  add node 'ex' to G if isn't lock
+     * Update cost reduction (minimal cut) for removing node 'in' from G
+     * and add node 'en' to G if isn't locked
      * 
      * @param G Group of nodes 
      * @param in node of G to move to other group
@@ -252,7 +243,7 @@ public class KernighanLinCommunityDetector extends CommunityDetector
      * @param D Cost to update
      *
      */
-    private void updateD(List<Integer> G, int in, int en, List<Boolean> L, DenseMatrix C, DenseVector D) 
+    private void updateD(List<Integer> G, int in, int en, List<Boolean> L, Matrix C, Vector D) 
     {
         for (int i = 0; i < G.size(); ++i) {
             int node = G.get(i);

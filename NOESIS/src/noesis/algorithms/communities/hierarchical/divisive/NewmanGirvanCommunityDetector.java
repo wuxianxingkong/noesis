@@ -34,7 +34,7 @@ public class NewmanGirvanCommunityDetector extends DivisiveCommunityDetector
         LinkScore linkScore = task.call();
         int source = -1;
         int destination = -1;
-        double bestScore = Double.MIN_VALUE;
+        double bestScore = Double.NEGATIVE_INFINITY;
         for (int node = 0; node < dn.size(); node++) {
             for (int link = 0; link < dn.outDegree(node); link++) {
                 double m = linkScore.get(node, dn.outLink(node, link));

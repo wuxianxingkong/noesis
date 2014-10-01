@@ -447,13 +447,14 @@ public abstract class Network<V, E> implements Graph<V,E>
 	 */	
 	public final boolean remove2 (int sourceIndex, int destinationIndex)
 	{
-		boolean ok;
-		
-		ok = remove(sourceIndex,destinationIndex);
-		
+		boolean ok = false;
+
+		if (contains(sourceIndex,destinationIndex))
+			ok = remove(sourceIndex,destinationIndex);
+
 		if (ok && contains(destinationIndex, sourceIndex))
 			ok = remove(destinationIndex,sourceIndex);
-		
+
 		return ok;
 	}
 	

@@ -5,37 +5,27 @@ import java.awt.Color;
 import ikor.model.graphics.Line;
 import ikor.model.graphics.Style;
 
-public class DefaultLinkRenderer implements LinkRenderer 
+public class DefaultLinkRenderer extends LinkRenderer 
 {
-	public static final int DEFAULT_WIDTH = 1;
 	public static final Color DEFAULT_COLOR = new Color(0x70, 0x70, 0x70, 0xFF);
 	
 	private Style style;
-	private int   width;
 	
 	public DefaultLinkRenderer ()
 	{
 		style = new Style ( DEFAULT_COLOR, DEFAULT_WIDTH);
-		width = DEFAULT_WIDTH;
 	}
 	
 	public DefaultLinkRenderer (Style style)
 	{
 		this.style = style;
-		this.width = style.getWidth();
-	}
-
-	@Override
-	public int getWidth() 
-	{
-		return width;
 	}
 
 	@Override
 	public void setWidth (int width) 
 	{
 		if (width>=0) {
-			this.width = width;
+			super.setWidth(width);
 			style.setWidth(width);
 		}
 	}
@@ -64,6 +54,12 @@ public class DefaultLinkRenderer implements LinkRenderer
 			link.setEndY( drawing.getY(target) );
 		}
 
+	}
+
+	@Override
+	public Style getStyle(int source, int target) 
+	{
+		return style;
 	}
 
 

@@ -7,9 +7,11 @@ import ikor.util.indexer.Indexer;
 
 import java.awt.Color;
 
-public class ColorLinkRenderer extends LinkRenderer 
+public class ColorMapLinkRenderer extends LinkRenderer 
 {
+	public static final int DEFAULT_COLORS = 16;
 	public static final Color DEFAULT_COLOR = new Color(0x70, 0x70, 0x70, 0xFF);
+
 	private Style[][] cache;
 
 	@Override

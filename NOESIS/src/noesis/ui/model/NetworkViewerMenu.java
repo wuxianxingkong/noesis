@@ -1,6 +1,8 @@
 package noesis.ui.model;
 
 
+import ikor.model.graphics.colors.InverseGrayscaleColorMap;
+import ikor.model.graphics.colors.JetColorMap;
 import ikor.model.ui.Application;
 import ikor.model.ui.Menu;
 import ikor.model.ui.Option;
@@ -29,6 +31,7 @@ import noesis.algorithms.visualization.RandomLayout;
 import noesis.algorithms.visualization.StarLayout;
 import noesis.algorithms.visualization.ToroidalLayout;
 import noesis.analysis.structure.*;
+import noesis.io.graphics.ColorMapLinkRenderer;
 import noesis.io.graphics.ColorMapNodeRenderer;
 import noesis.io.graphics.GrayscaleNodeRenderer;
 import noesis.io.graphics.LinearGradientNodeRenderer;
@@ -38,6 +41,7 @@ import noesis.ui.model.actions.ExitAction;
 import noesis.ui.model.actions.FlipAction;
 import noesis.ui.model.actions.ForwardAction;
 import noesis.ui.model.actions.LayoutAction;
+import noesis.ui.model.actions.LinkStyleAction;
 import noesis.ui.model.actions.LinkWidthAction;
 import noesis.ui.model.actions.LinkScoreAction;
 import noesis.ui.model.actions.NodeScoreAction;
@@ -378,6 +382,11 @@ public class NetworkViewerMenu extends Menu
 		
 		view.add ( new Separator() );
 		
+		Option linkAttributes = new Option("Link attributes...", new ForwardAction (new LinkAttributesUIModel(app, figure) ));
+		linkAttributes.setIcon( app.url("icons/palette.png") );
+		view.add(linkAttributes);
+		//linkAttributes.disable(); // TODO ...
+				
 		Menu linkWidth = new Menu("Link width");
 		linkWidth.setIcon( app.url("icons/size.png") );
 		view.add(linkWidth);
@@ -390,9 +399,21 @@ public class NetworkViewerMenu extends Menu
 		linkWidthDecrease.setIcon( app.url("icons/size-flip.png") );
 		linkWidth.add(linkWidthDecrease);
 		
-		// Menu linkStyle = new Menu("Link style");
-		// linkStyle.setIcon( app.url("icons/paint.png") );
-		// view.add(linkStyle);
+		Menu linkStyle = new Menu("Link style");
+		linkStyle.setIcon( app.url("icons/paint.png") );
+		view.add(linkStyle);
+		
+		Option linkStyleJet = new Option ("Jet", new LinkStyleAction(app, figure, new JetColorMap(256)) );
+		linkStyleJet.setIcon( app.url("icons/paint.png") );
+		linkStyle.add(linkStyleJet);
+
+		Option linkStyleGrayscale = new Option ("Grayscale", new LinkStyleAction(app, figure, new InverseGrayscaleColorMap(256)) );
+		linkStyleGrayscale.setIcon( app.url("icons/paint.png") );
+		linkStyle.add(linkStyleGrayscale);
+
+		Option linkStyleReset = new Option ("Reset", new LinkStyleAction(app, figure, ColorMapLinkRenderer.class) );
+		linkStyleReset.setIcon( app.url("icons/paint.png") );
+		linkStyle.add(linkStyleReset);
 		
 		view.add ( new Separator() );
 		

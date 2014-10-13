@@ -5,18 +5,15 @@ import java.awt.Color;
 import noesis.Attribute;
 import noesis.AttributeNetwork;
 import noesis.LinkAttribute;
-
-import noesis.io.graphics.DefaultLinkRenderer;
+import noesis.io.graphics.ColorMapLinkRenderer;
 import noesis.io.graphics.NetworkRenderer;
 import noesis.io.graphics.RadialGradientNodeRenderer;
-
 import ikor.model.graphics.Drawing;
 import ikor.model.graphics.DrawingElement;
 import ikor.model.graphics.DrawingSelectionListener;
 import ikor.model.graphics.DrawingTooltipProvider;
 import ikor.model.graphics.DrawingUpdateListener;
 import ikor.model.graphics.Style;
-
 import ikor.model.ui.Figure;
 
 /**
@@ -40,7 +37,7 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 		
 		renderer = new NetworkRenderer( getNetwork(), DEFAULT_SIZE, DEFAULT_SIZE);
 		
-		renderer.setLinkRenderer(  new DefaultLinkRenderer () );
+		renderer.setLinkRenderer(  new ColorMapLinkRenderer () );
 		renderer.setNodeRenderer( new RadialGradientNodeRenderer() );
 
 		render();

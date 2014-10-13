@@ -7,13 +7,14 @@ import ikor.model.graphics.colors.JetColorMap;
 import ikor.model.ui.Application;
 import ikor.util.indexer.Indexer;
 import ikor.util.log.Log;
+
 import noesis.Attribute;
 import noesis.AttributeNetwork;
 import noesis.Network;
 import noesis.algorithms.communities.CommunityDetector;
 import noesis.algorithms.communities.CommunityDetectorTask;
 import noesis.analysis.NodeScoreTask;
-import noesis.network.attribute.NumericAttributeIndexer;
+import noesis.network.attribute.NumericalNodeAttributeIndexer;
 import noesis.ui.model.NetworkFigure;
 import noesis.ui.model.NetworkModel;
 
@@ -56,7 +57,7 @@ public class CommunityDetectionAction extends NodeScoreAction
 		Attribute attribute = ((AttributeNetwork)getNetwork()).getNodeAttribute( task.getName() );
 
 		ColorMap map = new JetColorMap(256);
-		Indexer<Integer> indexer = new NumericAttributeIndexer(attribute,map.size());
+		Indexer<Integer> indexer = new NumericalNodeAttributeIndexer(attribute,map.size());
 
 		figure.getRenderer().getNodeRenderer().setColorMap(map);
 		figure.getRenderer().getNodeRenderer().setColorIndexer(indexer);

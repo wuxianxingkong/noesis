@@ -1,36 +1,32 @@
 package noesis.ui.model;
 
-import noesis.AttributeNetwork;
-
-import noesis.ui.model.actions.NodeAttributeColorAction;
-import noesis.ui.model.actions.NodeAttributePositionAction;
-import noesis.ui.model.actions.NodeAttributeSizeAction;
-
 import ikor.model.Observer;
 import ikor.model.Subject;
-import ikor.model.graphics.colors.InverseGrayscaleColorMap;
 import ikor.model.graphics.colors.JetColorMap;
 import ikor.model.ui.Application;
 import ikor.model.ui.Editor;
 import ikor.model.ui.Option;
 import ikor.model.ui.Selector;
 import ikor.model.ui.UIModel;
+import noesis.AttributeNetwork;
+import noesis.ui.model.actions.LinkAttributeColorAction;
+import noesis.ui.model.actions.LinkAttributeWidthAction;
 
 /**
- * Network visualization adjustments based on node attributes.
+ * Network visualization adjustments based on link attributes.
  * 
- * @author Fernando Berzal (berzal@acm.org)
+ * @author Victor Martinez (fvictor@decsai.ugr.es)
  */
 
-public class NodeAttributesUIModel extends UIModel
+public class LinkAttributesUIModel extends UIModel
 {
 	NetworkFigure figure;
 	Selector      attributes;
 	UIModel       buttons;
 	
-	public NodeAttributesUIModel (Application app, NetworkFigure figure)
+	public LinkAttributesUIModel (Application app, NetworkFigure figure)
 	{
-		super(app, "Node attributes...");
+		super(app, "Link attributes...");
 		
 		setIcon( app.url("icon.gif") );
 
@@ -57,30 +53,15 @@ public class NodeAttributesUIModel extends UIModel
 		Editor<Boolean> logScale = new Editor<Boolean>("Logarithmic scale", Boolean.class);
 		buttons.add(logScale);
 		
-		Option color = new Option("Adjust node colors");
+		Option color = new Option("Adjust link colors");
 		color.setIcon( app.url("icon.gif") );
-		color.setAction( new NodeAttributeColorAction(app, figure, attributes, logScale, new JetColorMap(256) ) );
+		color.setAction( new LinkAttributeColorAction(app, figure, attributes, logScale, new JetColorMap(256) ) );
 		buttons.add(color);
-
-		Option gray = new Option("Adjust node gray levels");
-		gray.setIcon( app.url("icon.gif") );
-		gray.setAction( new NodeAttributeColorAction(app, figure, attributes, logScale, new InverseGrayscaleColorMap(256) ) );
-		buttons.add(gray);
 		
-		Option size = new Option("Adjust node sizes");
-		size.setIcon( app.url("icon.gif") );
-		size.setAction( new NodeAttributeSizeAction(app, figure, attributes, logScale) );
-		buttons.add(size);
-
-		Option x = new Option("Adjust X coordinates");
-		x.setIcon( app.url("icon.gif") );
-		x.setAction( new NodeAttributePositionAction(app, figure, attributes, logScale, NodeAttributePositionAction.Axis.X) );
-		buttons.add(x);
-
-		Option y = new Option("Adjust Y coordinates");
-		y.setIcon( app.url("icon.gif") );
-		y.setAction( new NodeAttributePositionAction(app, figure, attributes, logScale, NodeAttributePositionAction.Axis.Y) );
-		buttons.add(y);
+		Option width = new Option("Adjust link widths");
+		width.setIcon( app.url("icon.gif") );
+		width.setAction( new LinkAttributeWidthAction(app, figure, attributes, logScale ) );
+		buttons.add(width);
 		
 		// Observer
 		
@@ -111,13 +92,13 @@ public class NodeAttributesUIModel extends UIModel
 				
 				attributes.clear();
 				
-			} else if (network.getNodeAttributeCount()!=attributes.getOptions().size()) {
+			} else if (network.getLinkAttributeCount()!=attributes.getOptions().size()) {
 				
 				attributes.clear();
 				attributes.setMultipleSelection(false);
 				
-				for (int i=0; i<network.getNodeAttributeCount(); i++) {
-					Option option = new Option(network.getNodeAttribute(i).getID());  // ID vs. Description
+				for (int i=0; i<network.getLinkAttributeCount(); i++) {
+					Option option = new Option(network.getLinkAttribute(i).getID());  // ID vs. Description
 					option.setIcon(app.url("icons/kiviat.png"));
 					attributes.add(option);
 				}

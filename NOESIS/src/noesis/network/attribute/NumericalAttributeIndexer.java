@@ -8,18 +8,18 @@ import noesis.Attribute;
 /**
  * Indexer for numeric attributes
  */
-public class NumericAttributeIndexer extends Indexer<Integer>
+public abstract class NumericalAttributeIndexer<T> extends Indexer<T>
 {
 	private Attribute       attribute;
 	private int             size;
 	private Indexer<Double> valueIndex;
 	
-	public NumericAttributeIndexer (Attribute attribute, int size)
+	public NumericalAttributeIndexer (Attribute attribute, int size)
 	{
 		this(attribute,size,false);
 	}
 	
-	public NumericAttributeIndexer (Attribute attribute, int size, boolean logScale)
+	public NumericalAttributeIndexer (Attribute attribute, int size, boolean logScale)
 	{
 		this.attribute = attribute;
 		this.size = size;
@@ -52,17 +52,6 @@ public class NumericAttributeIndexer extends Indexer<Integer>
 	}
 
 	@Override
-	public int index (Integer node) 
-	{
-		Number value = (Number) attribute.get(node);
-		
-		if (value!=null)
-			return valueIndex.index(value.doubleValue());
-		else
-			return 0;
-	}
-
-	@Override
 	public int min() 
 	{
 		return 0;
@@ -72,5 +61,21 @@ public class NumericAttributeIndexer extends Indexer<Integer>
 	public int max() 
 	{
 		return size-1;
+	}
+	
+	
+	protected Attribute getAttribute() 
+	{
+		return attribute;
+	}
+	
+	protected int getSize() 
+	{
+		return size;
+	}
+	
+	protected Indexer<Double> getValueIndex() 
+	{
+		return valueIndex;
 	}
 }

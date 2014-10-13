@@ -6,7 +6,9 @@ import noesis.Attribute;
 import noesis.AttributeNetwork;
 import noesis.LinkAttribute;
 import noesis.io.graphics.ColorMapLinkRenderer;
+import noesis.io.graphics.LinkRenderer;
 import noesis.io.graphics.NetworkRenderer;
+import noesis.io.graphics.NodeRenderer;
 import noesis.io.graphics.RadialGradientNodeRenderer;
 import ikor.model.graphics.Drawing;
 import ikor.model.graphics.DrawingElement;
@@ -37,8 +39,8 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 		
 		renderer = new NetworkRenderer( getNetwork(), DEFAULT_SIZE, DEFAULT_SIZE);
 		
-		renderer.setLinkRenderer(  new ColorMapLinkRenderer () );
-		renderer.setNodeRenderer( new RadialGradientNodeRenderer() );
+		renderer.setNodeRenderer( defaultNodeRenderer() );
+		renderer.setLinkRenderer( defaultLinkRenderer() );
 
 		render();
 				
@@ -52,6 +54,16 @@ public class NetworkFigure extends Figure<AttributeNetwork>
 		
 		this.addObserver(data);
 		data.addObserver(this);
+	}
+	
+	public static NodeRenderer defaultNodeRenderer ()
+	{
+		return new RadialGradientNodeRenderer();
+	}
+	
+	public static LinkRenderer defaultLinkRenderer ()
+	{
+		return new ColorMapLinkRenderer();
 	}
 	
 	

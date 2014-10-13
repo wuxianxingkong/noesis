@@ -31,9 +31,7 @@ import noesis.algorithms.visualization.RandomLayout;
 import noesis.algorithms.visualization.StarLayout;
 import noesis.algorithms.visualization.ToroidalLayout;
 import noesis.analysis.structure.*;
-import noesis.io.graphics.ColorMapLinkRenderer;
 import noesis.io.graphics.ColorMapNodeRenderer;
-import noesis.io.graphics.GrayscaleNodeRenderer;
 import noesis.io.graphics.LinearGradientNodeRenderer;
 import noesis.io.graphics.RadialGradientNodeRenderer;
 import noesis.ui.model.actions.CommunityDetectionAction;
@@ -42,12 +40,14 @@ import noesis.ui.model.actions.FlipAction;
 import noesis.ui.model.actions.ForwardAction;
 import noesis.ui.model.actions.LayoutAction;
 import noesis.ui.model.actions.LinkStyleAction;
+import noesis.ui.model.actions.LinkStyleResetAction;
 import noesis.ui.model.actions.LinkWidthAction;
 import noesis.ui.model.actions.LinkScoreAction;
 import noesis.ui.model.actions.NodeScoreAction;
 import noesis.ui.model.actions.NodeMultiScoreAction;
 import noesis.ui.model.actions.NodeSizeAction;
 import noesis.ui.model.actions.NodeStyleAction;
+import noesis.ui.model.actions.NodeStyleResetAction;
 import noesis.ui.model.actions.ViewerOpenAction;
 import noesis.ui.model.actions.ViewerSaveAction;
 import noesis.ui.model.actions.ViewerCloseAction;
@@ -364,22 +364,24 @@ public class NetworkViewerMenu extends Menu
 		nodeStyleFlat.setIcon( app.url("icons/paint.png") );
 		nodeStyle.add(nodeStyleFlat);
 
-		Option nodeStyleJet = new Option ("Jet", new NodeStyleAction(app,figure, ColorMapNodeRenderer.class) );
+		Option nodeStyleSolid = new Option ("Solid", new NodeStyleAction(app,figure, ColorMapNodeRenderer.class) );
+		nodeStyleSolid.setIcon( app.url("icons/paint.png") );
+		nodeStyle.add(nodeStyleSolid);
+		
+		nodeStyle.add(new Separator());
+
+		Option nodeStyleJet = new Option ("Color", new NodeStyleAction(app,figure, new JetColorMap(256)) );
 		nodeStyleJet.setIcon( app.url("icons/paint.png") );
 		nodeStyle.add(nodeStyleJet);
 
-		Option nodeStyleGrayscale = new Option ("Grayscale", new NodeStyleAction(app,figure, GrayscaleNodeRenderer.class) );
+		Option nodeStyleGrayscale = new Option ("Grayscale", new NodeStyleAction(app,figure, new InverseGrayscaleColorMap(256)) );
 		nodeStyleGrayscale.setIcon( app.url("icons/paint.png") );
 		nodeStyle.add(nodeStyleGrayscale);
 
-		//Option nodeStyleColor = new Option ("RGB", new NodeStyleAction(app,figure, ColorNodeRenderer.class) );
-		//nodeStyleColor.setIcon( app.url("icons/paint.png") );
-		//nodeStyle.add(nodeStyleColor);
-		
-		//Option nodeStyleDefault = new Option ("Default", new NodeStyleAction(app,figure, DefaultNodeRenderer.class) );
-		//nodeStyleDefault.setIcon( app.url("icons/paint.png") );
-		//nodeStyle.add(nodeStyleDefault);
-		
+		Option nodeStyleReset = new Option ("Reset", new NodeStyleResetAction(app, figure) );
+		nodeStyleReset.setIcon( app.url("icons/paint.png") );
+		nodeStyle.add(nodeStyleReset);
+				
 		view.add ( new Separator() );
 		
 		Option linkAttributes = new Option("Link attributes...", new ForwardAction (new LinkAttributesUIModel(app, figure) ));
@@ -403,7 +405,7 @@ public class NetworkViewerMenu extends Menu
 		linkStyle.setIcon( app.url("icons/paint.png") );
 		view.add(linkStyle);
 		
-		Option linkStyleJet = new Option ("Jet", new LinkStyleAction(app, figure, new JetColorMap(256)) );
+		Option linkStyleJet = new Option ("Color", new LinkStyleAction(app, figure, new JetColorMap(256)) );
 		linkStyleJet.setIcon( app.url("icons/paint.png") );
 		linkStyle.add(linkStyleJet);
 
@@ -411,7 +413,7 @@ public class NetworkViewerMenu extends Menu
 		linkStyleGrayscale.setIcon( app.url("icons/paint.png") );
 		linkStyle.add(linkStyleGrayscale);
 
-		Option linkStyleReset = new Option ("Reset", new LinkStyleAction(app, figure, ColorMapLinkRenderer.class) );
+		Option linkStyleReset = new Option ("Reset", new LinkStyleResetAction(app, figure) );
 		linkStyleReset.setIcon( app.url("icons/paint.png") );
 		linkStyle.add(linkStyleReset);
 		

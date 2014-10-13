@@ -8,7 +8,6 @@ import noesis.ui.model.actions.NodeAttributeSizeAction;
 
 import ikor.model.Observer;
 import ikor.model.Subject;
-import ikor.model.graphics.colors.InverseGrayscaleColorMap;
 import ikor.model.graphics.colors.JetColorMap;
 import ikor.model.ui.Application;
 import ikor.model.ui.Editor;
@@ -61,11 +60,6 @@ public class NodeAttributesUIModel extends UIModel
 		color.setIcon( app.url("icon.gif") );
 		color.setAction( new NodeAttributeColorAction(app, figure, attributes, logScale, new JetColorMap(256) ) );
 		buttons.add(color);
-
-		Option gray = new Option("Adjust node gray levels");
-		gray.setIcon( app.url("icon.gif") );
-		gray.setAction( new NodeAttributeColorAction(app, figure, attributes, logScale, new InverseGrayscaleColorMap(256) ) );
-		buttons.add(gray);
 		
 		Option size = new Option("Adjust node sizes");
 		size.setIcon( app.url("icon.gif") );

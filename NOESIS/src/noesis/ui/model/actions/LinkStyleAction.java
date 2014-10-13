@@ -54,8 +54,12 @@ public class LinkStyleAction extends Action
 			
 			if (renderer!=null) {
 				LinkRenderer linkRenderer = instantiateLinkRenderer(renderer); 
+				LinkRenderer figureRenderer = figure.getRenderer().getLinkRenderer();
 
-				linkRenderer.setWidth( figure.getRenderer().getLinkRenderer().getWidth() );
+				linkRenderer.setWidth( figureRenderer.getWidth() );
+				linkRenderer.setColorMap( figureRenderer.getColorMap() );
+				linkRenderer.setWidthIndexer( figureRenderer.getWidthIndexer());
+				linkRenderer.setColorIndexer( figureRenderer.getColorIndexer());
 
 				figure.getRenderer().setLinkRenderer( linkRenderer );
 			}

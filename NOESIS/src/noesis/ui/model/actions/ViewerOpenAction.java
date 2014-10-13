@@ -53,52 +53,62 @@ public class ViewerOpenAction extends Action
 			
 			if (filename!=null) {
 				
-				AttributeNetwork net = read(filename);
+				AttributeNetwork net;
 				
-				// Node id attribute
-				
-				Attribute<String> id = net.getNodeAttribute("id");
-				
-				if (id==null) {
+				try {
+							
+					net = read(filename);
+
+					// Node id attribute
+
+					Attribute<String> id = net.getNodeAttribute("id");
+
+					if (id==null) {
+
+						id = new Attribute<String>("id");
+
+						net.addNodeAttribute(id);
+
+						for (int i=0; i<net.size(); i++)
+							id.set(i, ""+(i+1));
+					}
+
+					// (x,y) coordinates
+
+					Attribute<Double> x = net.getNodeAttribute("x");
+					Attribute<Double> y = net.getNodeAttribute("y");
+
+					if ((x==null) || (y==null)){
+
+						RealModel coordinateModel = new RealModel();
+						coordinateModel.setMinimumValue(0.0);
+						coordinateModel.setMaximumValue(1.0);										
+
+						x = new Attribute<Double>("x", coordinateModel);
+						y = new Attribute<Double>("y", coordinateModel);
+
+						net.addNodeAttribute(x);
+						net.addNodeAttribute(y);
+
+						NetworkLayout display = new RandomLayout ();
+
+						display.layout(net);
+
+					} else {
+
+						NetworkLayout normalize = new NormalizedLayout ();
+
+						normalize.layout(net);		
+					}
+
+					ui.set("network", net);
+
+				} catch (Exception error) {
 					
-					id = new Attribute<String>("id");
-					
-					net.addNodeAttribute(id);
-					
-					for (int i=0; i<net.size(); i++)
-						id.set(i, ""+(i+1));
+					Log.error("Unable to load network - " + error);
 				}
 				
-				// (x,y) coordinates
-				
-				Attribute<Double> x = net.getNodeAttribute("x");
-				Attribute<Double> y = net.getNodeAttribute("y");
-				
-				
-				if ((x==null) || (y==null)){
-					
-					RealModel coordinateModel = new RealModel();
-					coordinateModel.setMinimumValue(0.0);
-					coordinateModel.setMaximumValue(1.0);										
-					
-					x = new Attribute<Double>("x", coordinateModel);
-					y = new Attribute<Double>("y", coordinateModel);
-					
-					net.addNodeAttribute(x);
-					net.addNodeAttribute(y);
-					
-					NetworkLayout display = new RandomLayout ();
-					
-					display.layout(net);
-					
-				} else {
-					
-					NetworkLayout normalize = new NormalizedLayout ();
-					
-					normalize.layout(net);		
-				}
-				
-				ui.set("network", net);
+			
 			}
 		}
 		

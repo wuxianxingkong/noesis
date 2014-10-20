@@ -490,6 +490,14 @@ public class NetworkViewerMenu extends Menu
 		normalizedDegree.setIcon( app.url("icons/microscope.png") );
 		degree.add(normalizedDegree);
 
+		Option localAssortativity = new Option("Degree assortativity", new NodeScoreAction(app, model, DegreeAssortativity.class) );
+		localAssortativity.setIcon( app.url("icons/microscope.png") );
+		degree.add(localAssortativity);		
+		
+		Option unbiasedLocalAssortativity = new Option("Unbiased degree assortativity", new NodeScoreAction(app, model, UnbiasedDegreeAssortativity.class) );
+		unbiasedLocalAssortativity.setIcon( app.url("icons/microscope.png") );
+		degree.add(unbiasedLocalAssortativity);		
+		
 		// Node reachability
 		
 		Menu reachability = new Menu("Reachability");

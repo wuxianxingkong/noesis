@@ -29,7 +29,8 @@ import org.junit.runners.Suite;
 	GeometricDistributionTest.class,
 	HypergeometricDistributionTest.class,
 	NegativeBinomialDistributionTest.class,
-	PoissonDistributionTest.class
+	PoissonDistributionTest.class,
+	DiscreteProbabilityDistributionTest.class
 })
 public class AllTests {
 

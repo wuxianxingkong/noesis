@@ -572,6 +572,12 @@ public class NetworkViewerMenu extends Menu
 		influence.add(katz);		
 		// TODO Katz centrality: alpha & beta parameters
 
+		Option diffCentrality = new Option("Diffusion centrality", new NodeScoreAction(app, model, DiffusionCentrality.class) );
+		diffCentrality.setIcon( app.url("icons/microscope.png") );
+		influence.add(diffCentrality);
+		// TODO Diffusion centrality: parameters
+
+		
 		// Links
 		
 		Menu links = new Menu("Links");

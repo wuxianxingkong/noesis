@@ -12,6 +12,7 @@ import noesis.Network;
 import noesis.analysis.NodeScoreTask;
 import noesis.analysis.NodeScore;
 import noesis.ui.model.NetworkModel;
+import noesis.ui.model.NodeScoreUIModel;
 import noesis.ui.model.data.VectorUIModel;
 
 
@@ -20,7 +21,8 @@ public class NodeScoreAction extends Action
 	private Application  application;
 	private NetworkModel model;
 	private Class        measureClass;
-
+	
+	
 	public NodeScoreAction (Application application, NetworkModel model, Class metric)
 	{
 		this.application = application;
@@ -33,18 +35,19 @@ public class NodeScoreAction extends Action
 		return model.getNetwork();
 	}
 	
+	
 	public NodeScoreTask instantiateTask (Network network)
 	{
 		NodeScoreTask metrics = null;
 		
 		try {
-		
+	
 			Constructor constructor = measureClass.getConstructor(Network.class);
 			metrics = (NodeScoreTask) constructor.newInstance(network);
-		
+
 		} catch (Exception error) {
 			
-			Log.error ("NodeMeasure: Unable to instantiate "+measureClass);
+			Log.error ("NodeScore: Unable to instantiate "+measureClass);
 		}
 		
 		return metrics;
@@ -54,43 +57,53 @@ public class NodeScoreAction extends Action
 	public void run() 
 	{
 		AttributeNetwork network = model.getNetwork();
-		NodeScoreTask  task;
-		NodeScore      metrics;
-		Attribute        attribute;
-		String           id;
-		
+		NodeScoreTask    task;
+
 		if (network!=null) {
 			
 			task = instantiateTask(network);
 			
 			if (task!=null) {
 				
-				metrics = task.getResult();
-				
-				id = metrics.getName();
-				
-				attribute = network.getNodeAttribute(id);
-
-				if (attribute==null) {
-					attribute = new Attribute( metrics.getName(), metrics.getModel() );
-					network.addNodeAttribute(attribute);
+				if (task.getParameters().length>0) {
+					ForwardAction forward = new ForwardAction( new NodeScoreUIModel(application,model,this,task) );
+					forward.run();
+				} else {				
+					computeScore(network, task);
 				}
-				
-				for (int i=0; i<network.size(); i++)
-					if (metrics.getModel() instanceof IntegerModel)
-						attribute.set (i, (int) metrics.get(i) );
-					else // RealModel
-						attribute.set(i, metrics.get(i) );
-			
-				model.setNetwork(network);
-				
-				VectorUIModel resultsUI = new VectorUIModel(application, metrics.getDescription(), metrics);
-				Action forward = new ForwardAction(resultsUI);
-				
-				forward.run();
 			}
 			
 		}
-	}			
+	}
+
+	public void computeScore(AttributeNetwork network, NodeScoreTask task) 
+	{
+		NodeScore metrics;
+		Attribute attribute;
+		String id;
 	
+		metrics = task.getResult();
+		
+		id = metrics.getName();
+		
+		attribute = network.getNodeAttribute(id);
+
+		if (attribute==null) {
+			attribute = new Attribute( metrics.getName(), metrics.getModel() );
+			network.addNodeAttribute(attribute);
+		}
+		
+		for (int i=0; i<network.size(); i++)
+			if (metrics.getModel() instanceof IntegerModel)
+				attribute.set (i, (int) metrics.get(i) );
+			else // RealModel
+				attribute.set(i, metrics.get(i) );
+
+		model.setNetwork(network);
+		
+		VectorUIModel resultsUI = new VectorUIModel(application, metrics.getDescription(), metrics);
+		Action forward = new ForwardAction(resultsUI);
+		
+		forward.run();
+	}			
 }	

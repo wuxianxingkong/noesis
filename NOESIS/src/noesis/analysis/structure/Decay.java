@@ -1,6 +1,8 @@
 package noesis.analysis.structure;
 
+import ikor.model.data.annotations.Description;
 import noesis.Network;
+import noesis.Parameter;
 import noesis.analysis.NodeScoreTask;
 
 /**
@@ -13,11 +15,12 @@ import noesis.analysis.NodeScoreTask;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-
+@Description("Node decay")
 public class Decay extends NodeScoreTask 
 {
 	public static final double DEFAULT_DECAY = 0.5;
 	
+	@Parameter(min=0.0, max=1.0, defaultValue=DEFAULT_DECAY)
 	private double delta;
 	
 	

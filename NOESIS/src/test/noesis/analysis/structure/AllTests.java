@@ -9,6 +9,7 @@ import org.junit.runners.Suite;
 	                   test.noesis.analysis.structure.PageRankTest.class,
 	                   test.noesis.analysis.structure.BowtieTest.class,
 	                   test.noesis.analysis.structure.DegreeAssortativityTest.class,
+	                   test.noesis.analysis.structure.DiffusionCentralityTest.class,	                   
 	                   test.noesis.analysis.structure.LinkRaysTest.class,
 	                   test.noesis.analysis.structure.LinkEmbeddednessTest.class,
 	                   test.noesis.analysis.structure.communities.AllTests.class})

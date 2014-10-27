@@ -1,7 +1,7 @@
 package noesis.analysis;
 
-import ikor.parallel.Task;
 import noesis.Network;
+import noesis.NoesisTask;
 import noesis.network.LinkIndex;
 import noesis.network.LinkIndexer;
 
@@ -11,7 +11,7 @@ import noesis.network.LinkIndexer;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-public abstract class LinkScoreTask extends Task<LinkScore>
+public abstract class LinkScoreTask extends NoesisTask<LinkScore>
 {
 	private Network     network;
 	private LinkIndexer index;
@@ -52,6 +52,7 @@ public abstract class LinkScoreTask extends Task<LinkScore>
 			compute();
 	}
 	
+	@Override
 	public void compute ()
 	{
 		int size = network.size();
@@ -69,14 +70,6 @@ public abstract class LinkScoreTask extends Task<LinkScore>
 		setResult(result);
 	}
 
-	
-	@Override
-	public LinkScore call() 
-	{
-		compute();
-		
-		return getResult();
-	}
 	
 	public abstract double compute (int source, int destination);
 	

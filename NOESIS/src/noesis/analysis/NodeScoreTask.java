@@ -1,10 +1,8 @@
 package noesis.analysis;
 
 import ikor.model.data.DataModel;
-import ikor.model.data.annotations.Description;
-import ikor.model.data.annotations.Label;
-import ikor.parallel.Task;
 import noesis.Network;
+import noesis.NoesisTask;
 
 /**
  * Task for computing node scores.
@@ -12,11 +10,12 @@ import noesis.Network;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-public abstract class NodeScoreTask extends Task<NodeScore>
+public abstract class NodeScoreTask extends NoesisTask<NodeScore>
 {
 	private DataModel   model;
 	private Network     network;
 
+	// Constructors
 	
 	public NodeScoreTask (DataModel model, Network network)
 	{
@@ -29,6 +28,7 @@ public abstract class NodeScoreTask extends Task<NodeScore>
 		this(NodeScore.REAL_MODEL, network);
 	}
 
+	// Getters
 		
 	public final DataModel getModel ()
 	{
@@ -40,28 +40,7 @@ public abstract class NodeScoreTask extends Task<NodeScore>
 		return network;
 	}
 	
-	public String getName ()
-	{
-		Class type = this.getClass();
-		Label label = (Label) type.getAnnotation(Label.class);
-				
-		if (label!=null)
-			return label.value();
-		else
-			return null;
-	}
-	
-	public String getDescription()
-	{
-		Class type = this.getClass();
-		Description description = (Description) type.getAnnotation(Description.class);
-		
-		if (description!=null)
-			return description.value();
-		else
-			return null;
-	}
-	
+	// Task result
 	
 	public final double getResult (int node)
 	{
@@ -83,21 +62,14 @@ public abstract class NodeScoreTask extends Task<NodeScore>
 	}
 
 	// Computation template method
-	
-	@Override
-	public NodeScore call() 
-	{
-		compute();
-		
-		return getResult();
-	}
 
 	public void checkDone ()
 	{
 		if (getResult()==null)
 			compute();
 	}
-	
+
+	@Override
 	public void compute ()
 	{
 		int size = network.size();

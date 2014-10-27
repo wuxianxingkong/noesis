@@ -1,7 +1,6 @@
 package noesis.analysis;
 
 import ikor.math.DenseVector;
-
 import ikor.model.data.DataModel;
 import ikor.model.data.IntegerModel;
 import ikor.model.data.RealModel;

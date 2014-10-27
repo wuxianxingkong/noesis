@@ -1,6 +1,8 @@
 package noesis.analysis.structure;
 
+import ikor.model.data.annotations.Description;
 import noesis.Network;
+import noesis.Parameter;
 import noesis.analysis.NodeScoreTask;
 
 /**
@@ -14,22 +16,29 @@ import noesis.analysis.NodeScoreTask;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
+@Description("Katz centrality")
 public class KatzCentrality  extends NodeScoreTask 
 {
+	public static final double DEFAULT_ALPHA = 1.0;
+	public static final double DEFAULT_BETA = 1.0;
+	
 	public static int MAX_ITERATIONS = 100;
 	public static double EPSILON = 1e-6;
 
+	@Parameter(defaultValue=DEFAULT_ALPHA)
 	private double alpha;
+	
+	@Parameter(defaultValue=DEFAULT_BETA)
 	private double beta;
 
 	public KatzCentrality (Network network)
 	{
-		this(network,1.0,1.0);
+		this(network,DEFAULT_ALPHA,DEFAULT_BETA);
 	}
 	
 	public KatzCentrality (Network network, double alpha)
 	{
-		this(network,alpha,1.0);
+		this(network,alpha,DEFAULT_BETA);
 	}
 	
 	public KatzCentrality (Network network, double alpha, double beta)
@@ -55,13 +64,6 @@ public class KatzCentrality  extends NodeScoreTask
 	{
 		return "katz("+alpha+","+beta+")";
 	}	
-
-	@Override
-	public String getDescription() 
-	{
-		return "Katz centrality (alpha="+alpha+"; beta="+beta+")";
-	}	
-
 	
 
 	@Override

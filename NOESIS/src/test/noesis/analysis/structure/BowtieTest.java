@@ -30,12 +30,6 @@ public class BowtieTest
 
 	Network  netBowtie;
 
-	private void connect (Network net, int node1, int node2)
-	{
-		net.add(node1, node2);
-		net.add(node2, node1);
-	}
-	
 	@Before
 	public void setUp() throws Exception 
 	{
@@ -44,16 +38,16 @@ public class BowtieTest
 		netBowtie = new BasicNetwork(); 
 		netBowtie.setSize(7);
 		
-		connect(netBowtie, 0, 1);
-		connect(netBowtie, 1, 2);
-		connect(netBowtie, 0, 2);
+		netBowtie.add2(0, 1);
+		netBowtie.add2(1, 2);
+		netBowtie.add2(0, 2);
 
-		connect(netBowtie, 2, 3);
-		connect(netBowtie, 3, 4);
+		netBowtie.add2(2, 3);
+		netBowtie.add2(3, 4);
 
-		connect(netBowtie, 4, 5);
-		connect(netBowtie, 4, 6);
-		connect(netBowtie, 5, 6);
+		netBowtie.add2(4, 5);
+		netBowtie.add2(4, 6);
+		netBowtie.add2(5, 6);
 	}
 	
 	private void checkMeasure (NodeScoreTask task, double[] expected)

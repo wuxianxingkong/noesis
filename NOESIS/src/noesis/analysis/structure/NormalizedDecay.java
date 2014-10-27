@@ -1,5 +1,6 @@
 package noesis.analysis.structure;
 
+import ikor.model.data.annotations.Description;
 import noesis.Network;
 
 /**
@@ -7,6 +8,8 @@ import noesis.Network;
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
+
+@Description("Normalized decay")
 public class NormalizedDecay extends Decay 
 {
 	public NormalizedDecay (Network network)

@@ -9,6 +9,7 @@ import noesis.analysis.structure.Betweenness;
 import noesis.analysis.structure.Decay;
 import noesis.analysis.structure.DiffusionCentrality;
 import noesis.analysis.structure.KatzCentrality;
+import noesis.analysis.structure.NormalizedDecay;
 
 import org.junit.Test;
 
@@ -45,6 +46,25 @@ public class ParameterTest
 		assertEquals(0.5, parameter.getDefaultValue(), EPSILON);		
 	}
 
+	@Test
+	public void testInheritedParameter ()
+	{
+		NoesisTask decay = new NormalizedDecay(null);
+
+		assertEquals("decay-50-norm", decay.getName() );
+		assertEquals("Normalized decay", decay.getDescription() );
+		assertEquals(1, decay.getParameters().length );
+		
+		ParameterMetadata parameter = decay.getParameters()[0];
+
+		assertEquals("delta", parameter.getLabel());
+		assertEquals("delta parameter", parameter.getDescription());
+		assertTrue(parameter.getModel() instanceof RealModel);
+		assertEquals(0.0, parameter.getMinimumValue(), EPSILON);
+		assertEquals(1.0, parameter.getMaximumValue(), EPSILON);
+		assertEquals(0.5, parameter.getDefaultValue(), EPSILON);		
+	}
+	
 	@Test
 	public void testTwoParameters ()
 	{

@@ -1,6 +1,5 @@
 package noesis.ui.model;
 
-
 import ikor.model.graphics.colors.InverseGrayscaleColorMap;
 import ikor.model.graphics.colors.JetColorMap;
 import ikor.model.ui.Application;
@@ -338,7 +337,6 @@ public class NetworkViewerMenu extends Menu
 		Option nodeAttributes = new Option("Node attributes...", new ForwardAction (new NodeAttributesUIModel(app, figure) ));
 		nodeAttributes.setIcon( app.url("icons/palette.png") );
 		view.add(nodeAttributes);
-		//nodeAttributes.disable(); // TODO ...
 
 		Menu nodeSize = new Menu("Node size");
 		nodeSize.setIcon( app.url("icons/size.png") );
@@ -387,7 +385,6 @@ public class NetworkViewerMenu extends Menu
 		Option linkAttributes = new Option("Link attributes...", new ForwardAction (new LinkAttributesUIModel(app, figure) ));
 		linkAttributes.setIcon( app.url("icons/palette.png") );
 		view.add(linkAttributes);
-		//linkAttributes.disable(); // TODO ...
 				
 		Menu linkWidth = new Menu("Link width");
 		linkWidth.setIcon( app.url("icons/size.png") );
@@ -523,12 +520,10 @@ public class NetworkViewerMenu extends Menu
 		Option decay = new Option("Decay", new NodeScoreAction(app, model, Decay.class) ); 
 		decay.setIcon( app.url("icons/microscope.png") );
 		reachability.add(decay);
-		// TODO Decay: delta parameter...
 		
 		Option normalizedDecay = new Option("Normalized decay", new NodeScoreAction(app, model, NormalizedDecay.class) );
 		normalizedDecay.setIcon( app.url("icons/microscope.png") );
 		reachability.add(normalizedDecay);
-		// TODO Decay: delta parameter...
 
 		
 		// Node betweenness
@@ -570,12 +565,10 @@ public class NetworkViewerMenu extends Menu
 		Option katz = new Option("Katz centrality", new NodeScoreAction(app, model, KatzCentrality.class) );
 		katz.setIcon( app.url("icons/microscope.png") );
 		influence.add(katz);		
-		// TODO Katz centrality: alpha & beta parameters
 
 		Option diffCentrality = new Option("Diffusion centrality", new NodeScoreAction(app, model, DiffusionCentrality.class) );
 		diffCentrality.setIcon( app.url("icons/microscope.png") );
 		influence.add(diffCentrality);
-		// TODO Diffusion centrality: parameters
 
 		
 		// Links

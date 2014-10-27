@@ -55,11 +55,22 @@ public abstract class NoesisTask<T> extends Task<T>
 	
 	
 	public ParameterMetadata[] getParameters ()
-	{
+	{		
+		Class type = this.getClass();
 		List<ParameterMetadata> parameters = CollectionFactory.createList();
 		
-		Class type = this.getClass();
+		getParameters(type, parameters);
 		
+		ParameterMetadata[] array = new ParameterMetadata[parameters.size()];
+		
+		for (int i=0; i<parameters.size(); i++)
+			array[i] = parameters.get(i);
+		
+		return array;
+	}
+
+	private void getParameters (Class type, List<ParameterMetadata> parameters) 
+	{
 		for (Field field: type.getDeclaredFields()) {
 			
 			Parameter annotation = field.getAnnotation(Parameter.class);
@@ -68,11 +79,7 @@ public abstract class NoesisTask<T> extends Task<T>
 				parameters.add(new ParameterMetadata(field));
 		}
 		
-		ParameterMetadata[] array = new ParameterMetadata[parameters.size()];
-		
-		for (int i=0; i<parameters.size(); i++)
-			array[i] = parameters.get(i);
-		
-		return array;
+		if (NoesisTask.class.isAssignableFrom(type.getSuperclass()))
+			getParameters(type.getSuperclass(), parameters);
 	}	
 }

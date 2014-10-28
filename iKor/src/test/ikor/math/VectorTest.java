@@ -23,6 +23,60 @@ public class VectorTest
 		for (int i=0; i<d.length; i++)
 			die.set(i, d[i]);
 	}
+	
+	@Test
+	public void testVectorOperations ()
+	{
+		Vector v;
+		
+		v = die.add(die);
+
+		for (int i=0; i<die.size(); i++)
+			assertEquals ( 2*d[i], v.get(i), EPSILON);
+			
+		v = v.subtract(die);
+		
+		assertEquals(v, die);
+		
+		for (int i=0; i<die.size(); i++)
+			assertEquals ( d[i], v.get(i), EPSILON);
+		
+		v = die.subtract(die);
+		
+		for (int i=0; i<die.size(); i++)
+			assertEquals ( 0.0, v.get(i), EPSILON);		
+	}
+	
+	@Test
+	public void testScalarOperations ()
+	{
+		Vector v;
+		
+		v = die.add(2.0);
+
+		for (int i=0; i<die.size(); i++)
+			assertEquals ( 2.0+d[i], v.get(i), EPSILON);
+
+		v = die.add(0.0);
+
+		assertEquals(v, die);
+			
+		v = die.multiply(2.0);
+		
+		for (int i=0; i<die.size(); i++)
+			assertEquals ( 2.0*d[i], v.get(i), EPSILON);
+		
+		v = die.multiply(1.0);
+		
+		assertEquals(v, die);
+		
+		v = die.multiply(0.0);
+		
+		for (int i=0; i<die.size(); i++)
+			assertEquals ( 0.0, v.get(i), EPSILON);		
+	}
+	
+	
 
 	@Test
 	public void testMagnitude() 

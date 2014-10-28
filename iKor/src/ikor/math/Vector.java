@@ -121,6 +121,79 @@ public abstract class Vector extends Matrix
 	// Arithmetic
 	
 	/**
+	 * Vector addition
+	 * @param other Vector to be added
+	 * @return Result (this+other)
+	 */
+	public Vector add (Vector other) 
+	{
+		Vector suma = null;
+
+		if (this.size() == other.size()) {
+
+			suma = MatrixFactory.createVector(size());
+
+			for (int i=0; i<size(); i++)
+				suma.set(i, this.get(i)+other.get(i));
+		}
+
+		return suma;
+	}
+
+	/**
+	 * Vector subtraction
+	 * @param other Vector to be subtracted
+	 * @return Result (this-other)
+	 */
+	public Vector subtract (Vector other) 
+	{
+		Vector suma = null;
+
+		if (this.size() == other.size()) {
+
+			suma = MatrixFactory.createVector(size());
+
+			for (int i=0; i<size(); i++)
+				suma.set(i, this.get(i)-other.get(i));
+		}
+
+		return suma;
+	}	
+	/**
+	 * Add a constant to a vector V
+	 * 
+	 * @param constant c
+	 * @return Result (V+c)
+	 */
+	public Vector add (double constant) 
+	{
+		Vector result = MatrixFactory.createVector(size());
+		
+		for (int i=0; i<size(); i++)
+			result.set(i, this.get(i)+constant);
+
+		return result;
+	}
+
+	/**
+	 * Multiply a vector V by a constant
+	 * 
+	 * @param constant c
+	 * @return Result (V*c)
+	 */
+	public Vector multiply (double constant) 
+	{
+		Vector result = MatrixFactory.createVector(size());
+		
+		for (int i=0; i<size(); i++)
+			result.set(i, this.get(i)*constant);
+
+		return result;
+	}
+	
+	
+	
+	/**
 	 * In-place vector addition 
 	 * @param other Vector to be added to the current vector
 	 * @return Updated vector

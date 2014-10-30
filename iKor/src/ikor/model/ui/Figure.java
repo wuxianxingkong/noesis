@@ -67,7 +67,12 @@ public class Figure<M> extends Component<M>
 	public void update ()
 	{
 		drawing.update();
-		update(null, null);		
+
+		if (!updating) {
+			updating = true;
+			notifyObservers();
+			updating = false;
+		}
 	}
 		
 	@Override

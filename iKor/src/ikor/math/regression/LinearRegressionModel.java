@@ -59,20 +59,6 @@ public class LinearRegressionModel extends RegressionModel
 	}
 	
 	/**
-	 * The t-statistic tests whether any of the regression coefficients might be equal to zero. The t-statistic 
-	 * is calculated simply as parameter(p)/standardError(p). If the errors follow a normal distribution, 
-	 * t follows a Student-t distribution. Under weaker conditions, t is asymptotically normal. Large values of 
-	 * t indicate that the null hypothesis can be rejected and that the corresponding coefficient is not zero.
-	 * 
-	 * @param p Linear regression coefficient
-	 * @return Student t-statistic
-	 */
-	public double tStatistic (int p)
-	{
-		return getParameter(p) / standardError(p);
-	}
-	
-	/**
 	 * The t-statistic tests whether any of the regression coefficients might be equal to zero. Its p-value 
 	 * expresses the results of the hypothesis test as a significance level. Conventionally, p-values smaller 
 	 * than 0.05 are taken as evidence that the population coefficient is nonzero.
@@ -83,7 +69,7 @@ public class LinearRegressionModel extends RegressionModel
 	public double pValue (int p)
 	{
 		double t = tStatistic(p);
-		StudentTDistribution tdist = new StudentTDistribution(n()-parameters());
+		StudentTDistribution tdist = new StudentTDistribution(dof());
 		
 		return 2*Math.min( tdist.cdf(t), 1.0-tdist.cdf(t) );
 	}

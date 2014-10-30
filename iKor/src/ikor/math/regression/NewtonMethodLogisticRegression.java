@@ -57,4 +57,20 @@ public class NewtonMethodLogisticRegression extends GradientDescentLogisticRegre
 		model.setParameters(t);
 	}		
 
+	
+	// Model fit
+
+	@Override
+	public void fit (RegressionModel model)
+	{
+		super.fit(model);
+		
+		Vector variance = covariance().getDiagonal();
+		Vector stderr = MatrixFactory.createVector(variance);
+		
+		for (int i=0; i<stderr.size(); i++)
+			stderr.set(i, Math.sqrt(stderr.get(i)) );
+		
+		model.setStandardErrors( stderr );
+	}
 }

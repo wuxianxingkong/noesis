@@ -1,5 +1,7 @@
 package ikor.math.regression;
 
+import ikor.math.statistics.NormalDistribution;
+
 // Title:       Logistic regression model
 // Version:     2.0
 // Copyright:   2012-2014
@@ -43,5 +45,33 @@ public class LogisticRegressionModel extends RegressionModel
 		
 		return 1.0 / (1.0 + Math.exp(-h));
 	}	
+	
+	
+	// Wald statistic
+	
+	public double waldStatistic (int p)
+	{
+		double beta = getParameter(p);
+		double stderr = standardError(p);
+		
+		return (beta*beta) / (stderr*stderr);
+	}
+	
+	// p-value (Wald statistic)
+
+	public double pValue (int p)
+	{
+		double t = tStatistic(p);
+		NormalDistribution norm = new NormalDistribution(0,1);
+		
+		return 2*norm.cdf(-Math.abs(t));    // MATLAB
+		
+		// StudentTDistribution tdist = new StudentTDistribution(dof());
+		// return 2*tdist.cdf(t);
+		
+		// double w = waldStatistic(p);
+		// ChiSquaredDistribution chi2 = new ChiSquaredDistribution(dof());
+		// return 2*Math.min( chi2.cdf(w), 1.0-chi2.cdf(w) );
+	}
 	
 }

@@ -146,6 +146,33 @@ public abstract class RegressionModel
 		else
 			return Double.NaN;
 	}
+
+	/**
+	 * Degrees of freedom
+	 * 
+	 * @return n() - parameters()
+	 */
+	public int dof ()
+	{
+		return n()-parameters();
+	}
+	
+	/**
+	 * The t-statistic tests whether any of the regression coefficients might be equal to zero. The t-statistic 
+	 * is calculated simply as parameter(p)/standardError(p). If the errors follow a normal distribution, 
+	 * t follows a Student-t distribution. Under weaker conditions, t is asymptotically normal. Large values of 
+	 * t indicate that the null hypothesis can be rejected and that the corresponding coefficient is not zero.
+	 * 
+	 * @param p Linear regression coefficient
+	 * @return Student t-statistic
+	 */
+	public double tStatistic (int p)
+	{
+		return getParameter(p) / standardError(p);
+	}
+
+
+	public abstract double pValue (int p);
 	
 	// Durbin–Watson statistic
 	

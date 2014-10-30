@@ -6,6 +6,8 @@ package ikor.math.regression;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
+import ikor.math.Matrix;
+import ikor.math.MatrixFactory;
 import ikor.math.Vector;
 
 /**
@@ -115,6 +117,13 @@ public class GradientDescentLogisticRegression extends GradientDescentRegression
 		
 		return s;
 	}
-
-
+	
+	// Estimate of the covariance matrix
+	
+	public Matrix covariance ()
+	{
+		Matrix hessian = MatrixFactory.create(hessian());                  
+		
+		return hessian.inverse().divide(instances());
+	}
 }

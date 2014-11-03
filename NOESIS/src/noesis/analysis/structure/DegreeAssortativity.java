@@ -2,11 +2,10 @@ package noesis.analysis.structure;
 
 import ikor.math.Vector;
 import ikor.math.statistics.DiscreteProbabilityDistribution;
-
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
-
 import noesis.Network;
+import noesis.analysis.NodeScore;
 import noesis.analysis.NodeScoreTask;
 
 /**
@@ -36,6 +35,7 @@ public class DegreeAssortativity extends NodeScoreTask
 	public void compute ()
 	{
 		Network network = getNetwork();
+		int size = network.size();
 		
 		// Degree distribution
 		Vector degree = (new OutDegree(network)).call();
@@ -43,7 +43,7 @@ public class DegreeAssortativity extends NodeScoreTask
 		double degreeAverage = degree.average();
 		double[] degreeFraction = new double[maxDegree+1];
 		
-		for (int node=0; node<network.nodes(); node++)
+		for (int node=0; node<size; node++)
 			degreeFraction[network.outDegree(node)]++;
 		
 		for (int i=0; i<degreeFraction.length; i++)
@@ -61,15 +61,29 @@ public class DegreeAssortativity extends NodeScoreTask
 		this.distribution = new DiscreteProbabilityDistribution(degreeValues, degreeProbabilities); 
 		this.mean = distribution.mean();
 		this.variance = distribution.variance();
-
-		super.compute();
+		
+		// Node degree assortativities
+		
+		NodeScore score = new NodeScore(this,network);
+	
+		for (int node=0; node<size; node++)
+			score.set (node, computeAssortativity(network,node));
+		
+		setResult(score);		
 	}
+	
 	
 	@Override
 	public double compute (int node) 
 	{
-		Network network = getNetwork();
+		checkDone();	
 		
+		return getResult(node);
+	}
+	
+	
+	private double computeAssortativity (Network network, int node) 
+	{
 		double nodeExcessDegree = network.outDegree(node)-1;
 		double avgNeighboursExcessDegree = 0;
 		int neighbors = network.outDegree(node);
@@ -83,11 +97,11 @@ public class DegreeAssortativity extends NodeScoreTask
 		if (variance==0.0)
 			return 1.0/network.size();
 		else
-			return computeAssortativity(network, nodeExcessDegree, avgNeighboursExcessDegree);
+			return assortativity(network, nodeExcessDegree, avgNeighboursExcessDegree);
 	}
 	
 	
-	protected double computeAssortativity (Network network, double nodeExcessDegree, double avgNeighboursExcessDegree) 
+	protected double assortativity (Network network, double nodeExcessDegree, double avgNeighboursExcessDegree) 
 	{
 		return (nodeExcessDegree + 1)
 				* (nodeExcessDegree*avgNeighboursExcessDegree - mean*mean)

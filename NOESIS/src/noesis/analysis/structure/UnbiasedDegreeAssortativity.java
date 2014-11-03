@@ -22,7 +22,7 @@ public class UnbiasedDegreeAssortativity extends DegreeAssortativity
 	}
 
 	@Override
-	protected double computeAssortativity (Network network, double nodeExcessDegree, double avgNeighboursExcessDegree) 
+	protected double assortativity (Network network, double nodeExcessDegree, double avgNeighboursExcessDegree) 
 	{
 		return nodeExcessDegree
 				* (nodeExcessDegree + 1)

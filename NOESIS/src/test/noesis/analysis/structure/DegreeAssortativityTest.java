@@ -79,6 +79,20 @@ public class DegreeAssortativityTest
 		assertEquals ( -0.1, assortativity.get(5), EPSILON);
 		assertEquals ( -1.0, assortativity.sum(), EPSILON);
 	}
+
+	@Test
+	public void testStarAssortativityCompute() 
+	{
+		DegreeAssortativity assortativityTask = new DegreeAssortativity(createStarNetwork());
+		
+		assertEquals ( -0.5, assortativityTask.compute(0), EPSILON);
+		assertEquals ( -0.1, assortativityTask.compute(1), EPSILON);
+		assertEquals ( -0.1, assortativityTask.compute(2), EPSILON);
+		assertEquals ( -0.1, assortativityTask.compute(3), EPSILON);
+		assertEquals ( -0.1, assortativityTask.compute(4), EPSILON);
+		assertEquals ( -0.1, assortativityTask.compute(5), EPSILON);
+		assertEquals ( -1.0, assortativityTask.getResult().sum(), EPSILON);
+	}
 	
 	
 	@Test
@@ -95,4 +109,19 @@ public class DegreeAssortativityTest
 		assertEquals ( 0.0, assortativity.get(5), EPSILON);
 		assertEquals ( -1.0 , assortativity.sum(), EPSILON);
 	}
+	
+	@Test
+	public void testStarUnbiasedAssortativityCompute() 
+	{
+		UnbiasedDegreeAssortativity assortativityTask = new UnbiasedDegreeAssortativity(createStarNetwork());
+		
+		assertEquals ( -1.0, assortativityTask.compute(0), EPSILON);
+		assertEquals ( 0.0, assortativityTask.compute(1), EPSILON);
+		assertEquals ( 0.0, assortativityTask.compute(2), EPSILON);
+		assertEquals ( 0.0, assortativityTask.compute(3), EPSILON);
+		assertEquals ( 0.0, assortativityTask.compute(4), EPSILON);
+		assertEquals ( 0.0, assortativityTask.compute(5), EPSILON);
+		assertEquals ( -1.0, assortativityTask.getResult().sum(), EPSILON);
+	}
+	
 }

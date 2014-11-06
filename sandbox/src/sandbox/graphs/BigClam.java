@@ -54,6 +54,7 @@ public class BigClam
 	public Matrix updateParameters (Matrix F)
 	{
 		Vector sum = columnSum(F);
+		Vector newFrow = new DenseVector(F.columns());
 		
 		maxDelta = 0;
 		
@@ -71,16 +72,15 @@ public class BigClam
 				
 				if (newF<0)		 // Project to non-negative vector
 					newF = 0.0;
-				else if (newF>1) // Modification: Trim to 1
-					newF = 1.0;
 
-				F.set(row, column, newF );
-				sum.set(column, sum.get(column)+newF-oldF);
+				newFrow.set(column,newF);
 				
 				if (Math.abs(newF-oldF)>maxDelta)
 					maxDelta = Math.abs(newF-oldF);
 			}
 			
+			sum = sum.add(newFrow).subtract(F.getRow(row));
+			F.setRow(row, newFrow);
 		}
 		
 		return F;
@@ -137,22 +137,32 @@ public class BigClam
 		
 		return str;
 	}
+
+	// Test network
+	
+	private final static int K1 = 5;
+	private final static int K2 = 5;
 	
 	public static Network createNetwork ()
 	{
 		Network network = new BasicNetwork();
 		
-		network.setSize(10);
+		network.setSize(K1+K2);
 		
-		for (int i=0; i<5; i++) {
-			for (int j=i+1; j<5; j++) {
+		for (int i=0; i<K1; i++) {
+			for (int j=i+1; j<K1; j++) {
 				network.add2(i, j);
-				network.add2(5+i, 5+j);
+			}
+		}
+
+		for (int i=0; i<K2; i++) {
+			for (int j=i+1; j<K2; j++) {
+				network.add2(K1+i, K1+j);
 			}
 		}
 		
-		// network.add2(4, 5);
-		// network.add2(4, 6);
+		// network.add2(K1-1, K1);
+		// network.add2(K1-1, K1+1);
 		
 		return network;
 	}

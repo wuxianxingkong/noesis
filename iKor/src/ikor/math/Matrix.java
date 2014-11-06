@@ -193,6 +193,21 @@ public abstract class Matrix implements java.io.Serializable
 	}
 
 	/**
+	 * Set a complete row in the matrix
+	 * 
+	 * @param i Row index
+	 * @param v Row vector
+	 */	
+	public final void setRow (int i, Vector v)
+	{
+		if (v.size()==columns()) {
+			for (int j=0; j<v.size(); j++) {
+				Matrix.this.set (i, j, v.get(j));
+			}
+		}
+	}
+
+	/**
 	 * Set a complete row in the matrix with a given value
 	 * 
 	 * @param i Row index
@@ -269,6 +284,21 @@ public abstract class Matrix implements java.io.Serializable
 		}		
 	}
 
+	/**
+	 * Set a complete column in the matrix
+	 * 
+	 * @param i Column index
+	 * @param v Column vector
+	 */	
+	public final void setColumn (int j, Vector v)
+	{
+		if (v.size()==rows()) {
+			for (int i=0; i<v.size(); i++) {
+				Matrix.this.set (i, j, v.get(i));
+			}
+		}		
+	}
+	
 	/**
 	 * Set a complete column in the matrix with a given value
 	 * 

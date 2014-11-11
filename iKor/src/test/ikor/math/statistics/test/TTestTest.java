@@ -86,7 +86,7 @@ public class TTestTest
 	// hypothesis that the data comes from a population with a mean greater than 65).
 	
 	@Test
-	public void testMATLABoneSided ()
+	public void testMATLABright ()
 	{
 		Vector data = MatrixFactory.createVector(matlabDataMean);
 		
@@ -101,7 +101,33 @@ public class TTestTest
 		assertEquals(6.9555e-24, t.pvalue(), 0.0001e-24);
 		
 		assertEquals(73.6887, t.minConfidenceInterval(0.05), 0.0001);
-		assertEquals(Double.POSITIVE_INFINITY, t.maxConfidenceInterval(0.05), 0.0);
-		
+		assertEquals(Double.POSITIVE_INFINITY, t.maxConfidenceInterval(0.05), 0.0);		
 	}
+	
+	// One-sided t-test:
+	// [h,p,ci,stats] = ttest(x,85,0.05,'left')
+	// i.e. test the null hypothesis that the data comes from a population with mean equal to 85, 
+	// against the alternative that the mean is lower than 85.
+	// (the t-test rejects the null hypothesis at the 5% significance level, in favor of the alternate
+	// hypothesis that the data comes from a population with a mean lower than 85).
+	
+	@Test
+	public void testMATLABleft ()
+	{
+		Vector data = MatrixFactory.createVector(matlabDataMean);
+		
+		assertEquals(120, data.size());
+		assertEquals(75.0083, data.average(), 0.0001);
+		
+		TTest t = new OneTailedTTest(data,85,OneTailedTTest.Tail.LEFT);
+		
+		assertEquals(119, t.df() );
+		assertEquals(8.7202, t.sd(), 0.0001 );
+		assertEquals(-12.5517, t.tstat(), 0.0001);
+		assertEquals(7.7936e-24, t.pvalue(), 0.0001e-24);
+		
+		assertEquals(Double.NEGATIVE_INFINITY, t.minConfidenceInterval(0.05), 0.0001);
+		assertEquals(76.3280, t.maxConfidenceInterval(0.05), 0.0001);
+	}
+	
 }

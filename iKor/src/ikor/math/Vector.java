@@ -365,9 +365,35 @@ public abstract class Vector extends Matrix
 		return sum2()/size() - avg*avg;
 	}	
 	
+	/**
+	 * Unbiased estimator for the variance given by applying Bessel's correction, 
+	 * using N-1 instead of N to yield the unbiased sample variance, denoted s^2
+	 * 
+	 * @return Sample variance
+	 */
+
+	public double sampleVariance ()
+	{
+		double avg = average();
+		double sum2 = 0.0;
+		double diff;
+		
+		for (int i=0; i<size(); i++) {
+			diff = get(i)-avg;
+			sum2 += diff*diff;
+		}
+		
+		return sum2/(size()-1);
+	}	
+	
 	public double deviation ()
 	{
 		return Math.sqrt(variance());
+	}	
+
+	public double sampleDeviation ()
+	{
+		return Math.sqrt(sampleVariance());
 	}	
 
 	public double absoluteDeviation ()

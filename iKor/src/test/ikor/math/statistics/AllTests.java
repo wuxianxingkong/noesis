@@ -30,7 +30,9 @@ import org.junit.runners.Suite;
 	HypergeometricDistributionTest.class,
 	NegativeBinomialDistributionTest.class,
 	PoissonDistributionTest.class,
-	DiscreteProbabilityDistributionTest.class
+	DiscreteProbabilityDistributionTest.class,
+	// Statistical tests
+	test.ikor.math.statistics.test.AllTests.class
 })
 public class AllTests {
 

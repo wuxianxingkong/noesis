@@ -159,6 +159,7 @@ public abstract class Vector extends Matrix
 
 		return suma;
 	}	
+	
 	/**
 	 * Add a constant to a vector V
 	 * 
@@ -176,6 +177,23 @@ public abstract class Vector extends Matrix
 	}
 
 	/**
+	 * Subtract a constant from a vector V
+	 * 
+	 * @param constant c
+	 * @return Result (V-c)
+	 */
+	public Vector subtract (double constant) 
+	{
+		Vector result = MatrixFactory.createVector(size());
+		
+		for (int i=0; i<size(); i++)
+			result.set(i, this.get(i)-constant);
+
+		return result;
+	}
+
+	
+	/**
 	 * Multiply a vector V by a constant
 	 * 
 	 * @param constant c
@@ -191,6 +209,26 @@ public abstract class Vector extends Matrix
 		return result;
 	}
 	
+	/**
+	 * Element-by-element array multiplication
+	 * 
+	 * @param other Other vector
+	 * @return Result (this.*other)
+	 */
+	public Vector arrayMultiply (Vector other) 
+	{
+		Vector result = null;
+		
+		if (this.size() == other.size()) {
+			
+			result = MatrixFactory.createVector(size());
+		
+			for (int i=0; i<size(); i++)
+				result.set(i, this.get(i)*other.get(i));
+		}
+		
+		return result;
+	}
 	
 	
 	/**

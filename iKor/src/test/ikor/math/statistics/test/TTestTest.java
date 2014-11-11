@@ -3,6 +3,7 @@ package test.ikor.math.statistics.test;
 import static org.junit.Assert.*;
 import ikor.math.MatrixFactory;
 import ikor.math.Vector;
+import ikor.math.statistics.test.OneTailedTTest;
 import ikor.math.statistics.test.TTest;
 
 import org.junit.Test;
@@ -10,6 +11,7 @@ import org.junit.Test;
 public class TTestTest 
 {
 	// Test for a mean equal to zero
+	// i.e. test the null hypothesis that the sample data comes from a population with mean equal to zero.
 
 	double matlabData[] = new double[]{ 
 			 0.1503,-0.6113,-2.1800, 0.2538,-2.0649, 0.9817,-1.1336,-2.5854, 2.7277, 0.1204,
@@ -45,6 +47,8 @@ public class TTestTest
 	}
 	
 	// Test for an hypothesized mean
+	// i.e. test the null hypothesis that sample data comes from a distribution with mean m = 75.
+	// (the t-test does not reject the null hypothesis at the 5% significance level)
 	
 	double matlabDataMean[] = new double[]{
 			65,61,81,88,69,89,55,84,86,84,71,81,84,81,78,67,96,66,73,75,
@@ -63,15 +67,41 @@ public class TTestTest
 		assertEquals(120, data.size());
 		assertEquals(75.0083, data.average(), 0.0001);
 		
-		TTest t = new TTest(data);
+		TTest t = new TTest(data,75);
 		
 		assertEquals(119, t.df() );
 		assertEquals(8.7202, t.sd(), 0.0001 );
-		assertEquals(94.2266, t.tstat(), 0.0001);
-		assertEquals(1.2316e-113, t.pvalue(), 0.0001e-113);
+		assertEquals(0.0105, t.tstat(), 0.0001);
+		assertEquals(0.9917, t.pvalue(), 0.0001);
 		
 		assertEquals(73.4321, t.minConfidenceInterval(0.05), 0.0001);
 		assertEquals(76.5846, t.maxConfidenceInterval(0.05), 0.0001);
 	}
 
+	// One-sided t-test:
+	// [h,p,ci,stats] = ttest(x,65,0.05,'right')
+	// i.e. test the null hypothesis that the data comes from a population with mean equal to 65, 
+	// against the alternative that the mean is greater than 65.
+	// (the t-test rejects the null hypothesis at the 5% significance level, in favor of the alternate
+	// hypothesis that the data comes from a population with a mean greater than 65).
+	
+	@Test
+	public void testMATLABoneSided ()
+	{
+		Vector data = MatrixFactory.createVector(matlabDataMean);
+		
+		assertEquals(120, data.size());
+		assertEquals(75.0083, data.average(), 0.0001);
+		
+		TTest t = new OneTailedTTest(data,65,OneTailedTTest.Tail.RIGHT);
+		
+		assertEquals(119, t.df() );
+		assertEquals(8.7202, t.sd(), 0.0001 );
+		assertEquals(12.5726, t.tstat(), 0.0001);
+		assertEquals(6.9555e-24, t.pvalue(), 0.0001e-24);
+		
+		assertEquals(73.6887, t.minConfidenceInterval(0.05), 0.0001);
+		assertEquals(Double.POSITIVE_INFINITY, t.maxConfidenceInterval(0.05), 0.0);
+		
+	}
 }

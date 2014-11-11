@@ -1,7 +1,6 @@
 package ikor.math.statistics.test;
 
 import ikor.math.Vector;
-import ikor.math.statistics.StudentTDistribution;
 
 /**
  * One-sample t-test
@@ -10,42 +9,25 @@ import ikor.math.statistics.StudentTDistribution;
  * 
  * @author Fernando Berzal (berzal@acm.org)
  */
-public class TTest 
+public class OneTailedTTest extends TTest 
 {
-	protected Vector data;
-	protected double mean;
-	protected StudentTDistribution tdist;
+	public enum Tail { LEFT, RIGHT };
 	
-	public TTest (Vector data)
-	{
-		this(data,0.0);
-	}
+	private Tail tail;
 	
-	public TTest (Vector data, double mean)
-	{
-		this.data  = data;
-		this.mean  = mean;
-		this.tdist = new StudentTDistribution(df());
-	}
 	
-	// Statistics
-
-	public double tstat ()
+	public OneTailedTTest (Vector data, Tail tail)
 	{
-		double sampleMean = data.average();
-		double sampleSize = data.size();
+		super(data);
 		
-		return (sampleMean-mean)/sd()*Math.sqrt(sampleSize);
+		this.tail = tail;
 	}
 	
-	public int df ()
+	public OneTailedTTest (Vector data, double mean, Tail tail)
 	{
-		return data.size()-1;
-	}
-	
-	public double sd ()
-	{
-		return data.sampleDeviation();
+		super(data,mean);
+		
+		this.tail = tail;
 	}
 	
 	/**
@@ -55,14 +37,17 @@ public class TTest
 	 */
 	public double pvalue ()
 	{
-		return 2*tdist.cdf(-Math.abs(tstat()));
+		if (tail==Tail.RIGHT)
+			return tdist.cdf(-tstat());
+		else // tail==Tail.LEFT
+			return tdist.cdf(tstat());
 	}
 
 	// Confidence interval
 	
 	private double criticalValue (double alpha)
 	{
-		return tdist.idf( 1-alpha/2 ) * sd() / Math.sqrt(data.size());
+		return tdist.idf( 1-alpha ) * sd() / Math.sqrt(data.size());
 	}
 	
 	/**
@@ -74,7 +59,10 @@ public class TTest
 	 */	
 	public double minConfidenceInterval (double alpha)
 	{
-		return data.average() - criticalValue(alpha);
+		if (tail==Tail.RIGHT)
+			return data.average() - criticalValue(alpha);
+		else // tail==Tail.LEFT
+			return Double.NEGATIVE_INFINITY;
 	}
 	
 	/**
@@ -86,7 +74,11 @@ public class TTest
 	 */
 	public double maxConfidenceInterval (double alpha)
 	{
-		return data.average() + criticalValue(alpha);
+		if (tail==Tail.RIGHT)
+			return Double.POSITIVE_INFINITY;
+		else // tail==Tail.LEFT
+			return data.average() + criticalValue(alpha);
 	}
 	
+
 }

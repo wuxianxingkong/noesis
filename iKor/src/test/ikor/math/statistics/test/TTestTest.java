@@ -46,11 +46,7 @@ public class TTestTest
 		assertEquals(-0.0997, t.maxConfidenceInterval(0.05), 0.0001);
 	}
 	
-	// Test for an hypothesized mean
-	// i.e. test the null hypothesis that sample data comes from a distribution with mean m = 75.
-	// (the t-test does not reject the null hypothesis at the 5% significance level)
-	
-	double matlabDataMean[] = new double[]{
+	double matlabDataX[] = new double[]{
 			65,61,81,88,69,89,55,84,86,84,71,81,84,81,78,67,96,66,73,75,
 			59,71,69,63,79,76,63,85,87,88,80,71,65,84,71,75,81,79,64,65,
 			84,77,70,75,84,75,73,92,90,79,80,71,73,71,58,79,73,64,77,82,
@@ -58,11 +54,24 @@ public class TTestTest
 			80,73,73,71,66,78,64,74,68,67,75,75,80,85,74,76,80,77,93,70,
 			86,80,81,83,68,60,85,64,74,82,81,77,66,85,75,81,69,60,83,72
 	};
+
+	double matlabDataY[] = new double[]{
+			77,74,80,76,77,93,64,83,75,82,70,88,78,77,66,74,87,69,75,68,
+			64,71,68,75,83,80,67,78,84,91,76,73,67,89,67,75,72,69,71,72,
+			72,81,77,71,77,77,67,75,83,74,74,81,67,69,63,73,77,79,86,73,
+			84,71,67,84,71,78,68,68,77,84,70,69,81,81,77,66,76,75,83,77,
+			78,77,74,72,68,75,78,71,74,70,88,70,74,76,71,79,62,77,80,71,
+			72,79,76,77,71,64,74,63,68,78,69,73,79,76,84,89,63,69,79,83
+	};
+
+	// Test for an hypothesized mean
+	// i.e. test the null hypothesis that sample data comes from a distribution with mean m = 75.
+	// (the t-test does not reject the null hypothesis at the 5% significance level)
 	
 	@Test
 	public void testMATLABmean ()
 	{
-		Vector data = MatrixFactory.createVector(matlabDataMean);
+		Vector data = MatrixFactory.createVector(matlabDataX);
 		
 		assertEquals(120, data.size());
 		assertEquals(75.0083, data.average(), 0.0001);
@@ -88,7 +97,7 @@ public class TTestTest
 	@Test
 	public void testMATLABright ()
 	{
-		Vector data = MatrixFactory.createVector(matlabDataMean);
+		Vector data = MatrixFactory.createVector(matlabDataX);
 		
 		assertEquals(120, data.size());
 		assertEquals(75.0083, data.average(), 0.0001);
@@ -114,7 +123,7 @@ public class TTestTest
 	@Test
 	public void testMATLABleft ()
 	{
-		Vector data = MatrixFactory.createVector(matlabDataMean);
+		Vector data = MatrixFactory.createVector(matlabDataX);
 		
 		assertEquals(120, data.size());
 		assertEquals(75.0083, data.average(), 0.0001);
@@ -128,6 +137,60 @@ public class TTestTest
 		
 		assertEquals(Double.NEGATIVE_INFINITY, t.minConfidenceInterval(0.05), 0.0001);
 		assertEquals(76.3280, t.maxConfidenceInterval(0.05), 0.0001);
+	}
+	
+	// Paired t-test:
+	// Test the null hypothesis that the pairwise difference between data vectors x and y has a mean equal to zero.
+	// (the t-test does not reject the null hypothesis at the default 5% significance level).
+	
+	@Test
+	public void testMATLABpaired ()
+	{
+		Vector x = MatrixFactory.createVector(matlabDataX);
+		Vector y = MatrixFactory.createVector(matlabDataY);
+		
+		assertEquals(120, x.size());
+		assertEquals(75.0083, x.average(), 0.0001);
+		assertEquals(120, y.size());
+		assertEquals(74.9917, y.average(), 0.0001);
+		
+		TTest t = new TTest(x,y);
+		
+		assertEquals(119, t.df() );
+		assertEquals(7.4563, t.sd(), 0.0001 );
+		assertEquals(0.0245, t.tstat(), 0.0001);
+		assertEquals(0.9805, t.pvalue(), 0.0001);
+		
+		assertEquals(-1.3311, t.minConfidenceInterval(0.05), 0.0001);
+		assertEquals(+1.3644, t.maxConfidenceInterval(0.05), 0.0001);
+	}
+
+	// One-sided paired t-test:
+	// [h,p,ci,stats] = ttest(x,y,0.05,'right')
+	// i.e. test the null hypothesis that the pairwise difference between data vectors x and y 
+	// has a mean equal to zero, against the alternative that it is is greater than 0.
+	// (the t-test does not reject the null hypothesis at the 5% significance level).
+
+	@Test
+	public void testMATLABpairedSided ()
+	{
+		Vector x = MatrixFactory.createVector(matlabDataX);
+		Vector y = MatrixFactory.createVector(matlabDataY);
+		
+		assertEquals(120, x.size());
+		assertEquals(75.0083, x.average(), 0.0001);
+		assertEquals(120, y.size());
+		assertEquals(74.9917, y.average(), 0.0001);
+		
+		TTest t = new OneTailedTTest(x,y, OneTailedTTest.Tail.RIGHT);
+		
+		assertEquals(119, t.df() );
+		assertEquals(7.4563, t.sd(), 0.0001 );
+		assertEquals(0.0245, t.tstat(), 0.0001);
+		assertEquals(0.4903, t.pvalue(), 0.0001);
+		
+		assertEquals(-1.1117, t.minConfidenceInterval(0.05), 0.0001);
+		assertEquals(Double.POSITIVE_INFINITY, t.maxConfidenceInterval(0.05), 0.0001);
 	}
 	
 }

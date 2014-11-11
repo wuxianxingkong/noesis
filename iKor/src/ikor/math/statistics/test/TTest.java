@@ -4,7 +4,7 @@ import ikor.math.Vector;
 import ikor.math.statistics.StudentTDistribution;
 
 /**
- * One-sample t-test
+ * One-sample & paired t-test
  * 
  * http://en.wikipedia.org/wiki/Student's_t-test
  * 
@@ -26,6 +26,16 @@ public class TTest
 		this.data  = data;
 		this.mean  = mean;
 		this.tdist = new StudentTDistribution(df());
+	}
+	
+	public TTest (Vector x, Vector y)
+	{
+		this( x.subtract(y) );
+	}
+	
+	public TTest (Vector x, Vector y, double mean)
+	{
+		this( x.subtract(y), mean);
 	}
 	
 	// Statistics

@@ -5,7 +5,24 @@ import ikor.math.Vector;
 import ikor.math.statistics.NormalDistribution;
 
 /**
- * One-sample & paired Wilcoxon signed-rank test
+ * One-sample & paired Wilcoxon signed-rank test.
+ * 
+ * P is the probability of observing the given result, or one more extreme, 
+ * by chance if the null hypothesis is true:
+ * - Median is zero: new WilcoxonTest(data).
+ * - Mediam is M: new WilcoxonTest(data,M).
+ * - The difference between the matched samples in the vectors X and Y 
+ *   comes from a distribution whose median is zero: new WilcoxonTest(x,y).
+ * - The difference between the matched samples in the vectors X and Y 
+ *   comes from a distribution whose median is M: new WilcoxonTest(x,y,M).
+ *   
+ * Small values of P cast doubt on the validity of the null hypothesis.
+ * 
+ * 
+ * The data are assumed to come from a continuous distribution, symmetric about its median;
+ * i.e. The differences X-Y are assumed to come from a continuous distribution, symmetric about its median. 
+ * 
+ * NOTE: The test computes the p-value using a normal approximation.
  * 
  * http://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test
  * 
@@ -13,9 +30,13 @@ import ikor.math.statistics.NormalDistribution;
  */
 public class WilcoxonTest 
 {
-	protected int n;
-	protected Vector signrank;
-	double tieadjustment;
+	private int n;
+	private int nr;
+	
+	private Vector signrank;
+	private double tieadjustment;
+	
+	private static NormalDistribution normal = new NormalDistribution(0.0,1.0);
 	
 	public WilcoxonTest (Vector x)
 	{
@@ -27,7 +48,8 @@ public class WilcoxonTest
 		
 		Vector rank = tiedrank (absolute);
 		
-		this.n = reduced.size();
+		this.n = x.size();
+		this.nr = reduced.size();
 		this.signrank = sign.arrayMultiply(rank);
 	}
 	
@@ -170,40 +192,88 @@ public class WilcoxonTest
 
 	public double signedrank ()
 	{
-		return Math.abs(signrank.sum()); // vs. Math.abs(signrank.sum());
+		return Math.abs(signrank.sum()); 
+		
+		// MATLAB (one-tailed, negative signranks only):
+		// return signrank.sum();
 	}
 	
 	public int n ()
 	{
 		return n;
 	}
+
+	public int nr ()
+	{
+		return nr;
+	}
 	
-	// Normal approximation
+	/**
+	 * Mean of the sampling distribution of W (=0).
+	 */
+	public double mu ()
+	{
+		return 0.0;
+	}
+	
+	/**
+	 * Standard deviation of the sampling distribution of W.
+	 */
+	public double sigma ()
+	{
+		return Math.sqrt(nr*(nr+1)*(2*nr+1)/6);
+	}
+	
+	/**
+	 * Adjusted deviation of the sampling distribution of W.
+	 */
+	public double adjustedSigma ()
+	{
+		return Math.sqrt((n*(n+1)*(2*n+1)-tieadjustment)/24.0);		
+	}
+	
+	// Normal approximation (including -0.5 correction for continuity).
 	
 	public double zvalue ()
 	{
 		double w = signedrank();
-		double sigma = Math.sqrt(n*(n+1)*(2*n+1)/6);
 		
-		return (w-0.5)/sigma;
+		if (nr>0)
+			return (w-0.5)/sigma();
+		else
+			return Double.POSITIVE_INFINITY; 
 		
-		// MATLAB z-score:
+		// MATLAB z-score (one-tailed, only negative signranks):
 		// w = Math.min (w, n*(n+1)/2.0 - w);
-		// return (w - n*(n+1)/4.0) / Math.sqrt((n*(n+1)*(2*n+1)-tieadjustment)/24.0);
+		// return (w - n*(n+1)/4.0) / adjustedSigma();
 	}
 	
 	/**
-	 * Two-tailed t-test
+	 * Two-tailed Wilcoxon test.
 	 * 
 	 * @return p-value
 	 */
 	public double pvalue ()
 	{
-		NormalDistribution normal = new NormalDistribution(0.0,1.0);
-			
-		return 2*(1-normal.cdf(Math.abs(zvalue())));
+		if (nr>0)
+			return 2*(1-normal.cdf(Math.abs(zvalue())));
+		else
+			return 1.0;
 		
-		// MATLAB p-value:
-		// return 2*(normal.cdf(zvalue());
+		// MATLAB p-value (one-tailed):
+		// The two-sided p-value is computed by doubling the most significant one-sided value
+		// return 2*normal.cdf(zvalue());
 	}
+	
+	/**
+	 * Critical value of W (approximated using a normal distribution)
+	 * @param alpha Significance level
+	 * @return Estimation of W_alpha
+	 */
+	public double w (double alpha)
+	{
+		return mu()+sigma()*normal.idf(1-alpha/2);
+	}
+	
+	
 }

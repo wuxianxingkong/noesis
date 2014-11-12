@@ -86,8 +86,15 @@ public class FriedmanTestTest
 		assertEquals(20, test.n());
 		assertEquals( 5, test.nc());
 		assertEquals( 4, test.df());
+		
 		assertEquals( 49.206, test.q(), 0.001);
 		assertEquals( 5.289e-10, test.pvalue(), 0.001e-10);
+		
+		assertEquals( 1.350, test.meanrank(0), 0.001); // CN
+		assertEquals( 2.725, test.meanrank(1), 0.001); // AA
+		assertEquals( 2.475, test.meanrank(2), 0.001); // RA
+		assertEquals( 4.075, test.meanrank(3), 0.001); // ADP
+		assertEquals( 4.375, test.meanrank(4), 0.001); // best
 	}
 	
 }

@@ -13,14 +13,13 @@ public class WilcoxonTestTest
 	// Two-sided test for the median of a single population
 	// i.e. test the hypothesis that the median mileage differs from 33.
 	// (at the 5% significance level, the results indicate that the median mileage differs from 33)
-	
-	double mileage[] = new double[] { 34.5, 34.8, 33.8, 33.4, 33.7, 33.9 };
-	
+		
 	// [p,h,stats] = signrank(mileage(:,2),33,'method','approximate')
 	
 	@Test
 	public void testMATLABexample ()
 	{
+		double mileage[] = new double[] { 34.5, 34.8, 33.8, 33.4, 33.7, 33.9 };
 		Vector x = MatrixFactory.createVector(mileage);
 		
 		WilcoxonTest test = new WilcoxonTest(x,33.0);
@@ -38,7 +37,8 @@ public class WilcoxonTestTest
 	@Test
 	public void testMATLABtie ()
 	{
-		Vector x = MatrixFactory.createVector(new double[]{1, 2, 2, 4, 4, 5});
+		double data[] = new double[]{1, 2, 2, 4, 4, 5};
+		Vector x = MatrixFactory.createVector(data);
 		
 		WilcoxonTest test = new WilcoxonTest(x);
 		
@@ -54,8 +54,7 @@ public class WilcoxonTestTest
 		assertEquals ( 6, test3.nr() );
 		assertEquals ( 0, test3.signedrank(), 0.0001 );
 		assertEquals ( -0.0524, test3.zvalue(), 0.0001 ); // vs. 0
-		assertEquals ( 0.9582, test3.pvalue(), 0.0001 );  // vs. 1
-		
+		assertEquals ( 0.9582, test3.pvalue(), 0.0001 );  // vs. 1	
 	}
 
 	// [p,h,stats] = signrank([1 1 1 4 4 5],3,'method','approximate')
@@ -63,7 +62,8 @@ public class WilcoxonTestTest
 	@Test
 	public void testMATLABtie3 ()
 	{
-		Vector x = MatrixFactory.createVector(new double[]{1, 1, 1, 4, 4, 5});
+		double data[] =  new double[]{1, 1, 1, 4, 4, 5};
+		Vector x = MatrixFactory.createVector(data);
 		
 		WilcoxonTest test = new WilcoxonTest(x,3);
 		
@@ -80,15 +80,16 @@ public class WilcoxonTestTest
 	@Test
 	public void testMATLABdegenerate ()
 	{
-		Vector x = MatrixFactory.createVector(new double[]{3, 3, 3, 3, 3, 3});
+		double data[] = new double[]{3, 3, 3, 3, 3, 3};
+		Vector x = MatrixFactory.createVector(data);
 		
 		WilcoxonTest test = new WilcoxonTest(x,3);
 		
 		assertEquals ( 6, test.n() );
 		assertEquals ( 0, test.nr() );
 		assertEquals ( 0, test.signedrank(), 0.0001 );
-		assertEquals ( Double.POSITIVE_INFINITY, test.zvalue(), 0.0001 ); // vs. -0.6489
-		assertEquals ( 1.0, test.pvalue(), 0.0001 ); // vs.  0.5164
+		assertEquals ( Double.POSITIVE_INFINITY, test.zvalue(), 0.0001 );
+		assertEquals ( 1.0, test.pvalue(), 0.0001 );
 	}
 
 	
@@ -96,12 +97,12 @@ public class WilcoxonTestTest
 	
 	// Example from Wikipedia, http://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test
 
-	double wikipediaX[] = new double[]{ 125, 115, 130, 140, 140, 115, 140, 125, 140, 135 };
-	double wikipediaY[] = new double[]{ 110, 122, 125, 120, 140, 124, 123, 137, 135, 145 };
-
 	@Test
 	public void testWikipedia ()
 	{
+		double wikipediaX[] = new double[]{ 125, 115, 130, 140, 140, 115, 140, 125, 140, 135 };
+		double wikipediaY[] = new double[]{ 110, 122, 125, 120, 140, 124, 123, 137, 135, 145 };
+
 		Vector x = MatrixFactory.createVector(wikipediaX);
 		Vector y = MatrixFactory.createVector(wikipediaY);
 		
@@ -116,12 +117,12 @@ public class WilcoxonTestTest
 	
 	// Example from Richard Lowry, http://vassarstats.net/textbook/ch12a.html
 
-	double lowryX[] = new double[]{ 78, 24, 64, 45, 64, 52, 30, 50, 64, 50, 78, 22, 84, 40, 90, 72 };
-	double lowryY[] = new double[]{ 78, 24, 62, 48, 68, 56, 25, 44, 56, 40, 68, 36, 68, 20, 58, 32 };
-	
 	@Test
 	public void testLowry ()
 	{
+		double lowryX[] = new double[]{ 78, 24, 64, 45, 64, 52, 30, 50, 64, 50, 78, 22, 84, 40, 90, 72 };
+		double lowryY[] = new double[]{ 78, 24, 62, 48, 68, 56, 25, 44, 56, 40, 68, 36, 68, 20, 58, 32 };
+
 		Vector x = MatrixFactory.createVector(lowryX);
 		Vector y = MatrixFactory.createVector(lowryY);
 		
@@ -140,5 +141,4 @@ public class WilcoxonTestTest
 		// Lowry's:
 		// * correction for continuity: z-score = (W-0.5)/sigmaW = +2.09 => 0.02 < p-value < 0.05
 	}
-	
 }

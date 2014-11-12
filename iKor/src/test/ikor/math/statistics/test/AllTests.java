@@ -5,7 +5,8 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses( { TTestTest.class,
-					   WilcoxonTestTest.class
+					   WilcoxonTestTest.class,
+					   RankTest.class
 })
 public class AllTests {
 

@@ -34,7 +34,7 @@ public class WilcoxonTest
 	private int nr;
 	
 	private Vector signrank;
-	private double tieadjustment;
+	private Rank   rank;
 	
 	private static NormalDistribution normal = new NormalDistribution(0.0,1.0);
 	
@@ -44,13 +44,10 @@ public class WilcoxonTest
 		Vector sign = sign(reduced);
 		Vector absolute = abs(reduced);
 
-		sort(sign,absolute);
-		
-		Vector rank = tiedrank (absolute);
-		
 		this.n = x.size();
 		this.nr = reduced.size();
-		this.signrank = sign.arrayMultiply(rank);
+		this.rank = new Rank(absolute);
+		this.signrank = sign.arrayMultiply(rank.rank());
 	}
 	
 	public WilcoxonTest (Vector x, double median)
@@ -69,7 +66,7 @@ public class WilcoxonTest
 	}
 	
 	
-	// Exclude pairs with 0 difference.
+	// Exclude pairs with 0 difference & NaNs.
 	
 	private Vector reduce (Vector x) 
 	{
@@ -118,75 +115,7 @@ public class WilcoxonTest
 			absolute.set(i, Math.abs(x.get(i)));
 		
 		return absolute;
-	}
-	
-	// Sort
-	
-	private void sort (Vector sign, Vector absolute)
-	{
-		// Selection sort
-
-		double tmp;
-		int min;
-		int n = absolute.size();
-
-		for (int i=0; i<n-1; i++) {
-
-			// Minimum
-			
-			min = i;
-
-			for (int j=i+1; j<n; j++)
-				if (absolute.get(j)<absolute.get(min))
-					min = j;
-
-			// Set minimum at its correct position
-
-			tmp = sign.get(i);
-			sign.set(i, sign.get(min));
-			sign.set(min, tmp);
-			
-			tmp = absolute.get(i);
-			absolute.set(i, absolute.get(min));
-			absolute.set(min, tmp);
-		}
-	}
-	
-	// Rank
-	
-	private Vector tiedrank (Vector sorted)
-	{
-		int n = sorted.size();
-		int current, next, ntied;
-		double rank;
-		Vector ranked = MatrixFactory.createVector(n);
-		
-		current = 0;
-		tieadjustment = 0;
-		
-		while (current<n) {
-			
-			next = current+1;
-			rank = next;
-			
-			while ( (next<n) && sorted.get(current)==sorted.get(next) ) {
-				next++;
-				rank += next;
-			}
-			
-			rank /= (next-current);
-			
-			ntied = next-current;
-			tieadjustment += ntied * (ntied-1) * (ntied+1) / 2;
-			
-			for (int j=current; j<next; j++)
-				ranked.set(j, rank);
-			
-			current = next;
-		}
-		
-		return ranked;
-	}
+	}	
 	
 	// Statistics
 
@@ -229,7 +158,7 @@ public class WilcoxonTest
 	 */
 	public double adjustedSigma ()
 	{
-		return Math.sqrt((n*(n+1)*(2*n+1)-tieadjustment)/24.0);		
+		return Math.sqrt((n*(n+1)*(2*n+1)-rank.tieAdjustment())/24.0);		
 	}
 	
 	// Normal approximation (including -0.5 correction for continuity).
@@ -274,6 +203,4 @@ public class WilcoxonTest
 	{
 		return mu()+sigma()*normal.idf(1-alpha/2);
 	}
-	
-	
 }

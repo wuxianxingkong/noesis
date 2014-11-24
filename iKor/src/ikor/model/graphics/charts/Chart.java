@@ -239,6 +239,14 @@ public class Chart extends Drawing
 		data.set(i, series);
 	}
 
+    // Update chart
+
+	@Override
+    public void update () 
+	{
+        render();
+    }
+	
 	// Render chart
 	
 	public void render ()
@@ -261,7 +269,4 @@ public class Chart extends Drawing
 			renderers.get(i).render();
 	
 	}
-
-
-	
 }

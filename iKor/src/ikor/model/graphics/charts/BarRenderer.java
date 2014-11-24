@@ -14,7 +14,6 @@ public class BarRenderer extends SeriesRenderer
 	public static final double DEFAULT_COLUMN_WIDTH = 0.75;
 
 	private Chart    chart;
-	private Series   series;
 	
 	private Style  bar;
 	private Style  border;
@@ -26,7 +25,6 @@ public class BarRenderer extends SeriesRenderer
 		super(series);
 		
 		this.chart = chart;
-		this.series = series;
 		
 		Gradient gradient = new LinearGradient(0.4f, 0.4f, 0.8f, 0.8f);
 		
@@ -66,13 +64,12 @@ public class BarRenderer extends SeriesRenderer
 	
 	public void render (int i)
 	{
-		int xspan = chart.chartWidth()/series.size();
+		int xspan = chart.chartWidth()/getSeries().size();
 		int x = chart.originX(i) + (int)(xspan*columnOffset);
-		int y = (int) (chart.marginY()+chart.chartHeight()*(1-chart.yscale(series.getY(i))));
+		int y = (int) (chart.marginY()+chart.chartHeight()*(1-yscale(i)));
 		int width =  (int) ( columnWidth*xspan );
-		int height = (int) ( chart.chartHeight()*chart.yscale(series.getY(i))); 
+		int height = (int) ( chart.chartHeight()*yscale(i)); 
 		
-		chart.add( new Rectangle (chart.label(i), bar, border, x, y, width, height) );
-	}
-	
+		chart.add( new Rectangle (label(i), bar, border, x, y, width, height) );
+	}	
 }

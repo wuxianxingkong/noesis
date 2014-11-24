@@ -9,7 +9,6 @@ import java.awt.Color;
 public class LineRenderer extends SeriesRenderer
 {
 	private Chart  chart;
-	private Series series;
 	private Style  style;
 	
 	public LineRenderer (Chart chart, Series series)
@@ -17,7 +16,6 @@ public class LineRenderer extends SeriesRenderer
 		super(series);
 		
 		this.chart = chart;
-		this.series = series;
 		this.style = new Style ( new Color(0xB0, 0x00, 0x00, 0xFF), 3);
 	}
 	
@@ -34,8 +32,9 @@ public class LineRenderer extends SeriesRenderer
 	public void render (int i)
 	{
 		if (i>0)
-			chart.add ( new Line (chart.label(i), style, chart.xcoord(series.getX(i-1)), chart.ycoord(series.getY(i-1)), 
-					                                     chart.xcoord(series.getX(i)),   chart.ycoord(series.getY(i))) );
+			chart.add ( new Line (label(i), style, 
+					              chart.xcoord(xscale(i-1)), chart.ycoord(yscale(i-1)), 
+					              chart.xcoord(xscale(i)),   chart.ycoord(yscale(i))) );
 	}
 
 }

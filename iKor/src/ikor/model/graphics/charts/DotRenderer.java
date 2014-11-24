@@ -12,7 +12,6 @@ public class DotRenderer extends SeriesRenderer
 	public static final int DEFAULT_SIZE = 5;
 	
 	private Chart  chart;
-	private Series series;
 	
 	private Style  dot;
 	private Style  border;
@@ -23,7 +22,6 @@ public class DotRenderer extends SeriesRenderer
 		super(series);
 		
 		this.chart = chart;
-		this.series = series;
 		
 		this.dot = new Style ( new Color(0xB0, 0x00, 0x00, 0xFF), 3);
 		this.border = new Style ( new Color(0x33, 0x00, 0x00, 0xFF), 1);
@@ -52,7 +50,7 @@ public class DotRenderer extends SeriesRenderer
 	
 	public void render (int i)
 	{
-		chart.add( new Circle (chart.label(i), dot, border, chart.xcoord(series.getX(i)), chart.ycoord(series.getY(i)), size) );
+		chart.add( new Circle (label(i), dot, border, chart.xcoord(xscale(i)), chart.ycoord(yscale(i)), size) );
 	}
 
 }

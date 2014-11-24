@@ -5,7 +5,6 @@ import java.lang.reflect.Constructor;
 import ikor.collection.DynamicList;
 import ikor.collection.List;
 import ikor.math.Vector;
-import ikor.math.util.LinearScale;
 import ikor.math.util.Scale;
 
 import ikor.model.graphics.Drawing;
@@ -13,16 +12,13 @@ import ikor.model.graphics.Drawing;
 
 public class Chart extends Drawing 
 {
-	List<Series>         data;
-	List<SeriesRenderer> renderers;
-
-	Scale xscale;
-	Scale yscale;
+	private List<Series>         data;
+	private List<SeriesRenderer> renderers;
 	
-	BackgroundRenderer background;
-	AxisRenderer axis;
+	private BackgroundRenderer background;
+	private AxisRenderer axis;
 	
-	// Constructors
+	// Constructor
 	
 	public Chart (int width, int height)
 	{
@@ -38,7 +34,19 @@ public class Chart extends Drawing
 		background = new BackgroundRenderer(this);
 		axis = new AxisRenderer(this);
 	}
+
+	// Chart reset
 	
+	@Override
+	public void clear ()
+	{
+		super.clear();
+		
+		data.clear();
+		renderers.clear();
+	}
+	
+	// Series renderer
 	
 	public SeriesRenderer createRenderer (Series series, Class type)
 	{
@@ -55,16 +63,17 @@ public class Chart extends Drawing
 		return renderer;
 	}
 
+	// Add series
+	
 	public void addSeries (Series series, SeriesRenderer renderer)
 	{
-		if (xscale==null)
-			xscale = new LinearScale(0, series.size()-1);
-		
-		if (yscale==null)
-			yscale = new LinearScale(0, series.getY().max());
-		
 		data.add(series);
 		renderers.add ( renderer );
+		
+		// Update axes
+		
+		axis.setXScale( renderer.getXScale() );
+		axis.setYScale( renderer.getYScale() );
 	}
 
 	public void addSeries (Series series, Class type)
@@ -74,15 +83,14 @@ public class Chart extends Drawing
 	
 	public void addSeries (Vector data, Class type)
 	{
-		addSeries ( new Series(data), type);
+		addSeries ( new Series("Series "+series(), data), type);
 	}
 
 	public void addSeries (Vector data, SeriesRenderer renderer)
 	{
-		addSeries ( new Series(data), renderer);
+		addSeries ( new Series("Series "+series(), data), renderer);
 	}
 
-	
 	
 	// Chart dimensions
 	
@@ -131,7 +139,7 @@ public class Chart extends Drawing
 	}
 	
 	
-	// Data
+	// Chart data
 	
 	public int series ()
 	{
@@ -146,54 +154,73 @@ public class Chart extends Drawing
 			return 0;
 	}
 	
+	public Series getSeries (int i)
+	{
+		return data.get(i);
+	}
+	
+	public void setSeries (int i, Series series)
+	{
+		data.set(i, series);
+	}
+
 	
 	// Chart scale
 	
-	public Scale getXScale ()
+	public Scale getXScale (int i)
 	{
-		return this.xscale;
+		return renderers.get(i).getXScale();
 	}
 	
-	public void setXScale (Scale scale)
+	public void setXScale (int i, Scale xscale)
 	{
-		this.xscale = scale;
+		renderers.get(i).setXScale(xscale);
 	}
-	
-	public Scale getYScale ()
+
+	public void setXScale (Scale xscale)
 	{
-		return this.yscale;
-	}
-	
-	public void setYScale (Scale scale)
-	{
-		this.yscale = scale;
+		for (int i=0; i<series(); i++)
+			setXScale(i,xscale);
+		
+		axis.setXScale(xscale);
 	}	
 	
-	
-	public double xscale (double value)
-	{			
-		return xscale.scale(value); 
-	}
-	
-	public double yscale (double value)
+	public Scale getYScale (int i)
 	{
-		return yscale.scale(value); 
+		return renderers.get(i).getYScale();
 	}
-
 	
+	public void setYScale (int i, Scale yscale)
+	{
+		renderers.get(i).setYScale(yscale);
+	}	
+	
+	public void setYScale (Scale yscale)
+	{
+		for (int i=0; i<series(); i++)
+			setYScale(i, yscale);
+		
+		axis.setYScale(yscale);
+	}	
+	
+	/**
+	 * Y coordinate for scaled value
+	 * @param value Scaled value (between 0 and 1)
+	 * @return Y coordinate
+	 */
 	public int ycoord (double value)
 	{
-		return (int) ( marginY() + chartHeight() - yscale.scale(value)*chartHeight());
-	}
-
-	public int xcoord (double value)
-	{
-		return (int) ( marginX() + xscale.scale(value)*chartWidth() );
+		return (int) ( marginY() + chartHeight() - value*chartHeight());
 	}
 	
-	public String label (int i)
+	/**
+	 * X coordinate for scaled value
+	 * @param value Scaled value (between 0 and 1)
+	 * @return X coordinate
+	 */
+	public int xcoord (double value)
 	{
-		return "data["+i+"]";
+		return (int) ( marginX() + value*chartWidth() );
 	}
 	
 	
@@ -229,16 +256,6 @@ public class Chart extends Drawing
 		renderers.set(i, renderer);
 	}
 	
-	public Series getSeries (int i)
-	{
-		return data.get(i);
-	}
-	
-	public void setSeries (int i, Series series)
-	{
-		data.set(i, series);
-	}
-
     // Update chart
 
 	@Override
@@ -267,6 +284,5 @@ public class Chart extends Drawing
 				
 		for (int i=0; i<renderers.size(); i++) 
 			renderers.get(i).render();
-	
 	}
 }

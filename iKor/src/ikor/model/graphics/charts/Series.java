@@ -4,20 +4,35 @@ import ikor.math.Vector;
 
 public class Series 
 {
-	Vector x;
-	Vector y;
+	private String id;
+	private Vector x;
+	private Vector y;
 	
-	
-	public Series (Vector x, Vector y)
+	public Series (String id, Vector x, Vector y)
 	{
+		this.id = id;
 		this.x = x;
 		this.y = y;
 	}
 	
+	public Series (Vector x, Vector y)
+	{
+		this(null,x,y);
+	}
+	
+	public Series (String id, Vector data)
+	{
+		this(id,null,data);
+	}
+	
 	public Series (Vector data)
 	{
-		this.x = null;
-		this.y = data;
+		this(null,null,data);
+	}
+
+	public String id ()
+	{
+		return id;
 	}
 	
 	public int size ()
@@ -44,6 +59,4 @@ public class Series
 	{
 		return y.get(i);
 	}
-	
-	
 }

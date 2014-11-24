@@ -21,6 +21,10 @@ public class AxisRenderer implements Renderer
 	
 	Style axis;
 	Style grid;
+
+	private Scale xscale;
+	private Scale yscale;
+	
 	
 	public AxisRenderer (Chart chart)
 	{
@@ -29,6 +33,8 @@ public class AxisRenderer implements Renderer
 		this.axis = new Style(new Color(0x00, 0x00, 0x00, 0xFF),1);
 		this.grid = new Style(new Color(0x70, 0x70, 0x70, 0xFF),1);
 	}
+
+	
 	
 	public void displayAxis (boolean display)
 	{
@@ -55,6 +61,28 @@ public class AxisRenderer implements Renderer
 	{
 		this.lines = lines;
 	}
+	
+	
+	public Scale getXScale () 
+	{
+		return xscale;
+	}
+	
+	public void setXScale (Scale xscale) 
+	{
+		this.xscale = xscale;
+	}
+	
+	public Scale getYScale () 
+	{
+		return yscale;
+	}
+	
+	public void setYScale (Scale yscale) 
+	{
+		this.yscale = yscale;
+	}
+
 	
 	public void render ()
 	{
@@ -90,8 +118,7 @@ public class AxisRenderer implements Renderer
 
 	private void linearGridX() 
 	{
-		Scale  scale = chart.getXScale();
-		double range = scale.max()-scale.min();
+		double range = xscale.max()-xscale.min();
 		double step;
 		
 		if (range>lines)
@@ -99,16 +126,16 @@ public class AxisRenderer implements Renderer
 		else
 			step = 1;
 			
-		for (double x=scale.min(); x<=scale.max(); x+=step) {
-			chart.add ( new Line ("x="+x, grid, chart.xcoord(x), chart.marginY(), 
-						                        chart.xcoord(x), chart.marginY()+chart.chartHeight()) );
+		for (double x=xscale.min(); x<=xscale.max(); x+=step) {
+			chart.add ( new Line ( "x="+x, grid, 
+					               chart.xcoord(xscale.scale(x)), chart.marginY(), 
+						           chart.xcoord(xscale.scale(x)), chart.marginY()+chart.chartHeight()) );
 		}
 	}
 
 	private void linearGridY() 
 	{
-		Scale  scale = chart.getYScale();
-		double range = scale.max()-scale.min();
+		double range = yscale.max()-yscale.min();
 		double step;
 		
 		if (range>lines)
@@ -116,28 +143,31 @@ public class AxisRenderer implements Renderer
 		else
 			step = 1;
 			
-		for (double y=scale.min(); y<=scale.max(); y+=step) {
-			chart.add ( new Line ("y="+y, grid, chart.originX(), chart.ycoord(y), 
-                                                chart.originX()+chart.chartWidth(), chart.ycoord(y)) );
+		for (double y=yscale.min(); y<=yscale.max(); y+=step) {
+			chart.add ( new Line ( "y="+y, grid, 
+					               chart.originX(), chart.ycoord(yscale.scale(y)), 
+                                   chart.originX()+chart.chartWidth(), chart.ycoord(yscale.scale(y))) );
 		}
 	}
 	
 	private void logarithmicGridX() 
 	{
-		for (double scale=1; scale<=chart.getXScale().max(); scale*=10) {
-			for (int i=1; (i<10) && (scale*i<=chart.getXScale().max()); i++) {
-				chart.add ( new Line ("x="+scale*i, grid, chart.xcoord(scale*i), chart.marginY(), 
-						                                  chart.xcoord(scale*i), chart.marginY()+chart.chartHeight()) );
+		for (double x=1; x<=xscale.max(); x*=10) {
+			for (int i=1; (i<10) && (x*i<=xscale.max()); i++) {
+				chart.add ( new Line ( "x="+x*i, grid, 
+						               chart.xcoord(xscale.scale(x*i)), chart.marginY(), 
+						               chart.xcoord(xscale.scale(x*i)), chart.marginY()+chart.chartHeight()) );
 			}
 		}
 	}
 
 	private void logarithmicGridY() 
 	{
-		for (double scale=1; scale<=chart.getYScale().max(); scale*=10) {
-			for (int i=1; (i<10) && (scale*i<=chart.getYScale().max()); i++) {
-				chart.add ( new Line ("y="+scale*i, grid, chart.originX(), chart.ycoord(scale*i), 
-						                                  chart.originX()+chart.chartWidth(), chart.ycoord(scale*i)) );
+		for (double y=1; y<=yscale.max(); y*=10) {
+			for (int i=1; (i<10) && (y*i<=yscale.max()); i++) {
+				chart.add ( new Line ( "y="+y*i, grid, 
+						               chart.originX(), chart.ycoord(yscale.scale(y*i)), 
+						               chart.originX()+chart.chartWidth(), chart.ycoord(yscale.scale(y*i))) );
 			}
 		}
 	}

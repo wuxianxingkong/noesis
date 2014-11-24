@@ -15,11 +15,16 @@ public class HistogramFigure extends Figure<Histogram>
 {
 	private Chart chart;
 	
+	private static final int DEFAULT_WIDTH = 500;
+	private static final int DEFAULT_HEIGHT = 300;
+	
 	public HistogramFigure (Histogram histogram)
 	{
-		setTooltipProvider( new HistogramTooltipProvider(histogram) );
+		this.chart = new Chart(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		this.chart.setBackgroundRenderer(null);
 
-		setModel(histogram);
+		setTooltipProvider( new HistogramTooltipProvider(histogram) );
+		setModel(histogram);				
 	}
 	
 	public void setModel (Histogram histogram)
@@ -29,11 +34,10 @@ public class HistogramFigure extends Figure<Histogram>
 		if (histogram!=null) {
 			
 			// Update chart
-
-			chart = new Chart(500,300);
+			
+			chart.clear();
 
 			chart.addSeries(histogram, BarRenderer.class);
-			chart.setBackgroundRenderer(null);
 			chart.getAxisRenderer().grid( AxisRenderer.GridStyle.None, AxisRenderer.GridStyle.None);
 			
 			if (histogram.getScale() instanceof LogarithmicScale) {
@@ -43,16 +47,25 @@ public class HistogramFigure extends Figure<Histogram>
 				chart.getAxisRenderer().grid( AxisRenderer.GridStyle.None, AxisRenderer.GridStyle.None);
 			}
 
-			chart.render();
-
-			super.setDrawing(chart);
-
-			update();
-
 			// Update tooltip provider 
+			
+			if (getTooltipProvider()!=null)
+				((HistogramTooltipProvider)getTooltipProvider()).setHistogram(histogram);
 
-			((HistogramTooltipProvider)getTooltipProvider()).setHistogram(histogram);
+			// Render
+			
+			render();
 		}
+	}
+	
+	
+	public void render ()
+	{
+		chart.render();
+		
+		super.setDrawing(chart);		
+
+		update();
 	}
 	
 	
@@ -100,6 +113,4 @@ public class HistogramFigure extends Figure<Histogram>
 			return tooltip;
 		}
 	}	
-	
-
 }

@@ -32,7 +32,9 @@ import org.junit.runners.Suite;
 	PoissonDistributionTest.class,
 	DiscreteProbabilityDistributionTest.class,
 	// Statistical tests
-	test.ikor.math.statistics.test.AllTests.class
+	test.ikor.math.statistics.test.AllTests.class,
+	// Distribution fitting
+	test.ikor.math.statistics.fit.AllTests.class
 })
 public class AllTests {
 

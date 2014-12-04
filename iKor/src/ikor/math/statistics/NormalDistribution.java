@@ -67,6 +67,11 @@ public class NormalDistribution implements Distribution
 	{
 		return mu;
 	}
+	
+	public double deviation()
+	{
+		return sigma;
+	}
 
 	@Override
 	public double variance() 

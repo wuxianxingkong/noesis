@@ -5,7 +5,8 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses( { 
-	NormalDistributionFitTest.class
+	NormalDistributionFitTest.class,
+	PoissonDistributionFitTest.class
 } )
 public class AllTests {
 

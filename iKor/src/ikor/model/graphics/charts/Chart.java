@@ -164,6 +164,11 @@ public class Chart extends Drawing
 		data.set(i, series);
 	}
 
+	public void removeSeries (int i)
+	{
+		data.remove(i);
+		renderers.remove(i);
+	}
 	
 	// Chart scale
 	

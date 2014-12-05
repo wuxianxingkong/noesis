@@ -21,9 +21,10 @@ public class AboutUIModel extends UIModel
 
 		add( new Separator () );
 		
-		add( new Label("<html><center><b>NOESIS</b></center></html>") );
-		add( new Label("Network-Oriented Exploration, Simulation, and Induction System") );
-		add( new Label("<html><center>&copy; Fernando Berzal (berzal@acm.org)</center></html>") );
+		add( new Label("<html><h1>NOESIS</h1><b>Network-Oriented Exploration, Simulation, and Induction System</b></html>") );
+		add( new Label("<html>&copy; Fernando Berzal (<a href=\"mailto:berzal@acm.org\">berzal@acm.org</a>)"
+				+ " &amp; V&iacute;ctor Mart&iacute;nez (<a href=\"mailto:victormg@acm.org\">victormg@acm.org</a>),"
+				+ "<br/> with contributions by Aar&oacute;n Rosas and Francisco Javier Gij&oacute;n.</html>") );
 		
 		add ( new Separator() );
 		

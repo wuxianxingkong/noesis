@@ -10,16 +10,16 @@ import ikor.math.random.Random;
  */
 public class ParetoDistribution implements Distribution 
 {
-	private double lambda;
-	private double kappa;
+	private double lambda; // a.k.a. scale parameter, sigma, or x_min
+	private double kappa;  // a.k.a. shape parameter, tail index, or alpha
 
 	/**
 	 * Pareto distribution
 	 * @param exponent > 0
 	 */
-	public ParetoDistribution (double exponent)
+	public ParetoDistribution (double shape)
 	{
-		this(exponent,1);
+		this(shape,1);
 	}
 	
 	/**
@@ -28,9 +28,9 @@ public class ParetoDistribution implements Distribution
 	 * @param scale > 0
 	 */
 
-	public ParetoDistribution (double exponent, double scale)
+	public ParetoDistribution (double shape, double scale)
 	{
-		this.kappa = exponent;
+		this.kappa = shape;
 		this.lambda = scale;
 	}
 	

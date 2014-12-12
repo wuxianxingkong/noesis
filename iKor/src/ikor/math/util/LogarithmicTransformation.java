@@ -15,15 +15,19 @@ public class LogarithmicTransformation extends Scale
 	public double scale (double value)
 	{
 		if (value>0.0)
-			return (Math.log(value)-Math.log(min))/(Math.log(max)-Math.log(min));
+			return Math.log(value/min)/Math.log(max/min);
+		     // == (Math.log(value)-Math.log(min))/(Math.log(max)-Math.log(min));
 		else
-			return Double.NEGATIVE_INFINITY;
+			return 0.0;
 	}
 	
 	@Override
 	public double inverse (double value)
 	{
-		return Math.exp(value*(Math.log(max)-Math.log(min)) + Math.log(min));
+		return min*Math.pow(max/min,value); 
+		   // == min*Math.exp(value*(Math.log(max)-Math.log(min)));
+		   // == min*Math.exp(value*Math.log(max/min)); 
+		   // == min*Math.pow(max/min,value)
 	}
 	
 	@Override

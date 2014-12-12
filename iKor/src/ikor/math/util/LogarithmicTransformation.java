@@ -2,34 +2,39 @@ package ikor.math.util;
 
 public class LogarithmicTransformation extends Scale
 {
+	public final static double DEFAULT_RANGE = Math.exp(2.0);
+	
 	private double min;
 	private double max;
+	private double range;
 	
 	public LogarithmicTransformation (double min, double max)
 	{
 		this.min = min;
 		this.max = max;
+		this.range = DEFAULT_RANGE;
 	}
-		
+
+	public LogarithmicTransformation (double min, double max, double range)
+	{
+		this.min = min;
+		this.max = max;
+		this.range = range;
+	}
+	
 	@Override
 	public double scale (double value)
 	{
-		if (value>0.0)
-			return Math.log(value/min)/Math.log(max/min);
-		     // == (Math.log(value)-Math.log(min))/(Math.log(max)-Math.log(min));
-		else
-			return 0.0;
+		return Math.log(range*(value-min)+1)/Math.log(range*(max-min)+1);
 	}
 	
 	@Override
 	public double inverse (double value)
 	{
-		return min*Math.pow(max/min,value); 
-		   // == min*Math.exp(value*(Math.log(max)-Math.log(min)));
-		   // == min*Math.exp(value*Math.log(max/min)); 
-		   // == min*Math.pow(max/min,value)
+		return min + ( Math.pow(range*(max-min)+1, value) - 1 ) / range;
 	}
 	
+
 	@Override
 	public double min() 
 	{

@@ -3,7 +3,7 @@ package test.ikor.model.graphics;
 import ikor.math.DenseVector;
 import ikor.math.Vector;
 import ikor.math.util.LinearScale;
-import ikor.math.util.LogarithmicScale;
+import ikor.math.util.LogarithmicTransformation;
 import ikor.model.graphics.*;
 import ikor.model.graphics.io.DrawingWriter;
 import ikor.model.graphics.io.JPGDrawingWriter;
@@ -44,7 +44,7 @@ public class TestChart
 		drawing.addSeries(data, BarRenderer.class);
 		drawing.addSeries(data, LineRenderer.class);
 		drawing.addSeries(data, DotRenderer.class);
-		drawing.setYScale(new LogarithmicScale(0,100));
+		drawing.setYScale(new LogarithmicTransformation(0,100));
 		//drawing.setYScale(new LinearScale(0,10));
 		
 		return drawing;
@@ -106,7 +106,7 @@ public class TestChart
 		drawing.addSeries(x1, r1);
 		drawing.addSeries(x2, r2);
 		drawing.setYScale(new LinearScale(0,100));
-		drawing.setYScale(new LogarithmicScale(0,100));
+		drawing.setYScale(new LogarithmicTransformation(0,100));
 		drawing.getBackgroundRenderer().setStyle ( new Style ( new Color(0xFF, 0xFF, 0xFF, 0xFF), 3) );;
 		drawing.getAxisRenderer().displayAxis(true);
 		drawing.getAxisRenderer().setGridLines(50);

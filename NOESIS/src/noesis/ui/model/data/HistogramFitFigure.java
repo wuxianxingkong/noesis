@@ -1,12 +1,16 @@
 package noesis.ui.model.data;
 
+import java.text.DecimalFormat;
+
 import noesis.CollectionFactory;
 import ikor.collection.List;
+import ikor.math.DenseMatrix;
 import ikor.math.DenseVector;
 import ikor.math.Histogram;
+import ikor.math.Matrix;
 import ikor.math.Vector;
 import ikor.math.statistics.Distribution;
-import ikor.math.util.LogarithmicScale;
+import ikor.math.util.LinearScale;
 import ikor.math.util.LogarithmicTransformation;
 import ikor.math.util.Scale;
 import ikor.model.graphics.charts.Chart;
@@ -58,35 +62,36 @@ public class HistogramFitFigure extends HistogramFigure
 		Chart chart = getChart();
 		Histogram histogram = getModel();
 		Scale dataScale = histogram.getScale();
-		
+
 		if (distributions!=null) {
 	
-			// TODO Uniform y-scale for different probability distributions 
-			// TODO Display of confidence intervals
-			
+			Vector x = new DenseVector(DISTRIBUTION_POINTS+1);
+			Matrix y = new DenseMatrix(distributions.size(), DISTRIBUTION_POINTS+1);
+
+			double step = 1.0 / DISTRIBUTION_POINTS;
+
+			for (int i=0; i<=DISTRIBUTION_POINTS; i++) {
+				double value = dataScale.inverse(i*step);
+				x.set(i, value);
+
+				for (int d=0; d<distributions.size(); d++)
+					y.set(d, i, distributions.get(d).pdf( value ));
+			}
+
 			for (int d=0; d<distributions.size(); d++) {
 
-				Distribution distribution = distributions.get(d);
-
-				// Compute distribution points
-				Vector xPoints = new DenseVector(DISTRIBUTION_POINTS+1);
-				Vector yPoints = new DenseVector(DISTRIBUTION_POINTS+1);
-
-				for (int i = 0; i <= DISTRIBUTION_POINTS; i++) {
-					double x = (dataScale.max()-dataScale.min())*(i/(double)DISTRIBUTION_POINTS)+dataScale.min();
-					xPoints.set(i, x);
-					yPoints.set(i, distribution.pdf( x ));
-				}
-
-				Series series = new Series("distribution["+labels.get(d)+"]", xPoints, yPoints);
+				Series series = new Series("distribution_"+d, x, y.getRow(d));
 
 				LineRenderer lineRenderer = new LineRenderer (chart, series);
+
+				lineRenderer.setXScale( histogram.getScale() );
 				
-				if (histogram.getScale() instanceof LogarithmicScale) {
-					lineRenderer.setXScale( histogram.getScale() );
-					lineRenderer.setYScale( new LogarithmicTransformation(minPositive(yPoints), yPoints.max()) );
+				// Identical y-scale for the different probability distributions 
+				
+				if (histogram.getScale() instanceof LogarithmicTransformation) {
+					lineRenderer.setYScale( new LogarithmicTransformation(minPositive(y), y.max()) );
 				} else {
-					// Nothing to do (linear scale)
+					lineRenderer.setYScale( new LinearScale(0.0, y.max()));
 				}
 				
 				chart.addSeries(series, lineRenderer);
@@ -95,13 +100,18 @@ public class HistogramFitFigure extends HistogramFigure
 	}
 	
 	
-	private double minPositive (Vector v)
+	private double minPositive (Matrix data)
 	{
 		double min = Double.MAX_VALUE;
 		
-		for (int i=0; i<v.size(); i++)
-			if (v.get(i)>0.0 && v.get(i)<min)
-				min = v.get(i);
+		for (int i=0; i<data.rows(); i++) {
+			for (int j=0; j<data.columns(); j++) {
+				double value = data.get(i,j);
+				
+				if (value>0.0 && value<min)
+					min = value;
+			}
+		}
 		
 		return min;
 	}
@@ -119,13 +129,24 @@ public class HistogramFitFigure extends HistogramFigure
 		public String get(String id) 
 		{
 			String tooltip = super.get(id);
+			DecimalFormat df = new DecimalFormat("#.####");
 
 			if ( tooltip == null ) {
-				// Tooltip for distribution
+
 				if (id.startsWith("distribution")) {
-					String name = id.substring(id.indexOf("[")+1,id.indexOf("]"));
-					tooltip = "<html><b>"+name+"</b></html>";
-				}
+					
+					int d = Integer.parseInt(id.substring(13,14));
+					
+					tooltip = "<html><b>"+labels.get(d)+"</b>";
+					
+					int i = Integer.parseInt(id.substring(15,id.length()-1));
+					double x = getModel().getScale().inverse((double)i/(double)DISTRIBUTION_POINTS);
+
+					tooltip += "<br/>x = "+ df.format(x);
+					tooltip += "<br/>pdf(x) = "+df.format(distributions.get(d).pdf(x));
+					tooltip += "<br/>cdf(x) = "+df.format(distributions.get(d).cdf(x));
+					tooltip += "</html>";
+				}					
 			}
 
 			return tooltip;

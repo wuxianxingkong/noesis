@@ -31,8 +31,8 @@ public class FitParetoAction extends Action
 	public void run() 
 	{
 		ParetoDistributionFit fit = new ParetoDistributionFit(ui.getData());
-		ParetoDistribution distribution = fit.fit();
-			
+		ParetoDistribution distribution = new ParetoDistribution (fit.mleShape());	// vs. fit.fit();
+
 		if ( distribution.mean() < 0.0 ) {
 			ui.message("Data is not valid for fitting a discrete Poisson distribution");
 		} else {

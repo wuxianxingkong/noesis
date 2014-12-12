@@ -11,7 +11,7 @@ import ikor.math.Matrix;
 import ikor.math.Vector;
 import ikor.math.statistics.Distribution;
 import ikor.math.util.LinearScale;
-import ikor.math.util.LogarithmicTransformation;
+import ikor.math.util.LogarithmicScale;
 import ikor.math.util.Scale;
 import ikor.model.graphics.charts.Chart;
 import ikor.model.graphics.charts.LineRenderer;
@@ -88,8 +88,8 @@ public class HistogramFitFigure extends HistogramFigure
 				
 				// Identical y-scale for the different probability distributions 
 				
-				if (histogram.getScale() instanceof LogarithmicTransformation) {
-					lineRenderer.setYScale( new LogarithmicTransformation(minPositive(y), y.max()) );
+				if (histogram.getScale() instanceof LogarithmicScale) {
+					lineRenderer.setYScale( new LogarithmicScale(minPositive(y), y.max()) );
 				} else {
 					lineRenderer.setYScale( new LinearScale(0.0, y.max()));
 				}

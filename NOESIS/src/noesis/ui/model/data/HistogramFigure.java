@@ -3,7 +3,7 @@ package noesis.ui.model.data;
 import java.text.DecimalFormat;
 
 import ikor.math.Histogram;
-import ikor.math.util.LogarithmicTransformation;
+import ikor.math.util.LogarithmicScale;
 import ikor.model.graphics.DrawingTooltipProvider;
 import ikor.model.graphics.charts.AxisRenderer;
 import ikor.model.graphics.charts.BarRenderer;
@@ -62,8 +62,8 @@ public class HistogramFigure extends Figure<Histogram>
 		chart.addSeries("data",histogram, BarRenderer.class);
 		chart.getAxisRenderer().grid( AxisRenderer.GridStyle.None, AxisRenderer.GridStyle.None);
 		
-		if (histogram.getScale() instanceof LogarithmicTransformation) {
-			chart.setYScale( new LogarithmicTransformation(0.1, histogram.max()) );
+		if (histogram.getScale() instanceof LogarithmicScale) {
+			chart.setYScale( new LogarithmicScale(0.1, histogram.max()) );
 			chart.getAxisRenderer().grid( AxisRenderer.GridStyle.None, AxisRenderer.GridStyle.Logarithmic);
 		} else { // Linear scale, no grid
 			chart.getAxisRenderer().grid( AxisRenderer.GridStyle.None, AxisRenderer.GridStyle.None);

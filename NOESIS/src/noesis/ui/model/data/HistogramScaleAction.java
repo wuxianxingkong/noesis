@@ -3,7 +3,7 @@ package noesis.ui.model.data;
 import java.lang.reflect.Constructor;
 
 import ikor.math.Histogram;
-import ikor.math.util.LogarithmicTransformation;
+import ikor.math.util.LogarithmicScale;
 import ikor.math.util.Scale;
 import ikor.model.ui.Action;
 
@@ -41,7 +41,7 @@ public class HistogramScaleAction extends Action
 		Histogram h;
 		
 		int    bins = ui.getHistogram().size();
-		double min  = (type==LogarithmicTransformation.class)? Math.max(ui.getData().min(), 1.0): Math.min( ui.getData().min(), 0.0);
+		double min  = (type==LogarithmicScale.class)? Math.max(ui.getData().min(), 1.0): Math.min( ui.getData().min(), 0.0);
 		double max  = ui.getData().max();
 		Scale scale = createScale(type, min, max);
 		

@@ -1,8 +1,7 @@
 package noesis.ui.model.data;
 
-
 import ikor.math.util.LinearScale;
-import ikor.math.util.LogarithmicTransformation;
+import ikor.math.util.LogarithmicScale;
 import ikor.model.ui.Action;
 import ikor.model.ui.Application;
 import ikor.model.ui.Menu;
@@ -106,7 +105,7 @@ public class VectorUIMenu extends Menu
 		linearScale.setIcon( app.url("icons/chart.png") );
 		view.add(linearScale);
 
-		Option logScale = new Option ("Logarithmic scale", new HistogramScaleAction(ui,LogarithmicTransformation.class) );
+		Option logScale = new Option ("Logarithmic scale", new HistogramScaleAction(ui,LogarithmicScale.class) );
 		logScale.setIcon( app.url("icons/chart.png") );
 		view.add(logScale);
 		

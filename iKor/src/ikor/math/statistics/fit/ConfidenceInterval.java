@@ -1,5 +1,8 @@
 package ikor.math.statistics.fit;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+
 /**
  * Confidence interval.
  * 
@@ -47,5 +50,13 @@ public class ConfidenceInterval
 	public double confidenceLevel ()
 	{
 		return 1.0 - alpha;
+	}
+	
+	// toString
+	
+	public String toString ()
+	{
+		return "[" + new BigDecimal(min).round(new MathContext(5))
+			+ ", " + new BigDecimal(max).round(new MathContext(5)) + "]";
 	}
 }

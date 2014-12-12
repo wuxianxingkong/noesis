@@ -82,7 +82,7 @@ public class HistogramTest
 	{
 		int bins = 2;
 		Vector v = uniformVector();
-		Histogram h = new Histogram(bins, v, new LogarithmicScale(v.min(),v.max()));
+		Histogram h = new Histogram(bins, v, new LogarithmicScale(v.min(),v.max(),1.0));
 		double scale = Math.log(SIZE)/bins;
 		
 		assertEquals("First bin", (int)h.threshold(1), h.get(0), EPSILON);
@@ -97,7 +97,7 @@ public class HistogramTest
 	{
 		int bins = 10;
 		Vector v = uniformVector();
-		Histogram h = new Histogram(bins, v, new LogarithmicScale(v.min(),v.max()));
+		Histogram h = new Histogram(bins, v, new LogarithmicScale(v.min(),v.max(),1.0));
 		double scale = Math.log(SIZE)/bins;
 		
 		assertEquals(0, h.threshold(0), EPSILON);
@@ -175,7 +175,7 @@ public class HistogramTest
 	{
 		int bins = 2;
 		Vector v = squareVector();
-		Histogram h = new Histogram(bins, v, new LogarithmicScale(v.min(),v.max()));
+		Histogram h = new Histogram(bins, v, new LogarithmicScale(v.min(),v.max(),1.0));
 		double scale = Math.log((SIZE-1)*(SIZE-1)+1)/bins;
 		
 		assertEquals("First bin", sq(h.threshold(1)), h.get(0), EPSILON);
@@ -190,7 +190,7 @@ public class HistogramTest
 	{
 		int bins = 10;
 		Vector v = squareVector();
-		Histogram h = new Histogram(bins, v, new LogarithmicScale(v.min(),v.max()));
+		Histogram h = new Histogram(bins, v, new LogarithmicScale(v.min(),v.max(),1.0));
 		double scale = Math.log((SIZE-1)*(SIZE-1)+1)/bins;
 		
 		assertEquals(0, h.threshold(0), EPSILON);

@@ -72,8 +72,10 @@ public class Chart extends Drawing
 		
 		// Update axes
 		
-		axis.setXScale( renderer.getXScale() );
-		axis.setYScale( renderer.getYScale() );
+		if (data.size()==1) {
+			axis.setXScale( renderer.getXScale() );
+			axis.setYScale( renderer.getYScale() );
+		}
 	}
 
 	public void addSeries (Series series, Class type)
@@ -81,14 +83,24 @@ public class Chart extends Drawing
 		addSeries(series, createRenderer(series,type) );
 	}
 	
+	public void addSeries (String id, Vector data, Class type)
+	{
+		addSeries ( new Series(id, data), type);
+	}
+
 	public void addSeries (Vector data, Class type)
 	{
-		addSeries ( new Series("Series "+series(), data), type);
+		addSeries ( "Series "+series(), data, type);
+	}
+
+	public void addSeries (String id, Vector data, SeriesRenderer renderer)
+	{
+		addSeries ( new Series(id, data), renderer);
 	}
 
 	public void addSeries (Vector data, SeriesRenderer renderer)
 	{
-		addSeries ( new Series("Series "+series(), data), renderer);
+		addSeries ( "Series "+series(), data, renderer);
 	}
 
 	

@@ -11,6 +11,12 @@ import ikor.model.graphics.charts.BarRenderer;
 import ikor.model.graphics.charts.Chart;
 import ikor.model.ui.Figure;
 
+/**
+ * Histogram figure
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
+
 public class HistogramFigure extends Figure<Histogram> 
 {
 	private Chart chart;
@@ -35,17 +41,7 @@ public class HistogramFigure extends Figure<Histogram>
 			
 			// Update chart
 			
-			chart.clear();
-
-			chart.addSeries(histogram, BarRenderer.class);
-			chart.getAxisRenderer().grid( AxisRenderer.GridStyle.None, AxisRenderer.GridStyle.None);
-			
-			if (histogram.getScale() instanceof LogarithmicScale) {
-				chart.setYScale( new LogarithmicScale(0, histogram.max()) );
-				chart.getAxisRenderer().grid( AxisRenderer.GridStyle.None, AxisRenderer.GridStyle.Logarithmic);
-			} else { // Linear scale, no grid
-				chart.getAxisRenderer().grid( AxisRenderer.GridStyle.None, AxisRenderer.GridStyle.None);
-			}
+			reset();
 
 			// Update tooltip provider 
 			
@@ -59,6 +55,23 @@ public class HistogramFigure extends Figure<Histogram>
 	}
 	
 	
+	protected void reset ()
+	{
+		Histogram histogram = getModel();
+		
+		chart.clear();
+		chart.addSeries("data",histogram, BarRenderer.class);
+		chart.getAxisRenderer().grid( AxisRenderer.GridStyle.None, AxisRenderer.GridStyle.None);
+		
+		if (histogram.getScale() instanceof LogarithmicScale) {
+			chart.setYScale( new LogarithmicScale(0, histogram.max()) );
+			chart.getAxisRenderer().grid( AxisRenderer.GridStyle.None, AxisRenderer.GridStyle.Logarithmic);
+		} else { // Linear scale, no grid
+			chart.getAxisRenderer().grid( AxisRenderer.GridStyle.None, AxisRenderer.GridStyle.None);
+		}		
+	}
+	
+	
 	public void render ()
 	{
 		chart.render();
@@ -69,6 +82,10 @@ public class HistogramFigure extends Figure<Histogram>
 	}
 	
 	
+	protected Chart getChart() 
+	{
+		return chart;
+	}
 	
 	// Event handling
 

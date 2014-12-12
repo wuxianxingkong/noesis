@@ -10,7 +10,6 @@ import ikor.math.util.Scale;
 
 import ikor.model.data.DecimalModel;
 import ikor.model.ui.Application;
-import ikor.model.ui.Figure;
 import ikor.model.ui.Label;
 import ikor.model.ui.Menu;
 import ikor.model.ui.Option;
@@ -18,13 +17,18 @@ import ikor.model.ui.Separator;
 import ikor.model.ui.UIModel;
 import ikor.model.ui.Viewer;
 
+/**
+ * UI for the display of histograms
+ * 
+ * @author Fernando Berzal (berzal@acm.org)
+ */
 
 public class VectorUIModel extends UIModel
 {
-	Vector          data;
-	int             bins;
-	Histogram       histogram;
-	HistogramFigure figure;
+	private Vector data;
+	private int bins;
+	private Histogram histogram;
+	private HistogramFitFigure figure;
 	private Scale scale;
 	
 	public VectorUIModel (Application app, String title, Vector data)
@@ -56,7 +60,7 @@ public class VectorUIModel extends UIModel
 		
 		histogram = createHistogram(bins);
 		
-		figure = new HistogramFigure(histogram);
+		figure = new HistogramFitFigure(histogram);
 		
 		content.add(figure);
 
@@ -65,7 +69,7 @@ public class VectorUIModel extends UIModel
 		UIModel stats = new UIModel(app,"Statistics");
 		stats.add( viewer("Minimum", data.min()) );
 		stats.add( viewer("Maximum", data.max()) );
-		stats.add( viewer("Average", data.average()) );
+		stats.add( viewer("Mean", data.average()) );
 		stats.add( viewer("Deviation", data.deviation()) );
 		stats.add( viewer("Variance", data.variance()) );
 		
@@ -125,7 +129,7 @@ public class VectorUIModel extends UIModel
 		return histogram;
 	}
 	
-	public Figure getFigure ()
+	public HistogramFitFigure getFigure ()
 	{
 		return figure;
 	}

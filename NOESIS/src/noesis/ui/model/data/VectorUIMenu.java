@@ -1,23 +1,30 @@
 package noesis.ui.model.data;
 
 
-import java.awt.event.KeyEvent;
-
 import ikor.math.util.LinearScale;
 import ikor.math.util.LogarithmicScale;
+import ikor.model.ui.Action;
 import ikor.model.ui.Application;
 import ikor.model.ui.Menu;
 import ikor.model.ui.Option;
 import ikor.model.ui.Separator;
 
+import java.awt.event.KeyEvent;
+
 import noesis.ui.model.HelpMenu;
 import noesis.ui.model.actions.ExitAction;
 
+/**
+ * UI menu for the display of histograms
+ * 
+ * @author Fernando Berzal (berzal@acm.org) & Victor Martinez (victormg@acm.org)
+ */
 
 public class VectorUIMenu extends Menu 
 {
 	private Menu data;
 	private Menu view;
+	private Menu fit;
 	private Menu help;
 	
 
@@ -29,10 +36,12 @@ public class VectorUIMenu extends Menu
 		
 		data = createDataMenu(app, ui);
 		view = createViewMenu(app, ui);
+		fit = createFitMenu(app, ui);
 		help = new HelpMenu(app);
 		
 		this.add(data);
 		this.add(view);
+		this.add(fit);
 		this.add(help);
 	}
 
@@ -104,5 +113,43 @@ public class VectorUIMenu extends Menu
 		return view;
 	}
 		
+	
+	// Fit menu
+	// ---------
+
+	public Menu createFitMenu (Application app, VectorUIModel ui)
+	{
+		Menu fit = new Menu("Fit");
 		
+		fit.setIcon( app.url("icons/calculator.png") );
+		
+		Option gaussian = new Option ("Fit a Gaussian distribution");
+		gaussian.setIcon( app.url("icons/calculator.png") );
+		gaussian.setAction( new FitNormalAction(app, ui) );
+		fit.add(gaussian);
+		
+		Option poisson = new Option ("Fit a Poisson distribution");
+		poisson.setIcon( app.url("icons/calculator.png") );
+		poisson.setAction( new FitPoissonAction(app, ui) );
+		fit.add(poisson);
+
+		Option pareto = new Option ("Fit a Pareto distribution (i.e. power law)");
+		pareto.setIcon( app.url("icons/calculator.png") );
+		pareto.setAction( new FitParetoAction(app, ui) );
+		fit.add(pareto);
+
+		fit.add(new Separator());
+
+		Option clear = new Option ("Clear distribution fit");
+		clear.setIcon( app.url("icons/chart.png") );
+		clear.setAction(new Action() {
+			@Override
+			public void run() {
+				ui.getFigure().clearDistributions();
+			}
+		});
+		fit.add(clear);
+			
+		return fit;
+	}
 }

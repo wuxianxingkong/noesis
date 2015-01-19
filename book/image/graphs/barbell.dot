@@ -1,7 +1,0 @@
-graph K2 {
-
-node[fontname="Helvetica",style=filled,fillcolor="#d0d0d0",label="", shape=circle, fixedsize=true, width=0.3, height=0.3]
-edge[fontname="Helvetica",style=bold, color=blue];
-
-n1 -- n2; 
-}

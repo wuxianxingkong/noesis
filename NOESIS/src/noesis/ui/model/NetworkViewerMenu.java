@@ -23,7 +23,9 @@ import noesis.algorithms.communities.spectral.UKMeansCommunityDetector;
 import noesis.algorithms.visualization.BinaryTreeLayout;
 import noesis.algorithms.visualization.CircularLayout;
 import noesis.algorithms.visualization.FruchtermanReingoldLayout;
+import noesis.algorithms.visualization.HierarchicalLayout;
 import noesis.algorithms.visualization.HypercubeLayout;
+import noesis.algorithms.visualization.KamadaKawaiLayout;
 import noesis.algorithms.visualization.LinearLayout;
 import noesis.algorithms.visualization.MeshLayout;
 import noesis.algorithms.visualization.RandomLayout;
@@ -295,6 +297,14 @@ public class NetworkViewerMenu extends Menu
 		Option layoutFR = new Option("Fruchterman-Reingold layout", new LayoutAction( app, figure, new FruchtermanReingoldLayout() ) );
 		layoutFR.setIcon( app.url("icons/spiral.png") );
 		view.add(layoutFR);
+
+		Option layoutKK = new Option("Kamada-Kawai layout", new LayoutAction( app, figure, new KamadaKawaiLayout() ) );
+		layoutKK.setIcon( app.url("icons/spiral.png") );
+		view.add(layoutKK);
+
+		Option layoutHierarchical = new Option("Hierarchical layout", new LayoutAction( app, figure, new HierarchicalLayout() ) );
+		layoutHierarchical.setIcon( app.url("icons/spiral.png") );
+		view.add(layoutHierarchical);
 
 		Option layoutRandom = new Option("Random layout", new LayoutAction( app, figure, new RandomLayout() ) );
 		layoutRandom.setIcon( app.url("icons/spiral.png") );

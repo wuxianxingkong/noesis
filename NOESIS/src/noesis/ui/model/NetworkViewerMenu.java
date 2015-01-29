@@ -16,6 +16,7 @@ import noesis.algorithms.communities.hierarchical.agglomerative.CompleteLinkComm
 import noesis.algorithms.communities.hierarchical.agglomerative.SingleLinkCommunityDetector;
 import noesis.algorithms.communities.modularity.FastGreedyCommunityDetector;
 import noesis.algorithms.communities.modularity.MultiStepGreedyCommunityDetector;
+import noesis.algorithms.communities.overlapping.BigClamCommunityDetector;
 import noesis.algorithms.communities.partitioning.KernighanLinCommunityDetector;
 import noesis.algorithms.communities.spectral.EIG1CommunityDetector;
 import noesis.algorithms.communities.spectral.NJWCommunityDetector;
@@ -669,6 +670,12 @@ public class NetworkViewerMenu extends Menu
 		Option cdUKMeans = new Option("UKMeans spectral community detection", new CommunityDetectionAction(app, figure, model, UKMeansCommunityDetector.class) );
 		cdUKMeans.setIcon( app.url("icons/spiral.png") );
 		communities.add(cdUKMeans);		
+
+		communities.add( new Separator() );
+
+		Option cdBigClam = new Option("BigClam community detection", new CommunityDetectionAction(app, figure, model, BigClamCommunityDetector.class) );
+		cdBigClam.setIcon( app.url("icons/spiral.png") );
+		communities.add(cdBigClam);		
 		
 		// Clustering coefficients
 		

@@ -1,8 +1,7 @@
 package noesis.ui.model.data;
 
+import ikor.collection.CollectionFactory;
 import ikor.collection.List;
-
-import noesis.CollectionFactory;
 
 /**
  * Report of values resulting from an action

@@ -6,11 +6,11 @@ package noesis.analysis.structure;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
+import ikor.collection.CollectionFactory;
 import ikor.collection.Set;
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
 import noesis.Network;
-import noesis.CollectionFactory;
 import noesis.analysis.LinkScoreTask;
 
 /**

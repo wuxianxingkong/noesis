@@ -2,7 +2,7 @@ package noesis.ui.model.data;
 
 import java.text.DecimalFormat;
 
-import noesis.CollectionFactory;
+import ikor.collection.CollectionFactory;
 import ikor.collection.List;
 import ikor.math.DenseMatrix;
 import ikor.math.DenseVector;

@@ -1,9 +1,9 @@
 package noesis.analysis;
 
+import ikor.collection.CollectionFactory;
 import ikor.collection.List;
 import ikor.model.data.DataModel;
 import ikor.parallel.Task;
-import noesis.CollectionFactory;
 import noesis.Network;
 
 /**

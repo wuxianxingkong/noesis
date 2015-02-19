@@ -1,7 +1,7 @@
 package noesis.network.filter;
 
+import ikor.collection.CollectionFactory;
 import ikor.collection.Set;
-import noesis.CollectionFactory;
 import noesis.Network;
 
 public class LinkFilter implements NetworkFilter 

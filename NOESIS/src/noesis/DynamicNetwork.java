@@ -1,6 +1,7 @@
 package noesis;
 
 import noesis.Network;
+import ikor.collection.CollectionFactory;
 import ikor.collection.Dictionary;
 import ikor.collection.List;
 import ikor.collection.index.Index;

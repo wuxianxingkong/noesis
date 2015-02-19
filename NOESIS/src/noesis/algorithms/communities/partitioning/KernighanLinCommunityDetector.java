@@ -7,6 +7,7 @@ package noesis.algorithms.communities.partitioning;
 // E-mail:      fcojaviergijon@gmail.com & aarr90@gmail.com
 
 import static noesis.algorithms.communities.spectral.SpectralCommunityDetector.adjacencyMatrix;
+import ikor.collection.CollectionFactory;
 import ikor.collection.List;
 import ikor.collection.util.Pair;
 import ikor.math.DenseVector;
@@ -15,7 +16,6 @@ import ikor.math.Vector;
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
 import noesis.AttributeNetwork;
-import noesis.CollectionFactory;
 import noesis.algorithms.communities.CommunityDetector;
 
 /**

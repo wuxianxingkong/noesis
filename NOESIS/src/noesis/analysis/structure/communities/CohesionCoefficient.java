@@ -6,11 +6,10 @@ package noesis.analysis.structure.communities;
 // Author:      Fco. Javier Gijon & Aaron Rosas
 // E-mail:      fcojaviergijon@gmail.com & aarr90@gmail.com
 
+import ikor.collection.CollectionFactory;
 import ikor.collection.List;
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
-
-import noesis.CollectionFactory;
 import noesis.Network;
 import noesis.analysis.NodeScore;
 import noesis.analysis.structure.PathLength;

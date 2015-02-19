@@ -6,11 +6,9 @@ package test.noesis;
 //Author:      Fernando Berzal
 //E-mail:      berzal@acm.org
 
+import ikor.collection.CollectionFactory;
 import ikor.collection.List;
 import ikor.collection.Visitor;
-
-import noesis.CollectionFactory;
-
 import static org.junit.Assert.*;
 
 /**

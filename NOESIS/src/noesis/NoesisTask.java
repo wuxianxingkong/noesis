@@ -1,5 +1,6 @@
 package noesis;
 
+import ikor.collection.CollectionFactory;
 import ikor.collection.List;
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;

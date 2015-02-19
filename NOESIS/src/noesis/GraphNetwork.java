@@ -6,6 +6,7 @@ package noesis;
 // Author:      Fernando Berzal
 // E-mail:      berzal@acm.org
 
+import ikor.collection.CollectionFactory;
 import ikor.collection.graph.Graph;
 
 /**

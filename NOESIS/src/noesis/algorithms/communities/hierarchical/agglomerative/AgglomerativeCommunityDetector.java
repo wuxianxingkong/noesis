@@ -6,12 +6,12 @@ package noesis.algorithms.communities.hierarchical.agglomerative;
 // Author:      Fco. Javier Gijon & Aaron Rosas
 // E-mail:      fcojaviergijon@gmail.com & aarr90@gmail.com
 
+import ikor.collection.CollectionFactory;
 import ikor.collection.List;
 import ikor.math.DenseMatrix;
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
 import noesis.AttributeNetwork;
-import noesis.CollectionFactory;
 import noesis.DynamicNetwork;
 import noesis.algorithms.communities.CommunityDetector;
 import noesis.algorithms.traversal.ConnectedComponents;

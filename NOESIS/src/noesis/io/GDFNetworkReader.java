@@ -16,7 +16,6 @@ import ikor.model.data.DataModel;
 import ikor.model.data.IntegerModel;
 import ikor.model.data.RealModel;
 import ikor.model.data.TextModel;
-
 import noesis.*;
 
 /**

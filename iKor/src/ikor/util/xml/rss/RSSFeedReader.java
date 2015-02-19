@@ -1,23 +1,15 @@
 package ikor.util.xml.rss;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import javax.xml.stream.FactoryConfigurationError;
 import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.Characters;
 import javax.xml.stream.events.XMLEvent;
 
 /**
  * RSS feed reader, adapted from http://www.vogella.com/tutorials/RSSFeed/article.html
  * 
- * @author Lars Vogel
+ * @author Lars Vogel & Fernando Berzal
  */
 
-public class RSSFeedReader 
+public class RSSFeedReader extends FeedReader 
 {
 	static final String TITLE = "title";
 	static final String DESCRIPTION = "description";
@@ -30,20 +22,14 @@ public class RSSFeedReader
 	static final String PUB_DATE = "pubDate";
 	static final String GUID = "guid";
 
-	private URL url;
-
-	public RSSFeedReader (String feedUrl) 
+	public RSSFeedReader (String url) 
 	{
-		try {
-			this.url = new URL(feedUrl);
-		} catch (MalformedURLException e) {
-			throw new RuntimeException(e);
-		}
+		super(url);
 	}
 
-	public RSSFeed read()
+	public Feed read()
 	{
-		RSSFeed feed = null;
+		Feed feed = null;
 		
 		try {
 			boolean isFeedHeader = true;
@@ -57,7 +43,7 @@ public class RSSFeedReader
 			String pubdate = "";
 			String guid = "";
 
-			XMLEventReader eventReader = reader();
+			XMLEventReader eventReader = getStAXreader();
 			
 			// read the XML document
 			while (eventReader.hasNext()) {
@@ -69,7 +55,7 @@ public class RSSFeedReader
 					case ITEM:
 						if (isFeedHeader) {
 							isFeedHeader = false;
-							feed = new RSSFeed(title, link, description, language, copyright, pubdate);
+							feed = new Feed(title, link, description, language, copyright, pubdate);
 						}
 						event = eventReader.nextEvent();
 						break;
@@ -100,18 +86,14 @@ public class RSSFeedReader
 					}
 				} else if (event.isEndElement()) {
 					if (event.asEndElement().getName().getLocalPart() == (ITEM)) {
-						RSSMessage message = new RSSMessage();
-						message.setAuthor(author);
-						message.setDescription(description);
-						message.setGuid(guid);
-						message.setLink(link);
-						message.setTitle(title);
-						feed.getMessages().add(message);
+						FeedMessage message = new FeedMessage(title,description,author,pubdate,link,guid);
+						feed.add(message);
 						event = eventReader.nextEvent();
-						continue;
 					}
 				}
 			}
+			
+			eventReader.close();
 			
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -121,37 +103,17 @@ public class RSSFeedReader
 	}
 
 	
-	private XMLEventReader reader() 
-		throws FactoryConfigurationError, XMLStreamException, IOException 
-	{
-		XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-
-		return inputFactory.createXMLEventReader(url.openStream());
-	}
-
-	
-	private String getCharacterData(XMLEvent event, XMLEventReader eventReader)
-		throws XMLStreamException 
-	{
-		String result = "";
-		event = eventReader.nextEvent();
-		if (event instanceof Characters) {
-			result = event.asCharacters().getData();
-		}
-		return result;
-	}
-
 
 	// Test program
 	
 	public static void main(String[] args) 
 	{
 		RSSFeedReader reader = new RSSFeedReader(args[0]);
-		RSSFeed feed = reader.read();
+		Feed feed = reader.read();
 		
 		System.out.println(feed);
 		
-		for (RSSMessage message: feed.getMessages()) {
+		for (FeedMessage message: feed.getMessages()) {
 			System.out.println(message);
 		}
 

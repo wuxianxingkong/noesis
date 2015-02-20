@@ -139,9 +139,9 @@ public abstract class Application extends Subject<String> implements Runnable
 				userInterface.set(model.getId(), ui);
 			}
 			
-			model.start();
-			
 			ui.run();
+			
+			model.start();
 		}
 	}
 	

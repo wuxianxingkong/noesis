@@ -13,7 +13,7 @@ import noesis.io.NetworkWriter;
 import noesis.io.PajekNetworkWriter;
 import noesis.io.graphics.NetworkImageWriter;
 
-import noesis.ui.model.NetworkViewerUIModel;
+import noesis.ui.model.NetworkAnalyzerUIModel;
 
 import ikor.model.ui.Action;
 import ikor.model.ui.File;
@@ -21,13 +21,13 @@ import ikor.model.ui.File;
 import ikor.util.log.Log;
 
 
-public class ViewerSaveAction extends Action 
+public class AnalyzerSaveAction extends Action 
 {
-	private NetworkViewerUIModel ui;
+	private NetworkAnalyzerUIModel ui;
 	private String format;
 	private File file;
 	
-	public ViewerSaveAction (NetworkViewerUIModel ui, String format)
+	public AnalyzerSaveAction (NetworkAnalyzerUIModel ui, String format)
 	{
 		this.ui = ui;
 		this.format = format;

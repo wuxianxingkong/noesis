@@ -50,9 +50,9 @@ import noesis.ui.model.actions.NodeMultiScoreAction;
 import noesis.ui.model.actions.NodeSizeAction;
 import noesis.ui.model.actions.NodeStyleAction;
 import noesis.ui.model.actions.NodeStyleResetAction;
-import noesis.ui.model.actions.ViewerOpenAction;
-import noesis.ui.model.actions.ViewerSaveAction;
-import noesis.ui.model.actions.ViewerCloseAction;
+import noesis.ui.model.actions.AnalyzerOpenAction;
+import noesis.ui.model.actions.AnalyzerSaveAction;
+import noesis.ui.model.actions.AnalyzerCloseAction;
 import noesis.ui.model.networks.AnchoredRandomNetworkUI;
 import noesis.ui.model.networks.BarabasiAlbertNetworkUI;
 import noesis.ui.model.networks.BinaryTreeNetworkUI;
@@ -70,7 +70,7 @@ import noesis.ui.model.networks.TandemNetworkUI;
 import noesis.ui.model.networks.ToroidalNetworkUI;
 import noesis.ui.model.networks.WattsStrogatzNetworkUI;
 
-public class NetworkViewerMenu extends Menu 
+public class NetworkAnalyzerMenu extends Menu 
 {
 	private Menu net;
 	private Menu view;
@@ -83,7 +83,7 @@ public class NetworkViewerMenu extends Menu
 	private Menu   save;
 	private Menu   export;
 
-	public NetworkViewerMenu (NetworkViewerUIModel ui)
+	public NetworkAnalyzerMenu (NetworkAnalyzerUIModel ui)
 	{
 		super("NOESIS Network Viewer Menu");
 		
@@ -105,7 +105,7 @@ public class NetworkViewerMenu extends Menu
 	// Net menu
 	// --------
 
-	public Menu createNetMenu (Application app, NetworkViewerUIModel ui)
+	public Menu createNetMenu (Application app, NetworkAnalyzerUIModel ui)
 	{
 		Menu net = new Menu("Network");
 
@@ -119,11 +119,11 @@ public class NetworkViewerMenu extends Menu
 
 		// File operations
 		
-		open = new Option("Open", new ViewerOpenAction(ui), KeyEvent.VK_F3 );
+		open = new Option("Open", new AnalyzerOpenAction(ui), KeyEvent.VK_F3 );
 		open.setIcon( app.url("icons/open.png") );
 		net.add( open );
 
-		close = new Option("Close", new ViewerCloseAction(ui), KeyEvent.VK_F4 );
+		close = new Option("Close", new AnalyzerCloseAction(ui), KeyEvent.VK_F4 );
 		close.setIcon( app.url("icons/close.png") );
 		net.add( close );
 	
@@ -133,15 +133,15 @@ public class NetworkViewerMenu extends Menu
 		save.setIcon( app.url("icons/save.png") );
 		net.add( save );
 
-		Option saveGraphML =new Option("GraphML network", new ViewerSaveAction(ui, "graphml") );
+		Option saveGraphML =new Option("GraphML network", new AnalyzerSaveAction(ui, "graphml") );
 		saveGraphML.setIcon( app.url("icons/save.png") );
 		save.add(saveGraphML);
 
-		Option saveGML =new Option("GML network", new ViewerSaveAction(ui, "gml") );
+		Option saveGML =new Option("GML network", new AnalyzerSaveAction(ui, "gml") );
 		saveGML.setIcon( app.url("icons/save.png") );
 		save.add(saveGML);
 
-		Option saveGDF =new Option("GDF network", new ViewerSaveAction(ui, "gdf") );
+		Option saveGDF =new Option("GDF network", new AnalyzerSaveAction(ui, "gdf") );
 		saveGDF.setIcon( app.url("icons/save.png") );
 		save.add(saveGDF);
 
@@ -157,15 +157,15 @@ public class NetworkViewerMenu extends Menu
 		export.setIcon ( app.url("icons/arrow-right.png") );
 		net.add( export );
 		
-		Option saveSVG =new Option("SVG image", new ViewerSaveAction(ui, "svg") );
+		Option saveSVG =new Option("SVG image", new AnalyzerSaveAction(ui, "svg") );
 		saveSVG.setIcon( app.url("icons/kiviat.png") );
 		export.add(saveSVG);
 
-		Option savePNG=new Option("PNG image", new ViewerSaveAction(ui, "png") );
+		Option savePNG=new Option("PNG image", new AnalyzerSaveAction(ui, "png") );
 		savePNG.setIcon( app.url("icons/kiviat.png") );
 		export.add(savePNG);
 	    
-		Option saveJPG=new Option("JPG image", new ViewerSaveAction(ui, "jpg") );
+		Option saveJPG=new Option("JPG image", new AnalyzerSaveAction(ui, "jpg") );
 		saveJPG.setIcon( app.url("icons/kiviat.png") );
 		export.add(saveJPG);
 

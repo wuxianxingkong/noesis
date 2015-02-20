@@ -26,9 +26,9 @@ public class HelpMenu extends Menu
 		web.setIcon( app.url("icons/docs.png") );
 		add(web);
 		
-		//Option config = new Option("Configuration...", new ForwardAction(null), KeyEvent.VK_F9 );
-		//config.setIcon( app.url("icons/config.png") );
-		//add( config );
+		Option tip = new Option("Tip of the day...", new ForwardAction( new TipUIModel(app) ), KeyEvent.VK_F9 );
+		tip.setIcon( app.url("icons/config.png") );
+		add( tip );
 		
 
 		Option about = new Option("About...", new ForwardAction( new AboutUIModel(app) ) );

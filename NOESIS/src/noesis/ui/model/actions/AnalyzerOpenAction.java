@@ -19,19 +19,19 @@ import noesis.io.NetworkReader;
 import noesis.io.PajekNetworkReader;
 import noesis.io.SNAPGZNetworkReader;
 import noesis.io.SNAPNetworkReader;
-import noesis.ui.model.NetworkViewerUIModel;
+import noesis.ui.model.NetworkAnalyzerUIModel;
 import ikor.math.Decimal;
 import ikor.model.data.RealModel;
 import ikor.model.ui.Action;
 import ikor.model.ui.File;
 import ikor.util.log.Log;
 
-public class ViewerOpenAction extends Action 
+public class AnalyzerOpenAction extends Action 
 {
-	private NetworkViewerUIModel ui;
+	private NetworkAnalyzerUIModel ui;
 	private File file;
 	
-	public ViewerOpenAction (NetworkViewerUIModel ui)
+	public AnalyzerOpenAction (NetworkAnalyzerUIModel ui)
 	{
 		this.ui = ui;
 		this.file = new File(ui.getApplication(), "Open network...", "Open", new FileCommandAction() );

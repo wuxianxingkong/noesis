@@ -10,7 +10,7 @@ import noesis.AttributeNetwork;
 
 
 
-public class NetworkViewerApplication extends Application
+public class NetworkAnalyzerApplication extends Application
 {
 	// Application resources
 	
@@ -50,11 +50,14 @@ public class NetworkViewerApplication extends Application
 		// UI generation
 		
 		UIBuilder builder = new SwingUIBuilder(); // new ConsoleUIBuilder();
-		NetworkViewerApplication app = new NetworkViewerApplication();
+		NetworkAnalyzerApplication app = new NetworkAnalyzerApplication();
 		
 		app.setBuilder(builder);
-		app.setStartup(new NetworkViewerUIModel(app));
+		app.setStartup(new NetworkAnalyzerUIModel(app));
 		app.run();
+		
+		TipUIModel updates = new TipUIModel( app );
+		app.run(updates);		
 	}
 
 }

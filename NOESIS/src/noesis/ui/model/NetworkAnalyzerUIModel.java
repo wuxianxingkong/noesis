@@ -9,17 +9,17 @@ import ikor.model.ui.UIModel;
 import noesis.AttributeNetwork;
 import noesis.ui.model.actions.ExitAction;
 
-public class NetworkViewerUIModel  extends UIModel
+public class NetworkAnalyzerUIModel  extends UIModel
 {
 	private NetworkModel  model;
 	private NetworkFigure figure;
-	private NetworkViewerMenu menu;
+	private NetworkAnalyzerMenu menu;
 	
 	// Constructor
 
-	public NetworkViewerUIModel (Application app)
+	public NetworkAnalyzerUIModel (Application app)
 	{
-		super(app,"NOESIS Network Viewer");
+		super(app,"NOESIS Network Analyzer");
 
 		app.addObserver(this);
 		
@@ -39,7 +39,7 @@ public class NetworkViewerUIModel  extends UIModel
 		
 	    add(figure);
 	    
-	    menu = new NetworkViewerMenu(this); 
+	    menu = new NetworkAnalyzerMenu(this); 
 		
 		add(menu);
 	}	

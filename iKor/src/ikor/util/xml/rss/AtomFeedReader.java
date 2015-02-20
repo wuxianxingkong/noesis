@@ -71,13 +71,13 @@ public class AtomFeedReader extends FeedReader
 				id = xpath.evaluate("id", entry); 
 
 				FeedMessage message = new FeedMessage(title,content,author,date,link,id);
-				feed.getMessages().add(message);
+				feed.add(message);
 			}
 
 			input.close();
 			
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			feed = null;
 		}
 		
 		return feed;

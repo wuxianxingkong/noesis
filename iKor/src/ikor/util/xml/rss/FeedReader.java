@@ -22,7 +22,7 @@ import javax.xml.stream.events.StartElement;
  * @author Fernando Berzal (berzal@acm.org)
  */
 
-public class FeedReader 
+public abstract class FeedReader 
 {
 	private URL url;
 	
@@ -36,6 +36,13 @@ public class FeedReader
 			throw new RuntimeException(e);
 		}
 	}
+	
+	// Abstract method
+	
+	public abstract Feed read ();
+	
+	// Utility methods...
+	// ------------------
 	
 	// XML readers
 

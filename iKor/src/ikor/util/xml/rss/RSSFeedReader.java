@@ -96,7 +96,7 @@ public class RSSFeedReader extends FeedReader
 			eventReader.close();
 			
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			feed = null;
 		}
 		
 		return feed;

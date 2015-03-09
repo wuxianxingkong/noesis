@@ -71,16 +71,7 @@ public class RadialLayout extends NetworkLayout
 
 		// Compute components and get root node for each one
 		
-		ConnectedComponents components = new ConnectedComponents(undirectedNetwork);
-		components.compute();
-
-		List<Integer>[] componentList = new List[components.components()-1];
-		
-		for (int component=0; component < componentList.length; component++)
-			componentList[component] = new DynamicList<Integer>();
-		
-		for (int node=0; node < network.nodes(); node++)
-			componentList[components.component(node) - 1].add(node);
+		List<Integer>[] componentList = connectedComponents(undirectedNetwork);
 		
 		int rootNode = setGlobalRootNode(undirectedNetwork, componentList);
 		
@@ -121,7 +112,7 @@ public class RadialLayout extends NetworkLayout
 	{
 		int[] rootNodes = new int[componentList.length];
 		
-		for ( int component = 0 ; component < componentList.length ; component++ )
+		for (int component = 0; component < componentList.length; component++ )
 			rootNodes[component] = rootSelector.selectRootNode(undirectedNetwork, componentList[component]);
 		
 		// Set 'false' global root node when more than one component is present
@@ -212,7 +203,7 @@ public class RadialLayout extends NetworkLayout
 	{
 		double[] weights = new double[predecessor.length];
 	
-		for (int level=levels.size()-1; level >= 1 ; level--)
+		for (int level=levels.size()-1; level >= 1; level--)
 			for (int node: levels.get(level))
 				weights[predecessor[node]] = weights[predecessor[node]] + weights[node] + 1.0;
 		
@@ -238,6 +229,24 @@ public class RadialLayout extends NetworkLayout
 		return undirectedNetwork;
 	}
 	
+	// Connected components
+	
+	private List<Integer>[] connectedComponents(AttributeNetwork network) 
+	{
+		ConnectedComponents components = new ConnectedComponents(network);
+		components.compute();
+
+		List<Integer>[] componentList = new List[components.components()-1];
+		
+		for (int component=0; component < componentList.length; component++)
+			componentList[component] = new DynamicList<Integer>();
+		
+		for (int node=0; node < network.nodes(); node++)
+			componentList[components.component(node) - 1].add(node);
+		
+		return componentList;
+	}
+
 	
 	
 	/**
@@ -283,10 +292,10 @@ public class RadialLayout extends NetworkLayout
 	
 	private class NodeInfo 
 	{
-		public int level;
-		private double initialAngle;
-		private double finalAngle;
-		private double childrenAngle;
+		int    level;
+		double initialAngle;
+		double finalAngle;
+		double childrenAngle;
 
 		public NodeInfo (int level, double initialAngle, double finalAngle, double childrenAngle) 
 		{

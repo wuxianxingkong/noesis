@@ -29,6 +29,7 @@ import noesis.algorithms.visualization.HypercubeLayout;
 import noesis.algorithms.visualization.KamadaKawaiLayout;
 import noesis.algorithms.visualization.LinearLayout;
 import noesis.algorithms.visualization.MeshLayout;
+import noesis.algorithms.visualization.RadialLayout;
 import noesis.algorithms.visualization.RandomLayout;
 import noesis.algorithms.visualization.StarLayout;
 import noesis.algorithms.visualization.ToroidalLayout;
@@ -306,6 +307,10 @@ public class NetworkAnalyzerMenu extends Menu
 		Option layoutHierarchical = new Option("Hierarchical layout", new LayoutAction( app, figure, new HierarchicalLayout() ) );
 		layoutHierarchical.setIcon( app.url("icons/spiral.png") );
 		view.add(layoutHierarchical);
+
+		Option layoutRadial = new Option("Radial layout", new LayoutAction( app, figure, new RadialLayout() ) );
+		layoutRadial.setIcon( app.url("icons/spiral.png") );
+		view.add(layoutRadial);
 
 		Option layoutRandom = new Option("Random layout", new LayoutAction( app, figure, new RandomLayout() ) );
 		layoutRandom.setIcon( app.url("icons/spiral.png") );

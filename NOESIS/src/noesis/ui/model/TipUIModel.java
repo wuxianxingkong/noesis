@@ -16,7 +16,24 @@ public class TipUIModel extends UIModel
 {
 	private Feed feed;
 	
-	public TipUIModel (Application app)
+	// Singleton
+	
+	private static TipUIModel tips = null;
+	
+	
+	public static TipUIModel create (Application app)
+	{
+		if (tips==null)
+			tips = new TipUIModel (app);
+		
+		return tips;
+	}
+	
+	
+	// Constructor
+	
+	
+	private TipUIModel (Application app)
 	{
 		super(app, "NOESIS updates");
 		
@@ -48,7 +65,8 @@ public class TipUIModel extends UIModel
 	
 	public FeedMessage message ()
 	{
-		FeedReader reader = new AtomFeedReader("https://sites.google.com/a/ikor.org/noesis/updates/posts.xml"); // http://noesis.ikor.org/updates/posts.xml");
+		FeedReader reader = new AtomFeedReader("http://goo.gl/uTpTb1"); 
+		// http://goo.gl/uTpTb1 -> http://noesis.ikor.org/updates/posts.xml
 		
 		feed = reader.read();
 		

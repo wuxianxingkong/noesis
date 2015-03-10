@@ -56,7 +56,7 @@ public class NetworkAnalyzerApplication extends Application
 		app.setStartup(new NetworkAnalyzerUIModel(app));
 		app.run();
 		
-		TipUIModel updates = new TipUIModel( app );
+		TipUIModel updates = TipUIModel.create( app );
 		app.run(updates);		
 	}
 

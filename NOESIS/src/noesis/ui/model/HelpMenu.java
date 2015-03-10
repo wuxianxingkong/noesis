@@ -26,7 +26,7 @@ public class HelpMenu extends Menu
 		web.setIcon( app.url("icons/docs.png") );
 		add(web);
 		
-		Option tip = new Option("Tip of the day...", new ForwardAction( new TipUIModel(app) ), KeyEvent.VK_F9 );
+		Option tip = new Option("Tip of the day...", new ForwardAction( TipUIModel.create(app) ), KeyEvent.VK_F9 );
 		tip.setIcon( app.url("icons/config.png") );
 		add( tip );
 		

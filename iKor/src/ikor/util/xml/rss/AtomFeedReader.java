@@ -106,6 +106,7 @@ public class AtomFeedReader extends FeedReader
 		AtomFeedReader reader = new AtomFeedReader(args[0]);
 		Feed feed = reader.read();
 		
+		System.out.println("URL "+args[0]);
 		System.out.println(feed);
 		
 		for (FeedMessage message: feed.getMessages()) {

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.Proxy;
 import java.net.URL;
 import java.util.Iterator;
 
@@ -45,20 +44,28 @@ public abstract class FeedReader
 		}
 	}
 	
+	// Fake "user-agent", e.g. Safari
+	// e.g. Safari "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A";
+	//      Lynx   "Lynx/2.8.8dev.3 libwww-FM/2.14 SSL-MM/1.4.1"
+	
+	private final static String AGENT = "Lynx/2.8.8dev.3 libwww-FM/2.14 SSL-MM/1.4.1";
 	
     private String expandURL (String shortenedURL) throws IOException 
     {
         URL url = new URL(shortenedURL);    
         
         // open connection
-        HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection(Proxy.NO_PROXY); 
-        
-        // stop following browser redirect
-        httpURLConnection.setInstanceFollowRedirects(false);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection(); 
+                    
+        connection.setRequestProperty("User-Agent", AGENT);
+            
+        // stop following browser redirect (i.e. destination page is not downloaded)
+        connection.setInstanceFollowRedirects(false);
          
-        // extract location header containing the actual destination URL
-        String expandedURL = httpURLConnection.getHeaderField("Location");
-        httpURLConnection.disconnect();
+        // extract location header containing the actual destination URL    
+        connection.connect();
+        String expandedURL = connection.getHeaderField("Location");
+        connection.disconnect();
          
         return expandedURL;
     }	

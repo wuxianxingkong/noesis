@@ -34,7 +34,7 @@ public abstract class FeedReader
 		try {
 			
 			try {
-				this.url = new URL(expandURL(feedURL));
+			    this.url = new URL(expandURL(feedURL));
 			} catch (IOException e) {
 				this.url = new URL(feedURL);
 			}
@@ -44,6 +44,7 @@ public abstract class FeedReader
 		}
 	}
 	
+		
 	// Fake "user-agent", e.g. Safari
 	// e.g. Safari "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A";
 	//      Lynx   "Lynx/2.8.8dev.3 libwww-FM/2.14 SSL-MM/1.4.1"
@@ -63,13 +64,11 @@ public abstract class FeedReader
         connection.setInstanceFollowRedirects(false);
          
         // extract location header containing the actual destination URL    
-        connection.connect();
         String expandedURL = connection.getHeaderField("Location");
-        connection.disconnect();
          
         return expandedURL;
-    }	
-    
+    }
+        
     
 	// Abstract method
 	
@@ -85,13 +84,13 @@ public abstract class FeedReader
 	{
 		XMLInputFactory inputFactory = XMLInputFactory.newInstance();
 
-		return inputFactory.createXMLEventReader(url.openStream());
+		return inputFactory.createXMLEventReader(getInputStream());
 	}
 	
 	protected XMLStreamReader getStreamReader () 
 		throws XMLStreamException, IOException
 	{
-		InputStream input = url.openStream();
+		InputStream input = getInputStream();
 		XMLInputFactory factory = XMLInputFactory.newInstance();
 		
 		return factory.createXMLStreamReader(input);

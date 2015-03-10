@@ -41,6 +41,7 @@ public class AtomFeedReader extends FeedReader
 		try {
 
 			InputStream input = getInputStream();
+			
 			DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = builderFactory.newDocumentBuilder();
 			Document xmlDocument = builder.parse(input);

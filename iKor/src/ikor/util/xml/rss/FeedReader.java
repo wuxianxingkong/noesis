@@ -2,7 +2,9 @@ package ikor.util.xml.rss;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.Proxy;
 import java.net.URL;
 import java.util.Iterator;
 
@@ -28,15 +30,40 @@ public abstract class FeedReader
 	
 	// Constructor
 	
-	public FeedReader (String feedUrl) 
+	public FeedReader (String feedURL) 
 	{
 		try {
-			this.url = new URL(feedUrl);
+			
+			try {
+				this.url = new URL(expandURL(feedURL));
+			} catch (IOException e) {
+				this.url = new URL(feedURL);
+			}
+			
 		} catch (MalformedURLException e) {
 			throw new RuntimeException(e);
 		}
 	}
 	
+	
+    private String expandURL (String shortenedURL) throws IOException 
+    {
+        URL url = new URL(shortenedURL);    
+        
+        // open connection
+        HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection(Proxy.NO_PROXY); 
+        
+        // stop following browser redirect
+        httpURLConnection.setInstanceFollowRedirects(false);
+         
+        // extract location header containing the actual destination URL
+        String expandedURL = httpURLConnection.getHeaderField("Location");
+        httpURLConnection.disconnect();
+         
+        return expandedURL;
+    }	
+    
+    
 	// Abstract method
 	
 	public abstract Feed read ();

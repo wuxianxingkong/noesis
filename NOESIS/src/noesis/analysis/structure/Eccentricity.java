@@ -38,6 +38,14 @@ public class Eccentricity extends NodeScoreTask
 		return paths.getResult().max();
 	}	
 	
+	
+	public int radius ()
+	{
+		checkDone();
+		
+		return (int) getResult().min();
+	}
+	
 	public int diameter ()
 	{
 		checkDone();

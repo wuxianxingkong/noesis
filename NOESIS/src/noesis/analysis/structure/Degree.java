@@ -24,5 +24,35 @@ public class Degree extends NodeScoreTask
 		
 		return net.inDegree(node) + net.outDegree(node);
 	}
+	
+	// Average node degree
+	
+	public double averageDegree ()
+	{
+		Network net = getNetwork();
+		
+		return (double) net.links() / (double) net.nodes();
+	}
 
+	// Network heterogeneity (variance of node degrees)
+	
+	public double heterogeinity ()
+	{
+		checkDone();
+		
+		double d;
+		double s = 0;
+		double s2 = 0;
+		
+		NodeScore degree = getResult();
+		int nodes = degree.size(); 
+		
+		for (int i=0; i<nodes; i++) {
+			d = degree.get(i)/2;
+			s += d;
+			s2 += d*d;
+		}
+		
+		return s2 / (s*s) * nodes;
+	}
 }

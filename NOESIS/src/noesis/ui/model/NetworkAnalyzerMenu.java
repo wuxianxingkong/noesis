@@ -54,6 +54,7 @@ import noesis.ui.model.actions.NodeStyleResetAction;
 import noesis.ui.model.actions.AnalyzerOpenAction;
 import noesis.ui.model.actions.AnalyzerSaveAction;
 import noesis.ui.model.actions.AnalyzerCloseAction;
+import noesis.ui.model.actions.StatsAction;
 import noesis.ui.model.networks.AnchoredRandomNetworkUI;
 import noesis.ui.model.networks.BarabasiAlbertNetworkUI;
 import noesis.ui.model.networks.BinaryTreeNetworkUI;
@@ -310,7 +311,7 @@ public class NetworkAnalyzerMenu extends Menu
 
 		Option layoutRadial = new Option("Radial layout", new LayoutAction( app, figure, new RadialLayout() ) );
 		layoutRadial.setIcon( app.url("icons/spiral.png") );
-		view.add(layoutRadial);
+		//view.add(layoutRadial);
 
 		Option layoutRandom = new Option("Random layout", new LayoutAction( app, figure, new RandomLayout() ) );
 		layoutRandom.setIcon( app.url("icons/spiral.png") );
@@ -686,7 +687,13 @@ public class NetworkAnalyzerMenu extends Menu
 		
 		Option cc = new Option("Clustering coefficient", new NodeScoreAction(app, model, ClusteringCoefficient.class) );
 		cc.setIcon( app.url("icons/microscope.png") );
-		analysis.add(cc);		
+		analysis.add(cc);	
+		
+		// Network statistics
+		
+		Option statistics = new Option ("Network statistics", new StatsAction(app) );
+		statistics.setIcon( app.url("icons/microscope.png") );
+		analysis.add(statistics);		
 		
 		return analysis;
 	}	

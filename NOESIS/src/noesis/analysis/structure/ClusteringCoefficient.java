@@ -8,6 +8,7 @@ package noesis.analysis.structure;
 
 import ikor.model.data.annotations.Description;
 import ikor.model.data.annotations.Label;
+
 import noesis.Network;
 import noesis.analysis.NodeScoreTask;
 
@@ -49,4 +50,14 @@ public class ClusteringCoefficient extends NodeScoreTask
 			return 0;
 	}
 
+	
+	// Average clustering coefficient
+	
+	public double averageClusteringCoefficient ()
+	{
+		checkDone();
+		
+		return getResult().average();
+	}
+		
 }

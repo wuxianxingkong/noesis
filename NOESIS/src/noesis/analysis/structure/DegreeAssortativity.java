@@ -107,4 +107,13 @@ public class DegreeAssortativity extends NodeScoreTask
 				* (nodeExcessDegree*avgNeighboursExcessDegree - mean*mean)
 				/ (network.links()*variance);
 	}
+	
+	// Overall network assortativity
+	
+	public double networkAssortativity ()
+	{
+		checkDone();
+		
+		return getResult().sum();
+	}
 }

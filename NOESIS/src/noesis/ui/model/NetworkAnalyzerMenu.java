@@ -33,6 +33,8 @@ import noesis.algorithms.visualization.RadialLayout;
 import noesis.algorithms.visualization.RandomLayout;
 import noesis.algorithms.visualization.StarLayout;
 import noesis.algorithms.visualization.ToroidalLayout;
+import noesis.algorithms.visualization.strategy.MinAveragePathLengthSelectionStrategy;
+import noesis.algorithms.visualization.strategy.MinEccentricitySelectionStrategy;
 import noesis.analysis.structure.*;
 import noesis.io.graphics.ColorMapNodeRenderer;
 import noesis.io.graphics.LinearGradientNodeRenderer;
@@ -309,13 +311,17 @@ public class NetworkAnalyzerMenu extends Menu
 		layoutHierarchical.setIcon( app.url("icons/spiral.png") );
 		view.add(layoutHierarchical);
 
-		Option layoutRadial = new Option("Radial layout", new LayoutAction( app, figure, new RadialLayout() ) );
+		Menu layoutRadial = new Menu("Radial layout");
 		layoutRadial.setIcon( app.url("icons/spiral.png") );
-		//view.add(layoutRadial);
+		view.add(layoutRadial);
 
-		Option layoutRandom = new Option("Random layout", new LayoutAction( app, figure, new RandomLayout() ) );
-		layoutRandom.setIcon( app.url("icons/spiral.png") );
-		view.add(layoutRandom);
+		Option layoutRadialPathLength = new Option("... using average path length", new LayoutAction( app, figure, new RadialLayout( new MinAveragePathLengthSelectionStrategy() ) ) );
+		layoutRadialPathLength.setIcon( app.url("icons/spiral.png") );
+		layoutRadial.add(layoutRadialPathLength);
+
+		Option layoutRadialEccentricity = new Option("... using node eccentricity", new LayoutAction( app, figure, new RadialLayout( new MinEccentricitySelectionStrategy() ) ) );
+		layoutRadialEccentricity.setIcon( app.url("icons/spiral.png") );
+		layoutRadial.add(layoutRadialEccentricity);
 
 		Menu layoutRegular = new Menu("Regular layout");
 		layoutRegular.setIcon( app.url("icons/spiral.png") );
@@ -348,6 +354,10 @@ public class NetworkAnalyzerMenu extends Menu
 		Option layoutLinear = new Option("Linear layout", new LayoutAction( app, figure, new LinearLayout() ) );
 		layoutLinear.setIcon( app.url("icons/spiral.png") );
 		layoutRegular.add(layoutLinear);
+
+		Option layoutRandom = new Option("Random layout", new LayoutAction( app, figure, new RandomLayout() ) );
+		layoutRandom.setIcon( app.url("icons/spiral.png") );
+		view.add(layoutRandom);
 		
 		view.add ( new Separator() );
 

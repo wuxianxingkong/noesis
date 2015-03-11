@@ -6,12 +6,11 @@ import ikor.collection.List;
 import ikor.collection.Set;
 import noesis.Attribute;
 import noesis.AttributeNetwork;
-import noesis.Network;
 import noesis.algorithms.LinkVisitor;
 import noesis.algorithms.traversal.ConnectedComponents;
 import noesis.algorithms.traversal.NetworkBFS;
-import noesis.analysis.NodeScore;
-import noesis.analysis.structure.AveragePathLength;
+import noesis.algorithms.visualization.strategy.MinAveragePathLengthSelectionStrategy;
+import noesis.algorithms.visualization.strategy.SelectionStrategy;
 
 /**
  * Radial layout algorithm
@@ -37,21 +36,23 @@ public class RadialLayout extends NetworkLayout
 	/**
 	 * Component's root selection strategy
 	 */
-	private RootSelectionStrategy rootSelector;
+	private SelectionStrategy rootSelector;
 	
 	/**
 	 * Constructor with default strategy
 	 */
 	public RadialLayout () 
 	{
-		this.rootSelector = new AveragePathLengthSelectionStrategy();
+		this.rootSelector = new MinAveragePathLengthSelectionStrategy();
+				         // new MinEccentricitySelectionStrategy(); 
+		                 // new MinAveragePathLengthSelectionStrategy();
 	}
 	
 	/**
 	 * Constructor with custom strategy
 	 * @param rootSelector Root selection strategy
 	 */
-	public RadialLayout (RootSelectionStrategy rootSelector) 
+	public RadialLayout (SelectionStrategy rootSelector) 
 	{
 		this.rootSelector = rootSelector;
 	}
@@ -67,29 +68,29 @@ public class RadialLayout extends NetworkLayout
 		
 		// Create undirected version of the network
 		
-		AttributeNetwork undirectedNetwork = createUndirectedNetwork(network);
+		AttributeNetwork augmentedNetwork = createAugmentedNetwork(network);
 
 		// Compute components and get root node for each one
 		
-		List<Integer>[] componentList = connectedComponents(undirectedNetwork);
+		List<Integer>[] componentList = connectedComponents(augmentedNetwork);
 		
-		int rootNode = setGlobalRootNode(undirectedNetwork, componentList);
+		int rootNode = computeGlobalRootNode(augmentedNetwork, componentList);
 		
 		// Compute levels, weights, and node angles
 		
-		Set<Integer>[] children = new Set[undirectedNetwork.size()];
-		int[] predecessor = new int[undirectedNetwork.size()];
-		boolean[] visited = new boolean[undirectedNetwork.size()];
+		Set<Integer>[] children = new Set[augmentedNetwork.size()];
+		int[] predecessor = new int[augmentedNetwork.size()];
+		boolean[] visited = new boolean[augmentedNetwork.size()];
 		
 		for (int i=0; i<predecessor.length; i++)
 			predecessor[i] = -1;
 		
-		NetworkBFS<Integer,Integer> BFS = new NetworkBFS<Integer,Integer>(undirectedNetwork);
+		NetworkBFS<Integer,Integer> BFS = new NetworkBFS<Integer,Integer>(augmentedNetwork);
 		BFSLinkVisitor visitor = new BFSLinkVisitor(predecessor, children, rootNode, visited);
 		BFS.setLinkVisitor(visitor);
 		BFS.traverse(rootNode);
 		
-		List<List<Integer>> levels = getLevelNodes(rootNode, children);
+		List<List<Integer>> levels = getNodeLevels(rootNode, children);
 		double[] weights = computeNodeWeights(levels, predecessor);
 		NodeInfo[] nodeInfo = computePositionInfo(rootNode, weights, predecessor, children);
 
@@ -108,12 +109,12 @@ public class RadialLayout extends NetworkLayout
 	
 	// Compute global root node
 	
-	private int setGlobalRootNode (AttributeNetwork undirectedNetwork, List<Integer>[] componentList) 
+	private int computeGlobalRootNode (AttributeNetwork undirectedNetwork, List<Integer>[] componentList) 
 	{
 		int[] rootNodes = new int[componentList.length];
 		
 		for (int component = 0; component < componentList.length; component++ )
-			rootNodes[component] = rootSelector.selectRootNode(undirectedNetwork, componentList[component]);
+			rootNodes[component] = rootSelector.select(undirectedNetwork, componentList[component]);
 		
 		// Set 'false' global root node when more than one component is present
 		
@@ -173,7 +174,7 @@ public class RadialLayout extends NetworkLayout
 	
 	// Get nodes in each level
 	
-	private List<List<Integer>> getLevelNodes (int rootNode, Set<Integer>[] children) 
+	private List<List<Integer>> getNodeLevels (int rootNode, Set<Integer>[] children) 
 	{
 		List<List<Integer>> nodesPerLevel = new DynamicList<List<Integer>>();
 		List<Integer> currentNodes = new DynamicList<Integer>();
@@ -211,9 +212,13 @@ public class RadialLayout extends NetworkLayout
 	}
 
 	
-	// Force undirected network
+	/**
+	 * Augmented undirected network
+	 * @param network Original (possibly directed) network
+	 * @return Augmented undirected network with an additional node 
+	 */
 	
-	private AttributeNetwork createUndirectedNetwork (AttributeNetwork network) 
+	private AttributeNetwork createAugmentedNetwork (AttributeNetwork network) 
 	{
 		AttributeNetwork undirectedNetwork = new AttributeNetwork();
 		undirectedNetwork.setSize(network.size() + 1);
@@ -228,8 +233,13 @@ public class RadialLayout extends NetworkLayout
 
 		return undirectedNetwork;
 	}
+
 	
-	// Connected components
+	/**
+	 * Connected components
+	 * @param network Augmented undirected network
+	 * @return Lists of members for each connected component
+	 */
 	
 	private List<Integer>[] connectedComponents(AttributeNetwork network) 
 	{
@@ -240,53 +250,15 @@ public class RadialLayout extends NetworkLayout
 		
 		for (int component=0; component < componentList.length; component++)
 			componentList[component] = new DynamicList<Integer>();
+
+		// For each node in the original network 
+		// (i.e. all but the last node in the augmented network)
 		
-		for (int node=0; node < network.nodes(); node++)
+		for (int node=0; node < network.nodes()-1; node++)
 			componentList[components.component(node) - 1].add(node);
 		
 		return componentList;
 	}
-
-	
-	
-	/**
-	 * Root selection strategy interface (for connected components in undirected networks).
-	 */
-	
-	public interface RootSelectionStrategy 
-	{
-		public int selectRootNode (Network undirectedNetwork, List<Integer> componentNodes);
-	}
-
-	
-	/**
-	 * Default root selection strategy (for connected components in undirected networks):
-	 * Select node with lowest ASP to all the other nodes.
-	 */
-	public class AveragePathLengthSelectionStrategy implements RootSelectionStrategy 
-	{
-		@Override
-		public int selectRootNode (Network undirectedNetwork, List<Integer> componentNodes) 
-		{
-			AveragePathLength path = new AveragePathLength(undirectedNetwork);
-			
-			path.compute();
-			
-			NodeScore pathLength = path.getResult();
-			int minIndex = -1;
-			double pLength = Double.MAX_VALUE;
-			
-			for (int node: componentNodes) {
-				if (pathLength.get(node) < pLength) {
-					pLength = pathLength.get(node);
-					minIndex = node;
-				}
-			}
-			
-			return minIndex;
-		}
-	}
-	
 	
 	// Internal node information
 	

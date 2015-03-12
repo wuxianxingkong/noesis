@@ -35,6 +35,11 @@ public class NodeScoreAction extends Action
 		return model.getNetwork();
 	}
 	
+	public Application getApplication ()
+	{
+		return application;
+	}
+	
 	
 	public NodeScoreTask instantiateTask (Network network)
 	{
